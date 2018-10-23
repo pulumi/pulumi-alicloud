@@ -1,0 +1,1 @@
+{"version":3,"file":"getAttachments.js","sourceRoot":"","sources":["../../slb/getAttachments.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAGzC;;GAEG;AACH,wBAA+B,IAAwB,EAAE,IAA2B;IAChF,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,4CAA4C,EAAE;QACvE,aAAa,EAAE,IAAI,CAAC,WAAW;QAC/B,gBAAgB,EAAE,IAAI,CAAC,cAAc;KACxC,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AALD,wCAKC"}
