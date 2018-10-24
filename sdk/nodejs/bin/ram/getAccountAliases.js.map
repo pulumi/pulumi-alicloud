@@ -1,1 +1,0 @@
-{"version":3,"file":"getAccountAliases.js","sourceRoot":"","sources":["../../ram/getAccountAliases.ts"],"names":[],"mappings":";AAAA,wFAAwF;AACxF,iFAAiF;;AAEjF,yCAAyC;AAGzC;;GAEG;AACH,2BAAkC,IAA4B,EAAE,IAA2B;IACvF,IAAI,GAAG,IAAI,IAAI,EAAE,CAAC;IAClB,OAAO,MAAM,CAAC,OAAO,CAAC,MAAM,CAAC,kDAAkD,EAAE;QAC7E,YAAY,EAAE,IAAI,CAAC,UAAU;KAChC,EAAE,IAAI,CAAC,CAAC;AACb,CAAC;AALD,8CAKC"}
