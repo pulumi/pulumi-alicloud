@@ -4,12 +4,13 @@
 package ots
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
 // This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
 // It is foundation of creating data table.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -17,9 +18,6 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOpt) (*Instance, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["accessedBy"] = nil
@@ -61,45 +59,45 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Instance) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Instance) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The network limitation of accessing instance. Valid values:
-func (r *Instance) AccessedBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessedBy"])
+func (r *Instance) AccessedBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessedBy"])
 }
 
-// The description of the instance.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+// The description of the instance. Currently, it does not support modifying.
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
-func (r *Instance) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+func (r *Instance) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
 // The name of the instance.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A mapping of tags to assign to the instance.
-func (r *Instance) Tags() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["tags"])
+func (r *Instance) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
 	// The network limitation of accessing instance. Valid values:
 	AccessedBy interface{}
-	// The description of the instance.
+	// The description of the instance. Currently, it does not support modifying.
 	Description interface{}
 	// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
 	InstanceType interface{}
@@ -113,7 +111,7 @@ type InstanceState struct {
 type InstanceArgs struct {
 	// The network limitation of accessing instance. Valid values:
 	AccessedBy interface{}
-	// The description of the instance.
+	// The description of the instance. Currently, it does not support modifying.
 	Description interface{}
 	// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
 	InstanceType interface{}

@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides an alias for the Alibaba Cloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
 func LookupAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs) (*GetAccountAliasesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -19,13 +21,13 @@ func LookupAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs) (*Ge
 	}
 	return &GetAccountAliasesResult{
 		AccountAlias: outputs["accountAlias"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getAccountAliases.
 type GetAccountAliasesArgs struct {
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
@@ -33,6 +35,7 @@ type GetAccountAliasesArgs struct {
 type GetAccountAliasesResult struct {
 	// Alias of the account.
 	AccountAlias interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

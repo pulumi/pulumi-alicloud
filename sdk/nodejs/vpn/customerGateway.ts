@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPN customer gateway resource.
- * 
- * ~> **NOTE:** Terraform will auto build vpn customer gateway instance  while it uses `alicloud_vpn_customer_gateway` to build a vpn customer gateway resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_customer_gateway.html.markdown.
  */
 export class CustomerGateway extends pulumi.CustomResource {
     /**
@@ -18,22 +18,36 @@ export class CustomerGateway extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomerGatewayState): CustomerGateway {
-        return new CustomerGateway(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CustomerGatewayState, opts?: pulumi.CustomResourceOptions): CustomerGateway {
+        return new CustomerGateway(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpn/customerGateway:CustomerGateway';
+
+    /**
+     * Returns true if the given object is an instance of CustomerGateway.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is CustomerGateway {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === CustomerGateway.__pulumiType;
     }
 
     /**
      * The description of the VPN customer gateway instance.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The IP address of the customer gateway.
      */
-    public readonly ipAddress: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The name of the VPN customer gateway. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a CustomerGateway resource with the given unique name, arguments, and options.
@@ -46,7 +60,7 @@ export class CustomerGateway extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CustomerGatewayArgs | CustomerGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: CustomerGatewayState = argsOrState as CustomerGatewayState | undefined;
+            const state = argsOrState as CustomerGatewayState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -59,7 +73,14 @@ export class CustomerGateway extends pulumi.CustomResource {
             inputs["ipAddress"] = args ? args.ipAddress : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:vpn/customerGateway:CustomerGateway", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(CustomerGateway.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a ESS scaling configuration resource.
-// 
-// ~> **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud_instance_types` datasource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_configuration.html.markdown.
 type ScalingConfiguration struct {
 	s *pulumi.ResourceState
 }
@@ -21,14 +19,8 @@ func NewScalingConfiguration(ctx *pulumi.Context,
 	if args == nil || args.ImageId == nil {
 		return nil, errors.New("missing required argument 'ImageId'")
 	}
-	if args == nil || args.InstanceType == nil {
-		return nil, errors.New("missing required argument 'InstanceType'")
-	}
 	if args == nil || args.ScalingGroupId == nil {
 		return nil, errors.New("missing required argument 'ScalingGroupId'")
-	}
-	if args == nil || args.SecurityGroupId == nil {
-		return nil, errors.New("missing required argument 'SecurityGroupId'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
@@ -40,18 +32,26 @@ func NewScalingConfiguration(ctx *pulumi.Context,
 		inputs["instanceIds"] = nil
 		inputs["instanceName"] = nil
 		inputs["instanceType"] = nil
+		inputs["instanceTypes"] = nil
 		inputs["internetChargeType"] = nil
 		inputs["internetMaxBandwidthIn"] = nil
 		inputs["internetMaxBandwidthOut"] = nil
 		inputs["ioOptimized"] = nil
 		inputs["isOutdated"] = nil
 		inputs["keyName"] = nil
+		inputs["kmsEncryptedPassword"] = nil
+		inputs["kmsEncryptionContext"] = nil
+		inputs["override"] = nil
+		inputs["password"] = nil
+		inputs["passwordInherit"] = nil
 		inputs["roleName"] = nil
 		inputs["scalingConfigurationName"] = nil
 		inputs["scalingGroupId"] = nil
 		inputs["securityGroupId"] = nil
+		inputs["securityGroupIds"] = nil
 		inputs["substitute"] = nil
 		inputs["systemDiskCategory"] = nil
+		inputs["systemDiskSize"] = nil
 		inputs["tags"] = nil
 		inputs["userData"] = nil
 	} else {
@@ -63,18 +63,26 @@ func NewScalingConfiguration(ctx *pulumi.Context,
 		inputs["instanceIds"] = args.InstanceIds
 		inputs["instanceName"] = args.InstanceName
 		inputs["instanceType"] = args.InstanceType
+		inputs["instanceTypes"] = args.InstanceTypes
 		inputs["internetChargeType"] = args.InternetChargeType
 		inputs["internetMaxBandwidthIn"] = args.InternetMaxBandwidthIn
 		inputs["internetMaxBandwidthOut"] = args.InternetMaxBandwidthOut
 		inputs["ioOptimized"] = args.IoOptimized
 		inputs["isOutdated"] = args.IsOutdated
 		inputs["keyName"] = args.KeyName
+		inputs["kmsEncryptedPassword"] = args.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = args.KmsEncryptionContext
+		inputs["override"] = args.Override
+		inputs["password"] = args.Password
+		inputs["passwordInherit"] = args.PasswordInherit
 		inputs["roleName"] = args.RoleName
 		inputs["scalingConfigurationName"] = args.ScalingConfigurationName
 		inputs["scalingGroupId"] = args.ScalingGroupId
 		inputs["securityGroupId"] = args.SecurityGroupId
+		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["substitute"] = args.Substitute
 		inputs["systemDiskCategory"] = args.SystemDiskCategory
+		inputs["systemDiskSize"] = args.SystemDiskSize
 		inputs["tags"] = args.Tags
 		inputs["userData"] = args.UserData
 	}
@@ -99,18 +107,26 @@ func GetScalingConfiguration(ctx *pulumi.Context,
 		inputs["instanceIds"] = state.InstanceIds
 		inputs["instanceName"] = state.InstanceName
 		inputs["instanceType"] = state.InstanceType
+		inputs["instanceTypes"] = state.InstanceTypes
 		inputs["internetChargeType"] = state.InternetChargeType
 		inputs["internetMaxBandwidthIn"] = state.InternetMaxBandwidthIn
 		inputs["internetMaxBandwidthOut"] = state.InternetMaxBandwidthOut
 		inputs["ioOptimized"] = state.IoOptimized
 		inputs["isOutdated"] = state.IsOutdated
 		inputs["keyName"] = state.KeyName
+		inputs["kmsEncryptedPassword"] = state.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = state.KmsEncryptionContext
+		inputs["override"] = state.Override
+		inputs["password"] = state.Password
+		inputs["passwordInherit"] = state.PasswordInherit
 		inputs["roleName"] = state.RoleName
 		inputs["scalingConfigurationName"] = state.ScalingConfigurationName
 		inputs["scalingGroupId"] = state.ScalingGroupId
 		inputs["securityGroupId"] = state.SecurityGroupId
+		inputs["securityGroupIds"] = state.SecurityGroupIds
 		inputs["substitute"] = state.Substitute
 		inputs["systemDiskCategory"] = state.SystemDiskCategory
+		inputs["systemDiskSize"] = state.SystemDiskSize
 		inputs["tags"] = state.Tags
 		inputs["userData"] = state.UserData
 	}
@@ -122,123 +138,165 @@ func GetScalingConfiguration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ScalingConfiguration) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ScalingConfiguration) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ScalingConfiguration) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ScalingConfiguration) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Whether active current scaling configuration in the specified scaling group. Default to `false`.
-func (r *ScalingConfiguration) Active() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["active"])
+func (r *ScalingConfiguration) Active() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["active"])
 }
 
 // DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
-func (r *ScalingConfiguration) DataDisks() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dataDisks"])
+func (r *ScalingConfiguration) DataDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dataDisks"])
 }
 
 // Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
-func (r *ScalingConfiguration) Enable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enable"])
+func (r *ScalingConfiguration) Enable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enable"])
 }
 
 // The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
-func (r *ScalingConfiguration) ForceDelete() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDelete"])
+func (r *ScalingConfiguration) ForceDelete() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDelete"])
 }
 
 // ID of an image file, indicating the image resource selected when an instance is enabled.
-func (r *ScalingConfiguration) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *ScalingConfiguration) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
-// It has been deprecated from version 1.6.0. New resource `alicloud_ess_attachment` replaces it.
-func (r *ScalingConfiguration) InstanceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceIds"])
+// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+func (r *ScalingConfiguration) InstanceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceIds"])
 }
 
 // Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
-func (r *ScalingConfiguration) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *ScalingConfiguration) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // Resource type of an ECS instance.
-func (r *ScalingConfiguration) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+func (r *ScalingConfiguration) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
+}
+
+// Resource types of an ECS instance.
+func (r *ScalingConfiguration) InstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceTypes"])
 }
 
 // Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-func (r *ScalingConfiguration) InternetChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetChargeType"])
+func (r *ScalingConfiguration) InternetChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetChargeType"])
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-func (r *ScalingConfiguration) InternetMaxBandwidthIn() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["internetMaxBandwidthIn"])
+func (r *ScalingConfiguration) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["internetMaxBandwidthIn"])
 }
 
 // Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
-func (r *ScalingConfiguration) InternetMaxBandwidthOut() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["internetMaxBandwidthOut"])
+func (r *ScalingConfiguration) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["internetMaxBandwidthOut"])
 }
 
 // It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-func (r *ScalingConfiguration) IoOptimized() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ioOptimized"])
+func (r *ScalingConfiguration) IoOptimized() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ioOptimized"])
 }
 
 // Whether to use outdated instance type. Default to false.
-func (r *ScalingConfiguration) IsOutdated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isOutdated"])
+func (r *ScalingConfiguration) IsOutdated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isOutdated"])
 }
 
 // The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
-func (r *ScalingConfiguration) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *ScalingConfiguration) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
 }
 
-// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
-func (r *ScalingConfiguration) RoleName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleName"])
+// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+func (r *ScalingConfiguration) KmsEncryptedPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
 }
 
-// Name shown for the scheduled task. If this parameter value is not specified, the default value is ScalingConfigurationId.
-func (r *ScalingConfiguration) ScalingConfigurationName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingConfigurationName"])
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (r *ScalingConfiguration) KmsEncryptionContext() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["kmsEncryptionContext"])
+}
+
+// Indicates whether to overwrite the existing data. Default to false.
+func (r *ScalingConfiguration) Override() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["override"])
+}
+
+// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+func (r *ScalingConfiguration) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
+}
+
+// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
+func (r *ScalingConfiguration) PasswordInherit() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["passwordInherit"])
+}
+
+// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+func (r *ScalingConfiguration) RoleName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleName"])
+}
+
+// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+func (r *ScalingConfiguration) ScalingConfigurationName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingConfigurationName"])
 }
 
 // ID of the scaling group of a scaling configuration.
-func (r *ScalingConfiguration) ScalingGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingGroupId"])
+func (r *ScalingConfiguration) ScalingGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingGroupId"])
 }
 
-// ID of the security group to which a newly created instance belongs.
-func (r *ScalingConfiguration) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
+func (r *ScalingConfiguration) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
-// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'
-func (r *ScalingConfiguration) Substitute() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["substitute"])
+// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
+func (r *ScalingConfiguration) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
-// Category of the system disk. The parameter value options are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
-func (r *ScalingConfiguration) SystemDiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["systemDiskCategory"])
+// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
+func (r *ScalingConfiguration) Substitute() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["substitute"])
+}
+
+// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
+func (r *ScalingConfiguration) SystemDiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["systemDiskCategory"])
+}
+
+// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+func (r *ScalingConfiguration) SystemDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["systemDiskSize"])
 }
 
 // A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
-func (r *ScalingConfiguration) Tags() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["tags"])
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
+func (r *ScalingConfiguration) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
-func (r *ScalingConfiguration) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+func (r *ScalingConfiguration) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
 // Input properties used for looking up and filtering ScalingConfiguration resources.
@@ -253,12 +311,14 @@ type ScalingConfigurationState struct {
 	ForceDelete interface{}
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId interface{}
-	// It has been deprecated from version 1.6.0. New resource `alicloud_ess_attachment` replaces it.
+	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	InstanceIds interface{}
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName interface{}
 	// Resource type of an ECS instance.
 	InstanceType interface{}
+	// Resource types of an ECS instance.
+	InstanceTypes interface{}
 	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
 	InternetChargeType interface{}
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -271,19 +331,35 @@ type ScalingConfigurationState struct {
 	IsOutdated interface{}
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
 	KeyName interface{}
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
+	// Indicates whether to overwrite the existing data. Default to false.
+	Override interface{}
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	Password interface{}
+	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
+	PasswordInherit interface{}
+	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName interface{}
-	// Name shown for the scheduled task. If this parameter value is not specified, the default value is ScalingConfigurationId.
+	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
 	ScalingConfigurationName interface{}
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId interface{}
-	// ID of the security group to which a newly created instance belongs.
+	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId interface{}
-	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'
+	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
+	SecurityGroupIds interface{}
+	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute interface{}
-	// Category of the system disk. The parameter value options are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory interface{}
+	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+	SystemDiskSize interface{}
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags interface{}
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData interface{}
@@ -301,12 +377,14 @@ type ScalingConfigurationArgs struct {
 	ForceDelete interface{}
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId interface{}
-	// It has been deprecated from version 1.6.0. New resource `alicloud_ess_attachment` replaces it.
+	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	InstanceIds interface{}
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName interface{}
 	// Resource type of an ECS instance.
 	InstanceType interface{}
+	// Resource types of an ECS instance.
+	InstanceTypes interface{}
 	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
 	InternetChargeType interface{}
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
@@ -319,19 +397,35 @@ type ScalingConfigurationArgs struct {
 	IsOutdated interface{}
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
 	KeyName interface{}
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
+	// Indicates whether to overwrite the existing data. Default to false.
+	Override interface{}
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	Password interface{}
+	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
+	PasswordInherit interface{}
+	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName interface{}
-	// Name shown for the scheduled task. If this parameter value is not specified, the default value is ScalingConfigurationId.
+	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
 	ScalingConfigurationName interface{}
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId interface{}
-	// ID of the security group to which a newly created instance belongs.
+	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId interface{}
-	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'
+	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
+	SecurityGroupIds interface{}
+	// The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
 	Substitute interface{}
-	// Category of the system disk. The parameter value options are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
+	// Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory interface{}
+	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
+	SystemDiskSize interface{}
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
 	Tags interface{}
 	// User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
 	UserData interface{}

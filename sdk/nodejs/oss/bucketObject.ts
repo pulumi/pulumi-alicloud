@@ -2,10 +2,46 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a resource to put a object(content or file) to a oss bucket.
+ * 
+ * ## Example Usage
+ * 
+ * ### Uploading a file to a bucket
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const objectSource = new alicloud.oss.BucketObject("object-source", {
+ *     bucket: "yourBucketName",
+ *     key: "newObjectKey",
+ *     source: "path/to/file",
+ * });
+ * ```
+ * 
+ * ### Uploading a content to a bucket
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const example = new alicloud.oss.Bucket("example", {
+ *     acl: "public-read",
+ *     bucket: "yourBucketName",
+ * });
+ * const objectContent = new alicloud.oss.BucketObject("object-content", {
+ *     bucket: example.bucket,
+ *     content: "the content that you want to upload.",
+ *     key: "newObjectKey",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
  */
 export class BucketObject extends pulumi.CustomResource {
     /**
@@ -16,66 +52,88 @@ export class BucketObject extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketObjectState): BucketObject {
-        return new BucketObject(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketObjectState, opts?: pulumi.CustomResourceOptions): BucketObject {
+        return new BucketObject(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:oss/bucketObject:BucketObject';
+
+    /**
+     * Returns true if the given object is an instance of BucketObject.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BucketObject {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BucketObject.__pulumiType;
     }
 
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
      */
-    public readonly acl: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string | undefined>;
     /**
      * The name of the bucket to put the file in.
      */
-    public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly cacheControl: pulumi.Output<string | undefined>;
+    public readonly cacheControl!: pulumi.Output<string | undefined>;
     /**
      * The literal content being uploaded to the bucket.
      */
-    public readonly content: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string | undefined>;
     /**
      * Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly contentDisposition: pulumi.Output<string | undefined>;
+    public readonly contentDisposition!: pulumi.Output<string | undefined>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly contentEncoding: pulumi.Output<string | undefined>;
+    public readonly contentEncoding!: pulumi.Output<string | undefined>;
     /**
      * the content length of request.
      */
-    public /*out*/ readonly contentLength: pulumi.Output<string>;
+    public /*out*/ readonly contentLength!: pulumi.Output<string>;
     /**
      * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
      */
-    public readonly contentMd5: pulumi.Output<string | undefined>;
+    public readonly contentMd5!: pulumi.Output<string | undefined>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    public readonly contentType: pulumi.Output<string>;
+    public readonly contentType!: pulumi.Output<string>;
     /**
      * the ETag generated for the object (an MD5 sum of the object content).
      */
-    public /*out*/ readonly etag: pulumi.Output<string>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      */
-    public readonly expires: pulumi.Output<string | undefined>;
+    public readonly expires!: pulumi.Output<string | undefined>;
     /**
      * The name of the object once it is in the bucket.
      */
-    public readonly key: pulumi.Output<string>;
+    public readonly key!: pulumi.Output<string>;
     /**
-     * Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
+     * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      */
-    public readonly serverSideEncryption: pulumi.Output<string>;
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+     */
+    public readonly serverSideEncryption!: pulumi.Output<string | undefined>;
     /**
      * The path to the source file being uploaded to the bucket.
      */
-    public readonly source: pulumi.Output<string | undefined>;
+    public readonly source!: pulumi.Output<string | undefined>;
+    /**
+     * A unique version ID value for the object, if bucket versioning is enabled.
+     */
+    public /*out*/ readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -88,7 +146,7 @@ export class BucketObject extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketObjectState = argsOrState as BucketObjectState | undefined;
+            const state = argsOrState as BucketObjectState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["cacheControl"] = state ? state.cacheControl : undefined;
@@ -101,8 +159,10 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["etag"] = state ? state.etag : undefined;
             inputs["expires"] = state ? state.expires : undefined;
             inputs["key"] = state ? state.key : undefined;
+            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["serverSideEncryption"] = state ? state.serverSideEncryption : undefined;
             inputs["source"] = state ? state.source : undefined;
+            inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
             if (!args || args.bucket === undefined) {
@@ -121,12 +181,21 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["expires"] = args ? args.expires : undefined;
             inputs["key"] = args ? args.key : undefined;
+            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["serverSideEncryption"] = args ? args.serverSideEncryption : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["contentLength"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
+            inputs["versionId"] = undefined /*out*/;
         }
-        super("alicloud:oss/bucketObject:BucketObject", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(BucketObject.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -183,13 +252,21 @@ export interface BucketObjectState {
      */
     readonly key?: pulumi.Input<string>;
     /**
-     * Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
+     * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+     */
+    readonly kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */
     readonly serverSideEncryption?: pulumi.Input<string>;
     /**
      * The path to the source file being uploaded to the bucket.
      */
     readonly source?: pulumi.Input<string>;
+    /**
+     * A unique version ID value for the object, if bucket versioning is enabled.
+     */
+    readonly versionId?: pulumi.Input<string>;
 }
 
 /**
@@ -237,7 +314,11 @@ export interface BucketObjectArgs {
      */
     readonly key: pulumi.Input<string>;
     /**
-     * Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
+     * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+     */
+    readonly kmsKeyId?: pulumi.Input<string>;
+    /**
+     * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */
     readonly serverSideEncryption?: pulumi.Input<string>;
     /**

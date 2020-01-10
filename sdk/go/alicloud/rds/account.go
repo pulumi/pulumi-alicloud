@@ -8,7 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an RDS account resource and used to manage databases. A RDS instance supports multiple database account.
+// Provides an RDS account resource and used to manage databases.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
 type Account struct {
 	s *pulumi.ResourceState
 }
@@ -19,19 +21,20 @@ func NewAccount(ctx *pulumi.Context,
 	if args == nil || args.InstanceId == nil {
 		return nil, errors.New("missing required argument 'InstanceId'")
 	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["description"] = nil
 		inputs["instanceId"] = nil
+		inputs["kmsEncryptedPassword"] = nil
+		inputs["kmsEncryptionContext"] = nil
 		inputs["name"] = nil
 		inputs["password"] = nil
 		inputs["type"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["instanceId"] = args.InstanceId
+		inputs["kmsEncryptedPassword"] = args.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = args.KmsEncryptionContext
 		inputs["name"] = args.Name
 		inputs["password"] = args.Password
 		inputs["type"] = args.Type
@@ -51,6 +54,8 @@ func GetAccount(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["instanceId"] = state.InstanceId
+		inputs["kmsEncryptedPassword"] = state.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = state.KmsEncryptionContext
 		inputs["name"] = state.Name
 		inputs["password"] = state.Password
 		inputs["type"] = state.Type
@@ -63,40 +68,50 @@ func GetAccount(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Account) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Account) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Account) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Account) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-func (r *Account) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Account) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The Id of instance in which account belongs.
-func (r *Account) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *Account) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
+}
+
+// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+func (r *Account) KmsEncryptedPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (r *Account) KmsEncryptionContext() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["kmsEncryptionContext"])
 }
 
 // Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-func (r *Account) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Account) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
-func (r *Account) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (r *Account) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Privilege type of account.
 // - Normal: Common privilege.
 // - Super: High privilege.
-func (r *Account) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Account) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering Account resources.
@@ -105,9 +120,13 @@ type AccountState struct {
 	Description interface{}
 	// The Id of instance in which account belongs.
 	InstanceId interface{}
+	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	Name interface{}
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password interface{}
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -121,9 +140,13 @@ type AccountArgs struct {
 	Description interface{}
 	// The Id of instance in which account belongs.
 	InstanceId interface{}
+	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	Name interface{}
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password interface{}
 	// Privilege type of account.
 	// - Normal: Common privilege.

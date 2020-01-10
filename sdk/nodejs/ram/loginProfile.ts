@@ -7,6 +7,28 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User Login Profile resource.
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a RAM login profile.
+ * const user = new alicloud.ram.User("user", {
+ *     comments: "yoyoyo",
+ *     displayName: "userDisplayName",
+ *     email: "hello.uuu@aaa.com",
+ *     force: true,
+ *     mobile: "86-18688888888",
+ * });
+ * const profile = new alicloud.ram.LoginProfile("profile", {
+ *     password: "Yourpassword1234",
+ *     userName: user.name,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
  */
 export class LoginProfile extends pulumi.CustomResource {
     /**
@@ -17,26 +39,40 @@ export class LoginProfile extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoginProfileState): LoginProfile {
-        return new LoginProfile(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LoginProfileState, opts?: pulumi.CustomResourceOptions): LoginProfile {
+        return new LoginProfile(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/loginProfile:LoginProfile';
+
+    /**
+     * Returns true if the given object is an instance of LoginProfile.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoginProfile {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LoginProfile.__pulumiType;
     }
 
     /**
      * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
      */
-    public readonly mfaBindRequired: pulumi.Output<boolean | undefined>;
+    public readonly mfaBindRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Password of the RAM user.
      */
-    public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
      */
-    public readonly passwordResetRequired: pulumi.Output<boolean | undefined>;
+    public readonly passwordResetRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly userName: pulumi.Output<string>;
+    public readonly userName!: pulumi.Output<string>;
 
     /**
      * Create a LoginProfile resource with the given unique name, arguments, and options.
@@ -49,7 +85,7 @@ export class LoginProfile extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LoginProfileArgs | LoginProfileState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LoginProfileState = argsOrState as LoginProfileState | undefined;
+            const state = argsOrState as LoginProfileState | undefined;
             inputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["passwordResetRequired"] = state ? state.passwordResetRequired : undefined;
@@ -67,7 +103,14 @@ export class LoginProfile extends pulumi.CustomResource {
             inputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        super("alicloud:ram/loginProfile:LoginProfile", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(LoginProfile.__pulumiType, name, inputs, opts);
     }
 }
 

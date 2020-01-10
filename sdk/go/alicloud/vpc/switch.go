@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPC switch resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vswitch.html.markdown.
 type Switch struct {
 	s *pulumi.ResourceState
 }
@@ -31,12 +31,14 @@ func NewSwitch(ctx *pulumi.Context,
 		inputs["cidrBlock"] = nil
 		inputs["description"] = nil
 		inputs["name"] = nil
+		inputs["tags"] = nil
 		inputs["vpcId"] = nil
 	} else {
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["cidrBlock"] = args.CidrBlock
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
+		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 	}
 	s, err := ctx.RegisterResource("alicloud:vpc/switch:Switch", name, true, inputs, opts...)
@@ -56,6 +58,7 @@ func GetSwitch(ctx *pulumi.Context,
 		inputs["cidrBlock"] = state.CidrBlock
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["tags"] = state.Tags
 		inputs["vpcId"] = state.VpcId
 	}
 	s, err := ctx.ReadResource("alicloud:vpc/switch:Switch", name, id, inputs, opts...)
@@ -66,38 +69,43 @@ func GetSwitch(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Switch) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Switch) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Switch) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Switch) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The AZ for the switch.
-func (r *Switch) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Switch) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
 // The CIDR block for the switch.
-func (r *Switch) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Switch) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
 // The switch description. Defaults to null.
-func (r *Switch) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Switch) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the switch. Defaults to null.
-func (r *Switch) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Switch) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// A mapping of tags to assign to the resource.
+func (r *Switch) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // The VPC ID.
-func (r *Switch) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Switch) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering Switch resources.
@@ -110,6 +118,8 @@ type SwitchState struct {
 	Description interface{}
 	// The name of the switch. Defaults to null.
 	Name interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 	// The VPC ID.
 	VpcId interface{}
 }
@@ -124,6 +134,8 @@ type SwitchArgs struct {
 	Description interface{}
 	// The name of the switch. Defaults to null.
 	Name interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 	// The VPC ID.
 	VpcId interface{}
 }

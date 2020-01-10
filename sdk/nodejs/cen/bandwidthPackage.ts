@@ -8,6 +8,25 @@ import * as utilities from "../utilities";
  * Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
  * 
  * For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const foo = new alicloud.cen.BandwidthPackage("foo", {
+ *     bandwidth: 5,
+ *     geographicRegionIds: [
+ *         "China",
+ *         "Asia-Pacific",
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
  */
 export class BandwidthPackage extends pulumi.CustomResource {
     /**
@@ -18,42 +37,56 @@ export class BandwidthPackage extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BandwidthPackageState): BandwidthPackage {
-        return new BandwidthPackage(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BandwidthPackageState, opts?: pulumi.CustomResourceOptions): BandwidthPackage {
+        return new BandwidthPackage(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cen/bandwidthPackage:BandwidthPackage';
+
+    /**
+     * Returns true if the given object is an instance of BandwidthPackage.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BandwidthPackage {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BandwidthPackage.__pulumiType;
     }
 
     /**
-     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
+     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
-    public readonly bandwidth: pulumi.Output<number>;
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
-    public readonly chargeType: pulumi.Output<string | undefined>;
+    public readonly chargeType!: pulumi.Output<string | undefined>;
     /**
      * The description of the bandwidth package. Default to null.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The time of the bandwidth package to expire.
      */
-    public /*out*/ readonly expiredTime: pulumi.Output<string>;
+    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
      * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
      */
-    public readonly geographicRegionIds: pulumi.Output<string[]>;
+    public readonly geographicRegionIds!: pulumi.Output<string[]>;
     /**
      * The name of the bandwidth package. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The status of the bandwidth, including "InUse" and "Idle".
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackage resource with the given unique name, arguments, and options.
@@ -66,7 +99,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BandwidthPackageArgs | BandwidthPackageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BandwidthPackageState = argsOrState as BandwidthPackageState | undefined;
+            const state = argsOrState as BandwidthPackageState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["chargeType"] = state ? state.chargeType : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -92,7 +125,14 @@ export class BandwidthPackage extends pulumi.CustomResource {
             inputs["expiredTime"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:cen/bandwidthPackage:BandwidthPackage", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(BandwidthPackage.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -101,7 +141,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
  */
 export interface BandwidthPackageState {
     /**
-     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
+     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
     readonly bandwidth?: pulumi.Input<number>;
     /**
@@ -139,7 +179,7 @@ export interface BandwidthPackageState {
  */
 export interface BandwidthPackageArgs {
     /**
-     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
+     * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
     readonly bandwidth: pulumi.Input<number>;
     /**

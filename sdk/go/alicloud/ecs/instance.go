@@ -10,16 +10,20 @@ import (
 
 // Provides a ECS instance resource.
 // 
-// ~> **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+// > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitchId`. One instance can only belong to one VSwitch.
 // 
-// ~> **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
+// > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
 // 
-// ~> **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud_instance_types` datasource.
+// > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `ecs.getInstanceTypes` datasource.
 // 
-// ~> **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+// > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
 // 
-// ~> **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+// > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
 //  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+// 
+// > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -41,6 +45,9 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["allocatePublicIp"] = nil
 		inputs["autoRenewPeriod"] = nil
 		inputs["availabilityZone"] = nil
+		inputs["creditSpecification"] = nil
+		inputs["dataDisks"] = nil
+		inputs["deletionProtection"] = nil
 		inputs["description"] = nil
 		inputs["dryRun"] = nil
 		inputs["forceDelete"] = nil
@@ -56,12 +63,16 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["ioOptimized"] = nil
 		inputs["isOutdated"] = nil
 		inputs["keyName"] = nil
+		inputs["kmsEncryptedPassword"] = nil
+		inputs["kmsEncryptionContext"] = nil
 		inputs["password"] = nil
 		inputs["period"] = nil
 		inputs["periodUnit"] = nil
 		inputs["privateIp"] = nil
 		inputs["renewalStatus"] = nil
+		inputs["resourceGroupId"] = nil
 		inputs["roleName"] = nil
+		inputs["securityEnhancementStrategy"] = nil
 		inputs["securityGroups"] = nil
 		inputs["spotPriceLimit"] = nil
 		inputs["spotStrategy"] = nil
@@ -70,11 +81,15 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["systemDiskSize"] = nil
 		inputs["tags"] = nil
 		inputs["userData"] = nil
+		inputs["volumeTags"] = nil
 		inputs["vswitchId"] = nil
 	} else {
 		inputs["allocatePublicIp"] = args.AllocatePublicIp
 		inputs["autoRenewPeriod"] = args.AutoRenewPeriod
 		inputs["availabilityZone"] = args.AvailabilityZone
+		inputs["creditSpecification"] = args.CreditSpecification
+		inputs["dataDisks"] = args.DataDisks
+		inputs["deletionProtection"] = args.DeletionProtection
 		inputs["description"] = args.Description
 		inputs["dryRun"] = args.DryRun
 		inputs["forceDelete"] = args.ForceDelete
@@ -90,12 +105,16 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["ioOptimized"] = args.IoOptimized
 		inputs["isOutdated"] = args.IsOutdated
 		inputs["keyName"] = args.KeyName
+		inputs["kmsEncryptedPassword"] = args.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = args.KmsEncryptionContext
 		inputs["password"] = args.Password
 		inputs["period"] = args.Period
 		inputs["periodUnit"] = args.PeriodUnit
 		inputs["privateIp"] = args.PrivateIp
 		inputs["renewalStatus"] = args.RenewalStatus
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["roleName"] = args.RoleName
+		inputs["securityEnhancementStrategy"] = args.SecurityEnhancementStrategy
 		inputs["securityGroups"] = args.SecurityGroups
 		inputs["spotPriceLimit"] = args.SpotPriceLimit
 		inputs["spotStrategy"] = args.SpotStrategy
@@ -104,6 +123,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["systemDiskSize"] = args.SystemDiskSize
 		inputs["tags"] = args.Tags
 		inputs["userData"] = args.UserData
+		inputs["volumeTags"] = args.VolumeTags
 		inputs["vswitchId"] = args.VswitchId
 	}
 	inputs["publicIp"] = nil
@@ -124,6 +144,9 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["allocatePublicIp"] = state.AllocatePublicIp
 		inputs["autoRenewPeriod"] = state.AutoRenewPeriod
 		inputs["availabilityZone"] = state.AvailabilityZone
+		inputs["creditSpecification"] = state.CreditSpecification
+		inputs["dataDisks"] = state.DataDisks
+		inputs["deletionProtection"] = state.DeletionProtection
 		inputs["description"] = state.Description
 		inputs["dryRun"] = state.DryRun
 		inputs["forceDelete"] = state.ForceDelete
@@ -139,13 +162,17 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["ioOptimized"] = state.IoOptimized
 		inputs["isOutdated"] = state.IsOutdated
 		inputs["keyName"] = state.KeyName
+		inputs["kmsEncryptedPassword"] = state.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = state.KmsEncryptionContext
 		inputs["password"] = state.Password
 		inputs["period"] = state.Period
 		inputs["periodUnit"] = state.PeriodUnit
 		inputs["privateIp"] = state.PrivateIp
 		inputs["publicIp"] = state.PublicIp
 		inputs["renewalStatus"] = state.RenewalStatus
+		inputs["resourceGroupId"] = state.ResourceGroupId
 		inputs["roleName"] = state.RoleName
+		inputs["securityEnhancementStrategy"] = state.SecurityEnhancementStrategy
 		inputs["securityGroups"] = state.SecurityGroups
 		inputs["spotPriceLimit"] = state.SpotPriceLimit
 		inputs["spotStrategy"] = state.SpotStrategy
@@ -155,6 +182,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["systemDiskSize"] = state.SystemDiskSize
 		inputs["tags"] = state.Tags
 		inputs["userData"] = state.UserData
+		inputs["volumeTags"] = state.VolumeTags
 		inputs["vswitchId"] = state.VswitchId
 	}
 	s, err := ctx.ReadResource("alicloud:ecs/instance:Instance", name, id, inputs, opts...)
@@ -165,220 +193,278 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Instance) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Instance) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
-func (r *Instance) AllocatePublicIp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allocatePublicIp"])
+// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+func (r *Instance) AllocatePublicIp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allocatePublicIp"])
 }
 
-// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-// - [1, 2, 3] when `period_unit` in "Week"
-func (r *Instance) AutoRenewPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["autoRenewPeriod"])
+// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+// - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+// - [1, 2, 3] when `periodUnit` in "Week"
+func (r *Instance) AutoRenewPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["autoRenewPeriod"])
 }
 
-// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
-func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+// The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
+func (r *Instance) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
-// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+func (r *Instance) CreditSpecification() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creditSpecification"])
 }
 
-// Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
-func (r *Instance) DryRun() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["dryRun"])
+// The list of data disks created with instance.
+func (r *Instance) DataDisks() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dataDisks"])
+}
+
+// Whether enable the deletion protection or not.
+// - true: Enable deletion protection.
+// - false: Disable deletion protection.
+func (r *Instance) DeletionProtection() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deletionProtection"])
+}
+
+// The description of the data disk.
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
+}
+
+// Specifies whether to send a dry-run request. Default to false. 
+// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+// - false: A request is sent. If the validation succeeds, the instance is created.
+func (r *Instance) DryRun() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["dryRun"])
 }
 
 // If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 // However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
-func (r *Instance) ForceDelete() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forceDelete"])
+func (r *Instance) ForceDelete() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDelete"])
 }
 
-// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 // On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
-func (r *Instance) HostName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostName"])
+func (r *Instance) HostName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostName"])
 }
 
 // The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
-func (r *Instance) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Instance) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // Whether to change instance disks charge type when changing instance charge type.
-func (r *Instance) IncludeDataDisks() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["includeDataDisks"])
+func (r *Instance) IncludeDataDisks() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["includeDataDisks"])
 }
 
 // Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-func (r *Instance) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+func (r *Instance) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
-// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-// Terraform will autogenerate a default name is `ECS-Instance`.
-func (r *Instance) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *Instance) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
-// The type of instance to start.
-func (r *Instance) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
 // Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
-func (r *Instance) InternetChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetChargeType"])
+func (r *Instance) InternetChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetChargeType"])
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
-func (r *Instance) InternetMaxBandwidthIn() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["internetMaxBandwidthIn"])
+func (r *Instance) InternetMaxBandwidthIn() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["internetMaxBandwidthIn"])
 }
 
 // Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-func (r *Instance) InternetMaxBandwidthOut() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["internetMaxBandwidthOut"])
+func (r *Instance) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["internetMaxBandwidthOut"])
 }
 
 // It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-func (r *Instance) IoOptimized() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ioOptimized"])
+func (r *Instance) IoOptimized() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ioOptimized"])
 }
 
 // Whether to use outdated instance type. Default to false.
-func (r *Instance) IsOutdated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isOutdated"])
+func (r *Instance) IsOutdated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isOutdated"])
 }
 
 // The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
-func (r *Instance) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *Instance) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
+}
+
+// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) KmsEncryptedPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) KmsEncryptionContext() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["kmsEncryptionContext"])
 }
 
 // Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
-func (r *Instance) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Instance) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
-// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-// - [1-3] when `period_unit` in "Week"
-func (r *Instance) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+// - [1-3] when `periodUnit` in "Week"
+func (r *Instance) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
-// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
-func (r *Instance) PeriodUnit() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["periodUnit"])
+// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+func (r *Instance) PeriodUnit() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["periodUnit"])
 }
 
-// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
-func (r *Instance) PrivateIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateIp"])
+// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) PrivateIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateIp"])
 }
 
 // The instance public ip.
-func (r *Instance) PublicIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicIp"])
+func (r *Instance) PublicIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicIp"])
 }
 
-// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 // - `AutoRenewal`: Enable auto renewal.
 // - `Normal`: Disable auto renewal.
 // - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-func (r *Instance) RenewalStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["renewalStatus"])
+func (r *Instance) RenewalStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["renewalStatus"])
 }
 
-// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
-func (r *Instance) RoleName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleName"])
+// The Id of resource group which the instance belongs.
+func (r *Instance) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
+}
+
+// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+func (r *Instance) RoleName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleName"])
+}
+
+// The security enhancement strategy.
+// - Active: Enable security enhancement strategy, it only works on system images.
+// - Deactive: Disable security enhancement strategy, it works on all images.
+func (r *Instance) SecurityEnhancementStrategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityEnhancementStrategy"])
 }
 
 // A list of security group ids to associate with.
-func (r *Instance) SecurityGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityGroups"])
+func (r *Instance) SecurityGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroups"])
 }
 
 // The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-func (r *Instance) SpotPriceLimit() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["spotPriceLimit"])
+func (r *Instance) SpotPriceLimit() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["spotPriceLimit"])
 }
 
-// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
 // - NoSpot: A regular Pay-As-You-Go instance.
 // - SpotWithPriceLimit: A price threshold for a spot instance
 // - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
-func (r *Instance) SpotStrategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["spotStrategy"])
+func (r *Instance) SpotStrategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["spotStrategy"])
 }
 
 // The instance status.
-func (r *Instance) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Instance) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
-func (r *Instance) SubnetId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subnetId"])
+func (r *Instance) SubnetId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subnetId"])
 }
 
-// Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
-func (r *Instance) SystemDiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["systemDiskCategory"])
+// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
+func (r *Instance) SystemDiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["systemDiskCategory"])
 }
 
-// Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
-func (r *Instance) SystemDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["systemDiskSize"])
+// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) SystemDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["systemDiskSize"])
 }
 
 // A mapping of tags to assign to the resource.
-func (r *Instance) Tags() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["tags"])
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (r *Instance) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
-// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
-func (r *Instance) UserData() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userData"])
+// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
+func (r *Instance) UserData() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userData"])
 }
 
-// The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
-func (r *Instance) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+// A mapping of tags to assign to the devices created by the instance at launch time.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (r *Instance) VolumeTags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["volumeTags"])
+}
+
+// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
+func (r *Instance) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp interface{}
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-	// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-	// - [1, 2, 3] when `period_unit` in "Week"
+	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+	// - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+	// - [1, 2, 3] when `periodUnit` in "Week"
 	AutoRenewPeriod interface{}
-	// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+	// The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
 	AvailabilityZone interface{}
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification interface{}
+	// The list of data disks created with instance.
+	DataDisks interface{}
+	// Whether enable the deletion protection or not.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection interface{}
+	// The description of the data disk.
 	Description interface{}
-	// Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
+	// Specifies whether to send a dry-run request. Default to false. 
+	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun interface{}
 	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete interface{}
-	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName interface{}
 	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
@@ -387,10 +473,8 @@ type InstanceState struct {
 	IncludeDataDisks interface{}
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType interface{}
-	// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-	// Terraform will autogenerate a default name is `ECS-Instance`.
 	InstanceName interface{}
-	// The type of instance to start.
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType interface{}
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType interface{}
@@ -404,30 +488,40 @@ type InstanceState struct {
 	IsOutdated interface{}
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
 	KeyName interface{}
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+	KmsEncryptionContext interface{}
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-	// - [1-3] when `period_unit` in "Week"
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+	// - [1-3] when `periodUnit` in "Week"
 	Period interface{}
-	// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit interface{}
-	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
+	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp interface{}
 	// The instance public ip.
 	PublicIp interface{}
-	// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus interface{}
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+	// The Id of resource group which the instance belongs.
+	ResourceGroupId interface{}
+	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName interface{}
+	// The security enhancement strategy.
+	// - Active: Enable security enhancement strategy, it only works on system images.
+	// - Deactive: Disable security enhancement strategy, it works on all images.
+	SecurityEnhancementStrategy interface{}
 	// A list of security group ids to associate with.
 	SecurityGroups interface{}
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit interface{}
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
 	// - NoSpot: A regular Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -435,36 +529,52 @@ type InstanceState struct {
 	// The instance status.
 	Status interface{}
 	SubnetId interface{}
-	// Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory interface{}
-	// Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
 	SystemDiskSize interface{}
 	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags interface{}
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData interface{}
-	// The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
+	// A mapping of tags to assign to the devices created by the instance at launch time.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	VolumeTags interface{}
+	// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
 	VswitchId interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp interface{}
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-	// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-	// - [1, 2, 3] when `period_unit` in "Week"
+	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+	// - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+	// - [1, 2, 3] when `periodUnit` in "Week"
 	AutoRenewPeriod interface{}
-	// The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+	// The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
 	AvailabilityZone interface{}
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+	CreditSpecification interface{}
+	// The list of data disks created with instance.
+	DataDisks interface{}
+	// Whether enable the deletion protection or not.
+	// - true: Enable deletion protection.
+	// - false: Disable deletion protection.
+	DeletionProtection interface{}
+	// The description of the data disk.
 	Description interface{}
-	// Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
+	// Specifies whether to send a dry-run request. Default to false. 
+	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun interface{}
 	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete interface{}
-	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName interface{}
 	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
@@ -473,10 +583,8 @@ type InstanceArgs struct {
 	IncludeDataDisks interface{}
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType interface{}
-	// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-	// Terraform will autogenerate a default name is `ECS-Instance`.
 	InstanceName interface{}
-	// The type of instance to start.
+	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType interface{}
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
 	InternetChargeType interface{}
@@ -490,41 +598,57 @@ type InstanceArgs struct {
 	IsOutdated interface{}
 	// The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
 	KeyName interface{}
+	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+	KmsEncryptionContext interface{}
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-	// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-	// - [1-3] when `period_unit` in "Week"
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+	// - [1-3] when `periodUnit` in "Week"
 	Period interface{}
-	// The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit interface{}
-	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
+	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp interface{}
-	// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus interface{}
-	// Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+	// The Id of resource group which the instance belongs.
+	ResourceGroupId interface{}
+	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName interface{}
+	// The security enhancement strategy.
+	// - Active: Enable security enhancement strategy, it only works on system images.
+	// - Deactive: Disable security enhancement strategy, it works on all images.
+	SecurityEnhancementStrategy interface{}
 	// A list of security group ids to associate with.
 	SecurityGroups interface{}
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit interface{}
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
 	// - NoSpot: A regular Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy interface{}
 	SubnetId interface{}
-	// Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory interface{}
-	// Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
 	SystemDiskSize interface{}
 	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags interface{}
-	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+	// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
 	UserData interface{}
-	// The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
+	// A mapping of tags to assign to the devices created by the instance at launch time.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	VolumeTags interface{}
+	// The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
 	VswitchId interface{}
 }

@@ -2,15 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud_kvstore_instances` data source provides a collection of kvstore instances available in Alicloud account.
+ * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
  */
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:kvstore/getInstances:getInstances", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:kvstore/getInstances:getInstances", {
+        "ids": args.ids,
         "instanceClass": args.instanceClass,
         "instanceType": args.instanceType,
         "nameRegex": args.nameRegex,
@@ -20,12 +32,18 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
+    /**
+     * A list of RKV instance IDs.
+     */
+    readonly ids?: string[];
     readonly instanceClass?: string;
     /**
      * Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -35,13 +53,10 @@ export interface GetInstancesArgs {
      * A regex string to apply to the instance name.
      */
     readonly nameRegex?: string;
-    /**
-     * The name of file that can save the collection of instances after running `terraform plan`.
-     */
     readonly outputFile?: string;
     /**
      * Status of the instance.
-     * * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
+     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
     readonly status?: string;
@@ -64,9 +79,36 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
-     * A list of RDS instances. Its every element contains the following attributes:
+     * A list of RKV instance IDs.
      */
-    readonly instances: { availabilityZone: string, bandwidth: number, capacity: number, chargeType: string, connectionDomain: string, connections: number, createTime: string, expireTime: string, id: string, instanceClass: string, instanceType: string, name: string, port: number, privateIp: string, regionId: string, status: string, userName: string, vpcId: string, vswitchId: string }[];
+    readonly ids: string[];
+    readonly instanceClass?: string;
+    /**
+     * (Optional) Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     */
+    readonly instanceType?: string;
+    /**
+     * A list of RKV instances. Its every element contains the following attributes:
+     */
+    readonly instances: outputs.kvstore.GetInstancesInstance[];
+    readonly nameRegex?: string;
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * Status of the instance.
+     */
+    readonly status?: string;
+    readonly tags?: {[key: string]: any};
+    /**
+     * VPC ID the instance belongs to.
+     */
+    readonly vpcId?: string;
+    /**
+     * VSwitch ID the instance belongs to.
+     */
+    readonly vswitchId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

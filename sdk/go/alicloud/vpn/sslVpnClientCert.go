@@ -8,10 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a SSL VPN client cert resource.
-// 
-// ~> **NOTE:** Terraform will auto build SSL VPN client certs  while it uses `alicloud_ssl_vpn_client_cert` to build a ssl vpn client certs resource.
-//              It depends on VPN instance and SSL VPN Server.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_client_cert.html.markdown.
 type SslVpnClientCert struct {
 	s *pulumi.ResourceState
 }
@@ -30,6 +27,10 @@ func NewSslVpnClientCert(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["sslVpnServerId"] = args.SslVpnServerId
 	}
+	inputs["caCert"] = nil
+	inputs["clientCert"] = nil
+	inputs["clientConfig"] = nil
+	inputs["clientKey"] = nil
 	inputs["status"] = nil
 	s, err := ctx.RegisterResource("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, true, inputs, opts...)
 	if err != nil {
@@ -44,6 +45,10 @@ func GetSslVpnClientCert(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SslVpnClientCertState, opts ...pulumi.ResourceOpt) (*SslVpnClientCert, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["caCert"] = state.CaCert
+		inputs["clientCert"] = state.ClientCert
+		inputs["clientConfig"] = state.ClientConfig
+		inputs["clientKey"] = state.ClientKey
 		inputs["name"] = state.Name
 		inputs["sslVpnServerId"] = state.SslVpnServerId
 		inputs["status"] = state.Status
@@ -56,44 +61,56 @@ func GetSslVpnClientCert(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SslVpnClientCert) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *SslVpnClientCert) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SslVpnClientCert) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *SslVpnClientCert) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The name of the client certificate.
-func (r *SslVpnClientCert) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SslVpnClientCert) CaCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["caCert"])
 }
 
-// The ID of the SSL-VPN server.
-func (r *SslVpnClientCert) SslVpnServerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sslVpnServerId"])
+func (r *SslVpnClientCert) ClientCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientCert"])
 }
 
-// The status of the client certificate.
-func (r *SslVpnClientCert) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *SslVpnClientCert) ClientConfig() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientConfig"])
+}
+
+func (r *SslVpnClientCert) ClientKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientKey"])
+}
+
+func (r *SslVpnClientCert) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+func (r *SslVpnClientCert) SslVpnServerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sslVpnServerId"])
+}
+
+func (r *SslVpnClientCert) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Input properties used for looking up and filtering SslVpnClientCert resources.
 type SslVpnClientCertState struct {
-	// The name of the client certificate.
+	CaCert interface{}
+	ClientCert interface{}
+	ClientConfig interface{}
+	ClientKey interface{}
 	Name interface{}
-	// The ID of the SSL-VPN server.
 	SslVpnServerId interface{}
-	// The status of the client certificate.
 	Status interface{}
 }
 
 // The set of arguments for constructing a SslVpnClientCert resource.
 type SslVpnClientCertArgs struct {
-	// The name of the client certificate.
 	Name interface{}
-	// The ID of the SSL-VPN server.
 	SslVpnServerId interface{}
 }

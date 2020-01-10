@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM User resource.
- * 
- * ~> **NOTE:** When you want to destroy this resource forcefully(means release all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user.html.markdown.
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -18,34 +18,48 @@ export class User extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState): User {
-        return new User(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState, opts?: pulumi.CustomResourceOptions): User {
+        return new User(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/user:User';
+
+    /**
+     * Returns true if the given object is an instance of User.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is User {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === User.__pulumiType;
     }
 
     /**
      * Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
      */
-    public readonly comments: pulumi.Output<string | undefined>;
+    public readonly comments!: pulumi.Output<string | undefined>;
     /**
-     * Name of the RAM user which for display. This name can have a string of 1 to 12 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+     * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
-    public readonly displayName: pulumi.Output<string | undefined>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Email of the RAM user.
      */
-    public readonly email: pulumi.Output<string | undefined>;
+    public readonly email!: pulumi.Output<string | undefined>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
      */
-    public readonly mobile: pulumi.Output<string | undefined>;
+    public readonly mobile!: pulumi.Output<string | undefined>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -58,7 +72,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserState = argsOrState as UserState | undefined;
+            const state = argsOrState as UserState | undefined;
             inputs["comments"] = state ? state.comments : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["email"] = state ? state.email : undefined;
@@ -74,7 +88,14 @@ export class User extends pulumi.CustomResource {
             inputs["mobile"] = args ? args.mobile : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:ram/user:User", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(User.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -87,7 +108,7 @@ export interface UserState {
      */
     readonly comments?: pulumi.Input<string>;
     /**
-     * Name of the RAM user which for display. This name can have a string of 1 to 12 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+     * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
@@ -117,7 +138,7 @@ export interface UserArgs {
      */
     readonly comments?: pulumi.Input<string>;
     /**
-     * Name of the RAM user which for display. This name can have a string of 1 to 12 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
+     * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as "-",".", and must not end with a hyphen.
      */
     readonly displayName?: pulumi.Input<string>;
     /**

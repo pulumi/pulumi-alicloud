@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPN gateway resource.
-// 
-// ~> **NOTE:** Terraform will auto build vpn instance  while it uses `alicloud_vpn_gateway` to build a vpn resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_gateway.html.markdown.
 type Gateway struct {
 	s *pulumi.ResourceState
 }
@@ -35,6 +33,7 @@ func NewGateway(ctx *pulumi.Context,
 		inputs["period"] = nil
 		inputs["sslConnections"] = nil
 		inputs["vpcId"] = nil
+		inputs["vswitchId"] = nil
 	} else {
 		inputs["bandwidth"] = args.Bandwidth
 		inputs["description"] = args.Description
@@ -45,6 +44,7 @@ func NewGateway(ctx *pulumi.Context,
 		inputs["period"] = args.Period
 		inputs["sslConnections"] = args.SslConnections
 		inputs["vpcId"] = args.VpcId
+		inputs["vswitchId"] = args.VswitchId
 	}
 	inputs["businessStatus"] = nil
 	inputs["internetIp"] = nil
@@ -74,6 +74,7 @@ func GetGateway(ctx *pulumi.Context,
 		inputs["sslConnections"] = state.SslConnections
 		inputs["status"] = state.Status
 		inputs["vpcId"] = state.VpcId
+		inputs["vswitchId"] = state.VswitchId
 	}
 	s, err := ctx.ReadResource("alicloud:vpn/gateway:Gateway", name, id, inputs, opts...)
 	if err != nil {
@@ -83,80 +84,81 @@ func GetGateway(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Gateway) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Gateway) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Gateway) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Gateway) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-// It can't be changed by terraform.
-func (r *Gateway) Bandwidth() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidth"])
+func (r *Gateway) Bandwidth() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidth"])
 }
 
 // The business status of the VPN gateway.
-func (r *Gateway) BusinessStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["businessStatus"])
+func (r *Gateway) BusinessStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["businessStatus"])
 }
 
 // The description of the VPN instance.
-func (r *Gateway) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Gateway) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
-func (r *Gateway) EnableIpsec() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableIpsec"])
+func (r *Gateway) EnableIpsec() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableIpsec"])
 }
 
 // Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-func (r *Gateway) EnableSsl() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableSsl"])
+func (r *Gateway) EnableSsl() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableSsl"])
 }
 
-// The charge type for instance.
-func (r *Gateway) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+func (r *Gateway) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
 // The internet ip of the VPN.
-func (r *Gateway) InternetIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetIp"])
+func (r *Gateway) InternetIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetIp"])
 }
 
 // The name of the VPN. Defaults to null.
-func (r *Gateway) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Gateway) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The filed is only required while the InstanceChargeType is prepaid.
-func (r *Gateway) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+func (r *Gateway) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
-// The max connections of SSL VPN.
-func (r *Gateway) SslConnections() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["sslConnections"])
+// The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
+func (r *Gateway) SslConnections() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["sslConnections"])
 }
 
 // The status of the VPN gateway.
-func (r *Gateway) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Gateway) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The VPN belongs the vpc_id, the field can't be changed.
-func (r *Gateway) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Gateway) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
+}
+
+// The VPN belongs the vswitch_id, the field can't be changed.
+func (r *Gateway) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering Gateway resources.
 type GatewayState struct {
-	// The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-	// It can't be changed by terraform.
 	Bandwidth interface{}
 	// The business status of the VPN gateway.
 	BusinessStatus interface{}
@@ -166,26 +168,26 @@ type GatewayState struct {
 	EnableIpsec interface{}
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl interface{}
-	// The charge type for instance.
+	// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
 	InstanceChargeType interface{}
 	// The internet ip of the VPN.
 	InternetIp interface{}
 	// The name of the VPN. Defaults to null.
 	Name interface{}
-	// The filed is only required while the InstanceChargeType is prepaid.
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
 	Period interface{}
-	// The max connections of SSL VPN.
+	// The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
 	SslConnections interface{}
 	// The status of the VPN gateway.
 	Status interface{}
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId interface{}
+	// The VPN belongs the vswitch_id, the field can't be changed.
+	VswitchId interface{}
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-	// It can't be changed by terraform.
 	Bandwidth interface{}
 	// The description of the VPN instance.
 	Description interface{}
@@ -193,14 +195,16 @@ type GatewayArgs struct {
 	EnableIpsec interface{}
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl interface{}
-	// The charge type for instance.
+	// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
 	InstanceChargeType interface{}
 	// The name of the VPN. Defaults to null.
 	Name interface{}
-	// The filed is only required while the InstanceChargeType is prepaid.
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
 	Period interface{}
-	// The max connections of SSL VPN.
+	// The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
 	SslConnections interface{}
 	// The VPN belongs the vpc_id, the field can't be changed.
 	VpcId interface{}
+	// The VPN belongs the vswitch_id, the field can't be changed.
+	VswitchId interface{}
 }

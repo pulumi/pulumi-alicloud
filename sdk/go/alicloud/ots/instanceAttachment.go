@@ -9,6 +9,8 @@ import (
 )
 
 // This resource will help you to bind a VPC to an OTS instance.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance_attachment.html.markdown.
 type InstanceAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -62,33 +64,33 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *InstanceAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *InstanceAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The name of the OTS instance.
-func (r *InstanceAttachment) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *InstanceAttachment) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // The ID of attaching VPC to instance.
-func (r *InstanceAttachment) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *InstanceAttachment) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // The name of attaching VPC to instance.
-func (r *InstanceAttachment) VpcName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcName"])
+func (r *InstanceAttachment) VpcName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcName"])
 }
 
 // The ID of attaching VSwitch to instance.
-func (r *InstanceAttachment) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+func (r *InstanceAttachment) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering InstanceAttachment resources.

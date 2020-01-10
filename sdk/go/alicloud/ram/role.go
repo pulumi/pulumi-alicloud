@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM Role resource.
-// 
-// ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role.html.markdown.
 type Role struct {
 	s *pulumi.ResourceState
 }
@@ -36,6 +34,7 @@ func NewRole(ctx *pulumi.Context,
 		inputs["version"] = args.Version
 	}
 	inputs["arn"] = nil
+	inputs["roleId"] = nil
 	s, err := ctx.RegisterResource("alicloud:ram/role:Role", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -55,6 +54,7 @@ func GetRole(ctx *pulumi.Context,
 		inputs["force"] = state.Force
 		inputs["name"] = state.Name
 		inputs["ramUsers"] = state.RamUsers
+		inputs["roleId"] = state.RoleId
 		inputs["services"] = state.Services
 		inputs["version"] = state.Version
 	}
@@ -66,53 +66,58 @@ func GetRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Role) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Role) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Role) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Role) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The role arn.
-func (r *Role) Arn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["arn"])
+func (r *Role) Arn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["arn"])
 }
 
 // Description of the RAM role. This name can have a string of 1 to 1024 characters.
-func (r *Role) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Role) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
-func (r *Role) Document() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["document"])
+// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
+func (r *Role) Document() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["document"])
 }
 
 // This parameter is used for resource destroy. Default value is `false`.
-func (r *Role) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *Role) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
 // Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
-func (r *Role) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Role) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
-func (r *Role) RamUsers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ramUsers"])
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+func (r *Role) RamUsers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ramUsers"])
 }
 
-// List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
-func (r *Role) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+// The role ID.
+func (r *Role) RoleId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleId"])
 }
 
-// Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
-func (r *Role) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+func (r *Role) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
+}
+
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+func (r *Role) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // Input properties used for looking up and filtering Role resources.
@@ -121,17 +126,19 @@ type RoleState struct {
 	Arn interface{}
 	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
 	Description interface{}
-	// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document interface{}
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force interface{}
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name interface{}
-	// List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
 	RamUsers interface{}
-	// List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// The role ID.
+	RoleId interface{}
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
 	Services interface{}
-	// Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
 	Version interface{}
 }
 
@@ -139,16 +146,16 @@ type RoleState struct {
 type RoleArgs struct {
 	// Description of the RAM role. This name can have a string of 1 to 1024 characters.
 	Description interface{}
-	// Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+	// Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
 	Document interface{}
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force interface{}
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name interface{}
-	// List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
 	RamUsers interface{}
-	// List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
 	Services interface{}
-	// Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
 	Version interface{}
 }

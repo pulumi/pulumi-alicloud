@@ -6,3 +6,6 @@ export * from "./bucket";
 export * from "./bucketObject";
 export * from "./getBucketObjects";
 export * from "./getBuckets";
+export * from "./getInstanceAttachments";
+export * from "./getInstances";
+export * from "./getTables";

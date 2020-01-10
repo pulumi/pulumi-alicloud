@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides the disks of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
 func LookupDisks(ctx *pulumi.Context, args *GetDisksArgs) (*GetDisksResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -17,6 +19,7 @@ func LookupDisks(ctx *pulumi.Context, args *GetDisksArgs) (*GetDisksResult, erro
 		inputs["instanceId"] = args.InstanceId
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["tags"] = args.Tags
 		inputs["type"] = args.Type
 	}
@@ -25,14 +28,23 @@ func LookupDisks(ctx *pulumi.Context, args *GetDisksArgs) (*GetDisksResult, erro
 		return nil, err
 	}
 	return &GetDisksResult{
+		Category: outputs["category"],
 		Disks: outputs["disks"],
+		Encrypted: outputs["encrypted"],
+		Ids: outputs["ids"],
+		InstanceId: outputs["instanceId"],
+		NameRegex: outputs["nameRegex"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Tags: outputs["tags"],
+		Type: outputs["type"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getDisks.
 type GetDisksArgs struct {
-	// Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `cloud_ssd` (SSD cloud disk), `ephemeral_ssd` (ephemeral SSD) and `ephemeral` (ephemeral disk).
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
 	Category interface{}
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted interface{}
@@ -42,11 +54,12 @@ type GetDisksArgs struct {
 	InstanceId interface{}
 	// A regex string to filter results by disk name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the disk belongs.
+	ResourceGroupId interface{}
 	// A map of tags assigned to the disks. It must be in the format:
 	// ```
-	// data "alicloud_disks" "disks_ds" {
+	// data "ecs.getDisks" "disksDs" {
 	// tags = {
 	// tagKey1 = "tagValue1",
 	// tagKey2 = "tagValue2"
@@ -60,8 +73,23 @@ type GetDisksArgs struct {
 
 // A collection of values returned by getDisks.
 type GetDisksResult struct {
+	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
+	Category interface{}
 	// A list of disks. Each element contains the following attributes:
 	Disks interface{}
+	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+	Encrypted interface{}
+	Ids interface{}
+	// ID of the related instance. It is `null` unless the `status` is `In_use`.
+	InstanceId interface{}
+	NameRegex interface{}
+	OutputFile interface{}
+	// The Id of resource group.
+	ResourceGroupId interface{}
+	// A map of tags assigned to the disk.
+	Tags interface{}
+	// Disk type. Possible values: `system` and `data`.
+	Type interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

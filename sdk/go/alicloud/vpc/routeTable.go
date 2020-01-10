@@ -8,11 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a route table resource.
-// 
-// ~> **NOTE:** Terraform will auto build route table instance while it uses `alicloud_route_table` to build a route table resource.
-// 
-// For information about route table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_table.html.markdown.
 type RouteTable struct {
 	s *pulumi.ResourceState
 }
@@ -27,10 +23,12 @@ func NewRouteTable(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["name"] = nil
+		inputs["tags"] = nil
 		inputs["vpcId"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
+		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 	}
 	s, err := ctx.RegisterResource("alicloud:vpc/routeTable:RouteTable", name, true, inputs, opts...)
@@ -48,6 +46,7 @@ func GetRouteTable(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["tags"] = state.Tags
 		inputs["vpcId"] = state.VpcId
 	}
 	s, err := ctx.ReadResource("alicloud:vpc/routeTable:RouteTable", name, id, inputs, opts...)
@@ -58,28 +57,33 @@ func GetRouteTable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouteTable) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouteTable) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouteTable) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouteTable) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The description of the route table instance.
-func (r *RouteTable) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RouteTable) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the route table.
-func (r *RouteTable) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RouteTable) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The vpc_id of the route table, the field can't be changed.
-func (r *RouteTable) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+// A mapping of tags to assign to the resource.
+func (r *RouteTable) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
+}
+
+// The vpcId of the route table, the field can't be changed.
+func (r *RouteTable) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering RouteTable resources.
@@ -88,7 +92,9 @@ type RouteTableState struct {
 	Description interface{}
 	// The name of the route table.
 	Name interface{}
-	// The vpc_id of the route table, the field can't be changed.
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
+	// The vpcId of the route table, the field can't be changed.
 	VpcId interface{}
 }
 
@@ -98,6 +104,8 @@ type RouteTableArgs struct {
 	Description interface{}
 	// The name of the route table.
 	Name interface{}
-	// The vpc_id of the route table, the field can't be changed.
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
+	// The vpcId of the route table, the field can't be changed.
 	VpcId interface{}
 }

@@ -7,11 +7,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `alicloud_kvstore_instances` data source provides a collection of kvstore instances available in Alicloud account.
+// The `kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
 func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstancesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["instanceClass"] = args.InstanceClass
 		inputs["instanceType"] = args.InstanceType
 		inputs["nameRegex"] = args.NameRegex
@@ -26,22 +29,33 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		return nil, err
 	}
 	return &GetInstancesResult{
+		Ids: outputs["ids"],
+		InstanceClass: outputs["instanceClass"],
+		InstanceType: outputs["instanceType"],
 		Instances: outputs["instances"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
+		VswitchId: outputs["vswitchId"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// A list of RKV instance IDs.
+	Ids interface{}
 	InstanceClass interface{}
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType interface{}
 	// A regex string to apply to the instance name.
 	NameRegex interface{}
-	// The name of file that can save the collection of instances after running `terraform plan`.
 	OutputFile interface{}
 	// Status of the instance.
-	// * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
+	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
 	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	Status interface{}
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
@@ -54,8 +68,25 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// A list of RDS instances. Its every element contains the following attributes:
+	// A list of RKV instance IDs.
+	Ids interface{}
+	InstanceClass interface{}
+	// (Optional) Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
+	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	InstanceType interface{}
+	// A list of RKV instances. Its every element contains the following attributes:
 	Instances interface{}
+	NameRegex interface{}
+	Names interface{}
+	OutputFile interface{}
+	// Status of the instance.
+	Status interface{}
+	Tags interface{}
+	// VPC ID the instance belongs to.
+	VpcId interface{}
+	// VSwitch ID the instance belongs to.
+	VswitchId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

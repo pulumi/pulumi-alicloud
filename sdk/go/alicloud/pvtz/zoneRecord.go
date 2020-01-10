@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Private Zone Record resource.
-// 
-// ~> **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud_pvtz_zone_record` to build a Private Zone Record resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_record.html.markdown.
 type ZoneRecord struct {
 	s *pulumi.ResourceState
 }
@@ -46,6 +44,7 @@ func NewZoneRecord(ctx *pulumi.Context,
 		inputs["value"] = args.Value
 		inputs["zoneId"] = args.ZoneId
 	}
+	inputs["recordId"] = nil
 	s, err := ctx.RegisterResource("alicloud:pvtz/zoneRecord:ZoneRecord", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -60,6 +59,7 @@ func GetZoneRecord(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["priority"] = state.Priority
+		inputs["recordId"] = state.RecordId
 		inputs["resourceRecord"] = state.ResourceRecord
 		inputs["ttl"] = state.Ttl
 		inputs["type"] = state.Type
@@ -74,54 +74,61 @@ func GetZoneRecord(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ZoneRecord) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ZoneRecord) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ZoneRecord) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ZoneRecord) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The priority of the Private Zone Record.
-func (r *ZoneRecord) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
+func (r *ZoneRecord) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
+}
+
+// The Private Zone Record ID.
+func (r *ZoneRecord) RecordId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["recordId"])
 }
 
 // The resource record of the Private Zone Record.
-func (r *ZoneRecord) ResourceRecord() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourceRecord"])
+func (r *ZoneRecord) ResourceRecord() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceRecord"])
 }
 
 // The ttl of the Private Zone Record.
-func (r *ZoneRecord) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *ZoneRecord) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
-// The type of the Private Zone Record.
-func (r *ZoneRecord) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
+func (r *ZoneRecord) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The value of the Private Zone Record.
-func (r *ZoneRecord) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *ZoneRecord) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // The name of the Private Zone Record.
-func (r *ZoneRecord) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *ZoneRecord) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering ZoneRecord resources.
 type ZoneRecordState struct {
-	// The priority of the Private Zone Record.
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
 	Priority interface{}
+	// The Private Zone Record ID.
+	RecordId interface{}
 	// The resource record of the Private Zone Record.
 	ResourceRecord interface{}
 	// The ttl of the Private Zone Record.
 	Ttl interface{}
-	// The type of the Private Zone Record.
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
 	Type interface{}
 	// The value of the Private Zone Record.
 	Value interface{}
@@ -131,13 +138,13 @@ type ZoneRecordState struct {
 
 // The set of arguments for constructing a ZoneRecord resource.
 type ZoneRecordArgs struct {
-	// The priority of the Private Zone Record.
+	// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
 	Priority interface{}
 	// The resource record of the Private Zone Record.
 	ResourceRecord interface{}
 	// The ttl of the Private Zone Record.
 	Ttl interface{}
-	// The type of the Private Zone Record.
+	// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
 	Type interface{}
 	// The value of the Private Zone Record.
 	Value interface{}

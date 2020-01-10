@@ -8,14 +8,18 @@ import (
 )
 
 // This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
 func LookupDomains(ctx *pulumi.Context, args *GetDomainsArgs) (*GetDomainsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["aliDomain"] = args.AliDomain
 		inputs["domainNameRegex"] = args.DomainNameRegex
 		inputs["groupNameRegex"] = args.GroupNameRegex
+		inputs["ids"] = args.Ids
 		inputs["instanceId"] = args.InstanceId
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["versionCode"] = args.VersionCode
 	}
 	outputs, err := ctx.Invoke("alicloud:dns/getDomains:getDomains", inputs)
@@ -23,7 +27,16 @@ func LookupDomains(ctx *pulumi.Context, args *GetDomainsArgs) (*GetDomainsResult
 		return nil, err
 	}
 	return &GetDomainsResult{
+		AliDomain: outputs["aliDomain"],
+		DomainNameRegex: outputs["domainNameRegex"],
 		Domains: outputs["domains"],
+		GroupNameRegex: outputs["groupNameRegex"],
+		Ids: outputs["ids"],
+		InstanceId: outputs["instanceId"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		VersionCode: outputs["versionCode"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -36,18 +49,36 @@ type GetDomainsArgs struct {
 	DomainNameRegex interface{}
 	// A regex string to filter results by the group name.
 	GroupNameRegex interface{}
+	Ids interface{}
 	// Cloud analysis product ID.
 	InstanceId interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId interface{}
 	// Cloud analysis version code.
+	// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 	VersionCode interface{}
 }
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
+	// Indicates whether the domain is an Alibaba Cloud domain.
+	AliDomain interface{}
+	DomainNameRegex interface{}
 	// A list of domains. Each element contains the following attributes:
 	Domains interface{}
+	GroupNameRegex interface{}
+	// A list of domain IDs.
+	Ids interface{}
+	// Cloud analysis product ID of the domain.
+	InstanceId interface{}
+	// A list of domain names.
+	Names interface{}
+	OutputFile interface{}
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId interface{}
+	// Cloud analysis version code of the domain.
+	VersionCode interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

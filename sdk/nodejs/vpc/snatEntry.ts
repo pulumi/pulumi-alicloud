@@ -2,8 +2,71 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a snat resource.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "snat-entry-example-name";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: vpc.id,
+ * });
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
+ *     specification: "Small",
+ *     vpcId: vswitch.vpcId,
+ * });
+ * const eip: alicloud.ecs.Eip[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     eip.push(new alicloud.ecs.Eip(`eip-${i}`, {}));
+ * }
+ * const defaultEipAssociation: alicloud.ecs.EipAssociation[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     defaultEipAssociation.push(new alicloud.ecs.EipAssociation(`default-${i}`, {
+ *         allocationId: pulumi.all(alicloud_eip_default.map(v => v.id)).apply(id => id.map(v => v)[i]),
+ *         instanceId: defaultNatGateway.id,
+ *     }));
+ * }
+ * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
+ *     bandwidth: 10,
+ *     internetChargeType: "PayByTraffic",
+ *     ratio: 100,
+ * });
+ * const defaultCommonBandwithPackageAttachment: alicloud.vpc.CommonBandwithPackageAttachment[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     defaultCommonBandwithPackageAttachment.push(new alicloud.vpc.CommonBandwithPackageAttachment(`default-${i}`, {
+ *         bandwidthPackageId: defaultCommonBandwithPackage.id,
+ *         instanceId: pulumi.all(alicloud_eip_default.map(v => v.id)).apply(id => id.map(v => v)[i]),
+ *     }));
+ * }
+ * const defaultSnatEntry = new alicloud.vpc.SnatEntry("default", {
+ *     snatIp: pulumi.all(alicloud_eip_default.map(v => v.ipAddress)).apply(ipAddress => ipAddress.map(v => v).join(",")),
+ *     snatTableId: defaultNatGateway.snatTableIds,
+ *     sourceVswitchId: vswitch.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
+ */
 export class SnatEntry extends pulumi.CustomResource {
     /**
      * Get an existing SnatEntry resource's state with the given name, ID, and optional extra
@@ -13,13 +76,40 @@ export class SnatEntry extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnatEntryState): SnatEntry {
-        return new SnatEntry(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnatEntryState, opts?: pulumi.CustomResourceOptions): SnatEntry {
+        return new SnatEntry(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly snatIp: pulumi.Output<string>;
-    public readonly snatTableId: pulumi.Output<string>;
-    public readonly sourceVswitchId: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/snatEntry:SnatEntry';
+
+    /**
+     * Returns true if the given object is an instance of SnatEntry.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SnatEntry {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SnatEntry.__pulumiType;
+    }
+
+    /**
+     * The id of the snat entry on the server.
+     */
+    public /*out*/ readonly snatEntryId!: pulumi.Output<string>;
+    /**
+     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     */
+    public readonly snatIp!: pulumi.Output<string>;
+    /**
+     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     */
+    public readonly snatTableId!: pulumi.Output<string>;
+    /**
+     * The vswitch ID.
+     */
+    public readonly sourceVswitchId!: pulumi.Output<string>;
 
     /**
      * Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -32,7 +122,8 @@ export class SnatEntry extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SnatEntryArgs | SnatEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SnatEntryState = argsOrState as SnatEntryState | undefined;
+            const state = argsOrState as SnatEntryState | undefined;
+            inputs["snatEntryId"] = state ? state.snatEntryId : undefined;
             inputs["snatIp"] = state ? state.snatIp : undefined;
             inputs["snatTableId"] = state ? state.snatTableId : undefined;
             inputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
@@ -50,8 +141,16 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["snatIp"] = args ? args.snatIp : undefined;
             inputs["snatTableId"] = args ? args.snatTableId : undefined;
             inputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
+            inputs["snatEntryId"] = undefined /*out*/;
         }
-        super("alicloud:vpc/snatEntry:SnatEntry", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(SnatEntry.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -59,8 +158,21 @@ export class SnatEntry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnatEntry resources.
  */
 export interface SnatEntryState {
+    /**
+     * The id of the snat entry on the server.
+     */
+    readonly snatEntryId?: pulumi.Input<string>;
+    /**
+     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     */
     readonly snatIp?: pulumi.Input<string>;
+    /**
+     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     */
     readonly snatTableId?: pulumi.Input<string>;
+    /**
+     * The vswitch ID.
+     */
     readonly sourceVswitchId?: pulumi.Input<string>;
 }
 
@@ -68,7 +180,16 @@ export interface SnatEntryState {
  * The set of arguments for constructing a SnatEntry resource.
  */
 export interface SnatEntryArgs {
+    /**
+     * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
+     */
     readonly snatIp: pulumi.Input<string>;
+    /**
+     * The value can get from `alicloud.vpc.NatGateway` Attributes "snatTableIds".
+     */
     readonly snatTableId: pulumi.Input<string>;
+    /**
+     * The vswitch ID.
+     */
     readonly sourceVswitchId: pulumi.Input<string>;
 }

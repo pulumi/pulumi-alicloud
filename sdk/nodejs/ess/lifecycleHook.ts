@@ -13,17 +13,31 @@ export class LifecycleHook extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LifecycleHookState): LifecycleHook {
-        return new LifecycleHook(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LifecycleHookState, opts?: pulumi.CustomResourceOptions): LifecycleHook {
+        return new LifecycleHook(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly defaultResult: pulumi.Output<string | undefined>;
-    public readonly heartbeatTimeout: pulumi.Output<number | undefined>;
-    public readonly lifecycleTransition: pulumi.Output<string>;
-    public readonly name: pulumi.Output<string>;
-    public readonly notificationArn: pulumi.Output<string>;
-    public readonly notificationMetadata: pulumi.Output<string>;
-    public readonly scalingGroupId: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ess/lifecycleHook:LifecycleHook';
+
+    /**
+     * Returns true if the given object is an instance of LifecycleHook.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LifecycleHook {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LifecycleHook.__pulumiType;
+    }
+
+    public readonly defaultResult!: pulumi.Output<string | undefined>;
+    public readonly heartbeatTimeout!: pulumi.Output<number | undefined>;
+    public readonly lifecycleTransition!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly notificationArn!: pulumi.Output<string>;
+    public readonly notificationMetadata!: pulumi.Output<string>;
+    public readonly scalingGroupId!: pulumi.Output<string>;
 
     /**
      * Create a LifecycleHook resource with the given unique name, arguments, and options.
@@ -36,7 +50,7 @@ export class LifecycleHook extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LifecycleHookArgs | LifecycleHookState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LifecycleHookState = argsOrState as LifecycleHookState | undefined;
+            const state = argsOrState as LifecycleHookState | undefined;
             inputs["defaultResult"] = state ? state.defaultResult : undefined;
             inputs["heartbeatTimeout"] = state ? state.heartbeatTimeout : undefined;
             inputs["lifecycleTransition"] = state ? state.lifecycleTransition : undefined;
@@ -60,7 +74,14 @@ export class LifecycleHook extends pulumi.CustomResource {
             inputs["notificationMetadata"] = args ? args.notificationMetadata : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        super("alicloud:ess/lifecycleHook:LifecycleHook", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(LifecycleHook.__pulumiType, name, inputs, opts);
     }
 }
 

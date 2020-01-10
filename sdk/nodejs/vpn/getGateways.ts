@@ -2,14 +2,41 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const vpnGateways = alicloud.vpn.getGateways({
+ *     businessStatus: "Normal",
+ *     nameRegex: "testAcc*",
+ *     outputFile: "/tmp/vpns",
+ *     status: "active",
+ *     vpcId: "fake-vpc-id",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
  */
-export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
+export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> & GetGatewaysResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetGatewaysResult> = pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -17,6 +44,8 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
         "status": args.status,
         "vpcId": args.vpcId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -54,9 +83,31 @@ export interface GetGatewaysArgs {
  */
 export interface GetGatewaysResult {
     /**
+     * The business status of the VPN gateway.
+     */
+    readonly businessStatus?: string;
+    /**
      * A list of VPN gateways. Each element contains the following attributes:
      */
-    readonly gateways: { businessStatus: string, createTime: number, description: string, enableIpsec: string, enableSsl: string, endTime: number, id: string, instanceChargeType: string, internetIp: string, name: string, regionId: string, specification: string, sslConnections: number, status: string, vpcId: string }[];
+    readonly gateways: outputs.vpn.GetGatewaysGateway[];
+    /**
+     * IDs of the VPN.
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * names of the VPN.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * The status of the VPN
+     */
+    readonly status?: string;
+    /**
+     * ID of the VPC that the VPN belongs.
+     */
+    readonly vpcId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

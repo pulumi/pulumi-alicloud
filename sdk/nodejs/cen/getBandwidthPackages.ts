@@ -2,19 +2,45 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Bandwidth Packages available to the user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bwp = alicloud.cen.getBandwidthPackages({
+ *     instanceId: "cen-id1",
+ *     nameRegex: "^foo",
+ * });
+ * 
+ * export const firstCenBandwidthPackageId = bwp.packages[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
  */
-export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
+export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> & GetBandwidthPackagesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetBandwidthPackagesResult> = pulumi.runtime.invoke("alicloud:cen/getBandwidthPackages:getBandwidthPackages", {
         "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -33,9 +59,6 @@ export interface GetBandwidthPackagesArgs {
      * A regex string to filter CEN Bandwidth Package by name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -43,10 +66,18 @@ export interface GetBandwidthPackagesArgs {
  * A collection of values returned by getBandwidthPackages.
  */
 export interface GetBandwidthPackagesResult {
+    readonly ids: string[];
+    /**
+     * ID of CEN instance that owns the CEN Bandwidth Package.
+     */
+    readonly instanceId?: string;
+    readonly nameRegex?: string;
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * A list of CEN bandwidth package. Each element contains the following attributes:
      */
-    readonly packages: { bandwidth: number, bandwidthPackageChargeType: string, businessStatus: string, creationTime: string, description: string, geographicRegionAId: string, geographicRegionBId: string, id: string, instanceId: string, name: string, status: string }[];
+    readonly packages: outputs.cen.GetBandwidthPackagesPackage[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

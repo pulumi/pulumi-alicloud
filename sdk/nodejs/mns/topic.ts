@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mns_topic.html.markdown.
+ */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra
@@ -13,22 +16,36 @@ export class Topic extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState): Topic {
-        return new Topic(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicState, opts?: pulumi.CustomResourceOptions): Topic {
+        return new Topic(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:mns/topic:Topic';
+
+    /**
+     * Returns true if the given object is an instance of Topic.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Topic {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
     /**
      * Is logging enabled? true or false. Default value to false.
      */
-    public readonly loggingEnabled: pulumi.Output<boolean | undefined>;
+    public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
      */
-    public readonly maximumMessageSize: pulumi.Output<number | undefined>;
+    public readonly maximumMessageSize!: pulumi.Output<number | undefined>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -41,7 +58,7 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TopicState = argsOrState as TopicState | undefined;
+            const state = argsOrState as TopicState | undefined;
             inputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
             inputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -51,7 +68,14 @@ export class Topic extends pulumi.CustomResource {
             inputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:mns/topic:Topic", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Topic.__pulumiType, name, inputs, opts);
     }
 }
 

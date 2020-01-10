@@ -8,6 +8,8 @@ import (
 )
 
 // A kms key can help user to protect data security in the transmission process.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
 type Key struct {
 	s *pulumi.ResourceState
 }
@@ -55,39 +57,38 @@ func GetKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Key) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Key) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Key) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Key) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The Alicloud Resource Name (ARN) of the key.
-func (r *Key) Arn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["arn"])
+func (r *Key) Arn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["arn"])
 }
 
 // Duration in days after which the key is deleted
 // after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
-func (r *Key) DeletionWindowInDays() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["deletionWindowInDays"])
+func (r *Key) DeletionWindowInDays() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["deletionWindowInDays"])
 }
 
-// The description of the key as viewed in Alicloud console. Default to "From Terraform".
-func (r *Key) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Key) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Specifies whether the key is enabled. Defaults to true.
-func (r *Key) IsEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isEnabled"])
+func (r *Key) IsEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isEnabled"])
 }
 
 // Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
-func (r *Key) KeyUsage() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyUsage"])
+func (r *Key) KeyUsage() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyUsage"])
 }
 
 // Input properties used for looking up and filtering Key resources.
@@ -97,7 +98,6 @@ type KeyState struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays interface{}
-	// The description of the key as viewed in Alicloud console. Default to "From Terraform".
 	Description interface{}
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled interface{}
@@ -110,7 +110,6 @@ type KeyArgs struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays interface{}
-	// The description of the key as viewed in Alicloud console. Default to "From Terraform".
 	Description interface{}
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled interface{}

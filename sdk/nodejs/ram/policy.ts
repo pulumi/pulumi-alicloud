@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Policy resource. 
- * 
- * ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_policy.html.markdown.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -18,42 +18,56 @@ export class Policy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState): Policy {
-        return new Policy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PolicyState, opts?: pulumi.CustomResourceOptions): Policy {
+        return new Policy(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/policy:Policy';
+
+    /**
+     * Returns true if the given object is an instance of Policy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Policy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
     /**
      * The policy attachment count.
      */
-    public /*out*/ readonly attachmentCount: pulumi.Output<number>;
+    public /*out*/ readonly attachmentCount!: pulumi.Output<number>;
     /**
      * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Document of the RAM policy. It is required when the `statement` is not specified.
      */
-    public readonly document: pulumi.Output<string>;
+    public readonly document!: pulumi.Output<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * Statements of the RAM policy document. It is required when the `document` is not specified.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      */
-    public readonly statements: pulumi.Output<{ actions: string[], effect: string, resources: string[] }[]>;
+    public readonly statements!: pulumi.Output<outputs.ram.PolicyStatement[]>;
     /**
      * The policy type.
      */
-    public /*out*/ readonly type: pulumi.Output<string>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      */
-    public readonly version: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -66,7 +80,7 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PolicyState = argsOrState as PolicyState | undefined;
+            const state = argsOrState as PolicyState | undefined;
             inputs["attachmentCount"] = state ? state.attachmentCount : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["document"] = state ? state.document : undefined;
@@ -86,7 +100,14 @@ export class Policy extends pulumi.CustomResource {
             inputs["attachmentCount"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        super("alicloud:ram/policy:Policy", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Policy.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -115,15 +136,15 @@ export interface PolicyState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Statements of the RAM policy document. It is required when the `document` is not specified.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      */
-    readonly statements?: pulumi.Input<pulumi.Input<{ actions: pulumi.Input<pulumi.Input<string>[]>, effect: pulumi.Input<string>, resources: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
     /**
      * The policy type.
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -149,11 +170,11 @@ export interface PolicyArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Statements of the RAM policy document. It is required when the `document` is not specified.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
      */
-    readonly statements?: pulumi.Input<pulumi.Input<{ actions: pulumi.Input<pulumi.Input<string>[]>, effect: pulumi.Input<string>, resources: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
     /**
-     * Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      */
     readonly version?: pulumi.Input<string>;
 }

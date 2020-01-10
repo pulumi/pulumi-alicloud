@@ -2,12 +2,38 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This resource manages swarm cluster, which is being deprecated and will be replaced by Kubernetes cluster.
+ * 
  * This resource will help you to manager a Swarm Cluster.
  * 
- * -> **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
+ * > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitchId`.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const myCluster = new alicloud.cs.Swarm("myCluster", {
+ *     cidrBlock: "172.18.0.0/24",
+ *     diskCategory: "cloudEfficiency",
+ *     diskSize: 20,
+ *     imageId: var_image_id,
+ *     instanceType: "ecs.n4.small",
+ *     nodeNumber: 2,
+ *     password: "Yourpassword1234",
+ *     vswitchId: var_vswitch_id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
  */
 export class Swarm extends pulumi.CustomResource {
     /**
@@ -18,14 +44,28 @@ export class Swarm extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SwarmState): Swarm {
-        return new Swarm(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SwarmState, opts?: pulumi.CustomResourceOptions): Swarm {
+        return new Swarm(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cs/swarm:Swarm';
+
+    /**
+     * Returns true if the given object is an instance of Swarm.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Swarm {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Swarm.__pulumiType;
     }
 
     /**
      * The nodes agent version.
      */
-    public /*out*/ readonly agentVersion: pulumi.Output<string>;
+    public /*out*/ readonly agentVersion!: pulumi.Output<string>;
     /**
      * The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
      * Valid value:
@@ -33,73 +73,70 @@ export class Swarm extends pulumi.CustomResource {
      * - 172.19-30.0.0/16
      * - 10.0.0.0/16
      */
-    public readonly cidrBlock: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string>;
     /**
-     * The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
-    public readonly diskCategory: pulumi.Output<string | undefined>;
+    public readonly diskCategory!: pulumi.Output<string | undefined>;
     /**
      * The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
      */
-    public readonly diskSize: pulumi.Output<number | undefined>;
+    public readonly diskSize!: pulumi.Output<number | undefined>;
     /**
      * The image ID of ECS instance node used. Default to System automate allocated.
      */
-    public readonly imageId: pulumi.Output<string | undefined>;
+    public readonly imageId!: pulumi.Output<string | undefined>;
     /**
      * The type of ECS instance node.
      */
-    public readonly instanceType: pulumi.Output<string>;
+    public readonly instanceType!: pulumi.Output<string>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
-    public readonly isOutdated: pulumi.Output<boolean | undefined>;
+    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
     /**
      * The container cluster's name. It is the only in one Alicloud account.
      */
-    public readonly name: pulumi.Output<string>;
-    /**
-     * The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
-     */
-    public readonly namePrefix: pulumi.Output<string | undefined>;
-    public readonly needSlb: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    public readonly needSlb!: pulumi.Output<boolean | undefined>;
     /**
      * The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
      */
-    public readonly nodeNumber: pulumi.Output<number | undefined>;
+    public readonly nodeNumber!: pulumi.Output<number | undefined>;
     /**
      * List of cluster nodes. It contains several attributes to `Block Nodes`.
      */
-    public /*out*/ readonly nodes: pulumi.Output<{ eip: string, id: string, name: string, privateIp: string, status: string }[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.cs.SwarmNode[]>;
     /**
      * The password of ECS instance node.
      */
-    public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
-    public readonly releaseEip: pulumi.Output<boolean | undefined>;
+    public readonly releaseEip!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of security group where the current cluster worker node is located.
      */
-    public /*out*/ readonly securityGroupId: pulumi.Output<string>;
+    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
-    public readonly size: pulumi.Output<number | undefined>;
+    public readonly size!: pulumi.Output<number | undefined>;
     /**
      * The ID of load balancer where the current cluster worker node is located.
      */
-    public /*out*/ readonly slbId: pulumi.Output<string>;
+    public /*out*/ readonly slbId!: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    public /*out*/ readonly vpcId: pulumi.Output<string>;
+    public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
      */
-    public readonly vswitchId: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string>;
 
     /**
      * Create a Swarm resource with the given unique name, arguments, and options.
@@ -112,7 +149,7 @@ export class Swarm extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SwarmArgs | SwarmState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SwarmState = argsOrState as SwarmState | undefined;
+            const state = argsOrState as SwarmState | undefined;
             inputs["agentVersion"] = state ? state.agentVersion : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["diskCategory"] = state ? state.diskCategory : undefined;
@@ -166,7 +203,14 @@ export class Swarm extends pulumi.CustomResource {
             inputs["slbId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("alicloud:cs/swarm:Swarm", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Swarm.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -187,7 +231,7 @@ export interface SwarmState {
      */
     readonly cidrBlock?: pulumi.Input<string>;
     /**
-     * The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     readonly diskCategory?: pulumi.Input<string>;
     /**
@@ -210,9 +254,6 @@ export interface SwarmState {
      * The container cluster's name. It is the only in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
-     */
     readonly namePrefix?: pulumi.Input<string>;
     readonly needSlb?: pulumi.Input<boolean>;
     /**
@@ -222,14 +263,14 @@ export interface SwarmState {
     /**
      * List of cluster nodes. It contains several attributes to `Block Nodes`.
      */
-    readonly nodes?: pulumi.Input<pulumi.Input<{ eip?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, privateIp?: pulumi.Input<string>, status?: pulumi.Input<string> }>[]>;
+    readonly nodes?: pulumi.Input<pulumi.Input<inputs.cs.SwarmNode>[]>;
     /**
      * The password of ECS instance node.
      */
     readonly password?: pulumi.Input<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
     readonly releaseEip?: pulumi.Input<boolean>;
     /**
@@ -267,7 +308,7 @@ export interface SwarmArgs {
      */
     readonly cidrBlock: pulumi.Input<string>;
     /**
-     * The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
     readonly diskCategory?: pulumi.Input<string>;
     /**
@@ -290,9 +331,6 @@ export interface SwarmArgs {
      * The container cluster's name. It is the only in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
-     */
     readonly namePrefix?: pulumi.Input<string>;
     readonly needSlb?: pulumi.Input<boolean>;
     /**
@@ -305,7 +343,7 @@ export interface SwarmArgs {
     readonly password: pulumi.Input<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
     readonly releaseEip?: pulumi.Input<boolean>;
     /**

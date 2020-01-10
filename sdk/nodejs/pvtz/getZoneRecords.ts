@@ -2,17 +2,45 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const recordsDs = pulumi.all([alicloud_pvtz_zone_record_foo.value, alicloud_pvtz_zone_basic.id]).apply(([value, id]) => alicloud.pvtz.getZoneRecords({
+ *     keyword: value,
+ *     zoneId: id,
+ * }));
+ * 
+ * export const firstRecordId = recordsDs.records[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
  */
-export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
-    return pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
+export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> & GetZoneRecordsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetZoneRecordsResult> = pulumi.runtime.invoke("alicloud:pvtz/getZoneRecords:getZoneRecords", {
+        "ids": args.ids,
         "keyword": args.keyword,
         "outputFile": args.outputFile,
         "zoneId": args.zoneId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -20,12 +48,13 @@ export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetZoneRecordsArgs {
     /**
+     * A list of Private Zone Record IDs.
+     */
+    readonly ids?: string[];
+    /**
      * Keyword for record rr and value.
      */
     readonly keyword?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * ID of the Private Zone.
@@ -38,9 +67,16 @@ export interface GetZoneRecordsArgs {
  */
 export interface GetZoneRecordsResult {
     /**
+     * A list of Private Zone Record IDs.
+     */
+    readonly ids: string[];
+    readonly keyword?: string;
+    readonly outputFile?: string;
+    /**
      * A list of zone records. Each element contains the following attributes:
      */
-    readonly records: { id: number, priority: number, resourceRecord: string, status: string, ttl: number, type: string, value: string }[];
+    readonly records: outputs.pvtz.GetZoneRecordsRecord[];
+    readonly zoneId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

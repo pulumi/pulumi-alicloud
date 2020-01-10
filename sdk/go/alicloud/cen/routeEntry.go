@@ -11,6 +11,8 @@ import (
 // Provides a CEN route entry resource. Cloud Enterprise Network (CEN) supports publishing and withdrawing route entries of attached networks. You can publish a route entry of an attached VPC or VBR to a CEN instance, then other attached networks can learn the route if there is no route conflict. You can withdraw a published route entry when CEN does not need it any more.
 // 
 // For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
 type RouteEntry struct {
 	s *pulumi.ResourceState
 }
@@ -62,28 +64,28 @@ func GetRouteEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouteEntry) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouteEntry) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouteEntry) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouteEntry) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The destination CIDR block of the route entry to publish.
-func (r *RouteEntry) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *RouteEntry) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
 // The ID of the CEN.
-func (r *RouteEntry) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *RouteEntry) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The route table of the attached VBR or VPC.
-func (r *RouteEntry) RouteTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routeTableId"])
+func (r *RouteEntry) RouteTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routeTableId"])
 }
 
 // Input properties used for looking up and filtering RouteEntry resources.

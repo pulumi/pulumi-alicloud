@@ -2,21 +2,49 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const domainsDs = alicloud.dns.getDomains({
+ *     domainNameRegex: "^hegu",
+ *     outputFile: "domains.txt",
+ * });
+ * 
+ * export const firstDomainId = domainsDs.domains[0].domainId;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
  */
-export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
+export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> & GetDomainsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDomainsResult> = pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
         "aliDomain": args.aliDomain,
         "domainNameRegex": args.domainNameRegex,
         "groupNameRegex": args.groupNameRegex,
+        "ids": args.ids,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "versionCode": args.versionCode,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -35,16 +63,19 @@ export interface GetDomainsArgs {
      * A regex string to filter results by the group name.
      */
     readonly groupNameRegex?: string;
+    readonly ids?: string[];
     /**
      * Cloud analysis product ID.
      */
     readonly instanceId?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
+     * The Id of resource group which the dns belongs.
+     */
+    readonly resourceGroupId?: string;
+    /**
      * Cloud analysis version code.
+     * * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
      */
     readonly versionCode?: string;
 }
@@ -54,9 +85,36 @@ export interface GetDomainsArgs {
  */
 export interface GetDomainsResult {
     /**
+     * Indicates whether the domain is an Alibaba Cloud domain.
+     */
+    readonly aliDomain?: boolean;
+    readonly domainNameRegex?: string;
+    /**
      * A list of domains. Each element contains the following attributes:
      */
-    readonly domains: { aliDomain: boolean, dnsServers: string[], domainId: string, domainName: string, groupId: string, groupName: string, instanceId: string, punyCode: string, versionCode: string }[];
+    readonly domains: outputs.dns.GetDomainsDomain[];
+    readonly groupNameRegex?: string;
+    /**
+     * A list of domain IDs.
+     */
+    readonly ids: string[];
+    /**
+     * Cloud analysis product ID of the domain.
+     */
+    readonly instanceId?: string;
+    /**
+     * A list of domain names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * The Id of resource group which the dns belongs.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * Cloud analysis version code of the domain.
+     */
+    readonly versionCode?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -6,6 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * A kms key can help user to protect data security in the transmission process.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const key = new alicloud.kms.Key("key", {
+ *     deletionWindowInDays: 7,
+ *     description: "Hello KMS",
+ *     isEnabled: true,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
  */
 export class Key extends pulumi.CustomResource {
     /**
@@ -16,31 +33,42 @@ export class Key extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyState): Key {
-        return new Key(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyState, opts?: pulumi.CustomResourceOptions): Key {
+        return new Key(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:kms/key:Key';
+
+    /**
+     * Returns true if the given object is an instance of Key.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Key {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Key.__pulumiType;
     }
 
     /**
      * The Alicloud Resource Name (ARN) of the key.
      */
-    public /*out*/ readonly arn: pulumi.Output<string>;
+    public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Duration in days after which the key is deleted
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
-    public readonly deletionWindowInDays: pulumi.Output<number | undefined>;
-    /**
-     * The description of the key as viewed in Alicloud console. Default to "From Terraform".
-     */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly deletionWindowInDays!: pulumi.Output<number | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the key is enabled. Defaults to true.
      */
-    public readonly isEnabled: pulumi.Output<boolean | undefined>;
+    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
      */
-    public readonly keyUsage: pulumi.Output<string | undefined>;
+    public readonly keyUsage!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -53,7 +81,7 @@ export class Key extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyArgs | KeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyState = argsOrState as KeyState | undefined;
+            const state = argsOrState as KeyState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["deletionWindowInDays"] = state ? state.deletionWindowInDays : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -67,7 +95,14 @@ export class Key extends pulumi.CustomResource {
             inputs["keyUsage"] = args ? args.keyUsage : undefined;
             inputs["arn"] = undefined /*out*/;
         }
-        super("alicloud:kms/key:Key", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Key.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -84,9 +119,6 @@ export interface KeyState {
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
     readonly deletionWindowInDays?: pulumi.Input<number>;
-    /**
-     * The description of the key as viewed in Alicloud console. Default to "From Terraform".
-     */
     readonly description?: pulumi.Input<string>;
     /**
      * Specifies whether the key is enabled. Defaults to true.
@@ -107,9 +139,6 @@ export interface KeyArgs {
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
     readonly deletionWindowInDays?: pulumi.Input<number>;
-    /**
-     * The description of the key as viewed in Alicloud console. Default to "From Terraform".
-     */
     readonly description?: pulumi.Input<string>;
     /**
      * Specifies whether the key is enabled. Defaults to true.

@@ -7,7 +7,43 @@ import * as utilities from "../utilities";
 /**
  * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
  * 
- * ~> **NOTE:** At present, it does not support creating 'PostgreSQL' and 'PPAS' database. You have to login RDS instance to create manually.
+ * > **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "Rds";
+ * const name = config.get("name") || "dbdatabasebasic";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const instance = new alicloud.rds.Instance("instance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceName: name,
+ *     instanceStorage: 10,
+ *     instanceType: "rds.mysql.s1.small",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultDatabase = new alicloud.rds.Database("default", {
+ *     instanceId: instance.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -18,29 +54,44 @@ export class Database extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState): Database {
-        return new Database(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState, opts?: pulumi.CustomResourceOptions): Database {
+        return new Database(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:rds/database:Database';
+
+    /**
+     * Returns true if the given object is an instance of Database.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Database {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Database.__pulumiType;
     }
 
     /**
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
+     * - PostgreSQL: [ KOI8U、UTF8、WIN866、WIN874、WIN1250、WIN1251、WIN1252、WIN1253、WIN1254、WIN1255、WIN1256、WIN1257、WIN1258、EUC_CN、EUC_KR、EUC_TW、EUC_JP、EUC_JIS_2004、KOI8R、MULE_INTERNAL、LATIN1、LATIN2、LATIN3、LATIN4、LATIN5、LATIN6、LATIN7、LATIN8、LATIN9、LATIN10、ISO_8859_5、ISO_8859_6、ISO_8859_7、ISO_8859_8、SQL_ASCII ]
      */
-    public readonly characterSet: pulumi.Output<string | undefined>;
+    public readonly characterSet!: pulumi.Output<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
      * and have no more than 64 characters.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -53,7 +104,7 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseState = argsOrState as DatabaseState | undefined;
+            const state = argsOrState as DatabaseState | undefined;
             inputs["characterSet"] = state ? state.characterSet : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -68,7 +119,14 @@ export class Database extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:rds/database:Database", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Database.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -80,6 +138,7 @@ export interface DatabaseState {
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
+     * - PostgreSQL: [ KOI8U、UTF8、WIN866、WIN874、WIN1250、WIN1251、WIN1252、WIN1253、WIN1254、WIN1255、WIN1256、WIN1257、WIN1258、EUC_CN、EUC_KR、EUC_TW、EUC_JP、EUC_JIS_2004、KOI8R、MULE_INTERNAL、LATIN1、LATIN2、LATIN3、LATIN4、LATIN5、LATIN6、LATIN7、LATIN8、LATIN9、LATIN10、ISO_8859_5、ISO_8859_6、ISO_8859_7、ISO_8859_8、SQL_ASCII ]
      */
     readonly characterSet?: pulumi.Input<string>;
     /**
@@ -105,6 +164,7 @@ export interface DatabaseArgs {
      * Character set. The value range is limited to the following:
      * - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \(`utf8mb4` only supports versions 5.5 and 5.6\).
      * - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
+     * - PostgreSQL: [ KOI8U、UTF8、WIN866、WIN874、WIN1250、WIN1251、WIN1252、WIN1253、WIN1254、WIN1255、WIN1256、WIN1257、WIN1258、EUC_CN、EUC_KR、EUC_TW、EUC_JP、EUC_JIS_2004、KOI8R、MULE_INTERNAL、LATIN1、LATIN2、LATIN3、LATIN4、LATIN5、LATIN6、LATIN7、LATIN8、LATIN9、LATIN10、ISO_8859_5、ISO_8859_6、ISO_8859_7、ISO_8859_8、SQL_ASCII ]
      */
     readonly characterSet?: pulumi.Input<string>;
     /**

@@ -2,15 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ~> **NOTE:** This resource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). Please use the datasource `alicloud_dns_records` instead.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_records.html.markdown.
  */
-export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> {
-    return pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
+export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> & GetDomainRecordsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDomainRecordsResult> = pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
         "domainName": args.domainName,
         "hostRecordRegex": args.hostRecordRegex,
+        "ids": args.ids,
         "isLocked": args.isLocked,
         "line": args.line,
         "outputFile": args.outputFile,
@@ -18,6 +27,8 @@ export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.Invok
         "type": args.type,
         "valueRegex": args.valueRegex,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -26,6 +37,7 @@ export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.Invok
 export interface GetDomainRecordsArgs {
     readonly domainName: string;
     readonly hostRecordRegex?: string;
+    readonly ids?: string[];
     readonly isLocked?: boolean;
     readonly line?: string;
     readonly outputFile?: string;
@@ -38,7 +50,17 @@ export interface GetDomainRecordsArgs {
  * A collection of values returned by getDomainRecords.
  */
 export interface GetDomainRecordsResult {
-    readonly records: { domainName: string, hostRecord: string, line: string, locked: boolean, priority: number, recordId: string, status: string, ttl: number, type: string, value: string }[];
+    readonly domainName: string;
+    readonly hostRecordRegex?: string;
+    readonly ids: string[];
+    readonly isLocked?: boolean;
+    readonly line?: string;
+    readonly outputFile?: string;
+    readonly records: outputs.dns.GetDomainRecordsRecord[];
+    readonly status?: string;
+    readonly type?: string;
+    readonly urls: string[];
+    readonly valueRegex?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

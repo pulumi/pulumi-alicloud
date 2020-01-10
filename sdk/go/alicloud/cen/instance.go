@@ -10,6 +10,8 @@ import (
 // Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 // 
 // For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -49,23 +51,23 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Instance) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Instance) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The description of the CEN instance. Defaults to null.
-func (r *Instance) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Instance) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the CEN instance. Defaults to null.
-func (r *Instance) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Instance) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Instance resources.

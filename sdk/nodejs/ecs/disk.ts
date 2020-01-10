@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ECS disk resource.
- * 
- * ~> **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud_disk` doesn't resize disk.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
  */
 export class Disk extends pulumi.CustomResource {
     /**
@@ -18,46 +16,77 @@ export class Disk extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DiskState): Disk {
-        return new Disk(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DiskState, opts?: pulumi.CustomResourceOptions): Disk {
+        return new Disk(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/disk:Disk';
+
+    /**
+     * Returns true if the given object is an instance of Disk.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Disk {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Disk.__pulumiType;
     }
 
     /**
      * The Zone to create the disk in.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
-    public readonly category: pulumi.Output<string | undefined>;
+    public readonly category!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     */
+    public readonly deleteAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether the disk is released together with the instance: Default value: false.
+     */
+    public readonly deleteWithInstance!: pulumi.Output<boolean | undefined>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * If true, the disk will be encrypted
+     * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
      */
-    public readonly encrypted: pulumi.Output<boolean | undefined>;
+    public readonly enableAutoSnapshot!: pulumi.Output<boolean | undefined>;
+    /**
+     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     */
+    public readonly encrypted!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * The size of the disk in GiBs, and it value range: 20 ~ 32768.
+     * The Id of resource group which the disk belongs.
+     * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      */
-    public readonly size: pulumi.Output<number | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
+     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
-    public readonly snapshotId: pulumi.Output<string | undefined>;
+    public readonly size!: pulumi.Output<number>;
+    /**
+     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     */
+    public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
      * The disk status.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Disk resource with the given unique name, arguments, and options.
@@ -70,12 +99,16 @@ export class Disk extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DiskState = argsOrState as DiskState | undefined;
+            const state = argsOrState as DiskState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["category"] = state ? state.category : undefined;
+            inputs["deleteAutoSnapshot"] = state ? state.deleteAutoSnapshot : undefined;
+            inputs["deleteWithInstance"] = state ? state.deleteWithInstance : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["size"] = state ? state.size : undefined;
             inputs["snapshotId"] = state ? state.snapshotId : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -85,17 +118,31 @@ export class Disk extends pulumi.CustomResource {
             if (!args || args.availabilityZone === undefined) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
+            if (!args || args.size === undefined) {
+                throw new Error("Missing required property 'size'");
+            }
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["category"] = args ? args.category : undefined;
+            inputs["deleteAutoSnapshot"] = args ? args.deleteAutoSnapshot : undefined;
+            inputs["deleteWithInstance"] = args ? args.deleteWithInstance : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:ecs/disk:Disk", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Disk.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -108,15 +155,27 @@ export interface DiskState {
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     readonly category?: pulumi.Input<string>;
+    /**
+     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     */
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the disk is released together with the instance: Default value: false.
+     */
+    readonly deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * If true, the disk will be encrypted
+     * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     */
+    readonly enableAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
     /**
@@ -124,11 +183,16 @@ export interface DiskState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The size of the disk in GiBs, and it value range: 20 ~ 32768.
+     * The Id of resource group which the disk belongs.
+     * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
     readonly size?: pulumi.Input<number>;
     /**
-     * A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
+     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
     readonly snapshotId?: pulumi.Input<string>;
     /**
@@ -150,15 +214,27 @@ export interface DiskArgs {
      */
     readonly availabilityZone: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
+     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
      */
     readonly category?: pulumi.Input<string>;
+    /**
+     * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+     */
+    readonly deleteAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the disk is released together with the instance: Default value: false.
+     */
+    readonly deleteWithInstance?: pulumi.Input<boolean>;
     /**
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * If true, the disk will be encrypted
+     * Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+     */
+    readonly enableAutoSnapshot?: pulumi.Input<boolean>;
+    /**
+     * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
     /**
@@ -166,11 +242,16 @@ export interface DiskArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The size of the disk in GiBs, and it value range: 20 ~ 32768.
+     * The Id of resource group which the disk belongs.
+     * > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
      */
-    readonly size?: pulumi.Input<number>;
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
-     * A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
+     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     */
+    readonly size: pulumi.Input<number>;
+    /**
+     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
     readonly snapshotId?: pulumi.Input<string>;
     /**

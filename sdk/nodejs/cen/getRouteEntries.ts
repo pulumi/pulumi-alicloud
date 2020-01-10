@@ -2,18 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Route Entries available to the user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const entry = alicloud.cen.getRouteEntries({
+ *     instanceId: "cen-id1",
+ *     routeTableId: "vtb-id1",
+ * });
+ * 
+ * export const firstRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_route_entries.html.markdown.
  */
-export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
-    return pulumi.runtime.invoke("alicloud:cen/getRouteEntries:getRouteEntries", {
+export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> & GetRouteEntriesResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRouteEntriesResult> = pulumi.runtime.invoke("alicloud:cen/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
         "routeTableId": args.routeTableId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -28,9 +54,6 @@ export interface GetRouteEntriesArgs {
      * ID of the CEN instance.
      */
     readonly instanceId: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * ID of the route table of the VPC or VBR.
@@ -43,9 +66,22 @@ export interface GetRouteEntriesArgs {
  */
 export interface GetRouteEntriesResult {
     /**
+     * The destination CIDR block of the conflicted route entry.
+     */
+    readonly cidrBlock?: string;
+    /**
      * A list of CEN Route Entries. Each element contains the following attributes:
      */
-    readonly entries: { cidrBlock: string, conflicts: { cidrBlock: string, instanceId: string, instanceType: string, regionId: string, status: string }[], nextHopId: string, nextHopType: string, operationalMode: boolean, publishStatus: string, routeTableId: string, routeType: string }[];
+    readonly entries: outputs.cen.GetRouteEntriesEntry[];
+    /**
+     * ID of the CEN child instance.
+     */
+    readonly instanceId: string;
+    readonly outputFile?: string;
+    /**
+     * ID of the route table.
+     */
+    readonly routeTableId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

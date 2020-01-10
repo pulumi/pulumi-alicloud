@@ -2,10 +2,69 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a RAM Role attachment resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a RAM Role Policy attachment.
+ * const role = new alicloud.ram.Role("role", {
+ *     description: "this is a role test.",
+ *     document: `    {
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "apigateway.aliyuncs.com", 
+ *               "ecs.aliyuncs.com"
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       "Version": "1"
+ *     }
+ *     `,
+ *     force: true,
+ * });
+ * const policy = new alicloud.ram.Policy("policy", {
+ *     description: "this is a policy test",
+ *     document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": [
+ *           "oss:ListObjects",
+ *           "oss:GetObject"
+ *         ],
+ *         "Effect": "Allow",
+ *         "Resource": [
+ *           "acs:oss:*:*:mybucket",
+ *           "acs:oss:*:*:mybucket/*"
+ *         ]
+ *       }
+ *     ],
+ *       "Version": "1"
+ *   }
+ *   `,
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
+ *     policyName: policy.name,
+ *     policyType: policy.type,
+ *     roleName: role.name,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_policy_attachment.html.markdown.
  */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**
@@ -16,22 +75,36 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RolePolicyAttachmentState): RolePolicyAttachment {
-        return new RolePolicyAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RolePolicyAttachmentState, opts?: pulumi.CustomResourceOptions): RolePolicyAttachment {
+        return new RolePolicyAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/rolePolicyAttachment:RolePolicyAttachment';
+
+    /**
+     * Returns true if the given object is an instance of RolePolicyAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RolePolicyAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RolePolicyAttachment.__pulumiType;
     }
 
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly policyName: pulumi.Output<string>;
+    public readonly policyName!: pulumi.Output<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    public readonly policyType: pulumi.Output<string>;
+    public readonly policyType!: pulumi.Output<string>;
     /**
      * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    public readonly roleName: pulumi.Output<string>;
+    public readonly roleName!: pulumi.Output<string>;
 
     /**
      * Create a RolePolicyAttachment resource with the given unique name, arguments, and options.
@@ -44,7 +117,7 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RolePolicyAttachmentArgs | RolePolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RolePolicyAttachmentState = argsOrState as RolePolicyAttachmentState | undefined;
+            const state = argsOrState as RolePolicyAttachmentState | undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
             inputs["policyType"] = state ? state.policyType : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
@@ -63,7 +136,14 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
             inputs["policyType"] = args ? args.policyType : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
         }
-        super("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RolePolicyAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -8,16 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a resource to create a VPC NAT Gateway.
-// 
-// 
-// ~> **NOTE:** Resource bandwidth packages will not be supported since 00:00 on November 4, 2017, and public IP can be replaced be elastic IPs.
-// If a Nat Gateway has already bought some bandwidth packages, it can not bind elastic IP and you have to submit the [work order](https://selfservice.console.aliyun.com/ticket/createIndex) to solve.
-// If you want to add public IP, you can use resource 'alicloud_eip_association' to bind several elastic IPs for one Nat Gateway.
-// 
-// ~> **NOTE:** From version 1.7.1, this resource has deprecated bandwidth packages.
-// But, in order to manage stock bandwidth packages, version 1.13.0 re-support configuring 'bandwidth_packages'.
-// 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nat_gateway.html.markdown.
 type NatGateway struct {
 	s *pulumi.ResourceState
 }
@@ -32,14 +23,18 @@ func NewNatGateway(ctx *pulumi.Context,
 	if args == nil {
 		inputs["bandwidthPackages"] = nil
 		inputs["description"] = nil
+		inputs["instanceChargeType"] = nil
 		inputs["name"] = nil
+		inputs["period"] = nil
 		inputs["spec"] = nil
 		inputs["specification"] = nil
 		inputs["vpcId"] = nil
 	} else {
 		inputs["bandwidthPackages"] = args.BandwidthPackages
 		inputs["description"] = args.Description
+		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["name"] = args.Name
+		inputs["period"] = args.Period
 		inputs["spec"] = args.Spec
 		inputs["specification"] = args.Specification
 		inputs["vpcId"] = args.VpcId
@@ -64,7 +59,9 @@ func GetNatGateway(ctx *pulumi.Context,
 		inputs["bandwidthPackages"] = state.BandwidthPackages
 		inputs["description"] = state.Description
 		inputs["forwardTableIds"] = state.ForwardTableIds
+		inputs["instanceChargeType"] = state.InstanceChargeType
 		inputs["name"] = state.Name
+		inputs["period"] = state.Period
 		inputs["snatTableIds"] = state.SnatTableIds
 		inputs["spec"] = state.Spec
 		inputs["specification"] = state.Specification
@@ -78,73 +75,87 @@ func GetNatGateway(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *NatGateway) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *NatGateway) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *NatGateway) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *NatGateway) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// A list ID of the bandwidth packages, and split them with commas
-func (r *NatGateway) BandwidthPackageIds() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bandwidthPackageIds"])
+// A list ID of the bandwidth packages, and split them with commas.
+func (r *NatGateway) BandwidthPackageIds() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bandwidthPackageIds"])
 }
 
 // A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-func (r *NatGateway) BandwidthPackages() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["bandwidthPackages"])
+func (r *NatGateway) BandwidthPackages() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["bandwidthPackages"])
 }
 
 // Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
-func (r *NatGateway) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *NatGateway) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
-func (r *NatGateway) ForwardTableIds() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["forwardTableIds"])
+// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one.
+func (r *NatGateway) ForwardTableIds() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["forwardTableIds"])
+}
+
+// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+func (r *NatGateway) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
 // Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-func (r *NatGateway) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *NatGateway) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
-func (r *NatGateway) SnatTableIds() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snatTableIds"])
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+func (r *NatGateway) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
+}
+
+// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
+func (r *NatGateway) SnatTableIds() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snatTableIds"])
 }
 
 // It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-func (r *NatGateway) Spec() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["spec"])
+func (r *NatGateway) Spec() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["spec"])
 }
 
 // The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
-func (r *NatGateway) Specification() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["specification"])
+func (r *NatGateway) Specification() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["specification"])
 }
 
 // The VPC ID.
-func (r *NatGateway) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *NatGateway) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering NatGateway resources.
 type NatGatewayState struct {
-	// A list ID of the bandwidth packages, and split them with commas
+	// A list ID of the bandwidth packages, and split them with commas.
 	BandwidthPackageIds interface{}
 	// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
 	BandwidthPackages interface{}
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description interface{}
-	// The nat gateway will auto create a snap and forward item, the `forward_table_ids` is the created one.
+	// The nat gateway will auto create a snap and forward item, the `forwardTableIds` is the created one.
 	ForwardTableIds interface{}
+	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	InstanceChargeType interface{}
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name interface{}
-	// The nat gateway will auto create a snap and forward item, the `snat_table_ids` is the created one.
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	Period interface{}
+	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
 	SnatTableIds interface{}
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec interface{}
@@ -160,8 +171,12 @@ type NatGatewayArgs struct {
 	BandwidthPackages interface{}
 	// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
 	Description interface{}
+	// The billing method of the nat gateway. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	InstanceChargeType interface{}
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	Name interface{}
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	Period interface{}
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec interface{}
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).

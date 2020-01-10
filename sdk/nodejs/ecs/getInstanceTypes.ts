@@ -2,28 +2,60 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the ECS instance types of Alibaba Cloud.
  * 
- * ~> **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+ * > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
  * 
- * ~> **NOTE:** If one instance type is sold out, it will not be exported.
+ * > **NOTE:** If one instance type is sold out, it will not be exported.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Declare the data source
+ * const typesDs = alicloud.ecs.getInstanceTypes({
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     instanceType: typesDs.instanceTypes[0].id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
  */
-export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
+export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> & GetInstanceTypesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstanceTypesResult> = pulumi.runtime.invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", {
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
+        "eniAmount": args.eniAmount,
         "instanceChargeType": args.instanceChargeType,
         "instanceTypeFamily": args.instanceTypeFamily,
         "isOutdated": args.isOutdated,
+        "kubernetesNodeRole": args.kubernetesNodeRole,
         "memorySize": args.memorySize,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
+        "sortedBy": args.sortedBy,
         "spotStrategy": args.spotStrategy,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -39,6 +71,10 @@ export interface GetInstanceTypesArgs {
      */
     readonly cpuCoreCount?: number;
     /**
+     * Filter the result whose network interface number is no more than `eniAmount`.
+     */
+    readonly eniAmount?: number;
+    /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
     readonly instanceChargeType?: string;
@@ -50,6 +86,7 @@ export interface GetInstanceTypesArgs {
      * If true, outdated instance types are included in the results. Default to false.
      */
     readonly isOutdated?: boolean;
+    readonly kubernetesNodeRole?: string;
     /**
      * Filter the results to a specific memory size in GB.
      */
@@ -58,12 +95,10 @@ export interface GetInstanceTypesArgs {
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     readonly networkType?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
+    readonly sortedBy?: string;
     /**
-     * - (Optional) Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
     readonly spotStrategy?: string;
 }
@@ -72,10 +107,35 @@ export interface GetInstanceTypesArgs {
  * A collection of values returned by getInstanceTypes.
  */
 export interface GetInstanceTypesResult {
+    readonly availabilityZone?: string;
+    /**
+     * Number of CPU cores.
+     */
+    readonly cpuCoreCount?: number;
+    /**
+     * The maximum number of network interfaces that an instance type can be attached to.
+     */
+    readonly eniAmount?: number;
+    /**
+     * A list of instance type IDs.
+     */
+    readonly ids: string[];
+    readonly instanceChargeType?: string;
+    readonly instanceTypeFamily?: string;
     /**
      * A list of image types. Each element contains the following attributes:
      */
-    readonly instanceTypes: { availabilityZones: string[], burstableInstance: { baselineCredit: string, initialCredit: string }, cpuCoreCount: number, eniAmount: number, family: string, gpu: { amount: string, category: string }, id: string, localStorage: { amount: string, capacity: string, category: string }, memorySize: number }[];
+    readonly instanceTypes: outputs.ecs.GetInstanceTypesInstanceType[];
+    readonly isOutdated?: boolean;
+    readonly kubernetesNodeRole?: string;
+    /**
+     * Size of memory, measured in GB.
+     */
+    readonly memorySize?: number;
+    readonly networkType?: string;
+    readonly outputFile?: string;
+    readonly sortedBy?: string;
+    readonly spotStrategy?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

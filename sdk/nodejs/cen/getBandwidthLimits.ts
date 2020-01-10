@@ -2,17 +2,42 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Bandwidth Limits available to the user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bwl = alicloud.cen.getBandwidthLimits({
+ *     instanceIds: ["cen-id1"],
+ * });
+ * 
+ * export const firstCenBandwidthLimitsLocalRegionId = bwl.limits[0].localRegionId;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
  */
-export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> {
+export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> & GetBandwidthLimitsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetBandwidthLimitsResult> = pulumi.runtime.invoke("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {
         "instanceIds": args.instanceIds,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -23,9 +48,6 @@ export interface GetBandwidthLimitsArgs {
      * A list of CEN instances IDs.
      */
     readonly instanceIds?: string[];
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -33,10 +55,12 @@ export interface GetBandwidthLimitsArgs {
  * A collection of values returned by getBandwidthLimits.
  */
 export interface GetBandwidthLimitsResult {
+    readonly instanceIds?: string[];
     /**
      * A list of CEN Bandwidth Limits. Each element contains the following attributes:
      */
-    readonly limits: { bandwidthLimit: number, instanceId: string, localRegionId: string, oppositeRegionId: string, status: string }[];
+    readonly limits: outputs.cen.GetBandwidthLimitsLimit[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

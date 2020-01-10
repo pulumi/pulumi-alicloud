@@ -2,17 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the VServer groups related to a server load balancer.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getServerGroups({
+ *     loadBalancerId: id,
+ * }));
+ * 
+ * export const firstSlbServerGroupId = sampleDs.slbServerGroups[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
  */
-export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
-    return pulumi.runtime.invoke("alicloud:slb/getServerGroups:getServerGroups", {
+export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> & GetServerGroupsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetServerGroupsResult> = pulumi.runtime.invoke("alicloud:slb/getServerGroups:getServerGroups", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -31,6 +58,7 @@ export interface GetServerGroupsArgs {
      * A regex string to filter results by VServer group name.
      */
     readonly nameRegex?: string;
+    readonly outputFile?: string;
 }
 
 /**
@@ -38,9 +66,20 @@ export interface GetServerGroupsArgs {
  */
 export interface GetServerGroupsResult {
     /**
+     * A list of SLB VServer groups IDs.
+     */
+    readonly ids: string[];
+    readonly loadBalancerId: string;
+    readonly nameRegex?: string;
+    /**
+     * A list of SLB VServer groups names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
      * A list of SLB VServer groups. Each element contains the following attributes:
      */
-    readonly slbServerGroups: { id: string, name: string, servers: { instanceId: string, weight: number }[] }[];
+    readonly slbServerGroups: outputs.slb.GetServerGroupsSlbServerGroup[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

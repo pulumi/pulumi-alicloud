@@ -9,6 +9,8 @@ import (
 
 // This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
 // other public images and the ones available on the image market. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
 func LookupImages(ctx *pulumi.Context, args *GetImagesArgs) (*GetImagesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -22,7 +24,12 @@ func LookupImages(ctx *pulumi.Context, args *GetImagesArgs) (*GetImagesResult, e
 		return nil, err
 	}
 	return &GetImagesResult{
+		Ids: outputs["ids"],
 		Images: outputs["images"],
+		MostRecent: outputs["mostRecent"],
+		NameRegex: outputs["nameRegex"],
+		OutputFile: outputs["outputFile"],
+		Owners: outputs["owners"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -33,7 +40,6 @@ type GetImagesArgs struct {
 	MostRecent interface{}
 	// A regex string to filter resulting images by name. 
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners interface{}
@@ -41,8 +47,14 @@ type GetImagesArgs struct {
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
+	// A list of image IDs.
+	Ids interface{}
 	// A list of images. Each element contains the following attributes:
 	Images interface{}
+	MostRecent interface{}
+	NameRegex interface{}
+	OutputFile interface{}
+	Owners interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

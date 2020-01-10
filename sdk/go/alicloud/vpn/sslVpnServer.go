@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a SSL VPN server resource. [Refer to details](https://www.alibabacloud.com/help/doc-detail/64960.htm)
-// 
-// ~> **NOTE:** Terraform will auto build ssl vpn server while it uses `alicloud_ssl_vpn_server` to build a ssl vpn server resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_server.html.markdown.
 type SslVpnServer struct {
 	s *pulumi.ResourceState
 }
@@ -83,68 +81,68 @@ func GetSslVpnServer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SslVpnServer) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *SslVpnServer) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SslVpnServer) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *SslVpnServer) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
-func (r *SslVpnServer) Cipher() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cipher"])
+func (r *SslVpnServer) Cipher() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cipher"])
 }
 
 // The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
-func (r *SslVpnServer) ClientIpPool() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clientIpPool"])
+func (r *SslVpnServer) ClientIpPool() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientIpPool"])
 }
 
 // Specify whether to compress the communication. Valid value: true (default) | false
-func (r *SslVpnServer) Compress() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["compress"])
+func (r *SslVpnServer) Compress() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["compress"])
 }
 
 // The number of current connections.
-func (r *SslVpnServer) Connections() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["connections"])
+func (r *SslVpnServer) Connections() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["connections"])
 }
 
 // The internet IP of the SSL-VPN server.
-func (r *SslVpnServer) InternetIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetIp"])
+func (r *SslVpnServer) InternetIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetIp"])
 }
 
 // The CIDR block to be accessed by the client through the SSL-VPN connection.
-func (r *SslVpnServer) LocalSubnet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["localSubnet"])
+func (r *SslVpnServer) LocalSubnet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["localSubnet"])
 }
 
 // The maximum number of connections.
-func (r *SslVpnServer) MaxConnections() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxConnections"])
+func (r *SslVpnServer) MaxConnections() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxConnections"])
 }
 
 // The name of the SSL-VPN server.
-func (r *SslVpnServer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SslVpnServer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
-func (r *SslVpnServer) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *SslVpnServer) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
-func (r *SslVpnServer) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *SslVpnServer) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // The ID of the VPN gateway.
-func (r *SslVpnServer) VpnGatewayId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpnGatewayId"])
+func (r *SslVpnServer) VpnGatewayId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpnGatewayId"])
 }
 
 // Input properties used for looking up and filtering SslVpnServer resources.

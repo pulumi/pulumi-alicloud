@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Provides a snat resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
 type SnatEntry struct {
 	s *pulumi.ResourceState
 }
@@ -34,6 +37,7 @@ func NewSnatEntry(ctx *pulumi.Context,
 		inputs["snatTableId"] = args.SnatTableId
 		inputs["sourceVswitchId"] = args.SourceVswitchId
 	}
+	inputs["snatEntryId"] = nil
 	s, err := ctx.RegisterResource("alicloud:vpc/snatEntry:SnatEntry", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -47,6 +51,7 @@ func GetSnatEntry(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *SnatEntryState, opts ...pulumi.ResourceOpt) (*SnatEntry, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["snatEntryId"] = state.SnatEntryId
 		inputs["snatIp"] = state.SnatIp
 		inputs["snatTableId"] = state.SnatTableId
 		inputs["sourceVswitchId"] = state.SourceVswitchId
@@ -59,37 +64,53 @@ func GetSnatEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SnatEntry) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *SnatEntry) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SnatEntry) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *SnatEntry) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *SnatEntry) SnatIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snatIp"])
+// The id of the snat entry on the server.
+func (r *SnatEntry) SnatEntryId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snatEntryId"])
 }
 
-func (r *SnatEntry) SnatTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snatTableId"])
+// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+func (r *SnatEntry) SnatIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snatIp"])
 }
 
-func (r *SnatEntry) SourceVswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceVswitchId"])
+// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
+func (r *SnatEntry) SnatTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snatTableId"])
+}
+
+// The vswitch ID.
+func (r *SnatEntry) SourceVswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceVswitchId"])
 }
 
 // Input properties used for looking up and filtering SnatEntry resources.
 type SnatEntryState struct {
+	// The id of the snat entry on the server.
+	SnatEntryId interface{}
+	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp interface{}
+	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId interface{}
+	// The vswitch ID.
 	SourceVswitchId interface{}
 }
 
 // The set of arguments for constructing a SnatEntry resource.
 type SnatEntryArgs struct {
+	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp interface{}
+	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId interface{}
+	// The vswitch ID.
 	SourceVswitchId interface{}
 }

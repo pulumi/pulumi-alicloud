@@ -2,15 +2,41 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
  * that connect VPCs together.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const routerInterfacesDs = alicloud.vpc.getRouterInterfaces({
+ *     nameRegex: "^testenv",
+ *     status: "Active",
+ * });
+ * 
+ * export const firstRouterInterfaceId = routerInterfacesDs.interfaces[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
  */
-export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
+export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> & GetRouterInterfacesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRouterInterfacesResult> = pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "oppositeInterfaceId": args.oppositeInterfaceId,
         "oppositeInterfaceOwnerId": args.oppositeInterfaceOwnerId,
@@ -21,12 +47,18 @@ export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulum
         "specification": args.specification,
         "status": args.status,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getRouterInterfaces.
  */
 export interface GetRouterInterfacesArgs {
+    /**
+     * A list of router interface IDs.
+     */
+    readonly ids?: string[];
     /**
      * A regex string used to filter by router interface name.
      */
@@ -39,13 +71,10 @@ export interface GetRouterInterfacesArgs {
      * Account ID of the owner of the peer router interface.
      */
     readonly oppositeInterfaceOwnerId?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
-     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+     * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
      */
     readonly role?: string;
     /**
@@ -71,9 +100,47 @@ export interface GetRouterInterfacesArgs {
  */
 export interface GetRouterInterfacesResult {
     /**
+     * A list of router interface IDs.
+     */
+    readonly ids: string[];
+    /**
      * A list of router interfaces. Each element contains the following attributes:
      */
-    readonly interfaces: { accessPointId: string, creationTime: string, description: string, healthCheckSourceIp: string, healthCheckTargetIp: string, id: string, name: string, oppositeInterfaceId: string, oppositeInterfaceOwnerId: string, oppositeRegionId: string, oppositeRouterId: string, oppositeRouterType: string, role: string, routerId: string, routerType: string, specification: string, status: string, vpcId: string }[];
+    readonly interfaces: outputs.vpc.GetRouterInterfacesInterface[];
+    readonly nameRegex?: string;
+    /**
+     * A list of router interface names.
+     */
+    readonly names: string[];
+    /**
+     * Peer router interface ID.
+     */
+    readonly oppositeInterfaceId?: string;
+    /**
+     * Account ID of the owner of the peer router interface.
+     */
+    readonly oppositeInterfaceOwnerId?: string;
+    readonly outputFile?: string;
+    /**
+     * Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
+     */
+    readonly role?: string;
+    /**
+     * ID of the VRouter located in the local region.
+     */
+    readonly routerId?: string;
+    /**
+     * Router type in the local region. Possible values: `VRouter` and `VBR`.
+     */
+    readonly routerType?: string;
+    /**
+     * Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
+     */
+    readonly specification?: string;
+    /**
+     * Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
+     */
+    readonly status?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

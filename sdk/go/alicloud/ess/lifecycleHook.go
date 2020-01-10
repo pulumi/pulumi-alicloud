@@ -68,41 +68,41 @@ func GetLifecycleHook(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LifecycleHook) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *LifecycleHook) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LifecycleHook) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *LifecycleHook) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *LifecycleHook) DefaultResult() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultResult"])
+func (r *LifecycleHook) DefaultResult() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultResult"])
 }
 
-func (r *LifecycleHook) HeartbeatTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["heartbeatTimeout"])
+func (r *LifecycleHook) HeartbeatTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["heartbeatTimeout"])
 }
 
-func (r *LifecycleHook) LifecycleTransition() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lifecycleTransition"])
+func (r *LifecycleHook) LifecycleTransition() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lifecycleTransition"])
 }
 
-func (r *LifecycleHook) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LifecycleHook) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *LifecycleHook) NotificationArn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notificationArn"])
+func (r *LifecycleHook) NotificationArn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notificationArn"])
 }
 
-func (r *LifecycleHook) NotificationMetadata() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notificationMetadata"])
+func (r *LifecycleHook) NotificationMetadata() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notificationMetadata"])
 }
 
-func (r *LifecycleHook) ScalingGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingGroupId"])
+func (r *LifecycleHook) ScalingGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingGroupId"])
 }
 
 // Input properties used for looking up and filtering LifecycleHook resources.

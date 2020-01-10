@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides the rules associated with a server load balancer listener.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
 func LookupRules(ctx *pulumi.Context, args *GetRulesArgs) (*GetRulesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -15,12 +17,19 @@ func LookupRules(ctx *pulumi.Context, args *GetRulesArgs) (*GetRulesResult, erro
 		inputs["ids"] = args.Ids
 		inputs["loadBalancerId"] = args.LoadBalancerId
 		inputs["nameRegex"] = args.NameRegex
+		inputs["outputFile"] = args.OutputFile
 	}
 	outputs, err := ctx.Invoke("alicloud:slb/getRules:getRules", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetRulesResult{
+		FrontendPort: outputs["frontendPort"],
+		Ids: outputs["ids"],
+		LoadBalancerId: outputs["loadBalancerId"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		SlbRules: outputs["slbRules"],
 		Id: outputs["id"],
 	}, nil
@@ -36,10 +45,19 @@ type GetRulesArgs struct {
 	LoadBalancerId interface{}
 	// A regex string to filter results by rule name.
 	NameRegex interface{}
+	OutputFile interface{}
 }
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
+	FrontendPort interface{}
+	// A list of SLB listener rules IDs.
+	Ids interface{}
+	LoadBalancerId interface{}
+	NameRegex interface{}
+	// A list of SLB listener rules names.
+	Names interface{}
+	OutputFile interface{}
 	// A list of SLB listener rules. Each element contains the following attributes:
 	SlbRules interface{}
 	// id is the provider-assigned unique ID for this managed resource.

@@ -7,7 +7,29 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM User access key resource.
  * 
- * ~> **NOTE:**  You should set the `secret_file` if you want to get the access key.  
+ * > **NOTE:**  You should set the `secretFile` if you want to get the access key.  
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a new RAM access key for user.
+ * const user = new alicloud.ram.User("user", {
+ *     comments: "yoyoyo",
+ *     displayName: "userDisplayName",
+ *     email: "hello.uuu@aaa.com",
+ *     force: true,
+ *     mobile: "86-18688888888",
+ * });
+ * const ak = new alicloud.ram.AccessKey("ak", {
+ *     secretFile: "/xxx/xxx/xxx.txt",
+ *     userName: user.name,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_access_key.html.markdown.
  */
 export class AccessKey extends pulumi.CustomResource {
     /**
@@ -18,22 +40,45 @@ export class AccessKey extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessKeyState): AccessKey {
-        return new AccessKey(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessKeyState, opts?: pulumi.CustomResourceOptions): AccessKey {
+        return new AccessKey(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/accessKey:AccessKey';
+
+    /**
+     * Returns true if the given object is an instance of AccessKey.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccessKey {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccessKey.__pulumiType;
+    }
+
+    public /*out*/ readonly encryptedSecret!: pulumi.Output<string>;
+    /**
+     * The fingerprint of the PGP key used to encrypt the secret
+     */
+    public /*out*/ readonly keyFingerprint!: pulumi.Output<string>;
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+     */
+    public readonly pgpKey!: pulumi.Output<string | undefined>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    public readonly secretFile: pulumi.Output<string | undefined>;
+    public readonly secretFile!: pulumi.Output<string | undefined>;
     /**
      * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
      */
-    public readonly status: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string | undefined>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly userName: pulumi.Output<string | undefined>;
+    public readonly userName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessKey resource with the given unique name, arguments, and options.
@@ -46,17 +91,30 @@ export class AccessKey extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccessKeyArgs | AccessKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccessKeyState = argsOrState as AccessKeyState | undefined;
+            const state = argsOrState as AccessKeyState | undefined;
+            inputs["encryptedSecret"] = state ? state.encryptedSecret : undefined;
+            inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
+            inputs["pgpKey"] = state ? state.pgpKey : undefined;
             inputs["secretFile"] = state ? state.secretFile : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["userName"] = state ? state.userName : undefined;
         } else {
             const args = argsOrState as AccessKeyArgs | undefined;
+            inputs["pgpKey"] = args ? args.pgpKey : undefined;
             inputs["secretFile"] = args ? args.secretFile : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["userName"] = args ? args.userName : undefined;
+            inputs["encryptedSecret"] = undefined /*out*/;
+            inputs["keyFingerprint"] = undefined /*out*/;
         }
-        super("alicloud:ram/accessKey:AccessKey", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(AccessKey.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -64,6 +122,15 @@ export class AccessKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKey resources.
  */
 export interface AccessKeyState {
+    readonly encryptedSecret?: pulumi.Input<string>;
+    /**
+     * The fingerprint of the PGP key used to encrypt the secret
+     */
+    readonly keyFingerprint?: pulumi.Input<string>;
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+     */
+    readonly pgpKey?: pulumi.Input<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
@@ -82,6 +149,10 @@ export interface AccessKeyState {
  * The set of arguments for constructing a AccessKey resource.
  */
 export interface AccessKeyArgs {
+    /**
+     * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+     */
+    readonly pgpKey?: pulumi.Input<string>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */

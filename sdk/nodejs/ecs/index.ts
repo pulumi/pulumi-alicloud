@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./copyImage";
 export * from "./disk";
 export * from "./diskAttachment";
 export * from "./eip";
@@ -9,13 +10,24 @@ export * from "./eipAssociation";
 export * from "./getDisks";
 export * from "./getEips";
 export * from "./getImages";
+export * from "./getInstanceTypeFamilies";
 export * from "./getInstanceTypes";
 export * from "./getInstances";
 export * from "./getKeyPairs";
+export * from "./getNetworkInterfaces";
 export * from "./getSecurityGroupRules";
 export * from "./getSecurityGroups";
+export * from "./getSnapshots";
+export * from "./image";
+export * from "./imageCopy";
+export * from "./imageExport";
+export * from "./imageSharePermission";
 export * from "./instance";
 export * from "./keyPair";
 export * from "./keyPairAttachment";
+export * from "./launchTemplate";
+export * from "./reservedInstance";
 export * from "./securityGroup";
 export * from "./securityGroupRule";
+export * from "./snapshot";
+export * from "./snapshotPolicy";

@@ -8,5 +8,6 @@ export * from "./gateway";
 export * from "./getConnections";
 export * from "./getCustomerGateways";
 export * from "./getGateways";
+export * from "./routeEntry";
 export * from "./sslVpnClientCert";
 export * from "./sslVpnServer";

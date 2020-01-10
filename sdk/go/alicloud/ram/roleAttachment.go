@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a RAM role attachment resource to bind role for several ECS instances.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_attachment.html.markdown.
 type RoleAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -54,23 +56,23 @@ func GetRoleAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RoleAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RoleAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RoleAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RoleAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The list of ECS instance's IDs.
-func (r *RoleAttachment) InstanceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceIds"])
+func (r *RoleAttachment) InstanceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceIds"])
 }
 
 // The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
-func (r *RoleAttachment) RoleName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleName"])
+func (r *RoleAttachment) RoleName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleName"])
 }
 
 // Input properties used for looking up and filtering RoleAttachment resources.

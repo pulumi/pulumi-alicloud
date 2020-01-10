@@ -3,6 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from backup_policy import *
-from instance import *
-from get_instances import *
+from .account import *
+from .backup_policy import *
+from .instance import *
+from .get_instance_classes import *
+from .get_instance_engines import *
+from .get_instances import *

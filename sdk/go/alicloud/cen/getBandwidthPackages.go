@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides CEN Bandwidth Packages available to the user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
 func LookupBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs) (*GetBandwidthPackagesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,6 +23,11 @@ func LookupBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs
 		return nil, err
 	}
 	return &GetBandwidthPackagesResult{
+		Ids: outputs["ids"],
+		InstanceId: outputs["instanceId"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Packages: outputs["packages"],
 		Id: outputs["id"],
 	}, nil
@@ -34,12 +41,17 @@ type GetBandwidthPackagesArgs struct {
 	InstanceId interface{}
 	// A regex string to filter CEN Bandwidth Package by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getBandwidthPackages.
 type GetBandwidthPackagesResult struct {
+	Ids interface{}
+	// ID of CEN instance that owns the CEN Bandwidth Package.
+	InstanceId interface{}
+	NameRegex interface{}
+	Names interface{}
+	OutputFile interface{}
 	// A list of CEN bandwidth package. Each element contains the following attributes:
 	Packages interface{}
 	// id is the provider-assigned unique ID for this managed resource.

@@ -2,17 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getListeners({
+ *     loadBalancerId: id,
+ * }));
+ * 
+ * export const firstSlbListenerProtocol = sampleDs.slbListeners[0].protocol;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_listeners.html.markdown.
  */
-export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
-    return pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
+export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> & GetListenersResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetListenersResult> = pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
         "frontendPort": args.frontendPort,
         "loadBalancerId": args.loadBalancerId,
+        "outputFile": args.outputFile,
         "protocol": args.protocol,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -27,6 +54,7 @@ export interface GetListenersArgs {
      * ID of the SLB with listeners.
      */
     readonly loadBalancerId: string;
+    readonly outputFile?: string;
     /**
      * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
      */
@@ -38,9 +66,19 @@ export interface GetListenersArgs {
  */
 export interface GetListenersResult {
     /**
+     * Frontend port used to receive incoming traffic and distribute it to the backend servers.
+     */
+    readonly frontendPort?: number;
+    readonly loadBalancerId: string;
+    readonly outputFile?: string;
+    /**
+     * Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
+     */
+    readonly protocol?: string;
+    /**
      * A list of SLB listeners. Each element contains the following attributes:
      */
-    readonly slbListeners: { backendPort: number, bandwidth: number, caCertificateId: string, cookie: string, cookieTimeout: number, establishedTimeout: number, frontendPort: number, gzip: string, healthCheck: string, healthCheckConnectPort: number, healthCheckConnectTimeout: number, healthCheckDomain: string, healthCheckHttpCode: string, healthCheckInterval: number, healthCheckTimeout: number, healthCheckType: string, healthCheckUri: string, healthyThreshold: number, masterSlaveServerGroupId: string, persistenceTimeout: number, protocol: string, scheduler: string, securityStatus: string, serverGroupId: string, sslCertificateId: string, status: string, stickySession: string, stickySessionType: string, unhealthyThreshold: number, xForwardedFor: string, xForwardedForSlbId: string, xForwardedForSlbIp: string, xForwardedForSlbProto: string }[];
+    readonly slbListeners: outputs.slb.GetListenersSlbListener[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

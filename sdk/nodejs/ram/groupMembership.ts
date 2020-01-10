@@ -6,6 +6,42 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM Group membership resource. 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a RAM Group membership.
+ * const group = new alicloud.ram.Group("group", {
+ *     comments: "this is a group comments.",
+ *     force: true,
+ * });
+ * const user = new alicloud.ram.User("user", {
+ *     comments: "yoyoyo",
+ *     displayName: "userDisplayName",
+ *     email: "hello.uuu@aaa.com",
+ *     force: true,
+ *     mobile: "86-18688888888",
+ * });
+ * const user1 = new alicloud.ram.User("user1", {
+ *     comments: "yoyoyo",
+ *     displayName: "userDisplayName1",
+ *     email: "hello.uuu@aaa.com",
+ *     force: true,
+ *     mobile: "86-18688888889",
+ * });
+ * const membership = new alicloud.ram.GroupMembership("membership", {
+ *     groupName: group.name,
+ *     userNames: [
+ *         user.name,
+ *         user1.name,
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**
@@ -16,18 +52,32 @@ export class GroupMembership extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupMembershipState): GroupMembership {
-        return new GroupMembership(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupMembershipState, opts?: pulumi.CustomResourceOptions): GroupMembership {
+        return new GroupMembership(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/groupMembership:GroupMembership';
+
+    /**
+     * Returns true if the given object is an instance of GroupMembership.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is GroupMembership {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === GroupMembership.__pulumiType;
     }
 
     /**
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly groupName: pulumi.Output<string>;
+    public readonly groupName!: pulumi.Output<string>;
     /**
      * Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly userNames: pulumi.Output<string[]>;
+    public readonly userNames!: pulumi.Output<string[]>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -40,7 +90,7 @@ export class GroupMembership extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupMembershipArgs | GroupMembershipState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupMembershipState = argsOrState as GroupMembershipState | undefined;
+            const state = argsOrState as GroupMembershipState | undefined;
             inputs["groupName"] = state ? state.groupName : undefined;
             inputs["userNames"] = state ? state.userNames : undefined;
         } else {
@@ -54,7 +104,14 @@ export class GroupMembership extends pulumi.CustomResource {
             inputs["groupName"] = args ? args.groupName : undefined;
             inputs["userNames"] = args ? args.userNames : undefined;
         }
-        super("alicloud:ram/groupMembership:GroupMembership", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(GroupMembership.__pulumiType, name, inputs, opts);
     }
 }
 

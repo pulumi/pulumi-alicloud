@@ -9,8 +9,9 @@ import (
 
 // Provides a resource to create a oss bucket and set its attribution.
 // 
-// ~> **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
-// 
+// > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket.html.markdown.
 type Bucket struct {
 	s *pulumi.ResourceState
 }
@@ -23,19 +24,31 @@ func NewBucket(ctx *pulumi.Context,
 		inputs["acl"] = nil
 		inputs["bucket"] = nil
 		inputs["corsRules"] = nil
+		inputs["forceDestroy"] = nil
 		inputs["lifecycleRules"] = nil
 		inputs["logging"] = nil
 		inputs["loggingIsenable"] = nil
+		inputs["policy"] = nil
 		inputs["refererConfig"] = nil
+		inputs["serverSideEncryptionRule"] = nil
+		inputs["storageClass"] = nil
+		inputs["tags"] = nil
+		inputs["versioning"] = nil
 		inputs["website"] = nil
 	} else {
 		inputs["acl"] = args.Acl
 		inputs["bucket"] = args.Bucket
 		inputs["corsRules"] = args.CorsRules
+		inputs["forceDestroy"] = args.ForceDestroy
 		inputs["lifecycleRules"] = args.LifecycleRules
 		inputs["logging"] = args.Logging
 		inputs["loggingIsenable"] = args.LoggingIsenable
+		inputs["policy"] = args.Policy
 		inputs["refererConfig"] = args.RefererConfig
+		inputs["serverSideEncryptionRule"] = args.ServerSideEncryptionRule
+		inputs["storageClass"] = args.StorageClass
+		inputs["tags"] = args.Tags
+		inputs["versioning"] = args.Versioning
 		inputs["website"] = args.Website
 	}
 	inputs["creationDate"] = nil
@@ -43,7 +56,6 @@ func NewBucket(ctx *pulumi.Context,
 	inputs["intranetEndpoint"] = nil
 	inputs["location"] = nil
 	inputs["owner"] = nil
-	inputs["storageClass"] = nil
 	s, err := ctx.RegisterResource("alicloud:oss/bucket:Bucket", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -62,14 +74,19 @@ func GetBucket(ctx *pulumi.Context,
 		inputs["corsRules"] = state.CorsRules
 		inputs["creationDate"] = state.CreationDate
 		inputs["extranetEndpoint"] = state.ExtranetEndpoint
+		inputs["forceDestroy"] = state.ForceDestroy
 		inputs["intranetEndpoint"] = state.IntranetEndpoint
 		inputs["lifecycleRules"] = state.LifecycleRules
 		inputs["location"] = state.Location
 		inputs["logging"] = state.Logging
 		inputs["loggingIsenable"] = state.LoggingIsenable
 		inputs["owner"] = state.Owner
+		inputs["policy"] = state.Policy
 		inputs["refererConfig"] = state.RefererConfig
+		inputs["serverSideEncryptionRule"] = state.ServerSideEncryptionRule
 		inputs["storageClass"] = state.StorageClass
+		inputs["tags"] = state.Tags
+		inputs["versioning"] = state.Versioning
 		inputs["website"] = state.Website
 	}
 	s, err := ctx.ReadResource("alicloud:oss/bucket:Bucket", name, id, inputs, opts...)
@@ -80,81 +97,106 @@ func GetBucket(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Bucket) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Bucket) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Bucket) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Bucket) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
-func (r *Bucket) Acl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["acl"])
+func (r *Bucket) Acl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["acl"])
 }
 
-// The name of the bucket. If omitted, Terraform will assign a random and unique name.
-func (r *Bucket) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *Bucket) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
-func (r *Bucket) CorsRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["corsRules"])
+// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+func (r *Bucket) CorsRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["corsRules"])
 }
 
 // The creation date of the bucket.
-func (r *Bucket) CreationDate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationDate"])
+func (r *Bucket) CreationDate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationDate"])
 }
 
 // The extranet access endpoint of the bucket.
-func (r *Bucket) ExtranetEndpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["extranetEndpoint"])
+func (r *Bucket) ExtranetEndpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["extranetEndpoint"])
+}
+
+// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+func (r *Bucket) ForceDestroy() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceDestroy"])
 }
 
 // The intranet access endpoint of the bucket.
-func (r *Bucket) IntranetEndpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["intranetEndpoint"])
+func (r *Bucket) IntranetEndpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["intranetEndpoint"])
 }
 
 // A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
-func (r *Bucket) LifecycleRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["lifecycleRules"])
+func (r *Bucket) LifecycleRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["lifecycleRules"])
 }
 
 // The location of the bucket.
-func (r *Bucket) Location() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["location"])
+func (r *Bucket) Location() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["location"])
 }
 
 // A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
-func (r *Bucket) Logging() *pulumi.Output {
+func (r *Bucket) Logging() pulumi.Output {
 	return r.s.State["logging"]
 }
 
 // The flag of using logging enable container. Defaults true.
-func (r *Bucket) LoggingIsenable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["loggingIsenable"])
+func (r *Bucket) LoggingIsenable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["loggingIsenable"])
 }
 
 // The bucket owner.
-func (r *Bucket) Owner() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["owner"])
+func (r *Bucket) Owner() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["owner"])
+}
+
+// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+func (r *Bucket) Policy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policy"])
 }
 
 // The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
-func (r *Bucket) RefererConfig() *pulumi.Output {
+func (r *Bucket) RefererConfig() pulumi.Output {
 	return r.s.State["refererConfig"]
 }
 
-// The bucket storage type.
-func (r *Bucket) StorageClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["storageClass"])
+// A configuration of server-side encryption (documented below).
+func (r *Bucket) ServerSideEncryptionRule() pulumi.Output {
+	return r.s.State["serverSideEncryptionRule"]
+}
+
+// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+func (r *Bucket) StorageClass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["storageClass"])
+}
+
+// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+func (r *Bucket) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
+}
+
+// A state of versioning (documented below).
+func (r *Bucket) Versioning() pulumi.Output {
+	return r.s.State["versioning"]
 }
 
 // A website object(documented below).
-func (r *Bucket) Website() *pulumi.Output {
+func (r *Bucket) Website() pulumi.Output {
 	return r.s.State["website"]
 }
 
@@ -162,13 +204,15 @@ func (r *Bucket) Website() *pulumi.Output {
 type BucketState struct {
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
 	Acl interface{}
-	// The name of the bucket. If omitted, Terraform will assign a random and unique name.
 	Bucket interface{}
+	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
 	CorsRules interface{}
 	// The creation date of the bucket.
 	CreationDate interface{}
 	// The extranet access endpoint of the bucket.
 	ExtranetEndpoint interface{}
+	// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+	ForceDestroy interface{}
 	// The intranet access endpoint of the bucket.
 	IntranetEndpoint interface{}
 	// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
@@ -181,10 +225,18 @@ type BucketState struct {
 	LoggingIsenable interface{}
 	// The bucket owner.
 	Owner interface{}
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	Policy interface{}
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig interface{}
-	// The bucket storage type.
+	// A configuration of server-side encryption (documented below).
+	ServerSideEncryptionRule interface{}
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
 	StorageClass interface{}
+	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+	Tags interface{}
+	// A state of versioning (documented below).
+	Versioning interface{}
 	// A website object(documented below).
 	Website interface{}
 }
@@ -193,17 +245,29 @@ type BucketState struct {
 type BucketArgs struct {
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
 	Acl interface{}
-	// The name of the bucket. If omitted, Terraform will assign a random and unique name.
 	Bucket interface{}
+	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
 	CorsRules interface{}
+	// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+	ForceDestroy interface{}
 	// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
 	LifecycleRules interface{}
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging interface{}
 	// The flag of using logging enable container. Defaults true.
 	LoggingIsenable interface{}
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	Policy interface{}
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig interface{}
+	// A configuration of server-side encryption (documented below).
+	ServerSideEncryptionRule interface{}
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+	StorageClass interface{}
+	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+	Tags interface{}
+	// A state of versioning (documented below).
+	Versioning interface{}
 	// A website object(documented below).
 	Website interface{}
 }

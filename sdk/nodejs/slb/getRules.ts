@@ -2,18 +2,46 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the rules associated with a server load balancer listener.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getRules({
+ *     frontendPort: 80,
+ *     loadBalancerId: id,
+ * }));
+ * 
+ * export const firstSlbRuleId = sampleDs.slbRules[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
  */
-export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
-    return pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
+export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> & GetRulesResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRulesResult> = pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -36,16 +64,29 @@ export interface GetRulesArgs {
      * A regex string to filter results by rule name.
      */
     readonly nameRegex?: string;
+    readonly outputFile?: string;
 }
 
 /**
  * A collection of values returned by getRules.
  */
 export interface GetRulesResult {
+    readonly frontendPort: number;
+    /**
+     * A list of SLB listener rules IDs.
+     */
+    readonly ids: string[];
+    readonly loadBalancerId: string;
+    readonly nameRegex?: string;
+    /**
+     * A list of SLB listener rules names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * A list of SLB listener rules. Each element contains the following attributes:
      */
-    readonly slbRules: { domain: string, id: string, name: string, serverGroupId: string, url: string }[];
+    readonly slbRules: outputs.slb.GetRulesSlbRule[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides the OSS buckets of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
 func LookupBuckets(ctx *pulumi.Context, args *GetBucketsArgs) (*GetBucketsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -20,6 +22,9 @@ func LookupBuckets(ctx *pulumi.Context, args *GetBucketsArgs) (*GetBucketsResult
 	}
 	return &GetBucketsResult{
 		Buckets: outputs["buckets"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -28,7 +33,6 @@ func LookupBuckets(ctx *pulumi.Context, args *GetBucketsArgs) (*GetBucketsResult
 type GetBucketsArgs struct {
 	// A regex string to filter results by bucket name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
@@ -36,6 +40,10 @@ type GetBucketsArgs struct {
 type GetBucketsResult struct {
 	// A list of buckets. Each element contains the following attributes:
 	Buckets interface{}
+	NameRegex interface{}
+	// A list of bucket names. 
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Private Zone resource.
-// 
-// ~> **NOTE:** Terraform will auto Create a Private Zone while it uses `alicloud_pvtz_zone` to build a Private Zone resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
 type Zone struct {
 	s *pulumi.ResourceState
 }
@@ -57,40 +55,40 @@ func GetZone(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Zone) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Zone) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Zone) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Zone) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *Zone) CreationTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["creationTime"])
+func (r *Zone) CreationTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["creationTime"])
 }
 
-func (r *Zone) IsPtr() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isPtr"])
+func (r *Zone) IsPtr() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isPtr"])
 }
 
 // The name of the Private Zone.
-func (r *Zone) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Zone) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The count of the Private Zone Record.
-func (r *Zone) RecordCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["recordCount"])
+func (r *Zone) RecordCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["recordCount"])
 }
 
 // The remark of the Private Zone.
-func (r *Zone) Remark() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["remark"])
+func (r *Zone) Remark() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["remark"])
 }
 
-func (r *Zone) UpdateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["updateTime"])
+func (r *Zone) UpdateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
 // Input properties used for looking up and filtering Zone resources.

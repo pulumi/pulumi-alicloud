@@ -4,6 +4,7 @@
 // Export members:
 export * from "./accessKey";
 export * from "./accountAlias";
+export * from "./accountPasswordPolicy";
 export * from "./alias";
 export * from "./getAccountAlias";
 export * from "./getAccountAliases";

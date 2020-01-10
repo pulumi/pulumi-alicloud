@@ -9,20 +9,25 @@ import (
 
 // This data source provides the ECS instance types of Alibaba Cloud.
 // 
-// ~> **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+// > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
 // 
-// ~> **NOTE:** If one instance type is sold out, it will not be exported.
+// > **NOTE:** If one instance type is sold out, it will not be exported.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
 func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetInstanceTypesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["cpuCoreCount"] = args.CpuCoreCount
+		inputs["eniAmount"] = args.EniAmount
 		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["instanceTypeFamily"] = args.InstanceTypeFamily
 		inputs["isOutdated"] = args.IsOutdated
+		inputs["kubernetesNodeRole"] = args.KubernetesNodeRole
 		inputs["memorySize"] = args.MemorySize
 		inputs["networkType"] = args.NetworkType
 		inputs["outputFile"] = args.OutputFile
+		inputs["sortedBy"] = args.SortedBy
 		inputs["spotStrategy"] = args.SpotStrategy
 	}
 	outputs, err := ctx.Invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", inputs)
@@ -30,7 +35,20 @@ func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetI
 		return nil, err
 	}
 	return &GetInstanceTypesResult{
+		AvailabilityZone: outputs["availabilityZone"],
+		CpuCoreCount: outputs["cpuCoreCount"],
+		EniAmount: outputs["eniAmount"],
+		Ids: outputs["ids"],
+		InstanceChargeType: outputs["instanceChargeType"],
+		InstanceTypeFamily: outputs["instanceTypeFamily"],
 		InstanceTypes: outputs["instanceTypes"],
+		IsOutdated: outputs["isOutdated"],
+		KubernetesNodeRole: outputs["kubernetesNodeRole"],
+		MemorySize: outputs["memorySize"],
+		NetworkType: outputs["networkType"],
+		OutputFile: outputs["outputFile"],
+		SortedBy: outputs["sortedBy"],
+		SpotStrategy: outputs["spotStrategy"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -41,26 +59,46 @@ type GetInstanceTypesArgs struct {
 	AvailabilityZone interface{}
 	// Filter the results to a specific number of cpu cores.
 	CpuCoreCount interface{}
+	// Filter the result whose network interface number is no more than `eniAmount`.
+	EniAmount interface{}
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType interface{}
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily interface{}
 	// If true, outdated instance types are included in the results. Default to false.
 	IsOutdated interface{}
+	KubernetesNodeRole interface{}
 	// Filter the results to a specific memory size in GB.
 	MemorySize interface{}
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
-	// - (Optional) Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	SortedBy interface{}
+	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy interface{}
 }
 
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
+	AvailabilityZone interface{}
+	// Number of CPU cores.
+	CpuCoreCount interface{}
+	// The maximum number of network interfaces that an instance type can be attached to.
+	EniAmount interface{}
+	// A list of instance type IDs.
+	Ids interface{}
+	InstanceChargeType interface{}
+	InstanceTypeFamily interface{}
 	// A list of image types. Each element contains the following attributes:
 	InstanceTypes interface{}
+	IsOutdated interface{}
+	KubernetesNodeRole interface{}
+	// Size of memory, measured in GB.
+	MemorySize interface{}
+	NetworkType interface{}
+	OutputFile interface{}
+	SortedBy interface{}
+	SpotStrategy interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -10,6 +10,8 @@ import (
 
 // Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
 // You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store_index.html.markdown.
 type StoreIndex struct {
 	s *pulumi.ResourceState
 }
@@ -61,33 +63,33 @@ func GetStoreIndex(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *StoreIndex) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *StoreIndex) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *StoreIndex) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *StoreIndex) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // List configurations of field search index. Valid item as follows:
-func (r *StoreIndex) FieldSearches() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["fieldSearches"])
+func (r *StoreIndex) FieldSearches() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["fieldSearches"])
 }
 
 // The configuration of full text index. Valid item as follows:
-func (r *StoreIndex) FullText() *pulumi.Output {
+func (r *StoreIndex) FullText() pulumi.Output {
 	return r.s.State["fullText"]
 }
 
 // The log store name to the query index belongs.
-func (r *StoreIndex) Logstore() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["logstore"])
+func (r *StoreIndex) Logstore() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["logstore"])
 }
 
 // The project name to the log store belongs.
-func (r *StoreIndex) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *StoreIndex) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Input properties used for looking up and filtering StoreIndex resources.

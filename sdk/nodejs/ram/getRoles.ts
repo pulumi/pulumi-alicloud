@@ -2,39 +2,68 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const rolesDs = alicloud.ram.getRoles({
+ *     nameRegex: ".*test.*",
+ *     outputFile: "roles.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * 
+ * export const firstRoleId = rolesDs.roles[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
  */
-export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
+export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> & GetRolesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getRoles:getRoles", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRolesResult> = pulumi.runtime.invoke("alicloud:ram/getRoles:getRoles", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getRoles.
  */
 export interface GetRolesArgs {
+    readonly ids?: string[];
     /**
      * A regex string to filter results by the role name.
+     * * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
-     * Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
      */
     readonly policyName?: string;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
     readonly policyType?: string;
 }
@@ -44,9 +73,21 @@ export interface GetRolesArgs {
  */
 export interface GetRolesResult {
     /**
+     * A list of ram role IDs. 
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of ram role names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly policyName?: string;
+    readonly policyType?: string;
+    /**
      * A list of roles. Each element contains the following attributes:
      */
-    readonly roles: { arn: string, assumeRolePolicyDocument: string, createDate: string, description: string, document: string, id: string, name: string, updateDate: string }[];
+    readonly roles: outputs.ram.GetRolesRole[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

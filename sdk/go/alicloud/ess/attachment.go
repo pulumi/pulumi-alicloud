@@ -10,9 +10,11 @@ import (
 
 // Attaches several ECS instances to a specified scaling group or remove them from it.
 // 
-// ~> **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
+// > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
 // 
-// ~> **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+// > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
 type Attachment struct {
 	s *pulumi.ResourceState
 }
@@ -61,28 +63,28 @@ func GetAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Attachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Attachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Attachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Attachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
-func (r *Attachment) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *Attachment) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
 // ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
-func (r *Attachment) InstanceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceIds"])
+func (r *Attachment) InstanceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceIds"])
 }
 
 // ID of the scaling group of a scaling configuration.
-func (r *Attachment) ScalingGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingGroupId"])
+func (r *Attachment) ScalingGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingGroupId"])
 }
 
 // Input properties used for looking up and filtering Attachment resources.

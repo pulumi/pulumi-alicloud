@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
 func LookupPolicies(ctx *pulumi.Context, args *GetPoliciesArgs) (*GetPoliciesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -23,7 +25,14 @@ func LookupPolicies(ctx *pulumi.Context, args *GetPoliciesArgs) (*GetPoliciesRes
 		return nil, err
 	}
 	return &GetPoliciesResult{
+		GroupName: outputs["groupName"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Policies: outputs["policies"],
+		RoleName: outputs["roleName"],
+		Type: outputs["type"],
+		UserName: outputs["userName"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -34,7 +43,6 @@ type GetPoliciesArgs struct {
 	GroupName interface{}
 	// A regex string to filter resulting policies by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Filter results by a specific role name. Returned policies are attached to the specified role.
 	RoleName interface{}
@@ -46,8 +54,17 @@ type GetPoliciesArgs struct {
 
 // A collection of values returned by getPolicies.
 type GetPoliciesResult struct {
+	GroupName interface{}
+	NameRegex interface{}
+	// A list of ram group names.
+	Names interface{}
+	OutputFile interface{}
 	// A list of policies. Each element contains the following attributes:
 	Policies interface{}
+	RoleName interface{}
+	// Type of the policy.
+	Type interface{}
+	UserName interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

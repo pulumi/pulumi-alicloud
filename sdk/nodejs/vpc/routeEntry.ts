@@ -2,8 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_entry.html.markdown.
+ */
 export class RouteEntry extends pulumi.CustomResource {
     /**
      * Get an existing RouteEntry resource's state with the given name, ID, and optional extra
@@ -13,15 +18,54 @@ export class RouteEntry extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteEntryState): RouteEntry {
-        return new RouteEntry(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteEntryState, opts?: pulumi.CustomResourceOptions): RouteEntry {
+        return new RouteEntry(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly destinationCidrblock: pulumi.Output<string | undefined>;
-    public readonly nexthopId: pulumi.Output<string | undefined>;
-    public readonly nexthopType: pulumi.Output<string | undefined>;
-    public readonly routeTableId: pulumi.Output<string>;
-    public readonly routerId: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/routeEntry:RouteEntry';
+
+    /**
+     * Returns true if the given object is an instance of RouteEntry.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouteEntry {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouteEntry.__pulumiType;
+    }
+
+    /**
+     * The RouteEntry's target network segment.
+     */
+    public readonly destinationCidrblock!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     */
+    public readonly nexthopId!: pulumi.Output<string | undefined>;
+    /**
+     * The next hop type. Available values:
+     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
+     */
+    public readonly nexthopType!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the route table.
+     */
+    public readonly routeTableId!: pulumi.Output<string>;
+    /**
+     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     */
+    public readonly routerId!: pulumi.Output<string>;
 
     /**
      * Create a RouteEntry resource with the given unique name, arguments, and options.
@@ -34,8 +78,9 @@ export class RouteEntry extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouteEntryArgs | RouteEntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouteEntryState = argsOrState as RouteEntryState | undefined;
+            const state = argsOrState as RouteEntryState | undefined;
             inputs["destinationCidrblock"] = state ? state.destinationCidrblock : undefined;
+            inputs["name"] = state ? state.name : undefined;
             inputs["nexthopId"] = state ? state.nexthopId : undefined;
             inputs["nexthopType"] = state ? state.nexthopType : undefined;
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
@@ -46,12 +91,20 @@ export class RouteEntry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'routeTableId'");
             }
             inputs["destinationCidrblock"] = args ? args.destinationCidrblock : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["nexthopId"] = args ? args.nexthopId : undefined;
             inputs["nexthopType"] = args ? args.nexthopType : undefined;
             inputs["routeTableId"] = args ? args.routeTableId : undefined;
             inputs["routerId"] = args ? args.routerId : undefined;
         }
-        super("alicloud:vpc/routeEntry:RouteEntry", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RouteEntry.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -59,10 +112,35 @@ export class RouteEntry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouteEntry resources.
  */
 export interface RouteEntryState {
+    /**
+     * The RouteEntry's target network segment.
+     */
     readonly destinationCidrblock?: pulumi.Input<string>;
+    /**
+     * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
+     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     */
     readonly nexthopId?: pulumi.Input<string>;
+    /**
+     * The next hop type. Available values:
+     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
+     */
     readonly nexthopType?: pulumi.Input<string>;
+    /**
+     * The ID of the route table.
+     */
     readonly routeTableId?: pulumi.Input<string>;
+    /**
+     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     */
     readonly routerId?: pulumi.Input<string>;
 }
 
@@ -70,9 +148,34 @@ export interface RouteEntryState {
  * The set of arguments for constructing a RouteEntry resource.
  */
 export interface RouteEntryArgs {
+    /**
+     * The RouteEntry's target network segment.
+     */
     readonly destinationCidrblock?: pulumi.Input<string>;
+    /**
+     * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
+     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     */
     readonly nexthopId?: pulumi.Input<string>;
+    /**
+     * The next hop type. Available values:
+     * - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+     * - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+     * - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+     * - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+     * - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+     * - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
+     */
     readonly nexthopType?: pulumi.Input<string>;
+    /**
+     * The ID of the route table.
+     */
     readonly routeTableId: pulumi.Input<string>;
+    /**
+     * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     */
     readonly routerId?: pulumi.Input<string>;
 }

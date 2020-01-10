@@ -2,18 +2,48 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud_db_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+ * The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const dbInstancesDs = alicloud.rds.getInstances({
+ *     nameRegex: "data-\\d+",
+ *     status: "Running",
+ *     tags: {
+ *         size: "tiny",
+ *         type: "database",
+ *     },
+ * });
+ * 
+ * export const firstDbInstanceId = dbInstancesDs.instances[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
  */
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:rds/getInstances:getInstances", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:rds/getInstances:getInstances", {
         "connectionMode": args.connectionMode,
         "dbType": args.dbType,
         "engine": args.engine,
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
@@ -21,6 +51,8 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -32,7 +64,7 @@ export interface GetInstancesArgs {
      */
     readonly connectionMode?: string;
     /**
-     * `Primary` for primary instance, `ReadOnly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+     * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
      */
     readonly dbType?: string;
     /**
@@ -40,21 +72,23 @@ export interface GetInstancesArgs {
      */
     readonly engine?: string;
     /**
+     * A list of RDS instance IDs. 
+     */
+    readonly ids?: string[];
+    /**
      * A regex string to filter results by instance name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Status of the instance.
      */
     readonly status?: string;
     /**
-     * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+     * A map of tags assigned to the DB instances. 
+     * Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
      */
-    readonly tags?: string;
+    readonly tags?: {[key: string]: any};
     /**
      * Used to retrieve instances belong to specified VPC.
      */
@@ -70,9 +104,44 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
+     * `Standard` for standard access mode and `Safe` for high security access mode.
+     */
+    readonly connectionMode?: string;
+    /**
+     * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+     */
+    readonly dbType?: string;
+    /**
+     * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+     */
+    readonly engine?: string;
+    /**
+     * A list of RDS instance IDs. 
+     */
+    readonly ids: string[];
+    /**
      * A list of RDS instances. Each element contains the following attributes:
      */
-    readonly instances: { availabilityZone: string, chargeType: string, connectionMode: string, createTime: string, dbType: string, engine: string, engineVersion: string, expireTime: string, guardInstanceId: string, id: string, instanceType: string, masterInstanceId: string, name: string, netType: string, readonlyInstanceIds: string[], regionId: string, status: string, tempInstanceId: string, vpcId: string, vswitchId: string }[];
+    readonly instances: outputs.rds.GetInstancesInstance[];
+    readonly nameRegex?: string;
+    /**
+     * A list of RDS instance names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * Status of the instance.
+     */
+    readonly status?: string;
+    readonly tags?: {[key: string]: any};
+    /**
+     * ID of the VPC the instance belongs to.
+     */
+    readonly vpcId?: string;
+    /**
+     * ID of the VSwitch the instance belongs to.
+     */
+    readonly vswitchId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC switch resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vswitch.html.markdown.
  */
 export class Switch extends pulumi.CustomResource {
     /**
@@ -16,30 +18,48 @@ export class Switch extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SwitchState): Switch {
-        return new Switch(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SwitchState, opts?: pulumi.CustomResourceOptions): Switch {
+        return new Switch(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/switch:Switch';
+
+    /**
+     * Returns true if the given object is an instance of Switch.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Switch {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Switch.__pulumiType;
     }
 
     /**
      * The AZ for the switch.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * The CIDR block for the switch.
      */
-    public readonly cidrBlock: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string>;
     /**
      * The switch description. Defaults to null.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the switch. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The VPC ID.
      */
-    public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Switch resource with the given unique name, arguments, and options.
@@ -52,11 +72,12 @@ export class Switch extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SwitchArgs | SwitchState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SwitchState = argsOrState as SwitchState | undefined;
+            const state = argsOrState as SwitchState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SwitchArgs | undefined;
@@ -73,9 +94,17 @@ export class Switch extends pulumi.CustomResource {
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("alicloud:vpc/switch:Switch", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Switch.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -99,6 +128,10 @@ export interface SwitchState {
      * The name of the switch. Defaults to null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */
@@ -125,6 +158,10 @@ export interface SwitchArgs {
      * The name of the switch. Defaults to null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The VPC ID.
      */

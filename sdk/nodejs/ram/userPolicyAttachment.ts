@@ -2,10 +2,56 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a RAM User Policy attachment resource. 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a RAM User Policy attachment.
+ * const user = new alicloud.ram.User("user", {
+ *     comments: "yoyoyo",
+ *     displayName: "userDisplayName",
+ *     email: "hello.uuu@aaa.com",
+ *     force: true,
+ *     mobile: "86-18688888888",
+ * });
+ * const policy = new alicloud.ram.Policy("policy", {
+ *     description: "this is a policy test",
+ *     document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": [
+ *           "oss:ListObjects",
+ *           "oss:GetObject"
+ *         ],
+ *         "Effect": "Allow",
+ *         "Resource": [
+ *           "acs:oss:*:*:mybucket",
+ *           "acs:oss:*:*:mybucket/*"
+ *         ]
+ *       }
+ *     ],
+ *       "Version": "1"
+ *   }
+ *   `,
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.UserPolicyAttachment("attach", {
+ *     policyName: policy.name,
+ *     policyType: policy.type,
+ *     userName: user.name,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user_policy_attachment.html.markdown.
  */
 export class UserPolicyAttachment extends pulumi.CustomResource {
     /**
@@ -16,22 +62,36 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserPolicyAttachmentState): UserPolicyAttachment {
-        return new UserPolicyAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserPolicyAttachmentState, opts?: pulumi.CustomResourceOptions): UserPolicyAttachment {
+        return new UserPolicyAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/userPolicyAttachment:UserPolicyAttachment';
+
+    /**
+     * Returns true if the given object is an instance of UserPolicyAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UserPolicyAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === UserPolicyAttachment.__pulumiType;
     }
 
     /**
      * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly policyName: pulumi.Output<string>;
+    public readonly policyName!: pulumi.Output<string>;
     /**
      * Type of the RAM policy. It must be `Custom` or `System`.
      */
-    public readonly policyType: pulumi.Output<string>;
+    public readonly policyType!: pulumi.Output<string>;
     /**
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
      */
-    public readonly userName: pulumi.Output<string>;
+    public readonly userName!: pulumi.Output<string>;
 
     /**
      * Create a UserPolicyAttachment resource with the given unique name, arguments, and options.
@@ -44,7 +104,7 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserPolicyAttachmentArgs | UserPolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserPolicyAttachmentState = argsOrState as UserPolicyAttachmentState | undefined;
+            const state = argsOrState as UserPolicyAttachmentState | undefined;
             inputs["policyName"] = state ? state.policyName : undefined;
             inputs["policyType"] = state ? state.policyType : undefined;
             inputs["userName"] = state ? state.userName : undefined;
@@ -63,7 +123,14 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
             inputs["policyType"] = args ? args.policyType : undefined;
             inputs["userName"] = args ? args.userName : undefined;
         }
-        super("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(UserPolicyAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -8,10 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
-//  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
-// 
-// -> **NOTE:** The resource requires a provider field 'account_id'. [See account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_trigger.html.markdown.
 type Trigger struct {
 	s *pulumi.ResourceState
 }
@@ -19,9 +16,6 @@ type Trigger struct {
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
 func NewTrigger(ctx *pulumi.Context,
 	name string, args *TriggerArgs, opts ...pulumi.ResourceOpt) (*Trigger, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
 	if args == nil || args.Function == nil {
 		return nil, errors.New("missing required argument 'Function'")
 	}
@@ -34,6 +28,7 @@ func NewTrigger(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["config"] = nil
+		inputs["configMns"] = nil
 		inputs["function"] = nil
 		inputs["name"] = nil
 		inputs["namePrefix"] = nil
@@ -43,6 +38,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["type"] = nil
 	} else {
 		inputs["config"] = args.Config
+		inputs["configMns"] = args.ConfigMns
 		inputs["function"] = args.Function
 		inputs["name"] = args.Name
 		inputs["namePrefix"] = args.NamePrefix
@@ -52,6 +48,7 @@ func NewTrigger(ctx *pulumi.Context,
 		inputs["type"] = args.Type
 	}
 	inputs["lastModified"] = nil
+	inputs["triggerId"] = nil
 	s, err := ctx.RegisterResource("alicloud:fc/trigger:Trigger", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -66,6 +63,7 @@ func GetTrigger(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["config"] = state.Config
+		inputs["configMns"] = state.ConfigMns
 		inputs["function"] = state.Function
 		inputs["lastModified"] = state.LastModified
 		inputs["name"] = state.Name
@@ -73,6 +71,7 @@ func GetTrigger(ctx *pulumi.Context,
 		inputs["role"] = state.Role
 		inputs["service"] = state.Service
 		inputs["sourceArn"] = state.SourceArn
+		inputs["triggerId"] = state.TriggerId
 		inputs["type"] = state.Type
 	}
 	s, err := ctx.ReadResource("alicloud:fc/trigger:Trigger", name, id, inputs, opts...)
@@ -83,69 +82,81 @@ func GetTrigger(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Trigger) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Trigger) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Trigger) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Trigger) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
-func (r *Trigger) Config() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["config"])
+// The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+func (r *Trigger) Config() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["config"])
+}
+
+// The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+func (r *Trigger) ConfigMns() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["configMns"])
 }
 
 // The Function Compute function name.
-func (r *Trigger) Function() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["function"])
+func (r *Trigger) Function() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["function"])
 }
 
 // The date this resource was last modified.
-func (r *Trigger) LastModified() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastModified"])
+func (r *Trigger) LastModified() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastModified"])
 }
 
-// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
-func (r *Trigger) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+func (r *Trigger) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Setting a prefix to get a only trigger name. It is conflict with "name".
-func (r *Trigger) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *Trigger) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-func (r *Trigger) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Trigger) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The Function Compute service name.
-func (r *Trigger) Service() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["service"])
+func (r *Trigger) Service() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["service"])
 }
 
 // Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-func (r *Trigger) SourceArn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceArn"])
+func (r *Trigger) SourceArn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceArn"])
 }
 
-// The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
-func (r *Trigger) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+// The Function Compute trigger ID.
+func (r *Trigger) TriggerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["triggerId"])
+}
+
+// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+func (r *Trigger) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering Trigger resources.
 type TriggerState struct {
-	// The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+	// The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
 	Config interface{}
+	// The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+	ConfigMns interface{}
 	// The Function Compute function name.
 	Function interface{}
 	// The date this resource was last modified.
 	LastModified interface{}
-	// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name interface{}
 	// Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix interface{}
@@ -155,17 +166,21 @@ type TriggerState struct {
 	Service interface{}
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn interface{}
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
+	// The Function Compute trigger ID.
+	TriggerId interface{}
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
 	Type interface{}
 }
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
-	// The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+	// The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
 	Config interface{}
+	// The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+	ConfigMns interface{}
 	// The Function Compute function name.
 	Function interface{}
-	// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name interface{}
 	// Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix interface{}
@@ -175,6 +190,6 @@ type TriggerArgs struct {
 	Service interface{}
 	// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	SourceArn interface{}
-	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
+	// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
 	Type interface{}
 }

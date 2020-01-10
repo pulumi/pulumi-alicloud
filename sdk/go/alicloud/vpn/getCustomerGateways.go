@@ -8,6 +8,8 @@ import (
 )
 
 // The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
 func LookupCustomerGateways(ctx *pulumi.Context, args *GetCustomerGatewaysArgs) (*GetCustomerGatewaysResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,6 +23,10 @@ func LookupCustomerGateways(ctx *pulumi.Context, args *GetCustomerGatewaysArgs) 
 	}
 	return &GetCustomerGatewaysResult{
 		Gateways: outputs["gateways"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -39,6 +45,10 @@ type GetCustomerGatewaysArgs struct {
 type GetCustomerGatewaysResult struct {
 	// A list of VPN customer gateways. Each element contains the following attributes:
 	Gateways interface{}
+	Ids interface{}
+	NameRegex interface{}
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -2,17 +2,43 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const subscriptions = alicloud.mns.getTopicSubscriptions({
+ *     namePrefix: "tf-",
+ *     topicName: "topicName",
+ * });
+ * 
+ * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
  */
-export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
-    return pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
+export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> & GetTopicSubscriptionsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetTopicSubscriptionsResult> = pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
         "topicName": args.topicName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -23,9 +49,6 @@ export interface GetTopicSubscriptionsArgs {
      * A string to filter resulting subscriptions of the topic by their name prefixs.
      */
     readonly namePrefix?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
@@ -37,10 +60,17 @@ export interface GetTopicSubscriptionsArgs {
  * A collection of values returned by getTopicSubscriptions.
  */
 export interface GetTopicSubscriptionsResult {
+    readonly namePrefix?: string;
     /**
-     * A list of users. Each element contains the following attributes:
+     * A list of subscription names.
      */
-    readonly subscriptions: { endpoint: string, filterTag: string, id: string, name: string, notifyContentFormat: string, notifyStrategy: string, topicName: string }[];
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * A list of subscriptions. Each element contains the following attributes:
+     */
+    readonly subscriptions: outputs.mns.GetTopicSubscriptionsSubscription[];
+    readonly topicName: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

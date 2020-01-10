@@ -8,10 +8,13 @@ import (
 )
 
 // This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
 func LookupTriggers(ctx *pulumi.Context, args *GetTriggersArgs) (*GetTriggersResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["functionName"] = args.FunctionName
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["serviceName"] = args.ServiceName
@@ -21,6 +24,12 @@ func LookupTriggers(ctx *pulumi.Context, args *GetTriggersArgs) (*GetTriggersRes
 		return nil, err
 	}
 	return &GetTriggersResult{
+		FunctionName: outputs["functionName"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ServiceName: outputs["serviceName"],
 		Triggers: outputs["triggers"],
 		Id: outputs["id"],
 	}, nil
@@ -30,9 +39,10 @@ func LookupTriggers(ctx *pulumi.Context, args *GetTriggersArgs) (*GetTriggersRes
 type GetTriggersArgs struct {
 	// FC function name.
 	FunctionName interface{}
+	Ids interface{}
 	// A regex string to filter results by FC trigger name.
+	// * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// FC service name.
 	ServiceName interface{}
@@ -40,6 +50,14 @@ type GetTriggersArgs struct {
 
 // A collection of values returned by getTriggers.
 type GetTriggersResult struct {
+	FunctionName interface{}
+	// A list of FC triggers ids.
+	Ids interface{}
+	NameRegex interface{}
+	// A list of FC triggers names.
+	Names interface{}
+	OutputFile interface{}
+	ServiceName interface{}
 	// A list of FC triggers. Each element contains the following attributes:
 	Triggers interface{}
 	// id is the provider-assigned unique ID for this managed resource.

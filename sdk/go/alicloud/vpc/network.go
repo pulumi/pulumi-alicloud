@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPC resource.
-// 
-// ~> **NOTE:** Terraform will auto build a router and a route table while it uses `alicloud_vpc` to build a vpc resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpc.html.markdown.
 type Network struct {
 	s *pulumi.ResourceState
 }
@@ -26,10 +24,14 @@ func NewNetwork(ctx *pulumi.Context,
 		inputs["cidrBlock"] = nil
 		inputs["description"] = nil
 		inputs["name"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["tags"] = nil
 	} else {
 		inputs["cidrBlock"] = args.CidrBlock
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	inputs["routeTableId"] = nil
 	inputs["routerId"] = nil
@@ -50,9 +52,11 @@ func GetNetwork(ctx *pulumi.Context,
 		inputs["cidrBlock"] = state.CidrBlock
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["resourceGroupId"] = state.ResourceGroupId
 		inputs["routeTableId"] = state.RouteTableId
 		inputs["routerId"] = state.RouterId
 		inputs["routerTableId"] = state.RouterTableId
+		inputs["tags"] = state.Tags
 	}
 	s, err := ctx.ReadResource("alicloud:vpc/network:Network", name, id, inputs, opts...)
 	if err != nil {
@@ -62,42 +66,52 @@ func GetNetwork(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Network) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Network) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Network) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Network) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The CIDR block for the VPC.
-func (r *Network) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Network) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
 // The VPC description. Defaults to null.
-func (r *Network) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Network) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the VPC. Defaults to null.
-func (r *Network) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Network) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// The Id of resource group which the VPC belongs.
+func (r *Network) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
 }
 
 // The route table ID of the router created by default on VPC creation.
-func (r *Network) RouteTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routeTableId"])
+func (r *Network) RouteTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routeTableId"])
 }
 
 // The ID of the router created by default on VPC creation.
-func (r *Network) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+func (r *Network) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
-func (r *Network) RouterTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerTableId"])
+func (r *Network) RouterTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerTableId"])
+}
+
+// A mapping of tags to assign to the resource.
+func (r *Network) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Network resources.
@@ -108,11 +122,15 @@ type NetworkState struct {
 	Description interface{}
 	// The name of the VPC. Defaults to null.
 	Name interface{}
+	// The Id of resource group which the VPC belongs.
+	ResourceGroupId interface{}
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId interface{}
 	// The ID of the router created by default on VPC creation.
 	RouterId interface{}
 	RouterTableId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }
 
 // The set of arguments for constructing a Network resource.
@@ -123,4 +141,8 @@ type NetworkArgs struct {
 	Description interface{}
 	// The name of the VPC. Defaults to null.
 	Name interface{}
+	// The Id of resource group which the VPC belongs.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }

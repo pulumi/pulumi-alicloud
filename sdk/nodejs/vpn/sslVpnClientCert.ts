@@ -5,10 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a SSL VPN client cert resource.
- * 
- * ~> **NOTE:** Terraform will auto build SSL VPN client certs  while it uses `alicloud_ssl_vpn_client_cert` to build a ssl vpn client certs resource.
- *              It depends on VPN instance and SSL VPN Server.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_client_cert.html.markdown.
  */
 export class SslVpnClientCert extends pulumi.CustomResource {
     /**
@@ -19,22 +16,31 @@ export class SslVpnClientCert extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SslVpnClientCertState): SslVpnClientCert {
-        return new SslVpnClientCert(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SslVpnClientCertState, opts?: pulumi.CustomResourceOptions): SslVpnClientCert {
+        return new SslVpnClientCert(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpn/sslVpnClientCert:SslVpnClientCert';
+
     /**
-     * The name of the client certificate.
+     * Returns true if the given object is an instance of SslVpnClientCert.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the SSL-VPN server.
-     */
-    public readonly sslVpnServerId: pulumi.Output<string>;
-    /**
-     * The status of the client certificate.
-     */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public static isInstance(obj: any): obj is SslVpnClientCert {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SslVpnClientCert.__pulumiType;
+    }
+
+    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    public /*out*/ readonly clientCert!: pulumi.Output<string>;
+    public /*out*/ readonly clientConfig!: pulumi.Output<string>;
+    public /*out*/ readonly clientKey!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly sslVpnServerId!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a SslVpnClientCert resource with the given unique name, arguments, and options.
@@ -47,7 +53,11 @@ export class SslVpnClientCert extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SslVpnClientCertArgs | SslVpnClientCertState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SslVpnClientCertState = argsOrState as SslVpnClientCertState | undefined;
+            const state = argsOrState as SslVpnClientCertState | undefined;
+            inputs["caCert"] = state ? state.caCert : undefined;
+            inputs["clientCert"] = state ? state.clientCert : undefined;
+            inputs["clientConfig"] = state ? state.clientConfig : undefined;
+            inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sslVpnServerId"] = state ? state.sslVpnServerId : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -58,9 +68,20 @@ export class SslVpnClientCert extends pulumi.CustomResource {
             }
             inputs["name"] = args ? args.name : undefined;
             inputs["sslVpnServerId"] = args ? args.sslVpnServerId : undefined;
+            inputs["caCert"] = undefined /*out*/;
+            inputs["clientCert"] = undefined /*out*/;
+            inputs["clientConfig"] = undefined /*out*/;
+            inputs["clientKey"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(SslVpnClientCert.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -68,17 +89,12 @@ export class SslVpnClientCert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SslVpnClientCert resources.
  */
 export interface SslVpnClientCertState {
-    /**
-     * The name of the client certificate.
-     */
+    readonly caCert?: pulumi.Input<string>;
+    readonly clientCert?: pulumi.Input<string>;
+    readonly clientConfig?: pulumi.Input<string>;
+    readonly clientKey?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the SSL-VPN server.
-     */
     readonly sslVpnServerId?: pulumi.Input<string>;
-    /**
-     * The status of the client certificate.
-     */
     readonly status?: pulumi.Input<string>;
 }
 
@@ -86,12 +102,6 @@ export interface SslVpnClientCertState {
  * The set of arguments for constructing a SslVpnClientCert resource.
  */
 export interface SslVpnClientCertArgs {
-    /**
-     * The name of the client certificate.
-     */
     readonly name?: pulumi.Input<string>;
-    /**
-     * The ID of the SSL-VPN server.
-     */
     readonly sslVpnServerId: pulumi.Input<string>;
 }

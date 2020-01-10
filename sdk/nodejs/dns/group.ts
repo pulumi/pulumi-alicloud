@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DNS Group resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Add a new Domain group.
+ * const group = new alicloud.dns.Group("group", {});
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -16,14 +28,28 @@ export class Group extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState): Group {
-        return new Group(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState, opts?: pulumi.CustomResourceOptions): Group {
+        return new Group(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:dns/group:Group';
+
+    /**
+     * Returns true if the given object is an instance of Group.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Group {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Group.__pulumiType;
     }
 
     /**
      * Name of the domain group.    
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -36,13 +62,20 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupState = argsOrState as GroupState | undefined;
+            const state = argsOrState as GroupState | undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:dns/group:Group", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Group.__pulumiType, name, inputs, opts);
     }
 }
 

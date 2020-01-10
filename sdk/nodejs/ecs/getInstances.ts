@@ -2,24 +2,53 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const instancesDs = alicloud.ecs.getInstances({
+ *     nameRegex: "webServer",
+ *     status: "Running",
+ * });
+ * 
+ * export const firstInstanceId = instancesDs.instances[0].id;
+ * export const instanceIds = instancesDs.ids!;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
  */
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ecs/getInstances:getInstances", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:ecs/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
         "imageId": args.imageId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -42,10 +71,11 @@ export interface GetInstancesArgs {
      * A regex string to filter results by instance name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
+    /**
+     * The Id of resource group which the instance belongs.
+     */
+    readonly resourceGroupId?: string;
     /**
      * Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
      */
@@ -53,7 +83,7 @@ export interface GetInstancesArgs {
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
      * ```
-     * data "alicloud_instances" "taggedInstances" {
+     * data "alicloud.ecs.getInstances" "taggedInstances" {
      * tags = {
      * tagKey1 = "tagValue1",
      * tagKey2 = "tagValue2"
@@ -77,9 +107,47 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
+     * Availability zone the instance belongs to.
+     */
+    readonly availabilityZone?: string;
+    /**
+     * A list of ECS instance IDs.
+     */
+    readonly ids: string[];
+    /**
+     * Image ID the instance is using.
+     */
+    readonly imageId?: string;
+    /**
      * A list of instances. Each element contains the following attributes:
      */
-    readonly instances: { availabilityZone: string, creationTime: string, description: string, diskDeviceMappings: { category: string, device: string, size: number, type: string }[], eip: string, id: string, imageId: string, instanceChargeType: string, instanceType: string, internetChargeType: string, internetMaxBandwidthOut: number, keyName: string, name: string, privateIp: string, publicIp: string, regionId: string, securityGroups: string[], spotStrategy: string, status: string, tags?: {[key: string]: any}, vpcId: string, vswitchId: string }[];
+    readonly instances: outputs.ecs.GetInstancesInstance[];
+    readonly nameRegex?: string;
+    /**
+     * A list of instances names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * The Id of resource group.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * Instance current status.
+     */
+    readonly status?: string;
+    /**
+     * A map of tags assigned to the ECS instance.
+     */
+    readonly tags?: {[key: string]: any};
+    /**
+     * ID of the VPC the instance belongs to.
+     */
+    readonly vpcId?: string;
+    /**
+     * ID of the VSwitch the instance belongs to.
+     */
+    readonly vswitchId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

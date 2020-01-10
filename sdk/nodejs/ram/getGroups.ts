@@ -2,20 +2,48 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const groupsDs = alicloud.ram.getGroups({
+ *     nameRegex: "^group[0-9]*",
+ *     outputFile: "groups.txt",
+ *     userName: "user1",
+ * });
+ * 
+ * export const firstGroupName = groupsDs.groups[0].name;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
  */
-export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
+export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> & GetGroupsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getGroups:getGroups", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetGroupsResult> = pulumi.runtime.invoke("alicloud:ram/getGroups:getGroups", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
         "userName": args.userName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -26,16 +54,13 @@ export interface GetGroupsArgs {
      * A regex string to filter the returned groups by their names.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
-     * Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+     * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
      */
     readonly policyName?: string;
     /**
-     * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
     readonly policyType?: string;
     /**
@@ -51,7 +76,16 @@ export interface GetGroupsResult {
     /**
      * A list of groups. Each element contains the following attributes:
      */
-    readonly groups: { comments: string, name: string }[];
+    readonly groups: outputs.ram.GetGroupsGroup[];
+    readonly nameRegex?: string;
+    /**
+     * A list of ram group names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly policyName?: string;
+    readonly policyType?: string;
+    readonly userName?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

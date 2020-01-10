@@ -2,14 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./commonBandwithPackage";
+export * from "./commonBandwithPackageAttachment";
 export * from "./forwardEntry";
+export * from "./getCommonBandwidthPackages";
+export * from "./getForwardEntries";
+export * from "./getNatGateways";
 export * from "./getNetworks";
+export * from "./getRouteEntries";
+export * from "./getRouteTables";
 export * from "./getRouterInterfaces";
+export * from "./getSnatEntries";
+export * from "./getSslVpnClientCerts";
+export * from "./getSslVpnServers";
 export * from "./getSwitches";
-export * from "./haVip";
-export * from "./haVipAttachment";
+export * from "./hAVip";
+export * from "./hAVipAttachment";
 export * from "./natGateway";
 export * from "./network";
+export * from "./networkAcl";
+export * from "./networkAclAttachment";
+export * from "./networkAclEntries";
+export * from "./networkInterface";
+export * from "./networkInterfaceAttachment";
 export * from "./routeEntry";
 export * from "./routeTable";
 export * from "./routeTableAttachment";

@@ -9,10 +9,12 @@ import (
 
 // Provides an Application Load Balancer resource.
 // 
-// ~> **NOTE:** Resource `alicloud_slb` has deprecated 'listener' filed from terraform-alicloud-provider [version 1.3.0](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.0) . You can create new listeners for Load Balancer by resource `alicloud_slb_listener`.
-// If you have had several listeners in one load balancer, you can import them via the specified listener ID. In the `alicloud_slb_listener`, listener ID is consist of load balancer ID and frontend port, and its format is `<load balancer ID>:<frontend port>`, like "lb-hr2fwnf32t:8080".
+// > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
 // 
-// ~> **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+// > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
 type LoadBalancer struct {
 	s *pulumi.ResourceState
 }
@@ -22,25 +24,40 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	name string, args *LoadBalancerArgs, opts ...pulumi.ResourceOpt) (*LoadBalancer, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["address"] = nil
+		inputs["addressIpVersion"] = nil
+		inputs["addressType"] = nil
 		inputs["bandwidth"] = nil
-		inputs["instances"] = nil
+		inputs["deleteProtection"] = nil
+		inputs["instanceChargeType"] = nil
 		inputs["internet"] = nil
 		inputs["internetChargeType"] = nil
-		inputs["listeners"] = nil
+		inputs["masterZoneId"] = nil
 		inputs["name"] = nil
+		inputs["period"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["slaveZoneId"] = nil
 		inputs["specification"] = nil
+		inputs["tags"] = nil
 		inputs["vswitchId"] = nil
 	} else {
+		inputs["address"] = args.Address
+		inputs["addressIpVersion"] = args.AddressIpVersion
+		inputs["addressType"] = args.AddressType
 		inputs["bandwidth"] = args.Bandwidth
-		inputs["instances"] = args.Instances
+		inputs["deleteProtection"] = args.DeleteProtection
+		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["internet"] = args.Internet
 		inputs["internetChargeType"] = args.InternetChargeType
-		inputs["listeners"] = args.Listeners
+		inputs["masterZoneId"] = args.MasterZoneId
 		inputs["name"] = args.Name
+		inputs["period"] = args.Period
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["slaveZoneId"] = args.SlaveZoneId
 		inputs["specification"] = args.Specification
+		inputs["tags"] = args.Tags
 		inputs["vswitchId"] = args.VswitchId
 	}
-	inputs["address"] = nil
 	s, err := ctx.RegisterResource("alicloud:slb/loadBalancer:LoadBalancer", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -55,13 +72,20 @@ func GetLoadBalancer(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["address"] = state.Address
+		inputs["addressIpVersion"] = state.AddressIpVersion
+		inputs["addressType"] = state.AddressType
 		inputs["bandwidth"] = state.Bandwidth
-		inputs["instances"] = state.Instances
+		inputs["deleteProtection"] = state.DeleteProtection
+		inputs["instanceChargeType"] = state.InstanceChargeType
 		inputs["internet"] = state.Internet
 		inputs["internetChargeType"] = state.InternetChargeType
-		inputs["listeners"] = state.Listeners
+		inputs["masterZoneId"] = state.MasterZoneId
 		inputs["name"] = state.Name
+		inputs["period"] = state.Period
+		inputs["resourceGroupId"] = state.ResourceGroupId
+		inputs["slaveZoneId"] = state.SlaveZoneId
 		inputs["specification"] = state.Specification
+		inputs["tags"] = state.Tags
 		inputs["vswitchId"] = state.VswitchId
 	}
 	s, err := ctx.ReadResource("alicloud:slb/loadBalancer:LoadBalancer", name, id, inputs, opts...)
@@ -72,116 +96,181 @@ func GetLoadBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancer) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *LoadBalancer) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancer) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *LoadBalancer) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The IP address of the load balancer.
-func (r *LoadBalancer) Address() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["address"])
+// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+func (r *LoadBalancer) Address() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["address"])
+}
+
+// The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+func (r *LoadBalancer) AddressIpVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["addressIpVersion"])
+}
+
+// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+func (r *LoadBalancer) AddressType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["addressType"])
 }
 
 // Valid
-// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
-func (r *LoadBalancer) Bandwidth() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidth"])
+// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
+func (r *LoadBalancer) Bandwidth() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidth"])
 }
 
-func (r *LoadBalancer) Instances() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instances"])
+// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+func (r *LoadBalancer) DeleteProtection() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deleteProtection"])
 }
 
-// If true, the SLB addressType will be internet, false will be intranet, Default is false. If load balancer launched in VPC, this value must be "false".
-func (r *LoadBalancer) Internet() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["internet"])
+// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+func (r *LoadBalancer) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
+}
+
+// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+func (r *LoadBalancer) Internet() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["internet"])
 }
 
 // Valid
 // values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
 // Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
-func (r *LoadBalancer) InternetChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetChargeType"])
+func (r *LoadBalancer) InternetChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetChargeType"])
 }
 
-// The field has been deprecated from terraform-alicloud-provider [version 1.3.0](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.0), and use resource `alicloud_slb_listener` to replace.
-func (r *LoadBalancer) Listeners() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["listeners"])
+// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+func (r *LoadBalancer) MasterZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterZoneId"])
 }
 
-// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
-// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
-// Terraform will autogenerate a name beginning with `tf-lb`.
-func (r *LoadBalancer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LoadBalancer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+func (r *LoadBalancer) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
+}
+
+// The Id of resource group which the SLB belongs.
+func (r *LoadBalancer) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
+}
+
+// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+func (r *LoadBalancer) SlaveZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slaveZoneId"])
 }
 
 // The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 // Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-// "slb.s3.small", "slb.s3.medium" and "slb.s3.large".
-func (r *LoadBalancer) Specification() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["specification"])
+// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+func (r *LoadBalancer) Specification() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["specification"])
 }
 
-// The VSwitch ID to launch in.
-func (r *LoadBalancer) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+func (r *LoadBalancer) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
+}
+
+// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+func (r *LoadBalancer) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type LoadBalancerState struct {
-	// The IP address of the load balancer.
+	// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
 	Address interface{}
+	// The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+	AddressIpVersion interface{}
+	// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+	AddressType interface{}
 	// Valid
-	// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth interface{}
-	Instances interface{}
-	// If true, the SLB addressType will be internet, false will be intranet, Default is false. If load balancer launched in VPC, this value must be "false".
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	DeleteProtection interface{}
+	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	InstanceChargeType interface{}
+	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet interface{}
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType interface{}
-	// The field has been deprecated from terraform-alicloud-provider [version 1.3.0](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.0), and use resource `alicloud_slb_listener` to replace.
-	Listeners interface{}
-	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
-	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
-	// Terraform will autogenerate a name beginning with `tf-lb`.
+	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	MasterZoneId interface{}
 	Name interface{}
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+	Period interface{}
+	// The Id of resource group which the SLB belongs.
+	ResourceGroupId interface{}
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId interface{}
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium" and "slb.s3.large".
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
 	Specification interface{}
-	// The VSwitch ID to launch in.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	Tags interface{}
+	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId interface{}
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
+	// Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
+	Address interface{}
+	// The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to "ipv4". Now, only internet instance support ipv6 address.
+	AddressIpVersion interface{}
+	// The network type of the SLB instance. Valid values: ["internet", "intranet"]. If load balancer launched in VPC, this value must be "intranet".
+	// - internet: After an Internet SLB instance is created, the system allocates a public IP address so that the instance can forward requests from the Internet.
+	// - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
+	AddressType interface{}
 	// Valid
-	// value is between 1 and 1000, If argument "internet_charge_type" is "paybytraffic", then this value will be ignore.
+	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth interface{}
-	Instances interface{}
-	// If true, the SLB addressType will be internet, false will be intranet, Default is false. If load balancer launched in VPC, this value must be "false".
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	DeleteProtection interface{}
+	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	InstanceChargeType interface{}
+	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet interface{}
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType interface{}
-	// The field has been deprecated from terraform-alicloud-provider [version 1.3.0](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.0), and use resource `alicloud_slb_listener` to replace.
-	Listeners interface{}
-	// The name of the SLB. This name must be unique within your AliCloud account, can have a maximum of 80 characters,
-	// must contain only alphanumeric characters or hyphens, such as "-","/",".","_", and must not begin or end with a hyphen. If not specified,
-	// Terraform will autogenerate a name beginning with `tf-lb`.
+	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	MasterZoneId interface{}
 	Name interface{}
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
+	Period interface{}
+	// The Id of resource group which the SLB belongs.
+	ResourceGroupId interface{}
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId interface{}
 	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
 	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium" and "slb.s3.large".
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
 	Specification interface{}
-	// The VSwitch ID to launch in.
+	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
+	Tags interface{}
+	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
 	VswitchId interface{}
 }

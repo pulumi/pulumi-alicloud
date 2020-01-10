@@ -8,12 +8,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
+// 
 // This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
 // Each application can contain one or more services.
 // 
-// -> **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
+// > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
 // 
-// -> **NOTE:** At present, this resource only support swarm cluster.
+// > **NOTE:** At present, this resource only support swarm cluster.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
 type Application struct {
 	s *pulumi.ResourceState
 }
@@ -84,75 +88,75 @@ func GetApplication(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Application) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Application) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Application) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Application) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Wherther to use "Blue Green" method when release a new version. Default to false.
-func (r *Application) BlueGreen() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["blueGreen"])
+func (r *Application) BlueGreen() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["blueGreen"])
 }
 
-// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
-func (r *Application) BlueGreenConfirm() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["blueGreenConfirm"])
+// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
+func (r *Application) BlueGreenConfirm() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["blueGreenConfirm"])
 }
 
 // The swarm cluster's name.
-func (r *Application) ClusterName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterName"])
+func (r *Application) ClusterName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterName"])
 }
 
 // The application default domain and it can be used to configure routing service.
-func (r *Application) DefaultDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultDomain"])
+func (r *Application) DefaultDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultDomain"])
 }
 
 // The description of application.
-func (r *Application) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Application) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A key/value map used to replace the variable parameter in the Compose template.
-func (r *Application) Environment() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["environment"])
+func (r *Application) Environment() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["environment"])
 }
 
 // Whether to use latest docker image while each updating application. Default to false.
-func (r *Application) LatestImage() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["latestImage"])
+func (r *Application) LatestImage() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["latestImage"])
 }
 
 // The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-func (r *Application) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Application) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // List of services in the application. It contains several attributes to `Block Nodes`.
-func (r *Application) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+func (r *Application) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
 }
 
 // The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
-func (r *Application) Template() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["template"])
+func (r *Application) Template() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["template"])
 }
 
 // The application deploying version. Each updating, it must be different with current. Default to "1.0"
-func (r *Application) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+func (r *Application) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // Input properties used for looking up and filtering Application resources.
 type ApplicationState struct {
 	// Wherther to use "Blue Green" method when release a new version. Default to false.
 	BlueGreen interface{}
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
+	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
 	BlueGreenConfirm interface{}
 	// The swarm cluster's name.
 	ClusterName interface{}
@@ -178,7 +182,7 @@ type ApplicationState struct {
 type ApplicationArgs struct {
 	// Wherther to use "Blue Green" method when release a new version. Default to false.
 	BlueGreen interface{}
-	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
+	// Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
 	BlueGreenConfirm interface{}
 	// The swarm cluster's name.
 	ClusterName interface{}

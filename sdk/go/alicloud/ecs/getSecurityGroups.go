@@ -8,11 +8,15 @@ import (
 )
 
 // This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
 func LookupSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs) (*GetSecurityGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 	}
@@ -22,19 +26,29 @@ func LookupSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs) (*Ge
 	}
 	return &GetSecurityGroupsResult{
 		Groups: outputs["groups"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getSecurityGroups.
 type GetSecurityGroupsArgs struct {
+	// A list of Security Group IDs.
+	Ids interface{}
 	// A regex string to filter the resulting security groups by their names.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the securityGroup belongs.
+	ResourceGroupId interface{}
 	// A map of tags assigned to the ECS instances. It must be in the format:
 	// ```
-	// data "alicloud_security_groups" "taggedSecurityGroups" {
+	// data "ecs.getSecurityGroups" "taggedSecurityGroups" {
 	// tags = {
 	// tagKey1 = "tagValue1",
 	// tagKey2 = "tagValue2"
@@ -48,8 +62,20 @@ type GetSecurityGroupsArgs struct {
 
 // A collection of values returned by getSecurityGroups.
 type GetSecurityGroupsResult struct {
-	// A list of groups. Each element contains the following attributes:
+	// A list of Security Groups. Each element contains the following attributes:
 	Groups interface{}
+	// A list of Security Group IDs.
+	Ids interface{}
+	NameRegex interface{}
+	// A list of Security Group names.
+	Names interface{}
+	OutputFile interface{}
+	// The Id of resource group which the securityGroup belongs.
+	ResourceGroupId interface{}
+	// A map of tags assigned to the ECS instance.
+	Tags interface{}
+	// The ID of the VPC that owns the security group.
+	VpcId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

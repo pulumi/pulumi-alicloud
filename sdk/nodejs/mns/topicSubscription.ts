@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mns_topic_subscription.html.markdown.
+ */
 export class TopicSubscription extends pulumi.CustomResource {
     /**
      * Get an existing TopicSubscription resource's state with the given name, ID, and optional extra
@@ -13,8 +16,22 @@ export class TopicSubscription extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicSubscriptionState): TopicSubscription {
-        return new TopicSubscription(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicSubscriptionState, opts?: pulumi.CustomResourceOptions): TopicSubscription {
+        return new TopicSubscription(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:mns/topicSubscription:TopicSubscription';
+
+    /**
+     * Returns true if the given object is an instance of TopicSubscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is TopicSubscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === TopicSubscription.__pulumiType;
     }
 
     /**
@@ -23,24 +40,24 @@ export class TopicSubscription extends pulumi.CustomResource {
      * - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
      * - Email Format: mail:directmail:{MailAddress}
      */
-    public readonly endpoint: pulumi.Output<string>;
+    public readonly endpoint!: pulumi.Output<string>;
     /**
      * The length should be shorter than 16.
      */
-    public readonly filterTag: pulumi.Output<string | undefined>;
+    public readonly filterTag!: pulumi.Output<string | undefined>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
      */
-    public readonly notifyContentFormat: pulumi.Output<string | undefined>;
+    public readonly notifyContentFormat!: pulumi.Output<string | undefined>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
-    public readonly notifyStrategy: pulumi.Output<string | undefined>;
-    public readonly topicName: pulumi.Output<string>;
+    public readonly notifyStrategy!: pulumi.Output<string | undefined>;
+    public readonly topicName!: pulumi.Output<string>;
 
     /**
      * Create a TopicSubscription resource with the given unique name, arguments, and options.
@@ -53,7 +70,7 @@ export class TopicSubscription extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TopicSubscriptionArgs | TopicSubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TopicSubscriptionState = argsOrState as TopicSubscriptionState | undefined;
+            const state = argsOrState as TopicSubscriptionState | undefined;
             inputs["endpoint"] = state ? state.endpoint : undefined;
             inputs["filterTag"] = state ? state.filterTag : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -75,7 +92,14 @@ export class TopicSubscription extends pulumi.CustomResource {
             inputs["notifyStrategy"] = args ? args.notifyStrategy : undefined;
             inputs["topicName"] = args ? args.topicName : undefined;
         }
-        super("alicloud:mns/topicSubscription:TopicSubscription", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(TopicSubscription.__pulumiType, name, inputs, opts);
     }
 }
 

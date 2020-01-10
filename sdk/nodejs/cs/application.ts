@@ -2,15 +2,41 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
+ * 
  * This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
  * Each application can contain one or more services.
  * 
- * -> **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
+ * > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
  * 
- * -> **NOTE:** At present, this resource only support swarm cluster.
+ * > **NOTE:** At present, this resource only support swarm cluster.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as fs from "fs";
+ * 
+ * const app = new alicloud.cs.Application("app", {
+ *     clusterName: "my-first-swarm",
+ *     environment: {
+ *         EXTERNAL_URL: "123.123.123.123:8080",
+ *     },
+ *     latestImage: true,
+ *     template: fs.readFileSync("wordpress.yml", "utf-8"),
+ *     version: "1.2",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
  */
 export class Application extends pulumi.CustomResource {
     /**
@@ -21,54 +47,68 @@ export class Application extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApplicationState): Application {
-        return new Application(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApplicationState, opts?: pulumi.CustomResourceOptions): Application {
+        return new Application(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cs/application:Application';
+
+    /**
+     * Returns true if the given object is an instance of Application.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Application {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Application.__pulumiType;
     }
 
     /**
      * Wherther to use "Blue Green" method when release a new version. Default to false.
      */
-    public readonly blueGreen: pulumi.Output<boolean | undefined>;
+    public readonly blueGreen!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
+     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
      */
-    public readonly blueGreenConfirm: pulumi.Output<boolean | undefined>;
+    public readonly blueGreenConfirm!: pulumi.Output<boolean | undefined>;
     /**
      * The swarm cluster's name.
      */
-    public readonly clusterName: pulumi.Output<string>;
+    public readonly clusterName!: pulumi.Output<string>;
     /**
      * The application default domain and it can be used to configure routing service.
      */
-    public /*out*/ readonly defaultDomain: pulumi.Output<string>;
+    public /*out*/ readonly defaultDomain!: pulumi.Output<string>;
     /**
      * The description of application.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A key/value map used to replace the variable parameter in the Compose template.
      */
-    public readonly environment: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly environment!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Whether to use latest docker image while each updating application. Default to false.
      */
-    public readonly latestImage: pulumi.Output<boolean | undefined>;
+    public readonly latestImage!: pulumi.Output<boolean | undefined>;
     /**
      * The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * List of services in the application. It contains several attributes to `Block Nodes`.
      */
-    public /*out*/ readonly services: pulumi.Output<{ id: string, name: string, status: string, version: string }[]>;
+    public /*out*/ readonly services!: pulumi.Output<outputs.cs.ApplicationService[]>;
     /**
      * The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
      */
-    public readonly template: pulumi.Output<string>;
+    public readonly template!: pulumi.Output<string>;
     /**
      * The application deploying version. Each updating, it must be different with current. Default to "1.0"
      */
-    public readonly version: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -81,7 +121,7 @@ export class Application extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ApplicationState = argsOrState as ApplicationState | undefined;
+            const state = argsOrState as ApplicationState | undefined;
             inputs["blueGreen"] = state ? state.blueGreen : undefined;
             inputs["blueGreenConfirm"] = state ? state.blueGreenConfirm : undefined;
             inputs["clusterName"] = state ? state.clusterName : undefined;
@@ -113,7 +153,14 @@ export class Application extends pulumi.CustomResource {
             inputs["defaultDomain"] = undefined /*out*/;
             inputs["services"] = undefined /*out*/;
         }
-        super("alicloud:cs/application:Application", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Application.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -126,7 +173,7 @@ export interface ApplicationState {
      */
     readonly blueGreen?: pulumi.Input<boolean>;
     /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
+     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
      */
     readonly blueGreenConfirm?: pulumi.Input<boolean>;
     /**
@@ -144,7 +191,7 @@ export interface ApplicationState {
     /**
      * A key/value map used to replace the variable parameter in the Compose template.
      */
-    readonly environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly environment?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether to use latest docker image while each updating application. Default to false.
      */
@@ -156,7 +203,7 @@ export interface ApplicationState {
     /**
      * List of services in the application. It contains several attributes to `Block Nodes`.
      */
-    readonly services?: pulumi.Input<pulumi.Input<{ id?: pulumi.Input<string>, name?: pulumi.Input<string>, status?: pulumi.Input<string>, version?: pulumi.Input<string> }>[]>;
+    readonly services?: pulumi.Input<pulumi.Input<inputs.cs.ApplicationService>[]>;
     /**
      * The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
      */
@@ -176,7 +223,7 @@ export interface ApplicationArgs {
      */
     readonly blueGreen?: pulumi.Input<boolean>;
     /**
-     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blue_green` is false.
+     * Whether to confirm a "Blue Green" application. Default to false. It will be ignored when `blueGreen` is false.
      */
     readonly blueGreenConfirm?: pulumi.Input<boolean>;
     /**
@@ -190,7 +237,7 @@ export interface ApplicationArgs {
     /**
      * A key/value map used to replace the variable parameter in the Compose template.
      */
-    readonly environment?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly environment?: pulumi.Input<{[key: string]: any}>;
     /**
      * Whether to use latest docker image while each updating application. Default to false.
      */

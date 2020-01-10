@@ -7,35 +7,53 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("alicloud");
 
 /**
- * Access key of alicloud
+ * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+ * console.
  */
-export let accessKey: string = __config.require("accessKey");
+export let accessKey: string | undefined = __config.get("accessKey") || utilities.getEnv("ALICLOUD_ACCESS_KEY");
 /**
- * Alibaba Cloud account ID
+ * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+ * Alibaba Cloud console.
  */
-export let accountId: string | undefined = __config.get("accountId");
+export let accountId: string | undefined = __config.get("accountId") || utilities.getEnv("ALICLOUD_ACCOUNT_ID");
+export let assumeRole: { policy?: string, roleArn: string, sessionExpiration?: number, sessionName?: string } | undefined = __config.getObject<{ policy?: string, roleArn: string, sessionExpiration?: number, sessionName?: string }>("assumeRole");
 /**
- * Custom function compute endpoints
+ * Use this to mark a terraform configuration file source.
  */
+export let configurationSource: string | undefined = __config.get("configurationSource");
+/**
+ * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+ * of the Alibaba Cloud console.
+ */
+export let ecsRoleName: string | undefined = __config.get("ecsRoleName") || utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
+export let endpoints: { actiontrail?: string, alikafka?: string, apigateway?: string, bssopenapi?: string, cas?: string, cdn?: string, cen?: string, cms?: string, cr?: string, cs?: string, datahub?: string, ddosbgp?: string, ddoscoo?: string, dds?: string, dns?: string, drds?: string, ecs?: string, elasticsearch?: string, emr?: string, ess?: string, fc?: string, gpdb?: string, kms?: string, kvstore?: string, location?: string, log?: string, market?: string, mns?: string, nas?: string, ons?: string, oss?: string, ots?: string, polardb?: string, pvtz?: string, ram?: string, rds?: string, slb?: string, sts?: string, vpc?: string }[] | undefined = __config.getObject<{ actiontrail?: string, alikafka?: string, apigateway?: string, bssopenapi?: string, cas?: string, cdn?: string, cen?: string, cms?: string, cr?: string, cs?: string, datahub?: string, ddosbgp?: string, ddoscoo?: string, dds?: string, dns?: string, drds?: string, ecs?: string, elasticsearch?: string, emr?: string, ess?: string, fc?: string, gpdb?: string, kms?: string, kvstore?: string, location?: string, log?: string, market?: string, mns?: string, nas?: string, ons?: string, oss?: string, ots?: string, polardb?: string, pvtz?: string, ram?: string, rds?: string, slb?: string, sts?: string, vpc?: string }[]>("endpoints");
 export let fc: string | undefined = __config.get("fc");
-/**
- * Alibaba Cloud log service self-define endpoint
- */
 export let logEndpoint: string | undefined = __config.get("logEndpoint");
-/**
- * Alibaba Cloud mns service self-define endpoint
- */
 export let mnsEndpoint: string | undefined = __config.get("mnsEndpoint");
 export let otsInstanceName: string | undefined = __config.get("otsInstanceName");
 /**
- * Region of alicloud
+ * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
  */
-export let region: string = __config.require("region");
+export let profile: string | undefined = __config.get("profile") || utilities.getEnv("ALICLOUD_PROFILE");
 /**
- * Secret key of alicloud
+ * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
  */
-export let secretKey: string = __config.require("secretKey");
+export let region: string | undefined = __config.get("region") || utilities.getEnv("ALICLOUD_REGION");
 /**
- * Alibaba Cloud Security Token
+ * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+ * console.
  */
-export let securityToken: string | undefined = __config.get("securityToken");
+export let secretKey: string | undefined = __config.get("secretKey") || utilities.getEnv("ALICLOUD_SECRET_KEY");
+/**
+ * security token. A security token is only required if you are using Security Token Service.
+ */
+export let securityToken: string | undefined = __config.get("securityToken") || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
+/**
+ * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+ */
+export let sharedCredentialsFile: string | undefined = __config.get("sharedCredentialsFile") || utilities.getEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
+/**
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
+ * that are not public (yet).
+ */
+export let skipRegionValidation: boolean | undefined = __config.getObject<boolean>("skipRegionValidation");

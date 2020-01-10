@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
 type BackupPolicy struct {
 	s *pulumi.ResourceState
 }
@@ -54,43 +56,46 @@ func GetBackupPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BackupPolicy) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BackupPolicy) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BackupPolicy) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BackupPolicy) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *BackupPolicy) BackupPeriods() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["backupPeriods"])
+// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+func (r *BackupPolicy) BackupPeriods() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["backupPeriods"])
 }
 
-func (r *BackupPolicy) BackupTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backupTime"])
+// Backup time, in the format of HH:mmZ- HH:mm Z
+func (r *BackupPolicy) BackupTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backupTime"])
 }
 
 // The id of ApsaraDB for Redis or Memcache intance.
-// * `preferred_backup_time`- (Required) Backup time, in the format of HH:mmZ- HH:mm Z
-func (r *BackupPolicy) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *BackupPolicy) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // Input properties used for looking up and filtering BackupPolicy resources.
 type BackupPolicyState struct {
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 	BackupPeriods interface{}
+	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime interface{}
 	// The id of ApsaraDB for Redis or Memcache intance.
-	// * `preferred_backup_time`- (Required) Backup time, in the format of HH:mmZ- HH:mm Z
 	InstanceId interface{}
 }
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
+	// Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 	BackupPeriods interface{}
+	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime interface{}
 	// The id of ApsaraDB for Redis or Memcache intance.
-	// * `preferred_backup_time`- (Required) Backup time, in the format of HH:mmZ- HH:mm Z
 	InstanceId interface{}
 }

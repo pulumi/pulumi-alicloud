@@ -8,9 +8,12 @@ import (
 )
 
 // This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
 func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["keyword"] = args.Keyword
 		inputs["outputFile"] = args.OutputFile
 	}
@@ -19,6 +22,10 @@ func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, erro
 		return nil, err
 	}
 	return &GetZonesResult{
+		Ids: outputs["ids"],
+		Keyword: outputs["keyword"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Zones: outputs["zones"],
 		Id: outputs["id"],
 	}, nil
@@ -26,14 +33,21 @@ func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, erro
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// A list of zone IDs. 
+	Ids interface{}
 	// keyword for zone name.
 	Keyword interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	// A list of zone IDs. 
+	Ids interface{}
+	Keyword interface{}
+	// A list of zone names. 
+	Names interface{}
+	OutputFile interface{}
 	// A list of zones. Each element contains the following attributes:
 	Zones interface{}
 	// id is the provider-assigned unique ID for this managed resource.

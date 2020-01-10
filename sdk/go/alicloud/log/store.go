@@ -10,6 +10,8 @@ import (
 
 // The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
 // and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store.html.markdown.
 type Store struct {
 	s *pulumi.ResourceState
 }
@@ -22,11 +24,19 @@ func NewStore(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["appendMeta"] = nil
+		inputs["autoSplit"] = nil
+		inputs["enableWebTracking"] = nil
+		inputs["maxSplitShardCount"] = nil
 		inputs["name"] = nil
 		inputs["project"] = nil
 		inputs["retentionPeriod"] = nil
 		inputs["shardCount"] = nil
 	} else {
+		inputs["appendMeta"] = args.AppendMeta
+		inputs["autoSplit"] = args.AutoSplit
+		inputs["enableWebTracking"] = args.EnableWebTracking
+		inputs["maxSplitShardCount"] = args.MaxSplitShardCount
 		inputs["name"] = args.Name
 		inputs["project"] = args.Project
 		inputs["retentionPeriod"] = args.RetentionPeriod
@@ -46,6 +56,10 @@ func GetStore(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *StoreState, opts ...pulumi.ResourceOpt) (*Store, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["appendMeta"] = state.AppendMeta
+		inputs["autoSplit"] = state.AutoSplit
+		inputs["enableWebTracking"] = state.EnableWebTracking
+		inputs["maxSplitShardCount"] = state.MaxSplitShardCount
 		inputs["name"] = state.Name
 		inputs["project"] = state.Project
 		inputs["retentionPeriod"] = state.RetentionPeriod
@@ -60,41 +74,69 @@ func GetStore(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Store) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Store) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Store) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Store) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+func (r *Store) AppendMeta() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["appendMeta"])
+}
+
+// Determines whether to automatically split a shard. Default to true.
+func (r *Store) AutoSplit() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoSplit"])
+}
+
+// Determines whether to enable Web Tracking. Default false.
+func (r *Store) EnableWebTracking() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableWebTracking"])
+}
+
+// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+func (r *Store) MaxSplitShardCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxSplitShardCount"])
 }
 
 // The log store, which is unique in the same project.
-func (r *Store) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Store) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project name to the log store belongs.
-func (r *Store) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *Store) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
-func (r *Store) RetentionPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retentionPeriod"])
+func (r *Store) RetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retentionPeriod"])
 }
 
 // The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
-func (r *Store) ShardCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["shardCount"])
+func (r *Store) ShardCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["shardCount"])
 }
 
-func (r *Store) Shards() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["shards"])
+func (r *Store) Shards() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["shards"])
 }
 
 // Input properties used for looking up and filtering Store resources.
 type StoreState struct {
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	AppendMeta interface{}
+	// Determines whether to automatically split a shard. Default to true.
+	AutoSplit interface{}
+	// Determines whether to enable Web Tracking. Default false.
+	EnableWebTracking interface{}
+	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	MaxSplitShardCount interface{}
 	// The log store, which is unique in the same project.
 	Name interface{}
 	// The project name to the log store belongs.
@@ -108,6 +150,14 @@ type StoreState struct {
 
 // The set of arguments for constructing a Store resource.
 type StoreArgs struct {
+	// Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+	AppendMeta interface{}
+	// Determines whether to automatically split a shard. Default to true.
+	AutoSplit interface{}
+	// Determines whether to enable Web Tracking. Default false.
+	EnableWebTracking interface{}
+	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	MaxSplitShardCount interface{}
 	// The log store, which is unique in the same project.
 	Name interface{}
 	// The project name to the log store belongs.

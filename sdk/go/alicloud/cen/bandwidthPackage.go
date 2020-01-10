@@ -11,6 +11,8 @@ import (
 // Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
 // 
 // For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
 type BandwidthPackage struct {
 	s *pulumi.ResourceState
 }
@@ -72,58 +74,58 @@ func GetBandwidthPackage(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BandwidthPackage) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BandwidthPackage) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BandwidthPackage) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BandwidthPackage) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
-func (r *BandwidthPackage) Bandwidth() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidth"])
+// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+func (r *BandwidthPackage) Bandwidth() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidth"])
 }
 
 // The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
-func (r *BandwidthPackage) ChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["chargeType"])
+func (r *BandwidthPackage) ChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["chargeType"])
 }
 
 // The description of the bandwidth package. Default to null.
-func (r *BandwidthPackage) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *BandwidthPackage) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The time of the bandwidth package to expire.
-func (r *BandwidthPackage) ExpiredTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiredTime"])
+func (r *BandwidthPackage) ExpiredTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiredTime"])
 }
 
 // List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
-func (r *BandwidthPackage) GeographicRegionIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["geographicRegionIds"])
+func (r *BandwidthPackage) GeographicRegionIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["geographicRegionIds"])
 }
 
 // The name of the bandwidth package. Defaults to null.
-func (r *BandwidthPackage) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *BandwidthPackage) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
-func (r *BandwidthPackage) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+func (r *BandwidthPackage) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
 // The status of the bandwidth, including "InUse" and "Idle".
-func (r *BandwidthPackage) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *BandwidthPackage) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Input properties used for looking up and filtering BandwidthPackage resources.
 type BandwidthPackageState struct {
-	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
+	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth interface{}
 	// The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	ChargeType interface{}
@@ -143,7 +145,7 @@ type BandwidthPackageState struct {
 
 // The set of arguments for constructing a BandwidthPackage resource.
 type BandwidthPackageArgs struct {
-	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 1Mbps.
+	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth interface{}
 	// The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	ChargeType interface{}

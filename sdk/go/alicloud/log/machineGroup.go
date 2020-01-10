@@ -10,6 +10,8 @@ import (
 
 // Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
 //  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_machine_group.html.markdown.
 type MachineGroup struct {
 	s *pulumi.ResourceState
 }
@@ -64,39 +66,39 @@ func GetMachineGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *MachineGroup) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *MachineGroup) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *MachineGroup) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *MachineGroup) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The machine identification.
-func (r *MachineGroup) IdentifyLists() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["identifyLists"])
+func (r *MachineGroup) IdentifyLists() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["identifyLists"])
 }
 
 // The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-// * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
-func (r *MachineGroup) IdentifyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["identifyType"])
+// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
+func (r *MachineGroup) IdentifyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["identifyType"])
 }
 
 // The machine group name, which is unique in the same project.
-func (r *MachineGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *MachineGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The project name to the machine group belongs.
-func (r *MachineGroup) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+func (r *MachineGroup) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // The topic of a machine group.
-func (r *MachineGroup) Topic() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topic"])
+func (r *MachineGroup) Topic() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topic"])
 }
 
 // Input properties used for looking up and filtering MachineGroup resources.
@@ -104,7 +106,7 @@ type MachineGroupState struct {
 	// The machine identification.
 	IdentifyLists interface{}
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
+	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType interface{}
 	// The machine group name, which is unique in the same project.
 	Name interface{}
@@ -119,7 +121,7 @@ type MachineGroupArgs struct {
 	// The machine identification.
 	IdentifyLists interface{}
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
+	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType interface{}
 	// The machine group name, which is unique in the same project.
 	Name interface{}

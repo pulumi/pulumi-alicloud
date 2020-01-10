@@ -2,12 +2,77 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a key pair attachment resource to bind key pair for several ECS instances.
  * 
- * -> **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+ * > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "keyPairAttachmentName";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloudSsd",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const type = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const images = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^ubuntu_18.*_64",
+ *     owners: "system",
+ * });
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     vpcId: vpc.id,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "New security group",
+ *     vpcId: vpc.id,
+ * });
+ * const instance: alicloud.ecs.Instance[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     instance.push(new alicloud.ecs.Instance(`instance-${i}`, {
+ *         imageId: images.images[0].id,
+ *         instanceChargeType: "PostPaid",
+ *         instanceName: `${name}-${(i + 1)}`,
+ *         instanceType: type.instanceTypes[0].id,
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 5,
+ *         password: "Test12345",
+ *         securityGroups: [group.id],
+ *         systemDiskCategory: "cloudSsd",
+ *         vswitchId: vswitch.id,
+ *     }));
+ * }
+ * const pair = new alicloud.ecs.KeyPair("pair", {
+ *     keyName: name,
+ * });
+ * const attachment = new alicloud.ecs.KeyPairAttachment("attachment", {
+ *     instanceIds: instance.map(v => v.id),
+ *     keyName: pair.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
  */
 export class KeyPairAttachment extends pulumi.CustomResource {
     /**
@@ -18,22 +83,36 @@ export class KeyPairAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyPairAttachmentState): KeyPairAttachment {
-        return new KeyPairAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyPairAttachmentState, opts?: pulumi.CustomResourceOptions): KeyPairAttachment {
+        return new KeyPairAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/keyPairAttachment:KeyPairAttachment';
+
+    /**
+     * Returns true if the given object is an instance of KeyPairAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KeyPairAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KeyPairAttachment.__pulumiType;
     }
 
     /**
      * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * The list of ECS instance's IDs.
      */
-    public readonly instanceIds: pulumi.Output<string[]>;
+    public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * The name of key pair used to bind.
      */
-    public readonly keyName: pulumi.Output<string>;
+    public readonly keyName!: pulumi.Output<string>;
 
     /**
      * Create a KeyPairAttachment resource with the given unique name, arguments, and options.
@@ -46,7 +125,7 @@ export class KeyPairAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyPairAttachmentArgs | KeyPairAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyPairAttachmentState = argsOrState as KeyPairAttachmentState | undefined;
+            const state = argsOrState as KeyPairAttachmentState | undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
@@ -62,7 +141,14 @@ export class KeyPairAttachment extends pulumi.CustomResource {
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
         }
-        super("alicloud:ecs/keyPairAttachment:KeyPairAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(KeyPairAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

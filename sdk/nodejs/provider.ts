@@ -2,12 +2,33 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The provider type for the alicloud package
+ * The provider type for the alicloud package. By default, resources use package-wide configuration
+ * settings, however an explicit `Provider` instance may be created and passed during resource
+ * construction to achieve fine-grained programmatic control over provider settings. See the
+ * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown.
  */
 export class Provider extends pulumi.ProviderResource {
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud';
+
+    /**
+     * Returns true if the given object is an instance of Provider.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Provider {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Provider.__pulumiType;
+    }
+
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -16,29 +37,34 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.accessKey === undefined) {
-                throw new Error("Missing required property 'accessKey'");
-            }
-            if (!args || args.region === undefined) {
-                throw new Error("Missing required property 'region'");
-            }
-            if (!args || args.secretKey === undefined) {
-                throw new Error("Missing required property 'secretKey'");
-            }
-            inputs["accessKey"] = args ? args.accessKey : undefined;
-            inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["accessKey"] = (args ? args.accessKey : undefined) || utilities.getEnv("ALICLOUD_ACCESS_KEY");
+            inputs["accountId"] = (args ? args.accountId : undefined) || utilities.getEnv("ALICLOUD_ACCOUNT_ID");
+            inputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
+            inputs["configurationSource"] = args ? args.configurationSource : undefined;
+            inputs["ecsRoleName"] = (args ? args.ecsRoleName : undefined) || utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
+            inputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
             inputs["fc"] = args ? args.fc : undefined;
             inputs["logEndpoint"] = args ? args.logEndpoint : undefined;
             inputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
             inputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["securityToken"] = args ? args.securityToken : undefined;
+            inputs["profile"] = (args ? args.profile : undefined) || utilities.getEnv("ALICLOUD_PROFILE");
+            inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("ALICLOUD_REGION");
+            inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("ALICLOUD_SECRET_KEY");
+            inputs["securityToken"] = (args ? args.securityToken : undefined) || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
+            inputs["sharedCredentialsFile"] = (args ? args.sharedCredentialsFile : undefined) || utilities.getEnv("ALICLOUD_SHARED_CREDENTIALS_FILE");
+            inputs["skipRegionValidation"] = pulumi.output(args ? args.skipRegionValidation : undefined).apply(JSON.stringify);
         }
-        super("alicloud", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Provider.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -47,36 +73,54 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Access key of alicloud
+     * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+     * console.
      */
-    readonly accessKey: pulumi.Input<string>;
+    readonly accessKey?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud account ID
+     * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+     * Alibaba Cloud console.
      */
     readonly accountId?: pulumi.Input<string>;
+    readonly assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
     /**
-     * Custom function compute endpoints
+     * Use this to mark a terraform configuration file source.
      */
+    readonly configurationSource?: pulumi.Input<string>;
+    /**
+     * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control'
+     * section of the Alibaba Cloud console.
+     */
+    readonly ecsRoleName?: pulumi.Input<string>;
+    readonly endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
     readonly fc?: pulumi.Input<string>;
-    /**
-     * Alibaba Cloud log service self-define endpoint
-     */
     readonly logEndpoint?: pulumi.Input<string>;
-    /**
-     * Alibaba Cloud mns service self-define endpoint
-     */
     readonly mnsEndpoint?: pulumi.Input<string>;
     readonly otsInstanceName?: pulumi.Input<string>;
     /**
-     * Region of alicloud
+     * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      */
-    readonly region: pulumi.Input<string>;
+    readonly profile?: pulumi.Input<string>;
     /**
-     * Secret key of alicloud
+     * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      */
-    readonly secretKey: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud Security Token
+     * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+     * console.
+     */
+    readonly secretKey?: pulumi.Input<string>;
+    /**
+     * security token. A security token is only required if you are using Security Token Service.
      */
     readonly securityToken?: pulumi.Input<string>;
+    /**
+     * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+     */
+    readonly sharedCredentialsFile?: pulumi.Input<string>;
+    /**
+     * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to
+     * regions that are not public (yet).
+     */
+    readonly skipRegionValidation?: pulumi.Input<boolean>;
 }

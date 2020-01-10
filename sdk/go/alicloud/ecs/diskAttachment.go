@@ -4,10 +4,13 @@
 package ecs
 
 import (
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
 // Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
 type DiskAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -15,6 +18,12 @@ type DiskAttachment struct {
 // NewDiskAttachment registers a new resource with the given unique name, arguments, and options.
 func NewDiskAttachment(ctx *pulumi.Context,
 	name string, args *DiskAttachmentArgs, opts ...pulumi.ResourceOpt) (*DiskAttachment, error) {
+	if args == nil || args.DiskId == nil {
+		return nil, errors.New("missing required argument 'DiskId'")
+	}
+	if args == nil || args.InstanceId == nil {
+		return nil, errors.New("missing required argument 'InstanceId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["deviceName"] = nil
@@ -50,28 +59,28 @@ func GetDiskAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DiskAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *DiskAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DiskAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *DiskAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-func (r *DiskAttachment) DeviceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["deviceName"])
+func (r *DiskAttachment) DeviceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deviceName"])
 }
 
 // ID of the Disk to be attached.
-func (r *DiskAttachment) DiskId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskId"])
+func (r *DiskAttachment) DiskId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["diskId"])
 }
 
 // ID of the Instance to attach to.
-func (r *DiskAttachment) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *DiskAttachment) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // Input properties used for looking up and filtering DiskAttachment resources.

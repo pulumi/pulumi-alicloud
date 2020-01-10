@@ -9,6 +9,8 @@ import (
 )
 
 // The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_subscription.html.markdown.
 type Subscription struct {
 	s *pulumi.ResourceState
 }
@@ -63,43 +65,43 @@ func GetSubscription(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Subscription) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Subscription) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Subscription) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Subscription) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Comment of the datahub subscription. It cannot be longer than 255 characters.
-func (r *Subscription) Comment() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["comment"])
+func (r *Subscription) Comment() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["comment"])
 }
 
 // Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
-func (r *Subscription) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Subscription) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
-func (r *Subscription) LastModifyTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastModifyTime"])
+func (r *Subscription) LastModifyTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastModifyTime"])
 }
 
 // The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-func (r *Subscription) ProjectName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectName"])
+func (r *Subscription) ProjectName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectName"])
 }
 
 // The identidy of the subscritpion, generate from server side.
-func (r *Subscription) SubId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["subId"])
+func (r *Subscription) SubId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subId"])
 }
 
 // The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-func (r *Subscription) TopicName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topicName"])
+func (r *Subscription) TopicName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topicName"])
 }
 
 // Input properties used for looking up and filtering Subscription resources.

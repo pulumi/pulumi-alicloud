@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ~> **NOTE:** This resource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). New resource `alicloud_ram_account_alias` will replace.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_alias.html.markdown.
  */
 export class Alias extends pulumi.CustomResource {
     /**
@@ -16,11 +16,25 @@ export class Alias extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AliasState): Alias {
-        return new Alias(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AliasState, opts?: pulumi.CustomResourceOptions): Alias {
+        return new Alias(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly accountAlias: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/alias:Alias';
+
+    /**
+     * Returns true if the given object is an instance of Alias.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Alias {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Alias.__pulumiType;
+    }
+
+    public readonly accountAlias!: pulumi.Output<string>;
 
     /**
      * Create a Alias resource with the given unique name, arguments, and options.
@@ -33,7 +47,7 @@ export class Alias extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AliasArgs | AliasState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AliasState = argsOrState as AliasState | undefined;
+            const state = argsOrState as AliasState | undefined;
             inputs["accountAlias"] = state ? state.accountAlias : undefined;
         } else {
             const args = argsOrState as AliasArgs | undefined;
@@ -42,7 +56,14 @@ export class Alias extends pulumi.CustomResource {
             }
             inputs["accountAlias"] = args ? args.accountAlias : undefined;
         }
-        super("alicloud:ram/alias:Alias", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Alias.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides vpcs bound to Alicloud Private Zone resource.
- * 
- * ~> **NOTE:** Terraform will auto bind vpc to a Private Zone while it uses `alicloud_pvtz_zone_attachment` to build a Private Zone and VPC binding resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_attachment.html.markdown.
  */
 export class ZoneAttachment extends pulumi.CustomResource {
     /**
@@ -18,18 +18,44 @@ export class ZoneAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneAttachmentState): ZoneAttachment {
-        return new ZoneAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneAttachmentState, opts?: pulumi.CustomResourceOptions): ZoneAttachment {
+        return new ZoneAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:pvtz/zoneAttachment:ZoneAttachment';
+
+    /**
+     * Returns true if the given object is an instance of ZoneAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ZoneAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ZoneAttachment.__pulumiType;
     }
 
     /**
-     * The id List of the VPC, for example:["vpc-1","vpc-2"].
+     * The language of code.
      */
-    public readonly vpcIds: pulumi.Output<string[] | undefined>;
+    public readonly lang!: pulumi.Output<string | undefined>;
+    /**
+     * The user custom IP address.
+     */
+    public readonly userClientIp!: pulumi.Output<string | undefined>;
+    /**
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+     */
+    public readonly vpcIds!: pulumi.Output<string[]>;
+    /**
+     * The List of the VPC:
+     */
+    public readonly vpcs!: pulumi.Output<outputs.pvtz.ZoneAttachmentVpc[]>;
     /**
      * The name of the Private Zone Record.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneAttachment resource with the given unique name, arguments, and options.
@@ -42,18 +68,31 @@ export class ZoneAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneAttachmentArgs | ZoneAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneAttachmentState = argsOrState as ZoneAttachmentState | undefined;
+            const state = argsOrState as ZoneAttachmentState | undefined;
+            inputs["lang"] = state ? state.lang : undefined;
+            inputs["userClientIp"] = state ? state.userClientIp : undefined;
             inputs["vpcIds"] = state ? state.vpcIds : undefined;
+            inputs["vpcs"] = state ? state.vpcs : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneAttachmentArgs | undefined;
             if (!args || args.zoneId === undefined) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["lang"] = args ? args.lang : undefined;
+            inputs["userClientIp"] = args ? args.userClientIp : undefined;
             inputs["vpcIds"] = args ? args.vpcIds : undefined;
+            inputs["vpcs"] = args ? args.vpcs : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(ZoneAttachment.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -62,9 +101,21 @@ export class ZoneAttachment extends pulumi.CustomResource {
  */
 export interface ZoneAttachmentState {
     /**
-     * The id List of the VPC, for example:["vpc-1","vpc-2"].
+     * The language of code.
+     */
+    readonly lang?: pulumi.Input<string>;
+    /**
+     * The user custom IP address.
+     */
+    readonly userClientIp?: pulumi.Input<string>;
+    /**
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
      */
     readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The List of the VPC:
+     */
+    readonly vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**
      * The name of the Private Zone Record.
      */
@@ -76,9 +127,21 @@ export interface ZoneAttachmentState {
  */
 export interface ZoneAttachmentArgs {
     /**
-     * The id List of the VPC, for example:["vpc-1","vpc-2"].
+     * The language of code.
+     */
+    readonly lang?: pulumi.Input<string>;
+    /**
+     * The user custom IP address.
+     */
+    readonly userClientIp?: pulumi.Input<string>;
+    /**
+     * The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
      */
     readonly vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The List of the VPC:
+     */
+    readonly vpcs?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneAttachmentVpc>[]>;
     /**
      * The name of the Private Zone Record.
      */

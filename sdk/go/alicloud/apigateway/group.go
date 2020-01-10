@@ -8,11 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an api group resource.To create an API, you must firstly create a group which is a basic attribute of the API.
-// 
-// For information about Api Gateway Group and how to use it, see [Create An Api Group](https://www.alibabacloud.com/help/doc-detail/43611.html)
-// 
-// ~> **NOTE:** Terraform will auto build api group while it uses `alicloud_api_gateway_group` to build api group.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_group.html.markdown.
 type Group struct {
 	s *pulumi.ResourceState
 }
@@ -55,23 +51,23 @@ func GetGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Group) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Group) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Group) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Group) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The description of the api gateway group. Defaults to null.
-func (r *Group) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Group) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the api gateway group. Defaults to null.
-func (r *Group) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Group) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Group resources.

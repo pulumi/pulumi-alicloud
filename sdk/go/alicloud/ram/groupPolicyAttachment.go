@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a RAM Group Policy attachment resource. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_policy_attachment.html.markdown.
 type GroupPolicyAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -60,28 +62,28 @@ func GetGroupPolicyAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GroupPolicyAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *GroupPolicyAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GroupPolicyAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *GroupPolicyAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *GroupPolicyAttachment) GroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupName"])
+func (r *GroupPolicyAttachment) GroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupName"])
 }
 
 // Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *GroupPolicyAttachment) PolicyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyName"])
+func (r *GroupPolicyAttachment) PolicyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyName"])
 }
 
 // Type of the RAM policy. It must be `Custom` or `System`.
-func (r *GroupPolicyAttachment) PolicyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyType"])
+func (r *GroupPolicyAttachment) PolicyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyType"])
 }
 
 // Input properties used for looking up and filtering GroupPolicyAttachment resources.

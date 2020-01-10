@@ -8,6 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mns_topic_subscription.html.markdown.
 type TopicSubscription struct {
 	s *pulumi.ResourceState
 }
@@ -65,45 +66,45 @@ func GetTopicSubscription(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TopicSubscription) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *TopicSubscription) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TopicSubscription) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *TopicSubscription) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The endpoint has three format. Available values format:
 // - HTTP Format: http://xxx.com/xxx
 // - Queue Format: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
 // - Email Format: mail:directmail:{MailAddress}
-func (r *TopicSubscription) Endpoint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endpoint"])
+func (r *TopicSubscription) Endpoint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endpoint"])
 }
 
 // The length should be shorter than 16.
-func (r *TopicSubscription) FilterTag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filterTag"])
+func (r *TopicSubscription) FilterTag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filterTag"])
 }
 
 // Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-func (r *TopicSubscription) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TopicSubscription) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
-func (r *TopicSubscription) NotifyContentFormat() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notifyContentFormat"])
+func (r *TopicSubscription) NotifyContentFormat() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notifyContentFormat"])
 }
 
 // The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
-func (r *TopicSubscription) NotifyStrategy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notifyStrategy"])
+func (r *TopicSubscription) NotifyStrategy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notifyStrategy"])
 }
 
-func (r *TopicSubscription) TopicName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["topicName"])
+func (r *TopicSubscription) TopicName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["topicName"])
 }
 
 // Input properties used for looking up and filtering TopicSubscription resources.

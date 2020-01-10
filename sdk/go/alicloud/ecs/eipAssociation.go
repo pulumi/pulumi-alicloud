@@ -4,17 +4,20 @@
 package ecs
 
 import (
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
 // Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
 // 
-// ~> **NOTE:** `alicloud_eip_association` is useful in scenarios where EIPs are either
+// > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
 //  pre-existing or distributed to customers or users and therefore cannot be changed.
 // 
-// ~> **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+// > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
 // 
-// ~> **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+// > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
 type EipAssociation struct {
 	s *pulumi.ResourceState
 }
@@ -22,13 +25,23 @@ type EipAssociation struct {
 // NewEipAssociation registers a new resource with the given unique name, arguments, and options.
 func NewEipAssociation(ctx *pulumi.Context,
 	name string, args *EipAssociationArgs, opts ...pulumi.ResourceOpt) (*EipAssociation, error) {
+	if args == nil || args.AllocationId == nil {
+		return nil, errors.New("missing required argument 'AllocationId'")
+	}
+	if args == nil || args.InstanceId == nil {
+		return nil, errors.New("missing required argument 'InstanceId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["allocationId"] = nil
 		inputs["instanceId"] = nil
+		inputs["instanceType"] = nil
+		inputs["privateIpAddress"] = nil
 	} else {
 		inputs["allocationId"] = args.AllocationId
 		inputs["instanceId"] = args.InstanceId
+		inputs["instanceType"] = args.InstanceType
+		inputs["privateIpAddress"] = args.PrivateIpAddress
 	}
 	s, err := ctx.RegisterResource("alicloud:ecs/eipAssociation:EipAssociation", name, true, inputs, opts...)
 	if err != nil {
@@ -45,6 +58,8 @@ func GetEipAssociation(ctx *pulumi.Context,
 	if state != nil {
 		inputs["allocationId"] = state.AllocationId
 		inputs["instanceId"] = state.InstanceId
+		inputs["instanceType"] = state.InstanceType
+		inputs["privateIpAddress"] = state.PrivateIpAddress
 	}
 	s, err := ctx.ReadResource("alicloud:ecs/eipAssociation:EipAssociation", name, id, inputs, opts...)
 	if err != nil {
@@ -54,23 +69,33 @@ func GetEipAssociation(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *EipAssociation) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *EipAssociation) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *EipAssociation) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *EipAssociation) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The allocation EIP ID.
-func (r *EipAssociation) AllocationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["allocationId"])
+func (r *EipAssociation) AllocationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["allocationId"])
 }
 
 // The ID of the ECS or SLB instance or Nat Gateway.
-func (r *EipAssociation) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *EipAssociation) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
+}
+
+// The type of cloud product that the eip instance to bind.
+func (r *EipAssociation) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
+}
+
+// The private IP address in the network segment of the vswitch which has been assigned.
+func (r *EipAssociation) PrivateIpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateIpAddress"])
 }
 
 // Input properties used for looking up and filtering EipAssociation resources.
@@ -79,6 +104,10 @@ type EipAssociationState struct {
 	AllocationId interface{}
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId interface{}
+	// The type of cloud product that the eip instance to bind.
+	InstanceType interface{}
+	// The private IP address in the network segment of the vswitch which has been assigned.
+	PrivateIpAddress interface{}
 }
 
 // The set of arguments for constructing a EipAssociation resource.
@@ -87,4 +116,8 @@ type EipAssociationArgs struct {
 	AllocationId interface{}
 	// The ID of the ECS or SLB instance or Nat Gateway.
 	InstanceId interface{}
+	// The type of cloud product that the eip instance to bind.
+	InstanceType interface{}
+	// The private IP address in the network segment of the vswitch which has been assigned.
+	PrivateIpAddress interface{}
 }

@@ -9,6 +9,8 @@ import (
 
 // The project is the resource management unit in Log Service and is used to isolate and control resources.
 // You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_project.html.markdown.
 type Project struct {
 	s *pulumi.ResourceState
 }
@@ -48,28 +50,28 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Project) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Project) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// Description of the log project. At present, it is not modified by terraform.
-func (r *Project) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+// Description of the log project.
+func (r *Project) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The name of the log project. It is the only in one Alicloud account.
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Project resources.
 type ProjectState struct {
-	// Description of the log project. At present, it is not modified by terraform.
+	// Description of the log project.
 	Description interface{}
 	// The name of the log project. It is the only in one Alicloud account.
 	Name interface{}
@@ -77,7 +79,7 @@ type ProjectState struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Description of the log project. At present, it is not modified by terraform.
+	// Description of the log project.
 	Description interface{}
 	// The name of the log project. It is the only in one Alicloud account.
 	Name interface{}

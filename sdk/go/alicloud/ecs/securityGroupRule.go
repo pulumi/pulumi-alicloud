@@ -11,8 +11,9 @@ import (
 // Provides a security group rule resource.
 // Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
 // 
-// ~> **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
-// 
+// > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group_rule.html.markdown.
 type SecurityGroupRule struct {
 	s *pulumi.ResourceState
 }
@@ -32,6 +33,7 @@ func NewSecurityGroupRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["cidrIp"] = nil
+		inputs["description"] = nil
 		inputs["ipProtocol"] = nil
 		inputs["nicType"] = nil
 		inputs["policy"] = nil
@@ -43,6 +45,7 @@ func NewSecurityGroupRule(ctx *pulumi.Context,
 		inputs["type"] = nil
 	} else {
 		inputs["cidrIp"] = args.CidrIp
+		inputs["description"] = args.Description
 		inputs["ipProtocol"] = args.IpProtocol
 		inputs["nicType"] = args.NicType
 		inputs["policy"] = args.Policy
@@ -67,6 +70,7 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["cidrIp"] = state.CidrIp
+		inputs["description"] = state.Description
 		inputs["ipProtocol"] = state.IpProtocol
 		inputs["nicType"] = state.NicType
 		inputs["policy"] = state.Policy
@@ -85,70 +89,77 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecurityGroupRule) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *SecurityGroupRule) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecurityGroupRule) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *SecurityGroupRule) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
-func (r *SecurityGroupRule) CidrIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrIp"])
+func (r *SecurityGroupRule) CidrIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrIp"])
+}
+
+// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+func (r *SecurityGroupRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
-func (r *SecurityGroupRule) IpProtocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipProtocol"])
+func (r *SecurityGroupRule) IpProtocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipProtocol"])
 }
 
 // Network type, can be either `internet` or `intranet`, the default value is `internet`.
-func (r *SecurityGroupRule) NicType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nicType"])
+func (r *SecurityGroupRule) NicType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nicType"])
 }
 
 // Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
-func (r *SecurityGroupRule) Policy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policy"])
+func (r *SecurityGroupRule) Policy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policy"])
 }
 
 // The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
 // For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
-func (r *SecurityGroupRule) PortRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["portRange"])
+func (r *SecurityGroupRule) PortRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["portRange"])
 }
 
 // Authorization policy priority, with parameter values: `1-100`, default value: 1.
-func (r *SecurityGroupRule) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *SecurityGroupRule) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The security group to apply this rule to.
-func (r *SecurityGroupRule) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+func (r *SecurityGroupRule) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
-// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
-func (r *SecurityGroupRule) SourceGroupOwnerAccount() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceGroupOwnerAccount"])
+// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+func (r *SecurityGroupRule) SourceGroupOwnerAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceGroupOwnerAccount"])
 }
 
-// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
-func (r *SecurityGroupRule) SourceSecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceSecurityGroupId"])
+// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
+func (r *SecurityGroupRule) SourceSecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceSecurityGroupId"])
 }
 
 // The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
-func (r *SecurityGroupRule) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *SecurityGroupRule) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering SecurityGroupRule resources.
 type SecurityGroupRuleState struct {
 	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
 	CidrIp interface{}
+	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+	Description interface{}
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol interface{}
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
@@ -162,9 +173,9 @@ type SecurityGroupRuleState struct {
 	Priority interface{}
 	// The security group to apply this rule to.
 	SecurityGroupId interface{}
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
 	SourceGroupOwnerAccount interface{}
-	// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId interface{}
 	// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
 	Type interface{}
@@ -174,6 +185,8 @@ type SecurityGroupRuleState struct {
 type SecurityGroupRuleArgs struct {
 	// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
 	CidrIp interface{}
+	// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+	Description interface{}
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol interface{}
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
@@ -187,9 +200,9 @@ type SecurityGroupRuleArgs struct {
 	Priority interface{}
 	// The security group to apply this rule to.
 	SecurityGroupId interface{}
-	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+	// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
 	SourceGroupOwnerAccount interface{}
-	// The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
+	// The target security group ID within the same region. If this field is specified, the `nicType` can only select `intranet`.
 	SourceSecurityGroupId interface{}
 	// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
 	Type interface{}

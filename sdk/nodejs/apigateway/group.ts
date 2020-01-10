@@ -2,14 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an api group resource.To create an API, you must firstly create a group which is a basic attribute of the API.
- * 
- * For information about Api Gateway Group and how to use it, see [Create An Api Group](https://www.alibabacloud.com/help/doc-detail/43611.html)
- * 
- * ~> **NOTE:** Terraform will auto build api group while it uses `alicloud_api_gateway_group` to build api group.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -20,18 +18,32 @@ export class Group extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState): Group {
-        return new Group(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState, opts?: pulumi.CustomResourceOptions): Group {
+        return new Group(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:apigateway/group:Group';
+
+    /**
+     * Returns true if the given object is an instance of Group.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Group {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Group.__pulumiType;
     }
 
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the api gateway group. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -44,7 +56,7 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupState = argsOrState as GroupState | undefined;
+            const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
@@ -55,7 +67,14 @@ export class Group extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:apigateway/group:Group", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Group.__pulumiType, name, inputs, opts);
     }
 }
 

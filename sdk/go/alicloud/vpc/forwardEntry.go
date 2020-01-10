@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// Provides a forward resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
 type ForwardEntry struct {
 	s *pulumi.ResourceState
 }
@@ -41,6 +44,7 @@ func NewForwardEntry(ctx *pulumi.Context,
 		inputs["internalIp"] = nil
 		inputs["internalPort"] = nil
 		inputs["ipProtocol"] = nil
+		inputs["name"] = nil
 	} else {
 		inputs["externalIp"] = args.ExternalIp
 		inputs["externalPort"] = args.ExternalPort
@@ -48,7 +52,9 @@ func NewForwardEntry(ctx *pulumi.Context,
 		inputs["internalIp"] = args.InternalIp
 		inputs["internalPort"] = args.InternalPort
 		inputs["ipProtocol"] = args.IpProtocol
+		inputs["name"] = args.Name
 	}
+	inputs["forwardEntryId"] = nil
 	s, err := ctx.RegisterResource("alicloud:vpc/forwardEntry:ForwardEntry", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -64,10 +70,12 @@ func GetForwardEntry(ctx *pulumi.Context,
 	if state != nil {
 		inputs["externalIp"] = state.ExternalIp
 		inputs["externalPort"] = state.ExternalPort
+		inputs["forwardEntryId"] = state.ForwardEntryId
 		inputs["forwardTableId"] = state.ForwardTableId
 		inputs["internalIp"] = state.InternalIp
 		inputs["internalPort"] = state.InternalPort
 		inputs["ipProtocol"] = state.IpProtocol
+		inputs["name"] = state.Name
 	}
 	s, err := ctx.ReadResource("alicloud:vpc/forwardEntry:ForwardEntry", name, id, inputs, opts...)
 	if err != nil {
@@ -77,55 +85,89 @@ func GetForwardEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ForwardEntry) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ForwardEntry) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ForwardEntry) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ForwardEntry) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *ForwardEntry) ExternalIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalIp"])
+// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
+func (r *ForwardEntry) ExternalIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalIp"])
 }
 
-func (r *ForwardEntry) ExternalPort() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalPort"])
+// The external port, valid value is 1~65535|any.
+func (r *ForwardEntry) ExternalPort() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalPort"])
 }
 
-func (r *ForwardEntry) ForwardTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["forwardTableId"])
+// The id of the forward entry on the server.
+func (r *ForwardEntry) ForwardEntryId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["forwardEntryId"])
 }
 
-func (r *ForwardEntry) InternalIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internalIp"])
+// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
+func (r *ForwardEntry) ForwardTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["forwardTableId"])
 }
 
-func (r *ForwardEntry) InternalPort() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internalPort"])
+// The internal ip, must a private ip.
+func (r *ForwardEntry) InternalIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internalIp"])
 }
 
-func (r *ForwardEntry) IpProtocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipProtocol"])
+// The internal port, valid value is 1~65535|any.
+func (r *ForwardEntry) InternalPort() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internalPort"])
+}
+
+// The ip protocal, valid value is tcp|udp|any.
+func (r *ForwardEntry) IpProtocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipProtocol"])
+}
+
+// The name of forward entry.
+func (r *ForwardEntry) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering ForwardEntry resources.
 type ForwardEntryState struct {
+	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	ExternalIp interface{}
+	// The external port, valid value is 1~65535|any.
 	ExternalPort interface{}
+	// The id of the forward entry on the server.
+	ForwardEntryId interface{}
+	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId interface{}
+	// The internal ip, must a private ip.
 	InternalIp interface{}
+	// The internal port, valid value is 1~65535|any.
 	InternalPort interface{}
+	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol interface{}
+	// The name of forward entry.
+	Name interface{}
 }
 
 // The set of arguments for constructing a ForwardEntry resource.
 type ForwardEntryArgs struct {
+	// The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	ExternalIp interface{}
+	// The external port, valid value is 1~65535|any.
 	ExternalPort interface{}
+	// The value can get from `vpc.NatGateway` Attributes "forwardTableIds".
 	ForwardTableId interface{}
+	// The internal ip, must a private ip.
 	InternalIp interface{}
+	// The internal port, valid value is 1~65535|any.
 	InternalPort interface{}
+	// The ip protocal, valid value is tcp|udp|any.
 	IpProtocol interface{}
+	// The name of forward entry.
+	Name interface{}
 }

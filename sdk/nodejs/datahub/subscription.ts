@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_subscription.html.markdown.
  */
 export class Subscription extends pulumi.CustomResource {
     /**
@@ -16,34 +16,48 @@ export class Subscription extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionState): Subscription {
-        return new Subscription(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionState, opts?: pulumi.CustomResourceOptions): Subscription {
+        return new Subscription(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:datahub/subscription:Subscription';
+
+    /**
+     * Returns true if the given object is an instance of Subscription.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Subscription {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Subscription.__pulumiType;
     }
 
     /**
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      */
-    public readonly comment: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly lastModifyTime: pulumi.Output<string>;
+    public /*out*/ readonly lastModifyTime!: pulumi.Output<string>;
     /**
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    public readonly projectName: pulumi.Output<string>;
+    public readonly projectName!: pulumi.Output<string>;
     /**
      * The identidy of the subscritpion, generate from server side.
      */
-    public /*out*/ readonly subId: pulumi.Output<string>;
+    public /*out*/ readonly subId!: pulumi.Output<string>;
     /**
      * The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    public readonly topicName: pulumi.Output<string>;
+    public readonly topicName!: pulumi.Output<string>;
 
     /**
      * Create a Subscription resource with the given unique name, arguments, and options.
@@ -56,7 +70,7 @@ export class Subscription extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubscriptionArgs | SubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubscriptionState = argsOrState as SubscriptionState | undefined;
+            const state = argsOrState as SubscriptionState | undefined;
             inputs["comment"] = state ? state.comment : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
@@ -78,7 +92,14 @@ export class Subscription extends pulumi.CustomResource {
             inputs["lastModifyTime"] = undefined /*out*/;
             inputs["subId"] = undefined /*out*/;
         }
-        super("alicloud:datahub/subscription:Subscription", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Subscription.__pulumiType, name, inputs, opts);
     }
 }
 

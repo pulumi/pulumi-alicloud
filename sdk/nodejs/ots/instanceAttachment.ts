@@ -6,6 +6,41 @@ import * as utilities from "../utilities";
 
 /**
  * This resource will help you to bind a VPC to an OTS instance.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create an OTS instance
+ * const fooInstance = new alicloud.ots.Instance("foo", {
+ *     accessedBy: "Vpc",
+ *     description: "for table",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Building table",
+ *     },
+ * });
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
+ *     availabilityZone: fooZones.zones[0].id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     vpcId: fooNetwork.id,
+ * });
+ * const fooInstanceAttachment = new alicloud.ots.InstanceAttachment("foo", {
+ *     instanceName: fooInstance.name,
+ *     vpcName: "attachment1",
+ *     vswitchId: fooSwitch.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance_attachment.html.markdown.
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**
@@ -16,26 +51,40 @@ export class InstanceAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceAttachmentState): InstanceAttachment {
-        return new InstanceAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceAttachmentState, opts?: pulumi.CustomResourceOptions): InstanceAttachment {
+        return new InstanceAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ots/instanceAttachment:InstanceAttachment';
+
+    /**
+     * Returns true if the given object is an instance of InstanceAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is InstanceAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === InstanceAttachment.__pulumiType;
     }
 
     /**
      * The name of the OTS instance.
      */
-    public readonly instanceName: pulumi.Output<string>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
      * The ID of attaching VPC to instance.
      */
-    public /*out*/ readonly vpcId: pulumi.Output<string>;
+    public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The name of attaching VPC to instance.
      */
-    public readonly vpcName: pulumi.Output<string>;
+    public readonly vpcName!: pulumi.Output<string>;
     /**
      * The ID of attaching VSwitch to instance.
      */
-    public readonly vswitchId: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string>;
 
     /**
      * Create a InstanceAttachment resource with the given unique name, arguments, and options.
@@ -48,7 +97,7 @@ export class InstanceAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceAttachmentArgs | InstanceAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceAttachmentState = argsOrState as InstanceAttachmentState | undefined;
+            const state = argsOrState as InstanceAttachmentState | undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vpcName"] = state ? state.vpcName : undefined;
@@ -69,7 +118,14 @@ export class InstanceAttachment extends pulumi.CustomResource {
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("alicloud:ots/instanceAttachment:InstanceAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(InstanceAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

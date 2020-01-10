@@ -9,7 +9,8 @@ import (
 )
 
 // Provides a RAM cloud account alias.
-// 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_account_alias.html.markdown.
 type AccountAlias struct {
 	s *pulumi.ResourceState
 }
@@ -49,18 +50,18 @@ func GetAccountAlias(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccountAlias) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *AccountAlias) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccountAlias) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *AccountAlias) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
-func (r *AccountAlias) AccountAlias() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accountAlias"])
+func (r *AccountAlias) AccountAlias() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountAlias"])
 }
 
 // Input properties used for looking up and filtering AccountAlias resources.

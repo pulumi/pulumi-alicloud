@@ -2,30 +2,57 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute functions of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const functionsDs = alicloud.fc.getFunctions({
+ *     nameRegex: "sampleFcFunction",
+ *     serviceName: "sampleService",
+ * });
+ * 
+ * export const firstFcFunctionName = functionsDs.functions[0].name;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
  */
-export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> {
-    return pulumi.runtime.invoke("alicloud:fc/getFunctions:getFunctions", {
+export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> & GetFunctionsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetFunctionsResult> = pulumi.runtime.invoke("alicloud:fc/getFunctions:getFunctions", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "serviceName": args.serviceName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getFunctions.
  */
 export interface GetFunctionsArgs {
+    readonly ids?: string[];
     /**
      * A regex string to filter results by function name.
+     * * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Name of the service that contains the functions to find.
@@ -40,7 +67,18 @@ export interface GetFunctionsResult {
     /**
      * A list of functions. Each element contains the following attributes:
      */
-    readonly functions: { codeChecksum: string, codeSize: number, creationTime: string, description: string, handler: string, id: string, lastModificationTime: string, memorySize: number, name: string, runtime: string, timeout: number }[];
+    readonly functions: outputs.fc.GetFunctionsFunction[];
+    /**
+     * A list of functions ids.
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of functions names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly serviceName: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

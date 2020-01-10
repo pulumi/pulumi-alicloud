@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a resource to put a object(content or file) to a oss bucket.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
 type BucketObject struct {
 	s *pulumi.ResourceState
 }
@@ -34,6 +36,7 @@ func NewBucketObject(ctx *pulumi.Context,
 		inputs["contentType"] = nil
 		inputs["expires"] = nil
 		inputs["key"] = nil
+		inputs["kmsKeyId"] = nil
 		inputs["serverSideEncryption"] = nil
 		inputs["source"] = nil
 	} else {
@@ -47,11 +50,13 @@ func NewBucketObject(ctx *pulumi.Context,
 		inputs["contentType"] = args.ContentType
 		inputs["expires"] = args.Expires
 		inputs["key"] = args.Key
+		inputs["kmsKeyId"] = args.KmsKeyId
 		inputs["serverSideEncryption"] = args.ServerSideEncryption
 		inputs["source"] = args.Source
 	}
 	inputs["contentLength"] = nil
 	inputs["etag"] = nil
+	inputs["versionId"] = nil
 	s, err := ctx.RegisterResource("alicloud:oss/bucketObject:BucketObject", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -77,8 +82,10 @@ func GetBucketObject(ctx *pulumi.Context,
 		inputs["etag"] = state.Etag
 		inputs["expires"] = state.Expires
 		inputs["key"] = state.Key
+		inputs["kmsKeyId"] = state.KmsKeyId
 		inputs["serverSideEncryption"] = state.ServerSideEncryption
 		inputs["source"] = state.Source
+		inputs["versionId"] = state.VersionId
 	}
 	s, err := ctx.ReadResource("alicloud:oss/bucketObject:BucketObject", name, id, inputs, opts...)
 	if err != nil {
@@ -88,83 +95,93 @@ func GetBucketObject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BucketObject) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BucketObject) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BucketObject) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BucketObject) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
-func (r *BucketObject) Acl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["acl"])
+func (r *BucketObject) Acl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["acl"])
 }
 
 // The name of the bucket to put the file in.
-func (r *BucketObject) Bucket() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bucket"])
+func (r *BucketObject) Bucket() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bucket"])
 }
 
 // Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-func (r *BucketObject) CacheControl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cacheControl"])
+func (r *BucketObject) CacheControl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cacheControl"])
 }
 
 // The literal content being uploaded to the bucket.
-func (r *BucketObject) Content() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["content"])
+func (r *BucketObject) Content() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["content"])
 }
 
 // Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-func (r *BucketObject) ContentDisposition() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentDisposition"])
+func (r *BucketObject) ContentDisposition() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentDisposition"])
 }
 
 // Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-func (r *BucketObject) ContentEncoding() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentEncoding"])
+func (r *BucketObject) ContentEncoding() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentEncoding"])
 }
 
 // the content length of request.
-func (r *BucketObject) ContentLength() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentLength"])
+func (r *BucketObject) ContentLength() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentLength"])
 }
 
 // The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
-func (r *BucketObject) ContentMd5() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentMd5"])
+func (r *BucketObject) ContentMd5() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentMd5"])
 }
 
 // A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-func (r *BucketObject) ContentType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["contentType"])
+func (r *BucketObject) ContentType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["contentType"])
 }
 
 // the ETag generated for the object (an MD5 sum of the object content).
-func (r *BucketObject) Etag() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["etag"])
+func (r *BucketObject) Etag() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["etag"])
 }
 
 // Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-func (r *BucketObject) Expires() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expires"])
+func (r *BucketObject) Expires() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expires"])
 }
 
 // The name of the object once it is in the bucket.
-func (r *BucketObject) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *BucketObject) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
-// Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
-func (r *BucketObject) ServerSideEncryption() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverSideEncryption"])
+// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+func (r *BucketObject) KmsKeyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsKeyId"])
+}
+
+// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
+func (r *BucketObject) ServerSideEncryption() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverSideEncryption"])
 }
 
 // The path to the source file being uploaded to the bucket.
-func (r *BucketObject) Source() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["source"])
+func (r *BucketObject) Source() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["source"])
+}
+
+// A unique version ID value for the object, if bucket versioning is enabled.
+func (r *BucketObject) VersionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["versionId"])
 }
 
 // Input properties used for looking up and filtering BucketObject resources.
@@ -193,10 +210,14 @@ type BucketObjectState struct {
 	Expires interface{}
 	// The name of the object once it is in the bucket.
 	Key interface{}
-	// Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
+	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	KmsKeyId interface{}
+	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption interface{}
 	// The path to the source file being uploaded to the bucket.
 	Source interface{}
+	// A unique version ID value for the object, if bucket versioning is enabled.
+	VersionId interface{}
 }
 
 // The set of arguments for constructing a BucketObject resource.
@@ -221,7 +242,9 @@ type BucketObjectArgs struct {
 	Expires interface{}
 	// The name of the object once it is in the bucket.
 	Key interface{}
-	// Specifies server-side encryption of the object in OSS. At present, it valid value is "`AES256`".
+	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	KmsKeyId interface{}
+	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption interface{}
 	// The path to the source file being uploaded to the bucket.
 	Source interface{}

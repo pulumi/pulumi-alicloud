@@ -11,13 +11,15 @@ import (
 // Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
 // After that, all of the two router interfaces will be active.
 // 
-// -> **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+// > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
 // 
-// -> **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+// > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
 // 
-// -> **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+// > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
 // 
-// -> **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+// > **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
 type RouterInterfaceConnection struct {
 	s *pulumi.ResourceState
 }
@@ -72,51 +74,49 @@ func GetRouterInterfaceConnection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterInterfaceConnection) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouterInterfaceConnection) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterInterfaceConnection) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouterInterfaceConnection) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // One side router interface ID.
-func (r *RouterInterfaceConnection) InterfaceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["interfaceId"])
+func (r *RouterInterfaceConnection) InterfaceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["interfaceId"])
 }
 
-// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
-func (r *RouterInterfaceConnection) OppositeInterfaceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeInterfaceId"])
+// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
+func (r *RouterInterfaceConnection) OppositeInterfaceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeInterfaceId"])
 }
 
-// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
-func (r *RouterInterfaceConnection) OppositeInterfaceOwnerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeInterfaceOwnerId"])
+func (r *RouterInterfaceConnection) OppositeInterfaceOwnerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeInterfaceOwnerId"])
 }
 
-// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
-func (r *RouterInterfaceConnection) OppositeRouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeRouterId"])
+// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
+func (r *RouterInterfaceConnection) OppositeRouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeRouterId"])
 }
 
-// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
-func (r *RouterInterfaceConnection) OppositeRouterType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeRouterType"])
+// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+func (r *RouterInterfaceConnection) OppositeRouterType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeRouterType"])
 }
 
 // Input properties used for looking up and filtering RouterInterfaceConnection resources.
 type RouterInterfaceConnectionState struct {
 	// One side router interface ID.
 	InterfaceId interface{}
-	// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
 	OppositeInterfaceId interface{}
-	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
 	OppositeInterfaceOwnerId interface{}
-	// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId interface{}
-	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterType interface{}
 }
 
@@ -124,12 +124,11 @@ type RouterInterfaceConnectionState struct {
 type RouterInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId interface{}
-	// Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
 	OppositeInterfaceId interface{}
-	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
 	OppositeInterfaceOwnerId interface{}
-	// Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId interface{}
-	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterType interface{}
 }

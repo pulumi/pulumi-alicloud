@@ -8,25 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource will help you to manager a Kubernetes Cluster. The cluster is same as container service created by web console.
-// 
-// -> **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
-// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
-// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
-// 
-// -> **NOTE:** If there is no specified `vswitch_ids`, the resource will create a new VPC and VSwitch while creating kubernetes cluster.
-// 
-// -> **NOTE:** Each kubernetes cluster contains 3 master nodes and those number cannot be changed at now.
-// 
-// -> **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
-// 
-// -> **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
-// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
-// 
-// -> **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind,
-// you must specify three items in `vswitch_ids`, `master_instance_types` and `worker_instance_types`.
-// 
-// -> **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes.html.markdown.
 type Kubernetes struct {
 	s *pulumi.ResourceState
 }
@@ -40,6 +22,9 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args == nil || args.WorkerInstanceTypes == nil {
 		return nil, errors.New("missing required argument 'WorkerInstanceTypes'")
 	}
+	if args == nil || args.WorkerNumbers == nil {
+		return nil, errors.New("missing required argument 'WorkerNumbers'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["availabilityZone"] = nil
@@ -48,15 +33,24 @@ func NewKubernetes(ctx *pulumi.Context,
 		inputs["clusterCaCert"] = nil
 		inputs["clusterNetworkType"] = nil
 		inputs["enableSsh"] = nil
+		inputs["forceUpdate"] = nil
+		inputs["imageId"] = nil
 		inputs["installCloudMonitor"] = nil
 		inputs["isOutdated"] = nil
 		inputs["keyName"] = nil
+		inputs["kmsEncryptedPassword"] = nil
+		inputs["kmsEncryptionContext"] = nil
 		inputs["kubeConfig"] = nil
 		inputs["logConfig"] = nil
+		inputs["masterAutoRenew"] = nil
+		inputs["masterAutoRenewPeriod"] = nil
 		inputs["masterDiskCategory"] = nil
 		inputs["masterDiskSize"] = nil
+		inputs["masterInstanceChargeType"] = nil
 		inputs["masterInstanceType"] = nil
 		inputs["masterInstanceTypes"] = nil
+		inputs["masterPeriod"] = nil
+		inputs["masterPeriodUnit"] = nil
 		inputs["name"] = nil
 		inputs["namePrefix"] = nil
 		inputs["newNatGateway"] = nil
@@ -66,17 +60,23 @@ func NewKubernetes(ctx *pulumi.Context,
 		inputs["podCidr"] = nil
 		inputs["serviceCidr"] = nil
 		inputs["slbInternetEnabled"] = nil
+		inputs["userCa"] = nil
 		inputs["version"] = nil
 		inputs["vswitchId"] = nil
 		inputs["vswitchIds"] = nil
+		inputs["workerAutoRenew"] = nil
+		inputs["workerAutoRenewPeriod"] = nil
 		inputs["workerDataDiskCategory"] = nil
 		inputs["workerDataDiskSize"] = nil
 		inputs["workerDiskCategory"] = nil
 		inputs["workerDiskSize"] = nil
+		inputs["workerInstanceChargeType"] = nil
 		inputs["workerInstanceType"] = nil
 		inputs["workerInstanceTypes"] = nil
 		inputs["workerNumber"] = nil
 		inputs["workerNumbers"] = nil
+		inputs["workerPeriod"] = nil
+		inputs["workerPeriodUnit"] = nil
 	} else {
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["clientCert"] = args.ClientCert
@@ -84,15 +84,24 @@ func NewKubernetes(ctx *pulumi.Context,
 		inputs["clusterCaCert"] = args.ClusterCaCert
 		inputs["clusterNetworkType"] = args.ClusterNetworkType
 		inputs["enableSsh"] = args.EnableSsh
+		inputs["forceUpdate"] = args.ForceUpdate
+		inputs["imageId"] = args.ImageId
 		inputs["installCloudMonitor"] = args.InstallCloudMonitor
 		inputs["isOutdated"] = args.IsOutdated
 		inputs["keyName"] = args.KeyName
+		inputs["kmsEncryptedPassword"] = args.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = args.KmsEncryptionContext
 		inputs["kubeConfig"] = args.KubeConfig
 		inputs["logConfig"] = args.LogConfig
+		inputs["masterAutoRenew"] = args.MasterAutoRenew
+		inputs["masterAutoRenewPeriod"] = args.MasterAutoRenewPeriod
 		inputs["masterDiskCategory"] = args.MasterDiskCategory
 		inputs["masterDiskSize"] = args.MasterDiskSize
+		inputs["masterInstanceChargeType"] = args.MasterInstanceChargeType
 		inputs["masterInstanceType"] = args.MasterInstanceType
 		inputs["masterInstanceTypes"] = args.MasterInstanceTypes
+		inputs["masterPeriod"] = args.MasterPeriod
+		inputs["masterPeriodUnit"] = args.MasterPeriodUnit
 		inputs["name"] = args.Name
 		inputs["namePrefix"] = args.NamePrefix
 		inputs["newNatGateway"] = args.NewNatGateway
@@ -102,20 +111,25 @@ func NewKubernetes(ctx *pulumi.Context,
 		inputs["podCidr"] = args.PodCidr
 		inputs["serviceCidr"] = args.ServiceCidr
 		inputs["slbInternetEnabled"] = args.SlbInternetEnabled
+		inputs["userCa"] = args.UserCa
 		inputs["version"] = args.Version
 		inputs["vswitchId"] = args.VswitchId
 		inputs["vswitchIds"] = args.VswitchIds
+		inputs["workerAutoRenew"] = args.WorkerAutoRenew
+		inputs["workerAutoRenewPeriod"] = args.WorkerAutoRenewPeriod
 		inputs["workerDataDiskCategory"] = args.WorkerDataDiskCategory
 		inputs["workerDataDiskSize"] = args.WorkerDataDiskSize
 		inputs["workerDiskCategory"] = args.WorkerDiskCategory
 		inputs["workerDiskSize"] = args.WorkerDiskSize
+		inputs["workerInstanceChargeType"] = args.WorkerInstanceChargeType
 		inputs["workerInstanceType"] = args.WorkerInstanceType
 		inputs["workerInstanceTypes"] = args.WorkerInstanceTypes
 		inputs["workerNumber"] = args.WorkerNumber
 		inputs["workerNumbers"] = args.WorkerNumbers
+		inputs["workerPeriod"] = args.WorkerPeriod
+		inputs["workerPeriodUnit"] = args.WorkerPeriodUnit
 	}
 	inputs["connections"] = nil
-	inputs["imageId"] = nil
 	inputs["masterNodes"] = nil
 	inputs["natGatewayId"] = nil
 	inputs["securityGroupId"] = nil
@@ -144,17 +158,25 @@ func GetKubernetes(ctx *pulumi.Context,
 		inputs["clusterNetworkType"] = state.ClusterNetworkType
 		inputs["connections"] = state.Connections
 		inputs["enableSsh"] = state.EnableSsh
+		inputs["forceUpdate"] = state.ForceUpdate
 		inputs["imageId"] = state.ImageId
 		inputs["installCloudMonitor"] = state.InstallCloudMonitor
 		inputs["isOutdated"] = state.IsOutdated
 		inputs["keyName"] = state.KeyName
+		inputs["kmsEncryptedPassword"] = state.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = state.KmsEncryptionContext
 		inputs["kubeConfig"] = state.KubeConfig
 		inputs["logConfig"] = state.LogConfig
+		inputs["masterAutoRenew"] = state.MasterAutoRenew
+		inputs["masterAutoRenewPeriod"] = state.MasterAutoRenewPeriod
 		inputs["masterDiskCategory"] = state.MasterDiskCategory
 		inputs["masterDiskSize"] = state.MasterDiskSize
+		inputs["masterInstanceChargeType"] = state.MasterInstanceChargeType
 		inputs["masterInstanceType"] = state.MasterInstanceType
 		inputs["masterInstanceTypes"] = state.MasterInstanceTypes
 		inputs["masterNodes"] = state.MasterNodes
+		inputs["masterPeriod"] = state.MasterPeriod
+		inputs["masterPeriodUnit"] = state.MasterPeriodUnit
 		inputs["name"] = state.Name
 		inputs["namePrefix"] = state.NamePrefix
 		inputs["natGatewayId"] = state.NatGatewayId
@@ -169,19 +191,25 @@ func GetKubernetes(ctx *pulumi.Context,
 		inputs["slbInternet"] = state.SlbInternet
 		inputs["slbInternetEnabled"] = state.SlbInternetEnabled
 		inputs["slbIntranet"] = state.SlbIntranet
+		inputs["userCa"] = state.UserCa
 		inputs["version"] = state.Version
 		inputs["vpcId"] = state.VpcId
 		inputs["vswitchId"] = state.VswitchId
 		inputs["vswitchIds"] = state.VswitchIds
+		inputs["workerAutoRenew"] = state.WorkerAutoRenew
+		inputs["workerAutoRenewPeriod"] = state.WorkerAutoRenewPeriod
 		inputs["workerDataDiskCategory"] = state.WorkerDataDiskCategory
 		inputs["workerDataDiskSize"] = state.WorkerDataDiskSize
 		inputs["workerDiskCategory"] = state.WorkerDiskCategory
 		inputs["workerDiskSize"] = state.WorkerDiskSize
+		inputs["workerInstanceChargeType"] = state.WorkerInstanceChargeType
 		inputs["workerInstanceType"] = state.WorkerInstanceType
 		inputs["workerInstanceTypes"] = state.WorkerInstanceTypes
 		inputs["workerNodes"] = state.WorkerNodes
 		inputs["workerNumber"] = state.WorkerNumber
 		inputs["workerNumbers"] = state.WorkerNumbers
+		inputs["workerPeriod"] = state.WorkerPeriod
+		inputs["workerPeriodUnit"] = state.WorkerPeriodUnit
 	}
 	s, err := ctx.ReadResource("alicloud:cs/kubernetes:Kubernetes", name, id, inputs, opts...)
 	if err != nil {
@@ -191,246 +219,308 @@ func GetKubernetes(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Kubernetes) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Kubernetes) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Kubernetes) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Kubernetes) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The Zone where new kubernetes cluster will be located. If it is not be specified, the value will be vswitch's zone.
-func (r *Kubernetes) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
+func (r *Kubernetes) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
 // The path of client certificate, like `~/.kube/client-cert.pem`.
-func (r *Kubernetes) ClientCert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clientCert"])
+func (r *Kubernetes) ClientCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientCert"])
 }
 
 // The path of client key, like `~/.kube/client-key.pem`.
-func (r *Kubernetes) ClientKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clientKey"])
+func (r *Kubernetes) ClientKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientKey"])
 }
 
 // The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-func (r *Kubernetes) ClusterCaCert() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterCaCert"])
+func (r *Kubernetes) ClusterCaCert() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterCaCert"])
 }
 
 // The network that cluster uses, use `flannel` or `terway`.
-func (r *Kubernetes) ClusterNetworkType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clusterNetworkType"])
+func (r *Kubernetes) ClusterNetworkType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clusterNetworkType"])
 }
 
 // Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-func (r *Kubernetes) Connections() *pulumi.Output {
+func (r *Kubernetes) Connections() pulumi.Output {
 	return r.s.State["connections"]
 }
 
 // Whether to allow to SSH login kubernetes. Default to false.
-func (r *Kubernetes) EnableSsh() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableSsh"])
+func (r *Kubernetes) EnableSsh() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableSsh"])
 }
 
-// The ID of node image.
-func (r *Kubernetes) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+// Whether to force the update of kubernetes cluster arguments. Default to false.
+func (r *Kubernetes) ForceUpdate() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forceUpdate"])
+}
+
+func (r *Kubernetes) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // Whether to install cloud monitor for the kubernetes' node.
-func (r *Kubernetes) InstallCloudMonitor() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["installCloudMonitor"])
+func (r *Kubernetes) InstallCloudMonitor() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["installCloudMonitor"])
 }
 
 // Whether to use outdated instance type. Default to false.
-func (r *Kubernetes) IsOutdated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isOutdated"])
+func (r *Kubernetes) IsOutdated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isOutdated"])
 }
 
 // The keypair of ssh login cluster node, you have to create it first.
-func (r *Kubernetes) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *Kubernetes) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
+}
+
+// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+func (r *Kubernetes) KmsEncryptedPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
+}
+
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (r *Kubernetes) KmsEncryptionContext() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["kmsEncryptionContext"])
 }
 
 // The path of kube config, like `~/.kube/config`.
-func (r *Kubernetes) KubeConfig() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["kubeConfig"])
+func (r *Kubernetes) KubeConfig() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kubeConfig"])
 }
 
 // A list of one element containing information about the associated log store. It contains the following attributes:
-func (r *Kubernetes) LogConfig() *pulumi.Output {
+func (r *Kubernetes) LogConfig() pulumi.Output {
 	return r.s.State["logConfig"]
 }
 
-// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-func (r *Kubernetes) MasterDiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterDiskCategory"])
+// Enable master payment auto-renew, defaults to false.
+func (r *Kubernetes) MasterAutoRenew() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["masterAutoRenew"])
 }
 
-// The system disk size of master node. Its valid value range [20~32768] in GB. Default to 20.
-func (r *Kubernetes) MasterDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["masterDiskSize"])
+// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+func (r *Kubernetes) MasterAutoRenewPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["masterAutoRenewPeriod"])
+}
+
+// The system disk category of master node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+func (r *Kubernetes) MasterDiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterDiskCategory"])
+}
+
+// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
+func (r *Kubernetes) MasterDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["masterDiskSize"])
+}
+
+// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+func (r *Kubernetes) MasterInstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterInstanceChargeType"])
 }
 
 // (Required, Force new resource) The instance type of master node.
-func (r *Kubernetes) MasterInstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterInstanceType"])
+func (r *Kubernetes) MasterInstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterInstanceType"])
 }
 
-// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-func (r *Kubernetes) MasterInstanceTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masterInstanceTypes"])
+func (r *Kubernetes) MasterInstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masterInstanceTypes"])
 }
 
 // List of cluster master nodes. It contains several attributes to `Block Nodes`.
-func (r *Kubernetes) MasterNodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["masterNodes"])
+func (r *Kubernetes) MasterNodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["masterNodes"])
+}
+
+// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+func (r *Kubernetes) MasterPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["masterPeriod"])
+}
+
+// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+func (r *Kubernetes) MasterPeriodUnit() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterPeriodUnit"])
 }
 
 // The kubernetes cluster's name. It is the only in one Alicloud account.
-func (r *Kubernetes) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Kubernetes) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
-func (r *Kubernetes) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *Kubernetes) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // The ID of nat gateway used to launch kubernetes cluster.
-func (r *Kubernetes) NatGatewayId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["natGatewayId"])
+func (r *Kubernetes) NatGatewayId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["natGatewayId"])
 }
 
 // Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
-func (r *Kubernetes) NewNatGateway() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["newNatGateway"])
+func (r *Kubernetes) NewNatGateway() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["newNatGateway"])
 }
 
 // The network mask used on pods for each node, ranging from `24` to `28`.
 // Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
-func (r *Kubernetes) NodeCidrMask() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeCidrMask"])
+func (r *Kubernetes) NodeCidrMask() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeCidrMask"])
 }
 
-// (Deprecated from version 1.9.4) It has been deprecated from provider version 1.9.4. New field `master_nodes` and `worker_nodes` replace it.
-func (r *Kubernetes) Nodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodes"])
+func (r *Kubernetes) Nodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodes"])
 }
 
-// The password of ssh login cluster node. You have to specify one of `password` and `key_name` fields.
-func (r *Kubernetes) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
+func (r *Kubernetes) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
-// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
+// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
 // It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 // Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
-func (r *Kubernetes) PodCidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["podCidr"])
+func (r *Kubernetes) PodCidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["podCidr"])
 }
 
 // The ID of security group where the current cluster worker node is located.
-func (r *Kubernetes) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+func (r *Kubernetes) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
-// The CIDR block for the service network.  It will be allocated automatically when `vswitch_id` is not specified.
+// The CIDR block for the service network. 
 // It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-func (r *Kubernetes) ServiceCidr() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serviceCidr"])
+func (r *Kubernetes) ServiceCidr() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceCidr"])
 }
 
-// (Deprecated from version 1.9.2).
-func (r *Kubernetes) SlbId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbId"])
+func (r *Kubernetes) SlbId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slbId"])
 }
 
-// The ID of public load balancer where the current cluster master node is located.
-func (r *Kubernetes) SlbInternet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbInternet"])
+func (r *Kubernetes) SlbInternet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slbInternet"])
 }
 
 // Whether to create internet load balancer for API Server. Default to true.
-func (r *Kubernetes) SlbInternetEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["slbInternetEnabled"])
+func (r *Kubernetes) SlbInternetEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["slbInternetEnabled"])
 }
 
 // The ID of private load balancer where the current cluster master node is located.
-func (r *Kubernetes) SlbIntranet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbIntranet"])
+func (r *Kubernetes) SlbIntranet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slbIntranet"])
 }
 
-func (r *Kubernetes) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
+func (r *Kubernetes) UserCa() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userCa"])
+}
+
+func (r *Kubernetes) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // The ID of VPC where the current cluster is located.
-func (r *Kubernetes) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Kubernetes) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
-// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-func (r *Kubernetes) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+func (r *Kubernetes) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
-// The vswitch where new kubernetes cluster will be located. For SingleAZ Cluster, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified. For MultiAZ Cluster, you must create three vswitches firstly, specify them here.
-func (r *Kubernetes) VswitchIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vswitchIds"])
+// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
+func (r *Kubernetes) VswitchIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vswitchIds"])
 }
 
-// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
-func (r *Kubernetes) WorkerDataDiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["workerDataDiskCategory"])
+// Enable worker payment auto-renew, defaults to false.
+func (r *Kubernetes) WorkerAutoRenew() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["workerAutoRenew"])
 }
 
-// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
-func (r *Kubernetes) WorkerDataDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["workerDataDiskSize"])
+// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+func (r *Kubernetes) WorkerAutoRenewPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["workerAutoRenewPeriod"])
 }
 
-// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-func (r *Kubernetes) WorkerDiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["workerDiskCategory"])
+// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
+func (r *Kubernetes) WorkerDataDiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["workerDataDiskCategory"])
+}
+
+// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
+func (r *Kubernetes) WorkerDataDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["workerDataDiskSize"])
+}
+
+// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+func (r *Kubernetes) WorkerDiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["workerDiskCategory"])
 }
 
 // The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
-func (r *Kubernetes) WorkerDiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["workerDiskSize"])
+func (r *Kubernetes) WorkerDiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["workerDiskSize"])
+}
+
+// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+func (r *Kubernetes) WorkerInstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["workerInstanceChargeType"])
 }
 
 // (Required, Force new resource) The instance type of worker node.
-func (r *Kubernetes) WorkerInstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["workerInstanceType"])
+func (r *Kubernetes) WorkerInstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["workerInstanceType"])
 }
 
-// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-func (r *Kubernetes) WorkerInstanceTypes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["workerInstanceTypes"])
+func (r *Kubernetes) WorkerInstanceTypes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["workerInstanceTypes"])
 }
 
 // List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-func (r *Kubernetes) WorkerNodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["workerNodes"])
+func (r *Kubernetes) WorkerNodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["workerNodes"])
 }
 
 // The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-func (r *Kubernetes) WorkerNumber() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["workerNumber"])
+func (r *Kubernetes) WorkerNumber() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["workerNumber"])
 }
 
-// The ECS instance node number in the current container cluster.
-func (r *Kubernetes) WorkerNumbers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["workerNumbers"])
+func (r *Kubernetes) WorkerNumbers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["workerNumbers"])
+}
+
+// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+func (r *Kubernetes) WorkerPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["workerPeriod"])
+}
+
+// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+func (r *Kubernetes) WorkerPeriodUnit() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["workerPeriodUnit"])
 }
 
 // Input properties used for looking up and filtering Kubernetes resources.
 type KubernetesState struct {
-	// The Zone where new kubernetes cluster will be located. If it is not be specified, the value will be vswitch's zone.
+	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone interface{}
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert interface{}
@@ -444,7 +534,8 @@ type KubernetesState struct {
 	Connections interface{}
 	// Whether to allow to SSH login kubernetes. Default to false.
 	EnableSsh interface{}
-	// The ID of node image.
+	// Whether to force the update of kubernetes cluster arguments. Default to false.
+	ForceUpdate interface{}
 	ImageId interface{}
 	// Whether to install cloud monitor for the kubernetes' node.
 	InstallCloudMonitor interface{}
@@ -452,23 +543,35 @@ type KubernetesState struct {
 	IsOutdated interface{}
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName interface{}
+	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig interface{}
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	LogConfig interface{}
-	// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// Enable master payment auto-renew, defaults to false.
+	MasterAutoRenew interface{}
+	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	MasterAutoRenewPeriod interface{}
+	// The system disk category of master node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory interface{}
-	// The system disk size of master node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize interface{}
+	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	MasterInstanceChargeType interface{}
 	// (Required, Force new resource) The instance type of master node.
 	MasterInstanceType interface{}
-	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes interface{}
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
 	MasterNodes interface{}
+	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	MasterPeriod interface{}
+	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+	MasterPeriodUnit interface{}
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name interface{}
-	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix interface{}
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId interface{}
@@ -477,57 +580,64 @@ type KubernetesState struct {
 	// The network mask used on pods for each node, ranging from `24` to `28`.
 	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
 	NodeCidrMask interface{}
-	// (Deprecated from version 1.9.4) It has been deprecated from provider version 1.9.4. New field `master_nodes` and `worker_nodes` replace it.
 	Nodes interface{}
-	// The password of ssh login cluster node. You have to specify one of `password` and `key_name` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password interface{}
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
+	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
 	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
 	PodCidr interface{}
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId interface{}
-	// The CIDR block for the service network.  It will be allocated automatically when `vswitch_id` is not specified.
+	// The CIDR block for the service network. 
 	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr interface{}
-	// (Deprecated from version 1.9.2).
 	SlbId interface{}
-	// The ID of public load balancer where the current cluster master node is located.
 	SlbInternet interface{}
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled interface{}
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet interface{}
+	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
+	UserCa interface{}
 	Version interface{}
 	// The ID of VPC where the current cluster is located.
 	VpcId interface{}
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	VswitchId interface{}
-	// The vswitch where new kubernetes cluster will be located. For SingleAZ Cluster, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified. For MultiAZ Cluster, you must create three vswitches firstly, specify them here.
+	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
 	VswitchIds interface{}
-	// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
+	// Enable worker payment auto-renew, defaults to false.
+	WorkerAutoRenew interface{}
+	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	WorkerAutoRenewPeriod interface{}
+	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory interface{}
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
+	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize interface{}
-	// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory interface{}
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
 	WorkerDiskSize interface{}
+	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	WorkerInstanceChargeType interface{}
 	// (Required, Force new resource) The instance type of worker node.
 	WorkerInstanceType interface{}
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes interface{}
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes interface{}
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber interface{}
-	// The ECS instance node number in the current container cluster.
 	WorkerNumbers interface{}
+	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	WorkerPeriod interface{}
+	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	WorkerPeriodUnit interface{}
 }
 
 // The set of arguments for constructing a Kubernetes resource.
 type KubernetesArgs struct {
-	// The Zone where new kubernetes cluster will be located. If it is not be specified, the value will be vswitch's zone.
+	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone interface{}
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert interface{}
@@ -539,65 +649,89 @@ type KubernetesArgs struct {
 	ClusterNetworkType interface{}
 	// Whether to allow to SSH login kubernetes. Default to false.
 	EnableSsh interface{}
+	// Whether to force the update of kubernetes cluster arguments. Default to false.
+	ForceUpdate interface{}
+	ImageId interface{}
 	// Whether to install cloud monitor for the kubernetes' node.
 	InstallCloudMonitor interface{}
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated interface{}
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName interface{}
+	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig interface{}
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	LogConfig interface{}
-	// The system disk category of master node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// Enable master payment auto-renew, defaults to false.
+	MasterAutoRenew interface{}
+	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	MasterAutoRenewPeriod interface{}
+	// The system disk category of master node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	MasterDiskCategory interface{}
-	// The system disk size of master node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of master node. Its valid value range [20~500] in GB. Default to 20.
 	MasterDiskSize interface{}
+	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	MasterInstanceChargeType interface{}
 	// (Required, Force new resource) The instance type of master node.
 	MasterInstanceType interface{}
-	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes interface{}
+	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	MasterPeriod interface{}
+	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
+	MasterPeriodUnit interface{}
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name interface{}
-	// The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
 	NamePrefix interface{}
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway interface{}
 	// The network mask used on pods for each node, ranging from `24` to `28`.
 	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
 	NodeCidrMask interface{}
-	// (Deprecated from version 1.9.4) It has been deprecated from provider version 1.9.4. New field `master_nodes` and `worker_nodes` replace it.
 	Nodes interface{}
-	// The password of ssh login cluster node. You have to specify one of `password` and `key_name` fields.
+	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password interface{}
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
+	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
 	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
 	PodCidr interface{}
-	// The CIDR block for the service network.  It will be allocated automatically when `vswitch_id` is not specified.
+	// The CIDR block for the service network. 
 	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr interface{}
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled interface{}
+	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
+	UserCa interface{}
 	Version interface{}
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	VswitchId interface{}
-	// The vswitch where new kubernetes cluster will be located. For SingleAZ Cluster, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified. For MultiAZ Cluster, you must create three vswitches firstly, specify them here.
+	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
 	VswitchIds interface{}
-	// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
+	// Enable worker payment auto-renew, defaults to false.
+	WorkerAutoRenew interface{}
+	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
+	WorkerAutoRenewPeriod interface{}
+	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory interface{}
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
+	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize interface{}
-	// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory interface{}
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
 	WorkerDiskSize interface{}
+	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
+	WorkerInstanceChargeType interface{}
 	// (Required, Force new resource) The instance type of worker node.
 	WorkerInstanceType interface{}
-	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes interface{}
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber interface{}
-	// The ECS instance node number in the current container cluster.
 	WorkerNumbers interface{}
+	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
+	WorkerPeriod interface{}
+	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+	WorkerPeriodUnit interface{}
 }

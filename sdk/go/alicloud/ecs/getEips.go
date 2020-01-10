@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
 func LookupEips(ctx *pulumi.Context, args *GetEipsArgs) (*GetEipsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -15,6 +17,8 @@ func LookupEips(ctx *pulumi.Context, args *GetEipsArgs) (*GetEipsResult, error) 
 		inputs["inUse"] = args.InUse
 		inputs["ipAddresses"] = args.IpAddresses
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	outputs, err := ctx.Invoke("alicloud:ecs/getEips:getEips", inputs)
 	if err != nil {
@@ -22,6 +26,13 @@ func LookupEips(ctx *pulumi.Context, args *GetEipsArgs) (*GetEipsResult, error) 
 	}
 	return &GetEipsResult{
 		Eips: outputs["eips"],
+		Ids: outputs["ids"],
+		InUse: outputs["inUse"],
+		IpAddresses: outputs["ipAddresses"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Tags: outputs["tags"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -34,14 +45,27 @@ type GetEipsArgs struct {
 	InUse interface{}
 	// A list of EIP public IP addresses.
 	IpAddresses interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the eips belongs.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }
 
 // A collection of values returned by getEips.
 type GetEipsResult struct {
 	// A list of EIPs. Each element contains the following attributes:
 	Eips interface{}
+	// (Optional) A list of EIP IDs.
+	Ids interface{}
+	InUse interface{}
+	IpAddresses interface{}
+	// (Optional) A list of EIP names.
+	Names interface{}
+	OutputFile interface{}
+	// The Id of resource group which the eips belongs.
+	ResourceGroupId interface{}
+	Tags interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

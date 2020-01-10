@@ -8,6 +8,8 @@ import (
 )
 
 // Provides a key pair resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
 type KeyPair struct {
 	s *pulumi.ResourceState
 }
@@ -21,11 +23,15 @@ func NewKeyPair(ctx *pulumi.Context,
 		inputs["keyName"] = nil
 		inputs["keyNamePrefix"] = nil
 		inputs["publicKey"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["tags"] = nil
 	} else {
 		inputs["keyFile"] = args.KeyFile
 		inputs["keyName"] = args.KeyName
 		inputs["keyNamePrefix"] = args.KeyNamePrefix
 		inputs["publicKey"] = args.PublicKey
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	inputs["fingerPrint"] = nil
 	s, err := ctx.RegisterResource("alicloud:ecs/keyPair:KeyPair", name, true, inputs, opts...)
@@ -46,6 +52,8 @@ func GetKeyPair(ctx *pulumi.Context,
 		inputs["keyName"] = state.KeyName
 		inputs["keyNamePrefix"] = state.KeyNamePrefix
 		inputs["publicKey"] = state.PublicKey
+		inputs["resourceGroupId"] = state.ResourceGroupId
+		inputs["tags"] = state.Tags
 	}
 	s, err := ctx.ReadResource("alicloud:ecs/keyPair:KeyPair", name, id, inputs, opts...)
 	if err != nil {
@@ -55,37 +63,45 @@ func GetKeyPair(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyPair) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *KeyPair) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyPair) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *KeyPair) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *KeyPair) FingerPrint() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fingerPrint"])
+func (r *KeyPair) FingerPrint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fingerPrint"])
 }
 
 // The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
-func (r *KeyPair) KeyFile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyFile"])
+func (r *KeyPair) KeyFile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyFile"])
 }
 
 // The key pair's name. It is the only in one Alicloud account.
-func (r *KeyPair) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *KeyPair) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
 }
 
-// The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
-func (r *KeyPair) KeyNamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyNamePrefix"])
+func (r *KeyPair) KeyNamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyNamePrefix"])
 }
 
 // You can import an existing public key and using Alicloud key pair to manage it.
-func (r *KeyPair) PublicKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["publicKey"])
+func (r *KeyPair) PublicKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["publicKey"])
+}
+
+// The Id of resource group which the key pair belongs.
+func (r *KeyPair) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
+}
+
+func (r *KeyPair) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering KeyPair resources.
@@ -95,10 +111,12 @@ type KeyPairState struct {
 	KeyFile interface{}
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName interface{}
-	// The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix interface{}
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey interface{}
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId interface{}
+	Tags interface{}
 }
 
 // The set of arguments for constructing a KeyPair resource.
@@ -107,8 +125,10 @@ type KeyPairArgs struct {
 	KeyFile interface{}
 	// The key pair's name. It is the only in one Alicloud account.
 	KeyName interface{}
-	// The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
 	KeyNamePrefix interface{}
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey interface{}
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId interface{}
+	Tags interface{}
 }

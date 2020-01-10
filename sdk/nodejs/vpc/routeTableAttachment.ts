@@ -2,14 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Alicloud Route Table Attachment resource for associating Route Table to VSwitch Instance.
- * 
- * ~> **NOTE:** Terraform will auto build route table attachment while it uses `alicloud_route_table_attachment` to build a route table attachment resource.
- * 
- * For information about route table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_table_attachment.html.markdown.
  */
 export class RouteTableAttachment extends pulumi.CustomResource {
     /**
@@ -20,18 +18,32 @@ export class RouteTableAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteTableAttachmentState): RouteTableAttachment {
-        return new RouteTableAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteTableAttachmentState, opts?: pulumi.CustomResourceOptions): RouteTableAttachment {
+        return new RouteTableAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/routeTableAttachment:RouteTableAttachment';
+
+    /**
+     * Returns true if the given object is an instance of RouteTableAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouteTableAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouteTableAttachment.__pulumiType;
     }
 
     /**
-     * The route_table_id of the route table attachment, the field can't be changed.
+     * The routeTableId of the route table attachment, the field can't be changed.
      */
-    public readonly routeTableId: pulumi.Output<string>;
+    public readonly routeTableId!: pulumi.Output<string>;
     /**
-     * The vswitch_id of the route table attachment, the field can't be changed.
+     * The vswitchId of the route table attachment, the field can't be changed.
      */
-    public readonly vswitchId: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string>;
 
     /**
      * Create a RouteTableAttachment resource with the given unique name, arguments, and options.
@@ -44,7 +56,7 @@ export class RouteTableAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouteTableAttachmentArgs | RouteTableAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouteTableAttachmentState = argsOrState as RouteTableAttachmentState | undefined;
+            const state = argsOrState as RouteTableAttachmentState | undefined;
             inputs["routeTableId"] = state ? state.routeTableId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -58,7 +70,14 @@ export class RouteTableAttachment extends pulumi.CustomResource {
             inputs["routeTableId"] = args ? args.routeTableId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
-        super("alicloud:vpc/routeTableAttachment:RouteTableAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RouteTableAttachment.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -67,11 +86,11 @@ export class RouteTableAttachment extends pulumi.CustomResource {
  */
 export interface RouteTableAttachmentState {
     /**
-     * The route_table_id of the route table attachment, the field can't be changed.
+     * The routeTableId of the route table attachment, the field can't be changed.
      */
     readonly routeTableId?: pulumi.Input<string>;
     /**
-     * The vswitch_id of the route table attachment, the field can't be changed.
+     * The vswitchId of the route table attachment, the field can't be changed.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }
@@ -81,11 +100,11 @@ export interface RouteTableAttachmentState {
  */
 export interface RouteTableAttachmentArgs {
     /**
-     * The route_table_id of the route table attachment, the field can't be changed.
+     * The routeTableId of the route table attachment, the field can't be changed.
      */
     readonly routeTableId: pulumi.Input<string>;
     /**
-     * The vswitch_id of the route table attachment, the field can't be changed.
+     * The vswitchId of the route table attachment, the field can't be changed.
      */
     readonly vswitchId: pulumi.Input<string>;
 }

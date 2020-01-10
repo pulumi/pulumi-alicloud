@@ -2,17 +2,43 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const ossBucketsDs = alicloud.oss.getBuckets({
+ *     nameRegex: "sampleOssBucket",
+ * });
+ * 
+ * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
  */
-export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
+export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> & GetBucketsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetBucketsResult> = pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -23,9 +49,6 @@ export interface GetBucketsArgs {
      * A regex string to filter results by bucket name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -36,7 +59,13 @@ export interface GetBucketsResult {
     /**
      * A list of buckets. Each element contains the following attributes:
      */
-    readonly buckets: { acl: string, corsRules: { allowedHeaders: string[], allowedMethods: string[], allowedOrigins: string[], exposeHeaders: string[], maxAgeSeconds: number }[], creationDate: string, extranetEndpoint: string, intranetEndpoint: string, lifecycleRules: { enabled: boolean, expiration: { date?: string, days?: number }, id: string, prefix: string }[], location: string, logging: { targetBucket: string, targetPrefix: string }, name: string, owner: string, refererConfig: { allowEmpty: boolean, referers: string[] }, storageClass: string, website: { errorDocument: string, indexDocument: string } }[];
+    readonly buckets: outputs.oss.GetBucketsBucket[];
+    readonly nameRegex?: string;
+    /**
+     * A list of bucket names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -10,7 +10,9 @@ import (
 
 // Provides an RDS instance backup policy resource and used to configure instance backup policy.
 // 
-// ~> **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+// > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
 type BackupPolicy struct {
 	s *pulumi.ResourceState
 }
@@ -25,14 +27,22 @@ func NewBackupPolicy(ctx *pulumi.Context,
 	if args == nil {
 		inputs["backupPeriods"] = nil
 		inputs["backupTime"] = nil
+		inputs["enableBackupLog"] = nil
+		inputs["highSpaceUsageProtection"] = nil
 		inputs["instanceId"] = nil
+		inputs["localLogRetentionHours"] = nil
+		inputs["localLogRetentionSpace"] = nil
 		inputs["logBackup"] = nil
 		inputs["logRetentionPeriod"] = nil
 		inputs["retentionPeriod"] = nil
 	} else {
 		inputs["backupPeriods"] = args.BackupPeriods
 		inputs["backupTime"] = args.BackupTime
+		inputs["enableBackupLog"] = args.EnableBackupLog
+		inputs["highSpaceUsageProtection"] = args.HighSpaceUsageProtection
 		inputs["instanceId"] = args.InstanceId
+		inputs["localLogRetentionHours"] = args.LocalLogRetentionHours
+		inputs["localLogRetentionSpace"] = args.LocalLogRetentionSpace
 		inputs["logBackup"] = args.LogBackup
 		inputs["logRetentionPeriod"] = args.LogRetentionPeriod
 		inputs["retentionPeriod"] = args.RetentionPeriod
@@ -52,7 +62,11 @@ func GetBackupPolicy(ctx *pulumi.Context,
 	if state != nil {
 		inputs["backupPeriods"] = state.BackupPeriods
 		inputs["backupTime"] = state.BackupTime
+		inputs["enableBackupLog"] = state.EnableBackupLog
+		inputs["highSpaceUsageProtection"] = state.HighSpaceUsageProtection
 		inputs["instanceId"] = state.InstanceId
+		inputs["localLogRetentionHours"] = state.LocalLogRetentionHours
+		inputs["localLogRetentionSpace"] = state.LocalLogRetentionSpace
 		inputs["logBackup"] = state.LogBackup
 		inputs["logRetentionPeriod"] = state.LogRetentionPeriod
 		inputs["retentionPeriod"] = state.RetentionPeriod
@@ -65,56 +79,84 @@ func GetBackupPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BackupPolicy) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BackupPolicy) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BackupPolicy) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BackupPolicy) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
-func (r *BackupPolicy) BackupPeriods() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["backupPeriods"])
+// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+func (r *BackupPolicy) BackupPeriods() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["backupPeriods"])
 }
 
 // DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-func (r *BackupPolicy) BackupTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backupTime"])
+func (r *BackupPolicy) BackupTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backupTime"])
+}
+
+// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+func (r *BackupPolicy) EnableBackupLog() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableBackupLog"])
+}
+
+// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+func (r *BackupPolicy) HighSpaceUsageProtection() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["highSpaceUsageProtection"])
 }
 
 // The Id of instance that can run database.
-func (r *BackupPolicy) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *BackupPolicy) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-// Whether to backup instance log. Default to true.
-func (r *BackupPolicy) LogBackup() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["logBackup"])
+// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+func (r *BackupPolicy) LocalLogRetentionHours() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["localLogRetentionHours"])
 }
 
-// Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
-func (r *BackupPolicy) LogRetentionPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["logRetentionPeriod"])
+// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+func (r *BackupPolicy) LocalLogRetentionSpace() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["localLogRetentionSpace"])
+}
+
+// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+func (r *BackupPolicy) LogBackup() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["logBackup"])
+}
+
+// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+func (r *BackupPolicy) LogRetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["logRetentionPeriod"])
 }
 
 // Instance backup retention days. Valid values: [7-730]. Default to 7.
-func (r *BackupPolicy) RetentionPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retentionPeriod"])
+func (r *BackupPolicy) RetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retentionPeriod"])
 }
 
 // Input properties used for looking up and filtering BackupPolicy resources.
 type BackupPolicyState struct {
-	// DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	BackupPeriods interface{}
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	BackupTime interface{}
+	// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+	EnableBackupLog interface{}
+	// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+	HighSpaceUsageProtection interface{}
 	// The Id of instance that can run database.
 	InstanceId interface{}
-	// Whether to backup instance log. Default to true.
+	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+	LocalLogRetentionHours interface{}
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	LocalLogRetentionSpace interface{}
+	// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
 	LogBackup interface{}
-	// Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
+	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
 	LogRetentionPeriod interface{}
 	// Instance backup retention days. Valid values: [7-730]. Default to 7.
 	RetentionPeriod interface{}
@@ -122,15 +164,23 @@ type BackupPolicyState struct {
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
-	// DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	BackupPeriods interface{}
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	BackupTime interface{}
+	// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+	EnableBackupLog interface{}
+	// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+	HighSpaceUsageProtection interface{}
 	// The Id of instance that can run database.
 	InstanceId interface{}
-	// Whether to backup instance log. Default to true.
+	// Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+	LocalLogRetentionHours interface{}
+	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+	LocalLogRetentionSpace interface{}
+	// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
 	LogBackup interface{}
-	// Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
+	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
 	LogRetentionPeriod interface{}
 	// Instance backup retention days. Valid values: [7-730]. Default to 7.
 	RetentionPeriod interface{}

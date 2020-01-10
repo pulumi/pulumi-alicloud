@@ -3,5 +3,11 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from group import *
-from get_groups import *
+from .api import *
+from .app import *
+from .app_attachment import *
+from .group import *
+from .vpc_access import *
+from .get_apis import *
+from .get_apps import *
+from .get_groups import *

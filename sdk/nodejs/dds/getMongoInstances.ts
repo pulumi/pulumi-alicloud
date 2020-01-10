@@ -2,57 +2,57 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * The `alicloud_mongo_instances` data source provides a collection of MongoDB instances available in Alicloud account.
- * Filters support regular expression for the instance name, engine or instance type.
- */
-export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> {
+export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> & GetMongoInstancesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetMongoInstancesResult> = pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
         "availabilityZone": args.availabilityZone,
+        "ids": args.ids,
         "instanceClass": args.instanceClass,
         "instanceType": args.instanceType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getMongoInstances.
  */
 export interface GetMongoInstancesArgs {
-    /**
-     * Instance availability zone.
-     */
     readonly availabilityZone?: string;
-    /**
-     * Sizing of the instance to be queried.
-     */
+    readonly ids?: string[];
     readonly instanceClass?: string;
-    /**
-     * Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
-     */
     readonly instanceType?: string;
-    /**
-     * A regex string to apply to the instance name.
-     */
     readonly nameRegex?: string;
-    /**
-     * The name of file that can save the collection of instances after running `terraform plan`.
-     */
     readonly outputFile?: string;
+    readonly tags?: {[key: string]: any};
 }
 
 /**
  * A collection of values returned by getMongoInstances.
  */
 export interface GetMongoInstancesResult {
-    /**
-     * A list of MongoDB instances. Its every element contains the following attributes:
-     */
-    readonly instances: { availabilityZone: string, chargeType: string, creationTime: string, engine: string, engineVersion: string, expirationTime: string, id: string, instanceClass: string, instanceType: string, lockMode: string, mongos: { class: string, description: string, nodeId: string }[], name: string, networkType: string, regionId: string, replication: string, shards: { class: string, description: string, nodeId: string, storage: number }[], status: string, storage: number }[];
+    readonly availabilityZone?: string;
+    readonly ids: string[];
+    readonly instanceClass?: string;
+    readonly instanceType?: string;
+    readonly instances: outputs.dds.GetMongoInstancesInstance[];
+    readonly nameRegex?: string;
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly tags?: {[key: string]: any};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

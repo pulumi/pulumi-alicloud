@@ -2,19 +2,54 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Filter security groups and print the results into a file
+ * const secGroupsDs = alicloud.ecs.getSecurityGroups({
+ *     nameRegex: "^web-",
+ *     outputFile: "web_access.json",
+ * });
+ * // In conjunction with a VPC
+ * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primarySecGroupsDs = primaryVpcDs.id.apply(id => alicloud.ecs.getSecurityGroups({
+ *     vpcId: id,
+ * }));
+ * 
+ * export const firstGroupId = primarySecGroupsDs.groups[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
  */
-export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
+export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> & GetSecurityGroupsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetSecurityGroupsResult> = pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
         "vpcId": args.vpcId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -22,17 +57,22 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
  */
 export interface GetSecurityGroupsArgs {
     /**
+     * A list of Security Group IDs.
+     */
+    readonly ids?: string[];
+    /**
      * A regex string to filter the resulting security groups by their names.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
+    /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    readonly resourceGroupId?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
      * ```
-     * data "alicloud_security_groups" "taggedSecurityGroups" {
+     * data "alicloud.ecs.getSecurityGroups" "taggedSecurityGroups" {
      * tags = {
      * tagKey1 = "tagValue1",
      * tagKey2 = "tagValue2"
@@ -52,9 +92,31 @@ export interface GetSecurityGroupsArgs {
  */
 export interface GetSecurityGroupsResult {
     /**
-     * A list of groups. Each element contains the following attributes:
+     * A list of Security Groups. Each element contains the following attributes:
      */
-    readonly groups: { creationTime: string, description: string, id: string, innerAccess: boolean, name: string, tags?: {[key: string]: any}, vpcId: string }[];
+    readonly groups: outputs.ecs.GetSecurityGroupsGroup[];
+    /**
+     * A list of Security Group IDs.
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of Security Group names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * A map of tags assigned to the ECS instance.
+     */
+    readonly tags?: {[key: string]: any};
+    /**
+     * The ID of the VPC that owns the security group.
+     */
+    readonly vpcId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

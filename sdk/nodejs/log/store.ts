@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
- * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store.html.markdown.
  */
 export class Store extends pulumi.CustomResource {
     /**
@@ -17,27 +18,57 @@ export class Store extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StoreState): Store {
-        return new Store(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StoreState, opts?: pulumi.CustomResourceOptions): Store {
+        return new Store(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:log/store:Store';
+
+    /**
+     * Returns true if the given object is an instance of Store.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Store {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Store.__pulumiType;
     }
 
     /**
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     */
+    public readonly appendMeta!: pulumi.Output<boolean | undefined>;
+    /**
+     * Determines whether to automatically split a shard. Default to true.
+     */
+    public readonly autoSplit!: pulumi.Output<boolean | undefined>;
+    /**
+     * Determines whether to enable Web Tracking. Default false.
+     */
+    public readonly enableWebTracking!: pulumi.Output<boolean | undefined>;
+    /**
+     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     */
+    public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
+    /**
      * The log store, which is unique in the same project.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project name to the log store belongs.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
      */
-    public readonly retentionPeriod: pulumi.Output<number | undefined>;
+    public readonly retentionPeriod!: pulumi.Output<number | undefined>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
-    public readonly shardCount: pulumi.Output<number | undefined>;
-    public /*out*/ readonly shards: pulumi.Output<{ beginKey: string, endKey: string, id: number, status: string }[]>;
+    public readonly shardCount!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly shards!: pulumi.Output<outputs.log.StoreShard[]>;
 
     /**
      * Create a Store resource with the given unique name, arguments, and options.
@@ -50,7 +81,11 @@ export class Store extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: StoreArgs | StoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: StoreState = argsOrState as StoreState | undefined;
+            const state = argsOrState as StoreState | undefined;
+            inputs["appendMeta"] = state ? state.appendMeta : undefined;
+            inputs["autoSplit"] = state ? state.autoSplit : undefined;
+            inputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
+            inputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
@@ -61,13 +96,24 @@ export class Store extends pulumi.CustomResource {
             if (!args || args.project === undefined) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["appendMeta"] = args ? args.appendMeta : undefined;
+            inputs["autoSplit"] = args ? args.autoSplit : undefined;
+            inputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
+            inputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
             inputs["shardCount"] = args ? args.shardCount : undefined;
             inputs["shards"] = undefined /*out*/;
         }
-        super("alicloud:log/store:Store", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Store.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -75,6 +121,22 @@ export class Store extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Store resources.
  */
 export interface StoreState {
+    /**
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     */
+    readonly appendMeta?: pulumi.Input<boolean>;
+    /**
+     * Determines whether to automatically split a shard. Default to true.
+     */
+    readonly autoSplit?: pulumi.Input<boolean>;
+    /**
+     * Determines whether to enable Web Tracking. Default false.
+     */
+    readonly enableWebTracking?: pulumi.Input<boolean>;
+    /**
+     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     */
+    readonly maxSplitShardCount?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project.
      */
@@ -91,13 +153,29 @@ export interface StoreState {
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
      */
     readonly shardCount?: pulumi.Input<number>;
-    readonly shards?: pulumi.Input<pulumi.Input<{ beginKey?: pulumi.Input<string>, endKey?: pulumi.Input<string>, id?: pulumi.Input<number>, status?: pulumi.Input<string> }>[]>;
+    readonly shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
 }
 
 /**
  * The set of arguments for constructing a Store resource.
  */
 export interface StoreArgs {
+    /**
+     * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
+     */
+    readonly appendMeta?: pulumi.Input<boolean>;
+    /**
+     * Determines whether to automatically split a shard. Default to true.
+     */
+    readonly autoSplit?: pulumi.Input<boolean>;
+    /**
+     * Determines whether to enable Web Tracking. Default false.
+     */
+    readonly enableWebTracking?: pulumi.Input<boolean>;
+    /**
+     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     */
+    readonly maxSplitShardCount?: pulumi.Input<number>;
     /**
      * The log store, which is unique in the same project.
      */

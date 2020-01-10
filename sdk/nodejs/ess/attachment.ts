@@ -7,9 +7,98 @@ import * as utilities from "../utilities";
 /**
  * Attaches several ECS instances to a specified scaling group or remove them from it.
  * 
- * ~> **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
+ * > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
  * 
- * ~> **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+ * > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "essattachmentconfig";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloudEfficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^ubuntu_18.*_64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
+ *     cidrIp: "172.16.0.0/24",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     type: "ingress",
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
+ *     maxSize: 2,
+ *     minSize: 0,
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     scalingGroupName: name,
+ *     vswitchIds: [defaultSwitch.id],
+ * });
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
+ *     active: true,
+ *     enable: true,
+ *     forceDelete: true,
+ *     imageId: defaultImages.images[0].id,
+ *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *     scalingGroupId: defaultScalingGroup.id,
+ *     securityGroupId: defaultSecurityGroup.id,
+ * });
+ * const defaultInstance: alicloud.ecs.Instance[] = [];
+ * for (let i = 0; i < 2; i++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${i}`, {
+ *         imageId: defaultImages.images[0].id,
+ *         instanceChargeType: "PostPaid",
+ *         instanceName: name,
+ *         instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 10,
+ *         securityGroups: [defaultSecurityGroup.id],
+ *         systemDiskCategory: "cloudEfficiency",
+ *         vswitchId: defaultSwitch.id,
+ *     }));
+ * }
+ * const defaultAttachment = new alicloud.ess.Attachment("default", {
+ *     force: true,
+ *     instanceIds: [
+ *         defaultInstance[0].id,
+ *         defaultInstance[1].id,
+ *     ],
+ *     scalingGroupId: defaultScalingGroup.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
  */
 export class Attachment extends pulumi.CustomResource {
     /**
@@ -20,22 +109,36 @@ export class Attachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttachmentState): Attachment {
-        return new Attachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttachmentState, opts?: pulumi.CustomResourceOptions): Attachment {
+        return new Attachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ess/attachment:Attachment';
+
+    /**
+     * Returns true if the given object is an instance of Attachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Attachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Attachment.__pulumiType;
     }
 
     /**
      * Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
      */
-    public readonly instanceIds: pulumi.Output<string[]>;
+    public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
-    public readonly scalingGroupId: pulumi.Output<string>;
+    public readonly scalingGroupId!: pulumi.Output<string>;
 
     /**
      * Create a Attachment resource with the given unique name, arguments, and options.
@@ -48,7 +151,7 @@ export class Attachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AttachmentState = argsOrState as AttachmentState | undefined;
+            const state = argsOrState as AttachmentState | undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
@@ -64,7 +167,14 @@ export class Attachment extends pulumi.CustomResource {
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
         }
-        super("alicloud:ess/attachment:Attachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Attachment.__pulumiType, name, inputs, opts);
     }
 }
 

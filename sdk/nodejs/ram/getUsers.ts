@@ -2,20 +2,51 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const usersDs = alicloud.ram.getUsers({
+ *     groupName: "group1",
+ *     nameRegex: "^user",
+ *     outputFile: "users.txt",
+ *     policyName: "AliyunACSDefaultAccess",
+ *     policyType: "Custom",
+ * });
+ * 
+ * export const firstUserId = usersDs.users[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
  */
-export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
+export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> & GetUsersResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getUsers:getUsers", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetUsersResult> = pulumi.runtime.invoke("alicloud:ram/getUsers:getUsers", {
         "groupName": args.groupName,
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -26,20 +57,19 @@ export interface GetUsersArgs {
      * Filter results by a specific group name. Returned users are in the specified group. 
      */
     readonly groupName?: string;
+    readonly ids?: string[];
     /**
      * A regex string to filter resulting users by their names.
+     * * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
-     * Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
      */
     readonly policyName?: string;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
      */
     readonly policyType?: string;
 }
@@ -48,10 +78,23 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    readonly groupName?: string;
+    /**
+     * A list of ram user IDs. 
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of ram user names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly policyName?: string;
+    readonly policyType?: string;
     /**
      * A list of users. Each element contains the following attributes:
      */
-    readonly users: { createDate: string, id: string, lastLoginDate: string, name: string }[];
+    readonly users: outputs.ram.GetUsersUser[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

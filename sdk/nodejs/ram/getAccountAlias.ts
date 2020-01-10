@@ -2,13 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
+export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> & GetAccountAliasResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getAccountAlias:getAccountAlias", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetAccountAliasResult> = pulumi.runtime.invoke("alicloud:ram/getAccountAlias:getAccountAlias", {
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -23,6 +34,7 @@ export interface GetAccountAliasArgs {
  */
 export interface GetAccountAliasResult {
     readonly accountAlias: string;
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

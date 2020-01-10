@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mns_topic.html.markdown.
 type Topic struct {
 	s *pulumi.ResourceState
 }
@@ -49,28 +50,28 @@ func GetTopic(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Topic) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Topic) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Topic) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Topic) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Is logging enabled? true or false. Default value to false.
-func (r *Topic) LoggingEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["loggingEnabled"])
+func (r *Topic) LoggingEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["loggingEnabled"])
 }
 
 // This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
-func (r *Topic) MaximumMessageSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maximumMessageSize"])
+func (r *Topic) MaximumMessageSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maximumMessageSize"])
 }
 
 // Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-func (r *Topic) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Topic) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Topic resources.

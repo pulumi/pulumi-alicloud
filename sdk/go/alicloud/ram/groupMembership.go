@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a RAM Group membership resource. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
 type GroupMembership struct {
 	s *pulumi.ResourceState
 }
@@ -54,23 +56,23 @@ func GetGroupMembership(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GroupMembership) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *GroupMembership) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GroupMembership) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *GroupMembership) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *GroupMembership) GroupName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupName"])
+func (r *GroupMembership) GroupName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupName"])
 }
 
 // Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-func (r *GroupMembership) UserNames() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["userNames"])
+func (r *GroupMembership) UserNames() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["userNames"])
 }
 
 // Input properties used for looking up and filtering GroupMembership resources.

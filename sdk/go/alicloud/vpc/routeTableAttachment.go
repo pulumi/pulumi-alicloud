@@ -8,11 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an Alicloud Route Table Attachment resource for associating Route Table to VSwitch Instance.
-// 
-// ~> **NOTE:** Terraform will auto build route table attachment while it uses `alicloud_route_table_attachment` to build a route table attachment resource.
-// 
-// For information about route table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_table_attachment.html.markdown.
 type RouteTableAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -58,37 +54,37 @@ func GetRouteTableAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouteTableAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouteTableAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouteTableAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouteTableAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The route_table_id of the route table attachment, the field can't be changed.
-func (r *RouteTableAttachment) RouteTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routeTableId"])
+// The routeTableId of the route table attachment, the field can't be changed.
+func (r *RouteTableAttachment) RouteTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routeTableId"])
 }
 
-// The vswitch_id of the route table attachment, the field can't be changed.
-func (r *RouteTableAttachment) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+// The vswitchId of the route table attachment, the field can't be changed.
+func (r *RouteTableAttachment) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering RouteTableAttachment resources.
 type RouteTableAttachmentState struct {
-	// The route_table_id of the route table attachment, the field can't be changed.
+	// The routeTableId of the route table attachment, the field can't be changed.
 	RouteTableId interface{}
-	// The vswitch_id of the route table attachment, the field can't be changed.
+	// The vswitchId of the route table attachment, the field can't be changed.
 	VswitchId interface{}
 }
 
 // The set of arguments for constructing a RouteTableAttachment resource.
 type RouteTableAttachmentArgs struct {
-	// The route_table_id of the route table attachment, the field can't be changed.
+	// The routeTableId of the route table attachment, the field can't be changed.
 	RouteTableId interface{}
-	// The vswitch_id of the route table attachment, the field can't be changed.
+	// The vswitchId of the route table attachment, the field can't be changed.
 	VswitchId interface{}
 }

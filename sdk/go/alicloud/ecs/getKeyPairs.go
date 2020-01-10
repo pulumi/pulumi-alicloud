@@ -8,12 +8,17 @@ import (
 )
 
 // This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
 func LookupKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs) (*GetKeyPairsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["fingerPrint"] = args.FingerPrint
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	outputs, err := ctx.Invoke("alicloud:ecs/getKeyPairs:getKeyPairs", inputs)
 	if err != nil {
@@ -21,7 +26,13 @@ func LookupKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs) (*GetKeyPairsRes
 	}
 	return &GetKeyPairsResult{
 		FingerPrint: outputs["fingerPrint"],
+		Ids: outputs["ids"],
 		KeyPairs: outputs["keyPairs"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Tags: outputs["tags"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -30,18 +41,32 @@ func LookupKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs) (*GetKeyPairsRes
 type GetKeyPairsArgs struct {
 	// A finger print used to retrieve specified key pair.
 	FingerPrint interface{}
+	// A list of key pair IDs.
+	Ids interface{}
 	// A regex string to apply to the resulting key pairs.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the key pair belongs.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }
 
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// Finger print of the key pair.
 	FingerPrint interface{}
+	Ids interface{}
 	// A list of key pairs. Each element contains the following attributes:
 	KeyPairs interface{}
+	NameRegex interface{}
+	// A list of key pair names.
+	Names interface{}
+	OutputFile interface{}
+	// The Id of resource group.
+	ResourceGroupId interface{}
+	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+	Tags interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -17,7 +17,7 @@ package main
 import (
 	alicloud "github.com/pulumi/pulumi-alicloud"
 	"github.com/pulumi/pulumi-alicloud/pkg/version"
-	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 )
 
 func main() {

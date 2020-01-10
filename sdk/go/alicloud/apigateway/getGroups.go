@@ -8,9 +8,12 @@ import (
 )
 
 // This data source provides the api groups of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
 func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 	}
@@ -20,15 +23,20 @@ func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, e
 	}
 	return &GetGroupsResult{
 		Groups: outputs["groups"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
+	// A list of api group IDs. 
+	Ids interface{}
 	// A regex string to filter api gateway groups by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
@@ -36,6 +44,12 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// A list of api groups. Each element contains the following attributes:
 	Groups interface{}
+	// A list of api group IDs. 
+	Ids interface{}
+	NameRegex interface{}
+	// A list of api group names. 
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

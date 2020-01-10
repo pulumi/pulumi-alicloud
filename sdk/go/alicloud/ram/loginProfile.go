@@ -9,7 +9,8 @@ import (
 )
 
 // Provides a RAM User Login Profile resource.
-// 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
 type LoginProfile struct {
 	s *pulumi.ResourceState
 }
@@ -61,33 +62,33 @@ func GetLoginProfile(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoginProfile) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *LoginProfile) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoginProfile) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *LoginProfile) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
-func (r *LoginProfile) MfaBindRequired() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["mfaBindRequired"])
+func (r *LoginProfile) MfaBindRequired() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["mfaBindRequired"])
 }
 
 // Password of the RAM user.
-func (r *LoginProfile) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *LoginProfile) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
-func (r *LoginProfile) PasswordResetRequired() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["passwordResetRequired"])
+func (r *LoginProfile) PasswordResetRequired() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["passwordResetRequired"])
 }
 
 // Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-func (r *LoginProfile) UserName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userName"])
+func (r *LoginProfile) UserName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userName"])
 }
 
 // Input properties used for looking up and filtering LoginProfile resources.

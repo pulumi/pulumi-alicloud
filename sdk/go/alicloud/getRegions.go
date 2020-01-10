@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides Alibaba Cloud regions.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
 func LookupRegions(ctx *pulumi.Context, args *GetRegionsArgs) (*GetRegionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,7 +23,9 @@ func LookupRegions(ctx *pulumi.Context, args *GetRegionsArgs) (*GetRegionsResult
 	}
 	return &GetRegionsResult{
 		Current: outputs["current"],
+		Ids: outputs["ids"],
 		Name: outputs["name"],
+		OutputFile: outputs["outputFile"],
 		Regions: outputs["regions"],
 		Id: outputs["id"],
 	}, nil
@@ -33,14 +37,16 @@ type GetRegionsArgs struct {
 	Current interface{}
 	// The name of the region to select, such as `eu-central-1`.
 	Name interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	Current interface{}
+	// A list of region IDs.
+	Ids interface{}
 	Name interface{}
+	OutputFile interface{}
 	// A list of regions. Each element contains the following attributes:
 	Regions interface{}
 	// id is the provider-assigned unique ID for this managed resource.
