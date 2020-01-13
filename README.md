@@ -31,10 +31,32 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-alicloud/sdk/go/...
 
-## Concepts
+## Configuration
 
-The `@pulumi/alicloud` package provides a strongly-typed means to build cloud applications that create
-and interact closely with AliCloud resources.  Resources are exposed for the entire AliCloud surface area.
+The following configuration points are available:
+
+- `alicloud:accessKey` - (Required) This is the Alicloud access key. It must be provided, but it can also be sourced from
+  the `ALICLOUD_ACCESS_KEY` environment variable.
+- `alicloud:secretKey` - (Required) This is the Alicloud secret key. It must be provided, but it can also be sourced from
+  the `ALICLOUD_SECRET_KEY` environment variable.
+- `alicloud:securityToken` - (Optional) Alicloud Security Token Service. It can be sourced from the `ALICLOUD_SECURITY_TOKEN`
+  environment variable.
+- `alicloud:escRoleName` - (Optional) The RAM Role Name attached on a ECS instance for API operations. You can retrieve
+  this from the 'Access Control' section of the Alibaba Cloud console. It can be sourced from the `ALICLOUD_ECS_ROLE_NAME`
+  environment variable.
+- `alicloud:region` - (Required) This is the Alicloud region. It must be provided, but it can also be sourced from the
+  `ALICLOUD_REGION` environment variables.
+- `alicloud:accountId` - (Optional) Alibaba Cloud Account ID. It is used by the Function Compute service and to
+  connect router interfaces. If not provided, the provider will attempt to retrieve it automatically with STS GetCallerIdentity.
+  It can be sourced from the `ALICLOUD_ACCOUNT_ID` environment variable.
+- `alicloud:sharedCredentialsFile` - (Optional) This is the path to the shared credentials file. It can also be sourced
+  from the `ALICLOUD_SHARED_CREDENTIALS_FILE` environment variable. If this is not set and a profile is specified, 
+  `~/.aliyun/config.json` will be used.
+- `alicloud:profile` - (Optional) This is the Alicloud profile name as set in the shared credentials file. It can also be
+  sourced from the `ALICLOUD_PROFILE` environment variable. 
+- `alicloud:skipRegionValidation` - (Optional) Skip static validation of region ID. Used by users of alternative
+  AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+
 
 ## Reference
 
