@@ -2,19 +2,67 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
  * After that, all of the two router interfaces will be active.
  * 
- * -> **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+ * > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
  * 
- * -> **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+ * > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
  * 
- * -> **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+ * > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
  * 
- * -> **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+ * > **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "alicloudRouterInterfaceConnectionBasic";
+ * 
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const barNetwork = new alicloud.vpc.Network("bar", {
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const initiate = new alicloud.vpc.RouterInterface("initiate", {
+ *     description: name,
+ *     instanceChargeType: "PostPaid",
+ *     oppositeRegion: region,
+ *     role: "InitiatingSide",
+ *     routerId: fooNetwork.routerId,
+ *     routerType: "VRouter",
+ *     specification: "Large.2",
+ * });
+ * const opposite = new alicloud.vpc.RouterInterface("opposite", {
+ *     description: `${name}-opposite`,
+ *     oppositeRegion: region,
+ *     role: "AcceptingSide",
+ *     routerId: barNetwork.routerId,
+ *     routerType: "VRouter",
+ *     specification: "Large.1",
+ * });
+ * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("bar", {
+ *     interfaceId: opposite.id,
+ *     oppositeInterfaceId: initiate.id,
+ * });
+ * // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+ * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("foo", {
+ *     interfaceId: initiate.id,
+ *     oppositeInterfaceId: opposite.id,
+ * }, {dependsOn: [barRouterInterfaceConnection]});
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
  */
 export class RouterInterfaceConnection extends pulumi.CustomResource {
     /**
@@ -25,30 +73,41 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceConnectionState): RouterInterfaceConnection {
-        return new RouterInterfaceConnection(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceConnectionState, opts?: pulumi.CustomResourceOptions): RouterInterfaceConnection {
+        return new RouterInterfaceConnection(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection';
+
+    /**
+     * Returns true if the given object is an instance of RouterInterfaceConnection.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterInterfaceConnection {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouterInterfaceConnection.__pulumiType;
     }
 
     /**
      * One side router interface ID.
      */
-    public readonly interfaceId: pulumi.Output<string>;
+    public readonly interfaceId!: pulumi.Output<string>;
     /**
-     * Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+     * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
-    public readonly oppositeInterfaceId: pulumi.Output<string>;
+    public readonly oppositeInterfaceId!: pulumi.Output<string>;
+    public readonly oppositeInterfaceOwnerId!: pulumi.Output<string>;
     /**
-     * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
+     * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    public readonly oppositeInterfaceOwnerId: pulumi.Output<string>;
+    public readonly oppositeRouterId!: pulumi.Output<string>;
     /**
-     * Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    public readonly oppositeRouterId: pulumi.Output<string>;
-    /**
-     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
-     */
-    public readonly oppositeRouterType: pulumi.Output<string | undefined>;
+    public readonly oppositeRouterType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterfaceConnection resource with the given unique name, arguments, and options.
@@ -61,7 +120,7 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterInterfaceConnectionArgs | RouterInterfaceConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterInterfaceConnectionState = argsOrState as RouterInterfaceConnectionState | undefined;
+            const state = argsOrState as RouterInterfaceConnectionState | undefined;
             inputs["interfaceId"] = state ? state.interfaceId : undefined;
             inputs["oppositeInterfaceId"] = state ? state.oppositeInterfaceId : undefined;
             inputs["oppositeInterfaceOwnerId"] = state ? state.oppositeInterfaceOwnerId : undefined;
@@ -81,7 +140,14 @@ export class RouterInterfaceConnection extends pulumi.CustomResource {
             inputs["oppositeRouterId"] = args ? args.oppositeRouterId : undefined;
             inputs["oppositeRouterType"] = args ? args.oppositeRouterType : undefined;
         }
-        super("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RouterInterfaceConnection.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -94,19 +160,16 @@ export interface RouterInterfaceConnectionState {
      */
     readonly interfaceId?: pulumi.Input<string>;
     /**
-     * Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+     * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
     readonly oppositeInterfaceId?: pulumi.Input<string>;
-    /**
-     * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
-     */
     readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
-     * Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+     * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
     readonly oppositeRouterId?: pulumi.Input<string>;
     /**
-     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
     readonly oppositeRouterType?: pulumi.Input<string>;
 }
@@ -120,19 +183,16 @@ export interface RouterInterfaceConnectionArgs {
      */
     readonly interfaceId: pulumi.Input<string>;
     /**
-     * Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
+     * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
     readonly oppositeInterfaceId: pulumi.Input<string>;
-    /**
-     * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to [Provider account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
-     */
     readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
-     * Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
+     * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
     readonly oppositeRouterId?: pulumi.Input<string>;
     /**
-     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+     * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
     readonly oppositeRouterType?: pulumi.Input<string>;
 }

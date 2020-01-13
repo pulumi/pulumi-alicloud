@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a CDN Accelerated Domain resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain.html.markdown.
 type Domain struct {
 	s *pulumi.ResourceState
 }
@@ -28,6 +28,7 @@ func NewDomain(ctx *pulumi.Context,
 		inputs["blockIps"] = nil
 		inputs["cacheConfigs"] = nil
 		inputs["cdnType"] = nil
+		inputs["certificateConfig"] = nil
 		inputs["domainName"] = nil
 		inputs["httpHeaderConfigs"] = nil
 		inputs["optimizeEnable"] = nil
@@ -46,6 +47,7 @@ func NewDomain(ctx *pulumi.Context,
 		inputs["blockIps"] = args.BlockIps
 		inputs["cacheConfigs"] = args.CacheConfigs
 		inputs["cdnType"] = args.CdnType
+		inputs["certificateConfig"] = args.CertificateConfig
 		inputs["domainName"] = args.DomainName
 		inputs["httpHeaderConfigs"] = args.HttpHeaderConfigs
 		inputs["optimizeEnable"] = args.OptimizeEnable
@@ -77,6 +79,7 @@ func GetDomain(ctx *pulumi.Context,
 		inputs["blockIps"] = state.BlockIps
 		inputs["cacheConfigs"] = state.CacheConfigs
 		inputs["cdnType"] = state.CdnType
+		inputs["certificateConfig"] = state.CertificateConfig
 		inputs["domainName"] = state.DomainName
 		inputs["httpHeaderConfigs"] = state.HttpHeaderConfigs
 		inputs["optimizeEnable"] = state.OptimizeEnable
@@ -99,131 +102,136 @@ func GetDomain(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Domain) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Domain) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Domain) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Domain) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// Auth config of the accelerated domain. It's a set and consist of at most 1 item.
-func (r *Domain) AuthConfig() *pulumi.Output {
+// The auth config of the accelerated domain.
+func (r *Domain) AuthConfig() pulumi.Output {
 	return r.s.State["authConfig"]
 }
 
-func (r *Domain) BlockIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["blockIps"])
+func (r *Domain) BlockIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["blockIps"])
 }
 
-// Cache config of the accelerated domain. It's a set and each item's `cache_content` can not be repeated.
-func (r *Domain) CacheConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["cacheConfigs"])
+// The cache configs of the accelerated domain.
+func (r *Domain) CacheConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["cacheConfigs"])
 }
 
 // Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-func (r *Domain) CdnType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cdnType"])
+func (r *Domain) CdnType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cdnType"])
+}
+
+func (r *Domain) CertificateConfig() pulumi.Output {
+	return r.s.State["certificateConfig"]
 }
 
 // Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-func (r *Domain) DomainName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainName"])
+func (r *Domain) DomainName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainName"])
 }
 
-// Http header config of the accelerated domain. It's a set and consist of at most 8 items. The `header_key` for each item can not be repeated.
-func (r *Domain) HttpHeaderConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["httpHeaderConfigs"])
+// The http header configs of the accelerated domain.
+func (r *Domain) HttpHeaderConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["httpHeaderConfigs"])
 }
 
 // Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
-func (r *Domain) OptimizeEnable() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["optimizeEnable"])
+func (r *Domain) OptimizeEnable() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["optimizeEnable"])
 }
 
-// Error Page config of the accelerated domain. It's a set and consists of at most one item.
-func (r *Domain) Page404Config() *pulumi.Output {
+// The error page config of the accelerated domain.
+func (r *Domain) Page404Config() pulumi.Output {
 	return r.s.State["page404Config"]
 }
 
 // Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-func (r *Domain) PageCompressEnable() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pageCompressEnable"])
+func (r *Domain) PageCompressEnable() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pageCompressEnable"])
 }
 
-// Parameter filter config of the accelerated domain. It's a set and consists of at most one item.
-func (r *Domain) ParameterFilterConfig() *pulumi.Output {
+// The parameter filter config of the accelerated domain.
+func (r *Domain) ParameterFilterConfig() pulumi.Output {
 	return r.s.State["parameterFilterConfig"]
 }
 
 // Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-func (r *Domain) RangeEnable() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["rangeEnable"])
+func (r *Domain) RangeEnable() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["rangeEnable"])
 }
 
-// Refer anti-theft chain config of the accelerated domain. It's a set and consists of at most 1 item. 
-func (r *Domain) ReferConfig() *pulumi.Output {
+// The refer config of the accelerated domain.
+func (r *Domain) ReferConfig() pulumi.Output {
 	return r.s.State["referConfig"]
 }
 
 // Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
-func (r *Domain) Scope() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scope"])
+func (r *Domain) Scope() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scope"])
 }
 
-// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
-func (r *Domain) SourcePort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["sourcePort"])
+// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
+func (r *Domain) SourcePort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["sourcePort"])
 }
 
-// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
-func (r *Domain) SourceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sourceType"])
+// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
+func (r *Domain) SourceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sourceType"])
 }
 
-// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
-func (r *Domain) Sources() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["sources"])
+// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
+func (r *Domain) Sources() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["sources"])
 }
 
 // Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-func (r *Domain) VideoSeekEnable() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["videoSeekEnable"])
+func (r *Domain) VideoSeekEnable() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["videoSeekEnable"])
 }
 
 // Input properties used for looking up and filtering Domain resources.
 type DomainState struct {
-	// Auth config of the accelerated domain. It's a set and consist of at most 1 item.
+	// The auth config of the accelerated domain.
 	AuthConfig interface{}
 	BlockIps interface{}
-	// Cache config of the accelerated domain. It's a set and each item's `cache_content` can not be repeated.
+	// The cache configs of the accelerated domain.
 	CacheConfigs interface{}
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
 	CdnType interface{}
+	CertificateConfig interface{}
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName interface{}
-	// Http header config of the accelerated domain. It's a set and consist of at most 8 items. The `header_key` for each item can not be repeated.
+	// The http header configs of the accelerated domain.
 	HttpHeaderConfigs interface{}
 	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
 	OptimizeEnable interface{}
-	// Error Page config of the accelerated domain. It's a set and consists of at most one item.
+	// The error page config of the accelerated domain.
 	Page404Config interface{}
 	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	PageCompressEnable interface{}
-	// Parameter filter config of the accelerated domain. It's a set and consists of at most one item.
+	// The parameter filter config of the accelerated domain.
 	ParameterFilterConfig interface{}
 	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	RangeEnable interface{}
-	// Refer anti-theft chain config of the accelerated domain. It's a set and consists of at most 1 item. 
+	// The refer config of the accelerated domain.
 	ReferConfig interface{}
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope interface{}
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
+	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
 	SourcePort interface{}
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
+	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
 	SourceType interface{}
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
+	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
 	Sources interface{}
 	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	VideoSeekEnable interface{}
@@ -231,36 +239,37 @@ type DomainState struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// Auth config of the accelerated domain. It's a set and consist of at most 1 item.
+	// The auth config of the accelerated domain.
 	AuthConfig interface{}
 	BlockIps interface{}
-	// Cache config of the accelerated domain. It's a set and each item's `cache_content` can not be repeated.
+	// The cache configs of the accelerated domain.
 	CacheConfigs interface{}
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
 	CdnType interface{}
+	CertificateConfig interface{}
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName interface{}
-	// Http header config of the accelerated domain. It's a set and consist of at most 8 items. The `header_key` for each item can not be repeated.
+	// The http header configs of the accelerated domain.
 	HttpHeaderConfigs interface{}
 	// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
 	OptimizeEnable interface{}
-	// Error Page config of the accelerated domain. It's a set and consists of at most one item.
+	// The error page config of the accelerated domain.
 	Page404Config interface{}
 	// Page Compress config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	PageCompressEnable interface{}
-	// Parameter filter config of the accelerated domain. It's a set and consists of at most one item.
+	// The parameter filter config of the accelerated domain.
 	ParameterFilterConfig interface{}
 	// Range Source config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	RangeEnable interface{}
-	// Refer anti-theft chain config of the accelerated domain. It's a set and consists of at most 1 item. 
+	// The refer config of the accelerated domain.
 	ReferConfig interface{}
 	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
 	Scope interface{}
-	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `source_type` is `oss`.
+	// Source port of the accelerated domain. Valid values are `80` and `443`. Default value is `80`. You must use `80` when the `sourceType` is `oss`.
 	SourcePort interface{}
-	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
+	// Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdnType` value is not `liveStream`.
 	SourceType interface{}
-	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
+	// Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdnType` value is not `liveStream`.
 	Sources interface{}
 	// Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
 	VideoSeekEnable interface{}

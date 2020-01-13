@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./logTailAttachment";
+export * from "./logTailConfig";
 export * from "./machineGroup";
 export * from "./project";
 export * from "./store";

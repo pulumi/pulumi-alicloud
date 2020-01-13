@@ -11,15 +11,26 @@ import (
 // A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
 // and to meet the personalized requirements of domain name and URL forwarding.
 // 
-// ~> **NOTE:** One ECS instance can be added into multiple virtual server groups.
+// > **NOTE:** One ECS instance can be added into multiple virtual server groups.
 // 
-// ~> **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
+// > **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
 // 
-// ~> **NOTE:** One Classic and Internet load balancer, its virtual server group can add Classic and VPC ECS instances.
+// > **NOTE:** One Classic and Internet load balancer, its virtual server group can add Classic and VPC ECS instances.
 // 
-// ~> **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
+// > **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
 // 
-// ~> **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
+// > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
+// 
+// ## Block servers
+// 
+// The servers mapping supports the following:
+// 
+// * `serverIds` - (Required) A list backend server ID (ECS instance ID).
+// * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
+// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
+// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
 type ServerGroup struct {
 	s *pulumi.ResourceState
 }
@@ -32,10 +43,12 @@ func NewServerGroup(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["deleteProtectionValidation"] = nil
 		inputs["loadBalancerId"] = nil
 		inputs["name"] = nil
 		inputs["servers"] = nil
 	} else {
+		inputs["deleteProtectionValidation"] = args.DeleteProtectionValidation
 		inputs["loadBalancerId"] = args.LoadBalancerId
 		inputs["name"] = args.Name
 		inputs["servers"] = args.Servers
@@ -53,6 +66,7 @@ func GetServerGroup(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ServerGroupState, opts ...pulumi.ResourceOpt) (*ServerGroup, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["deleteProtectionValidation"] = state.DeleteProtectionValidation
 		inputs["loadBalancerId"] = state.LoadBalancerId
 		inputs["name"] = state.Name
 		inputs["servers"] = state.Servers
@@ -65,32 +79,39 @@ func GetServerGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServerGroup) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ServerGroup) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServerGroup) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ServerGroup) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (r *ServerGroup) DeleteProtectionValidation() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteProtectionValidation"])
 }
 
 // The Load Balancer ID which is used to launch a new virtual server group.
-func (r *ServerGroup) LoadBalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadBalancerId"])
+func (r *ServerGroup) LoadBalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadBalancerId"])
 }
 
 // Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
-func (r *ServerGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ServerGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
-func (r *ServerGroup) Servers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["servers"])
+func (r *ServerGroup) Servers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["servers"])
 }
 
 // Input properties used for looking up and filtering ServerGroup resources.
 type ServerGroupState struct {
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// The Load Balancer ID which is used to launch a new virtual server group.
 	LoadBalancerId interface{}
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
@@ -101,6 +122,8 @@ type ServerGroupState struct {
 
 // The set of arguments for constructing a ServerGroup resource.
 type ServerGroupArgs struct {
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// The Load Balancer ID which is used to launch a new virtual server group.
 	LoadBalancerId interface{}
 	// Name of the virtual server group. Our plugin provides a default name: "tf-server-group".

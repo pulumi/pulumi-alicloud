@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides CEN instances available to the user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_instances.html.markdown.
 func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstancesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -20,7 +22,11 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		return nil, err
 	}
 	return &GetInstancesResult{
+		Ids: outputs["ids"],
 		Instances: outputs["instances"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -31,14 +37,19 @@ type GetInstancesArgs struct {
 	Ids interface{}
 	// A regex string to filter CEN instances by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	// A list of CEN instances IDs.
+	Ids interface{}
 	// A list of CEN instances. Each element contains the following attributes:
 	Instances interface{}
+	NameRegex interface{}
+	// A list of CEN instances names. 
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

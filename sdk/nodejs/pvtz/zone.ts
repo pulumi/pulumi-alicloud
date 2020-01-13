@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Private Zone resource.
- * 
- * ~> **NOTE:** Terraform will auto Create a Private Zone while it uses `alicloud_pvtz_zone` to build a Private Zone resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
  */
 export class Zone extends pulumi.CustomResource {
     /**
@@ -18,25 +16,39 @@ export class Zone extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneState): Zone {
-        return new Zone(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneState, opts?: pulumi.CustomResourceOptions): Zone {
+        return new Zone(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly creationTime: pulumi.Output<string>;
-    public /*out*/ readonly isPtr: pulumi.Output<boolean>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:pvtz/zone:Zone';
+
+    /**
+     * Returns true if the given object is an instance of Zone.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Zone {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Zone.__pulumiType;
+    }
+
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    public /*out*/ readonly isPtr!: pulumi.Output<boolean>;
     /**
      * The name of the Private Zone.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The count of the Private Zone Record.
      */
-    public /*out*/ readonly recordCount: pulumi.Output<number>;
+    public /*out*/ readonly recordCount!: pulumi.Output<number>;
     /**
      * The remark of the Private Zone.
      */
-    public readonly remark: pulumi.Output<string | undefined>;
-    public /*out*/ readonly updateTime: pulumi.Output<string>;
+    public readonly remark!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -49,7 +61,7 @@ export class Zone extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneState = argsOrState as ZoneState | undefined;
+            const state = argsOrState as ZoneState | undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["isPtr"] = state ? state.isPtr : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -65,7 +77,14 @@ export class Zone extends pulumi.CustomResource {
             inputs["recordCount"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        super("alicloud:pvtz/zone:Zone", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Zone.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -8,9 +8,12 @@ import (
 )
 
 // This data source provides the Function Compute functions of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
 func LookupFunctions(ctx *pulumi.Context, args *GetFunctionsArgs) (*GetFunctionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["serviceName"] = args.ServiceName
@@ -21,15 +24,21 @@ func LookupFunctions(ctx *pulumi.Context, args *GetFunctionsArgs) (*GetFunctions
 	}
 	return &GetFunctionsResult{
 		Functions: outputs["functions"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ServiceName: outputs["serviceName"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsArgs struct {
+	Ids interface{}
 	// A regex string to filter results by function name.
+	// * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Name of the service that contains the functions to find.
 	ServiceName interface{}
@@ -39,6 +48,13 @@ type GetFunctionsArgs struct {
 type GetFunctionsResult struct {
 	// A list of functions. Each element contains the following attributes:
 	Functions interface{}
+	// A list of functions ids.
+	Ids interface{}
+	NameRegex interface{}
+	// A list of functions names.
+	Names interface{}
+	OutputFile interface{}
+	ServiceName interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -2,18 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN instances available to the user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const cenInstancesDs = alicloud.cen.getInstances({
+ *     ids: ["cen-id1"],
+ *     nameRegex: "^foo",
+ * });
+ * 
+ * export const firstCenInstanceId = cenInstancesDs.instances[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_instances.html.markdown.
  */
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:cen/getInstances:getInstances", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:cen/getInstances:getInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -28,9 +54,6 @@ export interface GetInstancesArgs {
      * A regex string to filter CEN instances by name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -39,9 +62,19 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
+     * A list of CEN instances IDs.
+     */
+    readonly ids: string[];
+    /**
      * A list of CEN instances. Each element contains the following attributes:
      */
-    readonly instances: { bandwidthPackageIds: string[], childInstanceIds: string[], description: string, id: string, name: string, status: string }[];
+    readonly instances: outputs.cen.GetInstancesInstance[];
+    readonly nameRegex?: string;
+    /**
+     * A list of CEN instances names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

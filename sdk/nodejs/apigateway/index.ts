@@ -2,5 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./api";
+export * from "./app";
+export * from "./appAttachment";
+export * from "./getApis";
+export * from "./getApps";
 export * from "./getGroups";
 export * from "./group";
+export * from "./vpcAccess";

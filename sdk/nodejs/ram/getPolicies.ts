@@ -2,14 +2,41 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const policiesDs = alicloud.ram.getPolicies({
+ *     groupName: "group1",
+ *     outputFile: "policies.txt",
+ *     type: "System",
+ *     userName: "user1",
+ * });
+ * 
+ * export const firstPolicyName = policiesDs.policies[0].name;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
  */
-export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
+export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> & GetPoliciesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetPoliciesResult> = pulumi.runtime.invoke("alicloud:ram/getPolicies:getPolicies", {
         "groupName": args.groupName,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -17,6 +44,8 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
         "type": args.type,
         "userName": args.userName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -31,9 +60,6 @@ export interface GetPoliciesArgs {
      * A regex string to filter resulting policies by name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Filter results by a specific role name. Returned policies are attached to the specified role.
@@ -53,10 +79,23 @@ export interface GetPoliciesArgs {
  * A collection of values returned by getPolicies.
  */
 export interface GetPoliciesResult {
+    readonly groupName?: string;
+    readonly nameRegex?: string;
+    /**
+     * A list of ram group names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * A list of policies. Each element contains the following attributes:
      */
-    readonly policies: { attachmentCount: number, createDate: string, defaultVersion: string, description: string, document: string, name: string, type: string, updateDate: string }[];
+    readonly policies: outputs.ram.GetPoliciesPolicy[];
+    readonly roleName?: string;
+    /**
+     * Type of the policy.
+     */
+    readonly type?: string;
+    readonly userName?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

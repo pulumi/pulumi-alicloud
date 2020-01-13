@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides CEN Bandwidth Limits available to the user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
 func LookupBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs) (*GetBandwidthLimitsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -19,7 +21,9 @@ func LookupBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs) (*
 		return nil, err
 	}
 	return &GetBandwidthLimitsResult{
+		InstanceIds: outputs["instanceIds"],
 		Limits: outputs["limits"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -28,14 +32,15 @@ func LookupBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs) (*
 type GetBandwidthLimitsArgs struct {
 	// A list of CEN instances IDs.
 	InstanceIds interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getBandwidthLimits.
 type GetBandwidthLimitsResult struct {
+	InstanceIds interface{}
 	// A list of CEN Bandwidth Limits. Each element contains the following attributes:
 	Limits interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

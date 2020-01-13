@@ -8,18 +8,26 @@ import (
 )
 
 // This data source provides the VServer groups related to a server load balancer.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
 func LookupServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs) (*GetServerGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["ids"] = args.Ids
 		inputs["loadBalancerId"] = args.LoadBalancerId
 		inputs["nameRegex"] = args.NameRegex
+		inputs["outputFile"] = args.OutputFile
 	}
 	outputs, err := ctx.Invoke("alicloud:slb/getServerGroups:getServerGroups", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetServerGroupsResult{
+		Ids: outputs["ids"],
+		LoadBalancerId: outputs["loadBalancerId"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		SlbServerGroups: outputs["slbServerGroups"],
 		Id: outputs["id"],
 	}, nil
@@ -33,10 +41,18 @@ type GetServerGroupsArgs struct {
 	LoadBalancerId interface{}
 	// A regex string to filter results by VServer group name.
 	NameRegex interface{}
+	OutputFile interface{}
 }
 
 // A collection of values returned by getServerGroups.
 type GetServerGroupsResult struct {
+	// A list of SLB VServer groups IDs.
+	Ids interface{}
+	LoadBalancerId interface{}
+	NameRegex interface{}
+	// A list of SLB VServer groups names.
+	Names interface{}
+	OutputFile interface{}
 	// A list of SLB VServer groups. Each element contains the following attributes:
 	SlbServerGroups interface{}
 	// id is the provider-assigned unique ID for this managed resource.

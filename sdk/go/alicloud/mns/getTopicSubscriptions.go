@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
 func LookupTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsArgs) (*GetTopicSubscriptionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -20,7 +22,11 @@ func LookupTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsAr
 		return nil, err
 	}
 	return &GetTopicSubscriptionsResult{
+		NamePrefix: outputs["namePrefix"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Subscriptions: outputs["subscriptions"],
+		TopicName: outputs["topicName"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -29,7 +35,6 @@ func LookupTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsAr
 type GetTopicSubscriptionsArgs struct {
 	// A string to filter resulting subscriptions of the topic by their name prefixs.
 	NamePrefix interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName interface{}
@@ -37,8 +42,13 @@ type GetTopicSubscriptionsArgs struct {
 
 // A collection of values returned by getTopicSubscriptions.
 type GetTopicSubscriptionsResult struct {
-	// A list of users. Each element contains the following attributes:
+	NamePrefix interface{}
+	// A list of subscription names.
+	Names interface{}
+	OutputFile interface{}
+	// A list of subscriptions. Each element contains the following attributes:
 	Subscriptions interface{}
+	TopicName interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

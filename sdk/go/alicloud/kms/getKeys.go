@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
 func LookupKeys(ctx *pulumi.Context, args *GetKeysArgs) (*GetKeysResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,7 +23,11 @@ func LookupKeys(ctx *pulumi.Context, args *GetKeysArgs) (*GetKeysResult, error) 
 		return nil, err
 	}
 	return &GetKeysResult{
+		DescriptionRegex: outputs["descriptionRegex"],
+		Ids: outputs["ids"],
 		Keys: outputs["keys"],
+		OutputFile: outputs["outputFile"],
+		Status: outputs["status"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -32,7 +38,6 @@ type GetKeysArgs struct {
 	DescriptionRegex interface{}
 	// A list of KMS key IDs.
 	Ids interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status interface{}
@@ -40,8 +45,14 @@ type GetKeysArgs struct {
 
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
+	DescriptionRegex interface{}
+	// A list of KMS key IDs.
+	Ids interface{}
 	// A list of KMS keys. Each element contains the following attributes:
 	Keys interface{}
+	OutputFile interface{}
+	// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
+	Status interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

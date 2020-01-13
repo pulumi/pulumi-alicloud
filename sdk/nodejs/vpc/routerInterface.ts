@@ -2,15 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC router interface resource aim to build a connection between two VPCs.
- * 
- * -> **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
- * 
- * -> **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource [alicloud_router_interface_connection](https://www.terraform.io/docs/providers/alicloud/r/router_interface_connection.html).
- * 
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface.html.markdown.
  */
 export class RouterInterface extends pulumi.CustomResource {
     /**
@@ -21,79 +18,93 @@ export class RouterInterface extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceState): RouterInterface {
-        return new RouterInterface(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouterInterfaceState, opts?: pulumi.CustomResourceOptions): RouterInterface {
+        return new RouterInterface(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/routerInterface:RouterInterface';
+
+    /**
+     * Returns true if the given object is an instance of RouterInterface.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouterInterface {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouterInterface.__pulumiType;
     }
 
     /**
      * It has been deprecated from version 1.11.0.
      */
-    public /*out*/ readonly accessPointId: pulumi.Output<string>;
+    public /*out*/ readonly accessPointId!: pulumi.Output<string>;
     /**
      * Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
-    public readonly healthCheckSourceIp: pulumi.Output<string | undefined>;
+    public readonly healthCheckSourceIp!: pulumi.Output<string | undefined>;
     /**
-     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
-    public readonly healthCheckTargetIp: pulumi.Output<string | undefined>;
+    public readonly healthCheckTargetIp!: pulumi.Output<string | undefined>;
     /**
-     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
-    public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0.
      */
-    public readonly oppositeAccessPointId: pulumi.Output<string | undefined>;
+    public readonly oppositeAccessPointId!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
-    public /*out*/ readonly oppositeInterfaceId: pulumi.Output<string>;
+    public /*out*/ readonly oppositeInterfaceId!: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
-    public /*out*/ readonly oppositeInterfaceOwnerId: pulumi.Output<string>;
+    public /*out*/ readonly oppositeInterfaceOwnerId!: pulumi.Output<string>;
     /**
      * The Region of peer side.
      */
-    public readonly oppositeRegion: pulumi.Output<string>;
+    public readonly oppositeRegion!: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
-    public /*out*/ readonly oppositeRouterId: pulumi.Output<string>;
+    public /*out*/ readonly oppositeRouterId!: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
-    public /*out*/ readonly oppositeRouterType: pulumi.Output<string>;
+    public /*out*/ readonly oppositeRouterType!: pulumi.Output<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
      */
-    public readonly role: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
     /**
      * The Router ID.
      */
-    public readonly routerId: pulumi.Output<string>;
+    public readonly routerId!: pulumi.Output<string>;
     /**
      * Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
      */
-    public readonly routerType: pulumi.Output<string>;
+    public readonly routerType!: pulumi.Output<string>;
     /**
      * Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
      */
-    public readonly specification: pulumi.Output<string | undefined>;
+    public readonly specification!: pulumi.Output<string | undefined>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -106,7 +117,7 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouterInterfaceState = argsOrState as RouterInterfaceState | undefined;
+            const state = argsOrState as RouterInterfaceState | undefined;
             inputs["accessPointId"] = state ? state.accessPointId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["healthCheckSourceIp"] = state ? state.healthCheckSourceIp : undefined;
@@ -156,7 +167,14 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["oppositeRouterId"] = undefined /*out*/;
             inputs["oppositeRouterType"] = undefined /*out*/;
         }
-        super("alicloud:vpc/routerInterface:RouterInterface", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RouterInterface.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -173,15 +191,15 @@ export interface RouterInterfaceState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
     readonly healthCheckSourceIp?: pulumi.Input<string>;
     /**
-     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
     readonly healthCheckTargetIp?: pulumi.Input<string>;
     /**
-     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -214,7 +232,7 @@ export interface RouterInterfaceState {
      */
     readonly oppositeRouterType?: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -244,15 +262,15 @@ export interface RouterInterfaceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+     * Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
      */
     readonly healthCheckSourceIp?: pulumi.Input<string>;
     /**
-     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+     * Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
      */
     readonly healthCheckTargetIp?: pulumi.Input<string>;
     /**
-     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -269,7 +287,7 @@ export interface RouterInterfaceArgs {
      */
     readonly oppositeRegion: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
      */
     readonly period?: pulumi.Input<number>;
     /**

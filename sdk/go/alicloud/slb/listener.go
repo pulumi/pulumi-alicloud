@@ -12,8 +12,55 @@ import (
 // 
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 // 
-// For information about listener and how to use it, see [Configure a Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+// For information about listener and how to use it, to see the following:
 // 
+// * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+// * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+// * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+// * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+// 
+// ## Listener fields and protocol mapping
+// 
+// load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
+// 
+// listener parameter | support protocol | value range |
+// ------------- | ------------- | ------------- | 
+// backendPort | http & https & tcp & udp | 1-65535 | 
+// frontendPort | http & https & tcp & udp | 1-65535 |
+// protocol | http & https & tcp & udp |
+// bandwidth | http & https & tcp & udp | -1 / 1-1000 |
+// scheduler | http & https & tcp & udp | wrr rr or wlc |
+// stickySession | http & https | on or off |
+// stickySessionType | http & https | insert or server | 
+// cookieTimeout | http & https | 1-86400  | 
+// cookie | http & https |   | 
+// persistenceTimeout | tcp & udp | 0-3600 | 
+// healthCheck | http & https | on or off | 
+// healthCheckType | tcp | tcp or http | 
+// healthCheckDomain | http & https & tcp | 
+// healthCheckUri | http & https & tcp |  | 
+// healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 | 
+// healthyThreshold | http & https & tcp & udp | 1-10 | 
+// unhealthyThreshold | http & https & tcp & udp | 1-10 | 
+// healthCheckTimeout | http & https & tcp & udp | 1-300 |
+// healthCheckInterval | http & https & tcp & udp | 1-50 |
+// healthCheckHttpCode | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx | 
+// serverCertificateId | https |  |
+// gzip | http & https | true or false  |
+// xForwardedFor | http & https |  |
+// aclStatus | http & https & tcp & udp | on or off |
+// aclType   | http & https & tcp & udp | white or black |
+// aclId     | http & https & tcp & udp | the id of resource alicloud_slb_acl|
+// establishedTimeout | tcp       | 10-900|
+// idleTimeout |http & https      | 1-60  |
+// requestTimeout |http & https   | 1-180 |
+// enableHttp2    |https          | on or off |
+// tlsCipherPolicy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tlsCipherPolicy12Strict |
+// serverGroupId    | http & https & tcp & udp | the id of resource slb.ServerGroup |
+// 
+// The listener mapping supports the following:
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
 type Listener struct {
 	s *pulumi.ResourceState
 }
@@ -21,12 +68,6 @@ type Listener struct {
 // NewListener registers a new resource with the given unique name, arguments, and options.
 func NewListener(ctx *pulumi.Context,
 	name string, args *ListenerArgs, opts ...pulumi.ResourceOpt) (*Listener, error) {
-	if args == nil || args.BackendPort == nil {
-		return nil, errors.New("missing required argument 'BackendPort'")
-	}
-	if args == nil || args.Bandwidth == nil {
-		return nil, errors.New("missing required argument 'Bandwidth'")
-	}
 	if args == nil || args.FrontendPort == nil {
 		return nil, errors.New("missing required argument 'FrontendPort'")
 	}
@@ -45,6 +86,10 @@ func NewListener(ctx *pulumi.Context,
 		inputs["bandwidth"] = nil
 		inputs["cookie"] = nil
 		inputs["cookieTimeout"] = nil
+		inputs["deleteProtectionValidation"] = nil
+		inputs["enableHttp2"] = nil
+		inputs["establishedTimeout"] = nil
+		inputs["forwardPort"] = nil
 		inputs["frontendPort"] = nil
 		inputs["gzip"] = nil
 		inputs["healthCheck"] = nil
@@ -56,17 +101,23 @@ func NewListener(ctx *pulumi.Context,
 		inputs["healthCheckType"] = nil
 		inputs["healthCheckUri"] = nil
 		inputs["healthyThreshold"] = nil
+		inputs["idleTimeout"] = nil
 		inputs["instancePort"] = nil
 		inputs["lbPort"] = nil
 		inputs["lbProtocol"] = nil
+		inputs["listenerForward"] = nil
 		inputs["loadBalancerId"] = nil
+		inputs["masterSlaveServerGroupId"] = nil
 		inputs["persistenceTimeout"] = nil
 		inputs["protocol"] = nil
+		inputs["requestTimeout"] = nil
 		inputs["scheduler"] = nil
+		inputs["serverCertificateId"] = nil
 		inputs["serverGroupId"] = nil
 		inputs["sslCertificateId"] = nil
 		inputs["stickySession"] = nil
 		inputs["stickySessionType"] = nil
+		inputs["tlsCipherPolicy"] = nil
 		inputs["unhealthyThreshold"] = nil
 		inputs["xForwardedFor"] = nil
 	} else {
@@ -77,6 +128,10 @@ func NewListener(ctx *pulumi.Context,
 		inputs["bandwidth"] = args.Bandwidth
 		inputs["cookie"] = args.Cookie
 		inputs["cookieTimeout"] = args.CookieTimeout
+		inputs["deleteProtectionValidation"] = args.DeleteProtectionValidation
+		inputs["enableHttp2"] = args.EnableHttp2
+		inputs["establishedTimeout"] = args.EstablishedTimeout
+		inputs["forwardPort"] = args.ForwardPort
 		inputs["frontendPort"] = args.FrontendPort
 		inputs["gzip"] = args.Gzip
 		inputs["healthCheck"] = args.HealthCheck
@@ -88,17 +143,23 @@ func NewListener(ctx *pulumi.Context,
 		inputs["healthCheckType"] = args.HealthCheckType
 		inputs["healthCheckUri"] = args.HealthCheckUri
 		inputs["healthyThreshold"] = args.HealthyThreshold
+		inputs["idleTimeout"] = args.IdleTimeout
 		inputs["instancePort"] = args.InstancePort
 		inputs["lbPort"] = args.LbPort
 		inputs["lbProtocol"] = args.LbProtocol
+		inputs["listenerForward"] = args.ListenerForward
 		inputs["loadBalancerId"] = args.LoadBalancerId
+		inputs["masterSlaveServerGroupId"] = args.MasterSlaveServerGroupId
 		inputs["persistenceTimeout"] = args.PersistenceTimeout
 		inputs["protocol"] = args.Protocol
+		inputs["requestTimeout"] = args.RequestTimeout
 		inputs["scheduler"] = args.Scheduler
+		inputs["serverCertificateId"] = args.ServerCertificateId
 		inputs["serverGroupId"] = args.ServerGroupId
 		inputs["sslCertificateId"] = args.SslCertificateId
 		inputs["stickySession"] = args.StickySession
 		inputs["stickySessionType"] = args.StickySessionType
+		inputs["tlsCipherPolicy"] = args.TlsCipherPolicy
 		inputs["unhealthyThreshold"] = args.UnhealthyThreshold
 		inputs["xForwardedFor"] = args.XForwardedFor
 	}
@@ -122,6 +183,10 @@ func GetListener(ctx *pulumi.Context,
 		inputs["bandwidth"] = state.Bandwidth
 		inputs["cookie"] = state.Cookie
 		inputs["cookieTimeout"] = state.CookieTimeout
+		inputs["deleteProtectionValidation"] = state.DeleteProtectionValidation
+		inputs["enableHttp2"] = state.EnableHttp2
+		inputs["establishedTimeout"] = state.EstablishedTimeout
+		inputs["forwardPort"] = state.ForwardPort
 		inputs["frontendPort"] = state.FrontendPort
 		inputs["gzip"] = state.Gzip
 		inputs["healthCheck"] = state.HealthCheck
@@ -133,17 +198,23 @@ func GetListener(ctx *pulumi.Context,
 		inputs["healthCheckType"] = state.HealthCheckType
 		inputs["healthCheckUri"] = state.HealthCheckUri
 		inputs["healthyThreshold"] = state.HealthyThreshold
+		inputs["idleTimeout"] = state.IdleTimeout
 		inputs["instancePort"] = state.InstancePort
 		inputs["lbPort"] = state.LbPort
 		inputs["lbProtocol"] = state.LbProtocol
+		inputs["listenerForward"] = state.ListenerForward
 		inputs["loadBalancerId"] = state.LoadBalancerId
+		inputs["masterSlaveServerGroupId"] = state.MasterSlaveServerGroupId
 		inputs["persistenceTimeout"] = state.PersistenceTimeout
 		inputs["protocol"] = state.Protocol
+		inputs["requestTimeout"] = state.RequestTimeout
 		inputs["scheduler"] = state.Scheduler
+		inputs["serverCertificateId"] = state.ServerCertificateId
 		inputs["serverGroupId"] = state.ServerGroupId
 		inputs["sslCertificateId"] = state.SslCertificateId
 		inputs["stickySession"] = state.StickySession
 		inputs["stickySessionType"] = state.StickySessionType
+		inputs["tlsCipherPolicy"] = state.TlsCipherPolicy
 		inputs["unhealthyThreshold"] = state.UnhealthyThreshold
 		inputs["xForwardedFor"] = state.XForwardedFor
 	}
@@ -155,182 +226,240 @@ func GetListener(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Listener) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Listener) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Listener) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Listener) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
-func (r *Listener) AclId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclId"])
+// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored.
+func (r *Listener) AclId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclId"])
 }
 
-// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
-func (r *Listener) AclStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclStatus"])
+// Whether to enable "acl(access control list)", the acl is specified by `aclId`. Valid values are `on` and `off`. Default to `off`.
+func (r *Listener) AclStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclStatus"])
 }
 
-// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl;
-func (r *Listener) AclType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclType"])
+// Mode for handling the acl specified by acl_id. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+func (r *Listener) AclType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclType"])
 }
 
 // Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
-func (r *Listener) BackendPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["backendPort"])
+func (r *Listener) BackendPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["backendPort"])
 }
 
 // Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-func (r *Listener) Bandwidth() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidth"])
+func (r *Listener) Bandwidth() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidth"])
 }
 
-// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-func (r *Listener) Cookie() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cookie"])
+// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+func (r *Listener) Cookie() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cookie"])
 }
 
-// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-func (r *Listener) CookieTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cookieTimeout"])
+// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+func (r *Listener) CookieTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cookieTimeout"])
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (r *Listener) DeleteProtectionValidation() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteProtectionValidation"])
+}
+
+// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+func (r *Listener) EnableHttp2() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["enableHttp2"])
+}
+
+// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+func (r *Listener) EstablishedTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["establishedTimeout"])
+}
+
+// The port that http redirect to https.
+func (r *Listener) ForwardPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["forwardPort"])
 }
 
 // Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-func (r *Listener) FrontendPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["frontendPort"])
+func (r *Listener) FrontendPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["frontendPort"])
 }
 
 // Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
-func (r *Listener) Gzip() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["gzip"])
+func (r *Listener) Gzip() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["gzip"])
 }
 
 // Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-func (r *Listener) HealthCheck() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheck"])
+func (r *Listener) HealthCheck() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheck"])
 }
 
 // Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
-func (r *Listener) HealthCheckConnectPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckConnectPort"])
+func (r *Listener) HealthCheckConnectPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckConnectPort"])
 }
 
-// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-func (r *Listener) HealthCheckDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckDomain"])
+// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+func (r *Listener) HealthCheckDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckDomain"])
 }
 
-// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-func (r *Listener) HealthCheckHttpCode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckHttpCode"])
+// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+func (r *Listener) HealthCheckHttpCode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckHttpCode"])
 }
 
-// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-func (r *Listener) HealthCheckInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckInterval"])
+// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+func (r *Listener) HealthCheckInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckInterval"])
 }
 
-// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-func (r *Listener) HealthCheckTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthCheckTimeout"])
+// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+func (r *Listener) HealthCheckTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckTimeout"])
 }
 
 // Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-func (r *Listener) HealthCheckType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckType"])
+func (r *Listener) HealthCheckType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckType"])
 }
 
-// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
-func (r *Listener) HealthCheckUri() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckUri"])
+// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+func (r *Listener) HealthCheckUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckUri"])
 }
 
-// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-func (r *Listener) HealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["healthyThreshold"])
+// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (r *Listener) HealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthyThreshold"])
 }
 
-func (r *Listener) InstancePort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["instancePort"])
+// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+func (r *Listener) IdleTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["idleTimeout"])
 }
 
-func (r *Listener) LbPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["lbPort"])
+func (r *Listener) InstancePort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["instancePort"])
 }
 
-func (r *Listener) LbProtocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lbProtocol"])
+func (r *Listener) LbPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["lbPort"])
+}
+
+func (r *Listener) LbProtocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lbProtocol"])
+}
+
+// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+func (r *Listener) ListenerForward() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["listenerForward"])
 }
 
 // The Load Balancer ID which is used to launch a new listener.
-func (r *Listener) LoadBalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadBalancerId"])
+func (r *Listener) LoadBalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadBalancerId"])
+}
+
+func (r *Listener) MasterSlaveServerGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["masterSlaveServerGroupId"])
 }
 
 // Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
-func (r *Listener) PersistenceTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["persistenceTimeout"])
+func (r *Listener) PersistenceTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["persistenceTimeout"])
 }
 
 // The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
-func (r *Listener) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *Listener) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// Scheduling algorithm, Valid values are `wrr` and `wlc`.  Default to "wrr".
-func (r *Listener) Scheduler() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scheduler"])
+// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+func (r *Listener) RequestTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["requestTimeout"])
 }
 
-func (r *Listener) ServerGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverGroupId"])
+// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
+func (r *Listener) Scheduler() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scheduler"])
 }
 
-// Security certificate ID. It is required when `protocol` is `https`.
-func (r *Listener) SslCertificateId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sslCertificateId"])
+// SLB Server certificate ID. It is required when `protocol` is `https`.
+func (r *Listener) ServerCertificateId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverCertificateId"])
+}
+
+// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+func (r *Listener) ServerGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverGroupId"])
+}
+
+// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+func (r *Listener) SslCertificateId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sslCertificateId"])
 }
 
 // Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
-func (r *Listener) StickySession() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stickySession"])
+func (r *Listener) StickySession() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stickySession"])
 }
 
-// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-func (r *Listener) StickySessionType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["stickySessionType"])
+// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+func (r *Listener) StickySessionType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stickySessionType"])
 }
 
-// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-func (r *Listener) UnhealthyThreshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
+// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
+func (r *Listener) TlsCipherPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tlsCipherPolicy"])
+}
+
+// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (r *Listener) UnhealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
 }
 
 // Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
-func (r *Listener) XForwardedFor() *pulumi.Output {
+func (r *Listener) XForwardedFor() pulumi.Output {
 	return r.s.State["xForwardedFor"]
 }
 
 // Input properties used for looking up and filtering Listener resources.
 type ListenerState struct {
-	// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+	// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored.
 	AclId interface{}
-	// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+	// Whether to enable "acl(access control list)", the acl is specified by `aclId`. Valid values are `on` and `off`. Default to `off`.
 	AclStatus interface{}
-	// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl;
+	// Mode for handling the acl specified by acl_id. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
 	AclType interface{}
 	// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
 	BackendPort interface{}
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth interface{}
-	// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie interface{}
-	// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
 	CookieTimeout interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
+	// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+	EnableHttp2 interface{}
+	// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+	EstablishedTimeout interface{}
+	// The port that http redirect to https.
+	ForwardPort interface{}
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort interface{}
 	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
@@ -339,39 +468,51 @@ type ListenerState struct {
 	HealthCheck interface{}
 	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
 	HealthCheckConnectPort interface{}
-	// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain interface{}
-	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
 	HealthCheckHttpCode interface{}
-	// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval interface{}
-	// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout interface{}
 	// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
 	HealthCheckType interface{}
-	// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri interface{}
-	// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold interface{}
+	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+	IdleTimeout interface{}
 	InstancePort interface{}
 	LbPort interface{}
 	LbProtocol interface{}
+	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+	ListenerForward interface{}
 	// The Load Balancer ID which is used to launch a new listener.
 	LoadBalancerId interface{}
+	MasterSlaveServerGroupId interface{}
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout interface{}
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol interface{}
-	// Scheduling algorithm, Valid values are `wrr` and `wlc`.  Default to "wrr".
+	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+	RequestTimeout interface{}
+	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
 	Scheduler interface{}
+	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	ServerCertificateId interface{}
+	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId interface{}
-	// Security certificate ID. It is required when `protocol` is `https`.
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
 	SslCertificateId interface{}
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession interface{}
-	// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType interface{}
-	// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
+	TlsCipherPolicy interface{}
+	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold interface{}
 	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
 	XForwardedFor interface{}
@@ -379,20 +520,28 @@ type ListenerState struct {
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
-	// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+	// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored.
 	AclId interface{}
-	// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+	// Whether to enable "acl(access control list)", the acl is specified by `aclId`. Valid values are `on` and `off`. Default to `off`.
 	AclStatus interface{}
-	// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl;
+	// Mode for handling the acl specified by acl_id. If `aclStatus` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
 	AclType interface{}
 	// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
 	BackendPort interface{}
 	// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
 	Bandwidth interface{}
-	// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
 	Cookie interface{}
-	// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
 	CookieTimeout interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
+	// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+	EnableHttp2 interface{}
+	// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+	EstablishedTimeout interface{}
+	// The port that http redirect to https.
+	ForwardPort interface{}
 	// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
 	FrontendPort interface{}
 	// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available in v1.13.0+.
@@ -401,39 +550,51 @@ type ListenerArgs struct {
 	HealthCheck interface{}
 	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
 	HealthCheckConnectPort interface{}
-	// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
 	HealthCheckDomain interface{}
-	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
 	HealthCheckHttpCode interface{}
-	// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval interface{}
-	// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout interface{}
 	// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
 	HealthCheckType interface{}
-	// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri interface{}
-	// Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold interface{}
+	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+	IdleTimeout interface{}
 	InstancePort interface{}
 	LbPort interface{}
 	LbProtocol interface{}
+	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+	ListenerForward interface{}
 	// The Load Balancer ID which is used to launch a new listener.
 	LoadBalancerId interface{}
+	MasterSlaveServerGroupId interface{}
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout interface{}
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol interface{}
-	// Scheduling algorithm, Valid values are `wrr` and `wlc`.  Default to "wrr".
+	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+	RequestTimeout interface{}
+	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr".
 	Scheduler interface{}
+	// SLB Server certificate ID. It is required when `protocol` is `https`.
+	ServerCertificateId interface{}
+	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId interface{}
-	// Security certificate ID. It is required when `protocol` is `https`.
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
 	SslCertificateId interface{}
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession interface{}
-	// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType interface{}
-	// Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+	// Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`. Currently the `tlsCipherPolicy` can not be updated when load balancer instance is "Shared-Performance".
+	TlsCipherPolicy interface{}
+	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold interface{}
 	// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
 	XForwardedFor interface{}

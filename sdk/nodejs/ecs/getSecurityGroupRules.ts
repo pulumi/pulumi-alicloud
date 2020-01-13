@@ -2,15 +2,57 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud_security_group_rules` data source provides a collection of security permissions of a specific security group.
+ * The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
  * Each collection item represents a single `ingress` or `egress` permission rule.
- * The ID of the security group can be provided via a variable or the result from the other data source `alicloud_security_groups`.
+ * The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
+ * 
+ * ## Example Usage
+ * 
+ * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * // Get the security group id from a variable
+ * const securityGroupId = config.require("securityGroupId");
+ * 
+ * // Or get it from the alicloud.ecs.getSecurityGroups data source.
+ * // Please note that the data source arguments must be enough to filter results to one security group.
+ * const groupsDs = alicloud.ecs.getSecurityGroups({
+ *     nameRegex: "api",
+ * });
+ * // Filter the security group rule by group
+ * const ingressRulesDs = alicloud.ecs.getSecurityGroupRules({
+ *     direction: "ingress",
+ *     groupId: groupsDs.groups[0].id, // or ${var.security_group_id}
+ *     ipProtocol: "TCP",
+ *     nicType: "internet",
+ * });
+ * // Pass portRange to the backend service
+ * const backend = new alicloud.ecs.Instance("backend", {
+ *     // ...
+ *     userData: `config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
  */
-export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
-    return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
+export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> & GetSecurityGroupRulesResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetSecurityGroupRulesResult> = pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
         "direction": args.direction,
         "groupId": args.groupId,
         "ipProtocol": args.ipProtocol,
@@ -18,6 +60,8 @@ export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pu
         "outputFile": args.outputFile,
         "policy": args.policy,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -40,9 +84,6 @@ export interface GetSecurityGroupRulesArgs {
      * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      */
     readonly nicType?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
@@ -55,17 +96,35 @@ export interface GetSecurityGroupRulesArgs {
  */
 export interface GetSecurityGroupRulesResult {
     /**
+     * Authorization direction, `ingress` or `egress`.
+     */
+    readonly direction?: string;
+    /**
      * The description of the security group that owns the rules.
      */
     readonly groupDesc: string;
+    readonly groupId: string;
     /**
      * The name of the security group that owns the rules.
      */
     readonly groupName: string;
     /**
+     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     */
+    readonly ipProtocol?: string;
+    /**
+     * Network type, `internet` or `intranet`.
+     */
+    readonly nicType?: string;
+    readonly outputFile?: string;
+    /**
+     * Authorization policy. Can be either `accept` or `drop`.
+     */
+    readonly policy?: string;
+    /**
      * A list of security group rules. Each element contains the following attributes:
      */
-    readonly rules: { description: string, destCidrIp: string, destGroupId: string, destGroupOwnerAccount: string, direction: string, ipProtocol: string, nicType: string, policy: string, portRange: string, priority: number, sourceCidrIp: string, sourceGroupId: string, sourceGroupOwnerAccount: string }[];
+    readonly rules: outputs.ecs.GetSecurityGroupRulesRule[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

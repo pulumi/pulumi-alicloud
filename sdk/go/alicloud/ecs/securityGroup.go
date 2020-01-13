@@ -9,9 +9,11 @@ import (
 
 // Provides a security group resource.
 // 
-// ~> **NOTE:** `alicloud_security_group` is used to build and manage a security group, and `alicloud_security_group_rule` can define ingress or egress rules for it.
+// > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
 // 
-// ~> **NOTE:** From version 1.7.2, `alicloud_security_group` has supported to segregate different ECS instance in which the same security group.
+// > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
 type SecurityGroup struct {
 	s *pulumi.ResourceState
 }
@@ -23,13 +25,19 @@ func NewSecurityGroup(ctx *pulumi.Context,
 	if args == nil {
 		inputs["description"] = nil
 		inputs["innerAccess"] = nil
+		inputs["innerAccessPolicy"] = nil
 		inputs["name"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["securityGroupType"] = nil
 		inputs["tags"] = nil
 		inputs["vpcId"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["innerAccess"] = args.InnerAccess
+		inputs["innerAccessPolicy"] = args.InnerAccessPolicy
 		inputs["name"] = args.Name
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["securityGroupType"] = args.SecurityGroupType
 		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 	}
@@ -48,7 +56,10 @@ func GetSecurityGroup(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["innerAccess"] = state.InnerAccess
+		inputs["innerAccessPolicy"] = state.InnerAccessPolicy
 		inputs["name"] = state.Name
+		inputs["resourceGroupId"] = state.ResourceGroupId
+		inputs["securityGroupType"] = state.SecurityGroupType
 		inputs["tags"] = state.Tags
 		inputs["vpcId"] = state.VpcId
 	}
@@ -60,51 +71,76 @@ func GetSecurityGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SecurityGroup) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *SecurityGroup) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SecurityGroup) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *SecurityGroup) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The security group description. Defaults to null.
-func (r *SecurityGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SecurityGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Whether to allow both machines to access each other on all ports in the same security group.
-func (r *SecurityGroup) InnerAccess() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["innerAccess"])
+// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+func (r *SecurityGroup) InnerAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["innerAccess"])
+}
+
+// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+func (r *SecurityGroup) InnerAccessPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["innerAccessPolicy"])
 }
 
 // The name of the security group. Defaults to null.
-func (r *SecurityGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SecurityGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// The Id of resource group which the securityGroup belongs.
+func (r *SecurityGroup) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
+}
+
+// The type of the security group. Valid values:
+// `normal`: basic security group.
+// `enterprise`: advanced security group For more information.
+func (r *SecurityGroup) SecurityGroupType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupType"])
 }
 
 // A mapping of tags to assign to the resource.
-func (r *SecurityGroup) Tags() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["tags"])
+func (r *SecurityGroup) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
-// The VPC ID.
-func (r *SecurityGroup) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+// The VPC ID.	
+func (r *SecurityGroup) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering SecurityGroup resources.
 type SecurityGroupState struct {
 	// The security group description. Defaults to null.
 	Description interface{}
-	// Whether to allow both machines to access each other on all ports in the same security group.
+	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess interface{}
+	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	InnerAccessPolicy interface{}
 	// The name of the security group. Defaults to null.
 	Name interface{}
+	// The Id of resource group which the securityGroup belongs.
+	ResourceGroupId interface{}
+	// The type of the security group. Valid values:
+	// `normal`: basic security group.
+	// `enterprise`: advanced security group For more information.
+	SecurityGroupType interface{}
 	// A mapping of tags to assign to the resource.
 	Tags interface{}
-	// The VPC ID.
+	// The VPC ID.	
 	VpcId interface{}
 }
 
@@ -112,12 +148,20 @@ type SecurityGroupState struct {
 type SecurityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description interface{}
-	// Whether to allow both machines to access each other on all ports in the same security group.
+	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess interface{}
+	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+	InnerAccessPolicy interface{}
 	// The name of the security group. Defaults to null.
 	Name interface{}
+	// The Id of resource group which the securityGroup belongs.
+	ResourceGroupId interface{}
+	// The type of the security group. Valid values:
+	// `normal`: basic security group.
+	// `enterprise`: advanced security group For more information.
+	SecurityGroupType interface{}
 	// A mapping of tags to assign to the resource.
 	Tags interface{}
-	// The VPC ID.
+	// The VPC ID.	
 	VpcId interface{}
 }

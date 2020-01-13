@@ -11,15 +11,17 @@ import (
 // A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
 // You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
 // 
-// ~> **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
+// > **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
 // 
-// ~> **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
+// > **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
 // 
-// ~> **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
+// > **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
 // 
-// ~> **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
+// > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
 // 
-// ~> **NOTE:** Only rule's virtual server group can be modified.
+// > **NOTE:** Only rule's virtual server group can be modified.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
 type Rule struct {
 	s *pulumi.ResourceState
 }
@@ -38,18 +40,50 @@ func NewRule(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["cookie"] = nil
+		inputs["cookieTimeout"] = nil
+		inputs["deleteProtectionValidation"] = nil
 		inputs["domain"] = nil
 		inputs["frontendPort"] = nil
+		inputs["healthCheck"] = nil
+		inputs["healthCheckConnectPort"] = nil
+		inputs["healthCheckDomain"] = nil
+		inputs["healthCheckHttpCode"] = nil
+		inputs["healthCheckInterval"] = nil
+		inputs["healthCheckTimeout"] = nil
+		inputs["healthCheckUri"] = nil
+		inputs["healthyThreshold"] = nil
+		inputs["listenerSync"] = nil
 		inputs["loadBalancerId"] = nil
 		inputs["name"] = nil
+		inputs["scheduler"] = nil
 		inputs["serverGroupId"] = nil
+		inputs["stickySession"] = nil
+		inputs["stickySessionType"] = nil
+		inputs["unhealthyThreshold"] = nil
 		inputs["url"] = nil
 	} else {
+		inputs["cookie"] = args.Cookie
+		inputs["cookieTimeout"] = args.CookieTimeout
+		inputs["deleteProtectionValidation"] = args.DeleteProtectionValidation
 		inputs["domain"] = args.Domain
 		inputs["frontendPort"] = args.FrontendPort
+		inputs["healthCheck"] = args.HealthCheck
+		inputs["healthCheckConnectPort"] = args.HealthCheckConnectPort
+		inputs["healthCheckDomain"] = args.HealthCheckDomain
+		inputs["healthCheckHttpCode"] = args.HealthCheckHttpCode
+		inputs["healthCheckInterval"] = args.HealthCheckInterval
+		inputs["healthCheckTimeout"] = args.HealthCheckTimeout
+		inputs["healthCheckUri"] = args.HealthCheckUri
+		inputs["healthyThreshold"] = args.HealthyThreshold
+		inputs["listenerSync"] = args.ListenerSync
 		inputs["loadBalancerId"] = args.LoadBalancerId
 		inputs["name"] = args.Name
+		inputs["scheduler"] = args.Scheduler
 		inputs["serverGroupId"] = args.ServerGroupId
+		inputs["stickySession"] = args.StickySession
+		inputs["stickySessionType"] = args.StickySessionType
+		inputs["unhealthyThreshold"] = args.UnhealthyThreshold
 		inputs["url"] = args.Url
 	}
 	s, err := ctx.RegisterResource("alicloud:slb/rule:Rule", name, true, inputs, opts...)
@@ -65,11 +99,27 @@ func GetRule(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *RuleState, opts ...pulumi.ResourceOpt) (*Rule, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["cookie"] = state.Cookie
+		inputs["cookieTimeout"] = state.CookieTimeout
+		inputs["deleteProtectionValidation"] = state.DeleteProtectionValidation
 		inputs["domain"] = state.Domain
 		inputs["frontendPort"] = state.FrontendPort
+		inputs["healthCheck"] = state.HealthCheck
+		inputs["healthCheckConnectPort"] = state.HealthCheckConnectPort
+		inputs["healthCheckDomain"] = state.HealthCheckDomain
+		inputs["healthCheckHttpCode"] = state.HealthCheckHttpCode
+		inputs["healthCheckInterval"] = state.HealthCheckInterval
+		inputs["healthCheckTimeout"] = state.HealthCheckTimeout
+		inputs["healthCheckUri"] = state.HealthCheckUri
+		inputs["healthyThreshold"] = state.HealthyThreshold
+		inputs["listenerSync"] = state.ListenerSync
 		inputs["loadBalancerId"] = state.LoadBalancerId
 		inputs["name"] = state.Name
+		inputs["scheduler"] = state.Scheduler
 		inputs["serverGroupId"] = state.ServerGroupId
+		inputs["stickySession"] = state.StickySession
+		inputs["stickySessionType"] = state.StickySessionType
+		inputs["unhealthyThreshold"] = state.UnhealthyThreshold
 		inputs["url"] = state.Url
 	}
 	s, err := ctx.ReadResource("alicloud:slb/rule:Rule", name, id, inputs, opts...)
@@ -80,51 +130,137 @@ func GetRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Rule) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Rule) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Rule) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Rule) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+func (r *Rule) Cookie() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cookie"])
+}
+
+// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+func (r *Rule) CookieTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cookieTimeout"])
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (r *Rule) DeleteProtectionValidation() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteProtectionValidation"])
 }
 
 // Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 // and wildcard characters. The following two domain name formats are supported:
 // - Standard domain name: www.test.com
 // - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
-func (r *Rule) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *Rule) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
-func (r *Rule) FrontendPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["frontendPort"])
+func (r *Rule) FrontendPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["frontendPort"])
+}
+
+// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+func (r *Rule) HealthCheck() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheck"])
+}
+
+// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+func (r *Rule) HealthCheckConnectPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckConnectPort"])
+}
+
+// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+func (r *Rule) HealthCheckDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckDomain"])
+}
+
+// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+func (r *Rule) HealthCheckHttpCode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckHttpCode"])
+}
+
+// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+func (r *Rule) HealthCheckInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckInterval"])
+}
+
+// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+func (r *Rule) HealthCheckTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthCheckTimeout"])
+}
+
+// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+func (r *Rule) HealthCheckUri() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckUri"])
+}
+
+// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (r *Rule) HealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["healthyThreshold"])
+}
+
+// Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+func (r *Rule) ListenerSync() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["listenerSync"])
 }
 
 // The Load Balancer ID which is used to launch the new forwarding rule.
-func (r *Rule) LoadBalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadBalancerId"])
+func (r *Rule) LoadBalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadBalancerId"])
 }
 
 // Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
-func (r *Rule) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Rule) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+func (r *Rule) Scheduler() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scheduler"])
 }
 
 // ID of a virtual server group that will be forwarded.
-func (r *Rule) ServerGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["serverGroupId"])
+func (r *Rule) ServerGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverGroupId"])
+}
+
+// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+func (r *Rule) StickySession() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stickySession"])
+}
+
+// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+func (r *Rule) StickySessionType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["stickySessionType"])
+}
+
+// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+func (r *Rule) UnhealthyThreshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["unhealthyThreshold"])
 }
 
 // Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
 // and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
-func (r *Rule) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *Rule) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering Rule resources.
 type RuleState struct {
+	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+	Cookie interface{}
+	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+	CookieTimeout interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
 	// - Standard domain name: www.test.com
@@ -132,12 +268,38 @@ type RuleState struct {
 	Domain interface{}
 	// The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
 	FrontendPort interface{}
+	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+	HealthCheck interface{}
+	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	HealthCheckConnectPort interface{}
+	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+	HealthCheckDomain interface{}
+	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+	HealthCheckHttpCode interface{}
+	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+	HealthCheckInterval interface{}
+	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+	HealthCheckTimeout interface{}
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	HealthCheckUri interface{}
+	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	HealthyThreshold interface{}
+	// Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+	ListenerSync interface{}
 	// The Load Balancer ID which is used to launch the new forwarding rule.
 	LoadBalancerId interface{}
 	// Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
 	Name interface{}
+	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+	Scheduler interface{}
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId interface{}
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	StickySession interface{}
+	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+	StickySessionType interface{}
+	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	UnhealthyThreshold interface{}
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
 	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url interface{}
@@ -145,6 +307,12 @@ type RuleState struct {
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
+	// The cookie configured on the server. It is mandatory when `stickySession` is "on" and `stickySessionType` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+	Cookie interface{}
+	// Cookie timeout. It is mandatory when `stickySession` is "on" and `stickySessionType` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+	CookieTimeout interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
 	// and wildcard characters. The following two domain name formats are supported:
 	// - Standard domain name: www.test.com
@@ -152,12 +320,38 @@ type RuleArgs struct {
 	Domain interface{}
 	// The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
 	FrontendPort interface{}
+	// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+	HealthCheck interface{}
+	// Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+	HealthCheckConnectPort interface{}
+	// Domain name used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+	HealthCheckDomain interface{}
+	// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `healthCheck` is on. Default to `http2xx`.  Valid values are: `http2xx`,  `http3xx`, `http4xx` and `http5xx`.
+	HealthCheckHttpCode interface{}
+	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
+	HealthCheckInterval interface{}
+	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
+	HealthCheckTimeout interface{}
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	HealthCheckUri interface{}
+	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	HealthyThreshold interface{}
+	// Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+	ListenerSync interface{}
 	// The Load Balancer ID which is used to launch the new forwarding rule.
 	LoadBalancerId interface{}
 	// Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
 	Name interface{}
+	// Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+	Scheduler interface{}
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId interface{}
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	StickySession interface{}
+	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+	StickySessionType interface{}
+	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
+	UnhealthyThreshold interface{}
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
 	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url interface{}

@@ -2,17 +2,42 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const topics = alicloud.mns.getTopics({
+ *     namePrefix: "tf-",
+ * });
+ * 
+ * export const firstTopicId = topics.topics[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
  */
-export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
+export function getTopics(args?: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> & GetTopicsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:mns/getTopics:getTopics", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetTopicsResult> = pulumi.runtime.invoke("alicloud:mns/getTopics:getTopics", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -23,9 +48,6 @@ export interface GetTopicsArgs {
      * A string to filter resulting topics by their name prefixs.
      */
     readonly namePrefix?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -33,10 +55,16 @@ export interface GetTopicsArgs {
  * A collection of values returned by getTopics.
  */
 export interface GetTopicsResult {
+    readonly namePrefix?: string;
     /**
-     * A list of users. Each element contains the following attributes:
+     * A list of topic names.
      */
-    readonly topics: { id: string, loggingEnabled: boolean, maximumMessageSize: number, name: string }[];
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * A list of topics. Each element contains the following attributes:
+     */
+    readonly topics: outputs.mns.GetTopicsTopic[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

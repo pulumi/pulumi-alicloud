@@ -8,10 +8,13 @@ import (
 )
 
 // This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
 func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["groupName"] = args.GroupName
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["policyName"] = args.PolicyName
@@ -22,6 +25,13 @@ func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, erro
 		return nil, err
 	}
 	return &GetUsersResult{
+		GroupName: outputs["groupName"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		PolicyName: outputs["policyName"],
+		PolicyType: outputs["policyType"],
 		Users: outputs["users"],
 		Id: outputs["id"],
 	}, nil
@@ -31,18 +41,28 @@ func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, erro
 type GetUsersArgs struct {
 	// Filter results by a specific group name. Returned users are in the specified group. 
 	GroupName interface{}
+	Ids interface{}
 	// A regex string to filter resulting users by their names.
+	// * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
-	// Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
+	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
 	PolicyName interface{}
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
 	PolicyType interface{}
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	GroupName interface{}
+	// A list of ram user IDs. 
+	Ids interface{}
+	NameRegex interface{}
+	// A list of ram user names. 
+	Names interface{}
+	OutputFile interface{}
+	PolicyName interface{}
+	PolicyType interface{}
 	// A list of users. Each element contains the following attributes:
 	Users interface{}
 	// id is the provider-assigned unique ID for this managed resource.

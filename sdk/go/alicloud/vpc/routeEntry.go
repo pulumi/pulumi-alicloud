@@ -8,6 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_entry.html.markdown.
 type RouteEntry struct {
 	s *pulumi.ResourceState
 }
@@ -21,12 +22,14 @@ func NewRouteEntry(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["destinationCidrblock"] = nil
+		inputs["name"] = nil
 		inputs["nexthopId"] = nil
 		inputs["nexthopType"] = nil
 		inputs["routeTableId"] = nil
 		inputs["routerId"] = nil
 	} else {
 		inputs["destinationCidrblock"] = args.DestinationCidrblock
+		inputs["name"] = args.Name
 		inputs["nexthopId"] = args.NexthopId
 		inputs["nexthopType"] = args.NexthopType
 		inputs["routeTableId"] = args.RouteTableId
@@ -46,6 +49,7 @@ func GetRouteEntry(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["destinationCidrblock"] = state.DestinationCidrblock
+		inputs["name"] = state.Name
 		inputs["nexthopId"] = state.NexthopId
 		inputs["nexthopType"] = state.NexthopType
 		inputs["routeTableId"] = state.RouteTableId
@@ -59,49 +63,91 @@ func GetRouteEntry(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouteEntry) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouteEntry) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouteEntry) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouteEntry) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *RouteEntry) DestinationCidrblock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationCidrblock"])
+// The RouteEntry's target network segment.
+func (r *RouteEntry) DestinationCidrblock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationCidrblock"])
 }
 
-func (r *RouteEntry) NexthopId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nexthopId"])
+// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+func (r *RouteEntry) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *RouteEntry) NexthopType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["nexthopType"])
+// The route entry's next hop. ECS instance ID or VPC router interface ID.
+func (r *RouteEntry) NexthopId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nexthopId"])
 }
 
-func (r *RouteEntry) RouteTableId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routeTableId"])
+// The next hop type. Available values:
+// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
+func (r *RouteEntry) NexthopType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["nexthopType"])
 }
 
-func (r *RouteEntry) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+// The ID of the route table.
+func (r *RouteEntry) RouteTableId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routeTableId"])
+}
+
+// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+func (r *RouteEntry) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
 // Input properties used for looking up and filtering RouteEntry resources.
 type RouteEntryState struct {
+	// The RouteEntry's target network segment.
 	DestinationCidrblock interface{}
+	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	Name interface{}
+	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId interface{}
+	// The next hop type. Available values:
+	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType interface{}
+	// The ID of the route table.
 	RouteTableId interface{}
+	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
 	RouterId interface{}
 }
 
 // The set of arguments for constructing a RouteEntry resource.
 type RouteEntryArgs struct {
+	// The RouteEntry's target network segment.
 	DestinationCidrblock interface{}
+	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	Name interface{}
+	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId interface{}
+	// The next hop type. Available values:
+	// - `Instance` (Default): Route the traffic destined for the destination CIDR block to an ECS instance in the VPC.
+	// - `RouterInterface`: Route the traffic destined for the destination CIDR block to a router interface.
+	// - `VpnGateway`: Route the traffic destined for the destination CIDR block to a VPN Gateway.
+	// - `HaVip`: Route the traffic destined for the destination CIDR block to an HAVIP.
+	// - `NetworkInterface`: Route the traffic destined for the destination CIDR block to an NetworkInterface.
+	// - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
 	NexthopType interface{}
+	// The ID of the route table.
 	RouteTableId interface{}
+	// This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
 	RouterId interface{}
 }

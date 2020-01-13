@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Private Zone Record resource.
- * 
- * ~> **NOTE:** Terraform will auto Create a Private Zone Record while it uses `alicloud_pvtz_zone_record` to build a Private Zone Record resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_record.html.markdown.
  */
 export class ZoneRecord extends pulumi.CustomResource {
     /**
@@ -18,34 +18,52 @@ export class ZoneRecord extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneRecordState): ZoneRecord {
-        return new ZoneRecord(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneRecordState, opts?: pulumi.CustomResourceOptions): ZoneRecord {
+        return new ZoneRecord(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:pvtz/zoneRecord:ZoneRecord';
+
+    /**
+     * Returns true if the given object is an instance of ZoneRecord.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ZoneRecord {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ZoneRecord.__pulumiType;
     }
 
     /**
-     * The priority of the Private Zone Record.
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
      */
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
+    /**
+     * The Private Zone Record ID.
+     */
+    public /*out*/ readonly recordId!: pulumi.Output<number>;
     /**
      * The resource record of the Private Zone Record.
      */
-    public readonly resourceRecord: pulumi.Output<string>;
+    public readonly resourceRecord!: pulumi.Output<string>;
     /**
      * The ttl of the Private Zone Record.
      */
-    public readonly ttl: pulumi.Output<number | undefined>;
+    public readonly ttl!: pulumi.Output<number | undefined>;
     /**
-     * The type of the Private Zone Record.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The value of the Private Zone Record.
      */
-    public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
     /**
      * The name of the Private Zone Record.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneRecord resource with the given unique name, arguments, and options.
@@ -58,8 +76,9 @@ export class ZoneRecord extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneRecordArgs | ZoneRecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneRecordState = argsOrState as ZoneRecordState | undefined;
+            const state = argsOrState as ZoneRecordState | undefined;
             inputs["priority"] = state ? state.priority : undefined;
+            inputs["recordId"] = state ? state.recordId : undefined;
             inputs["resourceRecord"] = state ? state.resourceRecord : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
             inputs["type"] = state ? state.type : undefined;
@@ -85,8 +104,16 @@ export class ZoneRecord extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["value"] = args ? args.value : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["recordId"] = undefined /*out*/;
         }
-        super("alicloud:pvtz/zoneRecord:ZoneRecord", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(ZoneRecord.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -95,9 +122,13 @@ export class ZoneRecord extends pulumi.CustomResource {
  */
 export interface ZoneRecordState {
     /**
-     * The priority of the Private Zone Record.
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
      */
     readonly priority?: pulumi.Input<number>;
+    /**
+     * The Private Zone Record ID.
+     */
+    readonly recordId?: pulumi.Input<number>;
     /**
      * The resource record of the Private Zone Record.
      */
@@ -107,7 +138,7 @@ export interface ZoneRecordState {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The type of the Private Zone Record.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -125,7 +156,7 @@ export interface ZoneRecordState {
  */
 export interface ZoneRecordArgs {
     /**
-     * The priority of the Private Zone Record.
+     * The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
      */
     readonly priority?: pulumi.Input<number>;
     /**
@@ -137,7 +168,7 @@ export interface ZoneRecordArgs {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The type of the Private Zone Record.
+     * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
      */
     readonly type: pulumi.Input<string>;
     /**

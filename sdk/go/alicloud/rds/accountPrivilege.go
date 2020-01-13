@@ -9,6 +9,8 @@ import (
 )
 
 // Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account_privilege.html.markdown.
 type AccountPrivilege struct {
 	s *pulumi.ResourceState
 }
@@ -63,33 +65,38 @@ func GetAccountPrivilege(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccountPrivilege) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *AccountPrivilege) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccountPrivilege) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *AccountPrivilege) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // A specified account name.
-func (r *AccountPrivilege) AccountName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accountName"])
+func (r *AccountPrivilege) AccountName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountName"])
 }
 
 // List of specified database name.
-func (r *AccountPrivilege) DbNames() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dbNames"])
+func (r *AccountPrivilege) DbNames() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dbNames"])
 }
 
 // The Id of instance in which account belongs.
-func (r *AccountPrivilege) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *AccountPrivilege) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
-func (r *AccountPrivilege) Privilege() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privilege"])
+// The privilege of one account access database. Valid values: 
+// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+func (r *AccountPrivilege) Privilege() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privilege"])
 }
 
 // Input properties used for looking up and filtering AccountPrivilege resources.
@@ -100,7 +107,12 @@ type AccountPrivilegeState struct {
 	DbNames interface{}
 	// The Id of instance in which account belongs.
 	InstanceId interface{}
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: 
+	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
 	Privilege interface{}
 }
 
@@ -112,6 +124,11 @@ type AccountPrivilegeArgs struct {
 	DbNames interface{}
 	// The Id of instance in which account belongs.
 	InstanceId interface{}
-	// The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+	// The privilege of one account access database. Valid values: 
+	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
 	Privilege interface{}
 }

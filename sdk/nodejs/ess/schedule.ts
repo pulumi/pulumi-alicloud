@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ESS schedule resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_schedule.html.markdown.
  */
 export class Schedule extends pulumi.CustomResource {
     /**
@@ -16,52 +18,33 @@ export class Schedule extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ScheduleState): Schedule {
-        return new Schedule(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ScheduleState, opts?: pulumi.CustomResourceOptions): Schedule {
+        return new Schedule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ess/schedule:Schedule';
+
     /**
-     * Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
+     * Returns true if the given object is an instance of Schedule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public readonly description: pulumi.Output<string>;
-    /**
-     * Time period within which the failed scheduled task is retried. The default value is 600s. Value range: [0, 21600]
-     */
-    public readonly launchExpirationTime: pulumi.Output<number | undefined>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
-    public readonly launchTime: pulumi.Output<string>;
-    /**
-     * End time of the scheduled task to be repeated. The date format follows the ISO8601 standard and uses UTC time. It is in the format of YYYY-MM-DDThh:mmZ. A time point 90 days after creation or modification cannot be entered. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.                                  
-     */
-    public readonly recurrenceEndTime: pulumi.Output<string>;
-    /**
-     * Type of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified. Optional values:
-     * - Daily: Recurrence interval by day for a scheduled task.
-     * - Weekly: Recurrence interval by week for a scheduled task.
-     * - Monthly: Recurrence interval by month for a scheduled task.
-     */
-    public readonly recurrenceType: pulumi.Output<string>;
-    /**
-     * Value of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.
-     * - Daily: Only one value in the range [1,31] can be filled.
-     * - Weekly: Multiple values can be filled. The values of Sunday to Saturday are 0 to 6 in sequence. Multiple values shall be separated by a comma “,”.
-     * - Monthly: In the format of A-B. The value range of A and B is 1 to 31, and the B value must be greater than the A value.
-     */
-    public readonly recurrenceValue: pulumi.Output<string>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
-    public readonly scheduledAction: pulumi.Output<string>;
-    /**
-     * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
-     */
-    public readonly scheduledTaskName: pulumi.Output<string | undefined>;
-    /**
-     * Whether to enable the scheduled task. The default value is true.
-     */
-    public readonly taskEnabled: pulumi.Output<boolean | undefined>;
+    public static isInstance(obj: any): obj is Schedule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Schedule.__pulumiType;
+    }
+
+    public readonly description!: pulumi.Output<string>;
+    public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
+    public readonly launchTime!: pulumi.Output<string>;
+    public readonly recurrenceEndTime!: pulumi.Output<string>;
+    public readonly recurrenceType!: pulumi.Output<string>;
+    public readonly recurrenceValue!: pulumi.Output<string>;
+    public readonly scheduledAction!: pulumi.Output<string>;
+    public readonly scheduledTaskName!: pulumi.Output<string | undefined>;
+    public readonly taskEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -74,7 +57,7 @@ export class Schedule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ScheduleArgs | ScheduleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ScheduleState = argsOrState as ScheduleState | undefined;
+            const state = argsOrState as ScheduleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["launchExpirationTime"] = state ? state.launchExpirationTime : undefined;
             inputs["launchTime"] = state ? state.launchTime : undefined;
@@ -102,7 +85,14 @@ export class Schedule extends pulumi.CustomResource {
             inputs["scheduledTaskName"] = args ? args.scheduledTaskName : undefined;
             inputs["taskEnabled"] = args ? args.taskEnabled : undefined;
         }
-        super("alicloud:ess/schedule:Schedule", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Schedule.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -110,47 +100,14 @@ export class Schedule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Schedule resources.
  */
 export interface ScheduleState {
-    /**
-     * Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Time period within which the failed scheduled task is retried. The default value is 600s. Value range: [0, 21600]
-     */
     readonly launchExpirationTime?: pulumi.Input<number>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
     readonly launchTime?: pulumi.Input<string>;
-    /**
-     * End time of the scheduled task to be repeated. The date format follows the ISO8601 standard and uses UTC time. It is in the format of YYYY-MM-DDThh:mmZ. A time point 90 days after creation or modification cannot be entered. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.                                  
-     */
     readonly recurrenceEndTime?: pulumi.Input<string>;
-    /**
-     * Type of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified. Optional values:
-     * - Daily: Recurrence interval by day for a scheduled task.
-     * - Weekly: Recurrence interval by week for a scheduled task.
-     * - Monthly: Recurrence interval by month for a scheduled task.
-     */
     readonly recurrenceType?: pulumi.Input<string>;
-    /**
-     * Value of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.
-     * - Daily: Only one value in the range [1,31] can be filled.
-     * - Weekly: Multiple values can be filled. The values of Sunday to Saturday are 0 to 6 in sequence. Multiple values shall be separated by a comma “,”.
-     * - Monthly: In the format of A-B. The value range of A and B is 1 to 31, and the B value must be greater than the A value.
-     */
     readonly recurrenceValue?: pulumi.Input<string>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
     readonly scheduledAction?: pulumi.Input<string>;
-    /**
-     * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
-     */
     readonly scheduledTaskName?: pulumi.Input<string>;
-    /**
-     * Whether to enable the scheduled task. The default value is true.
-     */
     readonly taskEnabled?: pulumi.Input<boolean>;
 }
 
@@ -158,46 +115,13 @@ export interface ScheduleState {
  * The set of arguments for constructing a Schedule resource.
  */
 export interface ScheduleArgs {
-    /**
-     * Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
-     */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Time period within which the failed scheduled task is retried. The default value is 600s. Value range: [0, 21600]
-     */
     readonly launchExpirationTime?: pulumi.Input<number>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
     readonly launchTime: pulumi.Input<string>;
-    /**
-     * End time of the scheduled task to be repeated. The date format follows the ISO8601 standard and uses UTC time. It is in the format of YYYY-MM-DDThh:mmZ. A time point 90 days after creation or modification cannot be entered. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.                                  
-     */
     readonly recurrenceEndTime?: pulumi.Input<string>;
-    /**
-     * Type of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified. Optional values:
-     * - Daily: Recurrence interval by day for a scheduled task.
-     * - Weekly: Recurrence interval by week for a scheduled task.
-     * - Monthly: Recurrence interval by month for a scheduled task.
-     */
     readonly recurrenceType?: pulumi.Input<string>;
-    /**
-     * Value of the scheduled task to be repeated. RecurrenceType, RecurrenceValue and RecurrenceEndTime must be specified.
-     * - Daily: Only one value in the range [1,31] can be filled.
-     * - Weekly: Multiple values can be filled. The values of Sunday to Saturday are 0 to 6 in sequence. Multiple values shall be separated by a comma “,”.
-     * - Monthly: In the format of A-B. The value range of A and B is 1 to 31, and the B value must be greater than the A value.
-     */
     readonly recurrenceValue?: pulumi.Input<string>;
-    /**
-     * Operations performed when the scheduled task is triggered. Fill in the unique identifier of the scaling rule.
-     */
     readonly scheduledAction: pulumi.Input<string>;
-    /**
-     * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
-     */
     readonly scheduledTaskName?: pulumi.Input<string>;
-    /**
-     * Whether to enable the scheduled task. The default value is true.
-     */
     readonly taskEnabled?: pulumi.Input<boolean>;
 }

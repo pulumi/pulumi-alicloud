@@ -2,21 +2,61 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a ECS instance resource.
  * 
- * ~> **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+ * > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitchId`. One instance can only belong to one VSwitch.
  * 
- * ~> **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
+ * > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
  * 
- * ~> **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud_instance_types` datasource.
+ * > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
  * 
- * ~> **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+ * > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
  * 
- * ~> **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+ * > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
  *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+ * 
+ * > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a new ECS instance for VPC
+ * const vpc = new alicloud.vpc.Network("vpc", {});
+ * // Create a new ECS instance for a VPC
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "foo",
+ *     vpcId: vpc.id,
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: vpc.id,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     // cn-beijing
+ *     availabilityZone: "cn-beijing-b",
+ *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+ *     instanceName: "testFoo",
+ *     // series III
+ *     instanceType: "ecs.n4.large",
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: group.id,
+ *     systemDiskCategory: "cloudEfficiency",
+ *     vswitchId: vswitch.id,
+ * });
+ * const slb = new alicloud.slb.LoadBalancer("slb", {
+ *     vpcId: vpc.id,
+ *     vswitchId: vswitch.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -27,160 +67,212 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
     /**
-     * It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
-    public readonly allocatePublicIp: pulumi.Output<boolean | undefined>;
+    public readonly allocatePublicIp!: pulumi.Output<boolean | undefined>;
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-     * - [1, 2, 3] when `period_unit` in "Week"
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+     * - [1, 2, 3] when `periodUnit` in "Week"
      */
-    public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
+    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      */
-    public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly creditSpecification!: pulumi.Output<string>;
     /**
-     * Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
+     * The list of data disks created with instance.
      */
-    public readonly dryRun: pulumi.Output<boolean | undefined>;
+    public readonly dataDisks!: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
+    /**
+     * Whether enable the deletion protection or not.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
+     * The description of the data disk.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to send a dry-run request. Default to false. 
+     * - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+     * - false: A request is sent. If the validation succeeds, the instance is created.
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
      */
-    public readonly forceDelete: pulumi.Output<boolean | undefined>;
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
      * On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly hostName: pulumi.Output<string>;
+    public readonly hostName!: pulumi.Output<string>;
     /**
      * The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly imageId: pulumi.Output<string>;
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * Whether to change instance disks charge type when changing instance charge type.
      */
-    public readonly includeDataDisks: pulumi.Output<boolean | undefined>;
+    public readonly includeDataDisks!: pulumi.Output<boolean | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
      */
-    public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
+    public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-     * Terraform will autogenerate a default name is `ECS-Instance`.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly instanceName: pulumi.Output<string | undefined>;
-    /**
-     * The type of instance to start.
-     */
-    public readonly instanceType: pulumi.Output<string>;
+    public readonly instanceType!: pulumi.Output<string>;
     /**
      * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
      */
-    public readonly internetChargeType: pulumi.Output<string | undefined>;
+    public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
      */
-    public readonly internetMaxBandwidthIn: pulumi.Output<number>;
+    public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
     /**
      * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
      */
-    public readonly internetMaxBandwidthOut: pulumi.Output<number | undefined>;
+    public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      */
-    public readonly ioOptimized: pulumi.Output<string | undefined>;
+    public readonly ioOptimized!: pulumi.Output<string | undefined>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
-    public readonly isOutdated: pulumi.Output<boolean | undefined>;
+    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      */
-    public readonly keyName: pulumi.Output<string>;
+    public readonly keyName!: pulumi.Output<string>;
+    /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+     */
+    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+     */
+    public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-     * - [1-3] when `period_unit` in "Week"
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
      */
-    public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
-     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
+     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly privateIp: pulumi.Output<string>;
+    public readonly privateIp!: pulumi.Output<string>;
     /**
      * The instance public ip.
      */
-    public /*out*/ readonly publicIp: pulumi.Output<string>;
+    public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
-     * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+     * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
-    public readonly renewalStatus: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string | undefined>;
     /**
-     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+     * The Id of resource group which the instance belongs.
      */
-    public readonly roleName: pulumi.Output<string>;
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
+     */
+    public readonly roleName!: pulumi.Output<string>;
+    /**
+     * The security enhancement strategy.
+     * - Active: Enable security enhancement strategy, it only works on system images.
+     * - Deactive: Disable security enhancement strategy, it works on all images.
+     */
+    public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
     /**
      * A list of security group ids to associate with.
      */
-    public readonly securityGroups: pulumi.Output<string[]>;
+    public readonly securityGroups!: pulumi.Output<string[]>;
     /**
      * The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
      */
-    public readonly spotPriceLimit: pulumi.Output<number | undefined>;
+    public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      */
-    public readonly spotStrategy: pulumi.Output<string | undefined>;
+    public readonly spotStrategy!: pulumi.Output<string | undefined>;
     /**
      * The instance status.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
-    public readonly subnetId: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
-     * Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
-    public readonly systemDiskCategory: pulumi.Output<string | undefined>;
+    public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
      */
-    public readonly systemDiskSize: pulumi.Output<number | undefined>;
+    public readonly systemDiskSize!: pulumi.Output<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
-    public readonly userData: pulumi.Output<string | undefined>;
+    public readonly userData!: pulumi.Output<string | undefined>;
     /**
-     * The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
+     * A mapping of tags to assign to the devices created by the instance at launch time.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    public readonly vswitchId: pulumi.Output<string | undefined>;
+    public readonly volumeTags!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
+     */
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -193,10 +285,13 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["allocatePublicIp"] = state ? state.allocatePublicIp : undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            inputs["creditSpecification"] = state ? state.creditSpecification : undefined;
+            inputs["dataDisks"] = state ? state.dataDisks : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dryRun"] = state ? state.dryRun : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
@@ -212,13 +307,17 @@ export class Instance extends pulumi.CustomResource {
             inputs["ioOptimized"] = state ? state.ioOptimized : undefined;
             inputs["isOutdated"] = state ? state.isOutdated : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
+            inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["periodUnit"] = state ? state.periodUnit : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
             inputs["publicIp"] = state ? state.publicIp : undefined;
             inputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
+            inputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = state ? state.securityGroups : undefined;
             inputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
@@ -228,6 +327,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
+            inputs["volumeTags"] = state ? state.volumeTags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -243,6 +343,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["allocatePublicIp"] = args ? args.allocatePublicIp : undefined;
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            inputs["creditSpecification"] = args ? args.creditSpecification : undefined;
+            inputs["dataDisks"] = args ? args.dataDisks : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
@@ -258,12 +361,16 @@ export class Instance extends pulumi.CustomResource {
             inputs["ioOptimized"] = args ? args.ioOptimized : undefined;
             inputs["isOutdated"] = args ? args.isOutdated : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
+            inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
+            inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["periodUnit"] = args ? args.periodUnit : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
             inputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
+            inputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
@@ -272,11 +379,19 @@ export class Instance extends pulumi.CustomResource {
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
+            inputs["volumeTags"] = args ? args.volumeTags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["publicIp"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:ecs/instance:Instance", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -285,25 +400,41 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-     * - [1, 2, 3] when `period_unit` in "Week"
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+     * - [1, 2, 3] when `periodUnit` in "Week"
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     */
+    readonly creditSpecification?: pulumi.Input<string>;
+    /**
+     * The list of data disks created with instance.
+     */
+    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
+    /**
+     * Whether enable the deletion protection or not.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The description of the data disk.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
+     * Specifies whether to send a dry-run request. Default to false. 
+     * - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+     * - false: A request is sent. If the validation succeeds, the instance is created.
      */
     readonly dryRun?: pulumi.Input<boolean>;
     /**
@@ -312,7 +443,7 @@ export interface InstanceState {
      */
     readonly forceDelete?: pulumi.Input<boolean>;
     /**
-     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
      * On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly hostName?: pulumi.Input<string>;
@@ -328,13 +459,9 @@ export interface InstanceState {
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
-    /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-     * Terraform will autogenerate a default name is `ECS-Instance`.
-     */
     readonly instanceName?: pulumi.Input<string>;
     /**
-     * The type of instance to start.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
@@ -362,21 +489,29 @@ export interface InstanceState {
      */
     readonly keyName?: pulumi.Input<string>;
     /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+     */
+    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+     */
+    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-     * - [1-3] when `period_unit` in "Week"
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
-     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
+     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly privateIp?: pulumi.Input<string>;
     /**
@@ -384,16 +519,26 @@ export interface InstanceState {
      */
     readonly publicIp?: pulumi.Input<string>;
     /**
-     * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+     * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     readonly renewalStatus?: pulumi.Input<string>;
     /**
-     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+     * The Id of resource group which the instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     readonly roleName?: pulumi.Input<string>;
+    /**
+     * The security enhancement strategy.
+     * - Active: Enable security enhancement strategy, it only works on system images.
+     * - Deactive: Disable security enhancement strategy, it works on all images.
+     */
+    readonly securityEnhancementStrategy?: pulumi.Input<string>;
     /**
      * A list of security group ids to associate with.
      */
@@ -403,7 +548,7 @@ export interface InstanceState {
      */
     readonly spotPriceLimit?: pulumi.Input<number>;
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -415,23 +560,31 @@ export interface InstanceState {
     readonly status?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
     /**
-     * Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
+     * A mapping of tags to assign to the devices created by the instance at launch time.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly volumeTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }
@@ -441,25 +594,41 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+     * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
-     * - [1, 2, 3, 6, 12] when `period_unit` in "Month"
-     * - [1, 2, 3] when `period_unit` in "Week"
+     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
+     * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
+     * - [1, 2, 3] when `periodUnit` in "Week"
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+     * The Zone to start the instance in. It is ignored and will be computed when set `vswitchId`.
      */
     readonly availabilityZone?: pulumi.Input<string>;
     /**
-     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
+     */
+    readonly creditSpecification?: pulumi.Input<string>;
+    /**
+     * The list of data disks created with instance.
+     */
+    readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
+    /**
+     * Whether enable the deletion protection or not.
+     * - true: Enable deletion protection.
+     * - false: Disable deletion protection.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * The description of the data disk.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to pre-detection. When it is true, only pre-detection and not actually modify the payment type operation. It is valid when `instance_charge_type` is 'PrePaid'. Default to false.
+     * Specifies whether to send a dry-run request. Default to false. 
+     * - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
+     * - false: A request is sent. If the validation succeeds, the instance is created.
      */
     readonly dryRun?: pulumi.Input<boolean>;
     /**
@@ -468,7 +637,7 @@ export interface InstanceArgs {
      */
     readonly forceDelete?: pulumi.Input<boolean>;
     /**
-     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters.
+     * Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
      * On other OSs such as Linux, the host name can contain a maximum of 30 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly hostName?: pulumi.Input<string>;
@@ -484,13 +653,9 @@ export interface InstanceArgs {
      * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
-    /**
-     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. If not specified, 
-     * Terraform will autogenerate a default name is `ECS-Instance`.
-     */
     readonly instanceName?: pulumi.Input<string>;
     /**
-     * The type of instance to start.
+     * The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly instanceType: pulumi.Input<string>;
     /**
@@ -518,34 +683,52 @@ export interface InstanceArgs {
      */
     readonly keyName?: pulumi.Input<string>;
     /**
+     * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
+     */
+    readonly kmsEncryptedPassword?: pulumi.Input<string>;
+    /**
+     * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating an instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
+     */
+    readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values:
-     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
-     * - [1-3] when `period_unit` in "Week"
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
+     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
      */
     readonly periodUnit?: pulumi.Input<string>;
     /**
-     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified.
+     * Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly privateIp?: pulumi.Input<string>;
     /**
-     * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+     * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
      * - `Normal`: Disable auto renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     readonly renewalStatus?: pulumi.Input<string>;
     /**
-     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud_ram_role` to create a new one.
+     * The Id of resource group which the instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
     readonly roleName?: pulumi.Input<string>;
+    /**
+     * The security enhancement strategy.
+     * - Active: Enable security enhancement strategy, it only works on system images.
+     * - Deactive: Disable security enhancement strategy, it works on all images.
+     */
+    readonly securityEnhancementStrategy?: pulumi.Input<string>;
     /**
      * A list of security group ids to associate with.
      */
@@ -555,7 +738,7 @@ export interface InstanceArgs {
      */
     readonly spotPriceLimit?: pulumi.Input<number>;
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:
+     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'. Value range:
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
@@ -563,23 +746,31 @@ export interface InstanceArgs {
     readonly spotStrategy?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
     /**
-     * Valid values are `cloud_efficiency`, `cloud_ssd` and `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
     /**
-     * Size of the system disk, value range: 40GB ~ 500GB. Default is 40GB. ECS instance's system disk can be reset when replacing system disk.
+     * Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly systemDiskSize?: pulumi.Input<number>;
     /**
      * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance.
+     * User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
      */
     readonly userData?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch in VPC. If you want to create instances in VPC network, this parameter must be set.
+     * A mapping of tags to assign to the devices created by the instance at launch time.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly volumeTags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly vswitchId?: pulumi.Input<string>;
 }

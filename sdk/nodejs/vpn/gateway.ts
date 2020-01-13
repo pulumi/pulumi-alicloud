@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPN gateway resource.
- * 
- * ~> **NOTE:** Terraform will auto build vpn instance  while it uses `alicloud_vpn_gateway` to build a vpn resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_gateway.html.markdown.
  */
 export class Gateway extends pulumi.CustomResource {
     /**
@@ -18,59 +18,73 @@ export class Gateway extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GatewayState): Gateway {
-        return new Gateway(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GatewayState, opts?: pulumi.CustomResourceOptions): Gateway {
+        return new Gateway(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpn/gateway:Gateway';
+
     /**
-     * The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-     * It can't be changed by terraform.
+     * Returns true if the given object is an instance of Gateway.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public readonly bandwidth: pulumi.Output<number>;
+    public static isInstance(obj: any): obj is Gateway {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Gateway.__pulumiType;
+    }
+
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The business status of the VPN gateway.
      */
-    public /*out*/ readonly businessStatus: pulumi.Output<string>;
+    public /*out*/ readonly businessStatus!: pulumi.Output<string>;
     /**
      * The description of the VPN instance.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
      */
-    public readonly enableIpsec: pulumi.Output<boolean | undefined>;
+    public readonly enableIpsec!: pulumi.Output<boolean | undefined>;
     /**
      * Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
      */
-    public readonly enableSsl: pulumi.Output<boolean | undefined>;
+    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     /**
-     * The charge type for instance.
+     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
      */
-    public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The internet ip of the VPN.
      */
-    public /*out*/ readonly internetIp: pulumi.Output<string>;
+    public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
      * The name of the VPN. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * The filed is only required while the InstanceChargeType is prepaid.
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The max connections of SSL VPN.
+     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
      */
-    public readonly sslConnections: pulumi.Output<number | undefined>;
+    public readonly sslConnections!: pulumi.Output<number | undefined>;
     /**
      * The status of the VPN gateway.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
-    public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
+    /**
+     * The VPN belongs the vswitch_id, the field can't be changed.
+     */
+    public readonly vswitchId!: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -83,7 +97,7 @@ export class Gateway extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GatewayArgs | GatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GatewayState = argsOrState as GatewayState | undefined;
+            const state = argsOrState as GatewayState | undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["businessStatus"] = state ? state.businessStatus : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -96,6 +110,7 @@ export class Gateway extends pulumi.CustomResource {
             inputs["sslConnections"] = state ? state.sslConnections : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
+            inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
             if (!args || args.bandwidth === undefined) {
@@ -113,11 +128,19 @@ export class Gateway extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["sslConnections"] = args ? args.sslConnections : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
+            inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["businessStatus"] = undefined /*out*/;
             inputs["internetIp"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:vpn/gateway:Gateway", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Gateway.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -125,10 +148,6 @@ export class Gateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Gateway resources.
  */
 export interface GatewayState {
-    /**
-     * The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-     * It can't be changed by terraform.
-     */
     readonly bandwidth?: pulumi.Input<number>;
     /**
      * The business status of the VPN gateway.
@@ -147,7 +166,7 @@ export interface GatewayState {
      */
     readonly enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance.
+     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -159,11 +178,11 @@ export interface GatewayState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The filed is only required while the InstanceChargeType is prepaid.
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The max connections of SSL VPN.
+     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
      */
     readonly sslConnections?: pulumi.Input<number>;
     /**
@@ -174,16 +193,16 @@ export interface GatewayState {
      * The VPN belongs the vpc_id, the field can't be changed.
      */
     readonly vpcId?: pulumi.Input<string>;
+    /**
+     * The VPN belongs the vswitch_id, the field can't be changed.
+     */
+    readonly vswitchId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Gateway resource.
  */
 export interface GatewayArgs {
-    /**
-     * The value should be 10 or 100 if the user is postpaid, otherwise it can be 5, 10, 20, 50, 100.
-     * It can't be changed by terraform.
-     */
     readonly bandwidth: pulumi.Input<number>;
     /**
      * The description of the VPN instance.
@@ -198,7 +217,7 @@ export interface GatewayArgs {
      */
     readonly enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance.
+     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -206,15 +225,19 @@ export interface GatewayArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The filed is only required while the InstanceChargeType is prepaid.
+     * The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The max connections of SSL VPN.
+     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
      */
     readonly sslConnections?: pulumi.Input<number>;
     /**
      * The VPN belongs the vpc_id, the field can't be changed.
      */
     readonly vpcId: pulumi.Input<string>;
+    /**
+     * The VPN belongs the vswitch_id, the field can't be changed.
+     */
+    readonly vswitchId?: pulumi.Input<string>;
 }

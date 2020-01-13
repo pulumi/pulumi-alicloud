@@ -9,7 +9,9 @@ import (
 
 // Provides a DNS resource.
 // 
-// ~> **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+// > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns.html.markdown.
 type Domain struct {
 	s *pulumi.ResourceState
 }
@@ -21,11 +23,14 @@ func NewDomain(ctx *pulumi.Context,
 	if args == nil {
 		inputs["groupId"] = nil
 		inputs["name"] = nil
+		inputs["resourceGroupId"] = nil
 	} else {
 		inputs["groupId"] = args.GroupId
 		inputs["name"] = args.Name
+		inputs["resourceGroupId"] = args.ResourceGroupId
 	}
 	inputs["dnsServers"] = nil
+	inputs["domainId"] = nil
 	s, err := ctx.RegisterResource("alicloud:dns/domain:Domain", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -40,8 +45,10 @@ func GetDomain(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["dnsServers"] = state.DnsServers
+		inputs["domainId"] = state.DomainId
 		inputs["groupId"] = state.GroupId
 		inputs["name"] = state.Name
+		inputs["resourceGroupId"] = state.ResourceGroupId
 	}
 	s, err := ctx.ReadResource("alicloud:dns/domain:Domain", name, id, inputs, opts...)
 	if err != nil {
@@ -51,38 +58,52 @@ func GetDomain(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Domain) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Domain) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Domain) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Domain) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // A list of the dns server name.
-func (r *Domain) DnsServers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dnsServers"])
+func (r *Domain) DnsServers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dnsServers"])
+}
+
+// The domain ID.
+func (r *Domain) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // Id of the group in which the domain will add. If not supplied, then use default group.
-func (r *Domain) GroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupId"])
+func (r *Domain) GroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupId"])
 }
 
 // Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-func (r *Domain) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Domain) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// The Id of resource group which the dns belongs.
+func (r *Domain) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
 }
 
 // Input properties used for looking up and filtering Domain resources.
 type DomainState struct {
 	// A list of the dns server name.
 	DnsServers interface{}
+	// The domain ID.
+	DomainId interface{}
 	// Id of the group in which the domain will add. If not supplied, then use default group.
 	GroupId interface{}
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	Name interface{}
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId interface{}
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -91,4 +112,6 @@ type DomainArgs struct {
 	GroupId interface{}
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	Name interface{}
+	// The Id of resource group which the dns belongs.
+	ResourceGroupId interface{}
 }

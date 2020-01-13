@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Subnet extends pulumi.CustomResource {
@@ -13,15 +15,30 @@ export class Subnet extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState): Subnet {
-        return new Subnet(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetState, opts?: pulumi.CustomResourceOptions): Subnet {
+        return new Subnet(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly availabilityZone: pulumi.Output<string>;
-    public readonly cidrBlock: pulumi.Output<string>;
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly vpcId: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/subnet:Subnet';
+
+    /**
+     * Returns true if the given object is an instance of Subnet.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Subnet {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Subnet.__pulumiType;
+    }
+
+    public readonly availabilityZone!: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -34,11 +51,12 @@ export class Subnet extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SubnetState = argsOrState as SubnetState | undefined;
+            const state = argsOrState as SubnetState | undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
@@ -55,9 +73,17 @@ export class Subnet extends pulumi.CustomResource {
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("alicloud:vpc/subnet:Subnet", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Subnet.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -69,6 +95,7 @@ export interface SubnetState {
     readonly cidrBlock?: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     readonly vpcId?: pulumi.Input<string>;
 }
 
@@ -80,5 +107,6 @@ export interface SubnetArgs {
     readonly cidrBlock: pulumi.Input<string>;
     readonly description?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     readonly vpcId: pulumi.Input<string>;
 }

@@ -4,8 +4,14 @@
 // Export members:
 export * from "./alarm";
 export * from "./attachment";
+export * from "./getScalingConfigurations";
+export * from "./getScalingGroups";
+export * from "./getScalingRules";
 export * from "./lifecycleHook";
+export * from "./notification";
 export * from "./scalingConfiguration";
 export * from "./scalingGroup";
+export * from "./scalingGroupVServerGroups";
 export * from "./scalingRule";
 export * from "./schedule";
+export * from "./scheduledTask";

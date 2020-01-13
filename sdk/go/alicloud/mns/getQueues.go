@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_queues.html.markdown.
 func LookupQueues(ctx *pulumi.Context, args *GetQueuesArgs) (*GetQueuesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -19,6 +21,9 @@ func LookupQueues(ctx *pulumi.Context, args *GetQueuesArgs) (*GetQueuesResult, e
 		return nil, err
 	}
 	return &GetQueuesResult{
+		NamePrefix: outputs["namePrefix"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Queues: outputs["queues"],
 		Id: outputs["id"],
 	}, nil
@@ -28,13 +33,16 @@ func LookupQueues(ctx *pulumi.Context, args *GetQueuesArgs) (*GetQueuesResult, e
 type GetQueuesArgs struct {
 	// A string to filter resulting queues by their name prefixs.
 	NamePrefix interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getQueues.
 type GetQueuesResult struct {
-	// A list of users. Each element contains the following attributes:
+	NamePrefix interface{}
+	// A list of queue names. 
+	Names interface{}
+	OutputFile interface{}
+	// A list of queues. Each element contains the following attributes:
 	Queues interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

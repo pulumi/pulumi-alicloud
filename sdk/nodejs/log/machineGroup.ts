@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
- *  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_machine_group.html.markdown.
  */
 export class MachineGroup extends pulumi.CustomResource {
     /**
@@ -17,31 +16,45 @@ export class MachineGroup extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MachineGroupState): MachineGroup {
-        return new MachineGroup(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MachineGroupState, opts?: pulumi.CustomResourceOptions): MachineGroup {
+        return new MachineGroup(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:log/machineGroup:MachineGroup';
+
+    /**
+     * Returns true if the given object is an instance of MachineGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is MachineGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === MachineGroup.__pulumiType;
     }
 
     /**
      * The machine identification.
      */
-    public readonly identifyLists: pulumi.Output<string[]>;
+    public readonly identifyLists!: pulumi.Output<string[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
+     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
-    public readonly identifyType: pulumi.Output<string | undefined>;
+    public readonly identifyType!: pulumi.Output<string | undefined>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The project name to the machine group belongs.
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The topic of a machine group.
      */
-    public readonly topic: pulumi.Output<string | undefined>;
+    public readonly topic!: pulumi.Output<string | undefined>;
 
     /**
      * Create a MachineGroup resource with the given unique name, arguments, and options.
@@ -54,7 +67,7 @@ export class MachineGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MachineGroupArgs | MachineGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: MachineGroupState = argsOrState as MachineGroupState | undefined;
+            const state = argsOrState as MachineGroupState | undefined;
             inputs["identifyLists"] = state ? state.identifyLists : undefined;
             inputs["identifyType"] = state ? state.identifyType : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -74,7 +87,14 @@ export class MachineGroup extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         }
-        super("alicloud:log/machineGroup:MachineGroup", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(MachineGroup.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -88,7 +108,7 @@ export interface MachineGroupState {
     readonly identifyLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
+     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyType?: pulumi.Input<string>;
     /**
@@ -115,7 +135,7 @@ export interface MachineGroupArgs {
     readonly identifyLists: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identify_list`-  The specific machine identification, which can be an IP address or user-defined identity.
+     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyType?: pulumi.Input<string>;
     /**

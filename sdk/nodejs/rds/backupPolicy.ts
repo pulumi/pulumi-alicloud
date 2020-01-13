@@ -7,7 +7,43 @@ import * as utilities from "../utilities";
 /**
  * Provides an RDS instance backup policy resource and used to configure instance backup policy.
  * 
- * ~> **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+ * > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "Rds";
+ * const name = config.get("name") || "dbbackuppolicybasic";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const instance = new alicloud.rds.Instance("instance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceName: name,
+ *     instanceStorage: 10,
+ *     instanceType: "rds.mysql.s1.small",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const policy = new alicloud.rds.BackupPolicy("policy", {
+ *     instanceId: instance.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
  */
 export class BackupPolicy extends pulumi.CustomResource {
     /**
@@ -18,34 +54,64 @@ export class BackupPolicy extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackupPolicyState): BackupPolicy {
-        return new BackupPolicy(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BackupPolicyState, opts?: pulumi.CustomResourceOptions): BackupPolicy {
+        return new BackupPolicy(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:rds/backupPolicy:BackupPolicy';
+
+    /**
+     * Returns true if the given object is an instance of BackupPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BackupPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BackupPolicy.__pulumiType;
     }
 
     /**
-     * DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
-    public readonly backupPeriods: pulumi.Output<string[]>;
+    public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
      * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    public readonly backupTime: pulumi.Output<string | undefined>;
+    public readonly backupTime!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     */
+    public readonly enableBackupLog!: pulumi.Output<boolean>;
+    /**
+     * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+     */
+    public readonly highSpaceUsageProtection!: pulumi.Output<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Whether to backup instance log. Default to true.
+     * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      */
-    public readonly logBackup: pulumi.Output<boolean | undefined>;
+    public readonly localLogRetentionHours!: pulumi.Output<number | undefined>;
     /**
-     * Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
      */
-    public readonly logRetentionPeriod: pulumi.Output<number | undefined>;
+    public readonly localLogRetentionSpace!: pulumi.Output<number | undefined>;
+    /**
+     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     */
+    public readonly logBackup!: pulumi.Output<boolean>;
+    /**
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+     */
+    public readonly logRetentionPeriod!: pulumi.Output<number>;
     /**
      * Instance backup retention days. Valid values: [7-730]. Default to 7.
      */
-    public readonly retentionPeriod: pulumi.Output<number | undefined>;
+    public readonly retentionPeriod!: pulumi.Output<number | undefined>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -58,10 +124,14 @@ export class BackupPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BackupPolicyArgs | BackupPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BackupPolicyState = argsOrState as BackupPolicyState | undefined;
+            const state = argsOrState as BackupPolicyState | undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
+            inputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
+            inputs["highSpaceUsageProtection"] = state ? state.highSpaceUsageProtection : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["localLogRetentionHours"] = state ? state.localLogRetentionHours : undefined;
+            inputs["localLogRetentionSpace"] = state ? state.localLogRetentionSpace : undefined;
             inputs["logBackup"] = state ? state.logBackup : undefined;
             inputs["logRetentionPeriod"] = state ? state.logRetentionPeriod : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
@@ -72,12 +142,23 @@ export class BackupPolicy extends pulumi.CustomResource {
             }
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
+            inputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
+            inputs["highSpaceUsageProtection"] = args ? args.highSpaceUsageProtection : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["localLogRetentionHours"] = args ? args.localLogRetentionHours : undefined;
+            inputs["localLogRetentionSpace"] = args ? args.localLogRetentionSpace : undefined;
             inputs["logBackup"] = args ? args.logBackup : undefined;
             inputs["logRetentionPeriod"] = args ? args.logRetentionPeriod : undefined;
             inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
         }
-        super("alicloud:rds/backupPolicy:BackupPolicy", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(BackupPolicy.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -86,7 +167,7 @@ export class BackupPolicy extends pulumi.CustomResource {
  */
 export interface BackupPolicyState {
     /**
-     * DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -94,15 +175,31 @@ export interface BackupPolicyState {
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
+     * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     */
+    readonly enableBackupLog?: pulumi.Input<boolean>;
+    /**
+     * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+     */
+    readonly highSpaceUsageProtection?: pulumi.Input<string>;
+    /**
      * The Id of instance that can run database.
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * Whether to backup instance log. Default to true.
+     * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+     */
+    readonly localLogRetentionHours?: pulumi.Input<number>;
+    /**
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+     */
+    readonly localLogRetentionSpace?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
     readonly logBackup?: pulumi.Input<boolean>;
     /**
-     * Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
      */
     readonly logRetentionPeriod?: pulumi.Input<number>;
     /**
@@ -116,7 +213,7 @@ export interface BackupPolicyState {
  */
 export interface BackupPolicyArgs {
     /**
-     * DB Instance backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -124,15 +221,31 @@ export interface BackupPolicyArgs {
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
+     * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     */
+    readonly enableBackupLog?: pulumi.Input<boolean>;
+    /**
+     * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
+     */
+    readonly highSpaceUsageProtection?: pulumi.Input<string>;
+    /**
      * The Id of instance that can run database.
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * Whether to backup instance log. Default to true.
+     * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
+     */
+    readonly localLogRetentionHours?: pulumi.Input<number>;
+    /**
+     * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
+     */
+    readonly localLogRetentionSpace?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
     readonly logBackup?: pulumi.Input<boolean>;
     /**
-     * Instance log backup retention days. Valid values: [7-730]. Default to 7. It can be larger than 'retention_period'.
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
      */
     readonly logRetentionPeriod?: pulumi.Input<number>;
     /**

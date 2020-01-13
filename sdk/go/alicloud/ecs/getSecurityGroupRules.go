@@ -7,9 +7,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `alicloud_security_group_rules` data source provides a collection of security permissions of a specific security group.
+// The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
 // Each collection item represents a single `ingress` or `egress` permission rule.
-// The ID of the security group can be provided via a variable or the result from the other data source `alicloud_security_groups`.
+// The ID of the security group can be provided via a variable or the result from the other data source `ecs.getSecurityGroups`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
 func LookupSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesArgs) (*GetSecurityGroupRulesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -25,8 +27,14 @@ func LookupSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesAr
 		return nil, err
 	}
 	return &GetSecurityGroupRulesResult{
+		Direction: outputs["direction"],
 		GroupDesc: outputs["groupDesc"],
+		GroupId: outputs["groupId"],
 		GroupName: outputs["groupName"],
+		IpProtocol: outputs["ipProtocol"],
+		NicType: outputs["nicType"],
+		OutputFile: outputs["outputFile"],
+		Policy: outputs["policy"],
 		Rules: outputs["rules"],
 		Id: outputs["id"],
 	}, nil
@@ -42,7 +50,6 @@ type GetSecurityGroupRulesArgs struct {
 	IpProtocol interface{}
 	// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
 	NicType interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
 	Policy interface{}
@@ -50,10 +57,20 @@ type GetSecurityGroupRulesArgs struct {
 
 // A collection of values returned by getSecurityGroupRules.
 type GetSecurityGroupRulesResult struct {
+	// Authorization direction, `ingress` or `egress`.
+	Direction interface{}
 	// The description of the security group that owns the rules.
 	GroupDesc interface{}
+	GroupId interface{}
 	// The name of the security group that owns the rules.
 	GroupName interface{}
+	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+	IpProtocol interface{}
+	// Network type, `internet` or `intranet`.
+	NicType interface{}
+	OutputFile interface{}
+	// Authorization policy. Can be either `accept` or `drop`.
+	Policy interface{}
 	// A list of security group rules. Each element contains the following attributes:
 	Rules interface{}
 	// id is the provider-assigned unique ID for this managed resource.

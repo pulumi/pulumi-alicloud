@@ -8,9 +8,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource manages swarm cluster, which is being deprecated and will be replaced by Kubernetes cluster.
+// 
 // This resource will help you to manager a Swarm Cluster.
 // 
-// -> **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
+// > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitchId`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
 type Swarm struct {
 	s *pulumi.ResourceState
 }
@@ -108,18 +112,18 @@ func GetSwarm(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Swarm) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Swarm) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Swarm) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Swarm) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The nodes agent version.
-func (r *Swarm) AgentVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["agentVersion"])
+func (r *Swarm) AgentVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["agentVersion"])
 }
 
 // The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
@@ -127,93 +131,92 @@ func (r *Swarm) AgentVersion() *pulumi.StringOutput {
 // - 192.168.0.0/16
 // - 172.19-30.0.0/16
 // - 10.0.0.0/16
-func (r *Swarm) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Swarm) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
-// The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-func (r *Swarm) DiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskCategory"])
+// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
+func (r *Swarm) DiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["diskCategory"])
 }
 
 // The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
-func (r *Swarm) DiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["diskSize"])
+func (r *Swarm) DiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["diskSize"])
 }
 
 // The image ID of ECS instance node used. Default to System automate allocated.
-func (r *Swarm) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Swarm) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
 // The type of ECS instance node.
-func (r *Swarm) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+func (r *Swarm) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
 // Whether to use outdated instance type. Default to false.
-func (r *Swarm) IsOutdated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isOutdated"])
+func (r *Swarm) IsOutdated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isOutdated"])
 }
 
 // The container cluster's name. It is the only in one Alicloud account.
-func (r *Swarm) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Swarm) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
-func (r *Swarm) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *Swarm) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
-func (r *Swarm) NeedSlb() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["needSlb"])
+func (r *Swarm) NeedSlb() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["needSlb"])
 }
 
 // The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
-func (r *Swarm) NodeNumber() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeNumber"])
+func (r *Swarm) NodeNumber() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeNumber"])
 }
 
 // List of cluster nodes. It contains several attributes to `Block Nodes`.
-func (r *Swarm) Nodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodes"])
+func (r *Swarm) Nodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodes"])
 }
 
 // The password of ECS instance node.
-func (r *Swarm) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Swarm) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Whether to release EIP after creating swarm cluster successfully. Default to false.
-// * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
-func (r *Swarm) ReleaseEip() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["releaseEip"])
+// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+func (r *Swarm) ReleaseEip() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["releaseEip"])
 }
 
 // The ID of security group where the current cluster worker node is located.
-func (r *Swarm) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+func (r *Swarm) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
 // Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-func (r *Swarm) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Swarm) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
 // The ID of load balancer where the current cluster worker node is located.
-func (r *Swarm) SlbId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbId"])
+func (r *Swarm) SlbId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slbId"])
 }
 
 // The ID of VPC where the current cluster is located.
-func (r *Swarm) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Swarm) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
-func (r *Swarm) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+func (r *Swarm) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering Swarm resources.
@@ -226,7 +229,7 @@ type SwarmState struct {
 	// - 172.19-30.0.0/16
 	// - 10.0.0.0/16
 	CidrBlock interface{}
-	// The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	DiskCategory interface{}
 	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
 	DiskSize interface{}
@@ -238,7 +241,6 @@ type SwarmState struct {
 	IsOutdated interface{}
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name interface{}
-	// The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
 	NamePrefix interface{}
 	NeedSlb interface{}
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -248,7 +250,7 @@ type SwarmState struct {
 	// The password of ECS instance node.
 	Password interface{}
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip interface{}
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId interface{}
@@ -270,7 +272,7 @@ type SwarmArgs struct {
 	// - 172.19-30.0.0/16
 	// - 10.0.0.0/16
 	CidrBlock interface{}
-	// The data disk category of ECS instance node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+	// The data disk category of ECS instance node. Its valid value are `cloud`, `cloudSsd`, `cloudEssd`, `ephemeralEssd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	DiskCategory interface{}
 	// The data disk size of ECS instance node. Its valid value is 20~32768 GB. Default to 20.
 	DiskSize interface{}
@@ -282,7 +284,6 @@ type SwarmArgs struct {
 	IsOutdated interface{}
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name interface{}
-	// The container cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to 'Terraform-Creation'.
 	NamePrefix interface{}
 	NeedSlb interface{}
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -290,7 +291,7 @@ type SwarmArgs struct {
 	// The password of ECS instance node.
 	Password interface{}
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `need_slb`- Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip interface{}
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size interface{}

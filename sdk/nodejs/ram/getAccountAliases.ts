@@ -2,25 +2,48 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides an alias for the Alibaba Cloud account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const aliasDs = alicloud.ram.getAccountAliases({
+ *     outputFile: "alias.txt",
+ * });
+ * 
+ * export const accountAlias = aliasDs.accountAlias;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
  */
-export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> {
+export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> & GetAccountAliasesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetAccountAliasesResult> = pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesArgs {
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -32,6 +55,7 @@ export interface GetAccountAliasesResult {
      * Alias of the account.
      */
     readonly accountAlias: string;
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

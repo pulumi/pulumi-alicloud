@@ -2,33 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * An access control list contains multiple IP addresses or CIDR blocks.
- * The access control list can help you to define multiple instance listening dimension,
- * and to meet the multiple usage for single access control list.
- * 
- * Server Load Balancer allows you to configure access control for listeners.
- * You can configure different whitelists or blacklists for different listeners.
- * 
- * You can configure access control
- * when you create a listener or change access control configuration after a listener is created.
- * 
- * ~> **NOTE:** One access control list can be attached to many Listeners in different load balancer as whitelists or blacklists.
- * 
- * ~> **NOTE:** The maximum number of access control lists per region  is 50.
- * 
- * ~> **NOTE:** The maximum number of IP addresses added each time is 50.
- * 
- * ~> **NOTE:** The maximum number of entries per access control list is 300.
- * 
- * ~> **NOTE:** The maximum number of listeners that an access control list can be added to is 50.
- * 
- * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
- * 
- * For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
- * 
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_acl.html.markdown.
  */
 export class Acl extends pulumi.CustomResource {
     /**
@@ -39,22 +18,44 @@ export class Acl extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AclState): Acl {
-        return new Acl(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AclState, opts?: pulumi.CustomResourceOptions): Acl {
+        return new Acl(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:slb/acl:Acl';
+
+    /**
+     * Returns true if the given object is an instance of Acl.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Acl {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Acl.__pulumiType;
     }
 
     /**
      * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
      */
-    public readonly entryLists: pulumi.Output<{ comment?: string, entry: string }[] | undefined>;
+    public readonly entryLists!: pulumi.Output<outputs.slb.AclEntryList[] | undefined>;
     /**
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
      */
-    public readonly ipVersion: pulumi.Output<string | undefined>;
+    public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
      * Name of the access control list.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Resource group ID.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -67,17 +68,28 @@ export class Acl extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AclState = argsOrState as AclState | undefined;
+            const state = argsOrState as AclState | undefined;
             inputs["entryLists"] = state ? state.entryLists : undefined;
             inputs["ipVersion"] = state ? state.ipVersion : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
             inputs["entryLists"] = args ? args.entryLists : undefined;
             inputs["ipVersion"] = args ? args.ipVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
         }
-        super("alicloud:slb/acl:Acl", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Acl.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -88,7 +100,7 @@ export interface AclState {
     /**
      * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
      */
-    readonly entryLists?: pulumi.Input<pulumi.Input<{ comment?: pulumi.Input<string>, entry: pulumi.Input<string> }>[]>;
+    readonly entryLists?: pulumi.Input<pulumi.Input<inputs.slb.AclEntryList>[]>;
     /**
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
      */
@@ -97,6 +109,14 @@ export interface AclState {
      * Name of the access control list.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Resource group ID.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -106,7 +126,7 @@ export interface AclArgs {
     /**
      * A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
      */
-    readonly entryLists?: pulumi.Input<pulumi.Input<{ comment?: pulumi.Input<string>, entry: pulumi.Input<string> }>[]>;
+    readonly entryLists?: pulumi.Input<pulumi.Input<inputs.slb.AclEntryList>[]>;
     /**
      * The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
      */
@@ -115,4 +135,12 @@ export interface AclArgs {
      * Name of the access control list.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Resource group ID.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

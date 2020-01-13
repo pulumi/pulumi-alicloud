@@ -6,6 +6,33 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
+ * const cen = new alicloud.cen.Instance("cen", {
+ *     description: "tf-testAccCenBandwidthPackageAttachmentDescription",
+ * });
+ * const bwp = new alicloud.cen.BandwidthPackage("bwp", {
+ *     bandwidth: 20,
+ *     geographicRegionIds: [
+ *         "China",
+ *         "Asia-Pacific",
+ *     ],
+ * });
+ * const foo = new alicloud.cen.BandwidthPackageAttachment("foo", {
+ *     bandwidthPackageId: bwp.id,
+ *     instanceId: cen.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package_attachment.html.markdown.
  */
 export class BandwidthPackageAttachment extends pulumi.CustomResource {
     /**
@@ -16,18 +43,32 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BandwidthPackageAttachmentState): BandwidthPackageAttachment {
-        return new BandwidthPackageAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BandwidthPackageAttachmentState, opts?: pulumi.CustomResourceOptions): BandwidthPackageAttachment {
+        return new BandwidthPackageAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment';
+
+    /**
+     * Returns true if the given object is an instance of BandwidthPackageAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is BandwidthPackageAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === BandwidthPackageAttachment.__pulumiType;
     }
 
     /**
      * The ID of the bandwidth package.
      */
-    public readonly bandwidthPackageId: pulumi.Output<string>;
+    public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
      * The ID of the CEN.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPackageAttachment resource with the given unique name, arguments, and options.
@@ -40,7 +81,7 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BandwidthPackageAttachmentArgs | BandwidthPackageAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BandwidthPackageAttachmentState = argsOrState as BandwidthPackageAttachmentState | undefined;
+            const state = argsOrState as BandwidthPackageAttachmentState | undefined;
             inputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
         } else {
@@ -54,7 +95,14 @@ export class BandwidthPackageAttachment extends pulumi.CustomResource {
             inputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
         }
-        super("alicloud:cen/bandwidthPackageAttachment:BandwidthPackageAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(BandwidthPackageAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

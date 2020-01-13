@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
 func LookupTopics(ctx *pulumi.Context, args *GetTopicsArgs) (*GetTopicsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -19,6 +21,9 @@ func LookupTopics(ctx *pulumi.Context, args *GetTopicsArgs) (*GetTopicsResult, e
 		return nil, err
 	}
 	return &GetTopicsResult{
+		NamePrefix: outputs["namePrefix"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Topics: outputs["topics"],
 		Id: outputs["id"],
 	}, nil
@@ -28,13 +33,16 @@ func LookupTopics(ctx *pulumi.Context, args *GetTopicsArgs) (*GetTopicsResult, e
 type GetTopicsArgs struct {
 	// A string to filter resulting topics by their name prefixs.
 	NamePrefix interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
-	// A list of users. Each element contains the following attributes:
+	NamePrefix interface{}
+	// A list of topic names.
+	Names interface{}
+	OutputFile interface{}
+	// A list of topics. Each element contains the following attributes:
 	Topics interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

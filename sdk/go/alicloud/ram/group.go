@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM Group resource.
-// 
-// ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully. 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group.html.markdown.
 type Group struct {
 	s *pulumi.ResourceState
 }
@@ -52,28 +50,28 @@ func GetGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Group) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Group) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Group) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Group) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
-func (r *Group) Comments() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["comments"])
+func (r *Group) Comments() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["comments"])
 }
 
 // This parameter is used for resource destroy. Default value is `false`.
-func (r *Group) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *Group) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
-// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *Group) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+func (r *Group) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Group resources.
@@ -82,7 +80,7 @@ type GroupState struct {
 	Comments interface{}
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force interface{}
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name interface{}
 }
 
@@ -92,6 +90,6 @@ type GroupArgs struct {
 	Comments interface{}
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force interface{}
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name interface{}
 }

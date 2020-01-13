@@ -8,6 +8,10 @@ import (
 )
 
 // The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+// 
+// > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_project.html.markdown.
 type Project struct {
 	s *pulumi.ResourceState
 }
@@ -51,33 +55,33 @@ func GetProject(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Project) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Project) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Project) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Project) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Comment of the datahub project. It cannot be longer than 255 characters.
-func (r *Project) Comment() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["comment"])
+func (r *Project) Comment() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["comment"])
 }
 
 // Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
-func (r *Project) CreateTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createTime"])
+func (r *Project) CreateTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createTime"])
 }
 
 // Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
-func (r *Project) LastModifyTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastModifyTime"])
+func (r *Project) LastModifyTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastModifyTime"])
 }
 
 // The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-func (r *Project) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Project) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Project resources.

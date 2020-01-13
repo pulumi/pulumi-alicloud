@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// ~> **NOTE:** This resource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). New resource `alicloud_ram_account_alias` will replace.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_alias.html.markdown.
 type Alias struct {
 	s *pulumi.ResourceState
 }
@@ -48,17 +48,17 @@ func GetAlias(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Alias) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Alias) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Alias) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Alias) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *Alias) AccountAlias() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accountAlias"])
+func (r *Alias) AccountAlias() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountAlias"])
 }
 
 // Input properties used for looking up and filtering Alias resources.

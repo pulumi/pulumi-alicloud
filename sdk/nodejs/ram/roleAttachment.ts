@@ -2,10 +2,93 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a RAM role attachment resource to bind role for several ECS instances.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "ecsInstanceVPCExample";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloudEfficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^ubuntu_18.*_64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
+ *     cidrIp: "172.16.0.0/24",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     type: "ingress",
+ * });
+ * const foo = new alicloud.ecs.Instance("foo", {
+ *     imageId: defaultImages.images[0].id,
+ *     instanceName: name,
+ *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     systemDiskCategory: "cloudEfficiency",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const role = new alicloud.ram.Role("role", {
+ *     description: "this is a test",
+ *     document: `  {
+ *     "Statement": [
+ *       {
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "ecs.aliyuncs.com"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     "Version": "1"
+ *   }
+ *   `,
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.RoleAttachment("attach", {
+ *     instanceIds: [foo.id],
+ *     roleName: role.name,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_attachment.html.markdown.
  */
 export class RoleAttachment extends pulumi.CustomResource {
     /**
@@ -16,18 +99,32 @@ export class RoleAttachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RoleAttachmentState): RoleAttachment {
-        return new RoleAttachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RoleAttachmentState, opts?: pulumi.CustomResourceOptions): RoleAttachment {
+        return new RoleAttachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/roleAttachment:RoleAttachment';
+
+    /**
+     * Returns true if the given object is an instance of RoleAttachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RoleAttachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RoleAttachment.__pulumiType;
     }
 
     /**
      * The list of ECS instance's IDs.
      */
-    public readonly instanceIds: pulumi.Output<string[]>;
+    public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    public readonly roleName: pulumi.Output<string>;
+    public readonly roleName!: pulumi.Output<string>;
 
     /**
      * Create a RoleAttachment resource with the given unique name, arguments, and options.
@@ -40,7 +137,7 @@ export class RoleAttachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RoleAttachmentArgs | RoleAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RoleAttachmentState = argsOrState as RoleAttachmentState | undefined;
+            const state = argsOrState as RoleAttachmentState | undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["roleName"] = state ? state.roleName : undefined;
         } else {
@@ -54,7 +151,14 @@ export class RoleAttachment extends pulumi.CustomResource {
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["roleName"] = args ? args.roleName : undefined;
         }
-        super("alicloud:ram/roleAttachment:RoleAttachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RoleAttachment.__pulumiType, name, inputs, opts);
     }
 }
 

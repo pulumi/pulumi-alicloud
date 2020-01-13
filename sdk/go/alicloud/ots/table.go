@@ -10,8 +10,10 @@ import (
 
 // Provides an OTS table resource.
 // 
-// ~> **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
+// > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
 // you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
 type Table struct {
 	s *pulumi.ResourceState
 }
@@ -36,12 +38,14 @@ func NewTable(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["deviationCellVersionInSec"] = nil
 		inputs["instanceName"] = nil
 		inputs["maxVersion"] = nil
 		inputs["primaryKeys"] = nil
 		inputs["tableName"] = nil
 		inputs["timeToLive"] = nil
 	} else {
+		inputs["deviationCellVersionInSec"] = args.DeviationCellVersionInSec
 		inputs["instanceName"] = args.InstanceName
 		inputs["maxVersion"] = args.MaxVersion
 		inputs["primaryKeys"] = args.PrimaryKeys
@@ -61,6 +65,7 @@ func GetTable(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *TableState, opts ...pulumi.ResourceOpt) (*Table, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["deviationCellVersionInSec"] = state.DeviationCellVersionInSec
 		inputs["instanceName"] = state.InstanceName
 		inputs["maxVersion"] = state.MaxVersion
 		inputs["primaryKeys"] = state.PrimaryKeys
@@ -75,47 +80,54 @@ func GetTable(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Table) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Table) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Table) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Table) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+func (r *Table) DeviationCellVersionInSec() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["deviationCellVersionInSec"])
 }
 
 // The name of the OTS instance in which table will located.
-func (r *Table) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+func (r *Table) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // The maximum number of versions stored in this table. The valid value is 1-2147483647.
-func (r *Table) MaxVersion() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxVersion"])
+func (r *Table) MaxVersion() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxVersion"])
 }
 
-// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
-func (r *Table) PrimaryKeys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["primaryKeys"])
+// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
+func (r *Table) PrimaryKeys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["primaryKeys"])
 }
 
 // The table name of the OTS instance. If changed, a new table would be created.
-func (r *Table) TableName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tableName"])
+func (r *Table) TableName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tableName"])
 }
 
 // The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
-func (r *Table) TimeToLive() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeToLive"])
+func (r *Table) TimeToLive() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeToLive"])
 }
 
 // Input properties used for looking up and filtering Table resources.
 type TableState struct {
+	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+	DeviationCellVersionInSec interface{}
 	// The name of the OTS instance in which table will located.
 	InstanceName interface{}
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion interface{}
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys interface{}
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName interface{}
@@ -125,11 +137,13 @@ type TableState struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
+	DeviationCellVersionInSec interface{}
 	// The name of the OTS instance in which table will located.
 	InstanceName interface{}
 	// The maximum number of versions stored in this table. The valid value is 1-2147483647.
 	MaxVersion interface{}
-	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
+	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four.
 	PrimaryKeys interface{}
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName interface{}

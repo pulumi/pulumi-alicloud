@@ -8,13 +8,18 @@ import (
 )
 
 // This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
 func LookupSwitches(ctx *pulumi.Context, args *GetSwitchesArgs) (*GetSwitchesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["cidrBlock"] = args.CidrBlock
+		inputs["ids"] = args.Ids
 		inputs["isDefault"] = args.IsDefault
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 		inputs["zoneId"] = args.ZoneId
 	}
@@ -23,7 +28,17 @@ func LookupSwitches(ctx *pulumi.Context, args *GetSwitchesArgs) (*GetSwitchesRes
 		return nil, err
 	}
 	return &GetSwitchesResult{
+		CidrBlock: outputs["cidrBlock"],
+		Ids: outputs["ids"],
+		IsDefault: outputs["isDefault"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
 		Vswitches: outputs["vswitches"],
+		ZoneId: outputs["zoneId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -32,12 +47,17 @@ func LookupSwitches(ctx *pulumi.Context, args *GetSwitchesArgs) (*GetSwitchesRes
 type GetSwitchesArgs struct {
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock interface{}
+	// A list of VSwitch IDs.
+	Ids interface{}
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault interface{}
 	// A regex string to filter results by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which VSWitch belongs.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 	// ID of the VPC that owns the VSwitch.
 	VpcId interface{}
 	// The availability zone of the VSwitch.
@@ -46,8 +66,24 @@ type GetSwitchesArgs struct {
 
 // A collection of values returned by getSwitches.
 type GetSwitchesResult struct {
+	// CIDR block of the VSwitch.
+	CidrBlock interface{}
+	// A list of VSwitch IDs.
+	Ids interface{}
+	// Whether the VSwitch is the default one in the region.
+	IsDefault interface{}
+	NameRegex interface{}
+	// A list of VSwitch names.
+	Names interface{}
+	OutputFile interface{}
+	ResourceGroupId interface{}
+	Tags interface{}
+	// ID of the VPC that owns the VSwitch.
+	VpcId interface{}
 	// A list of VSwitches. Each element contains the following attributes:
 	Vswitches interface{}
+	// ID of the availability zone where the VSwitch is located.
+	ZoneId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

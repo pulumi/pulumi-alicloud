@@ -2,17 +2,45 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the objects of an OSS bucket.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketObjectsDs = alicloud.oss.getBucketObjects({
+ *     bucketName: "sampleBucket",
+ *     keyRegex: "sample/sample_object.txt",
+ * });
+ * 
+ * export const firstObjectKey = bucketObjectsDs.objects[0].key;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
  */
-export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
-    return pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
+export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> & GetBucketObjectsResult {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetBucketObjectsResult> = pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
         "bucketName": args.bucketName,
         "keyPrefix": args.keyPrefix,
         "keyRegex": args.keyRegex,
+        "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -31,16 +59,21 @@ export interface GetBucketObjectsArgs {
      * A regex string to filter results by key.
      */
     readonly keyRegex?: string;
+    readonly outputFile?: string;
 }
 
 /**
  * A collection of values returned by getBucketObjects.
  */
 export interface GetBucketObjectsResult {
+    readonly bucketName: string;
+    readonly keyPrefix?: string;
+    readonly keyRegex?: string;
     /**
      * A list of bucket objects. Each element contains the following attributes:
      */
-    readonly objects: { acl: string, cacheControl: string, contentDisposition: string, contentEncoding: string, contentLength: string, contentMd5: string, contentType: string, etag: string, expires: string, key: string, lastModificationTime: string, serverSideEncryption: string, storageClass: string }[];
+    readonly objects: outputs.oss.GetBucketObjectsObject[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

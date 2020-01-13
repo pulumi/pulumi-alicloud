@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a RAM Role attachment resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_policy_attachment.html.markdown.
 type RolePolicyAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -60,28 +62,28 @@ func GetRolePolicyAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RolePolicyAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RolePolicyAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RolePolicyAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RolePolicyAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *RolePolicyAttachment) PolicyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyName"])
+func (r *RolePolicyAttachment) PolicyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyName"])
 }
 
 // Type of the RAM policy. It must be `Custom` or `System`.
-func (r *RolePolicyAttachment) PolicyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyType"])
+func (r *RolePolicyAttachment) PolicyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyType"])
 }
 
 // Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
-func (r *RolePolicyAttachment) RoleName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleName"])
+func (r *RolePolicyAttachment) RoleName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleName"])
 }
 
 // Input properties used for looking up and filtering RolePolicyAttachment resources.

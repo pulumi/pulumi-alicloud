@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package_attachment.html.markdown.
 type BandwidthPackageAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -54,23 +56,23 @@ func GetBandwidthPackageAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BandwidthPackageAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BandwidthPackageAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BandwidthPackageAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BandwidthPackageAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The ID of the bandwidth package.
-func (r *BandwidthPackageAttachment) BandwidthPackageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["bandwidthPackageId"])
+func (r *BandwidthPackageAttachment) BandwidthPackageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["bandwidthPackageId"])
 }
 
 // The ID of the CEN.
-func (r *BandwidthPackageAttachment) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *BandwidthPackageAttachment) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // Input properties used for looking up and filtering BandwidthPackageAttachment resources.

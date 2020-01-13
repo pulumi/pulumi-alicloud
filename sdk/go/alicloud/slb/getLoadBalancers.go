@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides the server load balancers of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
 func LookupLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs) (*GetLoadBalancersResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -16,7 +18,10 @@ func LookupLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs) (*GetL
 		inputs["masterAvailabilityZone"] = args.MasterAvailabilityZone
 		inputs["nameRegex"] = args.NameRegex
 		inputs["networkType"] = args.NetworkType
+		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["slaveAvailabilityZone"] = args.SlaveAvailabilityZone
+		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 		inputs["vswitchId"] = args.VswitchId
 	}
@@ -25,7 +30,19 @@ func LookupLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs) (*GetL
 		return nil, err
 	}
 	return &GetLoadBalancersResult{
+		Address: outputs["address"],
+		Ids: outputs["ids"],
+		MasterAvailabilityZone: outputs["masterAvailabilityZone"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		NetworkType: outputs["networkType"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		SlaveAvailabilityZone: outputs["slaveAvailabilityZone"],
 		Slbs: outputs["slbs"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
+		VswitchId: outputs["vswitchId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -42,8 +59,21 @@ type GetLoadBalancersArgs struct {
 	NameRegex interface{}
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType interface{}
+	OutputFile interface{}
+	// The Id of resource group which SLB belongs.
+	ResourceGroupId interface{}
 	// Slave availability zone of the SLBs.
 	SlaveAvailabilityZone interface{}
+	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	// ```
+	// data "slb.getLoadBalancers" "taggedInstances" {
+	// tags = {
+	// tagKey1 = "tagValue1",
+	// tagKey2 = "tagValue2"
+	// }
+	// }
+	// ```
+	Tags interface{}
 	// ID of the VPC linked to the SLBs.
 	VpcId interface{}
 	// ID of the VSwitch linked to the SLBs.
@@ -52,8 +82,29 @@ type GetLoadBalancersArgs struct {
 
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
+	// Service address of the SLB.
+	Address interface{}
+	// A list of slb IDs.
+	Ids interface{}
+	// Master availability zone of the SLBs.
+	MasterAvailabilityZone interface{}
+	NameRegex interface{}
+	// A list of slb names.
+	Names interface{}
+	// Network type of the SLB. Possible values: `vpc` and `classic`.
+	NetworkType interface{}
+	OutputFile interface{}
+	ResourceGroupId interface{}
+	// Slave availability zone of the SLBs.
+	SlaveAvailabilityZone interface{}
 	// A list of SLBs. Each element contains the following attributes:
 	Slbs interface{}
+	// A map of tags assigned to the SLB instance.
+	Tags interface{}
+	// ID of the VPC the SLB belongs to.
+	VpcId interface{}
+	// ID of the VSwitch the SLB belongs to.
+	VswitchId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a ESS scaling rule resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_rule.html.markdown.
 type ScalingRule struct {
 	s *pulumi.ResourceState
 }
@@ -16,12 +16,6 @@ type ScalingRule struct {
 // NewScalingRule registers a new resource with the given unique name, arguments, and options.
 func NewScalingRule(ctx *pulumi.Context,
 	name string, args *ScalingRuleArgs, opts ...pulumi.ResourceOpt) (*ScalingRule, error) {
-	if args == nil || args.AdjustmentType == nil {
-		return nil, errors.New("missing required argument 'AdjustmentType'")
-	}
-	if args == nil || args.AdjustmentValue == nil {
-		return nil, errors.New("missing required argument 'AdjustmentValue'")
-	}
 	if args == nil || args.ScalingGroupId == nil {
 		return nil, errors.New("missing required argument 'ScalingGroupId'")
 	}
@@ -30,14 +24,26 @@ func NewScalingRule(ctx *pulumi.Context,
 		inputs["adjustmentType"] = nil
 		inputs["adjustmentValue"] = nil
 		inputs["cooldown"] = nil
+		inputs["disableScaleIn"] = nil
+		inputs["estimatedInstanceWarmup"] = nil
+		inputs["metricName"] = nil
 		inputs["scalingGroupId"] = nil
 		inputs["scalingRuleName"] = nil
+		inputs["scalingRuleType"] = nil
+		inputs["stepAdjustments"] = nil
+		inputs["targetValue"] = nil
 	} else {
 		inputs["adjustmentType"] = args.AdjustmentType
 		inputs["adjustmentValue"] = args.AdjustmentValue
 		inputs["cooldown"] = args.Cooldown
+		inputs["disableScaleIn"] = args.DisableScaleIn
+		inputs["estimatedInstanceWarmup"] = args.EstimatedInstanceWarmup
+		inputs["metricName"] = args.MetricName
 		inputs["scalingGroupId"] = args.ScalingGroupId
 		inputs["scalingRuleName"] = args.ScalingRuleName
+		inputs["scalingRuleType"] = args.ScalingRuleType
+		inputs["stepAdjustments"] = args.StepAdjustments
+		inputs["targetValue"] = args.TargetValue
 	}
 	inputs["ari"] = nil
 	s, err := ctx.RegisterResource("alicloud:ess/scalingRule:ScalingRule", name, true, inputs, opts...)
@@ -57,8 +63,14 @@ func GetScalingRule(ctx *pulumi.Context,
 		inputs["adjustmentValue"] = state.AdjustmentValue
 		inputs["ari"] = state.Ari
 		inputs["cooldown"] = state.Cooldown
+		inputs["disableScaleIn"] = state.DisableScaleIn
+		inputs["estimatedInstanceWarmup"] = state.EstimatedInstanceWarmup
+		inputs["metricName"] = state.MetricName
 		inputs["scalingGroupId"] = state.ScalingGroupId
 		inputs["scalingRuleName"] = state.ScalingRuleName
+		inputs["scalingRuleType"] = state.ScalingRuleType
+		inputs["stepAdjustments"] = state.StepAdjustments
+		inputs["targetValue"] = state.TargetValue
 	}
 	s, err := ctx.ReadResource("alicloud:ess/scalingRule:ScalingRule", name, id, inputs, opts...)
 	if err != nil {
@@ -68,49 +80,78 @@ func GetScalingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ScalingRule) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ScalingRule) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ScalingRule) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ScalingRule) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Adjustment mode of a scaling rule. Optional values:
 // - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
 // - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
 // - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
-func (r *ScalingRule) AdjustmentType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["adjustmentType"])
+func (r *ScalingRule) AdjustmentType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["adjustmentType"])
 }
 
 // Adjusted value of a scaling rule. Value range:
-// - QuantityChangeInCapacity：(0, 100] U (-100, 0]
-// - PercentChangeInCapacity：[0, 10000] U [-10000, 0]
-// - TotalCapacity：[0, 100]
-func (r *ScalingRule) AdjustmentValue() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["adjustmentValue"])
+// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+// - TotalCapacity：[0, 1000]
+func (r *ScalingRule) AdjustmentValue() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["adjustmentValue"])
 }
 
-// Unique identifier of a scaling rule.
-func (r *ScalingRule) Ari() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ari"])
+func (r *ScalingRule) Ari() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ari"])
 }
 
-// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty.
-func (r *ScalingRule) Cooldown() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cooldown"])
+// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
+func (r *ScalingRule) Cooldown() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cooldown"])
+}
+
+// Indicates whether scale in by the target tracking policy is disabled. Default to false.
+func (r *ScalingRule) DisableScaleIn() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableScaleIn"])
+}
+
+// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+func (r *ScalingRule) EstimatedInstanceWarmup() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["estimatedInstanceWarmup"])
+}
+
+// A CloudMonitor metric name.
+func (r *ScalingRule) MetricName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metricName"])
 }
 
 // ID of the scaling group of a scaling rule.
-func (r *ScalingRule) ScalingGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingGroupId"])
+func (r *ScalingRule) ScalingGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingGroupId"])
 }
 
-// Name shown for the scaling rule, which is a string containing 2 to 40 English or Chinese characters.
-func (r *ScalingRule) ScalingRuleName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingRuleName"])
+// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+func (r *ScalingRule) ScalingRuleName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingRuleName"])
+}
+
+// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+func (r *ScalingRule) ScalingRuleType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingRuleType"])
+}
+
+// Steps for StepScalingRule. See Block stepAdjustment below for details.
+func (r *ScalingRule) StepAdjustments() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["stepAdjustments"])
+}
+
+// The target value for the metric.
+func (r *ScalingRule) TargetValue() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["targetValue"])
 }
 
 // Input properties used for looking up and filtering ScalingRule resources.
@@ -121,18 +162,29 @@ type ScalingRuleState struct {
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType interface{}
 	// Adjusted value of a scaling rule. Value range:
-	// - QuantityChangeInCapacity：(0, 100] U (-100, 0]
-	// - PercentChangeInCapacity：[0, 10000] U [-10000, 0]
-	// - TotalCapacity：[0, 100]
+	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+	// - TotalCapacity：[0, 1000]
 	AdjustmentValue interface{}
-	// Unique identifier of a scaling rule.
 	Ari interface{}
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty.
+	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown interface{}
+	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
+	DisableScaleIn interface{}
+	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+	EstimatedInstanceWarmup interface{}
+	// A CloudMonitor metric name.
+	MetricName interface{}
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId interface{}
-	// Name shown for the scaling rule, which is a string containing 2 to 40 English or Chinese characters.
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
 	ScalingRuleName interface{}
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	ScalingRuleType interface{}
+	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	StepAdjustments interface{}
+	// The target value for the metric.
+	TargetValue interface{}
 }
 
 // The set of arguments for constructing a ScalingRule resource.
@@ -143,14 +195,26 @@ type ScalingRuleArgs struct {
 	// - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
 	AdjustmentType interface{}
 	// Adjusted value of a scaling rule. Value range:
-	// - QuantityChangeInCapacity：(0, 100] U (-100, 0]
-	// - PercentChangeInCapacity：[0, 10000] U [-10000, 0]
-	// - TotalCapacity：[0, 100]
+	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
+	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
+	// - TotalCapacity：[0, 1000]
 	AdjustmentValue interface{}
-	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty.
+	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown interface{}
+	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
+	DisableScaleIn interface{}
+	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+	EstimatedInstanceWarmup interface{}
+	// A CloudMonitor metric name.
+	MetricName interface{}
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId interface{}
-	// Name shown for the scaling rule, which is a string containing 2 to 40 English or Chinese characters.
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
 	ScalingRuleName interface{}
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	ScalingRuleType interface{}
+	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	StepAdjustments interface{}
+	// The target value for the metric.
+	TargetValue interface{}
 }

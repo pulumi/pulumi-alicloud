@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a SSL VPN server resource. [Refer to details](https://www.alibabacloud.com/help/doc-detail/64960.htm)
- * 
- * ~> **NOTE:** Terraform will auto build ssl vpn server while it uses `alicloud_ssl_vpn_server` to build a ssl vpn server resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_server.html.markdown.
  */
 export class SslVpnServer extends pulumi.CustomResource {
     /**
@@ -18,54 +16,68 @@ export class SslVpnServer extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SslVpnServerState): SslVpnServer {
-        return new SslVpnServer(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SslVpnServerState, opts?: pulumi.CustomResourceOptions): SslVpnServer {
+        return new SslVpnServer(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpn/sslVpnServer:SslVpnServer';
+
+    /**
+     * Returns true if the given object is an instance of SslVpnServer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SslVpnServer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SslVpnServer.__pulumiType;
     }
 
     /**
      * The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
      */
-    public readonly cipher: pulumi.Output<string | undefined>;
+    public readonly cipher!: pulumi.Output<string | undefined>;
     /**
      * The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
      */
-    public readonly clientIpPool: pulumi.Output<string>;
+    public readonly clientIpPool!: pulumi.Output<string>;
     /**
      * Specify whether to compress the communication. Valid value: true (default) | false
      */
-    public readonly compress: pulumi.Output<boolean | undefined>;
+    public readonly compress!: pulumi.Output<boolean | undefined>;
     /**
      * The number of current connections.
      */
-    public /*out*/ readonly connections: pulumi.Output<number>;
+    public /*out*/ readonly connections!: pulumi.Output<number>;
     /**
      * The internet IP of the SSL-VPN server.
      */
-    public /*out*/ readonly internetIp: pulumi.Output<string>;
+    public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
      * The CIDR block to be accessed by the client through the SSL-VPN connection.
      */
-    public readonly localSubnet: pulumi.Output<string>;
+    public readonly localSubnet!: pulumi.Output<string>;
     /**
      * The maximum number of connections.
      */
-    public /*out*/ readonly maxConnections: pulumi.Output<number>;
+    public /*out*/ readonly maxConnections!: pulumi.Output<number>;
     /**
      * The name of the SSL-VPN server.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
-    public readonly port: pulumi.Output<number | undefined>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
      */
-    public readonly protocol: pulumi.Output<string | undefined>;
+    public readonly protocol!: pulumi.Output<string | undefined>;
     /**
      * The ID of the VPN gateway.
      */
-    public readonly vpnGatewayId: pulumi.Output<string>;
+    public readonly vpnGatewayId!: pulumi.Output<string>;
 
     /**
      * Create a SslVpnServer resource with the given unique name, arguments, and options.
@@ -78,7 +90,7 @@ export class SslVpnServer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SslVpnServerArgs | SslVpnServerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SslVpnServerState = argsOrState as SslVpnServerState | undefined;
+            const state = argsOrState as SslVpnServerState | undefined;
             inputs["cipher"] = state ? state.cipher : undefined;
             inputs["clientIpPool"] = state ? state.clientIpPool : undefined;
             inputs["compress"] = state ? state.compress : undefined;
@@ -113,7 +125,14 @@ export class SslVpnServer extends pulumi.CustomResource {
             inputs["internetIp"] = undefined /*out*/;
             inputs["maxConnections"] = undefined /*out*/;
         }
-        super("alicloud:vpn/sslVpnServer:SslVpnServer", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(SslVpnServer.__pulumiType, name, inputs, opts);
     }
 }
 

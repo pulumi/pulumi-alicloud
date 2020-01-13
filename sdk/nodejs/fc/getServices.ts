@@ -2,30 +2,56 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute services of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const fcServicesDs = alicloud.fc.getServices({
+ *     nameRegex: "sampleFcService",
+ * });
+ * 
+ * export const firstFcServiceName = fcServicesDs.services[0].name;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
  */
-export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
+export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> & GetServicesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:fc/getServices:getServices", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetServicesResult> = pulumi.runtime.invoke("alicloud:fc/getServices:getServices", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesArgs {
+    readonly ids?: string[];
     /**
      * A regex string to filter results by FC service name.
+     * * `ids` (Optional, Available in 1.53.0+) - A list of FC services ids.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -34,9 +60,19 @@ export interface GetServicesArgs {
  */
 export interface GetServicesResult {
     /**
+     * A list of FC services ids.
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of FC services names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
      * A list of FC services. Each element contains the following attributes:
      */
-    readonly services: { creationTime: string, description: string, id: string, internetAccess: boolean, lastModificationTime: string, logConfig: { logstore: string, project: string }, name: string, role: string, vpcConfig: { securityGroupId: string, vpcId: string, vswitchIds: string[] } }[];
+    readonly services: outputs.fc.GetServicesService[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

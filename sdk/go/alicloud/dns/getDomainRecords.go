@@ -7,12 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// ~> **NOTE:** This resource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). Please use the datasource `alicloud_dns_records` instead.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_records.html.markdown.
 func LookupDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs) (*GetDomainRecordsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["domainName"] = args.DomainName
 		inputs["hostRecordRegex"] = args.HostRecordRegex
+		inputs["ids"] = args.Ids
 		inputs["isLocked"] = args.IsLocked
 		inputs["line"] = args.Line
 		inputs["outputFile"] = args.OutputFile
@@ -25,7 +26,17 @@ func LookupDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs) (*GetD
 		return nil, err
 	}
 	return &GetDomainRecordsResult{
+		DomainName: outputs["domainName"],
+		HostRecordRegex: outputs["hostRecordRegex"],
+		Ids: outputs["ids"],
+		IsLocked: outputs["isLocked"],
+		Line: outputs["line"],
+		OutputFile: outputs["outputFile"],
 		Records: outputs["records"],
+		Status: outputs["status"],
+		Type: outputs["type"],
+		Urls: outputs["urls"],
+		ValueRegex: outputs["valueRegex"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -34,6 +45,7 @@ func LookupDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs) (*GetD
 type GetDomainRecordsArgs struct {
 	DomainName interface{}
 	HostRecordRegex interface{}
+	Ids interface{}
 	IsLocked interface{}
 	Line interface{}
 	OutputFile interface{}
@@ -44,7 +56,17 @@ type GetDomainRecordsArgs struct {
 
 // A collection of values returned by getDomainRecords.
 type GetDomainRecordsResult struct {
+	DomainName interface{}
+	HostRecordRegex interface{}
+	Ids interface{}
+	IsLocked interface{}
+	Line interface{}
+	OutputFile interface{}
 	Records interface{}
+	Status interface{}
+	Type interface{}
+	Urls interface{}
+	ValueRegex interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

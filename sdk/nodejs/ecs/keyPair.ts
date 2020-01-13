@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a key pair resource.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
  */
 export class KeyPair extends pulumi.CustomResource {
     /**
@@ -16,27 +18,43 @@ export class KeyPair extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyPairState): KeyPair {
-        return new KeyPair(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KeyPairState, opts?: pulumi.CustomResourceOptions): KeyPair {
+        return new KeyPair(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly fingerPrint: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/keyPair:KeyPair';
+
+    /**
+     * Returns true if the given object is an instance of KeyPair.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is KeyPair {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === KeyPair.__pulumiType;
+    }
+
+    public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
-    public readonly keyFile: pulumi.Output<string | undefined>;
+    public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
      * The key pair's name. It is the only in one Alicloud account.
      */
-    public readonly keyName: pulumi.Output<string>;
-    /**
-     * The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
-     */
-    public readonly keyNamePrefix: pulumi.Output<string | undefined>;
+    public readonly keyName!: pulumi.Output<string>;
+    public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it.
      */
-    public readonly publicKey: pulumi.Output<string | undefined>;
+    public readonly publicKey!: pulumi.Output<string | undefined>;
+    /**
+     * The Id of resource group which the key pair belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a KeyPair resource with the given unique name, arguments, and options.
@@ -49,21 +67,32 @@ export class KeyPair extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: KeyPairArgs | KeyPairState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: KeyPairState = argsOrState as KeyPairState | undefined;
+            const state = argsOrState as KeyPairState | undefined;
             inputs["fingerPrint"] = state ? state.fingerPrint : undefined;
             inputs["keyFile"] = state ? state.keyFile : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["keyNamePrefix"] = state ? state.keyNamePrefix : undefined;
             inputs["publicKey"] = state ? state.publicKey : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as KeyPairArgs | undefined;
             inputs["keyFile"] = args ? args.keyFile : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["keyNamePrefix"] = args ? args.keyNamePrefix : undefined;
             inputs["publicKey"] = args ? args.publicKey : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["fingerPrint"] = undefined /*out*/;
         }
-        super("alicloud:ecs/keyPair:KeyPair", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(KeyPair.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -80,14 +109,16 @@ export interface KeyPairState {
      * The key pair's name. It is the only in one Alicloud account.
      */
     readonly keyName?: pulumi.Input<string>;
-    /**
-     * The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
-     */
     readonly keyNamePrefix?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it.
      */
     readonly publicKey?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the key pair belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -102,12 +133,14 @@ export interface KeyPairArgs {
      * The key pair's name. It is the only in one Alicloud account.
      */
     readonly keyName?: pulumi.Input<string>;
-    /**
-     * The key pair name's prefix. It is conflict with `key_name`. If it is specified, terraform will using it to build the only key name.
-     */
     readonly keyNamePrefix?: pulumi.Input<string>;
     /**
      * You can import an existing public key and using Alicloud key pair to manage it.
      */
     readonly publicKey?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the key pair belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

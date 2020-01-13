@@ -10,7 +10,9 @@ import (
 
 // Provides a key pair attachment resource to bind key pair for several ECS instances.
 // 
-// -> **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+// > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
 type KeyPairAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -59,28 +61,28 @@ func GetKeyPairAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *KeyPairAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *KeyPairAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *KeyPairAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *KeyPairAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
-func (r *KeyPairAttachment) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *KeyPairAttachment) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
 // The list of ECS instance's IDs.
-func (r *KeyPairAttachment) InstanceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceIds"])
+func (r *KeyPairAttachment) InstanceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceIds"])
 }
 
 // The name of key pair used to bind.
-func (r *KeyPairAttachment) KeyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyName"])
+func (r *KeyPairAttachment) KeyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyName"])
 }
 
 // Input properties used for looking up and filtering KeyPairAttachment resources.

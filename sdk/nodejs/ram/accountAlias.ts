@@ -7,6 +7,20 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM cloud account alias.
  * 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create a alias for cloud account.
+ * const alias = new alicloud.ram.AccountAlias("alias", {
+ *     accountAlias: "hallo",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_account_alias.html.markdown.
  */
 export class AccountAlias extends pulumi.CustomResource {
     /**
@@ -17,14 +31,28 @@ export class AccountAlias extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountAliasState): AccountAlias {
-        return new AccountAlias(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountAliasState, opts?: pulumi.CustomResourceOptions): AccountAlias {
+        return new AccountAlias(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/accountAlias:AccountAlias';
+
+    /**
+     * Returns true if the given object is an instance of AccountAlias.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountAlias {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccountAlias.__pulumiType;
     }
 
     /**
      * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
      */
-    public readonly accountAlias: pulumi.Output<string>;
+    public readonly accountAlias!: pulumi.Output<string>;
 
     /**
      * Create a AccountAlias resource with the given unique name, arguments, and options.
@@ -37,7 +65,7 @@ export class AccountAlias extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountAliasArgs | AccountAliasState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountAliasState = argsOrState as AccountAliasState | undefined;
+            const state = argsOrState as AccountAliasState | undefined;
             inputs["accountAlias"] = state ? state.accountAlias : undefined;
         } else {
             const args = argsOrState as AccountAliasArgs | undefined;
@@ -46,7 +74,14 @@ export class AccountAlias extends pulumi.CustomResource {
             }
             inputs["accountAlias"] = args ? args.accountAlias : undefined;
         }
-        super("alicloud:ram/accountAlias:AccountAlias", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(AccountAlias.__pulumiType, name, inputs, opts);
     }
 }
 

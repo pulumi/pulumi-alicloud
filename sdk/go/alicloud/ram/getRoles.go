@@ -8,9 +8,12 @@ import (
 )
 
 // This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
 func LookupRoles(ctx *pulumi.Context, args *GetRolesArgs) (*GetRolesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["policyName"] = args.PolicyName
@@ -21,6 +24,12 @@ func LookupRoles(ctx *pulumi.Context, args *GetRolesArgs) (*GetRolesResult, erro
 		return nil, err
 	}
 	return &GetRolesResult{
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		PolicyName: outputs["policyName"],
+		PolicyType: outputs["policyType"],
 		Roles: outputs["roles"],
 		Id: outputs["id"],
 	}, nil
@@ -28,18 +37,27 @@ func LookupRoles(ctx *pulumi.Context, args *GetRolesArgs) (*GetRolesResult, erro
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
+	Ids interface{}
 	// A regex string to filter results by the role name.
+	// * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
-	// Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
 	PolicyName interface{}
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
 	PolicyType interface{}
 }
 
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
+	// A list of ram role IDs. 
+	Ids interface{}
+	NameRegex interface{}
+	// A list of ram role names. 
+	Names interface{}
+	OutputFile interface{}
+	PolicyName interface{}
+	PolicyType interface{}
 	// A list of roles. Each element contains the following attributes:
 	Roles interface{}
 	// id is the provider-assigned unique ID for this managed resource.

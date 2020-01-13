@@ -7,8 +7,45 @@ import * as utilities from "../utilities";
 /**
  * Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
  * 
- * ~> **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
+ * > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "Rds";
+ * const name = config.get("name") || "dbconnectionbasic";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const instance = new alicloud.rds.Instance("instance", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceName: name,
+ *     instanceStorage: 10,
+ *     instanceType: "rds.mysql.t1.small",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const foo = new alicloud.rds.Connection("foo", {
+ *     connectionPrefix: "testabc",
+ *     instanceId: instance.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -19,30 +56,44 @@ export class Connection extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionState): Connection {
-        return new Connection(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionState, opts?: pulumi.CustomResourceOptions): Connection {
+        return new Connection(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:rds/connection:Connection';
+
+    /**
+     * Returns true if the given object is an instance of Connection.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Connection {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
      */
-    public readonly connectionPrefix: pulumi.Output<string>;
+    public readonly connectionPrefix!: pulumi.Output<string>;
     /**
      * Connection instance string.
      */
-    public /*out*/ readonly connectionString: pulumi.Output<string>;
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
      * The Id of instance that can run database.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ip address of connection string.
      */
-    public /*out*/ readonly ipAddress: pulumi.Output<string>;
+    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
      * Internet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    public readonly port: pulumi.Output<string | undefined>;
+    public readonly port!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -55,7 +106,7 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ConnectionState = argsOrState as ConnectionState | undefined;
+            const state = argsOrState as ConnectionState | undefined;
             inputs["connectionPrefix"] = state ? state.connectionPrefix : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -72,7 +123,14 @@ export class Connection extends pulumi.CustomResource {
             inputs["connectionString"] = undefined /*out*/;
             inputs["ipAddress"] = undefined /*out*/;
         }
-        super("alicloud:rds/connection:Connection", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Connection.__pulumiType, name, inputs, opts);
     }
 }
 

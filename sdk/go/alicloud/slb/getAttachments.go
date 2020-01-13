@@ -8,17 +8,23 @@ import (
 )
 
 // This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
 func LookupAttachments(ctx *pulumi.Context, args *GetAttachmentsArgs) (*GetAttachmentsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["instanceIds"] = args.InstanceIds
 		inputs["loadBalancerId"] = args.LoadBalancerId
+		inputs["outputFile"] = args.OutputFile
 	}
 	outputs, err := ctx.Invoke("alicloud:slb/getAttachments:getAttachments", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetAttachmentsResult{
+		InstanceIds: outputs["instanceIds"],
+		LoadBalancerId: outputs["loadBalancerId"],
+		OutputFile: outputs["outputFile"],
 		SlbAttachments: outputs["slbAttachments"],
 		Id: outputs["id"],
 	}, nil
@@ -30,10 +36,14 @@ type GetAttachmentsArgs struct {
 	InstanceIds interface{}
 	// ID of the SLB with attachments.
 	LoadBalancerId interface{}
+	OutputFile interface{}
 }
 
 // A collection of values returned by getAttachments.
 type GetAttachmentsResult struct {
+	InstanceIds interface{}
+	LoadBalancerId interface{}
+	OutputFile interface{}
 	// A list of SLB attachments. Each element contains the following attributes:
 	SlbAttachments interface{}
 	// id is the provider-assigned unique ID for this managed resource.

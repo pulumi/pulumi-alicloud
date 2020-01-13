@@ -2,13 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
- * 
- * -> **NOTE:** The resource requires a provider field 'account_id'. [See account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_trigger.html.markdown.
  */
 export class Trigger extends pulumi.CustomResource {
     /**
@@ -19,46 +18,68 @@ export class Trigger extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TriggerState): Trigger {
-        return new Trigger(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TriggerState, opts?: pulumi.CustomResourceOptions): Trigger {
+        return new Trigger(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:fc/trigger:Trigger';
+
+    /**
+     * Returns true if the given object is an instance of Trigger.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Trigger {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
     /**
-     * The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    public readonly config: pulumi.Output<string>;
+    public readonly config!: pulumi.Output<string | undefined>;
+    /**
+     * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+     */
+    public readonly configMns!: pulumi.Output<string | undefined>;
     /**
      * The Function Compute function name.
      */
-    public readonly function: pulumi.Output<string>;
+    public readonly function!: pulumi.Output<string>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModified: pulumi.Output<string>;
+    public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    public readonly namePrefix: pulumi.Output<string | undefined>;
+    public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    public readonly role: pulumi.Output<string | undefined>;
+    public readonly role!: pulumi.Output<string | undefined>;
     /**
      * The Function Compute service name.
      */
-    public readonly service: pulumi.Output<string>;
+    public readonly service!: pulumi.Output<string>;
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    public readonly sourceArn: pulumi.Output<string | undefined>;
+    public readonly sourceArn!: pulumi.Output<string | undefined>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
+     * The Function Compute trigger ID.
      */
-    public readonly type: pulumi.Output<string>;
+    public /*out*/ readonly triggerId!: pulumi.Output<string>;
+    /**
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -71,8 +92,9 @@ export class Trigger extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: TriggerState = argsOrState as TriggerState | undefined;
+            const state = argsOrState as TriggerState | undefined;
             inputs["config"] = state ? state.config : undefined;
+            inputs["configMns"] = state ? state.configMns : undefined;
             inputs["function"] = state ? state.function : undefined;
             inputs["lastModified"] = state ? state.lastModified : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -80,12 +102,10 @@ export class Trigger extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
             inputs["service"] = state ? state.service : undefined;
             inputs["sourceArn"] = state ? state.sourceArn : undefined;
+            inputs["triggerId"] = state ? state.triggerId : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TriggerArgs | undefined;
-            if (!args || args.config === undefined) {
-                throw new Error("Missing required property 'config'");
-            }
             if (!args || args.function === undefined) {
                 throw new Error("Missing required property 'function'");
             }
@@ -96,6 +116,7 @@ export class Trigger extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["configMns"] = args ? args.configMns : undefined;
             inputs["function"] = args ? args.function : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
@@ -104,8 +125,16 @@ export class Trigger extends pulumi.CustomResource {
             inputs["sourceArn"] = args ? args.sourceArn : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["lastModified"] = undefined /*out*/;
+            inputs["triggerId"] = undefined /*out*/;
         }
-        super("alicloud:fc/trigger:Trigger", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Trigger.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -114,9 +143,13 @@ export class Trigger extends pulumi.CustomResource {
  */
 export interface TriggerState {
     /**
-     * The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
     readonly config?: pulumi.Input<string>;
+    /**
+     * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+     */
+    readonly configMns?: pulumi.Input<string>;
     /**
      * The Function Compute function name.
      */
@@ -126,7 +159,7 @@ export interface TriggerState {
      */
     readonly lastModified?: pulumi.Input<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -146,7 +179,11 @@ export interface TriggerState {
      */
     readonly sourceArn?: pulumi.Input<string>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
+     * The Function Compute trigger ID.
+     */
+    readonly triggerId?: pulumi.Input<string>;
+    /**
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -156,15 +193,19 @@ export interface TriggerState {
  */
 export interface TriggerArgs {
     /**
-     * The config of Function Compute trigger. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
+     * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    readonly config: pulumi.Input<string>;
+    readonly config?: pulumi.Input<string>;
+    /**
+     * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
+     */
+    readonly configMns?: pulumi.Input<string>;
     /**
      * The Function Compute function name.
      */
     readonly function: pulumi.Input<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -184,7 +225,7 @@ export interface TriggerArgs {
      */
     readonly sourceArn?: pulumi.Input<string>;
     /**
-     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http"].
+     * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents"].
      */
     readonly type: pulumi.Input<string>;
 }

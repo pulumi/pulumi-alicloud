@@ -2,23 +2,35 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ~> **NOTE:** This datasource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). Please use the datasource `alicloud_dns_groups` instead.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_groups.html.markdown.
  */
-export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> {
+export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> & GetDomainGroupsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetDomainGroupsResult> = pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getDomainGroups.
  */
 export interface GetDomainGroupsArgs {
+    readonly ids?: string[];
     readonly nameRegex?: string;
     readonly outputFile?: string;
 }
@@ -27,7 +39,11 @@ export interface GetDomainGroupsArgs {
  * A collection of values returned by getDomainGroups.
  */
 export interface GetDomainGroupsResult {
-    readonly groups: { groupId: string, groupName: string }[];
+    readonly groups: outputs.dns.GetDomainGroupsGroup[];
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

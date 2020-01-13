@@ -11,6 +11,8 @@ import (
 // Provides an RDS instance resource. A DB instance is an isolated database
 // environment in the cloud. A DB instance can contain multiple user-created
 // databases.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -32,51 +34,45 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["allocatePublicConnection"] = nil
-		inputs["backupRetentionPeriod"] = nil
-		inputs["connections"] = nil
-		inputs["dbInstanceClass"] = nil
-		inputs["dbInstanceNetType"] = nil
-		inputs["dbInstanceStorage"] = nil
-		inputs["dbMappings"] = nil
+		inputs["autoRenew"] = nil
+		inputs["autoRenewPeriod"] = nil
+		inputs["autoUpgradeMinorVersion"] = nil
+		inputs["dbInstanceStorageType"] = nil
 		inputs["engine"] = nil
 		inputs["engineVersion"] = nil
 		inputs["instanceChargeType"] = nil
 		inputs["instanceName"] = nil
-		inputs["instanceNetworkType"] = nil
 		inputs["instanceStorage"] = nil
 		inputs["instanceType"] = nil
-		inputs["masterUserName"] = nil
-		inputs["masterUserPassword"] = nil
-		inputs["multiAz"] = nil
+		inputs["maintainTime"] = nil
+		inputs["monitoringPeriod"] = nil
+		inputs["parameters"] = nil
 		inputs["period"] = nil
-		inputs["preferredBackupPeriods"] = nil
-		inputs["preferredBackupTime"] = nil
+		inputs["securityGroupId"] = nil
+		inputs["securityIpMode"] = nil
 		inputs["securityIps"] = nil
+		inputs["tags"] = nil
 		inputs["vswitchId"] = nil
 		inputs["zoneId"] = nil
 	} else {
-		inputs["allocatePublicConnection"] = args.AllocatePublicConnection
-		inputs["backupRetentionPeriod"] = args.BackupRetentionPeriod
-		inputs["connections"] = args.Connections
-		inputs["dbInstanceClass"] = args.DbInstanceClass
-		inputs["dbInstanceNetType"] = args.DbInstanceNetType
-		inputs["dbInstanceStorage"] = args.DbInstanceStorage
-		inputs["dbMappings"] = args.DbMappings
+		inputs["autoRenew"] = args.AutoRenew
+		inputs["autoRenewPeriod"] = args.AutoRenewPeriod
+		inputs["autoUpgradeMinorVersion"] = args.AutoUpgradeMinorVersion
+		inputs["dbInstanceStorageType"] = args.DbInstanceStorageType
 		inputs["engine"] = args.Engine
 		inputs["engineVersion"] = args.EngineVersion
 		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["instanceName"] = args.InstanceName
-		inputs["instanceNetworkType"] = args.InstanceNetworkType
 		inputs["instanceStorage"] = args.InstanceStorage
 		inputs["instanceType"] = args.InstanceType
-		inputs["masterUserName"] = args.MasterUserName
-		inputs["masterUserPassword"] = args.MasterUserPassword
-		inputs["multiAz"] = args.MultiAz
+		inputs["maintainTime"] = args.MaintainTime
+		inputs["monitoringPeriod"] = args.MonitoringPeriod
+		inputs["parameters"] = args.Parameters
 		inputs["period"] = args.Period
-		inputs["preferredBackupPeriods"] = args.PreferredBackupPeriods
-		inputs["preferredBackupTime"] = args.PreferredBackupTime
+		inputs["securityGroupId"] = args.SecurityGroupId
+		inputs["securityIpMode"] = args.SecurityIpMode
 		inputs["securityIps"] = args.SecurityIps
+		inputs["tags"] = args.Tags
 		inputs["vswitchId"] = args.VswitchId
 		inputs["zoneId"] = args.ZoneId
 	}
@@ -95,29 +91,26 @@ func GetInstance(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InstanceState, opts ...pulumi.ResourceOpt) (*Instance, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
-		inputs["allocatePublicConnection"] = state.AllocatePublicConnection
-		inputs["backupRetentionPeriod"] = state.BackupRetentionPeriod
+		inputs["autoRenew"] = state.AutoRenew
+		inputs["autoRenewPeriod"] = state.AutoRenewPeriod
+		inputs["autoUpgradeMinorVersion"] = state.AutoUpgradeMinorVersion
 		inputs["connectionString"] = state.ConnectionString
-		inputs["connections"] = state.Connections
-		inputs["dbInstanceClass"] = state.DbInstanceClass
-		inputs["dbInstanceNetType"] = state.DbInstanceNetType
-		inputs["dbInstanceStorage"] = state.DbInstanceStorage
-		inputs["dbMappings"] = state.DbMappings
+		inputs["dbInstanceStorageType"] = state.DbInstanceStorageType
 		inputs["engine"] = state.Engine
 		inputs["engineVersion"] = state.EngineVersion
 		inputs["instanceChargeType"] = state.InstanceChargeType
 		inputs["instanceName"] = state.InstanceName
-		inputs["instanceNetworkType"] = state.InstanceNetworkType
 		inputs["instanceStorage"] = state.InstanceStorage
 		inputs["instanceType"] = state.InstanceType
-		inputs["masterUserName"] = state.MasterUserName
-		inputs["masterUserPassword"] = state.MasterUserPassword
-		inputs["multiAz"] = state.MultiAz
+		inputs["maintainTime"] = state.MaintainTime
+		inputs["monitoringPeriod"] = state.MonitoringPeriod
+		inputs["parameters"] = state.Parameters
 		inputs["period"] = state.Period
 		inputs["port"] = state.Port
-		inputs["preferredBackupPeriods"] = state.PreferredBackupPeriods
-		inputs["preferredBackupTime"] = state.PreferredBackupTime
+		inputs["securityGroupId"] = state.SecurityGroupId
+		inputs["securityIpMode"] = state.SecurityIpMode
 		inputs["securityIps"] = state.SecurityIps
+		inputs["tags"] = state.Tags
 		inputs["vswitchId"] = state.VswitchId
 		inputs["zoneId"] = state.ZoneId
 	}
@@ -129,82 +122,65 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Instance) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Instance) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
-func (r *Instance) AllocatePublicConnection() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allocatePublicConnection"])
+// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+func (r *Instance) AutoRenew() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoRenew"])
 }
 
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
-func (r *Instance) BackupRetentionPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["backupRetentionPeriod"])
+// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+func (r *Instance) AutoRenewPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["autoRenewPeriod"])
+}
+
+// The upgrade method to use. Valid values:
+// - Auto: Instances are automatically upgraded to a higher minor version.
+// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+func (r *Instance) AutoUpgradeMinorVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["autoUpgradeMinorVersion"])
 }
 
 // RDS database connection string.
-func (r *Instance) ConnectionString() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionString"])
+func (r *Instance) ConnectionString() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionString"])
 }
 
-// (Deprecated from version 1.5.0).
-func (r *Instance) Connections() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["connections"])
-}
-
-// It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
-func (r *Instance) DbInstanceClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dbInstanceClass"])
-}
-
-// It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-func (r *Instance) DbInstanceNetType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dbInstanceNetType"])
-}
-
-// It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-func (r *Instance) DbInstanceStorage() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["dbInstanceStorage"])
-}
-
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-func (r *Instance) DbMappings() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dbMappings"])
+// The storage type of the instance. Valid values:
+// - local_ssd: specifies to use local SSDs. This value is recommended.
+// - cloud_ssd: specifies to use standard SSDs.
+// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+func (r *Instance) DbInstanceStorageType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dbInstanceStorageType"])
 }
 
 // Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
-func (r *Instance) Engine() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["engine"])
+func (r *Instance) Engine() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["engine"])
 }
 
-// Database version. Value options: 
-// - 5.5/5.6/5.7 for MySQL
-// - 2008r2/2012 for SQLServer
-// - 9.4/10.0 for PostgreSQL
-// - 9.3 for PPAS
-func (r *Instance) EngineVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["engineVersion"])
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+func (r *Instance) EngineVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["engineVersion"])
 }
 
-// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
-func (r *Instance) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
+func (r *Instance) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
 // The name of DB instance. It a string of 2 to 256 characters.
-func (r *Instance) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
-}
-
-// It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-func (r *Instance) InstanceNetworkType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceNetworkType"])
+func (r *Instance) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
 // User-defined DB instance storage space. Value range:
@@ -213,189 +189,197 @@ func (r *Instance) InstanceNetworkType() *pulumi.StringOutput {
 // - [10, 2000] for SQL Server 2008R2;
 // - [20,2000] for SQL Server 2012 basic single node edition
 // Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-func (r *Instance) InstanceStorage() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["instanceStorage"])
+// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
+func (r *Instance) InstanceStorage() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["instanceStorage"])
 }
 
 // DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-func (r *Instance) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+func (r *Instance) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
-func (r *Instance) MasterUserName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterUserName"])
+// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+func (r *Instance) MaintainTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintainTime"])
 }
 
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
-func (r *Instance) MasterUserPassword() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["masterUserPassword"])
+// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+func (r *Instance) MonitoringPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["monitoringPeriod"])
 }
 
-// It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
-func (r *Instance) MultiAz() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["multiAz"])
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+func (r *Instance) Parameters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["parameters"])
 }
 
-// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-func (r *Instance) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+func (r *Instance) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
 // RDS database connection port.
-func (r *Instance) Port() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["port"])
+func (r *Instance) Port() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["port"])
 }
 
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
-func (r *Instance) PreferredBackupPeriods() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["preferredBackupPeriods"])
+// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+func (r *Instance) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
-// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
-func (r *Instance) PreferredBackupTime() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["preferredBackupTime"])
+// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+func (r *Instance) SecurityIpMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityIpMode"])
 }
 
 // List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-func (r *Instance) SecurityIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityIps"])
+func (r *Instance) SecurityIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityIps"])
+}
+
+// A mapping of tags to assign to the resource.
+// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+func (r *Instance) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // The virtual switch ID to launch DB instances in one VPC.
-func (r *Instance) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+func (r *Instance) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
-func (r *Instance) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
+func (r *Instance) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
-	AllocatePublicConnection interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
-	BackupRetentionPeriod interface{}
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew interface{}
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod interface{}
+	// The upgrade method to use. Valid values:
+	// - Auto: Instances are automatically upgraded to a higher minor version.
+	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+	AutoUpgradeMinorVersion interface{}
 	// RDS database connection string.
 	ConnectionString interface{}
-	// (Deprecated from version 1.5.0).
-	Connections interface{}
-	// It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
-	DbInstanceClass interface{}
-	// It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-	DbInstanceNetType interface{}
-	// It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-	DbInstanceStorage interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-	DbMappings interface{}
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType interface{}
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine interface{}
-	// Database version. Value options: 
-	// - 5.5/5.6/5.7 for MySQL
-	// - 2008r2/2012 for SQLServer
-	// - 9.4/10.0 for PostgreSQL
-	// - 9.3 for PPAS
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion interface{}
-	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType interface{}
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName interface{}
-	// It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-	InstanceNetworkType interface{}
 	// User-defined DB instance storage space. Value range:
 	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
 	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage interface{}
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
-	MasterUserName interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
-	MasterUserPassword interface{}
-	// It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
-	MultiAz interface{}
-	// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+	MaintainTime interface{}
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	MonitoringPeriod interface{}
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	Parameters interface{}
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period interface{}
 	// RDS database connection port.
 	Port interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
-	PreferredBackupPeriods interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
-	PreferredBackupTime interface{}
+	// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+	SecurityGroupId interface{}
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps interface{}
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags interface{}
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId interface{}
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-	// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
 	ZoneId interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
-	AllocatePublicConnection interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
-	BackupRetentionPeriod interface{}
-	// (Deprecated from version 1.5.0).
-	Connections interface{}
-	// It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
-	DbInstanceClass interface{}
-	// It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-	DbInstanceNetType interface{}
-	// It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-	DbInstanceStorage interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-	DbMappings interface{}
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew interface{}
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod interface{}
+	// The upgrade method to use. Valid values:
+	// - Auto: Instances are automatically upgraded to a higher minor version.
+	// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+	AutoUpgradeMinorVersion interface{}
+	// The storage type of the instance. Valid values:
+	// - local_ssd: specifies to use local SSDs. This value is recommended.
+	// - cloud_ssd: specifies to use standard SSDs.
+	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	DbInstanceStorageType interface{}
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
 	Engine interface{}
-	// Database version. Value options: 
-	// - 5.5/5.6/5.7 for MySQL
-	// - 2008r2/2012 for SQLServer
-	// - 9.4/10.0 for PostgreSQL
-	// - 9.3 for PPAS
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion interface{}
-	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
+	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType interface{}
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName interface{}
-	// It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-	InstanceNetworkType interface{}
 	// User-defined DB instance storage space. Value range:
 	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
 	// Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage interface{}
 	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	InstanceType interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
-	MasterUserName interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
-	MasterUserPassword interface{}
-	// It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
-	MultiAz interface{}
-	// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+	MaintainTime interface{}
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	MonitoringPeriod interface{}
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	Parameters interface{}
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
-	PreferredBackupPeriods interface{}
-	// It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
-	PreferredBackupTime interface{}
+	// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+	SecurityGroupId interface{}
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps interface{}
+	// A mapping of tags to assign to the resource.
+	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	Tags interface{}
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId interface{}
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-	// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
+	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
 	ZoneId interface{}
 }

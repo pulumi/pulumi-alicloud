@@ -2,10 +2,68 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "slbattachmenttest";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloudEfficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^ubuntu_18.*_64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/16",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultImages.images[0].id,
+ *     instanceName: name,
+ *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 5,
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     systemDiskCategory: "cloudEfficiency",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const defaultAttachment = new alicloud.slb.Attachment("default", {
+ *     instanceIds: [defaultInstance.id],
+ *     loadBalancerId: defaultLoadBalancer.id,
+ *     weight: 90,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
  */
 export class Attachment extends pulumi.CustomResource {
     /**
@@ -16,34 +74,48 @@ export class Attachment extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttachmentState): Attachment {
-        return new Attachment(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AttachmentState, opts?: pulumi.CustomResourceOptions): Attachment {
+        return new Attachment(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:slb/attachment:Attachment';
+
+    /**
+     * Returns true if the given object is an instance of Attachment.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Attachment {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Attachment.__pulumiType;
     }
 
     /**
      * The backend servers of the load balancer.
      */
-    public readonly backendServers: pulumi.Output<string>;
+    public readonly backendServers!: pulumi.Output<string>;
+    /**
+     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     */
+    public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
     /**
      * A list of instance ids to added backend server in the SLB.
      */
-    public readonly instanceIds: pulumi.Output<string[]>;
-    /**
-     * It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-     */
-    public readonly instances: pulumi.Output<string[] | undefined>;
+    public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * ID of the load balancer.
      */
-    public readonly loadBalancerId: pulumi.Output<string>;
+    public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
+     * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    public readonly slbId: pulumi.Output<string | undefined>;
+    public readonly serverType!: pulumi.Output<string | undefined>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
-    public readonly weight: pulumi.Output<number | undefined>;
+    public readonly weight!: pulumi.Output<number | undefined>;
 
     /**
      * Create a Attachment resource with the given unique name, arguments, and options.
@@ -56,12 +128,12 @@ export class Attachment extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AttachmentArgs | AttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AttachmentState = argsOrState as AttachmentState | undefined;
+            const state = argsOrState as AttachmentState | undefined;
             inputs["backendServers"] = state ? state.backendServers : undefined;
+            inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
             inputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
-            inputs["slbId"] = state ? state.slbId : undefined;
+            inputs["serverType"] = state ? state.serverType : undefined;
             inputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as AttachmentArgs | undefined;
@@ -72,13 +144,20 @@ export class Attachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
             inputs["backendServers"] = args ? args.backendServers : undefined;
+            inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
             inputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
-            inputs["slbId"] = args ? args.slbId : undefined;
+            inputs["serverType"] = args ? args.serverType : undefined;
             inputs["weight"] = args ? args.weight : undefined;
         }
-        super("alicloud:slb/attachment:Attachment", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Attachment.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -91,21 +170,21 @@ export interface AttachmentState {
      */
     readonly backendServers?: pulumi.Input<string>;
     /**
+     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     */
+    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    /**
      * A list of instance ids to added backend server in the SLB.
      */
     readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-     */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the load balancer.
      */
     readonly loadBalancerId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
+     * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    readonly slbId?: pulumi.Input<string>;
+    readonly serverType?: pulumi.Input<string>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */
@@ -121,21 +200,21 @@ export interface AttachmentArgs {
      */
     readonly backendServers?: pulumi.Input<string>;
     /**
+     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     */
+    readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    /**
      * A list of instance ids to added backend server in the SLB.
      */
     readonly instanceIds: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-     */
-    readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the load balancer.
      */
     readonly loadBalancerId: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
+     * Type of the instances. Valid value ecs, eni. Default to ecs.
      */
-    readonly slbId?: pulumi.Input<string>;
+    readonly serverType?: pulumi.Input<string>;
     /**
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      */

@@ -2,14 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a security group resource.
  * 
- * ~> **NOTE:** `alicloud_security_group` is used to build and manage a security group, and `alicloud_security_group_rule` can define ingress or egress rules for it.
+ * > **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
  * 
- * ~> **NOTE:** From version 1.7.2, `alicloud_security_group` has supported to segregate different ECS instance in which the same security group.
+ * > **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "New security group",
+ * });
+ * ```
+ * Basic usage for vpc
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     vpcId: vpc.id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
  */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
@@ -20,30 +50,58 @@ export class SecurityGroup extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecurityGroupState): SecurityGroup {
-        return new SecurityGroup(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecurityGroupState, opts?: pulumi.CustomResourceOptions): SecurityGroup {
+        return new SecurityGroup(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/securityGroup:SecurityGroup';
+
+    /**
+     * Returns true if the given object is an instance of SecurityGroup.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SecurityGroup {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SecurityGroup.__pulumiType;
     }
 
     /**
      * The security group description. Defaults to null.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group.
+     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
-    public readonly innerAccess: pulumi.Output<boolean | undefined>;
+    public readonly innerAccess!: pulumi.Output<boolean>;
+    /**
+     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     */
+    public readonly innerAccessPolicy!: pulumi.Output<string>;
     /**
      * The name of the security group. Defaults to null.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the security group. Valid values:
+     * `normal`: basic security group.
+     * `enterprise`: advanced security group For more information.
+     */
+    public readonly securityGroupType!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The VPC ID.
+     * The VPC ID.	
      */
-    public readonly vpcId: pulumi.Output<string | undefined>;
+    public readonly vpcId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -56,21 +114,34 @@ export class SecurityGroup extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SecurityGroupArgs | SecurityGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SecurityGroupState = argsOrState as SecurityGroupState | undefined;
+            const state = argsOrState as SecurityGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["innerAccess"] = state ? state.innerAccess : undefined;
+            inputs["innerAccessPolicy"] = state ? state.innerAccessPolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            inputs["securityGroupType"] = state ? state.securityGroupType : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["innerAccess"] = args ? args.innerAccess : undefined;
+            inputs["innerAccessPolicy"] = args ? args.innerAccessPolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            inputs["securityGroupType"] = args ? args.securityGroupType : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("alicloud:ecs/securityGroup:SecurityGroup", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(SecurityGroup.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -83,19 +154,33 @@ export interface SecurityGroupState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group.
+     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
+    /**
+     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     */
+    readonly innerAccessPolicy?: pulumi.Input<string>;
     /**
      * The name of the security group. Defaults to null.
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The type of the security group. Valid values:
+     * `normal`: basic security group.
+     * `enterprise`: advanced security group For more information.
+     */
+    readonly securityGroupType?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.
+     * The VPC ID.	
      */
     readonly vpcId?: pulumi.Input<string>;
 }
@@ -109,19 +194,33 @@ export interface SecurityGroupArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Whether to allow both machines to access each other on all ports in the same security group.
+     * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
+    /**
+     * Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
+     */
+    readonly innerAccessPolicy?: pulumi.Input<string>;
     /**
      * The name of the security group. Defaults to null.
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * The Id of resource group which the securityGroup belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The type of the security group. Valid values:
+     * `normal`: basic security group.
+     * `enterprise`: advanced security group For more information.
+     */
+    readonly securityGroupType?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC ID.
+     * The VPC ID.	
      */
     readonly vpcId?: pulumi.Input<string>;
 }

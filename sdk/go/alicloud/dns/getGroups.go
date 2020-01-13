@@ -8,9 +8,12 @@ import (
 )
 
 // This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
 func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 	}
@@ -20,15 +23,20 @@ func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, e
 	}
 	return &GetGroupsResult{
 		Groups: outputs["groups"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
+	// A list of group IDs.
+	Ids interface{}
 	// A regex string to filter results by group name. 
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 }
 
@@ -36,6 +44,12 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// A list of groups. Each element contains the following attributes:
 	Groups interface{}
+	// A list of group IDs. 
+	Ids interface{}
+	NameRegex interface{}
+	// A list of group names.
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

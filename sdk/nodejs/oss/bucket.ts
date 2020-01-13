@@ -2,13 +2,189 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a oss bucket and set its attribution.
  * 
- * ~> **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
+ * > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
  * 
+ * 
+ * ## Example Usage
+ * 
+ * Private Bucket
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketAcl = new alicloud.oss.Bucket("bucket-acl", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-acl",
+ * });
+ * ```
+ * 
+ * Static Website
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketWebsite = new alicloud.oss.Bucket("bucket-website", {
+ *     bucket: "bucket-170309-website",
+ *     website: {
+ *         errorDocument: "error.html",
+ *         indexDocument: "index.html",
+ *     },
+ * });
+ * ```
+ * 
+ * Enable Logging
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketTarget = new alicloud.oss.Bucket("bucket-target", {
+ *     acl: "public-read",
+ *     bucket: "bucket-170309-acl",
+ * });
+ * const bucketLogging = new alicloud.oss.Bucket("bucket-logging", {
+ *     bucket: "bucket-170309-logging",
+ *     logging: {
+ *         targetBucket: bucket_target.id,
+ *         targetPrefix: "log/",
+ *     },
+ * });
+ * ```
+ * 
+ * Referer configuration
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketReferer = new alicloud.oss.Bucket("bucket-referer", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-referer",
+ *     refererConfig: {
+ *         allowEmpty: false,
+ *         referers: [
+ *             "http://www.aliyun.com",
+ *             "https://www.aliyun.com",
+ *         ],
+ *     },
+ * });
+ * ```
+ * 
+ * Set lifecycle rule
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketLifecycle = new alicloud.oss.Bucket("bucket-lifecycle", {
+ *     acl: "public-read",
+ *     bucket: "bucket-170309-lifecycle",
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         id: "rule-days-transition",
+ *         prefix: "path3/",
+ *         transitions: [
+ *             {
+ *                 createdBeforeDate: "2020-11-11",
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 createdBeforeDate: "2021-11-11",
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ * 
+ * Set bucket policy 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketPolicy = new alicloud.oss.Bucket("bucket-policy", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-policy",
+ *     policy: `  {"Statement":
+ *       [{"Action":
+ *           ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
+ *         "Effect":"Allow",
+ *         "Resource":
+ *             ["acs:oss:*:*:*"]}],
+ *    "Version":"1"}
+ *   `,
+ * });
+ * ```
+ * 
+ * IA Bucket
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketStorageclass = new alicloud.oss.Bucket("bucket-storageclass", {
+ *     bucket: "bucket-170309-storageclass",
+ *     storageClass: "IA",
+ * });
+ * ```
+ * 
+ * Set bucket server-side encryption rule 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketSserule = new alicloud.oss.Bucket("bucket-sserule", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-sserule",
+ *     serverSideEncryptionRule: {
+ *         sseAlgorithm: "AES256",
+ *     },
+ * });
+ * ```
+ * 
+ * Set bucket tags 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketTags = new alicloud.oss.Bucket("bucket-tags", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-tags",
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * ```
+ * 
+ * Enable bucket versioning 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const bucketVersioning = new alicloud.oss.Bucket("bucket-versioning", {
+ *     acl: "private",
+ *     bucket: "bucket-170309-versioning",
+ *     versioning: {
+ *         status: "Enabled",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket.html.markdown.
  */
 export class Bucket extends pulumi.CustomResource {
     /**
@@ -19,63 +195,97 @@ export class Bucket extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketState): Bucket {
-        return new Bucket(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketState, opts?: pulumi.CustomResourceOptions): Bucket {
+        return new Bucket(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:oss/bucket:Bucket';
+
+    /**
+     * Returns true if the given object is an instance of Bucket.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Bucket {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Bucket.__pulumiType;
     }
 
     /**
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
      */
-    public readonly acl: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string | undefined>;
+    public readonly bucket!: pulumi.Output<string | undefined>;
     /**
-     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
+     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
      */
-    public readonly bucket: pulumi.Output<string | undefined>;
-    public readonly corsRules: pulumi.Output<{ allowedHeaders?: string[], allowedMethods: string[], allowedOrigins: string[], exposeHeaders?: string[], maxAgeSeconds?: number }[] | undefined>;
+    public readonly corsRules!: pulumi.Output<outputs.oss.BucketCorsRule[] | undefined>;
     /**
      * The creation date of the bucket.
      */
-    public /*out*/ readonly creationDate: pulumi.Output<string>;
+    public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
      * The extranet access endpoint of the bucket.
      */
-    public /*out*/ readonly extranetEndpoint: pulumi.Output<string>;
+    public /*out*/ readonly extranetEndpoint!: pulumi.Output<string>;
+    /**
+     * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * The intranet access endpoint of the bucket.
      */
-    public /*out*/ readonly intranetEndpoint: pulumi.Output<string>;
+    public /*out*/ readonly intranetEndpoint!: pulumi.Output<string>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
      */
-    public readonly lifecycleRules: pulumi.Output<{ enabled: boolean, expirations: { date?: string, days?: number }[], id: string, prefix: string }[] | undefined>;
+    public readonly lifecycleRules!: pulumi.Output<outputs.oss.BucketLifecycleRule[] | undefined>;
     /**
      * The location of the bucket.
      */
-    public /*out*/ readonly location: pulumi.Output<string>;
+    public /*out*/ readonly location!: pulumi.Output<string>;
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
      */
-    public readonly logging: pulumi.Output<{ targetBucket: string, targetPrefix?: string } | undefined>;
+    public readonly logging!: pulumi.Output<outputs.oss.BucketLogging | undefined>;
     /**
      * The flag of using logging enable container. Defaults true.
      */
-    public readonly loggingIsenable: pulumi.Output<boolean | undefined>;
+    public readonly loggingIsenable!: pulumi.Output<boolean | undefined>;
     /**
      * The bucket owner.
      */
-    public /*out*/ readonly owner: pulumi.Output<string>;
+    public /*out*/ readonly owner!: pulumi.Output<string>;
+    /**
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     */
+    public readonly policy!: pulumi.Output<string | undefined>;
     /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
-    public readonly refererConfig: pulumi.Output<{ allowEmpty?: boolean, referers: string[] }>;
+    public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
     /**
-     * The bucket storage type.
+     * A configuration of server-side encryption (documented below).
      */
-    public /*out*/ readonly storageClass: pulumi.Output<string>;
+    public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
+    /**
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+     */
+    public readonly storageClass!: pulumi.Output<string | undefined>;
+    /**
+     * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * A state of versioning (documented below).
+     */
+    public readonly versioning!: pulumi.Output<outputs.oss.BucketVersioning | undefined>;
     /**
      * A website object(documented below).
      */
-    public readonly website: pulumi.Output<{ errorDocument?: string, indexDocument: string } | undefined>;
+    public readonly website!: pulumi.Output<outputs.oss.BucketWebsite | undefined>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -88,39 +298,56 @@ export class Bucket extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: BucketArgs | BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: BucketState = argsOrState as BucketState | undefined;
+            const state = argsOrState as BucketState | undefined;
             inputs["acl"] = state ? state.acl : undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["corsRules"] = state ? state.corsRules : undefined;
             inputs["creationDate"] = state ? state.creationDate : undefined;
             inputs["extranetEndpoint"] = state ? state.extranetEndpoint : undefined;
+            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             inputs["intranetEndpoint"] = state ? state.intranetEndpoint : undefined;
             inputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["logging"] = state ? state.logging : undefined;
             inputs["loggingIsenable"] = state ? state.loggingIsenable : undefined;
             inputs["owner"] = state ? state.owner : undefined;
+            inputs["policy"] = state ? state.policy : undefined;
             inputs["refererConfig"] = state ? state.refererConfig : undefined;
+            inputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
             inputs["storageClass"] = state ? state.storageClass : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
+            inputs["versioning"] = state ? state.versioning : undefined;
             inputs["website"] = state ? state.website : undefined;
         } else {
             const args = argsOrState as BucketArgs | undefined;
             inputs["acl"] = args ? args.acl : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["corsRules"] = args ? args.corsRules : undefined;
+            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             inputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             inputs["logging"] = args ? args.logging : undefined;
             inputs["loggingIsenable"] = args ? args.loggingIsenable : undefined;
+            inputs["policy"] = args ? args.policy : undefined;
             inputs["refererConfig"] = args ? args.refererConfig : undefined;
+            inputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
+            inputs["storageClass"] = args ? args.storageClass : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
+            inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
             inputs["creationDate"] = undefined /*out*/;
             inputs["extranetEndpoint"] = undefined /*out*/;
             inputs["intranetEndpoint"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
             inputs["owner"] = undefined /*out*/;
-            inputs["storageClass"] = undefined /*out*/;
         }
-        super("alicloud:oss/bucket:Bucket", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Bucket.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -132,11 +359,11 @@ export interface BucketState {
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
      */
     readonly acl?: pulumi.Input<string>;
-    /**
-     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
-     */
     readonly bucket?: pulumi.Input<string>;
-    readonly corsRules?: pulumi.Input<pulumi.Input<{ allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>, allowedMethods: pulumi.Input<pulumi.Input<string>[]>, allowedOrigins: pulumi.Input<pulumi.Input<string>[]>, exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>, maxAgeSeconds?: pulumi.Input<number> }>[]>;
+    /**
+     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     */
+    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
     /**
      * The creation date of the bucket.
      */
@@ -146,13 +373,17 @@ export interface BucketState {
      */
     readonly extranetEndpoint?: pulumi.Input<string>;
     /**
+     * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
+    /**
      * The intranet access endpoint of the bucket.
      */
     readonly intranetEndpoint?: pulumi.Input<string>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ enabled: pulumi.Input<boolean>, expirations: pulumi.Input<pulumi.Input<{ date?: pulumi.Input<string>, days?: pulumi.Input<number> }>[]>, id?: pulumi.Input<string>, prefix: pulumi.Input<string> }>[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
      * The location of the bucket.
      */
@@ -160,7 +391,7 @@ export interface BucketState {
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
      */
-    readonly logging?: pulumi.Input<{ targetBucket: pulumi.Input<string>, targetPrefix?: pulumi.Input<string> }>;
+    readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
      */
@@ -170,17 +401,33 @@ export interface BucketState {
      */
     readonly owner?: pulumi.Input<string>;
     /**
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     */
+    readonly policy?: pulumi.Input<string>;
+    /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
-    readonly refererConfig?: pulumi.Input<{ allowEmpty?: pulumi.Input<boolean>, referers: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
-     * The bucket storage type.
+     * A configuration of server-side encryption (documented below).
+     */
+    readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
+    /**
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
      */
     readonly storageClass?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A state of versioning (documented below).
+     */
+    readonly versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
+    /**
      * A website object(documented below).
      */
-    readonly website?: pulumi.Input<{ errorDocument?: pulumi.Input<string>, indexDocument: pulumi.Input<string> }>;
+    readonly website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }
 
 /**
@@ -191,29 +438,53 @@ export interface BucketArgs {
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
      */
     readonly acl?: pulumi.Input<string>;
-    /**
-     * The name of the bucket. If omitted, Terraform will assign a random and unique name.
-     */
     readonly bucket?: pulumi.Input<string>;
-    readonly corsRules?: pulumi.Input<pulumi.Input<{ allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>, allowedMethods: pulumi.Input<pulumi.Input<string>[]>, allowedOrigins: pulumi.Input<pulumi.Input<string>[]>, exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>, maxAgeSeconds?: pulumi.Input<number> }>[]>;
+    /**
+     * A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
+     */
+    readonly corsRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketCorsRule>[]>;
+    /**
+     * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+     */
+    readonly forceDestroy?: pulumi.Input<boolean>;
     /**
      * A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
      */
-    readonly lifecycleRules?: pulumi.Input<pulumi.Input<{ enabled: pulumi.Input<boolean>, expirations: pulumi.Input<pulumi.Input<{ date?: pulumi.Input<string>, days?: pulumi.Input<number> }>[]>, id?: pulumi.Input<string>, prefix: pulumi.Input<string> }>[]>;
+    readonly lifecycleRules?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRule>[]>;
     /**
      * A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
      */
-    readonly logging?: pulumi.Input<{ targetBucket: pulumi.Input<string>, targetPrefix?: pulumi.Input<string> }>;
+    readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;
     /**
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     */
+    readonly policy?: pulumi.Input<string>;
+    /**
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
      */
-    readonly refererConfig?: pulumi.Input<{ allowEmpty?: pulumi.Input<boolean>, referers: pulumi.Input<pulumi.Input<string>[]> }>;
+    readonly refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
+    /**
+     * A configuration of server-side encryption (documented below).
+     */
+    readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
+    /**
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+     */
+    readonly storageClass?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * A state of versioning (documented below).
+     */
+    readonly versioning?: pulumi.Input<inputs.oss.BucketVersioning>;
     /**
      * A website object(documented below).
      */
-    readonly website?: pulumi.Input<{ errorDocument?: pulumi.Input<string>, indexDocument: pulumi.Input<string> }>;
+    readonly website?: pulumi.Input<inputs.oss.BucketWebsite>;
 }

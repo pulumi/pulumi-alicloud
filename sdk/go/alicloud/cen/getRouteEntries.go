@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides CEN Route Entries available to the user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_route_entries.html.markdown.
 func LookupRouteEntries(ctx *pulumi.Context, args *GetRouteEntriesArgs) (*GetRouteEntriesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,7 +23,11 @@ func LookupRouteEntries(ctx *pulumi.Context, args *GetRouteEntriesArgs) (*GetRou
 		return nil, err
 	}
 	return &GetRouteEntriesResult{
+		CidrBlock: outputs["cidrBlock"],
 		Entries: outputs["entries"],
+		InstanceId: outputs["instanceId"],
+		OutputFile: outputs["outputFile"],
+		RouteTableId: outputs["routeTableId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -32,7 +38,6 @@ type GetRouteEntriesArgs struct {
 	CidrBlock interface{}
 	// ID of the CEN instance.
 	InstanceId interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// ID of the route table of the VPC or VBR.
 	RouteTableId interface{}
@@ -40,8 +45,15 @@ type GetRouteEntriesArgs struct {
 
 // A collection of values returned by getRouteEntries.
 type GetRouteEntriesResult struct {
+	// The destination CIDR block of the conflicted route entry.
+	CidrBlock interface{}
 	// A list of CEN Route Entries. Each element contains the following attributes:
 	Entries interface{}
+	// ID of the CEN child instance.
+	InstanceId interface{}
+	OutputFile interface{}
+	// ID of the route table.
+	RouteTableId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

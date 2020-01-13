@@ -5,14 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
- * 
- * ~> **NOTE:** `alicloud_eip_association` is useful in scenarios where EIPs are either
- *  pre-existing or distributed to customers or users and therefore cannot be changed.
- * 
- * ~> **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
- * 
- * ~> **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
  */
 export class EipAssociation extends pulumi.CustomResource {
     /**
@@ -23,18 +16,40 @@ export class EipAssociation extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EipAssociationState): EipAssociation {
-        return new EipAssociation(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EipAssociationState, opts?: pulumi.CustomResourceOptions): EipAssociation {
+        return new EipAssociation(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ecs/eipAssociation:EipAssociation';
+
+    /**
+     * Returns true if the given object is an instance of EipAssociation.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is EipAssociation {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === EipAssociation.__pulumiType;
     }
 
     /**
      * The allocation EIP ID.
      */
-    public readonly allocationId: pulumi.Output<string>;
+    public readonly allocationId!: pulumi.Output<string>;
     /**
      * The ID of the ECS or SLB instance or Nat Gateway.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The type of cloud product that the eip instance to bind.
+     */
+    public readonly instanceType!: pulumi.Output<string>;
+    /**
+     * The private IP address in the network segment of the vswitch which has been assigned.
+     */
+    public readonly privateIpAddress!: pulumi.Output<string>;
 
     /**
      * Create a EipAssociation resource with the given unique name, arguments, and options.
@@ -43,19 +58,36 @@ export class EipAssociation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: EipAssociationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: EipAssociationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EipAssociationArgs | EipAssociationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: EipAssociationState = argsOrState as EipAssociationState | undefined;
+            const state = argsOrState as EipAssociationState | undefined;
             inputs["allocationId"] = state ? state.allocationId : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
+            inputs["instanceType"] = state ? state.instanceType : undefined;
+            inputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
+            if (!args || args.allocationId === undefined) {
+                throw new Error("Missing required property 'allocationId'");
+            }
+            if (!args || args.instanceId === undefined) {
+                throw new Error("Missing required property 'instanceId'");
+            }
             inputs["allocationId"] = args ? args.allocationId : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["instanceType"] = args ? args.instanceType : undefined;
+            inputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
         }
-        super("alicloud:ecs/eipAssociation:EipAssociation", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(EipAssociation.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -71,6 +103,14 @@ export interface EipAssociationState {
      * The ID of the ECS or SLB instance or Nat Gateway.
      */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * The type of cloud product that the eip instance to bind.
+     */
+    readonly instanceType?: pulumi.Input<string>;
+    /**
+     * The private IP address in the network segment of the vswitch which has been assigned.
+     */
+    readonly privateIpAddress?: pulumi.Input<string>;
 }
 
 /**
@@ -80,9 +120,17 @@ export interface EipAssociationArgs {
     /**
      * The allocation EIP ID.
      */
-    readonly allocationId?: pulumi.Input<string>;
+    readonly allocationId: pulumi.Input<string>;
     /**
      * The ID of the ECS or SLB instance or Nat Gateway.
      */
-    readonly instanceId?: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
+    /**
+     * The type of cloud product that the eip instance to bind.
+     */
+    readonly instanceType?: pulumi.Input<string>;
+    /**
+     * The private IP address in the network segment of the vswitch which has been assigned.
+     */
+    readonly privateIpAddress?: pulumi.Input<string>;
 }

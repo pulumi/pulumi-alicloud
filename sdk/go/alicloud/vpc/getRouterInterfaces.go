@@ -9,9 +9,12 @@ import (
 
 // This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
 // that connect VPCs together.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
 func LookupRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs) (*GetRouterInterfacesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["oppositeInterfaceId"] = args.OppositeInterfaceId
 		inputs["oppositeInterfaceOwnerId"] = args.OppositeInterfaceOwnerId
@@ -27,23 +30,35 @@ func LookupRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs) 
 		return nil, err
 	}
 	return &GetRouterInterfacesResult{
+		Ids: outputs["ids"],
 		Interfaces: outputs["interfaces"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OppositeInterfaceId: outputs["oppositeInterfaceId"],
+		OppositeInterfaceOwnerId: outputs["oppositeInterfaceOwnerId"],
+		OutputFile: outputs["outputFile"],
+		Role: outputs["role"],
+		RouterId: outputs["routerId"],
+		RouterType: outputs["routerType"],
+		Specification: outputs["specification"],
+		Status: outputs["status"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getRouterInterfaces.
 type GetRouterInterfacesArgs struct {
+	// A list of router interface IDs.
+	Ids interface{}
 	// A regex string used to filter by router interface name.
 	NameRegex interface{}
 	// ID of the peer router interface.
 	OppositeInterfaceId interface{}
 	// Account ID of the owner of the peer router interface.
 	OppositeInterfaceOwnerId interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
-	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
+	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
 	Role interface{}
 	// ID of the VRouter located in the local region.
 	RouterId interface{}
@@ -57,8 +72,28 @@ type GetRouterInterfacesArgs struct {
 
 // A collection of values returned by getRouterInterfaces.
 type GetRouterInterfacesResult struct {
+	// A list of router interface IDs.
+	Ids interface{}
 	// A list of router interfaces. Each element contains the following attributes:
 	Interfaces interface{}
+	NameRegex interface{}
+	// A list of router interface names.
+	Names interface{}
+	// Peer router interface ID.
+	OppositeInterfaceId interface{}
+	// Account ID of the owner of the peer router interface.
+	OppositeInterfaceOwnerId interface{}
+	OutputFile interface{}
+	// Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
+	Role interface{}
+	// ID of the VRouter located in the local region.
+	RouterId interface{}
+	// Router type in the local region. Possible values: `VRouter` and `VBR`.
+	RouterType interface{}
+	// Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
+	Specification interface{}
+	// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
+	Status interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

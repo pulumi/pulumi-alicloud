@@ -7,9 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM Policy resource. 
-// 
-// ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_policy.html.markdown.
 type Policy struct {
 	s *pulumi.ResourceState
 }
@@ -65,53 +63,53 @@ func GetPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Policy) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Policy) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Policy) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Policy) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The policy attachment count.
-func (r *Policy) AttachmentCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["attachmentCount"])
+func (r *Policy) AttachmentCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["attachmentCount"])
 }
 
 // Description of the RAM policy. This name can have a string of 1 to 1024 characters.
-func (r *Policy) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Policy) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Document of the RAM policy. It is required when the `statement` is not specified.
-func (r *Policy) Document() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["document"])
+func (r *Policy) Document() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["document"])
 }
 
 // This parameter is used for resource destroy. Default value is `false`.
-func (r *Policy) Force() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["force"])
+func (r *Policy) Force() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
 // Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *Policy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Policy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Statements of the RAM policy document. It is required when the `document` is not specified.
-func (r *Policy) Statements() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["statements"])
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+func (r *Policy) Statements() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["statements"])
 }
 
 // The policy type.
-func (r *Policy) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Policy) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
-// Version of the RAM policy document. Valid value is `1`. Default value is `1`.
-func (r *Policy) Version() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["version"])
+// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+func (r *Policy) Version() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["version"])
 }
 
 // Input properties used for looking up and filtering Policy resources.
@@ -126,11 +124,11 @@ type PolicyState struct {
 	Force interface{}
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name interface{}
-	// Statements of the RAM policy document. It is required when the `document` is not specified.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
 	Statements interface{}
 	// The policy type.
 	Type interface{}
-	// Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	Version interface{}
 }
 
@@ -144,8 +142,8 @@ type PolicyArgs struct {
 	Force interface{}
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name interface{}
-	// Statements of the RAM policy document. It is required when the `document` is not specified.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
 	Statements interface{}
-	// Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	Version interface{}
 }

@@ -9,10 +9,12 @@ import (
 
 // Provides an elastic IP resource.
 // 
-// -> **NOTE:** The resource only support to create `PayByTraffic` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+// > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
 // Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
 // 
-// -> **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+// > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip.html.markdown.
 type Eip struct {
 	s *pulumi.ResourceState
 }
@@ -24,19 +26,23 @@ func NewEip(ctx *pulumi.Context,
 	if args == nil {
 		inputs["bandwidth"] = nil
 		inputs["description"] = nil
-		inputs["instance"] = nil
 		inputs["instanceChargeType"] = nil
 		inputs["internetChargeType"] = nil
+		inputs["isp"] = nil
 		inputs["name"] = nil
 		inputs["period"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["tags"] = nil
 	} else {
 		inputs["bandwidth"] = args.Bandwidth
 		inputs["description"] = args.Description
-		inputs["instance"] = args.Instance
 		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["internetChargeType"] = args.InternetChargeType
+		inputs["isp"] = args.Isp
 		inputs["name"] = args.Name
 		inputs["period"] = args.Period
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	inputs["ipAddress"] = nil
 	inputs["status"] = nil
@@ -55,13 +61,15 @@ func GetEip(ctx *pulumi.Context,
 	if state != nil {
 		inputs["bandwidth"] = state.Bandwidth
 		inputs["description"] = state.Description
-		inputs["instance"] = state.Instance
 		inputs["instanceChargeType"] = state.InstanceChargeType
 		inputs["internetChargeType"] = state.InternetChargeType
 		inputs["ipAddress"] = state.IpAddress
+		inputs["isp"] = state.Isp
 		inputs["name"] = state.Name
 		inputs["period"] = state.Period
+		inputs["resourceGroupId"] = state.ResourceGroupId
 		inputs["status"] = state.Status
+		inputs["tags"] = state.Tags
 	}
 	s, err := ctx.ReadResource("alicloud:ecs/eip:Eip", name, id, inputs, opts...)
 	if err != nil {
@@ -71,58 +79,69 @@ func GetEip(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Eip) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Eip) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Eip) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Eip) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-func (r *Eip) Bandwidth() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidth"])
+func (r *Eip) Bandwidth() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidth"])
 }
 
 // Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-func (r *Eip) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
-}
-
-func (r *Eip) Instance() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instance"])
+func (r *Eip) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-func (r *Eip) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+func (r *Eip) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
-// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`.
-func (r *Eip) InternetChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["internetChargeType"])
+// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
+func (r *Eip) InternetChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["internetChargeType"])
 }
 
 // The elastic ip address
-func (r *Eip) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *Eip) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
+}
+
+// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+func (r *Eip) Isp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["isp"])
 }
 
 // The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-func (r *Eip) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Eip) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
 // Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-func (r *Eip) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+func (r *Eip) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
+}
+
+// The Id of resource group which the eip belongs.
+func (r *Eip) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
 }
 
 // The EIP current status.
-func (r *Eip) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Eip) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
+}
+
+// A mapping of tags to assign to the resource.
+func (r *Eip) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Eip resources.
@@ -131,20 +150,25 @@ type EipState struct {
 	Bandwidth interface{}
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description interface{}
-	Instance interface{}
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType interface{}
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
 	InternetChargeType interface{}
 	// The elastic ip address
 	IpAddress interface{}
+	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+	Isp interface{}
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	Name interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
 	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period interface{}
+	// The Id of resource group which the eip belongs.
+	ResourceGroupId interface{}
 	// The EIP current status.
 	Status interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }
 
 // The set of arguments for constructing a Eip resource.
@@ -153,14 +177,19 @@ type EipArgs struct {
 	Bandwidth interface{}
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description interface{}
-	Instance interface{}
 	// Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType interface{}
-	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`.
+	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. From version `1.7.1`, default to `PayByTraffic`. It is only PayByBandwidth when `instanceChargeType` is PrePaid.
 	InternetChargeType interface{}
+	// The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
+	Isp interface{}
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	Name interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
 	// Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period interface{}
+	// The Id of resource group which the eip belongs.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }

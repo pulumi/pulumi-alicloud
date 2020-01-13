@@ -9,6 +9,8 @@ import (
 )
 
 // Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It can be associated with IP whitelists and backup configuration which are separate resource providers.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_instance.html.markdown.
 type Instance struct {
 	s *pulumi.ResourceState
 }
@@ -19,11 +21,10 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil || args.InstanceClass == nil {
 		return nil, errors.New("missing required argument 'InstanceClass'")
 	}
-	if args == nil || args.Password == nil {
-		return nil, errors.New("missing required argument 'Password'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["autoRenew"] = nil
+		inputs["autoRenewPeriod"] = nil
 		inputs["availabilityZone"] = nil
 		inputs["backupId"] = nil
 		inputs["engineVersion"] = nil
@@ -31,12 +32,21 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["instanceClass"] = nil
 		inputs["instanceName"] = nil
 		inputs["instanceType"] = nil
+		inputs["kmsEncryptedPassword"] = nil
+		inputs["kmsEncryptionContext"] = nil
+		inputs["maintainEndTime"] = nil
+		inputs["maintainStartTime"] = nil
+		inputs["parameters"] = nil
 		inputs["password"] = nil
 		inputs["period"] = nil
 		inputs["privateIp"] = nil
 		inputs["securityIps"] = nil
+		inputs["tags"] = nil
+		inputs["vpcAuthMode"] = nil
 		inputs["vswitchId"] = nil
 	} else {
+		inputs["autoRenew"] = args.AutoRenew
+		inputs["autoRenewPeriod"] = args.AutoRenewPeriod
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["backupId"] = args.BackupId
 		inputs["engineVersion"] = args.EngineVersion
@@ -44,10 +54,17 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["instanceClass"] = args.InstanceClass
 		inputs["instanceName"] = args.InstanceName
 		inputs["instanceType"] = args.InstanceType
+		inputs["kmsEncryptedPassword"] = args.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = args.KmsEncryptionContext
+		inputs["maintainEndTime"] = args.MaintainEndTime
+		inputs["maintainStartTime"] = args.MaintainStartTime
+		inputs["parameters"] = args.Parameters
 		inputs["password"] = args.Password
 		inputs["period"] = args.Period
 		inputs["privateIp"] = args.PrivateIp
 		inputs["securityIps"] = args.SecurityIps
+		inputs["tags"] = args.Tags
+		inputs["vpcAuthMode"] = args.VpcAuthMode
 		inputs["vswitchId"] = args.VswitchId
 	}
 	inputs["connectionDomain"] = nil
@@ -64,6 +81,8 @@ func GetInstance(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *InstanceState, opts ...pulumi.ResourceOpt) (*Instance, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["autoRenew"] = state.AutoRenew
+		inputs["autoRenewPeriod"] = state.AutoRenewPeriod
 		inputs["availabilityZone"] = state.AvailabilityZone
 		inputs["backupId"] = state.BackupId
 		inputs["connectionDomain"] = state.ConnectionDomain
@@ -72,10 +91,17 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["instanceClass"] = state.InstanceClass
 		inputs["instanceName"] = state.InstanceName
 		inputs["instanceType"] = state.InstanceType
+		inputs["kmsEncryptedPassword"] = state.KmsEncryptedPassword
+		inputs["kmsEncryptionContext"] = state.KmsEncryptionContext
+		inputs["maintainEndTime"] = state.MaintainEndTime
+		inputs["maintainStartTime"] = state.MaintainStartTime
+		inputs["parameters"] = state.Parameters
 		inputs["password"] = state.Password
 		inputs["period"] = state.Period
 		inputs["privateIp"] = state.PrivateIp
 		inputs["securityIps"] = state.SecurityIps
+		inputs["tags"] = state.Tags
+		inputs["vpcAuthMode"] = state.VpcAuthMode
 		inputs["vswitchId"] = state.VswitchId
 	}
 	s, err := ctx.ReadResource("alicloud:kvstore/instance:Instance", name, id, inputs, opts...)
@@ -86,135 +112,212 @@ func GetInstance(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Instance) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Instance) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Instance) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Instance) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+func (r *Instance) AutoRenew() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["autoRenew"])
+}
+
+// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+func (r *Instance) AutoRenewPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["autoRenewPeriod"])
 }
 
 // The Zone to launch the DB instance.
-func (r *Instance) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Instance) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
-func (r *Instance) BackupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backupId"])
+func (r *Instance) BackupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backupId"])
 }
 
-func (r *Instance) ConnectionDomain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionDomain"])
+// Instance connection domain (only Intranet access supported).
+func (r *Instance) ConnectionDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionDomain"])
 }
 
-func (r *Instance) EngineVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["engineVersion"])
+func (r *Instance) EngineVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["engineVersion"])
 }
 
 // Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
-func (r *Instance) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+func (r *Instance) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
-// Type of the applied ApsaraDB for Redis instance.
-// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-func (r *Instance) InstanceClass() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceClass"])
+func (r *Instance) InstanceClass() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceClass"])
 }
 
 // The name of DB instance. It a string of 2 to 256 characters.
-// * `password`- (Required) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
-func (r *Instance) InstanceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceName"])
+// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+func (r *Instance) InstanceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceName"])
 }
 
-// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`
-func (r *Instance) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
+func (r *Instance) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
-func (r *Instance) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+func (r *Instance) KmsEncryptedPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
 }
 
-// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-func (r *Instance) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+func (r *Instance) KmsEncryptionContext() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["kmsEncryptionContext"])
 }
 
-func (r *Instance) PrivateIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["privateIp"])
+// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (r *Instance) MaintainEndTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintainEndTime"])
 }
 
-func (r *Instance) SecurityIps() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["securityIps"])
+// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+func (r *Instance) MaintainStartTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["maintainStartTime"])
+}
+
+// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+func (r *Instance) Parameters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["parameters"])
+}
+
+func (r *Instance) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
+}
+
+// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+func (r *Instance) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
+}
+
+func (r *Instance) PrivateIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["privateIp"])
+}
+
+func (r *Instance) SecurityIps() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityIps"])
+}
+
+// A mapping of tags to assign to the resource.
+func (r *Instance) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
+}
+
+func (r *Instance) VpcAuthMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcAuthMode"])
 }
 
 // The ID of VSwitch.
-// * `engine_version`- (Optional) Engine version. Supported values: 2.8 and 4.0. Default value: 2.8.
-// * `security_ips`- (Optional) Set the instance's IP whitelist of the default security group.
-// * `private_ip`- (Optional) Set the instance's private IP.
-// * `backup_id`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
-func (r *Instance) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+// * `securityIps`- (Optional) Set the instance's IP whitelist of the default security group.
+// * `privateIp`- (Optional) Set the instance's private IP.
+// * `backupId`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+// * `vpcAuthMode`- (Optional) Only meaningful if instanceType is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
+func (r *Instance) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew interface{}
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod interface{}
 	// The Zone to launch the DB instance.
 	AvailabilityZone interface{}
 	BackupId interface{}
+	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain interface{}
 	EngineVersion interface{}
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType interface{}
-	// Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceClass interface{}
 	// The name of DB instance. It a string of 2 to 256 characters.
-	// * `password`- (Required) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName interface{}
-	// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`
+	// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType interface{}
+	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime interface{}
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime interface{}
+	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	Parameters interface{}
 	Password interface{}
-	// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period interface{}
 	PrivateIp interface{}
 	SecurityIps interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
+	VpcAuthMode interface{}
 	// The ID of VSwitch.
-	// * `engine_version`- (Optional) Engine version. Supported values: 2.8 and 4.0. Default value: 2.8.
-	// * `security_ips`- (Optional) Set the instance's IP whitelist of the default security group.
-	// * `private_ip`- (Optional) Set the instance's private IP.
-	// * `backup_id`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+	// * `securityIps`- (Optional) Set the instance's IP whitelist of the default security group.
+	// * `privateIp`- (Optional) Set the instance's private IP.
+	// * `backupId`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+	// * `vpcAuthMode`- (Optional) Only meaningful if instanceType is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VswitchId interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
+	AutoRenew interface{}
+	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
+	AutoRenewPeriod interface{}
 	// The Zone to launch the DB instance.
 	AvailabilityZone interface{}
 	BackupId interface{}
 	EngineVersion interface{}
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType interface{}
-	// Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceClass interface{}
 	// The name of DB instance. It a string of 2 to 256 characters.
-	// * `password`- (Required) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName interface{}
-	// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`
+	// The engine to use: `Redis` or `Memcache`. Defaults to `Redis`.
 	InstanceType interface{}
+	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored.
+	KmsEncryptedPassword interface{}
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	KmsEncryptionContext interface{}
+	// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainEndTime interface{}
+	// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
+	MaintainStartTime interface{}
+	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
+	Parameters interface{}
 	Password interface{}
-	// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period interface{}
 	PrivateIp interface{}
 	SecurityIps interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
+	VpcAuthMode interface{}
 	// The ID of VSwitch.
-	// * `engine_version`- (Optional) Engine version. Supported values: 2.8 and 4.0. Default value: 2.8.
-	// * `security_ips`- (Optional) Set the instance's IP whitelist of the default security group.
-	// * `private_ip`- (Optional) Set the instance's private IP.
-	// * `backup_id`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
+	// * `securityIps`- (Optional) Set the instance's IP whitelist of the default security group.
+	// * `privateIp`- (Optional) Set the instance's private IP.
+	// * `backupId`- (Optional) If an instance created based on a backup set generated by another instance is valid, this parameter indicates the ID of the generated backup set.
+	// * `vpcAuthMode`- (Optional) Only meaningful if instanceType is `Redis` and network type is VPC. Valid values are `Close`, `Open`. Defaults to `Open`.  `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
 	VswitchId interface{}
 }

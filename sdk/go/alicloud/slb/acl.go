@@ -17,20 +17,29 @@ import (
 // You can configure access control
 // when you create a listener or change access control configuration after a listener is created.
 // 
-// ~> **NOTE:** One access control list can be attached to many Listeners in different load balancer as whitelists or blacklists.
+// > **NOTE:** One access control list can be attached to many Listeners in different load balancer as whitelists or blacklists.
 // 
-// ~> **NOTE:** The maximum number of access control lists per region  is 50.
+// > **NOTE:** The maximum number of access control lists per region  is 50.
 // 
-// ~> **NOTE:** The maximum number of IP addresses added each time is 50.
+// > **NOTE:** The maximum number of IP addresses added each time is 50.
 // 
-// ~> **NOTE:** The maximum number of entries per access control list is 300.
+// > **NOTE:** The maximum number of entries per access control list is 300.
 // 
-// ~> **NOTE:** The maximum number of listeners that an access control list can be added to is 50.
+// > **NOTE:** The maximum number of listeners that an access control list can be added to is 50.
 // 
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 // 
 // For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
 // 
+// 
+// ## Entry Block
+// 
+// The entry mapping supports the following:
+// 
+// * `entry` - (Required) An IP addresses or CIDR blocks.
+// * `comment` - (Optional) the comment of the entry.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_acl.html.markdown.
 type Acl struct {
 	s *pulumi.ResourceState
 }
@@ -43,10 +52,14 @@ func NewAcl(ctx *pulumi.Context,
 		inputs["entryLists"] = nil
 		inputs["ipVersion"] = nil
 		inputs["name"] = nil
+		inputs["resourceGroupId"] = nil
+		inputs["tags"] = nil
 	} else {
 		inputs["entryLists"] = args.EntryLists
 		inputs["ipVersion"] = args.IpVersion
 		inputs["name"] = args.Name
+		inputs["resourceGroupId"] = args.ResourceGroupId
+		inputs["tags"] = args.Tags
 	}
 	s, err := ctx.RegisterResource("alicloud:slb/acl:Acl", name, true, inputs, opts...)
 	if err != nil {
@@ -64,6 +77,8 @@ func GetAcl(ctx *pulumi.Context,
 		inputs["entryLists"] = state.EntryLists
 		inputs["ipVersion"] = state.IpVersion
 		inputs["name"] = state.Name
+		inputs["resourceGroupId"] = state.ResourceGroupId
+		inputs["tags"] = state.Tags
 	}
 	s, err := ctx.ReadResource("alicloud:slb/acl:Acl", name, id, inputs, opts...)
 	if err != nil {
@@ -73,28 +88,38 @@ func GetAcl(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Acl) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Acl) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Acl) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Acl) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
-func (r *Acl) EntryLists() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["entryLists"])
+func (r *Acl) EntryLists() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["entryLists"])
 }
 
 // The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
-func (r *Acl) IpVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipVersion"])
+func (r *Acl) IpVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipVersion"])
 }
 
 // Name of the access control list.
-func (r *Acl) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Acl) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+// Resource group ID.
+func (r *Acl) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
+}
+
+// A mapping of tags to assign to the resource.
+func (r *Acl) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Acl resources.
@@ -105,6 +130,10 @@ type AclState struct {
 	IpVersion interface{}
 	// Name of the access control list.
 	Name interface{}
+	// Resource group ID.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }
 
 // The set of arguments for constructing a Acl resource.
@@ -115,4 +144,8 @@ type AclArgs struct {
 	IpVersion interface{}
 	// Name of the access control list.
 	Name interface{}
+	// Resource group ID.
+	ResourceGroupId interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 }

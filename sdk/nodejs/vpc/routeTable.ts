@@ -2,14 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a route table resource.
- * 
- * ~> **NOTE:** Terraform will auto build route table instance while it uses `alicloud_route_table` to build a route table resource.
- * 
- * For information about route table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_table.html.markdown.
  */
 export class RouteTable extends pulumi.CustomResource {
     /**
@@ -20,22 +18,40 @@ export class RouteTable extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteTableState): RouteTable {
-        return new RouteTable(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RouteTableState, opts?: pulumi.CustomResourceOptions): RouteTable {
+        return new RouteTable(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpc/routeTable:RouteTable';
+
+    /**
+     * Returns true if the given object is an instance of RouteTable.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RouteTable {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RouteTable.__pulumiType;
     }
 
     /**
      * The description of the route table instance.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the route table.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * The vpc_id of the route table, the field can't be changed.
+     * A mapping of tags to assign to the resource.
      */
-    public readonly vpcId: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The vpcId of the route table, the field can't be changed.
+     */
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a RouteTable resource with the given unique name, arguments, and options.
@@ -48,9 +64,10 @@ export class RouteTable extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RouteTableArgs | RouteTableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RouteTableState = argsOrState as RouteTableState | undefined;
+            const state = argsOrState as RouteTableState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as RouteTableArgs | undefined;
@@ -59,9 +76,17 @@ export class RouteTable extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
         }
-        super("alicloud:vpc/routeTable:RouteTable", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(RouteTable.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -78,7 +103,11 @@ export interface RouteTableState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The vpc_id of the route table, the field can't be changed.
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The vpcId of the route table, the field can't be changed.
      */
     readonly vpcId?: pulumi.Input<string>;
 }
@@ -96,7 +125,11 @@ export interface RouteTableArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The vpc_id of the route table, the field can't be changed.
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The vpcId of the route table, the field can't be changed.
      */
     readonly vpcId: pulumi.Input<string>;
 }

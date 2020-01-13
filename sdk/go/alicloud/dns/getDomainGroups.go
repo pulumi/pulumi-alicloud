@@ -7,10 +7,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// ~> **NOTE:** This datasource has been deprecated from [v1.3.2](https://github.com/alibaba/terraform-provider/releases/tag/V1.3.2). Please use the datasource `alicloud_dns_groups` instead.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_groups.html.markdown.
 func LookupDomainGroups(ctx *pulumi.Context, args *GetDomainGroupsArgs) (*GetDomainGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 	}
@@ -20,12 +21,17 @@ func LookupDomainGroups(ctx *pulumi.Context, args *GetDomainGroupsArgs) (*GetDom
 	}
 	return &GetDomainGroupsResult{
 		Groups: outputs["groups"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getDomainGroups.
 type GetDomainGroupsArgs struct {
+	Ids interface{}
 	NameRegex interface{}
 	OutputFile interface{}
 }
@@ -33,6 +39,10 @@ type GetDomainGroupsArgs struct {
 // A collection of values returned by getDomainGroups.
 type GetDomainGroupsResult struct {
 	Groups interface{}
+	Ids interface{}
+	NameRegex interface{}
+	Names interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

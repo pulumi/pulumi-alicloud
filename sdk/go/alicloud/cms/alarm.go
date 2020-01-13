@@ -10,6 +10,8 @@ import (
 
 // This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
 // Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
 type Alarm struct {
 	s *pulumi.ResourceState
 }
@@ -36,11 +38,11 @@ func NewAlarm(ctx *pulumi.Context,
 	if args == nil {
 		inputs["contactGroups"] = nil
 		inputs["dimensions"] = nil
+		inputs["effectiveInterval"] = nil
 		inputs["enabled"] = nil
 		inputs["endTime"] = nil
 		inputs["metric"] = nil
 		inputs["name"] = nil
-		inputs["notifyType"] = nil
 		inputs["operator"] = nil
 		inputs["period"] = nil
 		inputs["project"] = nil
@@ -49,14 +51,15 @@ func NewAlarm(ctx *pulumi.Context,
 		inputs["statistics"] = nil
 		inputs["threshold"] = nil
 		inputs["triggeredCount"] = nil
+		inputs["webhook"] = nil
 	} else {
 		inputs["contactGroups"] = args.ContactGroups
 		inputs["dimensions"] = args.Dimensions
+		inputs["effectiveInterval"] = args.EffectiveInterval
 		inputs["enabled"] = args.Enabled
 		inputs["endTime"] = args.EndTime
 		inputs["metric"] = args.Metric
 		inputs["name"] = args.Name
-		inputs["notifyType"] = args.NotifyType
 		inputs["operator"] = args.Operator
 		inputs["period"] = args.Period
 		inputs["project"] = args.Project
@@ -65,6 +68,7 @@ func NewAlarm(ctx *pulumi.Context,
 		inputs["statistics"] = args.Statistics
 		inputs["threshold"] = args.Threshold
 		inputs["triggeredCount"] = args.TriggeredCount
+		inputs["webhook"] = args.Webhook
 	}
 	inputs["status"] = nil
 	s, err := ctx.RegisterResource("alicloud:cms/alarm:Alarm", name, true, inputs, opts...)
@@ -82,11 +86,11 @@ func GetAlarm(ctx *pulumi.Context,
 	if state != nil {
 		inputs["contactGroups"] = state.ContactGroups
 		inputs["dimensions"] = state.Dimensions
+		inputs["effectiveInterval"] = state.EffectiveInterval
 		inputs["enabled"] = state.Enabled
 		inputs["endTime"] = state.EndTime
 		inputs["metric"] = state.Metric
 		inputs["name"] = state.Name
-		inputs["notifyType"] = state.NotifyType
 		inputs["operator"] = state.Operator
 		inputs["period"] = state.Period
 		inputs["project"] = state.Project
@@ -96,6 +100,7 @@ func GetAlarm(ctx *pulumi.Context,
 		inputs["status"] = state.Status
 		inputs["threshold"] = state.Threshold
 		inputs["triggeredCount"] = state.TriggeredCount
+		inputs["webhook"] = state.Webhook
 	}
 	s, err := ctx.ReadResource("alicloud:cms/alarm:Alarm", name, id, inputs, opts...)
 	if err != nil {
@@ -105,93 +110,98 @@ func GetAlarm(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Alarm) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Alarm) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Alarm) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Alarm) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // List contact groups of the alarm rule, which must have been created on the console.
-func (r *Alarm) ContactGroups() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["contactGroups"])
+func (r *Alarm) ContactGroups() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["contactGroups"])
 }
 
 // Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-func (r *Alarm) Dimensions() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["dimensions"])
+func (r *Alarm) Dimensions() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["dimensions"])
+}
+
+func (r *Alarm) EffectiveInterval() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["effectiveInterval"])
 }
 
 // Whether to enable alarm rule. Default to true.
-func (r *Alarm) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+func (r *Alarm) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
-func (r *Alarm) EndTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["endTime"])
+func (r *Alarm) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
-// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-func (r *Alarm) Metric() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metric"])
+// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+func (r *Alarm) Metric() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metric"])
 }
 
 // The alarm rule name.
-func (r *Alarm) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
-}
-
-// Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-func (r *Alarm) NotifyType() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["notifyType"])
+func (r *Alarm) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
-func (r *Alarm) Operator() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["operator"])
+func (r *Alarm) Operator() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["operator"])
 }
 
 // Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
-func (r *Alarm) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+func (r *Alarm) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
-// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-func (r *Alarm) Project() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["project"])
+// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+func (r *Alarm) Project() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["project"])
 }
 
 // Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-func (r *Alarm) SilenceTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["silenceTime"])
+func (r *Alarm) SilenceTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["silenceTime"])
 }
 
 // Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
-func (r *Alarm) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *Alarm) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
-func (r *Alarm) Statistics() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["statistics"])
+func (r *Alarm) Statistics() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["statistics"])
 }
 
 // The current alarm rule status.
-func (r *Alarm) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+// * `webhook`- The webhook that is called when the alarm is triggered.
+func (r *Alarm) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Alarm threshold value, which must be a numeric value currently.
-func (r *Alarm) Threshold() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["threshold"])
+func (r *Alarm) Threshold() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["threshold"])
 }
 
 // Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-func (r *Alarm) TriggeredCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["triggeredCount"])
+func (r *Alarm) TriggeredCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["triggeredCount"])
+}
+
+func (r *Alarm) Webhook() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["webhook"])
 }
 
 // Input properties used for looking up and filtering Alarm resources.
@@ -200,21 +210,21 @@ type AlarmState struct {
 	ContactGroups interface{}
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions interface{}
+	EffectiveInterval interface{}
 	// Whether to enable alarm rule. Default to true.
+	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled interface{}
 	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
 	EndTime interface{}
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric interface{}
 	// The alarm rule name.
 	Name interface{}
-	// Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-	NotifyType interface{}
 	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	Operator interface{}
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period interface{}
-	// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Project interface{}
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime interface{}
@@ -223,11 +233,13 @@ type AlarmState struct {
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics interface{}
 	// The current alarm rule status.
+	// * `webhook`- The webhook that is called when the alarm is triggered.
 	Status interface{}
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold interface{}
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount interface{}
+	Webhook interface{}
 }
 
 // The set of arguments for constructing a Alarm resource.
@@ -236,21 +248,21 @@ type AlarmArgs struct {
 	ContactGroups interface{}
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions interface{}
+	EffectiveInterval interface{}
 	// Whether to enable alarm rule. Default to true.
+	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled interface{}
 	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
 	EndTime interface{}
-	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric interface{}
 	// The alarm rule name.
 	Name interface{}
-	// Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-	NotifyType interface{}
 	// Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
 	Operator interface{}
 	// Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
 	Period interface{}
-	// Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+	// Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Project interface{}
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime interface{}
@@ -262,4 +274,5 @@ type AlarmArgs struct {
 	Threshold interface{}
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount interface{}
+	Webhook interface{}
 }

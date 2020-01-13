@@ -8,6 +8,8 @@ import (
 )
 
 // The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
 func LookupConnections(ctx *pulumi.Context, args *GetConnectionsArgs) (*GetConnectionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -23,6 +25,12 @@ func LookupConnections(ctx *pulumi.Context, args *GetConnectionsArgs) (*GetConne
 	}
 	return &GetConnectionsResult{
 		Connections: outputs["connections"],
+		CustomerGatewayId: outputs["customerGatewayId"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		VpnGatewayId: outputs["vpnGatewayId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -45,6 +53,16 @@ type GetConnectionsArgs struct {
 type GetConnectionsResult struct {
 	// A list of VPN connections. Each element contains the following attributes:
 	Connections interface{}
+	// ID of the VPN customer gateway.
+	CustomerGatewayId interface{}
+	// (Optional) IDs of the VPN connections.
+	Ids interface{}
+	NameRegex interface{}
+	// (Optional) names of the VPN connections.
+	Names interface{}
+	OutputFile interface{}
+	// ID of the VPN gateway.
+	VpnGatewayId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

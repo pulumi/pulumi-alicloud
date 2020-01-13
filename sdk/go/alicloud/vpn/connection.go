@@ -8,10 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPN connection resource.
-// 
-// ~> **NOTE:** Terraform will auto build vpn connection while it uses `alicloud_vpn_connection` to build a vpn connection resource.
-//              The vpn connection depends on VPN and VPN customer gateway.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_connection.html.markdown.
 type Connection struct {
 	s *pulumi.ResourceState
 }
@@ -83,58 +80,58 @@ func GetConnection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Connection) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Connection) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Connection) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Connection) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The ID of the customer gateway.
-func (r *Connection) CustomerGatewayId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["customerGatewayId"])
+func (r *Connection) CustomerGatewayId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["customerGatewayId"])
 }
 
 // Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-func (r *Connection) EffectImmediately() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["effectImmediately"])
+func (r *Connection) EffectImmediately() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["effectImmediately"])
 }
 
 // The configurations of phase-one negotiation.
-func (r *Connection) IkeConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ikeConfigs"])
+func (r *Connection) IkeConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ikeConfigs"])
 }
 
 // The configurations of phase-two negotiation.
-func (r *Connection) IpsecConfigs() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["ipsecConfigs"])
+func (r *Connection) IpsecConfigs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["ipsecConfigs"])
 }
 
 // The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
-func (r *Connection) LocalSubnets() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["localSubnets"])
+func (r *Connection) LocalSubnets() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["localSubnets"])
 }
 
 // The name of the IPsec connection.
-func (r *Connection) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Connection) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The CIDR block of the local data center. This parameter is used for phase-two negotiation.
-func (r *Connection) RemoteSubnets() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["remoteSubnets"])
+func (r *Connection) RemoteSubnets() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["remoteSubnets"])
 }
 
 // The status of VPN connection.
-func (r *Connection) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Connection) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The ID of the VPN gateway.
-func (r *Connection) VpnGatewayId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpnGatewayId"])
+func (r *Connection) VpnGatewayId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpnGatewayId"])
 }
 
 // Input properties used for looking up and filtering Connection resources.

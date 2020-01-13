@@ -8,6 +8,8 @@ import (
 )
 
 // The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
 func LookupGateways(ctx *pulumi.Context, args *GetGatewaysArgs) (*GetGatewaysResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -23,7 +25,14 @@ func LookupGateways(ctx *pulumi.Context, args *GetGatewaysArgs) (*GetGatewaysRes
 		return nil, err
 	}
 	return &GetGatewaysResult{
+		BusinessStatus: outputs["businessStatus"],
 		Gateways: outputs["gateways"],
+		Ids: outputs["ids"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		Status: outputs["status"],
+		VpcId: outputs["vpcId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -46,8 +55,20 @@ type GetGatewaysArgs struct {
 
 // A collection of values returned by getGateways.
 type GetGatewaysResult struct {
+	// The business status of the VPN gateway.
+	BusinessStatus interface{}
 	// A list of VPN gateways. Each element contains the following attributes:
 	Gateways interface{}
+	// IDs of the VPN.
+	Ids interface{}
+	NameRegex interface{}
+	// names of the VPN.
+	Names interface{}
+	OutputFile interface{}
+	// The status of the VPN
+	Status interface{}
+	// ID of the VPC that the VPN belongs.
+	VpcId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

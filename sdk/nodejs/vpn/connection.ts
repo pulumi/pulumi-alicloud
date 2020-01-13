@@ -2,13 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPN connection resource.
- * 
- * ~> **NOTE:** Terraform will auto build vpn connection while it uses `alicloud_vpn_connection` to build a vpn connection resource.
- *              The vpn connection depends on VPN and VPN customer gateway.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -19,46 +18,60 @@ export class Connection extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionState): Connection {
-        return new Connection(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionState, opts?: pulumi.CustomResourceOptions): Connection {
+        return new Connection(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:vpn/connection:Connection';
+
+    /**
+     * Returns true if the given object is an instance of Connection.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Connection {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
     /**
      * The ID of the customer gateway.
      */
-    public readonly customerGatewayId: pulumi.Output<string>;
+    public readonly customerGatewayId!: pulumi.Output<string>;
     /**
      * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
      */
-    public readonly effectImmediately: pulumi.Output<boolean | undefined>;
+    public readonly effectImmediately!: pulumi.Output<boolean | undefined>;
     /**
      * The configurations of phase-one negotiation.
      */
-    public readonly ikeConfigs: pulumi.Output<{ ikeAuthAlg?: string, ikeEncAlg?: string, ikeLifetime?: number, ikeLocalId?: string, ikeMode?: string, ikePfs?: string, ikeRemoteId?: string, ikeVersion?: string, psk?: string }[] | undefined>;
+    public readonly ikeConfigs!: pulumi.Output<outputs.vpn.ConnectionIkeConfig[]>;
     /**
      * The configurations of phase-two negotiation.
      */
-    public readonly ipsecConfigs: pulumi.Output<{ ipsecAuthAlg?: string, ipsecEncAlg?: string, ipsecLifetime?: number, ipsecPfs?: string }[] | undefined>;
+    public readonly ipsecConfigs!: pulumi.Output<outputs.vpn.ConnectionIpsecConfig[]>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
-    public readonly localSubnets: pulumi.Output<string[]>;
+    public readonly localSubnets!: pulumi.Output<string[]>;
     /**
      * The name of the IPsec connection.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      */
-    public readonly remoteSubnets: pulumi.Output<string[]>;
+    public readonly remoteSubnets!: pulumi.Output<string[]>;
     /**
      * The status of VPN connection.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The ID of the VPN gateway.
      */
-    public readonly vpnGatewayId: pulumi.Output<string>;
+    public readonly vpnGatewayId!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -71,7 +84,7 @@ export class Connection extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ConnectionArgs | ConnectionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ConnectionState = argsOrState as ConnectionState | undefined;
+            const state = argsOrState as ConnectionState | undefined;
             inputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
             inputs["effectImmediately"] = state ? state.effectImmediately : undefined;
             inputs["ikeConfigs"] = state ? state.ikeConfigs : undefined;
@@ -105,7 +118,14 @@ export class Connection extends pulumi.CustomResource {
             inputs["vpnGatewayId"] = args ? args.vpnGatewayId : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:vpn/connection:Connection", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Connection.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -124,11 +144,11 @@ export interface ConnectionState {
     /**
      * The configurations of phase-one negotiation.
      */
-    readonly ikeConfigs?: pulumi.Input<pulumi.Input<{ ikeAuthAlg?: pulumi.Input<string>, ikeEncAlg?: pulumi.Input<string>, ikeLifetime?: pulumi.Input<number>, ikeLocalId?: pulumi.Input<string>, ikeMode?: pulumi.Input<string>, ikePfs?: pulumi.Input<string>, ikeRemoteId?: pulumi.Input<string>, ikeVersion?: pulumi.Input<string>, psk?: pulumi.Input<string> }>[]>;
+    readonly ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
     /**
      * The configurations of phase-two negotiation.
      */
-    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<{ ipsecAuthAlg?: pulumi.Input<string>, ipsecEncAlg?: pulumi.Input<string>, ipsecLifetime?: pulumi.Input<number>, ipsecPfs?: pulumi.Input<string> }>[]>;
+    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */
@@ -166,11 +186,11 @@ export interface ConnectionArgs {
     /**
      * The configurations of phase-one negotiation.
      */
-    readonly ikeConfigs?: pulumi.Input<pulumi.Input<{ ikeAuthAlg?: pulumi.Input<string>, ikeEncAlg?: pulumi.Input<string>, ikeLifetime?: pulumi.Input<number>, ikeLocalId?: pulumi.Input<string>, ikeMode?: pulumi.Input<string>, ikePfs?: pulumi.Input<string>, ikeRemoteId?: pulumi.Input<string>, ikeVersion?: pulumi.Input<string>, psk?: pulumi.Input<string> }>[]>;
+    readonly ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIkeConfig>[]>;
     /**
      * The configurations of phase-two negotiation.
      */
-    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<{ ipsecAuthAlg?: pulumi.Input<string>, ipsecEncAlg?: pulumi.Input<string>, ipsecLifetime?: pulumi.Input<number>, ipsecPfs?: pulumi.Input<string> }>[]>;
+    readonly ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.ConnectionIpsecConfig>[]>;
     /**
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      */

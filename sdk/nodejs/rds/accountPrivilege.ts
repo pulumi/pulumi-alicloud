@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account_privilege.html.markdown.
  */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**
@@ -16,26 +16,45 @@ export class AccountPrivilege extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountPrivilegeState): AccountPrivilege {
-        return new AccountPrivilege(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccountPrivilegeState, opts?: pulumi.CustomResourceOptions): AccountPrivilege {
+        return new AccountPrivilege(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:rds/accountPrivilege:AccountPrivilege';
+
+    /**
+     * Returns true if the given object is an instance of AccountPrivilege.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountPrivilege {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccountPrivilege.__pulumiType;
     }
 
     /**
      * A specified account name.
      */
-    public readonly accountName: pulumi.Output<string>;
+    public readonly accountName!: pulumi.Output<string>;
     /**
      * List of specified database name.
      */
-    public readonly dbNames: pulumi.Output<string[]>;
+    public readonly dbNames!: pulumi.Output<string[]>;
     /**
      * The Id of instance in which account belongs.
      */
-    public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: 
+     * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+     * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+     * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      */
-    public readonly privilege: pulumi.Output<string | undefined>;
+    public readonly privilege!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountPrivilege resource with the given unique name, arguments, and options.
@@ -48,7 +67,7 @@ export class AccountPrivilege extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountPrivilegeArgs | AccountPrivilegeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountPrivilegeState = argsOrState as AccountPrivilegeState | undefined;
+            const state = argsOrState as AccountPrivilegeState | undefined;
             inputs["accountName"] = state ? state.accountName : undefined;
             inputs["dbNames"] = state ? state.dbNames : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
@@ -69,7 +88,14 @@ export class AccountPrivilege extends pulumi.CustomResource {
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["privilege"] = args ? args.privilege : undefined;
         }
-        super("alicloud:rds/accountPrivilege:AccountPrivilege", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(AccountPrivilege.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -90,7 +116,12 @@ export interface AccountPrivilegeState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: 
+     * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+     * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+     * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      */
     readonly privilege?: pulumi.Input<string>;
 }
@@ -112,7 +143,12 @@ export interface AccountPrivilegeArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
+     * The privilege of one account access database. Valid values: 
+     * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
+     * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
+     * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
+     * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      */
     readonly privilege?: pulumi.Input<string>;
 }

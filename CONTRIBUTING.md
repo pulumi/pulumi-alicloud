@@ -18,5 +18,5 @@ provider are installed by running `make ensure` in the root of the repository.
 ## Running Integration Tests
 
 The examples and integration tests in this repository will create and destroy real AliCloud
-cloud resources while running. Before running these tests, make sure that you have
-[configured Pulumi with AliCloud](https://pulumi.io/install/alicloud.html) successfully once before.
+cloud resources while running. Before running these tests, make sure that you have configured 
+[Pulumi with AliCloud](https://pulumi.io/install/alicloud.html) successfully once before.

@@ -8,14 +8,19 @@ import (
 )
 
 // This data source provides VPCs available to the user.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
 func LookupNetworks(ctx *pulumi.Context, args *GetNetworksArgs) (*GetNetworksResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["cidrBlock"] = args.CidrBlock
+		inputs["ids"] = args.Ids
 		inputs["isDefault"] = args.IsDefault
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["status"] = args.Status
+		inputs["tags"] = args.Tags
 		inputs["vswitchId"] = args.VswitchId
 	}
 	outputs, err := ctx.Invoke("alicloud:vpc/getNetworks:getNetworks", inputs)
@@ -23,7 +28,17 @@ func LookupNetworks(ctx *pulumi.Context, args *GetNetworksArgs) (*GetNetworksRes
 		return nil, err
 	}
 	return &GetNetworksResult{
+		CidrBlock: outputs["cidrBlock"],
+		Ids: outputs["ids"],
+		IsDefault: outputs["isDefault"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
 		Vpcs: outputs["vpcs"],
+		VswitchId: outputs["vswitchId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -32,22 +47,42 @@ func LookupNetworks(ctx *pulumi.Context, args *GetNetworksArgs) (*GetNetworksRes
 type GetNetworksArgs struct {
 	// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
 	CidrBlock interface{}
+	// A list of VPC IDs.
+	Ids interface{}
 	// Indicate whether the VPC is the default one in the specified region.
 	IsDefault interface{}
 	// A regex string to filter VPCs by name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which VPC belongs.
+	ResourceGroupId interface{}
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status interface{}
+	// A mapping of tags to assign to the resource.
+	Tags interface{}
 	// Filter results by the specified VSwitch.
 	VswitchId interface{}
 }
 
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
+	// CIDR block of the VPC.
+	CidrBlock interface{}
+	// A list of VPC IDs.
+	Ids interface{}
+	// Whether the VPC is the default VPC in the region.
+	IsDefault interface{}
+	NameRegex interface{}
+	// A list of VPC names.
+	Names interface{}
+	OutputFile interface{}
+	ResourceGroupId interface{}
+	// Status of the VPC.
+	Status interface{}
+	Tags interface{}
 	// A list of VPCs. Each element contains the following attributes:
 	Vpcs interface{}
+	VswitchId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

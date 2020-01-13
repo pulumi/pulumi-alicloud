@@ -8,6 +8,8 @@ import (
 )
 
 // This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
 func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -23,6 +25,12 @@ func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, e
 	}
 	return &GetGroupsResult{
 		Groups: outputs["groups"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		PolicyName: outputs["policyName"],
+		PolicyType: outputs["policyType"],
+		UserName: outputs["userName"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -31,11 +39,10 @@ func LookupGroups(ctx *pulumi.Context, args *GetGroupsArgs) (*GetGroupsResult, e
 type GetGroupsArgs struct {
 	// A regex string to filter the returned groups by their names.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
-	// Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
+	// Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
 	PolicyName interface{}
-	// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+	// Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
 	PolicyType interface{}
 	// Filter the results by a specific the user name.
 	UserName interface{}
@@ -45,6 +52,13 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// A list of groups. Each element contains the following attributes:
 	Groups interface{}
+	NameRegex interface{}
+	// A list of ram group names.
+	Names interface{}
+	OutputFile interface{}
+	PolicyName interface{}
+	PolicyType interface{}
+	UserName interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

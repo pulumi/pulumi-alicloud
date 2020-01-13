@@ -2,20 +2,47 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const foo = alicloud.vpn.getConnections({
+ *     customerGatewayId: "fake-cgw-id",
+ *     ids: ["fake-conn-id"],
+ *     outputFile: "/tmp/vpnconn",
+ *     vpnGatewayId: "fake-vpn-id",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
  */
-export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
+export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> & GetConnectionsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:vpn/getConnections:getConnections", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetConnectionsResult> = pulumi.runtime.invoke("alicloud:vpn/getConnections:getConnections", {
         "customerGatewayId": args.customerGatewayId,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "vpnGatewayId": args.vpnGatewayId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -51,7 +78,25 @@ export interface GetConnectionsResult {
     /**
      * A list of VPN connections. Each element contains the following attributes:
      */
-    readonly connections: { createTime: number, customerGatewayId: string, effectImmediately: boolean, id: string, ikeConfigs?: { ikeAuthAlg?: string, ikeEncAlg?: string, ikeLifetime?: number, ikeLocalId?: string, ikeMode?: string, ikePfs?: string, ikeRemoteId?: string, ikeVersion?: string, psk?: string }[], ipsecConfigs?: { ipsecAuthAlg?: string, ipsecEncAlg?: string, ipsecLifetime?: number, ipsecPfs?: string }[], localSubnet: string, name: string, remoteSubnet: string, status: string, vpnGatewayId: string }[];
+    readonly connections: outputs.vpn.GetConnectionsConnection[];
+    /**
+     * ID of the VPN customer gateway.
+     */
+    readonly customerGatewayId?: string;
+    /**
+     * (Optional) IDs of the VPN connections.
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * (Optional) names of the VPN connections.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * ID of the VPN gateway.
+     */
+    readonly vpnGatewayId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

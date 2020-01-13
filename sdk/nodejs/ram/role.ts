@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Role resource.
- * 
- * ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role.html.markdown.
  */
 export class Role extends pulumi.CustomResource {
     /**
@@ -18,42 +18,60 @@ export class Role extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RoleState): Role {
-        return new Role(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RoleState, opts?: pulumi.CustomResourceOptions): Role {
+        return new Role(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/role:Role';
+
+    /**
+     * Returns true if the given object is an instance of Role.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Role {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Role.__pulumiType;
     }
 
     /**
      * The role arn.
      */
-    public /*out*/ readonly arn: pulumi.Output<string>;
+    public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
      * Description of the RAM role. This name can have a string of 1 to 1024 characters.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+     * Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
      */
-    public readonly document: pulumi.Output<string>;
+    public readonly document!: pulumi.Output<string>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      */
-    public readonly ramUsers: pulumi.Output<string[]>;
+    public readonly ramUsers!: pulumi.Output<string[]>;
     /**
-     * List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+     * The role ID.
      */
-    public readonly services: pulumi.Output<string[]>;
+    public /*out*/ readonly roleId!: pulumi.Output<string>;
     /**
-     * Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
      */
-    public readonly version: pulumi.Output<string | undefined>;
+    public readonly services!: pulumi.Output<string[]>;
+    /**
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     */
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -66,13 +84,14 @@ export class Role extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RoleState = argsOrState as RoleState | undefined;
+            const state = argsOrState as RoleState | undefined;
             inputs["arn"] = state ? state.arn : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["document"] = state ? state.document : undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["ramUsers"] = state ? state.ramUsers : undefined;
+            inputs["roleId"] = state ? state.roleId : undefined;
             inputs["services"] = state ? state.services : undefined;
             inputs["version"] = state ? state.version : undefined;
         } else {
@@ -85,8 +104,16 @@ export class Role extends pulumi.CustomResource {
             inputs["services"] = args ? args.services : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["arn"] = undefined /*out*/;
+            inputs["roleId"] = undefined /*out*/;
         }
-        super("alicloud:ram/role:Role", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Role.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -103,7 +130,7 @@ export interface RoleState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+     * Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
      */
     readonly document?: pulumi.Input<string>;
     /**
@@ -115,15 +142,19 @@ export interface RoleState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      */
     readonly ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+     * The role ID.
+     */
+    readonly roleId?: pulumi.Input<string>;
+    /**
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -137,7 +168,7 @@ export interface RoleArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
+     * Authorization strategy of the RAM role. It is required when the `services` and `ramUsers` are not specified.
      */
     readonly document?: pulumi.Input<string>;
     /**
@@ -149,15 +180,15 @@ export interface RoleArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
      */
     readonly ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+     * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
      */
     readonly version?: pulumi.Input<string>;
 }

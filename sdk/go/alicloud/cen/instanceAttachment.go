@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a CEN child instance attachment resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_attachment.html.markdown.
 type InstanceAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -28,10 +30,12 @@ func NewInstanceAttachment(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["childInstanceId"] = nil
+		inputs["childInstanceOwnerId"] = nil
 		inputs["childInstanceRegionId"] = nil
 		inputs["instanceId"] = nil
 	} else {
 		inputs["childInstanceId"] = args.ChildInstanceId
+		inputs["childInstanceOwnerId"] = args.ChildInstanceOwnerId
 		inputs["childInstanceRegionId"] = args.ChildInstanceRegionId
 		inputs["instanceId"] = args.InstanceId
 	}
@@ -49,6 +53,7 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["childInstanceId"] = state.ChildInstanceId
+		inputs["childInstanceOwnerId"] = state.ChildInstanceOwnerId
 		inputs["childInstanceRegionId"] = state.ChildInstanceRegionId
 		inputs["instanceId"] = state.InstanceId
 	}
@@ -60,34 +65,41 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *InstanceAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *InstanceAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *InstanceAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *InstanceAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The ID of the child instance to attach.
-func (r *InstanceAttachment) ChildInstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["childInstanceId"])
+func (r *InstanceAttachment) ChildInstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["childInstanceId"])
+}
+
+// The uid of the child instance. Only used when attach a child instance of other account.
+func (r *InstanceAttachment) ChildInstanceOwnerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["childInstanceOwnerId"])
 }
 
 // The region ID of the child instance to attach.
-func (r *InstanceAttachment) ChildInstanceRegionId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["childInstanceRegionId"])
+func (r *InstanceAttachment) ChildInstanceRegionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["childInstanceRegionId"])
 }
 
 // The ID of the CEN.
-func (r *InstanceAttachment) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *InstanceAttachment) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // Input properties used for looking up and filtering InstanceAttachment resources.
 type InstanceAttachmentState struct {
 	// The ID of the child instance to attach.
 	ChildInstanceId interface{}
+	// The uid of the child instance. Only used when attach a child instance of other account.
+	ChildInstanceOwnerId interface{}
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId interface{}
 	// The ID of the CEN.
@@ -98,6 +110,8 @@ type InstanceAttachmentState struct {
 type InstanceAttachmentArgs struct {
 	// The ID of the child instance to attach.
 	ChildInstanceId interface{}
+	// The uid of the child instance. Only used when attach a child instance of other account.
+	ChildInstanceOwnerId interface{}
 	// The region ID of the child instance to attach.
 	ChildInstanceRegionId interface{}
 	// The ID of the CEN.

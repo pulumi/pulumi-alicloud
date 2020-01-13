@@ -5,10 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
- * 
- * -> **NOTE:** The resource requires a provider field 'account_id'. [See account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_function.html.markdown.
  */
 export class Function extends pulumi.CustomResource {
     /**
@@ -19,58 +16,81 @@ export class Function extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FunctionState): Function {
-        return new Function(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FunctionState, opts?: pulumi.CustomResourceOptions): Function {
+        return new Function(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:fc/function:Function';
+
+    /**
+     * Returns true if the given object is an instance of Function.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Function {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Function.__pulumiType;
+    }
+
+    public readonly codeChecksum!: pulumi.Output<string>;
     /**
      * The Function Compute function description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A map that defines environment variables for the function.
+     */
+    public readonly environmentVariables!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
-    public readonly filename: pulumi.Output<string | undefined>;
+    public readonly filename!: pulumi.Output<string | undefined>;
+    /**
+     * The Function Compute service ID.
+     */
+    public /*out*/ readonly functionId!: pulumi.Output<string>;
     /**
      * The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
      */
-    public readonly handler: pulumi.Output<string>;
+    public readonly handler!: pulumi.Output<string>;
     /**
      * The date this resource was last modified.
      */
-    public /*out*/ readonly lastModified: pulumi.Output<string>;
+    public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
      * Amount of memory in MB your Function can use at runtime. Defaults to `128`. Limits to [128, 3072].
      */
-    public readonly memorySize: pulumi.Output<number | undefined>;
+    public readonly memorySize!: pulumi.Output<number | undefined>;
     /**
-     * The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Setting a prefix to get a only function name. It is conflict with "name".
      */
-    public readonly namePrefix: pulumi.Output<string | undefined>;
+    public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
      * The OSS bucket location containing the function's deployment package. Conflicts with `filename`. This bucket must reside in the same Alibaba Cloud region where you are creating the function.
      */
-    public readonly ossBucket: pulumi.Output<string | undefined>;
+    public readonly ossBucket!: pulumi.Output<string | undefined>;
     /**
      * The OSS key of an object containing the function's deployment package. Conflicts with `filename`.
      */
-    public readonly ossKey: pulumi.Output<string | undefined>;
+    public readonly ossKey!: pulumi.Output<string | undefined>;
     /**
      * See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
      */
-    public readonly runtime: pulumi.Output<string>;
+    public readonly runtime!: pulumi.Output<string>;
     /**
      * The Function Compute service name.
      */
-    public readonly service: pulumi.Output<string>;
+    public readonly service!: pulumi.Output<string>;
     /**
      * The amount of time your Function has to run in seconds.
      */
-    public readonly timeout: pulumi.Output<number | undefined>;
+    public readonly timeout!: pulumi.Output<number | undefined>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -83,9 +103,12 @@ export class Function extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FunctionState = argsOrState as FunctionState | undefined;
+            const state = argsOrState as FunctionState | undefined;
+            inputs["codeChecksum"] = state ? state.codeChecksum : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["environmentVariables"] = state ? state.environmentVariables : undefined;
             inputs["filename"] = state ? state.filename : undefined;
+            inputs["functionId"] = state ? state.functionId : undefined;
             inputs["handler"] = state ? state.handler : undefined;
             inputs["lastModified"] = state ? state.lastModified : undefined;
             inputs["memorySize"] = state ? state.memorySize : undefined;
@@ -107,7 +130,9 @@ export class Function extends pulumi.CustomResource {
             if (!args || args.service === undefined) {
                 throw new Error("Missing required property 'service'");
             }
+            inputs["codeChecksum"] = args ? args.codeChecksum : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["environmentVariables"] = args ? args.environmentVariables : undefined;
             inputs["filename"] = args ? args.filename : undefined;
             inputs["handler"] = args ? args.handler : undefined;
             inputs["memorySize"] = args ? args.memorySize : undefined;
@@ -118,9 +143,17 @@ export class Function extends pulumi.CustomResource {
             inputs["runtime"] = args ? args.runtime : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
+            inputs["functionId"] = undefined /*out*/;
             inputs["lastModified"] = undefined /*out*/;
         }
-        super("alicloud:fc/function:Function", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Function.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -128,14 +161,23 @@ export class Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Function resources.
  */
 export interface FunctionState {
+    readonly codeChecksum?: pulumi.Input<string>;
     /**
      * The Function Compute function description.
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * A map that defines environment variables for the function.
+     */
+    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
     readonly filename?: pulumi.Input<string>;
+    /**
+     * The Function Compute service ID.
+     */
+    readonly functionId?: pulumi.Input<string>;
     /**
      * The function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in your code.
      */
@@ -149,7 +191,7 @@ export interface FunctionState {
      */
     readonly memorySize?: pulumi.Input<number>;
     /**
-     * The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -182,10 +224,15 @@ export interface FunctionState {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
+    readonly codeChecksum?: pulumi.Input<string>;
     /**
      * The Function Compute function description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * A map that defines environment variables for the function.
+     */
+    readonly environmentVariables?: pulumi.Input<{[key: string]: any}>;
     /**
      * The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
      */
@@ -199,7 +246,7 @@ export interface FunctionArgs {
      */
     readonly memorySize?: pulumi.Input<number>;
     /**
-     * The Function Compute function name. It is the only in one service and is conflict with "name_prefix".
+     * The Function Compute function name. It is the only in one service and is conflict with "namePrefix".
      */
     readonly name?: pulumi.Input<string>;
     /**

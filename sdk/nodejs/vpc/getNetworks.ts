@@ -2,21 +2,52 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides VPCs available to the user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const vpcsDs = alicloud.vpc.getNetworks({
+ *     cidrBlock: "172.16.0.0/12",
+ *     nameRegex: "^foo",
+ *     status: "Available",
+ * });
+ * 
+ * export const firstVpcId = vpcsDs.vpcs[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
  */
-export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
+export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> & GetNetworksResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetNetworksResult> = pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
         "cidrBlock": args.cidrBlock,
+        "ids": args.ids,
         "isDefault": args.isDefault,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "status": args.status,
+        "tags": args.tags,
         "vswitchId": args.vswitchId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -28,6 +59,10 @@ export interface GetNetworksArgs {
      */
     readonly cidrBlock?: string;
     /**
+     * A list of VPC IDs.
+     */
+    readonly ids?: string[];
+    /**
      * Indicate whether the VPC is the default one in the specified region.
      */
     readonly isDefault?: boolean;
@@ -35,14 +70,19 @@ export interface GetNetworksArgs {
      * A regex string to filter VPCs by name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
+    /**
+     * The Id of resource group which VPC belongs.
+     */
+    readonly resourceGroupId?: string;
     /**
      * Filter results by a specific status. Valid value are `Pending` and `Available`.
      */
     readonly status?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * Filter results by the specified VSwitch.
      */
@@ -54,9 +94,34 @@ export interface GetNetworksArgs {
  */
 export interface GetNetworksResult {
     /**
+     * CIDR block of the VPC.
+     */
+    readonly cidrBlock?: string;
+    /**
+     * A list of VPC IDs.
+     */
+    readonly ids: string[];
+    /**
+     * Whether the VPC is the default VPC in the region.
+     */
+    readonly isDefault?: boolean;
+    readonly nameRegex?: string;
+    /**
+     * A list of VPC names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    readonly resourceGroupId?: string;
+    /**
+     * Status of the VPC.
+     */
+    readonly status?: string;
+    readonly tags?: {[key: string]: any};
+    /**
      * A list of VPCs. Each element contains the following attributes:
      */
-    readonly vpcs: { cidrBlock: string, creationTime: string, description: string, id: string, isDefault: boolean, regionId: string, routeTableId: string, status: string, vpcName: string, vrouterId: string, vswitchIds: string[] }[];
+    readonly vpcs: outputs.vpc.GetNetworksVpc[];
+    readonly vswitchId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

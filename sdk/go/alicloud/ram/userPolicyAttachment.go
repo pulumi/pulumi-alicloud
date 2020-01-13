@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a RAM User Policy attachment resource. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user_policy_attachment.html.markdown.
 type UserPolicyAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -60,28 +62,28 @@ func GetUserPolicyAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *UserPolicyAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *UserPolicyAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *UserPolicyAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *UserPolicyAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-func (r *UserPolicyAttachment) PolicyName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyName"])
+func (r *UserPolicyAttachment) PolicyName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyName"])
 }
 
 // Type of the RAM policy. It must be `Custom` or `System`.
-func (r *UserPolicyAttachment) PolicyType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["policyType"])
+func (r *UserPolicyAttachment) PolicyType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["policyType"])
 }
 
 // Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-func (r *UserPolicyAttachment) UserName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userName"])
+func (r *UserPolicyAttachment) UserName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userName"])
 }
 
 // Input properties used for looking up and filtering UserPolicyAttachment resources.

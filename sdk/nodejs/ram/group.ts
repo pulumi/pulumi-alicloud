@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Group resource.
- * 
- * ~> **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `terraform plan`, then you can delete resource forcefully. 
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -18,22 +16,36 @@ export class Group extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState): Group {
-        return new Group(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState, opts?: pulumi.CustomResourceOptions): Group {
+        return new Group(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ram/group:Group';
+
+    /**
+     * Returns true if the given object is an instance of Group.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Group {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Group.__pulumiType;
     }
 
     /**
      * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
      */
-    public readonly comments: pulumi.Output<string | undefined>;
+    public readonly comments!: pulumi.Output<string | undefined>;
     /**
      * This parameter is used for resource destroy. Default value is `false`.
      */
-    public readonly force: pulumi.Output<boolean | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -46,7 +58,7 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GroupState = argsOrState as GroupState | undefined;
+            const state = argsOrState as GroupState | undefined;
             inputs["comments"] = state ? state.comments : undefined;
             inputs["force"] = state ? state.force : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -56,7 +68,14 @@ export class Group extends pulumi.CustomResource {
             inputs["force"] = args ? args.force : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:ram/group:Group", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Group.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -73,7 +92,7 @@ export interface GroupState {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -91,7 +110,7 @@ export interface GroupArgs {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
      */
     readonly name?: pulumi.Input<string>;
 }

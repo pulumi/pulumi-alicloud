@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mns_queue.html.markdown.
 type Queue struct {
 	s *pulumi.ResourceState
 }
@@ -58,43 +59,43 @@ func GetQueue(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Queue) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Queue) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Queue) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Queue) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued. Valid value range: 0-604800 seconds, i.e., 0 to 7 days. Default value to 0.
-func (r *Queue) DelaySeconds() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["delaySeconds"])
+func (r *Queue) DelaySeconds() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["delaySeconds"])
 }
 
 // This indicates the maximum length, in bytes, of any message body sent to the queue. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
-func (r *Queue) MaximumMessageSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maximumMessageSize"])
+func (r *Queue) MaximumMessageSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maximumMessageSize"])
 }
 
 // Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue. Valid value range: 60-604800 seconds, i.e., 1 minutes to 7 days. Default value to 345600.
-func (r *Queue) MessageRetentionPeriod() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["messageRetentionPeriod"])
+func (r *Queue) MessageRetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["messageRetentionPeriod"])
 }
 
 // Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters .
-func (r *Queue) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Queue) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
-func (r *Queue) PollingWaitSeconds() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["pollingWaitSeconds"])
+func (r *Queue) PollingWaitSeconds() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["pollingWaitSeconds"])
 }
 
 // The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
-func (r *Queue) VisibilityTimeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["visibilityTimeout"])
+func (r *Queue) VisibilityTimeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["visibilityTimeout"])
 }
 
 // Input properties used for looking up and filtering Queue resources.

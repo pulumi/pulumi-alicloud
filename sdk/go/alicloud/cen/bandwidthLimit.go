@@ -13,6 +13,8 @@ import (
 // For example, a CEN instance is bound to a bandwidth package of 20 Mbps and  the interconnection areas are Mainland China and North America. You can set the cross-region interconnection bandwidth between US West 1 and China East 1, China East 2, China South 1, and so on. However, the total bandwidth set for all the interconnected regions cannot exceed 20  Mbps.
 // 
 // For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
 type BandwidthLimit struct {
 	s *pulumi.ResourceState
 }
@@ -64,28 +66,28 @@ func GetBandwidthLimit(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *BandwidthLimit) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *BandwidthLimit) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *BandwidthLimit) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *BandwidthLimit) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The bandwidth configured for the interconnected regions communication.
-func (r *BandwidthLimit) BandwidthLimit() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["bandwidthLimit"])
+func (r *BandwidthLimit) BandwidthLimit() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["bandwidthLimit"])
 }
 
 // The ID of the CEN.
-func (r *BandwidthLimit) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *BandwidthLimit) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-// List of the two regions to interconnect. 
-func (r *BandwidthLimit) RegionIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["regionIds"])
+// List of the two regions to interconnect. Must be two different regions.
+func (r *BandwidthLimit) RegionIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["regionIds"])
 }
 
 // Input properties used for looking up and filtering BandwidthLimit resources.
@@ -94,7 +96,7 @@ type BandwidthLimitState struct {
 	BandwidthLimit interface{}
 	// The ID of the CEN.
 	InstanceId interface{}
-	// List of the two regions to interconnect. 
+	// List of the two regions to interconnect. Must be two different regions.
 	RegionIds interface{}
 }
 
@@ -104,6 +106,6 @@ type BandwidthLimitArgs struct {
 	BandwidthLimit interface{}
 	// The ID of the CEN.
 	InstanceId interface{}
-	// List of the two regions to interconnect. 
+	// List of the two regions to interconnect. Must be two different regions.
 	RegionIds interface{}
 }

@@ -8,12 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPC router interface resource aim to build a connection between two VPCs.
-// 
-// -> **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
-// 
-// -> **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource [alicloud_router_interface_connection](https://www.terraform.io/docs/providers/alicloud/r/router_interface_connection.html).
-// 
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface.html.markdown.
 type RouterInterface struct {
 	s *pulumi.ResourceState
 }
@@ -105,99 +100,99 @@ func GetRouterInterface(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RouterInterface) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *RouterInterface) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RouterInterface) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *RouterInterface) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // It has been deprecated from version 1.11.0.
-func (r *RouterInterface) AccessPointId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accessPointId"])
+func (r *RouterInterface) AccessPointId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accessPointId"])
 }
 
 // Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
-func (r *RouterInterface) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RouterInterface) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
-func (r *RouterInterface) HealthCheckSourceIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckSourceIp"])
+// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
+func (r *RouterInterface) HealthCheckSourceIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckSourceIp"])
 }
 
-// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
-func (r *RouterInterface) HealthCheckTargetIp() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["healthCheckTargetIp"])
+// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
+func (r *RouterInterface) HealthCheckTargetIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckTargetIp"])
 }
 
-// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
-func (r *RouterInterface) InstanceChargeType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceChargeType"])
+// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
+func (r *RouterInterface) InstanceChargeType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
 
 // Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 // If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
-func (r *RouterInterface) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *RouterInterface) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // It has been deprecated from version 1.11.0.
-func (r *RouterInterface) OppositeAccessPointId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeAccessPointId"])
+func (r *RouterInterface) OppositeAccessPointId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeAccessPointId"])
 }
 
 // It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-func (r *RouterInterface) OppositeInterfaceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeInterfaceId"])
+func (r *RouterInterface) OppositeInterfaceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeInterfaceId"])
 }
 
 // It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
-func (r *RouterInterface) OppositeInterfaceOwnerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeInterfaceOwnerId"])
+func (r *RouterInterface) OppositeInterfaceOwnerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeInterfaceOwnerId"])
 }
 
 // The Region of peer side.
-func (r *RouterInterface) OppositeRegion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeRegion"])
+func (r *RouterInterface) OppositeRegion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeRegion"])
 }
 
 // It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-func (r *RouterInterface) OppositeRouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeRouterId"])
+func (r *RouterInterface) OppositeRouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeRouterId"])
 }
 
 // It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
-func (r *RouterInterface) OppositeRouterType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["oppositeRouterType"])
+func (r *RouterInterface) OppositeRouterType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["oppositeRouterType"])
 }
 
-// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-func (r *RouterInterface) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+func (r *RouterInterface) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
 // The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
-func (r *RouterInterface) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *RouterInterface) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // The Router ID.
-func (r *RouterInterface) RouterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerId"])
+func (r *RouterInterface) RouterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerId"])
 }
 
 // Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
-func (r *RouterInterface) RouterType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["routerType"])
+func (r *RouterInterface) RouterType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["routerType"])
 }
 
 // Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
-func (r *RouterInterface) Specification() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["specification"])
+func (r *RouterInterface) Specification() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["specification"])
 }
 
 // Input properties used for looking up and filtering RouterInterface resources.
@@ -206,11 +201,11 @@ type RouterInterfaceState struct {
 	AccessPointId interface{}
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description interface{}
-	// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+	// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
 	HealthCheckSourceIp interface{}
-	// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+	// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
 	HealthCheckTargetIp interface{}
-	// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
 	InstanceChargeType interface{}
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
@@ -227,7 +222,7 @@ type RouterInterfaceState struct {
 	OppositeRouterId interface{}
 	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period interface{}
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role interface{}
@@ -243,11 +238,11 @@ type RouterInterfaceState struct {
 type RouterInterfaceArgs struct {
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description interface{}
-	// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
+	// Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckTargetIp` must be specified at the same time.
 	HealthCheckSourceIp interface{}
-	// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
+	// Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `routerType` is `VBR`. The IP must be an unused IP in the local VPC. It and `healthCheckSourceIp` must be specified at the same time.
 	HealthCheckTargetIp interface{}
-	// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and oppositeRegion are the same.
 	InstanceChargeType interface{}
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
@@ -256,7 +251,7 @@ type RouterInterfaceArgs struct {
 	OppositeAccessPointId interface{}
 	// The Region of peer side.
 	OppositeRegion interface{}
-	// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period interface{}
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role interface{}

@@ -3,6 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from project import *
-from subscription import *
-from topic import *
+from .project import *
+from .subscription import *
+from .topic import *

@@ -10,7 +10,9 @@ import (
 
 // Provides a ECS disk resource.
 // 
-// ~> **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud_disk` doesn't resize disk.
+// > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `ecs.Disk` doesn't resize disk.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
 type Disk struct {
 	s *pulumi.ResourceState
 }
@@ -21,22 +23,33 @@ func NewDisk(ctx *pulumi.Context,
 	if args == nil || args.AvailabilityZone == nil {
 		return nil, errors.New("missing required argument 'AvailabilityZone'")
 	}
+	if args == nil || args.Size == nil {
+		return nil, errors.New("missing required argument 'Size'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["availabilityZone"] = nil
 		inputs["category"] = nil
+		inputs["deleteAutoSnapshot"] = nil
+		inputs["deleteWithInstance"] = nil
 		inputs["description"] = nil
+		inputs["enableAutoSnapshot"] = nil
 		inputs["encrypted"] = nil
 		inputs["name"] = nil
+		inputs["resourceGroupId"] = nil
 		inputs["size"] = nil
 		inputs["snapshotId"] = nil
 		inputs["tags"] = nil
 	} else {
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["category"] = args.Category
+		inputs["deleteAutoSnapshot"] = args.DeleteAutoSnapshot
+		inputs["deleteWithInstance"] = args.DeleteWithInstance
 		inputs["description"] = args.Description
+		inputs["enableAutoSnapshot"] = args.EnableAutoSnapshot
 		inputs["encrypted"] = args.Encrypted
 		inputs["name"] = args.Name
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["size"] = args.Size
 		inputs["snapshotId"] = args.SnapshotId
 		inputs["tags"] = args.Tags
@@ -57,9 +70,13 @@ func GetDisk(ctx *pulumi.Context,
 	if state != nil {
 		inputs["availabilityZone"] = state.AvailabilityZone
 		inputs["category"] = state.Category
+		inputs["deleteAutoSnapshot"] = state.DeleteAutoSnapshot
+		inputs["deleteWithInstance"] = state.DeleteWithInstance
 		inputs["description"] = state.Description
+		inputs["enableAutoSnapshot"] = state.EnableAutoSnapshot
 		inputs["encrypted"] = state.Encrypted
 		inputs["name"] = state.Name
+		inputs["resourceGroupId"] = state.ResourceGroupId
 		inputs["size"] = state.Size
 		inputs["snapshotId"] = state.SnapshotId
 		inputs["status"] = state.Status
@@ -73,75 +90,105 @@ func GetDisk(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Disk) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Disk) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Disk) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Disk) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The Zone to create the disk in.
-func (r *Disk) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Disk) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
-// Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
-func (r *Disk) Category() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["category"])
+// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
+func (r *Disk) Category() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["category"])
+}
+
+// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+func (r *Disk) DeleteAutoSnapshot() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteAutoSnapshot"])
+}
+
+// Indicates whether the disk is released together with the instance: Default value: false.
+func (r *Disk) DeleteWithInstance() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteWithInstance"])
 }
 
 // Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-func (r *Disk) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Disk) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// If true, the disk will be encrypted
-func (r *Disk) Encrypted() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["encrypted"])
+// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+func (r *Disk) EnableAutoSnapshot() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableAutoSnapshot"])
+}
+
+// If true, the disk will be encrypted, conflict with `snapshotId`.
+func (r *Disk) Encrypted() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["encrypted"])
 }
 
 // Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
-func (r *Disk) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Disk) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The size of the disk in GiBs, and it value range: 20 ~ 32768.
-func (r *Disk) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+// The Id of resource group which the disk belongs.
+// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+func (r *Disk) ResourceGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourceGroupId"])
 }
 
-// A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
-func (r *Disk) SnapshotId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["snapshotId"])
+// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+func (r *Disk) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
+}
+
+// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+func (r *Disk) SnapshotId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["snapshotId"])
 }
 
 // The disk status.
-func (r *Disk) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *Disk) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // A mapping of tags to assign to the resource.
-func (r *Disk) Tags() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["tags"])
+func (r *Disk) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering Disk resources.
 type DiskState struct {
 	// The Zone to create the disk in.
 	AvailabilityZone interface{}
-	// Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
 	Category interface{}
+	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	DeleteAutoSnapshot interface{}
+	// Indicates whether the disk is released together with the instance: Default value: false.
+	DeleteWithInstance interface{}
 	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description interface{}
-	// If true, the disk will be encrypted
+	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	EnableAutoSnapshot interface{}
+	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted interface{}
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name interface{}
-	// The size of the disk in GiBs, and it value range: 20 ~ 32768.
+	// The Id of resource group which the disk belongs.
+	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	ResourceGroupId interface{}
+	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size interface{}
-	// A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
+	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
 	SnapshotId interface{}
 	// The disk status.
 	Status interface{}
@@ -153,17 +200,26 @@ type DiskState struct {
 type DiskArgs struct {
 	// The Zone to create the disk in.
 	AvailabilityZone interface{}
-	// Category of the disk. Valid values are `cloud`, `cloud_efficiency` and `cloud_ssd`. Default is `cloud_efficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`. Default is `cloudEfficiency`.
 	Category interface{}
+	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
+	DeleteAutoSnapshot interface{}
+	// Indicates whether the disk is released together with the instance: Default value: false.
+	DeleteWithInstance interface{}
 	// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description interface{}
-	// If true, the disk will be encrypted
+	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	EnableAutoSnapshot interface{}
+	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted interface{}
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name interface{}
-	// The size of the disk in GiBs, and it value range: 20 ~ 32768.
+	// The Id of resource group which the disk belongs.
+	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+	ResourceGroupId interface{}
+	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size interface{}
-	// A snapshot to base the disk off of. If it is specified, `size` will be invalid and the disk size is equals to the snapshot size.
+	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
 	SnapshotId interface{}
 	// A mapping of tags to assign to the resource.
 	Tags interface{}

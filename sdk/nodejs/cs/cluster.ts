@@ -2,11 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ~> **NOTE:** This resource name has been replaced by [`alicloud_cs_swarm`](https://www.terraform.io/docs/providers/alicloud/r/cs_swarm.html) from [version 1.8.2](https://releases.hashicorp.com/terraform-provider-alicloud/1.8.2/).
- * Please update it.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/container_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -17,29 +18,43 @@ export class Cluster extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterState): Cluster {
-        return new Cluster(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterState, opts?: pulumi.CustomResourceOptions): Cluster {
+        return new Cluster(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly agentVersion: pulumi.Output<string>;
-    public readonly cidrBlock: pulumi.Output<string>;
-    public readonly diskCategory: pulumi.Output<string | undefined>;
-    public readonly diskSize: pulumi.Output<number | undefined>;
-    public readonly imageId: pulumi.Output<string | undefined>;
-    public readonly instanceType: pulumi.Output<string>;
-    public readonly isOutdated: pulumi.Output<boolean | undefined>;
-    public readonly name: pulumi.Output<string>;
-    public readonly namePrefix: pulumi.Output<string | undefined>;
-    public readonly needSlb: pulumi.Output<boolean | undefined>;
-    public readonly nodeNumber: pulumi.Output<number | undefined>;
-    public /*out*/ readonly nodes: pulumi.Output<{ eip: string, id: string, name: string, privateIp: string, status: string }[]>;
-    public readonly password: pulumi.Output<string>;
-    public readonly releaseEip: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly securityGroupId: pulumi.Output<string>;
-    public readonly size: pulumi.Output<number | undefined>;
-    public /*out*/ readonly slbId: pulumi.Output<string>;
-    public /*out*/ readonly vpcId: pulumi.Output<string>;
-    public readonly vswitchId: pulumi.Output<string>;
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cs/cluster:Cluster';
+
+    /**
+     * Returns true if the given object is an instance of Cluster.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Cluster {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Cluster.__pulumiType;
+    }
+
+    public /*out*/ readonly agentVersion!: pulumi.Output<string>;
+    public readonly cidrBlock!: pulumi.Output<string>;
+    public readonly diskCategory!: pulumi.Output<string | undefined>;
+    public readonly diskSize!: pulumi.Output<number | undefined>;
+    public readonly imageId!: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string>;
+    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly namePrefix!: pulumi.Output<string | undefined>;
+    public readonly needSlb!: pulumi.Output<boolean | undefined>;
+    public readonly nodeNumber!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.cs.ClusterNode[]>;
+    public readonly password!: pulumi.Output<string>;
+    public readonly releaseEip!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    public readonly size!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly slbId!: pulumi.Output<string>;
+    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -52,7 +67,7 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ClusterState = argsOrState as ClusterState | undefined;
+            const state = argsOrState as ClusterState | undefined;
             inputs["agentVersion"] = state ? state.agentVersion : undefined;
             inputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             inputs["diskCategory"] = state ? state.diskCategory : undefined;
@@ -106,7 +121,14 @@ export class Cluster extends pulumi.CustomResource {
             inputs["slbId"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
         }
-        super("alicloud:cs/cluster:Cluster", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Cluster.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -125,7 +147,7 @@ export interface ClusterState {
     readonly namePrefix?: pulumi.Input<string>;
     readonly needSlb?: pulumi.Input<boolean>;
     readonly nodeNumber?: pulumi.Input<number>;
-    readonly nodes?: pulumi.Input<pulumi.Input<{ eip?: pulumi.Input<string>, id?: pulumi.Input<string>, name?: pulumi.Input<string>, privateIp?: pulumi.Input<string>, status?: pulumi.Input<string> }>[]>;
+    readonly nodes?: pulumi.Input<pulumi.Input<inputs.cs.ClusterNode>[]>;
     readonly password?: pulumi.Input<string>;
     readonly releaseEip?: pulumi.Input<boolean>;
     readonly securityGroupId?: pulumi.Input<string>;

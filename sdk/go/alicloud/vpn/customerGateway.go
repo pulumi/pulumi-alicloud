@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a VPN customer gateway resource.
-// 
-// ~> **NOTE:** Terraform will auto build vpn customer gateway instance  while it uses `alicloud_vpn_customer_gateway` to build a vpn customer gateway resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_customer_gateway.html.markdown.
 type CustomerGateway struct {
 	s *pulumi.ResourceState
 }
@@ -56,28 +54,28 @@ func GetCustomerGateway(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CustomerGateway) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *CustomerGateway) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CustomerGateway) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *CustomerGateway) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The description of the VPN customer gateway instance.
-func (r *CustomerGateway) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *CustomerGateway) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The IP address of the customer gateway.
-func (r *CustomerGateway) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *CustomerGateway) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // The name of the VPN customer gateway. Defaults to null.
-func (r *CustomerGateway) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *CustomerGateway) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering CustomerGateway resources.

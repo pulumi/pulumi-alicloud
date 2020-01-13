@@ -8,8 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// ~> **NOTE:** This resource name has been replaced by [`alicloud_cs_swarm`](https://www.terraform.io/docs/providers/alicloud/r/cs_swarm.html) from [version 1.8.2](https://releases.hashicorp.com/terraform-provider-alicloud/1.8.2/).
-// Please update it.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/container_cluster.html.markdown.
 type Cluster struct {
 	s *pulumi.ResourceState
 }
@@ -107,89 +106,89 @@ func GetCluster(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Cluster) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Cluster) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Cluster) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Cluster) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *Cluster) AgentVersion() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["agentVersion"])
+func (r *Cluster) AgentVersion() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["agentVersion"])
 }
 
-func (r *Cluster) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Cluster) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
-func (r *Cluster) DiskCategory() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["diskCategory"])
+func (r *Cluster) DiskCategory() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["diskCategory"])
 }
 
-func (r *Cluster) DiskSize() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["diskSize"])
+func (r *Cluster) DiskSize() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["diskSize"])
 }
 
-func (r *Cluster) ImageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["imageId"])
+func (r *Cluster) ImageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageId"])
 }
 
-func (r *Cluster) InstanceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceType"])
+func (r *Cluster) InstanceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceType"])
 }
 
-func (r *Cluster) IsOutdated() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isOutdated"])
+func (r *Cluster) IsOutdated() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isOutdated"])
 }
 
-func (r *Cluster) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Cluster) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Cluster) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *Cluster) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
-func (r *Cluster) NeedSlb() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["needSlb"])
+func (r *Cluster) NeedSlb() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["needSlb"])
 }
 
-func (r *Cluster) NodeNumber() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["nodeNumber"])
+func (r *Cluster) NodeNumber() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["nodeNumber"])
 }
 
-func (r *Cluster) Nodes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["nodes"])
+func (r *Cluster) Nodes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["nodes"])
 }
 
-func (r *Cluster) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Cluster) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
-func (r *Cluster) ReleaseEip() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["releaseEip"])
+func (r *Cluster) ReleaseEip() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["releaseEip"])
 }
 
-func (r *Cluster) SecurityGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["securityGroupId"])
+func (r *Cluster) SecurityGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
 }
 
-func (r *Cluster) Size() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["size"])
+func (r *Cluster) Size() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["size"])
 }
 
-func (r *Cluster) SlbId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbId"])
+func (r *Cluster) SlbId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["slbId"])
 }
 
-func (r *Cluster) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Cluster) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
-func (r *Cluster) VswitchId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vswitchId"])
+func (r *Cluster) VswitchId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vswitchId"])
 }
 
 // Input properties used for looking up and filtering Cluster resources.

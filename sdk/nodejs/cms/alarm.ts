@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
- * Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
  */
 export class Alarm extends pulumi.CustomResource {
     /**
@@ -17,74 +16,88 @@ export class Alarm extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlarmState): Alarm {
-        return new Alarm(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlarmState, opts?: pulumi.CustomResourceOptions): Alarm {
+        return new Alarm(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:cms/alarm:Alarm';
+
+    /**
+     * Returns true if the given object is an instance of Alarm.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Alarm {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Alarm.__pulumiType;
     }
 
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
      */
-    public readonly contactGroups: pulumi.Output<string[]>;
+    public readonly contactGroups!: pulumi.Output<string[]>;
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly dimensions: pulumi.Output<{[key: string]: string}>;
+    public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
+    public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable alarm rule. Default to true.
+     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
      */
-    public readonly endTime: pulumi.Output<number | undefined>;
+    public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly metric: pulumi.Output<string>;
+    public readonly metric!: pulumi.Output<string>;
     /**
      * The alarm rule name.
      */
-    public readonly name: pulumi.Output<string>;
-    /**
-     * Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-     */
-    public readonly notifyType: pulumi.Output<number | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
      */
-    public readonly operator: pulumi.Output<string | undefined>;
+    public readonly operator!: pulumi.Output<string | undefined>;
     /**
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    public readonly project: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      */
-    public readonly silenceTime: pulumi.Output<number | undefined>;
+    public readonly silenceTime!: pulumi.Output<number | undefined>;
     /**
      * Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
      */
-    public readonly startTime: pulumi.Output<number | undefined>;
+    public readonly startTime!: pulumi.Output<number | undefined>;
     /**
      * Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
      */
-    public readonly statistics: pulumi.Output<string | undefined>;
+    public readonly statistics!: pulumi.Output<string | undefined>;
     /**
      * The current alarm rule status.
+     * * `webhook`- The webhook that is called when the alarm is triggered.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Alarm threshold value, which must be a numeric value currently.
      */
-    public readonly threshold: pulumi.Output<string>;
+    public readonly threshold!: pulumi.Output<string>;
     /**
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
-    public readonly triggeredCount: pulumi.Output<number | undefined>;
+    public readonly triggeredCount!: pulumi.Output<number | undefined>;
+    public readonly webhook!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Alarm resource with the given unique name, arguments, and options.
@@ -97,14 +110,14 @@ export class Alarm extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AlarmArgs | AlarmState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AlarmState = argsOrState as AlarmState | undefined;
+            const state = argsOrState as AlarmState | undefined;
             inputs["contactGroups"] = state ? state.contactGroups : undefined;
             inputs["dimensions"] = state ? state.dimensions : undefined;
+            inputs["effectiveInterval"] = state ? state.effectiveInterval : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
             inputs["metric"] = state ? state.metric : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["notifyType"] = state ? state.notifyType : undefined;
             inputs["operator"] = state ? state.operator : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -114,6 +127,7 @@ export class Alarm extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["threshold"] = state ? state.threshold : undefined;
             inputs["triggeredCount"] = state ? state.triggeredCount : undefined;
+            inputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as AlarmArgs | undefined;
             if (!args || args.contactGroups === undefined) {
@@ -133,11 +147,11 @@ export class Alarm extends pulumi.CustomResource {
             }
             inputs["contactGroups"] = args ? args.contactGroups : undefined;
             inputs["dimensions"] = args ? args.dimensions : undefined;
+            inputs["effectiveInterval"] = args ? args.effectiveInterval : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["metric"] = args ? args.metric : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["notifyType"] = args ? args.notifyType : undefined;
             inputs["operator"] = args ? args.operator : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -146,9 +160,17 @@ export class Alarm extends pulumi.CustomResource {
             inputs["statistics"] = args ? args.statistics : undefined;
             inputs["threshold"] = args ? args.threshold : undefined;
             inputs["triggeredCount"] = args ? args.triggeredCount : undefined;
+            inputs["webhook"] = args ? args.webhook : undefined;
             inputs["status"] = undefined /*out*/;
         }
-        super("alicloud:cms/alarm:Alarm", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Alarm.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -163,9 +185,11 @@ export interface AlarmState {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly dimensions?: pulumi.Input<{[key: string]: any}>;
+    readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
+     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
@@ -173,17 +197,13 @@ export interface AlarmState {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly metric?: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-     */
-    readonly notifyType?: pulumi.Input<number>;
     /**
      * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
      */
@@ -193,7 +213,7 @@ export interface AlarmState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -210,6 +230,7 @@ export interface AlarmState {
     readonly statistics?: pulumi.Input<string>;
     /**
      * The current alarm rule status.
+     * * `webhook`- The webhook that is called when the alarm is triggered.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -220,6 +241,7 @@ export interface AlarmState {
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
     readonly triggeredCount?: pulumi.Input<number>;
+    readonly webhook?: pulumi.Input<string>;
 }
 
 /**
@@ -233,9 +255,11 @@ export interface AlarmArgs {
     /**
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
-    readonly dimensions: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly dimensions: pulumi.Input<{[key: string]: any}>;
+    readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
+     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
@@ -243,17 +267,13 @@ export interface AlarmArgs {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly metric: pulumi.Input<string>;
     /**
      * The alarm rule name.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Notification type. Valid value [0, 1]. The value 0 indicates TradeManager+email, and the value 1 indicates that TradeManager+email+SMS
-     */
-    readonly notifyType?: pulumi.Input<number>;
     /**
      * Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
      */
@@ -263,7 +283,7 @@ export interface AlarmArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * Monitor project name, such as "acsEcsDashboard" and "acsRdsDashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly project: pulumi.Input<string>;
     /**
@@ -286,4 +306,5 @@ export interface AlarmArgs {
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
     readonly triggeredCount?: pulumi.Input<number>;
+    readonly webhook?: pulumi.Input<string>;
 }

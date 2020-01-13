@@ -4,5 +4,11 @@
 // Export members:
 export * from "./application";
 export * from "./cluster";
+export * from "./getKubernetesClusters";
+export * from "./getManagedKubernetesClusters";
+export * from "./getServerlessKubernetesClusters";
 export * from "./kubernetes";
+export * from "./kubernetesAutoscaler";
+export * from "./managedKubernetes";
+export * from "./serverlessKubernetes";
 export * from "./swarm";

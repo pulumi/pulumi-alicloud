@@ -8,19 +8,26 @@ import (
 )
 
 // This data source provides the objects of an OSS bucket.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
 func LookupBucketObjects(ctx *pulumi.Context, args *GetBucketObjectsArgs) (*GetBucketObjectsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["bucketName"] = args.BucketName
 		inputs["keyPrefix"] = args.KeyPrefix
 		inputs["keyRegex"] = args.KeyRegex
+		inputs["outputFile"] = args.OutputFile
 	}
 	outputs, err := ctx.Invoke("alicloud:oss/getBucketObjects:getBucketObjects", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetBucketObjectsResult{
+		BucketName: outputs["bucketName"],
+		KeyPrefix: outputs["keyPrefix"],
+		KeyRegex: outputs["keyRegex"],
 		Objects: outputs["objects"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -33,12 +40,17 @@ type GetBucketObjectsArgs struct {
 	KeyPrefix interface{}
 	// A regex string to filter results by key.
 	KeyRegex interface{}
+	OutputFile interface{}
 }
 
 // A collection of values returned by getBucketObjects.
 type GetBucketObjectsResult struct {
+	BucketName interface{}
+	KeyPrefix interface{}
+	KeyRegex interface{}
 	// A list of bucket objects. Each element contains the following attributes:
 	Objects interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from machine_group import *
-from project import *
-from store import *
-from store_index import *
+from .machine_group import *
+from .project import *
+from .store import *
+from .store_index import *
+from .log_tail_attachment import *
+from .log_tail_config import *

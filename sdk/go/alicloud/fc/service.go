@@ -7,13 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
-//  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
-// 
-// -> **NOTE:** The resource requires a provider field 'account_id'. [See account_id](https://www.terraform.io/docs/providers/alicloud/index.html#account_id).
-// 
-// -> **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
-// which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_service.html.markdown.
 type Service struct {
 	s *pulumi.ResourceState
 }
@@ -40,6 +34,7 @@ func NewService(ctx *pulumi.Context,
 		inputs["vpcConfig"] = args.VpcConfig
 	}
 	inputs["lastModified"] = nil
+	inputs["serviceId"] = nil
 	s, err := ctx.RegisterResource("alicloud:fc/service:Service", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -60,6 +55,7 @@ func GetService(ctx *pulumi.Context,
 		inputs["name"] = state.Name
 		inputs["namePrefix"] = state.NamePrefix
 		inputs["role"] = state.Role
+		inputs["serviceId"] = state.ServiceId
 		inputs["vpcConfig"] = state.VpcConfig
 	}
 	s, err := ctx.ReadResource("alicloud:fc/service:Service", name, id, inputs, opts...)
@@ -70,52 +66,57 @@ func GetService(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Service) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Service) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Service) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Service) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The function compute service description.
-func (r *Service) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Service) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether to allow the service to access Internet. Default to "true".
-func (r *Service) InternetAccess() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["internetAccess"])
+func (r *Service) InternetAccess() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["internetAccess"])
 }
 
 // The date this resource was last modified.
-func (r *Service) LastModified() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["lastModified"])
+func (r *Service) LastModified() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lastModified"])
 }
 
 // Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
-func (r *Service) LogConfig() *pulumi.Output {
+func (r *Service) LogConfig() pulumi.Output {
 	return r.s.State["logConfig"]
 }
 
-// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
-func (r *Service) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
+func (r *Service) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Setting a prefix to get a only name. It is conflict with "name".
-func (r *Service) NamePrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["namePrefix"])
+func (r *Service) NamePrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["namePrefix"])
 }
 
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-func (r *Service) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Service) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
+}
+
+// The Function Compute service ID.
+func (r *Service) ServiceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serviceId"])
 }
 
 // Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
-func (r *Service) VpcConfig() *pulumi.Output {
+func (r *Service) VpcConfig() pulumi.Output {
 	return r.s.State["vpcConfig"]
 }
 
@@ -129,12 +130,14 @@ type ServiceState struct {
 	LastModified interface{}
 	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig interface{}
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
+	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
 	Name interface{}
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix interface{}
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	Role interface{}
+	// The Function Compute service ID.
+	ServiceId interface{}
 	// Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
 	VpcConfig interface{}
 }
@@ -147,7 +150,7 @@ type ServiceArgs struct {
 	InternetAccess interface{}
 	// Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
 	LogConfig interface{}
-	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "name_prefix".
+	// The Function Compute service name. It is the only in one Alicloud account and is conflict with "namePrefix".
 	Name interface{}
 	// Setting a prefix to get a only name. It is conflict with "name".
 	NamePrefix interface{}

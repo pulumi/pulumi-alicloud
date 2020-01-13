@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The project is the resource management unit in Log Service and is used to isolate and control resources.
- * You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -17,18 +16,32 @@ export class Project extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectState): Project {
-        return new Project(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectState, opts?: pulumi.CustomResourceOptions): Project {
+        return new Project(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:log/project:Project';
+
+    /**
+     * Returns true if the given object is an instance of Project.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Project {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Project.__pulumiType;
     }
 
     /**
-     * Description of the log project. At present, it is not modified by terraform.
+     * Description of the log project.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -41,7 +54,7 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectState = argsOrState as ProjectState | undefined;
+            const state = argsOrState as ProjectState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
@@ -49,7 +62,14 @@ export class Project extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        super("alicloud:log/project:Project", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Project.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -58,7 +78,7 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Description of the log project. At present, it is not modified by terraform.
+     * Description of the log project.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -72,7 +92,7 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Description of the log project. At present, it is not modified by terraform.
+     * Description of the log project.
      */
     readonly description?: pulumi.Input<string>;
     /**

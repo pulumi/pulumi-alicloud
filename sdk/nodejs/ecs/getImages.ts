@@ -2,20 +2,47 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
  * other public images and the ones available on the image market. 
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const imagesDs = alicloud.ecs.getImages({
+ *     nameRegex: "^centos_6",
+ *     owners: "system",
+ * });
+ * 
+ * export const firstImageId = imagesDs.images[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
  */
-export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
+export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> & GetImagesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetImagesResult> = pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
         "mostRecent": args.mostRecent,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "owners": args.owners,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -30,9 +57,6 @@ export interface GetImagesArgs {
      * A regex string to filter resulting images by name. 
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
@@ -45,9 +69,17 @@ export interface GetImagesArgs {
  */
 export interface GetImagesResult {
     /**
+     * A list of image IDs.
+     */
+    readonly ids: string[];
+    /**
      * A list of images. Each element contains the following attributes:
      */
-    readonly images: { architecture: string, creationTime: string, description: string, diskDeviceMappings: { device: string, size: string, snapshotId: string }[], id: string, imageId: string, imageOwnerAlias: string, imageVersion: string, isCopied: boolean, isSelfShared: string, isSubscribed: boolean, isSupportIoOptimized: boolean, name: string, osName: string, osType: string, platform: string, productCode: string, progress: string, size: number, state: string, status: string, tags?: {[key: string]: any}, usage: string }[];
+    readonly images: outputs.ecs.GetImagesImage[];
+    readonly mostRecent?: boolean;
+    readonly nameRegex?: string;
+    readonly outputFile?: string;
+    readonly owners?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

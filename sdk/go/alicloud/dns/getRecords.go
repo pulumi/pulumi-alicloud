@@ -8,11 +8,14 @@ import (
 )
 
 // This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
 func LookupRecords(ctx *pulumi.Context, args *GetRecordsArgs) (*GetRecordsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["domainName"] = args.DomainName
 		inputs["hostRecordRegex"] = args.HostRecordRegex
+		inputs["ids"] = args.Ids
 		inputs["isLocked"] = args.IsLocked
 		inputs["line"] = args.Line
 		inputs["outputFile"] = args.OutputFile
@@ -25,7 +28,17 @@ func LookupRecords(ctx *pulumi.Context, args *GetRecordsArgs) (*GetRecordsResult
 		return nil, err
 	}
 	return &GetRecordsResult{
+		DomainName: outputs["domainName"],
+		HostRecordRegex: outputs["hostRecordRegex"],
+		Ids: outputs["ids"],
+		IsLocked: outputs["isLocked"],
+		Line: outputs["line"],
+		OutputFile: outputs["outputFile"],
 		Records: outputs["records"],
+		Status: outputs["status"],
+		Type: outputs["type"],
+		Urls: outputs["urls"],
+		ValueRegex: outputs["valueRegex"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -36,11 +49,12 @@ type GetRecordsArgs struct {
 	DomainName interface{}
 	// Host record regex. 
 	HostRecordRegex interface{}
+	// A list of record IDs.
+	Ids interface{}
 	// Whether the record is locked or not.
 	IsLocked interface{}
-	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`.
+	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
 	Line interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Record status. Valid items are `ENABLE` and `DISABLE`.
 	Status interface{}
@@ -52,8 +66,24 @@ type GetRecordsArgs struct {
 
 // A collection of values returned by getRecords.
 type GetRecordsResult struct {
+	// Name of the domain the record belongs to.
+	DomainName interface{}
+	HostRecordRegex interface{}
+	// A list of record IDs. 
+	Ids interface{}
+	IsLocked interface{}
+	// ISP line of the record. 
+	Line interface{}
+	OutputFile interface{}
 	// A list of records. Each element contains the following attributes:
 	Records interface{}
+	// Status of the record.
+	Status interface{}
+	// Type of the record.
+	Type interface{}
+	// A list of entire URLs. Each item format as `<host_record>.<domain_name>`.
+	Urls interface{}
+	ValueRegex interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

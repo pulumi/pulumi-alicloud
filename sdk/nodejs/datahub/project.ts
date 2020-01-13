@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -16,26 +16,40 @@ export class Project extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectState): Project {
-        return new Project(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ProjectState, opts?: pulumi.CustomResourceOptions): Project {
+        return new Project(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:datahub/project:Project';
+
+    /**
+     * Returns true if the given object is an instance of Project.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Project {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Project.__pulumiType;
     }
 
     /**
      * Comment of the datahub project. It cannot be longer than 255 characters.
      */
-    public readonly comment: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    public /*out*/ readonly lastModifyTime: pulumi.Output<string>;
+    public /*out*/ readonly lastModifyTime!: pulumi.Output<string>;
     /**
      * The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -48,7 +62,7 @@ export class Project extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ProjectState = argsOrState as ProjectState | undefined;
+            const state = argsOrState as ProjectState | undefined;
             inputs["comment"] = state ? state.comment : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["lastModifyTime"] = state ? state.lastModifyTime : undefined;
@@ -60,7 +74,14 @@ export class Project extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["lastModifyTime"] = undefined /*out*/;
         }
-        super("alicloud:datahub/project:Project", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Project.__pulumiType, name, inputs, opts);
     }
 }
 

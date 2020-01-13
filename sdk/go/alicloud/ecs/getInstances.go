@@ -8,6 +8,8 @@ import (
 )
 
 // The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
 func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstancesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -16,6 +18,7 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		inputs["imageId"] = args.ImageId
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["status"] = args.Status
 		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
@@ -26,7 +29,18 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		return nil, err
 	}
 	return &GetInstancesResult{
+		AvailabilityZone: outputs["availabilityZone"],
+		Ids: outputs["ids"],
+		ImageId: outputs["imageId"],
 		Instances: outputs["instances"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		ResourceGroupId: outputs["resourceGroupId"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
+		VswitchId: outputs["vswitchId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -41,13 +55,14 @@ type GetInstancesArgs struct {
 	ImageId interface{}
 	// A regex string to filter results by instance name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
+	// The Id of resource group which the instance belongs.
+	ResourceGroupId interface{}
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status interface{}
 	// A map of tags assigned to the ECS instances. It must be in the format:
 	// ```
-	// data "alicloud_instances" "taggedInstances" {
+	// data "ecs.getInstances" "taggedInstances" {
 	// tags = {
 	// tagKey1 = "tagValue1",
 	// tagKey2 = "tagValue2"
@@ -63,8 +78,28 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	// Availability zone the instance belongs to.
+	AvailabilityZone interface{}
+	// A list of ECS instance IDs.
+	Ids interface{}
+	// Image ID the instance is using.
+	ImageId interface{}
 	// A list of instances. Each element contains the following attributes:
 	Instances interface{}
+	NameRegex interface{}
+	// A list of instances names. 
+	Names interface{}
+	OutputFile interface{}
+	// The Id of resource group.
+	ResourceGroupId interface{}
+	// Instance current status.
+	Status interface{}
+	// A map of tags assigned to the ECS instance.
+	Tags interface{}
+	// ID of the VPC the instance belongs to.
+	VpcId interface{}
+	// ID of the VSwitch the instance belongs to.
+	VswitchId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

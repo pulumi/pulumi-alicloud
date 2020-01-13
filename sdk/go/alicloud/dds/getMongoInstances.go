@@ -7,45 +7,57 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `alicloud_mongo_instances` data source provides a collection of MongoDB instances available in Alicloud account.
-// Filters support regular expression for the instance name, engine or instance type.
 func LookupMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs) (*GetMongoInstancesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["availabilityZone"] = args.AvailabilityZone
+		inputs["ids"] = args.Ids
 		inputs["instanceClass"] = args.InstanceClass
 		inputs["instanceType"] = args.InstanceType
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["tags"] = args.Tags
 	}
 	outputs, err := ctx.Invoke("alicloud:dds/getMongoInstances:getMongoInstances", inputs)
 	if err != nil {
 		return nil, err
 	}
 	return &GetMongoInstancesResult{
+		AvailabilityZone: outputs["availabilityZone"],
+		Ids: outputs["ids"],
+		InstanceClass: outputs["instanceClass"],
+		InstanceType: outputs["instanceType"],
 		Instances: outputs["instances"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		Tags: outputs["tags"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesArgs struct {
-	// Instance availability zone.
 	AvailabilityZone interface{}
-	// Sizing of the instance to be queried.
+	Ids interface{}
 	InstanceClass interface{}
-	// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
 	InstanceType interface{}
-	// A regex string to apply to the instance name.
 	NameRegex interface{}
-	// The name of file that can save the collection of instances after running `terraform plan`.
 	OutputFile interface{}
+	Tags interface{}
 }
 
 // A collection of values returned by getMongoInstances.
 type GetMongoInstancesResult struct {
-	// A list of MongoDB instances. Its every element contains the following attributes:
+	AvailabilityZone interface{}
+	Ids interface{}
+	InstanceClass interface{}
+	InstanceType interface{}
 	Instances interface{}
+	NameRegex interface{}
+	Names interface{}
+	OutputFile interface{}
+	Tags interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

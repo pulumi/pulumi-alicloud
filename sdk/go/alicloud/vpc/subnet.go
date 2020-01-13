@@ -30,12 +30,14 @@ func NewSubnet(ctx *pulumi.Context,
 		inputs["cidrBlock"] = nil
 		inputs["description"] = nil
 		inputs["name"] = nil
+		inputs["tags"] = nil
 		inputs["vpcId"] = nil
 	} else {
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["cidrBlock"] = args.CidrBlock
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
+		inputs["tags"] = args.Tags
 		inputs["vpcId"] = args.VpcId
 	}
 	s, err := ctx.RegisterResource("alicloud:vpc/subnet:Subnet", name, true, inputs, opts...)
@@ -55,6 +57,7 @@ func GetSubnet(ctx *pulumi.Context,
 		inputs["cidrBlock"] = state.CidrBlock
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["tags"] = state.Tags
 		inputs["vpcId"] = state.VpcId
 	}
 	s, err := ctx.ReadResource("alicloud:vpc/subnet:Subnet", name, id, inputs, opts...)
@@ -65,33 +68,37 @@ func GetSubnet(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Subnet) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Subnet) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Subnet) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Subnet) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-func (r *Subnet) AvailabilityZone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["availabilityZone"])
+func (r *Subnet) AvailabilityZone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["availabilityZone"])
 }
 
-func (r *Subnet) CidrBlock() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["cidrBlock"])
+func (r *Subnet) CidrBlock() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["cidrBlock"])
 }
 
-func (r *Subnet) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Subnet) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *Subnet) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Subnet) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Subnet) VpcId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["vpcId"])
+func (r *Subnet) Tags() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["tags"])
+}
+
+func (r *Subnet) VpcId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcId"])
 }
 
 // Input properties used for looking up and filtering Subnet resources.
@@ -100,6 +107,7 @@ type SubnetState struct {
 	CidrBlock interface{}
 	Description interface{}
 	Name interface{}
+	Tags interface{}
 	VpcId interface{}
 }
 
@@ -109,5 +117,6 @@ type SubnetArgs struct {
 	CidrBlock interface{}
 	Description interface{}
 	Name interface{}
+	Tags interface{}
 	VpcId interface{}
 }

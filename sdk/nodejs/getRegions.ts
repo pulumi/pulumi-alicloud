@@ -2,18 +2,43 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * This data source provides Alibaba Cloud regions.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const currentRegionDs = alicloud.getRegions({
+ *     current: true,
+ * });
+ * 
+ * export const currentRegionId = currentRegionDs.regions[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
  */
-export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
+export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> & GetRegionsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetRegionsResult> = pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
         "current": args.current,
         "name": args.name,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -28,9 +53,6 @@ export interface GetRegionsArgs {
      * The name of the region to select, such as `eu-central-1`.
      */
     readonly name?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -39,11 +61,16 @@ export interface GetRegionsArgs {
  */
 export interface GetRegionsResult {
     readonly current: boolean;
+    /**
+     * A list of region IDs.
+     */
+    readonly ids: string[];
     readonly name: string;
+    readonly outputFile?: string;
     /**
      * A list of regions. Each element contains the following attributes:
      */
-    readonly regions: { id: string, localName: string, regionId: string }[];
+    readonly regions: outputs.GetRegionsRegion[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

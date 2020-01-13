@@ -9,7 +9,9 @@ import (
 
 // Provides a RAM User access key resource.
 // 
-// ~> **NOTE:**  You should set the `secret_file` if you want to get the access key.  
+// > **NOTE:**  You should set the `secretFile` if you want to get the access key.  
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_access_key.html.markdown.
 type AccessKey struct {
 	s *pulumi.ResourceState
 }
@@ -19,14 +21,18 @@ func NewAccessKey(ctx *pulumi.Context,
 	name string, args *AccessKeyArgs, opts ...pulumi.ResourceOpt) (*AccessKey, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["pgpKey"] = nil
 		inputs["secretFile"] = nil
 		inputs["status"] = nil
 		inputs["userName"] = nil
 	} else {
+		inputs["pgpKey"] = args.PgpKey
 		inputs["secretFile"] = args.SecretFile
 		inputs["status"] = args.Status
 		inputs["userName"] = args.UserName
 	}
+	inputs["encryptedSecret"] = nil
+	inputs["keyFingerprint"] = nil
 	s, err := ctx.RegisterResource("alicloud:ram/accessKey:AccessKey", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -40,6 +46,9 @@ func GetAccessKey(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *AccessKeyState, opts ...pulumi.ResourceOpt) (*AccessKey, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["encryptedSecret"] = state.EncryptedSecret
+		inputs["keyFingerprint"] = state.KeyFingerprint
+		inputs["pgpKey"] = state.PgpKey
 		inputs["secretFile"] = state.SecretFile
 		inputs["status"] = state.Status
 		inputs["userName"] = state.UserName
@@ -52,32 +61,51 @@ func GetAccessKey(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessKey) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *AccessKey) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessKey) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *AccessKey) ID() pulumi.IDOutput {
+	return r.s.ID()
+}
+
+func (r *AccessKey) EncryptedSecret() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["encryptedSecret"])
+}
+
+// The fingerprint of the PGP key used to encrypt the secret
+func (r *AccessKey) KeyFingerprint() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyFingerprint"])
+}
+
+// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+func (r *AccessKey) PgpKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pgpKey"])
 }
 
 // The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-func (r *AccessKey) SecretFile() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secretFile"])
+func (r *AccessKey) SecretFile() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secretFile"])
 }
 
 // Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-func (r *AccessKey) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *AccessKey) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-func (r *AccessKey) UserName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userName"])
+func (r *AccessKey) UserName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userName"])
 }
 
 // Input properties used for looking up and filtering AccessKey resources.
 type AccessKeyState struct {
+	EncryptedSecret interface{}
+	// The fingerprint of the PGP key used to encrypt the secret
+	KeyFingerprint interface{}
+	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+	PgpKey interface{}
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile interface{}
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
@@ -88,6 +116,8 @@ type AccessKeyState struct {
 
 // The set of arguments for constructing a AccessKey resource.
 type AccessKeyArgs struct {
+	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
+	PgpKey interface{}
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile interface{}
 	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.

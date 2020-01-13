@@ -2,18 +2,49 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Declare the data source
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {
+ *     keyName: "keyPairDatasource",
+ * });
+ * const defaultKeyPairs = defaultKeyPair.keyName.apply(keyName => alicloud.ecs.getKeyPairs({
+ *     nameRegex: keyName,
+ * }));
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
  */
-export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
+export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> & GetKeyPairsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetKeyPairsResult> = pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
         "fingerPrint": args.fingerPrint,
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
+        "tags": args.tags,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -25,13 +56,22 @@ export interface GetKeyPairsArgs {
      */
     readonly fingerPrint?: boolean;
     /**
+     * A list of key pair IDs.
+     */
+    readonly ids?: string[];
+    /**
      * A regex string to apply to the resulting key pairs.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
+    /**
+     * The Id of resource group which the key pair belongs.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
 }
 
 /**
@@ -42,10 +82,25 @@ export interface GetKeyPairsResult {
      * Finger print of the key pair.
      */
     readonly fingerPrint: boolean;
+    readonly ids: string[];
     /**
      * A list of key pairs. Each element contains the following attributes:
      */
-    readonly keyPairs: { fingerPrint: string, id: string, instances: { availabilityZone: string, description: string, imageId: string, instanceId: string, instanceName: string, instanceType: string, keyName: string, privateIp: string, publicIp: string, regionId: string, status: string, vswitchId: string }[], keyName: string }[];
+    readonly keyPairs: outputs.ecs.GetKeyPairsKeyPair[];
+    readonly nameRegex?: string;
+    /**
+     * A list of key pair names.
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
+    /**
+     * The Id of resource group.
+     */
+    readonly resourceGroupId?: string;
+    /**
+     * (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -8,9 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides vpcs bound to Alicloud Private Zone resource.
-// 
-// ~> **NOTE:** Terraform will auto bind vpc to a Private Zone while it uses `alicloud_pvtz_zone_attachment` to build a Private Zone and VPC binding resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_attachment.html.markdown.
 type ZoneAttachment struct {
 	s *pulumi.ResourceState
 }
@@ -23,10 +21,16 @@ func NewZoneAttachment(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["lang"] = nil
+		inputs["userClientIp"] = nil
 		inputs["vpcIds"] = nil
+		inputs["vpcs"] = nil
 		inputs["zoneId"] = nil
 	} else {
+		inputs["lang"] = args.Lang
+		inputs["userClientIp"] = args.UserClientIp
 		inputs["vpcIds"] = args.VpcIds
+		inputs["vpcs"] = args.Vpcs
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, true, inputs, opts...)
@@ -42,7 +46,10 @@ func GetZoneAttachment(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ZoneAttachmentState, opts ...pulumi.ResourceOpt) (*ZoneAttachment, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["lang"] = state.Lang
+		inputs["userClientIp"] = state.UserClientIp
 		inputs["vpcIds"] = state.VpcIds
+		inputs["vpcs"] = state.Vpcs
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, id, inputs, opts...)
@@ -53,37 +60,64 @@ func GetZoneAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ZoneAttachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *ZoneAttachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ZoneAttachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *ZoneAttachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
-// The id List of the VPC, for example:["vpc-1","vpc-2"].
-func (r *ZoneAttachment) VpcIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vpcIds"])
+// The language of code.
+func (r *ZoneAttachment) Lang() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lang"])
+}
+
+// The user custom IP address.
+func (r *ZoneAttachment) UserClientIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userClientIp"])
+}
+
+// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+func (r *ZoneAttachment) VpcIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vpcIds"])
+}
+
+// The List of the VPC:
+func (r *ZoneAttachment) Vpcs() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vpcs"])
 }
 
 // The name of the Private Zone Record.
-func (r *ZoneAttachment) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *ZoneAttachment) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering ZoneAttachment resources.
 type ZoneAttachmentState struct {
-	// The id List of the VPC, for example:["vpc-1","vpc-2"].
+	// The language of code.
+	Lang interface{}
+	// The user custom IP address.
+	UserClientIp interface{}
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
 	VpcIds interface{}
+	// The List of the VPC:
+	Vpcs interface{}
 	// The name of the Private Zone Record.
 	ZoneId interface{}
 }
 
 // The set of arguments for constructing a ZoneAttachment resource.
 type ZoneAttachmentArgs struct {
-	// The id List of the VPC, for example:["vpc-1","vpc-2"].
+	// The language of code.
+	Lang interface{}
+	// The user custom IP address.
+	UserClientIp interface{}
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
 	VpcIds interface{}
+	// The List of the VPC:
+	Vpcs interface{}
 	// The name of the Private Zone Record.
 	ZoneId interface{}
 }

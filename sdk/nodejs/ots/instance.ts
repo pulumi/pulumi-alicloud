@@ -7,6 +7,25 @@ import * as utilities from "../utilities";
 /**
  * This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
  * It is foundation of creating data table.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Create an OTS instance
+ * const foo = new alicloud.ots.Instance("foo", {
+ *     accessedBy: "Vpc",
+ *     description: "for table",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Building table",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -17,30 +36,44 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:ots/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
     /**
      * The network limitation of accessing instance. Valid values:
      */
-    public readonly accessedBy: pulumi.Output<string | undefined>;
+    public readonly accessedBy!: pulumi.Output<string | undefined>;
     /**
-     * The description of the instance.
+     * The description of the instance. Currently, it does not support modifying.
      */
-    public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    public readonly instanceType: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
      * The name of the instance.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    public readonly tags: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -49,11 +82,11 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
+            const state = argsOrState as InstanceState | undefined;
             inputs["accessedBy"] = state ? state.accessedBy : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
@@ -61,16 +94,20 @@ export class Instance extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.description === undefined) {
-                throw new Error("Missing required property 'description'");
-            }
             inputs["accessedBy"] = args ? args.accessedBy : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["tags"] = args ? args.tags : undefined;
         }
-        super("alicloud:ots/instance:Instance", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -83,7 +120,7 @@ export interface InstanceState {
      */
     readonly accessedBy?: pulumi.Input<string>;
     /**
-     * The description of the instance.
+     * The description of the instance. Currently, it does not support modifying.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -109,9 +146,9 @@ export interface InstanceArgs {
      */
     readonly accessedBy?: pulumi.Input<string>;
     /**
-     * The description of the instance.
+     * The description of the instance. Currently, it does not support modifying.
      */
-    readonly description: pulumi.Input<string>;
+    readonly description?: pulumi.Input<string>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */

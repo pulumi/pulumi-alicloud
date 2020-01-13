@@ -3,11 +3,14 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from domain import *
-from group import *
-from record import *
-from get_domain_groups import *
-from get_domain_records import *
-from get_domains import *
-from get_groups import *
-from get_records import *
+from .ddos_bgp_instance import *
+from .ddos_coo_instance import *
+from .domain import *
+from .group import *
+from .record import *
+from .get_domain_groups import *
+from .get_domain_records import *
+from .get_domains import *
+from .get_groups import *
+from .get_records import *
+from .get_resolution_lines import *

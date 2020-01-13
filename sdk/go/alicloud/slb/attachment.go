@@ -9,6 +9,8 @@ import (
 )
 
 // Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
 type Attachment struct {
 	s *pulumi.ResourceState
 }
@@ -25,17 +27,17 @@ func NewAttachment(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["backendServers"] = nil
+		inputs["deleteProtectionValidation"] = nil
 		inputs["instanceIds"] = nil
-		inputs["instances"] = nil
 		inputs["loadBalancerId"] = nil
-		inputs["slbId"] = nil
+		inputs["serverType"] = nil
 		inputs["weight"] = nil
 	} else {
 		inputs["backendServers"] = args.BackendServers
+		inputs["deleteProtectionValidation"] = args.DeleteProtectionValidation
 		inputs["instanceIds"] = args.InstanceIds
-		inputs["instances"] = args.Instances
 		inputs["loadBalancerId"] = args.LoadBalancerId
-		inputs["slbId"] = args.SlbId
+		inputs["serverType"] = args.ServerType
 		inputs["weight"] = args.Weight
 	}
 	s, err := ctx.RegisterResource("alicloud:slb/attachment:Attachment", name, true, inputs, opts...)
@@ -52,10 +54,10 @@ func GetAttachment(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["backendServers"] = state.BackendServers
+		inputs["deleteProtectionValidation"] = state.DeleteProtectionValidation
 		inputs["instanceIds"] = state.InstanceIds
-		inputs["instances"] = state.Instances
 		inputs["loadBalancerId"] = state.LoadBalancerId
-		inputs["slbId"] = state.SlbId
+		inputs["serverType"] = state.ServerType
 		inputs["weight"] = state.Weight
 	}
 	s, err := ctx.ReadResource("alicloud:slb/attachment:Attachment", name, id, inputs, opts...)
@@ -66,57 +68,57 @@ func GetAttachment(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Attachment) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Attachment) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Attachment) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Attachment) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The backend servers of the load balancer.
-func (r *Attachment) BackendServers() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["backendServers"])
+func (r *Attachment) BackendServers() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["backendServers"])
+}
+
+// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+func (r *Attachment) DeleteProtectionValidation() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["deleteProtectionValidation"])
 }
 
 // A list of instance ids to added backend server in the SLB.
-func (r *Attachment) InstanceIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instanceIds"])
-}
-
-// It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-func (r *Attachment) Instances() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["instances"])
+func (r *Attachment) InstanceIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["instanceIds"])
 }
 
 // ID of the load balancer.
-func (r *Attachment) LoadBalancerId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["loadBalancerId"])
+func (r *Attachment) LoadBalancerId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["loadBalancerId"])
 }
 
-// It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
-func (r *Attachment) SlbId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["slbId"])
+// Type of the instances. Valid value ecs, eni. Default to ecs.
+func (r *Attachment) ServerType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["serverType"])
 }
 
 // Weight of the instances. Valid value range: [0-100]. Default to 100.
-func (r *Attachment) Weight() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["weight"])
+func (r *Attachment) Weight() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["weight"])
 }
 
 // Input properties used for looking up and filtering Attachment resources.
 type AttachmentState struct {
 	// The backend servers of the load balancer.
 	BackendServers interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// A list of instance ids to added backend server in the SLB.
 	InstanceIds interface{}
-	// It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-	Instances interface{}
 	// ID of the load balancer.
 	LoadBalancerId interface{}
-	// It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
-	SlbId interface{}
+	// Type of the instances. Valid value ecs, eni. Default to ecs.
+	ServerType interface{}
 	// Weight of the instances. Valid value range: [0-100]. Default to 100.
 	Weight interface{}
 }
@@ -125,14 +127,14 @@ type AttachmentState struct {
 type AttachmentArgs struct {
 	// The backend servers of the load balancer.
 	BackendServers interface{}
+	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+	DeleteProtectionValidation interface{}
 	// A list of instance ids to added backend server in the SLB.
 	InstanceIds interface{}
-	// It has been deprecated from provider version 1.6.0. New field 'instance_ids' replaces it.
-	Instances interface{}
 	// ID of the load balancer.
 	LoadBalancerId interface{}
-	// It has been deprecated from provider version 1.6.0. New field 'load_balancer_id' replaces it.
-	SlbId interface{}
+	// Type of the instances. Valid value ecs, eni. Default to ecs.
+	ServerType interface{}
 	// Weight of the instances. Valid value range: [0-100]. Default to 100.
 	Weight interface{}
 }

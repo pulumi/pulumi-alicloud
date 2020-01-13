@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a ESS alarm task resource.
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_alarm.html.markdown.
 type Alarm struct {
 	s *pulumi.ResourceState
 }
@@ -35,6 +35,7 @@ func NewAlarm(ctx *pulumi.Context,
 		inputs["comparisonOperator"] = nil
 		inputs["description"] = nil
 		inputs["dimensions"] = nil
+		inputs["enable"] = nil
 		inputs["evaluationCount"] = nil
 		inputs["metricName"] = nil
 		inputs["metricType"] = nil
@@ -49,6 +50,7 @@ func NewAlarm(ctx *pulumi.Context,
 		inputs["comparisonOperator"] = args.ComparisonOperator
 		inputs["description"] = args.Description
 		inputs["dimensions"] = args.Dimensions
+		inputs["enable"] = args.Enable
 		inputs["evaluationCount"] = args.EvaluationCount
 		inputs["metricName"] = args.MetricName
 		inputs["metricType"] = args.MetricType
@@ -77,6 +79,7 @@ func GetAlarm(ctx *pulumi.Context,
 		inputs["comparisonOperator"] = state.ComparisonOperator
 		inputs["description"] = state.Description
 		inputs["dimensions"] = state.Dimensions
+		inputs["enable"] = state.Enable
 		inputs["evaluationCount"] = state.EvaluationCount
 		inputs["metricName"] = state.MetricName
 		inputs["metricType"] = state.MetricType
@@ -95,83 +98,88 @@ func GetAlarm(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Alarm) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Alarm) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Alarm) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Alarm) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
-func (r *Alarm) AlarmActions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["alarmActions"])
+func (r *Alarm) AlarmActions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["alarmActions"])
 }
 
 // Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
-func (r *Alarm) CloudMonitorGroupId() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["cloudMonitorGroupId"])
+func (r *Alarm) CloudMonitorGroupId() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["cloudMonitorGroupId"])
 }
 
 // The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
-func (r *Alarm) ComparisonOperator() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["comparisonOperator"])
+func (r *Alarm) ComparisonOperator() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["comparisonOperator"])
 }
 
 // The description for the alarm.
-func (r *Alarm) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Alarm) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
-func (r *Alarm) Dimensions() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["dimensions"])
+// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+func (r *Alarm) Dimensions() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["dimensions"])
+}
+
+// Whether to enable specific ess alarm. Default to true.
+func (r *Alarm) Enable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enable"])
 }
 
 // The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
-func (r *Alarm) EvaluationCount() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["evaluationCount"])
+func (r *Alarm) EvaluationCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["evaluationCount"])
 }
 
-// The name for the alarm's associated metric.
-func (r *Alarm) MetricName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metricName"])
+// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+func (r *Alarm) MetricName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metricName"])
 }
 
 // The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
-func (r *Alarm) MetricType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["metricType"])
+func (r *Alarm) MetricType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["metricType"])
 }
 
 // The name for ess alarm.
-func (r *Alarm) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Alarm) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
-func (r *Alarm) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+func (r *Alarm) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
-// The scaling group associated with this alarm.
-func (r *Alarm) ScalingGroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scalingGroupId"])
+// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
+func (r *Alarm) ScalingGroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scalingGroupId"])
 }
 
 // The state of specified alarm.  
-func (r *Alarm) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *Alarm) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
-func (r *Alarm) Statistics() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["statistics"])
+func (r *Alarm) Statistics() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["statistics"])
 }
 
 // The value against which the specified statistics is compared.
-func (r *Alarm) Threshold() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["threshold"])
+func (r *Alarm) Threshold() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["threshold"])
 }
 
 // Input properties used for looking up and filtering Alarm resources.
@@ -184,11 +192,13 @@ type AlarmState struct {
 	ComparisonOperator interface{}
 	// The description for the alarm.
 	Description interface{}
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
 	Dimensions interface{}
+	// Whether to enable specific ess alarm. Default to true.
+	Enable interface{}
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount interface{}
-	// The name for the alarm's associated metric.
+	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName interface{}
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
 	MetricType interface{}
@@ -196,7 +206,7 @@ type AlarmState struct {
 	Name interface{}
 	// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
 	Period interface{}
-	// The scaling group associated with this alarm.
+	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId interface{}
 	// The state of specified alarm.  
 	State interface{}
@@ -216,11 +226,13 @@ type AlarmArgs struct {
 	ComparisonOperator interface{}
 	// The description for the alarm.
 	Description interface{}
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
 	Dimensions interface{}
+	// Whether to enable specific ess alarm. Default to true.
+	Enable interface{}
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount interface{}
-	// The name for the alarm's associated metric.
+	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName interface{}
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
 	MetricType interface{}
@@ -228,7 +240,7 @@ type AlarmArgs struct {
 	Name interface{}
 	// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
 	Period interface{}
-	// The scaling group associated with this alarm.
+	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId interface{}
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics interface{}

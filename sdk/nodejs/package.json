@@ -8,16 +8,15 @@
     ],
     "homepage": "https://pulumi.io",
     "repository": "https://github.com/pulumi/pulumi-alicloud",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^0.15.3-dev"
+        "@pulumi/pulumi": "^1.0.0"
     },
     "devDependencies": {
-        "@types/node": "^8.0.25",
-        "typescript": "^2.6.2"
+        "@types/node": "^8.0.25"
     },
     "pulumi": {
         "resource": true

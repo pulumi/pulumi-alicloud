@@ -7,14 +7,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `alicloud_db_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
+// The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
 func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstancesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["connectionMode"] = args.ConnectionMode
 		inputs["dbType"] = args.DbType
 		inputs["engine"] = args.Engine
+		inputs["ids"] = args.Ids
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["status"] = args.Status
@@ -27,7 +30,18 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		return nil, err
 	}
 	return &GetInstancesResult{
+		ConnectionMode: outputs["connectionMode"],
+		DbType: outputs["dbType"],
+		Engine: outputs["engine"],
+		Ids: outputs["ids"],
 		Instances: outputs["instances"],
+		NameRegex: outputs["nameRegex"],
+		Names: outputs["names"],
+		OutputFile: outputs["outputFile"],
+		Status: outputs["status"],
+		Tags: outputs["tags"],
+		VpcId: outputs["vpcId"],
+		VswitchId: outputs["vswitchId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -36,17 +50,19 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 type GetInstancesArgs struct {
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode interface{}
-	// `Primary` for primary instance, `ReadOnly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType interface{}
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine interface{}
+	// A list of RDS instance IDs. 
+	Ids interface{}
 	// A regex string to filter results by instance name.
 	NameRegex interface{}
-	// File name where to save data source results (after running `terraform plan`).
 	OutputFile interface{}
 	// Status of the instance.
 	Status interface{}
-	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+	// A map of tags assigned to the DB instances. 
+	// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
 	Tags interface{}
 	// Used to retrieve instances belong to specified VPC.
 	VpcId interface{}
@@ -56,8 +72,27 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	// `Standard` for standard access mode and `Safe` for high security access mode.
+	ConnectionMode interface{}
+	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
+	DbType interface{}
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
+	Engine interface{}
+	// A list of RDS instance IDs. 
+	Ids interface{}
 	// A list of RDS instances. Each element contains the following attributes:
 	Instances interface{}
+	NameRegex interface{}
+	// A list of RDS instance names. 
+	Names interface{}
+	OutputFile interface{}
+	// Status of the instance.
+	Status interface{}
+	Tags interface{}
+	// ID of the VPC the instance belongs to.
+	VpcId interface{}
+	// ID of the VSwitch the instance belongs to.
+	VswitchId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

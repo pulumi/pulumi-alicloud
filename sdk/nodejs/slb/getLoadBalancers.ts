@@ -2,23 +2,52 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the server load balancers of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const slbsDs = alicloud.slb.getLoadBalancers({
+ *     nameRegex: "sampleSlb",
+ * });
+ * 
+ * export const firstSlbId = slbsDs.slbs[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
  */
-export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
+export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> & GetLoadBalancersResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetLoadBalancersResult> = pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
         "ids": args.ids,
         "masterAvailabilityZone": args.masterAvailabilityZone,
         "nameRegex": args.nameRegex,
         "networkType": args.networkType,
+        "outputFile": args.outputFile,
+        "resourceGroupId": args.resourceGroupId,
         "slaveAvailabilityZone": args.slaveAvailabilityZone,
+        "tags": args.tags,
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -45,10 +74,27 @@ export interface GetLoadBalancersArgs {
      * Network type of the SLBs. Valid values: `vpc` and `classic`.
      */
     readonly networkType?: string;
+    readonly outputFile?: string;
+    /**
+     * The Id of resource group which SLB belongs.
+     */
+    readonly resourceGroupId?: string;
     /**
      * Slave availability zone of the SLBs.
      */
     readonly slaveAvailabilityZone?: string;
+    /**
+     * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * ```
+     * data "alicloud.slb.getLoadBalancers" "taggedInstances" {
+     * tags = {
+     * tagKey1 = "tagValue1",
+     * tagKey2 = "tagValue2"
+     * }
+     * }
+     * ```
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * ID of the VPC linked to the SLBs.
      */
@@ -64,9 +110,48 @@ export interface GetLoadBalancersArgs {
  */
 export interface GetLoadBalancersResult {
     /**
+     * Service address of the SLB.
+     */
+    readonly address?: string;
+    /**
+     * A list of slb IDs.
+     */
+    readonly ids: string[];
+    /**
+     * Master availability zone of the SLBs.
+     */
+    readonly masterAvailabilityZone?: string;
+    readonly nameRegex?: string;
+    /**
+     * A list of slb names.
+     */
+    readonly names: string[];
+    /**
+     * Network type of the SLB. Possible values: `vpc` and `classic`.
+     */
+    readonly networkType?: string;
+    readonly outputFile?: string;
+    readonly resourceGroupId?: string;
+    /**
+     * Slave availability zone of the SLBs.
+     */
+    readonly slaveAvailabilityZone?: string;
+    /**
      * A list of SLBs. Each element contains the following attributes:
      */
-    readonly slbs: { address: string, creationTime: string, id: string, internet: boolean, masterAvailabilityZone: string, name: string, networkType: string, regionId: string, slaveAvailabilityZone: string, status: string, vpcId: string, vswitchId: string }[];
+    readonly slbs: outputs.slb.GetLoadBalancersSlb[];
+    /**
+     * A map of tags assigned to the SLB instance.
+     */
+    readonly tags?: {[key: string]: any};
+    /**
+     * ID of the VPC the SLB belongs to.
+     */
+    readonly vpcId?: string;
+    /**
+     * ID of the VSwitch the SLB belongs to.
+     */
+    readonly vswitchId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

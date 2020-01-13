@@ -2,26 +2,58 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  * 
  * 
- * ~> **NOTE:** If one zone is sold out, it will not be exported.
+ * > **NOTE:** If one zone is sold out, it will not be exported.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * // Declare the data source
+ * const zonesDs = alicloud.getZones({
+ *     availableDiskCategory: "cloudSsd",
+ *     availableInstanceType: "ecs.n4.large",
+ * });
+ * // Create an ECS instance with the first matched zone
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     availabilityZone: zonesDs.zones[0].id,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
  */
-export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
         "availableDiskCategory": args.availableDiskCategory,
         "availableInstanceType": args.availableInstanceType,
         "availableResourceCreation": args.availableResourceCreation,
+        "availableSlbAddressIpVersion": args.availableSlbAddressIpVersion,
+        "availableSlbAddressType": args.availableSlbAddressType,
+        "enableDetails": args.enableDetails,
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
         "spotStrategy": args.spotStrategy,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -29,7 +61,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetZonesArgs {
     /**
-     * Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency` or `cloud_ssd`.
+     * Filter the results by a specific disk category. Can be either `cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`.
      */
     readonly availableDiskCategory?: string;
     /**
@@ -37,9 +69,23 @@ export interface GetZonesArgs {
      */
     readonly availableInstanceType?: string;
     /**
-     * Filter the results by a specific resource type. The following values are allowed: `Instance`, `Disk`, `VSwitch` and `Rds`.
+     * Filter the results by a specific resource type.
+     * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
      */
     readonly availableResourceCreation?: string;
+    /**
+     * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     * > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
+     */
+    readonly availableSlbAddressIpVersion?: string;
+    /**
+     * Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+     */
+    readonly availableSlbAddressType?: string;
+    /**
+     * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     */
+    readonly enableDetails?: boolean;
     /**
      * Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
@@ -52,9 +98,6 @@ export interface GetZonesArgs {
      * Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
      */
     readonly networkType?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
     /**
      * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -66,10 +109,28 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
+    readonly availableDiskCategory?: string;
+    readonly availableInstanceType?: string;
+    /**
+     * Type of resources that can be created.
+     */
+    readonly availableResourceCreation?: string;
+    readonly availableSlbAddressIpVersion?: string;
+    readonly availableSlbAddressType?: string;
+    readonly enableDetails?: boolean;
+    /**
+     * A list of zone IDs.
+     */
+    readonly ids: string[];
+    readonly instanceChargeType?: string;
+    readonly multi?: boolean;
+    readonly networkType?: string;
+    readonly outputFile?: string;
+    readonly spotStrategy?: string;
     /**
      * A list of availability zones. Each element contains the following attributes:
      */
-    readonly zones: { availableDiskCategories: string[], availableInstanceTypes: string[], availableResourceCreations: string[], id: string, localName: string }[];
+    readonly zones: outputs.GetZonesZone[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

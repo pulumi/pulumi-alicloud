@@ -18,6 +18,7 @@ func LookupAccountAlias(ctx *pulumi.Context, args *GetAccountAliasArgs) (*GetAcc
 	}
 	return &GetAccountAliasResult{
 		AccountAlias: outputs["accountAlias"],
+		OutputFile: outputs["outputFile"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -30,6 +31,7 @@ type GetAccountAliasArgs struct {
 // A collection of values returned by getAccountAlias.
 type GetAccountAliasResult struct {
 	AccountAlias interface{}
+	OutputFile interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

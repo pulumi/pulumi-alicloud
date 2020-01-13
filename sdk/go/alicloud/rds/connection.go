@@ -10,8 +10,10 @@ import (
 
 // Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
 // 
-// ~> **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
+// > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
 type Connection struct {
 	s *pulumi.ResourceState
 }
@@ -61,38 +63,38 @@ func GetConnection(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Connection) URN() *pulumi.URNOutput {
-	return r.s.URN
+func (r *Connection) URN() pulumi.URNOutput {
+	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Connection) ID() *pulumi.IDOutput {
-	return r.s.ID
+func (r *Connection) ID() pulumi.IDOutput {
+	return r.s.ID()
 }
 
 // Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'tf'.
-func (r *Connection) ConnectionPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionPrefix"])
+func (r *Connection) ConnectionPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionPrefix"])
 }
 
 // Connection instance string.
-func (r *Connection) ConnectionString() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["connectionString"])
+func (r *Connection) ConnectionString() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["connectionString"])
 }
 
 // The Id of instance that can run database.
-func (r *Connection) InstanceId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["instanceId"])
+func (r *Connection) InstanceId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
 // The ip address of connection string.
-func (r *Connection) IpAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ipAddress"])
+func (r *Connection) IpAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ipAddress"])
 }
 
 // Internet connection port. Valid value: [3001-3999]. Default to 3306.
-func (r *Connection) Port() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["port"])
+func (r *Connection) Port() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["port"])
 }
 
 // Input properties used for looking up and filtering Connection resources.

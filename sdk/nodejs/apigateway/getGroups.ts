@@ -2,17 +2,44 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * This data source provides the api groups of the current Alibaba Cloud user.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const dataApigatway = alicloud.apigateway.getGroups({
+ *     outputFile: "outgroups",
+ * });
+ * 
+ * export const firstGroupId = dataApigatway.groups[0].id;
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
  */
-export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
+export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> & GetGroupsResult {
     args = args || {};
-    return pulumi.runtime.invoke("alicloud:apigateway/getGroups:getGroups", {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
+    const promise: Promise<GetGroupsResult> = pulumi.runtime.invoke("alicloud:apigateway/getGroups:getGroups", {
+        "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -20,12 +47,13 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetGroupsArgs {
     /**
+     * A list of api group IDs. 
+     */
+    readonly ids?: string[];
+    /**
      * A regex string to filter api gateway groups by name.
      */
     readonly nameRegex?: string;
-    /**
-     * File name where to save data source results (after running `terraform plan`).
-     */
     readonly outputFile?: string;
 }
 
@@ -36,7 +64,17 @@ export interface GetGroupsResult {
     /**
      * A list of api groups. Each element contains the following attributes:
      */
-    readonly groups: { billingStatus: string, createdTime: string, description: string, id: string, illegalStatus: string, modifiedTime: string, name: string, regionId: string, subDomain: string, trafficLimit: number }[];
+    readonly groups: outputs.apigateway.GetGroupsGroup[];
+    /**
+     * A list of api group IDs. 
+     */
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of api group names. 
+     */
+    readonly names: string[];
+    readonly outputFile?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

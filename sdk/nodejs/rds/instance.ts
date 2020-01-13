@@ -2,12 +2,83 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
  * Provides an RDS instance resource. A DB instance is an isolated database
  * environment in the cloud. A DB instance can contain multiple user-created
  * databases.
+ * 
+ * ## Example Usage
+ * 
+ * ### Create a RDS MySQL instance
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "dbInstanceconfig";
+ * const creation = config.get("creation") || "Rds";
+ * 
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     instanceChargeType: "Postpaid",
+ *     instanceName: name,
+ *     instanceStorage: 30,
+ *     instanceType: "rds.mysql.s2.large",
+ *     monitoringPeriod: 60,
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
+ * 
+ * ### Create a RDS MySQL instance with specific parameters
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: alicloud_zones_default.zones.0.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
+ *     dbInstanceClass: "rds.mysql.t1.small",
+ *     dbInstanceStorage: "10",
+ *     engine: "MySQL",
+ *     engineVersion: "5.6",
+ *     parameters: [
+ *         {
+ *             name: "innodbLargePrefix",
+ *             value: "ON",
+ *         },
+ *         {
+ *             name: "connectTimeout",
+ *             value: "50",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -18,66 +89,67 @@ export class Instance extends pulumi.CustomResource {
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState): Instance {
-        return new Instance(name, <any>state, { id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
+        return new Instance(name, <any>state, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'alicloud:rds/instance:Instance';
+
+    /**
+     * Returns true if the given object is an instance of Instance.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Instance {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
     /**
-     * It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
-    public readonly allocatePublicConnection: pulumi.Output<boolean | undefined>;
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      */
-    public readonly backupRetentionPeriod: pulumi.Output<number | undefined>;
+    public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * The upgrade method to use. Valid values:
+     * - Auto: Instances are automatically upgraded to a higher minor version.
+     * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+     */
+    public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
      * RDS database connection string.
      */
-    public /*out*/ readonly connectionString: pulumi.Output<string>;
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * (Deprecated from version 1.5.0).
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
-    public readonly connections: pulumi.Output<{ connectionString: string, ipAddress?: string, ipType: string }[]>;
-    /**
-     * It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
-     */
-    public readonly dbInstanceClass: pulumi.Output<string | undefined>;
-    /**
-     * It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-     */
-    public readonly dbInstanceNetType: pulumi.Output<string | undefined>;
-    /**
-     * It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-     */
-    public readonly dbInstanceStorage: pulumi.Output<number | undefined>;
-    /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-     */
-    public readonly dbMappings: pulumi.Output<{ characterSetName: string, dbDescription?: string, dbName: string }[]>;
+    public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
-    public readonly engine: pulumi.Output<string>;
+    public readonly engine!: pulumi.Output<string>;
     /**
-     * Database version. Value options: 
-     * - 5.5/5.6/5.7 for MySQL
-     * - 2008r2/2012 for SQLServer
-     * - 9.4/10.0 for PostgreSQL
-     * - 9.3 for PPAS
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    public readonly engineVersion: pulumi.Output<string>;
+    public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
-    public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The name of DB instance. It a string of 2 to 256 characters.
      */
-    public readonly instanceName: pulumi.Output<string | undefined>;
-    /**
-     * It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-     */
-    public readonly instanceNetworkType: pulumi.Output<string | undefined>;
+    public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
      * User-defined DB instance storage space. Value range:
      * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
@@ -85,54 +157,61 @@ export class Instance extends pulumi.CustomResource {
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
      * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
      */
-    public readonly instanceStorage: pulumi.Output<number>;
+    public readonly instanceStorage!: pulumi.Output<number>;
     /**
      * DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      */
-    public readonly instanceType: pulumi.Output<string>;
+    public readonly instanceType!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
+     * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    public readonly masterUserName: pulumi.Output<string | undefined>;
+    public readonly maintainTime!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
+     * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
      */
-    public readonly masterUserPassword: pulumi.Output<string | undefined>;
+    public readonly monitoringPeriod!: pulumi.Output<number>;
     /**
-     * It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
-    public readonly multiAz: pulumi.Output<boolean | undefined>;
+    public readonly parameters!: pulumi.Output<outputs.rds.InstanceParameter[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
-    public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * RDS database connection port.
      */
-    public /*out*/ readonly port: pulumi.Output<string>;
+    public /*out*/ readonly port!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
+     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
      */
-    public readonly preferredBackupPeriods: pulumi.Output<string[] | undefined>;
+    public readonly securityGroupId!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */
-    public readonly preferredBackupTime: pulumi.Output<string | undefined>;
+    public readonly securityIpMode!: pulumi.Output<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    public readonly securityIps: pulumi.Output<string[]>;
+    public readonly securityIps!: pulumi.Output<string[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -145,30 +224,27 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: InstanceState = argsOrState as InstanceState | undefined;
-            inputs["allocatePublicConnection"] = state ? state.allocatePublicConnection : undefined;
-            inputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
+            const state = argsOrState as InstanceState | undefined;
+            inputs["autoRenew"] = state ? state.autoRenew : undefined;
+            inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["autoUpgradeMinorVersion"] = state ? state.autoUpgradeMinorVersion : undefined;
             inputs["connectionString"] = state ? state.connectionString : undefined;
-            inputs["connections"] = state ? state.connections : undefined;
-            inputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
-            inputs["dbInstanceNetType"] = state ? state.dbInstanceNetType : undefined;
-            inputs["dbInstanceStorage"] = state ? state.dbInstanceStorage : undefined;
-            inputs["dbMappings"] = state ? state.dbMappings : undefined;
+            inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["instanceNetworkType"] = state ? state.instanceNetworkType : undefined;
             inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
-            inputs["masterUserName"] = state ? state.masterUserName : undefined;
-            inputs["masterUserPassword"] = state ? state.masterUserPassword : undefined;
-            inputs["multiAz"] = state ? state.multiAz : undefined;
+            inputs["maintainTime"] = state ? state.maintainTime : undefined;
+            inputs["monitoringPeriod"] = state ? state.monitoringPeriod : undefined;
+            inputs["parameters"] = state ? state.parameters : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
-            inputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
+            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["securityIpMode"] = state ? state.securityIpMode : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -185,33 +261,37 @@ export class Instance extends pulumi.CustomResource {
             if (!args || args.instanceType === undefined) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            inputs["allocatePublicConnection"] = args ? args.allocatePublicConnection : undefined;
-            inputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
-            inputs["connections"] = args ? args.connections : undefined;
-            inputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
-            inputs["dbInstanceNetType"] = args ? args.dbInstanceNetType : undefined;
-            inputs["dbInstanceStorage"] = args ? args.dbInstanceStorage : undefined;
-            inputs["dbMappings"] = args ? args.dbMappings : undefined;
+            inputs["autoRenew"] = args ? args.autoRenew : undefined;
+            inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
+            inputs["autoUpgradeMinorVersion"] = args ? args.autoUpgradeMinorVersion : undefined;
+            inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["instanceNetworkType"] = args ? args.instanceNetworkType : undefined;
             inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
-            inputs["masterUserName"] = args ? args.masterUserName : undefined;
-            inputs["masterUserPassword"] = args ? args.masterUserPassword : undefined;
-            inputs["multiAz"] = args ? args.multiAz : undefined;
+            inputs["maintainTime"] = args ? args.maintainTime : undefined;
+            inputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
+            inputs["parameters"] = args ? args.parameters : undefined;
             inputs["period"] = args ? args.period : undefined;
-            inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
-            inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["securityIpMode"] = args ? args.securityIpMode : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["connectionString"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
         }
-        super("alicloud:rds/instance:Instance", name, inputs, opts);
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
+        super(Instance.__pulumiType, name, inputs, opts);
     }
 }
 
@@ -220,51 +300,42 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
-    readonly allocatePublicConnection?: pulumi.Input<boolean>;
+    readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      */
-    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * The upgrade method to use. Valid values:
+     * - Auto: Instances are automatically upgraded to a higher minor version.
+     * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+     */
+    readonly autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
      * RDS database connection string.
      */
     readonly connectionString?: pulumi.Input<string>;
     /**
-     * (Deprecated from version 1.5.0).
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
-    readonly connections?: pulumi.Input<pulumi.Input<{ connectionString: pulumi.Input<string>, ipAddress?: pulumi.Input<string>, ipType: pulumi.Input<string> }>[]>;
-    /**
-     * It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
-     */
-    readonly dbInstanceClass?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-     */
-    readonly dbInstanceNetType?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-     */
-    readonly dbInstanceStorage?: pulumi.Input<number>;
-    /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-     */
-    readonly dbMappings?: pulumi.Input<pulumi.Input<{ characterSetName: pulumi.Input<string>, dbDescription?: pulumi.Input<string>, dbName: pulumi.Input<string> }>[]>;
+    readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
     readonly engine?: pulumi.Input<string>;
     /**
-     * Database version. Value options: 
-     * - 5.5/5.6/5.7 for MySQL
-     * - 2008r2/2012 for SQLServer
-     * - 9.4/10.0 for PostgreSQL
-     * - 9.3 for PPAS
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -272,16 +343,13 @@ export interface InstanceState {
      */
     readonly instanceName?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-     */
-    readonly instanceNetworkType?: pulumi.Input<string>;
-    /**
      * User-defined DB instance storage space. Value range:
      * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
      * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
      */
     readonly instanceStorage?: pulumi.Input<number>;
     /**
@@ -289,19 +357,19 @@ export interface InstanceState {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
+     * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly masterUserName?: pulumi.Input<string>;
+    readonly maintainTime?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
+     * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
      */
-    readonly masterUserPassword?: pulumi.Input<string>;
+    readonly monitoringPeriod?: pulumi.Input<number>;
     /**
-     * It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
-    readonly multiAz?: pulumi.Input<boolean>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -309,25 +377,31 @@ export interface InstanceState {
      */
     readonly port?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
+     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly securityGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    readonly securityIpMode?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -337,47 +411,38 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * It has been deprecated from version 1.5.0. If you want to allocate public connection string, please use new resource `alicloud_db_connection`.
+     * Whether to renewal a DB instance automatically or not. It is valid when instanceChargeType is `PrePaid`. Default to `false`.
      */
-    readonly allocatePublicConnection?: pulumi.Input<boolean>;
+    readonly autoRenew?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'retention_period' replaces it.
+     * Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
      */
-    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * (Deprecated from version 1.5.0).
+     * The upgrade method to use. Valid values:
+     * - Auto: Instances are automatically upgraded to a higher minor version.
+     * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      */
-    readonly connections?: pulumi.Input<pulumi.Input<{ connectionString: pulumi.Input<string>, ipAddress?: pulumi.Input<string>, ipType: pulumi.Input<string> }>[]>;
+    readonly autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0 and use 'instance_type' to replace.
+     * The storage type of the instance. Valid values:
+     * - local_ssd: specifies to use local SSDs. This value is recommended.
+     * - cloud_ssd: specifies to use standard SSDs.
+     * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
+     * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
      */
-    readonly dbInstanceClass?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from version 1.5.0. If you want to set public connection, please use new resource `alicloud_db_connection`. Default to Intranet.
-     */
-    readonly dbInstanceNetType?: pulumi.Input<string>;
-    /**
-     * It has been deprecated from version 1.5.0 and use 'instance_storage' to replace.
-     */
-    readonly dbInstanceStorage?: pulumi.Input<number>;
-    /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_database` replaces it.
-     */
-    readonly dbMappings?: pulumi.Input<pulumi.Input<{ characterSetName: pulumi.Input<string>, dbDescription?: pulumi.Input<string>, dbName: pulumi.Input<string> }>[]>;
+    readonly dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
      */
     readonly engine: pulumi.Input<string>;
     /**
-     * Database version. Value options: 
-     * - 5.5/5.6/5.7 for MySQL
-     * - 2008r2/2012 for SQLServer
-     * - 9.4/10.0 for PostgreSQL
-     * - 9.3 for PPAS
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`.
+     * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -385,16 +450,13 @@ export interface InstanceArgs {
      */
     readonly instanceName?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. If you want to create instances in VPC network, this parameter must be set.
-     */
-    readonly instanceNetworkType?: pulumi.Input<string>;
-    /**
      * User-defined DB instance storage space. Value range:
      * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
      * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
      */
     readonly instanceStorage: pulumi.Input<number>;
     /**
@@ -402,41 +464,47 @@ export interface InstanceArgs {
      */
     readonly instanceType: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'name' replaces it.
+     * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
-    readonly masterUserName?: pulumi.Input<string>;
+    readonly maintainTime?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_account` field 'password' replaces it.
+     * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
      */
-    readonly masterUserPassword?: pulumi.Input<string>;
+    readonly monitoringPeriod?: pulumi.Input<number>;
     /**
-     * It has been deprecated from version 1.8.1, and `zone_id` can support multiple zone.
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
-    readonly multiAz?: pulumi.Input<boolean>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_period' replaces it.
+     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly securityGroupId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.5.0. New resource `alicloud_db_backup_policy` field 'backup_time' replaces it.
+     * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    readonly securityIpMode?: pulumi.Input<string>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
-     * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud_zones`.
+     * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
+     * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud..getZones`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
