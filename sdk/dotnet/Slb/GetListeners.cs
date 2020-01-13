@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Slb
     public sealed class GetListenersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// A regex string to filter results by SLB listener description.
+        /// </summary>
+        [Input("descriptionRegex")]
+        public string? DescriptionRegex { get; set; }
+
+        /// <summary>
         /// Filter listeners by the specified frontend port.
         /// </summary>
         [Input("frontendPort")]
@@ -50,6 +56,7 @@ namespace Pulumi.AliCloud.Slb
     [OutputType]
     public sealed class GetListenersResult
     {
+        public readonly string? DescriptionRegex;
         /// <summary>
         /// Frontend port used to receive incoming traffic and distribute it to the backend servers.
         /// </summary>
@@ -71,6 +78,7 @@ namespace Pulumi.AliCloud.Slb
 
         [OutputConstructor]
         private GetListenersResult(
+            string? descriptionRegex,
             int? frontendPort,
             string loadBalancerId,
             string? outputFile,
@@ -78,6 +86,7 @@ namespace Pulumi.AliCloud.Slb
             ImmutableArray<Outputs.GetListenersSlbListenersResult> slbListeners,
             string id)
         {
+            DescriptionRegex = descriptionRegex;
             FrontendPort = frontendPort;
             LoadBalancerId = loadBalancerId;
             OutputFile = outputFile;
@@ -113,6 +122,10 @@ namespace Pulumi.AliCloud.Slb
         /// Cookie timeout in seconds. Only available when the sticky_session_type is `insert`.
         /// </summary>
         public readonly int CookieTimeout;
+        /// <summary>
+        /// The description of slb listener.
+        /// </summary>
+        public readonly string Description;
         /// <summary>
         /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         /// </summary>
@@ -250,6 +263,7 @@ namespace Pulumi.AliCloud.Slb
             string caCertificateId,
             string cookie,
             int cookieTimeout,
+            string description,
             string enableHttp2,
             int establishedTimeout,
             int frontendPort,
@@ -289,6 +303,7 @@ namespace Pulumi.AliCloud.Slb
             CaCertificateId = caCertificateId;
             Cookie = cookie;
             CookieTimeout = cookieTimeout;
+            Description = description;
             EnableHttp2 = enableHttp2;
             EstablishedTimeout = establishedTimeout;
             FrontendPort = frontendPort;

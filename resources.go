@@ -282,6 +282,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snapshot":               {Tok: resource(ecsMod, "Snapshot")},
 			"alicloud_snapshot_policy":        {Tok: resource(ecsMod, "SnapshotPolicy")},
 			"alicloud_copy_image":             {Tok: resource(ecsMod, "CopyImage")},
+			"alicloud_image_import":           {Tok: resource(ecsMod, "ImageImport")},
 
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
@@ -336,6 +337,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_log_store_index":    {Tok: resource(logMod, "StoreIndex")},
 			"alicloud_logtail_attachment": {Tok: resource(logMod, "LogTailAttachment")},
 			"alicloud_logtail_config":     {Tok: resource(logMod, "LogTailConfig")},
+
+			// Marketplace
+			"alicloud_market_order": {Tok: resource(marketPlaceMod, "Order")},
 
 			// MongoDb
 			"alicloud_mongodb_instance":          {Tok: resource(mongoDbMod, "Instance")},
@@ -605,6 +609,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Marketplace
 			"alicloud_market_products": {Tok: dataSource(marketPlaceMod, "getProducts")},
+			"alicloud_market_product":  {Tok: dataSource(marketPlaceMod, "getProduct")},
 
 			// Mns
 			"alicloud_mns_queues":              {Tok: dataSource(mnsMod, "getQueues")},

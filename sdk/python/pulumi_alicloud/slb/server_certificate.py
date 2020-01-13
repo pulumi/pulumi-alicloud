@@ -15,9 +15,15 @@ class ServerCertificate(pulumi.CustomResource):
     alicloud_certificate_id: pulumi.Output[str]
     """
     an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-    * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
     """
     alicloud_certificate_name: pulumi.Output[str]
+    """
+    the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+    """
+    alicloud_certificate_region_id: pulumi.Output[str]
+    """
+    the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+    """
     name: pulumi.Output[str]
     """
     Name of the Server Certificate.
@@ -38,7 +44,7 @@ class ServerCertificate(pulumi.CustomResource):
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, alicloud_certifacte_id=None, alicloud_certifacte_name=None, alicloud_certificate_id=None, alicloud_certificate_name=None, name=None, private_key=None, resource_group_id=None, server_certificate=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, alicloud_certifacte_id=None, alicloud_certifacte_name=None, alicloud_certificate_id=None, alicloud_certificate_name=None, alicloud_certificate_region_id=None, name=None, private_key=None, resource_group_id=None, server_certificate=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
         
@@ -49,7 +55,8 @@ class ServerCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-               * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[str] name: Name of the Server Certificate.
         :param pulumi.Input[str] private_key: the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb server certificate belongs.
@@ -79,6 +86,7 @@ class ServerCertificate(pulumi.CustomResource):
             __props__['alicloud_certifacte_name'] = alicloud_certifacte_name
             __props__['alicloud_certificate_id'] = alicloud_certificate_id
             __props__['alicloud_certificate_name'] = alicloud_certificate_name
+            __props__['alicloud_certificate_region_id'] = alicloud_certificate_region_id
             __props__['name'] = name
             __props__['private_key'] = private_key
             __props__['resource_group_id'] = resource_group_id
@@ -91,7 +99,7 @@ class ServerCertificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alicloud_certifacte_id=None, alicloud_certifacte_name=None, alicloud_certificate_id=None, alicloud_certificate_name=None, name=None, private_key=None, resource_group_id=None, server_certificate=None, tags=None):
+    def get(resource_name, id, opts=None, alicloud_certifacte_id=None, alicloud_certifacte_name=None, alicloud_certificate_id=None, alicloud_certificate_name=None, alicloud_certificate_region_id=None, name=None, private_key=None, resource_group_id=None, server_certificate=None, tags=None):
         """
         Get an existing ServerCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,7 +108,8 @@ class ServerCertificate(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-               * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_name: the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        :param pulumi.Input[str] alicloud_certificate_region_id: the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
         :param pulumi.Input[str] name: Name of the Server Certificate.
         :param pulumi.Input[str] private_key: the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb server certificate belongs.
@@ -116,6 +125,7 @@ class ServerCertificate(pulumi.CustomResource):
         __props__["alicloud_certifacte_name"] = alicloud_certifacte_name
         __props__["alicloud_certificate_id"] = alicloud_certificate_id
         __props__["alicloud_certificate_name"] = alicloud_certificate_name
+        __props__["alicloud_certificate_region_id"] = alicloud_certificate_region_id
         __props__["name"] = name
         __props__["private_key"] = private_key
         __props__["resource_group_id"] = resource_group_id

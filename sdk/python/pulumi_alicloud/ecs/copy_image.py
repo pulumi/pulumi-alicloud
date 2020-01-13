@@ -13,12 +13,13 @@ class CopyImage(pulumi.CustomResource):
     description: pulumi.Output[str]
     encrypted: pulumi.Output[bool]
     force: pulumi.Output[bool]
+    image_name: pulumi.Output[str]
     kms_key_id: pulumi.Output[str]
     name: pulumi.Output[str]
     source_image_id: pulumi.Output[str]
     source_region_id: pulumi.Output[str]
     tags: pulumi.Output[dict]
-    def __init__(__self__, resource_name, opts=None, description=None, encrypted=None, force=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, encrypted=None, force=None, image_name=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a CopyImage resource with the given unique name, props, and options.
         
@@ -45,6 +46,7 @@ class CopyImage(pulumi.CustomResource):
             __props__['description'] = description
             __props__['encrypted'] = encrypted
             __props__['force'] = force
+            __props__['image_name'] = image_name
             __props__['kms_key_id'] = kms_key_id
             __props__['name'] = name
             if source_image_id is None:
@@ -61,7 +63,7 @@ class CopyImage(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, encrypted=None, force=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None):
+    def get(resource_name, id, opts=None, description=None, encrypted=None, force=None, image_name=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None):
         """
         Get an existing CopyImage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -76,6 +78,7 @@ class CopyImage(pulumi.CustomResource):
         __props__["description"] = description
         __props__["encrypted"] = encrypted
         __props__["force"] = force
+        __props__["image_name"] = image_name
         __props__["kms_key_id"] = kms_key_id
         __props__["name"] = name
         __props__["source_image_id"] = source_image_id

@@ -25,6 +25,18 @@ namespace Pulumi.AliCloud.ApiGateway
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+        /// </summary>
+        [Output("subDomain")]
+        public Output<string> SubDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+        /// </summary>
+        [Output("vpcDomain")]
+        public Output<string> VpcDomain { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.
@@ -101,6 +113,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+        /// </summary>
+        [Input("subDomain")]
+        public Input<string>? SubDomain { get; set; }
+
+        /// <summary>
+        /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+        /// </summary>
+        [Input("vpcDomain")]
+        public Input<string>? VpcDomain { get; set; }
 
         public GroupState()
         {

@@ -168,7 +168,7 @@ func (r *Instance) Domain() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
-// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 func (r *Instance) InstanceChargeType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
@@ -263,7 +263,7 @@ type InstanceState struct {
 	Description interface{}
 	// Instance connection domain (only VPC network access supported).
 	Domain interface{}
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType interface{}
 	// Kibana console domain (Internet access supported).
 	KibanaDomain interface{}
@@ -310,7 +310,7 @@ type InstanceArgs struct {
 	DataNodeSpec interface{}
 	// The description of instance. It a string of 0 to 30 characters.
 	Description interface{}
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType interface{}
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists interface{}

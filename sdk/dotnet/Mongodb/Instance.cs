@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ReplicaSetName { get; private set; } = null!;
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3,5,7]
+        /// Number of replica set nodes. Valid values: [3, 5, 7]
         /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Output("replicationFactor")]
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3,5,7]
+        /// Number of replica set nodes. Valid values: [3, 5, 7]
         /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("replicationFactor")]
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EngineVersion { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        /// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ReplicaSetName { get; set; }
 
         /// <summary>
-        /// Number of replica set nodes. Valid values: [3,5,7]
+        /// Number of replica set nodes. Valid values: [3, 5, 7]
         /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("replicationFactor")]

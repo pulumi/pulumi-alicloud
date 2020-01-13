@@ -37,6 +37,7 @@ func NewImageCopy(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["encrypted"] = nil
 		inputs["force"] = nil
+		inputs["imageName"] = nil
 		inputs["kmsKeyId"] = nil
 		inputs["name"] = nil
 		inputs["sourceImageId"] = nil
@@ -46,6 +47,7 @@ func NewImageCopy(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["encrypted"] = args.Encrypted
 		inputs["force"] = args.Force
+		inputs["imageName"] = args.ImageName
 		inputs["kmsKeyId"] = args.KmsKeyId
 		inputs["name"] = args.Name
 		inputs["sourceImageId"] = args.SourceImageId
@@ -68,6 +70,7 @@ func GetImageCopy(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["encrypted"] = state.Encrypted
 		inputs["force"] = state.Force
+		inputs["imageName"] = state.ImageName
 		inputs["kmsKeyId"] = state.KmsKeyId
 		inputs["name"] = state.Name
 		inputs["sourceImageId"] = state.SourceImageId
@@ -108,12 +111,16 @@ func (r *ImageCopy) Force() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
+// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+func (r *ImageCopy) ImageName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageName"])
+}
+
 // Key ID used to encrypt the image.
 func (r *ImageCopy) KmsKeyId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kmsKeyId"])
 }
 
-// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 func (r *ImageCopy) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
@@ -143,9 +150,10 @@ type ImageCopyState struct {
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force interface{}
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName interface{}
 	// Key ID used to encrypt the image.
 	KmsKeyId interface{}
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 	Name interface{}
 	// The source image ID.
 	SourceImageId interface{}
@@ -165,9 +173,10 @@ type ImageCopyArgs struct {
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force interface{}
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName interface{}
 	// Key ID used to encrypt the image.
 	KmsKeyId interface{}
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 	Name interface{}
 	// The source image ID.
 	SourceImageId interface{}

@@ -26,6 +26,7 @@ func NewCopyImage(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["encrypted"] = nil
 		inputs["force"] = nil
+		inputs["imageName"] = nil
 		inputs["kmsKeyId"] = nil
 		inputs["name"] = nil
 		inputs["sourceImageId"] = nil
@@ -35,6 +36,7 @@ func NewCopyImage(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["encrypted"] = args.Encrypted
 		inputs["force"] = args.Force
+		inputs["imageName"] = args.ImageName
 		inputs["kmsKeyId"] = args.KmsKeyId
 		inputs["name"] = args.Name
 		inputs["sourceImageId"] = args.SourceImageId
@@ -57,6 +59,7 @@ func GetCopyImage(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["encrypted"] = state.Encrypted
 		inputs["force"] = state.Force
+		inputs["imageName"] = state.ImageName
 		inputs["kmsKeyId"] = state.KmsKeyId
 		inputs["name"] = state.Name
 		inputs["sourceImageId"] = state.SourceImageId
@@ -92,6 +95,10 @@ func (r *CopyImage) Force() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
+func (r *CopyImage) ImageName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageName"])
+}
+
 func (r *CopyImage) KmsKeyId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kmsKeyId"])
 }
@@ -117,6 +124,7 @@ type CopyImageState struct {
 	Description interface{}
 	Encrypted interface{}
 	Force interface{}
+	ImageName interface{}
 	KmsKeyId interface{}
 	Name interface{}
 	SourceImageId interface{}
@@ -129,6 +137,7 @@ type CopyImageArgs struct {
 	Description interface{}
 	Encrypted interface{}
 	Force interface{}
+	ImageName interface{}
 	KmsKeyId interface{}
 	Name interface{}
 	SourceImageId interface{}

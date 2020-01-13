@@ -42,6 +42,10 @@ class Listener(pulumi.CustomResource):
     """
     Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
     """
+    description: pulumi.Output[str]
+    """
+    The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+    """
     enable_http2: pulumi.Output[str]
     """
     Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
@@ -167,7 +171,7 @@ class Listener(pulumi.CustomResource):
       * `retriveSlbIp` (`bool`) - Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
       * `retriveSlbProto` (`bool`) - Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
     """
-    def __init__(__self__, resource_name, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Application Load Balancer Listener resource.
         
@@ -231,6 +235,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         :param pulumi.Input[float] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
         :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         :param pulumi.Input[float] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[float] forward_port: The port that http redirect to https.
@@ -295,6 +300,7 @@ class Listener(pulumi.CustomResource):
             __props__['cookie'] = cookie
             __props__['cookie_timeout'] = cookie_timeout
             __props__['delete_protection_validation'] = delete_protection_validation
+            __props__['description'] = description
             __props__['enable_http2'] = enable_http2
             __props__['established_timeout'] = established_timeout
             __props__['forward_port'] = forward_port
@@ -341,7 +347,7 @@ class Listener(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None):
+    def get(resource_name, id, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -357,6 +363,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         :param pulumi.Input[float] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
         :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         :param pulumi.Input[float] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
         :param pulumi.Input[float] forward_port: The port that http redirect to https.
@@ -407,6 +414,7 @@ class Listener(pulumi.CustomResource):
         __props__["cookie"] = cookie
         __props__["cookie_timeout"] = cookie_timeout
         __props__["delete_protection_validation"] = delete_protection_validation
+        __props__["description"] = description
         __props__["enable_http2"] = enable_http2
         __props__["established_timeout"] = established_timeout
         __props__["forward_port"] = forward_port

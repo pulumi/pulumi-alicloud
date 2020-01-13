@@ -534,11 +534,11 @@ export namespace drds {
 export namespace ecs {
     export interface ImageDiskDeviceMapping {
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
          */
         device?: pulumi.Input<string>;
         /**
-         * Snapshot ID.
+         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
          */
         diskType?: pulumi.Input<string>;
         /**
@@ -549,6 +549,26 @@ export namespace ecs {
          * Specifies a snapshot that is used to create a combined custom image.
          */
         snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface ImageImportDiskDeviceMapping {
+        /**
+         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         */
+        device?: pulumi.Input<string>;
+        /**
+         * Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         */
+        diskImageSize?: pulumi.Input<number>;
+        /**
+         * Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         */
+        format?: pulumi.Input<string>;
+        /**
+         * Save the exported OSS bucket.
+         */
+        ossBucket?: pulumi.Input<string>;
+        ossObject?: pulumi.Input<string>;
     }
 
     export interface InstanceDataDisk {

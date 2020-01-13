@@ -185,9 +185,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
-     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
-    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     */
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */
@@ -242,6 +246,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityIpMode"] = state ? state.securityIpMode : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -276,6 +281,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityIpMode"] = args ? args.securityIpMode : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -377,9 +383,13 @@ export interface InstanceState {
      */
     readonly port?: pulumi.Input<string>;
     /**
-     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     */
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */
@@ -480,9 +490,13 @@ export interface InstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     */
+    readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
      */

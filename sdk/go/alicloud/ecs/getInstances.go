@@ -18,6 +18,7 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		inputs["imageId"] = args.ImageId
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
+		inputs["ramRoleName"] = args.RamRoleName
 		inputs["resourceGroupId"] = args.ResourceGroupId
 		inputs["status"] = args.Status
 		inputs["tags"] = args.Tags
@@ -36,6 +37,7 @@ func LookupInstances(ctx *pulumi.Context, args *GetInstancesArgs) (*GetInstances
 		NameRegex: outputs["nameRegex"],
 		Names: outputs["names"],
 		OutputFile: outputs["outputFile"],
+		RamRoleName: outputs["ramRoleName"],
 		ResourceGroupId: outputs["resourceGroupId"],
 		Status: outputs["status"],
 		Tags: outputs["tags"],
@@ -56,6 +58,8 @@ type GetInstancesArgs struct {
 	// A regex string to filter results by instance name.
 	NameRegex interface{}
 	OutputFile interface{}
+	// The RAM role name which the instance attaches.
+	RamRoleName interface{}
 	// The Id of resource group which the instance belongs.
 	ResourceGroupId interface{}
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
@@ -90,6 +94,8 @@ type GetInstancesResult struct {
 	// A list of instances names. 
 	Names interface{}
 	OutputFile interface{}
+	// The Ram role name.
+	RamRoleName interface{}
 	// The Id of resource group.
 	ResourceGroupId interface{}
 	// Instance current status.

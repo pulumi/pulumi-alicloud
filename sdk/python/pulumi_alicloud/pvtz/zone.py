@@ -12,10 +12,12 @@ from .. import utilities, tables
 class Zone(pulumi.CustomResource):
     creation_time: pulumi.Output[str]
     is_ptr: pulumi.Output[bool]
+    lang: pulumi.Output[str]
     name: pulumi.Output[str]
     """
     The name of the Private Zone.
     """
+    proxy_pattern: pulumi.Output[str]
     record_count: pulumi.Output[float]
     """
     The count of the Private Zone Record.
@@ -23,9 +25,13 @@ class Zone(pulumi.CustomResource):
     remark: pulumi.Output[str]
     """
     The remark of the Private Zone.
+    * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+    - ZONE: indicates that the recursive DNS proxy is disabled.
+    - RECORD: indicates that the recursive DNS proxy is enabled.
     """
     update_time: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, name=None, remark=None, __props__=None, __name__=None, __opts__=None):
+    user_client_ip: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, lang=None, name=None, proxy_pattern=None, remark=None, user_client_ip=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Zone resource with the given unique name, props, and options.
         
@@ -33,6 +39,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the Private Zone.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
+               * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+               - ZONE: indicates that the recursive DNS proxy is disabled.
+               - RECORD: indicates that the recursive DNS proxy is enabled.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """
@@ -53,8 +62,11 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['lang'] = lang
             __props__['name'] = name
+            __props__['proxy_pattern'] = proxy_pattern
             __props__['remark'] = remark
+            __props__['user_client_ip'] = user_client_ip
             __props__['creation_time'] = None
             __props__['is_ptr'] = None
             __props__['record_count'] = None
@@ -66,7 +78,7 @@ class Zone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_time=None, is_ptr=None, name=None, record_count=None, remark=None, update_time=None):
+    def get(resource_name, id, opts=None, creation_time=None, is_ptr=None, lang=None, name=None, proxy_pattern=None, record_count=None, remark=None, update_time=None, user_client_ip=None):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -77,6 +89,9 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the Private Zone.
         :param pulumi.Input[float] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
+               * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+               - ZONE: indicates that the recursive DNS proxy is disabled.
+               - RECORD: indicates that the recursive DNS proxy is enabled.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """
@@ -85,10 +100,13 @@ class Zone(pulumi.CustomResource):
         __props__ = dict()
         __props__["creation_time"] = creation_time
         __props__["is_ptr"] = is_ptr
+        __props__["lang"] = lang
         __props__["name"] = name
+        __props__["proxy_pattern"] = proxy_pattern
         __props__["record_count"] = record_count
         __props__["remark"] = remark
         __props__["update_time"] = update_time
+        __props__["user_client_ip"] = user_client_ip
         return Zone(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

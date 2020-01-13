@@ -18,16 +18,46 @@ namespace Pulumi.AliCloud.Rds
     public partial class BackupPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// </summary>
+        [Output("archiveBackupKeepCount")]
+        public Output<int> ArchiveBackupKeepCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// </summary>
+        [Output("archiveBackupKeepPolicy")]
+        public Output<string> ArchiveBackupKeepPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// </summary>
+        [Output("archiveBackupRetentionPeriod")]
+        public Output<int> ArchiveBackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         [Output("backupPeriods")]
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
 
         /// <summary>
-        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+        /// </summary>
+        [Output("backupRetentionPeriod")]
+        public Output<int?> BackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Output("backupTime")]
-        public Output<string?> BackupTime { get; private set; } = null!;
+        public Output<string> BackupTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+        /// </summary>
+        [Output("compressType")]
+        public Output<string> CompressType { get; private set; } = null!;
 
         /// <summary>
         /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
@@ -51,31 +81,55 @@ namespace Pulumi.AliCloud.Rds
         /// Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         /// </summary>
         [Output("localLogRetentionHours")]
-        public Output<int?> LocalLogRetentionHours { get; private set; } = null!;
+        public Output<int> LocalLogRetentionHours { get; private set; } = null!;
 
         /// <summary>
         /// Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [5-50].
         /// </summary>
         [Output("localLogRetentionSpace")]
-        public Output<int?> LocalLogRetentionSpace { get; private set; } = null!;
+        public Output<int> LocalLogRetentionSpace { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Output("logBackup")]
         public Output<bool> LogBackup { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retention_period`.
+        /// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        /// </summary>
+        [Output("logBackupFrequency")]
+        public Output<string> LogBackupFrequency { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// </summary>
+        [Output("logBackupRetentionPeriod")]
+        public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Output("logRetentionPeriod")]
         public Output<int> LogRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Instance backup retention days. Valid values: [7-730]. Default to 7.
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// </summary>
+        [Output("preferredBackupPeriods")]
+        public Output<ImmutableArray<string>> PreferredBackupPeriods { get; private set; } = null!;
+
+        /// <summary>
+        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// </summary>
+        [Output("preferredBackupTime")]
+        public Output<string?> PreferredBackupTime { get; private set; } = null!;
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Output("retentionPeriod")]
-        public Output<int?> RetentionPeriod { get; private set; } = null!;
+        public Output<int> RetentionPeriod { get; private set; } = null!;
 
 
         /// <summary>
@@ -123,11 +177,29 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class BackupPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// </summary>
+        [Input("archiveBackupKeepCount")]
+        public Input<int>? ArchiveBackupKeepCount { get; set; }
+
+        /// <summary>
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// </summary>
+        [Input("archiveBackupKeepPolicy")]
+        public Input<string>? ArchiveBackupKeepPolicy { get; set; }
+
+        /// <summary>
+        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// </summary>
+        [Input("archiveBackupRetentionPeriod")]
+        public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -136,10 +208,22 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
+
+        /// <summary>
+        /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+        /// </summary>
+        [Input("compressType")]
+        public Input<string>? CompressType { get; set; }
 
         /// <summary>
         /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
@@ -172,19 +256,49 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionSpace { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Input("logBackup")]
         public Input<bool>? LogBackup { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retention_period`.
+        /// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        /// </summary>
+        [Input("logBackupFrequency")]
+        public Input<string>? LogBackupFrequency { get; set; }
+
+        /// <summary>
+        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Input("logRetentionPeriod")]
         public Input<int>? LogRetentionPeriod { get; set; }
 
+        [Input("preferredBackupPeriods")]
+        private InputList<string>? _preferredBackupPeriods;
+
         /// <summary>
-        /// Instance backup retention days. Valid values: [7-730]. Default to 7.
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// </summary>
+        public InputList<string> PreferredBackupPeriods
+        {
+            get => _preferredBackupPeriods ?? (_preferredBackupPeriods = new InputList<string>());
+            set => _preferredBackupPeriods = value;
+        }
+
+        /// <summary>
+        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// </summary>
+        [Input("preferredBackupTime")]
+        public Input<string>? PreferredBackupTime { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
@@ -196,11 +310,29 @@ namespace Pulumi.AliCloud.Rds
 
     public sealed class BackupPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
+        /// </summary>
+        [Input("archiveBackupKeepCount")]
+        public Input<int>? ArchiveBackupKeepCount { get; set; }
+
+        /// <summary>
+        /// Instance archive backup keep policy. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+        /// </summary>
+        [Input("archiveBackupKeepPolicy")]
+        public Input<string>? ArchiveBackupKeepPolicy { get; set; }
+
+        /// <summary>
+        /// Instance archive backup retention days. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archive_backup_retention_period` must larger than `backup_retention_period` 730.
+        /// </summary>
+        [Input("archiveBackupRetentionPeriod")]
+        public Input<int>? ArchiveBackupRetentionPeriod { get; set; }
+
         [Input("backupPeriods")]
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         public InputList<string> BackupPeriods
         {
@@ -209,10 +341,22 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+        /// </summary>
+        [Input("backupRetentionPeriod")]
+        public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
+
+        /// <summary>
+        /// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+        /// </summary>
+        [Input("compressType")]
+        public Input<string>? CompressType { get; set; }
 
         /// <summary>
         /// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
@@ -245,19 +389,49 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionSpace { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Input("logBackup")]
         public Input<bool>? LogBackup { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retention_period`.
+        /// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+        /// </summary>
+        [Input("logBackupFrequency")]
+        public Input<string>? LogBackupFrequency { get; set; }
+
+        /// <summary>
+        /// Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
+        /// </summary>
+        [Input("logBackupRetentionPeriod")]
+        public Input<int>? LogBackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Input("logRetentionPeriod")]
         public Input<int>? LogRetentionPeriod { get; set; }
 
+        [Input("preferredBackupPeriods")]
+        private InputList<string>? _preferredBackupPeriods;
+
         /// <summary>
-        /// Instance backup retention days. Valid values: [7-730]. Default to 7.
+        /// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+        /// </summary>
+        public InputList<string> PreferredBackupPeriods
+        {
+            get => _preferredBackupPeriods ?? (_preferredBackupPeriods = new InputList<string>());
+            set => _preferredBackupPeriods = value;
+        }
+
+        /// <summary>
+        /// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// </summary>
+        [Input("preferredBackupTime")]
+        public Input<string>? PreferredBackupTime { get; set; }
+
+        /// <summary>
+        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

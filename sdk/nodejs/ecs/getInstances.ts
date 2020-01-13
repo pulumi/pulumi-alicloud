@@ -41,6 +41,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "imageId": args.imageId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "ramRoleName": args.ramRoleName,
         "resourceGroupId": args.resourceGroupId,
         "status": args.status,
         "tags": args.tags,
@@ -72,6 +73,10 @@ export interface GetInstancesArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * The RAM role name which the instance attaches.
+     */
+    readonly ramRoleName?: string;
     /**
      * The Id of resource group which the instance belongs.
      */
@@ -128,6 +133,10 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The Ram role name.
+     */
+    readonly ramRoleName?: string;
     /**
      * The Id of resource group.
      */

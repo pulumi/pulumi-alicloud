@@ -25,26 +25,44 @@ func NewBackupPolicy(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["archiveBackupKeepCount"] = nil
+		inputs["archiveBackupKeepPolicy"] = nil
+		inputs["archiveBackupRetentionPeriod"] = nil
 		inputs["backupPeriods"] = nil
+		inputs["backupRetentionPeriod"] = nil
 		inputs["backupTime"] = nil
+		inputs["compressType"] = nil
 		inputs["enableBackupLog"] = nil
 		inputs["highSpaceUsageProtection"] = nil
 		inputs["instanceId"] = nil
 		inputs["localLogRetentionHours"] = nil
 		inputs["localLogRetentionSpace"] = nil
 		inputs["logBackup"] = nil
+		inputs["logBackupFrequency"] = nil
+		inputs["logBackupRetentionPeriod"] = nil
 		inputs["logRetentionPeriod"] = nil
+		inputs["preferredBackupPeriods"] = nil
+		inputs["preferredBackupTime"] = nil
 		inputs["retentionPeriod"] = nil
 	} else {
+		inputs["archiveBackupKeepCount"] = args.ArchiveBackupKeepCount
+		inputs["archiveBackupKeepPolicy"] = args.ArchiveBackupKeepPolicy
+		inputs["archiveBackupRetentionPeriod"] = args.ArchiveBackupRetentionPeriod
 		inputs["backupPeriods"] = args.BackupPeriods
+		inputs["backupRetentionPeriod"] = args.BackupRetentionPeriod
 		inputs["backupTime"] = args.BackupTime
+		inputs["compressType"] = args.CompressType
 		inputs["enableBackupLog"] = args.EnableBackupLog
 		inputs["highSpaceUsageProtection"] = args.HighSpaceUsageProtection
 		inputs["instanceId"] = args.InstanceId
 		inputs["localLogRetentionHours"] = args.LocalLogRetentionHours
 		inputs["localLogRetentionSpace"] = args.LocalLogRetentionSpace
 		inputs["logBackup"] = args.LogBackup
+		inputs["logBackupFrequency"] = args.LogBackupFrequency
+		inputs["logBackupRetentionPeriod"] = args.LogBackupRetentionPeriod
 		inputs["logRetentionPeriod"] = args.LogRetentionPeriod
+		inputs["preferredBackupPeriods"] = args.PreferredBackupPeriods
+		inputs["preferredBackupTime"] = args.PreferredBackupTime
 		inputs["retentionPeriod"] = args.RetentionPeriod
 	}
 	s, err := ctx.RegisterResource("alicloud:rds/backupPolicy:BackupPolicy", name, true, inputs, opts...)
@@ -60,15 +78,24 @@ func GetBackupPolicy(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *BackupPolicyState, opts ...pulumi.ResourceOpt) (*BackupPolicy, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["archiveBackupKeepCount"] = state.ArchiveBackupKeepCount
+		inputs["archiveBackupKeepPolicy"] = state.ArchiveBackupKeepPolicy
+		inputs["archiveBackupRetentionPeriod"] = state.ArchiveBackupRetentionPeriod
 		inputs["backupPeriods"] = state.BackupPeriods
+		inputs["backupRetentionPeriod"] = state.BackupRetentionPeriod
 		inputs["backupTime"] = state.BackupTime
+		inputs["compressType"] = state.CompressType
 		inputs["enableBackupLog"] = state.EnableBackupLog
 		inputs["highSpaceUsageProtection"] = state.HighSpaceUsageProtection
 		inputs["instanceId"] = state.InstanceId
 		inputs["localLogRetentionHours"] = state.LocalLogRetentionHours
 		inputs["localLogRetentionSpace"] = state.LocalLogRetentionSpace
 		inputs["logBackup"] = state.LogBackup
+		inputs["logBackupFrequency"] = state.LogBackupFrequency
+		inputs["logBackupRetentionPeriod"] = state.LogBackupRetentionPeriod
 		inputs["logRetentionPeriod"] = state.LogRetentionPeriod
+		inputs["preferredBackupPeriods"] = state.PreferredBackupPeriods
+		inputs["preferredBackupTime"] = state.PreferredBackupTime
 		inputs["retentionPeriod"] = state.RetentionPeriod
 	}
 	s, err := ctx.ReadResource("alicloud:rds/backupPolicy:BackupPolicy", name, id, inputs, opts...)
@@ -88,14 +115,39 @@ func (r *BackupPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+func (r *BackupPolicy) ArchiveBackupKeepCount() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["archiveBackupKeepCount"])
+}
+
+// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+func (r *BackupPolicy) ArchiveBackupKeepPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["archiveBackupKeepPolicy"])
+}
+
+// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+func (r *BackupPolicy) ArchiveBackupRetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["archiveBackupRetentionPeriod"])
+}
+
+// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 func (r *BackupPolicy) BackupPeriods() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["backupPeriods"])
 }
 
-// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+func (r *BackupPolicy) BackupRetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["backupRetentionPeriod"])
+}
+
+// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
 func (r *BackupPolicy) BackupTime() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["backupTime"])
+}
+
+// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+func (r *BackupPolicy) CompressType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["compressType"])
 }
 
 // Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
@@ -123,27 +175,57 @@ func (r *BackupPolicy) LocalLogRetentionSpace() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["localLogRetentionSpace"])
 }
 
-// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 func (r *BackupPolicy) LogBackup() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["logBackup"])
 }
 
-// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+func (r *BackupPolicy) LogBackupFrequency() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["logBackupFrequency"])
+}
+
+// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+func (r *BackupPolicy) LogBackupRetentionPeriod() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["logBackupRetentionPeriod"])
+}
+
+// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
 func (r *BackupPolicy) LogRetentionPeriod() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["logRetentionPeriod"])
 }
 
-// Instance backup retention days. Valid values: [7-730]. Default to 7.
+// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+func (r *BackupPolicy) PreferredBackupPeriods() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["preferredBackupPeriods"])
+}
+
+// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+func (r *BackupPolicy) PreferredBackupTime() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["preferredBackupTime"])
+}
+
+// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 func (r *BackupPolicy) RetentionPeriod() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["retentionPeriod"])
 }
 
 // Input properties used for looking up and filtering BackupPolicy resources.
 type BackupPolicyState struct {
-	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+	ArchiveBackupKeepCount interface{}
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	ArchiveBackupKeepPolicy interface{}
+	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+	ArchiveBackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	BackupPeriods interface{}
-	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+	BackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
 	BackupTime interface{}
+	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+	CompressType interface{}
 	// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
 	EnableBackupLog interface{}
 	// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
@@ -154,20 +236,38 @@ type BackupPolicyState struct {
 	LocalLogRetentionHours interface{}
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace interface{}
-	// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	LogBackup interface{}
-	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+	LogBackupFrequency interface{}
+	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+	LogBackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
 	LogRetentionPeriod interface{}
-	// Instance backup retention days. Valid values: [7-730]. Default to 7.
+	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	PreferredBackupPeriods interface{}
+	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	PreferredBackupTime interface{}
+	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	RetentionPeriod interface{}
 }
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
-	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	// Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+	ArchiveBackupKeepCount interface{}
+	// Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+	ArchiveBackupKeepPolicy interface{}
+	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+	ArchiveBackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	BackupPeriods interface{}
-	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+	BackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
 	BackupTime interface{}
+	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
+	CompressType interface{}
 	// Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
 	EnableBackupLog interface{}
 	// Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
@@ -178,10 +278,18 @@ type BackupPolicyArgs struct {
 	LocalLogRetentionHours interface{}
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace interface{}
-	// It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
 	LogBackup interface{}
-	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+	LogBackupFrequency interface{}
+	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+	LogBackupRetentionPeriod interface{}
+	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
 	LogRetentionPeriod interface{}
-	// Instance backup retention days. Valid values: [7-730]. Default to 7.
+	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+	PreferredBackupPeriods interface{}
+	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	PreferredBackupTime interface{}
+	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
 	RetentionPeriod interface{}
 }

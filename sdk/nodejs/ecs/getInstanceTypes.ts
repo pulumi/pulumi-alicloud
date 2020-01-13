@@ -44,6 +44,8 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
         "eniAmount": args.eniAmount,
+        "gpuAmount": args.gpuAmount,
+        "gpuSpec": args.gpuSpec,
         "instanceChargeType": args.instanceChargeType,
         "instanceTypeFamily": args.instanceTypeFamily,
         "isOutdated": args.isOutdated,
@@ -74,6 +76,14 @@ export interface GetInstanceTypesArgs {
      * Filter the result whose network interface number is no more than `eniAmount`.
      */
     readonly eniAmount?: number;
+    /**
+     * The GPU amount of an instance type.
+     */
+    readonly gpuAmount?: number;
+    /**
+     * The GPU spec of an instance type.
+     */
+    readonly gpuSpec?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
@@ -116,6 +126,8 @@ export interface GetInstanceTypesResult {
      * The maximum number of network interfaces that an instance type can be attached to.
      */
     readonly eniAmount?: number;
+    readonly gpuAmount?: number;
+    readonly gpuSpec?: string;
     /**
      * A list of instance type IDs.
      */

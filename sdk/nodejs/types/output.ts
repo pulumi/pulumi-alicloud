@@ -406,6 +406,10 @@ export namespace apigateway {
 
     export interface GetAppsApp {
         /**
+         * App code.
+         */
+        appCode: string;
+        /**
          * Creation time (Greenwich mean time).
          */
         createdTime: string;
@@ -2037,6 +2041,10 @@ export namespace ecs {
          */
         publicIp: string;
         /**
+         * The RAM role name which the instance attaches.
+         */
+        ramRoleName: string;
+        /**
          * Region ID the instance belongs to.
          */
         regionId: string;
@@ -2393,11 +2401,11 @@ export namespace ecs {
 
     export interface ImageDiskDeviceMapping {
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
          */
         device: string;
         /**
-         * Snapshot ID.
+         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
          */
         diskType: string;
         /**
@@ -2408,6 +2416,26 @@ export namespace ecs {
          * Specifies a snapshot that is used to create a combined custom image.
          */
         snapshotId: string;
+    }
+
+    export interface ImageImportDiskDeviceMapping {
+        /**
+         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         */
+        device: string;
+        /**
+         * Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         */
+        diskImageSize?: number;
+        /**
+         * Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         */
+        format: string;
+        /**
+         * Save the exported OSS bucket.
+         */
+        ossBucket?: string;
+        ossObject?: string;
     }
 
     export interface InstanceDataDisk {
@@ -2611,7 +2639,7 @@ export namespace emr {
          */
         localStorageCapacity: number;
         /**
-         * The available zone id in Alibaba Cloud account
+         * The supported resources of specific zoneId.
          */
         zoneId: string;
     }
@@ -3300,6 +3328,51 @@ export namespace log {
 }
 
 export namespace marketplace {
+    export interface GetProductProduct {
+        /**
+         * The code of the product.
+         */
+        code: string;
+        /**
+         * The description of the product.
+         */
+        description: string;
+        /**
+         * The name of the product.
+         */
+        name: string;
+        /**
+         * A list of one element containing sku attributes of an object. Each element contains the following attributes:
+         */
+        skuses: outputs.marketplace.GetProductProductSkus[];
+    }
+
+    export interface GetProductProductSkus {
+        /**
+         * The list of package version details of this product sku, Each element contains the following attributes:
+         */
+        packageVersions: outputs.marketplace.GetProductProductSkusPackageVersion[];
+        /**
+         * The sku code of this product sku.
+         */
+        skuCode: string;
+        /**
+         * The sku name of this product sku.
+         */
+        skuName: string;
+    }
+
+    export interface GetProductProductSkusPackageVersion {
+        /**
+         * The package name of this product sku package.
+         */
+        packageName: string;
+        /**
+         * The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
+         */
+        packageVersion: string;
+    }
+
     export interface GetProductsProduct {
         /**
          * The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
@@ -4991,6 +5064,10 @@ export namespace slb {
          * Cookie timeout in seconds. Only available when the stickySessionType is `insert`.
          */
         cookieTimeout: number;
+        /**
+         * The description of slb listener.
+         */
+        description: string;
         /**
          * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
          */

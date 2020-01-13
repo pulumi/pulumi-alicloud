@@ -49,6 +49,7 @@ export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.Invok
         "outputFile": args.outputFile,
         "supportLocalStorage": args.supportLocalStorage,
         "supportNodeTypes": args.supportNodeTypes,
+        "zoneId": args.zoneId,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -80,6 +81,10 @@ export interface GetInstanceTypesArgs {
      * Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
      */
     readonly supportNodeTypes?: string[];
+    /**
+     * The supported resources of specific zoneId.
+     */
+    readonly zoneId?: string;
 }
 
 /**
@@ -100,6 +105,10 @@ export interface GetInstanceTypesResult {
      * A list of emr instance types. Each element contains the following attributes:
      */
     readonly types: outputs.emr.GetInstanceTypesType[];
+    /**
+     * The available zone id in Alibaba Cloud account
+     */
+    readonly zoneId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

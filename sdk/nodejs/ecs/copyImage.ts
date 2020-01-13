@@ -34,6 +34,7 @@ export class CopyImage extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
     public readonly force!: pulumi.Output<boolean | undefined>;
+    public readonly imageName!: pulumi.Output<string>;
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly sourceImageId!: pulumi.Output<string>;
@@ -55,6 +56,7 @@ export class CopyImage extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["force"] = state ? state.force : undefined;
+            inputs["imageName"] = state ? state.imageName : undefined;
             inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sourceImageId"] = state ? state.sourceImageId : undefined;
@@ -71,6 +73,7 @@ export class CopyImage extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["imageName"] = args ? args.imageName : undefined;
             inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sourceImageId"] = args ? args.sourceImageId : undefined;
@@ -95,6 +98,7 @@ export interface CopyImageState {
     readonly description?: pulumi.Input<string>;
     readonly encrypted?: pulumi.Input<boolean>;
     readonly force?: pulumi.Input<boolean>;
+    readonly imageName?: pulumi.Input<string>;
     readonly kmsKeyId?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly sourceImageId?: pulumi.Input<string>;
@@ -109,6 +113,7 @@ export interface CopyImageArgs {
     readonly description?: pulumi.Input<string>;
     readonly encrypted?: pulumi.Input<boolean>;
     readonly force?: pulumi.Input<boolean>;
+    readonly imageName?: pulumi.Input<string>;
     readonly kmsKeyId?: pulumi.Input<string>;
     readonly name?: pulumi.Input<string>;
     readonly sourceImageId: pulumi.Input<string>;

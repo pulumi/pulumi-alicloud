@@ -44,14 +44,17 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
+        [Output("imageName")]
+        public Output<string> ImageName { get; private set; } = null!;
+
+        /// <summary>
         /// Key ID used to encrypt the image.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
-        /// <summary>
-        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -140,14 +143,17 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
         /// Key ID used to encrypt the image.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -203,14 +209,17 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        /// <summary>
         /// Key ID used to encrypt the image.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
-        /// <summary>
-        /// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

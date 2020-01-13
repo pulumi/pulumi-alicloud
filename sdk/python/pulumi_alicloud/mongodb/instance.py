@@ -38,7 +38,7 @@ class Instance(pulumi.CustomResource):
     """
     instance_charge_type: pulumi.Output[str]
     """
-    Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+    Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
     """
     kms_encrypted_password: pulumi.Output[str]
     """
@@ -70,7 +70,7 @@ class Instance(pulumi.CustomResource):
     """
     replication_factor: pulumi.Output[float]
     """
-    Number of replica set nodes. Valid values: [3,5,7]
+    Number of replica set nodes. Valid values: [3, 5, 7]
     * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
     """
     retention_period: pulumi.Output[float]
@@ -119,14 +119,14 @@ class Instance(pulumi.CustomResource):
                - Custom storage space; value range: [10,2000]
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
-        :param pulumi.Input[float] replication_factor: Number of replica set nodes. Valid values: [3,5,7]
+        :param pulumi.Input[float] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
                * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -204,7 +204,7 @@ class Instance(pulumi.CustomResource):
                - Custom storage space; value range: [10,2000]
                - 10-GB increments.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
@@ -212,7 +212,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[float] replication_factor: Number of replica set nodes. Valid values: [3,5,7]
+        :param pulumi.Input[float] replication_factor: Number of replica set nodes. Valid values: [3, 5, 7]
                * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[float] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).

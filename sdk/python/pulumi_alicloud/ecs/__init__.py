@@ -11,6 +11,7 @@ from .eip_association import *
 from .image import *
 from .image_copy import *
 from .image_export import *
+from .image_import import *
 from .image_share_permission import *
 from .instance import *
 from .key_pair import *

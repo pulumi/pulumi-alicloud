@@ -13,6 +13,7 @@ import (
 func LookupListeners(ctx *pulumi.Context, args *GetListenersArgs) (*GetListenersResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["descriptionRegex"] = args.DescriptionRegex
 		inputs["frontendPort"] = args.FrontendPort
 		inputs["loadBalancerId"] = args.LoadBalancerId
 		inputs["outputFile"] = args.OutputFile
@@ -23,6 +24,7 @@ func LookupListeners(ctx *pulumi.Context, args *GetListenersArgs) (*GetListeners
 		return nil, err
 	}
 	return &GetListenersResult{
+		DescriptionRegex: outputs["descriptionRegex"],
 		FrontendPort: outputs["frontendPort"],
 		LoadBalancerId: outputs["loadBalancerId"],
 		OutputFile: outputs["outputFile"],
@@ -34,6 +36,8 @@ func LookupListeners(ctx *pulumi.Context, args *GetListenersArgs) (*GetListeners
 
 // A collection of arguments for invoking getListeners.
 type GetListenersArgs struct {
+	// A regex string to filter results by SLB listener description.
+	DescriptionRegex interface{}
 	// Filter listeners by the specified frontend port.
 	FrontendPort interface{}
 	// ID of the SLB with listeners.
@@ -45,6 +49,7 @@ type GetListenersArgs struct {
 
 // A collection of values returned by getListeners.
 type GetListenersResult struct {
+	DescriptionRegex interface{}
 	// Frontend port used to receive incoming traffic and distribute it to the backend servers.
 	FrontendPort interface{}
 	LoadBalancerId interface{}

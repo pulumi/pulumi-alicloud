@@ -73,13 +73,33 @@ export class BackupPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+     */
+    public readonly archiveBackupKeepCount!: pulumi.Output<number>;
+    /**
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     */
+    public readonly archiveBackupKeepPolicy!: pulumi.Output<string>;
+    /**
+     * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+     */
+    public readonly archiveBackupRetentionPeriod!: pulumi.Output<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
-     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
      */
-    public readonly backupTime!: pulumi.Output<string | undefined>;
+    public readonly backupRetentionPeriod!: pulumi.Output<number | undefined>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+     */
+    public readonly backupTime!: pulumi.Output<string>;
+    /**
+     * The compress type of instance policy. Valid values are `1`, `4`, `8`.
+     */
+    public readonly compressType!: pulumi.Output<string>;
     /**
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
@@ -95,23 +115,39 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Instance log backup local retention hours. Valid when the `enableBackupLog` is `true`. Valid values: [0-7*24].
      */
-    public readonly localLogRetentionHours!: pulumi.Output<number | undefined>;
+    public readonly localLogRetentionHours!: pulumi.Output<number>;
     /**
      * Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
      */
-    public readonly localLogRetentionSpace!: pulumi.Output<number | undefined>;
+    public readonly localLogRetentionSpace!: pulumi.Output<number>;
     /**
-     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      */
     public readonly logBackup!: pulumi.Output<boolean>;
     /**
-     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+     * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+     */
+    public readonly logBackupFrequency!: pulumi.Output<string>;
+    /**
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+     */
+    public readonly logBackupRetentionPeriod!: pulumi.Output<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      */
     public readonly logRetentionPeriod!: pulumi.Output<number>;
     /**
-     * Instance backup retention days. Valid values: [7-730]. Default to 7.
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      */
-    public readonly retentionPeriod!: pulumi.Output<number | undefined>;
+    public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
+    /**
+     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     */
+    public readonly preferredBackupTime!: pulumi.Output<string | undefined>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+     */
+    public readonly retentionPeriod!: pulumi.Output<number>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -125,30 +161,48 @@ export class BackupPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as BackupPolicyState | undefined;
+            inputs["archiveBackupKeepCount"] = state ? state.archiveBackupKeepCount : undefined;
+            inputs["archiveBackupKeepPolicy"] = state ? state.archiveBackupKeepPolicy : undefined;
+            inputs["archiveBackupRetentionPeriod"] = state ? state.archiveBackupRetentionPeriod : undefined;
             inputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            inputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
             inputs["backupTime"] = state ? state.backupTime : undefined;
+            inputs["compressType"] = state ? state.compressType : undefined;
             inputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             inputs["highSpaceUsageProtection"] = state ? state.highSpaceUsageProtection : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["localLogRetentionHours"] = state ? state.localLogRetentionHours : undefined;
             inputs["localLogRetentionSpace"] = state ? state.localLogRetentionSpace : undefined;
             inputs["logBackup"] = state ? state.logBackup : undefined;
+            inputs["logBackupFrequency"] = state ? state.logBackupFrequency : undefined;
+            inputs["logBackupRetentionPeriod"] = state ? state.logBackupRetentionPeriod : undefined;
             inputs["logRetentionPeriod"] = state ? state.logRetentionPeriod : undefined;
+            inputs["preferredBackupPeriods"] = state ? state.preferredBackupPeriods : undefined;
+            inputs["preferredBackupTime"] = state ? state.preferredBackupTime : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
         } else {
             const args = argsOrState as BackupPolicyArgs | undefined;
             if (!args || args.instanceId === undefined) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            inputs["archiveBackupKeepCount"] = args ? args.archiveBackupKeepCount : undefined;
+            inputs["archiveBackupKeepPolicy"] = args ? args.archiveBackupKeepPolicy : undefined;
+            inputs["archiveBackupRetentionPeriod"] = args ? args.archiveBackupRetentionPeriod : undefined;
             inputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            inputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
             inputs["backupTime"] = args ? args.backupTime : undefined;
+            inputs["compressType"] = args ? args.compressType : undefined;
             inputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             inputs["highSpaceUsageProtection"] = args ? args.highSpaceUsageProtection : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["localLogRetentionHours"] = args ? args.localLogRetentionHours : undefined;
             inputs["localLogRetentionSpace"] = args ? args.localLogRetentionSpace : undefined;
             inputs["logBackup"] = args ? args.logBackup : undefined;
+            inputs["logBackupFrequency"] = args ? args.logBackupFrequency : undefined;
+            inputs["logBackupRetentionPeriod"] = args ? args.logBackupRetentionPeriod : undefined;
             inputs["logRetentionPeriod"] = args ? args.logRetentionPeriod : undefined;
+            inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
+            inputs["preferredBackupTime"] = args ? args.preferredBackupTime : undefined;
             inputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
         }
         if (!opts) {
@@ -167,13 +221,33 @@ export class BackupPolicy extends pulumi.CustomResource {
  */
 export interface BackupPolicyState {
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+     */
+    readonly archiveBackupKeepCount?: pulumi.Input<number>;
+    /**
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     */
+    readonly archiveBackupKeepPolicy?: pulumi.Input<string>;
+    /**
+     * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+     */
+    readonly archiveBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+     */
+    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      */
     readonly backupTime?: pulumi.Input<string>;
+    /**
+     * The compress type of instance policy. Valid values are `1`, `4`, `8`.
+     */
+    readonly compressType?: pulumi.Input<string>;
     /**
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
@@ -195,15 +269,31 @@ export interface BackupPolicyState {
      */
     readonly localLogRetentionSpace?: pulumi.Input<number>;
     /**
-     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      */
     readonly logBackup?: pulumi.Input<boolean>;
     /**
-     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+     * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+     */
+    readonly logBackupFrequency?: pulumi.Input<string>;
+    /**
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+     */
+    readonly logBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      */
     readonly logRetentionPeriod?: pulumi.Input<number>;
     /**
-     * Instance backup retention days. Valid values: [7-730]. Default to 7.
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     */
+    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     */
+    readonly preferredBackupTime?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
 }
@@ -213,13 +303,33 @@ export interface BackupPolicyState {
  */
 export interface BackupPolicyArgs {
     /**
-     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     * Instance archive backup keep count. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. When `archiveBackupKeepPolicy` is `ByMonth` Valid values: [1-31]. When `archiveBackupKeepPolicy` is `ByWeek` Valid values: [1-7].
+     */
+    readonly archiveBackupKeepCount?: pulumi.Input<number>;
+    /**
+     * Instance archive backup keep policy. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values are `ByMonth`, `Disable`, `KeepAll`.
+     */
+    readonly archiveBackupKeepPolicy?: pulumi.Input<string>;
+    /**
+     * Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
+     */
+    readonly archiveBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
+     */
+    readonly backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      */
     readonly backupTime?: pulumi.Input<string>;
+    /**
+     * The compress type of instance policy. Valid values are `1`, `4`, `8`.
+     */
+    readonly compressType?: pulumi.Input<string>;
     /**
      * Whether to backup instance log. Valid values are `true`, `false`, Default to `true`. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
      */
@@ -241,15 +351,31 @@ export interface BackupPolicyArgs {
      */
     readonly localLogRetentionSpace?: pulumi.Input<number>;
     /**
-     * It has been deprecated from version 1.67.0, and use field 'enable_backup_log' to replace. Whether to backup instance log. Note: The 'Basic Edition' category Rds instance does not support setting log backup. [What is Basic Edition](https://www.alibabacloud.com/help/doc-detail/48980.htm).
+     * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      */
     readonly logBackup?: pulumi.Input<boolean>;
     /**
-     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `retentionPeriod`.
+     * Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
+     */
+    readonly logBackupFrequency?: pulumi.Input<string>;
+    /**
+     * Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
+     */
+    readonly logBackupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      */
     readonly logRetentionPeriod?: pulumi.Input<number>;
     /**
-     * Instance backup retention days. Valid values: [7-730]. Default to 7.
+     * DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
+     */
+    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     */
+    readonly preferredBackupTime?: pulumi.Input<string>;
+    /**
+     * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      */
     readonly retentionPeriod?: pulumi.Input<number>;
 }

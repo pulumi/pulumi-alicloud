@@ -38,7 +38,7 @@ class Instance(pulumi.CustomResource):
     """
     instance_charge_type: pulumi.Output[str]
     """
-    Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+    Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
     """
     kibana_domain: pulumi.Output[str]
     """
@@ -114,7 +114,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[list] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -202,7 +202,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[str] description: The description of instance. It a string of 0 to 30 characters.
         :param pulumi.Input[str] domain: Instance connection domain (only VPC network access supported).
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         :param pulumi.Input[str] kibana_domain: Kibana console domain (Internet access supported).
         :param pulumi.Input[float] kibana_port: Kibana console port.
         :param pulumi.Input[list] kibana_whitelists: Set the Kibana's IP whitelist in internet network.

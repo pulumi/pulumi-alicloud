@@ -164,7 +164,7 @@ func (r *Instance) EngineVersion() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["engineVersion"])
 }
 
-// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 func (r *Instance) InstanceChargeType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["instanceChargeType"])
 }
@@ -204,7 +204,7 @@ func (r *Instance) ReplicaSetName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["replicaSetName"])
 }
 
-// Number of replica set nodes. Valid values: [3,5,7]
+// Number of replica set nodes. Valid values: [3, 5, 7]
 // * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 func (r *Instance) ReplicationFactor() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["replicationFactor"])
@@ -257,7 +257,7 @@ type InstanceState struct {
 	DbInstanceStorage interface{}
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
 	EngineVersion interface{}
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType interface{}
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword interface{}
@@ -273,7 +273,7 @@ type InstanceState struct {
 	Period interface{}
 	// The name of the mongo replica set
 	ReplicaSetName interface{}
-	// Number of replica set nodes. Valid values: [3,5,7]
+	// Number of replica set nodes. Valid values: [3, 5, 7]
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor interface{}
 	// Instance log backup retention days. Available in 1.42.0+.
@@ -307,7 +307,7 @@ type InstanceArgs struct {
 	DbInstanceStorage interface{}
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
 	EngineVersion interface{}
-	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+	// Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
 	InstanceChargeType interface{}
 	// An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword interface{}
@@ -321,7 +321,7 @@ type InstanceArgs struct {
 	Name interface{}
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period interface{}
-	// Number of replica set nodes. Valid values: [3,5,7]
+	// Number of replica set nodes. Valid values: [3, 5, 7]
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).

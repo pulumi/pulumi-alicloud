@@ -27,13 +27,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-        /// * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Output("alicloudCertificateId")]
         public Output<string?> AlicloudCertificateId { get; private set; } = null!;
 
+        /// <summary>
+        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
         [Output("alicloudCertificateName")]
         public Output<string?> AlicloudCertificateName { get; private set; } = null!;
+
+        /// <summary>
+        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
+        [Output("alicloudCertificateRegionId")]
+        public Output<string?> AlicloudCertificateRegionId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the Server Certificate.
@@ -119,13 +127,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-        /// * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateId")]
         public Input<string>? AlicloudCertificateId { get; set; }
 
+        /// <summary>
+        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
         [Input("alicloudCertificateName")]
         public Input<string>? AlicloudCertificateName { get; set; }
+
+        /// <summary>
+        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
+        [Input("alicloudCertificateRegionId")]
+        public Input<string>? AlicloudCertificateRegionId { get; set; }
 
         /// <summary>
         /// Name of the Server Certificate.
@@ -178,13 +194,21 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-        /// * `alicloud_certificate_name`- (Optional, ForceNew) the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         /// </summary>
         [Input("alicloudCertificateId")]
         public Input<string>? AlicloudCertificateId { get; set; }
 
+        /// <summary>
+        /// the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
         [Input("alicloudCertificateName")]
         public Input<string>? AlicloudCertificateName { get; set; }
+
+        /// <summary>
+        /// the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
+        /// </summary>
+        [Input("alicloudCertificateRegionId")]
+        public Input<string>? AlicloudCertificateRegionId { get; set; }
 
         /// <summary>
         /// Name of the Server Certificate.

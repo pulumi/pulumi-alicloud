@@ -127,10 +127,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         /// </summary>
         [Output("securityGroupId")]
-        public Output<string?> SecurityGroupId { get; private set; } = null!;
+        public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// </summary>
+        [Output("securityGroupIds")]
+        public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
@@ -316,10 +322,22 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         /// <summary>
         /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
@@ -490,10 +508,22 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+        /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
 
         /// <summary>
         /// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 

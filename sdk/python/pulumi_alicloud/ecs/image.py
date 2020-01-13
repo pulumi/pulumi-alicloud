@@ -22,8 +22,8 @@ class Image(pulumi.CustomResource):
     """
     Description of the system with disks and snapshots under the image.
     
-      * `device` (`str`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-      * `disk_type` (`str`) - Snapshot ID.
+      * `device` (`str`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+      * `disk_type` (`str`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
       * `size` (`float`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
       * `snapshot_id` (`str`) - Specifies a snapshot that is used to create a combined custom image.
     """
@@ -33,17 +33,18 @@ class Image(pulumi.CustomResource):
     - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
     - false：Verifies that the image is not currently in use by any other instances before deleting the image.
     """
+    image_name: pulumi.Output[str]
+    """
+    The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+    """
     instance_id: pulumi.Output[str]
     """
     The instance ID.
     """
     name: pulumi.Output[str]
-    """
-    The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-    """
     platform: pulumi.Output[str]
     """
-    Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloud_ssd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+    Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
     """
     resource_group_id: pulumi.Output[str]
     """
@@ -57,7 +58,7 @@ class Image(pulumi.CustomResource):
     """
     The tag value of an image. The value of N ranges from 1 to 20.
     """
-    def __init__(__self__, resource_name, opts=None, architecture=None, description=None, disk_device_mappings=None, force=None, instance_id=None, name=None, platform=None, resource_group_id=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, architecture=None, description=None, disk_device_mappings=None, force=None, image_name=None, instance_id=None, name=None, platform=None, resource_group_id=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a custom image. You can then use a custom image to create ECS instances (RunInstances) or change the system disk for an existing instance (ReplaceSystemDisk).
         
@@ -77,17 +78,17 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloud_ssd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
         
         The **disk_device_mappings** object supports the following:
         
-          * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-          * `disk_type` (`pulumi.Input[str]`) - Snapshot ID.
+          * `device` (`pulumi.Input[str]`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+          * `disk_type` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `size` (`pulumi.Input[float]`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
           * `snapshot_id` (`pulumi.Input[str]`) - Specifies a snapshot that is used to create a combined custom image.
 
@@ -114,6 +115,7 @@ class Image(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disk_device_mappings'] = disk_device_mappings
             __props__['force'] = force
+            __props__['image_name'] = image_name
             __props__['instance_id'] = instance_id
             __props__['name'] = name
             __props__['platform'] = platform
@@ -127,7 +129,7 @@ class Image(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, architecture=None, description=None, disk_device_mappings=None, force=None, instance_id=None, name=None, platform=None, resource_group_id=None, snapshot_id=None, tags=None):
+    def get(resource_name, id, opts=None, architecture=None, description=None, disk_device_mappings=None, force=None, image_name=None, instance_id=None, name=None, platform=None, resource_group_id=None, snapshot_id=None, tags=None):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -141,17 +143,17 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] instance_id: The instance ID.
-        :param pulumi.Input[str] name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloud_ssd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+        :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
         
         The **disk_device_mappings** object supports the following:
         
-          * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-          * `disk_type` (`pulumi.Input[str]`) - Snapshot ID.
+          * `device` (`pulumi.Input[str]`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+          * `disk_type` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `size` (`pulumi.Input[float]`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
           * `snapshot_id` (`pulumi.Input[str]`) - Specifies a snapshot that is used to create a combined custom image.
 
@@ -164,6 +166,7 @@ class Image(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disk_device_mappings"] = disk_device_mappings
         __props__["force"] = force
+        __props__["image_name"] = image_name
         __props__["instance_id"] = instance_id
         __props__["name"] = name
         __props__["platform"] = platform

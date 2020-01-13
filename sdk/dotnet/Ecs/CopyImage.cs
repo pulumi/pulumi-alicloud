@@ -19,6 +19,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
+        [Output("imageName")]
+        public Output<string> ImageName { get; private set; } = null!;
+
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
@@ -89,6 +92,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
@@ -124,6 +130,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("force")]
         public Input<bool>? Force { get; set; }
+
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
 
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }

@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const defaultImage = new alicloud.ecs.Image("default", {
  *     architecture: "x8664",
  *     description: "test-image",
+ *     imageName: "test-image",
  *     instanceId: "i-bp1g6zv0ce8oghu7k***",
  *     platform: "CentOS",
  *     resourceGroupId: "rg-bp67acfmxazb4ph***",
@@ -83,15 +84,16 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    public readonly imageName!: pulumi.Output<string>;
+    /**
      * The instance ID.
      */
     public readonly instanceId!: pulumi.Output<string | undefined>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
      */
     public readonly platform!: pulumi.Output<string | undefined>;
     /**
@@ -123,6 +125,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["diskDeviceMappings"] = state ? state.diskDeviceMappings : undefined;
             inputs["force"] = state ? state.force : undefined;
+            inputs["imageName"] = state ? state.imageName : undefined;
             inputs["instanceId"] = state ? state.instanceId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["platform"] = state ? state.platform : undefined;
@@ -135,6 +138,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskDeviceMappings"] = args ? args.diskDeviceMappings : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["imageName"] = args ? args.imageName : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["platform"] = args ? args.platform : undefined;
@@ -176,15 +180,16 @@ export interface ImageState {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    readonly imageName?: pulumi.Input<string>;
+    /**
      * The instance ID.
      */
     readonly instanceId?: pulumi.Input<string>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
      */
     readonly platform?: pulumi.Input<string>;
     /**
@@ -224,15 +229,16 @@ export interface ImageArgs {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    readonly imageName?: pulumi.Input<string>;
+    /**
      * The instance ID.
      */
     readonly instanceId?: pulumi.Input<string>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+     * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
      */
     readonly platform?: pulumi.Input<string>;
     /**

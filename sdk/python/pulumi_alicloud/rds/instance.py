@@ -92,7 +92,11 @@ class Instance(pulumi.CustomResource):
     """
     security_group_id: pulumi.Output[str]
     """
-    Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+    It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+    """
+    security_group_ids: pulumi.Output[list]
+    """
+    , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
     """
     security_ip_mode: pulumi.Output[str]
     """
@@ -118,7 +122,7 @@ class Instance(pulumi.CustomResource):
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
     The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS instance resource. A DB instance is an isolated database
         environment in the cloud. A DB instance can contain multiple user-created
@@ -153,7 +157,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-        :param pulumi.Input[str] security_group_id: Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+        :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -211,6 +216,7 @@ class Instance(pulumi.CustomResource):
             __props__['parameters'] = parameters
             __props__['period'] = period
             __props__['security_group_id'] = security_group_id
+            __props__['security_group_ids'] = security_group_ids
             __props__['security_ip_mode'] = security_ip_mode
             __props__['security_ips'] = security_ips
             __props__['tags'] = tags
@@ -225,7 +231,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -262,7 +268,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] port: RDS database connection port.
-        :param pulumi.Input[str] security_group_id: Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+        :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+        :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -300,6 +307,7 @@ class Instance(pulumi.CustomResource):
         __props__["period"] = period
         __props__["port"] = port
         __props__["security_group_id"] = security_group_id
+        __props__["security_group_ids"] = security_group_ids
         __props__["security_ip_mode"] = security_ip_mode
         __props__["security_ips"] = security_ips
         __props__["tags"] = tags

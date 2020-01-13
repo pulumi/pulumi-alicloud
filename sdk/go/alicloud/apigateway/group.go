@@ -27,6 +27,8 @@ func NewGroup(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
 	}
+	inputs["subDomain"] = nil
+	inputs["vpcDomain"] = nil
 	s, err := ctx.RegisterResource("alicloud:apigateway/group:Group", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -42,6 +44,8 @@ func GetGroup(ctx *pulumi.Context,
 	if state != nil {
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
+		inputs["subDomain"] = state.SubDomain
+		inputs["vpcDomain"] = state.VpcDomain
 	}
 	s, err := ctx.ReadResource("alicloud:apigateway/group:Group", name, id, inputs, opts...)
 	if err != nil {
@@ -70,12 +74,26 @@ func (r *Group) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
+// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+func (r *Group) SubDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["subDomain"])
+}
+
+// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+func (r *Group) VpcDomain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["vpcDomain"])
+}
+
 // Input properties used for looking up and filtering Group resources.
 type GroupState struct {
 	// The description of the api gateway group. Defaults to null.
 	Description interface{}
 	// The name of the api gateway group. Defaults to null.
 	Name interface{}
+	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+	SubDomain interface{}
+	// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+	VpcDomain interface{}
 }
 
 // The set of arguments for constructing a Group resource.

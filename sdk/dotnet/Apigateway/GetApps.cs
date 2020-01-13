@@ -109,6 +109,10 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GetAppsAppsResult
     {
         /// <summary>
+        /// App code.
+        /// </summary>
+        public readonly string AppCode;
+        /// <summary>
         /// Creation time (Greenwich mean time).
         /// </summary>
         public readonly string CreatedTime;
@@ -131,12 +135,14 @@ namespace Pulumi.AliCloud.ApiGateway
 
         [OutputConstructor]
         private GetAppsAppsResult(
+            string appCode,
             string createdTime,
             string description,
             int id,
             string modifiedTime,
             string name)
         {
+            AppCode = appCode;
             CreatedTime = createdTime;
             Description = description;
             Id = id;

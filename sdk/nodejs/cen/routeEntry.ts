@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * }, {provider: hz});
  * const defaultImages = alicloud.ecs.getImages({
  *     mostRecent: true,
- *     nameRegex: "^ubuntu_18.*_64",
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
  * }, {provider: hz});
  * const vpc = new alicloud.vpc.Network("vpc", {

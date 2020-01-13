@@ -49,6 +49,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["parameters"] = nil
 		inputs["period"] = nil
 		inputs["securityGroupId"] = nil
+		inputs["securityGroupIds"] = nil
 		inputs["securityIpMode"] = nil
 		inputs["securityIps"] = nil
 		inputs["tags"] = nil
@@ -70,6 +71,7 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["parameters"] = args.Parameters
 		inputs["period"] = args.Period
 		inputs["securityGroupId"] = args.SecurityGroupId
+		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["securityIpMode"] = args.SecurityIpMode
 		inputs["securityIps"] = args.SecurityIps
 		inputs["tags"] = args.Tags
@@ -108,6 +110,7 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["period"] = state.Period
 		inputs["port"] = state.Port
 		inputs["securityGroupId"] = state.SecurityGroupId
+		inputs["securityGroupIds"] = state.SecurityGroupIds
 		inputs["securityIpMode"] = state.SecurityIpMode
 		inputs["securityIps"] = state.SecurityIps
 		inputs["tags"] = state.Tags
@@ -224,9 +227,14 @@ func (r *Instance) Port() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["port"])
 }
 
-// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 func (r *Instance) SecurityGroupId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["securityGroupId"])
+}
+
+// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+func (r *Instance) SecurityGroupIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["securityGroupIds"])
 }
 
 // Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
@@ -305,8 +313,10 @@ type InstanceState struct {
 	Period interface{}
 	// RDS database connection port.
 	Port interface{}
-	// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId interface{}
+	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	SecurityGroupIds interface{}
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
 	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -366,8 +376,10 @@ type InstanceArgs struct {
 	Parameters interface{}
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period interface{}
-	// Input the ECS Security Group ID to join ECS Security Group. Only support mysql 5.5, mysql 5.6
+	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId interface{}
+	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	SecurityGroupIds interface{}
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
 	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).

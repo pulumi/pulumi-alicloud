@@ -13,7 +13,7 @@ class GetProductsResult:
     """
     A collection of values returned by getProducts.
     """
-    def __init__(__self__, category_id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, sort=None, id=None):
+    def __init__(__self__, category_id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, search_term=None, sort=None, id=None):
         if category_id and not isinstance(category_id, str):
             raise TypeError("Expected argument 'category_id' to be a str")
         __self__.category_id = category_id
@@ -41,6 +41,9 @@ class GetProductsResult:
         """
         A list of products. Each element contains the following attributes:
         """
+        if search_term and not isinstance(search_term, str):
+            raise TypeError("Expected argument 'search_term' to be a str")
+        __self__.search_term = search_term
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
         __self__.sort = sort
@@ -62,10 +65,11 @@ class AwaitableGetProductsResult(GetProductsResult):
             output_file=self.output_file,
             product_type=self.product_type,
             products=self.products,
+            search_term=self.search_term,
             sort=self.sort,
             id=self.id)
 
-def get_products(category_id=None,ids=None,name_regex=None,output_file=None,product_type=None,sort=None,opts=None):
+def get_products(category_id=None,ids=None,name_regex=None,output_file=None,product_type=None,search_term=None,sort=None,opts=None):
     """
     This data source provides the Market product items of Alibaba Cloud.
     
@@ -75,6 +79,7 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
     :param list ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
     :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
+    :param str search_term: Search term in this query.
     :param str sort: This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
@@ -86,6 +91,7 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['productType'] = product_type
+    __args__['searchTerm'] = search_term
     __args__['sort'] = sort
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -100,5 +106,6 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
         output_file=__ret__.get('outputFile'),
         product_type=__ret__.get('productType'),
         products=__ret__.get('products'),
+        search_term=__ret__.get('searchTerm'),
         sort=__ret__.get('sort'),
         id=__ret__.get('id'))

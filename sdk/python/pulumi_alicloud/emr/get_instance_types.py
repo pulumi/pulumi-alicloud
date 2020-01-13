@@ -13,7 +13,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, cluster_type=None, destination_resource=None, ids=None, instance_charge_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, id=None):
+    def __init__(__self__, cluster_type=None, destination_resource=None, ids=None, instance_charge_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, zone_id=None, id=None):
         if cluster_type and not isinstance(cluster_type, str):
             raise TypeError("Expected argument 'cluster_type' to be a str")
         __self__.cluster_type = cluster_type
@@ -44,6 +44,12 @@ class GetInstanceTypesResult:
         """
         A list of emr instance types. Each element contains the following attributes:
         """
+        if zone_id and not isinstance(zone_id, str):
+            raise TypeError("Expected argument 'zone_id' to be a str")
+        __self__.zone_id = zone_id
+        """
+        The available zone id in Alibaba Cloud account
+        """
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -64,9 +70,10 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             support_local_storage=self.support_local_storage,
             support_node_types=self.support_node_types,
             types=self.types,
+            zone_id=self.zone_id,
             id=self.id)
 
-def get_instance_types(cluster_type=None,destination_resource=None,instance_charge_type=None,output_file=None,support_local_storage=None,support_node_types=None,opts=None):
+def get_instance_types(cluster_type=None,destination_resource=None,instance_charge_type=None,output_file=None,support_local_storage=None,support_node_types=None,zone_id=None,opts=None):
     """
     The `emr.getInstanceTypes` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
@@ -79,6 +86,7 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     :param bool support_local_storage: Whether the current storage disk is local or not.
     :param list support_node_types: The specific supported node type list. 
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
+    :param str zone_id: The supported resources of specific zoneId.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
     """
@@ -90,6 +98,7 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     __args__['outputFile'] = output_file
     __args__['supportLocalStorage'] = support_local_storage
     __args__['supportNodeTypes'] = support_node_types
+    __args__['zoneId'] = zone_id
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -105,4 +114,5 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
         support_local_storage=__ret__.get('supportLocalStorage'),
         support_node_types=__ret__.get('supportNodeTypes'),
         types=__ret__.get('types'),
+        zone_id=__ret__.get('zoneId'),
         id=__ret__.get('id'))

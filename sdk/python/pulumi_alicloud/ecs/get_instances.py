@@ -13,7 +13,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vswitch_id=None, id=None):
+    def __init__(__self__, availability_zone=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vswitch_id=None, id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
@@ -50,6 +50,12 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
+        if ram_role_name and not isinstance(ram_role_name, str):
+            raise TypeError("Expected argument 'ram_role_name' to be a str")
+        __self__.ram_role_name = ram_role_name
+        """
+        The Ram role name.
+        """
         if resource_group_id and not isinstance(resource_group_id, str):
             raise TypeError("Expected argument 'resource_group_id' to be a str")
         __self__.resource_group_id = resource_group_id
@@ -99,6 +105,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            ram_role_name=self.ram_role_name,
             resource_group_id=self.resource_group_id,
             status=self.status,
             tags=self.tags,
@@ -106,7 +113,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             vswitch_id=self.vswitch_id,
             id=self.id)
 
-def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,output_file=None,resource_group_id=None,status=None,tags=None,vpc_id=None,vswitch_id=None,opts=None):
+def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,output_file=None,ram_role_name=None,resource_group_id=None,status=None,tags=None,vpc_id=None,vswitch_id=None,opts=None):
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
     
@@ -114,6 +121,7 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
     :param list ids: A list of ECS instance IDs.
     :param str image_id: The image ID of some ECS instance used.
     :param str name_regex: A regex string to filter results by instance name.
+    :param str ram_role_name: The RAM role name which the instance attaches.
     :param str resource_group_id: The Id of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param dict tags: A map of tags assigned to the ECS instances. It must be in the format:
@@ -137,6 +145,7 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
     __args__['imageId'] = image_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['ramRoleName'] = ram_role_name
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
@@ -156,6 +165,7 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
+        ram_role_name=__ret__.get('ramRoleName'),
         resource_group_id=__ret__.get('resourceGroupId'),
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),

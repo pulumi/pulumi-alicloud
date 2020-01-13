@@ -87,6 +87,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["cookie"] = nil
 		inputs["cookieTimeout"] = nil
 		inputs["deleteProtectionValidation"] = nil
+		inputs["description"] = nil
 		inputs["enableHttp2"] = nil
 		inputs["establishedTimeout"] = nil
 		inputs["forwardPort"] = nil
@@ -129,6 +130,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["cookie"] = args.Cookie
 		inputs["cookieTimeout"] = args.CookieTimeout
 		inputs["deleteProtectionValidation"] = args.DeleteProtectionValidation
+		inputs["description"] = args.Description
 		inputs["enableHttp2"] = args.EnableHttp2
 		inputs["establishedTimeout"] = args.EstablishedTimeout
 		inputs["forwardPort"] = args.ForwardPort
@@ -184,6 +186,7 @@ func GetListener(ctx *pulumi.Context,
 		inputs["cookie"] = state.Cookie
 		inputs["cookieTimeout"] = state.CookieTimeout
 		inputs["deleteProtectionValidation"] = state.DeleteProtectionValidation
+		inputs["description"] = state.Description
 		inputs["enableHttp2"] = state.EnableHttp2
 		inputs["establishedTimeout"] = state.EstablishedTimeout
 		inputs["forwardPort"] = state.ForwardPort
@@ -273,6 +276,11 @@ func (r *Listener) CookieTimeout() pulumi.IntOutput {
 // Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 func (r *Listener) DeleteProtectionValidation() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["deleteProtectionValidation"])
+}
+
+// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+func (r *Listener) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
@@ -454,6 +462,8 @@ type ListenerState struct {
 	CookieTimeout interface{}
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation interface{}
+	// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+	Description interface{}
 	// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
 	EnableHttp2 interface{}
 	// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
@@ -536,6 +546,8 @@ type ListenerArgs struct {
 	CookieTimeout interface{}
 	// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
 	DeleteProtectionValidation interface{}
+	// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+	Description interface{}
 	// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
 	EnableHttp2 interface{}
 	// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.

@@ -33,6 +33,7 @@ export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetListenersResult> = pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
+        "descriptionRegex": args.descriptionRegex,
         "frontendPort": args.frontendPort,
         "loadBalancerId": args.loadBalancerId,
         "outputFile": args.outputFile,
@@ -46,6 +47,10 @@ export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getListeners.
  */
 export interface GetListenersArgs {
+    /**
+     * A regex string to filter results by SLB listener description.
+     */
+    readonly descriptionRegex?: string;
     /**
      * Filter listeners by the specified frontend port.
      */
@@ -65,6 +70,7 @@ export interface GetListenersArgs {
  * A collection of values returned by getListeners.
  */
 export interface GetListenersResult {
+    readonly descriptionRegex?: string;
     /**
      * Frontend port used to receive incoming traffic and distribute it to the backend servers.
      */

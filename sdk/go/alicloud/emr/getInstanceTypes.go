@@ -22,6 +22,7 @@ func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetI
 		inputs["outputFile"] = args.OutputFile
 		inputs["supportLocalStorage"] = args.SupportLocalStorage
 		inputs["supportNodeTypes"] = args.SupportNodeTypes
+		inputs["zoneId"] = args.ZoneId
 	}
 	outputs, err := ctx.Invoke("alicloud:emr/getInstanceTypes:getInstanceTypes", inputs)
 	if err != nil {
@@ -36,6 +37,7 @@ func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetI
 		SupportLocalStorage: outputs["supportLocalStorage"],
 		SupportNodeTypes: outputs["supportNodeTypes"],
 		Types: outputs["types"],
+		ZoneId: outputs["zoneId"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -54,6 +56,8 @@ type GetInstanceTypesArgs struct {
 	// The specific supported node type list. 
 	// Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
 	SupportNodeTypes interface{}
+	// The supported resources of specific zoneId.
+	ZoneId interface{}
 }
 
 // A collection of values returned by getInstanceTypes.
@@ -68,6 +72,8 @@ type GetInstanceTypesResult struct {
 	SupportNodeTypes interface{}
 	// A list of emr instance types. Each element contains the following attributes:
 	Types interface{}
+	// The available zone id in Alibaba Cloud account
+	ZoneId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

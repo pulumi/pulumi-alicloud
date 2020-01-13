@@ -43,6 +43,7 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "productType": args.productType,
+        "searchTerm": args.searchTerm,
         "sort": args.sort,
     }, opts);
 
@@ -71,6 +72,10 @@ export interface GetProductsArgs {
      */
     readonly productType?: string;
     /**
+     * Search term in this query.
+     */
+    readonly searchTerm?: string;
+    /**
      * This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
      */
     readonly sort?: string;
@@ -95,6 +100,7 @@ export interface GetProductsResult {
      * A list of products. Each element contains the following attributes:
      */
     readonly products: outputs.marketplace.GetProductsProduct[];
+    readonly searchTerm?: string;
     readonly sort?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

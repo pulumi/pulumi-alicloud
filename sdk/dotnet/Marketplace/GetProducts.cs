@@ -57,6 +57,12 @@ namespace Pulumi.AliCloud.MarketPlace
         public string? ProductType { get; set; }
 
         /// <summary>
+        /// Search term in this query.
+        /// </summary>
+        [Input("searchTerm")]
+        public string? SearchTerm { get; set; }
+
+        /// <summary>
         /// This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
         /// </summary>
         [Input("sort")]
@@ -85,6 +91,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// A list of products. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProductsProductsResult> Products;
+        public readonly string? SearchTerm;
         public readonly string? Sort;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -99,6 +106,7 @@ namespace Pulumi.AliCloud.MarketPlace
             string? outputFile,
             string? productType,
             ImmutableArray<Outputs.GetProductsProductsResult> products,
+            string? searchTerm,
             string? sort,
             string id)
         {
@@ -108,6 +116,7 @@ namespace Pulumi.AliCloud.MarketPlace
             OutputFile = outputFile;
             ProductType = productType;
             Products = products;
+            SearchTerm = searchTerm;
             Sort = sort;
             Id = id;
         }

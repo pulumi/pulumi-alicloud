@@ -64,6 +64,12 @@ namespace Pulumi.AliCloud.Emr
             set => _supportNodeTypes = value;
         }
 
+        /// <summary>
+        /// The supported resources of specific zoneId.
+        /// </summary>
+        [Input("zoneId")]
+        public string? ZoneId { get; set; }
+
         public GetInstanceTypesArgs()
         {
         }
@@ -87,6 +93,10 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypesResult> Types;
         /// <summary>
+        /// The available zone id in Alibaba Cloud account
+        /// </summary>
+        public readonly string? ZoneId;
+        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -101,6 +111,7 @@ namespace Pulumi.AliCloud.Emr
             bool? supportLocalStorage,
             ImmutableArray<string> supportNodeTypes,
             ImmutableArray<Outputs.GetInstanceTypesTypesResult> types,
+            string? zoneId,
             string id)
         {
             ClusterType = clusterType;
@@ -111,6 +122,7 @@ namespace Pulumi.AliCloud.Emr
             SupportLocalStorage = supportLocalStorage;
             SupportNodeTypes = supportNodeTypes;
             Types = types;
+            ZoneId = zoneId;
             Id = id;
         }
     }
@@ -130,7 +142,7 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly int LocalStorageCapacity;
         /// <summary>
-        /// The available zone id in Alibaba Cloud account
+        /// The supported resources of specific zoneId.
         /// </summary>
         public readonly string ZoneId;
 

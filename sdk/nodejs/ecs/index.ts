@@ -21,6 +21,7 @@ export * from "./getSnapshots";
 export * from "./image";
 export * from "./imageCopy";
 export * from "./imageExport";
+export * from "./imageImport";
 export * from "./imageSharePermission";
 export * from "./instance";
 export * from "./keyPair";

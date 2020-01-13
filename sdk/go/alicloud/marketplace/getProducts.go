@@ -20,6 +20,7 @@ func LookupProducts(ctx *pulumi.Context, args *GetProductsArgs) (*GetProductsRes
 		inputs["nameRegex"] = args.NameRegex
 		inputs["outputFile"] = args.OutputFile
 		inputs["productType"] = args.ProductType
+		inputs["searchTerm"] = args.SearchTerm
 		inputs["sort"] = args.Sort
 	}
 	outputs, err := ctx.Invoke("alicloud:marketplace/getProducts:getProducts", inputs)
@@ -33,6 +34,7 @@ func LookupProducts(ctx *pulumi.Context, args *GetProductsArgs) (*GetProductsRes
 		OutputFile: outputs["outputFile"],
 		ProductType: outputs["productType"],
 		Products: outputs["products"],
+		SearchTerm: outputs["searchTerm"],
 		Sort: outputs["sort"],
 		Id: outputs["id"],
 	}, nil
@@ -49,6 +51,8 @@ type GetProductsArgs struct {
 	OutputFile interface{}
 	// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
 	ProductType interface{}
+	// Search term in this query.
+	SearchTerm interface{}
 	// This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
 	Sort interface{}
 }
@@ -64,6 +68,7 @@ type GetProductsResult struct {
 	ProductType interface{}
 	// A list of products. Each element contains the following attributes:
 	Products interface{}
+	SearchTerm interface{}
 	Sort interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

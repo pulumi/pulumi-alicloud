@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * 
  * const defaultImageCopy = new alicloud.ecs.ImageCopy("default", {
  *     description: "test-image",
+ *     imageName: "test-image",
  *     sourceImageId: "m-bp1gxyhdswlsn18tu***",
  *     sourceRegionId: "cn-hangzhou",
  *     tags: {
@@ -77,12 +78,13 @@ export class ImageCopy extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    public readonly imageName!: pulumi.Output<string>;
+    /**
      * Key ID used to encrypt the image.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The source image ID.
@@ -112,6 +114,7 @@ export class ImageCopy extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
             inputs["force"] = state ? state.force : undefined;
+            inputs["imageName"] = state ? state.imageName : undefined;
             inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sourceImageId"] = state ? state.sourceImageId : undefined;
@@ -128,6 +131,7 @@ export class ImageCopy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
             inputs["force"] = args ? args.force : undefined;
+            inputs["imageName"] = args ? args.imageName : undefined;
             inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sourceImageId"] = args ? args.sourceImageId : undefined;
@@ -164,12 +168,13 @@ export interface ImageCopyState {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    readonly imageName?: pulumi.Input<string>;
+    /**
      * Key ID used to encrypt the image.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     readonly name?: pulumi.Input<string>;
     /**
      * The source image ID.
@@ -204,12 +209,13 @@ export interface ImageCopyArgs {
      */
     readonly force?: pulumi.Input<boolean>;
     /**
+     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     */
+    readonly imageName?: pulumi.Input<string>;
+    /**
      * Key ID used to encrypt the image.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
-    /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-     */
     readonly name?: pulumi.Input<string>;
     /**
      * The source image ID.

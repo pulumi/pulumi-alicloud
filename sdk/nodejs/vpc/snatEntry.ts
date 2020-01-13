@@ -8,62 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a snat resource.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const config = new pulumi.Config();
- * const name = config.get("name") || "snat-entry-example-name";
- * 
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "172.16.0.0/12",
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/21",
- *     vpcId: vpc.id,
- * });
- * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
- *     specification: "Small",
- *     vpcId: vswitch.vpcId,
- * });
- * const eip: alicloud.ecs.Eip[] = [];
- * for (let i = 0; i < 2; i++) {
- *     eip.push(new alicloud.ecs.Eip(`eip-${i}`, {}));
- * }
- * const defaultEipAssociation: alicloud.ecs.EipAssociation[] = [];
- * for (let i = 0; i < 2; i++) {
- *     defaultEipAssociation.push(new alicloud.ecs.EipAssociation(`default-${i}`, {
- *         allocationId: pulumi.all(alicloud_eip_default.map(v => v.id)).apply(id => id.map(v => v)[i]),
- *         instanceId: defaultNatGateway.id,
- *     }));
- * }
- * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("default", {
- *     bandwidth: 10,
- *     internetChargeType: "PayByTraffic",
- *     ratio: 100,
- * });
- * const defaultCommonBandwithPackageAttachment: alicloud.vpc.CommonBandwithPackageAttachment[] = [];
- * for (let i = 0; i < 2; i++) {
- *     defaultCommonBandwithPackageAttachment.push(new alicloud.vpc.CommonBandwithPackageAttachment(`default-${i}`, {
- *         bandwidthPackageId: defaultCommonBandwithPackage.id,
- *         instanceId: pulumi.all(alicloud_eip_default.map(v => v.id)).apply(id => id.map(v => v)[i]),
- *     }));
- * }
- * const defaultSnatEntry = new alicloud.vpc.SnatEntry("default", {
- *     snatIp: pulumi.all(alicloud_eip_default.map(v => v.ipAddress)).apply(ipAddress => ipAddress.map(v => v).join(",")),
- *     snatTableId: defaultNatGateway.snatTableIds,
- *     sourceVswitchId: vswitch.id,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
  */

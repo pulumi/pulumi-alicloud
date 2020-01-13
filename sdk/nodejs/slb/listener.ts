@@ -179,6 +179,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
     /**
+     * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
      */
     public readonly enableHttp2!: pulumi.Output<string | undefined>;
@@ -319,6 +323,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["cookie"] = state ? state.cookie : undefined;
             inputs["cookieTimeout"] = state ? state.cookieTimeout : undefined;
             inputs["deleteProtectionValidation"] = state ? state.deleteProtectionValidation : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["enableHttp2"] = state ? state.enableHttp2 : undefined;
             inputs["establishedTimeout"] = state ? state.establishedTimeout : undefined;
             inputs["forwardPort"] = state ? state.forwardPort : undefined;
@@ -371,6 +376,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["cookie"] = args ? args.cookie : undefined;
             inputs["cookieTimeout"] = args ? args.cookieTimeout : undefined;
             inputs["deleteProtectionValidation"] = args ? args.deleteProtectionValidation : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["enableHttp2"] = args ? args.enableHttp2 : undefined;
             inputs["establishedTimeout"] = args ? args.establishedTimeout : undefined;
             inputs["forwardPort"] = args ? args.forwardPort : undefined;
@@ -452,6 +458,10 @@ export interface ListenerState {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
     readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    /**
+     * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
      */
@@ -610,6 +620,10 @@ export interface ListenerArgs {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
     readonly deleteProtectionValidation?: pulumi.Input<boolean>;
+    /**
+     * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
      */

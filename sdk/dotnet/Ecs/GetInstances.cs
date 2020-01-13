@@ -55,6 +55,12 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
+        /// The RAM role name which the instance attaches.
+        /// </summary>
+        [Input("ramRoleName")]
+        public string? RamRoleName { get; set; }
+
+        /// <summary>
         /// The Id of resource group which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -129,6 +135,10 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
+        /// The Ram role name.
+        /// </summary>
+        public readonly string? RamRoleName;
+        /// <summary>
         /// The Id of resource group.
         /// </summary>
         public readonly string? ResourceGroupId;
@@ -162,6 +172,7 @@ namespace Pulumi.AliCloud.Ecs
             string? nameRegex,
             ImmutableArray<string> names,
             string? outputFile,
+            string? ramRoleName,
             string? resourceGroupId,
             string? status,
             ImmutableDictionary<string, object>? tags,
@@ -176,6 +187,7 @@ namespace Pulumi.AliCloud.Ecs
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            RamRoleName = ramRoleName;
             ResourceGroupId = resourceGroupId;
             Status = status;
             Tags = tags;
@@ -286,6 +298,10 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string PublicIp;
         /// <summary>
+        /// The RAM role name which the instance attaches.
+        /// </summary>
+        public readonly string RamRoleName;
+        /// <summary>
         /// Region ID the instance belongs to.
         /// </summary>
         public readonly string RegionId;
@@ -343,6 +359,7 @@ namespace Pulumi.AliCloud.Ecs
             string name,
             string privateIp,
             string publicIp,
+            string ramRoleName,
             string regionId,
             string resourceGroupId,
             ImmutableArray<string> securityGroups,
@@ -367,6 +384,7 @@ namespace Pulumi.AliCloud.Ecs
             Name = name;
             PrivateIp = privateIp;
             PublicIp = publicIp;
+            RamRoleName = ramRoleName;
             RegionId = regionId;
             ResourceGroupId = resourceGroupId;
             SecurityGroups = securityGroups;

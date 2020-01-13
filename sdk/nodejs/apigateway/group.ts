@@ -44,6 +44,14 @@ export class Group extends pulumi.CustomResource {
      * The name of the api gateway group. Defaults to null.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+     */
+    public /*out*/ readonly subDomain!: pulumi.Output<string>;
+    /**
+     * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+     */
+    public /*out*/ readonly vpcDomain!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -59,6 +67,8 @@ export class Group extends pulumi.CustomResource {
             const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["subDomain"] = state ? state.subDomain : undefined;
+            inputs["vpcDomain"] = state ? state.vpcDomain : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if (!args || args.description === undefined) {
@@ -66,6 +76,8 @@ export class Group extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["subDomain"] = undefined /*out*/;
+            inputs["vpcDomain"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -90,6 +102,14 @@ export interface GroupState {
      * The name of the api gateway group. Defaults to null.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+     */
+    readonly subDomain?: pulumi.Input<string>;
+    /**
+     * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+     */
+    readonly vpcDomain?: pulumi.Input<string>;
 }
 
 /**

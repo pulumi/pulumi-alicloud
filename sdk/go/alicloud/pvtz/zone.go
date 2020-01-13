@@ -17,11 +17,17 @@ func NewZone(ctx *pulumi.Context,
 	name string, args *ZoneArgs, opts ...pulumi.ResourceOpt) (*Zone, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["lang"] = nil
 		inputs["name"] = nil
+		inputs["proxyPattern"] = nil
 		inputs["remark"] = nil
+		inputs["userClientIp"] = nil
 	} else {
+		inputs["lang"] = args.Lang
 		inputs["name"] = args.Name
+		inputs["proxyPattern"] = args.ProxyPattern
 		inputs["remark"] = args.Remark
+		inputs["userClientIp"] = args.UserClientIp
 	}
 	inputs["creationTime"] = nil
 	inputs["isPtr"] = nil
@@ -42,10 +48,13 @@ func GetZone(ctx *pulumi.Context,
 	if state != nil {
 		inputs["creationTime"] = state.CreationTime
 		inputs["isPtr"] = state.IsPtr
+		inputs["lang"] = state.Lang
 		inputs["name"] = state.Name
+		inputs["proxyPattern"] = state.ProxyPattern
 		inputs["recordCount"] = state.RecordCount
 		inputs["remark"] = state.Remark
 		inputs["updateTime"] = state.UpdateTime
+		inputs["userClientIp"] = state.UserClientIp
 	}
 	s, err := ctx.ReadResource("alicloud:pvtz/zone:Zone", name, id, inputs, opts...)
 	if err != nil {
@@ -72,9 +81,17 @@ func (r *Zone) IsPtr() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["isPtr"])
 }
 
+func (r *Zone) Lang() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["lang"])
+}
+
 // The name of the Private Zone.
 func (r *Zone) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
+}
+
+func (r *Zone) ProxyPattern() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proxyPattern"])
 }
 
 // The count of the Private Zone Record.
@@ -83,6 +100,9 @@ func (r *Zone) RecordCount() pulumi.IntOutput {
 }
 
 // The remark of the Private Zone.
+// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+// - ZONE: indicates that the recursive DNS proxy is disabled.
+// - RECORD: indicates that the recursive DNS proxy is enabled.
 func (r *Zone) Remark() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["remark"])
 }
@@ -91,23 +111,39 @@ func (r *Zone) UpdateTime() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
+func (r *Zone) UserClientIp() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userClientIp"])
+}
+
 // Input properties used for looking up and filtering Zone resources.
 type ZoneState struct {
 	CreationTime interface{}
 	IsPtr interface{}
+	Lang interface{}
 	// The name of the Private Zone.
 	Name interface{}
+	ProxyPattern interface{}
 	// The count of the Private Zone Record.
 	RecordCount interface{}
 	// The remark of the Private Zone.
+	// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+	// - ZONE: indicates that the recursive DNS proxy is disabled.
+	// - RECORD: indicates that the recursive DNS proxy is enabled.
 	Remark interface{}
 	UpdateTime interface{}
+	UserClientIp interface{}
 }
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	Lang interface{}
 	// The name of the Private Zone.
 	Name interface{}
+	ProxyPattern interface{}
 	// The remark of the Private Zone.
+	// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+	// - ZONE: indicates that the recursive DNS proxy is disabled.
+	// - RECORD: indicates that the recursive DNS proxy is enabled.
 	Remark interface{}
+	UserClientIp interface{}
 }

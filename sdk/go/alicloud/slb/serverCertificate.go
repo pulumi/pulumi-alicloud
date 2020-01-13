@@ -27,6 +27,7 @@ func NewServerCertificate(ctx *pulumi.Context,
 		inputs["alicloudCertifacteName"] = nil
 		inputs["alicloudCertificateId"] = nil
 		inputs["alicloudCertificateName"] = nil
+		inputs["alicloudCertificateRegionId"] = nil
 		inputs["name"] = nil
 		inputs["privateKey"] = nil
 		inputs["resourceGroupId"] = nil
@@ -37,6 +38,7 @@ func NewServerCertificate(ctx *pulumi.Context,
 		inputs["alicloudCertifacteName"] = args.AlicloudCertifacteName
 		inputs["alicloudCertificateId"] = args.AlicloudCertificateId
 		inputs["alicloudCertificateName"] = args.AlicloudCertificateName
+		inputs["alicloudCertificateRegionId"] = args.AlicloudCertificateRegionId
 		inputs["name"] = args.Name
 		inputs["privateKey"] = args.PrivateKey
 		inputs["resourceGroupId"] = args.ResourceGroupId
@@ -60,6 +62,7 @@ func GetServerCertificate(ctx *pulumi.Context,
 		inputs["alicloudCertifacteName"] = state.AlicloudCertifacteName
 		inputs["alicloudCertificateId"] = state.AlicloudCertificateId
 		inputs["alicloudCertificateName"] = state.AlicloudCertificateName
+		inputs["alicloudCertificateRegionId"] = state.AlicloudCertificateRegionId
 		inputs["name"] = state.Name
 		inputs["privateKey"] = state.PrivateKey
 		inputs["resourceGroupId"] = state.ResourceGroupId
@@ -92,13 +95,18 @@ func (r *ServerCertificate) AlicloudCertifacteName() pulumi.StringOutput {
 }
 
 // an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-// * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 func (r *ServerCertificate) AlicloudCertificateId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["alicloudCertificateId"])
 }
 
+// the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 func (r *ServerCertificate) AlicloudCertificateName() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["alicloudCertificateName"])
+}
+
+// the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+func (r *ServerCertificate) AlicloudCertificateRegionId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["alicloudCertificateRegionId"])
 }
 
 // Name of the Server Certificate.
@@ -131,9 +139,11 @@ type ServerCertificateState struct {
 	AlicloudCertifacteId interface{}
 	AlicloudCertifacteName interface{}
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-	// * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId interface{}
+	// the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateName interface{}
+	// the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+	AlicloudCertificateRegionId interface{}
 	// Name of the Server Certificate.
 	Name interface{}
 	// the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.
@@ -151,9 +161,11 @@ type ServerCertificateArgs struct {
 	AlicloudCertifacteId interface{}
 	AlicloudCertifacteName interface{}
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-	// * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId interface{}
+	// the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateName interface{}
+	// the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+	AlicloudCertificateRegionId interface{}
 	// Name of the Server Certificate.
 	Name interface{}
 	// the content of privat key of the ssl certificate specified by `serverCertificate`. where `alicloudCertificateId` is null, it is required, otherwise it is ignored.

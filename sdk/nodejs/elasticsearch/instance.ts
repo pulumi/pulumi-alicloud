@@ -89,7 +89,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly domain!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export interface InstanceState {
      */
     readonly domain?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -358,7 +358,7 @@ export interface InstanceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**

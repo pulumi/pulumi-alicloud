@@ -114,6 +114,12 @@ namespace Pulumi.AliCloud.Slb
         public Output<bool?> DeleteProtectionValidation { get; private set; } = null!;
 
         /// <summary>
+        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         /// </summary>
         [Output("enableHttp2")]
@@ -394,6 +400,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
         /// <summary>
+        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
         /// </summary>
         [Input("enableHttp2")]
@@ -633,6 +645,12 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
+
+        /// <summary>
+        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.

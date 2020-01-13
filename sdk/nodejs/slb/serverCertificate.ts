@@ -80,10 +80,16 @@ export class ServerCertificate extends pulumi.CustomResource {
     public readonly alicloudCertifacteName!: pulumi.Output<string | undefined>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-     * * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
     public readonly alicloudCertificateId!: pulumi.Output<string | undefined>;
+    /**
+     * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
+     */
     public readonly alicloudCertificateName!: pulumi.Output<string | undefined>;
+    /**
+     * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+     */
+    public readonly alicloudCertificateRegionId!: pulumi.Output<string | undefined>;
     /**
      * Name of the Server Certificate.
      */
@@ -121,6 +127,7 @@ export class ServerCertificate extends pulumi.CustomResource {
             inputs["alicloudCertifacteName"] = state ? state.alicloudCertifacteName : undefined;
             inputs["alicloudCertificateId"] = state ? state.alicloudCertificateId : undefined;
             inputs["alicloudCertificateName"] = state ? state.alicloudCertificateName : undefined;
+            inputs["alicloudCertificateRegionId"] = state ? state.alicloudCertificateRegionId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["privateKey"] = state ? state.privateKey : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -132,6 +139,7 @@ export class ServerCertificate extends pulumi.CustomResource {
             inputs["alicloudCertifacteName"] = args ? args.alicloudCertifacteName : undefined;
             inputs["alicloudCertificateId"] = args ? args.alicloudCertificateId : undefined;
             inputs["alicloudCertificateName"] = args ? args.alicloudCertificateName : undefined;
+            inputs["alicloudCertificateRegionId"] = args ? args.alicloudCertificateRegionId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["privateKey"] = args ? args.privateKey : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -157,10 +165,16 @@ export interface ServerCertificateState {
     readonly alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-     * * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
     readonly alicloudCertificateId?: pulumi.Input<string>;
+    /**
+     * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
+     */
     readonly alicloudCertificateName?: pulumi.Input<string>;
+    /**
+     * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+     */
+    readonly alicloudCertificateRegionId?: pulumi.Input<string>;
     /**
      * Name of the Server Certificate.
      */
@@ -191,10 +205,16 @@ export interface ServerCertificateArgs {
     readonly alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
-     * * `alicloudCertificateName`- (Optional, ForceNew) the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
      */
     readonly alicloudCertificateId?: pulumi.Input<string>;
+    /**
+     * the name of the certificate specified by `alicloudCertificateId`.but it is not supported on the international site of alibaba cloud now.
+     */
     readonly alicloudCertificateName?: pulumi.Input<string>;
+    /**
+     * the region of the certificate specified by `alicloudCertificateId`. but it is not supported on the international site of alibaba cloud now.
+     */
+    readonly alicloudCertificateRegionId?: pulumi.Input<string>;
     /**
      * Name of the Server Certificate.
      */

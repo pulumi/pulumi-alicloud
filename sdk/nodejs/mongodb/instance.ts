@@ -103,7 +103,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -135,7 +135,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
     /**
-     * Number of replica set nodes. Valid values: [3,5,7]
+     * Number of replica set nodes. Valid values: [3, 5, 7]
      * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     public readonly replicationFactor!: pulumi.Output<number>;
@@ -271,7 +271,7 @@ export interface InstanceState {
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -303,7 +303,7 @@ export interface InstanceState {
      */
     readonly replicaSetName?: pulumi.Input<string>;
     /**
-     * Number of replica set nodes. Valid values: [3,5,7]
+     * Number of replica set nodes. Valid values: [3, 5, 7]
      * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly replicationFactor?: pulumi.Input<number>;
@@ -363,7 +363,7 @@ export interface InstanceArgs {
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -391,7 +391,7 @@ export interface InstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * Number of replica set nodes. Valid values: [3,5,7]
+     * Number of replica set nodes. Valid values: [3, 5, 7]
      * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly replicationFactor?: pulumi.Input<number>;

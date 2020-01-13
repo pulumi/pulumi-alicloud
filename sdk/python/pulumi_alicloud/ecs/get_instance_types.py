@@ -13,7 +13,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, id=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
@@ -29,6 +29,12 @@ class GetInstanceTypesResult:
         """
         The maximum number of network interfaces that an instance type can be attached to.
         """
+        if gpu_amount and not isinstance(gpu_amount, float):
+            raise TypeError("Expected argument 'gpu_amount' to be a float")
+        __self__.gpu_amount = gpu_amount
+        if gpu_spec and not isinstance(gpu_spec, str):
+            raise TypeError("Expected argument 'gpu_spec' to be a str")
+        __self__.gpu_spec = gpu_spec
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -86,6 +92,8 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             availability_zone=self.availability_zone,
             cpu_core_count=self.cpu_core_count,
             eni_amount=self.eni_amount,
+            gpu_amount=self.gpu_amount,
+            gpu_spec=self.gpu_spec,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             instance_type_family=self.instance_type_family,
@@ -99,7 +107,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             spot_strategy=self.spot_strategy,
             id=self.id)
 
-def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=None,instance_charge_type=None,instance_type_family=None,is_outdated=None,kubernetes_node_role=None,memory_size=None,network_type=None,output_file=None,sorted_by=None,spot_strategy=None,opts=None):
+def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=None,gpu_amount=None,gpu_spec=None,instance_charge_type=None,instance_type_family=None,is_outdated=None,kubernetes_node_role=None,memory_size=None,network_type=None,output_file=None,sorted_by=None,spot_strategy=None,opts=None):
     """
     This data source provides the ECS instance types of Alibaba Cloud.
     
@@ -110,6 +118,8 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
     :param str availability_zone: The zone where instance types are supported.
     :param float cpu_core_count: Filter the results to a specific number of cpu cores.
     :param float eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
+    :param float gpu_amount: The GPU amount of an instance type.
+    :param str gpu_spec: The GPU spec of an instance type.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
@@ -124,6 +134,8 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
     __args__['availabilityZone'] = availability_zone
     __args__['cpuCoreCount'] = cpu_core_count
     __args__['eniAmount'] = eni_amount
+    __args__['gpuAmount'] = gpu_amount
+    __args__['gpuSpec'] = gpu_spec
     __args__['instanceChargeType'] = instance_charge_type
     __args__['instanceTypeFamily'] = instance_type_family
     __args__['isOutdated'] = is_outdated
@@ -143,6 +155,8 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
         availability_zone=__ret__.get('availabilityZone'),
         cpu_core_count=__ret__.get('cpuCoreCount'),
         eni_amount=__ret__.get('eniAmount'),
+        gpu_amount=__ret__.get('gpuAmount'),
+        gpu_spec=__ret__.get('gpuSpec'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_type_family=__ret__.get('instanceTypeFamily'),

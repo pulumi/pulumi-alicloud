@@ -20,6 +20,8 @@ func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetI
 		inputs["availabilityZone"] = args.AvailabilityZone
 		inputs["cpuCoreCount"] = args.CpuCoreCount
 		inputs["eniAmount"] = args.EniAmount
+		inputs["gpuAmount"] = args.GpuAmount
+		inputs["gpuSpec"] = args.GpuSpec
 		inputs["instanceChargeType"] = args.InstanceChargeType
 		inputs["instanceTypeFamily"] = args.InstanceTypeFamily
 		inputs["isOutdated"] = args.IsOutdated
@@ -38,6 +40,8 @@ func LookupInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs) (*GetI
 		AvailabilityZone: outputs["availabilityZone"],
 		CpuCoreCount: outputs["cpuCoreCount"],
 		EniAmount: outputs["eniAmount"],
+		GpuAmount: outputs["gpuAmount"],
+		GpuSpec: outputs["gpuSpec"],
 		Ids: outputs["ids"],
 		InstanceChargeType: outputs["instanceChargeType"],
 		InstanceTypeFamily: outputs["instanceTypeFamily"],
@@ -61,6 +65,10 @@ type GetInstanceTypesArgs struct {
 	CpuCoreCount interface{}
 	// Filter the result whose network interface number is no more than `eniAmount`.
 	EniAmount interface{}
+	// The GPU amount of an instance type.
+	GpuAmount interface{}
+	// The GPU spec of an instance type.
+	GpuSpec interface{}
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType interface{}
 	// Filter the results based on their family name. For example: 'ecs.n4'.
@@ -85,6 +93,8 @@ type GetInstanceTypesResult struct {
 	CpuCoreCount interface{}
 	// The maximum number of network interfaces that an instance type can be attached to.
 	EniAmount interface{}
+	GpuAmount interface{}
+	GpuSpec interface{}
 	// A list of instance type IDs.
 	Ids interface{}
 	InstanceChargeType interface{}

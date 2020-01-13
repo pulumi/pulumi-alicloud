@@ -24,14 +24,15 @@ class ImageCopy(pulumi.CustomResource):
     - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
     - false：Verifies that the image is not currently in use by any other instances before deleting the image.
     """
+    image_name: pulumi.Output[str]
+    """
+    The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+    """
     kms_key_id: pulumi.Output[str]
     """
     Key ID used to encrypt the image.
     """
     name: pulumi.Output[str]
-    """
-    The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
-    """
     source_image_id: pulumi.Output[str]
     """
     The source image ID.
@@ -44,7 +45,7 @@ class ImageCopy(pulumi.CustomResource):
     """
     The tag value of an image. The value of N ranges from 1 to 20.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, encrypted=None, force=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, encrypted=None, force=None, image_name=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
         
@@ -63,8 +64,8 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
-        :param pulumi.Input[str] name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] source_image_id: The source image ID.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -91,6 +92,7 @@ class ImageCopy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['encrypted'] = encrypted
             __props__['force'] = force
+            __props__['image_name'] = image_name
             __props__['kms_key_id'] = kms_key_id
             __props__['name'] = name
             if source_image_id is None:
@@ -107,7 +109,7 @@ class ImageCopy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, encrypted=None, force=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None):
+    def get(resource_name, id, opts=None, description=None, encrypted=None, force=None, image_name=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None):
         """
         Get an existing ImageCopy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -120,8 +122,8 @@ class ImageCopy(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Indicates whether to force delete the custom image, Default is `false`. 
                - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
                - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+        :param pulumi.Input[str] image_name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] kms_key_id: Key ID used to encrypt the image.
-        :param pulumi.Input[str] name: The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
         :param pulumi.Input[str] source_image_id: The source image ID.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
@@ -134,6 +136,7 @@ class ImageCopy(pulumi.CustomResource):
         __props__["description"] = description
         __props__["encrypted"] = encrypted
         __props__["force"] = force
+        __props__["image_name"] = image_name
         __props__["kms_key_id"] = kms_key_id
         __props__["name"] = name
         __props__["source_image_id"] = source_image_id

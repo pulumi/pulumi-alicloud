@@ -44,6 +44,18 @@ namespace Pulumi.AliCloud.Ecs
         public int? EniAmount { get; set; }
 
         /// <summary>
+        /// The GPU amount of an instance type.
+        /// </summary>
+        [Input("gpuAmount")]
+        public int? GpuAmount { get; set; }
+
+        /// <summary>
+        /// The GPU spec of an instance type.
+        /// </summary>
+        [Input("gpuSpec")]
+        public string? GpuSpec { get; set; }
+
+        /// <summary>
         /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
         /// </summary>
         [Input("instanceChargeType")]
@@ -105,6 +117,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The maximum number of network interfaces that an instance type can be attached to.
         /// </summary>
         public readonly int? EniAmount;
+        public readonly int? GpuAmount;
+        public readonly string? GpuSpec;
         /// <summary>
         /// A list of instance type IDs.
         /// </summary>
@@ -135,6 +149,8 @@ namespace Pulumi.AliCloud.Ecs
             string? availabilityZone,
             int? cpuCoreCount,
             int? eniAmount,
+            int? gpuAmount,
+            string? gpuSpec,
             ImmutableArray<string> ids,
             string? instanceChargeType,
             string? instanceTypeFamily,
@@ -151,6 +167,8 @@ namespace Pulumi.AliCloud.Ecs
             AvailabilityZone = availabilityZone;
             CpuCoreCount = cpuCoreCount;
             EniAmount = eniAmount;
+            GpuAmount = gpuAmount;
+            GpuSpec = gpuSpec;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceTypeFamily = instanceTypeFamily;

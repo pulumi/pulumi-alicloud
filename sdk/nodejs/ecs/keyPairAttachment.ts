@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const images = alicloud.ecs.getImages({
  *     mostRecent: true,
- *     nameRegex: "^ubuntu_18.*_64",
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {

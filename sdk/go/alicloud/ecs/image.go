@@ -31,6 +31,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = nil
 		inputs["diskDeviceMappings"] = nil
 		inputs["force"] = nil
+		inputs["imageName"] = nil
 		inputs["instanceId"] = nil
 		inputs["name"] = nil
 		inputs["platform"] = nil
@@ -42,6 +43,7 @@ func NewImage(ctx *pulumi.Context,
 		inputs["description"] = args.Description
 		inputs["diskDeviceMappings"] = args.DiskDeviceMappings
 		inputs["force"] = args.Force
+		inputs["imageName"] = args.ImageName
 		inputs["instanceId"] = args.InstanceId
 		inputs["name"] = args.Name
 		inputs["platform"] = args.Platform
@@ -66,6 +68,7 @@ func GetImage(ctx *pulumi.Context,
 		inputs["description"] = state.Description
 		inputs["diskDeviceMappings"] = state.DiskDeviceMappings
 		inputs["force"] = state.Force
+		inputs["imageName"] = state.ImageName
 		inputs["instanceId"] = state.InstanceId
 		inputs["name"] = state.Name
 		inputs["platform"] = state.Platform
@@ -112,17 +115,21 @@ func (r *Image) Force() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["force"])
 }
 
+// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+func (r *Image) ImageName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["imageName"])
+}
+
 // The instance ID.
 func (r *Image) InstanceId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 func (r *Image) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 func (r *Image) Platform() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["platform"])
 }
@@ -154,11 +161,12 @@ type ImageState struct {
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force interface{}
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName interface{}
 	// The instance ID.
 	InstanceId interface{}
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 	Name interface{}
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform interface{}
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId interface{}
@@ -180,11 +188,12 @@ type ImageArgs struct {
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force interface{}
+	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	ImageName interface{}
 	// The instance ID.
 	InstanceId interface{}
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
 	Name interface{}
-	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `cloudSsd`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
+	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform interface{}
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId interface{}

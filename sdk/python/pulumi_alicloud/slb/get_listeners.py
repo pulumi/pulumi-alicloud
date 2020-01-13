@@ -13,7 +13,10 @@ class GetListenersResult:
     """
     A collection of values returned by getListeners.
     """
-    def __init__(__self__, frontend_port=None, load_balancer_id=None, output_file=None, protocol=None, slb_listeners=None, id=None):
+    def __init__(__self__, description_regex=None, frontend_port=None, load_balancer_id=None, output_file=None, protocol=None, slb_listeners=None, id=None):
+        if description_regex and not isinstance(description_regex, str):
+            raise TypeError("Expected argument 'description_regex' to be a str")
+        __self__.description_regex = description_regex
         if frontend_port and not isinstance(frontend_port, float):
             raise TypeError("Expected argument 'frontend_port' to be a float")
         __self__.frontend_port = frontend_port
@@ -50,6 +53,7 @@ class AwaitableGetListenersResult(GetListenersResult):
         if False:
             yield self
         return GetListenersResult(
+            description_regex=self.description_regex,
             frontend_port=self.frontend_port,
             load_balancer_id=self.load_balancer_id,
             output_file=self.output_file,
@@ -57,10 +61,11 @@ class AwaitableGetListenersResult(GetListenersResult):
             slb_listeners=self.slb_listeners,
             id=self.id)
 
-def get_listeners(frontend_port=None,load_balancer_id=None,output_file=None,protocol=None,opts=None):
+def get_listeners(description_regex=None,frontend_port=None,load_balancer_id=None,output_file=None,protocol=None,opts=None):
     """
     This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
     
+    :param str description_regex: A regex string to filter results by SLB listener description.
     :param float frontend_port: Filter listeners by the specified frontend port.
     :param str load_balancer_id: ID of the SLB with listeners.
     :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
@@ -69,6 +74,7 @@ def get_listeners(frontend_port=None,load_balancer_id=None,output_file=None,prot
     """
     __args__ = dict()
 
+    __args__['descriptionRegex'] = description_regex
     __args__['frontendPort'] = frontend_port
     __args__['loadBalancerId'] = load_balancer_id
     __args__['outputFile'] = output_file
@@ -80,6 +86,7 @@ def get_listeners(frontend_port=None,load_balancer_id=None,output_file=None,prot
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getListeners:getListeners', __args__, opts=opts).value
 
     return AwaitableGetListenersResult(
+        description_regex=__ret__.get('descriptionRegex'),
         frontend_port=__ret__.get('frontendPort'),
         load_balancer_id=__ret__.get('loadBalancerId'),
         output_file=__ret__.get('outputFile'),

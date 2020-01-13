@@ -36,19 +36,25 @@ export class Zone extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     public /*out*/ readonly isPtr!: pulumi.Output<boolean>;
+    public readonly lang!: pulumi.Output<string | undefined>;
     /**
      * The name of the Private Zone.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly proxyPattern!: pulumi.Output<string | undefined>;
     /**
      * The count of the Private Zone Record.
      */
     public /*out*/ readonly recordCount!: pulumi.Output<number>;
     /**
      * The remark of the Private Zone.
+     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+     * - ZONE: indicates that the recursive DNS proxy is disabled.
+     * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly userClientIp!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -64,14 +70,20 @@ export class Zone extends pulumi.CustomResource {
             const state = argsOrState as ZoneState | undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
             inputs["isPtr"] = state ? state.isPtr : undefined;
+            inputs["lang"] = state ? state.lang : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["proxyPattern"] = state ? state.proxyPattern : undefined;
             inputs["recordCount"] = state ? state.recordCount : undefined;
             inputs["remark"] = state ? state.remark : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
+            inputs["userClientIp"] = state ? state.userClientIp : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
+            inputs["lang"] = args ? args.lang : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["proxyPattern"] = args ? args.proxyPattern : undefined;
             inputs["remark"] = args ? args.remark : undefined;
+            inputs["userClientIp"] = args ? args.userClientIp : undefined;
             inputs["creationTime"] = undefined /*out*/;
             inputs["isPtr"] = undefined /*out*/;
             inputs["recordCount"] = undefined /*out*/;
@@ -94,31 +106,43 @@ export class Zone extends pulumi.CustomResource {
 export interface ZoneState {
     readonly creationTime?: pulumi.Input<string>;
     readonly isPtr?: pulumi.Input<boolean>;
+    readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      */
     readonly name?: pulumi.Input<string>;
+    readonly proxyPattern?: pulumi.Input<string>;
     /**
      * The count of the Private Zone Record.
      */
     readonly recordCount?: pulumi.Input<number>;
     /**
      * The remark of the Private Zone.
+     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+     * - ZONE: indicates that the recursive DNS proxy is disabled.
+     * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
     readonly remark?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
+    readonly userClientIp?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Zone resource.
  */
 export interface ZoneArgs {
+    readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      */
     readonly name?: pulumi.Input<string>;
+    readonly proxyPattern?: pulumi.Input<string>;
     /**
      * The remark of the Private Zone.
+     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+     * - ZONE: indicates that the recursive DNS proxy is disabled.
+     * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
     readonly remark?: pulumi.Input<string>;
+    readonly userClientIp?: pulumi.Input<string>;
 }

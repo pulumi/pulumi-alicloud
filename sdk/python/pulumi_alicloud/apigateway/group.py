@@ -18,6 +18,14 @@ class Group(pulumi.CustomResource):
     """
     The name of the api gateway group. Defaults to null.
     """
+    sub_domain: pulumi.Output[str]
+    """
+    (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+    """
+    vpc_domain: pulumi.Output[str]
+    """
+    (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Group resource with the given unique name, props, and options.
@@ -50,6 +58,8 @@ class Group(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['name'] = name
+            __props__['sub_domain'] = None
+            __props__['vpc_domain'] = None
         super(Group, __self__).__init__(
             'alicloud:apigateway/group:Group',
             resource_name,
@@ -57,7 +67,7 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None):
+    def get(resource_name, id, opts=None, description=None, name=None, sub_domain=None, vpc_domain=None):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -67,6 +77,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
+        :param pulumi.Input[str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+        :param pulumi.Input[str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_group.html.markdown.
         """
@@ -75,6 +87,8 @@ class Group(pulumi.CustomResource):
         __props__ = dict()
         __props__["description"] = description
         __props__["name"] = name
+        __props__["sub_domain"] = sub_domain
+        __props__["vpc_domain"] = vpc_domain
         return Group(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
