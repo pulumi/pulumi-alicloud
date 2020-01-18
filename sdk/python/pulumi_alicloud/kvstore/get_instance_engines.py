@@ -70,7 +70,7 @@ def get_instance_engines(engine=None,engine_version=None,instance_charge_type=No
     
     > **NOTE:** Available in v1.51.0+
     
-    :param str engine: Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+    :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
     :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str zone_id: The Zone to launch the KVStore instance.

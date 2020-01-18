@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a security group rule resource.
-    /// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
-    /// 
-    /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group_rule.html.markdown.
     /// </summary>
     public partial class SecurityGroupRule : Pulumi.CustomResource

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? EditionType { get; set; }
 
         /// <summary>
-        /// Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }

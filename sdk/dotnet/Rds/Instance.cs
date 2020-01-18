@@ -151,6 +151,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
+        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// </summary>
+        [Output("sqlCollectorConfigValue")]
+        public Output<int?> SqlCollectorConfigValue { get; private set; } = null!;
+
+        /// <summary>
+        /// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        /// </summary>
+        [Output("sqlCollectorStatus")]
+        public Output<string?> SqlCollectorStatus { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -357,6 +369,18 @@ namespace Pulumi.AliCloud.Rds
             set => _securityIps = value;
         }
 
+        /// <summary>
+        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// </summary>
+        [Input("sqlCollectorConfigValue")]
+        public Input<int>? SqlCollectorConfigValue { get; set; }
+
+        /// <summary>
+        /// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        /// </summary>
+        [Input("sqlCollectorStatus")]
+        public Input<string>? SqlCollectorStatus { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -542,6 +566,18 @@ namespace Pulumi.AliCloud.Rds
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// </summary>
+        [Input("sqlCollectorConfigValue")]
+        public Input<int>? SqlCollectorConfigValue { get; set; }
+
+        /// <summary>
+        /// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        /// </summary>
+        [Input("sqlCollectorStatus")]
+        public Input<string>? SqlCollectorStatus { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

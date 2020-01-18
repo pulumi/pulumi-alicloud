@@ -9,15 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
-    /// 
-    /// &gt; **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
-    ///  pre-existing or distributed to customers or users and therefore cannot be changed.
-    /// 
-    /// &gt; **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
-    /// 
-    /// &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
     /// </summary>
     public partial class EipAssociation : Pulumi.CustomResource

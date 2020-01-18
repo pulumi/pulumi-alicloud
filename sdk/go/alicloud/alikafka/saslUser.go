@@ -84,7 +84,7 @@ func (r *SaslUser) InstanceId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["instanceId"])
 }
 
-// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 func (r *SaslUser) KmsEncryptedPassword() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["kmsEncryptedPassword"])
 }
@@ -108,7 +108,7 @@ func (r *SaslUser) Username() pulumi.StringOutput {
 type SaslUserState struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId interface{}
-	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword interface{}
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext interface{}
@@ -122,7 +122,7 @@ type SaslUserState struct {
 type SaslUserArgs struct {
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId interface{}
-	// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword interface{}
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext interface{}

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  *     localTopic: false,
  *     partitionNum: 12,
- *     remark: "dafaultOnsTopicRemark",
+ *     remark: "dafaultKafkaTopicRemark",
  *     topic: topic,
  * });
  * ```

@@ -638,6 +638,8 @@ func Provider() tfbridge.ProviderInfo {
 			// PolarDb
 			"alicloud_polardb_clusters":  {Tok: dataSource(polarDbMod, "getClusters")},
 			"alicloud_polardb_endpoints": {Tok: dataSource(polarDbMod, "getEndpoints")},
+			"alicloud_polardb_accounts":  {Tok: dataSource(polarDbMod, "getAccounts")},
+			"alicloud_polardb_databases": {Tok: dataSource(polarDbMod, "getDatabases")},
 
 			// Pvtr
 			"alicloud_pvtz_zone_records": {Tok: dataSource(pvtzMod, "getZoneRecords")},

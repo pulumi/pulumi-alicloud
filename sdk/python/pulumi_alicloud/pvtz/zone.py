@@ -13,11 +13,19 @@ class Zone(pulumi.CustomResource):
     creation_time: pulumi.Output[str]
     is_ptr: pulumi.Output[bool]
     lang: pulumi.Output[str]
+    """
+    The language. Valid values: "zh", "en", "jp".
+    """
     name: pulumi.Output[str]
     """
     The name of the Private Zone.
     """
     proxy_pattern: pulumi.Output[str]
+    """
+    The recursive DNS proxy. Valid values:
+    - ZONE: indicates that the recursive DNS proxy is disabled.
+    - RECORD: indicates that the recursive DNS proxy is enabled.
+    """
     record_count: pulumi.Output[float]
     """
     The count of the Private Zone Record.
@@ -25,23 +33,25 @@ class Zone(pulumi.CustomResource):
     remark: pulumi.Output[str]
     """
     The remark of the Private Zone.
-    * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
-    - ZONE: indicates that the recursive DNS proxy is disabled.
-    - RECORD: indicates that the recursive DNS proxy is enabled.
     """
     update_time: pulumi.Output[str]
     user_client_ip: pulumi.Output[str]
+    """
+    The IP address of the client.
+    """
     def __init__(__self__, resource_name, opts=None, lang=None, name=None, proxy_pattern=None, remark=None, user_client_ip=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Zone resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[str] name: The name of the Private Zone.
-        :param pulumi.Input[str] remark: The remark of the Private Zone.
-               * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+        :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
+        :param pulumi.Input[str] remark: The remark of the Private Zone.
+        :param pulumi.Input[str] user_client_ip: The IP address of the client.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """
@@ -86,12 +96,14 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
         :param pulumi.Input[str] name: The name of the Private Zone.
-        :param pulumi.Input[float] record_count: The count of the Private Zone Record.
-        :param pulumi.Input[str] remark: The remark of the Private Zone.
-               * `proxy_pattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+        :param pulumi.Input[str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
+        :param pulumi.Input[float] record_count: The count of the Private Zone Record.
+        :param pulumi.Input[str] remark: The remark of the Private Zone.
+        :param pulumi.Input[str] user_client_ip: The IP address of the client.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """

@@ -39,6 +39,7 @@ namespace Pulumi.AliCloud.Slb
     /// health_check | http &amp; https | on or off | 
     /// health_check_type | tcp | tcp or http | 
     /// health_check_domain | http &amp; https &amp; tcp | 
+    /// health_check_method | http &amp; https &amp; tcp | 
     /// health_check_uri | http &amp; https &amp; tcp |  | 
     /// health_check_connect_port | http &amp; https &amp; tcp &amp; udp | 1-65535 or -520 | 
     /// healthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 | 
@@ -178,6 +179,12 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Output("healthCheckInterval")]
         public Output<int?> HealthCheckInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// The method of health check. Valid values: ["head", "get"].
+        /// </summary>
+        [Output("healthCheckMethod")]
+        public Output<string> HealthCheckMethod { get; private set; } = null!;
 
         /// <summary>
         /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
@@ -466,6 +473,12 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
+        /// The method of health check. Valid values: ["head", "get"].
+        /// </summary>
+        [Input("healthCheckMethod")]
+        public Input<string>? HealthCheckMethod { get; set; }
+
+        /// <summary>
         /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
         /// </summary>
         [Input("healthCheckTimeout")]
@@ -711,6 +724,12 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
+
+        /// <summary>
+        /// The method of health check. Valid values: ["head", "get"].
+        /// </summary>
+        [Input("healthCheckMethod")]
+        public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
         /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.

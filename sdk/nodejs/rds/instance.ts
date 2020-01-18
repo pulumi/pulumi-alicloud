@@ -201,6 +201,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
+     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     */
+    public readonly sqlCollectorConfigValue!: pulumi.Output<number | undefined>;
+    /**
+     * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+     */
+    public readonly sqlCollectorStatus!: pulumi.Output<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -249,6 +257,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityIpMode"] = state ? state.securityIpMode : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
+            inputs["sqlCollectorConfigValue"] = state ? state.sqlCollectorConfigValue : undefined;
+            inputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -284,6 +294,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityIpMode"] = args ? args.securityIpMode : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
+            inputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
+            inputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -399,6 +411,14 @@ export interface InstanceState {
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     */
+    readonly sqlCollectorConfigValue?: pulumi.Input<number>;
+    /**
+     * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+     */
+    readonly sqlCollectorStatus?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -505,6 +525,14 @@ export interface InstanceArgs {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     */
+    readonly sqlCollectorConfigValue?: pulumi.Input<number>;
+    /**
+     * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+     */
+    readonly sqlCollectorStatus?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

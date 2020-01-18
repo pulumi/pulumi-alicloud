@@ -5,48 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services. 
- * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
- * 
- * > **NOTE:**  Available in 1.37.0+
- * 
- * > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
- * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`] 
- * 
- * > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
- * 
- * ## Example Usage
- * 
- * ### Create a Mongodb instance
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "MongoDB",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/24",
- *     vpcId: defaultNetwork.id,
- * });
- * const example = new alicloud.mongodb.Instance("example", {
- *     dbInstanceClass: "dds.mongo.mid",
- *     dbInstanceStorage: 10,
- *     engineVersion: "3.4",
- *     securityIpLists: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
- *     vswitchId: defaultSwitch.id,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
@@ -85,7 +43,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
@@ -253,7 +211,7 @@ export interface InstanceState {
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     readonly backupTime?: pulumi.Input<string>;
     /**
@@ -345,7 +303,7 @@ export interface InstanceArgs {
      */
     readonly backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+     * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     readonly backupTime?: pulumi.Input<string>;
     /**

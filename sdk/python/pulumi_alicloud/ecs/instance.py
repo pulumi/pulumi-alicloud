@@ -14,6 +14,12 @@ class Instance(pulumi.CustomResource):
     """
     It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
     """
+    auto_release_time: pulumi.Output[str]
+    """
+    The automatic release time of the `PostPaid` instance. 
+    The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+    Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+    """
     auto_renew_period: pulumi.Output[float]
     """
     Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
@@ -218,26 +224,16 @@ class Instance(pulumi.CustomResource):
     """
     The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
     """
-    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a ECS instance resource.
-        
-        > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
-        
-        > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
-        
-        > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `ecs.getInstanceTypes` datasource.
-        
-        > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
-        
-        > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
-         However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
-        
-        > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+        Create a Instance resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
         :param pulumi.Input[float] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
                - [1, 2, 3] when `period_unit` in "Week"
@@ -341,6 +337,7 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['allocate_public_ip'] = allocate_public_ip
+            __props__['auto_release_time'] = auto_release_time
             __props__['auto_renew_period'] = auto_renew_period
             __props__['availability_zone'] = availability_zone
             __props__['credit_specification'] = credit_specification
@@ -396,7 +393,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocate_public_ip=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, public_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, status=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, public_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, status=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -405,6 +402,9 @@ class Instance(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
         :param pulumi.Input[float] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
                - [1, 2, 3] when `period_unit` in "Week"
@@ -496,6 +496,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["allocate_public_ip"] = allocate_public_ip
+        __props__["auto_release_time"] = auto_release_time
         __props__["auto_renew_period"] = auto_renew_period
         __props__["availability_zone"] = availability_zone
         __props__["credit_specification"] = credit_specification

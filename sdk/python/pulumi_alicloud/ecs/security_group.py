@@ -46,11 +46,7 @@ class SecurityGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, inner_access=None, inner_access_policy=None, name=None, resource_group_id=None, security_group_type=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a security group resource.
-        
-        > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
-        
-        > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+        Create a SecurityGroup resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

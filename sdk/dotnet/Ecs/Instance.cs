@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a ECS instance resource.
-    /// 
-    /// &gt; **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
-    /// 
-    /// &gt; **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
-    /// 
-    /// &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
-    /// 
-    /// &gt; **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
-    /// 
-    /// &gt; **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
-    ///  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
-    /// 
-    /// &gt; **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
@@ -33,6 +18,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("allocatePublicIp")]
         public Output<bool?> AllocatePublicIp { get; private set; } = null!;
+
+        /// <summary>
+        /// The automatic release time of the `PostPaid` instance. 
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// </summary>
+        [Output("autoReleaseTime")]
+        public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
         /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
@@ -355,6 +348,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? AllocatePublicIp { get; set; }
 
         /// <summary>
+        /// The automatic release time of the `PostPaid` instance. 
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// </summary>
+        [Input("autoReleaseTime")]
+        public Input<string>? AutoReleaseTime { get; set; }
+
+        /// <summary>
         /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
         /// - [1, 2, 3, 6, 12] when `period_unit` in "Month"
         /// - [1, 2, 3] when `period_unit` in "Week"
@@ -652,6 +653,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("allocatePublicIp")]
         public Input<bool>? AllocatePublicIp { get; set; }
+
+        /// <summary>
+        /// The automatic release time of the `PostPaid` instance. 
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+        /// </summary>
+        [Input("autoReleaseTime")]
+        public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
         /// Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:

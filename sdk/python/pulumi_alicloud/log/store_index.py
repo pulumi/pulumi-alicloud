@@ -47,8 +47,7 @@ class StoreIndex(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, field_searches=None, full_text=None, logstore=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
-        You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+        Create a StoreIndex resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

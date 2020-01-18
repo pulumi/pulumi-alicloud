@@ -106,6 +106,14 @@ class Instance(pulumi.CustomResource):
     """
     List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
     """
+    sql_collector_config_value: pulumi.Output[float]
+    """
+    The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+    """
+    sql_collector_status: pulumi.Output[str]
+    """
+    The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+    """
     tags: pulumi.Output[dict]
     """
     A mapping of tags to assign to the resource.
@@ -122,7 +130,7 @@ class Instance(pulumi.CustomResource):
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
     The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS instance resource. A DB instance is an isolated database
         environment in the cloud. A DB instance can contain multiple user-created
@@ -161,6 +169,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -219,6 +229,8 @@ class Instance(pulumi.CustomResource):
             __props__['security_group_ids'] = security_group_ids
             __props__['security_ip_mode'] = security_ip_mode
             __props__['security_ips'] = security_ips
+            __props__['sql_collector_config_value'] = sql_collector_config_value
+            __props__['sql_collector_status'] = sql_collector_status
             __props__['tags'] = tags
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
@@ -231,7 +243,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -272,6 +284,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -310,6 +324,8 @@ class Instance(pulumi.CustomResource):
         __props__["security_group_ids"] = security_group_ids
         __props__["security_ip_mode"] = security_ip_mode
         __props__["security_ips"] = security_ips
+        __props__["sql_collector_config_value"] = sql_collector_config_value
+        __props__["sql_collector_status"] = sql_collector_status
         __props__["tags"] = tags
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id

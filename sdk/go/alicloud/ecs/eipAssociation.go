@@ -8,15 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
-// 
-// > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
-//  pre-existing or distributed to customers or users and therefore cannot be changed.
-// 
-// > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
-// 
-// > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
 type EipAssociation struct {
 	s *pulumi.ResourceState

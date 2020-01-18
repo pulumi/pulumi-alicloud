@@ -52,11 +52,11 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the CEN instance. Defaults to null.
+     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the CEN instance. Defaults to null.
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -95,11 +95,11 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The description of the CEN instance. Defaults to null.
+     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the CEN instance. Defaults to null.
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -109,11 +109,11 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The description of the CEN instance. Defaults to null.
+     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The name of the CEN instance. Defaults to null.
+     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
 }

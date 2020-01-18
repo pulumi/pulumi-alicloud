@@ -36,11 +36,19 @@ export class Zone extends pulumi.CustomResource {
 
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     public /*out*/ readonly isPtr!: pulumi.Output<boolean>;
+    /**
+     * The language. Valid values: "zh", "en", "jp".
+     */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
      * The name of the Private Zone.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The recursive DNS proxy. Valid values:
+     * - ZONE: indicates that the recursive DNS proxy is disabled.
+     * - RECORD: indicates that the recursive DNS proxy is enabled.
+     */
     public readonly proxyPattern!: pulumi.Output<string | undefined>;
     /**
      * The count of the Private Zone Record.
@@ -48,12 +56,12 @@ export class Zone extends pulumi.CustomResource {
     public /*out*/ readonly recordCount!: pulumi.Output<number>;
     /**
      * The remark of the Private Zone.
-     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
-     * - ZONE: indicates that the recursive DNS proxy is disabled.
-     * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The IP address of the client.
+     */
     public readonly userClientIp!: pulumi.Output<string | undefined>;
 
     /**
@@ -106,11 +114,19 @@ export class Zone extends pulumi.CustomResource {
 export interface ZoneState {
     readonly creationTime?: pulumi.Input<string>;
     readonly isPtr?: pulumi.Input<boolean>;
+    /**
+     * The language. Valid values: "zh", "en", "jp".
+     */
     readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The recursive DNS proxy. Valid values:
+     * - ZONE: indicates that the recursive DNS proxy is disabled.
+     * - RECORD: indicates that the recursive DNS proxy is enabled.
+     */
     readonly proxyPattern?: pulumi.Input<string>;
     /**
      * The count of the Private Zone Record.
@@ -118,12 +134,12 @@ export interface ZoneState {
     readonly recordCount?: pulumi.Input<number>;
     /**
      * The remark of the Private Zone.
-     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
-     * - ZONE: indicates that the recursive DNS proxy is disabled.
-     * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
     readonly remark?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
+    /**
+     * The IP address of the client.
+     */
     readonly userClientIp?: pulumi.Input<string>;
 }
 
@@ -131,18 +147,26 @@ export interface ZoneState {
  * The set of arguments for constructing a Zone resource.
  */
 export interface ZoneArgs {
+    /**
+     * The language. Valid values: "zh", "en", "jp".
+     */
     readonly lang?: pulumi.Input<string>;
     /**
      * The name of the Private Zone.
      */
     readonly name?: pulumi.Input<string>;
-    readonly proxyPattern?: pulumi.Input<string>;
     /**
-     * The remark of the Private Zone.
-     * * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+     * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      */
+    readonly proxyPattern?: pulumi.Input<string>;
+    /**
+     * The remark of the Private Zone.
+     */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * The IP address of the client.
+     */
     readonly userClientIp?: pulumi.Input<string>;
 }

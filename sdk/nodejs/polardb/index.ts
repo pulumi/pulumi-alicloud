@@ -8,5 +8,7 @@ export * from "./backupPolicy";
 export * from "./cluster";
 export * from "./database";
 export * from "./endpointAddress";
+export * from "./getAccounts";
 export * from "./getClusters";
+export * from "./getDatabases";
 export * from "./getEndpoints";

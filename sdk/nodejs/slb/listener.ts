@@ -95,6 +95,7 @@ import * as utilities from "../utilities";
  * healthCheck | http & https | on or off | 
  * healthCheckType | tcp | tcp or http | 
  * healthCheckDomain | http & https & tcp | 
+ * healthCheckMethod | http & https & tcp | 
  * healthCheckUri | http & https & tcp |  | 
  * healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 | 
  * healthyThreshold | http & https & tcp & udp | 1-10 | 
@@ -223,6 +224,10 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheckInterval!: pulumi.Output<number | undefined>;
     /**
+     * The method of health check. Valid values: ["head", "get"].
+     */
+    public readonly healthCheckMethod!: pulumi.Output<string>;
+    /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */
     public readonly healthCheckTimeout!: pulumi.Output<number | undefined>;
@@ -334,6 +339,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["healthCheckDomain"] = state ? state.healthCheckDomain : undefined;
             inputs["healthCheckHttpCode"] = state ? state.healthCheckHttpCode : undefined;
             inputs["healthCheckInterval"] = state ? state.healthCheckInterval : undefined;
+            inputs["healthCheckMethod"] = state ? state.healthCheckMethod : undefined;
             inputs["healthCheckTimeout"] = state ? state.healthCheckTimeout : undefined;
             inputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             inputs["healthCheckUri"] = state ? state.healthCheckUri : undefined;
@@ -387,6 +393,7 @@ export class Listener extends pulumi.CustomResource {
             inputs["healthCheckDomain"] = args ? args.healthCheckDomain : undefined;
             inputs["healthCheckHttpCode"] = args ? args.healthCheckHttpCode : undefined;
             inputs["healthCheckInterval"] = args ? args.healthCheckInterval : undefined;
+            inputs["healthCheckMethod"] = args ? args.healthCheckMethod : undefined;
             inputs["healthCheckTimeout"] = args ? args.healthCheckTimeout : undefined;
             inputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             inputs["healthCheckUri"] = args ? args.healthCheckUri : undefined;
@@ -502,6 +509,10 @@ export interface ListenerState {
      * Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
      */
     readonly healthCheckInterval?: pulumi.Input<number>;
+    /**
+     * The method of health check. Valid values: ["head", "get"].
+     */
+    readonly healthCheckMethod?: pulumi.Input<string>;
     /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */
@@ -664,6 +675,10 @@ export interface ListenerArgs {
      * Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
      */
     readonly healthCheckInterval?: pulumi.Input<number>;
+    /**
+     * The method of health check. Valid values: ["head", "get"].
+     */
+    readonly healthCheckMethod?: pulumi.Input<string>;
     /**
      * Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
      */

@@ -9,13 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides an elastic IP resource.
-    /// 
-    /// &gt; **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
-    /// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
-    /// 
-    /// &gt; **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip.html.markdown.
     /// </summary>
     public partial class Eip : Pulumi.CustomResource

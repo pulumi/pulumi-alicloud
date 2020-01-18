@@ -61,7 +61,7 @@ type GetInstanceClassesArgs struct {
 	Architecture interface{}
 	// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
 	EditionType interface{}
-	// Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine interface{}
 	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion interface{}

@@ -45,8 +45,7 @@ class Store(pulumi.CustomResource):
     shards: pulumi.Output[list]
     def __init__(__self__, resource_name, opts=None, append_meta=None, auto_split=None, enable_web_tracking=None, max_split_shard_count=None, name=None, project=None, retention_period=None, shard_count=None, __props__=None, __name__=None, __opts__=None):
         """
-        The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
-        and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+        Create a Store resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

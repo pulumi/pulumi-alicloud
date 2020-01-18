@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// The Logtail access service is a log collection agent provided by Log Service. 
-    /// You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
-    /// Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm
-    /// )
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_config.html.markdown.
     /// </summary>
     public partial class LogTailConfig : Pulumi.CustomResource

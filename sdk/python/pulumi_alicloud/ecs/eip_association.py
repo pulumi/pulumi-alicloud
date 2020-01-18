@@ -28,14 +28,7 @@ class EipAssociation(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, allocation_id=None, instance_id=None, instance_type=None, private_ip_address=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
-        
-        > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
-         pre-existing or distributed to customers or users and therefore cannot be changed.
-        
-        > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
-        
-        > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+        Create a EipAssociation resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

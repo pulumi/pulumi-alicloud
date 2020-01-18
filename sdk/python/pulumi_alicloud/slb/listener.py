@@ -86,6 +86,10 @@ class Listener(pulumi.CustomResource):
     """
     Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
     """
+    health_check_method: pulumi.Output[str]
+    """
+    The method of health check. Valid values: ["head", "get"].
+    """
     health_check_timeout: pulumi.Output[float]
     """
     Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
@@ -171,7 +175,7 @@ class Listener(pulumi.CustomResource):
       * `retriveSlbIp` (`bool`) - Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
       * `retriveSlbProto` (`bool`) - Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
     """
-    def __init__(__self__, resource_name, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_method=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Application Load Balancer Listener resource.
         
@@ -203,6 +207,7 @@ class Listener(pulumi.CustomResource):
         health_check | http & https | on or off | 
         health_check_type | tcp | tcp or http | 
         health_check_domain | http & https & tcp | 
+        health_check_method | http & https & tcp | 
         health_check_uri | http & https & tcp |  | 
         health_check_connect_port | http & https & tcp & udp | 1-65535 or -520 | 
         healthy_threshold | http & https & tcp & udp | 1-10 | 
@@ -246,6 +251,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[float] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
         :param pulumi.Input[float] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
@@ -313,6 +319,7 @@ class Listener(pulumi.CustomResource):
             __props__['health_check_domain'] = health_check_domain
             __props__['health_check_http_code'] = health_check_http_code
             __props__['health_check_interval'] = health_check_interval
+            __props__['health_check_method'] = health_check_method
             __props__['health_check_timeout'] = health_check_timeout
             __props__['health_check_type'] = health_check_type
             __props__['health_check_uri'] = health_check_uri
@@ -347,7 +354,7 @@ class Listener(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None):
+    def get(resource_name, id, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_method=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -374,6 +381,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
         :param pulumi.Input[float] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        :param pulumi.Input[str] health_check_method: The method of health check. Valid values: ["head", "get"].
         :param pulumi.Input[float] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
         :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
@@ -425,6 +433,7 @@ class Listener(pulumi.CustomResource):
         __props__["health_check_domain"] = health_check_domain
         __props__["health_check_http_code"] = health_check_http_code
         __props__["health_check_interval"] = health_check_interval
+        __props__["health_check_method"] = health_check_method
         __props__["health_check_timeout"] = health_check_timeout
         __props__["health_check_type"] = health_check_type
         __props__["health_check_uri"] = health_check_uri

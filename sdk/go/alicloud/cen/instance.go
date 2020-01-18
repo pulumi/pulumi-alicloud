@@ -60,28 +60,28 @@ func (r *Instance) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The description of the CEN instance. Defaults to null.
+// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 func (r *Instance) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// The name of the CEN instance. Defaults to null.
+// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 func (r *Instance) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Instance resources.
 type InstanceState struct {
-	// The description of the CEN instance. Defaults to null.
+	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description interface{}
-	// The name of the CEN instance. Defaults to null.
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name interface{}
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The description of the CEN instance. Defaults to null.
+	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
 	Description interface{}
-	// The name of the CEN instance. Defaults to null.
+	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name interface{}
 }
