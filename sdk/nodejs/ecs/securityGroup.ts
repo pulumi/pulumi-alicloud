@@ -7,38 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a security group resource.
- * 
- * > **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
- * 
- * > **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     description: "New security group",
- * });
- * ```
- * Basic usage for vpc
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "10.1.0.0/21",
- * });
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     vpcId: vpc.id,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
  */
 export class SecurityGroup extends pulumi.CustomResource {

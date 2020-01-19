@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
-    ///  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_machine_group.html.markdown.
     /// </summary>
     public partial class MachineGroup : Pulumi.CustomResource

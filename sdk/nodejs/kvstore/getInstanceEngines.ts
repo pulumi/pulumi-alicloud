@@ -57,7 +57,7 @@ export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.I
  */
 export interface GetInstanceEnginesArgs {
     /**
-     * Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      */
     readonly engine?: string;
     /**

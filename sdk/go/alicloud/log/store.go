@@ -8,9 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
-// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store.html.markdown.
 type Store struct {
 	s *pulumi.ResourceState

@@ -9,17 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB
 {
     /// <summary>
-    /// Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services. 
-    /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
-    /// 
-    /// &gt; **NOTE:**  Available in 1.37.0+
-    /// 
-    /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB instance.
-    /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`] 
-    /// 
-    /// &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
@@ -37,7 +26,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
@@ -217,7 +206,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -364,7 +353,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+        /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }

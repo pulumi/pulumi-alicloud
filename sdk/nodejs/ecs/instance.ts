@@ -7,55 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ECS instance resource.
- * 
- * > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitchId`. One instance can only belong to one VSwitch.
- * 
- * > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC.
- * 
- * > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
- * 
- * > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
- * 
- * > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
- *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
- * 
- * > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * // Create a new ECS instance for VPC
- * const vpc = new alicloud.vpc.Network("vpc", {});
- * // Create a new ECS instance for a VPC
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     description: "foo",
- *     vpcId: vpc.id,
- * });
- * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     vpcId: vpc.id,
- * });
- * const instance = new alicloud.ecs.Instance("instance", {
- *     // cn-beijing
- *     availabilityZone: "cn-beijing-b",
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
- *     instanceName: "testFoo",
- *     // series III
- *     instanceType: "ecs.n4.large",
- *     internetMaxBandwidthOut: 10,
- *     securityGroups: group.id,
- *     systemDiskCategory: "cloudEfficiency",
- *     vswitchId: vswitch.id,
- * });
- * const slb = new alicloud.slb.LoadBalancer("slb", {
- *     vpcId: vpc.id,
- *     vswitchId: vswitch.id,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
@@ -89,6 +40,12 @@ export class Instance extends pulumi.CustomResource {
      * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
     public readonly allocatePublicIp!: pulumi.Output<boolean | undefined>;
+    /**
+     * The automatic release time of the `PostPaid` instance. 
+     * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     */
+    public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
     /**
      * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
      * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
@@ -287,6 +244,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["allocatePublicIp"] = state ? state.allocatePublicIp : undefined;
+            inputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["creditSpecification"] = state ? state.creditSpecification : undefined;
@@ -341,6 +299,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'securityGroups'");
             }
             inputs["allocatePublicIp"] = args ? args.allocatePublicIp : undefined;
+            inputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["creditSpecification"] = args ? args.creditSpecification : undefined;
@@ -403,6 +362,12 @@ export interface InstanceState {
      * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
+    /**
+     * The automatic release time of the `PostPaid` instance. 
+     * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     */
+    readonly autoReleaseTime?: pulumi.Input<string>;
     /**
      * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
      * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"
@@ -597,6 +562,12 @@ export interface InstanceArgs {
      * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
+    /**
+     * The automatic release time of the `PostPaid` instance. 
+     * The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+     * Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
+     */
+    readonly autoReleaseTime?: pulumi.Input<string>;
     /**
      * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid value:
      * - [1, 2, 3, 6, 12] when `periodUnit` in "Month"

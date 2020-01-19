@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+        /// An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }

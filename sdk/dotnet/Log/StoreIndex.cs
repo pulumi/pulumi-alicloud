@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
-    /// Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
-    /// You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store_index.html.markdown.
     /// </summary>
     public partial class StoreIndex : Pulumi.CustomResource

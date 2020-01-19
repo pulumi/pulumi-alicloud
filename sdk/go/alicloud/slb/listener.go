@@ -38,6 +38,7 @@ import (
 // healthCheck | http & https | on or off | 
 // healthCheckType | tcp | tcp or http | 
 // healthCheckDomain | http & https & tcp | 
+// healthCheckMethod | http & https & tcp | 
 // healthCheckUri | http & https & tcp |  | 
 // healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 | 
 // healthyThreshold | http & https & tcp & udp | 1-10 | 
@@ -98,6 +99,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["healthCheckDomain"] = nil
 		inputs["healthCheckHttpCode"] = nil
 		inputs["healthCheckInterval"] = nil
+		inputs["healthCheckMethod"] = nil
 		inputs["healthCheckTimeout"] = nil
 		inputs["healthCheckType"] = nil
 		inputs["healthCheckUri"] = nil
@@ -141,6 +143,7 @@ func NewListener(ctx *pulumi.Context,
 		inputs["healthCheckDomain"] = args.HealthCheckDomain
 		inputs["healthCheckHttpCode"] = args.HealthCheckHttpCode
 		inputs["healthCheckInterval"] = args.HealthCheckInterval
+		inputs["healthCheckMethod"] = args.HealthCheckMethod
 		inputs["healthCheckTimeout"] = args.HealthCheckTimeout
 		inputs["healthCheckType"] = args.HealthCheckType
 		inputs["healthCheckUri"] = args.HealthCheckUri
@@ -197,6 +200,7 @@ func GetListener(ctx *pulumi.Context,
 		inputs["healthCheckDomain"] = state.HealthCheckDomain
 		inputs["healthCheckHttpCode"] = state.HealthCheckHttpCode
 		inputs["healthCheckInterval"] = state.HealthCheckInterval
+		inputs["healthCheckMethod"] = state.HealthCheckMethod
 		inputs["healthCheckTimeout"] = state.HealthCheckTimeout
 		inputs["healthCheckType"] = state.HealthCheckType
 		inputs["healthCheckUri"] = state.HealthCheckUri
@@ -331,6 +335,11 @@ func (r *Listener) HealthCheckHttpCode() pulumi.StringOutput {
 // Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 func (r *Listener) HealthCheckInterval() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["healthCheckInterval"])
+}
+
+// The method of health check. Valid values: ["head", "get"].
+func (r *Listener) HealthCheckMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["healthCheckMethod"])
 }
 
 // Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
@@ -484,6 +493,8 @@ type ListenerState struct {
 	HealthCheckHttpCode interface{}
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval interface{}
+	// The method of health check. Valid values: ["head", "get"].
+	HealthCheckMethod interface{}
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout interface{}
 	// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
@@ -568,6 +579,8 @@ type ListenerArgs struct {
 	HealthCheckHttpCode interface{}
 	// Time interval of health checks. It is required when `healthCheck` is on. Valid value range: [1-50] in seconds. Default to 2.
 	HealthCheckInterval interface{}
+	// The method of health check. Valid values: ["head", "get"].
+	HealthCheckMethod interface{}
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout interface{}
 	// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.

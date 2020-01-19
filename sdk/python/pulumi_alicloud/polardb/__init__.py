@@ -9,5 +9,7 @@ from .backup_policy import *
 from .cluster import *
 from .database import *
 from .endpoint_address import *
+from .get_accounts import *
 from .get_clusters import *
+from .get_databases import *
 from .get_endpoints import *

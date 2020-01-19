@@ -84,7 +84,7 @@ export class SaslUser extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
@@ -151,7 +151,7 @@ export interface SaslUserState {
      */
     readonly instanceId?: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface SaslUserArgs {
      */
     readonly instanceId: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**

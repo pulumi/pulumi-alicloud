@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     accountDescription: name,
  *     accountName: "tftestnormal",
  *     accountPassword: "Test12345",
- *     dbClusterId: alicloud_db_instance_instance.id,
+ *     dbClusterId: alicloud_db_instance_cluster.id,
  * });
  * ```
  *

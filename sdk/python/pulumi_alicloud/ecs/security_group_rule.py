@@ -57,10 +57,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cidr_ip=None, description=None, ip_protocol=None, nic_type=None, policy=None, port_range=None, priority=None, security_group_id=None, source_group_owner_account=None, source_security_group_id=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a security group rule resource.
-        Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
-        
-        > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+        Create a SecurityGroupRule resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

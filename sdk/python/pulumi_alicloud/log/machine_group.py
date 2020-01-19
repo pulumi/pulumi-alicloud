@@ -33,8 +33,7 @@ class MachineGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, identify_lists=None, identify_type=None, name=None, project=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
-        Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
-         [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+        Create a MachineGroup resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -52,6 +52,8 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["securityGroupIds"] = nil
 		inputs["securityIpMode"] = nil
 		inputs["securityIps"] = nil
+		inputs["sqlCollectorConfigValue"] = nil
+		inputs["sqlCollectorStatus"] = nil
 		inputs["tags"] = nil
 		inputs["vswitchId"] = nil
 		inputs["zoneId"] = nil
@@ -74,6 +76,8 @@ func NewInstance(ctx *pulumi.Context,
 		inputs["securityGroupIds"] = args.SecurityGroupIds
 		inputs["securityIpMode"] = args.SecurityIpMode
 		inputs["securityIps"] = args.SecurityIps
+		inputs["sqlCollectorConfigValue"] = args.SqlCollectorConfigValue
+		inputs["sqlCollectorStatus"] = args.SqlCollectorStatus
 		inputs["tags"] = args.Tags
 		inputs["vswitchId"] = args.VswitchId
 		inputs["zoneId"] = args.ZoneId
@@ -113,6 +117,8 @@ func GetInstance(ctx *pulumi.Context,
 		inputs["securityGroupIds"] = state.SecurityGroupIds
 		inputs["securityIpMode"] = state.SecurityIpMode
 		inputs["securityIps"] = state.SecurityIps
+		inputs["sqlCollectorConfigValue"] = state.SqlCollectorConfigValue
+		inputs["sqlCollectorStatus"] = state.SqlCollectorStatus
 		inputs["tags"] = state.Tags
 		inputs["vswitchId"] = state.VswitchId
 		inputs["zoneId"] = state.ZoneId
@@ -247,6 +253,16 @@ func (r *Instance) SecurityIps() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["securityIps"])
 }
 
+// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+func (r *Instance) SqlCollectorConfigValue() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["sqlCollectorConfigValue"])
+}
+
+// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+func (r *Instance) SqlCollectorStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sqlCollectorStatus"])
+}
+
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -321,6 +337,10 @@ type InstanceState struct {
 	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps interface{}
+	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	SqlCollectorConfigValue interface{}
+	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+	SqlCollectorStatus interface{}
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -384,6 +404,10 @@ type InstanceArgs struct {
 	SecurityIpMode interface{}
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps interface{}
+	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	SqlCollectorConfigValue interface{}
+	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+	SqlCollectorStatus interface{}
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

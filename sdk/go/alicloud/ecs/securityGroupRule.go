@@ -8,11 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a security group rule resource.
-// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
-// 
-// > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group_rule.html.markdown.
 type SecurityGroupRule struct {
 	s *pulumi.ResourceState

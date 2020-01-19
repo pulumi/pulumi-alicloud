@@ -3155,7 +3155,7 @@ export namespace kvstore {
 
     export interface GetInstanceEnginesInstanceEngine {
         /**
-         * Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+         * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
          */
         engine: string;
         /**
@@ -4260,6 +4260,44 @@ export namespace polardb {
         value: string;
     }
 
+    export interface GetAccountsAccount {
+        /**
+         * Account description.
+         */
+        accountDescription: string;
+        /**
+         * Account lock state, Valid values are `Lock`, `UnLock`.
+         */
+        accountLockState: string;
+        /**
+         * Account name.
+         */
+        accountName: string;
+        /**
+         * Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
+         */
+        accountStatus: string;
+        /**
+         * Account type, Valid values are `Normal`, `Super`.
+         */
+        accountType: string;
+        /**
+         * A list of database privilege. Each element contains the following attributes.
+         */
+        databasePrivileges: outputs.polardb.GetAccountsAccountDatabasePrivilege[];
+    }
+
+    export interface GetAccountsAccountDatabasePrivilege {
+        /**
+         * Account privilege of database
+         */
+        accountPrivilege: string;
+        /**
+         * The account owned database name 
+         */
+        dbName: string;
+    }
+
     export interface GetClustersCluster {
         /**
          * Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
@@ -4380,6 +4418,48 @@ export namespace polardb {
          * The zoneId of the db_nodes.
          */
         zoneId: string;
+    }
+
+    export interface GetDatabasesDatabase {
+        /**
+         * A list of accounts of database. Each element contains the following attributes.
+         */
+        accounts: outputs.polardb.GetDatabasesDatabaseAccount[];
+        /**
+         * The character set name of database.
+         */
+        characterSetName: string;
+        /**
+         * Database description.
+         */
+        dbDescription: string;
+        /**
+         * Database name.
+         */
+        dbName: string;
+        /**
+         * The status of database.
+         */
+        dbStatus: string;
+        /**
+         * The engine of database.
+         */
+        engine: string;
+    }
+
+    export interface GetDatabasesDatabaseAccount {
+        /**
+         * Account name.
+         */
+        accountName: string;
+        /**
+         * Account status.
+         */
+        accountStatus: string;
+        /**
+         * The privilege status of account.
+         */
+        privilegeStatus: string;
     }
 
     export interface GetEndpointsEndpoint {

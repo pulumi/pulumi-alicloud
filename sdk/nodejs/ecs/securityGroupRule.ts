@@ -7,33 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a security group rule resource.
- * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
- * 
- * > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
- * 
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {});
- * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allowAllTcp", {
- *     cidrIp: "0.0.0.0/0",
- *     ipProtocol: "tcp",
- *     nicType: "internet",
- *     policy: "accept",
- *     portRange: "1/65535",
- *     priority: 1,
- *     securityGroupId: defaultSecurityGroup.id,
- *     type: "ingress",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group_rule.html.markdown.
  */
 export class SecurityGroupRule extends pulumi.CustomResource {

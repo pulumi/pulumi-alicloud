@@ -7,9 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The project is the resource management unit in Log Service and is used to isolate and control resources.
-// You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_project.html.markdown.
 type Project struct {
 	s *pulumi.ResourceState

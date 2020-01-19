@@ -74,7 +74,7 @@ export interface GetInstanceClassesArgs {
      */
     readonly editionType?: string;
     /**
-     * Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+     * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      */
     readonly engine?: string;
     /**

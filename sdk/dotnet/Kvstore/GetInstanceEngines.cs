@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceEnginesArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceEnginesInstanceEnginesResult
     {
         /// <summary>
-        /// Database type. Options are `Redis`, `Memcache`. If no value is specified, all types are returned.
+        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
         /// </summary>
         public readonly string Engine;
         /// <summary>

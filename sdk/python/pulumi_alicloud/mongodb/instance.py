@@ -20,7 +20,7 @@ class Instance(pulumi.CustomResource):
     """
     backup_time: pulumi.Output[str]
     """
-    MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+    MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
     """
     db_instance_class: pulumi.Output[str]
     """
@@ -98,22 +98,13 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replication_factor=None, security_ip_lists=None, storage_engine=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services. 
-        It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
-        
-        > **NOTE:**  Available in 1.37.0+
-        
-        > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
-        [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`] 
-        
-        > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+        Create a Instance resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[list] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
-        :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[float] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space; value range: [10,2000]
@@ -198,7 +189,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[list] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
-        :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to a random time, like "23:00Z-24:00Z".
+        :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[float] db_instance_storage: User-defined DB instance storage space.Unit: GB. Value range:
                - Custom storage space; value range: [10,2000]

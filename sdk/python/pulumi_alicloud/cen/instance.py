@@ -12,11 +12,11 @@ from .. import utilities, tables
 class Instance(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
-    The description of the CEN instance. Defaults to null.
+    The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
     """
     name: pulumi.Output[str]
     """
-    The name of the CEN instance. Defaults to null.
+    The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -26,8 +26,8 @@ class Instance(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null.
-        :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null.
+        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance.html.markdown.
         """
@@ -65,8 +65,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null.
-        :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null.
+        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance.html.markdown.
         """

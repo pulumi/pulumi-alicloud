@@ -81,6 +81,7 @@ func (r *Zone) IsPtr() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["isPtr"])
 }
 
+// The language. Valid values: "zh", "en", "jp".
 func (r *Zone) Lang() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["lang"])
 }
@@ -90,6 +91,9 @@ func (r *Zone) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The recursive DNS proxy. Valid values:
+// - ZONE: indicates that the recursive DNS proxy is disabled.
+// - RECORD: indicates that the recursive DNS proxy is enabled.
 func (r *Zone) ProxyPattern() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["proxyPattern"])
 }
@@ -100,9 +104,6 @@ func (r *Zone) RecordCount() pulumi.IntOutput {
 }
 
 // The remark of the Private Zone.
-// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
-// - ZONE: indicates that the recursive DNS proxy is disabled.
-// - RECORD: indicates that the recursive DNS proxy is enabled.
 func (r *Zone) Remark() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["remark"])
 }
@@ -111,6 +112,7 @@ func (r *Zone) UpdateTime() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["updateTime"])
 }
 
+// The IP address of the client.
 func (r *Zone) UserClientIp() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["userClientIp"])
 }
@@ -119,31 +121,35 @@ func (r *Zone) UserClientIp() pulumi.StringOutput {
 type ZoneState struct {
 	CreationTime interface{}
 	IsPtr interface{}
+	// The language. Valid values: "zh", "en", "jp".
 	Lang interface{}
 	// The name of the Private Zone.
 	Name interface{}
+	// The recursive DNS proxy. Valid values:
+	// - ZONE: indicates that the recursive DNS proxy is disabled.
+	// - RECORD: indicates that the recursive DNS proxy is enabled.
 	ProxyPattern interface{}
 	// The count of the Private Zone Record.
 	RecordCount interface{}
 	// The remark of the Private Zone.
-	// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
-	// - ZONE: indicates that the recursive DNS proxy is disabled.
-	// - RECORD: indicates that the recursive DNS proxy is enabled.
 	Remark interface{}
 	UpdateTime interface{}
+	// The IP address of the client.
 	UserClientIp interface{}
 }
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	// The language. Valid values: "zh", "en", "jp".
 	Lang interface{}
 	// The name of the Private Zone.
 	Name interface{}
-	ProxyPattern interface{}
-	// The remark of the Private Zone.
-	// * `proxyPattern - (Optional, Available in 1.69.0+) The recursive DNS proxy. Valid values:
+	// The recursive DNS proxy. Valid values:
 	// - ZONE: indicates that the recursive DNS proxy is disabled.
 	// - RECORD: indicates that the recursive DNS proxy is enabled.
+	ProxyPattern interface{}
+	// The remark of the Private Zone.
 	Remark interface{}
+	// The IP address of the client.
 	UserClientIp interface{}
 }

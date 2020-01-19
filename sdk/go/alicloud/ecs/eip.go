@@ -7,13 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an elastic IP resource.
-// 
-// > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
-// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
-// 
-// > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
-//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip.html.markdown.
 type Eip struct {
 	s *pulumi.ResourceState

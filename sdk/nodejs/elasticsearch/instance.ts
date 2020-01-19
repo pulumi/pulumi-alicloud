@@ -117,11 +117,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly masterNodeSpec!: pulumi.Output<string | undefined>;
     /**
-     * The password of the instance. The password can be 8 to 32 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (!@#$%^&*()_+-=).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -297,11 +297,11 @@ export interface InstanceState {
      */
     readonly masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 32 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (!@#$%^&*()_+-=).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
     readonly period?: pulumi.Input<number>;
     /**
@@ -378,11 +378,11 @@ export interface InstanceArgs {
      */
     readonly masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 32 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (!@#$%^&*()_+-=).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      */
     readonly period?: pulumi.Input<number>;
     /**
