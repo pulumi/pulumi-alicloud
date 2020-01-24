@@ -186,7 +186,10 @@ export class Kubernetes extends pulumi.CustomResource {
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
     public readonly userCa!: pulumi.Output<string | undefined>;
-    public readonly version!: pulumi.Output<string | undefined>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
+    public readonly version!: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
@@ -557,6 +560,9 @@ export interface KubernetesState {
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
     readonly userCa?: pulumi.Input<string>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * The ID of VPC where the current cluster is located.
@@ -754,6 +760,9 @@ export interface KubernetesArgs {
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
     readonly userCa?: pulumi.Input<string>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.

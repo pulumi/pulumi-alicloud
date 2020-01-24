@@ -269,6 +269,7 @@ func (r *ManagedKubernetes) SlbInternetEnabled() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["slbInternetEnabled"])
 }
 
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 func (r *ManagedKubernetes) Version() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["version"])
 }
@@ -393,6 +394,7 @@ type ManagedKubernetesState struct {
 	ServiceCidr interface{}
 	// Whether to create internet load balancer for API Server. Default to false.
 	SlbInternetEnabled interface{}
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version interface{}
 	// The ID of VPC where the current cluster is located.
 	VpcId interface{}
@@ -469,6 +471,7 @@ type ManagedKubernetesArgs struct {
 	ServiceCidr interface{}
 	// Whether to create internet load balancer for API Server. Default to false.
 	SlbInternetEnabled interface{}
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version interface{}
 	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
 	VswitchIds interface{}

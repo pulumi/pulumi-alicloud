@@ -431,6 +431,7 @@ func (r *Kubernetes) UserCa() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["userCa"])
 }
 
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 func (r *Kubernetes) Version() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["version"])
 }
@@ -600,6 +601,7 @@ type KubernetesState struct {
 	SlbIntranet interface{}
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa interface{}
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version interface{}
 	// The ID of VPC where the current cluster is located.
 	VpcId interface{}
@@ -705,6 +707,7 @@ type KubernetesArgs struct {
 	SlbInternetEnabled interface{}
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa interface{}
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version interface{}
 	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	VswitchId interface{}

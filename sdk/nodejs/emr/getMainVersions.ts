@@ -19,10 +19,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * const defaultMainVersions = alicloud.emr.getMainVersions({
+ *     clusterTypes: [
+ *         "HADOOP",
+ *         "ZOOKEEPER",
+ *     ],
  *     emrVersion: "EMR-3.22.0",
  * });
  * 
  * export const firstMainVersion = defaultMainVersions.mainVersions[0].emrVersion;
+ * export const thisClusterTypes = defaultMainVersions.mainVersions[0].clusterTypes;
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
@@ -37,6 +42,7 @@ export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.Invoke
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetMainVersionsResult> = pulumi.runtime.invoke("alicloud:emr/getMainVersions:getMainVersions", {
+        "clusterTypes": args.clusterTypes,
         "emrVersion": args.emrVersion,
         "outputFile": args.outputFile,
     }, opts);
@@ -49,6 +55,11 @@ export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.Invoke
  */
 export interface GetMainVersionsArgs {
     /**
+     * The supported clusterType of this emr version.
+     * Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+     */
+    readonly clusterTypes?: string[];
+    /**
      * The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
      */
     readonly emrVersion?: string;
@@ -59,6 +70,7 @@ export interface GetMainVersionsArgs {
  * A collection of values returned by getMainVersions.
  */
 export interface GetMainVersionsResult {
+    readonly clusterTypes?: string[];
     /**
      * The version of the emr cluster instance.
      */
