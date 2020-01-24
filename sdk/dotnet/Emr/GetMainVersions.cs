@@ -24,6 +24,19 @@ namespace Pulumi.AliCloud.Emr
 
     public sealed class GetMainVersionsArgs : Pulumi.InvokeArgs
     {
+        [Input("clusterTypes")]
+        private List<string>? _clusterTypes;
+
+        /// <summary>
+        /// The supported clusterType of this emr version.
+        /// Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+        /// </summary>
+        public List<string> ClusterTypes
+        {
+            get => _clusterTypes ?? (_clusterTypes = new List<string>());
+            set => _clusterTypes = value;
+        }
+
         /// <summary>
         /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
         /// </summary>
@@ -41,6 +54,7 @@ namespace Pulumi.AliCloud.Emr
     [OutputType]
     public sealed class GetMainVersionsResult
     {
+        public readonly ImmutableArray<string> ClusterTypes;
         /// <summary>
         /// The version of the emr cluster instance.
         /// </summary>
@@ -61,12 +75,14 @@ namespace Pulumi.AliCloud.Emr
 
         [OutputConstructor]
         private GetMainVersionsResult(
+            ImmutableArray<string> clusterTypes,
             string? emrVersion,
             ImmutableArray<string> ids,
             ImmutableArray<Outputs.GetMainVersionsMainVersionsResult> mainVersions,
             string? outputFile,
             string id)
         {
+            ClusterTypes = clusterTypes;
             EmrVersion = emrVersion;
             Ids = ids;
             MainVersions = mainVersions;

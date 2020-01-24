@@ -245,8 +245,11 @@ namespace Pulumi.AliCloud.CS
         [Output("userCa")]
         public Output<string?> UserCa { get; private set; } = null!;
 
+        /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        /// </summary>
         [Output("version")]
-        public Output<string?> Version { get; private set; } = null!;
+        public Output<string> Version { get; private set; } = null!;
 
         /// <summary>
         /// The ID of VPC where the current cluster is located.
@@ -602,6 +605,9 @@ namespace Pulumi.AliCloud.CS
         [Input("userCa")]
         public Input<string>? UserCa { get; set; }
 
+        /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -966,6 +972,9 @@ namespace Pulumi.AliCloud.CS
         [Input("userCa")]
         public Input<string>? UserCa { get; set; }
 
+        /// <summary>
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

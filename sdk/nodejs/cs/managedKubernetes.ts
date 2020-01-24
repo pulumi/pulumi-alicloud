@@ -120,7 +120,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Whether to create internet load balancer for API Server. Default to false.
      */
     public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly version!: pulumi.Output<string | undefined>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
+    public readonly version!: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */
@@ -370,6 +373,9 @@ export interface ManagedKubernetesState {
      * Whether to create internet load balancer for API Server. Default to false.
      */
     readonly slbInternetEnabled?: pulumi.Input<boolean>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * The ID of VPC where the current cluster is located.
@@ -514,6 +520,9 @@ export interface ManagedKubernetesArgs {
      * Whether to create internet load balancer for API Server. Default to false.
      */
     readonly slbInternetEnabled?: pulumi.Input<boolean>;
+    /**
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     */
     readonly version?: pulumi.Input<string>;
     /**
      * The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.

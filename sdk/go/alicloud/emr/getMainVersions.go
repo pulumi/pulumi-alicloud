@@ -16,6 +16,7 @@ import (
 func LookupMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs) (*GetMainVersionsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["clusterTypes"] = args.ClusterTypes
 		inputs["emrVersion"] = args.EmrVersion
 		inputs["outputFile"] = args.OutputFile
 	}
@@ -24,6 +25,7 @@ func LookupMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs) (*GetMai
 		return nil, err
 	}
 	return &GetMainVersionsResult{
+		ClusterTypes: outputs["clusterTypes"],
 		EmrVersion: outputs["emrVersion"],
 		Ids: outputs["ids"],
 		MainVersions: outputs["mainVersions"],
@@ -34,6 +36,9 @@ func LookupMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs) (*GetMai
 
 // A collection of arguments for invoking getMainVersions.
 type GetMainVersionsArgs struct {
+	// The supported clusterType of this emr version.
+	// Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
+	ClusterTypes interface{}
 	// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
 	EmrVersion interface{}
 	OutputFile interface{}
@@ -41,6 +46,7 @@ type GetMainVersionsArgs struct {
 
 // A collection of values returned by getMainVersions.
 type GetMainVersionsResult struct {
+	ClusterTypes interface{}
 	// The version of the emr cluster instance.
 	EmrVersion interface{}
 	// A list of emr instance types IDs. 
