@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_records.html.markdown.
  */
-export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> & GetDomainRecordsResult {
+export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> {
     if (!opts) {
         opts = {}
     }
@@ -16,7 +16,7 @@ export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainRecordsResult> = pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
+    return pulumi.runtime.invoke("alicloud:dns/getDomainRecords:getDomainRecords", {
         "domainName": args.domainName,
         "hostRecordRegex": args.hostRecordRegex,
         "ids": args.ids,
@@ -27,8 +27,6 @@ export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.Invok
         "type": args.type,
         "valueRegex": args.valueRegex,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

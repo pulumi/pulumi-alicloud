@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
  */
-export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> & GetNetworkInterfacesResult {
+export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfacesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -102,7 +102,7 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNetworkInterfacesResult> = pulumi.runtime.invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
+    return pulumi.runtime.invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {
         "ids": args.ids,
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
@@ -115,8 +115,6 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

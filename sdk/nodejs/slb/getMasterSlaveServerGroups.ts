@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
  */
-export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSlaveServerGroupsResult> & GetMasterSlaveServerGroupsResult {
+export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSlaveServerGroupsResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,14 +34,12 @@ export function getMasterSlaveServerGroups(args: GetMasterSlaveServerGroupsArgs,
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetMasterSlaveServerGroupsResult> = pulumi.runtime.invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
+    return pulumi.runtime.invoke("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

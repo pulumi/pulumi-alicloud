@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
  */
-export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> & GetNatGatewaysResult {
+export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -48,14 +48,12 @@ export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOp
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNatGatewaysResult> = pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
+    return pulumi.runtime.invoke("alicloud:vpc/getNatGateways:getNatGateways", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "vpcId": args.vpcId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

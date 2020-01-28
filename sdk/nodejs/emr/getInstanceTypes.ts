@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
  */
-export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> & GetInstanceTypesResult {
+export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     if (!opts) {
         opts = {}
     }
@@ -42,7 +42,7 @@ export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceTypesResult> = pulumi.runtime.invoke("alicloud:emr/getInstanceTypes:getInstanceTypes", {
+    return pulumi.runtime.invoke("alicloud:emr/getInstanceTypes:getInstanceTypes", {
         "clusterType": args.clusterType,
         "destinationResource": args.destinationResource,
         "instanceChargeType": args.instanceChargeType,
@@ -51,8 +51,6 @@ export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.Invok
         "supportNodeTypes": args.supportNodeTypes,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

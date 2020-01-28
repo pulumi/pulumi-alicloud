@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
  */
-export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClustersResult> & GetKubernetesClustersResult {
+export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClustersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,14 +37,12 @@ export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKubernetesClustersResult> = pulumi.runtime.invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", {
+    return pulumi.runtime.invoke("alicloud:cs/getKubernetesClusters:getKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

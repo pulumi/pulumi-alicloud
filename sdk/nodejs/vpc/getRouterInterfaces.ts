@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
  */
-export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> & GetRouterInterfacesResult {
+export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +35,7 @@ export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulum
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRouterInterfacesResult> = pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
+    return pulumi.runtime.invoke("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "oppositeInterfaceId": args.oppositeInterfaceId,
@@ -47,8 +47,6 @@ export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulum
         "specification": args.specification,
         "status": args.status,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

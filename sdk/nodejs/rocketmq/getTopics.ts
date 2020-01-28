@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
  */
-export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> & GetTopicsResult {
+export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
     if (!opts) {
         opts = {}
     }
@@ -48,13 +48,11 @@ export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTopicsResult> = pulumi.runtime.invoke("alicloud:rocketmq/getTopics:getTopics", {
+    return pulumi.runtime.invoke("alicloud:rocketmq/getTopics:getTopics", {
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

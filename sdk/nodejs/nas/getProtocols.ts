@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
  */
-export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> & GetProtocolsResult {
+export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> {
     if (!opts) {
         opts = {}
     }
@@ -35,13 +35,11 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProtocolsResult> = pulumi.runtime.invoke("alicloud:nas/getProtocols:getProtocols", {
+    return pulumi.runtime.invoke("alicloud:nas/getProtocols:getProtocols", {
         "outputFile": args.outputFile,
         "type": args.type,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

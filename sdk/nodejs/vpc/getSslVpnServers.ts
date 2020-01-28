@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
  */
-export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> & GetSslVpnServersResult {
+export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -34,14 +34,12 @@ export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.Invo
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSslVpnServersResult> = pulumi.runtime.invoke("alicloud:vpc/getSslVpnServers:getSslVpnServers", {
+    return pulumi.runtime.invoke("alicloud:vpc/getSslVpnServers:getSslVpnServers", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "vpnGatewayId": args.vpnGatewayId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

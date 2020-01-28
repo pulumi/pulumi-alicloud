@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
  */
-export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> & GetBucketsResult {
+export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,12 +33,10 @@ export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBucketsResult> = pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
+    return pulumi.runtime.invoke("alicloud:oss/getBuckets:getBuckets", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

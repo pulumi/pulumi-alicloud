@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
  */
-export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> & GetTrailsResult {
+export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,12 +32,10 @@ export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTrailsResult> = pulumi.runtime.invoke("alicloud:actiontrail/getTrails:getTrails", {
+    return pulumi.runtime.invoke("alicloud:actiontrail/getTrails:getTrails", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

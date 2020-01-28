@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_engines.html.markdown.
  */
-export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> & GetInstanceEnginesResult {
+export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -38,7 +38,7 @@ export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceEnginesResult> = pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
+    return pulumi.runtime.invoke("alicloud:rds/getInstanceEngines:getInstanceEngines", {
         "engine": args.engine,
         "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
@@ -46,8 +46,6 @@ export function getInstanceEngines(args?: GetInstanceEnginesArgs, opts?: pulumi.
         "outputFile": args.outputFile,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

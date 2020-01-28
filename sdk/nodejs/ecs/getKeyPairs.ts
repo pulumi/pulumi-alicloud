@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
  */
-export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> & GetKeyPairsResult {
+export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +35,7 @@ export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKeyPairsResult> = pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
+    return pulumi.runtime.invoke("alicloud:ecs/getKeyPairs:getKeyPairs", {
         "fingerPrint": args.fingerPrint,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -43,8 +43,6 @@ export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions)
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

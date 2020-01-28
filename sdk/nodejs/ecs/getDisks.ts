@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
  */
-export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetDisksResult> & GetDisksResult {
+export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetDisksResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +33,7 @@ export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDisksResult> = pulumi.runtime.invoke("alicloud:ecs/getDisks:getDisks", {
+    return pulumi.runtime.invoke("alicloud:ecs/getDisks:getDisks", {
         "category": args.category,
         "encrypted": args.encrypted,
         "ids": args.ids,
@@ -44,8 +44,6 @@ export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Prom
         "tags": args.tags,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

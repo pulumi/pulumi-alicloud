@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
  */
-export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> & GetFileSystemsResult {
+export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,15 +35,13 @@ export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOp
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFileSystemsResult> = pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
+    return pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "protocolType": args.protocolType,
         "storageType": args.storageType,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

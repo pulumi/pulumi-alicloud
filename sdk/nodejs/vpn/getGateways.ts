@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
  */
-export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> & GetGatewaysResult {
+export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,7 +36,7 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGatewaysResult> = pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
+    return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -44,8 +44,6 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
         "status": args.status,
         "vpcId": args.vpcId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

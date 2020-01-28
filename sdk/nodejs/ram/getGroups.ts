@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
  */
-export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> & GetGroupsResult {
+export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,15 +35,13 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGroupsResult> = pulumi.runtime.invoke("alicloud:ram/getGroups:getGroups", {
+    return pulumi.runtime.invoke("alicloud:ram/getGroups:getGroups", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
         "userName": args.userName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

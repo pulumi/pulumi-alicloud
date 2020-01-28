@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
  */
-export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> & GetDomainExtensionsResult {
+export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,14 +34,12 @@ export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainExtensionsResult> = pulumi.runtime.invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", {
+    return pulumi.runtime.invoke("alicloud:slb/getDomainExtensions:getDomainExtensions", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

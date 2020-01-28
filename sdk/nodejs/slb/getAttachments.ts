@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
  */
-export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> & GetAttachmentsResult {
+export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachmentsResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,13 +32,11 @@ export function getAttachments(args: GetAttachmentsArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAttachmentsResult> = pulumi.runtime.invoke("alicloud:slb/getAttachments:getAttachments", {
+    return pulumi.runtime.invoke("alicloud:slb/getAttachments:getAttachments", {
         "instanceIds": args.instanceIds,
         "loadBalancerId": args.loadBalancerId,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
  */
-export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> & GetResolutionLinesResult {
+export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +35,7 @@ export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetResolutionLinesResult> = pulumi.runtime.invoke("alicloud:dns/getResolutionLines:getResolutionLines", {
+    return pulumi.runtime.invoke("alicloud:dns/getResolutionLines:getResolutionLines", {
         "domainName": args.domainName,
         "lang": args.lang,
         "lineCodes": args.lineCodes,
@@ -44,8 +44,6 @@ export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.
         "outputFile": args.outputFile,
         "userClientIp": args.userClientIp,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

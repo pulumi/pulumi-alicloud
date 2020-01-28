@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
  */
-export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> & GetBackendServersResult {
+export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServersResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,13 +34,11 @@ export function getBackendServers(args: GetBackendServersArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBackendServersResult> = pulumi.runtime.invoke("alicloud:slb/getBackendServers:getBackendServers", {
+    return pulumi.runtime.invoke("alicloud:slb/getBackendServers:getBackendServers", {
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

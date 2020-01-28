@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> & GetMongoInstancesResult {
+export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoInstancesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -14,7 +14,7 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetMongoInstancesResult> = pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
+    return pulumi.runtime.invoke("alicloud:dds/getMongoInstances:getMongoInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
         "instanceClass": args.instanceClass,
@@ -23,8 +23,6 @@ export function getMongoInstances(args?: GetMongoInstancesArgs, opts?: pulumi.In
         "outputFile": args.outputFile,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

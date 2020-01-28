@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
  */
-export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,13 +33,11 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("alicloud:pvtz/getZones:getZones", {
+    return pulumi.runtime.invoke("alicloud:pvtz/getZones:getZones", {
         "ids": args.ids,
         "keyword": args.keyword,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

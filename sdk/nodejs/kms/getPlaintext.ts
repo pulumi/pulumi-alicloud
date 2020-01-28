@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_plaintext.html.markdown.
  */
-export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> & GetPlaintextResult {
+export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
     if (!opts) {
         opts = {}
     }
@@ -16,12 +16,10 @@ export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetPlaintextResult> = pulumi.runtime.invoke("alicloud:kms/getPlaintext:getPlaintext", {
+    return pulumi.runtime.invoke("alicloud:kms/getPlaintext:getPlaintext", {
         "ciphertextBlob": args.ciphertextBlob,
         "encryptionContext": args.encryptionContext,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

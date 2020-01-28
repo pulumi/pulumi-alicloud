@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
  */
-export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> & GetForwardEntriesResult {
+export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
     if (!opts) {
         opts = {}
     }
@@ -63,7 +63,7 @@ export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetForwardEntriesResult> = pulumi.runtime.invoke("alicloud:vpc/getForwardEntries:getForwardEntries", {
+    return pulumi.runtime.invoke("alicloud:vpc/getForwardEntries:getForwardEntries", {
         "externalIp": args.externalIp,
         "forwardTableId": args.forwardTableId,
         "ids": args.ids,
@@ -72,8 +72,6 @@ export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.Inv
         "names": args.names,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

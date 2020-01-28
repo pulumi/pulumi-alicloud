@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
  */
-export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> & GetEndpointsResult {
+export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,12 +22,10 @@ export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEndpointsResult> = pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
+    return pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,
         "dbEndpointId": args.dbEndpointId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

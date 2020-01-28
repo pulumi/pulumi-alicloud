@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
  */
-export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertificatesResult> & GetCaCertificatesResult {
+export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertificatesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,15 +31,13 @@ export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCaCertificatesResult> = pulumi.runtime.invoke("alicloud:slb/getCaCertificates:getCaCertificates", {
+    return pulumi.runtime.invoke("alicloud:slb/getCaCertificates:getCaCertificates", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

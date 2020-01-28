@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
  */
-export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> & GetEipsResult {
+export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,7 +31,7 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEipsResult> = pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
+    return pulumi.runtime.invoke("alicloud:ecs/getEips:getEips", {
         "ids": args.ids,
         "inUse": args.inUse,
         "ipAddresses": args.ipAddresses,
@@ -39,8 +39,6 @@ export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promis
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

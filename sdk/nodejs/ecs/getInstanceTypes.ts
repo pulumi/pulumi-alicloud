@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
  */
-export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> & GetInstanceTypesResult {
+export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -40,7 +40,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceTypesResult> = pulumi.runtime.invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", {
+    return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypes:getInstanceTypes", {
         "availabilityZone": args.availabilityZone,
         "cpuCoreCount": args.cpuCoreCount,
         "eniAmount": args.eniAmount,
@@ -56,8 +56,6 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "sortedBy": args.sortedBy,
         "spotStrategy": args.spotStrategy,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

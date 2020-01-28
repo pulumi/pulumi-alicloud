@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
  */
-export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> & GetScalingConfigurationsResult {
+export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -38,14 +38,12 @@ export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, op
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetScalingConfigurationsResult> = pulumi.runtime.invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", {
+    return pulumi.runtime.invoke("alicloud:ess/getScalingConfigurations:getScalingConfigurations", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "scalingGroupId": args.scalingGroupId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

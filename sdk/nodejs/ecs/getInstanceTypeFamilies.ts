@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
  */
-export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> & GetInstanceTypeFamiliesResult {
+export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,15 +36,13 @@ export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceTypeFamiliesResult> = pulumi.runtime.invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
+    return pulumi.runtime.invoke("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {
         "generation": args.generation,
         "instanceChargeType": args.instanceChargeType,
         "outputFile": args.outputFile,
         "spotStrategy": args.spotStrategy,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

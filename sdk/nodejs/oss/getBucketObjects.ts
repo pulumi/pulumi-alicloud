@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
  */
-export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> & GetBucketObjectsResult {
+export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
     if (!opts) {
         opts = {}
     }
@@ -33,14 +33,12 @@ export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBucketObjectsResult> = pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
+    return pulumi.runtime.invoke("alicloud:oss/getBucketObjects:getBucketObjects", {
         "bucketName": args.bucketName,
         "keyPrefix": args.keyPrefix,
         "keyRegex": args.keyRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
  */
-export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> & GetMountTargetsResult {
+export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,7 +34,7 @@ export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetMountTargetsResult> = pulumi.runtime.invoke("alicloud:nas/getMountTargets:getMountTargets", {
+    return pulumi.runtime.invoke("alicloud:nas/getMountTargets:getMountTargets", {
         "accessGroupName": args.accessGroupName,
         "fileSystemId": args.fileSystemId,
         "ids": args.ids,
@@ -44,8 +44,6 @@ export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeO
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

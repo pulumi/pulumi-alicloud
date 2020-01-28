@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
  */
-export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> & GetCommonBandwidthPackagesResult {
+export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -45,14 +45,12 @@ export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCommonBandwidthPackagesResult> = pulumi.runtime.invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
+    return pulumi.runtime.invoke("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

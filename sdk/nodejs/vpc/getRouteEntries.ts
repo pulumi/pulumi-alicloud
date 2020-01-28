@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
  */
-export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> & GetRouteEntriesResult {
+export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
     if (!opts) {
         opts = {}
     }
@@ -90,15 +90,13 @@ export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeO
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRouteEntriesResult> = pulumi.runtime.invoke("alicloud:vpc/getRouteEntries:getRouteEntries", {
+    return pulumi.runtime.invoke("alicloud:vpc/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
         "routeTableId": args.routeTableId,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

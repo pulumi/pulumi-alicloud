@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
  */
-export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> & GetKeysResult {
+export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -34,14 +34,12 @@ export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetKeysResult> = pulumi.runtime.invoke("alicloud:kms/getKeys:getKeys", {
+    return pulumi.runtime.invoke("alicloud:kms/getKeys:getKeys", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

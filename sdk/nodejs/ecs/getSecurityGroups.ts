@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
  */
-export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> & GetSecurityGroupsResult {
+export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -40,7 +40,7 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecurityGroupsResult> = pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
+    return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroups:getSecurityGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -48,8 +48,6 @@ export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.In
         "tags": args.tags,
         "vpcId": args.vpcId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

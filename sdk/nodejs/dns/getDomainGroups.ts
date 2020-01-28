@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_groups.html.markdown.
  */
-export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> & GetDomainGroupsResult {
+export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -17,13 +17,11 @@ export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainGroupsResult> = pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
+    return pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

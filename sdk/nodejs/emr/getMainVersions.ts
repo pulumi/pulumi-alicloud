@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
  */
-export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMainVersionsResult> & GetMainVersionsResult {
+export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMainVersionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -41,13 +41,11 @@ export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetMainVersionsResult> = pulumi.runtime.invoke("alicloud:emr/getMainVersions:getMainVersions", {
+    return pulumi.runtime.invoke("alicloud:emr/getMainVersions:getMainVersions", {
         "clusterTypes": args.clusterTypes,
         "emrVersion": args.emrVersion,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
  */
-export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBastionHostInstancesResult> & GetBastionHostInstancesResult {
+export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBastionHostInstancesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -34,14 +34,12 @@ export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetBastionHostInstancesResult> = pulumi.runtime.invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", {
+    return pulumi.runtime.invoke("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

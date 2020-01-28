@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
  */
-export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> & GetRulesResult {
+export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     if (!opts) {
         opts = {}
     }
@@ -33,15 +33,13 @@ export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRulesResult> = pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
+    return pulumi.runtime.invoke("alicloud:slb/getRules:getRules", {
         "frontendPort": args.frontendPort,
         "ids": args.ids,
         "loadBalancerId": args.loadBalancerId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

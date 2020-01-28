@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/sag_acls.html.markdown.
  */
-export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> & GetAclsResult {
+export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -38,13 +38,11 @@ export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclsResult> = pulumi.runtime.invoke("alicloud:sag/getAcls:getAcls", {
+    return pulumi.runtime.invoke("alicloud:sag/getAcls:getAcls", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

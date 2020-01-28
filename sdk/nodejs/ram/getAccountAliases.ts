@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
  */
-export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> & GetAccountAliasesResult {
+export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,11 +33,9 @@ export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountAliasesResult> = pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
+    return pulumi.runtime.invoke("alicloud:ram/getAccountAliases:getAccountAliases", {
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

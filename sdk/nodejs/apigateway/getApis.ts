@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
  */
-export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> & GetApisResult {
+export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,15 +33,13 @@ export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetApisResult> = pulumi.runtime.invoke("alicloud:apigateway/getApis:getApis", {
+    return pulumi.runtime.invoke("alicloud:apigateway/getApis:getApis", {
         "apiId": args.apiId,
         "groupId": args.groupId,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

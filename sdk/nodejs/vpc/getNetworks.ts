@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
  */
-export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> & GetNetworksResult {
+export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +35,7 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNetworksResult> = pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
+    return pulumi.runtime.invoke("alicloud:vpc/getNetworks:getNetworks", {
         "cidrBlock": args.cidrBlock,
         "ids": args.ids,
         "isDefault": args.isDefault,
@@ -46,8 +46,6 @@ export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions)
         "tags": args.tags,
         "vswitchId": args.vswitchId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

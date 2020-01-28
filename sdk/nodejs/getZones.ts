@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
  */
-export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -39,7 +39,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
+    return pulumi.runtime.invoke("alicloud:index/getZones:getZones", {
         "availableDiskCategory": args.availableDiskCategory,
         "availableInstanceType": args.availableInstanceType,
         "availableResourceCreation": args.availableResourceCreation,
@@ -52,8 +52,6 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
         "outputFile": args.outputFile,
         "spotStrategy": args.spotStrategy,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

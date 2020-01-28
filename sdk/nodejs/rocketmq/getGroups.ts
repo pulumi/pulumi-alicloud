@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
  */
-export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> & GetGroupsResult {
+export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     if (!opts) {
         opts = {}
     }
@@ -47,13 +47,11 @@ export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pro
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGroupsResult> = pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
+    return pulumi.runtime.invoke("alicloud:rocketmq/getGroups:getGroups", {
         "groupIdRegex": args.groupIdRegex,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

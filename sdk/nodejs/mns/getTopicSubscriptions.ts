@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
  */
-export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> & GetTopicSubscriptionsResult {
+export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,13 +32,11 @@ export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetTopicSubscriptionsResult> = pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
+    return pulumi.runtime.invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", {
         "namePrefix": args.namePrefix,
         "outputFile": args.outputFile,
         "topicName": args.topicName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
