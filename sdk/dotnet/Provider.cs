@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud
         [Input("roleArn", required: true)]
         public Input<string> RoleArn { get; set; } = null!;
 
-        [Input("sessionExpiration", json: true)]
+        [Input("sessionExpiration")]
         public Input<int>? SessionExpiration { get; set; }
 
         [Input("sessionName")]
