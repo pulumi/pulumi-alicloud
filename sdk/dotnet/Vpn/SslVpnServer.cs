@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<string> InternetIp { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block to be accessed by the client through the SSL-VPN connection.
+        /// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         /// </summary>
         [Output("localSubnet")]
         public Output<string> LocalSubnet { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? Compress { get; set; }
 
         /// <summary>
-        /// The CIDR block to be accessed by the client through the SSL-VPN connection.
+        /// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         /// </summary>
         [Input("localSubnet", required: true)]
         public Input<string> LocalSubnet { get; set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? InternetIp { get; set; }
 
         /// <summary>
-        /// The CIDR block to be accessed by the client through the SSL-VPN connection.
+        /// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         /// </summary>
         [Input("localSubnet")]
         public Input<string>? LocalSubnet { get; set; }

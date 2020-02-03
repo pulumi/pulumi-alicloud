@@ -41,7 +41,8 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
         /// <summary>
-        /// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// Default to PostPaid.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -65,7 +66,8 @@ namespace Pulumi.AliCloud.Vpn
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        /// This field is ignored when enable_ssl is false.
         /// </summary>
         [Output("sslConnections")]
         public Output<int?> SslConnections { get; private set; } = null!;
@@ -156,7 +158,8 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// Default to PostPaid.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -174,7 +177,8 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        /// This field is ignored when enable_ssl is false.
         /// </summary>
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }
@@ -226,7 +230,8 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// Default to PostPaid.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -250,7 +255,8 @@ namespace Pulumi.AliCloud.Vpn
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+        /// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+        /// This field is ignored when enable_ssl is false.
         /// </summary>
         [Input("sslConnections")]
         public Input<int>? SslConnections { get; set; }

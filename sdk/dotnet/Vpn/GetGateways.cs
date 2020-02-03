@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The creation time of the VPN gateway.
         /// </summary>
-        public readonly int CreateTime;
+        public readonly string CreateTime;
         /// <summary>
         /// The description of the VPN
         /// </summary>
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The expiration time of the VPN gateway.
         /// </summary>
-        public readonly int EndTime;
+        public readonly string EndTime;
         /// <summary>
         /// ID of the VPN.
         /// </summary>
@@ -192,11 +192,11 @@ namespace Pulumi.AliCloud.Vpn
         [OutputConstructor]
         private GetGatewaysGatewaysResult(
             string businessStatus,
-            int createTime,
+            string createTime,
             string description,
             string enableIpsec,
             string enableSsl,
-            int endTime,
+            string endTime,
             string id,
             string instanceChargeType,
             string internetIp,

@@ -5831,7 +5831,7 @@ export namespace vpc {
         /**
          * The time of creation.
          */
-        createTime: number;
+        createTime: string;
         /**
          * The expiration time of the client certificate.
          */
@@ -5874,7 +5874,7 @@ export namespace vpc {
         /**
          * The time of creation.
          */
-        createTime: number;
+        createTime: string;
         /**
          * The ID of the SSL-VPN server.
          */
@@ -5895,6 +5895,9 @@ export namespace vpc {
          * The name of the SSL-VPN server.
          */
         name: string;
+        /**
+         * The port used by the SSL-VPN server.
+         */
         port: number;
         /**
          * The protocol used by the SSL-VPN server.
@@ -6086,7 +6089,7 @@ export namespace vpn {
     }
 
     export interface GetConnectionsConnection {
-        createTime: number;
+        createTime: string;
         /**
          * Use the VPN customer gateway ID as the search key.
          */
@@ -6188,7 +6191,7 @@ export namespace vpn {
         /**
          * The creation time of the VPN customer gateway.
          */
-        createTime: number;
+        createTime: string;
         /**
          * The description of the VPN customer gateway.
          */
@@ -6215,7 +6218,7 @@ export namespace vpn {
         /**
          * The creation time of the VPN gateway.
          */
-        createTime: number;
+        createTime: string;
         /**
          * The description of the VPN
          */
@@ -6231,7 +6234,7 @@ export namespace vpn {
         /**
          * The expiration time of the VPN gateway.
          */
-        endTime: number;
+        endTime: string;
         /**
          * ID of the VPN.
          */

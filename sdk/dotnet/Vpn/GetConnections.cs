@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Vpn
     [OutputType]
     public sealed class GetConnectionsConnectionsResult
     {
-        public readonly int CreateTime;
+        public readonly string CreateTime;
         /// <summary>
         /// Use the VPN customer gateway ID as the search key.
         /// </summary>
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Vpn
 
         [OutputConstructor]
         private GetConnectionsConnectionsResult(
-            int createTime,
+            string createTime,
             string customerGatewayId,
             bool effectImmediately,
             string id,

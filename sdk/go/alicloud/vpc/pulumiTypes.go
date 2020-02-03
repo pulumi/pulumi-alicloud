@@ -1875,7 +1875,7 @@ func (o GetSnatEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetSnatEntriesE
 
 type GetSslVpnClientCertsCert struct {
 	// The time of creation.
-	CreateTime int `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
 	// The expiration time of the client certificate.
 	EndTime int `pulumi:"endTime"`
 	// ID of the SSL-VPN client certificate.
@@ -1897,7 +1897,7 @@ type GetSslVpnClientCertsCertInput interface {
 
 type GetSslVpnClientCertsCertArgs struct {
 	// The time of creation.
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The expiration time of the client certificate.
 	EndTime pulumi.IntInput `pulumi:"endTime"`
 	// ID of the SSL-VPN client certificate.
@@ -1958,8 +1958,8 @@ func (o GetSslVpnClientCertsCertOutput) ToGetSslVpnClientCertsCertOutputWithCont
 }
 
 // The time of creation.
-func (o GetSslVpnClientCertsCertOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSslVpnClientCertsCert) int { return v.CreateTime }).(pulumi.IntOutput)
+func (o GetSslVpnClientCertsCertOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetSslVpnClientCertsCert) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The expiration time of the client certificate.
@@ -2017,7 +2017,7 @@ type GetSslVpnServersServer struct {
 	// The number of current connections.
 	Connections int `pulumi:"connections"`
 	// The time of creation.
-	CreateTime int `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
 	// The ID of the SSL-VPN server.
 	Id string `pulumi:"id"`
 	// The public IP.
@@ -2028,6 +2028,7 @@ type GetSslVpnServersServer struct {
 	MaxConnections int `pulumi:"maxConnections"`
 	// The name of the SSL-VPN server.
 	Name string `pulumi:"name"`
+	// The port used by the SSL-VPN server.
 	Port int `pulumi:"port"`
 	// The protocol used by the SSL-VPN server.
 	Proto string `pulumi:"proto"`
@@ -2052,7 +2053,7 @@ type GetSslVpnServersServerArgs struct {
 	// The number of current connections.
 	Connections pulumi.IntInput `pulumi:"connections"`
 	// The time of creation.
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the SSL-VPN server.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The public IP.
@@ -2063,6 +2064,7 @@ type GetSslVpnServersServerArgs struct {
 	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
 	// The name of the SSL-VPN server.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The port used by the SSL-VPN server.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The protocol used by the SSL-VPN server.
 	Proto pulumi.StringInput `pulumi:"proto"`
@@ -2138,8 +2140,8 @@ func (o GetSslVpnServersServerOutput) Connections() pulumi.IntOutput {
 }
 
 // The time of creation.
-func (o GetSslVpnServersServerOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSslVpnServersServer) int { return v.CreateTime }).(pulumi.IntOutput)
+func (o GetSslVpnServersServerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetSslVpnServersServer) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The ID of the SSL-VPN server.
@@ -2167,6 +2169,7 @@ func (o GetSslVpnServersServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func (v GetSslVpnServersServer) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port used by the SSL-VPN server.
 func (o GetSslVpnServersServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func (v GetSslVpnServersServer) int { return v.Port }).(pulumi.IntOutput)
 }

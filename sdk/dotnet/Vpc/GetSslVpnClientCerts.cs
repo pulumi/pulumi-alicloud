@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The time of creation.
         /// </summary>
-        public readonly int CreateTime;
+        public readonly string CreateTime;
         /// <summary>
         /// The expiration time of the client certificate.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Vpc
 
         [OutputConstructor]
         private GetSslVpnClientCertsCertsResult(
-            int createTime,
+            string createTime,
             int endTime,
             string id,
             string name,

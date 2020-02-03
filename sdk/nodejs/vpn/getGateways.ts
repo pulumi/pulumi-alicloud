@@ -17,11 +17,14 @@ import * as utilities from "../utilities";
  * 
  * const vpnGateways = alicloud.vpn.getGateways({
  *     businessStatus: "Normal",
+ *     ids: [
+ *         "fake-vpn-id1",
+ *         "fake-vpn-id2",
+ *     ],
  *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/vpns",
  *     status: "active",
  *     vpcId: "fake-vpc-id",
- *     vpnGatewayId: "fake-vpn-id",
  * });
  * ```
  *

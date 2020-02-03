@@ -54,7 +54,8 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     /**
-     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * Default to PostPaid.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -70,7 +71,8 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
+     * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+     * This field is ignored when enableSsl is false.
      */
     public readonly sslConnections!: pulumi.Output<number | undefined>;
     /**
@@ -166,7 +168,8 @@ export interface GatewayState {
      */
     readonly enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * Default to PostPaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -182,7 +185,8 @@ export interface GatewayState {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
+     * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+     * This field is ignored when enableSsl is false.
      */
     readonly sslConnections?: pulumi.Input<number>;
     /**
@@ -217,7 +221,8 @@ export interface GatewayArgs {
      */
     readonly enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * Default to PostPaid.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -229,7 +234,8 @@ export interface GatewayArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
-     * The max connections of SSL VPN. Default to 5. This field is ignored when enableSsl is false.
+     * The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+     * This field is ignored when enableSsl is false.
      */
     readonly sslConnections?: pulumi.Input<number>;
     /**

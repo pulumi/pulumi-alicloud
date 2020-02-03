@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The time of creation.
         /// </summary>
-        public readonly int CreateTime;
+        public readonly string CreateTime;
         /// <summary>
         /// The ID of the SSL-VPN server.
         /// </summary>
@@ -148,6 +148,9 @@ namespace Pulumi.AliCloud.Vpc
         /// The name of the SSL-VPN server.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port used by the SSL-VPN server.
+        /// </summary>
         public readonly int Port;
         /// <summary>
         /// The protocol used by the SSL-VPN server.
@@ -164,7 +167,7 @@ namespace Pulumi.AliCloud.Vpc
             string clientIpPool,
             bool compress,
             int connections,
-            int createTime,
+            string createTime,
             string id,
             string internetIp,
             string localSubnet,
