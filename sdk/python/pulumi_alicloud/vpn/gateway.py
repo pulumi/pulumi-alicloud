@@ -29,7 +29,8 @@ class Gateway(pulumi.CustomResource):
     """
     instance_charge_type: pulumi.Output[str]
     """
-    The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+    The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+    Default to PostPaid.
     """
     internet_ip: pulumi.Output[str]
     """
@@ -45,7 +46,8 @@ class Gateway(pulumi.CustomResource):
     """
     ssl_connections: pulumi.Output[float]
     """
-    The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+    The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+    This field is ignored when enable_ssl is false.
     """
     status: pulumi.Output[str]
     """
@@ -68,10 +70,12 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+               Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
         :param pulumi.Input[float] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
-        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+               This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
 
@@ -130,11 +134,13 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. Valid value: PostPaid, PrePaid. Default to PostPaid.
+        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+               Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
         :param pulumi.Input[float] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
-        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. This field is ignored when enable_ssl is false.
+        :param pulumi.Input[float] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+               This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] status: The status of the VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.

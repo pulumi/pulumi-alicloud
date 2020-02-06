@@ -25,7 +25,7 @@ type SslVpnServer struct {
 	Connections pulumi.IntOutput `pulumi:"connections"`
 	// The internet IP of the SSL-VPN server.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
 	LocalSubnet pulumi.StringOutput `pulumi:"localSubnet"`
 	// The maximum number of connections.
 	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
@@ -86,7 +86,7 @@ type sslVpnServerState struct {
 	Connections *int `pulumi:"connections"`
 	// The internet IP of the SSL-VPN server.
 	InternetIp *string `pulumi:"internetIp"`
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
 	LocalSubnet *string `pulumi:"localSubnet"`
 	// The maximum number of connections.
 	MaxConnections *int `pulumi:"maxConnections"`
@@ -111,7 +111,7 @@ type SslVpnServerState struct {
 	Connections pulumi.IntPtrInput
 	// The internet IP of the SSL-VPN server.
 	InternetIp pulumi.StringPtrInput
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
 	LocalSubnet pulumi.StringPtrInput
 	// The maximum number of connections.
 	MaxConnections pulumi.IntPtrInput
@@ -136,7 +136,7 @@ type sslVpnServerArgs struct {
 	ClientIpPool string `pulumi:"clientIpPool"`
 	// Specify whether to compress the communication. Valid value: true (default) | false
 	Compress *bool `pulumi:"compress"`
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
 	LocalSubnet string `pulumi:"localSubnet"`
 	// The name of the SSL-VPN server.
 	Name *string `pulumi:"name"`
@@ -156,7 +156,7 @@ type SslVpnServerArgs struct {
 	ClientIpPool pulumi.StringInput
 	// Specify whether to compress the communication. Valid value: true (default) | false
 	Compress pulumi.BoolPtrInput
-	// The CIDR block to be accessed by the client through the SSL-VPN connection.
+	// The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
 	LocalSubnet pulumi.StringInput
 	// The name of the SSL-VPN server.
 	Name pulumi.StringPtrInput

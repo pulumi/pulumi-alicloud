@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The creation time of the VPN customer gateway.
         /// </summary>
-        public readonly int CreateTime;
+        public readonly string CreateTime;
         /// <summary>
         /// The description of the VPN customer gateway.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.Vpn
 
         [OutputConstructor]
         private GetCustomerGatewaysGatewaysResult(
-            int createTime,
+            string createTime,
             string description,
             string id,
             string ipAddress,

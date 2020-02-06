@@ -289,7 +289,7 @@ func (o ConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput) ConnectionIps
 }
 
 type GetConnectionsConnection struct {
-	CreateTime int `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
 	EffectImmediately bool `pulumi:"effectImmediately"`
@@ -319,7 +319,7 @@ type GetConnectionsConnectionInput interface {
 }
 
 type GetConnectionsConnectionArgs struct {
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
 	EffectImmediately pulumi.BoolInput `pulumi:"effectImmediately"`
@@ -388,8 +388,8 @@ func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutputWithCont
 	return o
 }
 
-func (o GetConnectionsConnectionOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) int { return v.CreateTime }).(pulumi.IntOutput)
+func (o GetConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Use the VPN customer gateway ID as the search key.
@@ -740,7 +740,7 @@ func (o GetConnectionsConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput)
 
 type GetCustomerGatewaysGateway struct {
 	// The creation time of the VPN customer gateway.
-	CreateTime int `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
 	// The description of the VPN customer gateway.
 	Description string `pulumi:"description"`
 	// ID of the VPN customer gateway .
@@ -760,7 +760,7 @@ type GetCustomerGatewaysGatewayInput interface {
 
 type GetCustomerGatewaysGatewayArgs struct {
 	// The creation time of the VPN customer gateway.
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the VPN customer gateway.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the VPN customer gateway .
@@ -819,8 +819,8 @@ func (o GetCustomerGatewaysGatewayOutput) ToGetCustomerGatewaysGatewayOutputWith
 }
 
 // The creation time of the VPN customer gateway.
-func (o GetCustomerGatewaysGatewayOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) int { return v.CreateTime }).(pulumi.IntOutput)
+func (o GetCustomerGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the VPN customer gateway.
@@ -867,7 +867,7 @@ type GetGatewaysGateway struct {
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus string `pulumi:"businessStatus"`
 	// The creation time of the VPN gateway.
-	CreateTime int `pulumi:"createTime"`
+	CreateTime string `pulumi:"createTime"`
 	// The description of the VPN
 	Description string `pulumi:"description"`
 	// Whether the ipsec function is enabled.
@@ -875,7 +875,7 @@ type GetGatewaysGateway struct {
 	// Whether the ssl function is enabled.
 	EnableSsl string `pulumi:"enableSsl"`
 	// The expiration time of the VPN gateway.
-	EndTime int `pulumi:"endTime"`
+	EndTime string `pulumi:"endTime"`
 	// ID of the VPN.
 	Id string `pulumi:"id"`
 	// The charge type of the VPN gateway.
@@ -905,7 +905,7 @@ type GetGatewaysGatewayArgs struct {
 	// Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 	BusinessStatus pulumi.StringInput `pulumi:"businessStatus"`
 	// The creation time of the VPN gateway.
-	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the VPN
 	Description pulumi.StringInput `pulumi:"description"`
 	// Whether the ipsec function is enabled.
@@ -913,7 +913,7 @@ type GetGatewaysGatewayArgs struct {
 	// Whether the ssl function is enabled.
 	EnableSsl pulumi.StringInput `pulumi:"enableSsl"`
 	// The expiration time of the VPN gateway.
-	EndTime pulumi.IntInput `pulumi:"endTime"`
+	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// ID of the VPN.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The charge type of the VPN gateway.
@@ -985,8 +985,8 @@ func (o GetGatewaysGatewayOutput) BusinessStatus() pulumi.StringOutput {
 }
 
 // The creation time of the VPN gateway.
-func (o GetGatewaysGatewayOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) int { return v.CreateTime }).(pulumi.IntOutput)
+func (o GetGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the VPN
@@ -1005,8 +1005,8 @@ func (o GetGatewaysGatewayOutput) EnableSsl() pulumi.StringOutput {
 }
 
 // The expiration time of the VPN gateway.
-func (o GetGatewaysGatewayOutput) EndTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) int { return v.EndTime }).(pulumi.IntOutput)
+func (o GetGatewaysGatewayOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetGatewaysGateway) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // ID of the VPN.

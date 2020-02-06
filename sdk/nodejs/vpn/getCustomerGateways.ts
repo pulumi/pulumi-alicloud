@@ -16,7 +16,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * const foo = alicloud.vpn.getCustomerGateways({
- *     customerGatewayId: "fake-id*",
+ *     ids: [
+ *         "fake-id1",
+ *         "fake-id2",
+ *     ],
  *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/cgws",
  * });

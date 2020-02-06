@@ -55,7 +55,7 @@ export class SslVpnServer extends pulumi.CustomResource {
      */
     public /*out*/ readonly internetIp!: pulumi.Output<string>;
     /**
-     * The CIDR block to be accessed by the client through the SSL-VPN connection.
+     * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
     public readonly localSubnet!: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface SslVpnServerState {
      */
     readonly internetIp?: pulumi.Input<string>;
     /**
-     * The CIDR block to be accessed by the client through the SSL-VPN connection.
+     * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
     readonly localSubnet?: pulumi.Input<string>;
     /**
@@ -203,7 +203,7 @@ export interface SslVpnServerArgs {
      */
     readonly compress?: pulumi.Input<boolean>;
     /**
-     * The CIDR block to be accessed by the client through the SSL-VPN connection.
+     * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
     readonly localSubnet: pulumi.Input<string>;
     /**

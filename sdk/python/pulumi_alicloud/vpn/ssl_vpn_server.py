@@ -32,7 +32,7 @@ class SslVpnServer(pulumi.CustomResource):
     """
     local_subnet: pulumi.Output[str]
     """
-    The CIDR block to be accessed by the client through the SSL-VPN connection.
+    The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
     """
     max_connections: pulumi.Output[float]
     """
@@ -63,7 +63,7 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
         :param pulumi.Input[str] client_ip_pool: The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
-        :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection.
+        :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
         :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
@@ -125,7 +125,7 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[bool] compress: Specify whether to compress the communication. Valid value: true (default) | false
         :param pulumi.Input[float] connections: The number of current connections.
         :param pulumi.Input[str] internet_ip: The internet IP of the SSL-VPN server.
-        :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection.
+        :param pulumi.Input[str] local_subnet: The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         :param pulumi.Input[float] max_connections: The maximum number of connections.
         :param pulumi.Input[str] name: The name of the SSL-VPN server.
         :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
