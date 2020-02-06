@@ -195,9 +195,17 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string ConnectionMode;
         /// <summary>
+        /// (Available in 1.70.3+) RDS database connection string.
+        /// </summary>
+        public readonly string ConnectionString;
+        /// <summary>
         /// Creation time of the instance.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// (Available in 1.70.3+) The storage type of the instance.
+        /// </summary>
+        public readonly string DbInstanceStorageType;
         /// <summary>
         /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
         /// </summary>
@@ -223,6 +231,10 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available in 1.70.3+) User-defined DB instance storage space.
+        /// </summary>
+        public readonly int InstanceStorage;
+        /// <summary>
         /// Sizing of the RDS instance.
         /// </summary>
         public readonly string InstanceType;
@@ -238,6 +250,10 @@ namespace Pulumi.AliCloud.Rds
         /// `Internet` for public network or `Intranet` for private network.
         /// </summary>
         public readonly string NetType;
+        /// <summary>
+        /// (Available in 1.70.3+) RDS database connection port.
+        /// </summary>
+        public readonly string Port;
         /// <summary>
         /// A list of IDs of read-only instances attached to the primary instance.
         /// </summary>
@@ -268,17 +284,21 @@ namespace Pulumi.AliCloud.Rds
             string availabilityZone,
             string chargeType,
             string connectionMode,
+            string connectionString,
             string createTime,
+            string dbInstanceStorageType,
             string dbType,
             string engine,
             string engineVersion,
             string expireTime,
             string guardInstanceId,
             string id,
+            int instanceStorage,
             string instanceType,
             string masterInstanceId,
             string name,
             string netType,
+            string port,
             ImmutableArray<string> readonlyInstanceIds,
             string regionId,
             string status,
@@ -289,17 +309,21 @@ namespace Pulumi.AliCloud.Rds
             AvailabilityZone = availabilityZone;
             ChargeType = chargeType;
             ConnectionMode = connectionMode;
+            ConnectionString = connectionString;
             CreateTime = createTime;
+            DbInstanceStorageType = dbInstanceStorageType;
             DbType = dbType;
             Engine = engine;
             EngineVersion = engineVersion;
             ExpireTime = expireTime;
             GuardInstanceId = guardInstanceId;
             Id = id;
+            InstanceStorage = instanceStorage;
             InstanceType = instanceType;
             MasterInstanceId = masterInstanceId;
             Name = name;
             NetType = netType;
+            Port = port;
             ReadonlyInstanceIds = readonlyInstanceIds;
             RegionId = regionId;
             Status = status;
