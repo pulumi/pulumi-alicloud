@@ -4807,9 +4807,17 @@ export namespace rds {
          */
         connectionMode: string;
         /**
+         * (Available in 1.70.3+) RDS database connection string.
+         */
+        connectionString: string;
+        /**
          * Creation time of the instance.
          */
         createTime: string;
+        /**
+         * (Available in 1.70.3+) The storage type of the instance.
+         */
+        dbInstanceStorageType: string;
         /**
          * `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
          */
@@ -4835,6 +4843,10 @@ export namespace rds {
          */
         id: string;
         /**
+         * (Available in 1.70.3+) User-defined DB instance storage space.
+         */
+        instanceStorage: number;
+        /**
          * Sizing of the RDS instance.
          */
         instanceType: string;
@@ -4850,6 +4862,10 @@ export namespace rds {
          * `Internet` for public network or `Intranet` for private network.
          */
         netType: string;
+        /**
+         * (Available in 1.70.3+) RDS database connection port.
+         */
+        port: string;
         /**
          * A list of IDs of read-only instances attached to the primary instance.
          */

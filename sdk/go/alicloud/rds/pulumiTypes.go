@@ -693,8 +693,12 @@ type GetInstancesInstance struct {
 	ChargeType string `pulumi:"chargeType"`
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode string `pulumi:"connectionMode"`
+	// (Available in 1.70.3+) RDS database connection string.
+	ConnectionString string `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime string `pulumi:"createTime"`
+	// (Available in 1.70.3+) The storage type of the instance.
+	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType string `pulumi:"dbType"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
@@ -707,6 +711,8 @@ type GetInstancesInstance struct {
 	GuardInstanceId string `pulumi:"guardInstanceId"`
 	// The ID of the RDS instance.
 	Id string `pulumi:"id"`
+	// (Available in 1.70.3+) User-defined DB instance storage space.
+	InstanceStorage int `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType string `pulumi:"instanceType"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
@@ -715,6 +721,8 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
 	NetType string `pulumi:"netType"`
+	// (Available in 1.70.3+) RDS database connection port.
+	Port string `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds []string `pulumi:"readonlyInstanceIds"`
 	// Region ID the instance belongs to.
@@ -743,8 +751,12 @@ type GetInstancesInstanceArgs struct {
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// `Standard` for standard access mode and `Safe` for high security access mode.
 	ConnectionMode pulumi.StringInput `pulumi:"connectionMode"`
+	// (Available in 1.70.3+) RDS database connection string.
+	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// Creation time of the instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (Available in 1.70.3+) The storage type of the instance.
+	DbInstanceStorageType pulumi.StringInput `pulumi:"dbInstanceStorageType"`
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType pulumi.StringInput `pulumi:"dbType"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
@@ -757,6 +769,8 @@ type GetInstancesInstanceArgs struct {
 	GuardInstanceId pulumi.StringInput `pulumi:"guardInstanceId"`
 	// The ID of the RDS instance.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available in 1.70.3+) User-defined DB instance storage space.
+	InstanceStorage pulumi.IntInput `pulumi:"instanceStorage"`
 	// Sizing of the RDS instance.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 	// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
@@ -765,6 +779,8 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// `Internet` for public network or `Intranet` for private network.
 	NetType pulumi.StringInput `pulumi:"netType"`
+	// (Available in 1.70.3+) RDS database connection port.
+	Port pulumi.StringInput `pulumi:"port"`
 	// A list of IDs of read-only instances attached to the primary instance.
 	ReadonlyInstanceIds pulumi.StringArrayInput `pulumi:"readonlyInstanceIds"`
 	// Region ID the instance belongs to.
@@ -841,9 +857,19 @@ func (o GetInstancesInstanceOutput) ConnectionMode() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.ConnectionMode }).(pulumi.StringOutput)
 }
 
+// (Available in 1.70.3+) RDS database connection string.
+func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func (v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // Creation time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (Available in 1.70.3+) The storage type of the instance.
+func (o GetInstancesInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
+	return o.ApplyT(func (v GetInstancesInstance) string { return v.DbInstanceStorageType }).(pulumi.StringOutput)
 }
 
 // `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
@@ -876,6 +902,11 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available in 1.70.3+) User-defined DB instance storage space.
+func (o GetInstancesInstanceOutput) InstanceStorage() pulumi.IntOutput {
+	return o.ApplyT(func (v GetInstancesInstance) int { return v.InstanceStorage }).(pulumi.IntOutput)
+}
+
 // Sizing of the RDS instance.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
@@ -894,6 +925,11 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 // `Internet` for public network or `Intranet` for private network.
 func (o GetInstancesInstanceOutput) NetType() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.NetType }).(pulumi.StringOutput)
+}
+
+// (Available in 1.70.3+) RDS database connection port.
+func (o GetInstancesInstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func (v GetInstancesInstance) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // A list of IDs of read-only instances attached to the primary instance.
