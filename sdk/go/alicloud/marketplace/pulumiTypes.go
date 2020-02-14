@@ -128,6 +128,7 @@ func (o GetProductProductArrayOutput) Index(i pulumi.IntInput) GetProductProduct
 }
 
 type GetProductProductSkus struct {
+	Images []GetProductProductSkusImage `pulumi:"images"`
 	// The list of package version details of this product sku, Each element contains the following attributes:
 	PackageVersions []GetProductProductSkusPackageVersion `pulumi:"packageVersions"`
 	// The sku code of this product sku.
@@ -144,6 +145,7 @@ type GetProductProductSkusInput interface {
 }
 
 type GetProductProductSkusArgs struct {
+	Images GetProductProductSkusImageArrayInput `pulumi:"images"`
 	// The list of package version details of this product sku, Each element contains the following attributes:
 	PackageVersions GetProductProductSkusPackageVersionArrayInput `pulumi:"packageVersions"`
 	// The sku code of this product sku.
@@ -199,6 +201,10 @@ func (o GetProductProductSkusOutput) ToGetProductProductSkusOutputWithContext(ct
 	return o
 }
 
+func (o GetProductProductSkusOutput) Images() GetProductProductSkusImageArrayOutput {
+	return o.ApplyT(func (v GetProductProductSkus) []GetProductProductSkusImage { return v.Images }).(GetProductProductSkusImageArrayOutput)
+}
+
 // The list of package version details of this product sku, Each element contains the following attributes:
 func (o GetProductProductSkusOutput) PackageVersions() GetProductProductSkusPackageVersionArrayOutput {
 	return o.ApplyT(func (v GetProductProductSkus) []GetProductProductSkusPackageVersion { return v.PackageVersions }).(GetProductProductSkusPackageVersionArrayOutput)
@@ -232,6 +238,98 @@ func (o GetProductProductSkusArrayOutput) Index(i pulumi.IntInput) GetProductPro
 	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProductSkus {
 		return vs[0].([]GetProductProductSkus)[vs[1].(int)]
 	}).(GetProductProductSkusOutput)
+}
+
+type GetProductProductSkusImage struct {
+	ImageId string `pulumi:"imageId"`
+	ImageName string `pulumi:"imageName"`
+}
+
+type GetProductProductSkusImageInput interface {
+	pulumi.Input
+
+	ToGetProductProductSkusImageOutput() GetProductProductSkusImageOutput
+	ToGetProductProductSkusImageOutputWithContext(context.Context) GetProductProductSkusImageOutput
+}
+
+type GetProductProductSkusImageArgs struct {
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+}
+
+func (GetProductProductSkusImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductProductSkusImage)(nil)).Elem()
+}
+
+func (i GetProductProductSkusImageArgs) ToGetProductProductSkusImageOutput() GetProductProductSkusImageOutput {
+	return i.ToGetProductProductSkusImageOutputWithContext(context.Background())
+}
+
+func (i GetProductProductSkusImageArgs) ToGetProductProductSkusImageOutputWithContext(ctx context.Context) GetProductProductSkusImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusImageOutput)
+}
+
+type GetProductProductSkusImageArrayInput interface {
+	pulumi.Input
+
+	ToGetProductProductSkusImageArrayOutput() GetProductProductSkusImageArrayOutput
+	ToGetProductProductSkusImageArrayOutputWithContext(context.Context) GetProductProductSkusImageArrayOutput
+}
+
+type GetProductProductSkusImageArray []GetProductProductSkusImageInput
+
+func (GetProductProductSkusImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductProductSkusImage)(nil)).Elem()
+}
+
+func (i GetProductProductSkusImageArray) ToGetProductProductSkusImageArrayOutput() GetProductProductSkusImageArrayOutput {
+	return i.ToGetProductProductSkusImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetProductProductSkusImageArray) ToGetProductProductSkusImageArrayOutputWithContext(ctx context.Context) GetProductProductSkusImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusImageArrayOutput)
+}
+
+type GetProductProductSkusImageOutput struct { *pulumi.OutputState }
+
+func (GetProductProductSkusImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProductProductSkusImage)(nil)).Elem()
+}
+
+func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutput() GetProductProductSkusImageOutput {
+	return o
+}
+
+func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutputWithContext(ctx context.Context) GetProductProductSkusImageOutput {
+	return o
+}
+
+func (o GetProductProductSkusImageOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+func (o GetProductProductSkusImageOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+type GetProductProductSkusImageArrayOutput struct { *pulumi.OutputState}
+
+func (GetProductProductSkusImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProductProductSkusImage)(nil)).Elem()
+}
+
+func (o GetProductProductSkusImageArrayOutput) ToGetProductProductSkusImageArrayOutput() GetProductProductSkusImageArrayOutput {
+	return o
+}
+
+func (o GetProductProductSkusImageArrayOutput) ToGetProductProductSkusImageArrayOutputWithContext(ctx context.Context) GetProductProductSkusImageArrayOutput {
+	return o
+}
+
+func (o GetProductProductSkusImageArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusImageOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProductSkusImage {
+		return vs[0].([]GetProductProductSkusImage)[vs[1].(int)]
+	}).(GetProductProductSkusImageOutput)
 }
 
 type GetProductProductSkusPackageVersion struct {
@@ -552,6 +650,8 @@ func init() {
 	pulumi.RegisterOutputType(GetProductProductArrayOutput{})
 	pulumi.RegisterOutputType(GetProductProductSkusOutput{})
 	pulumi.RegisterOutputType(GetProductProductSkusArrayOutput{})
+	pulumi.RegisterOutputType(GetProductProductSkusImageOutput{})
+	pulumi.RegisterOutputType(GetProductProductSkusImageArrayOutput{})
 	pulumi.RegisterOutputType(GetProductProductSkusPackageVersionOutput{})
 	pulumi.RegisterOutputType(GetProductProductSkusPackageVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetProductsProductOutput{})

@@ -9,8 +9,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource

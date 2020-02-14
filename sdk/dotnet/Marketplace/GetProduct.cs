@@ -97,6 +97,22 @@ namespace Pulumi.AliCloud.MarketPlace
     }
 
     [OutputType]
+    public sealed class GetProductProductsSkusesImagesResult
+    {
+        public readonly string ImageId;
+        public readonly string ImageName;
+
+        [OutputConstructor]
+        private GetProductProductsSkusesImagesResult(
+            string imageId,
+            string imageName)
+        {
+            ImageId = imageId;
+            ImageName = imageName;
+        }
+    }
+
+    [OutputType]
     public sealed class GetProductProductsSkusesPackageVersionsResult
     {
         /// <summary>
@@ -121,6 +137,7 @@ namespace Pulumi.AliCloud.MarketPlace
     [OutputType]
     public sealed class GetProductProductsSkusesResult
     {
+        public readonly ImmutableArray<GetProductProductsSkusesImagesResult> Images;
         /// <summary>
         /// The list of package version details of this product sku, Each element contains the following attributes:
         /// </summary>
@@ -136,10 +153,12 @@ namespace Pulumi.AliCloud.MarketPlace
 
         [OutputConstructor]
         private GetProductProductsSkusesResult(
+            ImmutableArray<GetProductProductsSkusesImagesResult> images,
             ImmutableArray<GetProductProductsSkusesPackageVersionsResult> packageVersions,
             string skuCode,
             string skuName)
         {
+            Images = images;
             PackageVersions = packageVersions;
             SkuCode = skuCode;
             SkuName = skuName;

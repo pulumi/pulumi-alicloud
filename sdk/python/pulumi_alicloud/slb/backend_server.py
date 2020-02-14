@@ -28,7 +28,7 @@ class BackendServer(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, backend_servers=None, delete_protection_validation=None, load_balancer_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+        Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
         
         > **NOTE:** Available in 1.53.0+
         

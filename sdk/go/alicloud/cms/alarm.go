@@ -22,11 +22,12 @@ type Alarm struct {
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
-	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+	EffectiveInterval pulumi.StringOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
@@ -40,12 +41,11 @@ type Alarm struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
-	// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
 	// The current alarm rule status.
-	// * `webhook`- The webhook that is called when the alarm is triggered.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
@@ -101,11 +101,12 @@ type alarmState struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled *bool `pulumi:"enabled"`
-	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
@@ -119,12 +120,11 @@ type alarmState struct {
 	Project *string `pulumi:"project"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
-	// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
 	// The current alarm rule status.
-	// * `webhook`- The webhook that is called when the alarm is triggered.
 	Status *string `pulumi:"status"`
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
@@ -138,11 +138,12 @@ type AlarmState struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrInput
-	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
@@ -156,12 +157,11 @@ type AlarmState struct {
 	Project pulumi.StringPtrInput
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
-	// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrInput
 	// The current alarm rule status.
-	// * `webhook`- The webhook that is called when the alarm is triggered.
 	Status pulumi.StringPtrInput
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput
@@ -179,11 +179,12 @@ type alarmArgs struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled *bool `pulumi:"enabled"`
-	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
@@ -197,7 +198,7 @@ type alarmArgs struct {
 	Project string `pulumi:"project"`
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
-	// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
@@ -214,11 +215,12 @@ type AlarmArgs struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrInput
-	// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
@@ -232,7 +234,7 @@ type AlarmArgs struct {
 	Project pulumi.StringInput
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
-	// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrInput

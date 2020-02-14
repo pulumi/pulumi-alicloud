@@ -19,6 +19,9 @@ class Alarm(pulumi.CustomResource):
     Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
     """
     effective_interval: pulumi.Output[str]
+    """
+    The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+    """
     enabled: pulumi.Output[bool]
     """
     Whether to enable alarm rule. Default to true.
@@ -26,7 +29,7 @@ class Alarm(pulumi.CustomResource):
     """
     end_time: pulumi.Output[float]
     """
-    End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+    It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
     """
     metric: pulumi.Output[str]
     """
@@ -54,7 +57,7 @@ class Alarm(pulumi.CustomResource):
     """
     start_time: pulumi.Output[float]
     """
-    Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+    It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
     """
     statistics: pulumi.Output[str]
     """
@@ -63,7 +66,6 @@ class Alarm(pulumi.CustomResource):
     status: pulumi.Output[str]
     """
     The current alarm rule status.
-    * `webhook`- The webhook that is called when the alarm is triggered.
     """
     threshold: pulumi.Output[str]
     """
@@ -83,16 +85,17 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
                * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
-        :param pulumi.Input[float] end_time: End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+        :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param pulumi.Input[float] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[float] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[float] start_time: Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+        :param pulumi.Input[float] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
@@ -160,19 +163,19 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
                * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
-        :param pulumi.Input[float] end_time: End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+        :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
         :param pulumi.Input[str] operator: Alarm comparison operator. Valid values: ["<=", "<", ">", ">=", "==", "!="]. Default to "==".
         :param pulumi.Input[float] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: Monitor project name, such as "acs_ecs_dashboard" and "acs_rds_dashboard". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[float] silence_time: Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
-        :param pulumi.Input[float] start_time: Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+        :param pulumi.Input[float] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] status: The current alarm rule status.
-               * `webhook`- The webhook that is called when the alarm is triggered.
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 

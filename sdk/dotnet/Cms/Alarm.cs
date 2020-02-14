@@ -28,8 +28,11 @@ namespace Pulumi.AliCloud.Cms
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
 
+        /// <summary>
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// </summary>
         [Output("effectiveInterval")]
-        public Output<string?> EffectiveInterval { get; private set; } = null!;
+        public Output<string> EffectiveInterval { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable alarm rule. Default to true.
@@ -39,7 +42,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -81,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> SilenceTime { get; private set; } = null!;
 
         /// <summary>
-        /// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -94,7 +97,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The current alarm rule status.
-        /// * `webhook`- The webhook that is called when the alarm is triggered.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -184,6 +186,9 @@ namespace Pulumi.AliCloud.Cms
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
 
@@ -195,7 +200,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -237,7 +242,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -294,6 +299,9 @@ namespace Pulumi.AliCloud.Cms
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
 
@@ -305,7 +313,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -347,7 +355,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? SilenceTime { get; set; }
 
         /// <summary>
-        /// Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+        /// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -360,7 +368,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The current alarm rule status.
-        /// * `webhook`- The webhook that is called when the alarm is triggered.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -175,6 +175,9 @@ namespace Pulumi.AliCloud
         [Input("actiontrail")]
         public Input<string>? Actiontrail { get; set; }
 
+        [Input("adb")]
+        public Input<string>? Adb { get; set; }
+
         [Input("alikafka")]
         public Input<string>? Alikafka { get; set; }
 

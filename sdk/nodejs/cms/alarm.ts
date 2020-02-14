@@ -42,14 +42,17 @@ export class Alarm extends pulumi.CustomResource {
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
-    public readonly effectiveInterval!: pulumi.Output<string | undefined>;
+    /**
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     */
+    public readonly effectiveInterval!: pulumi.Output<string>;
     /**
      * Whether to enable alarm rule. Default to true.
      * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
@@ -77,7 +80,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly silenceTime!: pulumi.Output<number | undefined>;
     /**
-     * Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
@@ -86,7 +89,6 @@ export class Alarm extends pulumi.CustomResource {
     public readonly statistics!: pulumi.Output<string | undefined>;
     /**
      * The current alarm rule status.
-     * * `webhook`- The webhook that is called when the alarm is triggered.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -186,6 +188,9 @@ export interface AlarmState {
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly dimensions?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
@@ -193,7 +198,7 @@ export interface AlarmState {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     readonly endTime?: pulumi.Input<number>;
     /**
@@ -221,7 +226,7 @@ export interface AlarmState {
      */
     readonly silenceTime?: pulumi.Input<number>;
     /**
-     * Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     readonly startTime?: pulumi.Input<number>;
     /**
@@ -230,7 +235,6 @@ export interface AlarmState {
     readonly statistics?: pulumi.Input<string>;
     /**
      * The current alarm rule status.
-     * * `webhook`- The webhook that is called when the alarm is triggered.
      */
     readonly status?: pulumi.Input<string>;
     /**
@@ -256,6 +260,9 @@ export interface AlarmArgs {
      * Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      */
     readonly dimensions: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
@@ -263,7 +270,7 @@ export interface AlarmArgs {
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
-     * End time of the alarm effective period. Default value 24 and it indicates the time 24:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     readonly endTime?: pulumi.Input<number>;
     /**
@@ -291,7 +298,7 @@ export interface AlarmArgs {
      */
     readonly silenceTime?: pulumi.Input<number>;
     /**
-     * Start time of the alarm effective period. Default to 0 and it indicates the time 00:00. Valid value range: [0, 24].
+     * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
      */
     readonly startTime?: pulumi.Input<number>;
     /**

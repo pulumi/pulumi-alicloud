@@ -36,7 +36,7 @@ class Attachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, backend_servers=None, delete_protection_validation=None, instance_ids=None, load_balancer_id=None, server_type=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
-        Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+        Create a Attachment resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
