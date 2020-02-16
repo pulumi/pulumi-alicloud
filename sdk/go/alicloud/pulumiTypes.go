@@ -401,6 +401,7 @@ func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
 
 type ProviderEndpoint struct {
 	Actiontrail *string `pulumi:"actiontrail"`
+	Adb *string `pulumi:"adb"`
 	Alikafka *string `pulumi:"alikafka"`
 	Apigateway *string `pulumi:"apigateway"`
 	Bssopenapi *string `pulumi:"bssopenapi"`
@@ -450,6 +451,7 @@ type ProviderEndpointInput interface {
 
 type ProviderEndpointArgs struct {
 	Actiontrail pulumi.StringPtrInput `pulumi:"actiontrail"`
+	Adb pulumi.StringPtrInput `pulumi:"adb"`
 	Alikafka pulumi.StringPtrInput `pulumi:"alikafka"`
 	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
 	Bssopenapi pulumi.StringPtrInput `pulumi:"bssopenapi"`
@@ -539,6 +541,10 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.
 
 func (o ProviderEndpointOutput) Actiontrail() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Actiontrail }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Adb() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Adb }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Alikafka() pulumi.StringPtrOutput {

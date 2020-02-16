@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+    /// Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
     /// 

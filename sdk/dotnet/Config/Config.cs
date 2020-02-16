@@ -93,6 +93,7 @@ namespace Pulumi.AliCloud
     public class Endpoints
     {
         public string? Actiontrail { get; set; }
+        public string? Adb { get; set; }
         public string? Alikafka { get; set; }
         public string? Apigateway { get; set; }
         public string? Bssopenapi { get; set; }

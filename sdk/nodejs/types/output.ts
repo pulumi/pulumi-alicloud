@@ -3348,6 +3348,7 @@ export namespace marketplace {
     }
 
     export interface GetProductProductSkus {
+        images: outputs.marketplace.GetProductProductSkusImage[];
         /**
          * The list of package version details of this product sku, Each element contains the following attributes:
          */
@@ -3360,6 +3361,11 @@ export namespace marketplace {
          * The sku name of this product sku.
          */
         skuName: string;
+    }
+
+    export interface GetProductProductSkusImage {
+        imageId: string;
+        imageName: string;
     }
 
     export interface GetProductProductSkusPackageVersion {

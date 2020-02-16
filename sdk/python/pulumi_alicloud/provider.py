@@ -30,6 +30,7 @@ class Provider(pulumi.ProviderResource):
         The **endpoints** object supports the following:
         
           * `actiontrail` (`pulumi.Input[str]`)
+          * `adb` (`pulumi.Input[str]`)
           * `alikafka` (`pulumi.Input[str]`)
           * `apigateway` (`pulumi.Input[str]`)
           * `bssopenapi` (`pulumi.Input[str]`)

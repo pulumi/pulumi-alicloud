@@ -31,6 +31,7 @@ const (
 	// modules:
 	alicloudMod      = "index"
 	actionTrailMod   = "ActionTrail"
+	adbMod           = "Adb"
 	aliKafaMod       = "AliKafka"
 	apiGatewayMod    = "ApiGateway"
 	casMod           = "Cas"
@@ -169,6 +170,11 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// ActionTrail
 			"alicloud_actiontrail": {Tok: resource(actionTrailMod, "Trail")},
+
+			// Adb
+			"alicloud_adb_account":       {Tok: resource(adbMod, "Account")},
+			"alicloud_adb_backup_policy": {Tok: resource(adbMod, "BackupPolicy")},
+			"alicloud_adb_cluster":       {Tok: resource(adbMod, "Cluster")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},

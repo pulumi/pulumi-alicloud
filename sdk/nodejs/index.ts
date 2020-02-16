@@ -11,6 +11,7 @@ export * from "./provider";
 
 // Export sub-modules:
 import * as actiontrail from "./actiontrail/index";
+import * as adb from "./adb/index";
 import * as alikafka from "./alikafka/index";
 import * as apigateway from "./apigateway/index";
 import * as cas from "./cas/index";
@@ -52,4 +53,4 @@ import * as types from "./types/index";
 import * as vpc from "./vpc/index";
 import * as vpn from "./vpn/index";
 import * as yundun from "./yundun/index";
-export {actiontrail, alikafka, apigateway, cas, cdn, cen, cloudconnect, cms, config, cr, cs, datahub, ddos, dds, dns, drds, ecs, elasticsearch, emr, ess, fc, gpdb, kms, kvstore, log, marketplace, mns, mongodb, nas, oss, ots, polardb, pvtz, ram, rds, rocketmq, sag, slb, types, vpc, vpn, yundun};
+export {actiontrail, adb, alikafka, apigateway, cas, cdn, cen, cloudconnect, cms, config, cr, cs, datahub, ddos, dds, dns, drds, ecs, elasticsearch, emr, ess, fc, gpdb, kms, kvstore, log, marketplace, mns, mongodb, nas, oss, ots, polardb, pvtz, ram, rds, rocketmq, sag, slb, types, vpc, vpn, yundun};

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+ * Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
  * 
  * > **NOTE:** Available in 1.53.0+
  * 

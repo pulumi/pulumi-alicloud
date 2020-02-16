@@ -7,62 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const config = new pulumi.Config();
- * const name = config.get("name") || "slbattachmenttest";
- * 
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloudEfficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones[0].id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * });
- * const defaultImages = alicloud.ecs.getImages({
- *     mostRecent: true,
- *     nameRegex: "^ubuntu_18.*64",
- *     owners: "system",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     availabilityZone: defaultZones.zones[0].id,
- *     cidrBlock: "172.16.0.0/16",
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     vpcId: defaultNetwork.id,
- * });
- * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     imageId: defaultImages.images[0].id,
- *     instanceName: name,
- *     instanceType: defaultInstanceTypes.instanceTypes[0].id,
- *     internetChargeType: "PayByTraffic",
- *     internetMaxBandwidthOut: 5,
- *     securityGroups: [defaultSecurityGroup.id],
- *     systemDiskCategory: "cloudEfficiency",
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
- *     vswitchId: defaultSwitch.id,
- * });
- * const defaultAttachment = new alicloud.slb.Attachment("default", {
- *     instanceIds: [defaultInstance.id],
- *     loadBalancerId: defaultLoadBalancer.id,
- *     weight: 90,
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
  */
 export class Attachment extends pulumi.CustomResource {

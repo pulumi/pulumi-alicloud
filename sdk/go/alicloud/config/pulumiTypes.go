@@ -76,6 +76,7 @@ func (o AssumeRoleOutput) SessionName() pulumi.StringPtrOutput {
 
 type Endpoints struct {
 	Actiontrail *string `pulumi:"actiontrail"`
+	Adb *string `pulumi:"adb"`
 	Alikafka *string `pulumi:"alikafka"`
 	Apigateway *string `pulumi:"apigateway"`
 	Bssopenapi *string `pulumi:"bssopenapi"`
@@ -125,6 +126,7 @@ type EndpointsInput interface {
 
 type EndpointsArgs struct {
 	Actiontrail pulumi.StringPtrInput `pulumi:"actiontrail"`
+	Adb pulumi.StringPtrInput `pulumi:"adb"`
 	Alikafka pulumi.StringPtrInput `pulumi:"alikafka"`
 	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
 	Bssopenapi pulumi.StringPtrInput `pulumi:"bssopenapi"`
@@ -214,6 +216,10 @@ func (o EndpointsOutput) ToEndpointsOutputWithContext(ctx context.Context) Endpo
 
 func (o EndpointsOutput) Actiontrail() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v Endpoints) *string { return v.Actiontrail }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Adb() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v Endpoints) *string { return v.Adb }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Alikafka() pulumi.StringPtrOutput {
