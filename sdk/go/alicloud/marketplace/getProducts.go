@@ -37,6 +37,12 @@ type GetProductsArgs struct {
 	SearchTerm *string `pulumi:"searchTerm"`
 	// This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
 	Sort *string `pulumi:"sort"`
+	// The suggested price of the product.
+	SuggestedPrice *float64 `pulumi:"suggestedPrice"`
+	// The supplier id of the product.
+	SupplierId *string `pulumi:"supplierId"`
+	// The supplier name keyword of the product.
+	SupplierNameKeyword *string `pulumi:"supplierNameKeyword"`
 }
 
 
@@ -55,5 +61,10 @@ type GetProductsResult struct {
 	Products []GetProductsProduct `pulumi:"products"`
 	SearchTerm *string `pulumi:"searchTerm"`
 	Sort *string `pulumi:"sort"`
+	// The suggested price of the product.
+	SuggestedPrice *float64 `pulumi:"suggestedPrice"`
+	// The supplier id of the product.
+	SupplierId *string `pulumi:"supplierId"`
+	SupplierNameKeyword *string `pulumi:"supplierNameKeyword"`
 }
 

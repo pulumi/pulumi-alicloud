@@ -24,6 +24,12 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// A available region id used to filter market place Ecs images.
+        /// </summary>
+        [Input("availableRegion")]
+        public string? AvailableRegion { get; set; }
+
+        /// <summary>
         /// The product code of the market product.
         /// </summary>
         [Input("productCode", required: true)]
@@ -37,6 +43,7 @@ namespace Pulumi.AliCloud.MarketPlace
     [OutputType]
     public sealed class GetProductResult
     {
+        public readonly string? AvailableRegion;
         /// <summary>
         /// A product. It contains the following attributes:
         /// </summary>
@@ -49,10 +56,12 @@ namespace Pulumi.AliCloud.MarketPlace
 
         [OutputConstructor]
         private GetProductResult(
+            string? availableRegion,
             ImmutableArray<Outputs.GetProductProductsResult> products,
             string productCode,
             string id)
         {
+            AvailableRegion = availableRegion;
             Products = products;
             ProductCode = productCode;
             Id = id;
@@ -99,16 +108,28 @@ namespace Pulumi.AliCloud.MarketPlace
     [OutputType]
     public sealed class GetProductProductsSkusesImagesResult
     {
+        /// <summary>
+        /// The Ecs image id.
+        /// </summary>
         public readonly string ImageId;
+        /// <summary>
+        /// The Ecs image display name.
+        /// </summary>
         public readonly string ImageName;
+        /// <summary>
+        /// The Ecs image region.
+        /// </summary>
+        public readonly string RegionId;
 
         [OutputConstructor]
         private GetProductProductsSkusesImagesResult(
             string imageId,
-            string imageName)
+            string imageName,
+            string regionId)
         {
             ImageId = imageId;
             ImageName = imageName;
+            RegionId = regionId;
         }
     }
 
@@ -137,6 +158,9 @@ namespace Pulumi.AliCloud.MarketPlace
     [OutputType]
     public sealed class GetProductProductsSkusesResult
     {
+        /// <summary>
+        /// The list of custom ECS images, Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<GetProductProductsSkusesImagesResult> Images;
         /// <summary>
         /// The list of package version details of this product sku, Each element contains the following attributes:

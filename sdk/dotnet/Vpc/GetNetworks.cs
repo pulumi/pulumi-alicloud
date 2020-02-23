@@ -115,6 +115,9 @@ namespace Pulumi.AliCloud.Vpc
         /// Status of the VPC.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A map of tags assigned to the VPC.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
         /// A list of VPCs. Each element contains the following attributes:
@@ -195,6 +198,10 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
         /// Name of the VPC.
         /// </summary>
         public readonly string VpcName;
@@ -217,6 +224,7 @@ namespace Pulumi.AliCloud.Vpc
             string regionId,
             string routeTableId,
             string status,
+            ImmutableDictionary<string, object> tags,
             string vpcName,
             string vrouterId,
             ImmutableArray<string> vswitchIds)
@@ -229,6 +237,7 @@ namespace Pulumi.AliCloud.Vpc
             RegionId = regionId;
             RouteTableId = routeTableId;
             Status = status;
+            Tags = tags;
             VpcName = vpcName;
             VrouterId = vrouterId;
             VswitchIds = vswitchIds;

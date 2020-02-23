@@ -13,7 +13,10 @@ class GetProductResult:
     """
     A collection of values returned by getProduct.
     """
-    def __init__(__self__, products=None, product_code=None, id=None):
+    def __init__(__self__, available_region=None, products=None, product_code=None, id=None):
+        if available_region and not isinstance(available_region, str):
+            raise TypeError("Expected argument 'available_region' to be a str")
+        __self__.available_region = available_region
         if products and not isinstance(products, list):
             raise TypeError("Expected argument 'products' to be a list")
         __self__.products = products
@@ -35,22 +38,25 @@ class AwaitableGetProductResult(GetProductResult):
         if False:
             yield self
         return GetProductResult(
+            available_region=self.available_region,
             products=self.products,
             product_code=self.product_code,
             id=self.id)
 
-def get_product(product_code=None,opts=None):
+def get_product(available_region=None,product_code=None,opts=None):
     """
     This data source provides the Market product item details of Alibaba Cloud.
     
     > **NOTE:** Available in 1.69.0+
     
+    :param str available_region: A available region id used to filter market place Ecs images.
     :param str product_code: The product code of the market product.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
     """
     __args__ = dict()
 
+    __args__['availableRegion'] = available_region
     __args__['productCode'] = product_code
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -59,6 +65,7 @@ def get_product(product_code=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:marketplace/getProduct:getProduct', __args__, opts=opts).value
 
     return AwaitableGetProductResult(
+        available_region=__ret__.get('availableRegion'),
         products=__ret__.get('products'),
         product_code=__ret__.get('productCode'),
         id=__ret__.get('id'))

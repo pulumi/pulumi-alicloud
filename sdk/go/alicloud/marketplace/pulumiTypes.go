@@ -128,6 +128,7 @@ func (o GetProductProductArrayOutput) Index(i pulumi.IntInput) GetProductProduct
 }
 
 type GetProductProductSkus struct {
+	// The list of custom ECS images, Each element contains the following attributes:
 	Images []GetProductProductSkusImage `pulumi:"images"`
 	// The list of package version details of this product sku, Each element contains the following attributes:
 	PackageVersions []GetProductProductSkusPackageVersion `pulumi:"packageVersions"`
@@ -145,6 +146,7 @@ type GetProductProductSkusInput interface {
 }
 
 type GetProductProductSkusArgs struct {
+	// The list of custom ECS images, Each element contains the following attributes:
 	Images GetProductProductSkusImageArrayInput `pulumi:"images"`
 	// The list of package version details of this product sku, Each element contains the following attributes:
 	PackageVersions GetProductProductSkusPackageVersionArrayInput `pulumi:"packageVersions"`
@@ -201,6 +203,7 @@ func (o GetProductProductSkusOutput) ToGetProductProductSkusOutputWithContext(ct
 	return o
 }
 
+// The list of custom ECS images, Each element contains the following attributes:
 func (o GetProductProductSkusOutput) Images() GetProductProductSkusImageArrayOutput {
 	return o.ApplyT(func (v GetProductProductSkus) []GetProductProductSkusImage { return v.Images }).(GetProductProductSkusImageArrayOutput)
 }
@@ -241,8 +244,12 @@ func (o GetProductProductSkusArrayOutput) Index(i pulumi.IntInput) GetProductPro
 }
 
 type GetProductProductSkusImage struct {
+	// The Ecs image id.
 	ImageId string `pulumi:"imageId"`
+	// The Ecs image display name.
 	ImageName string `pulumi:"imageName"`
+	// The Ecs image region.
+	RegionId string `pulumi:"regionId"`
 }
 
 type GetProductProductSkusImageInput interface {
@@ -253,8 +260,12 @@ type GetProductProductSkusImageInput interface {
 }
 
 type GetProductProductSkusImageArgs struct {
+	// The Ecs image id.
 	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The Ecs image display name.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The Ecs image region.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
 }
 
 func (GetProductProductSkusImageArgs) ElementType() reflect.Type {
@@ -304,12 +315,19 @@ func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutputWith
 	return o
 }
 
+// The Ecs image id.
 func (o GetProductProductSkusImageOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
+// The Ecs image display name.
 func (o GetProductProductSkusImageOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The Ecs image region.
+func (o GetProductProductSkusImageOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 type GetProductProductSkusImageArrayOutput struct { *pulumi.OutputState}

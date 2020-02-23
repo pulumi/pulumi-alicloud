@@ -45,6 +45,9 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
         "productType": args.productType,
         "searchTerm": args.searchTerm,
         "sort": args.sort,
+        "suggestedPrice": args.suggestedPrice,
+        "supplierId": args.supplierId,
+        "supplierNameKeyword": args.supplierNameKeyword,
     }, opts);
 
     return pulumi.utils.liftProperties(promise, opts);
@@ -79,6 +82,18 @@ export interface GetProductsArgs {
      * This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
      */
     readonly sort?: string;
+    /**
+     * The suggested price of the product.
+     */
+    readonly suggestedPrice?: number;
+    /**
+     * The supplier id of the product.
+     */
+    readonly supplierId?: string;
+    /**
+     * The supplier name keyword of the product.
+     */
+    readonly supplierNameKeyword?: string;
 }
 
 /**
@@ -102,6 +117,15 @@ export interface GetProductsResult {
     readonly products: outputs.marketplace.GetProductsProduct[];
     readonly searchTerm?: string;
     readonly sort?: string;
+    /**
+     * The suggested price of the product.
+     */
+    readonly suggestedPrice?: number;
+    /**
+     * The supplier id of the product.
+     */
+    readonly supplierId?: string;
+    readonly supplierNameKeyword?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

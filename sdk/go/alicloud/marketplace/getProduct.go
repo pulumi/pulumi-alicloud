@@ -24,6 +24,8 @@ func GetProduct(ctx *pulumi.Context, args *GetProductArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getProduct.
 type GetProductArgs struct {
+	// A available region id used to filter market place Ecs images.
+	AvailableRegion *string `pulumi:"availableRegion"`
 	// The product code of the market product.
 	ProductCode string `pulumi:"productCode"`
 }
@@ -31,6 +33,7 @@ type GetProductArgs struct {
 
 // A collection of values returned by getProduct.
 type GetProductResult struct {
+	AvailableRegion *string `pulumi:"availableRegion"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	ProductCode string `pulumi:"productCode"`

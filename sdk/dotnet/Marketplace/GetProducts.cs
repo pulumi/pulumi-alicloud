@@ -68,6 +68,24 @@ namespace Pulumi.AliCloud.MarketPlace
         [Input("sort")]
         public string? Sort { get; set; }
 
+        /// <summary>
+        /// The suggested price of the product.
+        /// </summary>
+        [Input("suggestedPrice")]
+        public double? SuggestedPrice { get; set; }
+
+        /// <summary>
+        /// The supplier id of the product.
+        /// </summary>
+        [Input("supplierId")]
+        public string? SupplierId { get; set; }
+
+        /// <summary>
+        /// The supplier name keyword of the product.
+        /// </summary>
+        [Input("supplierNameKeyword")]
+        public string? SupplierNameKeyword { get; set; }
+
         public GetProductsArgs()
         {
         }
@@ -94,6 +112,15 @@ namespace Pulumi.AliCloud.MarketPlace
         public readonly string? SearchTerm;
         public readonly string? Sort;
         /// <summary>
+        /// The suggested price of the product.
+        /// </summary>
+        public readonly double? SuggestedPrice;
+        /// <summary>
+        /// The supplier id of the product.
+        /// </summary>
+        public readonly string? SupplierId;
+        public readonly string? SupplierNameKeyword;
+        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -108,6 +135,9 @@ namespace Pulumi.AliCloud.MarketPlace
             ImmutableArray<Outputs.GetProductsProductsResult> products,
             string? searchTerm,
             string? sort,
+            double? suggestedPrice,
+            string? supplierId,
+            string? supplierNameKeyword,
             string id)
         {
             CategoryId = categoryId;
@@ -118,6 +148,9 @@ namespace Pulumi.AliCloud.MarketPlace
             Products = products;
             SearchTerm = searchTerm;
             Sort = sort;
+            SuggestedPrice = suggestedPrice;
+            SupplierId = supplierId;
+            SupplierNameKeyword = supplierNameKeyword;
             Id = id;
         }
     }

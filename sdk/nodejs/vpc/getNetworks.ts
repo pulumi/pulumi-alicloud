@@ -116,6 +116,9 @@ export interface GetNetworksResult {
      * Status of the VPC.
      */
     readonly status?: string;
+    /**
+     * A map of tags assigned to the VPC.
+     */
     readonly tags?: {[key: string]: any};
     /**
      * A list of VPCs. Each element contains the following attributes:

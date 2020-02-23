@@ -56,6 +56,9 @@ class GetNetworksResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
+        """
+        A map of tags assigned to the VPC.
+        """
         if vpcs and not isinstance(vpcs, list):
             raise TypeError("Expected argument 'vpcs' to be a list")
         __self__.vpcs = vpcs

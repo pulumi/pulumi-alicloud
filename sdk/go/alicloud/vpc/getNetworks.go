@@ -59,6 +59,7 @@ type GetNetworksResult struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Status of the VPC.
 	Status *string `pulumi:"status"`
+	// A map of tags assigned to the VPC.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A list of VPCs. Each element contains the following attributes:
 	Vpcs []GetNetworksVpc `pulumi:"vpcs"`
