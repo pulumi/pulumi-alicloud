@@ -3348,6 +3348,9 @@ export namespace marketplace {
     }
 
     export interface GetProductProductSkus {
+        /**
+         * The list of custom ECS images, Each element contains the following attributes:
+         */
         images: outputs.marketplace.GetProductProductSkusImage[];
         /**
          * The list of package version details of this product sku, Each element contains the following attributes:
@@ -3364,8 +3367,18 @@ export namespace marketplace {
     }
 
     export interface GetProductProductSkusImage {
+        /**
+         * The Ecs image id.
+         */
         imageId: string;
+        /**
+         * The Ecs image display name.
+         */
         imageName: string;
+        /**
+         * The Ecs image region.
+         */
+        regionId: string;
     }
 
     export interface GetProductProductSkusPackageVersion {
@@ -5686,6 +5699,10 @@ export namespace vpc {
          * Filter results by a specific status. Valid value are `Pending` and `Available`.
          */
         status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
         /**
          * Name of the VPC.
          */

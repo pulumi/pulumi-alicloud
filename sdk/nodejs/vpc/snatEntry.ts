@@ -51,9 +51,13 @@ export class SnatEntry extends pulumi.CustomResource {
      */
     public readonly snatTableId!: pulumi.Output<string>;
     /**
+     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     */
+    public readonly sourceCidr!: pulumi.Output<string | undefined>;
+    /**
      * The vswitch ID.
      */
-    public readonly sourceVswitchId!: pulumi.Output<string>;
+    public readonly sourceVswitchId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SnatEntry resource with the given unique name, arguments, and options.
@@ -70,6 +74,7 @@ export class SnatEntry extends pulumi.CustomResource {
             inputs["snatEntryId"] = state ? state.snatEntryId : undefined;
             inputs["snatIp"] = state ? state.snatIp : undefined;
             inputs["snatTableId"] = state ? state.snatTableId : undefined;
+            inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
             inputs["sourceVswitchId"] = state ? state.sourceVswitchId : undefined;
         } else {
             const args = argsOrState as SnatEntryArgs | undefined;
@@ -79,11 +84,9 @@ export class SnatEntry extends pulumi.CustomResource {
             if (!args || args.snatTableId === undefined) {
                 throw new Error("Missing required property 'snatTableId'");
             }
-            if (!args || args.sourceVswitchId === undefined) {
-                throw new Error("Missing required property 'sourceVswitchId'");
-            }
             inputs["snatIp"] = args ? args.snatIp : undefined;
             inputs["snatTableId"] = args ? args.snatTableId : undefined;
+            inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
             inputs["sourceVswitchId"] = args ? args.sourceVswitchId : undefined;
             inputs["snatEntryId"] = undefined /*out*/;
         }
@@ -115,6 +118,10 @@ export interface SnatEntryState {
      */
     readonly snatTableId?: pulumi.Input<string>;
     /**
+     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     */
+    readonly sourceCidr?: pulumi.Input<string>;
+    /**
      * The vswitch ID.
      */
     readonly sourceVswitchId?: pulumi.Input<string>;
@@ -133,7 +140,11 @@ export interface SnatEntryArgs {
      */
     readonly snatTableId: pulumi.Input<string>;
     /**
+     * The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+     */
+    readonly sourceCidr?: pulumi.Input<string>;
+    /**
      * The vswitch ID.
      */
-    readonly sourceVswitchId: pulumi.Input<string>;
+    readonly sourceVswitchId?: pulumi.Input<string>;
 }

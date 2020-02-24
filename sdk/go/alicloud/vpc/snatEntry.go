@@ -23,8 +23,10 @@ type SnatEntry struct {
 	SnatIp pulumi.StringOutput `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId pulumi.StringOutput `pulumi:"snatTableId"`
+	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	SourceCidr pulumi.StringPtrOutput `pulumi:"sourceCidr"`
 	// The vswitch ID.
-	SourceVswitchId pulumi.StringOutput `pulumi:"sourceVswitchId"`
+	SourceVswitchId pulumi.StringPtrOutput `pulumi:"sourceVswitchId"`
 }
 
 // NewSnatEntry registers a new resource with the given unique name, arguments, and options.
@@ -35,9 +37,6 @@ func NewSnatEntry(ctx *pulumi.Context,
 	}
 	if args == nil || args.SnatTableId == nil {
 		return nil, errors.New("missing required argument 'SnatTableId'")
-	}
-	if args == nil || args.SourceVswitchId == nil {
-		return nil, errors.New("missing required argument 'SourceVswitchId'")
 	}
 	if args == nil {
 		args = &SnatEntryArgs{}
@@ -70,6 +69,8 @@ type snatEntryState struct {
 	SnatIp *string `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId *string `pulumi:"snatTableId"`
+	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	SourceCidr *string `pulumi:"sourceCidr"`
 	// The vswitch ID.
 	SourceVswitchId *string `pulumi:"sourceVswitchId"`
 }
@@ -81,6 +82,8 @@ type SnatEntryState struct {
 	SnatIp pulumi.StringPtrInput
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId pulumi.StringPtrInput
+	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	SourceCidr pulumi.StringPtrInput
 	// The vswitch ID.
 	SourceVswitchId pulumi.StringPtrInput
 }
@@ -94,8 +97,10 @@ type snatEntryArgs struct {
 	SnatIp string `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId string `pulumi:"snatTableId"`
+	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	SourceCidr *string `pulumi:"sourceCidr"`
 	// The vswitch ID.
-	SourceVswitchId string `pulumi:"sourceVswitchId"`
+	SourceVswitchId *string `pulumi:"sourceVswitchId"`
 }
 
 // The set of arguments for constructing a SnatEntry resource.
@@ -104,8 +109,10 @@ type SnatEntryArgs struct {
 	SnatIp pulumi.StringInput
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
 	SnatTableId pulumi.StringInput
+	// The private network segment of Ecs. This parameter and the `sourceVswitchId` parameter are mutually exclusive and cannot appear at the same time.
+	SourceCidr pulumi.StringPtrInput
 	// The vswitch ID.
-	SourceVswitchId pulumi.StringInput
+	SourceVswitchId pulumi.StringPtrInput
 }
 
 func (SnatEntryArgs) ElementType() reflect.Type {

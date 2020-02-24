@@ -13,7 +13,7 @@ class GetProductsResult:
     """
     A collection of values returned by getProducts.
     """
-    def __init__(__self__, category_id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, search_term=None, sort=None, id=None):
+    def __init__(__self__, category_id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, search_term=None, sort=None, suggested_price=None, supplier_id=None, supplier_name_keyword=None, id=None):
         if category_id and not isinstance(category_id, str):
             raise TypeError("Expected argument 'category_id' to be a str")
         __self__.category_id = category_id
@@ -47,6 +47,21 @@ class GetProductsResult:
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
         __self__.sort = sort
+        if suggested_price and not isinstance(suggested_price, float):
+            raise TypeError("Expected argument 'suggested_price' to be a float")
+        __self__.suggested_price = suggested_price
+        """
+        The suggested price of the product.
+        """
+        if supplier_id and not isinstance(supplier_id, str):
+            raise TypeError("Expected argument 'supplier_id' to be a str")
+        __self__.supplier_id = supplier_id
+        """
+        The supplier id of the product.
+        """
+        if supplier_name_keyword and not isinstance(supplier_name_keyword, str):
+            raise TypeError("Expected argument 'supplier_name_keyword' to be a str")
+        __self__.supplier_name_keyword = supplier_name_keyword
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -67,9 +82,12 @@ class AwaitableGetProductsResult(GetProductsResult):
             products=self.products,
             search_term=self.search_term,
             sort=self.sort,
+            suggested_price=self.suggested_price,
+            supplier_id=self.supplier_id,
+            supplier_name_keyword=self.supplier_name_keyword,
             id=self.id)
 
-def get_products(category_id=None,ids=None,name_regex=None,output_file=None,product_type=None,search_term=None,sort=None,opts=None):
+def get_products(category_id=None,ids=None,name_regex=None,output_file=None,product_type=None,search_term=None,sort=None,suggested_price=None,supplier_id=None,supplier_name_keyword=None,opts=None):
     """
     This data source provides the Market product items of Alibaba Cloud.
     
@@ -81,6 +99,9 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
     :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
     :param str search_term: Search term in this query.
     :param str sort: This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
+    :param float suggested_price: The suggested price of the product.
+    :param str supplier_id: The supplier id of the product.
+    :param str supplier_name_keyword: The supplier name keyword of the product.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
     """
@@ -93,6 +114,9 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
     __args__['productType'] = product_type
     __args__['searchTerm'] = search_term
     __args__['sort'] = sort
+    __args__['suggestedPrice'] = suggested_price
+    __args__['supplierId'] = supplier_id
+    __args__['supplierNameKeyword'] = supplier_name_keyword
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -108,4 +132,7 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
         products=__ret__.get('products'),
         search_term=__ret__.get('searchTerm'),
         sort=__ret__.get('sort'),
+        suggested_price=__ret__.get('suggestedPrice'),
+        supplier_id=__ret__.get('supplierId'),
+        supplier_name_keyword=__ret__.get('supplierNameKeyword'),
         id=__ret__.get('id'))

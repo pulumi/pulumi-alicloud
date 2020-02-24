@@ -36,6 +36,7 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetProductResult> = pulumi.runtime.invoke("alicloud:marketplace/getProduct:getProduct", {
+        "availableRegion": args.availableRegion,
         "productCode": args.productCode,
     }, opts);
 
@@ -47,6 +48,10 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetProductArgs {
     /**
+     * A available region id used to filter market place Ecs images.
+     */
+    readonly availableRegion?: string;
+    /**
      * The product code of the market product.
      */
     readonly productCode: string;
@@ -56,6 +61,7 @@ export interface GetProductArgs {
  * A collection of values returned by getProduct.
  */
 export interface GetProductResult {
+    readonly availableRegion?: string;
     /**
      * A product. It contains the following attributes:
      */

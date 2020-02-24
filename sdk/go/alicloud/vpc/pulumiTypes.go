@@ -1082,6 +1082,8 @@ type GetNetworksVpc struct {
 	RouteTableId string `pulumi:"routeTableId"`
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Name of the VPC.
 	VpcName string `pulumi:"vpcName"`
 	// ID of the VRouter.
@@ -1114,6 +1116,8 @@ type GetNetworksVpcArgs struct {
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
 	// Filter results by a specific status. Valid value are `Pending` and `Available`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// Name of the VPC.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
 	// ID of the VRouter.
@@ -1207,6 +1211,11 @@ func (o GetNetworksVpcOutput) RouteTableId() pulumi.StringOutput {
 // Filter results by a specific status. Valid value are `Pending` and `Available`.
 func (o GetNetworksVpcOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func (v GetNetworksVpc) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetNetworksVpcOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func (v GetNetworksVpc) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Name of the VPC.

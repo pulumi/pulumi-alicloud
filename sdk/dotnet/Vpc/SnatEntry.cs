@@ -34,10 +34,16 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SnatTableId { get; private set; } = null!;
 
         /// <summary>
+        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// </summary>
+        [Output("sourceCidr")]
+        public Output<string?> SourceCidr { get; private set; } = null!;
+
+        /// <summary>
         /// The vswitch ID.
         /// </summary>
         [Output("sourceVswitchId")]
-        public Output<string> SourceVswitchId { get; private set; } = null!;
+        public Output<string?> SourceVswitchId { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,10 +104,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> SnatTableId { get; set; } = null!;
 
         /// <summary>
+        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// </summary>
+        [Input("sourceCidr")]
+        public Input<string>? SourceCidr { get; set; }
+
+        /// <summary>
         /// The vswitch ID.
         /// </summary>
-        [Input("sourceVswitchId", required: true)]
-        public Input<string> SourceVswitchId { get; set; } = null!;
+        [Input("sourceVswitchId")]
+        public Input<string>? SourceVswitchId { get; set; }
 
         public SnatEntryArgs()
         {
@@ -127,6 +139,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("snatTableId")]
         public Input<string>? SnatTableId { get; set; }
+
+        /// <summary>
+        /// The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+        /// </summary>
+        [Input("sourceCidr")]
+        public Input<string>? SourceCidr { get; set; }
 
         /// <summary>
         /// The vswitch ID.

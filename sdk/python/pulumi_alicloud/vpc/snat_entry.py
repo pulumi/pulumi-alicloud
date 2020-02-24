@@ -22,11 +22,15 @@ class SnatEntry(pulumi.CustomResource):
     """
     The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
     """
+    source_cidr: pulumi.Output[str]
+    """
+    The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
+    """
     source_vswitch_id: pulumi.Output[str]
     """
     The vswitch ID.
     """
-    def __init__(__self__, resource_name, opts=None, snat_ip=None, snat_table_id=None, source_vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a snat resource.
         
@@ -34,6 +38,7 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
+        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
@@ -61,8 +66,7 @@ class SnatEntry(pulumi.CustomResource):
             if snat_table_id is None:
                 raise TypeError("Missing required property 'snat_table_id'")
             __props__['snat_table_id'] = snat_table_id
-            if source_vswitch_id is None:
-                raise TypeError("Missing required property 'source_vswitch_id'")
+            __props__['source_cidr'] = source_cidr
             __props__['source_vswitch_id'] = source_vswitch_id
             __props__['snat_entry_id'] = None
         super(SnatEntry, __self__).__init__(
@@ -72,7 +76,7 @@ class SnatEntry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, snat_entry_id=None, snat_ip=None, snat_table_id=None, source_vswitch_id=None):
+    def get(resource_name, id, opts=None, snat_entry_id=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None):
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -83,6 +87,7 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] snat_entry_id: The id of the snat entry on the server.
         :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
+        :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
@@ -93,6 +98,7 @@ class SnatEntry(pulumi.CustomResource):
         __props__["snat_entry_id"] = snat_entry_id
         __props__["snat_ip"] = snat_ip
         __props__["snat_table_id"] = snat_table_id
+        __props__["source_cidr"] = source_cidr
         __props__["source_vswitch_id"] = source_vswitch_id
         return SnatEntry(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
