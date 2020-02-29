@@ -56,6 +56,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
+        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// </summary>
+        [Output("modifyType")]
+        public Output<string?> ModifyType { get; private set; } = null!;
+
+        /// <summary>
         /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         /// </summary>
         [Output("parameters")]
@@ -187,6 +193,12 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
+        /// <summary>
+        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// </summary>
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
+
         [Input("parameters")]
         private InputList<Inputs.ClusterParametersArgs>? _parameters;
 
@@ -297,6 +309,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
+
+        /// <summary>
+        /// Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+        /// </summary>
+        [Input("modifyType")]
+        public Input<string>? ModifyType { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ClusterParametersGetArgs>? _parameters;

@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Emr
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
+        [Output("bootstrapActions")]
+        public Output<ImmutableArray<Outputs.ClusterBootstrapActions>> BootstrapActions { get; private set; } = null!;
+
         /// <summary>
         /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         /// </summary>
@@ -60,7 +63,7 @@ namespace Pulumi.AliCloud.Emr
         public Output<string?> MasterPwd { get; private set; } = null!;
 
         /// <summary>
-        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        /// bootstrap action name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -156,6 +159,14 @@ namespace Pulumi.AliCloud.Emr
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
+        [Input("bootstrapActions")]
+        private InputList<Inputs.ClusterBootstrapActionsArgs>? _bootstrapActions;
+        public InputList<Inputs.ClusterBootstrapActionsArgs> BootstrapActions
+        {
+            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionsArgs>());
+            set => _bootstrapActions = value;
+        }
+
         /// <summary>
         /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         /// </summary>
@@ -205,7 +216,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
-        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        /// bootstrap action name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -273,6 +284,14 @@ namespace Pulumi.AliCloud.Emr
 
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
+        [Input("bootstrapActions")]
+        private InputList<Inputs.ClusterBootstrapActionsGetArgs>? _bootstrapActions;
+        public InputList<Inputs.ClusterBootstrapActionsGetArgs> BootstrapActions
+        {
+            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionsGetArgs>());
+            set => _bootstrapActions = value;
+        }
+
         /// <summary>
         /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         /// </summary>
@@ -322,7 +341,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<string>? MasterPwd { get; set; }
 
         /// <summary>
-        /// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        /// bootstrap action name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -390,6 +409,56 @@ namespace Pulumi.AliCloud.Emr
 
     namespace Inputs
     {
+
+    public sealed class ClusterBootstrapActionsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// bootstrap action args, e.g. "--a=b".
+        /// </summary>
+        [Input("arg")]
+        public Input<string>? Arg { get; set; }
+
+        /// <summary>
+        /// bootstrap action name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// bootstrap action path, e.g. "oss://bucket/path".
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
+
+        public ClusterBootstrapActionsArgs()
+        {
+        }
+    }
+
+    public sealed class ClusterBootstrapActionsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// bootstrap action args, e.g. "--a=b".
+        /// </summary>
+        [Input("arg")]
+        public Input<string>? Arg { get; set; }
+
+        /// <summary>
+        /// bootstrap action name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// bootstrap action path, e.g. "oss://bucket/path".
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
+
+        public ClusterBootstrapActionsGetArgs()
+        {
+        }
+    }
 
     public sealed class ClusterHostGroupsArgs : Pulumi.ResourceArgs
     {
@@ -570,6 +639,34 @@ namespace Pulumi.AliCloud.Emr
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class ClusterBootstrapActions
+    {
+        /// <summary>
+        /// bootstrap action args, e.g. "--a=b".
+        /// </summary>
+        public readonly string? Arg;
+        /// <summary>
+        /// bootstrap action name.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// bootstrap action path, e.g. "oss://bucket/path".
+        /// </summary>
+        public readonly string? Path;
+
+        [OutputConstructor]
+        private ClusterBootstrapActions(
+            string? arg,
+            string? name,
+            string? path)
+        {
+            Arg = arg;
+            Name = name;
+            Path = path;
+        }
+    }
 
     [OutputType]
     public sealed class ClusterHostGroups

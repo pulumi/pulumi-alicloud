@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *     clusterType: "HADOOP",
  *     destinationResource: "InstanceType",
  *     instanceChargeType: "PostPaid",
+ *     instanceType: "ecs.g5.2xlarge",
  *     supportLocalStorage: false,
  *     supportNodeTypes: [
  *         "MASTER",
@@ -46,6 +47,7 @@ export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.Invok
         "clusterType": args.clusterType,
         "destinationResource": args.destinationResource,
         "instanceChargeType": args.instanceChargeType,
+        "instanceType": args.instanceType,
         "outputFile": args.outputFile,
         "supportLocalStorage": args.supportLocalStorage,
         "supportNodeTypes": args.supportNodeTypes,
@@ -71,13 +73,17 @@ export interface GetInstanceTypesArgs {
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
     readonly instanceChargeType: string;
+    /**
+     * Filter the specific ecs instance type to create emr cluster.
+     */
+    readonly instanceType?: string;
     readonly outputFile?: string;
     /**
      * Whether the current storage disk is local or not.
      */
     readonly supportLocalStorage?: boolean;
     /**
-     * The specific supported node type list. 
+     * The specific supported node type list.
      * Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
      */
     readonly supportNodeTypes?: string[];
@@ -98,6 +104,7 @@ export interface GetInstanceTypesResult {
      */
     readonly ids: string[];
     readonly instanceChargeType: string;
+    readonly instanceType?: string;
     readonly outputFile?: string;
     readonly supportLocalStorage?: boolean;
     readonly supportNodeTypes?: string[];

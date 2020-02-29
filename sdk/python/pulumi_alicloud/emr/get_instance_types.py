@@ -13,7 +13,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, cluster_type=None, destination_resource=None, ids=None, instance_charge_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, zone_id=None, id=None):
+    def __init__(__self__, cluster_type=None, destination_resource=None, ids=None, instance_charge_type=None, instance_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, zone_id=None, id=None):
         if cluster_type and not isinstance(cluster_type, str):
             raise TypeError("Expected argument 'cluster_type' to be a str")
         __self__.cluster_type = cluster_type
@@ -29,6 +29,9 @@ class GetInstanceTypesResult:
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
         __self__.instance_charge_type = instance_charge_type
+        if instance_type and not isinstance(instance_type, str):
+            raise TypeError("Expected argument 'instance_type' to be a str")
+        __self__.instance_type = instance_type
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
@@ -66,6 +69,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             destination_resource=self.destination_resource,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
+            instance_type=self.instance_type,
             output_file=self.output_file,
             support_local_storage=self.support_local_storage,
             support_node_types=self.support_node_types,
@@ -73,7 +77,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             zone_id=self.zone_id,
             id=self.id)
 
-def get_instance_types(cluster_type=None,destination_resource=None,instance_charge_type=None,output_file=None,support_local_storage=None,support_node_types=None,zone_id=None,opts=None):
+def get_instance_types(cluster_type=None,destination_resource=None,instance_charge_type=None,instance_type=None,output_file=None,support_local_storage=None,support_node_types=None,zone_id=None,opts=None):
     """
     The `emr.getInstanceTypes` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
@@ -83,8 +87,9 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type: Filter the specific ecs instance type to create emr cluster.
     :param bool support_local_storage: Whether the current storage disk is local or not.
-    :param list support_node_types: The specific supported node type list. 
+    :param list support_node_types: The specific supported node type list.
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
     :param str zone_id: The supported resources of specific zoneId.
 
@@ -95,6 +100,7 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     __args__['clusterType'] = cluster_type
     __args__['destinationResource'] = destination_resource
     __args__['instanceChargeType'] = instance_charge_type
+    __args__['instanceType'] = instance_type
     __args__['outputFile'] = output_file
     __args__['supportLocalStorage'] = support_local_storage
     __args__['supportNodeTypes'] = support_node_types
@@ -110,6 +116,7 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
         destination_resource=__ret__.get('destinationResource'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
+        instance_type=__ret__.get('instanceType'),
         output_file=__ret__.get('outputFile'),
         support_local_storage=__ret__.get('supportLocalStorage'),
         support_node_types=__ret__.get('supportNodeTypes'),

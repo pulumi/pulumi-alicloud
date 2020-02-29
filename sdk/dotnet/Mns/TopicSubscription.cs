@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Mns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
         /// </summary>
         [Output("notifyContentFormat")]
         public Output<string?> NotifyContentFormat { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Mns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
         /// </summary>
         [Input("notifyContentFormat")]
         public Input<string>? NotifyContentFormat { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Mns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
         /// </summary>
         [Input("notifyContentFormat")]
         public Input<string>? NotifyContentFormat { get; set; }

@@ -50,7 +50,7 @@ export class TopicSubscription extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
      */
     public readonly notifyContentFormat!: pulumi.Output<string | undefined>;
     /**
@@ -123,7 +123,7 @@ export interface TopicSubscriptionState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
      */
     readonly notifyContentFormat?: pulumi.Input<string>;
     /**
@@ -153,7 +153,7 @@ export interface TopicSubscriptionArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. the attribute has two value SIMPLIFIED or XML.Default value to SIMPLIFIED .
+     * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: 'SIMPLIFIED', 'XML' and 'JSON'. Default to 'SIMPLIFIED'.
      */
     readonly notifyContentFormat?: pulumi.Input<string>;
     /**

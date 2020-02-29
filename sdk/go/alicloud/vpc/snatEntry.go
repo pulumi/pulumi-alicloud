@@ -19,6 +19,8 @@ type SnatEntry struct {
 
 	// The id of the snat entry on the server.
 	SnatEntryId pulumi.StringOutput `pulumi:"snatEntryId"`
+	// The name of snat entry.
+	SnatEntryName pulumi.StringPtrOutput `pulumi:"snatEntryName"`
 	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp pulumi.StringOutput `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
@@ -65,6 +67,8 @@ func GetSnatEntry(ctx *pulumi.Context,
 type snatEntryState struct {
 	// The id of the snat entry on the server.
 	SnatEntryId *string `pulumi:"snatEntryId"`
+	// The name of snat entry.
+	SnatEntryName *string `pulumi:"snatEntryName"`
 	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp *string `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
@@ -78,6 +82,8 @@ type snatEntryState struct {
 type SnatEntryState struct {
 	// The id of the snat entry on the server.
 	SnatEntryId pulumi.StringPtrInput
+	// The name of snat entry.
+	SnatEntryName pulumi.StringPtrInput
 	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp pulumi.StringPtrInput
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
@@ -93,6 +99,8 @@ func (SnatEntryState) ElementType() reflect.Type {
 }
 
 type snatEntryArgs struct {
+	// The name of snat entry.
+	SnatEntryName *string `pulumi:"snatEntryName"`
 	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp string `pulumi:"snatIp"`
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".
@@ -105,6 +113,8 @@ type snatEntryArgs struct {
 
 // The set of arguments for constructing a SnatEntry resource.
 type SnatEntryArgs struct {
+	// The name of snat entry.
+	SnatEntryName pulumi.StringPtrInput
 	// The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidthPackages`.
 	SnatIp pulumi.StringInput
 	// The value can get from `vpc.NatGateway` Attributes "snatTableIds".

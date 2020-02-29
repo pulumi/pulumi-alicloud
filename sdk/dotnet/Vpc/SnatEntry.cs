@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> SnatEntryId { get; private set; } = null!;
 
         /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        [Output("snatEntryName")]
+        public Output<string?> SnatEntryName { get; private set; } = null!;
+
+        /// <summary>
         /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
         /// </summary>
         [Output("snatIp")]
@@ -92,6 +98,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SnatEntryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        [Input("snatEntryName")]
+        public Input<string>? SnatEntryName { get; set; }
+
+        /// <summary>
         /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
         /// </summary>
         [Input("snatIp", required: true)]
@@ -127,6 +139,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("snatEntryId")]
         public Input<string>? SnatEntryId { get; set; }
+
+        /// <summary>
+        /// The name of snat entry.
+        /// </summary>
+        [Input("snatEntryName")]
+        public Input<string>? SnatEntryName { get; set; }
 
         /// <summary>
         /// The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.

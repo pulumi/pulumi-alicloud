@@ -40,6 +40,7 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    public readonly bootstrapActions!: pulumi.Output<outputs.emr.ClusterBootstrapAction[] | undefined>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      */
@@ -63,7 +64,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly keyPairName!: pulumi.Output<string | undefined>;
     public readonly masterPwd!: pulumi.Output<string | undefined>;
     /**
-     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+     * bootstrap action name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly optionSoftwareLists!: pulumi.Output<string[] | undefined>;
@@ -106,6 +107,7 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            inputs["bootstrapActions"] = state ? state.bootstrapActions : undefined;
             inputs["chargeType"] = state ? state.chargeType : undefined;
             inputs["clusterType"] = state ? state.clusterType : undefined;
             inputs["depositType"] = state ? state.depositType : undefined;
@@ -137,6 +139,7 @@ export class Cluster extends pulumi.CustomResource {
             if (!args || args.zoneId === undefined) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["bootstrapActions"] = args ? args.bootstrapActions : undefined;
             inputs["chargeType"] = args ? args.chargeType : undefined;
             inputs["clusterType"] = args ? args.clusterType : undefined;
             inputs["depositType"] = args ? args.depositType : undefined;
@@ -173,6 +176,7 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    readonly bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      */
@@ -196,7 +200,7 @@ export interface ClusterState {
     readonly keyPairName?: pulumi.Input<string>;
     readonly masterPwd?: pulumi.Input<string>;
     /**
-     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+     * bootstrap action name.
      */
     readonly name?: pulumi.Input<string>;
     readonly optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -232,6 +236,7 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    readonly bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
     /**
      * Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
      */
@@ -255,7 +260,7 @@ export interface ClusterArgs {
     readonly keyPairName?: pulumi.Input<string>;
     readonly masterPwd?: pulumi.Input<string>;
     /**
-     * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+     * bootstrap action name.
      */
     readonly name?: pulumi.Input<string>;
     readonly optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;

@@ -46,6 +46,7 @@ type GetNatGatewaysResult struct {
 	// A list of Nat gateways names.
 	Names []string `pulumi:"names"`
 	OutputFile *string `pulumi:"outputFile"`
+	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 

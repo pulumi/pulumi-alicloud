@@ -42,6 +42,12 @@ namespace Pulumi.AliCloud.Emr
         [Input("instanceChargeType", required: true)]
         public string InstanceChargeType { get; set; } = null!;
 
+        /// <summary>
+        /// Filter the specific ecs instance type to create emr cluster.
+        /// </summary>
+        [Input("instanceType")]
+        public string? InstanceType { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -55,7 +61,7 @@ namespace Pulumi.AliCloud.Emr
         private List<string>? _supportNodeTypes;
 
         /// <summary>
-        /// The specific supported node type list. 
+        /// The specific supported node type list.
         /// Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
         /// </summary>
         public List<string> SupportNodeTypes
@@ -85,6 +91,7 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceChargeType;
+        public readonly string? InstanceType;
         public readonly string? OutputFile;
         public readonly bool? SupportLocalStorage;
         public readonly ImmutableArray<string> SupportNodeTypes;
@@ -107,6 +114,7 @@ namespace Pulumi.AliCloud.Emr
             string destinationResource,
             ImmutableArray<string> ids,
             string instanceChargeType,
+            string? instanceType,
             string? outputFile,
             bool? supportLocalStorage,
             ImmutableArray<string> supportNodeTypes,
@@ -118,6 +126,7 @@ namespace Pulumi.AliCloud.Emr
             DestinationResource = destinationResource;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
+            InstanceType = instanceType;
             OutputFile = outputFile;
             SupportLocalStorage = supportLocalStorage;
             SupportNodeTypes = supportNodeTypes;

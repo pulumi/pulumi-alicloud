@@ -213,6 +213,71 @@ export namespace actiontrail {
     }
 }
 
+export namespace adb {
+    export interface GetClustersCluster {
+        /**
+         * Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
+         */
+        chargeType: string;
+        /**
+         * The CreateTime of the ADB cluster.
+         */
+        createTime: string;
+        /**
+         * The DBNodeClass of the ADB cluster.
+         */
+        dbNodeClass: string;
+        /**
+         * The DBNodeCount of the ADB cluster.
+         */
+        dbNodeCount: number;
+        /**
+         * The DBNodeStorage of the ADB cluster.
+         */
+        dbNodeStorage: number;
+        /**
+         * The description of the ADB cluster.
+         */
+        description: string;
+        /**
+         * Expiration time. Pay-As-You-Go clusters never expire.
+         */
+        expireTime: string;
+        /**
+         * The expired of the ADB cluster.
+         */
+        expired: string;
+        /**
+         * The ID of the ADB cluster.
+         */
+        id: string;
+        /**
+         * The LockMode of the ADB cluster.
+         */
+        lockMode: string;
+        /**
+         * The DBClusterNetworkType of the ADB cluster.
+         */
+        networkType: string;
+        /**
+         * Region ID the cluster belongs to.
+         */
+        regionId: string;
+        /**
+         * status of the cluster.
+         */
+        status: string;
+        /**
+         * ID of the VPC the cluster belongs to.
+         */
+        vpcId: string;
+        /**
+         * The ZoneId of the ADB cluster.
+         */
+        zoneId: string;
+    }
+}
+
 export namespace apigateway {
     export interface ApiConstantParameter {
         /**
@@ -2558,6 +2623,21 @@ export namespace elasticsearch {
 }
 
 export namespace emr {
+    export interface ClusterBootstrapAction {
+        /**
+         * bootstrap action args, e.g. "--a=b".
+         */
+        arg?: string;
+        /**
+         * bootstrap action name.
+         */
+        name?: string;
+        /**
+         * bootstrap action path, e.g. "oss://bucket/path".
+         */
+        path?: string;
+    }
+
     export interface ClusterHostGroup {
         /**
          * Auto renew for prepaid, true of false. Default is false.
@@ -5664,6 +5744,10 @@ export namespace vpc {
          * The status of the NAT gateway.
          */
         status: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
     }
 
     export interface GetNetworksVpc {

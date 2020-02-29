@@ -57,6 +57,9 @@ export interface ProviderEndpoint {
 export namespace actiontrail {
 }
 
+export namespace adb {
+}
+
 export namespace apigateway {
     export interface ApiConstantParameter {
         /**
@@ -678,6 +681,21 @@ export namespace elasticsearch {
 }
 
 export namespace emr {
+    export interface ClusterBootstrapAction {
+        /**
+         * bootstrap action args, e.g. "--a=b".
+         */
+        arg?: pulumi.Input<string>;
+        /**
+         * bootstrap action name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * bootstrap action path, e.g. "oss://bucket/path".
+         */
+        path?: pulumi.Input<string>;
+    }
+
     export interface ClusterHostGroup {
         /**
          * Auto renew for prepaid, true of false. Default is false.
