@@ -706,6 +706,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Yundun
 			"alicloud_yundun_bastionhost_instances": {Tok: dataSource(yundunMod, "getBastionHostInstances")},
 			"alicloud_yundun_dbaudit_instance":      {Tok: dataSource(yundunMod, "getDBAuditInstance")},
+
+			// Adb
+			"alicloud_adb_clusters": {Tok: dataSource(adbMod, "getClusters")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

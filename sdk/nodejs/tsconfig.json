@@ -24,6 +24,7 @@
         "adb/account.ts",
         "adb/backupPolicy.ts",
         "adb/cluster.ts",
+        "adb/getClusters.ts",
         "adb/index.ts",
         "alikafka/consumerGroup.ts",
         "alikafka/index.ts",

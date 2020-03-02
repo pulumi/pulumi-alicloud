@@ -930,6 +930,8 @@ type GetNatGatewaysGateway struct {
 	Spec string `pulumi:"spec"`
 	// The status of the NAT gateway.
 	Status string `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
 }
 
 type GetNatGatewaysGatewayInput interface {
@@ -956,6 +958,8 @@ type GetNatGatewaysGatewayArgs struct {
 	Spec pulumi.StringInput `pulumi:"spec"`
 	// The status of the NAT gateway.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (GetNatGatewaysGatewayArgs) ElementType() reflect.Type {
@@ -1043,6 +1047,11 @@ func (o GetNatGatewaysGatewayOutput) Spec() pulumi.StringOutput {
 // The status of the NAT gateway.
 func (o GetNatGatewaysGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func (v GetNatGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
+func (o GetNatGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNatGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type GetNatGatewaysGatewayArrayOutput struct { *pulumi.OutputState}

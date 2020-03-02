@@ -43,6 +43,10 @@ export class SnatEntry extends pulumi.CustomResource {
      */
     public /*out*/ readonly snatEntryId!: pulumi.Output<string>;
     /**
+     * The name of snat entry.
+     */
+    public readonly snatEntryName!: pulumi.Output<string | undefined>;
+    /**
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
     public readonly snatIp!: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class SnatEntry extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as SnatEntryState | undefined;
             inputs["snatEntryId"] = state ? state.snatEntryId : undefined;
+            inputs["snatEntryName"] = state ? state.snatEntryName : undefined;
             inputs["snatIp"] = state ? state.snatIp : undefined;
             inputs["snatTableId"] = state ? state.snatTableId : undefined;
             inputs["sourceCidr"] = state ? state.sourceCidr : undefined;
@@ -84,6 +89,7 @@ export class SnatEntry extends pulumi.CustomResource {
             if (!args || args.snatTableId === undefined) {
                 throw new Error("Missing required property 'snatTableId'");
             }
+            inputs["snatEntryName"] = args ? args.snatEntryName : undefined;
             inputs["snatIp"] = args ? args.snatIp : undefined;
             inputs["snatTableId"] = args ? args.snatTableId : undefined;
             inputs["sourceCidr"] = args ? args.sourceCidr : undefined;
@@ -110,6 +116,10 @@ export interface SnatEntryState {
      */
     readonly snatEntryId?: pulumi.Input<string>;
     /**
+     * The name of snat entry.
+     */
+    readonly snatEntryName?: pulumi.Input<string>;
+    /**
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */
     readonly snatIp?: pulumi.Input<string>;
@@ -131,6 +141,10 @@ export interface SnatEntryState {
  * The set of arguments for constructing a SnatEntry resource.
  */
 export interface SnatEntryArgs {
+    /**
+     * The name of snat entry.
+     */
+    readonly snatEntryName?: pulumi.Input<string>;
     /**
      * The SNAT ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidthPackages`.
      */

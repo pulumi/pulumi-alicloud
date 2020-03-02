@@ -19,6 +19,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	BootstrapActions ClusterBootstrapActionArrayOutput `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrOutput `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -33,7 +34,7 @@ type Cluster struct {
 	IsOpenPublicIp pulumi.BoolPtrOutput `pulumi:"isOpenPublicIp"`
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	MasterPwd pulumi.StringPtrOutput `pulumi:"masterPwd"`
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	OptionSoftwareLists pulumi.StringArrayOutput `pulumi:"optionSoftwareLists"`
 	RelatedClusterId pulumi.StringPtrOutput `pulumi:"relatedClusterId"`
@@ -97,6 +98,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -111,7 +113,7 @@ type clusterState struct {
 	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
 	KeyPairName *string `pulumi:"keyPairName"`
 	MasterPwd *string `pulumi:"masterPwd"`
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
@@ -139,6 +141,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -153,7 +156,7 @@ type ClusterState struct {
 	IsOpenPublicIp pulumi.BoolPtrInput
 	KeyPairName pulumi.StringPtrInput
 	MasterPwd pulumi.StringPtrInput
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name pulumi.StringPtrInput
 	OptionSoftwareLists pulumi.StringArrayInput
 	RelatedClusterId pulumi.StringPtrInput
@@ -185,6 +188,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	BootstrapActions []ClusterBootstrapAction `pulumi:"bootstrapActions"`
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType *string `pulumi:"chargeType"`
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -199,7 +203,7 @@ type clusterArgs struct {
 	IsOpenPublicIp *bool `pulumi:"isOpenPublicIp"`
 	KeyPairName *string `pulumi:"keyPairName"`
 	MasterPwd *string `pulumi:"masterPwd"`
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name *string `pulumi:"name"`
 	OptionSoftwareLists []string `pulumi:"optionSoftwareLists"`
 	RelatedClusterId *string `pulumi:"relatedClusterId"`
@@ -228,6 +232,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	BootstrapActions ClusterBootstrapActionArrayInput
 	// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 	ChargeType pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
@@ -242,7 +247,7 @@ type ClusterArgs struct {
 	IsOpenPublicIp pulumi.BoolPtrInput
 	KeyPairName pulumi.StringPtrInput
 	MasterPwd pulumi.StringPtrInput
-	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+	// bootstrap action name.
 	Name pulumi.StringPtrInput
 	OptionSoftwareLists pulumi.StringArrayInput
 	RelatedClusterId pulumi.StringPtrInput

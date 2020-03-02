@@ -34,6 +34,10 @@ class Cluster(pulumi.CustomResource):
     """
     Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
     """
+    modify_type: pulumi.Output[str]
+    """
+    Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+    """
     parameters: pulumi.Output[list]
     """
     Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
@@ -71,7 +75,7 @@ class Cluster(pulumi.CustomResource):
     """
     The Zone to launch the DB cluster. it supports multiple zone.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew_period=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew_period=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, modify_type=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
         environment in the cloud. A PolarDB cluster can contain multiple user-created
@@ -87,6 +91,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         :param pulumi.Input[float] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -134,6 +139,7 @@ class Cluster(pulumi.CustomResource):
             __props__['db_version'] = db_version
             __props__['description'] = description
             __props__['maintain_time'] = maintain_time
+            __props__['modify_type'] = modify_type
             __props__['parameters'] = parameters
             __props__['pay_type'] = pay_type
             __props__['period'] = period
@@ -149,7 +155,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew_period=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew_period=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, modify_type=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -163,6 +169,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] description: The description of cluster.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
+        :param pulumi.Input[str] modify_type: Use as `db_node_class` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
         :param pulumi.Input[float] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
@@ -190,6 +197,7 @@ class Cluster(pulumi.CustomResource):
         __props__["db_version"] = db_version
         __props__["description"] = description
         __props__["maintain_time"] = maintain_time
+        __props__["modify_type"] = modify_type
         __props__["parameters"] = parameters
         __props__["pay_type"] = pay_type
         __props__["period"] = period

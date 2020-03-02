@@ -72,6 +72,9 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
         public readonly string? VpcId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -136,6 +139,10 @@ namespace Pulumi.AliCloud.Vpc
         /// The status of the NAT gateway.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        public readonly string VpcId;
 
         [OutputConstructor]
         private GetNatGatewaysGatewaysResult(
@@ -146,7 +153,8 @@ namespace Pulumi.AliCloud.Vpc
             string name,
             string snatTableId,
             string spec,
-            string status)
+            string status,
+            string vpcId)
         {
             CreationTime = creationTime;
             Description = description;
@@ -156,6 +164,7 @@ namespace Pulumi.AliCloud.Vpc
             SnatTableId = snatTableId;
             Spec = spec;
             Status = status;
+            VpcId = vpcId;
         }
     }
     }

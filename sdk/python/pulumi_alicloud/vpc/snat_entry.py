@@ -14,6 +14,10 @@ class SnatEntry(pulumi.CustomResource):
     """
     The id of the snat entry on the server.
     """
+    snat_entry_name: pulumi.Output[str]
+    """
+    The name of snat entry.
+    """
     snat_ip: pulumi.Output[str]
     """
     The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
@@ -30,12 +34,13 @@ class SnatEntry(pulumi.CustomResource):
     """
     The vswitch ID.
     """
-    def __init__(__self__, resource_name, opts=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, snat_entry_name=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a snat resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
         :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
@@ -60,6 +65,7 @@ class SnatEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['snat_entry_name'] = snat_entry_name
             if snat_ip is None:
                 raise TypeError("Missing required property 'snat_ip'")
             __props__['snat_ip'] = snat_ip
@@ -76,7 +82,7 @@ class SnatEntry(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, snat_entry_id=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None):
+    def get(resource_name, id, opts=None, snat_entry_id=None, snat_entry_name=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None):
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -85,6 +91,7 @@ class SnatEntry(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] snat_entry_id: The id of the snat entry on the server.
+        :param pulumi.Input[str] snat_entry_name: The name of snat entry.
         :param pulumi.Input[str] snat_ip: The SNAT ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
@@ -96,6 +103,7 @@ class SnatEntry(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["snat_entry_id"] = snat_entry_id
+        __props__["snat_entry_name"] = snat_entry_name
         __props__["snat_ip"] = snat_ip
         __props__["snat_table_id"] = snat_table_id
         __props__["source_cidr"] = source_cidr

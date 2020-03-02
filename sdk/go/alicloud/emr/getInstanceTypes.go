@@ -31,10 +31,12 @@ type GetInstanceTypesArgs struct {
 	DestinationResource string `pulumi:"destinationResource"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// Filter the specific ecs instance type to create emr cluster.
+	InstanceType *string `pulumi:"instanceType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Whether the current storage disk is local or not.
 	SupportLocalStorage *bool `pulumi:"supportLocalStorage"`
-	// The specific supported node type list. 
+	// The specific supported node type list.
 	// Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
 	SupportNodeTypes []string `pulumi:"supportNodeTypes"`
 	// The supported resources of specific zoneId.
@@ -51,6 +53,7 @@ type GetInstanceTypesResult struct {
 	// A list of emr instance types IDs. 
 	Ids []string `pulumi:"ids"`
 	InstanceChargeType string `pulumi:"instanceChargeType"`
+	InstanceType *string `pulumi:"instanceType"`
 	OutputFile *string `pulumi:"outputFile"`
 	SupportLocalStorage *bool `pulumi:"supportLocalStorage"`
 	SupportNodeTypes []string `pulumi:"supportNodeTypes"`

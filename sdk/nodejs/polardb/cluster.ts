@@ -100,6 +100,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
+     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     */
+    public readonly modifyType!: pulumi.Output<string | undefined>;
+    /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
     public readonly parameters!: pulumi.Output<outputs.polardb.ClusterParameter[]>;
@@ -152,6 +156,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["dbVersion"] = state ? state.dbVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["maintainTime"] = state ? state.maintainTime : undefined;
+            inputs["modifyType"] = state ? state.modifyType : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["payType"] = state ? state.payType : undefined;
             inputs["period"] = state ? state.period : undefined;
@@ -177,6 +182,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["dbVersion"] = args ? args.dbVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["maintainTime"] = args ? args.maintainTime : undefined;
+            inputs["modifyType"] = args ? args.modifyType : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["payType"] = args ? args.payType : undefined;
             inputs["period"] = args ? args.period : undefined;
@@ -225,6 +231,10 @@ export interface ClusterState {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    /**
+     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     */
+    readonly modifyType?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */
@@ -289,6 +299,10 @@ export interface ClusterArgs {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
     readonly maintainTime?: pulumi.Input<string>;
+    /**
+     * Use as `dbNodeClass` change class , define upgrade or downgrade.  Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
+     */
+    readonly modifyType?: pulumi.Input<string>;
     /**
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
      */

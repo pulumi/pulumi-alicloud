@@ -5,3 +5,4 @@
 export * from "./account";
 export * from "./backupPolicy";
 export * from "./cluster";
+export * from "./getClusters";

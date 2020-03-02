@@ -10,6 +10,7 @@ from typing import Union
 from .. import utilities, tables
 
 class Cluster(pulumi.CustomResource):
+    bootstrap_actions: pulumi.Output[list]
     charge_type: pulumi.Output[str]
     """
     Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
@@ -49,7 +50,7 @@ class Cluster(pulumi.CustomResource):
     master_pwd: pulumi.Output[str]
     name: pulumi.Output[str]
     """
-    The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+    bootstrap action name.
     """
     option_software_lists: pulumi.Output[list]
     related_cluster_id: pulumi.Output[str]
@@ -78,7 +79,7 @@ class Cluster(pulumi.CustomResource):
     * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
     * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
     """
-    def __init__(__self__, resource_name, opts=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bootstrap_actions=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
         
@@ -90,7 +91,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[list] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        :param pulumi.Input[str] name: bootstrap action name.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
                * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
@@ -105,6 +106,12 @@ class Cluster(pulumi.CustomResource):
                * `key_pair_name` (Optional, ForceNew) Ssh key pair.
                * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
                * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
+        
+        The **bootstrap_actions** object supports the following:
+        
+          * `arg` (`pulumi.Input[str]`) - bootstrap action args, e.g. "--a=b".
+          * `name` (`pulumi.Input[str]`) - bootstrap action name.
+          * `path` (`pulumi.Input[str]`) - bootstrap action path, e.g. "oss://bucket/path".
         
         The **host_groups** object supports the following:
         
@@ -142,6 +149,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['bootstrap_actions'] = bootstrap_actions
             __props__['charge_type'] = charge_type
             if cluster_type is None:
                 raise TypeError("Missing required property 'cluster_type'")
@@ -175,7 +183,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, bootstrap_actions=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -187,7 +195,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[list] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-        :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        :param pulumi.Input[str] name: bootstrap action name.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
                * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
@@ -202,6 +210,12 @@ class Cluster(pulumi.CustomResource):
                * `key_pair_name` (Optional, ForceNew) Ssh key pair.
                * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
                * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
+        
+        The **bootstrap_actions** object supports the following:
+        
+          * `arg` (`pulumi.Input[str]`) - bootstrap action args, e.g. "--a=b".
+          * `name` (`pulumi.Input[str]`) - bootstrap action name.
+          * `path` (`pulumi.Input[str]`) - bootstrap action path, e.g. "oss://bucket/path".
         
         The **host_groups** object supports the following:
         
@@ -225,6 +239,7 @@ class Cluster(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["bootstrap_actions"] = bootstrap_actions
         __props__["charge_type"] = charge_type
         __props__["cluster_type"] = cluster_type
         __props__["deposit_type"] = deposit_type

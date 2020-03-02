@@ -95,6 +95,9 @@ export interface GetNatGatewaysResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The ID of the VPC.
+     */
     readonly vpcId?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

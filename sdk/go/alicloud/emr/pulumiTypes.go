@@ -11,6 +11,113 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+type ClusterBootstrapAction struct {
+	// bootstrap action args, e.g. "--a=b".
+	Arg *string `pulumi:"arg"`
+	// bootstrap action name.
+	Name *string `pulumi:"name"`
+	// bootstrap action path, e.g. "oss://bucket/path".
+	Path *string `pulumi:"path"`
+}
+
+type ClusterBootstrapActionInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionOutput() ClusterBootstrapActionOutput
+	ToClusterBootstrapActionOutputWithContext(context.Context) ClusterBootstrapActionOutput
+}
+
+type ClusterBootstrapActionArgs struct {
+	// bootstrap action args, e.g. "--a=b".
+	Arg pulumi.StringPtrInput `pulumi:"arg"`
+	// bootstrap action name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// bootstrap action path, e.g. "oss://bucket/path".
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (ClusterBootstrapActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapAction)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionArgs) ToClusterBootstrapActionOutput() ClusterBootstrapActionOutput {
+	return i.ToClusterBootstrapActionOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionArgs) ToClusterBootstrapActionOutputWithContext(ctx context.Context) ClusterBootstrapActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionOutput)
+}
+
+type ClusterBootstrapActionArrayInput interface {
+	pulumi.Input
+
+	ToClusterBootstrapActionArrayOutput() ClusterBootstrapActionArrayOutput
+	ToClusterBootstrapActionArrayOutputWithContext(context.Context) ClusterBootstrapActionArrayOutput
+}
+
+type ClusterBootstrapActionArray []ClusterBootstrapActionInput
+
+func (ClusterBootstrapActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapAction)(nil)).Elem()
+}
+
+func (i ClusterBootstrapActionArray) ToClusterBootstrapActionArrayOutput() ClusterBootstrapActionArrayOutput {
+	return i.ToClusterBootstrapActionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterBootstrapActionArray) ToClusterBootstrapActionArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionArrayOutput)
+}
+
+type ClusterBootstrapActionOutput struct { *pulumi.OutputState }
+
+func (ClusterBootstrapActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterBootstrapAction)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionOutput) ToClusterBootstrapActionOutput() ClusterBootstrapActionOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionOutput) ToClusterBootstrapActionOutputWithContext(ctx context.Context) ClusterBootstrapActionOutput {
+	return o
+}
+
+// bootstrap action args, e.g. "--a=b".
+func (o ClusterBootstrapActionOutput) Arg() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Arg }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action name.
+func (o ClusterBootstrapActionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// bootstrap action path, e.g. "oss://bucket/path".
+func (o ClusterBootstrapActionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type ClusterBootstrapActionArrayOutput struct { *pulumi.OutputState}
+
+func (ClusterBootstrapActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterBootstrapAction)(nil)).Elem()
+}
+
+func (o ClusterBootstrapActionArrayOutput) ToClusterBootstrapActionArrayOutput() ClusterBootstrapActionArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArrayOutput) ToClusterBootstrapActionArrayOutputWithContext(ctx context.Context) ClusterBootstrapActionArrayOutput {
+	return o
+}
+
+func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBootstrapActionOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterBootstrapAction {
+		return vs[0].([]ClusterBootstrapAction)[vs[1].(int)]
+	}).(ClusterBootstrapActionOutput)
+}
+
 type ClusterHostGroup struct {
 	// Auto renew for prepaid, true of false. Default is false.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -536,6 +643,8 @@ func (o GetMainVersionsMainVersionArrayOutput) Index(i pulumi.IntInput) GetMainV
 }
 
 func init() {
+	pulumi.RegisterOutputType(ClusterBootstrapActionOutput{})
+	pulumi.RegisterOutputType(ClusterBootstrapActionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupOutput{})
 	pulumi.RegisterOutputType(ClusterHostGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskTypesTypeOutput{})
