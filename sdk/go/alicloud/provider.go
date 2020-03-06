@@ -79,6 +79,7 @@ type providerArgs struct {
 	OtsInstanceName *string `pulumi:"otsInstanceName"`
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 	Profile *string `pulumi:"profile"`
+	Protocol *string `pulumi:"protocol"`
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region *string `pulumi:"region"`
 	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
@@ -114,6 +115,7 @@ type ProviderArgs struct {
 	OtsInstanceName pulumi.StringPtrInput
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 	Profile pulumi.StringPtrInput
+	Protocol pulumi.StringPtrInput
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region pulumi.StringPtrInput
 	// The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud

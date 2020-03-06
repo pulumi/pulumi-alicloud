@@ -409,6 +409,498 @@ func (o ScalingRuleStepAdjustmentArrayOutput) Index(i pulumi.IntInput) ScalingRu
 	}).(ScalingRuleStepAdjustmentOutput)
 }
 
+type GetAlarmsAlarm struct {
+	// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+	AlarmActions []string `pulumi:"alarmActions"`
+	// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+	CloudMonitorGroupId int `pulumi:"cloudMonitorGroupId"`
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The description for the alarm.
+	Description string `pulumi:"description"`
+	// The dimension map for the alarm's associated metric. 
+	Dimensions map[string]interface{} `pulumi:"dimensions"`
+	// Whether to enable specific ess alarm.
+	Enable bool `pulumi:"enable"`
+	// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+	EvaluationCount int `pulumi:"evaluationCount"`
+	// The id of alarm.
+	Id string `pulumi:"id"`
+	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	MetricName string `pulumi:"metricName"`
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+	MetricType string `pulumi:"metricType"`
+	// The name for ess alarm.
+	Name string `pulumi:"name"`
+	// The period in seconds over which the specified statistic is applied.
+	Period int `pulumi:"period"`
+	// Scaling group id the alarms belong to.
+	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// The state of alarm task. 
+	State string `pulumi:"state"`
+	// The statistic to apply to the alarm's associated metric. 
+	Statistics string `pulumi:"statistics"`
+	// The value against which the specified statistics is compared.
+	Threshold string `pulumi:"threshold"`
+}
+
+type GetAlarmsAlarmInput interface {
+	pulumi.Input
+
+	ToGetAlarmsAlarmOutput() GetAlarmsAlarmOutput
+	ToGetAlarmsAlarmOutputWithContext(context.Context) GetAlarmsAlarmOutput
+}
+
+type GetAlarmsAlarmArgs struct {
+	// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+	AlarmActions pulumi.StringArrayInput `pulumi:"alarmActions"`
+	// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+	CloudMonitorGroupId pulumi.IntInput `pulumi:"cloudMonitorGroupId"`
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The description for the alarm.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The dimension map for the alarm's associated metric. 
+	Dimensions pulumi.MapInput `pulumi:"dimensions"`
+	// Whether to enable specific ess alarm.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+	EvaluationCount pulumi.IntInput `pulumi:"evaluationCount"`
+	// The id of alarm.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+	MetricType pulumi.StringInput `pulumi:"metricType"`
+	// The name for ess alarm.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The period in seconds over which the specified statistic is applied.
+	Period pulumi.IntInput `pulumi:"period"`
+	// Scaling group id the alarms belong to.
+	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
+	// The state of alarm task. 
+	State pulumi.StringInput `pulumi:"state"`
+	// The statistic to apply to the alarm's associated metric. 
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The value against which the specified statistics is compared.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (GetAlarmsAlarmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmsAlarm)(nil)).Elem()
+}
+
+func (i GetAlarmsAlarmArgs) ToGetAlarmsAlarmOutput() GetAlarmsAlarmOutput {
+	return i.ToGetAlarmsAlarmOutputWithContext(context.Background())
+}
+
+func (i GetAlarmsAlarmArgs) ToGetAlarmsAlarmOutputWithContext(ctx context.Context) GetAlarmsAlarmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmsAlarmOutput)
+}
+
+type GetAlarmsAlarmArrayInput interface {
+	pulumi.Input
+
+	ToGetAlarmsAlarmArrayOutput() GetAlarmsAlarmArrayOutput
+	ToGetAlarmsAlarmArrayOutputWithContext(context.Context) GetAlarmsAlarmArrayOutput
+}
+
+type GetAlarmsAlarmArray []GetAlarmsAlarmInput
+
+func (GetAlarmsAlarmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmsAlarm)(nil)).Elem()
+}
+
+func (i GetAlarmsAlarmArray) ToGetAlarmsAlarmArrayOutput() GetAlarmsAlarmArrayOutput {
+	return i.ToGetAlarmsAlarmArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlarmsAlarmArray) ToGetAlarmsAlarmArrayOutputWithContext(ctx context.Context) GetAlarmsAlarmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmsAlarmArrayOutput)
+}
+
+type GetAlarmsAlarmOutput struct { *pulumi.OutputState }
+
+func (GetAlarmsAlarmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlarmsAlarm)(nil)).Elem()
+}
+
+func (o GetAlarmsAlarmOutput) ToGetAlarmsAlarmOutput() GetAlarmsAlarmOutput {
+	return o
+}
+
+func (o GetAlarmsAlarmOutput) ToGetAlarmsAlarmOutputWithContext(ctx context.Context) GetAlarmsAlarmOutput {
+	return o
+}
+
+// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+func (o GetAlarmsAlarmOutput) AlarmActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) []string { return v.AlarmActions }).(pulumi.StringArrayOutput)
+}
+
+// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+func (o GetAlarmsAlarmOutput) CloudMonitorGroupId() pulumi.IntOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.CloudMonitorGroupId }).(pulumi.IntOutput)
+}
+
+// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+func (o GetAlarmsAlarmOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+}
+
+// The description for the alarm.
+func (o GetAlarmsAlarmOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The dimension map for the alarm's associated metric. 
+func (o GetAlarmsAlarmOutput) Dimensions() pulumi.MapOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+}
+
+// Whether to enable specific ess alarm.
+func (o GetAlarmsAlarmOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+func (o GetAlarmsAlarmOutput) EvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.EvaluationCount }).(pulumi.IntOutput)
+}
+
+// The id of alarm.
+func (o GetAlarmsAlarmOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+func (o GetAlarmsAlarmOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+func (o GetAlarmsAlarmOutput) MetricType() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.MetricType }).(pulumi.StringOutput)
+}
+
+// The name for ess alarm.
+func (o GetAlarmsAlarmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The period in seconds over which the specified statistic is applied.
+func (o GetAlarmsAlarmOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// Scaling group id the alarms belong to.
+func (o GetAlarmsAlarmOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The state of alarm task. 
+func (o GetAlarmsAlarmOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The statistic to apply to the alarm's associated metric. 
+func (o GetAlarmsAlarmOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// The value against which the specified statistics is compared.
+func (o GetAlarmsAlarmOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type GetAlarmsAlarmArrayOutput struct { *pulumi.OutputState}
+
+func (GetAlarmsAlarmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlarmsAlarm)(nil)).Elem()
+}
+
+func (o GetAlarmsAlarmArrayOutput) ToGetAlarmsAlarmArrayOutput() GetAlarmsAlarmArrayOutput {
+	return o
+}
+
+func (o GetAlarmsAlarmArrayOutput) ToGetAlarmsAlarmArrayOutputWithContext(ctx context.Context) GetAlarmsAlarmArrayOutput {
+	return o
+}
+
+func (o GetAlarmsAlarmArrayOutput) Index(i pulumi.IntInput) GetAlarmsAlarmOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAlarmsAlarm {
+		return vs[0].([]GetAlarmsAlarm)[vs[1].(int)]
+	}).(GetAlarmsAlarmOutput)
+}
+
+type GetLifecycleHooksHook struct {
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+	DefaultResult string `pulumi:"defaultResult"`
+	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
+	HeartbeatTimeout int `pulumi:"heartbeatTimeout"`
+	// ID of the lifecycle hook.
+	Id string `pulumi:"id"`
+	// Type of Scaling activity attached to lifecycle hook.
+	LifecycleTransition string `pulumi:"lifecycleTransition"`
+	// Name of the lifecycle hook.
+	Name string `pulumi:"name"`
+	// The Arn of notification target.
+	NotificationArn string `pulumi:"notificationArn"`
+	// Additional information that you want to include when Auto Scaling sends a message to the notification target.
+	NotificationMetadata string `pulumi:"notificationMetadata"`
+	// Scaling group id the lifecycle hooks belong to.
+	ScalingGroupId string `pulumi:"scalingGroupId"`
+}
+
+type GetLifecycleHooksHookInput interface {
+	pulumi.Input
+
+	ToGetLifecycleHooksHookOutput() GetLifecycleHooksHookOutput
+	ToGetLifecycleHooksHookOutputWithContext(context.Context) GetLifecycleHooksHookOutput
+}
+
+type GetLifecycleHooksHookArgs struct {
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+	DefaultResult pulumi.StringInput `pulumi:"defaultResult"`
+	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
+	HeartbeatTimeout pulumi.IntInput `pulumi:"heartbeatTimeout"`
+	// ID of the lifecycle hook.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Type of Scaling activity attached to lifecycle hook.
+	LifecycleTransition pulumi.StringInput `pulumi:"lifecycleTransition"`
+	// Name of the lifecycle hook.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Arn of notification target.
+	NotificationArn pulumi.StringInput `pulumi:"notificationArn"`
+	// Additional information that you want to include when Auto Scaling sends a message to the notification target.
+	NotificationMetadata pulumi.StringInput `pulumi:"notificationMetadata"`
+	// Scaling group id the lifecycle hooks belong to.
+	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
+}
+
+func (GetLifecycleHooksHookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecycleHooksHook)(nil)).Elem()
+}
+
+func (i GetLifecycleHooksHookArgs) ToGetLifecycleHooksHookOutput() GetLifecycleHooksHookOutput {
+	return i.ToGetLifecycleHooksHookOutputWithContext(context.Background())
+}
+
+func (i GetLifecycleHooksHookArgs) ToGetLifecycleHooksHookOutputWithContext(ctx context.Context) GetLifecycleHooksHookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLifecycleHooksHookOutput)
+}
+
+type GetLifecycleHooksHookArrayInput interface {
+	pulumi.Input
+
+	ToGetLifecycleHooksHookArrayOutput() GetLifecycleHooksHookArrayOutput
+	ToGetLifecycleHooksHookArrayOutputWithContext(context.Context) GetLifecycleHooksHookArrayOutput
+}
+
+type GetLifecycleHooksHookArray []GetLifecycleHooksHookInput
+
+func (GetLifecycleHooksHookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLifecycleHooksHook)(nil)).Elem()
+}
+
+func (i GetLifecycleHooksHookArray) ToGetLifecycleHooksHookArrayOutput() GetLifecycleHooksHookArrayOutput {
+	return i.ToGetLifecycleHooksHookArrayOutputWithContext(context.Background())
+}
+
+func (i GetLifecycleHooksHookArray) ToGetLifecycleHooksHookArrayOutputWithContext(ctx context.Context) GetLifecycleHooksHookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLifecycleHooksHookArrayOutput)
+}
+
+type GetLifecycleHooksHookOutput struct { *pulumi.OutputState }
+
+func (GetLifecycleHooksHookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLifecycleHooksHook)(nil)).Elem()
+}
+
+func (o GetLifecycleHooksHookOutput) ToGetLifecycleHooksHookOutput() GetLifecycleHooksHookOutput {
+	return o
+}
+
+func (o GetLifecycleHooksHookOutput) ToGetLifecycleHooksHookOutputWithContext(ctx context.Context) GetLifecycleHooksHookOutput {
+	return o
+}
+
+// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+func (o GetLifecycleHooksHookOutput) DefaultResult() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.DefaultResult }).(pulumi.StringOutput)
+}
+
+// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
+func (o GetLifecycleHooksHookOutput) HeartbeatTimeout() pulumi.IntOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) int { return v.HeartbeatTimeout }).(pulumi.IntOutput)
+}
+
+// ID of the lifecycle hook.
+func (o GetLifecycleHooksHookOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of Scaling activity attached to lifecycle hook.
+func (o GetLifecycleHooksHookOutput) LifecycleTransition() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.LifecycleTransition }).(pulumi.StringOutput)
+}
+
+// Name of the lifecycle hook.
+func (o GetLifecycleHooksHookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Arn of notification target.
+func (o GetLifecycleHooksHookOutput) NotificationArn() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.NotificationArn }).(pulumi.StringOutput)
+}
+
+// Additional information that you want to include when Auto Scaling sends a message to the notification target.
+func (o GetLifecycleHooksHookOutput) NotificationMetadata() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.NotificationMetadata }).(pulumi.StringOutput)
+}
+
+// Scaling group id the lifecycle hooks belong to.
+func (o GetLifecycleHooksHookOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+type GetLifecycleHooksHookArrayOutput struct { *pulumi.OutputState}
+
+func (GetLifecycleHooksHookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLifecycleHooksHook)(nil)).Elem()
+}
+
+func (o GetLifecycleHooksHookArrayOutput) ToGetLifecycleHooksHookArrayOutput() GetLifecycleHooksHookArrayOutput {
+	return o
+}
+
+func (o GetLifecycleHooksHookArrayOutput) ToGetLifecycleHooksHookArrayOutputWithContext(ctx context.Context) GetLifecycleHooksHookArrayOutput {
+	return o
+}
+
+func (o GetLifecycleHooksHookArrayOutput) Index(i pulumi.IntInput) GetLifecycleHooksHookOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetLifecycleHooksHook {
+		return vs[0].([]GetLifecycleHooksHook)[vs[1].(int)]
+	}).(GetLifecycleHooksHookOutput)
+}
+
+type GetNotificationsNotification struct {
+	// ID of the notification.
+	Id string `pulumi:"id"`
+	// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+	NotificationArn string `pulumi:"notificationArn"`
+	// The notification types of Auto Scaling events and resource changes.
+	NotificationTypes []string `pulumi:"notificationTypes"`
+	// Scaling group id the notifications belong to.
+	ScalingGroupId string `pulumi:"scalingGroupId"`
+}
+
+type GetNotificationsNotificationInput interface {
+	pulumi.Input
+
+	ToGetNotificationsNotificationOutput() GetNotificationsNotificationOutput
+	ToGetNotificationsNotificationOutputWithContext(context.Context) GetNotificationsNotificationOutput
+}
+
+type GetNotificationsNotificationArgs struct {
+	// ID of the notification.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+	NotificationArn pulumi.StringInput `pulumi:"notificationArn"`
+	// The notification types of Auto Scaling events and resource changes.
+	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
+	// Scaling group id the notifications belong to.
+	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
+}
+
+func (GetNotificationsNotificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsNotification)(nil)).Elem()
+}
+
+func (i GetNotificationsNotificationArgs) ToGetNotificationsNotificationOutput() GetNotificationsNotificationOutput {
+	return i.ToGetNotificationsNotificationOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsNotificationArgs) ToGetNotificationsNotificationOutputWithContext(ctx context.Context) GetNotificationsNotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsNotificationOutput)
+}
+
+type GetNotificationsNotificationArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsNotificationArrayOutput() GetNotificationsNotificationArrayOutput
+	ToGetNotificationsNotificationArrayOutputWithContext(context.Context) GetNotificationsNotificationArrayOutput
+}
+
+type GetNotificationsNotificationArray []GetNotificationsNotificationInput
+
+func (GetNotificationsNotificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsNotification)(nil)).Elem()
+}
+
+func (i GetNotificationsNotificationArray) ToGetNotificationsNotificationArrayOutput() GetNotificationsNotificationArrayOutput {
+	return i.ToGetNotificationsNotificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsNotificationArray) ToGetNotificationsNotificationArrayOutputWithContext(ctx context.Context) GetNotificationsNotificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsNotificationArrayOutput)
+}
+
+type GetNotificationsNotificationOutput struct { *pulumi.OutputState }
+
+func (GetNotificationsNotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsNotification)(nil)).Elem()
+}
+
+func (o GetNotificationsNotificationOutput) ToGetNotificationsNotificationOutput() GetNotificationsNotificationOutput {
+	return o
+}
+
+func (o GetNotificationsNotificationOutput) ToGetNotificationsNotificationOutputWithContext(ctx context.Context) GetNotificationsNotificationOutput {
+	return o
+}
+
+// ID of the notification.
+func (o GetNotificationsNotificationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNotificationsNotification) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+func (o GetNotificationsNotificationOutput) NotificationArn() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNotificationsNotification) string { return v.NotificationArn }).(pulumi.StringOutput)
+}
+
+// The notification types of Auto Scaling events and resource changes.
+func (o GetNotificationsNotificationOutput) NotificationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetNotificationsNotification) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
+}
+
+// Scaling group id the notifications belong to.
+func (o GetNotificationsNotificationOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func (v GetNotificationsNotification) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+type GetNotificationsNotificationArrayOutput struct { *pulumi.OutputState}
+
+func (GetNotificationsNotificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsNotification)(nil)).Elem()
+}
+
+func (o GetNotificationsNotificationArrayOutput) ToGetNotificationsNotificationArrayOutput() GetNotificationsNotificationArrayOutput {
+	return o
+}
+
+func (o GetNotificationsNotificationArrayOutput) ToGetNotificationsNotificationArrayOutputWithContext(ctx context.Context) GetNotificationsNotificationArrayOutput {
+	return o
+}
+
+func (o GetNotificationsNotificationArrayOutput) Index(i pulumi.IntInput) GetNotificationsNotificationOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNotificationsNotification {
+		return vs[0].([]GetNotificationsNotification)[vs[1].(int)]
+	}).(GetNotificationsNotificationOutput)
+}
+
 type GetScalingConfigurationsConfiguration struct {
 	// Creation time of the scaling configuration.
 	CreationTime string `pulumi:"creationTime"`
@@ -1152,6 +1644,185 @@ func (o GetScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetScalingRules
 	}).(GetScalingRulesRuleOutput)
 }
 
+type GetScheduledTasksTask struct {
+	// Description of the scheduled task.
+	Description string `pulumi:"description"`
+	// ID of the scheduled task id.
+	Id string `pulumi:"id"`
+	// The time period during which a failed scheduled task is retried.
+	LaunchExpirationTime int `pulumi:"launchExpirationTime"`
+	// The time at which the scheduled task is triggered.
+	LaunchTime string `pulumi:"launchTime"`
+	MaxValue int `pulumi:"maxValue"`
+	MinValue int `pulumi:"minValue"`
+	// Name of the scheduled task name.
+	Name string `pulumi:"name"`
+	// Specifies the end time after which the scheduled task is no longer repeated.
+	RecurrenceEndTime string `pulumi:"recurrenceEndTime"`
+	// Specifies the recurrence type of the scheduled task. 
+	RecurrenceType string `pulumi:"recurrenceType"`
+	// Specifies how often a scheduled task recurs. 
+	RecurrenceValue string `pulumi:"recurrenceValue"`
+	// The operation to be performed when a scheduled task is triggered.
+	ScheduledAction string `pulumi:"scheduledAction"`
+	TaskEnabled bool `pulumi:"taskEnabled"`
+}
+
+type GetScheduledTasksTaskInput interface {
+	pulumi.Input
+
+	ToGetScheduledTasksTaskOutput() GetScheduledTasksTaskOutput
+	ToGetScheduledTasksTaskOutputWithContext(context.Context) GetScheduledTasksTaskOutput
+}
+
+type GetScheduledTasksTaskArgs struct {
+	// Description of the scheduled task.
+	Description pulumi.StringInput `pulumi:"description"`
+	// ID of the scheduled task id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time period during which a failed scheduled task is retried.
+	LaunchExpirationTime pulumi.IntInput `pulumi:"launchExpirationTime"`
+	// The time at which the scheduled task is triggered.
+	LaunchTime pulumi.StringInput `pulumi:"launchTime"`
+	MaxValue pulumi.IntInput `pulumi:"maxValue"`
+	MinValue pulumi.IntInput `pulumi:"minValue"`
+	// Name of the scheduled task name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies the end time after which the scheduled task is no longer repeated.
+	RecurrenceEndTime pulumi.StringInput `pulumi:"recurrenceEndTime"`
+	// Specifies the recurrence type of the scheduled task. 
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Specifies how often a scheduled task recurs. 
+	RecurrenceValue pulumi.StringInput `pulumi:"recurrenceValue"`
+	// The operation to be performed when a scheduled task is triggered.
+	ScheduledAction pulumi.StringInput `pulumi:"scheduledAction"`
+	TaskEnabled pulumi.BoolInput `pulumi:"taskEnabled"`
+}
+
+func (GetScheduledTasksTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledTasksTask)(nil)).Elem()
+}
+
+func (i GetScheduledTasksTaskArgs) ToGetScheduledTasksTaskOutput() GetScheduledTasksTaskOutput {
+	return i.ToGetScheduledTasksTaskOutputWithContext(context.Background())
+}
+
+func (i GetScheduledTasksTaskArgs) ToGetScheduledTasksTaskOutputWithContext(ctx context.Context) GetScheduledTasksTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduledTasksTaskOutput)
+}
+
+type GetScheduledTasksTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetScheduledTasksTaskArrayOutput() GetScheduledTasksTaskArrayOutput
+	ToGetScheduledTasksTaskArrayOutputWithContext(context.Context) GetScheduledTasksTaskArrayOutput
+}
+
+type GetScheduledTasksTaskArray []GetScheduledTasksTaskInput
+
+func (GetScheduledTasksTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduledTasksTask)(nil)).Elem()
+}
+
+func (i GetScheduledTasksTaskArray) ToGetScheduledTasksTaskArrayOutput() GetScheduledTasksTaskArrayOutput {
+	return i.ToGetScheduledTasksTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetScheduledTasksTaskArray) ToGetScheduledTasksTaskArrayOutputWithContext(ctx context.Context) GetScheduledTasksTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetScheduledTasksTaskArrayOutput)
+}
+
+type GetScheduledTasksTaskOutput struct { *pulumi.OutputState }
+
+func (GetScheduledTasksTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetScheduledTasksTask)(nil)).Elem()
+}
+
+func (o GetScheduledTasksTaskOutput) ToGetScheduledTasksTaskOutput() GetScheduledTasksTaskOutput {
+	return o
+}
+
+func (o GetScheduledTasksTaskOutput) ToGetScheduledTasksTaskOutputWithContext(ctx context.Context) GetScheduledTasksTaskOutput {
+	return o
+}
+
+// Description of the scheduled task.
+func (o GetScheduledTasksTaskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ID of the scheduled task id.
+func (o GetScheduledTasksTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time period during which a failed scheduled task is retried.
+func (o GetScheduledTasksTaskOutput) LaunchExpirationTime() pulumi.IntOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.LaunchExpirationTime }).(pulumi.IntOutput)
+}
+
+// The time at which the scheduled task is triggered.
+func (o GetScheduledTasksTaskOutput) LaunchTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.LaunchTime }).(pulumi.StringOutput)
+}
+
+func (o GetScheduledTasksTaskOutput) MaxValue() pulumi.IntOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.MaxValue }).(pulumi.IntOutput)
+}
+
+func (o GetScheduledTasksTaskOutput) MinValue() pulumi.IntOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.MinValue }).(pulumi.IntOutput)
+}
+
+// Name of the scheduled task name.
+func (o GetScheduledTasksTaskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the end time after which the scheduled task is no longer repeated.
+func (o GetScheduledTasksTaskOutput) RecurrenceEndTime() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceEndTime }).(pulumi.StringOutput)
+}
+
+// Specifies the recurrence type of the scheduled task. 
+func (o GetScheduledTasksTaskOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Specifies how often a scheduled task recurs. 
+func (o GetScheduledTasksTaskOutput) RecurrenceValue() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceValue }).(pulumi.StringOutput)
+}
+
+// The operation to be performed when a scheduled task is triggered.
+func (o GetScheduledTasksTaskOutput) ScheduledAction() pulumi.StringOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.ScheduledAction }).(pulumi.StringOutput)
+}
+
+func (o GetScheduledTasksTaskOutput) TaskEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func (v GetScheduledTasksTask) bool { return v.TaskEnabled }).(pulumi.BoolOutput)
+}
+
+type GetScheduledTasksTaskArrayOutput struct { *pulumi.OutputState}
+
+func (GetScheduledTasksTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetScheduledTasksTask)(nil)).Elem()
+}
+
+func (o GetScheduledTasksTaskArrayOutput) ToGetScheduledTasksTaskArrayOutput() GetScheduledTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetScheduledTasksTaskArrayOutput) ToGetScheduledTasksTaskArrayOutputWithContext(ctx context.Context) GetScheduledTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledTasksTaskOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScheduledTasksTask {
+		return vs[0].([]GetScheduledTasksTask)[vs[1].(int)]
+	}).(GetScheduledTasksTaskOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskArrayOutput{})
@@ -1161,6 +1832,12 @@ func init() {
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentArrayOutput{})
+	pulumi.RegisterOutputType(GetAlarmsAlarmOutput{})
+	pulumi.RegisterOutputType(GetAlarmsAlarmArrayOutput{})
+	pulumi.RegisterOutputType(GetLifecycleHooksHookOutput{})
+	pulumi.RegisterOutputType(GetLifecycleHooksHookArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsNotificationOutput{})
+	pulumi.RegisterOutputType(GetNotificationsNotificationArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingConfigurationsConfigurationDataDiskOutput{})
@@ -1169,4 +1846,6 @@ func init() {
 	pulumi.RegisterOutputType(GetScalingGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetScalingRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetScheduledTasksTaskOutput{})
+	pulumi.RegisterOutputType(GetScheduledTasksTaskArrayOutput{})
 }

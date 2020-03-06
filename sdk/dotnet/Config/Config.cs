@@ -50,6 +50,8 @@ namespace Pulumi.AliCloud
         /// </summary>
         public static string? Profile { get; set; } = __config.Get("profile") ?? Utilities.GetEnv("ALICLOUD_PROFILE");
 
+        public static string? Protocol { get; set; } = __config.Get("protocol");
+
         /// <summary>
         /// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou,
         /// eu-central-1, etc.

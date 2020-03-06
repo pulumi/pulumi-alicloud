@@ -35,6 +35,7 @@ export let otsInstanceName: string | undefined = __config.get("otsInstanceName")
  * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
  */
 export let profile: string | undefined = __config.get("profile") || utilities.getEnv("ALICLOUD_PROFILE");
+export let protocol: string | undefined = __config.get("protocol");
 /**
  * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
  */

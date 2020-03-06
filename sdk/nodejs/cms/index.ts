@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./alarm";
+export * from "./siteMonitor";

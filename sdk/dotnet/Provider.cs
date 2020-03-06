@@ -102,6 +102,9 @@ namespace Pulumi.AliCloud
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
         /// <summary>
         /// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou,
         /// eu-central-1, etc.

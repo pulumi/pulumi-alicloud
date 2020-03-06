@@ -13,6 +13,10 @@ from .scaling_rule import *
 from .scaling_group_v_server_groups import *
 from .schedule import *
 from .scheduled_task import *
+from .get_alarms import *
+from .get_lifecycle_hooks import *
+from .get_notifications import *
 from .get_scaling_configurations import *
 from .get_scaling_groups import *
 from .get_scaling_rules import *
+from .get_scheduled_tasks import *

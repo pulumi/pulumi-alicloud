@@ -228,6 +228,12 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CMS
 			"alicloud_cms_alarm": {Tok: resource(cmsMod, "Alarm")},
+			"alicloud_cms_site_monitor": {
+				Tok: resource(cmsMod, "SiteMonitor"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cms_sitemonitor.markdown",
+				},
+			},
 
 			// CR
 			"alicloud_cr_repo":      {Tok: resource(crMod, "Repo")},
@@ -296,7 +302,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ess_lifecycle_hook": {
 				Tok: resource(essMod, "LifecycleHook"),
 				Docs: &tfbridge.DocInfo{
-					Source: "alicloud_ess_lifecycle_hook",
+					Source: "ess_scaling_lifecycle_hook.html.markdown",
 				},
 			},
 			"alicloud_ess_scaling_configuration":       {Tok: resource(essMod, "ScalingConfiguration")},
@@ -594,6 +600,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ess_scaling_configurations": {Tok: dataSource(essMod, "getScalingConfigurations")},
 			"alicloud_ess_scaling_groups":         {Tok: dataSource(essMod, "getScalingGroups")},
 			"alicloud_ess_scaling_rules":          {Tok: dataSource(essMod, "getScalingRules")},
+			"alicloud_ess_alarms":                 {Tok: dataSource(essMod, "getAlarms")},
+			"alicloud_ess_notifications":          {Tok: dataSource(essMod, "getNotifications")},
+			"alicloud_ess_scheduled_tasks":        {Tok: dataSource(essMod, "getScheduledTasks")},
+			"alicloud_ess_lifecycle_hooks":        {Tok: dataSource(essMod, "getLifecycleHooks")},
 
 			// Fc
 			"alicloud_fc_functions": {Tok: dataSource(fcMod, "getFunctions")},
