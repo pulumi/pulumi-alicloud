@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, access_key=None, account_id=None, assume_role=None, configuration_source=None, ecs_role_name=None, endpoints=None, fc=None, log_endpoint=None, mns_endpoint=None, ots_instance_name=None, profile=None, region=None, secret_key=None, security_token=None, shared_credentials_file=None, skip_region_validation=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, access_key=None, account_id=None, assume_role=None, configuration_source=None, ecs_role_name=None, endpoints=None, fc=None, log_endpoint=None, mns_endpoint=None, ots_instance_name=None, profile=None, protocol=None, region=None, secret_key=None, security_token=None, shared_credentials_file=None, skip_region_validation=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the alicloud package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -108,6 +108,7 @@ class Provider(pulumi.ProviderResource):
             if profile is None:
                 profile = utilities.get_env('ALICLOUD_PROFILE')
             __props__['profile'] = profile
+            __props__['protocol'] = protocol
             if region is None:
                 region = utilities.get_env('ALICLOUD_REGION')
             __props__['region'] = region

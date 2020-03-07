@@ -4,9 +4,13 @@
 // Export members:
 export * from "./alarm";
 export * from "./attachment";
+export * from "./getAlarms";
+export * from "./getLifecycleHooks";
+export * from "./getNotifications";
 export * from "./getScalingConfigurations";
 export * from "./getScalingGroups";
 export * from "./getScalingRules";
+export * from "./getScheduledTasks";
 export * from "./lifecycleHook";
 export * from "./notification";
 export * from "./scalingConfiguration";

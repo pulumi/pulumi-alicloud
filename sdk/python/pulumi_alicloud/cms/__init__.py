@@ -4,3 +4,4 @@
 
 # Export this package's modules as members:
 from .alarm import *
+from .site_monitor import *

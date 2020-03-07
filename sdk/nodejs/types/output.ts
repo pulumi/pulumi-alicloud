@@ -2741,6 +2741,127 @@ export namespace emr {
 }
 
 export namespace ess {
+    export interface GetAlarmsAlarm {
+        /**
+         * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
+         */
+        alarmActions: string[];
+        /**
+         * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
+         */
+        cloudMonitorGroupId: number;
+        /**
+         * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+         */
+        comparisonOperator: string;
+        /**
+         * The description for the alarm.
+         */
+        description: string;
+        /**
+         * The dimension map for the alarm's associated metric. 
+         */
+        dimensions: {[key: string]: any};
+        /**
+         * Whether to enable specific ess alarm.
+         */
+        enable: boolean;
+        /**
+         * The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+         */
+        evaluationCount: number;
+        /**
+         * The id of alarm.
+         */
+        id: string;
+        /**
+         * The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+         */
+        metricName: string;
+        /**
+         * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
+         */
+        metricType: string;
+        /**
+         * The name for ess alarm.
+         */
+        name: string;
+        /**
+         * The period in seconds over which the specified statistic is applied.
+         */
+        period: number;
+        /**
+         * Scaling group id the alarms belong to.
+         */
+        scalingGroupId: string;
+        /**
+         * The state of alarm task. 
+         */
+        state: string;
+        /**
+         * The statistic to apply to the alarm's associated metric. 
+         */
+        statistics: string;
+        /**
+         * The value against which the specified statistics is compared.
+         */
+        threshold: string;
+    }
+
+    export interface GetLifecycleHooksHook {
+        /**
+         * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+         */
+        defaultResult: string;
+        /**
+         * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
+         */
+        heartbeatTimeout: number;
+        /**
+         * ID of the lifecycle hook.
+         */
+        id: string;
+        /**
+         * Type of Scaling activity attached to lifecycle hook.
+         */
+        lifecycleTransition: string;
+        /**
+         * Name of the lifecycle hook.
+         */
+        name: string;
+        /**
+         * The Arn of notification target.
+         */
+        notificationArn: string;
+        /**
+         * Additional information that you want to include when Auto Scaling sends a message to the notification target.
+         */
+        notificationMetadata: string;
+        /**
+         * Scaling group id the lifecycle hooks belong to.
+         */
+        scalingGroupId: string;
+    }
+
+    export interface GetNotificationsNotification {
+        /**
+         * ID of the notification.
+         */
+        id: string;
+        /**
+         * The Alibaba Cloud Resource Name (ARN) for the notification object. 
+         */
+        notificationArn: string;
+        /**
+         * The notification types of Auto Scaling events and resource changes.
+         */
+        notificationTypes: string[];
+        /**
+         * Scaling group id the notifications belong to.
+         */
+        scalingGroupId: string;
+    }
+
     export interface GetScalingConfigurationsConfiguration {
         /**
          * Creation time of the scaling configuration.
@@ -2937,6 +3058,48 @@ export namespace ess {
          * Type of scaling rule.
          */
         type: string;
+    }
+
+    export interface GetScheduledTasksTask {
+        /**
+         * Description of the scheduled task.
+         */
+        description: string;
+        /**
+         * ID of the scheduled task id.
+         */
+        id: string;
+        /**
+         * The time period during which a failed scheduled task is retried.
+         */
+        launchExpirationTime: number;
+        /**
+         * The time at which the scheduled task is triggered.
+         */
+        launchTime: string;
+        maxValue: number;
+        minValue: number;
+        /**
+         * Name of the scheduled task name.
+         */
+        name: string;
+        /**
+         * Specifies the end time after which the scheduled task is no longer repeated.
+         */
+        recurrenceEndTime: string;
+        /**
+         * Specifies the recurrence type of the scheduled task. 
+         */
+        recurrenceType: string;
+        /**
+         * Specifies how often a scheduled task recurs. 
+         */
+        recurrenceValue: string;
+        /**
+         * The operation to be performed when a scheduled task is triggered.
+         */
+        scheduledAction: string;
+        taskEnabled: boolean;
     }
 
     export interface ScalingConfigurationDataDisk {

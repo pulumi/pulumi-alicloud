@@ -62,6 +62,9 @@ func GetProfile(ctx *pulumi.Context) string {
 		return v
 	}
 	return getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string)}
+func GetProtocol(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:protocol")
+}
 // The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 func GetRegion(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:region")

@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["mnsEndpoint"] = args ? args.mnsEndpoint : undefined;
             inputs["otsInstanceName"] = args ? args.otsInstanceName : undefined;
             inputs["profile"] = (args ? args.profile : undefined) || utilities.getEnv("ALICLOUD_PROFILE");
+            inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("ALICLOUD_REGION");
             inputs["secretKey"] = (args ? args.secretKey : undefined) || utilities.getEnv("ALICLOUD_SECRET_KEY");
             inputs["securityToken"] = (args ? args.securityToken : undefined) || utilities.getEnv("ALICLOUD_SECURITY_TOKEN");
@@ -101,6 +102,7 @@ export interface ProviderArgs {
      * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      */
     readonly profile?: pulumi.Input<string>;
+    readonly protocol?: pulumi.Input<string>;
     /**
      * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      */

@@ -51,6 +51,8 @@ profile = __config__.get('profile') or utilities.get_env('ALICLOUD_PROFILE')
 The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 """
 
+protocol = __config__.get('protocol')
+
 region = __config__.get('region') or utilities.get_env('ALICLOUD_REGION')
 """
 The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
