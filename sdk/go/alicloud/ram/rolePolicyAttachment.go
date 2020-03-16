@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a RAM Role attachment resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_policy_attachment.html.markdown.
 type RolePolicyAttachment struct {
 	pulumi.CustomResourceState

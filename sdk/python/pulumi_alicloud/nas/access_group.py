@@ -25,18 +25,18 @@ class AccessGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Nas Access Group resource.
-        
+
         In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
-        
+
         > **NOTE:** Available in v1.33.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The Access Group description.
         :param pulumi.Input[str] name: A Name of one Access Group.
         :param pulumi.Input[str] type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +71,18 @@ class AccessGroup(pulumi.CustomResource):
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The Access Group description.
         :param pulumi.Input[str] name: A Name of one Access Group.
         :param pulumi.Input[str] type: A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["name"] = name
         __props__["type"] = type

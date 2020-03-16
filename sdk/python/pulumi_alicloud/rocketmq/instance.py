@@ -33,19 +33,19 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, remark=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ONS instance resource.
-        
+
         For more information about how to use it, see [RocketMQ Instance Management API](https://www.alibabacloud.com/help/doc-detail/106354.html). 
-        
+
         > **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5". 
-        
+
         > **NOTE:** Available in 1.51.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         :param pulumi.Input[str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,7 +80,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -89,12 +89,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Two instances on a single account in the same region cannot have the same name. The length must be 3 to 64 characters. Chinese characters, English letters digits and hyphen are allowed.
         :param pulumi.Input[str] release_time: Platinum edition instance expiration time.
         :param pulumi.Input[str] remark: This attribute is a concise description of instance. The length cannot exceed 128.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["instance_status"] = instance_status
         __props__["instance_type"] = instance_type
         __props__["name"] = name

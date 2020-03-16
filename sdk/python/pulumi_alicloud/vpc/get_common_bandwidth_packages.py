@@ -13,7 +13,13 @@ class GetCommonBandwidthPackagesResult:
     """
     A collection of values returned by getCommonBandwidthPackages.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, packages=None, resource_group_id=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, packages=None, resource_group_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -44,46 +50,42 @@ class GetCommonBandwidthPackagesResult:
         """
         The Id of resource group which the common bandwidth package belongs.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCommonBandwidthPackagesResult(GetCommonBandwidthPackagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetCommonBandwidthPackagesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             packages=self.packages,
-            resource_group_id=self.resource_group_id,
-            id=self.id)
+            resource_group_id=self.resource_group_id)
 
 def get_common_bandwidth_packages(ids=None,name_regex=None,output_file=None,resource_group_id=None,opts=None):
     """
     This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.36.0+.
-    
+
     ## Public ip addresses Block
       
       The public ip addresses mapping supports the following:
       
       * `ip_address`   - The address of the EIP.
       * `allocation_id` - The ID of the EIP instance.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
+
+
     :param list ids: A list of Common Bandwidth Packages IDs.
     :param str name_regex: A regex string to filter results by name.
     :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -96,10 +98,10 @@ def get_common_bandwidth_packages(ids=None,name_regex=None,output_file=None,reso
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages', __args__, opts=opts).value
 
     return AwaitableGetCommonBandwidthPackagesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         packages=__ret__.get('packages'),
-        resource_group_id=__ret__.get('resourceGroupId'),
-        id=__ret__.get('id'))
+        resource_group_id=__ret__.get('resourceGroupId'))

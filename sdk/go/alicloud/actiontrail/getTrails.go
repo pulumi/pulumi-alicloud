@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of action trail of the current Alibaba Cloud user.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
 func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOption) (*GetTrailsResult, error) {
 	var rv GetTrailsResult

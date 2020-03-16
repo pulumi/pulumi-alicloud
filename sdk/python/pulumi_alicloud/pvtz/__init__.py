@@ -3,8 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_zone_records import *
+from .get_zones import *
 from .zone import *
 from .zone_attachment import *
 from .zone_record import *
-from .get_zone_records import *
-from .get_zones import *

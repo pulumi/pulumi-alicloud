@@ -12,17 +12,17 @@ import (
 )
 
 // Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
-// 
+//
 // > **NOTE:** Available in 1.53.0+
-// 
+//
 // ## Block servers
-// 
+//
 // The servers mapping supports the following:
-// 
+//
 // * `serverId` - (Required) A list backend server ID (ECS instance ID).
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
 // * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
 type BackendServer struct {
 	pulumi.CustomResourceState

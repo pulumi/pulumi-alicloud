@@ -13,7 +13,13 @@ class GetScheduledTasksResult:
     """
     A collection of values returned by getScheduledTasks.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, scheduled_action=None, scheduled_task_id=None, tasks=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, scheduled_action=None, scheduled_task_id=None, tasks=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -47,41 +53,37 @@ class GetScheduledTasksResult:
         """
         A list of scheduled tasks. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetScheduledTasksResult(GetScheduledTasksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetScheduledTasksResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             scheduled_action=self.scheduled_action,
             scheduled_task_id=self.scheduled_task_id,
-            tasks=self.tasks,
-            id=self.id)
+            tasks=self.tasks)
 
 def get_scheduled_tasks(ids=None,name_regex=None,output_file=None,scheduled_action=None,scheduled_task_id=None,opts=None):
     """
     This data source provides available scheduled task resources. 
-    
+
     > **NOTE:** Available in 1.72.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
+
+
     :param list ids: A list of scheduled task IDs.
     :param str name_regex: A regex string to filter resulting scheduled tasks by name.
     :param str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param str scheduled_task_id: The id of the scheduled task.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -95,11 +97,11 @@ def get_scheduled_tasks(ids=None,name_regex=None,output_file=None,scheduled_acti
     __ret__ = pulumi.runtime.invoke('alicloud:ess/getScheduledTasks:getScheduledTasks', __args__, opts=opts).value
 
     return AwaitableGetScheduledTasksResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         scheduled_action=__ret__.get('scheduledAction'),
         scheduled_task_id=__ret__.get('scheduledTaskId'),
-        tasks=__ret__.get('tasks'),
-        id=__ret__.get('id'))
+        tasks=__ret__.get('tasks'))

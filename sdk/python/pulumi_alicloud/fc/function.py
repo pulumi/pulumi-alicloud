@@ -11,6 +11,9 @@ from .. import utilities, tables
 
 class Function(pulumi.CustomResource):
     code_checksum: pulumi.Output[str]
+    """
+    The checksum (crc64) of the function code.
+    """
     description: pulumi.Output[str]
     """
     The Function Compute function description.
@@ -70,9 +73,9 @@ class Function(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, code_checksum=None, description=None, environment_variables=None, filename=None, handler=None, memory_size=None, name=None, name_prefix=None, oss_bucket=None, oss_key=None, runtime=None, service=None, timeout=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Function resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] code_checksum: The checksum (crc64) of the function code.
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[dict] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
@@ -85,8 +88,6 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[float] timeout: The amount of time your Function has to run in seconds.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_function.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -137,10 +138,11 @@ class Function(pulumi.CustomResource):
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] code_checksum: The checksum (crc64) of the function code.
         :param pulumi.Input[str] description: The Function Compute function description.
         :param pulumi.Input[dict] environment_variables: A map that defines environment variables for the function.
         :param pulumi.Input[str] filename: The path to the function's deployment package within the local filesystem. It is conflict with the `oss_`-prefixed options.
@@ -155,12 +157,11 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] runtime: See [Runtimes][https://www.alibabacloud.com/help/doc-detail/52077.htm] for valid values.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[float] timeout: The amount of time your Function has to run in seconds.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_function.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["code_checksum"] = code_checksum
         __props__["description"] = description
         __props__["environment_variables"] = environment_variables

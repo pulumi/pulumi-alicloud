@@ -13,10 +13,16 @@ class GetRulesResult:
     """
     A collection of values returned by getRules.
     """
-    def __init__(__self__, frontend_port=None, ids=None, load_balancer_id=None, name_regex=None, names=None, output_file=None, slb_rules=None, id=None):
+    def __init__(__self__, frontend_port=None, id=None, ids=None, load_balancer_id=None, name_regex=None, names=None, output_file=None, slb_rules=None):
         if frontend_port and not isinstance(frontend_port, float):
             raise TypeError("Expected argument 'frontend_port' to be a float")
         __self__.frontend_port = frontend_port
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -44,12 +50,6 @@ class GetRulesResult:
         """
         A list of SLB listener rules. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRulesResult(GetRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,26 +57,28 @@ class AwaitableGetRulesResult(GetRulesResult):
             yield self
         return GetRulesResult(
             frontend_port=self.frontend_port,
+            id=self.id,
             ids=self.ids,
             load_balancer_id=self.load_balancer_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            slb_rules=self.slb_rules,
-            id=self.id)
+            slb_rules=self.slb_rules)
 
 def get_rules(frontend_port=None,ids=None,load_balancer_id=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the rules associated with a server load balancer listener.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
+
+
     :param float frontend_port: SLB listener port.
     :param list ids: A list of rules IDs to filter results.
     :param str load_balancer_id: ID of the SLB with listener rules.
     :param str name_regex: A regex string to filter results by rule name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['frontendPort'] = frontend_port
     __args__['ids'] = ids
@@ -91,10 +93,10 @@ def get_rules(frontend_port=None,ids=None,load_balancer_id=None,name_regex=None,
 
     return AwaitableGetRulesResult(
         frontend_port=__ret__.get('frontendPort'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         load_balancer_id=__ret__.get('loadBalancerId'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        slb_rules=__ret__.get('slbRules'),
-        id=__ret__.get('id'))
+        slb_rules=__ret__.get('slbRules'))

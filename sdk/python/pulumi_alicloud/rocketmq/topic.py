@@ -33,11 +33,13 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, instance_id=None, message_type=None, perm=None, remark=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ONS topic resource.
-        
+
         For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
-        
+
         > **NOTE:** Available in 1.53.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_topic.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the topics.
@@ -45,8 +47,6 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_topic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +87,7 @@ class Topic(pulumi.CustomResource):
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,12 +96,11 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] perm: This attribute is used to set the read-write mode for the topic. Read [Request parameters](https://www.alibabacloud.com/help/doc-detail/56880.html) for further details.
         :param pulumi.Input[str] remark: This attribute is a concise description of topic. The length cannot exceed 128.
         :param pulumi.Input[str] topic: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_topic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["instance_id"] = instance_id
         __props__["message_type"] = message_type
         __props__["perm"] = perm

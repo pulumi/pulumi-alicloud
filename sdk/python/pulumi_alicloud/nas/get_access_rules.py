@@ -13,10 +13,16 @@ class GetAccessRulesResult:
     """
     A collection of values returned by getAccessRules.
     """
-    def __init__(__self__, access_group_name=None, ids=None, output_file=None, rules=None, rw_access=None, source_cidr_ip=None, user_access=None, id=None):
+    def __init__(__self__, access_group_name=None, id=None, ids=None, output_file=None, rules=None, rw_access=None, source_cidr_ip=None, user_access=None):
         if access_group_name and not isinstance(access_group_name, str):
             raise TypeError("Expected argument 'access_group_name' to be a str")
         __self__.access_group_name = access_group_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -50,12 +56,6 @@ class GetAccessRulesResult:
         """
         UserAccess of the AccessRule
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccessRulesResult(GetAccessRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,29 +63,31 @@ class AwaitableGetAccessRulesResult(GetAccessRulesResult):
             yield self
         return GetAccessRulesResult(
             access_group_name=self.access_group_name,
+            id=self.id,
             ids=self.ids,
             output_file=self.output_file,
             rules=self.rules,
             rw_access=self.rw_access,
             source_cidr_ip=self.source_cidr_ip,
-            user_access=self.user_access,
-            id=self.id)
+            user_access=self.user_access)
 
 def get_access_rules(access_group_name=None,ids=None,output_file=None,rw_access=None,source_cidr_ip=None,user_access=None,opts=None):
     """
     This data source provides AccessRule available to the user.
-    
+
     > NOTE: Available in 1.35.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
+
+
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param list ids: A list of rule IDs.
     :param str rw_access: Filter results by a specific RWAccess. 
     :param str source_cidr_ip: Filter results by a specific SourceCidrIp. 
     :param str user_access: Filter results by a specific UserAccess. 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['accessGroupName'] = access_group_name
     __args__['ids'] = ids
@@ -101,10 +103,10 @@ def get_access_rules(access_group_name=None,ids=None,output_file=None,rw_access=
 
     return AwaitableGetAccessRulesResult(
         access_group_name=__ret__.get('accessGroupName'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         output_file=__ret__.get('outputFile'),
         rules=__ret__.get('rules'),
         rw_access=__ret__.get('rwAccess'),
         source_cidr_ip=__ret__.get('sourceCidrIp'),
-        user_access=__ret__.get('userAccess'),
-        id=__ret__.get('id'))
+        user_access=__ret__.get('userAccess'))

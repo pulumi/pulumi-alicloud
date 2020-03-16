@@ -10,9 +10,9 @@ import (
 
 // The `polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
 // Filters support regular expression for the account name, searches by clusterId.
-// 
+//
 // > **NOTE:** Available in v1.70.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	var rv GetAccountsResult

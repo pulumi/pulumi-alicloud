@@ -37,7 +37,7 @@ class Instance(pulumi.CustomResource):
     data_disks: pulumi.Output[list]
     """
     The list of data disks created with instance.
-    
+
       * `category` (`str`) - The category of the disk:
         - `cloud`: The general cloud disk.
         - `cloud_efficiency`: The efficiency cloud disk.
@@ -227,7 +227,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
@@ -294,9 +293,9 @@ class Instance(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - `cloud`: The general cloud disk.
             - `cloud_efficiency`: The efficiency cloud disk.
@@ -316,8 +315,6 @@ class Instance(pulumi.CustomResource):
             - cloud_essd：[20, 32768]
             - ephemeral_ssd: [5, 800]
           * `snapshot_id` (`pulumi.Input[str]`) - The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -397,7 +394,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -467,9 +464,9 @@ class Instance(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - `cloud`: The general cloud disk.
             - `cloud_efficiency`: The efficiency cloud disk.
@@ -489,12 +486,11 @@ class Instance(pulumi.CustomResource):
             - cloud_essd：[20, 32768]
             - ephemeral_ssd: [5, 800]
           * `snapshot_id` (`pulumi.Input[str]`) - The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["allocate_public_ip"] = allocate_public_ip
         __props__["auto_release_time"] = auto_release_time
         __props__["auto_renew_period"] = auto_renew_period

@@ -12,7 +12,7 @@ import (
 )
 
 // Provides an RDS account resource and used to manage databases.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
 type Account struct {
 	pulumi.CustomResourceState

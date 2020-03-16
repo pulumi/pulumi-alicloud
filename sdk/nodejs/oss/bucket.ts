@@ -394,6 +394,8 @@ export interface BucketState {
     readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
+     * 
+     * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;
     /**
@@ -457,6 +459,8 @@ export interface BucketArgs {
     readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
+     * 
+     * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;
     /**

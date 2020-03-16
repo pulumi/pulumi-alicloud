@@ -45,7 +45,9 @@ class ForwardEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, external_ip=None, external_port=None, forward_table_id=None, internal_ip=None, internal_port=None, ip_protocol=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a forward resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_ip: The external ip address, the ip must along bandwidth package public ip which `vpc.NatGateway` argument `bandwidth_packages`.
@@ -55,8 +57,6 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
         :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: The name of forward entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,7 +106,7 @@ class ForwardEntry(pulumi.CustomResource):
         """
         Get an existing ForwardEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,12 +118,11 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] internal_port: The internal port, valid value is 1~65535|any.
         :param pulumi.Input[str] ip_protocol: The ip protocal, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: The name of forward entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["external_ip"] = external_ip
         __props__["external_port"] = external_port
         __props__["forward_entry_id"] = forward_entry_id

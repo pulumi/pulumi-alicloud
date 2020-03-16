@@ -53,6 +53,8 @@ export interface GetEipsArgs {
     readonly ids?: string[];
     /**
      * Deprecated since the version 1.8.0 of this provider.
+     * 
+     * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
      */
     readonly inUse?: boolean;
     /**

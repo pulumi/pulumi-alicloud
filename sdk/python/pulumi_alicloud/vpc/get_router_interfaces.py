@@ -13,7 +13,13 @@ class GetRouterInterfacesResult:
     """
     A collection of values returned by getRouterInterfaces.
     """
-    def __init__(__self__, ids=None, interfaces=None, name_regex=None, names=None, opposite_interface_id=None, opposite_interface_owner_id=None, output_file=None, role=None, router_id=None, router_type=None, specification=None, status=None, id=None):
+    def __init__(__self__, id=None, ids=None, interfaces=None, name_regex=None, names=None, opposite_interface_id=None, opposite_interface_owner_id=None, output_file=None, role=None, router_id=None, router_type=None, specification=None, status=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -80,18 +86,13 @@ class GetRouterInterfacesResult:
         """
         Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRouterInterfacesResult(GetRouterInterfacesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRouterInterfacesResult(
+            id=self.id,
             ids=self.ids,
             interfaces=self.interfaces,
             name_regex=self.name_regex,
@@ -103,14 +104,16 @@ class AwaitableGetRouterInterfacesResult(GetRouterInterfacesResult):
             router_id=self.router_id,
             router_type=self.router_type,
             specification=self.specification,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,opposite_interface_owner_id=None,output_file=None,role=None,router_id=None,router_type=None,specification=None,status=None,opts=None):
     """
     This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
     that connect VPCs together.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
+
+
     :param list ids: A list of router interface IDs.
     :param str name_regex: A regex string used to filter by router interface name.
     :param str opposite_interface_id: ID of the peer router interface.
@@ -121,10 +124,9 @@ def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,op
     :param str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
     :param str specification: Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
     :param str status: Expected status. Valid values are `Active`, `Inactive` and `Idle`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -143,6 +145,7 @@ def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,op
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getRouterInterfaces:getRouterInterfaces', __args__, opts=opts).value
 
     return AwaitableGetRouterInterfacesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         interfaces=__ret__.get('interfaces'),
         name_regex=__ret__.get('nameRegex'),
@@ -154,5 +157,4 @@ def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,op
         router_id=__ret__.get('routerId'),
         router_type=__ret__.get('routerType'),
         specification=__ret__.get('specification'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

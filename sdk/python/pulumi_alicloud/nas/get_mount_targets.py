@@ -13,7 +13,7 @@ class GetMountTargetsResult:
     """
     A collection of values returned by getMountTargets.
     """
-    def __init__(__self__, access_group_name=None, file_system_id=None, ids=None, mount_target_domain=None, output_file=None, targets=None, type=None, vpc_id=None, vswitch_id=None, id=None):
+    def __init__(__self__, access_group_name=None, file_system_id=None, id=None, ids=None, mount_target_domain=None, output_file=None, targets=None, type=None, vpc_id=None, vswitch_id=None):
         if access_group_name and not isinstance(access_group_name, str):
             raise TypeError("Expected argument 'access_group_name' to be a str")
         __self__.access_group_name = access_group_name
@@ -23,6 +23,12 @@ class GetMountTargetsResult:
         if file_system_id and not isinstance(file_system_id, str):
             raise TypeError("Expected argument 'file_system_id' to be a str")
         __self__.file_system_id = file_system_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -60,12 +66,6 @@ class GetMountTargetsResult:
         """
         VSwitchId of The MountTarget.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetMountTargetsResult(GetMountTargetsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -74,21 +74,24 @@ class AwaitableGetMountTargetsResult(GetMountTargetsResult):
         return GetMountTargetsResult(
             access_group_name=self.access_group_name,
             file_system_id=self.file_system_id,
+            id=self.id,
             ids=self.ids,
             mount_target_domain=self.mount_target_domain,
             output_file=self.output_file,
             targets=self.targets,
             type=self.type,
             vpc_id=self.vpc_id,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_mount_targets(access_group_name=None,file_system_id=None,ids=None,mount_target_domain=None,output_file=None,type=None,vpc_id=None,vswitch_id=None,opts=None):
     """
     This data source provides MountTargets available to the user.
-    
+
     > NOTE: Available in 1.35.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
+
+
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param str file_system_id: The ID of the FileSystem that owns the MountTarget.
     :param list ids: A list of MountTargetDomain.
@@ -96,10 +99,9 @@ def get_mount_targets(access_group_name=None,file_system_id=None,ids=None,mount_
     :param str type: Filter results by a specific NetworkType.
     :param str vpc_id: Filter results by a specific VpcId.
     :param str vswitch_id: Filter results by a specific VSwitchId.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['accessGroupName'] = access_group_name
     __args__['fileSystemId'] = file_system_id
@@ -118,11 +120,11 @@ def get_mount_targets(access_group_name=None,file_system_id=None,ids=None,mount_
     return AwaitableGetMountTargetsResult(
         access_group_name=__ret__.get('accessGroupName'),
         file_system_id=__ret__.get('fileSystemId'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         mount_target_domain=__ret__.get('mountTargetDomain'),
         output_file=__ret__.get('outputFile'),
         targets=__ret__.get('targets'),
         type=__ret__.get('type'),
         vpc_id=__ret__.get('vpcId'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))

@@ -39,13 +39,15 @@ class ClientUser(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth=None, client_ip=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, sag_id=None, user_mail=None, user_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Sag ClientUser resource. This topic describes how to manage accounts as an administrator. After you configure the network, you can create multiple accounts and distribute them to end users so that clients can access Alibaba Cloud.
-        
+
         For information about Sag ClientUser and how to use it, see [What is Sag ClientUser](https://www.alibabacloud.com/help/doc-detail/108326.htm).
-        
+
         > **NOTE:** Available in 1.65.0+
-        
+
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_client_user.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth: The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
@@ -54,8 +56,6 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         :param pulumi.Input[str] user_name: The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_client_user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class ClientUser(pulumi.CustomResource):
         """
         Get an existing ClientUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -109,12 +109,11 @@ class ClientUser(pulumi.CustomResource):
         :param pulumi.Input[str] sag_id: The ID of the SAG instance created for the SAG APP.
         :param pulumi.Input[str] user_mail: The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
         :param pulumi.Input[str] user_name: The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_client_user.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth"] = bandwidth
         __props__["client_ip"] = client_ip
         __props__["kms_encrypted_password"] = kms_encrypted_password

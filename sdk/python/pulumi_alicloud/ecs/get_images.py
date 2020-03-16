@@ -13,7 +13,13 @@ class GetImagesResult:
     """
     A collection of values returned by getImages.
     """
-    def __init__(__self__, ids=None, images=None, most_recent=None, name_regex=None, output_file=None, owners=None, id=None):
+    def __init__(__self__, id=None, ids=None, images=None, most_recent=None, name_regex=None, output_file=None, owners=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,38 +44,34 @@ class GetImagesResult:
         if owners and not isinstance(owners, str):
             raise TypeError("Expected argument 'owners' to be a str")
         __self__.owners = owners
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetImagesResult(GetImagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetImagesResult(
+            id=self.id,
             ids=self.ids,
             images=self.images,
             most_recent=self.most_recent,
             name_regex=self.name_regex,
             output_file=self.output_file,
-            owners=self.owners,
-            id=self.id)
+            owners=self.owners)
 
 def get_images(most_recent=None,name_regex=None,output_file=None,owners=None,opts=None):
     """
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
     other public images and the ones available on the image market. 
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
+
+
     :param bool most_recent: If more than one result are returned, select the most recent one.
     :param str name_regex: A regex string to filter resulting images by name. 
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['mostRecent'] = most_recent
     __args__['nameRegex'] = name_regex
@@ -82,10 +84,10 @@ def get_images(most_recent=None,name_regex=None,output_file=None,owners=None,opt
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getImages:getImages', __args__, opts=opts).value
 
     return AwaitableGetImagesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         images=__ret__.get('images'),
         most_recent=__ret__.get('mostRecent'),
         name_regex=__ret__.get('nameRegex'),
         output_file=__ret__.get('outputFile'),
-        owners=__ret__.get('owners'),
-        id=__ret__.get('id'))
+        owners=__ret__.get('owners'))

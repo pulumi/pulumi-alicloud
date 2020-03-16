@@ -13,12 +13,18 @@ class GetNatGatewaysResult:
     """
     A collection of values returned by getNatGateways.
     """
-    def __init__(__self__, gateways=None, ids=None, name_regex=None, names=None, output_file=None, vpc_id=None, id=None):
+    def __init__(__self__, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, vpc_id=None):
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         __self__.gateways = gateways
         """
         A list of Nat gateways. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -44,12 +50,6 @@ class GetNatGatewaysResult:
         """
         The ID of the VPC.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNatGatewaysResult(GetNatGatewaysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,26 +57,28 @@ class AwaitableGetNatGatewaysResult(GetNatGatewaysResult):
             yield self
         return GetNatGatewaysResult(
             gateways=self.gateways,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            vpc_id=self.vpc_id,
-            id=self.id)
+            vpc_id=self.vpc_id)
 
 def get_nat_gateways(ids=None,name_regex=None,output_file=None,vpc_id=None,opts=None):
     """
     This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.37.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
+
+
     :param list ids: A list of NAT gateways IDs.
     :param str name_regex: A regex string to filter nat gateways by name.
     :param str vpc_id: The ID of the VPC.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -90,9 +92,9 @@ def get_nat_gateways(ids=None,name_regex=None,output_file=None,vpc_id=None,opts=
 
     return AwaitableGetNatGatewaysResult(
         gateways=__ret__.get('gateways'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        vpc_id=__ret__.get('vpcId'),
-        id=__ret__.get('id'))
+        vpc_id=__ret__.get('vpcId'))

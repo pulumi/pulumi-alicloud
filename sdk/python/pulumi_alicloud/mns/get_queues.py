@@ -13,7 +13,13 @@ class GetQueuesResult:
     """
     A collection of values returned by getQueues.
     """
-    def __init__(__self__, name_prefix=None, names=None, output_file=None, queues=None, id=None):
+    def __init__(__self__, id=None, name_prefix=None, names=None, output_file=None, queues=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name_prefix and not isinstance(name_prefix, str):
             raise TypeError("Expected argument 'name_prefix' to be a str")
         __self__.name_prefix = name_prefix
@@ -32,33 +38,29 @@ class GetQueuesResult:
         """
         A list of queues. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetQueuesResult(GetQueuesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetQueuesResult(
+            id=self.id,
             name_prefix=self.name_prefix,
             names=self.names,
             output_file=self.output_file,
-            queues=self.queues,
-            id=self.id)
+            queues=self.queues)
 
 def get_queues(name_prefix=None,output_file=None,opts=None):
     """
     This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
-    
-    :param str name_prefix: A string to filter resulting queues by their name prefixs.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_queues.html.markdown.
+
+
+    :param str name_prefix: A string to filter resulting queues by their name prefixs.
     """
     __args__ = dict()
+
 
     __args__['namePrefix'] = name_prefix
     __args__['outputFile'] = output_file
@@ -69,8 +71,8 @@ def get_queues(name_prefix=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:mns/getQueues:getQueues', __args__, opts=opts).value
 
     return AwaitableGetQueuesResult(
+        id=__ret__.get('id'),
         name_prefix=__ret__.get('namePrefix'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        queues=__ret__.get('queues'),
-        id=__ret__.get('id'))
+        queues=__ret__.get('queues'))

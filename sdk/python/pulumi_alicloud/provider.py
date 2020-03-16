@@ -16,19 +16,36 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+        :param pulumi.Input[str] access_key: The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+               console.
+        :param pulumi.Input[str] account_id: The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
+               Alibaba Cloud console.
+        :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
+        :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
+               of the Alibaba Cloud console.
+        :param pulumi.Input[str] profile: The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
+        :param pulumi.Input[str] region: The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
+        :param pulumi.Input[str] secret_key: The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
+               console.
+        :param pulumi.Input[str] security_token: security token. A security token is only required if you are using Security Token Service.
+        :param pulumi.Input[str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
+        :param pulumi.Input[bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
+               that are not public (yet).
+
         The **assume_role** object supports the following:
-        
+
           * `policy` (`pulumi.Input[str]`)
           * `roleArn` (`pulumi.Input[str]`)
           * `sessionExpiration` (`pulumi.Input[float]`)
           * `sessionName` (`pulumi.Input[str]`)
-        
+
         The **endpoints** object supports the following:
-        
+
           * `actiontrail` (`pulumi.Input[str]`)
           * `adb` (`pulumi.Input[str]`)
           * `alikafka` (`pulumi.Input[str]`)
@@ -69,8 +86,6 @@ class Provider(pulumi.ProviderResource):
           * `slb` (`pulumi.Input[str]`)
           * `sts` (`pulumi.Input[str]`)
           * `vpc` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -128,22 +143,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -41,9 +41,11 @@ class Trail(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, event_rw=None, name=None, oss_bucket_name=None, oss_key_prefix=None, role_name=None, sls_project_arn=None, sls_write_role_arn=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
-        
+
         > **NOTE:** Available in 1.35.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] event_rw: Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
@@ -53,8 +55,6 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +95,7 @@ class Trail(pulumi.CustomResource):
         """
         Get an existing Trail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,12 +106,11 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["event_rw"] = event_rw
         __props__["name"] = name
         __props__["oss_bucket_name"] = oss_bucket_name

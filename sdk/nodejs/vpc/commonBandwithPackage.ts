@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/common_bandwidth_package.html.markdown.
- */
 export class CommonBandwithPackage extends pulumi.CustomResource {
     /**
      * Get an existing CommonBandwithPackage resource's state with the given name, ID, and optional extra

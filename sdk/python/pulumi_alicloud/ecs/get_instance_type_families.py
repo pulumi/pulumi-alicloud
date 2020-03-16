@@ -13,7 +13,7 @@ class GetInstanceTypeFamiliesResult:
     """
     A collection of values returned by getInstanceTypeFamilies.
     """
-    def __init__(__self__, families=None, generation=None, ids=None, instance_charge_type=None, output_file=None, spot_strategy=None, zone_id=None, id=None):
+    def __init__(__self__, families=None, generation=None, id=None, ids=None, instance_charge_type=None, output_file=None, spot_strategy=None, zone_id=None):
         if families and not isinstance(families, list):
             raise TypeError("Expected argument 'families' to be a list")
         __self__.families = families
@@ -22,6 +22,12 @@ class GetInstanceTypeFamiliesResult:
         __self__.generation = generation
         """
         The generation of the instance type family.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -41,12 +47,6 @@ class GetInstanceTypeFamiliesResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceTypeFamiliesResult(GetInstanceTypeFamiliesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,27 +55,29 @@ class AwaitableGetInstanceTypeFamiliesResult(GetInstanceTypeFamiliesResult):
         return GetInstanceTypeFamiliesResult(
             families=self.families,
             generation=self.generation,
+            id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             output_file=self.output_file,
             spot_strategy=self.spot_strategy,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_instance_type_families(generation=None,instance_charge_type=None,output_file=None,spot_strategy=None,zone_id=None,opts=None):
     """
     This data source provides the ECS instance type families of Alibaba Cloud.
-    
+
     > **NOTE:** Available in 1.54.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
+
+
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
     :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str zone_id: The Zone to launch the instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['generation'] = generation
     __args__['instanceChargeType'] = instance_charge_type
@@ -91,9 +93,9 @@ def get_instance_type_families(generation=None,instance_charge_type=None,output_
     return AwaitableGetInstanceTypeFamiliesResult(
         families=__ret__.get('families'),
         generation=__ret__.get('generation'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         output_file=__ret__.get('outputFile'),
         spot_strategy=__ret__.get('spotStrategy'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

@@ -51,13 +51,15 @@ class Instance(pulumi.CustomResource):
         Distributed Relational Database Service (DRDS) is a lightweight (stateless), flexible, stable, and efficient middleware product independently developed by Alibaba Group to resolve scalability issues with single-host relational databases.
         With its compatibility with MySQL protocols and syntaxes, DRDS enables database/table sharding, smooth scaling, configuration upgrade/downgrade,
         transparent read/write splitting, and distributed transactions, providing O&M capabilities for distributed databases throughout their entire lifecycle.
-        
+
         For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
-        
+
         > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
-        
+
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/drds_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
@@ -78,8 +80,6 @@ class Instance(pulumi.CustomResource):
                - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/drds_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -121,7 +121,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -143,12 +143,11 @@ class Instance(pulumi.CustomResource):
                - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/drds_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["instance_charge_type"] = instance_charge_type
         __props__["instance_series"] = instance_series

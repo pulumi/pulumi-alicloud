@@ -25,7 +25,7 @@ class ServerGroup(pulumi.CustomResource):
     servers: pulumi.Output[list]
     """
     A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
-    
+
       * `port` (`float`)
       * `serverIds` (`list`)
       * `type` (`str`)
@@ -35,41 +35,41 @@ class ServerGroup(pulumi.CustomResource):
         """
         A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
         and to meet the personalized requirements of domain name and URL forwarding.
-        
+
         > **NOTE:** One ECS instance can be added into multiple virtual server groups.
-        
+
         > **NOTE:** One virtual server group can be attached with multiple listeners in one load balancer.
-        
+
         > **NOTE:** One Classic and Internet load balancer, its virtual server group can add Classic and VPC ECS instances.
-        
+
         > **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
-        
+
         > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
-        
+
         ## Block servers
-        
+
         The servers mapping supports the following:
-        
+
         * `server_ids` - (Required) A list backend server ID (ECS instance ID).
         * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
         * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
         :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
         :param pulumi.Input[list] servers: A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
-        
+
         The **servers** object supports the following:
-        
+
           * `port` (`pulumi.Input[float]`)
           * `serverIds` (`pulumi.Input[list]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +105,7 @@ class ServerGroup(pulumi.CustomResource):
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,19 +113,18 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
         :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
         :param pulumi.Input[list] servers: A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
-        
+
         The **servers** object supports the following:
-        
+
           * `port` (`pulumi.Input[float]`)
           * `serverIds` (`pulumi.Input[list]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["delete_protection_validation"] = delete_protection_validation
         __props__["load_balancer_id"] = load_balancer_id
         __props__["name"] = name

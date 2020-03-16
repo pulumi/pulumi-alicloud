@@ -25,22 +25,22 @@ class ImageExport(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, image_id=None, oss_bucket=None, oss_prefix=None, __props__=None, __name__=None, __opts__=None):
         """
         Export a custom image to the OSS bucket in the same region as the custom image.
-        
+
         > **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.
-        
+
         > **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.
-        
+
         > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
-        
+
         > **NOTE:** Available in 1.68.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The source image ID.
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,19 +77,18 @@ class ImageExport(pulumi.CustomResource):
         """
         Get an existing ImageExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] image_id: The source image ID.
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["image_id"] = image_id
         __props__["oss_bucket"] = oss_bucket
         __props__["oss_prefix"] = oss_prefix

@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_serverless_kubernetes.html.markdown.
- */
 export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * Get an existing ServerlessKubernetes resource's state with the given name, ID, and optional extra

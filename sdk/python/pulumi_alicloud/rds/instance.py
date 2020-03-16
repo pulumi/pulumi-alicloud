@@ -78,7 +78,7 @@ class Instance(pulumi.CustomResource):
     parameters: pulumi.Output[list]
     """
     Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
-    
+
       * `name` (`str`)
       * `value` (`str`)
     """
@@ -135,7 +135,9 @@ class Instance(pulumi.CustomResource):
         Provides an RDS instance resource. A DB instance is an isolated database
         environment in the cloud. A DB instance can contain multiple user-created
         databases.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
@@ -178,13 +180,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
-        
+
         The **parameters** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -247,7 +247,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,17 +293,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
-        
+
         The **parameters** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`)
           * `value` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auto_renew"] = auto_renew
         __props__["auto_renew_period"] = auto_renew_period
         __props__["auto_upgrade_minor_version"] = auto_upgrade_minor_version

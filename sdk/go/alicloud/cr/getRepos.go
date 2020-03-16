@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list Container Registry repositories on Alibaba Cloud.
-// 
+//
 // > **NOTE:** Available in v1.35.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
 func GetRepos(ctx *pulumi.Context, args *GetReposArgs, opts ...pulumi.InvokeOption) (*GetReposResult, error) {
 	var rv GetReposResult

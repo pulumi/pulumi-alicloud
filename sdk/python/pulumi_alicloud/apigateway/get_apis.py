@@ -13,7 +13,7 @@ class GetApisResult:
     """
     A collection of values returned by getApis.
     """
-    def __init__(__self__, api_id=None, apis=None, group_id=None, ids=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, api_id=None, apis=None, group_id=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if api_id and not isinstance(api_id, str):
             raise TypeError("Expected argument 'api_id' to be a str")
         __self__.api_id = api_id
@@ -28,6 +28,12 @@ class GetApisResult:
         __self__.group_id = group_id
         """
         The group id that the apis belong to.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -47,12 +53,6 @@ class GetApisResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetApisResult(GetApisResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -62,24 +62,26 @@ class AwaitableGetApisResult(GetApisResult):
             api_id=self.api_id,
             apis=self.apis,
             group_id=self.group_id,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_apis(api_id=None,group_id=None,ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the apis of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
+
+
     :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
     :param str group_id: ID of the specified group.
     :param list ids: A list of api IDs. 
     :param str name_regex: A regex string to filter api gateway apis by name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['apiId'] = api_id
     __args__['groupId'] = group_id
@@ -96,8 +98,8 @@ def get_apis(api_id=None,group_id=None,ids=None,name_regex=None,output_file=None
         api_id=__ret__.get('apiId'),
         apis=__ret__.get('apis'),
         group_id=__ret__.get('groupId'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

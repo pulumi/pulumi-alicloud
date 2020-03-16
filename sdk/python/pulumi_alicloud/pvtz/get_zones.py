@@ -13,7 +13,13 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, ids=None, keyword=None, names=None, output_file=None, zones=None, id=None):
+    def __init__(__self__, id=None, ids=None, keyword=None, names=None, output_file=None, zones=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,35 +44,31 @@ class GetZonesResult:
         """
         A list of zones. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetZonesResult(
+            id=self.id,
             ids=self.ids,
             keyword=self.keyword,
             names=self.names,
             output_file=self.output_file,
-            zones=self.zones,
-            id=self.id)
+            zones=self.zones)
 
 def get_zones(ids=None,keyword=None,output_file=None,opts=None):
     """
     This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
-    
-    :param list ids: A list of zone IDs. 
-    :param str keyword: keyword for zone name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
+
+
+    :param list ids: A list of zone IDs. 
+    :param str keyword: keyword for zone name.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['keyword'] = keyword
@@ -78,9 +80,9 @@ def get_zones(ids=None,keyword=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:pvtz/getZones:getZones', __args__, opts=opts).value
 
     return AwaitableGetZonesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         keyword=__ret__.get('keyword'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        zones=__ret__.get('zones'),
-        id=__ret__.get('id'))
+        zones=__ret__.get('zones'))

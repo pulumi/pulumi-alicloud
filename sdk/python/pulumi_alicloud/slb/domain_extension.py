@@ -34,11 +34,13 @@ class DomainExtension(pulumi.CustomResource):
         """
         HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
         Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
-        
+
         > **NOTE:** Available in 1.60.0+
-        
+
         > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -46,8 +48,6 @@ class DomainExtension(pulumi.CustomResource):
         :param pulumi.Input[float] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,7 +90,7 @@ class DomainExtension(pulumi.CustomResource):
         """
         Get an existing DomainExtension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,12 +99,11 @@ class DomainExtension(pulumi.CustomResource):
         :param pulumi.Input[float] frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
         :param pulumi.Input[str] load_balancer_id: The ID of the SLB instance.
         :param pulumi.Input[str] server_certificate_id: The ID of the certificate used by the domain name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["delete_protection_validation"] = delete_protection_validation
         __props__["domain"] = domain
         __props__["frontend_port"] = frontend_port

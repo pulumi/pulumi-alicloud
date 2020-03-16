@@ -17,7 +17,7 @@ class ScalingConfiguration(pulumi.CustomResource):
     data_disks: pulumi.Output[list]
     """
     DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
-    
+
       * `category` (`str`)
       * `delete_with_instance` (`bool`)
       * `device` (`str`)
@@ -141,7 +141,6 @@ class ScalingConfiguration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, active=None, data_disks=None, enable=None, force_delete=None, image_id=None, instance_ids=None, instance_name=None, instance_type=None, instance_types=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, override=None, password=None, password_inherit=None, role_name=None, scaling_configuration_name=None, scaling_group_id=None, security_group_id=None, security_group_ids=None, substitute=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScalingConfiguration resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
@@ -176,16 +175,14 @@ class ScalingConfiguration(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`)
           * `delete_with_instance` (`pulumi.Input[bool]`)
           * `device` (`pulumi.Input[str]`)
           * `size` (`pulumi.Input[float]`)
           * `snapshot_id` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_configuration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -249,7 +246,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         """
         Get an existing ScalingConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -285,20 +282,19 @@ class ScalingConfiguration(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
         :param pulumi.Input[str] user_data: User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`)
           * `delete_with_instance` (`pulumi.Input[bool]`)
           * `device` (`pulumi.Input[str]`)
           * `size` (`pulumi.Input[float]`)
           * `snapshot_id` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_configuration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["active"] = active
         __props__["data_disks"] = data_disks
         __props__["enable"] = enable

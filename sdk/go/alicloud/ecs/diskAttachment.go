@@ -12,7 +12,7 @@ import (
 )
 
 // Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
 type DiskAttachment struct {
 	pulumi.CustomResourceState

@@ -25,19 +25,19 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, consumer_id=None, instance_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ALIKAFKA consumer group resource.
-        
+
         > **NOTE:** Available in 1.56.0+
-        
+
         > **NOTE:**  Only the following regions support create alikafka consumer group.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_consumer_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_consumer_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,19 +74,18 @@ class ConsumerGroup(pulumi.CustomResource):
         """
         Get an existing ConsumerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] consumer_id: ID of the consumer group. The length cannot exceed 64 characters.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_consumer_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["consumer_id"] = consumer_id
         __props__["instance_id"] = instance_id
         __props__["tags"] = tags

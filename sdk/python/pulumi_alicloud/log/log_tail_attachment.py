@@ -27,18 +27,18 @@ class LogTailAttachment(pulumi.CustomResource):
         The Logtail access service is a log collection agent provided by Log Service.
         You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
         Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
-        
+
         This resource amis to attach one logtail configure to a machine group.
-        
+
         > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,19 +77,18 @@ class LogTailAttachment(pulumi.CustomResource):
         """
         Get an existing LogTailAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] logtail_config_name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["logtail_config_name"] = logtail_config_name
         __props__["machine_group_name"] = machine_group_name
         __props__["project"] = project

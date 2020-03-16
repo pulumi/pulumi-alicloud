@@ -25,7 +25,7 @@ class Service(pulumi.CustomResource):
     log_config: pulumi.Output[dict]
     """
     Provide this to store your FC service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm).
-    
+
       * `logstore` (`str`) - The log store name of Logs service.
       * `project` (`str`) - The project name of Logs service.
     """
@@ -48,7 +48,7 @@ class Service(pulumi.CustomResource):
     vpc_config: pulumi.Output[dict]
     """
     Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
-    
+
       * `security_group_id` (`str`) - A security group ID associated with the FC service.
       * `vpc_id` (`str`)
       * `vswitch_ids` (`list`) - A list of vswitch IDs associated with the FC service.
@@ -56,7 +56,6 @@ class Service(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, internet_access=None, log_config=None, name=None, name_prefix=None, role=None, vpc_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Service resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The function compute service description.
@@ -66,19 +65,17 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name_prefix: Setting a prefix to get a only name. It is conflict with "name".
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[dict] vpc_config: Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
-        
+
         The **log_config** object supports the following:
-        
+
           * `logstore` (`pulumi.Input[str]`) - The log store name of Logs service.
           * `project` (`pulumi.Input[str]`) - The project name of Logs service.
-        
+
         The **vpc_config** object supports the following:
-        
+
           * `security_group_id` (`pulumi.Input[str]`) - A security group ID associated with the FC service.
           * `vpc_id` (`pulumi.Input[str]`)
           * `vswitch_ids` (`pulumi.Input[list]`) - A list of vswitch IDs associated with the FC service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_service.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +114,7 @@ class Service(pulumi.CustomResource):
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,23 +127,22 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[str] service_id: The Function Compute service ID.
         :param pulumi.Input[dict] vpc_config: Provide this to allow your FC service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm).
-        
+
         The **log_config** object supports the following:
-        
+
           * `logstore` (`pulumi.Input[str]`) - The log store name of Logs service.
           * `project` (`pulumi.Input[str]`) - The project name of Logs service.
-        
+
         The **vpc_config** object supports the following:
-        
+
           * `security_group_id` (`pulumi.Input[str]`) - A security group ID associated with the FC service.
           * `vpc_id` (`pulumi.Input[str]`)
           * `vswitch_ids` (`pulumi.Input[list]`) - A list of vswitch IDs associated with the FC service.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_service.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["internet_access"] = internet_access
         __props__["last_modified"] = last_modified

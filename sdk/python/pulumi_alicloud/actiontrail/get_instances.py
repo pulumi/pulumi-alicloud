@@ -13,7 +13,13 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, ids=None, instances=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,37 +44,33 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetInstancesResult(
+            id=self.id,
             ids=self.ids,
             instances=self.instances,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.59.0+
-    
-    :param list ids: A list of instance IDs to filter results.
-    :param str name_regex: A regex string to filter results by the instance name. 
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_instances.html.markdown.
+
+
+    :param list ids: A list of instance IDs to filter results.
+    :param str name_regex: A regex string to filter results by the instance name. 
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -80,9 +82,9 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getInstances:getInstances', __args__, opts=opts).value
 
     return AwaitableGetInstancesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instances=__ret__.get('instances'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

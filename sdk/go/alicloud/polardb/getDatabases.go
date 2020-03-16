@@ -10,9 +10,9 @@ import (
 
 // The `polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
 // Filters support regular expression for the database name, searches by clusterId.
-// 
+//
 // > **NOTE:** Available in v1.70.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	var rv GetDatabasesResult

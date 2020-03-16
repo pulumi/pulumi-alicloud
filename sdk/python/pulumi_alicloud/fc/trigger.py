@@ -57,7 +57,6 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, config=None, config_mns=None, function=None, name=None, name_prefix=None, role=None, service=None, source_arn=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Trigger resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
@@ -69,8 +68,6 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_trigger.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +114,7 @@ class Trigger(pulumi.CustomResource):
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -132,12 +129,11 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] trigger_id: The Function Compute trigger ID.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events"].
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_trigger.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config"] = config
         __props__["config_mns"] = config_mns
         __props__["function"] = function

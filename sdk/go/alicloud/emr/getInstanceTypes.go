@@ -10,9 +10,9 @@ import (
 
 // The `emr.getInstanceTypes` data source provides a collection of ecs
 // instance types available in Alibaba Cloud account when create a emr cluster.
-// 
+//
 // > **NOTE:** Available in 1.59.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	var rv GetInstanceTypesResult

@@ -13,7 +13,7 @@ class GetServerlessKubernetesClustersResult:
     """
     A collection of values returned by getServerlessKubernetesClusters.
     """
-    def __init__(__self__, clusters=None, enable_details=None, ids=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, clusters=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         __self__.clusters = clusters
@@ -23,6 +23,12 @@ class GetServerlessKubernetesClustersResult:
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         __self__.enable_details = enable_details
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -41,12 +47,6 @@ class GetServerlessKubernetesClustersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServerlessKubernetesClustersResult(GetServerlessKubernetesClustersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,24 +55,26 @@ class AwaitableGetServerlessKubernetesClustersResult(GetServerlessKubernetesClus
         return GetServerlessKubernetesClustersResult(
             clusters=self.clusters,
             enable_details=self.enable_details,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_serverless_kubernetes_clusters(enable_details=None,ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
-    
+
     > **NOTE:** Available in 1.58.0+
-    
-    :param list ids: Cluster IDs to filter.
-    :param str name_regex: A regex string to filter results by cluster name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
+
+
+    :param list ids: Cluster IDs to filter.
+    :param str name_regex: A regex string to filter results by cluster name.
     """
     __args__ = dict()
+
 
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
@@ -87,8 +89,8 @@ def get_serverless_kubernetes_clusters(enable_details=None,ids=None,name_regex=N
     return AwaitableGetServerlessKubernetesClustersResult(
         clusters=__ret__.get('clusters'),
         enable_details=__ret__.get('enableDetails'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

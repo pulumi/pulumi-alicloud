@@ -45,7 +45,6 @@ class Order(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, components=None, coupon_id=None, duration=None, package_version=None, pay_type=None, pricing_cycle=None, product_code=None, quantity=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Order resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] components: Service providers customize additional components.
@@ -56,8 +55,6 @@ class Order(pulumi.CustomResource):
         :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[str] product_code: The product_code of market place product.
         :param pulumi.Input[float] quantity: The quantity of the market product will be purchased.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/market_order.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,7 +98,7 @@ class Order(pulumi.CustomResource):
         """
         Get an existing Order resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,12 +110,11 @@ class Order(pulumi.CustomResource):
         :param pulumi.Input[str] pricing_cycle: The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
         :param pulumi.Input[str] product_code: The product_code of market place product.
         :param pulumi.Input[float] quantity: The quantity of the market product will be purchased.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/market_order.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["components"] = components
         __props__["coupon_id"] = coupon_id
         __props__["duration"] = duration

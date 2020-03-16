@@ -81,12 +81,14 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, address=None, address_ip_version=None, address_type=None, bandwidth=None, delete_protection=None, instance_charge_type=None, internet=None, internet_charge_type=None, master_zone_id=None, name=None, period=None, resource_group_id=None, slave_zone_id=None, specification=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Application Load Balancer resource.
-        
+
         > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-        
+
         > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
         For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
@@ -111,8 +113,6 @@ class LoadBalancer(pulumi.CustomResource):
                "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -158,7 +158,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -184,12 +184,11 @@ class LoadBalancer(pulumi.CustomResource):
                "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["address"] = address
         __props__["address_ip_version"] = address_ip_version
         __props__["address_type"] = address_type

@@ -25,20 +25,20 @@ class NetworkGrant(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ccn_id=None, cen_id=None, cen_uid=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloud Connect Network Grant resource. If the CEN instance to be attached belongs to another account, authorization by the CEN instance is required.
-        
+
         For information about Cloud Connect Network Grant and how to use it, see [What is Cloud Connect Network Grant](https://www.alibabacloud.com/help/doc-detail/94543.htm).
-        
+
         > **NOTE:** Available in 1.63.0+
-        
+
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_grant.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_grant.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,19 +77,18 @@ class NetworkGrant(pulumi.CustomResource):
         """
         Get an existing NetworkGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ccn_id: The ID of the CCN instance.
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_grant.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ccn_id"] = ccn_id
         __props__["cen_id"] = cen_id
         __props__["cen_uid"] = cen_uid

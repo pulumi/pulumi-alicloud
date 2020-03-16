@@ -25,16 +25,16 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cidr_block=None, instance_id=None, route_table_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CEN route entry resource. Cloud Enterprise Network (CEN) supports publishing and withdrawing route entries of attached networks. You can publish a route entry of an attached VPC or VBR to a CEN instance, then other attached networks can learn the route if there is no route conflict. You can withdraw a published route entry when CEN does not need it any more.
-        
+
         For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,19 +73,18 @@ class RouteEntry(pulumi.CustomResource):
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cidr_block"] = cidr_block
         __props__["instance_id"] = instance_id
         __props__["route_table_id"] = route_table_id

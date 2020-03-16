@@ -13,7 +13,13 @@ class GetSslVpnServersResult:
     """
     A collection of values returned by getSslVpnServers.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, servers=None, vpn_gateway_id=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, servers=None, vpn_gateway_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -44,38 +50,34 @@ class GetSslVpnServersResult:
         """
         The ID of the VPN gateway instance.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSslVpnServersResult(GetSslVpnServersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetSslVpnServersResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             servers=self.servers,
-            vpn_gateway_id=self.vpn_gateway_id,
-            id=self.id)
+            vpn_gateway_id=self.vpn_gateway_id)
 
 def get_ssl_vpn_servers(ids=None,name_regex=None,output_file=None,vpn_gateway_id=None,opts=None):
     """
     The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
+
+
     :param list ids: IDs of the SSL-VPN servers.
     :param str name_regex: A regex string of SSL-VPN server name.
     :param str output_file: Save the result to the file.
     :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -88,10 +90,10 @@ def get_ssl_vpn_servers(ids=None,name_regex=None,output_file=None,vpn_gateway_id
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getSslVpnServers:getSslVpnServers', __args__, opts=opts).value
 
     return AwaitableGetSslVpnServersResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         servers=__ret__.get('servers'),
-        vpn_gateway_id=__ret__.get('vpnGatewayId'),
-        id=__ret__.get('id'))
+        vpn_gateway_id=__ret__.get('vpnGatewayId'))

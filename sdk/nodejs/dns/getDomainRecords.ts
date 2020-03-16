@@ -5,9 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_records.html.markdown.
- */
 export function getDomainRecords(args: GetDomainRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainRecordsResult> & GetDomainRecordsResult {
     if (!opts) {
         opts = {}

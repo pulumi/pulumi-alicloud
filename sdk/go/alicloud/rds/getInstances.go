@@ -10,7 +10,7 @@ import (
 
 // The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

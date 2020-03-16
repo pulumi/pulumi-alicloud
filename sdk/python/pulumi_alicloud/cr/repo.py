@@ -17,7 +17,7 @@ class Repo(pulumi.CustomResource):
     domain_list: pulumi.Output[dict]
     """
     The repository domain list.
-    
+
       * `internal` (`str`) - Domain of internal endpoint, only in some regions.
       * `public` (`str`) - Domain of public endpoint.
       * `vpc` (`str`) - Domain of vpc endpoint.
@@ -41,11 +41,13 @@ class Repo(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, detail=None, name=None, namespace=None, repo_type=None, summary=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource will help you to manager Container Registry repositories.
-        
+
         > **NOTE:** Available in v1.35.0+.
-        
+
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
@@ -53,8 +55,6 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,7 +96,7 @@ class Repo(pulumi.CustomResource):
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,18 +106,17 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
         :param pulumi.Input[str] summary: The repository general information. It can contain 1 to 80 characters.
-        
+
         The **domain_list** object supports the following:
-        
+
           * `internal` (`pulumi.Input[str]`) - Domain of internal endpoint, only in some regions.
           * `public` (`pulumi.Input[str]`) - Domain of public endpoint.
           * `vpc` (`pulumi.Input[str]`) - Domain of vpc endpoint.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["detail"] = detail
         __props__["domain_list"] = domain_list
         __props__["name"] = name

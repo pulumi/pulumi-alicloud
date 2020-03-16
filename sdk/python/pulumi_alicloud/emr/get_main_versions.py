@@ -13,7 +13,7 @@ class GetMainVersionsResult:
     """
     A collection of values returned by getMainVersions.
     """
-    def __init__(__self__, cluster_types=None, emr_version=None, ids=None, main_versions=None, output_file=None, id=None):
+    def __init__(__self__, cluster_types=None, emr_version=None, id=None, ids=None, main_versions=None, output_file=None):
         if cluster_types and not isinstance(cluster_types, list):
             raise TypeError("Expected argument 'cluster_types' to be a list")
         __self__.cluster_types = cluster_types
@@ -22,6 +22,12 @@ class GetMainVersionsResult:
         __self__.emr_version = emr_version
         """
         The version of the emr cluster instance.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -38,12 +44,6 @@ class GetMainVersionsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetMainVersionsResult(GetMainVersionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,25 +52,27 @@ class AwaitableGetMainVersionsResult(GetMainVersionsResult):
         return GetMainVersionsResult(
             cluster_types=self.cluster_types,
             emr_version=self.emr_version,
+            id=self.id,
             ids=self.ids,
             main_versions=self.main_versions,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_main_versions(cluster_types=None,emr_version=None,output_file=None,opts=None):
     """
     The `emr.getMainVersions` data source provides a collection of emr 
     main versions available in Alibaba Cloud account when create a emr cluster.
-    
+
     > **NOTE:** Available in 1.59.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
+
+
     :param list cluster_types: The supported clusterType of this emr version.
            Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
     :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterTypes'] = cluster_types
     __args__['emrVersion'] = emr_version
@@ -84,7 +86,7 @@ def get_main_versions(cluster_types=None,emr_version=None,output_file=None,opts=
     return AwaitableGetMainVersionsResult(
         cluster_types=__ret__.get('clusterTypes'),
         emr_version=__ret__.get('emrVersion'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         main_versions=__ret__.get('mainVersions'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

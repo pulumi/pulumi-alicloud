@@ -13,10 +13,16 @@ class GetDomainGroupsResult:
     """
     A collection of values returned by getDomainGroups.
     """
-    def __init__(__self__, groups=None, ids=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         __self__.groups = groups
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -29,12 +35,6 @@ class GetDomainGroupsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDomainGroupsResult(GetDomainGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,20 +42,18 @@ class AwaitableGetDomainGroupsResult(GetDomainGroupsResult):
             yield self
         return GetDomainGroupsResult(
             groups=self.groups,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_domain_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_groups.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -68,8 +66,8 @@ def get_domain_groups(ids=None,name_regex=None,output_file=None,opts=None):
 
     return AwaitableGetDomainGroupsResult(
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
 func GetDdosCooInstances(ctx *pulumi.Context, args *GetDdosCooInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosCooInstancesResult, error) {
 	var rv GetDdosCooInstancesResult

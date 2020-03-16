@@ -60,6 +60,9 @@ export class Key extends pulumi.CustomResource {
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
     public readonly deletionWindowInDays!: pulumi.Output<number | undefined>;
+    /**
+     * The description of the key.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the key is enabled. Defaults to true.
@@ -119,6 +122,9 @@ export interface KeyState {
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
     readonly deletionWindowInDays?: pulumi.Input<number>;
+    /**
+     * The description of the key.
+     */
     readonly description?: pulumi.Input<string>;
     /**
      * Specifies whether the key is enabled. Defaults to true.
@@ -139,6 +145,9 @@ export interface KeyArgs {
      * after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
      */
     readonly deletionWindowInDays?: pulumi.Input<number>;
+    /**
+     * The description of the key.
+     */
     readonly description?: pulumi.Input<string>;
     /**
      * Specifies whether the key is enabled. Defaults to true.

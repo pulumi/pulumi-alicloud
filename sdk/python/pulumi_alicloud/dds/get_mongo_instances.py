@@ -13,10 +13,16 @@ class GetMongoInstancesResult:
     """
     A collection of values returned by getMongoInstances.
     """
-    def __init__(__self__, availability_zone=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, availability_zone=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -41,12 +47,6 @@ class GetMongoInstancesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,6 +54,7 @@ class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
             yield self
         return GetMongoInstancesResult(
             availability_zone=self.availability_zone,
+            id=self.id,
             ids=self.ids,
             instance_class=self.instance_class,
             instance_type=self.instance_type,
@@ -61,15 +62,14 @@ class AwaitableGetMongoInstancesResult(GetMongoInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_mongo_instances(availability_zone=None,ids=None,instance_class=None,instance_type=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['availabilityZone'] = availability_zone
     __args__['ids'] = ids
@@ -86,6 +86,7 @@ def get_mongo_instances(availability_zone=None,ids=None,instance_class=None,inst
 
     return AwaitableGetMongoInstancesResult(
         availability_zone=__ret__.get('availabilityZone'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_class=__ret__.get('instanceClass'),
         instance_type=__ret__.get('instanceType'),
@@ -93,5 +94,4 @@ def get_mongo_instances(availability_zone=None,ids=None,instance_class=None,inst
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

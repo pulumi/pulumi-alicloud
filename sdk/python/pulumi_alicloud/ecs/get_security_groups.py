@@ -13,12 +13,18 @@ class GetSecurityGroupsResult:
     """
     A collection of values returned by getSecurityGroups.
     """
-    def __init__(__self__, groups=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None, id=None):
+    def __init__(__self__, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         __self__.groups = groups
         """
         A list of Security Groups. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -56,12 +62,6 @@ class GetSecurityGroupsResult:
         """
         The ID of the VPC that owns the security group.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,19 +69,22 @@ class AwaitableGetSecurityGroupsResult(GetSecurityGroupsResult):
             yield self
         return GetSecurityGroupsResult(
             groups=self.groups,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
             tags=self.tags,
-            vpc_id=self.vpc_id,
-            id=self.id)
+            vpc_id=self.vpc_id)
 
 def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group_id=None,tags=None,vpc_id=None,opts=None):
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
+
+
     :param list ids: A list of Security Group IDs.
     :param str name_regex: A regex string to filter the resulting security groups by their names.
     :param str resource_group_id: The Id of resource group which the security_group belongs.
@@ -95,10 +98,9 @@ def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group
            }
            ```
     :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -114,11 +116,11 @@ def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group
 
     return AwaitableGetSecurityGroupsResult(
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
         tags=__ret__.get('tags'),
-        vpc_id=__ret__.get('vpcId'),
-        id=__ret__.get('id'))
+        vpc_id=__ret__.get('vpcId'))

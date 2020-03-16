@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a RAM User Login Profile resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
 type LoginProfile struct {
 	pulumi.CustomResourceState

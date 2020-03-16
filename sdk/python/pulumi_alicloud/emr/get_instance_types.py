@@ -13,13 +13,19 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, cluster_type=None, destination_resource=None, ids=None, instance_charge_type=None, instance_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, zone_id=None, id=None):
+    def __init__(__self__, cluster_type=None, destination_resource=None, id=None, ids=None, instance_charge_type=None, instance_type=None, output_file=None, support_local_storage=None, support_node_types=None, types=None, zone_id=None):
         if cluster_type and not isinstance(cluster_type, str):
             raise TypeError("Expected argument 'cluster_type' to be a str")
         __self__.cluster_type = cluster_type
         if destination_resource and not isinstance(destination_resource, str):
             raise TypeError("Expected argument 'destination_resource' to be a str")
         __self__.destination_resource = destination_resource
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -53,12 +59,6 @@ class GetInstanceTypesResult:
         """
         The available zone id in Alibaba Cloud account
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,6 +67,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
         return GetInstanceTypesResult(
             cluster_type=self.cluster_type,
             destination_resource=self.destination_resource,
+            id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             instance_type=self.instance_type,
@@ -74,16 +75,18 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             support_local_storage=self.support_local_storage,
             support_node_types=self.support_node_types,
             types=self.types,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_instance_types(cluster_type=None,destination_resource=None,instance_charge_type=None,instance_type=None,output_file=None,support_local_storage=None,support_node_types=None,zone_id=None,opts=None):
     """
     The `emr.getInstanceTypes` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
-    
+
     > **NOTE:** Available in 1.59.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
+
+
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
@@ -92,10 +95,9 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     :param list support_node_types: The specific supported node type list.
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
     :param str zone_id: The supported resources of specific zoneId.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['clusterType'] = cluster_type
     __args__['destinationResource'] = destination_resource
@@ -114,6 +116,7 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
     return AwaitableGetInstanceTypesResult(
         cluster_type=__ret__.get('clusterType'),
         destination_resource=__ret__.get('destinationResource'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_type=__ret__.get('instanceType'),
@@ -121,5 +124,4 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
         support_local_storage=__ret__.get('supportLocalStorage'),
         support_node_types=__ret__.get('supportNodeTypes'),
         types=__ret__.get('types'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

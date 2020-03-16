@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > **NOTE:** Available in 1.57.0+ .
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
 func GetDdosBgpInstances(ctx *pulumi.Context, args *GetDdosBgpInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpInstancesResult, error) {
 	var rv GetDdosBgpInstancesResult

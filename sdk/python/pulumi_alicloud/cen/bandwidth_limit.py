@@ -25,18 +25,18 @@ class BandwidthLimit(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth_limit=None, instance_id=None, region_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CEN cross-regional interconnection bandwidth resource. To connect networks in different regions, you must set cross-region interconnection bandwidth after buying a bandwidth package. The total bandwidth set for all the interconnected regions of a bandwidth package cannot exceed the bandwidth of the bandwidth package. By default, 1 Kbps bandwidth is provided for connectivity test. To run normal business, you must buy a bandwidth package and set a proper interconnection bandwidth.
-        
+
         For example, a CEN instance is bound to a bandwidth package of 20 Mbps and  the interconnection areas are Mainland China and North America. You can set the cross-region interconnection bandwidth between US West 1 and China East 1, China East 2, China South 1, and so on. However, the total bandwidth set for all the interconnected regions cannot exceed 20  Mbps.
-        
+
         For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[list] region_ids: List of the two regions to interconnect. Must be two different regions.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,19 +75,18 @@ class BandwidthLimit(pulumi.CustomResource):
         """
         Get an existing BandwidthLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[list] region_ids: List of the two regions to interconnect. Must be two different regions.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth_limit"] = bandwidth_limit
         __props__["instance_id"] = instance_id
         __props__["region_ids"] = region_ids

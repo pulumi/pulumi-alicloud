@@ -65,17 +65,19 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, deploy_type=None, disk_size=None, disk_type=None, eip_max=None, io_max=None, name=None, paid_type=None, spec_type=None, tags=None, topic_quota=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ALIKAFKA instance resource.
-        
+
         > **NOTE:** Available in 1.59.0+
-        
+
         > **NOTE:** ALIKAFKA instance resource only support create post pay instance. Creation or modification may took about 10-40 minutes.
-        
+
         > **NOTE:** Only the following regions support create alikafka pre paid instance.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
-        
+
         > **NOTE:** Only the following regions support create alikafka post paid instance.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] deploy_type: The deploy type of the instance. Currently only support two deploy type, 4: eip/vpc instance, 5: vpc instance.
@@ -89,8 +91,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[float] topic_quota: The max num of topic can be create of the instance. When modify this value, it only adjust to a greater value.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -145,7 +145,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,12 +162,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The ID of attaching VPC to instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The Zone to launch the kafka instance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["deploy_type"] = deploy_type
         __props__["disk_size"] = disk_size
         __props__["disk_type"] = disk_type

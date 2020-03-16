@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_records.html.markdown.
 func GetDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs, opts ...pulumi.InvokeOption) (*GetDomainRecordsResult, error) {
 	var rv GetDomainRecordsResult
 	err := ctx.Invoke("alicloud:dns/getDomainRecords:getDomainRecords", args, &rv, opts...)

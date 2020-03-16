@@ -11,13 +11,13 @@ import (
 )
 
 // Provides an ONS instance resource.
-// 
+//
 // For more information about how to use it, see [RocketMQ Instance Management API](https://www.alibabacloud.com/help/doc-detail/106354.html). 
-// 
+//
 // > **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5". 
-// 
+//
 // > **NOTE:** Available in 1.51.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState

@@ -13,7 +13,7 @@ class GetRecordsResult:
     """
     A collection of values returned by getRecords.
     """
-    def __init__(__self__, domain_name=None, host_record_regex=None, ids=None, is_locked=None, line=None, output_file=None, records=None, status=None, type=None, urls=None, value_regex=None, id=None):
+    def __init__(__self__, domain_name=None, host_record_regex=None, id=None, ids=None, is_locked=None, line=None, output_file=None, records=None, status=None, type=None, urls=None, value_regex=None):
         if domain_name and not isinstance(domain_name, str):
             raise TypeError("Expected argument 'domain_name' to be a str")
         __self__.domain_name = domain_name
@@ -23,6 +23,12 @@ class GetRecordsResult:
         if host_record_regex and not isinstance(host_record_regex, str):
             raise TypeError("Expected argument 'host_record_regex' to be a str")
         __self__.host_record_regex = host_record_regex
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -68,12 +74,6 @@ class GetRecordsResult:
         if value_regex and not isinstance(value_regex, str):
             raise TypeError("Expected argument 'value_regex' to be a str")
         __self__.value_regex = value_regex
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRecordsResult(GetRecordsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -82,6 +82,7 @@ class AwaitableGetRecordsResult(GetRecordsResult):
         return GetRecordsResult(
             domain_name=self.domain_name,
             host_record_regex=self.host_record_regex,
+            id=self.id,
             ids=self.ids,
             is_locked=self.is_locked,
             line=self.line,
@@ -90,13 +91,15 @@ class AwaitableGetRecordsResult(GetRecordsResult):
             status=self.status,
             type=self.type,
             urls=self.urls,
-            value_regex=self.value_regex,
-            id=self.id)
+            value_regex=self.value_regex)
 
 def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,line=None,output_file=None,status=None,type=None,value_regex=None,opts=None):
     """
     This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
+
+
     :param str domain_name: The domain name associated to the records.
     :param str host_record_regex: Host record regex. 
     :param list ids: A list of record IDs.
@@ -105,10 +108,9 @@ def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
     :param str value_regex: Host record value regex. 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainName'] = domain_name
     __args__['hostRecordRegex'] = host_record_regex
@@ -128,6 +130,7 @@ def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,
     return AwaitableGetRecordsResult(
         domain_name=__ret__.get('domainName'),
         host_record_regex=__ret__.get('hostRecordRegex'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         is_locked=__ret__.get('isLocked'),
         line=__ret__.get('line'),
@@ -136,5 +139,4 @@ def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,
         status=__ret__.get('status'),
         type=__ret__.get('type'),
         urls=__ret__.get('urls'),
-        value_regex=__ret__.get('valueRegex'),
-        id=__ret__.get('id'))
+        value_regex=__ret__.get('valueRegex'))

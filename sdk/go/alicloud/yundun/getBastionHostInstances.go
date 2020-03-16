@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > **NOTE:** Available in 1.63.0+ .
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
 func GetBastionHostInstances(ctx *pulumi.Context, args *GetBastionHostInstancesArgs, opts ...pulumi.InvokeOption) (*GetBastionHostInstancesResult, error) {
 	var rv GetBastionHostInstancesResult

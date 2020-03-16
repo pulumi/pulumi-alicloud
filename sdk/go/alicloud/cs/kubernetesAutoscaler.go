@@ -12,15 +12,15 @@ import (
 )
 
 // This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
-// 
+//
 // > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
-// 
+//
 // > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
-// 
+//
 // > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
-// 
+//
 // > **NOTE:** Available in 1.65.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
 type KubernetesAutoscaler struct {
 	pulumi.CustomResourceState
@@ -31,7 +31,7 @@ type KubernetesAutoscaler struct {
 	CoolDownDuration pulumi.StringOutput `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringOutput `pulumi:"deferScaleInDuration"`
-	// 
+	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -86,7 +86,7 @@ type kubernetesAutoscalerState struct {
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration *string `pulumi:"deferScaleInDuration"`
-	// 
+	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -102,7 +102,7 @@ type KubernetesAutoscalerState struct {
 	CoolDownDuration pulumi.StringPtrInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringPtrInput
-	// 
+	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -122,7 +122,7 @@ type kubernetesAutoscalerArgs struct {
 	CoolDownDuration string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration string `pulumi:"deferScaleInDuration"`
-	// 
+	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -139,7 +139,7 @@ type KubernetesAutoscalerArgs struct {
 	CoolDownDuration pulumi.StringInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringInput
-	// 
+	//
 	// * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.

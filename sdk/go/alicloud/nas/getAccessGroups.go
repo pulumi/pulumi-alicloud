@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides user-available access groups. Use when you can create mount points
-// 
+//
 // > NOTE: Available in 1.35.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
 func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pulumi.InvokeOption) (*GetAccessGroupsResult, error) {
 	var rv GetAccessGroupsResult

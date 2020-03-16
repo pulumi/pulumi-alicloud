@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a forward resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
 type ForwardEntry struct {
 	pulumi.CustomResourceState

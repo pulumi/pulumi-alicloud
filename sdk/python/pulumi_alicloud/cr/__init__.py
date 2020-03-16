@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .namespace import *
-from .repo import *
 from .get_namespaces import *
 from .get_repos import *
+from .namespace import *
+from .repo import *

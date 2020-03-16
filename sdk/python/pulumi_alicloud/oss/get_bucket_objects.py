@@ -13,10 +13,16 @@ class GetBucketObjectsResult:
     """
     A collection of values returned by getBucketObjects.
     """
-    def __init__(__self__, bucket_name=None, key_prefix=None, key_regex=None, objects=None, output_file=None, id=None):
+    def __init__(__self__, bucket_name=None, id=None, key_prefix=None, key_regex=None, objects=None, output_file=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         __self__.bucket_name = bucket_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if key_prefix and not isinstance(key_prefix, str):
             raise TypeError("Expected argument 'key_prefix' to be a str")
         __self__.key_prefix = key_prefix
@@ -32,12 +38,6 @@ class GetBucketObjectsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBucketObjectsResult(GetBucketObjectsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,23 +45,25 @@ class AwaitableGetBucketObjectsResult(GetBucketObjectsResult):
             yield self
         return GetBucketObjectsResult(
             bucket_name=self.bucket_name,
+            id=self.id,
             key_prefix=self.key_prefix,
             key_regex=self.key_regex,
             objects=self.objects,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_bucket_objects(bucket_name=None,key_prefix=None,key_regex=None,output_file=None,opts=None):
     """
     This data source provides the objects of an OSS bucket.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
+
+
     :param str bucket_name: Name of the bucket that contains the objects to find.
     :param str key_prefix: Filter results by the given key prefix (such as "path/to/folder/logs-").
     :param str key_regex: A regex string to filter results by key.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['bucketName'] = bucket_name
     __args__['keyPrefix'] = key_prefix
@@ -75,8 +77,8 @@ def get_bucket_objects(bucket_name=None,key_prefix=None,key_regex=None,output_fi
 
     return AwaitableGetBucketObjectsResult(
         bucket_name=__ret__.get('bucketName'),
+        id=__ret__.get('id'),
         key_prefix=__ret__.get('keyPrefix'),
         key_regex=__ret__.get('keyRegex'),
         objects=__ret__.get('objects'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

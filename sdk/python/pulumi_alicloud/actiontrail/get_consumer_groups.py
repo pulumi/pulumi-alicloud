@@ -13,7 +13,7 @@ class GetConsumerGroupsResult:
     """
     A collection of values returned by getConsumerGroups.
     """
-    def __init__(__self__, consumer_id_regex=None, consumer_ids=None, instance_id=None, output_file=None, id=None):
+    def __init__(__self__, consumer_id_regex=None, consumer_ids=None, id=None, instance_id=None, output_file=None):
         if consumer_id_regex and not isinstance(consumer_id_regex, str):
             raise TypeError("Expected argument 'consumer_id_regex' to be a str")
         __self__.consumer_id_regex = consumer_id_regex
@@ -23,18 +23,18 @@ class GetConsumerGroupsResult:
         """
         A list of consumer group ids.
         """
-        if instance_id and not isinstance(instance_id, str):
-            raise TypeError("Expected argument 'instance_id' to be a str")
-        __self__.instance_id = instance_id
-        if output_file and not isinstance(output_file, str):
-            raise TypeError("Expected argument 'output_file' to be a str")
-        __self__.output_file = output_file
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError("Expected argument 'instance_id' to be a str")
+        __self__.instance_id = instance_id
+        if output_file and not isinstance(output_file, str):
+            raise TypeError("Expected argument 'output_file' to be a str")
+        __self__.output_file = output_file
 class AwaitableGetConsumerGroupsResult(GetConsumerGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -43,22 +43,24 @@ class AwaitableGetConsumerGroupsResult(GetConsumerGroupsResult):
         return GetConsumerGroupsResult(
             consumer_id_regex=self.consumer_id_regex,
             consumer_ids=self.consumer_ids,
+            id=self.id,
             instance_id=self.instance_id,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_consumer_groups(consumer_id_regex=None,instance_id=None,output_file=None,opts=None):
     """
     This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.56.0+
-    
-    :param str consumer_id_regex: A regex string to filter results by the consumer group id. 
-    :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
+
+
+    :param str consumer_id_regex: A regex string to filter results by the consumer group id. 
+    :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
     """
     __args__ = dict()
+
 
     __args__['consumerIdRegex'] = consumer_id_regex
     __args__['instanceId'] = instance_id
@@ -72,6 +74,6 @@ def get_consumer_groups(consumer_id_regex=None,instance_id=None,output_file=None
     return AwaitableGetConsumerGroupsResult(
         consumer_id_regex=__ret__.get('consumerIdRegex'),
         consumer_ids=__ret__.get('consumerIds'),
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

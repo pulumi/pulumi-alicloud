@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides the ots tables of the current Alibaba Cloud user.
-// 
+//
 // > **NOTE:** Available in v1.40.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
 	var rv GetTablesResult

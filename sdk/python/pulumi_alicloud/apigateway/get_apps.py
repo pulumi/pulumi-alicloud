@@ -13,12 +13,18 @@ class GetAppsResult:
     """
     A collection of values returned by getApps.
     """
-    def __init__(__self__, apps=None, ids=None, name_regex=None, names=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, apps=None, id=None, ids=None, name_regex=None, names=None, output_file=None, tags=None):
         if apps and not isinstance(apps, list):
             raise TypeError("Expected argument 'apps' to be a list")
         __self__.apps = apps
         """
         A list of apps. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -41,12 +47,6 @@ class GetAppsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAppsResult(GetAppsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,24 +54,26 @@ class AwaitableGetAppsResult(GetAppsResult):
             yield self
         return GetAppsResult(
             apps=self.apps,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_apps(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     This data source provides the apps of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
+
+
     :param list ids: A list of app IDs. 
     :param str name_regex: A regex string to filter apps by name.
     :param dict tags: A mapping of tags to assign to the resource.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -85,9 +87,9 @@ def get_apps(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
 
     return AwaitableGetAppsResult(
         apps=__ret__.get('apps'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

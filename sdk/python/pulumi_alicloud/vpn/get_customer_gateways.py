@@ -13,12 +13,18 @@ class GetCustomerGatewaysResult:
     """
     A collection of values returned by getCustomerGateways.
     """
-    def __init__(__self__, gateways=None, ids=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         __self__.gateways = gateways
         """
         A list of VPN customer gateways. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -32,12 +38,6 @@ class GetCustomerGatewaysResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetCustomerGatewaysResult(GetCustomerGatewaysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,23 +45,25 @@ class AwaitableGetCustomerGatewaysResult(GetCustomerGatewaysResult):
             yield self
         return GetCustomerGatewaysResult(
             gateways=self.gateways,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_customer_gateways(ids=None,name_regex=None,output_file=None,opts=None):
     """
     The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
+
+
     :param list ids: ID of the VPN customer gateways.
     :param str name_regex: A regex string of VPN customer gateways name.
     :param str output_file: Save the result to the file.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -74,8 +76,8 @@ def get_customer_gateways(ids=None,name_regex=None,output_file=None,opts=None):
 
     return AwaitableGetCustomerGatewaysResult(
         gateways=__ret__.get('gateways'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

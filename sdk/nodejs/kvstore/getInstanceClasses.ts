@@ -92,10 +92,14 @@ export interface GetInstanceClassesArgs {
     readonly outputFile?: string;
     /**
      * It has been deprecated from 1.68.0.
+     * 
+     * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
      */
     readonly packageType?: string;
     /**
      * It has been deprecated from 1.68.0. 
+     * 
+     * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
     readonly performanceType?: string;
     /**
@@ -109,6 +113,8 @@ export interface GetInstanceClassesArgs {
     readonly sortedBy?: string;
     /**
      * It has been deprecated from 1.68.0. 
+     * 
+     * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
      */
     readonly storageType?: string;
     /**

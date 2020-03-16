@@ -13,7 +13,7 @@ class GetAccessGroupsResult:
     """
     A collection of values returned by getAccessGroups.
     """
-    def __init__(__self__, description=None, groups=None, ids=None, name_regex=None, names=None, output_file=None, type=None, id=None):
+    def __init__(__self__, description=None, groups=None, id=None, ids=None, name_regex=None, names=None, output_file=None, type=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -25,6 +25,12 @@ class GetAccessGroupsResult:
         __self__.groups = groups
         """
         A list of AccessGroups. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetAccessGroupsResult:
         """
         AccessGroupType of the AccessGroup.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccessGroupsResult(GetAccessGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,26 +64,28 @@ class AwaitableGetAccessGroupsResult(GetAccessGroupsResult):
         return GetAccessGroupsResult(
             description=self.description,
             groups=self.groups,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_access_groups(description=None,name_regex=None,output_file=None,type=None,opts=None):
     """
     This data source provides user-available access groups. Use when you can create mount points
-    
+
     > NOTE: Available in 1.35.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
+
+
     :param str description: Filter results by a specific Description.
     :param str name_regex: A regex string to filter AccessGroups by name. 
     :param str type: Filter results by a specific AccessGroupType.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['description'] = description
     __args__['nameRegex'] = name_regex
@@ -98,9 +100,9 @@ def get_access_groups(description=None,name_regex=None,output_file=None,type=Non
     return AwaitableGetAccessGroupsResult(
         description=__ret__.get('description'),
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

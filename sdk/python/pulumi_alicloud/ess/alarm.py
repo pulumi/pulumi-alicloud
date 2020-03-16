@@ -73,7 +73,6 @@ class Alarm(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, alarm_actions=None, cloud_monitor_group_id=None, comparison_operator=None, description=None, dimensions=None, enable=None, evaluation_count=None, metric_name=None, metric_type=None, name=None, period=None, scaling_group_id=None, statistics=None, threshold=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Alarm resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
@@ -90,8 +89,6 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_alarm.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -144,7 +141,7 @@ class Alarm(pulumi.CustomResource):
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -163,12 +160,11 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] state: The state of specified alarm.  
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_alarm.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["alarm_actions"] = alarm_actions
         __props__["cloud_monitor_group_id"] = cloud_monitor_group_id
         __props__["comparison_operator"] = comparison_operator

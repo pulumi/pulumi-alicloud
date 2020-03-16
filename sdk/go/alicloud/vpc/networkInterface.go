@@ -12,11 +12,11 @@ import (
 )
 
 // Provides an ECS Elastic Network Interface resource.
-// 
+//
 // For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-// 
+//
 // > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs. 
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
 type NetworkInterface struct {
 	pulumi.CustomResourceState

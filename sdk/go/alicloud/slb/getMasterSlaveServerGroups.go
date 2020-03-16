@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides the master slave server groups related to a server load balancer.
-// 
+//
 // > **NOTE:** Available in 1.54.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
 func GetMasterSlaveServerGroups(ctx *pulumi.Context, args *GetMasterSlaveServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetMasterSlaveServerGroupsResult, error) {
 	var rv GetMasterSlaveServerGroupsResult

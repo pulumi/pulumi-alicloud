@@ -13,7 +13,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, clusters=None, description_regex=None, descriptions=None, ids=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, clusters=None, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, tags=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         __self__.clusters = clusters
@@ -29,6 +29,12 @@ class GetClustersResult:
         """
         A list of ADB cluster descriptions. 
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -41,12 +47,6 @@ class GetClustersResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClustersResult(GetClustersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -56,27 +56,29 @@ class AwaitableGetClustersResult(GetClustersResult):
             clusters=self.clusters,
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            id=self.id,
             ids=self.ids,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_clusters(description_regex=None,ids=None,output_file=None,tags=None,opts=None):
     """
     The `adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-    
+
     > **NOTE:** Available in v1.71.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
+
+
     :param str description_regex: A regex string to filter results by cluster description.
     :param list ids: A list of ADB cluster IDs. 
     :param dict tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
@@ -92,7 +94,7 @@ def get_clusters(description_regex=None,ids=None,output_file=None,tags=None,opts
         clusters=__ret__.get('clusters'),
         description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

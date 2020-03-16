@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_alias.html.markdown.
- */
 export class Alias extends pulumi.CustomResource {
     /**
      * Get an existing Alias resource's state with the given name, ID, and optional extra

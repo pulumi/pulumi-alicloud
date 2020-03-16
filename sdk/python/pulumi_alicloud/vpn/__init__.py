@@ -3,12 +3,12 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .ssl_vpn_client_cert import *
-from .ssl_vpn_server import *
 from .connection import *
 from .customer_gateway import *
 from .gateway import *
-from .route_entry import *
 from .get_connections import *
 from .get_customer_gateways import *
 from .get_gateways import *
+from .route_entry import *
+from .ssl_vpn_client_cert import *
+from .ssl_vpn_server import *

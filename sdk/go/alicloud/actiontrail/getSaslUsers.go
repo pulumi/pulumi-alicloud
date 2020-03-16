@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > **NOTE:** Available in 1.66.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
 func GetSaslUsers(ctx *pulumi.Context, args *GetSaslUsersArgs, opts ...pulumi.InvokeOption) (*GetSaslUsersResult, error) {
 	var rv GetSaslUsersResult

@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a key pair resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
 type KeyPair struct {
 	pulumi.CustomResourceState

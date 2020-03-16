@@ -13,7 +13,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, clusters=None, db_type=None, description_regex=None, descriptions=None, ids=None, output_file=None, status=None, tags=None, id=None):
+    def __init__(__self__, clusters=None, db_type=None, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, status=None, tags=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         __self__.clusters = clusters
@@ -35,6 +35,12 @@ class GetClustersResult:
         """
         A list of RDS cluster descriptions. 
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -53,12 +59,6 @@ class GetClustersResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetClustersResult(GetClustersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -69,19 +69,22 @@ class AwaitableGetClustersResult(GetClustersResult):
             db_type=self.db_type,
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            id=self.id,
             ids=self.ids,
             output_file=self.output_file,
             status=self.status,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,status=None,tags=None,opts=None):
     """
     The `polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-    
+
     > **NOTE:** Available in v1.66.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
+
+
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
     :param str description_regex: A regex string to filter results by cluster description.
     :param list ids: A list of PolarDB cluster IDs. 
@@ -89,10 +92,9 @@ def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,s
     :param dict tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['dbType'] = db_type
     __args__['descriptionRegex'] = description_regex
@@ -111,8 +113,8 @@ def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,s
         db_type=__ret__.get('dbType'),
         description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         output_file=__ret__.get('outputFile'),
         status=__ret__.get('status'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

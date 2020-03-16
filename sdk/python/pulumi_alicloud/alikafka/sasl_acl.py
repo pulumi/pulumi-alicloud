@@ -41,12 +41,14 @@ class SaslAcl(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acl_operation_type=None, acl_resource_name=None, acl_resource_pattern_type=None, acl_resource_type=None, instance_id=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ALIKAFKA sasl acl resource.
-        
+
         > **NOTE:** Available in 1.66.0+
-        
+
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_sasl_acl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
@@ -55,8 +57,6 @@ class SaslAcl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic" and "Group".
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_sasl_acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +105,7 @@ class SaslAcl(pulumi.CustomResource):
         """
         Get an existing SaslAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,12 +116,11 @@ class SaslAcl(pulumi.CustomResource):
         :param pulumi.Input[str] host: The host of the acl.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_sasl_acl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl_operation_type"] = acl_operation_type
         __props__["acl_resource_name"] = acl_resource_name
         __props__["acl_resource_pattern_type"] = acl_resource_pattern_type

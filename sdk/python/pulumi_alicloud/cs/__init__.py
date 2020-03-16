@@ -3,13 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .cluster import *
 from .application import *
+from .cluster import *
+from .get_kubernetes_clusters import *
+from .get_managed_kubernetes_clusters import *
+from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *
 from .managed_kubernetes import *
 from .serverless_kubernetes import *
 from .swarm import *
-from .get_kubernetes_clusters import *
-from .get_managed_kubernetes_clusters import *
-from .get_serverless_kubernetes_clusters import *

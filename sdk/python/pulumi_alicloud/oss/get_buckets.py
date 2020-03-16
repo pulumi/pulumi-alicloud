@@ -13,12 +13,18 @@ class GetBucketsResult:
     """
     A collection of values returned by getBuckets.
     """
-    def __init__(__self__, buckets=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, buckets=None, id=None, name_regex=None, names=None, output_file=None):
         if buckets and not isinstance(buckets, list):
             raise TypeError("Expected argument 'buckets' to be a list")
         __self__.buckets = buckets
         """
         A list of buckets. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -32,12 +38,6 @@ class GetBucketsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBucketsResult(GetBucketsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,20 +45,22 @@ class AwaitableGetBucketsResult(GetBucketsResult):
             yield self
         return GetBucketsResult(
             buckets=self.buckets,
+            id=self.id,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_buckets(name_regex=None,output_file=None,opts=None):
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
-    
-    :param str name_regex: A regex string to filter results by bucket name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
+
+
+    :param str name_regex: A regex string to filter results by bucket name.
     """
     __args__ = dict()
+
 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -70,7 +72,7 @@ def get_buckets(name_regex=None,output_file=None,opts=None):
 
     return AwaitableGetBucketsResult(
         buckets=__ret__.get('buckets'),
+        id=__ret__.get('id'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

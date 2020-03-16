@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult

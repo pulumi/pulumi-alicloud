@@ -13,12 +13,18 @@ class GetTrailsResult:
     """
     A collection of values returned by getTrails.
     """
-    def __init__(__self__, actiontrails=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, actiontrails=None, id=None, name_regex=None, names=None, output_file=None):
         if actiontrails and not isinstance(actiontrails, list):
             raise TypeError("Expected argument 'actiontrails' to be a list")
         __self__.actiontrails = actiontrails
         """
         A list of actiontrails. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -32,12 +38,6 @@ class GetTrailsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetTrailsResult(GetTrailsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -45,20 +45,22 @@ class AwaitableGetTrailsResult(GetTrailsResult):
             yield self
         return GetTrailsResult(
             actiontrails=self.actiontrails,
+            id=self.id,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_trails(name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of action trail of the current Alibaba Cloud user.
-    
-    :param str name_regex: A regex string to filter results action trail name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
+
+
+    :param str name_regex: A regex string to filter results action trail name.
     """
     __args__ = dict()
+
 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -70,7 +72,7 @@ def get_trails(name_regex=None,output_file=None,opts=None):
 
     return AwaitableGetTrailsResult(
         actiontrails=__ret__.get('actiontrails'),
+        id=__ret__.get('id'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

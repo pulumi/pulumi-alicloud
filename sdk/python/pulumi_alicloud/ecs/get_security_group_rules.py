@@ -13,7 +13,7 @@ class GetSecurityGroupRulesResult:
     """
     A collection of values returned by getSecurityGroupRules.
     """
-    def __init__(__self__, direction=None, group_desc=None, group_id=None, group_name=None, ip_protocol=None, nic_type=None, output_file=None, policy=None, rules=None, id=None):
+    def __init__(__self__, direction=None, group_desc=None, group_id=None, group_name=None, id=None, ip_protocol=None, nic_type=None, output_file=None, policy=None, rules=None):
         if direction and not isinstance(direction, str):
             raise TypeError("Expected argument 'direction' to be a str")
         __self__.direction = direction
@@ -34,6 +34,12 @@ class GetSecurityGroupRulesResult:
         __self__.group_name = group_name
         """
         The name of the security group that owns the rules.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ip_protocol and not isinstance(ip_protocol, str):
             raise TypeError("Expected argument 'ip_protocol' to be a str")
@@ -62,12 +68,6 @@ class GetSecurityGroupRulesResult:
         """
         A list of security group rules. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSecurityGroupRulesResult(GetSecurityGroupRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -78,28 +78,30 @@ class AwaitableGetSecurityGroupRulesResult(GetSecurityGroupRulesResult):
             group_desc=self.group_desc,
             group_id=self.group_id,
             group_name=self.group_name,
+            id=self.id,
             ip_protocol=self.ip_protocol,
             nic_type=self.nic_type,
             output_file=self.output_file,
             policy=self.policy,
-            rules=self.rules,
-            id=self.id)
+            rules=self.rules)
 
 def get_security_group_rules(direction=None,group_id=None,ip_protocol=None,nic_type=None,output_file=None,policy=None,opts=None):
     """
     The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
     The ID of the security group can be provided via a variable or the result from the other data source `ecs.getSecurityGroups`.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
+
+
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.
     :param str group_id: The ID of the security group that owns the rules.
     :param str ip_protocol: The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
     :param str nic_type: Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
     :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['direction'] = direction
     __args__['groupId'] = group_id
@@ -118,9 +120,9 @@ def get_security_group_rules(direction=None,group_id=None,ip_protocol=None,nic_t
         group_desc=__ret__.get('groupDesc'),
         group_id=__ret__.get('groupId'),
         group_name=__ret__.get('groupName'),
+        id=__ret__.get('id'),
         ip_protocol=__ret__.get('ipProtocol'),
         nic_type=__ret__.get('nicType'),
         output_file=__ret__.get('outputFile'),
         policy=__ret__.get('policy'),
-        rules=__ret__.get('rules'),
-        id=__ret__.get('id'))
+        rules=__ret__.get('rules'))

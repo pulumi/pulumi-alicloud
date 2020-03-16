@@ -11,10 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_function.html.markdown.
 type Function struct {
 	pulumi.CustomResourceState
 
+	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringOutput `pulumi:"codeChecksum"`
 	// The Function Compute function description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -83,6 +83,7 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
+	// The checksum (crc64) of the function code.
 	CodeChecksum *string `pulumi:"codeChecksum"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
@@ -115,6 +116,7 @@ type functionState struct {
 }
 
 type FunctionState struct {
+	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
@@ -151,6 +153,7 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
+	// The checksum (crc64) of the function code.
 	CodeChecksum *string `pulumi:"codeChecksum"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
@@ -180,6 +183,7 @@ type functionArgs struct {
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
+	// The checksum (crc64) of the function code.
 	CodeChecksum pulumi.StringPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput

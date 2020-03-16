@@ -13,7 +13,13 @@ class GetBandwidthLimitsResult:
     """
     A collection of values returned by getBandwidthLimits.
     """
-    def __init__(__self__, instance_ids=None, limits=None, output_file=None, id=None):
+    def __init__(__self__, id=None, instance_ids=None, limits=None, output_file=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_ids and not isinstance(instance_ids, list):
             raise TypeError("Expected argument 'instance_ids' to be a list")
         __self__.instance_ids = instance_ids
@@ -26,32 +32,28 @@ class GetBandwidthLimitsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBandwidthLimitsResult(GetBandwidthLimitsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetBandwidthLimitsResult(
+            id=self.id,
             instance_ids=self.instance_ids,
             limits=self.limits,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_bandwidth_limits(instance_ids=None,output_file=None,opts=None):
     """
     This data source provides CEN Bandwidth Limits available to the user.
-    
-    :param list instance_ids: A list of CEN instances IDs.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
+
+
+    :param list instance_ids: A list of CEN instances IDs.
     """
     __args__ = dict()
+
 
     __args__['instanceIds'] = instance_ids
     __args__['outputFile'] = output_file
@@ -62,7 +64,7 @@ def get_bandwidth_limits(instance_ids=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getBandwidthLimits:getBandwidthLimits', __args__, opts=opts).value
 
     return AwaitableGetBandwidthLimitsResult(
+        id=__ret__.get('id'),
         instance_ids=__ret__.get('instanceIds'),
         limits=__ret__.get('limits'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

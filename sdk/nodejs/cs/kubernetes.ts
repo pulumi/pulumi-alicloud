@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes.html.markdown.
- */
 export class Kubernetes extends pulumi.CustomResource {
     /**
      * Get an existing Kubernetes resource's state with the given name, ID, and optional extra
@@ -493,6 +490,8 @@ export interface KubernetesState {
     readonly masterInstanceChargeType?: pulumi.Input<string>;
     /**
      * (Required, Force new resource) The instance type of master node.
+     * 
+     * @deprecated Field 'master_instance_type' has been deprecated from provider version 1.16.0. New field 'master_instance_types' replaces it.
      */
     readonly masterInstanceType?: pulumi.Input<string>;
     readonly masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -570,6 +569,8 @@ export interface KubernetesState {
     readonly vpcId?: pulumi.Input<string>;
     /**
      * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * 
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.16.0. New field 'vswitch_ids' replaces it.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -606,6 +607,8 @@ export interface KubernetesState {
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * (Required, Force new resource) The instance type of worker node.
+     * 
+     * @deprecated Field 'worker_instance_type' has been deprecated from provider version 1.16.0. New field 'worker_instance_types' replaces it.
      */
     readonly workerInstanceType?: pulumi.Input<string>;
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -615,6 +618,8 @@ export interface KubernetesState {
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerNode>[]>;
     /**
      * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * 
+     * @deprecated Field 'worker_number' has been deprecated from provider version 1.16.0. New field 'worker_numbers' replaces it.
      */
     readonly workerNumber?: pulumi.Input<number>;
     readonly workerNumbers?: pulumi.Input<pulumi.Input<number>[]>;
@@ -711,6 +716,8 @@ export interface KubernetesArgs {
     readonly masterInstanceChargeType?: pulumi.Input<string>;
     /**
      * (Required, Force new resource) The instance type of master node.
+     * 
+     * @deprecated Field 'master_instance_type' has been deprecated from provider version 1.16.0. New field 'master_instance_types' replaces it.
      */
     readonly masterInstanceType?: pulumi.Input<string>;
     readonly masterInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
@@ -766,6 +773,8 @@ export interface KubernetesArgs {
     readonly version?: pulumi.Input<string>;
     /**
      * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * 
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.16.0. New field 'vswitch_ids' replaces it.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -802,11 +811,15 @@ export interface KubernetesArgs {
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
      * (Required, Force new resource) The instance type of worker node.
+     * 
+     * @deprecated Field 'worker_instance_type' has been deprecated from provider version 1.16.0. New field 'worker_instance_types' replaces it.
      */
     readonly workerInstanceType?: pulumi.Input<string>;
     readonly workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * 
+     * @deprecated Field 'worker_number' has been deprecated from provider version 1.16.0. New field 'worker_numbers' replaces it.
      */
     readonly workerNumber?: pulumi.Input<number>;
     readonly workerNumbers: pulumi.Input<pulumi.Input<number>[]>;

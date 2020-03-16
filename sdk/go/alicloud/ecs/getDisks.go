@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides the disks of the current Alibaba Cloud user.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
 func GetDisks(ctx *pulumi.Context, args *GetDisksArgs, opts ...pulumi.InvokeOption) (*GetDisksResult, error) {
 	var rv GetDisksResult

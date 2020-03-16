@@ -4,8 +4,8 @@
 
 # Export this package's modules as members:
 from .function import *
-from .service import *
-from .trigger import *
 from .get_functions import *
 from .get_services import *
 from .get_triggers import *
+from .service import *
+from .trigger import *

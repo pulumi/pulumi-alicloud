@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_managed_kubernetes.html.markdown.
- */
 export class ManagedKubernetes extends pulumi.CustomResource {
     /**
      * Get an existing ManagedKubernetes resource's state with the given name, ID, and optional extra
@@ -424,6 +421,8 @@ export interface ManagedKubernetesState {
     readonly workerNumber?: pulumi.Input<number>;
     /**
      * The worker node number of the kubernetes cluster. Default to [3]. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * 
+     * @deprecated Field 'worker_numbers' has been deprecated from provider version 1.53.0. New field 'worker_number' replaces it.
      */
     readonly workerNumbers?: pulumi.Input<number>;
     /**
@@ -563,6 +562,8 @@ export interface ManagedKubernetesArgs {
     readonly workerNumber?: pulumi.Input<number>;
     /**
      * The worker node number of the kubernetes cluster. Default to [3]. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
+     * 
+     * @deprecated Field 'worker_numbers' has been deprecated from provider version 1.53.0. New field 'worker_number' replaces it.
      */
     readonly workerNumbers?: pulumi.Input<number>;
     /**

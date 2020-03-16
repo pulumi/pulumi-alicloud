@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	var rv GetTopicsResult

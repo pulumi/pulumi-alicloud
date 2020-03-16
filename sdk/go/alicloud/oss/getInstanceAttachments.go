@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides the ots instance attachments of the current Alibaba Cloud user.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
 func GetInstanceAttachments(ctx *pulumi.Context, args *GetInstanceAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetInstanceAttachmentsResult, error) {
 	var rv GetInstanceAttachmentsResult

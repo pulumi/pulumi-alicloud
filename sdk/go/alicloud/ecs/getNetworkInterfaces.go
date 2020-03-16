@@ -9,13 +9,13 @@ import (
 )
 
 // Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
-// 
+//
 // For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
-// 
+//
 // ##  Argument Reference
-// 
+//
 // The following arguments are supported:
-// 
+//
 // * `ids` - (Optional)  A list of ENI IDs.
 // * `nameRegex` - (Optional) A regex string to filter results by ENI name.
 // * `vpcId` - (Optional) The VPC ID linked to ENIs.
@@ -28,7 +28,7 @@ import (
 // * `tags` - (Optional) A map of tags assigned to ENIs.
 // * `outputFile` - (Optional) The name of output file that saves the filter results.
 // * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
 func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetNetworkInterfacesResult, error) {
 	var rv GetNetworkInterfacesResult

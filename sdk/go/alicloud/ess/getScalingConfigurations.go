@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides available scaling configuration resources. 
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
 func GetScalingConfigurations(ctx *pulumi.Context, args *GetScalingConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetScalingConfigurationsResult, error) {
 	var rv GetScalingConfigurationsResult

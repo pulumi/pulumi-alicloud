@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_ciphertext.html.markdown.
 func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...pulumi.InvokeOption) (*LookupCiphertextResult, error) {
 	var rv LookupCiphertextResult
 	err := ctx.Invoke("alicloud:kms/getCiphertext:getCiphertext", args, &rv, opts...)

@@ -13,7 +13,13 @@ class GetSaslUsersResult:
     """
     A collection of values returned by getSaslUsers.
     """
-    def __init__(__self__, instance_id=None, name_regex=None, names=None, output_file=None, users=None, id=None):
+    def __init__(__self__, id=None, instance_id=None, name_regex=None, names=None, output_file=None, users=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         __self__.instance_id = instance_id
@@ -35,37 +41,33 @@ class GetSaslUsersResult:
         """
         A list of sasl users. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSaslUsersResult(GetSaslUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetSaslUsersResult(
+            id=self.id,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            users=self.users,
-            id=self.id)
+            users=self.users)
 
 def get_sasl_users(instance_id=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.66.0+
-    
-    :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
-    :param str name_regex: A regex string to filter results by the username. 
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
+
+
+    :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
+    :param str name_regex: A regex string to filter results by the username. 
     """
     __args__ = dict()
+
 
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
@@ -77,9 +79,9 @@ def get_sasl_users(instance_id=None,name_regex=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getSaslUsers:getSaslUsers', __args__, opts=opts).value
 
     return AwaitableGetSaslUsersResult(
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        users=__ret__.get('users'),
-        id=__ret__.get('id'))
+        users=__ret__.get('users'))

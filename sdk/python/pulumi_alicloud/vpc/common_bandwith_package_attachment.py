@@ -21,13 +21,10 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth_package_id=None, instance_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a CommonBandwithPackageAttachment resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/common_bandwidth_package_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,18 +60,17 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         """
         Get an existing CommonBandwithPackageAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
         :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/common_bandwidth_package_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth_package_id"] = bandwidth_package_id
         __props__["instance_id"] = instance_id
         return CommonBandwithPackageAttachment(resource_name, opts=opts, __props__=__props__)

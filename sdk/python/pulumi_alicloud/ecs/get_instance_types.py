@@ -13,7 +13,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, id=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
@@ -35,6 +35,12 @@ class GetInstanceTypesResult:
         if gpu_spec and not isinstance(gpu_spec, str):
             raise TypeError("Expected argument 'gpu_spec' to be a str")
         __self__.gpu_spec = gpu_spec
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -77,12 +83,6 @@ class GetInstanceTypesResult:
         if spot_strategy and not isinstance(spot_strategy, str):
             raise TypeError("Expected argument 'spot_strategy' to be a str")
         __self__.spot_strategy = spot_strategy
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -94,6 +94,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             eni_amount=self.eni_amount,
             gpu_amount=self.gpu_amount,
             gpu_spec=self.gpu_spec,
+            id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             instance_type_family=self.instance_type_family,
@@ -104,17 +105,19 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             network_type=self.network_type,
             output_file=self.output_file,
             sorted_by=self.sorted_by,
-            spot_strategy=self.spot_strategy,
-            id=self.id)
+            spot_strategy=self.spot_strategy)
 
 def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=None,gpu_amount=None,gpu_spec=None,instance_charge_type=None,instance_type_family=None,is_outdated=None,kubernetes_node_role=None,memory_size=None,network_type=None,output_file=None,sorted_by=None,spot_strategy=None,opts=None):
     """
     This data source provides the ECS instance types of Alibaba Cloud.
-    
+
     > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
-    
+
     > **NOTE:** If one instance type is sold out, it will not be exported.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
+
+
     :param str availability_zone: The zone where instance types are supported.
     :param float cpu_core_count: Filter the results to a specific number of cpu cores.
     :param float eni_amount: Filter the result whose network interface number is no more than `eni_amount`.
@@ -126,10 +129,9 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['availabilityZone'] = availability_zone
     __args__['cpuCoreCount'] = cpu_core_count
@@ -157,6 +159,7 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
         eni_amount=__ret__.get('eniAmount'),
         gpu_amount=__ret__.get('gpuAmount'),
         gpu_spec=__ret__.get('gpuSpec'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_type_family=__ret__.get('instanceTypeFamily'),
@@ -167,5 +170,4 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
         network_type=__ret__.get('networkType'),
         output_file=__ret__.get('outputFile'),
         sorted_by=__ret__.get('sortedBy'),
-        spot_strategy=__ret__.get('spotStrategy'),
-        id=__ret__.get('id'))
+        spot_strategy=__ret__.get('spotStrategy'))

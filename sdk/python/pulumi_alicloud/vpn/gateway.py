@@ -64,7 +64,6 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth=None, description=None, enable_ipsec=None, enable_ssl=None, instance_charge_type=None, name=None, period=None, ssl_connections=None, vpc_id=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Gateway resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPN instance.
@@ -78,8 +77,6 @@ class Gateway(pulumi.CustomResource):
                This field is ignored when enable_ssl is false.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_gateway.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -126,7 +123,7 @@ class Gateway(pulumi.CustomResource):
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,12 +141,11 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the VPN gateway.
         :param pulumi.Input[str] vpc_id: The VPN belongs the vpc_id, the field can't be changed.
         :param pulumi.Input[str] vswitch_id: The VPN belongs the vswitch_id, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_gateway.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth"] = bandwidth
         __props__["business_status"] = business_status
         __props__["description"] = description

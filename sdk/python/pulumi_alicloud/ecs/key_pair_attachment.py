@@ -25,16 +25,16 @@ class KeyPairAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, force=None, instance_ids=None, key_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a key pair attachment resource to bind key pair for several ECS instances.
-        
+
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[list] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +71,18 @@ class KeyPairAttachment(pulumi.CustomResource):
         """
         Get an existing KeyPairAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[list] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["force"] = force
         __props__["instance_ids"] = instance_ids
         __props__["key_name"] = key_name

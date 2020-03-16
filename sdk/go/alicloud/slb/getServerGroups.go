@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides the VServer groups related to a server load balancer.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
 func GetServerGroups(ctx *pulumi.Context, args *GetServerGroupsArgs, opts ...pulumi.InvokeOption) (*GetServerGroupsResult, error) {
 	var rv GetServerGroupsResult

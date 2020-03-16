@@ -13,7 +13,7 @@ class GetInstanceClassesResult:
     """
     A collection of values returned by getInstanceClasses.
     """
-    def __init__(__self__, category=None, db_instance_class=None, engine=None, engine_version=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None, id=None):
+    def __init__(__self__, category=None, db_instance_class=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, instance_classes=None, multi_zone=None, output_file=None, sorted_by=None, storage_type=None, zone_id=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         __self__.category = category
@@ -26,6 +26,12 @@ class GetInstanceClassesResult:
         if engine_version and not isinstance(engine_version, str):
             raise TypeError("Expected argument 'engine_version' to be a str")
         __self__.engine_version = engine_version
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -56,12 +62,6 @@ class GetInstanceClassesResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +72,7 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             db_instance_class=self.db_instance_class,
             engine=self.engine,
             engine_version=self.engine_version,
+            id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             instance_classes=self.instance_classes,
@@ -79,15 +80,17 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             output_file=self.output_file,
             sorted_by=self.sorted_by,
             storage_type=self.storage_type,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_instance_classes(category=None,db_instance_class=None,engine=None,engine_version=None,instance_charge_type=None,multi_zone=None,output_file=None,sorted_by=None,storage_type=None,zone_id=None,opts=None):
     """
     This data source provides the RDS instance classes resource available info of Alibaba Cloud.
-    
+
     > **NOTE:** Available in v1.46.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
+
+
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str db_instance_class: The DB instance class type by the user.
     :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
@@ -96,10 +99,9 @@ def get_instance_classes(category=None,db_instance_class=None,engine=None,engine
     :param bool multi_zone: Whether to show multi available zone. Default false to not show multi availability zone.
     :param str storage_type: The DB instance storage space required by the user. Valid values: `cloud_ssd` and `local_ssd`.
     :param str zone_id: The Zone to launch the DB instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['category'] = category
     __args__['dbInstanceClass'] = db_instance_class
@@ -122,6 +124,7 @@ def get_instance_classes(category=None,db_instance_class=None,engine=None,engine
         db_instance_class=__ret__.get('dbInstanceClass'),
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_classes=__ret__.get('instanceClasses'),
@@ -129,5 +132,4 @@ def get_instance_classes(category=None,db_instance_class=None,engine=None,engine
         output_file=__ret__.get('outputFile'),
         sorted_by=__ret__.get('sortedBy'),
         storage_type=__ret__.get('storageType'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

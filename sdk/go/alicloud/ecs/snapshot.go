@@ -12,9 +12,9 @@ import (
 )
 
 // Provides an ECS snapshot resource.
-// 
+//
 // For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snapshot.html.markdown.
 type Snapshot struct {
 	pulumi.CustomResourceState

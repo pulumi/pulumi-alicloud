@@ -13,7 +13,7 @@ class Domain(pulumi.CustomResource):
     auth_config: pulumi.Output[dict]
     """
     The auth config of the accelerated domain.
-    
+
       * `auth_type` (`str`) - Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
       * `masterKey` (`str`) - Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
       * `slaveKey` (`str`) - Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
@@ -23,7 +23,7 @@ class Domain(pulumi.CustomResource):
     cache_configs: pulumi.Output[list]
     """
     The cache configs of the accelerated domain.
-    
+
       * `cacheContent` (`str`) - Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
       * `cacheId` (`str`)
       * `cacheType` (`str`) - Cache type of the cache config. Valid values are `suffix` and `path`.
@@ -42,7 +42,7 @@ class Domain(pulumi.CustomResource):
     http_header_configs: pulumi.Output[list]
     """
     The http header configs of the accelerated domain.
-    
+
       * `headerId` (`str`)
       * `headerKey` (`str`) - Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
       * `headerValue` (`str`) - Header value of the http header.
@@ -54,7 +54,7 @@ class Domain(pulumi.CustomResource):
     page404_config: pulumi.Output[dict]
     """
     The error page config of the accelerated domain.
-    
+
       * `customPageUrl` (`str`) - Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
       * `errorCode` (`str`)
       * `pageType` (`str`) - Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
@@ -66,7 +66,7 @@ class Domain(pulumi.CustomResource):
     parameter_filter_config: pulumi.Output[dict]
     """
     The parameter filter config of the accelerated domain.
-    
+
       * `enable` (`str`) - This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
       * `hashKeyArgs` (`list`) - Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
     """
@@ -77,7 +77,7 @@ class Domain(pulumi.CustomResource):
     refer_config: pulumi.Output[dict]
     """
     The refer config of the accelerated domain.
-    
+
       * `allowEmpty` (`str`) - This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
       * `referLists` (`list`) - A list of domain names of the refer config.
       * `referType` (`str`) - Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
@@ -105,7 +105,6 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auth_config=None, block_ips=None, cache_configs=None, cdn_type=None, certificate_config=None, domain_name=None, http_header_configs=None, optimize_enable=None, page404_config=None, page_compress_enable=None, parameter_filter_config=None, range_enable=None, refer_config=None, scope=None, source_port=None, source_type=None, sources=None, video_seek_enable=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Domain resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] auth_config: The auth config of the accelerated domain.
@@ -124,52 +123,50 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
         :param pulumi.Input[list] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
         :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        
+
         The **auth_config** object supports the following:
-        
+
           * `auth_type` (`pulumi.Input[str]`) - Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
           * `masterKey` (`pulumi.Input[str]`) - Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
           * `slaveKey` (`pulumi.Input[str]`) - Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
           * `timeout` (`pulumi.Input[float]`) - Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        
+
         The **cache_configs** object supports the following:
-        
+
           * `cacheContent` (`pulumi.Input[str]`) - Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
           * `cacheId` (`pulumi.Input[str]`)
           * `cacheType` (`pulumi.Input[str]`) - Cache type of the cache config. Valid values are `suffix` and `path`.
           * `ttl` (`pulumi.Input[float]`) - Cache time of the cache config.
           * `weight` (`pulumi.Input[float]`) - Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        
+
         The **certificate_config** object supports the following:
-        
-          * `privateKey` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
-          * `serverCertificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
+
+          * `private_key` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
+          * `server_certificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
           * `serverCertificateStatus` (`pulumi.Input[str]`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        
+
         The **http_header_configs** object supports the following:
-        
+
           * `headerId` (`pulumi.Input[str]`)
           * `headerKey` (`pulumi.Input[str]`) - Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
           * `headerValue` (`pulumi.Input[str]`) - Header value of the http header.
-        
+
         The **page404_config** object supports the following:
-        
+
           * `customPageUrl` (`pulumi.Input[str]`) - Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
           * `errorCode` (`pulumi.Input[str]`)
           * `pageType` (`pulumi.Input[str]`) - Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        
+
         The **parameter_filter_config** object supports the following:
-        
+
           * `enable` (`pulumi.Input[str]`) - This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
           * `hashKeyArgs` (`pulumi.Input[list]`) - Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        
+
         The **refer_config** object supports the following:
-        
+
           * `allowEmpty` (`pulumi.Input[str]`) - This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
           * `referLists` (`pulumi.Input[list]`) - A list of domain names of the refer config.
           * `referType` (`pulumi.Input[str]`) - Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -221,7 +218,7 @@ class Domain(pulumi.CustomResource):
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -241,56 +238,55 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] source_type: Source type of the accelerated domain. Valid values are `ipaddr`, `domain`, `oss`. You must set this parameter when `cdn_type` value is not `liveStream`.
         :param pulumi.Input[list] sources: Sources of the accelerated domain. It's a list of domain names or IP address and consists of at most 20 items. You must set this parameter when `cdn_type` value is not `liveStream`.
         :param pulumi.Input[str] video_seek_enable: Video Seek config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`.
-        
+
         The **auth_config** object supports the following:
-        
+
           * `auth_type` (`pulumi.Input[str]`) - Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
           * `masterKey` (`pulumi.Input[str]`) - Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
           * `slaveKey` (`pulumi.Input[str]`) - Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
           * `timeout` (`pulumi.Input[float]`) - Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        
+
         The **cache_configs** object supports the following:
-        
+
           * `cacheContent` (`pulumi.Input[str]`) - Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
           * `cacheId` (`pulumi.Input[str]`)
           * `cacheType` (`pulumi.Input[str]`) - Cache type of the cache config. Valid values are `suffix` and `path`.
           * `ttl` (`pulumi.Input[float]`) - Cache time of the cache config.
           * `weight` (`pulumi.Input[float]`) - Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        
+
         The **certificate_config** object supports the following:
-        
-          * `privateKey` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
-          * `serverCertificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
+
+          * `private_key` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
+          * `server_certificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
           * `serverCertificateStatus` (`pulumi.Input[str]`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        
+
         The **http_header_configs** object supports the following:
-        
+
           * `headerId` (`pulumi.Input[str]`)
           * `headerKey` (`pulumi.Input[str]`) - Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
           * `headerValue` (`pulumi.Input[str]`) - Header value of the http header.
-        
+
         The **page404_config** object supports the following:
-        
+
           * `customPageUrl` (`pulumi.Input[str]`) - Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
           * `errorCode` (`pulumi.Input[str]`)
           * `pageType` (`pulumi.Input[str]`) - Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        
+
         The **parameter_filter_config** object supports the following:
-        
+
           * `enable` (`pulumi.Input[str]`) - This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
           * `hashKeyArgs` (`pulumi.Input[list]`) - Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        
+
         The **refer_config** object supports the following:
-        
+
           * `allowEmpty` (`pulumi.Input[str]`) - This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
           * `referLists` (`pulumi.Input[list]`) - A list of domain names of the refer config.
           * `referType` (`pulumi.Input[str]`) - Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auth_config"] = auth_config
         __props__["block_ips"] = block_ips
         __props__["cache_configs"] = cache_configs

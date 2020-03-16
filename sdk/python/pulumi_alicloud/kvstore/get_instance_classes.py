@@ -13,7 +13,7 @@ class GetInstanceClassesResult:
     """
     A collection of values returned by getInstanceClasses.
     """
-    def __init__(__self__, architecture=None, classes=None, edition_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_classes=None, node_type=None, output_file=None, package_type=None, performance_type=None, series_type=None, shard_number=None, sorted_by=None, storage_type=None, zone_id=None, id=None):
+    def __init__(__self__, architecture=None, classes=None, edition_type=None, engine=None, engine_version=None, id=None, instance_charge_type=None, instance_classes=None, node_type=None, output_file=None, package_type=None, performance_type=None, series_type=None, shard_number=None, sorted_by=None, storage_type=None, zone_id=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         __self__.architecture = architecture
@@ -32,6 +32,12 @@ class GetInstanceClassesResult:
         if engine_version and not isinstance(engine_version, str):
             raise TypeError("Expected argument 'engine_version' to be a str")
         __self__.engine_version = engine_version
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
         __self__.instance_charge_type = instance_charge_type
@@ -68,12 +74,6 @@ class GetInstanceClassesResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         __self__.zone_id = zone_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -85,6 +85,7 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             edition_type=self.edition_type,
             engine=self.engine,
             engine_version=self.engine_version,
+            id=self.id,
             instance_charge_type=self.instance_charge_type,
             instance_classes=self.instance_classes,
             node_type=self.node_type,
@@ -95,15 +96,17 @@ class AwaitableGetInstanceClassesResult(GetInstanceClassesResult):
             shard_number=self.shard_number,
             sorted_by=self.sorted_by,
             storage_type=self.storage_type,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_version=None,instance_charge_type=None,node_type=None,output_file=None,package_type=None,performance_type=None,series_type=None,shard_number=None,sorted_by=None,storage_type=None,zone_id=None,opts=None):
     """
     This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
-    
+
     > **NOTE:** Available in v1.49.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
+
+
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
     :param str edition_type: The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
@@ -116,10 +119,9 @@ def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_
     :param float shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
     :param str storage_type: It has been deprecated from 1.68.0. 
     :param str zone_id: The Zone to launch the KVStore instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['architecture'] = architecture
     __args__['editionType'] = edition_type
@@ -147,6 +149,7 @@ def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_
         edition_type=__ret__.get('editionType'),
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),
+        id=__ret__.get('id'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_classes=__ret__.get('instanceClasses'),
         node_type=__ret__.get('nodeType'),
@@ -157,5 +160,4 @@ def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_
         shard_number=__ret__.get('shardNumber'),
         sorted_by=__ret__.get('sortedBy'),
         storage_type=__ret__.get('storageType'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

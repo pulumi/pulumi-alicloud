@@ -29,15 +29,12 @@ class EipAssociation(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, allocation_id=None, instance_id=None, instance_type=None, private_ip_address=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a EipAssociation resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_id: The allocation EIP ID.
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
         :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,7 +72,7 @@ class EipAssociation(pulumi.CustomResource):
         """
         Get an existing EipAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,12 +80,11 @@ class EipAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The ID of the ECS or SLB instance or Nat Gateway.
         :param pulumi.Input[str] instance_type: The type of cloud product that the eip instance to bind.
         :param pulumi.Input[str] private_ip_address: The private IP address in the network segment of the vswitch which has been assigned.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/eip_association.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["allocation_id"] = allocation_id
         __props__["instance_id"] = instance_id
         __props__["instance_type"] = instance_type

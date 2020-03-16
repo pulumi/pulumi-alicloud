@@ -29,19 +29,19 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, group_id=None, instance_id=None, read_enable=None, remark=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ONS group resource.
-        
+
         For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
-        
+
         > **NOTE:** Available in 1.53.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Name of the group. Two groups on a single instance cannot have the same name. A `group_id` starts with "GID_" or "GID-", and contains letters, numbers, hyphens (-), and underscores (_).
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class Group(pulumi.CustomResource):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +87,11 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: ID of the ONS Instance that owns the groups.
         :param pulumi.Input[bool] read_enable: This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
         :param pulumi.Input[str] remark: This attribute is a concise description of group. The length cannot exceed 256.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["group_id"] = group_id
         __props__["instance_id"] = instance_id
         __props__["read_enable"] = read_enable

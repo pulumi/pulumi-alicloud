@@ -25,16 +25,16 @@ class InstanceGrant(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cen_id=None, cen_owner_id=None, child_instance_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
-        
+
         For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to grant.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -73,19 +73,18 @@ class InstanceGrant(pulumi.CustomResource):
         """
         Get an existing InstanceGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to grant.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cen_id"] = cen_id
         __props__["cen_owner_id"] = cen_owner_id
         __props__["child_instance_id"] = child_instance_id

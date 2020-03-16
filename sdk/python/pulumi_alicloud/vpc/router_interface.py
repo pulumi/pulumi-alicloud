@@ -82,7 +82,6 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, health_check_source_ip=None, health_check_target_ip=None, instance_charge_type=None, name=None, opposite_access_point_id=None, opposite_region=None, period=None, role=None, router_id=None, router_type=None, specification=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RouterInterface resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
@@ -98,8 +97,6 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] router_id: The Router ID.
         :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
         :param pulumi.Input[str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -154,7 +151,7 @@ class RouterInterface(pulumi.CustomResource):
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -176,12 +173,11 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] router_id: The Router ID.
         :param pulumi.Input[str] router_type: Router Type. Optional value: VRouter, VBR. Accepting side router interface type only be VRouter.
         :param pulumi.Input[str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_point_id"] = access_point_id
         __props__["description"] = description
         __props__["health_check_source_ip"] = health_check_source_ip

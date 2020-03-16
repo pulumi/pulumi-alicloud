@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_entry.html.markdown.
- */
 export class RouteEntry extends pulumi.CustomResource {
     /**
      * Get an existing RouteEntry resource's state with the given name, ID, and optional extra
@@ -140,6 +137,8 @@ export interface RouteEntryState {
     readonly routeTableId?: pulumi.Input<string>;
     /**
      * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     * 
+     * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
     readonly routerId?: pulumi.Input<string>;
 }
@@ -176,6 +175,8 @@ export interface RouteEntryArgs {
     readonly routeTableId: pulumi.Input<string>;
     /**
      * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
+     * 
+     * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
     readonly routerId?: pulumi.Input<string>;
 }

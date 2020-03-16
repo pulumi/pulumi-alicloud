@@ -14,9 +14,9 @@ import (
 // Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
 // environment in the cloud. A PolarDB cluster can contain multiple user-created
 // databases.
-// 
+//
 // > **NOTE:** Available in v1.66.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

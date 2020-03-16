@@ -13,7 +13,7 @@ class GetDatabasesResult:
     """
     A collection of values returned by getDatabases.
     """
-    def __init__(__self__, databases=None, db_cluster_id=None, name_regex=None, names=None, id=None):
+    def __init__(__self__, databases=None, db_cluster_id=None, id=None, name_regex=None, names=None):
         if databases and not isinstance(databases, list):
             raise TypeError("Expected argument 'databases' to be a list")
         __self__.databases = databases
@@ -23,6 +23,12 @@ class GetDatabasesResult:
         if db_cluster_id and not isinstance(db_cluster_id, str):
             raise TypeError("Expected argument 'db_cluster_id' to be a str")
         __self__.db_cluster_id = db_cluster_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         __self__.name_regex = name_regex
@@ -32,12 +38,6 @@ class GetDatabasesResult:
         """
         database name of the cluster.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDatabasesResult(GetDatabasesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,23 +46,25 @@ class AwaitableGetDatabasesResult(GetDatabasesResult):
         return GetDatabasesResult(
             databases=self.databases,
             db_cluster_id=self.db_cluster_id,
+            id=self.id,
             name_regex=self.name_regex,
-            names=self.names,
-            id=self.id)
+            names=self.names)
 
 def get_databases(db_cluster_id=None,name_regex=None,opts=None):
     """
     The `polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
     Filters support regular expression for the database name, searches by clusterId.
-    
+
     > **NOTE:** Available in v1.70.0+.
-    
-    :param str db_cluster_id: The polarDB cluster ID. 
-    :param str name_regex: A regex string to filter results by database name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
+
+
+    :param str db_cluster_id: The polarDB cluster ID. 
+    :param str name_regex: A regex string to filter results by database name.
     """
     __args__ = dict()
+
 
     __args__['dbClusterId'] = db_cluster_id
     __args__['nameRegex'] = name_regex
@@ -75,6 +77,6 @@ def get_databases(db_cluster_id=None,name_regex=None,opts=None):
     return AwaitableGetDatabasesResult(
         databases=__ret__.get('databases'),
         db_cluster_id=__ret__.get('dbClusterId'),
+        id=__ret__.get('id'),
         name_regex=__ret__.get('nameRegex'),
-        names=__ret__.get('names'),
-        id=__ret__.get('id'))
+        names=__ret__.get('names'))

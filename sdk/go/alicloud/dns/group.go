@@ -11,7 +11,7 @@ import (
 )
 
 // Provides a DNS Group resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_group.html.markdown.
 type Group struct {
 	pulumi.CustomResourceState

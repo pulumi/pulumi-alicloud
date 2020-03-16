@@ -13,7 +13,7 @@ class GetFileSystemsResult:
     """
     A collection of values returned by getFileSystems.
     """
-    def __init__(__self__, description_regex=None, descriptions=None, ids=None, output_file=None, protocol_type=None, storage_type=None, systems=None, id=None):
+    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, output_file=None, protocol_type=None, storage_type=None, systems=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         __self__.description_regex = description_regex
@@ -22,6 +22,12 @@ class GetFileSystemsResult:
         __self__.descriptions = descriptions
         """
         A list of FileSystem descriptions.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetFileSystemsResult:
         """
         A list of VPCs. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetFileSystemsResult(GetFileSystemsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,27 +64,29 @@ class AwaitableGetFileSystemsResult(GetFileSystemsResult):
         return GetFileSystemsResult(
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            id=self.id,
             ids=self.ids,
             output_file=self.output_file,
             protocol_type=self.protocol_type,
             storage_type=self.storage_type,
-            systems=self.systems,
-            id=self.id)
+            systems=self.systems)
 
 def get_file_systems(description_regex=None,ids=None,output_file=None,protocol_type=None,storage_type=None,opts=None):
     """
     This data source provides FileSystems available to the user.
-    
+
     > NOTE: Available in 1.35.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
+
+
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param list ids: A list of FileSystemId.
     :param str protocol_type: Filter results by a specific ProtocolType. 
     :param str storage_type: Filter results by a specific StorageType. 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
@@ -100,9 +102,9 @@ def get_file_systems(description_regex=None,ids=None,output_file=None,protocol_t
     return AwaitableGetFileSystemsResult(
         description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         output_file=__ret__.get('outputFile'),
         protocol_type=__ret__.get('protocolType'),
         storage_type=__ret__.get('storageType'),
-        systems=__ret__.get('systems'),
-        id=__ret__.get('id'))
+        systems=__ret__.get('systems'))

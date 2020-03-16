@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list of Route Tables owned by an Alibaba Cloud account.
-// 
+//
 // > **NOTE:** Available in 1.36.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
 func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulumi.InvokeOption) (*GetRouteTablesResult, error) {
 	var rv GetRouteTablesResult

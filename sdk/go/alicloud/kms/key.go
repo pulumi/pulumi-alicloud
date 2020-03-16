@@ -11,7 +11,7 @@ import (
 )
 
 // A kms key can help user to protect data security in the transmission process.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
 type Key struct {
 	pulumi.CustomResourceState
@@ -21,6 +21,7 @@ type Key struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays pulumi.IntPtrOutput `pulumi:"deletionWindowInDays"`
+	// The description of the key.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
@@ -61,6 +62,7 @@ type keyState struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
+	// The description of the key.
 	Description *string `pulumi:"description"`
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -74,6 +76,7 @@ type KeyState struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays pulumi.IntPtrInput
+	// The description of the key.
 	Description pulumi.StringPtrInput
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled pulumi.BoolPtrInput
@@ -89,6 +92,7 @@ type keyArgs struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
+	// The description of the key.
 	Description *string `pulumi:"description"`
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -101,6 +105,7 @@ type KeyArgs struct {
 	// Duration in days after which the key is deleted
 	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
 	DeletionWindowInDays pulumi.IntPtrInput
+	// The description of the key.
 	Description pulumi.StringPtrInput
 	// Specifies whether the key is enabled. Defaults to true.
 	IsEnabled pulumi.BoolPtrInput

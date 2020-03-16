@@ -25,14 +25,14 @@ class DiskAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, device_name=None, disk_id=None, instance_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,19 +69,18 @@ class DiskAttachment(pulumi.CustomResource):
         """
         Get an existing DiskAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] disk_id: ID of the Disk to be attached.
         :param pulumi.Input[str] instance_id: ID of the Instance to attach to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["device_name"] = device_name
         __props__["disk_id"] = disk_id
         __props__["instance_id"] = instance_id

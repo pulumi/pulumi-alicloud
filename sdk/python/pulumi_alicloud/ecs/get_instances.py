@@ -13,12 +13,18 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vswitch_id=None, id=None):
+    def __init__(__self__, availability_zone=None, id=None, ids=None, image_id=None, instances=None, name_regex=None, names=None, output_file=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
         """
         Availability zone the instance belongs to.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -86,12 +92,6 @@ class GetInstancesResult:
         """
         ID of the VSwitch the instance belongs to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -99,6 +99,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            id=self.id,
             ids=self.ids,
             image_id=self.image_id,
             instances=self.instances,
@@ -110,13 +111,15 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             status=self.status,
             tags=self.tags,
             vpc_id=self.vpc_id,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,output_file=None,ram_role_name=None,resource_group_id=None,status=None,tags=None,vpc_id=None,vswitch_id=None,opts=None):
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
+
+
     :param str availability_zone: Availability zone where instances are located.
     :param list ids: A list of ECS instance IDs.
     :param str image_id: The image ID of some ECS instance used.
@@ -135,10 +138,9 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
            ```
     :param str vpc_id: ID of the VPC linked to the instances.
     :param str vswitch_id: ID of the VSwitch linked to the instances.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['availabilityZone'] = availability_zone
     __args__['ids'] = ids
@@ -159,6 +161,7 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
 
     return AwaitableGetInstancesResult(
         availability_zone=__ret__.get('availabilityZone'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         image_id=__ret__.get('imageId'),
         instances=__ret__.get('instances'),
@@ -170,5 +173,4 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         vpc_id=__ret__.get('vpcId'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))

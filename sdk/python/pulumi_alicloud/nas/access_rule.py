@@ -37,11 +37,13 @@ class AccessRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_group_name=None, priority=None, rw_access_type=None, source_cidr_ip=None, user_access_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Nas Access Rule resource.
-        
+
         When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
-        
+
         > **NOTE:** Available in v1.34.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
@@ -49,8 +51,6 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
         :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,7 +90,7 @@ class AccessRule(pulumi.CustomResource):
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,12 +100,11 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] rw_access_type: Read-write permission type: RDWR (default), RDONLY.
         :param pulumi.Input[str] source_cidr_ip: Address or address segment.
         :param pulumi.Input[str] user_access_type: User permission type: no_squash (default), root_squash, all_squash.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_group_name"] = access_group_name
         __props__["access_rule_id"] = access_rule_id
         __props__["priority"] = priority

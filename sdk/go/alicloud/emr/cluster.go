@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
-// 
+//
 // > **NOTE:** Available in 1.57.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

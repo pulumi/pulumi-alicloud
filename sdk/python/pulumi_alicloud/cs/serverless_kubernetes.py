@@ -68,7 +68,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, tags=None, vpc_id=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ServerlessKubernetes resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -86,8 +85,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_serverless_kubernetes.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,7 +132,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         """
         Get an existing ServerlessKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,12 +151,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_serverless_kubernetes.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key
         __props__["cluster_ca_cert"] = cluster_ca_cert

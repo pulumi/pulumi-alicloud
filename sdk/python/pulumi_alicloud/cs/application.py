@@ -45,7 +45,7 @@ class Application(pulumi.CustomResource):
     services: pulumi.Output[list]
     """
     List of services in the application. It contains several attributes to `Block Nodes`.
-    
+
       * `id` (`str`) - ID of the service.
       * `name` (`str`) - The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
       * `status` (`str`) - The current status of service.
@@ -62,14 +62,16 @@ class Application(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, blue_green=None, blue_green_confirm=None, cluster_name=None, description=None, environment=None, latest_image=None, name=None, template=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
-        
+
         This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
         Each application can contain one or more services.
-        
+
         > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
-        
+
         > **NOTE:** At present, this resource only support swarm cluster.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blue_green: Wherther to use "Blue Green" method when release a new version. Default to false.
@@ -81,8 +83,6 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] name: The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
         :param pulumi.Input[str] template: The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
         :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -127,7 +127,7 @@ class Application(pulumi.CustomResource):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,19 +142,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] services: List of services in the application. It contains several attributes to `Block Nodes`.
         :param pulumi.Input[str] template: The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
         :param pulumi.Input[str] version: The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        
+
         The **services** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`) - ID of the service.
           * `name` (`pulumi.Input[str]`) - The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
           * `status` (`pulumi.Input[str]`) - The current status of service.
           * `version` (`pulumi.Input[str]`) - The application deploying version. Each updating, it must be different with current. Default to "1.0"
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["blue_green"] = blue_green
         __props__["blue_green_confirm"] = blue_green_confirm
         __props__["cluster_name"] = cluster_name

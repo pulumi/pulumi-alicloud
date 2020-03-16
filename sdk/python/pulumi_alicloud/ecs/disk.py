@@ -66,9 +66,11 @@ class Disk(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, name=None, resource_group_id=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a ECS disk resource.
-        
+
         > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Zone to create the disk in.
@@ -84,8 +86,6 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[float] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -132,7 +132,7 @@ class Disk(pulumi.CustomResource):
         """
         Get an existing Disk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,12 +150,11 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["availability_zone"] = availability_zone
         __props__["category"] = category
         __props__["delete_auto_snapshot"] = delete_auto_snapshot

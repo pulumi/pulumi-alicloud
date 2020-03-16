@@ -25,20 +25,20 @@ class FileSystem(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, protocol_type=None, storage_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Nas File System resource.
-        
+
         After activating NAS, you can create a file system and purchase a storage package for it in the NAS console. The NAS console also enables you to view the file system details and remove unnecessary file systems.
-        
+
         For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
-        
+
         > **NOTE:** Available in v1.33.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_file_system.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The File System description.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_file_system.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,19 +75,18 @@ class FileSystem(pulumi.CustomResource):
         """
         Get an existing FileSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The File System description.
         :param pulumi.Input[str] protocol_type: The Protocol Type of a File System. Valid values: `NFS` and `SMB`.
         :param pulumi.Input[str] storage_type: The Storage Type of a File System. Valid values: `Capacity` and `Performance`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_file_system.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["protocol_type"] = protocol_type
         __props__["storage_type"] = storage_type

@@ -33,9 +33,11 @@ class Database(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, character_set=None, description=None, instance_id=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
-        
+
         > **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] character_set: Character set. The value range is limited to the following:
@@ -46,8 +48,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
                and have no more than 64 characters.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,7 +83,7 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,12 +95,11 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter
                and have no more than 64 characters.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["character_set"] = character_set
         __props__["description"] = description
         __props__["instance_id"] = instance_id

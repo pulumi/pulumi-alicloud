@@ -9,7 +9,7 @@ import (
 )
 
 // The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
 func GetCustomerGateways(ctx *pulumi.Context, args *GetCustomerGatewaysArgs, opts ...pulumi.InvokeOption) (*GetCustomerGatewaysResult, error) {
 	var rv GetCustomerGatewaysResult

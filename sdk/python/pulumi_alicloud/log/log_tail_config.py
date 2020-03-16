@@ -41,7 +41,6 @@ class LogTailConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, input_detail=None, input_type=None, log_sample=None, logstore=None, name=None, output_type=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a LogTailConfig resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] input_detail: The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
@@ -51,8 +50,6 @@ class LogTailConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +96,7 @@ class LogTailConfig(pulumi.CustomResource):
         """
         Get an existing LogTailConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,12 +107,11 @@ class LogTailConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Logtail configuration name, which is unique in the same project.
         :param pulumi.Input[str] output_type: The output type. Currently, only LogService is supported.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["input_detail"] = input_detail
         __props__["input_type"] = input_type
         __props__["log_sample"] = log_sample

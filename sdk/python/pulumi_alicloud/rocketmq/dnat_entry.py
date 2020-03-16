@@ -41,13 +41,15 @@ class DnatEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, external_ip=None, external_port=None, internal_ip=None, internal_port=None, ip_protocol=None, sag_id=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
-        
+
         For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
-        
+
         > **NOTE:** Available in 1.63.0+
-        
+
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_dnat_entry.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_ip: The external public IP address.when "type" is "Internet",automatically identify the external ip.
@@ -57,8 +59,6 @@ class DnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[str] type: The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_dnat_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +107,7 @@ class DnatEntry(pulumi.CustomResource):
         """
         Get an existing DnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,12 +118,11 @@ class DnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
         :param pulumi.Input[str] sag_id: The ID of the SAG instance.
         :param pulumi.Input[str] type: The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_dnat_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["external_ip"] = external_ip
         __props__["external_port"] = external_port
         __props__["internal_ip"] = internal_ip

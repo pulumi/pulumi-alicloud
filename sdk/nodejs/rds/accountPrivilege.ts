@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account_privilege.html.markdown.
- */
 export class AccountPrivilege extends pulumi.CustomResource {
     /**
      * Get an existing AccountPrivilege resource's state with the given name, ID, and optional extra

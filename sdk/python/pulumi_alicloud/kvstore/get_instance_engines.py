@@ -13,7 +13,7 @@ class GetInstanceEnginesResult:
     """
     A collection of values returned by getInstanceEngines.
     """
-    def __init__(__self__, engine=None, engine_version=None, instance_charge_type=None, instance_engines=None, output_file=None, zone_id=None, id=None):
+    def __init__(__self__, engine=None, engine_version=None, id=None, instance_charge_type=None, instance_engines=None, output_file=None, zone_id=None):
         if engine and not isinstance(engine, str):
             raise TypeError("Expected argument 'engine' to be a str")
         __self__.engine = engine
@@ -25,6 +25,12 @@ class GetInstanceEnginesResult:
         __self__.engine_version = engine_version
         """
         KVStore Instance version.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
@@ -44,12 +50,6 @@ class GetInstanceEnginesResult:
         """
         The Zone to launch the KVStore instance.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstanceEnginesResult(GetInstanceEnginesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -58,26 +58,28 @@ class AwaitableGetInstanceEnginesResult(GetInstanceEnginesResult):
         return GetInstanceEnginesResult(
             engine=self.engine,
             engine_version=self.engine_version,
+            id=self.id,
             instance_charge_type=self.instance_charge_type,
             instance_engines=self.instance_engines,
             output_file=self.output_file,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_instance_engines(engine=None,engine_version=None,instance_charge_type=None,output_file=None,zone_id=None,opts=None):
     """
     This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
-    
+
     > **NOTE:** Available in v1.51.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
+
+
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
     :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str zone_id: The Zone to launch the KVStore instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
@@ -93,8 +95,8 @@ def get_instance_engines(engine=None,engine_version=None,instance_charge_type=No
     return AwaitableGetInstanceEnginesResult(
         engine=__ret__.get('engine'),
         engine_version=__ret__.get('engineVersion'),
+        id=__ret__.get('id'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         instance_engines=__ret__.get('instanceEngines'),
         output_file=__ret__.get('outputFile'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

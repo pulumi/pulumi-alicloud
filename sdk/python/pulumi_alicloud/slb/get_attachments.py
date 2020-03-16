@@ -13,7 +13,13 @@ class GetAttachmentsResult:
     """
     A collection of values returned by getAttachments.
     """
-    def __init__(__self__, instance_ids=None, load_balancer_id=None, output_file=None, slb_attachments=None, id=None):
+    def __init__(__self__, id=None, instance_ids=None, load_balancer_id=None, output_file=None, slb_attachments=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_ids and not isinstance(instance_ids, list):
             raise TypeError("Expected argument 'instance_ids' to be a list")
         __self__.instance_ids = instance_ids
@@ -29,34 +35,30 @@ class GetAttachmentsResult:
         """
         A list of SLB attachments. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAttachmentsResult(GetAttachmentsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetAttachmentsResult(
+            id=self.id,
             instance_ids=self.instance_ids,
             load_balancer_id=self.load_balancer_id,
             output_file=self.output_file,
-            slb_attachments=self.slb_attachments,
-            id=self.id)
+            slb_attachments=self.slb_attachments)
 
 def get_attachments(instance_ids=None,load_balancer_id=None,output_file=None,opts=None):
     """
     This data source provides the server load balancer attachments of the current Alibaba Cloud user.
-    
-    :param list instance_ids: List of attached ECS instance IDs.
-    :param str load_balancer_id: ID of the SLB with attachments.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
+
+
+    :param list instance_ids: List of attached ECS instance IDs.
+    :param str load_balancer_id: ID of the SLB with attachments.
     """
     __args__ = dict()
+
 
     __args__['instanceIds'] = instance_ids
     __args__['loadBalancerId'] = load_balancer_id
@@ -68,8 +70,8 @@ def get_attachments(instance_ids=None,load_balancer_id=None,output_file=None,opt
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getAttachments:getAttachments', __args__, opts=opts).value
 
     return AwaitableGetAttachmentsResult(
+        id=__ret__.get('id'),
         instance_ids=__ret__.get('instanceIds'),
         load_balancer_id=__ret__.get('loadBalancerId'),
         output_file=__ret__.get('outputFile'),
-        slb_attachments=__ret__.get('slbAttachments'),
-        id=__ret__.get('id'))
+        slb_attachments=__ret__.get('slbAttachments'))

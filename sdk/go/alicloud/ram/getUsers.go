@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	var rv GetUsersResult

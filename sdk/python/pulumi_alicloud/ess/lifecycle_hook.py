@@ -41,7 +41,6 @@ class LifecycleHook(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, default_result=None, heartbeat_timeout=None, lifecycle_transition=None, name=None, notification_arn=None, notification_metadata=None, scaling_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a LifecycleHook resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_result: Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, default value: CONTINUE.
@@ -51,8 +50,6 @@ class LifecycleHook(pulumi.CustomResource):
         :param pulumi.Input[str] notification_arn: The Arn of notification target.
         :param pulumi.Input[str] notification_metadata: Additional information that you want to include when Auto Scaling sends a message to the notification target.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_lifecycle_hook.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +90,7 @@ class LifecycleHook(pulumi.CustomResource):
         """
         Get an existing LifecycleHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +101,11 @@ class LifecycleHook(pulumi.CustomResource):
         :param pulumi.Input[str] notification_arn: The Arn of notification target.
         :param pulumi.Input[str] notification_metadata: Additional information that you want to include when Auto Scaling sends a message to the notification target.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_lifecycle_hook.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["default_result"] = default_result
         __props__["heartbeat_timeout"] = heartbeat_timeout
         __props__["lifecycle_transition"] = lifecycle_transition

@@ -12,10 +12,10 @@ import (
 )
 
 // Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
-// 
+//
 // > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
 type Connection struct {
 	pulumi.CustomResourceState

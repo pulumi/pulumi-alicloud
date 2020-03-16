@@ -99,7 +99,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replication_factor=None, security_ip_lists=None, storage_engine=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -125,8 +124,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -183,7 +180,7 @@ class Instance(pulumi.CustomResource):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,12 +209,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_password"] = account_password
         __props__["backup_periods"] = backup_periods
         __props__["backup_time"] = backup_time

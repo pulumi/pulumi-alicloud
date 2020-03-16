@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_new.html.markdown.
- */
 export class DomainNew extends pulumi.CustomResource {
     /**
      * Get an existing DomainNew resource's state with the given name, ID, and optional extra

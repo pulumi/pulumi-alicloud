@@ -56,7 +56,7 @@ class ScalingRule(pulumi.CustomResource):
     step_adjustments: pulumi.Output[list]
     """
     Steps for StepScalingRule. See Block stepAdjustment below for details.
-    
+
       * `metricIntervalLowerBound` (`str`)
       * `metricIntervalUpperBound` (`str`)
       * `scalingAdjustment` (`float`)
@@ -68,7 +68,6 @@ class ScalingRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, adjustment_type=None, adjustment_value=None, cooldown=None, disable_scale_in=None, estimated_instance_warmup=None, metric_name=None, scaling_group_id=None, scaling_rule_name=None, scaling_rule_type=None, step_adjustments=None, target_value=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScalingRule resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] adjustment_type: Adjustment mode of a scaling rule. Optional values:
@@ -88,14 +87,12 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[list] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
         :param pulumi.Input[float] target_value: The target value for the metric.
-        
+
         The **step_adjustments** object supports the following:
-        
+
           * `metricIntervalLowerBound` (`pulumi.Input[str]`)
           * `metricIntervalUpperBound` (`pulumi.Input[str]`)
           * `scalingAdjustment` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -139,7 +136,7 @@ class ScalingRule(pulumi.CustomResource):
         """
         Get an existing ScalingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,18 +157,17 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[list] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
         :param pulumi.Input[float] target_value: The target value for the metric.
-        
+
         The **step_adjustments** object supports the following:
-        
+
           * `metricIntervalLowerBound` (`pulumi.Input[str]`)
           * `metricIntervalUpperBound` (`pulumi.Input[str]`)
           * `scalingAdjustment` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["adjustment_type"] = adjustment_type
         __props__["adjustment_value"] = adjustment_value
         __props__["ari"] = ari

@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a key pair attachment resource to bind key pair for several ECS instances.
-// 
+//
 // > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState

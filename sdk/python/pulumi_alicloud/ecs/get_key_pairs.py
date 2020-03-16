@@ -13,12 +13,18 @@ class GetKeyPairsResult:
     """
     A collection of values returned by getKeyPairs.
     """
-    def __init__(__self__, finger_print=None, ids=None, key_pairs=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, id=None):
+    def __init__(__self__, finger_print=None, id=None, ids=None, key_pairs=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None):
         if finger_print and not isinstance(finger_print, bool):
             raise TypeError("Expected argument 'finger_print' to be a bool")
         __self__.finger_print = finger_print
         """
         Finger print of the key pair.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -53,12 +59,6 @@ class GetKeyPairsResult:
         """
         (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeyPairsResult(GetKeyPairsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -66,28 +66,30 @@ class AwaitableGetKeyPairsResult(GetKeyPairsResult):
             yield self
         return GetKeyPairsResult(
             finger_print=self.finger_print,
+            id=self.id,
             ids=self.ids,
             key_pairs=self.key_pairs,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_key_pairs(finger_print=None,ids=None,name_regex=None,output_file=None,resource_group_id=None,tags=None,opts=None):
     """
     This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
+
+
     :param bool finger_print: A finger print used to retrieve specified key pair.
     :param list ids: A list of key pair IDs.
     :param str name_regex: A regex string to apply to the resulting key pairs.
     :param str resource_group_id: The Id of resource group which the key pair belongs.
     :param dict tags: A mapping of tags to assign to the resource.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['fingerPrint'] = finger_print
     __args__['ids'] = ids
@@ -103,11 +105,11 @@ def get_key_pairs(finger_print=None,ids=None,name_regex=None,output_file=None,re
 
     return AwaitableGetKeyPairsResult(
         finger_print=__ret__.get('fingerPrint'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         key_pairs=__ret__.get('keyPairs'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

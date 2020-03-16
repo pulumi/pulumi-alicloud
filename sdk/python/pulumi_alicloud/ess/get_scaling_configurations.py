@@ -13,12 +13,18 @@ class GetScalingConfigurationsResult:
     """
     A collection of values returned by getScalingConfigurations.
     """
-    def __init__(__self__, configurations=None, ids=None, name_regex=None, names=None, output_file=None, scaling_group_id=None, id=None):
+    def __init__(__self__, configurations=None, id=None, ids=None, name_regex=None, names=None, output_file=None, scaling_group_id=None):
         if configurations and not isinstance(configurations, list):
             raise TypeError("Expected argument 'configurations' to be a list")
         __self__.configurations = configurations
         """
         A list of scaling rules. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -44,12 +50,6 @@ class GetScalingConfigurationsResult:
         """
         ID of the scaling group.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetScalingConfigurationsResult(GetScalingConfigurationsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,24 +57,26 @@ class AwaitableGetScalingConfigurationsResult(GetScalingConfigurationsResult):
             yield self
         return GetScalingConfigurationsResult(
             configurations=self.configurations,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            scaling_group_id=self.scaling_group_id,
-            id=self.id)
+            scaling_group_id=self.scaling_group_id)
 
 def get_scaling_configurations(ids=None,name_regex=None,output_file=None,scaling_group_id=None,opts=None):
     """
     This data source provides available scaling configuration resources. 
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
+
+
     :param list ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.
     :param str scaling_group_id: Scaling group id the scaling configurations belong to.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -88,9 +90,9 @@ def get_scaling_configurations(ids=None,name_regex=None,output_file=None,scaling
 
     return AwaitableGetScalingConfigurationsResult(
         configurations=__ret__.get('configurations'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        scaling_group_id=__ret__.get('scalingGroupId'),
-        id=__ret__.get('id'))
+        scaling_group_id=__ret__.get('scalingGroupId'))

@@ -13,7 +13,13 @@ class GetNamespacesResult:
     """
     A collection of values returned by getNamespaces.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, namespaces=None, output_file=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, namespaces=None, output_file=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,36 +44,32 @@ class GetNamespacesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNamespacesResult(GetNamespacesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetNamespacesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             namespaces=self.namespaces,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_namespaces(name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list Container Registry namespaces on Alibaba Cloud.
-    
+
     > **NOTE:** Available in v1.35.0+
-    
-    :param str name_regex: A regex string to filter results by namespace name.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
+
+
+    :param str name_regex: A regex string to filter results by namespace name.
     """
     __args__ = dict()
+
 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -78,9 +80,9 @@ def get_namespaces(name_regex=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:cr/getNamespaces:getNamespaces', __args__, opts=opts).value
 
     return AwaitableGetNamespacesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         namespaces=__ret__.get('namespaces'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

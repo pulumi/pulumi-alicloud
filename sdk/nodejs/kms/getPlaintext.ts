@@ -5,9 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_plaintext.html.markdown.
- */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> & GetPlaintextResult {
     if (!opts) {
         opts = {}

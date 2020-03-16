@@ -13,7 +13,7 @@ class GetDisksResult:
     """
     A collection of values returned by getDisks.
     """
-    def __init__(__self__, category=None, disks=None, encrypted=None, ids=None, instance_id=None, name_regex=None, output_file=None, resource_group_id=None, tags=None, type=None, id=None):
+    def __init__(__self__, category=None, disks=None, encrypted=None, id=None, ids=None, instance_id=None, name_regex=None, output_file=None, resource_group_id=None, tags=None, type=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         __self__.category = category
@@ -31,6 +31,12 @@ class GetDisksResult:
         __self__.encrypted = encrypted
         """
         Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -65,12 +71,6 @@ class GetDisksResult:
         """
         Disk type. Possible values: `system` and `data`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDisksResult(GetDisksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,19 +80,22 @@ class AwaitableGetDisksResult(GetDisksResult):
             category=self.category,
             disks=self.disks,
             encrypted=self.encrypted,
+            id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
             tags=self.tags,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_disks(category=None,encrypted=None,ids=None,instance_id=None,name_regex=None,output_file=None,resource_group_id=None,tags=None,type=None,opts=None):
     """
     This data source provides the disks of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
+
+
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).
     :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param list ids: A list of disks IDs.
@@ -109,10 +112,9 @@ def get_disks(category=None,encrypted=None,ids=None,instance_id=None,name_regex=
            }
            ```
     :param str type: Disk type. Possible values: `system` and `data`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['category'] = category
     __args__['encrypted'] = encrypted
@@ -133,11 +135,11 @@ def get_disks(category=None,encrypted=None,ids=None,instance_id=None,name_regex=
         category=__ret__.get('category'),
         disks=__ret__.get('disks'),
         encrypted=__ret__.get('encrypted'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
         name_regex=__ret__.get('nameRegex'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
         tags=__ret__.get('tags'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

@@ -11,9 +11,9 @@ import (
 )
 
 // Provides a RAM User access key resource.
-// 
+//
 // > **NOTE:**  You should set the `secretFile` if you want to get the access key.  
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_access_key.html.markdown.
 type AccessKey struct {
 	pulumi.CustomResourceState

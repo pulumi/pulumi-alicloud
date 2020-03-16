@@ -45,9 +45,11 @@ class BandwidthPackage(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth=None, charge_type=None, description=None, geographic_region_ids=None, name=None, period=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
-        
+
         For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -56,8 +58,6 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[list] geographic_region_ids: List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
         :param pulumi.Input[str] name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[float] period: The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Get an existing BandwidthPackage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -111,12 +111,11 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[float] period: The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
         :param pulumi.Input[str] status: The status of the bandwidth, including "InUse" and "Idle".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth"] = bandwidth
         __props__["charge_type"] = charge_type
         __props__["description"] = description

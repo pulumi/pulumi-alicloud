@@ -17,7 +17,7 @@ class LaunchTemplate(pulumi.CustomResource):
     data_disks: pulumi.Output[list]
     """
     The list of data disks created with instance.
-    
+
       * `category` (`str`) - The category of the disk:
         - cloud: Basic cloud disk.
         - cloud_efficiency: Ultra cloud disk.
@@ -94,7 +94,7 @@ class LaunchTemplate(pulumi.CustomResource):
     network_interfaces: pulumi.Output[dict]
     """
     The list of network interfaces created with instance.
-    
+
       * `description` (`str`) - The description of the data disk.
       * `name` (`str`) - The name of the data disk.
       * `primaryIp` (`str`) - The primary private IP address of the ENI.
@@ -169,9 +169,11 @@ class LaunchTemplate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auto_release_time=None, data_disks=None, description=None, host_name=None, image_id=None, image_owner_alias=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, key_pair_name=None, name=None, network_interfaces=None, network_type=None, ram_role_name=None, resource_group_id=None, security_enhancement_strategy=None, security_group_id=None, spot_price_limit=None, spot_strategy=None, system_disk_category=None, system_disk_description=None, system_disk_name=None, system_disk_size=None, tags=None, userdata=None, vpc_id=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ECS Launch Template resource.
-        
+
         For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
@@ -218,9 +220,9 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - cloud: Basic cloud disk.
             - cloud_efficiency: Ultra cloud disk.
@@ -238,16 +240,14 @@ class LaunchTemplate(pulumi.CustomResource):
             - cloud_essd：[20, 32768]
             - ephemeral_ssd: [5, 800]
           * `snapshot_id` (`pulumi.Input[str]`) - The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `primaryIp` (`pulumi.Input[str]`) - The primary private IP address of the ENI.
           * `security_group_id` (`pulumi.Input[str]`) - The security group ID must be one in the same VPC.
           * `vswitch_id` (`pulumi.Input[str]`) - The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -309,7 +309,7 @@ class LaunchTemplate(pulumi.CustomResource):
         """
         Get an existing LaunchTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -357,9 +357,9 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
-        
+
         The **data_disks** object supports the following:
-        
+
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - cloud: Basic cloud disk.
             - cloud_efficiency: Ultra cloud disk.
@@ -377,20 +377,19 @@ class LaunchTemplate(pulumi.CustomResource):
             - cloud_essd：[20, 32768]
             - ephemeral_ssd: [5, 800]
           * `snapshot_id` (`pulumi.Input[str]`) - The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        
+
         The **network_interfaces** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `primaryIp` (`pulumi.Input[str]`) - The primary private IP address of the ENI.
           * `security_group_id` (`pulumi.Input[str]`) - The security group ID must be one in the same VPC.
           * `vswitch_id` (`pulumi.Input[str]`) - The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["auto_release_time"] = auto_release_time
         __props__["data_disks"] = data_disks
         __props__["description"] = description

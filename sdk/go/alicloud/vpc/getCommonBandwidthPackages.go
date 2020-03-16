@@ -9,16 +9,16 @@ import (
 )
 
 // This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
-// 
+//
 // > **NOTE:** Available in 1.36.0+.
-// 
+//
 // ## Public ip addresses Block
 //   
 //   The public ip addresses mapping supports the following:
 //   
 //   * `ipAddress`   - The address of the EIP.
 //   * `allocationId` - The ID of the EIP instance.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
 func GetCommonBandwidthPackages(ctx *pulumi.Context, args *GetCommonBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetCommonBandwidthPackagesResult, error) {
 	var rv GetCommonBandwidthPackagesResult

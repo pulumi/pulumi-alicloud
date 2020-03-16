@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .get_networks import *
 from .network import *
 from .network_attachment import *
 from .network_grant import *
-from .get_networks import *

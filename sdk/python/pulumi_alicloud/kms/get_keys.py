@@ -13,10 +13,16 @@ class GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
-    def __init__(__self__, description_regex=None, ids=None, keys=None, output_file=None, status=None, id=None):
+    def __init__(__self__, description_regex=None, id=None, ids=None, keys=None, output_file=None, status=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         __self__.description_regex = description_regex
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,12 +44,6 @@ class GetKeysResult:
         """
         Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -51,23 +51,25 @@ class AwaitableGetKeysResult(GetKeysResult):
             yield self
         return GetKeysResult(
             description_regex=self.description_regex,
+            id=self.id,
             ids=self.ids,
             keys=self.keys,
             output_file=self.output_file,
-            status=self.status,
-            id=self.id)
+            status=self.status)
 
 def get_keys(description_regex=None,ids=None,output_file=None,status=None,opts=None):
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
+
+
     :param str description_regex: A regex string to filter the results by the KMS key description.
     :param list ids: A list of KMS key IDs.
     :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
@@ -81,8 +83,8 @@ def get_keys(description_regex=None,ids=None,output_file=None,status=None,opts=N
 
     return AwaitableGetKeysResult(
         description_regex=__ret__.get('descriptionRegex'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         keys=__ret__.get('keys'),
         output_file=__ret__.get('outputFile'),
-        status=__ret__.get('status'),
-        id=__ret__.get('id'))
+        status=__ret__.get('status'))

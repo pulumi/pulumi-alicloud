@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
 	var rv GetEipsResult

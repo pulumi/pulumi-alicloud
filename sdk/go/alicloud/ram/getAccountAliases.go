@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides an alias for the Alibaba Cloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
 func GetAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs, opts ...pulumi.InvokeOption) (*GetAccountAliasesResult, error) {
 	var rv GetAccountAliasesResult

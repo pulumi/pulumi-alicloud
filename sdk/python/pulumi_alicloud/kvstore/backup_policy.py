@@ -25,14 +25,14 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backup_periods=None, backup_time=None, instance_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
         :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,19 +67,18 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
         :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backup_periods"] = backup_periods
         __props__["backup_time"] = backup_time
         __props__["instance_id"] = instance_id

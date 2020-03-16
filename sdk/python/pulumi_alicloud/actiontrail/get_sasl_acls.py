@@ -13,7 +13,7 @@ class GetSaslAclsResult:
     """
     A collection of values returned by getSaslAcls.
     """
-    def __init__(__self__, acl_resource_name=None, acl_resource_type=None, acls=None, instance_id=None, output_file=None, username=None, id=None):
+    def __init__(__self__, acl_resource_name=None, acl_resource_type=None, acls=None, id=None, instance_id=None, output_file=None, username=None):
         if acl_resource_name and not isinstance(acl_resource_name, str):
             raise TypeError("Expected argument 'acl_resource_name' to be a str")
         __self__.acl_resource_name = acl_resource_name
@@ -32,6 +32,12 @@ class GetSaslAclsResult:
         """
         A list of sasl acls. Each element contains the following attributes:
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         __self__.instance_id = instance_id
@@ -44,12 +50,6 @@ class GetSaslAclsResult:
         """
         The username of the sasl acl.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSaslAclsResult(GetSaslAclsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,25 +59,27 @@ class AwaitableGetSaslAclsResult(GetSaslAclsResult):
             acl_resource_name=self.acl_resource_name,
             acl_resource_type=self.acl_resource_type,
             acls=self.acls,
+            id=self.id,
             instance_id=self.instance_id,
             output_file=self.output_file,
-            username=self.username,
-            id=self.id)
+            username=self.username)
 
 def get_sasl_acls(acl_resource_name=None,acl_resource_type=None,instance_id=None,output_file=None,username=None,opts=None):
     """
     This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.66.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
+
+
     :param str acl_resource_name: Get results for the specified resource name. 
     :param str acl_resource_type: Get results for the specified resource type. 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl acls.
     :param str username: Get results for the specified username. 
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['aclResourceName'] = acl_resource_name
     __args__['aclResourceType'] = acl_resource_type
@@ -94,7 +96,7 @@ def get_sasl_acls(acl_resource_name=None,acl_resource_type=None,instance_id=None
         acl_resource_name=__ret__.get('aclResourceName'),
         acl_resource_type=__ret__.get('aclResourceType'),
         acls=__ret__.get('acls'),
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         output_file=__ret__.get('outputFile'),
-        username=__ret__.get('username'),
-        id=__ret__.get('id'))
+        username=__ret__.get('username'))

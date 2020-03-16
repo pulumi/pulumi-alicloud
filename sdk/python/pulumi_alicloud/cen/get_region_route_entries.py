@@ -13,12 +13,18 @@ class GetRegionRouteEntriesResult:
     """
     A collection of values returned by getRegionRouteEntries.
     """
-    def __init__(__self__, entries=None, instance_id=None, output_file=None, region_id=None, id=None):
+    def __init__(__self__, entries=None, id=None, instance_id=None, output_file=None, region_id=None):
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         __self__.entries = entries
         """
         A list of CEN Route Entries. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
@@ -29,12 +35,6 @@ class GetRegionRouteEntriesResult:
         if region_id and not isinstance(region_id, str):
             raise TypeError("Expected argument 'region_id' to be a str")
         __self__.region_id = region_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRegionRouteEntriesResult(GetRegionRouteEntriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -42,21 +42,23 @@ class AwaitableGetRegionRouteEntriesResult(GetRegionRouteEntriesResult):
             yield self
         return GetRegionRouteEntriesResult(
             entries=self.entries,
+            id=self.id,
             instance_id=self.instance_id,
             output_file=self.output_file,
-            region_id=self.region_id,
-            id=self.id)
+            region_id=self.region_id)
 
 def get_region_route_entries(instance_id=None,output_file=None,region_id=None,opts=None):
     """
     This data source provides CEN Regional Route Entries available to the user.
-    
-    :param str instance_id: ID of the CEN instance.
-    :param str region_id: ID of the region.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
+
+
+    :param str instance_id: ID of the CEN instance.
+    :param str region_id: ID of the region.
     """
     __args__ = dict()
+
 
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
@@ -69,7 +71,7 @@ def get_region_route_entries(instance_id=None,output_file=None,region_id=None,op
 
     return AwaitableGetRegionRouteEntriesResult(
         entries=__ret__.get('entries'),
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         output_file=__ret__.get('outputFile'),
-        region_id=__ret__.get('regionId'),
-        id=__ret__.get('id'))
+        region_id=__ret__.get('regionId'))

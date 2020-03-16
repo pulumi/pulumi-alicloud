@@ -34,13 +34,15 @@ class BastionHostInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, license_code=None, period=None, security_group_ids=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-        
+
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-        
+
         > **NOTE:** Available in 1.63.0+ .
-        
+
         > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -48,8 +50,6 @@ class BastionHostInstance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: security group IDs configured to bastionhost
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to bastionhost
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class BastionHostInstance(pulumi.CustomResource):
         """
         Get an existing BastionHostInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,12 +102,11 @@ class BastionHostInstance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: security group IDs configured to bastionhost
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to bastionhost
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["license_code"] = license_code
         __props__["period"] = period

@@ -22,7 +22,6 @@ class CopyImage(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, encrypted=None, force=None, image_name=None, kms_key_id=None, name=None, source_image_id=None, source_region_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a CopyImage resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -67,7 +66,7 @@ class CopyImage(pulumi.CustomResource):
         """
         Get an existing CopyImage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -75,6 +74,7 @@ class CopyImage(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["encrypted"] = encrypted
         __props__["force"] = force

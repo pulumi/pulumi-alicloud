@@ -13,12 +13,18 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None, vswitch_id=None, id=None):
+    def __init__(__self__, availability_zone=None, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None, vswitch_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
         """
         Instance availability zone.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetInstancesResult:
         if vswitch_id and not isinstance(vswitch_id, str):
             raise TypeError("Expected argument 'vswitch_id' to be a str")
         __self__.vswitch_id = vswitch_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,31 +63,33 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            id=self.id,
             ids=self.ids,
             instances=self.instances,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             tags=self.tags,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_instances(availability_zone=None,ids=None,name_regex=None,output_file=None,tags=None,vswitch_id=None,opts=None):
     """
     The `gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
     Filters support regular expression for the instance name or availability_zone.
-    
+
     > **NOTE:**  Available in 1.47.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/gpdb_instances.html.markdown.
+
+
     :param str availability_zone: Instance availability zone.
     :param list ids: A list of instance IDs.
     :param str name_regex: A regex string to apply to the instance name.
     :param dict tags: A mapping of tags to assign to the resource.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/gpdb_instances.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['availabilityZone'] = availability_zone
     __args__['ids'] = ids
@@ -103,11 +105,11 @@ def get_instances(availability_zone=None,ids=None,name_regex=None,output_file=No
 
     return AwaitableGetInstancesResult(
         availability_zone=__ret__.get('availabilityZone'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instances=__ret__.get('instances'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         tags=__ret__.get('tags'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))
