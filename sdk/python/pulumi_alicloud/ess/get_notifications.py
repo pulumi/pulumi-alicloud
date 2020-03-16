@@ -13,7 +13,13 @@ class GetNotificationsResult:
     """
     A collection of values returned by getNotifications.
     """
-    def __init__(__self__, ids=None, notifications=None, output_file=None, scaling_group_id=None, id=None):
+    def __init__(__self__, id=None, ids=None, notifications=None, output_file=None, scaling_group_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -35,36 +41,32 @@ class GetNotificationsResult:
         """
         ID of the scaling group.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNotificationsResult(GetNotificationsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetNotificationsResult(
+            id=self.id,
             ids=self.ids,
             notifications=self.notifications,
             output_file=self.output_file,
-            scaling_group_id=self.scaling_group_id,
-            id=self.id)
+            scaling_group_id=self.scaling_group_id)
 
 def get_notifications(ids=None,output_file=None,scaling_group_id=None,opts=None):
     """
     This data source provides available notification resources. 
-    
+
     > **NOTE:** Available in 1.72.0+
-    
-    :param list ids: A list of notification ids.
-    :param str scaling_group_id: Scaling group id the notifications belong to.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
+
+
+    :param list ids: A list of notification ids.
+    :param str scaling_group_id: Scaling group id the notifications belong to.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
@@ -76,8 +78,8 @@ def get_notifications(ids=None,output_file=None,scaling_group_id=None,opts=None)
     __ret__ = pulumi.runtime.invoke('alicloud:ess/getNotifications:getNotifications', __args__, opts=opts).value
 
     return AwaitableGetNotificationsResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         notifications=__ret__.get('notifications'),
         output_file=__ret__.get('outputFile'),
-        scaling_group_id=__ret__.get('scalingGroupId'),
-        id=__ret__.get('id'))
+        scaling_group_id=__ret__.get('scalingGroupId'))

@@ -42,7 +42,6 @@ class Network(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cidr_block=None, description=None, name=None, resource_group_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Network resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the VPC.
@@ -50,8 +49,6 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the VPC. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the VPC belongs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpc.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,7 +88,7 @@ class Network(pulumi.CustomResource):
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,12 +99,11 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpc.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cidr_block"] = cidr_block
         __props__["description"] = description
         __props__["name"] = name

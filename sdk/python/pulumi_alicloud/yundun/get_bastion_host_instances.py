@@ -13,13 +13,19 @@ class GetBastionHostInstancesResult:
     """
     A collection of values returned by getBastionHostInstances.
     """
-    def __init__(__self__, description_regex=None, descriptions=None, ids=None, instances=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, instances=None, output_file=None, tags=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         __self__.description_regex = description_regex
         if descriptions and not isinstance(descriptions, list):
             raise TypeError("Expected argument 'descriptions' to be a list")
         __self__.descriptions = descriptions
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,12 +44,6 @@ class GetBastionHostInstancesResult:
         """
         A map of tags assigned to the bastionhost instance.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBastionHostInstancesResult(GetBastionHostInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -52,18 +52,21 @@ class AwaitableGetBastionHostInstancesResult(GetBastionHostInstancesResult):
         return GetBastionHostInstancesResult(
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            id=self.id,
             ids=self.ids,
             instances=self.instances,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_bastion_host_instances(description_regex=None,ids=None,output_file=None,tags=None,opts=None):
     """
     This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.63.0+ .
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
+
+
     :param str description_regex: A regex string to filter results by the instance description.
     :param list ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
@@ -75,10 +78,9 @@ def get_bastion_host_instances(description_regex=None,ids=None,output_file=None,
            }
            }
            ```
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
@@ -93,8 +95,8 @@ def get_bastion_host_instances(description_regex=None,ids=None,output_file=None,
     return AwaitableGetBastionHostInstancesResult(
         description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instances=__ret__.get('instances'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

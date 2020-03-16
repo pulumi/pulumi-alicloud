@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/fc_function.html.markdown.
- */
 export class Function extends pulumi.CustomResource {
     /**
      * Get an existing Function resource's state with the given name, ID, and optional extra
@@ -34,6 +31,9 @@ export class Function extends pulumi.CustomResource {
         return obj['__pulumiType'] === Function.__pulumiType;
     }
 
+    /**
+     * The checksum (crc64) of the function code.
+     */
     public readonly codeChecksum!: pulumi.Output<string>;
     /**
      * The Function Compute function description.
@@ -161,6 +161,9 @@ export class Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Function resources.
  */
 export interface FunctionState {
+    /**
+     * The checksum (crc64) of the function code.
+     */
     readonly codeChecksum?: pulumi.Input<string>;
     /**
      * The Function Compute function description.
@@ -224,6 +227,9 @@ export interface FunctionState {
  * The set of arguments for constructing a Function resource.
  */
 export interface FunctionArgs {
+    /**
+     * The checksum (crc64) of the function code.
+     */
     readonly codeChecksum?: pulumi.Input<string>;
     /**
      * The Function Compute function description.

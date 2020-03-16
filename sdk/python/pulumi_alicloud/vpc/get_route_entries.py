@@ -13,7 +13,7 @@ class GetRouteEntriesResult:
     """
     A collection of values returned by getRouteEntries.
     """
-    def __init__(__self__, cidr_block=None, entries=None, instance_id=None, output_file=None, route_table_id=None, type=None, id=None):
+    def __init__(__self__, cidr_block=None, entries=None, id=None, instance_id=None, output_file=None, route_table_id=None, type=None):
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         __self__.cidr_block = cidr_block
@@ -25,6 +25,12 @@ class GetRouteEntriesResult:
         __self__.entries = entries
         """
         A list of Route Entries. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
@@ -47,12 +53,6 @@ class GetRouteEntriesResult:
         """
         The type of the route entry.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRouteEntriesResult(GetRouteEntriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,26 +61,28 @@ class AwaitableGetRouteEntriesResult(GetRouteEntriesResult):
         return GetRouteEntriesResult(
             cidr_block=self.cidr_block,
             entries=self.entries,
+            id=self.id,
             instance_id=self.instance_id,
             output_file=self.output_file,
             route_table_id=self.route_table_id,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_route_entries(cidr_block=None,instance_id=None,output_file=None,route_table_id=None,type=None,opts=None):
     """
     This data source provides a list of Route Entries owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.37.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
+
+
     :param str cidr_block: The destination CIDR block of the route entry.
     :param str instance_id: The instance ID of the next hop.
     :param str route_table_id: The ID of the router table to which the route entry belongs.
     :param str type: The type of the route entry.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['cidrBlock'] = cidr_block
     __args__['instanceId'] = instance_id
@@ -96,8 +98,8 @@ def get_route_entries(cidr_block=None,instance_id=None,output_file=None,route_ta
     return AwaitableGetRouteEntriesResult(
         cidr_block=__ret__.get('cidrBlock'),
         entries=__ret__.get('entries'),
+        id=__ret__.get('id'),
         instance_id=__ret__.get('instanceId'),
         output_file=__ret__.get('outputFile'),
         route_table_id=__ret__.get('routeTableId'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

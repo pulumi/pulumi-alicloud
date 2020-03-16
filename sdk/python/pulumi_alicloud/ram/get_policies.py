@@ -13,10 +13,16 @@ class GetPoliciesResult:
     """
     A collection of values returned by getPolicies.
     """
-    def __init__(__self__, group_name=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, type=None, user_name=None, id=None):
+    def __init__(__self__, group_name=None, id=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, type=None, user_name=None):
         if group_name and not isinstance(group_name, str):
             raise TypeError("Expected argument 'group_name' to be a str")
         __self__.group_name = group_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
         __self__.name_regex = name_regex
@@ -47,12 +53,6 @@ class GetPoliciesResult:
         if user_name and not isinstance(user_name, str):
             raise TypeError("Expected argument 'user_name' to be a str")
         __self__.user_name = user_name
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetPoliciesResult(GetPoliciesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,28 +60,30 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
             yield self
         return GetPoliciesResult(
             group_name=self.group_name,
+            id=self.id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             policies=self.policies,
             role_name=self.role_name,
             type=self.type,
-            user_name=self.user_name,
-            id=self.id)
+            user_name=self.user_name)
 
 def get_policies(group_name=None,name_regex=None,output_file=None,role_name=None,type=None,user_name=None,opts=None):
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
+
+
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
     :param str name_regex: A regex string to filter resulting policies by name.
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
     :param str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
     :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['groupName'] = group_name
     __args__['nameRegex'] = name_regex
@@ -97,11 +99,11 @@ def get_policies(group_name=None,name_regex=None,output_file=None,role_name=None
 
     return AwaitableGetPoliciesResult(
         group_name=__ret__.get('groupName'),
+        id=__ret__.get('id'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         policies=__ret__.get('policies'),
         role_name=__ret__.get('roleName'),
         type=__ret__.get('type'),
-        user_name=__ret__.get('userName'),
-        id=__ret__.get('id'))
+        user_name=__ret__.get('userName'))

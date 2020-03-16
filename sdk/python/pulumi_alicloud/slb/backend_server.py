@@ -13,7 +13,7 @@ class BackendServer(pulumi.CustomResource):
     backend_servers: pulumi.Output[list]
     """
     A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
-    
+
       * `serverId` (`str`)
       * `type` (`str`)
       * `weight` (`float`)
@@ -29,30 +29,30 @@ class BackendServer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_servers=None, delete_protection_validation=None, load_balancer_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
-        
+
         > **NOTE:** Available in 1.53.0+
-        
+
         ## Block servers
-        
+
         The servers mapping supports the following:
-        
+
         * `server_id` - (Required) A list backend server ID (ECS instance ID).
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
         * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
-        
+
         The **backend_servers** object supports the following:
-        
+
           * `serverId` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,25 +87,24 @@ class BackendServer(pulumi.CustomResource):
         """
         Get an existing BackendServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
-        
+
         The **backend_servers** object supports the following:
-        
+
           * `serverId` (`pulumi.Input[str]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend_servers"] = backend_servers
         __props__["delete_protection_validation"] = delete_protection_validation
         __props__["load_balancer_id"] = load_balancer_id

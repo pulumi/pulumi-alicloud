@@ -66,6 +66,8 @@ export interface GetMountTargetsArgs {
     readonly ids?: string[];
     /**
      * Filter results by a specific MountTargetDomain.
+     * 
+     * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
     readonly outputFile?: string;
@@ -99,6 +101,8 @@ export interface GetMountTargetsResult {
     /**
      * MountTargetDomain of the MountTarget.
      * * `type`- NetworkType of The MountTarget.
+     * 
+     * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
     readonly outputFile?: string;

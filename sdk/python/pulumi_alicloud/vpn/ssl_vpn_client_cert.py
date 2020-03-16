@@ -20,11 +20,8 @@ class SslVpnClientCert(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, ssl_vpn_server_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SslVpnClientCert resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_client_cert.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,16 +60,15 @@ class SslVpnClientCert(pulumi.CustomResource):
         """
         Get an existing SslVpnClientCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_client_cert.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ca_cert"] = ca_cert
         __props__["client_cert"] = client_cert
         __props__["client_config"] = client_config

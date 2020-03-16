@@ -41,7 +41,9 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, connection_prefix=None, distribution_type=None, instance_id=None, max_delay_time=None, port=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
@@ -50,8 +52,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
         :param pulumi.Input[float] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[dict] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom. 
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +92,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         """
         Get an existing ReadWriteSplittingConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,12 +103,11 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay_time: Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.  
         :param pulumi.Input[float] port: Intranet connection port. Valid value: [3001-3999]. Default to 3306.
         :param pulumi.Input[dict] weight: Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom. 
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connection_prefix"] = connection_prefix
         __props__["connection_string"] = connection_string
         __props__["distribution_type"] = distribution_type

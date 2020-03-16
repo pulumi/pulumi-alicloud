@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_lifecycle_hook.html.markdown.
- */
 export class LifecycleHook extends pulumi.CustomResource {
     /**
      * Get an existing LifecycleHook resource's state with the given name, ID, and optional extra

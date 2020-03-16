@@ -80,7 +80,9 @@ class Alarm(pulumi.CustomResource):
         """
         This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
         Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
@@ -99,8 +101,6 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -157,7 +157,7 @@ class Alarm(pulumi.CustomResource):
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,12 +178,11 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] status: The current alarm rule status.
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["contact_groups"] = contact_groups
         __props__["dimensions"] = dimensions
         __props__["effective_interval"] = effective_interval

@@ -10,7 +10,7 @@ import (
 
 // The `mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
 // Filters support regular expression for the instance name, engine or instance type.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult

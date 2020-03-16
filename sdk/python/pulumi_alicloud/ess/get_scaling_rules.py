@@ -13,7 +13,13 @@ class GetScalingRulesResult:
     """
     A collection of values returned by getScalingRules.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, rules=None, scaling_group_id=None, type=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, rules=None, scaling_group_id=None, type=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -50,39 +56,35 @@ class GetScalingRulesResult:
         """
         Type of the scaling rule.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetScalingRulesResult(GetScalingRulesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetScalingRulesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             rules=self.rules,
             scaling_group_id=self.scaling_group_id,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_scaling_rules(ids=None,name_regex=None,output_file=None,scaling_group_id=None,type=None,opts=None):
     """
     This data source provides available scaling rule resources. 
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
+
+
     :param list ids: A list of scaling rule IDs.
     :param str name_regex: A regex string to filter resulting scaling rules by name.
     :param str scaling_group_id: Scaling group id the scaling rules belong to.
     :param str type: Type of scaling rule.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -96,11 +98,11 @@ def get_scaling_rules(ids=None,name_regex=None,output_file=None,scaling_group_id
     __ret__ = pulumi.runtime.invoke('alicloud:ess/getScalingRules:getScalingRules', __args__, opts=opts).value
 
     return AwaitableGetScalingRulesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         rules=__ret__.get('rules'),
         scaling_group_id=__ret__.get('scalingGroupId'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))

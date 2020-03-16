@@ -47,7 +47,6 @@ class SecurityGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, inner_access=None, inner_access_policy=None, name=None, resource_group_id=None, security_group_type=None, tags=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SecurityGroup resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
@@ -60,8 +59,6 @@ class SecurityGroup(pulumi.CustomResource):
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.	
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +96,7 @@ class SecurityGroup(pulumi.CustomResource):
         """
         Get an existing SecurityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,12 +110,11 @@ class SecurityGroup(pulumi.CustomResource):
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.	
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["inner_access"] = inner_access
         __props__["inner_access_policy"] = inner_access_policy

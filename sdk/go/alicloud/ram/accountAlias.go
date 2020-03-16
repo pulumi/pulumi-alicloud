@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a RAM cloud account alias.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_account_alias.html.markdown.
 type AccountAlias struct {
 	pulumi.CustomResourceState

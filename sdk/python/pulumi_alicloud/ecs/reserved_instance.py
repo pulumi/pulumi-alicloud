@@ -54,9 +54,11 @@ class ReservedInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, instance_amount=None, instance_type=None, name=None, offering_type=None, period=None, period_unit=None, platform=None, resource_group_id=None, scope=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Reserved Instance resource.
-        
+
         > **NOTE:** Available in 1.65.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the RI. 2 to 256 English or Chinese characters. It cannot start with http:// or https://.
@@ -69,8 +71,6 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -113,7 +113,7 @@ class ReservedInstance(pulumi.CustomResource):
         """
         Get an existing ReservedInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,12 +127,11 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
         :param pulumi.Input[str] zone_id: ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["instance_amount"] = instance_amount
         __props__["instance_type"] = instance_type

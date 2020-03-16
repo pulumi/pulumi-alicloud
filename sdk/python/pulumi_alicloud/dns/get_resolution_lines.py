@@ -13,10 +13,16 @@ class GetResolutionLinesResult:
     """
     A collection of values returned by getResolutionLines.
     """
-    def __init__(__self__, domain_name=None, lang=None, line_codes=None, line_display_names=None, line_names=None, lines=None, output_file=None, user_client_ip=None, id=None):
+    def __init__(__self__, domain_name=None, id=None, lang=None, line_codes=None, line_display_names=None, line_names=None, lines=None, output_file=None, user_client_ip=None):
         if domain_name and not isinstance(domain_name, str):
             raise TypeError("Expected argument 'domain_name' to be a str")
         __self__.domain_name = domain_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if lang and not isinstance(lang, str):
             raise TypeError("Expected argument 'lang' to be a str")
         __self__.lang = lang
@@ -47,12 +53,6 @@ class GetResolutionLinesResult:
         if user_client_ip and not isinstance(user_client_ip, str):
             raise TypeError("Expected argument 'user_client_ip' to be a str")
         __self__.user_client_ip = user_client_ip
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetResolutionLinesResult(GetResolutionLinesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,30 +60,32 @@ class AwaitableGetResolutionLinesResult(GetResolutionLinesResult):
             yield self
         return GetResolutionLinesResult(
             domain_name=self.domain_name,
+            id=self.id,
             lang=self.lang,
             line_codes=self.line_codes,
             line_display_names=self.line_display_names,
             line_names=self.line_names,
             lines=self.lines,
             output_file=self.output_file,
-            user_client_ip=self.user_client_ip,
-            id=self.id)
+            user_client_ip=self.user_client_ip)
 
 def get_resolution_lines(domain_name=None,lang=None,line_codes=None,line_display_names=None,line_names=None,output_file=None,user_client_ip=None,opts=None):
     """
     This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.60.0.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
+
+
     :param str domain_name: Domain Name. 
     :param str lang: language.
     :param list line_codes: A list of lines codes.
     :param list line_display_names: A list of line display names.
     :param str user_client_ip: The ip of user client.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['domainName'] = domain_name
     __args__['lang'] = lang
@@ -100,11 +102,11 @@ def get_resolution_lines(domain_name=None,lang=None,line_codes=None,line_display
 
     return AwaitableGetResolutionLinesResult(
         domain_name=__ret__.get('domainName'),
+        id=__ret__.get('id'),
         lang=__ret__.get('lang'),
         line_codes=__ret__.get('lineCodes'),
         line_display_names=__ret__.get('lineDisplayNames'),
         line_names=__ret__.get('lineNames'),
         lines=__ret__.get('lines'),
         output_file=__ret__.get('outputFile'),
-        user_client_ip=__ret__.get('userClientIp'),
-        id=__ret__.get('id'))
+        user_client_ip=__ret__.get('userClientIp'))

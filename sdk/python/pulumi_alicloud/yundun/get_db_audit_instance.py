@@ -13,13 +13,19 @@ class GetDBAuditInstanceResult:
     """
     A collection of values returned by getDBAuditInstance.
     """
-    def __init__(__self__, description_regex=None, descriptions=None, ids=None, instances=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, instances=None, output_file=None, tags=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         __self__.description_regex = description_regex
         if descriptions and not isinstance(descriptions, list):
             raise TypeError("Expected argument 'descriptions' to be a list")
         __self__.descriptions = descriptions
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -32,12 +38,6 @@ class GetDBAuditInstanceResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDBAuditInstanceResult(GetDBAuditInstanceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,18 +46,18 @@ class AwaitableGetDBAuditInstanceResult(GetDBAuditInstanceResult):
         return GetDBAuditInstanceResult(
             description_regex=self.description_regex,
             descriptions=self.descriptions,
+            id=self.id,
             ids=self.ids,
             instances=self.instances,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_db_audit_instance(description_regex=None,ids=None,output_file=None,tags=None,opts=None):
     """
     Use this data source to access information about an existing resource.
-    
     """
     __args__ = dict()
+
 
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
@@ -72,8 +72,8 @@ def get_db_audit_instance(description_regex=None,ids=None,output_file=None,tags=
     return AwaitableGetDBAuditInstanceResult(
         description_regex=__ret__.get('descriptionRegex'),
         descriptions=__ret__.get('descriptions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instances=__ret__.get('instances'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

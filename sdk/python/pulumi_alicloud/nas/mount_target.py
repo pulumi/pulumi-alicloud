@@ -29,23 +29,23 @@ class MountTarget(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, access_group_name=None, file_system_id=None, status=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Nas Mount Target resource.
-        
+
         > NOTE: Available in v1.34.0+.
-        
+
         > NOTE: Currently this resource support create a mount point in a classic network only when current region is China mainland regions.
-        
+
         > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
         and it only can be achieved by creating a classic mount target mannually.
         See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_mount_target.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_group_name: Permission group name.
         :param pulumi.Input[str] file_system_id: File system ID.
         :param pulumi.Input[str] status: Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
         :param pulumi.Input[str] vswitch_id: VSwitch ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_mount_target.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,7 +83,7 @@ class MountTarget(pulumi.CustomResource):
         """
         Get an existing MountTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,12 +91,11 @@ class MountTarget(pulumi.CustomResource):
         :param pulumi.Input[str] file_system_id: File system ID.
         :param pulumi.Input[str] status: Whether the MountTarget is active. An inactive MountTarget is inusable. Valid values are Active(default) and Inactive.
         :param pulumi.Input[str] vswitch_id: VSwitch ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_mount_target.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["access_group_name"] = access_group_name
         __props__["file_system_id"] = file_system_id
         __props__["status"] = status

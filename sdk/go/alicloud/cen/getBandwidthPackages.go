@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides CEN Bandwidth Packages available to the user.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
 func GetBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetBandwidthPackagesResult, error) {
 	var rv GetBandwidthPackagesResult

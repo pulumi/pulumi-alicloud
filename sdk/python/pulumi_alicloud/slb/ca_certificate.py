@@ -29,19 +29,19 @@ class CaCertificate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, ca_certificate=None, name=None, resource_group_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A Load Balancer CA Certificate is used by the listener of the protocol https.
-        
+
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
-        
+
         For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_ca_certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] name: Name of the CA Certificate.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_ca_certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +77,7 @@ class CaCertificate(pulumi.CustomResource):
         """
         Get an existing CaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the CA Certificate.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_ca_certificate.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["ca_certificate"] = ca_certificate
         __props__["name"] = name
         __props__["resource_group_id"] = resource_group_id

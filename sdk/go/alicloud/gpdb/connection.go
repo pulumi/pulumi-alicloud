@@ -12,12 +12,12 @@ import (
 )
 
 // Provides a connection resource to allocate an Internet connection string for instance.
-// 
+//
 // > **NOTE:**  Available in 1.48.0+
-// 
+//
 // > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
 type Connection struct {
 	pulumi.CustomResourceState

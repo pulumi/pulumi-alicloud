@@ -17,12 +17,12 @@ class DomainNew(pulumi.CustomResource):
     certificate_config: pulumi.Output[dict]
     """
     Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
-    
+
       * `certName` (`str`)
       * `certType` (`str`)
       * `forceSet` (`str`)
-      * `privateKey` (`str`)
-      * `serverCertificate` (`str`)
+      * `private_key` (`str`)
+      * `server_certificate` (`str`)
       * `serverCertificateStatus` (`str`)
     """
     domain_name: pulumi.Output[str]
@@ -40,7 +40,7 @@ class DomainNew(pulumi.CustomResource):
     sources: pulumi.Output[dict]
     """
     The source address list of the accelerated domain. Defaults to null. See Block Sources.
-    
+
       * `content` (`str`)
       * `port` (`float`)
       * `priority` (`float`)
@@ -51,11 +51,13 @@ class DomainNew(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cdn_type=None, certificate_config=None, domain_name=None, resource_group_id=None, scope=None, sources=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
-        
+
         For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
-        
+
         > **NOTE:** Available in v1.34.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_new.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
@@ -64,25 +66,23 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         :param pulumi.Input[dict] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
-        
+
         The **certificate_config** object supports the following:
-        
+
           * `certName` (`pulumi.Input[str]`)
           * `certType` (`pulumi.Input[str]`)
           * `forceSet` (`pulumi.Input[str]`)
-          * `privateKey` (`pulumi.Input[str]`)
-          * `serverCertificate` (`pulumi.Input[str]`)
+          * `private_key` (`pulumi.Input[str]`)
+          * `server_certificate` (`pulumi.Input[str]`)
           * `serverCertificateStatus` (`pulumi.Input[str]`)
-        
+
         The **sources** object supports the following:
-        
+
           * `content` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `priority` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_new.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,7 +125,7 @@ class DomainNew(pulumi.CustomResource):
         """
         Get an existing DomainNew resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -135,29 +135,28 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         :param pulumi.Input[dict] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
-        
+
         The **certificate_config** object supports the following:
-        
+
           * `certName` (`pulumi.Input[str]`)
           * `certType` (`pulumi.Input[str]`)
           * `forceSet` (`pulumi.Input[str]`)
-          * `privateKey` (`pulumi.Input[str]`)
-          * `serverCertificate` (`pulumi.Input[str]`)
+          * `private_key` (`pulumi.Input[str]`)
+          * `server_certificate` (`pulumi.Input[str]`)
           * `serverCertificateStatus` (`pulumi.Input[str]`)
-        
+
         The **sources** object supports the following:
-        
+
           * `content` (`pulumi.Input[str]`)
           * `port` (`pulumi.Input[float]`)
           * `priority` (`pulumi.Input[float]`)
           * `type` (`pulumi.Input[str]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_new.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cdn_type"] = cdn_type
         __props__["certificate_config"] = certificate_config
         __props__["domain_name"] = domain_name

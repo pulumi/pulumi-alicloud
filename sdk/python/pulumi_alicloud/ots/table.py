@@ -25,7 +25,7 @@ class Table(pulumi.CustomResource):
     primary_keys: pulumi.Output[list]
     """
     The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
-    
+
       * `name` (`str`) - Name for primary key.
       * `type` (`str`) - Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
     """
@@ -40,10 +40,12 @@ class Table(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, deviation_cell_version_in_sec=None, instance_name=None, max_version=None, primary_keys=None, table_name=None, time_to_live=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an OTS table resource.
-        
+
         > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
         you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -52,13 +54,11 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[list] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[float] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
-        
+
         The **primary_keys** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - Name for primary key.
           * `type` (`pulumi.Input[str]`) - Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -104,7 +104,7 @@ class Table(pulumi.CustomResource):
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,17 +114,16 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[list] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[float] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
-        
+
         The **primary_keys** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - Name for primary key.
           * `type` (`pulumi.Input[str]`) - Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
         __props__["instance_name"] = instance_name
         __props__["max_version"] = max_version

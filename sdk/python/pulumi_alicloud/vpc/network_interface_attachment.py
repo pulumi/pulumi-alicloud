@@ -21,15 +21,15 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, instance_id=None, network_interface_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
-        
+
         For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The instance ID to attach.
         :param pulumi.Input[str] network_interface_id: The ENI ID to attach.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,18 +65,17 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         """
         Get an existing NetworkInterfaceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The instance ID to attach.
         :param pulumi.Input[str] network_interface_id: The ENI ID to attach.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["instance_id"] = instance_id
         __props__["network_interface_id"] = network_interface_id
         return NetworkInterfaceAttachment(resource_name, opts=opts, __props__=__props__)

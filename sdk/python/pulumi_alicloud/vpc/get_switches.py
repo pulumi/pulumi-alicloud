@@ -13,12 +13,18 @@ class GetSwitchesResult:
     """
     A collection of values returned by getSwitches.
     """
-    def __init__(__self__, cidr_block=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None, vswitches=None, zone_id=None, id=None):
+    def __init__(__self__, cidr_block=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None, vpc_id=None, vswitches=None, zone_id=None):
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         __self__.cidr_block = cidr_block
         """
         CIDR block of the VSwitch.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -68,12 +74,6 @@ class GetSwitchesResult:
         """
         ID of the availability zone where the VSwitch is located.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSwitchesResult(GetSwitchesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,6 +81,7 @@ class AwaitableGetSwitchesResult(GetSwitchesResult):
             yield self
         return GetSwitchesResult(
             cidr_block=self.cidr_block,
+            id=self.id,
             ids=self.ids,
             is_default=self.is_default,
             name_regex=self.name_regex,
@@ -90,13 +91,15 @@ class AwaitableGetSwitchesResult(GetSwitchesResult):
             tags=self.tags,
             vpc_id=self.vpc_id,
             vswitches=self.vswitches,
-            zone_id=self.zone_id,
-            id=self.id)
+            zone_id=self.zone_id)
 
 def get_switches(cidr_block=None,ids=None,is_default=None,name_regex=None,output_file=None,resource_group_id=None,tags=None,vpc_id=None,zone_id=None,opts=None):
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
+
+
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param list ids: A list of VSwitch IDs.
     :param bool is_default: Indicate whether the VSwitch is created by the system.
@@ -105,10 +108,9 @@ def get_switches(cidr_block=None,ids=None,is_default=None,name_regex=None,output
     :param dict tags: A mapping of tags to assign to the resource.
     :param str vpc_id: ID of the VPC that owns the VSwitch.
     :param str zone_id: The availability zone of the VSwitch.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['cidrBlock'] = cidr_block
     __args__['ids'] = ids
@@ -127,6 +129,7 @@ def get_switches(cidr_block=None,ids=None,is_default=None,name_regex=None,output
 
     return AwaitableGetSwitchesResult(
         cidr_block=__ret__.get('cidrBlock'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         is_default=__ret__.get('isDefault'),
         name_regex=__ret__.get('nameRegex'),
@@ -136,5 +139,4 @@ def get_switches(cidr_block=None,ids=None,is_default=None,name_regex=None,output
         tags=__ret__.get('tags'),
         vpc_id=__ret__.get('vpcId'),
         vswitches=__ret__.get('vswitches'),
-        zone_id=__ret__.get('zoneId'),
-        id=__ret__.get('id'))
+        zone_id=__ret__.get('zoneId'))

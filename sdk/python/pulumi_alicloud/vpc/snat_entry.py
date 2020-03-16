@@ -37,7 +37,9 @@ class SnatEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, snat_entry_name=None, snat_ip=None, snat_table_id=None, source_cidr=None, source_vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a snat resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] snat_entry_name: The name of snat entry.
@@ -45,8 +47,6 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,7 +86,7 @@ class SnatEntry(pulumi.CustomResource):
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,12 +96,11 @@ class SnatEntry(pulumi.CustomResource):
         :param pulumi.Input[str] snat_table_id: The value can get from `vpc.NatGateway` Attributes "snat_table_ids".
         :param pulumi.Input[str] source_cidr: The private network segment of Ecs. This parameter and the `source_vswitch_id` parameter are mutually exclusive and cannot appear at the same time.
         :param pulumi.Input[str] source_vswitch_id: The vswitch ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["snat_entry_id"] = snat_entry_id
         __props__["snat_entry_name"] = snat_entry_name
         __props__["snat_ip"] = snat_ip

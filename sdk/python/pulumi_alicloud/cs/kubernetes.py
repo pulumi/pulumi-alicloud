@@ -33,7 +33,7 @@ class Kubernetes(pulumi.CustomResource):
     connections: pulumi.Output[dict]
     """
     Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-    
+
       * `api_server_internet` (`str`) - API Server Internet endpoint.
       * `api_server_intranet` (`str`) - API Server Intranet endpoint.
       * `master_public_ip` (`str`) - Master node SSH IP address.
@@ -75,7 +75,7 @@ class Kubernetes(pulumi.CustomResource):
     log_config: pulumi.Output[dict]
     """
     A list of one element containing information about the associated log store. It contains the following attributes:
-    
+
       * `project` (`str`) - Log Service project name, cluster logs will output to this project.
       * `type` (`str`) - Type of collecting logs, only `SLS` are supported currently.
     """
@@ -107,10 +107,10 @@ class Kubernetes(pulumi.CustomResource):
     master_nodes: pulumi.Output[list]
     """
     List of cluster master nodes. It contains several attributes to `Block Nodes`.
-    
+
       * `id` (`str`) - ID of the node.
       * `name` (`str`) - The kubernetes cluster's name. It is the only in one Alicloud account.
-      * `privateIp` (`str`) - The private IP address of node.
+      * `private_ip` (`str`) - The private IP address of node.
     """
     master_period: pulumi.Output[float]
     """
@@ -224,10 +224,10 @@ class Kubernetes(pulumi.CustomResource):
     worker_nodes: pulumi.Output[list]
     """
     List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-    
+
       * `id` (`str`) - ID of the node.
       * `name` (`str`) - The kubernetes cluster's name. It is the only in one Alicloud account.
-      * `privateIp` (`str`) - The private IP address of node.
+      * `private_ip` (`str`) - The private IP address of node.
     """
     worker_number: pulumi.Output[float]
     """
@@ -245,7 +245,6 @@ class Kubernetes(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cluster_network_type=None, enable_ssh=None, force_update=None, image_id=None, install_cloud_monitor=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, log_config=None, master_auto_renew=None, master_auto_renew_period=None, master_disk_category=None, master_disk_size=None, master_instance_charge_type=None, master_instance_type=None, master_instance_types=None, master_period=None, master_period_unit=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, nodes=None, password=None, pod_cidr=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, version=None, vswitch_id=None, vswitch_ids=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_type=None, worker_instance_types=None, worker_number=None, worker_numbers=None, worker_period=None, worker_period_unit=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Kubernetes resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
@@ -296,13 +295,11 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[float] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-        
+
         The **log_config** object supports the following:
-        
+
           * `project` (`pulumi.Input[str]`) - Log Service project name, cluster logs will output to this project.
           * `type` (`pulumi.Input[str]`) - Type of collecting logs, only `SLS` are supported currently.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -397,7 +394,7 @@ class Kubernetes(pulumi.CustomResource):
         """
         Get an existing Kubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -456,36 +453,35 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[float] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-        
+
         The **connections** object supports the following:
-        
+
           * `api_server_internet` (`pulumi.Input[str]`) - API Server Internet endpoint.
           * `api_server_intranet` (`pulumi.Input[str]`) - API Server Intranet endpoint.
           * `master_public_ip` (`pulumi.Input[str]`) - Master node SSH IP address.
           * `service_domain` (`pulumi.Input[str]`) - Service Access Domain.
-        
+
         The **log_config** object supports the following:
-        
+
           * `project` (`pulumi.Input[str]`) - Log Service project name, cluster logs will output to this project.
           * `type` (`pulumi.Input[str]`) - Type of collecting logs, only `SLS` are supported currently.
-        
-        The **master_nodes** object supports the following:
-        
-          * `id` (`pulumi.Input[str]`) - ID of the node.
-          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
-          * `privateIp` (`pulumi.Input[str]`) - The private IP address of node.
-        
-        The **worker_nodes** object supports the following:
-        
-          * `id` (`pulumi.Input[str]`) - ID of the node.
-          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
-          * `privateIp` (`pulumi.Input[str]`) - The private IP address of node.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes.html.markdown.
+        The **master_nodes** object supports the following:
+
+          * `id` (`pulumi.Input[str]`) - ID of the node.
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
+          * `private_ip` (`pulumi.Input[str]`) - The private IP address of node.
+
+        The **worker_nodes** object supports the following:
+
+          * `id` (`pulumi.Input[str]`) - ID of the node.
+          * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is the only in one Alicloud account.
+          * `private_ip` (`pulumi.Input[str]`) - The private IP address of node.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["availability_zone"] = availability_zone
         __props__["client_cert"] = client_cert
         __props__["client_key"] = client_key

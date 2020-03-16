@@ -21,7 +21,7 @@ class Connection(pulumi.CustomResource):
     ike_configs: pulumi.Output[list]
     """
     The configurations of phase-one negotiation.
-    
+
       * `ikeAuthAlg` (`str`) - The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
       * `ikeEncAlg` (`str`) - The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
       * `ikeLifetime` (`float`) - The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
@@ -35,7 +35,7 @@ class Connection(pulumi.CustomResource):
     ipsec_configs: pulumi.Output[list]
     """
     The configurations of phase-two negotiation.
-    
+
       * `ipsecAuthAlg` (`str`) - The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
       * `ipsecEncAlg` (`str`) - The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
       * `ipsecLifetime` (`float`) - The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
@@ -64,7 +64,6 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, customer_gateway_id=None, effect_immediately=None, ike_configs=None, ipsec_configs=None, local_subnets=None, name=None, remote_subnets=None, vpn_gateway_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Connection resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
@@ -75,9 +74,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the IPsec connection.
         :param pulumi.Input[list] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-        
+
         The **ike_configs** object supports the following:
-        
+
           * `ikeAuthAlg` (`pulumi.Input[str]`) - The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
           * `ikeEncAlg` (`pulumi.Input[str]`) - The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
           * `ikeLifetime` (`pulumi.Input[float]`) - The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
@@ -87,15 +86,13 @@ class Connection(pulumi.CustomResource):
           * `ikeRemoteId` (`pulumi.Input[str]`) - The identification of the customer gateway.
           * `ikeVersion` (`pulumi.Input[str]`) - The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
           * `psk` (`pulumi.Input[str]`) - Used for authentication between the IPsec VPN gateway and the customer gateway.
-        
+
         The **ipsec_configs** object supports the following:
-        
+
           * `ipsecAuthAlg` (`pulumi.Input[str]`) - The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
           * `ipsecEncAlg` (`pulumi.Input[str]`) - The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
           * `ipsecLifetime` (`pulumi.Input[float]`) - The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
           * `ipsecPfs` (`pulumi.Input[str]`) - The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_connection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -142,7 +139,7 @@ class Connection(pulumi.CustomResource):
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,9 +152,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[list] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] status: The status of VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-        
+
         The **ike_configs** object supports the following:
-        
+
           * `ikeAuthAlg` (`pulumi.Input[str]`) - The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
           * `ikeEncAlg` (`pulumi.Input[str]`) - The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
           * `ikeLifetime` (`pulumi.Input[float]`) - The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
@@ -167,19 +164,18 @@ class Connection(pulumi.CustomResource):
           * `ikeRemoteId` (`pulumi.Input[str]`) - The identification of the customer gateway.
           * `ikeVersion` (`pulumi.Input[str]`) - The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
           * `psk` (`pulumi.Input[str]`) - Used for authentication between the IPsec VPN gateway and the customer gateway.
-        
+
         The **ipsec_configs** object supports the following:
-        
+
           * `ipsecAuthAlg` (`pulumi.Input[str]`) - The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
           * `ipsecEncAlg` (`pulumi.Input[str]`) - The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
           * `ipsecLifetime` (`pulumi.Input[float]`) - The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
           * `ipsecPfs` (`pulumi.Input[str]`) - The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_connection.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["customer_gateway_id"] = customer_gateway_id
         __props__["effect_immediately"] = effect_immediately
         __props__["ike_configs"] = ike_configs

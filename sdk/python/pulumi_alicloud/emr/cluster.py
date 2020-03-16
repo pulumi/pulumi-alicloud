@@ -29,8 +29,8 @@ class Cluster(pulumi.CustomResource):
     host_groups: pulumi.Output[list]
     """
     Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
-    
-      * `autoRenew` (`bool`) - Auto renew for prepaid, true of false. Default is false.
+
+      * `auto_renew` (`bool`) - Auto renew for prepaid, true of false. Default is false.
       * `charge_type` (`str`) - Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
       * `diskCapacity` (`str`) - Data disk capacity.
       * `diskCount` (`str`) - Data disk count.
@@ -82,9 +82,11 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bootstrap_actions=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
-        
+
         > **NOTE:** Available in 1.57.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
@@ -106,16 +108,16 @@ class Cluster(pulumi.CustomResource):
                * `key_pair_name` (Optional, ForceNew) Ssh key pair.
                * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
                * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
-        
+
         The **bootstrap_actions** object supports the following:
-        
+
           * `arg` (`pulumi.Input[str]`) - bootstrap action args, e.g. "--a=b".
           * `name` (`pulumi.Input[str]`) - bootstrap action name.
           * `path` (`pulumi.Input[str]`) - bootstrap action path, e.g. "oss://bucket/path".
-        
+
         The **host_groups** object supports the following:
-        
-          * `autoRenew` (`pulumi.Input[bool]`) - Auto renew for prepaid, true of false. Default is false.
+
+          * `auto_renew` (`pulumi.Input[bool]`) - Auto renew for prepaid, true of false. Default is false.
           * `charge_type` (`pulumi.Input[str]`) - Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
           * `diskCapacity` (`pulumi.Input[str]`) - Data disk capacity.
           * `diskCount` (`pulumi.Input[str]`) - Data disk count.
@@ -129,8 +131,6 @@ class Cluster(pulumi.CustomResource):
           * `period` (`pulumi.Input[float]`) - If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
           * `sysDiskCapacity` (`pulumi.Input[str]`) - System disk capacity.
           * `sysDiskType` (`pulumi.Input[str]`) - System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -187,7 +187,7 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -210,16 +210,16 @@ class Cluster(pulumi.CustomResource):
                * `key_pair_name` (Optional, ForceNew) Ssh key pair.
                * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
                * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
-        
+
         The **bootstrap_actions** object supports the following:
-        
+
           * `arg` (`pulumi.Input[str]`) - bootstrap action args, e.g. "--a=b".
           * `name` (`pulumi.Input[str]`) - bootstrap action name.
           * `path` (`pulumi.Input[str]`) - bootstrap action path, e.g. "oss://bucket/path".
-        
+
         The **host_groups** object supports the following:
-        
-          * `autoRenew` (`pulumi.Input[bool]`) - Auto renew for prepaid, true of false. Default is false.
+
+          * `auto_renew` (`pulumi.Input[bool]`) - Auto renew for prepaid, true of false. Default is false.
           * `charge_type` (`pulumi.Input[str]`) - Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
           * `diskCapacity` (`pulumi.Input[str]`) - Data disk capacity.
           * `diskCount` (`pulumi.Input[str]`) - Data disk count.
@@ -233,12 +233,11 @@ class Cluster(pulumi.CustomResource):
           * `period` (`pulumi.Input[float]`) - If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
           * `sysDiskCapacity` (`pulumi.Input[str]`) - System disk capacity.
           * `sysDiskType` (`pulumi.Input[str]`) - System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bootstrap_actions"] = bootstrap_actions
         __props__["charge_type"] = charge_type
         __props__["cluster_type"] = cluster_type

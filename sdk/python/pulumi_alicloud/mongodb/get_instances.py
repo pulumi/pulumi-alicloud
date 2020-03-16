@@ -13,12 +13,18 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None, id=None):
+    def __init__(__self__, availability_zone=None, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         __self__.availability_zone = availability_zone
         """
         Instance availability zone.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -59,12 +65,6 @@ class GetInstancesResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -72,6 +72,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            id=self.id,
             ids=self.ids,
             instance_class=self.instance_class,
             instance_type=self.instance_type,
@@ -79,24 +80,25 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_instances(availability_zone=None,ids=None,instance_class=None,instance_type=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     The `mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
+
+
     :param str availability_zone: Instance availability zone.
     :param list ids: The ids list of MongoDB instances
     :param str instance_class: Sizing of the instance to be queried.
     :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
     :param str name_regex: A regex string to apply to the instance name.
     :param dict tags: A mapping of tags to assign to the resource.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['availabilityZone'] = availability_zone
     __args__['ids'] = ids
@@ -113,6 +115,7 @@ def get_instances(availability_zone=None,ids=None,instance_class=None,instance_t
 
     return AwaitableGetInstancesResult(
         availability_zone=__ret__.get('availabilityZone'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_class=__ret__.get('instanceClass'),
         instance_type=__ret__.get('instanceType'),
@@ -120,5 +123,4 @@ def get_instances(availability_zone=None,ids=None,instance_class=None,instance_t
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

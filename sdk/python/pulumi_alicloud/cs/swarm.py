@@ -55,11 +55,11 @@ class Swarm(pulumi.CustomResource):
     nodes: pulumi.Output[list]
     """
     List of cluster nodes. It contains several attributes to `Block Nodes`.
-    
+
       * `eip` (`str`) - The Elastic IP address of node.
       * `id` (`str`) - ID of the node.
       * `name` (`str`) - The container cluster's name. It is the only in one Alicloud account.
-      * `privateIp` (`str`) - The private IP address of node.
+      * `private_ip` (`str`) - The private IP address of node.
       * `status` (`str`) - The node current status. It is different with instance status.
     """
     password: pulumi.Output[str]
@@ -94,11 +94,13 @@ class Swarm(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cidr_block=None, disk_category=None, disk_size=None, image_id=None, instance_type=None, is_outdated=None, name=None, name_prefix=None, need_slb=None, node_number=None, password=None, release_eip=None, size=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         > **DEPRECATED:** This resource manages swarm cluster, which is being deprecated and will be replaced by Kubernetes cluster.
-        
+
         This resource will help you to manager a Swarm Cluster.
-        
+
         > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block for the Container. It can not be same as the CIDR used by the VPC.
@@ -118,8 +120,6 @@ class Swarm(pulumi.CustomResource):
                * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         :param pulumi.Input[float] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         :param pulumi.Input[str] vswitch_id: The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -176,7 +176,7 @@ class Swarm(pulumi.CustomResource):
         """
         Get an existing Swarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,20 +202,19 @@ class Swarm(pulumi.CustomResource):
         :param pulumi.Input[str] slb_id: The ID of load balancer where the current cluster worker node is located.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[str] vswitch_id: The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
-        
+
         The **nodes** object supports the following:
-        
+
           * `eip` (`pulumi.Input[str]`) - The Elastic IP address of node.
           * `id` (`pulumi.Input[str]`) - ID of the node.
           * `name` (`pulumi.Input[str]`) - The container cluster's name. It is the only in one Alicloud account.
-          * `privateIp` (`pulumi.Input[str]`) - The private IP address of node.
+          * `private_ip` (`pulumi.Input[str]`) - The private IP address of node.
           * `status` (`pulumi.Input[str]`) - The node current status. It is different with instance status.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["agent_version"] = agent_version
         __props__["cidr_block"] = cidr_block
         __props__["disk_category"] = disk_category

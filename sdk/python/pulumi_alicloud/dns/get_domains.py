@@ -13,7 +13,7 @@ class GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
-    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, group_name_regex=None, ids=None, instance_id=None, names=None, output_file=None, resource_group_id=None, version_code=None, id=None):
+    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, group_name_regex=None, id=None, ids=None, instance_id=None, names=None, output_file=None, resource_group_id=None, version_code=None):
         if ali_domain and not isinstance(ali_domain, bool):
             raise TypeError("Expected argument 'ali_domain' to be a bool")
         __self__.ali_domain = ali_domain
@@ -32,6 +32,12 @@ class GetDomainsResult:
         if group_name_regex and not isinstance(group_name_regex, str):
             raise TypeError("Expected argument 'group_name_regex' to be a str")
         __self__.group_name_regex = group_name_regex
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -65,12 +71,6 @@ class GetDomainsResult:
         """
         Cloud analysis version code of the domain.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,18 +81,21 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             domain_name_regex=self.domain_name_regex,
             domains=self.domains,
             group_name_regex=self.group_name_regex,
+            id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
-            version_code=self.version_code,
-            id=self.id)
+            version_code=self.version_code)
 
 def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids=None,instance_id=None,output_file=None,resource_group_id=None,version_code=None,opts=None):
     """
     This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
+
+
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name. 
     :param str group_name_regex: A regex string to filter results by the group name.
@@ -100,10 +103,9 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str version_code: Cloud analysis version code.
            * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['aliDomain'] = ali_domain
     __args__['domainNameRegex'] = domain_name_regex
@@ -124,10 +126,10 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
         domain_name_regex=__ret__.get('domainNameRegex'),
         domains=__ret__.get('domains'),
         group_name_regex=__ret__.get('groupNameRegex'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
-        version_code=__ret__.get('versionCode'),
-        id=__ret__.get('id'))
+        version_code=__ret__.get('versionCode'))

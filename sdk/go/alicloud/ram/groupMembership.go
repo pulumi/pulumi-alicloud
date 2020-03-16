@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a RAM Group membership resource. 
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
 type GroupMembership struct {
 	pulumi.CustomResourceState

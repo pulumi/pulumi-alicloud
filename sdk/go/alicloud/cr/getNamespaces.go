@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list Container Registry namespaces on Alibaba Cloud.
-// 
+//
 // > **NOTE:** Available in v1.35.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
 func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.InvokeOption) (*GetNamespacesResult, error) {
 	var rv GetNamespacesResult

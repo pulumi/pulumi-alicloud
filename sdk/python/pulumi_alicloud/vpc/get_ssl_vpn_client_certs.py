@@ -13,10 +13,16 @@ class GetSslVpnClientCertsResult:
     """
     A collection of values returned by getSslVpnClientCerts.
     """
-    def __init__(__self__, certs=None, ids=None, name_regex=None, names=None, output_file=None, ssl_vpn_server_id=None, id=None):
+    def __init__(__self__, certs=None, id=None, ids=None, name_regex=None, names=None, output_file=None, ssl_vpn_server_id=None):
         if certs and not isinstance(certs, list):
             raise TypeError("Expected argument 'certs' to be a list")
         __self__.certs = certs
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -41,12 +47,6 @@ class GetSslVpnClientCertsResult:
         """
         ID of the SSL-VPN Server.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSslVpnClientCertsResult(GetSslVpnClientCertsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,25 +54,27 @@ class AwaitableGetSslVpnClientCertsResult(GetSslVpnClientCertsResult):
             yield self
         return GetSslVpnClientCertsResult(
             certs=self.certs,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            ssl_vpn_server_id=self.ssl_vpn_server_id,
-            id=self.id)
+            ssl_vpn_server_id=self.ssl_vpn_server_id)
 
 def get_ssl_vpn_client_certs(ids=None,name_regex=None,output_file=None,ssl_vpn_server_id=None,opts=None):
     """
     The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
+
+
     :param list ids: IDs of the SSL-VPN client certificates.
     :param str name_regex: A regex string of SSL-VPN client certificate name.
     :param str output_file: Save the result to the file.
     :param str ssl_vpn_server_id: Use the SSL-VPN server ID as the search key.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -86,9 +88,9 @@ def get_ssl_vpn_client_certs(ids=None,name_regex=None,output_file=None,ssl_vpn_s
 
     return AwaitableGetSslVpnClientCertsResult(
         certs=__ret__.get('certs'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        ssl_vpn_server_id=__ret__.get('sslVpnServerId'),
-        id=__ret__.get('id'))
+        ssl_vpn_server_id=__ret__.get('sslVpnServerId'))

@@ -57,7 +57,6 @@ class SslVpnServer(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cipher=None, client_ip_pool=None, compress=None, local_subnet=None, name=None, port=None, protocol=None, vpn_gateway_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SslVpnServer resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cipher: The encryption algorithm used by the SSL-VPN server. Valid value: AES-128-CBC (default)| AES-192-CBC | AES-256-CBC | none
@@ -68,8 +67,6 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_server.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -116,7 +113,7 @@ class SslVpnServer(pulumi.CustomResource):
         """
         Get an existing SslVpnServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -131,12 +128,11 @@ class SslVpnServer(pulumi.CustomResource):
         :param pulumi.Input[float] port: The port used by the SSL-VPN server. The default value is 1194.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         :param pulumi.Input[str] protocol: The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ssl_vpn_server.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cipher"] = cipher
         __props__["client_ip_pool"] = client_ip_pool
         __props__["compress"] = compress

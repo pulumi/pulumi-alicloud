@@ -13,7 +13,13 @@ class GetRouteTablesResult:
     """
     A collection of values returned by getRouteTables.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tables=None, tags=None, vpc_id=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tables=None, tags=None, vpc_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -50,18 +56,13 @@ class GetRouteTablesResult:
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         __self__.vpc_id = vpc_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRouteTablesResult(GetRouteTablesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRouteTablesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
@@ -69,24 +70,25 @@ class AwaitableGetRouteTablesResult(GetRouteTablesResult):
             resource_group_id=self.resource_group_id,
             tables=self.tables,
             tags=self.tags,
-            vpc_id=self.vpc_id,
-            id=self.id)
+            vpc_id=self.vpc_id)
 
 def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id=None,tags=None,vpc_id=None,opts=None):
     """
     This data source provides a list of Route Tables owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.36.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
+
+
     :param list ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param dict tags: A mapping of tags to assign to the resource.
     :param str vpc_id: Vpc id of the route table.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -101,6 +103,7 @@ def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getRouteTables:getRouteTables', __args__, opts=opts).value
 
     return AwaitableGetRouteTablesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
@@ -108,5 +111,4 @@ def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id
         resource_group_id=__ret__.get('resourceGroupId'),
         tables=__ret__.get('tables'),
         tags=__ret__.get('tags'),
-        vpc_id=__ret__.get('vpcId'),
-        id=__ret__.get('id'))
+        vpc_id=__ret__.get('vpcId'))

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a snat resource.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat.html.markdown.
  */
 export class SnatEntry extends pulumi.CustomResource {
     /**

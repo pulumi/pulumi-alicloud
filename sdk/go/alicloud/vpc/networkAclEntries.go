@@ -12,13 +12,13 @@ import (
 )
 
 // Provides a network acl entries resource to create ingress and egress entries.
-// 
+//
 // > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-// 
+//
 // > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-// 
+//
 // > **NOTE:** Using this resource need to open a whitelist.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
 type NetworkAclEntries struct {
 	pulumi.CustomResourceState

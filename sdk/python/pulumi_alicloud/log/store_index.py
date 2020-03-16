@@ -13,18 +13,17 @@ class StoreIndex(pulumi.CustomResource):
     field_searches: pulumi.Output[list]
     """
     List configurations of field search index. Valid item as follows:
-    
+
       * `alias` (`str`) - The alias of one field.
       * `caseSensitive` (`bool`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
       * `enableAnalytics` (`bool`) - Whether to enable field analytics. Default to true.
       * `includeChinese` (`bool`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
       * `jsonKeys` (`list`) - Use nested index when type is json
-    
         * `alias` (`str`) - The alias of one field.
         * `docValue` (`bool`) - Whether to enable statistics. default to true.
         * `name` (`str`) - When using the json_keys field, this field is required.
         * `type` (`str`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-    
+
       * `name` (`str`) - When using the json_keys field, this field is required.
       * `token` (`str`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
       * `type` (`str`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
@@ -32,7 +31,7 @@ class StoreIndex(pulumi.CustomResource):
     full_text: pulumi.Output[dict]
     """
     The configuration of full text index. Valid item as follows:
-    
+
       * `caseSensitive` (`bool`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
       * `includeChinese` (`bool`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
       * `token` (`str`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
@@ -48,38 +47,34 @@ class StoreIndex(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, field_searches=None, full_text=None, logstore=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a StoreIndex resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] field_searches: List configurations of field search index. Valid item as follows:
         :param pulumi.Input[dict] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        
+
         The **field_searches** object supports the following:
-        
+
           * `alias` (`pulumi.Input[str]`) - The alias of one field.
           * `caseSensitive` (`pulumi.Input[bool]`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
           * `enableAnalytics` (`pulumi.Input[bool]`) - Whether to enable field analytics. Default to true.
           * `includeChinese` (`pulumi.Input[bool]`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
           * `jsonKeys` (`pulumi.Input[list]`) - Use nested index when type is json
-        
             * `alias` (`pulumi.Input[str]`) - The alias of one field.
             * `docValue` (`pulumi.Input[bool]`) - Whether to enable statistics. default to true.
             * `name` (`pulumi.Input[str]`) - When using the json_keys field, this field is required.
             * `type` (`pulumi.Input[str]`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        
+
           * `name` (`pulumi.Input[str]`) - When using the json_keys field, this field is required.
           * `token` (`pulumi.Input[str]`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
           * `type` (`pulumi.Input[str]`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        
+
         The **full_text** object supports the following:
-        
+
           * `caseSensitive` (`pulumi.Input[bool]`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
           * `includeChinese` (`pulumi.Input[bool]`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
           * `token` (`pulumi.Input[str]`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store_index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +112,7 @@ class StoreIndex(pulumi.CustomResource):
         """
         Get an existing StoreIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -125,35 +120,33 @@ class StoreIndex(pulumi.CustomResource):
         :param pulumi.Input[dict] full_text: The configuration of full text index. Valid item as follows:
         :param pulumi.Input[str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[str] project: The project name to the log store belongs.
-        
+
         The **field_searches** object supports the following:
-        
+
           * `alias` (`pulumi.Input[str]`) - The alias of one field.
           * `caseSensitive` (`pulumi.Input[bool]`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
           * `enableAnalytics` (`pulumi.Input[bool]`) - Whether to enable field analytics. Default to true.
           * `includeChinese` (`pulumi.Input[bool]`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
           * `jsonKeys` (`pulumi.Input[list]`) - Use nested index when type is json
-        
             * `alias` (`pulumi.Input[str]`) - The alias of one field.
             * `docValue` (`pulumi.Input[bool]`) - Whether to enable statistics. default to true.
             * `name` (`pulumi.Input[str]`) - When using the json_keys field, this field is required.
             * `type` (`pulumi.Input[str]`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        
+
           * `name` (`pulumi.Input[str]`) - When using the json_keys field, this field is required.
           * `token` (`pulumi.Input[str]`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
           * `type` (`pulumi.Input[str]`) - The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        
+
         The **full_text** object supports the following:
-        
+
           * `caseSensitive` (`pulumi.Input[bool]`) - Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
           * `includeChinese` (`pulumi.Input[bool]`) - Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
           * `token` (`pulumi.Input[str]`) - The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store_index.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["field_searches"] = field_searches
         __props__["full_text"] = full_text
         __props__["logstore"] = logstore

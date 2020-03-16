@@ -13,7 +13,13 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None, vpc_id=None, vswitch_id=None, id=None):
+    def __init__(__self__, id=None, ids=None, instance_class=None, instance_type=None, instances=None, name_regex=None, names=None, output_file=None, status=None, tags=None, vpc_id=None, vswitch_id=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -67,18 +73,13 @@ class GetInstancesResult:
         """
         VSwitch ID the instance belongs to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetInstancesResult(
+            id=self.id,
             ids=self.ids,
             instance_class=self.instance_class,
             instance_type=self.instance_type,
@@ -89,14 +90,16 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             status=self.status,
             tags=self.tags,
             vpc_id=self.vpc_id,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=None,output_file=None,status=None,tags=None,vpc_id=None,vswitch_id=None,opts=None):
     """
     The `kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
+
+
     :param list ids: A list of RKV instance IDs.
     :param str instance_type: Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
@@ -106,10 +109,9 @@ def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=Non
     :param dict tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['instanceClass'] = instance_class
@@ -127,6 +129,7 @@ def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=Non
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getInstances:getInstances', __args__, opts=opts).value
 
     return AwaitableGetInstancesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_class=__ret__.get('instanceClass'),
         instance_type=__ret__.get('instanceType'),
@@ -137,5 +140,4 @@ def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=Non
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         vpc_id=__ret__.get('vpcId'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))

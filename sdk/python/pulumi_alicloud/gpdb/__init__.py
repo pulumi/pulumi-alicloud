@@ -4,5 +4,5 @@
 
 # Export this package's modules as members:
 from .connection import *
-from .instance import *
 from .get_instances import *
+from .instance import *

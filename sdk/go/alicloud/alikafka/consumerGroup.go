@@ -12,12 +12,12 @@ import (
 )
 
 // Provides an ALIKAFKA consumer group resource.
-// 
+//
 // > **NOTE:** Available in 1.56.0+
-// 
+//
 // > **NOTE:**  Only the following regions support create alikafka consumer group.
 // [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_consumer_group.html.markdown.
 type ConsumerGroup struct {
 	pulumi.CustomResourceState

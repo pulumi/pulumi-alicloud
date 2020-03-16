@@ -13,12 +13,18 @@ class GetNetworksResult:
     """
     A collection of values returned by getNetworks.
     """
-    def __init__(__self__, cidr_block=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpcs=None, vswitch_id=None, id=None):
+    def __init__(__self__, cidr_block=None, id=None, ids=None, is_default=None, name_regex=None, names=None, output_file=None, resource_group_id=None, status=None, tags=None, vpcs=None, vswitch_id=None):
         if cidr_block and not isinstance(cidr_block, str):
             raise TypeError("Expected argument 'cidr_block' to be a str")
         __self__.cidr_block = cidr_block
         """
         CIDR block of the VPC.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -68,12 +74,6 @@ class GetNetworksResult:
         if vswitch_id and not isinstance(vswitch_id, str):
             raise TypeError("Expected argument 'vswitch_id' to be a str")
         __self__.vswitch_id = vswitch_id
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetNetworksResult(GetNetworksResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -81,6 +81,7 @@ class AwaitableGetNetworksResult(GetNetworksResult):
             yield self
         return GetNetworksResult(
             cidr_block=self.cidr_block,
+            id=self.id,
             ids=self.ids,
             is_default=self.is_default,
             name_regex=self.name_regex,
@@ -90,13 +91,15 @@ class AwaitableGetNetworksResult(GetNetworksResult):
             status=self.status,
             tags=self.tags,
             vpcs=self.vpcs,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_networks(cidr_block=None,ids=None,is_default=None,name_regex=None,output_file=None,resource_group_id=None,status=None,tags=None,vswitch_id=None,opts=None):
     """
     This data source provides VPCs available to the user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
+
+
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param list ids: A list of VPC IDs.
     :param bool is_default: Indicate whether the VPC is the default one in the specified region.
@@ -105,10 +108,9 @@ def get_networks(cidr_block=None,ids=None,is_default=None,name_regex=None,output
     :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
     :param dict tags: A mapping of tags to assign to the resource.
     :param str vswitch_id: Filter results by the specified VSwitch.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['cidrBlock'] = cidr_block
     __args__['ids'] = ids
@@ -127,6 +129,7 @@ def get_networks(cidr_block=None,ids=None,is_default=None,name_regex=None,output
 
     return AwaitableGetNetworksResult(
         cidr_block=__ret__.get('cidrBlock'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         is_default=__ret__.get('isDefault'),
         name_regex=__ret__.get('nameRegex'),
@@ -136,5 +139,4 @@ def get_networks(cidr_block=None,ids=None,is_default=None,name_regex=None,output
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         vpcs=__ret__.get('vpcs'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))

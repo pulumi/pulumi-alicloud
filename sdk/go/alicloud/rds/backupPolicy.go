@@ -12,9 +12,9 @@ import (
 )
 
 // Provides an RDS instance backup policy resource and used to configure instance backup policy.
-// 
+//
 // > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
 type BackupPolicy struct {
 	pulumi.CustomResourceState

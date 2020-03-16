@@ -33,7 +33,6 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, next_hop=None, publish_vpc=None, route_dest=None, vpn_gateway_id=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RouteEntry resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
@@ -41,8 +40,6 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[float] weight: The value should be 0 or 100.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_route_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +84,7 @@ class RouteEntry(pulumi.CustomResource):
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,12 +93,11 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_gateway_id: The id of the vpn gateway.
         :param pulumi.Input[float] weight: The value should be 0 or 100.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_route_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["next_hop"] = next_hop
         __props__["publish_vpc"] = publish_vpc
         __props__["route_dest"] = route_dest

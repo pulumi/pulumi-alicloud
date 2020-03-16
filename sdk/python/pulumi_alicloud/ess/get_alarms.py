@@ -13,12 +13,18 @@ class GetAlarmsResult:
     """
     A collection of values returned by getAlarms.
     """
-    def __init__(__self__, alarms=None, ids=None, metric_type=None, name_regex=None, names=None, output_file=None, scaling_group_id=None, id=None):
+    def __init__(__self__, alarms=None, id=None, ids=None, metric_type=None, name_regex=None, names=None, output_file=None, scaling_group_id=None):
         if alarms and not isinstance(alarms, list):
             raise TypeError("Expected argument 'alarms' to be a list")
         __self__.alarms = alarms
         """
         A list of alarms. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetAlarmsResult:
         """
         The scaling group associated with this alarm.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAlarmsResult(GetAlarmsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,28 +63,30 @@ class AwaitableGetAlarmsResult(GetAlarmsResult):
             yield self
         return GetAlarmsResult(
             alarms=self.alarms,
+            id=self.id,
             ids=self.ids,
             metric_type=self.metric_type,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            scaling_group_id=self.scaling_group_id,
-            id=self.id)
+            scaling_group_id=self.scaling_group_id)
 
 def get_alarms(ids=None,metric_type=None,name_regex=None,output_file=None,scaling_group_id=None,opts=None):
     """
     This data source provides available alarm resources. 
-    
+
     > **NOTE** Available in 1.72.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
+
+
     :param list ids: A list of alarm IDs.
     :param str metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
     :param str name_regex: A regex string to filter resulting alarms by name.
     :param str scaling_group_id: Scaling group id the alarms belong to.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['metricType'] = metric_type
@@ -99,10 +101,10 @@ def get_alarms(ids=None,metric_type=None,name_regex=None,output_file=None,scalin
 
     return AwaitableGetAlarmsResult(
         alarms=__ret__.get('alarms'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         metric_type=__ret__.get('metricType'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        scaling_group_id=__ret__.get('scalingGroupId'),
-        id=__ret__.get('id'))
+        scaling_group_id=__ret__.get('scalingGroupId'))

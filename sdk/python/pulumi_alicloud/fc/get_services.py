@@ -13,7 +13,13 @@ class GetServicesResult:
     """
     A collection of values returned by getServices.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, services=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, services=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,35 +44,31 @@ class GetServicesResult:
         """
         A list of FC services. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetServicesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            services=self.services,
-            id=self.id)
+            services=self.services)
 
 def get_services(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the Function Compute services of the current Alibaba Cloud user.
-    
-    :param str name_regex: A regex string to filter results by FC service name.
-           * `ids` (Optional, Available in 1.53.0+) - A list of FC services ids.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
+
+
+    :param str name_regex: A regex string to filter results by FC service name.
+           * `ids` (Optional, Available in 1.53.0+) - A list of FC services ids.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -78,9 +80,9 @@ def get_services(ids=None,name_regex=None,output_file=None,opts=None):
     __ret__ = pulumi.runtime.invoke('alicloud:fc/getServices:getServices', __args__, opts=opts).value
 
     return AwaitableGetServicesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        services=__ret__.get('services'),
-        id=__ret__.get('id'))
+        services=__ret__.get('services'))

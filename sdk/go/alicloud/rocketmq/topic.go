@@ -12,11 +12,11 @@ import (
 )
 
 // Provides an ONS topic resource.
-// 
+//
 // For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
-// 
+//
 // > **NOTE:** Available in 1.53.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_topic.html.markdown.
 type Topic struct {
 	pulumi.CustomResourceState

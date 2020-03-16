@@ -12,8 +12,8 @@ import (
 )
 
 // Provides a snat resource.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat_entry.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snat.html.markdown.
 type SnatEntry struct {
 	pulumi.CustomResourceState
 

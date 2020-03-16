@@ -13,7 +13,13 @@ class GetBandwidthPackagesResult:
     """
     A collection of values returned by getBandwidthPackages.
     """
-    def __init__(__self__, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, packages=None, id=None):
+    def __init__(__self__, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, packages=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -38,37 +44,33 @@ class GetBandwidthPackagesResult:
         """
         A list of CEN bandwidth package. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBandwidthPackagesResult(GetBandwidthPackagesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetBandwidthPackagesResult(
+            id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            packages=self.packages,
-            id=self.id)
+            packages=self.packages)
 
 def get_bandwidth_packages(ids=None,instance_id=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides CEN Bandwidth Packages available to the user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
+
+
     :param list ids: Limit search to a list of specific CEN Bandwidth Package IDs.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
@@ -81,10 +83,10 @@ def get_bandwidth_packages(ids=None,instance_id=None,name_regex=None,output_file
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getBandwidthPackages:getBandwidthPackages', __args__, opts=opts).value
 
     return AwaitableGetBandwidthPackagesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        packages=__ret__.get('packages'),
-        id=__ret__.get('id'))
+        packages=__ret__.get('packages'))

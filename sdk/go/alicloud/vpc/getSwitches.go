@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of VSwitches owned by an Alibaba Cloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
 func GetSwitches(ctx *pulumi.Context, args *GetSwitchesArgs, opts ...pulumi.InvokeOption) (*GetSwitchesResult, error) {
 	var rv GetSwitchesResult

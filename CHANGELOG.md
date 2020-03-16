@@ -6,6 +6,10 @@ _(none)_
 
 ---
 
+## 1.5.0 (2020-03-16)
+* Upgrade to Pulumi v1.12.1
+* Upgrade to pulumi-terraform-bridge v1.8.2
+
 ## 1.4.0 (2020-03-09)
 * Upgrade to v1.72.0 of the AliCloud Terraform Provider
 

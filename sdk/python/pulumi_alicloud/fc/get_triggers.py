@@ -13,10 +13,16 @@ class GetTriggersResult:
     """
     A collection of values returned by getTriggers.
     """
-    def __init__(__self__, function_name=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None, triggers=None, id=None):
+    def __init__(__self__, function_name=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None, triggers=None):
         if function_name and not isinstance(function_name, str):
             raise TypeError("Expected argument 'function_name' to be a str")
         __self__.function_name = function_name
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -44,12 +50,6 @@ class GetTriggersResult:
         """
         A list of FC triggers. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetTriggersResult(GetTriggersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,26 +57,28 @@ class AwaitableGetTriggersResult(GetTriggersResult):
             yield self
         return GetTriggersResult(
             function_name=self.function_name,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             service_name=self.service_name,
-            triggers=self.triggers,
-            id=self.id)
+            triggers=self.triggers)
 
 def get_triggers(function_name=None,ids=None,name_regex=None,output_file=None,service_name=None,opts=None):
     """
     This data source provides the Function Compute triggers of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
+
+
     :param str function_name: FC function name.
     :param str name_regex: A regex string to filter results by FC trigger name.
            * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
     :param str service_name: FC service name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['functionName'] = function_name
     __args__['ids'] = ids
@@ -91,10 +93,10 @@ def get_triggers(function_name=None,ids=None,name_regex=None,output_file=None,se
 
     return AwaitableGetTriggersResult(
         function_name=__ret__.get('functionName'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         service_name=__ret__.get('serviceName'),
-        triggers=__ret__.get('triggers'),
-        id=__ret__.get('id'))
+        triggers=__ret__.get('triggers'))

@@ -43,7 +43,6 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, destination_cidrblock=None, name=None, nexthop_id=None, nexthop_type=None, route_table_id=None, router_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a RouteEntry resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
@@ -58,8 +57,6 @@ class RouteEntry(pulumi.CustomResource):
                - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_entry.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +94,7 @@ class RouteEntry(pulumi.CustomResource):
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,12 +110,11 @@ class RouteEntry(pulumi.CustomResource):
                - `NatGateway`: Route the traffic destined for the destination CIDR block to an Nat Gateway.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/route_entry.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["destination_cidrblock"] = destination_cidrblock
         __props__["name"] = name
         __props__["nexthop_id"] = nexthop_id

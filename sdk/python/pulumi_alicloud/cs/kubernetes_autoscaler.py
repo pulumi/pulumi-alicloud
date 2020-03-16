@@ -24,11 +24,11 @@ class KubernetesAutoscaler(pulumi.CustomResource):
     """
     nodepools: pulumi.Output[list]
     """
-    
+
     * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
     * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
     * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
-    
+
       * `id` (`str`)
       * `labels` (`str`)
       * `taints` (`str`)
@@ -40,15 +40,17 @@ class KubernetesAutoscaler(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cluster_id=None, cool_down_duration=None, defer_scale_in_duration=None, nodepools=None, utilization=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
-        
+
         > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
-        
+
         > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
-        
+
         > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
-        
+
         > **NOTE:** Available in 1.65.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
@@ -59,14 +61,12 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
                * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
-        
+
         The **nodepools** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[str]`)
           * `taints` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,7 +109,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         """
         Get an existing KubernetesAutoscaler resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,18 +121,17 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
                * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
-        
+
         The **nodepools** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `labels` (`pulumi.Input[str]`)
           * `taints` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cluster_id"] = cluster_id
         __props__["cool_down_duration"] = cool_down_duration
         __props__["defer_scale_in_duration"] = defer_scale_in_duration

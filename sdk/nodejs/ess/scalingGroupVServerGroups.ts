@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  * * `port` - (Required) - The port will be used for VServer Group backend server.
  * * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scalinggroup_vserver_groups.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scalinggroup_vserver_groups.markdown.
  */
 export class ScalingGroupVServerGroups extends pulumi.CustomResource {
     /**

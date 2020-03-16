@@ -169,7 +169,7 @@ class Listener(pulumi.CustomResource):
     x_forwarded_for: pulumi.Output[dict]
     """
     Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
-    
+
       * `retriveClientIp` (`bool`)
       * `retriveSlbId` (`bool`) - Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
       * `retriveSlbIp` (`bool`) - Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
@@ -178,20 +178,20 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acl_id=None, acl_status=None, acl_type=None, backend_port=None, bandwidth=None, cookie=None, cookie_timeout=None, delete_protection_validation=None, description=None, enable_http2=None, established_timeout=None, forward_port=None, frontend_port=None, gzip=None, health_check=None, health_check_connect_port=None, health_check_domain=None, health_check_http_code=None, health_check_interval=None, health_check_method=None, health_check_timeout=None, health_check_type=None, health_check_uri=None, healthy_threshold=None, idle_timeout=None, instance_port=None, lb_port=None, lb_protocol=None, listener_forward=None, load_balancer_id=None, master_slave_server_group_id=None, persistence_timeout=None, protocol=None, request_timeout=None, scheduler=None, server_certificate_id=None, server_group_id=None, ssl_certificate_id=None, sticky_session=None, sticky_session_type=None, tls_cipher_policy=None, unhealthy_threshold=None, x_forwarded_for=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an Application Load Balancer Listener resource.
-        
+
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
-        
+
         For information about listener and how to use it, to see the following:
-        
+
         * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
         * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
         * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
         * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
-        
+
         ## Listener fields and protocol mapping
-        
+
         load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
-        
+
         listener parameter | support protocol | value range |
         ------------- | ------------- | ------------- | 
         backend_port | http & https & tcp & udp | 1-65535 | 
@@ -227,9 +227,11 @@ class Listener(pulumi.CustomResource):
         enable_http2    |https          | on or off |
         tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
         server_group_id    | http & https & tcp & udp | the id of resource slb.ServerGroup |
-        
+
         The listener mapping supports the following:
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
@@ -271,15 +273,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[float] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[dict] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
-        
+
         The **x_forwarded_for** object supports the following:
-        
+
           * `retriveClientIp` (`pulumi.Input[bool]`)
           * `retriveSlbId` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
           * `retriveSlbIp` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
           * `retriveSlbProto` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -358,7 +358,7 @@ class Listener(pulumi.CustomResource):
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -401,19 +401,18 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
         :param pulumi.Input[float] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[dict] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available in v1.13.0+.
-        
+
         The **x_forwarded_for** object supports the following:
-        
+
           * `retriveClientIp` (`pulumi.Input[bool]`)
           * `retriveSlbId` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
           * `retriveSlbIp` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
           * `retriveSlbProto` (`pulumi.Input[bool]`) - Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl_id"] = acl_id
         __props__["acl_status"] = acl_status
         __props__["acl_type"] = acl_type

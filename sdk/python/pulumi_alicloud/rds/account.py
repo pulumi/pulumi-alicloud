@@ -43,7 +43,9 @@ class Account(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, instance_id=None, kms_encrypted_password=None, kms_encryption_context=None, name=None, password=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS account resource and used to manage databases.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -55,8 +57,6 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +95,7 @@ class Account(pulumi.CustomResource):
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -108,12 +108,11 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["instance_id"] = instance_id
         __props__["kms_encrypted_password"] = kms_encrypted_password

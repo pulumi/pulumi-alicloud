@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
 func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	var rv GetRolesResult

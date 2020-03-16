@@ -5,7 +5,7 @@
 # Export this package's modules as members:
 from .account import *
 from .backup_policy import *
-from .instance import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .instance import *

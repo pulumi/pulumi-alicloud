@@ -13,7 +13,7 @@ class GetSnapshotsResult:
     """
     A collection of values returned by getSnapshots.
     """
-    def __init__(__self__, disk_id=None, encrypted=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, snapshots=None, source_disk_type=None, status=None, tags=None, type=None, usage=None, id=None):
+    def __init__(__self__, disk_id=None, encrypted=None, id=None, ids=None, instance_id=None, name_regex=None, names=None, output_file=None, snapshots=None, source_disk_type=None, status=None, tags=None, type=None, usage=None):
         if disk_id and not isinstance(disk_id, str):
             raise TypeError("Expected argument 'disk_id' to be a str")
         __self__.disk_id = disk_id
@@ -22,6 +22,12 @@ class GetSnapshotsResult:
         __self__.encrypted = encrypted
         """
         Whether the snapshot is encrypted or not.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -86,12 +92,6 @@ class GetSnapshotsResult:
         * image_disk
         * none
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSnapshotsResult(GetSnapshotsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -100,6 +100,7 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
         return GetSnapshotsResult(
             disk_id=self.disk_id,
             encrypted=self.encrypted,
+            id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
             name_regex=self.name_regex,
@@ -110,21 +111,20 @@ class AwaitableGetSnapshotsResult(GetSnapshotsResult):
             status=self.status,
             tags=self.tags,
             type=self.type,
-            usage=self.usage,
-            id=self.id)
+            usage=self.usage)
 
 def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_regex=None,output_file=None,source_disk_type=None,status=None,tags=None,type=None,usage=None,opts=None):
     """
     Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
-    
+
     For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-    
+
     > **NOTE:**  Available in 1.40.0+.
-    
+
     ##  Argument Reference
-    
+
     The following arguments are supported:
-    
+
     * `instance_id` - (Optional) The specified instance ID.
     * `disk_id` - (Optional) The specified disk ID.
     * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
@@ -142,7 +142,7 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
       * all: All status.
       
       Default value: all.
-    
+
     * `type` - (Optional) The snapshot category. Optional values:
       * auto: Auto snapshots.
       * user: Manual snapshots.
@@ -160,11 +160,11 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
       * none: The snapshots are not used yet.
     * `tags` - (Optional) A map of tags assigned to snapshots.
     * `output_file` - (Optional) The name of output file that saves the filter results.
-    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['diskId'] = disk_id
     __args__['encrypted'] = encrypted
@@ -186,6 +186,7 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
     return AwaitableGetSnapshotsResult(
         disk_id=__ret__.get('diskId'),
         encrypted=__ret__.get('encrypted'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
         name_regex=__ret__.get('nameRegex'),
@@ -196,5 +197,4 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
         status=__ret__.get('status'),
         tags=__ret__.get('tags'),
         type=__ret__.get('type'),
-        usage=__ret__.get('usage'),
-        id=__ret__.get('id'))
+        usage=__ret__.get('usage'))

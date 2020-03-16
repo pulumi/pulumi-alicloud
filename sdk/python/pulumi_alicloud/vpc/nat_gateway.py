@@ -17,7 +17,7 @@ class NatGateway(pulumi.CustomResource):
     bandwidth_packages: pulumi.Output[list]
     """
     A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
-    
+
       * `bandwidth` (`float`)
       * `ip_count` (`float`)
       * `publicIpAddresses` (`str`)
@@ -62,7 +62,6 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth_packages=None, description=None, instance_charge_type=None, name=None, period=None, spec=None, specification=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a NatGateway resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] bandwidth_packages: A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
@@ -73,15 +72,13 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] spec: It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        
+
         The **bandwidth_packages** object supports the following:
-        
+
           * `bandwidth` (`pulumi.Input[float]`)
           * `ip_count` (`pulumi.Input[float]`)
           * `publicIpAddresses` (`pulumi.Input[str]`)
           * `zone` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nat_gateway.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -124,7 +121,7 @@ class NatGateway(pulumi.CustomResource):
         """
         Get an existing NatGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -139,19 +136,18 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] spec: It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        
+
         The **bandwidth_packages** object supports the following:
-        
+
           * `bandwidth` (`pulumi.Input[float]`)
           * `ip_count` (`pulumi.Input[float]`)
           * `publicIpAddresses` (`pulumi.Input[str]`)
           * `zone` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nat_gateway.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth_package_ids"] = bandwidth_package_ids
         __props__["bandwidth_packages"] = bandwidth_packages
         __props__["description"] = description

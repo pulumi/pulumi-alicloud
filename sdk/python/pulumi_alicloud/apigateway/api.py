@@ -21,7 +21,7 @@ class Api(pulumi.CustomResource):
     constant_parameters: pulumi.Output[list]
     """
     constant_parameters defines the constant parameters of the api.
-    
+
       * `description` (`str`) - The description of Constant parameter.
       * `in` (`str`) - System parameter location; values: 'HEAD' and 'QUERY'.
       * `name` (`str`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
@@ -34,9 +34,9 @@ class Api(pulumi.CustomResource):
     fc_service_config: pulumi.Output[dict]
     """
     fc_service_config defines the config when service_type selected 'FunctionCompute'.
-    
+
       * `arnRole` (`str`) - RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-      * `functionName` (`str`) - The function name of function compute service.
+      * `function_name` (`str`) - The function name of function compute service.
       * `region` (`str`) - The region that the function compute service belongs to.
       * `serviceName` (`str`) - The service name of function compute service.
       * `timeout` (`float`) - Backend service time-out time; unit: millisecond.
@@ -48,7 +48,7 @@ class Api(pulumi.CustomResource):
     http_service_config: pulumi.Output[dict]
     """
     http_service_config defines the config when service_type selected 'HTTP'.
-    
+
       * `address` (`str`) - The address of backend service.
       * `aoneName` (`str`)
       * `method` (`str`) - The http method of backend service.
@@ -58,7 +58,7 @@ class Api(pulumi.CustomResource):
     http_vpc_service_config: pulumi.Output[dict]
     """
     http_vpc_service_config defines the config when service_type selected 'HTTP-VPC'.
-    
+
       * `aoneName` (`str`)
       * `method` (`str`) - The http method of backend service.
       * `name` (`str`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
@@ -68,7 +68,7 @@ class Api(pulumi.CustomResource):
     mock_service_config: pulumi.Output[dict]
     """
     http_service_config defines the config when service_type selected 'MOCK'.
-    
+
       * `aoneName` (`str`)
       * `result` (`str`) - The result of the mock service.
     """
@@ -79,7 +79,7 @@ class Api(pulumi.CustomResource):
     request_config: pulumi.Output[dict]
     """
     Request_config defines how users can send requests to your API.
-    
+
       * `bodyFormat` (`str`) - The body format of the api, which support the values of 'STREAM' and 'FORM'
       * `method` (`str`) - The http method of backend service.
       * `mode` (`str`) - The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
@@ -89,7 +89,7 @@ class Api(pulumi.CustomResource):
     request_parameters: pulumi.Output[list]
     """
     request_parameters defines the request parameters of the api.
-    
+
       * `defaultValue` (`str`) - The default value of the parameter.
       * `description` (`str`) - The description of Constant parameter.
       * `in` (`str`) - System parameter location; values: 'HEAD' and 'QUERY'.
@@ -110,7 +110,7 @@ class Api(pulumi.CustomResource):
     system_parameters: pulumi.Output[list]
     """
     system_parameters defines the system parameters of the api.
-    
+
       * `in` (`str`) - System parameter location; values: 'HEAD' and 'QUERY'.
       * `name` (`str`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
       * `nameService` (`str`) - Backend service's parameter name.
@@ -118,7 +118,6 @@ class Api(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, auth_type=None, constant_parameters=None, description=None, fc_service_config=None, group_id=None, http_service_config=None, http_vpc_service_config=None, mock_service_config=None, name=None, request_config=None, request_parameters=None, service_type=None, stage_names=None, system_parameters=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Api resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
@@ -135,53 +134,53 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[list] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
         :param pulumi.Input[list] system_parameters: system_parameters defines the system parameters of the api.
-        
+
         The **constant_parameters** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of Constant parameter.
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `value` (`pulumi.Input[str]`) - Constant parameter value.
-        
+
         The **fc_service_config** object supports the following:
-        
+
           * `arnRole` (`pulumi.Input[str]`) - RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-          * `functionName` (`pulumi.Input[str]`) - The function name of function compute service.
+          * `function_name` (`pulumi.Input[str]`) - The function name of function compute service.
           * `region` (`pulumi.Input[str]`) - The region that the function compute service belongs to.
           * `serviceName` (`pulumi.Input[str]`) - The service name of function compute service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **http_service_config** object supports the following:
-        
+
           * `address` (`pulumi.Input[str]`) - The address of backend service.
           * `aoneName` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **http_vpc_service_config** object supports the following:
-        
+
           * `aoneName` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **mock_service_config** object supports the following:
-        
+
           * `aoneName` (`pulumi.Input[str]`)
           * `result` (`pulumi.Input[str]`) - The result of the mock service.
-        
+
         The **request_config** object supports the following:
-        
+
           * `bodyFormat` (`pulumi.Input[str]`) - The body format of the api, which support the values of 'STREAM' and 'FORM'
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `mode` (`pulumi.Input[str]`) - The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `protocol` (`pulumi.Input[str]`) - The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        
+
         The **request_parameters** object supports the following:
-        
+
           * `defaultValue` (`pulumi.Input[str]`) - The default value of the parameter.
           * `description` (`pulumi.Input[str]`) - The description of Constant parameter.
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
@@ -190,14 +189,12 @@ class Api(pulumi.CustomResource):
           * `nameService` (`pulumi.Input[str]`) - Backend service's parameter name.
           * `required` (`pulumi.Input[str]`) - Parameter required or not; values: REQUIRED and OPTIONAL.
           * `type` (`pulumi.Input[str]`) - Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
-        
+
         The **system_parameters** object supports the following:
-        
+
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `nameService` (`pulumi.Input[str]`) - Backend service's parameter name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_api.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -252,7 +249,7 @@ class Api(pulumi.CustomResource):
         """
         Get an existing Api resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -271,53 +268,53 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] service_type: The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
         :param pulumi.Input[list] stage_names: Stages that the api need to be deployed. Valid value: RELEASE | PRE | TEST.
         :param pulumi.Input[list] system_parameters: system_parameters defines the system parameters of the api.
-        
+
         The **constant_parameters** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of Constant parameter.
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `value` (`pulumi.Input[str]`) - Constant parameter value.
-        
+
         The **fc_service_config** object supports the following:
-        
+
           * `arnRole` (`pulumi.Input[str]`) - RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-          * `functionName` (`pulumi.Input[str]`) - The function name of function compute service.
+          * `function_name` (`pulumi.Input[str]`) - The function name of function compute service.
           * `region` (`pulumi.Input[str]`) - The region that the function compute service belongs to.
           * `serviceName` (`pulumi.Input[str]`) - The service name of function compute service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **http_service_config** object supports the following:
-        
+
           * `address` (`pulumi.Input[str]`) - The address of backend service.
           * `aoneName` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **http_vpc_service_config** object supports the following:
-        
+
           * `aoneName` (`pulumi.Input[str]`)
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `timeout` (`pulumi.Input[float]`) - Backend service time-out time; unit: millisecond.
-        
+
         The **mock_service_config** object supports the following:
-        
+
           * `aoneName` (`pulumi.Input[str]`)
           * `result` (`pulumi.Input[str]`) - The result of the mock service.
-        
+
         The **request_config** object supports the following:
-        
+
           * `bodyFormat` (`pulumi.Input[str]`) - The body format of the api, which support the values of 'STREAM' and 'FORM'
           * `method` (`pulumi.Input[str]`) - The http method of backend service.
           * `mode` (`pulumi.Input[str]`) - The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
           * `path` (`pulumi.Input[str]`) - The path of backend service.
           * `protocol` (`pulumi.Input[str]`) - The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        
+
         The **request_parameters** object supports the following:
-        
+
           * `defaultValue` (`pulumi.Input[str]`) - The default value of the parameter.
           * `description` (`pulumi.Input[str]`) - The description of Constant parameter.
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
@@ -326,18 +323,17 @@ class Api(pulumi.CustomResource):
           * `nameService` (`pulumi.Input[str]`) - Backend service's parameter name.
           * `required` (`pulumi.Input[str]`) - Parameter required or not; values: REQUIRED and OPTIONAL.
           * `type` (`pulumi.Input[str]`) - Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
-        
+
         The **system_parameters** object supports the following:
-        
+
           * `in` (`pulumi.Input[str]`) - System parameter location; values: 'HEAD' and 'QUERY'.
           * `name` (`pulumi.Input[str]`) - System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
           * `nameService` (`pulumi.Input[str]`) - Backend service's parameter name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_api.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["api_id"] = api_id
         __props__["auth_type"] = auth_type
         __props__["constant_parameters"] = constant_parameters

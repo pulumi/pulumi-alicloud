@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
 type BackupPolicy struct {
 	pulumi.CustomResourceState

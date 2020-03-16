@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_account_password_policy.html.markdown.
 type AccountPasswordPolicy struct {
 	pulumi.CustomResourceState
 

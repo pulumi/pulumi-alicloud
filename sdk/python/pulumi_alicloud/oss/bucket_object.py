@@ -77,7 +77,9 @@ class BucketObject(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, acl=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_md5=None, content_type=None, expires=None, key=None, kms_key_id=None, server_side_encryption=None, source=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to put a object(content or file) to a oss bucket.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -93,8 +95,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -144,7 +144,7 @@ class BucketObject(pulumi.CustomResource):
         """
         Get an existing BucketObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -164,12 +164,11 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl"] = acl
         __props__["bucket"] = bucket
         __props__["cache_control"] = cache_control

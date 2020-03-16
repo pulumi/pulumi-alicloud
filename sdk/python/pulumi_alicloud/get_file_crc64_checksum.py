@@ -13,7 +13,7 @@ class GetFileCrc64ChecksumResult:
     """
     A collection of values returned by getFileCrc64Checksum.
     """
-    def __init__(__self__, checksum=None, filename=None, output_file=None, id=None):
+    def __init__(__self__, checksum=None, filename=None, id=None, output_file=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         __self__.checksum = checksum
@@ -23,15 +23,15 @@ class GetFileCrc64ChecksumResult:
         if filename and not isinstance(filename, str):
             raise TypeError("Expected argument 'filename' to be a str")
         __self__.filename = filename
-        if output_file and not isinstance(output_file, str):
-            raise TypeError("Expected argument 'output_file' to be a str")
-        __self__.output_file = output_file
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if output_file and not isinstance(output_file, str):
+            raise TypeError("Expected argument 'output_file' to be a str")
+        __self__.output_file = output_file
 class AwaitableGetFileCrc64ChecksumResult(GetFileCrc64ChecksumResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -40,20 +40,22 @@ class AwaitableGetFileCrc64ChecksumResult(GetFileCrc64ChecksumResult):
         return GetFileCrc64ChecksumResult(
             checksum=self.checksum,
             filename=self.filename,
-            output_file=self.output_file,
-            id=self.id)
+            id=self.id,
+            output_file=self.output_file)
 
 def get_file_crc64_checksum(filename=None,output_file=None,opts=None):
     """
     This data source compute file crc64 checksum.
-    
+
     > **NOTE:** Available in 1.59.0+.
-    
-    :param str filename: The name of the file to be computed crc64 checksum.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
+
+
+    :param str filename: The name of the file to be computed crc64 checksum.
     """
     __args__ = dict()
+
 
     __args__['filename'] = filename
     __args__['outputFile'] = output_file
@@ -66,5 +68,5 @@ def get_file_crc64_checksum(filename=None,output_file=None,opts=None):
     return AwaitableGetFileCrc64ChecksumResult(
         checksum=__ret__.get('checksum'),
         filename=__ret__.get('filename'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        output_file=__ret__.get('outputFile'))

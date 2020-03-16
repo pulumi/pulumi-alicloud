@@ -13,12 +13,18 @@ class GetSnatEntriesResult:
     """
     A collection of values returned by getSnatEntries.
     """
-    def __init__(__self__, entries=None, ids=None, output_file=None, snat_ip=None, snat_table_id=None, source_cidr=None, id=None):
+    def __init__(__self__, entries=None, id=None, ids=None, output_file=None, snat_ip=None, snat_table_id=None, source_cidr=None):
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         __self__.entries = entries
         """
         A list of Snat Entries. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -44,12 +50,6 @@ class GetSnatEntriesResult:
         """
         The source CIDR block of the Snat Entry.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetSnatEntriesResult(GetSnatEntriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -57,27 +57,29 @@ class AwaitableGetSnatEntriesResult(GetSnatEntriesResult):
             yield self
         return GetSnatEntriesResult(
             entries=self.entries,
+            id=self.id,
             ids=self.ids,
             output_file=self.output_file,
             snat_ip=self.snat_ip,
             snat_table_id=self.snat_table_id,
-            source_cidr=self.source_cidr,
-            id=self.id)
+            source_cidr=self.source_cidr)
 
 def get_snat_entries(ids=None,output_file=None,snat_ip=None,snat_table_id=None,source_cidr=None,opts=None):
     """
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.37.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
+
+
     :param list ids: A list of Snat Entries IDs.
     :param str snat_ip: The public IP of the Snat Entry.
     :param str snat_table_id: The ID of the Snat table.
     :param str source_cidr: The source CIDR block of the Snat Entry.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
@@ -92,9 +94,9 @@ def get_snat_entries(ids=None,output_file=None,snat_ip=None,snat_table_id=None,s
 
     return AwaitableGetSnatEntriesResult(
         entries=__ret__.get('entries'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         output_file=__ret__.get('outputFile'),
         snat_ip=__ret__.get('snatIp'),
         snat_table_id=__ret__.get('snatTableId'),
-        source_cidr=__ret__.get('sourceCidr'),
-        id=__ret__.get('id'))
+        source_cidr=__ret__.get('sourceCidr'))

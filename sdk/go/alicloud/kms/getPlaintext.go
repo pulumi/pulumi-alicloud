@@ -8,7 +8,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_plaintext.html.markdown.
 func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.InvokeOption) (*GetPlaintextResult, error) {
 	var rv GetPlaintextResult
 	err := ctx.Invoke("alicloud:kms/getPlaintext:getPlaintext", args, &rv, opts...)

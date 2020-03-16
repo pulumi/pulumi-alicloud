@@ -13,7 +13,7 @@ class NetworkAclEntries(pulumi.CustomResource):
     egresses: pulumi.Output[list]
     """
     List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-    
+
       * `description` (`str`) - The description of the egress entry.
       * `destinationCidrIp` (`str`) - The destination ip of the egress entry.
       * `entryType` (`str`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
@@ -25,7 +25,7 @@ class NetworkAclEntries(pulumi.CustomResource):
     ingresses: pulumi.Output[list]
     """
     List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
-    
+
       * `description` (`str`) - The description of the egress entry.
       * `entryType` (`str`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
       * `name` (`str`) - The name of the egress entry.
@@ -41,21 +41,23 @@ class NetworkAclEntries(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, egresses=None, ingresses=None, network_acl_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a network acl entries resource to create ingress and egress entries.
-        
+
         > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-        
+
         > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-        
+
         > **NOTE:** Using this resource need to open a whitelist.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
         :param pulumi.Input[list] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        
+
         The **egresses** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the egress entry.
           * `destinationCidrIp` (`pulumi.Input[str]`) - The destination ip of the egress entry.
           * `entryType` (`pulumi.Input[str]`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
@@ -63,9 +65,9 @@ class NetworkAclEntries(pulumi.CustomResource):
           * `policy` (`pulumi.Input[str]`) - The policy of the egress entry. It must be `accept` or `drop`.
           * `port` (`pulumi.Input[str]`) - The port of the egress entry.
           * `protocol` (`pulumi.Input[str]`) - The protocol of the egress entry.
-        
+
         The **ingresses** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the egress entry.
           * `entryType` (`pulumi.Input[str]`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
           * `name` (`pulumi.Input[str]`) - The name of the egress entry.
@@ -73,8 +75,6 @@ class NetworkAclEntries(pulumi.CustomResource):
           * `port` (`pulumi.Input[str]`) - The port of the egress entry.
           * `protocol` (`pulumi.Input[str]`) - The protocol of the egress entry.
           * `source_cidr_ip` (`pulumi.Input[str]`) - The source ip of the ingress entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,16 +109,16 @@ class NetworkAclEntries(pulumi.CustomResource):
         """
         Get an existing NetworkAclEntries resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
         :param pulumi.Input[list] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        
+
         The **egresses** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the egress entry.
           * `destinationCidrIp` (`pulumi.Input[str]`) - The destination ip of the egress entry.
           * `entryType` (`pulumi.Input[str]`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
@@ -126,9 +126,9 @@ class NetworkAclEntries(pulumi.CustomResource):
           * `policy` (`pulumi.Input[str]`) - The policy of the egress entry. It must be `accept` or `drop`.
           * `port` (`pulumi.Input[str]`) - The port of the egress entry.
           * `protocol` (`pulumi.Input[str]`) - The protocol of the egress entry.
-        
+
         The **ingresses** object supports the following:
-        
+
           * `description` (`pulumi.Input[str]`) - The description of the egress entry.
           * `entryType` (`pulumi.Input[str]`) - The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
           * `name` (`pulumi.Input[str]`) - The name of the egress entry.
@@ -136,12 +136,11 @@ class NetworkAclEntries(pulumi.CustomResource):
           * `port` (`pulumi.Input[str]`) - The port of the egress entry.
           * `protocol` (`pulumi.Input[str]`) - The protocol of the egress entry.
           * `source_cidr_ip` (`pulumi.Input[str]`) - The source ip of the ingress entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["egresses"] = egresses
         __props__["ingresses"] = ingresses
         __props__["network_acl_id"] = network_acl_id

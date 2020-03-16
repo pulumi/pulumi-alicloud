@@ -13,12 +13,18 @@ class GetProductsResult:
     """
     A collection of values returned by getProducts.
     """
-    def __init__(__self__, category_id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, search_term=None, sort=None, suggested_price=None, supplier_id=None, supplier_name_keyword=None, id=None):
+    def __init__(__self__, category_id=None, id=None, ids=None, name_regex=None, output_file=None, product_type=None, products=None, search_term=None, sort=None, suggested_price=None, supplier_id=None, supplier_name_keyword=None):
         if category_id and not isinstance(category_id, str):
             raise TypeError("Expected argument 'category_id' to be a str")
         __self__.category_id = category_id
         """
         The category id of the product.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -62,12 +68,6 @@ class GetProductsResult:
         if supplier_name_keyword and not isinstance(supplier_name_keyword, str):
             raise TypeError("Expected argument 'supplier_name_keyword' to be a str")
         __self__.supplier_name_keyword = supplier_name_keyword
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetProductsResult(GetProductsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -75,6 +75,7 @@ class AwaitableGetProductsResult(GetProductsResult):
             yield self
         return GetProductsResult(
             category_id=self.category_id,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             output_file=self.output_file,
@@ -84,15 +85,17 @@ class AwaitableGetProductsResult(GetProductsResult):
             sort=self.sort,
             suggested_price=self.suggested_price,
             supplier_id=self.supplier_id,
-            supplier_name_keyword=self.supplier_name_keyword,
-            id=self.id)
+            supplier_name_keyword=self.supplier_name_keyword)
 
 def get_products(category_id=None,ids=None,name_regex=None,output_file=None,product_type=None,search_term=None,sort=None,suggested_price=None,supplier_id=None,supplier_name_keyword=None,opts=None):
     """
     This data source provides the Market product items of Alibaba Cloud.
-    
+
     > **NOTE:** Available in 1.64.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
+
+
     :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
     :param list ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
@@ -102,10 +105,9 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
     :param float suggested_price: The suggested price of the product.
     :param str supplier_id: The supplier id of the product.
     :param str supplier_name_keyword: The supplier name keyword of the product.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['categoryId'] = category_id
     __args__['ids'] = ids
@@ -125,6 +127,7 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
 
     return AwaitableGetProductsResult(
         category_id=__ret__.get('categoryId'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         output_file=__ret__.get('outputFile'),
@@ -134,5 +137,4 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
         sort=__ret__.get('sort'),
         suggested_price=__ret__.get('suggestedPrice'),
         supplier_id=__ret__.get('supplierId'),
-        supplier_name_keyword=__ret__.get('supplierNameKeyword'),
-        id=__ret__.get('id'))
+        supplier_name_keyword=__ret__.get('supplierNameKeyword'))

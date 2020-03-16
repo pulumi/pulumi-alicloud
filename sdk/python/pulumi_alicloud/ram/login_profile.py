@@ -29,15 +29,15 @@ class LoginProfile(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, mfa_bind_required=None, password=None, password_reset_required=None, user_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a RAM User Login Profile resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] mfa_bind_required: This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
         :param pulumi.Input[str] password: Password of the RAM user.
         :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,7 +75,7 @@ class LoginProfile(pulumi.CustomResource):
         """
         Get an existing LoginProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,12 +83,11 @@ class LoginProfile(pulumi.CustomResource):
         :param pulumi.Input[str] password: Password of the RAM user.
         :param pulumi.Input[bool] password_reset_required: This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["mfa_bind_required"] = mfa_bind_required
         __props__["password"] = password
         __props__["password_reset_required"] = password_reset_required

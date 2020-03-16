@@ -13,10 +13,16 @@ class GetReposResult:
     """
     A collection of values returned by getRepos.
     """
-    def __init__(__self__, enable_details=None, ids=None, name_regex=None, names=None, namespace=None, output_file=None, repos=None, id=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, namespace=None, output_file=None, repos=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         __self__.enable_details = enable_details
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -47,12 +53,6 @@ class GetReposResult:
         """
         A list of matched Container Registry Namespaces. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetReposResult(GetReposResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -60,27 +60,29 @@ class AwaitableGetReposResult(GetReposResult):
             yield self
         return GetReposResult(
             enable_details=self.enable_details,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             namespace=self.namespace,
             output_file=self.output_file,
-            repos=self.repos,
-            id=self.id)
+            repos=self.repos)
 
 def get_repos(enable_details=None,name_regex=None,namespace=None,output_file=None,opts=None):
     """
     This data source provides a list Container Registry repositories on Alibaba Cloud.
-    
+
     > **NOTE:** Available in v1.35.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
+
+
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
     :param str name_regex: A regex string to filter results by repository name.
     :param str namespace: Name of container registry namespace where the repositories are located in.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['enableDetails'] = enable_details
     __args__['nameRegex'] = name_regex
@@ -94,10 +96,10 @@ def get_repos(enable_details=None,name_regex=None,namespace=None,output_file=Non
 
     return AwaitableGetReposResult(
         enable_details=__ret__.get('enableDetails'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         namespace=__ret__.get('namespace'),
         output_file=__ret__.get('outputFile'),
-        repos=__ret__.get('repos'),
-        id=__ret__.get('id'))
+        repos=__ret__.get('repos'))

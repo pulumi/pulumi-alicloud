@@ -25,16 +25,16 @@ class NetworkAcl(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a network acl resource to add network acls.
-        
+
         > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[str] name: The name of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,19 +69,18 @@ class NetworkAcl(pulumi.CustomResource):
         """
         Get an existing NetworkAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the network acl instance.
         :param pulumi.Input[str] name: The name of the network acl.
         :param pulumi.Input[str] vpc_id: The vpc_id of the network acl, the field can't be changed.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["name"] = name
         __props__["vpc_id"] = vpc_id

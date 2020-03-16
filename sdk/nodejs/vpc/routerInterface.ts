@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface.html.markdown.
- */
 export class RouterInterface extends pulumi.CustomResource {
     /**
      * Get an existing RouterInterface resource's state with the given name, ID, and optional extra
@@ -184,6 +181,8 @@ export class RouterInterface extends pulumi.CustomResource {
 export interface RouterInterfaceState {
     /**
      * It has been deprecated from version 1.11.0.
+     * 
+     * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
     readonly accessPointId?: pulumi.Input<string>;
     /**
@@ -209,14 +208,20 @@ export interface RouterInterfaceState {
     readonly name?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0.
+     * 
+     * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
     readonly oppositeAccessPointId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * 
+     * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
     readonly oppositeInterfaceId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+     * 
+     * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
     readonly oppositeInterfaceOwnerId?: pulumi.Input<string>;
     /**
@@ -225,10 +230,14 @@ export interface RouterInterfaceState {
     readonly oppositeRegion?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * 
+     * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
     readonly oppositeRouterId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+     * 
+     * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
     readonly oppositeRouterType?: pulumi.Input<string>;
     /**
@@ -280,6 +289,8 @@ export interface RouterInterfaceArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.11.0.
+     * 
+     * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
     readonly oppositeAccessPointId?: pulumi.Input<string>;
     /**

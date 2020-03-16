@@ -13,24 +13,24 @@ class GetProductResult:
     """
     A collection of values returned by getProduct.
     """
-    def __init__(__self__, available_region=None, products=None, product_code=None, id=None):
+    def __init__(__self__, available_region=None, id=None, product_code=None, products=None):
         if available_region and not isinstance(available_region, str):
             raise TypeError("Expected argument 'available_region' to be a str")
         __self__.available_region = available_region
-        if products and not isinstance(products, list):
-            raise TypeError("Expected argument 'products' to be a list")
-        __self__.products = products
-        """
-        A product. It contains the following attributes:
-        """
-        if product_code and not isinstance(product_code, str):
-            raise TypeError("Expected argument 'product_code' to be a str")
-        __self__.product_code = product_code
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
+        """
+        if product_code and not isinstance(product_code, str):
+            raise TypeError("Expected argument 'product_code' to be a str")
+        __self__.product_code = product_code
+        if products and not isinstance(products, list):
+            raise TypeError("Expected argument 'products' to be a list")
+        __self__.products = products
+        """
+        A product. It contains the following attributes:
         """
 class AwaitableGetProductResult(GetProductResult):
     # pylint: disable=using-constant-test
@@ -39,22 +39,24 @@ class AwaitableGetProductResult(GetProductResult):
             yield self
         return GetProductResult(
             available_region=self.available_region,
-            products=self.products,
+            id=self.id,
             product_code=self.product_code,
-            id=self.id)
+            products=self.products)
 
 def get_product(available_region=None,product_code=None,opts=None):
     """
     This data source provides the Market product item details of Alibaba Cloud.
-    
+
     > **NOTE:** Available in 1.69.0+
-    
-    :param str available_region: A available region id used to filter market place Ecs images.
-    :param str product_code: The product code of the market product.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
+
+
+    :param str available_region: A available region id used to filter market place Ecs images.
+    :param str product_code: The product code of the market product.
     """
     __args__ = dict()
+
 
     __args__['availableRegion'] = available_region
     __args__['productCode'] = product_code
@@ -66,6 +68,6 @@ def get_product(available_region=None,product_code=None,opts=None):
 
     return AwaitableGetProductResult(
         available_region=__ret__.get('availableRegion'),
-        products=__ret__.get('products'),
+        id=__ret__.get('id'),
         product_code=__ret__.get('productCode'),
-        id=__ret__.get('id'))
+        products=__ret__.get('products'))

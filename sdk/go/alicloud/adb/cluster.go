@@ -14,9 +14,9 @@ import (
 // Provides a ADB cluster resource. A ADB cluster is an isolated database
 // environment in the cloud. A ADB cluster can contain multiple user-created
 // databases.
-// 
+//
 // > **NOTE:** Available in v1.71.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/adb_cluster.html.markdown.
 type Cluster struct {
 	pulumi.CustomResourceState

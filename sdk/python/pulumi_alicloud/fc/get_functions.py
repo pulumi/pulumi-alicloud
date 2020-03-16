@@ -13,12 +13,18 @@ class GetFunctionsResult:
     """
     A collection of values returned by getFunctions.
     """
-    def __init__(__self__, functions=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None, id=None):
+    def __init__(__self__, functions=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None):
         if functions and not isinstance(functions, list):
             raise TypeError("Expected argument 'functions' to be a list")
         __self__.functions = functions
         """
         A list of functions. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -41,12 +47,6 @@ class GetFunctionsResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         __self__.service_name = service_name
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetFunctionsResult(GetFunctionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,24 +54,26 @@ class AwaitableGetFunctionsResult(GetFunctionsResult):
             yield self
         return GetFunctionsResult(
             functions=self.functions,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            service_name=self.service_name,
-            id=self.id)
+            service_name=self.service_name)
 
 def get_functions(ids=None,name_regex=None,output_file=None,service_name=None,opts=None):
     """
     This data source provides the Function Compute functions of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
+
+
     :param str name_regex: A regex string to filter results by function name.
            * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
     :param str service_name: Name of the service that contains the functions to find.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -85,9 +87,9 @@ def get_functions(ids=None,name_regex=None,output_file=None,service_name=None,op
 
     return AwaitableGetFunctionsResult(
         functions=__ret__.get('functions'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        service_name=__ret__.get('serviceName'),
-        id=__ret__.get('id'))
+        service_name=__ret__.get('serviceName'))

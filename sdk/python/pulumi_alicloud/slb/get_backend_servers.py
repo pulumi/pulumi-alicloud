@@ -13,10 +13,16 @@ class GetBackendServersResult:
     """
     A collection of values returned by getBackendServers.
     """
-    def __init__(__self__, backend_servers=None, ids=None, load_balancer_id=None, output_file=None, id=None):
+    def __init__(__self__, backend_servers=None, id=None, ids=None, load_balancer_id=None, output_file=None):
         if backend_servers and not isinstance(backend_servers, list):
             raise TypeError("Expected argument 'backend_servers' to be a list")
         __self__.backend_servers = backend_servers
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -26,12 +32,6 @@ class GetBackendServersResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetBackendServersResult(GetBackendServersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,23 +39,25 @@ class AwaitableGetBackendServersResult(GetBackendServersResult):
             yield self
         return GetBackendServersResult(
             backend_servers=self.backend_servers,
+            id=self.id,
             ids=self.ids,
             load_balancer_id=self.load_balancer_id,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_backend_servers(ids=None,load_balancer_id=None,output_file=None,opts=None):
     """
     This data source provides the server load balancer backend servers related to a server load balancer..
-    
+
     > **NOTE:** Available in 1.53.0+
-    
-    :param list ids: List of attached ECS instance IDs.
-    :param str load_balancer_id: ID of the SLB with attachments.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
+
+
+    :param list ids: List of attached ECS instance IDs.
+    :param str load_balancer_id: ID of the SLB with attachments.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['loadBalancerId'] = load_balancer_id
@@ -68,7 +70,7 @@ def get_backend_servers(ids=None,load_balancer_id=None,output_file=None,opts=Non
 
     return AwaitableGetBackendServersResult(
         backend_servers=__ret__.get('backendServers'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         load_balancer_id=__ret__.get('loadBalancerId'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

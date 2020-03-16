@@ -31,23 +31,23 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         """
         Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
         After that, all of the two router interfaces will be active.
-        
+
         > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
-        
+
         > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
-        
+
         > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
-        
+
         > **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interface_id: One side router interface ID.
         :param pulumi.Input[str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         :param pulumi.Input[str] opposite_router_id: Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         :param pulumi.Input[str] opposite_router_type: Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,7 +86,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         """
         Get an existing RouterInterfaceConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,12 +94,11 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         :param pulumi.Input[str] opposite_interface_id: Another side router interface ID. It must belong the specified "opposite_interface_owner_id" account.
         :param pulumi.Input[str] opposite_router_id: Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
         :param pulumi.Input[str] opposite_router_type: Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["interface_id"] = interface_id
         __props__["opposite_interface_id"] = opposite_interface_id
         __props__["opposite_interface_owner_id"] = opposite_interface_owner_id

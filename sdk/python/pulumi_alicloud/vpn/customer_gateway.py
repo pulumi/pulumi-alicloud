@@ -25,14 +25,11 @@ class CustomerGateway(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, ip_address=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a CustomerGateway resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_customer_gateway.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,19 +64,18 @@ class CustomerGateway(pulumi.CustomResource):
         """
         Get an existing CustomerGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the VPN customer gateway instance.
         :param pulumi.Input[str] ip_address: The IP address of the customer gateway.
         :param pulumi.Input[str] name: The name of the VPN customer gateway. Defaults to null.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/vpn_customer_gateway.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["ip_address"] = ip_address
         __props__["name"] = name

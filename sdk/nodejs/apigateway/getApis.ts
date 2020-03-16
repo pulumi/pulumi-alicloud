@@ -50,6 +50,8 @@ export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promis
 export interface GetApisArgs {
     /**
      * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+     * 
+     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
      */
     readonly apiId?: string;
     /**

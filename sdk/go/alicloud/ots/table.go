@@ -12,10 +12,10 @@ import (
 )
 
 // Provides an OTS table resource.
-// 
+//
 // > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
 // you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
 type Table struct {
 	pulumi.CustomResourceState

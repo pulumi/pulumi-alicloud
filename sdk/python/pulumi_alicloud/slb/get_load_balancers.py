@@ -13,12 +13,18 @@ class GetLoadBalancersResult:
     """
     A collection of values returned by getLoadBalancers.
     """
-    def __init__(__self__, address=None, ids=None, master_availability_zone=None, name_regex=None, names=None, network_type=None, output_file=None, resource_group_id=None, slave_availability_zone=None, slbs=None, tags=None, vpc_id=None, vswitch_id=None, id=None):
+    def __init__(__self__, address=None, id=None, ids=None, master_availability_zone=None, name_regex=None, names=None, network_type=None, output_file=None, resource_group_id=None, slave_availability_zone=None, slbs=None, tags=None, vpc_id=None, vswitch_id=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         __self__.address = address
         """
         Service address of the SLB.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -83,12 +89,6 @@ class GetLoadBalancersResult:
         """
         ID of the VSwitch the SLB belongs to.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -96,6 +96,7 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             yield self
         return GetLoadBalancersResult(
             address=self.address,
+            id=self.id,
             ids=self.ids,
             master_availability_zone=self.master_availability_zone,
             name_regex=self.name_regex,
@@ -107,13 +108,15 @@ class AwaitableGetLoadBalancersResult(GetLoadBalancersResult):
             slbs=self.slbs,
             tags=self.tags,
             vpc_id=self.vpc_id,
-            vswitch_id=self.vswitch_id,
-            id=self.id)
+            vswitch_id=self.vswitch_id)
 
 def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_regex=None,network_type=None,output_file=None,resource_group_id=None,slave_availability_zone=None,tags=None,vpc_id=None,vswitch_id=None,opts=None):
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
+
+
     :param str address: Service address of the SLBs.
     :param list ids: A list of SLBs IDs.
     :param str master_availability_zone: Master availability zone of the SLBs.
@@ -132,10 +135,9 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
            ```
     :param str vpc_id: ID of the VPC linked to the SLBs.
     :param str vswitch_id: ID of the VSwitch linked to the SLBs.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['address'] = address
     __args__['ids'] = ids
@@ -156,6 +158,7 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
 
     return AwaitableGetLoadBalancersResult(
         address=__ret__.get('address'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         master_availability_zone=__ret__.get('masterAvailabilityZone'),
         name_regex=__ret__.get('nameRegex'),
@@ -167,5 +170,4 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
         slbs=__ret__.get('slbs'),
         tags=__ret__.get('tags'),
         vpc_id=__ret__.get('vpcId'),
-        vswitch_id=__ret__.get('vswitchId'),
-        id=__ret__.get('id'))
+        vswitch_id=__ret__.get('vswitchId'))

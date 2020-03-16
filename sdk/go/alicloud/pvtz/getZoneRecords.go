@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
 func GetZoneRecords(ctx *pulumi.Context, args *GetZoneRecordsArgs, opts ...pulumi.InvokeOption) (*GetZoneRecordsResult, error) {
 	var rv GetZoneRecordsResult

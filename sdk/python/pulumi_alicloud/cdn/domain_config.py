@@ -17,7 +17,7 @@ class DomainConfig(pulumi.CustomResource):
     function_args: pulumi.Output[list]
     """
     The args of the domain config.
-    
+
       * `argName` (`str`)
       * `argValue` (`str`)
     """
@@ -28,23 +28,23 @@ class DomainConfig(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, domain_name=None, function_args=None, function_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CDN Accelerated Domain resource.
-        
+
         For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
-        
+
         > **NOTE:** Available in v1.34.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[list] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        
+
         The **function_args** object supports the following:
-        
+
           * `argName` (`pulumi.Input[str]`)
           * `argValue` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -83,24 +83,23 @@ class DomainConfig(pulumi.CustomResource):
         """
         Get an existing DomainConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[list] function_args: The args of the domain config.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        
+
         The **function_args** object supports the following:
-        
+
           * `argName` (`pulumi.Input[str]`)
           * `argValue` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["domain_name"] = domain_name
         __props__["function_args"] = function_args
         __props__["function_name"] = function_name

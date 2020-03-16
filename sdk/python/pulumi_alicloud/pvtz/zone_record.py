@@ -41,7 +41,6 @@ class ZoneRecord(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, priority=None, resource_record=None, ttl=None, type=None, value=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ZoneRecord resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] priority: The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-50]. Default to 1.
@@ -50,8 +49,6 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,7 +93,7 @@ class ZoneRecord(pulumi.CustomResource):
         """
         Get an existing ZoneRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,12 +104,11 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR.
         :param pulumi.Input[str] value: The value of the Private Zone Record.
         :param pulumi.Input[str] zone_id: The name of the Private Zone Record.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone_record.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["priority"] = priority
         __props__["record_id"] = record_id
         __props__["resource_record"] = resource_record

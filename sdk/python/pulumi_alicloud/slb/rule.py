@@ -106,17 +106,19 @@ class Rule(pulumi.CustomResource):
         """
         A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
         You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
-        
+
         > **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
-        
+
         > **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
-        
+
         > **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
-        
+
         > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
-        
+
         > **NOTE:** Only rule's virtual server group can be modified.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
@@ -145,8 +147,6 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[float] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
                and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -204,7 +204,7 @@ class Rule(pulumi.CustomResource):
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -234,12 +234,11 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[float] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
         :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
                and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["cookie"] = cookie
         __props__["cookie_timeout"] = cookie_timeout
         __props__["delete_protection_validation"] = delete_protection_validation

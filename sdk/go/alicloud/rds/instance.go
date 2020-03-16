@@ -14,7 +14,7 @@ import (
 // Provides an RDS instance resource. A DB instance is an isolated database
 // environment in the cloud. A DB instance can contain multiple user-created
 // databases.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
 type Instance struct {
 	pulumi.CustomResourceState

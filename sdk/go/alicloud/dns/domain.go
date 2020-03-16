@@ -11,9 +11,9 @@ import (
 )
 
 // Provides a DNS resource.
-// 
+//
 // > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns.html.markdown.
 type Domain struct {
 	pulumi.CustomResourceState

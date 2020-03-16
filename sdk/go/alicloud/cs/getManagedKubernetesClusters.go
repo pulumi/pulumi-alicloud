@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
-// 
+//
 // > **NOTE:** Available in v1.35.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_managed_kubernetes_clusters.html.markdown.
 func GetManagedKubernetesClusters(ctx *pulumi.Context, args *GetManagedKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetManagedKubernetesClustersResult, error) {
 	var rv GetManagedKubernetesClustersResult

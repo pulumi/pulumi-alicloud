@@ -50,15 +50,17 @@ def get_endpoints(db_cluster_id=None,db_endpoint_id=None,opts=None):
     """
     The `polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
     Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
-    
+
     > **NOTE:** Available in v1.68.0+.
-    
-    :param str db_cluster_id: PolarDB cluster ID. 
-    :param str db_endpoint_id: endpoint of the cluster.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
+
+
+    :param str db_cluster_id: PolarDB cluster ID. 
+    :param str db_endpoint_id: endpoint of the cluster.
     """
     __args__ = dict()
+
 
     __args__['dbClusterId'] = db_cluster_id
     __args__['dbEndpointId'] = db_endpoint_id

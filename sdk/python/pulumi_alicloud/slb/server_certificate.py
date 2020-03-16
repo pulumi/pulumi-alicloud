@@ -47,11 +47,13 @@ class ServerCertificate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, alicloud_certifacte_id=None, alicloud_certifacte_name=None, alicloud_certificate_id=None, alicloud_certificate_name=None, alicloud_certificate_region_id=None, name=None, private_key=None, resource_group_id=None, server_certificate=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
-        
+
         For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
-        
+
         For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alicloud_certificate_id: an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
@@ -62,8 +64,6 @@ class ServerCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb server certificate belongs.
         :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,7 +103,7 @@ class ServerCertificate(pulumi.CustomResource):
         """
         Get an existing ServerCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,12 +115,11 @@ class ServerCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb server certificate belongs.
         :param pulumi.Input[str] server_certificate: the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["alicloud_certifacte_id"] = alicloud_certifacte_id
         __props__["alicloud_certifacte_name"] = alicloud_certifacte_name
         __props__["alicloud_certificate_id"] = alicloud_certificate_id

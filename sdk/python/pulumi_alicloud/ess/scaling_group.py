@@ -80,7 +80,6 @@ class ScalingGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, db_instance_ids=None, default_cooldown=None, loadbalancer_ids=None, max_size=None, min_size=None, multi_az_policy=None, on_demand_base_capacity=None, on_demand_percentage_above_base_capacity=None, removal_policies=None, scaling_group_name=None, spot_instance_pools=None, spot_instance_remedy=None, vswitch_id=None, vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScalingGroup resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -108,8 +107,6 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[list] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -157,7 +154,7 @@ class ScalingGroup(pulumi.CustomResource):
         """
         Get an existing ScalingGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -186,12 +183,11 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[list] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["db_instance_ids"] = db_instance_ids
         __props__["default_cooldown"] = default_cooldown
         __props__["loadbalancer_ids"] = loadbalancer_ids

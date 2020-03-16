@@ -32,11 +32,8 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, cidr_block=None, disk_category=None, disk_size=None, image_id=None, instance_type=None, is_outdated=None, name=None, name_prefix=None, need_slb=None, node_number=None, password=None, release_eip=None, size=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Cluster resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/container_cluster.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,24 +90,23 @@ class Cluster(pulumi.CustomResource):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        
+
         The **nodes** object supports the following:
-        
+
           * `eip` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[str]`)
           * `name` (`pulumi.Input[str]`)
-          * `privateIp` (`pulumi.Input[str]`)
+          * `private_ip` (`pulumi.Input[str]`)
           * `status` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/container_cluster.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["agent_version"] = agent_version
         __props__["cidr_block"] = cidr_block
         __props__["disk_category"] = disk_category

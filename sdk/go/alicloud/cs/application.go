@@ -12,14 +12,14 @@ import (
 )
 
 // > **DEPRECATED:** This resource manages applications in swarm cluster only, which is being deprecated and will be replaced by Kubernetes cluster.
-// 
+//
 // This resource use an orchestration template to define and deploy a multi-container application. An application is created by using an orchestration template.
 // Each application can contain one or more services.
-// 
+//
 // > **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
-// 
+//
 // > **NOTE:** At present, this resource only support swarm cluster.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
 type Application struct {
 	pulumi.CustomResourceState

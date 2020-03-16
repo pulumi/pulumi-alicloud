@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
- */
 export class DiskAttachment extends pulumi.CustomResource {
     /**
      * Get an existing DiskAttachment resource's state with the given name, ID, and optional extra
@@ -91,6 +88,8 @@ export class DiskAttachment extends pulumi.CustomResource {
 export interface DiskAttachmentState {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+     * 
+     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;
     /**
@@ -109,6 +108,8 @@ export interface DiskAttachmentState {
 export interface DiskAttachmentArgs {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+     * 
+     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;
     /**

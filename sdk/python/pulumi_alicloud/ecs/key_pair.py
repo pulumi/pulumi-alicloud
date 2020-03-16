@@ -32,15 +32,15 @@ class KeyPair(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, key_file=None, key_name=None, key_name_prefix=None, public_key=None, resource_group_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a key pair resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +77,7 @@ class KeyPair(pulumi.CustomResource):
         """
         Get an existing KeyPair resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["finger_print"] = finger_print
         __props__["key_file"] = key_file
         __props__["key_name"] = key_name

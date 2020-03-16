@@ -46,7 +46,6 @@ class Store(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, append_meta=None, auto_split=None, enable_web_tracking=None, max_split_shard_count=None, name=None, project=None, retention_period=None, shard_count=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Store resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to true.
@@ -57,8 +56,6 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[float] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
         :param pulumi.Input[float] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +96,7 @@ class Store(pulumi.CustomResource):
         """
         Get an existing Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -111,19 +108,18 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project name to the log store belongs.
         :param pulumi.Input[float] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is "3650".
         :param pulumi.Input[float] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/doc-detail/28976.htm)
-        
+
         The **shards** object supports the following:
-        
+
           * `beginKey` (`pulumi.Input[str]`)
           * `endKey` (`pulumi.Input[str]`)
           * `id` (`pulumi.Input[float]`) - The ID of the log project. It formats of `<project>:<name>`.
           * `status` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_store.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["append_meta"] = append_meta
         __props__["auto_split"] = auto_split
         __props__["enable_web_tracking"] = enable_web_tracking

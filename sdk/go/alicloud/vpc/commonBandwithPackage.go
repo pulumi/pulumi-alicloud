@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/common_bandwidth_package.html.markdown.
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
 

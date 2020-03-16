@@ -13,7 +13,7 @@ class GetDomainExtensionsResult:
     """
     A collection of values returned by getDomainExtensions.
     """
-    def __init__(__self__, extensions=None, frontend_port=None, ids=None, load_balancer_id=None, output_file=None, id=None):
+    def __init__(__self__, extensions=None, frontend_port=None, id=None, ids=None, load_balancer_id=None, output_file=None):
         if extensions and not isinstance(extensions, list):
             raise TypeError("Expected argument 'extensions' to be a list")
         __self__.extensions = extensions
@@ -23,6 +23,12 @@ class GetDomainExtensionsResult:
         if frontend_port and not isinstance(frontend_port, float):
             raise TypeError("Expected argument 'frontend_port' to be a float")
         __self__.frontend_port = frontend_port
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -32,12 +38,6 @@ class GetDomainExtensionsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetDomainExtensionsResult(GetDomainExtensionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,24 +46,26 @@ class AwaitableGetDomainExtensionsResult(GetDomainExtensionsResult):
         return GetDomainExtensionsResult(
             extensions=self.extensions,
             frontend_port=self.frontend_port,
+            id=self.id,
             ids=self.ids,
             load_balancer_id=self.load_balancer_id,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_domain_extensions(frontend_port=None,ids=None,load_balancer_id=None,output_file=None,opts=None):
     """
     This data source provides the domain extensions associated with a server load balancer listener.
-    
+
     > **NOTE:** Available in 1.60.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
+
+
     :param float frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
     :param list ids: IDs of the SLB domain extensions.
     :param str load_balancer_id: The ID of the SLB instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['frontendPort'] = frontend_port
     __args__['ids'] = ids
@@ -78,7 +80,7 @@ def get_domain_extensions(frontend_port=None,ids=None,load_balancer_id=None,outp
     return AwaitableGetDomainExtensionsResult(
         extensions=__ret__.get('extensions'),
         frontend_port=__ret__.get('frontendPort'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         load_balancer_id=__ret__.get('loadBalancerId'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

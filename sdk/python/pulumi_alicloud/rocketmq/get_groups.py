@@ -13,7 +13,7 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, group_id_regex=None, groups=None, ids=None, instance_id=None, output_file=None, id=None):
+    def __init__(__self__, group_id_regex=None, groups=None, id=None, ids=None, instance_id=None, output_file=None):
         if group_id_regex and not isinstance(group_id_regex, str):
             raise TypeError("Expected argument 'group_id_regex' to be a str")
         __self__.group_id_regex = group_id_regex
@@ -22,6 +22,12 @@ class GetGroupsResult:
         __self__.groups = groups
         """
         A list of groups. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -35,12 +41,6 @@ class GetGroupsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGroupsResult(GetGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -49,23 +49,25 @@ class AwaitableGetGroupsResult(GetGroupsResult):
         return GetGroupsResult(
             group_id_regex=self.group_id_regex,
             groups=self.groups,
+            id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_groups(group_id_regex=None,instance_id=None,output_file=None,opts=None):
     """
     This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
-    
+
     > **NOTE:** Available in 1.53.0+
-    
-    :param str group_id_regex: A regex string to filter results by the group name. 
-    :param str instance_id: ID of the ONS Instance that owns the groups.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
+
+
+    :param str group_id_regex: A regex string to filter results by the group name. 
+    :param str instance_id: ID of the ONS Instance that owns the groups.
     """
     __args__ = dict()
+
 
     __args__['groupIdRegex'] = group_id_regex
     __args__['instanceId'] = instance_id
@@ -79,7 +81,7 @@ def get_groups(group_id_regex=None,instance_id=None,output_file=None,opts=None):
     return AwaitableGetGroupsResult(
         group_id_regex=__ret__.get('groupIdRegex'),
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

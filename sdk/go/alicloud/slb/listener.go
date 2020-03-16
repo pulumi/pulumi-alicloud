@@ -12,20 +12,20 @@ import (
 )
 
 // Provides an Application Load Balancer Listener resource.
-// 
+//
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
-// 
+//
 // For information about listener and how to use it, to see the following:
-// 
+//
 // * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
 // * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 // * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 // * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
-// 
+//
 // ## Listener fields and protocol mapping
-// 
+//
 // load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
-// 
+//
 // listener parameter | support protocol | value range |
 // ------------- | ------------- | ------------- | 
 // backendPort | http & https & tcp & udp | 1-65535 | 
@@ -61,9 +61,9 @@ import (
 // enableHttp2    |https          | on or off |
 // tlsCipherPolicy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tlsCipherPolicy12Strict |
 // serverGroupId    | http & https & tcp & udp | the id of resource slb.ServerGroup |
-// 
+//
 // The listener mapping supports the following:
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
 type Listener struct {
 	pulumi.CustomResourceState

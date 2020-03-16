@@ -12,11 +12,11 @@ import (
 )
 
 // Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-// 
+//
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-// 
+//
 // > **NOTE:** Available in 1.57.0+ .
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState

@@ -29,17 +29,17 @@ class AccountPrivilege(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_name=None, account_privilege=None, db_cluster_id=None, db_names=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
-        
+
         > **NOTE:** Available in v1.67.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_account_privilege.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[list] db_names: List of specified database name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_account_privilege.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +79,7 @@ class AccountPrivilege(pulumi.CustomResource):
         """
         Get an existing AccountPrivilege resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +87,11 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_privilege: The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"]. Default to "ReadOnly".
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[list] db_names: List of specified database name.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_account_privilege.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_name"] = account_name
         __props__["account_privilege"] = account_privilege
         __props__["db_cluster_id"] = db_cluster_id

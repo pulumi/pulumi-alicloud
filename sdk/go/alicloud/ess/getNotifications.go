@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides available notification resources. 
-// 
+//
 // > **NOTE:** Available in 1.72.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
 func GetNotifications(ctx *pulumi.Context, args *GetNotificationsArgs, opts ...pulumi.InvokeOption) (*GetNotificationsResult, error) {
 	var rv GetNotificationsResult

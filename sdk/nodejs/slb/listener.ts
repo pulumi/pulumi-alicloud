@@ -571,6 +571,8 @@ export interface ListenerState {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     * 
+     * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;
     /**
@@ -737,6 +739,8 @@ export interface ListenerArgs {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     * 
+     * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;
     /**

@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a ECS disk resource.
-// 
+//
 // > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `ecs.Disk` doesn't resize disk.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
 type Disk struct {
 	pulumi.CustomResourceState

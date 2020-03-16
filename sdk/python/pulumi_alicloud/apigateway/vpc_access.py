@@ -29,15 +29,12 @@ class VpcAccess(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, instance_id=None, name=None, port=None, vpc_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a VpcAccess resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: ID of the instance in VPC (ECS/Server Load Balance).
         :param pulumi.Input[str] name: The name of the vpc authorization. 
         :param pulumi.Input[float] port: ID of the port corresponding to the instance.
         :param pulumi.Input[str] vpc_id: The vpc id of the vpc authorization. 
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_vpc_access.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,7 +74,7 @@ class VpcAccess(pulumi.CustomResource):
         """
         Get an existing VpcAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +82,11 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the vpc authorization. 
         :param pulumi.Input[float] port: ID of the port corresponding to the instance.
         :param pulumi.Input[str] vpc_id: The vpc id of the vpc authorization. 
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_vpc_access.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["instance_id"] = instance_id
         __props__["name"] = name
         __props__["port"] = port

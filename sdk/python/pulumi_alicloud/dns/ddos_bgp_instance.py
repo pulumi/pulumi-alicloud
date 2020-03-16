@@ -41,11 +41,13 @@ class DdosBgpInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bandwidth=None, base_bandwidth=None, ip_count=None, ip_type=None, name=None, period=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-        
+
         > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-        
+
         > **NOTE:** Available in 1.57.0+ .
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
@@ -55,8 +57,6 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[float] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,7 +99,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         """
         Get an existing DdosBgpInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,12 +110,11 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[float] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["bandwidth"] = bandwidth
         __props__["base_bandwidth"] = base_bandwidth
         __props__["ip_count"] = ip_count

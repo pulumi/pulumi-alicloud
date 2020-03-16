@@ -13,7 +13,7 @@ class GetConnectionsResult:
     """
     A collection of values returned by getConnections.
     """
-    def __init__(__self__, connections=None, customer_gateway_id=None, ids=None, name_regex=None, names=None, output_file=None, vpn_gateway_id=None, id=None):
+    def __init__(__self__, connections=None, customer_gateway_id=None, id=None, ids=None, name_regex=None, names=None, output_file=None, vpn_gateway_id=None):
         if connections and not isinstance(connections, list):
             raise TypeError("Expected argument 'connections' to be a list")
         __self__.connections = connections
@@ -25,6 +25,12 @@ class GetConnectionsResult:
         __self__.customer_gateway_id = customer_gateway_id
         """
         ID of the VPN customer gateway.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetConnectionsResult:
         """
         ID of the VPN gateway.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetConnectionsResult(GetConnectionsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -64,26 +64,28 @@ class AwaitableGetConnectionsResult(GetConnectionsResult):
         return GetConnectionsResult(
             connections=self.connections,
             customer_gateway_id=self.customer_gateway_id,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
-            vpn_gateway_id=self.vpn_gateway_id,
-            id=self.id)
+            vpn_gateway_id=self.vpn_gateway_id)
 
 def get_connections(customer_gateway_id=None,ids=None,name_regex=None,output_file=None,vpn_gateway_id=None,opts=None):
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
+
+
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
     :param list ids: IDs of the VPN connections.
     :param str name_regex: A regex string of VPN connection name.
     :param str output_file: Save the result to the file.
     :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['customerGatewayId'] = customer_gateway_id
     __args__['ids'] = ids
@@ -99,9 +101,9 @@ def get_connections(customer_gateway_id=None,ids=None,name_regex=None,output_fil
     return AwaitableGetConnectionsResult(
         connections=__ret__.get('connections'),
         customer_gateway_id=__ret__.get('customerGatewayId'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
-        vpn_gateway_id=__ret__.get('vpnGatewayId'),
-        id=__ret__.get('id'))
+        vpn_gateway_id=__ret__.get('vpnGatewayId'))

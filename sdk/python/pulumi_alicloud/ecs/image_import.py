@@ -21,7 +21,7 @@ class ImageImport(pulumi.CustomResource):
     disk_device_mappings: pulumi.Output[list]
     """
     Description of the system with disks and snapshots under the image.
-    
+
       * `device` (`str`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
       * `diskImageSize` (`float`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
       * `format` (`str`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
@@ -44,13 +44,15 @@ class ImageImport(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, architecture=None, description=None, disk_device_mappings=None, image_name=None, license_type=None, os_type=None, platform=None, __props__=None, __name__=None, __opts__=None):
         """
         Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
-        
+
         > **NOTE:** You must upload the image file to the object storage OSS in advance.
-        
+
         > **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
-        
+
         > **NOTE:** Available in 1.69.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -59,16 +61,14 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
         :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
-        
+
         The **disk_device_mappings** object supports the following:
-        
+
           * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `diskImageSize` (`pulumi.Input[float]`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
           * `format` (`pulumi.Input[str]`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
           * `oss_bucket` (`pulumi.Input[str]`) - Save the exported OSS bucket.
           * `ossObject` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +107,7 @@ class ImageImport(pulumi.CustomResource):
         """
         Get an existing ImageImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,20 +117,19 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
         :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
-        
+
         The **disk_device_mappings** object supports the following:
-        
+
           * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `diskImageSize` (`pulumi.Input[float]`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
           * `format` (`pulumi.Input[str]`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
           * `oss_bucket` (`pulumi.Input[str]`) - Save the exported OSS bucket.
           * `ossObject` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["architecture"] = architecture
         __props__["description"] = description
         __props__["disk_device_mappings"] = disk_device_mappings

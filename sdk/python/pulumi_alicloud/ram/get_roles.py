@@ -13,7 +13,13 @@ class GetRolesResult:
     """
     A collection of values returned by getRoles.
     """
-    def __init__(__self__, ids=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, roles=None, id=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, roles=None):
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -44,39 +50,35 @@ class GetRolesResult:
         """
         A list of roles. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetRolesResult(GetRolesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
         return GetRolesResult(
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             policy_name=self.policy_name,
             policy_type=self.policy_type,
-            roles=self.roles,
-            id=self.id)
+            roles=self.roles)
 
 def get_roles(ids=None,name_regex=None,output_file=None,policy_name=None,policy_type=None,opts=None):
     """
     This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
+
+
     :param str name_regex: A regex string to filter results by the role name.
            * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -90,11 +92,11 @@ def get_roles(ids=None,name_regex=None,output_file=None,policy_name=None,policy_
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getRoles:getRoles', __args__, opts=opts).value
 
     return AwaitableGetRolesResult(
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         policy_name=__ret__.get('policyName'),
         policy_type=__ret__.get('policyType'),
-        roles=__ret__.get('roles'),
-        id=__ret__.get('id'))
+        roles=__ret__.get('roles'))

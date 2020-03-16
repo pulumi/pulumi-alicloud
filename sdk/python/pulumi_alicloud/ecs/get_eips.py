@@ -13,12 +13,18 @@ class GetEipsResult:
     """
     A collection of values returned by getEips.
     """
-    def __init__(__self__, eips=None, ids=None, in_use=None, ip_addresses=None, names=None, output_file=None, resource_group_id=None, tags=None, id=None):
+    def __init__(__self__, eips=None, id=None, ids=None, in_use=None, ip_addresses=None, names=None, output_file=None, resource_group_id=None, tags=None):
         if eips and not isinstance(eips, list):
             raise TypeError("Expected argument 'eips' to be a list")
         __self__.eips = eips
         """
         A list of EIPs. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -50,12 +56,6 @@ class GetEipsResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         __self__.tags = tags
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetEipsResult(GetEipsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -63,28 +63,30 @@ class AwaitableGetEipsResult(GetEipsResult):
             yield self
         return GetEipsResult(
             eips=self.eips,
+            id=self.id,
             ids=self.ids,
             in_use=self.in_use,
             ip_addresses=self.ip_addresses,
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
-            tags=self.tags,
-            id=self.id)
+            tags=self.tags)
 
 def get_eips(ids=None,in_use=None,ip_addresses=None,output_file=None,resource_group_id=None,tags=None,opts=None):
     """
     This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
+
+
     :param list ids: A list of EIP IDs.
     :param bool in_use: Deprecated since the version 1.8.0 of this provider.
     :param list ip_addresses: A list of EIP public IP addresses.
     :param str resource_group_id: The Id of resource group which the eips belongs.
     :param dict tags: A mapping of tags to assign to the resource.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['inUse'] = in_use
@@ -100,11 +102,11 @@ def get_eips(ids=None,in_use=None,ip_addresses=None,output_file=None,resource_gr
 
     return AwaitableGetEipsResult(
         eips=__ret__.get('eips'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         in_use=__ret__.get('inUse'),
         ip_addresses=__ret__.get('ipAddresses'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
-        tags=__ret__.get('tags'),
-        id=__ret__.get('id'))
+        tags=__ret__.get('tags'))

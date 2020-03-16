@@ -29,15 +29,12 @@ class AppAttachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_id=None, app_id=None, group_id=None, stage_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a AppAttachment resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: The api_id that app apply to access.
         :param pulumi.Input[str] app_id: The app that apply to the authorization.
         :param pulumi.Input[str] group_id: The group that the api belongs to.
         :param pulumi.Input[str] stage_name: Stage that the app apply to access.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_app_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +76,7 @@ class AppAttachment(pulumi.CustomResource):
         """
         Get an existing AppAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,12 +84,11 @@ class AppAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The app that apply to the authorization.
         :param pulumi.Input[str] group_id: The group that the api belongs to.
         :param pulumi.Input[str] stage_name: Stage that the app apply to access.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/api_gateway_app_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["api_id"] = api_id
         __props__["app_id"] = app_id
         __props__["group_id"] = group_id

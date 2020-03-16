@@ -20,6 +20,9 @@ class Key(pulumi.CustomResource):
     after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
     """
     description: pulumi.Output[str]
+    """
+    The description of the key.
+    """
     is_enabled: pulumi.Output[bool]
     """
     Specifies whether the key is enabled. Defaults to true.
@@ -31,15 +34,16 @@ class Key(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, deletion_window_in_days=None, description=None, is_enabled=None, key_usage=None, __props__=None, __name__=None, __opts__=None):
         """
         A kms key can help user to protect data security in the transmission process.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] deletion_window_in_days: Duration in days after which the key is deleted
                after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
         :param pulumi.Input[str] key_usage: Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,21 +78,21 @@ class Key(pulumi.CustomResource):
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the key.
         :param pulumi.Input[float] deletion_window_in_days: Duration in days after which the key is deleted
                after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+        :param pulumi.Input[str] description: The description of the key.
         :param pulumi.Input[bool] is_enabled: Specifies whether the key is enabled. Defaults to true.
         :param pulumi.Input[str] key_usage: Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["arn"] = arn
         __props__["deletion_window_in_days"] = deletion_window_in_days
         __props__["description"] = description

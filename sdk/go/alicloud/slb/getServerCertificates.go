@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides the server certificate list.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_certificates.html.markdown.
 func GetServerCertificates(ctx *pulumi.Context, args *GetServerCertificatesArgs, opts ...pulumi.InvokeOption) (*GetServerCertificatesResult, error) {
 	var rv GetServerCertificatesResult

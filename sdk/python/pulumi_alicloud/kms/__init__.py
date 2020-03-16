@@ -4,7 +4,7 @@
 
 # Export this package's modules as members:
 from .ciphertext import *
-from .key import *
 from .get_ciphertext import *
 from .get_keys import *
 from .get_plaintext import *
+from .key import *

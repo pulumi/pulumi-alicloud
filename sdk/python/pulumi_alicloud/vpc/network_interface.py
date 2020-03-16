@@ -53,11 +53,13 @@ class NetworkInterface(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, name=None, private_ip=None, private_ips=None, private_ips_count=None, resource_group_id=None, security_groups=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ECS Elastic Network Interface resource.
-        
+
         For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-        
+
         > **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs. 
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -69,8 +71,6 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[list] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -114,7 +114,7 @@ class NetworkInterface(pulumi.CustomResource):
         """
         Get an existing NetworkInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,12 +128,11 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[list] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["mac"] = mac
         __props__["name"] = name

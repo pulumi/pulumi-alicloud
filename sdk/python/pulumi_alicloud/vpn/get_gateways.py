@@ -13,7 +13,7 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, business_status=None, gateways=None, ids=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None, id=None):
+    def __init__(__self__, business_status=None, gateways=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
         if business_status and not isinstance(business_status, str):
             raise TypeError("Expected argument 'business_status' to be a str")
         __self__.business_status = business_status
@@ -25,6 +25,12 @@ class GetGatewaysResult:
         __self__.gateways = gateways
         """
         A list of VPN gateways. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -56,12 +62,6 @@ class GetGatewaysResult:
         """
         ID of the VPC that the VPN belongs.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGatewaysResult(GetGatewaysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -70,28 +70,30 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
         return GetGatewaysResult(
             business_status=self.business_status,
             gateways=self.gateways,
+            id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             status=self.status,
-            vpc_id=self.vpc_id,
-            id=self.id)
+            vpc_id=self.vpc_id)
 
 def get_gateways(business_status=None,ids=None,name_regex=None,output_file=None,status=None,vpc_id=None,opts=None):
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
+
+
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param list ids: IDs of the VPN.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
     :param str vpc_id: Use the VPC ID as the search key.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['businessStatus'] = business_status
     __args__['ids'] = ids
@@ -108,10 +110,10 @@ def get_gateways(business_status=None,ids=None,name_regex=None,output_file=None,
     return AwaitableGetGatewaysResult(
         business_status=__ret__.get('businessStatus'),
         gateways=__ret__.get('gateways'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         status=__ret__.get('status'),
-        vpc_id=__ret__.get('vpcId'),
-        id=__ret__.get('id'))
+        vpc_id=__ret__.get('vpcId'))

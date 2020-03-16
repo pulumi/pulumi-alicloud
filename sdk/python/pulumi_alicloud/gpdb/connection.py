@@ -33,19 +33,19 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, connection_prefix=None, instance_id=None, port=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a connection resource to allocate an Internet connection string for instance.
-        
+
         > **NOTE:**  Available in 1.48.0+
-        
+
         > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + '-tf'.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [3200-3999]. Default to 3306.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -82,7 +82,7 @@ class Connection(pulumi.CustomResource):
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -91,12 +91,11 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [3200-3999]. Default to 3306.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connection_prefix"] = connection_prefix
         __props__["connection_string"] = connection_string
         __props__["instance_id"] = instance_id

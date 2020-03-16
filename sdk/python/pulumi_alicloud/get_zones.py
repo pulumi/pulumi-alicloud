@@ -13,7 +13,7 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, available_disk_category=None, available_instance_type=None, available_resource_creation=None, available_slb_address_ip_version=None, available_slb_address_type=None, enable_details=None, ids=None, instance_charge_type=None, multi=None, network_type=None, output_file=None, spot_strategy=None, zones=None, id=None):
+    def __init__(__self__, available_disk_category=None, available_instance_type=None, available_resource_creation=None, available_slb_address_ip_version=None, available_slb_address_type=None, enable_details=None, id=None, ids=None, instance_charge_type=None, multi=None, network_type=None, output_file=None, spot_strategy=None, zones=None):
         if available_disk_category and not isinstance(available_disk_category, str):
             raise TypeError("Expected argument 'available_disk_category' to be a str")
         __self__.available_disk_category = available_disk_category
@@ -35,6 +35,12 @@ class GetZonesResult:
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         __self__.enable_details = enable_details
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -62,12 +68,6 @@ class GetZonesResult:
         """
         A list of availability zones. Each element contains the following attributes:
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -80,22 +80,25 @@ class AwaitableGetZonesResult(GetZonesResult):
             available_slb_address_ip_version=self.available_slb_address_ip_version,
             available_slb_address_type=self.available_slb_address_type,
             enable_details=self.enable_details,
+            id=self.id,
             ids=self.ids,
             instance_charge_type=self.instance_charge_type,
             multi=self.multi,
             network_type=self.network_type,
             output_file=self.output_file,
             spot_strategy=self.spot_strategy,
-            zones=self.zones,
-            id=self.id)
+            zones=self.zones)
 
 def get_zones(available_disk_category=None,available_instance_type=None,available_resource_creation=None,available_slb_address_ip_version=None,available_slb_address_type=None,enable_details=None,instance_charge_type=None,multi=None,network_type=None,output_file=None,spot_strategy=None,opts=None):
     """
     This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
-    
-    
+
+
     > **NOTE:** If one zone is sold out, it will not be exported.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
+
+
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
     :param str available_instance_type: Filter the results by a specific instance type.
     :param str available_resource_creation: Filter the results by a specific resource type.
@@ -108,10 +111,9 @@ def get_zones(available_disk_category=None,available_instance_type=None,availabl
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     :param str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
     :param str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['availableDiskCategory'] = available_disk_category
     __args__['availableInstanceType'] = available_instance_type
@@ -137,11 +139,11 @@ def get_zones(available_disk_category=None,available_instance_type=None,availabl
         available_slb_address_ip_version=__ret__.get('availableSlbAddressIpVersion'),
         available_slb_address_type=__ret__.get('availableSlbAddressType'),
         enable_details=__ret__.get('enableDetails'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_charge_type=__ret__.get('instanceChargeType'),
         multi=__ret__.get('multi'),
         network_type=__ret__.get('networkType'),
         output_file=__ret__.get('outputFile'),
         spot_strategy=__ret__.get('spotStrategy'),
-        zones=__ret__.get('zones'),
-        id=__ret__.get('id'))
+        zones=__ret__.get('zones'))

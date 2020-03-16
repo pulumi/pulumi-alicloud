@@ -396,6 +396,8 @@ export interface InstanceState {
     readonly port?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * 
+     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
@@ -511,6 +513,8 @@ export interface InstanceArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * 
+     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**

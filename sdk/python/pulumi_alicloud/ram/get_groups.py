@@ -13,12 +13,18 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, groups=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, user_name=None, id=None):
+    def __init__(__self__, groups=None, id=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, user_name=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         __self__.groups = groups
         """
         A list of groups. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if name_regex and not isinstance(name_regex, str):
             raise TypeError("Expected argument 'name_regex' to be a str")
@@ -41,12 +47,6 @@ class GetGroupsResult:
         if user_name and not isinstance(user_name, str):
             raise TypeError("Expected argument 'user_name' to be a str")
         __self__.user_name = user_name
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetGroupsResult(GetGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,26 +54,28 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             yield self
         return GetGroupsResult(
             groups=self.groups,
+            id=self.id,
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
             policy_name=self.policy_name,
             policy_type=self.policy_type,
-            user_name=self.user_name,
-            id=self.id)
+            user_name=self.user_name)
 
 def get_groups(name_regex=None,output_file=None,policy_name=None,policy_type=None,user_name=None,opts=None):
     """
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
+
+
     :param str name_regex: A regex string to filter the returned groups by their names.
     :param str policy_name: Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
     :param str policy_type: Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     :param str user_name: Filter the results by a specific the user name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -88,10 +90,10 @@ def get_groups(name_regex=None,output_file=None,policy_name=None,policy_type=Non
 
     return AwaitableGetGroupsResult(
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         policy_name=__ret__.get('policyName'),
         policy_type=__ret__.get('policyType'),
-        user_name=__ret__.get('userName'),
-        id=__ret__.get('id'))
+        user_name=__ret__.get('userName'))

@@ -9,7 +9,7 @@ import (
 )
 
 // The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	var rv GetConnectionsResult

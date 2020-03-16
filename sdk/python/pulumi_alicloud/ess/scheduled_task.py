@@ -63,7 +63,6 @@ class ScheduledTask(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, launch_expiration_time=None, launch_time=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScheduledTask resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
@@ -89,8 +88,6 @@ class ScheduledTask(pulumi.CustomResource):
         :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
         :param pulumi.Input[str] scheduled_task_name: Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         :param pulumi.Input[bool] task_enabled: Specifies whether to start the scheduled task. Default to true.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scheduled_task.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +130,7 @@ class ScheduledTask(pulumi.CustomResource):
         """
         Get an existing ScheduledTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -160,12 +157,11 @@ class ScheduledTask(pulumi.CustomResource):
         :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
         :param pulumi.Input[str] scheduled_task_name: Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         :param pulumi.Input[bool] task_enabled: Specifies whether to start the scheduled task. Default to true.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scheduled_task.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["launch_expiration_time"] = launch_expiration_time
         __props__["launch_time"] = launch_time

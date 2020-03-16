@@ -54,7 +54,6 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, comment=None, life_cycle=None, name=None, project_name=None, record_schema=None, record_type=None, shard_count=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Topic resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
@@ -69,8 +68,6 @@ class Topic(pulumi.CustomResource):
                - TIMESTAMP
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         :param pulumi.Input[float] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_topic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,7 +108,7 @@ class Topic(pulumi.CustomResource):
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,12 +126,11 @@ class Topic(pulumi.CustomResource):
                - TIMESTAMP
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         :param pulumi.Input[float] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_topic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["comment"] = comment
         __props__["create_time"] = create_time
         __props__["last_modify_time"] = last_modify_time

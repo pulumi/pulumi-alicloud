@@ -279,6 +279,8 @@ export interface SwarmState {
     readonly securityGroupId?: pulumi.Input<string>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     * 
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;
     /**
@@ -348,6 +350,8 @@ export interface SwarmArgs {
     readonly releaseEip?: pulumi.Input<boolean>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     * 
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;
     /**

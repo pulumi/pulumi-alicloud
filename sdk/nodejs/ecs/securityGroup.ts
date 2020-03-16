@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/security_group.html.markdown.
- */
 export class SecurityGroup extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroup resource's state with the given name, ID, and optional extra
@@ -123,6 +120,8 @@ export interface SecurityGroupState {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * 
+     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
     /**
@@ -163,6 +162,8 @@ export interface SecurityGroupArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     * 
+     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
     /**

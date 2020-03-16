@@ -7,6 +7,12 @@ from .access_key import *
 from .account_alias import *
 from .account_password_policy import *
 from .alias import *
+from .get_account_alias import *
+from .get_account_aliases import *
+from .get_groups import *
+from .get_policies import *
+from .get_roles import *
+from .get_users import *
 from .group import *
 from .group_membership import *
 from .group_policy_attachment import *
@@ -17,9 +23,3 @@ from .role_attachment import *
 from .role_policy_attachment import *
 from .user import *
 from .user_policy_attachment import *
-from .get_account_alias import *
-from .get_account_aliases import *
-from .get_groups import *
-from .get_policies import *
-from .get_roles import *
-from .get_users import *

@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scaling_group.html.markdown.
- */
 export class ScalingGroup extends pulumi.CustomResource {
     /**
      * Get an existing ScalingGroup resource's state with the given name, ID, and optional extra
@@ -229,6 +226,8 @@ export interface ScalingGroupState {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     * 
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -302,6 +301,8 @@ export interface ScalingGroupArgs {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     * 
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**

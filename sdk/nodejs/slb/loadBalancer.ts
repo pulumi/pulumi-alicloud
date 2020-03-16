@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
- */
 export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Get an existing LoadBalancer resource's state with the given name, ID, and optional extra
@@ -194,6 +191,8 @@ export interface LoadBalancerState {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+     * 
+     * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
      */
     readonly internet?: pulumi.Input<boolean>;
     /**
@@ -268,6 +267,8 @@ export interface LoadBalancerArgs {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+     * 
+     * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
      */
     readonly internet?: pulumi.Input<boolean>;
     /**

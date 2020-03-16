@@ -11,11 +11,11 @@ import (
 )
 
 // A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
-// 
+//
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
-// 
+//
 // For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
 type ServerCertificate struct {
 	pulumi.CustomResourceState

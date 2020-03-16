@@ -14,11 +14,8 @@ class Alias(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_alias=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Alias resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_alias.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,16 +48,15 @@ class Alias(pulumi.CustomResource):
         """
         Get an existing Alias resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_alias.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_alias"] = account_alias
         return Alias(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

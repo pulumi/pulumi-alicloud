@@ -10,9 +10,9 @@ import (
 
 // The `emr.getMainVersions` data source provides a collection of emr 
 // main versions available in Alibaba Cloud account when create a emr cluster.
-// 
+//
 // > **NOTE:** Available in 1.59.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
 func GetMainVersions(ctx *pulumi.Context, args *GetMainVersionsArgs, opts ...pulumi.InvokeOption) (*GetMainVersionsResult, error) {
 	var rv GetMainVersionsResult

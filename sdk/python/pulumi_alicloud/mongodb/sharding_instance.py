@@ -43,7 +43,7 @@ class ShardingInstance(pulumi.CustomResource):
     """
     The mongo-node count can be purchased is in range of [2, 32].
     * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-    
+
       * `connectString` (`str`) - Mongo node connection string
       * `nodeClass` (`str`)
       * `nodeId` (`str`) - The ID of the shard-node.
@@ -70,7 +70,7 @@ class ShardingInstance(pulumi.CustomResource):
     """
     the shard-node count can be purchased is in range of [2, 32].
     * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-    
+
       * `nodeClass` (`str`)
       * `nodeId` (`str`) - The ID of the shard-node.
       * `nodeStorage` (`float`) - 
@@ -90,7 +90,6 @@ class ShardingInstance(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, mongo_lists=None, name=None, period=None, security_ip_lists=None, shard_lists=None, storage_engine=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ShardingInstance resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
@@ -111,24 +110,22 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        
+
         The **mongo_lists** object supports the following:
-        
+
           * `connectString` (`pulumi.Input[str]`) - Mongo node connection string
           * `nodeClass` (`pulumi.Input[str]`)
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `port` (`pulumi.Input[float]`) - Mongo node port
             * `shard_list`
-        
+
         The **shard_lists** object supports the following:
-        
+
           * `nodeClass` (`pulumi.Input[str]`)
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `nodeStorage` (`pulumi.Input[float]`) - 
             - Custom storage space; value range: [10, 1,000]
             - 10-GB increments. Unit: GB.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_sharding_instance.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -180,7 +177,7 @@ class ShardingInstance(pulumi.CustomResource):
         """
         Get an existing ShardingInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,28 +200,27 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        
+
         The **mongo_lists** object supports the following:
-        
+
           * `connectString` (`pulumi.Input[str]`) - Mongo node connection string
           * `nodeClass` (`pulumi.Input[str]`)
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `port` (`pulumi.Input[float]`) - Mongo node port
             * `shard_list`
-        
+
         The **shard_lists** object supports the following:
-        
+
           * `nodeClass` (`pulumi.Input[str]`)
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `nodeStorage` (`pulumi.Input[float]`) - 
             - Custom storage space; value range: [10, 1,000]
             - 10-GB increments. Unit: GB.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/mongodb_sharding_instance.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_password"] = account_password
         __props__["backup_periods"] = backup_periods
         __props__["backup_time"] = backup_time

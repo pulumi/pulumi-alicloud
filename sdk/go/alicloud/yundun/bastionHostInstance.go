@@ -12,13 +12,13 @@ import (
 )
 
 // Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-// 
+//
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-// 
+//
 // > **NOTE:** Available in 1.63.0+ .
-// 
+//
 // > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
 type BastionHostInstance struct {
 	pulumi.CustomResourceState

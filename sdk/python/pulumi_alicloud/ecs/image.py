@@ -21,7 +21,7 @@ class Image(pulumi.CustomResource):
     disk_device_mappings: pulumi.Output[list]
     """
     Description of the system with disks and snapshots under the image.
-    
+
       * `device` (`str`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
       * `disk_type` (`str`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
       * `size` (`float`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
@@ -61,15 +61,17 @@ class Image(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, architecture=None, description=None, disk_device_mappings=None, force=None, image_name=None, instance_id=None, name=None, platform=None, resource_group_id=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a custom image. You can then use a custom image to create ECS instances (RunInstances) or change the system disk for an existing instance (ReplaceSystemDisk).
-        
+
         > **NOTE:**  If you want to create a template from an ECS instance, you can specify the instance ID (InstanceId) to create a custom image. You must make sure that the status of the specified instance is Running or Stopped. After a successful invocation, each disk of the specified instance has a new snapshot created.
-        
+
         > **NOTE:**  If you want to create a custom image based on the system disk of your ECS instance, you can specify one of the system disk snapshots (SnapshotId) to create a custom image. However, the specified snapshot cannot be created on or before July 15, 2013.
-        
+
         > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
-        
+
         > **NOTE:**  Available in 1.64.0+
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
@@ -84,15 +86,13 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
-        
+
         The **disk_device_mappings** object supports the following:
-        
+
           * `device` (`pulumi.Input[str]`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
           * `disk_type` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `size` (`pulumi.Input[float]`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
           * `snapshot_id` (`pulumi.Input[str]`) - Specifies a snapshot that is used to create a combined custom image.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +133,7 @@ class Image(pulumi.CustomResource):
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,19 +149,18 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
         :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         :param pulumi.Input[dict] tags: The tag value of an image. The value of N ranges from 1 to 20.
-        
+
         The **disk_device_mappings** object supports the following:
-        
+
           * `device` (`pulumi.Input[str]`) - Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
           * `disk_type` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
           * `size` (`pulumi.Input[float]`) - Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
           * `snapshot_id` (`pulumi.Input[str]`) - Specifies a snapshot that is used to create a combined custom image.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["architecture"] = architecture
         __props__["description"] = description
         __props__["disk_device_mappings"] = disk_device_mappings

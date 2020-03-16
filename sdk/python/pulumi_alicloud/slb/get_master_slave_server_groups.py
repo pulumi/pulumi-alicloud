@@ -13,12 +13,18 @@ class GetMasterSlaveServerGroupsResult:
     """
     A collection of values returned by getMasterSlaveServerGroups.
     """
-    def __init__(__self__, groups=None, ids=None, load_balancer_id=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, groups=None, id=None, ids=None, load_balancer_id=None, name_regex=None, names=None, output_file=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         __self__.groups = groups
         """
         A list of SLB master slave server groups. Each element contains the following attributes:
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -41,12 +47,6 @@ class GetMasterSlaveServerGroupsResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetMasterSlaveServerGroupsResult(GetMasterSlaveServerGroupsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -54,26 +54,28 @@ class AwaitableGetMasterSlaveServerGroupsResult(GetMasterSlaveServerGroupsResult
             yield self
         return GetMasterSlaveServerGroupsResult(
             groups=self.groups,
+            id=self.id,
             ids=self.ids,
             load_balancer_id=self.load_balancer_id,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_master_slave_server_groups(ids=None,load_balancer_id=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the master slave server groups related to a server load balancer.
-    
+
     > **NOTE:** Available in 1.54.0+
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
+
+
     :param list ids: A list of master slave server group IDs to filter results.
     :param str load_balancer_id: ID of the SLB.
     :param str name_regex: A regex string to filter results by master slave server group name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['ids'] = ids
     __args__['loadBalancerId'] = load_balancer_id
@@ -87,9 +89,9 @@ def get_master_slave_server_groups(ids=None,load_balancer_id=None,name_regex=Non
 
     return AwaitableGetMasterSlaveServerGroupsResult(
         groups=__ret__.get('groups'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         load_balancer_id=__ret__.get('loadBalancerId'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

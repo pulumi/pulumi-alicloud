@@ -42,7 +42,6 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, lang=None, name=None, proxy_pattern=None, remark=None, user_client_ip=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Zone resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language. Valid values: "zh", "en", "jp".
@@ -52,8 +51,6 @@ class Zone(pulumi.CustomResource):
                - RECORD: indicates that the recursive DNS proxy is enabled.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -92,7 +89,7 @@ class Zone(pulumi.CustomResource):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +101,11 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[float] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/pvtz_zone.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["creation_time"] = creation_time
         __props__["is_ptr"] = is_ptr
         __props__["lang"] = lang

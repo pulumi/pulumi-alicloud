@@ -13,7 +13,7 @@ class GetForwardEntriesResult:
     """
     A collection of values returned by getForwardEntries.
     """
-    def __init__(__self__, entries=None, external_ip=None, forward_table_id=None, ids=None, internal_ip=None, name_regex=None, names=None, output_file=None, id=None):
+    def __init__(__self__, entries=None, external_ip=None, forward_table_id=None, id=None, ids=None, internal_ip=None, name_regex=None, names=None, output_file=None):
         if entries and not isinstance(entries, list):
             raise TypeError("Expected argument 'entries' to be a list")
         __self__.entries = entries
@@ -29,6 +29,12 @@ class GetForwardEntriesResult:
         if forward_table_id and not isinstance(forward_table_id, str):
             raise TypeError("Expected argument 'forward_table_id' to be a str")
         __self__.forward_table_id = forward_table_id
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         __self__.ids = ids
@@ -53,12 +59,6 @@ class GetForwardEntriesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetForwardEntriesResult(GetForwardEntriesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -68,28 +68,30 @@ class AwaitableGetForwardEntriesResult(GetForwardEntriesResult):
             entries=self.entries,
             external_ip=self.external_ip,
             forward_table_id=self.forward_table_id,
+            id=self.id,
             ids=self.ids,
             internal_ip=self.internal_ip,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file,
-            id=self.id)
+            output_file=self.output_file)
 
 def get_forward_entries(external_ip=None,forward_table_id=None,ids=None,internal_ip=None,name_regex=None,names=None,output_file=None,opts=None):
     """
     This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
-    
+
     > **NOTE:** Available in 1.37.0+.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
+
+
     :param str external_ip: The public IP address.
     :param str forward_table_id: The ID of the Forward table.
     :param list ids: A list of Forward Entries IDs.
     :param str internal_ip: The private IP address.
     :param str name_regex: A regex string to filter results by forward entry name.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['externalIp'] = external_ip
     __args__['forwardTableId'] = forward_table_id
@@ -108,9 +110,9 @@ def get_forward_entries(external_ip=None,forward_table_id=None,ids=None,internal
         entries=__ret__.get('entries'),
         external_ip=__ret__.get('externalIp'),
         forward_table_id=__ret__.get('forwardTableId'),
+        id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         internal_ip=__ret__.get('internalIp'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        output_file=__ret__.get('outputFile'))

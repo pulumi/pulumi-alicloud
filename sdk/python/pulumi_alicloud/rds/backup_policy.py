@@ -89,9 +89,11 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, archive_backup_keep_count=None, archive_backup_keep_policy=None, archive_backup_retention_period=None, backup_periods=None, backup_retention_period=None, backup_time=None, compress_type=None, enable_backup_log=None, high_space_usage_protection=None, instance_id=None, local_log_retention_hours=None, local_log_retention_space=None, log_backup=None, log_backup_frequency=None, log_backup_retention_period=None, log_retention_period=None, preferred_backup_periods=None, preferred_backup_time=None, retention_period=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS instance backup policy resource and used to configure instance backup policy.
-        
+
         > **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] archive_backup_keep_count: Instance archive backup keep count. Valid when the `enable_backup_log` is `true` and instance is mysql local disk. When `archive_backup_keep_policy` is `ByMonth` Valid values: [1-31]. When `archive_backup_keep_policy` is `ByWeek` Valid values: [1-7].
@@ -113,8 +115,6 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[float] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -165,7 +165,7 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -188,12 +188,11 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[list] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[float] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["archive_backup_keep_count"] = archive_backup_keep_count
         __props__["archive_backup_keep_policy"] = archive_backup_keep_policy
         __props__["archive_backup_retention_period"] = archive_backup_retention_period

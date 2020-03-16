@@ -13,22 +13,22 @@ class GetAccountAliasesResult:
     """
     A collection of values returned by getAccountAliases.
     """
-    def __init__(__self__, account_alias=None, output_file=None, id=None):
+    def __init__(__self__, account_alias=None, id=None, output_file=None):
         if account_alias and not isinstance(account_alias, str):
             raise TypeError("Expected argument 'account_alias' to be a str")
         __self__.account_alias = account_alias
         """
         Alias of the account.
         """
-        if output_file and not isinstance(output_file, str):
-            raise TypeError("Expected argument 'output_file' to be a str")
-        __self__.output_file = output_file
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if output_file and not isinstance(output_file, str):
+            raise TypeError("Expected argument 'output_file' to be a str")
+        __self__.output_file = output_file
 class AwaitableGetAccountAliasesResult(GetAccountAliasesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,17 +36,17 @@ class AwaitableGetAccountAliasesResult(GetAccountAliasesResult):
             yield self
         return GetAccountAliasesResult(
             account_alias=self.account_alias,
-            output_file=self.output_file,
-            id=self.id)
+            id=self.id,
+            output_file=self.output_file)
 
 def get_account_aliases(output_file=None,opts=None):
     """
     This data source provides an alias for the Alibaba Cloud account.
-    
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['outputFile'] = output_file
     if opts is None:
@@ -57,5 +57,5 @@ def get_account_aliases(output_file=None,opts=None):
 
     return AwaitableGetAccountAliasesResult(
         account_alias=__ret__.get('accountAlias'),
-        output_file=__ret__.get('outputFile'),
-        id=__ret__.get('id'))
+        id=__ret__.get('id'),
+        output_file=__ret__.get('outputFile'))

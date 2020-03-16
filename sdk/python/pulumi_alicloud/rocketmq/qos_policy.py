@@ -58,13 +58,15 @@ class QosPolicy(pulumi.CustomResource):
         """
         Provides a Sag qos policy resource. 
         You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
-        
+
         For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
-        
+
         > **NOTE:** Available in 1.60.0+
-        
+
         > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_qos_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the QoS policy.
@@ -78,8 +80,6 @@ class QosPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] source_cidr: The source CIDR block.
         :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
         :param pulumi.Input[str] start_time: The time when the quintuple rule takes effect.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_qos_policy.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,7 +134,7 @@ class QosPolicy(pulumi.CustomResource):
         """
         Get an existing QosPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,12 +149,11 @@ class QosPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] source_cidr: The source CIDR block.
         :param pulumi.Input[str] source_port_range: The source port range of the transport layer.
         :param pulumi.Input[str] start_time: The time when the quintuple rule takes effect.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_qos_policy.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["dest_cidr"] = dest_cidr
         __props__["dest_port_range"] = dest_port_range

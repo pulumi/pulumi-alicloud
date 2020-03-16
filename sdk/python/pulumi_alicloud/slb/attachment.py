@@ -37,7 +37,6 @@ class Attachment(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, backend_servers=None, delete_protection_validation=None, instance_ids=None, load_balancer_id=None, server_type=None, weight=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Attachment resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_servers: The backend servers of the load balancer.
@@ -46,8 +45,6 @@ class Attachment(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
         :param pulumi.Input[float] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -87,7 +84,7 @@ class Attachment(pulumi.CustomResource):
         """
         Get an existing Attachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -97,12 +94,11 @@ class Attachment(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
         :param pulumi.Input[float] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_attachment.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["backend_servers"] = backend_servers
         __props__["delete_protection_validation"] = delete_protection_validation
         __props__["instance_ids"] = instance_ids

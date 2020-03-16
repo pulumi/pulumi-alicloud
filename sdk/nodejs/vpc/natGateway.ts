@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nat_gateway.html.markdown.
- */
 export class NatGateway extends pulumi.CustomResource {
     /**
      * Get an existing NatGateway resource's state with the given name, ID, and optional extra
@@ -170,6 +167,8 @@ export interface NatGatewayState {
     readonly snatTableIds?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+     * 
+     * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;
     /**
@@ -208,6 +207,8 @@ export interface NatGatewayArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+     * 
+     * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;
     /**

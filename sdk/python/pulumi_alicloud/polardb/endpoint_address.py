@@ -41,18 +41,18 @@ class EndpointAddress(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, connection_prefix=None, db_cluster_id=None, db_endpoint_id=None, net_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
-        
+
         > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <db_endpoint_id> + 'tf'.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster that can run database.
         :param pulumi.Input[str] db_endpoint_id: The Id of endpoint that can run database.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class EndpointAddress(pulumi.CustomResource):
         """
         Get an existing EndpointAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +104,11 @@ class EndpointAddress(pulumi.CustomResource):
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] net_type: Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
         :param pulumi.Input[str] port: Connection cluster or endpoint port.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["connection_prefix"] = connection_prefix
         __props__["connection_string"] = connection_string
         __props__["db_cluster_id"] = db_cluster_id

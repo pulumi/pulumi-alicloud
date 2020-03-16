@@ -9,7 +9,7 @@ import (
 )
 
 // This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
 func GetTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetTopicSubscriptionsResult, error) {
 	var rv GetTopicSubscriptionsResult

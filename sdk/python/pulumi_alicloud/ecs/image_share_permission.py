@@ -21,21 +21,21 @@ class ImageSharePermission(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, image_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.
-        
+
         > **NOTE:** You can only share your own custom images to other Alibaba Cloud users.
-        
+
         > **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.
-        
+
         > **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
-        
+
         > **NOTE:** Available in 1.68.0+.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[str] image_id: The source image ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,18 +71,17 @@ class ImageSharePermission(pulumi.CustomResource):
         """
         Get an existing ImageSharePermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Alibaba Cloud Account ID. It is used to share images.
         :param pulumi.Input[str] image_id: The source image ID.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["image_id"] = image_id
         return ImageSharePermission(resource_name, opts=opts, __props__=__props__)

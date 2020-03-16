@@ -9,9 +9,9 @@ import (
 )
 
 // This data source provides the Market product items of Alibaba Cloud.
-// 
+//
 // > **NOTE:** Available in 1.64.0+
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
 func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.InvokeOption) (*GetProductsResult, error) {
 	var rv GetProductsResult

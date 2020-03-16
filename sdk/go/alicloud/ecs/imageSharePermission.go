@@ -12,15 +12,15 @@ import (
 )
 
 // Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.
-// 
+//
 // > **NOTE:** You can only share your own custom images to other Alibaba Cloud users.
-// 
+//
 // > **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.
-// 
+//
 // > **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
-// 
+//
 // > **NOTE:** Available in 1.68.0+.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
 type ImageSharePermission struct {
 	pulumi.CustomResourceState
