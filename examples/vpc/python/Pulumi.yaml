@@ -1,0 +1,3 @@
+name: vpc-python
+runtime: python
+description: A minimal AliCloud Python project for a VPC
