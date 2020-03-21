@@ -40,9 +40,9 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
-    public readonly effectiveInterval!: pulumi.Output<string>;
+    public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable alarm rule. Default to true.
      * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -186,7 +186,7 @@ export interface AlarmState {
      */
     readonly dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
@@ -262,7 +262,7 @@ export interface AlarmArgs {
      */
     readonly dimensions: pulumi.Input<{[key: string]: any}>;
     /**
-     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+     * The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
      */
     readonly effectiveInterval?: pulumi.Input<string>;
     /**

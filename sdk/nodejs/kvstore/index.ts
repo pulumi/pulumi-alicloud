@@ -7,4 +7,5 @@ export * from "./backupPolicy";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getZones";
 export * from "./instance";

@@ -5,4 +5,5 @@
 # Export this package's modules as members:
 from .connection import *
 from .get_instances import *
+from .get_zones import *
 from .instance import *

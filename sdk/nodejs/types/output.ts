@@ -276,6 +276,17 @@ export namespace adb {
          */
         zoneId: string;
     }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
+    }
 }
 
 export namespace apigateway {
@@ -1361,6 +1372,14 @@ export namespace cs {
         masterPublicIp: string;
     }
 
+    export interface KubernetesAddon {
+        config?: string;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: string;
+    }
+
     export interface KubernetesAutoscalerNodepool {
         id?: string;
         labels?: string;
@@ -1386,24 +1405,13 @@ export namespace cs {
         serviceDomain: string;
     }
 
-    export interface KubernetesLogConfig {
-        /**
-         * Log Service project name, cluster logs will output to this project.
-         */
-        project?: string;
-        /**
-         * Type of collecting logs, only `SLS` are supported currently.
-         */
-        type: string;
-    }
-
     export interface KubernetesMasterNode {
         /**
          * ID of the node.
          */
         id: string;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name: string;
         /**
@@ -1418,7 +1426,7 @@ export namespace cs {
          */
         id: string;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name: string;
         /**
@@ -1427,15 +1435,32 @@ export namespace cs {
         privateIp: string;
     }
 
-    export interface ManagedKubernetesLogConfig {
+    export interface ManagedKubernetesAddon {
+        config?: string;
+        disabled?: string;
         /**
-         * Log Service project name, cluster logs will output to this project.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
-        project?: string;
+        name?: string;
+    }
+
+    export interface ManagedKubernetesConnections {
         /**
-         * Type of collecting logs, only `SLS` are supported currently.
+         * API Server Internet endpoint.
          */
-        type: string;
+        apiServerInternet: string;
+        /**
+         * API Server Intranet endpoint.
+         */
+        apiServerIntranet: string;
+        /**
+         * Master node SSH IP address.
+         */
+        masterPublicIp: string;
+        /**
+         * Service Access Domain.
+         */
+        serviceDomain: string;
     }
 
     export interface ManagedKubernetesWorkerNode {
@@ -1444,7 +1469,7 @@ export namespace cs {
          */
         id: string;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name: string;
         /**
@@ -2505,6 +2530,10 @@ export namespace ecs {
 
     export interface InstanceDataDisk {
         /**
+         * The ID of the automatic snapshot policy applied to the system disk.
+         */
+        autoSnapshotPolicyId?: string;
+        /**
          * The category of the disk:
          * - `cloud`: The general cloud disk.
          * - `cloudEfficiency`: The efficiency cloud disk.
@@ -2616,9 +2645,21 @@ export namespace elasticsearch {
         id: string;
         instanceChargeType: string;
         status: string;
+        tags: {[key: string]: any};
         updatedAt: string;
         version: string;
         vswitchId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
     }
 }
 
@@ -3280,6 +3321,13 @@ export namespace fc {
         type: string;
     }
 
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+    }
+
     export interface ServiceLogConfig {
         /**
          * The log store name of Logs service.
@@ -3351,6 +3399,17 @@ export namespace gpdb {
          * Status of the instance.
          */
         status: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
     }
 }
 
@@ -3481,6 +3540,17 @@ export namespace kvstore {
          * Used to retrieve instances belong to specified `vswitch` resources.
          */
         vswitchId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
     }
 
     export interface InstanceParameter {
@@ -3893,6 +3963,17 @@ export namespace mongodb {
          * Shard disk.
          */
         storage: number;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
     }
 
     export interface ShardingInstanceMongoList {
@@ -4781,6 +4862,17 @@ export namespace polardb {
          */
         vswitchId: string;
     }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
+    }
 }
 
 export namespace pvtz {
@@ -5152,6 +5244,17 @@ export namespace rds {
          * Used to retrieve instances belong to specified `vswitch` resources.
          */
         vswitchId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
     }
 
     export interface InstanceParameter {
@@ -5756,6 +5859,17 @@ export namespace slb {
          * Weight associated to the ECS instance.
          */
         weight: number;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of slb slave zone ids in which the slb master zone.
+         */
+        slbSlaveZoneIds: string[];
     }
 
     export interface ListenerXForwardedFor {

@@ -45,6 +45,10 @@ class Instance(pulumi.CustomResource):
     """
     Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
     """
+    force_restart: pulumi.Output[bool]
+    """
+    Set it to true to make some parameter efficient when modifying them. Default to false.
+    """
     instance_charge_type: pulumi.Output[str]
     """
     Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
@@ -130,7 +134,7 @@ class Instance(pulumi.CustomResource):
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
     The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS instance resource. A DB instance is an isolated database
         environment in the cloud. A DB instance can contain multiple user-created
@@ -153,6 +157,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] instance_storage: User-defined DB instance storage space. Value range:
@@ -213,6 +218,7 @@ class Instance(pulumi.CustomResource):
             if engine_version is None:
                 raise TypeError("Missing required property 'engine_version'")
             __props__['engine_version'] = engine_version
+            __props__['force_restart'] = force_restart
             __props__['instance_charge_type'] = instance_charge_type
             __props__['instance_name'] = instance_name
             if instance_storage is None:
@@ -243,7 +249,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -265,6 +271,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] instance_storage: User-defined DB instance storage space. Value range:
@@ -310,6 +317,7 @@ class Instance(pulumi.CustomResource):
         __props__["db_instance_storage_type"] = db_instance_storage_type
         __props__["engine"] = engine
         __props__["engine_version"] = engine_version
+        __props__["force_restart"] = force_restart
         __props__["instance_charge_type"] = instance_charge_type
         __props__["instance_name"] = instance_name
         __props__["instance_storage"] = instance_storage

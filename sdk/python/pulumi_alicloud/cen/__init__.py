@@ -6,6 +6,7 @@
 from .bandwidth_limit import *
 from .bandwidth_package import *
 from .bandwidth_package_attachment import *
+from .flow_log import *
 from .get_bandwidth_limits import *
 from .get_bandwidth_packages import *
 from .get_instances import *

@@ -49,11 +49,15 @@ type Instance struct {
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -134,11 +138,15 @@ type instanceState struct {
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// The Security Group ID of ECS.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -183,11 +191,15 @@ type InstanceState struct {
 	ReplicationFactor pulumi.IntPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -232,11 +244,15 @@ type instanceArgs struct {
 	// Number of replica set nodes. Valid values: [3, 5, 7]
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
+	// The Security Group ID of ECS.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. it supports multiple zone.
@@ -278,11 +294,15 @@ type InstanceArgs struct {
 	// Number of replica set nodes. Valid values: [3, 5, 7]
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor pulumi.IntPtrInput
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. it supports multiple zone.

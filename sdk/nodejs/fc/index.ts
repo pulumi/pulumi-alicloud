@@ -6,5 +6,6 @@ export * from "./function";
 export * from "./getFunctions";
 export * from "./getServices";
 export * from "./getTriggers";
+export * from "./getZones";
 export * from "./service";
 export * from "./trigger";

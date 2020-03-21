@@ -200,6 +200,10 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly subnetId!: pulumi.Output<string>;
     /**
+     * The ID of the automatic snapshot policy applied to the system disk.
+     */
+    public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
@@ -278,6 +282,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["subnetId"] = state ? state.subnetId : undefined;
+            inputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -331,6 +336,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
+            inputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -525,6 +531,10 @@ export interface InstanceState {
      */
     readonly status?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
+    /**
+     * The ID of the automatic snapshot policy applied to the system disk.
+     */
+    readonly systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */
@@ -721,6 +731,10 @@ export interface InstanceArgs {
      */
     readonly spotStrategy?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
+    /**
+     * The ID of the automatic snapshot policy applied to the system disk.
+     */
+    readonly systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
      * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
      */

@@ -7,5 +7,6 @@ from .function import *
 from .get_functions import *
 from .get_services import *
 from .get_triggers import *
+from .get_zones import *
 from .service import *
 from .trigger import *

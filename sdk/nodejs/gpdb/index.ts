@@ -4,4 +4,5 @@
 // Export members:
 export * from "./connection";
 export * from "./getInstances";
+export * from "./getZones";
 export * from "./instance";

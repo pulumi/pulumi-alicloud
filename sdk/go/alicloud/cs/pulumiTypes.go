@@ -237,6 +237,101 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 	}).(ClusterNodeOutput)
 }
 
+type KubernetesAddon struct {
+	Config *string `pulumi:"config"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
+}
+
+type KubernetesAddonInput interface {
+	pulumi.Input
+
+	ToKubernetesAddonOutput() KubernetesAddonOutput
+	ToKubernetesAddonOutputWithContext(context.Context) KubernetesAddonOutput
+}
+
+type KubernetesAddonArgs struct {
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (KubernetesAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAddon)(nil)).Elem()
+}
+
+func (i KubernetesAddonArgs) ToKubernetesAddonOutput() KubernetesAddonOutput {
+	return i.ToKubernetesAddonOutputWithContext(context.Background())
+}
+
+func (i KubernetesAddonArgs) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonOutput)
+}
+
+type KubernetesAddonArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput
+	ToKubernetesAddonArrayOutputWithContext(context.Context) KubernetesAddonArrayOutput
+}
+
+type KubernetesAddonArray []KubernetesAddonInput
+
+func (KubernetesAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesAddon)(nil)).Elem()
+}
+
+func (i KubernetesAddonArray) ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput {
+	return i.ToKubernetesAddonArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesAddonArray) ToKubernetesAddonArrayOutputWithContext(ctx context.Context) KubernetesAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonArrayOutput)
+}
+
+type KubernetesAddonOutput struct { *pulumi.OutputState }
+
+func (KubernetesAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesAddon)(nil)).Elem()
+}
+
+func (o KubernetesAddonOutput) ToKubernetesAddonOutput() KubernetesAddonOutput {
+	return o
+}
+
+func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Context) KubernetesAddonOutput {
+	return o
+}
+
+func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v KubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o KubernetesAddonOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v KubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesAddonArrayOutput struct { *pulumi.OutputState}
+
+func (KubernetesAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesAddon)(nil)).Elem()
+}
+
+func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutput() KubernetesAddonArrayOutput {
+	return o
+}
+
+func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutputWithContext(ctx context.Context) KubernetesAddonArrayOutput {
+	return o
+}
+
+func (o KubernetesAddonArrayOutput) Index(i pulumi.IntInput) KubernetesAddonOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesAddon {
+		return vs[0].([]KubernetesAddon)[vs[1].(int)]
+	}).(KubernetesAddonOutput)
+}
+
 type KubernetesAutoscalerNodepool struct {
 	Id *string `pulumi:"id"`
 	Labels *string `pulumi:"labels"`
@@ -489,136 +584,10 @@ func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesLogConfig struct {
-	// Log Service project name, cluster logs will output to this project.
-	Project *string `pulumi:"project"`
-	// Type of collecting logs, only `SLS` are supported currently.
-	Type string `pulumi:"type"`
-}
-
-type KubernetesLogConfigInput interface {
-	pulumi.Input
-
-	ToKubernetesLogConfigOutput() KubernetesLogConfigOutput
-	ToKubernetesLogConfigOutputWithContext(context.Context) KubernetesLogConfigOutput
-}
-
-type KubernetesLogConfigArgs struct {
-	// Log Service project name, cluster logs will output to this project.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// Type of collecting logs, only `SLS` are supported currently.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (KubernetesLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesLogConfig)(nil)).Elem()
-}
-
-func (i KubernetesLogConfigArgs) ToKubernetesLogConfigOutput() KubernetesLogConfigOutput {
-	return i.ToKubernetesLogConfigOutputWithContext(context.Background())
-}
-
-func (i KubernetesLogConfigArgs) ToKubernetesLogConfigOutputWithContext(ctx context.Context) KubernetesLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesLogConfigOutput)
-}
-
-func (i KubernetesLogConfigArgs) ToKubernetesLogConfigPtrOutput() KubernetesLogConfigPtrOutput {
-	return i.ToKubernetesLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i KubernetesLogConfigArgs) ToKubernetesLogConfigPtrOutputWithContext(ctx context.Context) KubernetesLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesLogConfigOutput).ToKubernetesLogConfigPtrOutputWithContext(ctx)
-}
-
-type KubernetesLogConfigPtrInput interface {
-	pulumi.Input
-
-	ToKubernetesLogConfigPtrOutput() KubernetesLogConfigPtrOutput
-	ToKubernetesLogConfigPtrOutputWithContext(context.Context) KubernetesLogConfigPtrOutput
-}
-
-type kubernetesLogConfigPtrType KubernetesLogConfigArgs
-
-func KubernetesLogConfigPtr(v *KubernetesLogConfigArgs) KubernetesLogConfigPtrInput {	return (*kubernetesLogConfigPtrType)(v)
-}
-
-func (*kubernetesLogConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesLogConfig)(nil)).Elem()
-}
-
-func (i *kubernetesLogConfigPtrType) ToKubernetesLogConfigPtrOutput() KubernetesLogConfigPtrOutput {
-	return i.ToKubernetesLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *kubernetesLogConfigPtrType) ToKubernetesLogConfigPtrOutputWithContext(ctx context.Context) KubernetesLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KubernetesLogConfigPtrOutput)
-}
-
-type KubernetesLogConfigOutput struct { *pulumi.OutputState }
-
-func (KubernetesLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesLogConfig)(nil)).Elem()
-}
-
-func (o KubernetesLogConfigOutput) ToKubernetesLogConfigOutput() KubernetesLogConfigOutput {
-	return o
-}
-
-func (o KubernetesLogConfigOutput) ToKubernetesLogConfigOutputWithContext(ctx context.Context) KubernetesLogConfigOutput {
-	return o
-}
-
-func (o KubernetesLogConfigOutput) ToKubernetesLogConfigPtrOutput() KubernetesLogConfigPtrOutput {
-	return o.ToKubernetesLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (o KubernetesLogConfigOutput) ToKubernetesLogConfigPtrOutputWithContext(ctx context.Context) KubernetesLogConfigPtrOutput {
-	return o.ApplyT(func(v KubernetesLogConfig) *KubernetesLogConfig {
-		return &v
-	}).(KubernetesLogConfigPtrOutput)
-}
-// Log Service project name, cluster logs will output to this project.
-func (o KubernetesLogConfigOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Type of collecting logs, only `SLS` are supported currently.
-func (o KubernetesLogConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type KubernetesLogConfigPtrOutput struct { *pulumi.OutputState}
-
-func (KubernetesLogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KubernetesLogConfig)(nil)).Elem()
-}
-
-func (o KubernetesLogConfigPtrOutput) ToKubernetesLogConfigPtrOutput() KubernetesLogConfigPtrOutput {
-	return o
-}
-
-func (o KubernetesLogConfigPtrOutput) ToKubernetesLogConfigPtrOutputWithContext(ctx context.Context) KubernetesLogConfigPtrOutput {
-	return o
-}
-
-func (o KubernetesLogConfigPtrOutput) Elem() KubernetesLogConfigOutput {
-	return o.ApplyT(func (v *KubernetesLogConfig) KubernetesLogConfig { return *v }).(KubernetesLogConfigOutput)
-}
-
-// Log Service project name, cluster logs will output to this project.
-func (o KubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Type of collecting logs, only `SLS` are supported currently.
-func (o KubernetesLogConfigPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v KubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
 type KubernetesMasterNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -634,7 +603,7 @@ type KubernetesMasterNodeInput interface {
 type KubernetesMasterNodeArgs struct {
 	// ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -692,7 +661,7 @@ func (o KubernetesMasterNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is the only in one Alicloud account.
+// The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesMasterNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -725,7 +694,7 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 type KubernetesWorkerNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -741,7 +710,7 @@ type KubernetesWorkerNodeInput interface {
 type KubernetesWorkerNodeArgs struct {
 	// ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -799,7 +768,7 @@ func (o KubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is the only in one Alicloud account.
+// The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v KubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -829,136 +798,265 @@ func (o KubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) KubernetesWork
 	}).(KubernetesWorkerNodeOutput)
 }
 
-type ManagedKubernetesLogConfig struct {
-	// Log Service project name, cluster logs will output to this project.
-	Project *string `pulumi:"project"`
-	// Type of collecting logs, only `SLS` are supported currently.
-	Type string `pulumi:"type"`
+type ManagedKubernetesAddon struct {
+	Config *string `pulumi:"config"`
+	Disabled *string `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name *string `pulumi:"name"`
 }
 
-type ManagedKubernetesLogConfigInput interface {
+type ManagedKubernetesAddonInput interface {
 	pulumi.Input
 
-	ToManagedKubernetesLogConfigOutput() ManagedKubernetesLogConfigOutput
-	ToManagedKubernetesLogConfigOutputWithContext(context.Context) ManagedKubernetesLogConfigOutput
+	ToManagedKubernetesAddonOutput() ManagedKubernetesAddonOutput
+	ToManagedKubernetesAddonOutputWithContext(context.Context) ManagedKubernetesAddonOutput
 }
 
-type ManagedKubernetesLogConfigArgs struct {
-	// Log Service project name, cluster logs will output to this project.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// Type of collecting logs, only `SLS` are supported currently.
-	Type pulumi.StringInput `pulumi:"type"`
+type ManagedKubernetesAddonArgs struct {
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	Disabled pulumi.StringPtrInput `pulumi:"disabled"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (ManagedKubernetesLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesLogConfig)(nil)).Elem()
+func (ManagedKubernetesAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAddon)(nil)).Elem()
 }
 
-func (i ManagedKubernetesLogConfigArgs) ToManagedKubernetesLogConfigOutput() ManagedKubernetesLogConfigOutput {
-	return i.ToManagedKubernetesLogConfigOutputWithContext(context.Background())
+func (i ManagedKubernetesAddonArgs) ToManagedKubernetesAddonOutput() ManagedKubernetesAddonOutput {
+	return i.ToManagedKubernetesAddonOutputWithContext(context.Background())
 }
 
-func (i ManagedKubernetesLogConfigArgs) ToManagedKubernetesLogConfigOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesLogConfigOutput)
+func (i ManagedKubernetesAddonArgs) ToManagedKubernetesAddonOutputWithContext(ctx context.Context) ManagedKubernetesAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAddonOutput)
 }
 
-func (i ManagedKubernetesLogConfigArgs) ToManagedKubernetesLogConfigPtrOutput() ManagedKubernetesLogConfigPtrOutput {
-	return i.ToManagedKubernetesLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedKubernetesLogConfigArgs) ToManagedKubernetesLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesLogConfigOutput).ToManagedKubernetesLogConfigPtrOutputWithContext(ctx)
-}
-
-type ManagedKubernetesLogConfigPtrInput interface {
+type ManagedKubernetesAddonArrayInput interface {
 	pulumi.Input
 
-	ToManagedKubernetesLogConfigPtrOutput() ManagedKubernetesLogConfigPtrOutput
-	ToManagedKubernetesLogConfigPtrOutputWithContext(context.Context) ManagedKubernetesLogConfigPtrOutput
+	ToManagedKubernetesAddonArrayOutput() ManagedKubernetesAddonArrayOutput
+	ToManagedKubernetesAddonArrayOutputWithContext(context.Context) ManagedKubernetesAddonArrayOutput
 }
 
-type managedKubernetesLogConfigPtrType ManagedKubernetesLogConfigArgs
+type ManagedKubernetesAddonArray []ManagedKubernetesAddonInput
 
-func ManagedKubernetesLogConfigPtr(v *ManagedKubernetesLogConfigArgs) ManagedKubernetesLogConfigPtrInput {	return (*managedKubernetesLogConfigPtrType)(v)
+func (ManagedKubernetesAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesAddon)(nil)).Elem()
 }
 
-func (*managedKubernetesLogConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesLogConfig)(nil)).Elem()
+func (i ManagedKubernetesAddonArray) ToManagedKubernetesAddonArrayOutput() ManagedKubernetesAddonArrayOutput {
+	return i.ToManagedKubernetesAddonArrayOutputWithContext(context.Background())
 }
 
-func (i *managedKubernetesLogConfigPtrType) ToManagedKubernetesLogConfigPtrOutput() ManagedKubernetesLogConfigPtrOutput {
-	return i.ToManagedKubernetesLogConfigPtrOutputWithContext(context.Background())
+func (i ManagedKubernetesAddonArray) ToManagedKubernetesAddonArrayOutputWithContext(ctx context.Context) ManagedKubernetesAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAddonArrayOutput)
 }
 
-func (i *managedKubernetesLogConfigPtrType) ToManagedKubernetesLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesLogConfigPtrOutput)
+type ManagedKubernetesAddonOutput struct { *pulumi.OutputState }
+
+func (ManagedKubernetesAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesAddon)(nil)).Elem()
 }
 
-type ManagedKubernetesLogConfigOutput struct { *pulumi.OutputState }
-
-func (ManagedKubernetesLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedKubernetesLogConfig)(nil)).Elem()
-}
-
-func (o ManagedKubernetesLogConfigOutput) ToManagedKubernetesLogConfigOutput() ManagedKubernetesLogConfigOutput {
+func (o ManagedKubernetesAddonOutput) ToManagedKubernetesAddonOutput() ManagedKubernetesAddonOutput {
 	return o
 }
 
-func (o ManagedKubernetesLogConfigOutput) ToManagedKubernetesLogConfigOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigOutput {
+func (o ManagedKubernetesAddonOutput) ToManagedKubernetesAddonOutputWithContext(ctx context.Context) ManagedKubernetesAddonOutput {
 	return o
 }
 
-func (o ManagedKubernetesLogConfigOutput) ToManagedKubernetesLogConfigPtrOutput() ManagedKubernetesLogConfigPtrOutput {
-	return o.ToManagedKubernetesLogConfigPtrOutputWithContext(context.Background())
+func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
-func (o ManagedKubernetesLogConfigOutput) ToManagedKubernetesLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesLogConfig) *ManagedKubernetesLogConfig {
+func (o ManagedKubernetesAddonOutput) Disabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Disabled }).(pulumi.StringPtrOutput)
+}
+
+// The kubernetes cluster's name. It is unique in one Alicloud account.
+func (o ManagedKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesAddonArrayOutput struct { *pulumi.OutputState}
+
+func (ManagedKubernetesAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesAddon)(nil)).Elem()
+}
+
+func (o ManagedKubernetesAddonArrayOutput) ToManagedKubernetesAddonArrayOutput() ManagedKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesAddonArrayOutput) ToManagedKubernetesAddonArrayOutputWithContext(ctx context.Context) ManagedKubernetesAddonArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesAddonOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedKubernetesAddon {
+		return vs[0].([]ManagedKubernetesAddon)[vs[1].(int)]
+	}).(ManagedKubernetesAddonOutput)
+}
+
+type ManagedKubernetesConnections struct {
+	// API Server Internet endpoint.
+	ApiServerInternet *string `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
+	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
+	// Master node SSH IP address.
+	MasterPublicIp *string `pulumi:"masterPublicIp"`
+	// Service Access Domain.
+	ServiceDomain *string `pulumi:"serviceDomain"`
+}
+
+type ManagedKubernetesConnectionsInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput
+	ToManagedKubernetesConnectionsOutputWithContext(context.Context) ManagedKubernetesConnectionsOutput
+}
+
+type ManagedKubernetesConnectionsArgs struct {
+	// API Server Internet endpoint.
+	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
+	// API Server Intranet endpoint.
+	ApiServerIntranet pulumi.StringPtrInput `pulumi:"apiServerIntranet"`
+	// Master node SSH IP address.
+	MasterPublicIp pulumi.StringPtrInput `pulumi:"masterPublicIp"`
+	// Service Access Domain.
+	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
+}
+
+func (ManagedKubernetesConnectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesConnections)(nil)).Elem()
+}
+
+func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput {
+	return i.ToManagedKubernetesConnectionsOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsOutput)
+}
+
+func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
+	return i.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesConnectionsArgs) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsOutput).ToManagedKubernetesConnectionsPtrOutputWithContext(ctx)
+}
+
+type ManagedKubernetesConnectionsPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput
+	ToManagedKubernetesConnectionsPtrOutputWithContext(context.Context) ManagedKubernetesConnectionsPtrOutput
+}
+
+type managedKubernetesConnectionsPtrType ManagedKubernetesConnectionsArgs
+
+func ManagedKubernetesConnectionsPtr(v *ManagedKubernetesConnectionsArgs) ManagedKubernetesConnectionsPtrInput {	return (*managedKubernetesConnectionsPtrType)(v)
+}
+
+func (*managedKubernetesConnectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesConnections)(nil)).Elem()
+}
+
+func (i *managedKubernetesConnectionsPtrType) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
+	return i.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesConnectionsPtrType) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsPtrOutput)
+}
+
+type ManagedKubernetesConnectionsOutput struct { *pulumi.OutputState }
+
+func (ManagedKubernetesConnectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesConnections)(nil)).Elem()
+}
+
+func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsOutput() ManagedKubernetesConnectionsOutput {
+	return o
+}
+
+func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsOutput {
+	return o
+}
+
+func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
+	return o.ToManagedKubernetesConnectionsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesConnections) *ManagedKubernetesConnections {
 		return &v
-	}).(ManagedKubernetesLogConfigPtrOutput)
+	}).(ManagedKubernetesConnectionsPtrOutput)
 }
-// Log Service project name, cluster logs will output to this project.
-func (o ManagedKubernetesLogConfigOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
-}
-
-// Type of collecting logs, only `SLS` are supported currently.
-func (o ManagedKubernetesLogConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedKubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
+// API Server Internet endpoint.
+func (o ManagedKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesLogConfigPtrOutput struct { *pulumi.OutputState}
-
-func (ManagedKubernetesLogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedKubernetesLogConfig)(nil)).Elem()
+// API Server Intranet endpoint.
+func (o ManagedKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
-func (o ManagedKubernetesLogConfigPtrOutput) ToManagedKubernetesLogConfigPtrOutput() ManagedKubernetesLogConfigPtrOutput {
+// Master node SSH IP address.
+func (o ManagedKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+}
+
+// Service Access Domain.
+func (o ManagedKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesConnectionsPtrOutput struct { *pulumi.OutputState}
+
+func (ManagedKubernetesConnectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesConnections)(nil)).Elem()
+}
+
+func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtrOutput() ManagedKubernetesConnectionsPtrOutput {
 	return o
 }
 
-func (o ManagedKubernetesLogConfigPtrOutput) ToManagedKubernetesLogConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesLogConfigPtrOutput {
+func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtrOutputWithContext(ctx context.Context) ManagedKubernetesConnectionsPtrOutput {
 	return o
 }
 
-func (o ManagedKubernetesLogConfigPtrOutput) Elem() ManagedKubernetesLogConfigOutput {
-	return o.ApplyT(func (v *ManagedKubernetesLogConfig) ManagedKubernetesLogConfig { return *v }).(ManagedKubernetesLogConfigOutput)
+func (o ManagedKubernetesConnectionsPtrOutput) Elem() ManagedKubernetesConnectionsOutput {
+	return o.ApplyT(func (v *ManagedKubernetesConnections) ManagedKubernetesConnections { return *v }).(ManagedKubernetesConnectionsOutput)
 }
 
-// Log Service project name, cluster logs will output to this project.
-func (o ManagedKubernetesLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesLogConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+// API Server Internet endpoint.
+func (o ManagedKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
-// Type of collecting logs, only `SLS` are supported currently.
-func (o ManagedKubernetesLogConfigPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ManagedKubernetesLogConfig) string { return v.Type }).(pulumi.StringOutput)
+// API Server Intranet endpoint.
+func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+}
+
+// Master node SSH IP address.
+func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+}
+
+// Service Access Domain.
+func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesWorkerNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -974,7 +1072,7 @@ type ManagedKubernetesWorkerNodeInput interface {
 type ManagedKubernetesWorkerNodeArgs struct {
 	// ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -1032,7 +1130,7 @@ func (o ManagedKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is the only in one Alicloud account.
+// The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o ManagedKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2517,18 +2615,20 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationServiceArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeOutput{})
 	pulumi.RegisterOutputType(ClusterNodeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesAddonOutput{})
+	pulumi.RegisterOutputType(KubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolOutput{})
 	pulumi.RegisterOutputType(KubernetesAutoscalerNodepoolArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
-	pulumi.RegisterOutputType(KubernetesLogConfigOutput{})
-	pulumi.RegisterOutputType(KubernetesLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesWorkerNodeArrayOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesLogConfigOutput{})
-	pulumi.RegisterOutputType(ManagedKubernetesLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAddonOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesAddonArrayOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})

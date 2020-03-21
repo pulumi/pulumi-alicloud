@@ -12,3 +12,4 @@ export * from "./getAccounts";
 export * from "./getClusters";
 export * from "./getDatabases";
 export * from "./getEndpoints";
+export * from "./getZones";

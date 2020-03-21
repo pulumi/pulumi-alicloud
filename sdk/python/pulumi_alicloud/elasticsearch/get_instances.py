@@ -13,7 +13,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, instances=None, output_file=None, version=None):
+    def __init__(__self__, description_regex=None, descriptions=None, id=None, ids=None, instances=None, output_file=None, tags=None, version=None):
         if description_regex and not isinstance(description_regex, str):
             raise TypeError("Expected argument 'description_regex' to be a str")
         __self__.description_regex = description_regex
@@ -35,6 +35,9 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        __self__.tags = tags
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         __self__.version = version
@@ -50,9 +53,10 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             ids=self.ids,
             instances=self.instances,
             output_file=self.output_file,
+            tags=self.tags,
             version=self.version)
 
-def get_instances(description_regex=None,ids=None,output_file=None,version=None,opts=None):
+def get_instances(description_regex=None,ids=None,output_file=None,tags=None,version=None,opts=None):
     """
     Use this data source to access information about an existing resource.
     """
@@ -62,6 +66,7 @@ def get_instances(description_regex=None,ids=None,output_file=None,version=None,
     __args__['descriptionRegex'] = description_regex
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
+    __args__['tags'] = tags
     __args__['version'] = version
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -76,4 +81,5 @@ def get_instances(description_regex=None,ids=None,output_file=None,version=None,
         ids=__ret__.get('ids'),
         instances=__ret__.get('instances'),
         output_file=__ret__.get('outputFile'),
+        tags=__ret__.get('tags'),
         version=__ret__.get('version'))

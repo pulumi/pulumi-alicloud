@@ -60,6 +60,10 @@ type Instance struct {
 	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource. 
+	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VSwitch.
@@ -153,6 +157,10 @@ type instanceState struct {
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource. 
+	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
 	Version *string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -201,6 +209,10 @@ type InstanceState struct {
 	PublicWhitelists pulumi.StringArrayInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource. 
+	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
 	Version pulumi.StringPtrInput
 	// The ID of VSwitch.
@@ -243,6 +255,10 @@ type instanceArgs struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	PublicWhitelists []string `pulumi:"publicWhitelists"`
+	// A mapping of tags to assign to the resource. 
+	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
 	Version string `pulumi:"version"`
 	// The ID of VSwitch.
@@ -282,6 +298,10 @@ type InstanceArgs struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
 	PublicWhitelists pulumi.StringArrayInput
+	// A mapping of tags to assign to the resource. 
+	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+	Tags pulumi.MapInput
 	// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
 	Version pulumi.StringInput
 	// The ID of VSwitch.

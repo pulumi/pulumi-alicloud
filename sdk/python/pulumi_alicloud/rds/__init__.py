@@ -11,6 +11,7 @@ from .database import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_zones import *
 from .instance import *
 from .read_only_instance import *
 from .read_write_splitting_connection import *

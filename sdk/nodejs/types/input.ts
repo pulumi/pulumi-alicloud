@@ -18,6 +18,7 @@ export interface ProviderEndpoint {
     apigateway?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
+    cbn?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cen?: pulumi.Input<string>;
     cms?: pulumi.Input<string>;
@@ -407,6 +408,14 @@ export namespace cs {
         status?: pulumi.Input<string>;
     }
 
+    export interface KubernetesAddon {
+        config?: pulumi.Input<string>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+    }
+
     export interface KubernetesAutoscalerNodepool {
         id?: pulumi.Input<string>;
         labels?: pulumi.Input<string>;
@@ -432,24 +441,13 @@ export namespace cs {
         serviceDomain?: pulumi.Input<string>;
     }
 
-    export interface KubernetesLogConfig {
-        /**
-         * Log Service project name, cluster logs will output to this project.
-         */
-        project?: pulumi.Input<string>;
-        /**
-         * Type of collecting logs, only `SLS` are supported currently.
-         */
-        type: pulumi.Input<string>;
-    }
-
     export interface KubernetesMasterNode {
         /**
          * ID of the node.
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
         /**
@@ -464,7 +462,7 @@ export namespace cs {
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
         /**
@@ -473,15 +471,32 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
-    export interface ManagedKubernetesLogConfig {
+    export interface ManagedKubernetesAddon {
+        config?: pulumi.Input<string>;
+        disabled?: pulumi.Input<string>;
         /**
-         * Log Service project name, cluster logs will output to this project.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
-        project?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
+    }
+
+    export interface ManagedKubernetesConnections {
         /**
-         * Type of collecting logs, only `SLS` are supported currently.
+         * API Server Internet endpoint.
          */
-        type: pulumi.Input<string>;
+        apiServerInternet?: pulumi.Input<string>;
+        /**
+         * API Server Intranet endpoint.
+         */
+        apiServerIntranet?: pulumi.Input<string>;
+        /**
+         * Master node SSH IP address.
+         */
+        masterPublicIp?: pulumi.Input<string>;
+        /**
+         * Service Access Domain.
+         */
+        serviceDomain?: pulumi.Input<string>;
     }
 
     export interface ManagedKubernetesWorkerNode {
@@ -490,7 +505,7 @@ export namespace cs {
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
         /**
@@ -576,6 +591,10 @@ export namespace ecs {
     }
 
     export interface InstanceDataDisk {
+        /**
+         * The ID of the automatic snapshot policy applied to the system disk.
+         */
+        autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
          * The category of the disk:
          * - `cloud`: The general cloud disk.

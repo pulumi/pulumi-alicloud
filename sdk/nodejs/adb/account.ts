@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * const cluster = new alicloud.adb.Cluster("cluster", {
  *     dbClusterCategory: "Cluster",
- *     dbClusterNetworkType: "VPC",
  *     dbClusterVersion: "3.0",
  *     dbNodeClass: "C8",
  *     dbNodeCount: 2,
