@@ -18,6 +18,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
+        "tags": args.tags,
         "version": args.version,
     }, opts);
 
@@ -31,6 +32,7 @@ export interface GetInstancesArgs {
     readonly descriptionRegex?: string;
     readonly ids?: string[];
     readonly outputFile?: string;
+    readonly tags?: {[key: string]: any};
     readonly version?: string;
 }
 
@@ -43,6 +45,7 @@ export interface GetInstancesResult {
     readonly ids: string[];
     readonly instances: outputs.elasticsearch.GetInstancesInstance[];
     readonly outputFile?: string;
+    readonly tags?: {[key: string]: any};
     readonly version?: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

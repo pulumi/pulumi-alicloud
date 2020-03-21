@@ -143,6 +143,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    public readonly forceRestart!: pulumi.Output<boolean | undefined>;
+    /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
@@ -244,6 +248,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             inputs["engine"] = state ? state.engine : undefined;
             inputs["engineVersion"] = state ? state.engineVersion : undefined;
+            inputs["forceRestart"] = state ? state.forceRestart : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceStorage"] = state ? state.instanceStorage : undefined;
@@ -282,6 +287,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             inputs["engine"] = args ? args.engine : undefined;
             inputs["engineVersion"] = args ? args.engineVersion : undefined;
+            inputs["forceRestart"] = args ? args.forceRestart : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceStorage"] = args ? args.instanceStorage : undefined;
@@ -352,6 +358,10 @@ export interface InstanceState {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion?: pulumi.Input<string>;
+    /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    readonly forceRestart?: pulumi.Input<boolean>;
     /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */
@@ -473,6 +483,10 @@ export interface InstanceArgs {
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
     readonly engineVersion: pulumi.Input<string>;
+    /**
+     * Set it to true to make some parameter efficient when modifying them. Default to false.
+     */
+    readonly forceRestart?: pulumi.Input<boolean>;
     /**
      * Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
      */

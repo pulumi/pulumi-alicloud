@@ -11,6 +11,9 @@ namespace Pulumi.AliCloud.CS
 {
     public partial class Kubernetes : Pulumi.CustomResource
     {
+        [Output("addons")]
+        public Output<ImmutableArray<Outputs.KubernetesAddons>> Addons { get; private set; } = null!;
+
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
@@ -36,52 +39,43 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
         /// <summary>
-        /// The network that cluster uses, use `flannel` or `terway`.
-        /// </summary>
-        [Output("clusterNetworkType")]
-        public Output<string?> ClusterNetworkType { get; private set; } = null!;
-
-        /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.KubernetesConnections> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow to SSH login kubernetes. Default to false.
+        /// kubelet cpu policy. options: static|none. default: none.
+        /// </summary>
+        [Output("cpuPolicy")]
+        public Output<string?> CpuPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable login to the node through SSH. default: false 
         /// </summary>
         [Output("enableSsh")]
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to force the update of kubernetes cluster arguments. Default to false.
+        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
-        [Output("forceUpdate")]
-        public Output<bool?> ForceUpdate { get; private set; } = null!;
-
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to install cloud monitor for the kubernetes' node.
+        /// Install cloud monitor agent on ECS. default: true 
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
-        /// </summary>
-        [Output("isOutdated")]
-        public Output<bool?> IsOutdated { get; private set; } = null!;
-
-        /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Output("keyName")]
         public Output<string?> KeyName { get; private set; } = null!;
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `key_name`.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Output("kmsEncryptedPassword")]
         public Output<string?> KmsEncryptedPassword { get; private set; } = null!;
@@ -97,12 +91,6 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("kubeConfig")]
         public Output<string?> KubeConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        [Output("logConfig")]
-        public Output<Outputs.KubernetesLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// Enable master payment auto-renew, defaults to false.
@@ -135,11 +123,8 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> MasterInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// (Required, Force new resource) The instance type of master node.
+        /// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         /// </summary>
-        [Output("masterInstanceType")]
-        public Output<string?> MasterInstanceType { get; private set; } = null!;
-
         [Output("masterInstanceTypes")]
         public Output<ImmutableArray<string>> MasterInstanceTypes { get; private set; } = null!;
 
@@ -161,8 +146,11 @@ namespace Pulumi.AliCloud.CS
         [Output("masterPeriodUnit")]
         public Output<string?> MasterPeriodUnit { get; private set; } = null!;
 
+        [Output("masterVswitchIds")]
+        public Output<ImmutableArray<string>> MasterVswitchIds { get; private set; } = null!;
+
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -177,20 +165,16 @@ namespace Pulumi.AliCloud.CS
         public Output<string> NatGatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The network mask used on pods for each node, ranging from `24` to `28`.
-        /// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         /// </summary>
         [Output("nodeCidrMask")]
         public Output<int?> NodeCidrMask { get; private set; } = null!;
-
-        [Output("nodes")]
-        public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -199,12 +183,22 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         /// </summary>
         [Output("podCidr")]
         public Output<string?> PodCidr { get; private set; } = null!;
+
+        /// <summary>
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// </summary>
+        [Output("podVswitchIds")]
+        public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// </summary>
+        [Output("proxyMode")]
+        public Output<string?> ProxyMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of security group where the current cluster worker node is located.
@@ -213,8 +207,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block for the service network. 
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         /// </summary>
         [Output("serviceCidr")]
         public Output<string?> ServiceCidr { get; private set; } = null!;
@@ -247,25 +240,13 @@ namespace Pulumi.AliCloud.CS
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         /// </summary>
         [Output("version")]
-        public Output<string> Version { get; private set; } = null!;
+        public Output<string?> Version { get; private set; } = null!;
 
         /// <summary>
         /// The ID of VPC where the current cluster is located.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
-
-        /// <summary>
-        /// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Output("vswitchIds")]
-        public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
 
         /// <summary>
         /// Enable worker payment auto-renew, defaults to false.
@@ -279,15 +260,9 @@ namespace Pulumi.AliCloud.CS
         [Output("workerAutoRenewPeriod")]
         public Output<int?> WorkerAutoRenewPeriod { get; private set; } = null!;
 
-        /// <summary>
-        /// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
-        /// </summary>
         [Output("workerDataDiskCategory")]
         public Output<string?> WorkerDataDiskCategory { get; private set; } = null!;
 
-        /// <summary>
-        /// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
-        /// </summary>
         [Output("workerDataDiskSize")]
         public Output<int?> WorkerDataDiskSize { get; private set; } = null!;
 
@@ -310,11 +285,8 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerInstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// (Required, Force new resource) The instance type of worker node.
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         /// </summary>
-        [Output("workerInstanceType")]
-        public Output<string?> WorkerInstanceType { get; private set; } = null!;
-
         [Output("workerInstanceTypes")]
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
 
@@ -328,10 +300,7 @@ namespace Pulumi.AliCloud.CS
         /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         /// </summary>
         [Output("workerNumber")]
-        public Output<int?> WorkerNumber { get; private set; } = null!;
-
-        [Output("workerNumbers")]
-        public Output<ImmutableArray<int>> WorkerNumbers { get; private set; } = null!;
+        public Output<int> WorkerNumber { get; private set; } = null!;
 
         /// <summary>
         /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
@@ -344,6 +313,9 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("workerPeriodUnit")]
         public Output<string?> WorkerPeriodUnit { get; private set; } = null!;
+
+        [Output("workerVswitchIds")]
+        public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -391,6 +363,14 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class KubernetesArgs : Pulumi.ResourceArgs
     {
+        [Input("addons")]
+        private InputList<Inputs.KubernetesAddonsArgs>? _addons;
+        public InputList<Inputs.KubernetesAddonsArgs> Addons
+        {
+            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonsArgs>());
+            set => _addons = value;
+        }
+
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
@@ -416,46 +396,37 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// The network that cluster uses, use `flannel` or `terway`.
+        /// kubelet cpu policy. options: static|none. default: none.
         /// </summary>
-        [Input("clusterNetworkType")]
-        public Input<string>? ClusterNetworkType { get; set; }
+        [Input("cpuPolicy")]
+        public Input<string>? CpuPolicy { get; set; }
 
         /// <summary>
-        /// Whether to allow to SSH login kubernetes. Default to false.
+        /// Enable login to the node through SSH. default: false 
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Whether to force the update of kubernetes cluster arguments. Default to false.
+        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
-        [Input("forceUpdate")]
-        public Input<bool>? ForceUpdate { get; set; }
-
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Whether to install cloud monitor for the kubernetes' node.
+        /// Install cloud monitor agent on ECS. default: true 
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
-        /// </summary>
-        [Input("isOutdated")]
-        public Input<bool>? IsOutdated { get; set; }
-
-        /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `key_name`.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -477,12 +448,6 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
-
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        [Input("logConfig")]
-        public Input<Inputs.KubernetesLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
         /// Enable master payment auto-renew, defaults to false.
@@ -514,14 +479,12 @@ namespace Pulumi.AliCloud.CS
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
 
-        /// <summary>
-        /// (Required, Force new resource) The instance type of master node.
-        /// </summary>
-        [Input("masterInstanceType")]
-        public Input<string>? MasterInstanceType { get; set; }
-
         [Input("masterInstanceTypes", required: true)]
         private InputList<string>? _masterInstanceTypes;
+
+        /// <summary>
+        /// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// </summary>
         public InputList<string> MasterInstanceTypes
         {
             get => _masterInstanceTypes ?? (_masterInstanceTypes = new InputList<string>());
@@ -540,8 +503,16 @@ namespace Pulumi.AliCloud.CS
         [Input("masterPeriodUnit")]
         public Input<string>? MasterPeriodUnit { get; set; }
 
+        [Input("masterVswitchIds", required: true)]
+        private InputList<string>? _masterVswitchIds;
+        public InputList<string> MasterVswitchIds
+        {
+            get => _masterVswitchIds ?? (_masterVswitchIds = new InputList<string>());
+            set => _masterVswitchIds = value;
+        }
+
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -550,26 +521,16 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// The network mask used on pods for each node, ranging from `24` to `28`.
-        /// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         /// </summary>
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
-
-        [Input("nodes")]
-        private InputList<string>? _nodes;
-        [Obsolete(@"Field 'nodes' has been deprecated from provider version 1.9.4. New field 'master_nodes' replaces it.")]
-        public InputList<string> Nodes
-        {
-            get => _nodes ?? (_nodes = new InputList<string>());
-            set => _nodes = value;
-        }
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -578,16 +539,31 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
+        [Input("podVswitchIds")]
+        private InputList<string>? _podVswitchIds;
+
         /// <summary>
-        /// The CIDR block for the service network. 
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// </summary>
+        public InputList<string> PodVswitchIds
+        {
+            get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
+            set => _podVswitchIds = value;
+        }
+
+        /// <summary>
+        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// </summary>
+        [Input("proxyMode")]
+        public Input<string>? ProxyMode { get; set; }
+
+        /// <summary>
+        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
@@ -611,24 +587,6 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
-
-        [Input("vswitchIds")]
-        private InputList<string>? _vswitchIds;
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        public InputList<string> VswitchIds
-        {
-            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
-            set => _vswitchIds = value;
-        }
-
-        /// <summary>
         /// Enable worker payment auto-renew, defaults to false.
         /// </summary>
         [Input("workerAutoRenew")]
@@ -640,15 +598,9 @@ namespace Pulumi.AliCloud.CS
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
-        /// <summary>
-        /// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
-        /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
 
-        /// <summary>
-        /// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
-        /// </summary>
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
 
@@ -670,14 +622,12 @@ namespace Pulumi.AliCloud.CS
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
 
-        /// <summary>
-        /// (Required, Force new resource) The instance type of worker node.
-        /// </summary>
-        [Input("workerInstanceType")]
-        public Input<string>? WorkerInstanceType { get; set; }
-
         [Input("workerInstanceTypes", required: true)]
         private InputList<string>? _workerInstanceTypes;
+
+        /// <summary>
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
             get => _workerInstanceTypes ?? (_workerInstanceTypes = new InputList<string>());
@@ -687,16 +637,8 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         /// </summary>
-        [Input("workerNumber")]
-        public Input<int>? WorkerNumber { get; set; }
-
-        [Input("workerNumbers", required: true)]
-        private InputList<int>? _workerNumbers;
-        public InputList<int> WorkerNumbers
-        {
-            get => _workerNumbers ?? (_workerNumbers = new InputList<int>());
-            set => _workerNumbers = value;
-        }
+        [Input("workerNumber", required: true)]
+        public Input<int> WorkerNumber { get; set; } = null!;
 
         /// <summary>
         /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
@@ -710,6 +652,14 @@ namespace Pulumi.AliCloud.CS
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
 
+        [Input("workerVswitchIds", required: true)]
+        private InputList<string>? _workerVswitchIds;
+        public InputList<string> WorkerVswitchIds
+        {
+            get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
+            set => _workerVswitchIds = value;
+        }
+
         public KubernetesArgs()
         {
         }
@@ -717,6 +667,14 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class KubernetesState : Pulumi.ResourceArgs
     {
+        [Input("addons")]
+        private InputList<Inputs.KubernetesAddonsGetArgs>? _addons;
+        public InputList<Inputs.KubernetesAddonsGetArgs> Addons
+        {
+            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonsGetArgs>());
+            set => _addons = value;
+        }
+
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
@@ -742,52 +700,43 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// The network that cluster uses, use `flannel` or `terway`.
-        /// </summary>
-        [Input("clusterNetworkType")]
-        public Input<string>? ClusterNetworkType { get; set; }
-
-        /// <summary>
         /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.KubernetesConnectionsGetArgs>? Connections { get; set; }
 
         /// <summary>
-        /// Whether to allow to SSH login kubernetes. Default to false.
+        /// kubelet cpu policy. options: static|none. default: none.
+        /// </summary>
+        [Input("cpuPolicy")]
+        public Input<string>? CpuPolicy { get; set; }
+
+        /// <summary>
+        /// Enable login to the node through SSH. default: false 
         /// </summary>
         [Input("enableSsh")]
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
-        /// Whether to force the update of kubernetes cluster arguments. Default to false.
+        /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
-        [Input("forceUpdate")]
-        public Input<bool>? ForceUpdate { get; set; }
-
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Whether to install cloud monitor for the kubernetes' node.
+        /// Install cloud monitor agent on ECS. default: true 
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
-        /// </summary>
-        [Input("isOutdated")]
-        public Input<bool>? IsOutdated { get; set; }
-
-        /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first.
+        /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
         /// <summary>
-        /// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `key_name`.
+        /// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("kmsEncryptedPassword")]
         public Input<string>? KmsEncryptedPassword { get; set; }
@@ -809,12 +758,6 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("kubeConfig")]
         public Input<string>? KubeConfig { get; set; }
-
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        [Input("logConfig")]
-        public Input<Inputs.KubernetesLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
         /// Enable master payment auto-renew, defaults to false.
@@ -846,14 +789,12 @@ namespace Pulumi.AliCloud.CS
         [Input("masterInstanceChargeType")]
         public Input<string>? MasterInstanceChargeType { get; set; }
 
-        /// <summary>
-        /// (Required, Force new resource) The instance type of master node.
-        /// </summary>
-        [Input("masterInstanceType")]
-        public Input<string>? MasterInstanceType { get; set; }
-
         [Input("masterInstanceTypes")]
         private InputList<string>? _masterInstanceTypes;
+
+        /// <summary>
+        /// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// </summary>
         public InputList<string> MasterInstanceTypes
         {
             get => _masterInstanceTypes ?? (_masterInstanceTypes = new InputList<string>());
@@ -884,8 +825,16 @@ namespace Pulumi.AliCloud.CS
         [Input("masterPeriodUnit")]
         public Input<string>? MasterPeriodUnit { get; set; }
 
+        [Input("masterVswitchIds")]
+        private InputList<string>? _masterVswitchIds;
+        public InputList<string> MasterVswitchIds
+        {
+            get => _masterVswitchIds ?? (_masterVswitchIds = new InputList<string>());
+            set => _masterVswitchIds = value;
+        }
+
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -900,26 +849,16 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? NatGatewayId { get; set; }
 
         /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// The network mask used on pods for each node, ranging from `24` to `28`.
-        /// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         /// </summary>
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
-
-        [Input("nodes")]
-        private InputList<string>? _nodes;
-        [Obsolete(@"Field 'nodes' has been deprecated from provider version 1.9.4. New field 'master_nodes' replaces it.")]
-        public InputList<string> Nodes
-        {
-            get => _nodes ?? (_nodes = new InputList<string>());
-            set => _nodes = value;
-        }
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -928,12 +867,28 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The CIDR block for the pod network. It will be allocated automatically when `vswitch_ids` is not specified.
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+        /// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
+
+        [Input("podVswitchIds")]
+        private InputList<string>? _podVswitchIds;
+
+        /// <summary>
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// </summary>
+        public InputList<string> PodVswitchIds
+        {
+            get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
+            set => _podVswitchIds = value;
+        }
+
+        /// <summary>
+        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        /// </summary>
+        [Input("proxyMode")]
+        public Input<string>? ProxyMode { get; set; }
 
         /// <summary>
         /// The ID of security group where the current cluster worker node is located.
@@ -942,8 +897,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The CIDR block for the service network. 
-        /// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
@@ -985,24 +939,6 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
-
-        [Input("vswitchIds")]
-        private InputList<string>? _vswitchIds;
-
-        /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availability_zone` specified.
-        /// </summary>
-        public InputList<string> VswitchIds
-        {
-            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
-            set => _vswitchIds = value;
-        }
-
-        /// <summary>
         /// Enable worker payment auto-renew, defaults to false.
         /// </summary>
         [Input("workerAutoRenew")]
@@ -1014,15 +950,9 @@ namespace Pulumi.AliCloud.CS
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
-        /// <summary>
-        /// The data disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`, if not set, data disk will not be created.
-        /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
 
-        /// <summary>
-        /// The data disk size of worker node. Its valid value range [20~32768] in GB. When `worker_data_disk_category` is presented, it defaults to 40.
-        /// </summary>
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
 
@@ -1044,14 +974,12 @@ namespace Pulumi.AliCloud.CS
         [Input("workerInstanceChargeType")]
         public Input<string>? WorkerInstanceChargeType { get; set; }
 
-        /// <summary>
-        /// (Required, Force new resource) The instance type of worker node.
-        /// </summary>
-        [Input("workerInstanceType")]
-        public Input<string>? WorkerInstanceType { get; set; }
-
         [Input("workerInstanceTypes")]
         private InputList<string>? _workerInstanceTypes;
+
+        /// <summary>
+        /// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
+        /// </summary>
         public InputList<string> WorkerInstanceTypes
         {
             get => _workerInstanceTypes ?? (_workerInstanceTypes = new InputList<string>());
@@ -1076,14 +1004,6 @@ namespace Pulumi.AliCloud.CS
         [Input("workerNumber")]
         public Input<int>? WorkerNumber { get; set; }
 
-        [Input("workerNumbers")]
-        private InputList<int>? _workerNumbers;
-        public InputList<int> WorkerNumbers
-        {
-            get => _workerNumbers ?? (_workerNumbers = new InputList<int>());
-            set => _workerNumbers = value;
-        }
-
         /// <summary>
         /// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         /// </summary>
@@ -1096,6 +1016,14 @@ namespace Pulumi.AliCloud.CS
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
 
+        [Input("workerVswitchIds")]
+        private InputList<string>? _workerVswitchIds;
+        public InputList<string> WorkerVswitchIds
+        {
+            get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
+            set => _workerVswitchIds = value;
+        }
+
         public KubernetesState()
         {
         }
@@ -1103,6 +1031,38 @@ namespace Pulumi.AliCloud.CS
 
     namespace Inputs
     {
+
+    public sealed class KubernetesAddonsArgs : Pulumi.ResourceArgs
+    {
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
+        /// <summary>
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public KubernetesAddonsArgs()
+        {
+        }
+    }
+
+    public sealed class KubernetesAddonsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("config")]
+        public Input<string>? Config { get; set; }
+
+        /// <summary>
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public KubernetesAddonsGetArgs()
+        {
+        }
+    }
 
     public sealed class KubernetesConnectionsGetArgs : Pulumi.ResourceArgs
     {
@@ -1135,44 +1095,6 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
-    public sealed class KubernetesLogConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Log Service project name, cluster logs will output to this project.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Type of collecting logs, only `SLS` are supported currently.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public KubernetesLogConfigArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesLogConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Log Service project name, cluster logs will output to this project.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Type of collecting logs, only `SLS` are supported currently.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public KubernetesLogConfigGetArgs()
-        {
-        }
-    }
-
     public sealed class KubernetesMasterNodesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
@@ -1182,7 +1104,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1207,7 +1129,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1226,6 +1148,25 @@ namespace Pulumi.AliCloud.CS
 
     namespace Outputs
     {
+
+    [OutputType]
+    public sealed class KubernetesAddons
+    {
+        public readonly string? Config;
+        /// <summary>
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private KubernetesAddons(
+            string? config,
+            string? name)
+        {
+            Config = config;
+            Name = name;
+        }
+    }
 
     [OutputType]
     public sealed class KubernetesConnections
@@ -1262,28 +1203,6 @@ namespace Pulumi.AliCloud.CS
     }
 
     [OutputType]
-    public sealed class KubernetesLogConfig
-    {
-        /// <summary>
-        /// Log Service project name, cluster logs will output to this project.
-        /// </summary>
-        public readonly string? Project;
-        /// <summary>
-        /// Type of collecting logs, only `SLS` are supported currently.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private KubernetesLogConfig(
-            string? project,
-            string type)
-        {
-            Project = project;
-            Type = type;
-        }
-    }
-
-    [OutputType]
     public sealed class KubernetesMasterNodes
     {
         /// <summary>
@@ -1291,7 +1210,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -1319,7 +1238,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The kubernetes cluster's name. It is the only in one Alicloud account.
+        /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -85,6 +85,12 @@ class Instance(pulumi.CustomResource):
     """
     The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
     """
+    tags: pulumi.Output[dict]
+    """
+    A mapping of tags to assign to the resource. 
+    - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+    - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+    """
     version: pulumi.Output[str]
     """
     Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
@@ -97,7 +103,7 @@ class Instance(pulumi.CustomResource):
     """
     The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
     """
-    def __init__(__self__, resource_name, opts=None, data_node_amount=None, data_node_disk_size=None, data_node_disk_type=None, data_node_spec=None, description=None, instance_charge_type=None, kibana_whitelists=None, kms_encrypted_password=None, kms_encryption_context=None, master_node_spec=None, password=None, period=None, private_whitelists=None, public_whitelists=None, version=None, vswitch_id=None, zone_count=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, data_node_amount=None, data_node_disk_size=None, data_node_disk_type=None, data_node_spec=None, description=None, instance_charge_type=None, kibana_whitelists=None, kms_encrypted_password=None, kms_encryption_context=None, master_node_spec=None, password=None, period=None, private_whitelists=None, public_whitelists=None, tags=None, version=None, vswitch_id=None, zone_count=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
 
@@ -124,6 +130,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[float] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[list] private_whitelists: Set the instance's IP whitelist in VPC network.
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. 
+               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[float] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -167,6 +176,7 @@ class Instance(pulumi.CustomResource):
             __props__['period'] = period
             __props__['private_whitelists'] = private_whitelists
             __props__['public_whitelists'] = public_whitelists
+            __props__['tags'] = tags
             if version is None:
                 raise TypeError("Missing required property 'version'")
             __props__['version'] = version
@@ -186,7 +196,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, data_node_amount=None, data_node_disk_size=None, data_node_disk_type=None, data_node_spec=None, description=None, domain=None, instance_charge_type=None, kibana_domain=None, kibana_port=None, kibana_whitelists=None, kms_encrypted_password=None, kms_encryption_context=None, master_node_spec=None, password=None, period=None, port=None, private_whitelists=None, public_whitelists=None, status=None, version=None, vswitch_id=None, zone_count=None):
+    def get(resource_name, id, opts=None, data_node_amount=None, data_node_disk_size=None, data_node_disk_type=None, data_node_spec=None, description=None, domain=None, instance_charge_type=None, kibana_domain=None, kibana_port=None, kibana_whitelists=None, kms_encrypted_password=None, kms_encryption_context=None, master_node_spec=None, password=None, period=None, port=None, private_whitelists=None, public_whitelists=None, status=None, tags=None, version=None, vswitch_id=None, zone_count=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -214,6 +224,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] port: Instance connection port.
         :param pulumi.Input[list] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource. 
+               - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+               - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
         :param pulumi.Input[str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         :param pulumi.Input[str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[float] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
@@ -241,6 +254,7 @@ class Instance(pulumi.CustomResource):
         __props__["private_whitelists"] = private_whitelists
         __props__["public_whitelists"] = public_whitelists
         __props__["status"] = status
+        __props__["tags"] = tags
         __props__["version"] = version
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_count"] = zone_count

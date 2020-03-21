@@ -250,6 +250,8 @@ func (o ImageImportDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageI
 }
 
 type InstanceDataDisk struct {
+	// The ID of the automatic snapshot policy applied to the system disk.
+	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// The category of the disk:
 	// - `cloud`: The general cloud disk.
 	// - `cloudEfficiency`: The efficiency cloud disk.
@@ -285,6 +287,8 @@ type InstanceDataDiskInput interface {
 }
 
 type InstanceDataDiskArgs struct {
+	// The ID of the automatic snapshot policy applied to the system disk.
+	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// The category of the disk:
 	// - `cloud`: The general cloud disk.
 	// - `cloudEfficiency`: The efficiency cloud disk.
@@ -357,6 +361,11 @@ func (o InstanceDataDiskOutput) ToInstanceDataDiskOutput() InstanceDataDiskOutpu
 
 func (o InstanceDataDiskOutput) ToInstanceDataDiskOutputWithContext(ctx context.Context) InstanceDataDiskOutput {
 	return o
+}
+
+// The ID of the automatic snapshot policy applied to the system disk.
+func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v InstanceDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // The category of the disk:

@@ -18,6 +18,7 @@ export * from "./getMasterSlaveServerGroups";
 export * from "./getRules";
 export * from "./getServerCertificates";
 export * from "./getServerGroups";
+export * from "./getZones";
 export * from "./listener";
 export * from "./loadBalancer";
 export * from "./masterSlaveServerGroup";

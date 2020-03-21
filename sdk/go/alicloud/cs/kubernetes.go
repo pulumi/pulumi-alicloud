@@ -14,6 +14,7 @@ import (
 type Kubernetes struct {
 	pulumi.CustomResourceState
 
+	Addons KubernetesAddonArrayOutput `pulumi:"addons"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -22,29 +23,24 @@ type Kubernetes struct {
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
-	// The network that cluster uses, use `flannel` or `terway`.
-	ClusterNetworkType pulumi.StringPtrOutput `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections KubernetesConnectionsOutput `pulumi:"connections"`
-	// Whether to allow to SSH login kubernetes. Default to false.
+	// kubelet cpu policy. options: static|none. default: none.
+	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
+	// Enable login to the node through SSH. default: false 
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
-	// Whether to force the update of kubernetes cluster arguments. Default to false.
-	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// Whether to install cloud monitor for the kubernetes' node.
+	// Install cloud monitor agent on ECS. default: true 
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
-	// The keypair of ssh login cluster node, you have to create it first.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
-	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfig KubernetesLogConfigPtrOutput `pulumi:"logConfig"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrOutput `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
@@ -55,8 +51,7 @@ type Kubernetes struct {
 	MasterDiskSize pulumi.IntPtrOutput `pulumi:"masterDiskSize"`
 	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	MasterInstanceChargeType pulumi.StringPtrOutput `pulumi:"masterInstanceChargeType"`
-	// (Required, Force new resource) The instance type of master node.
-	MasterInstanceType pulumi.StringPtrOutput `pulumi:"masterInstanceType"`
+	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes pulumi.StringArrayOutput `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
 	MasterNodes KubernetesMasterNodeArrayOutput `pulumi:"masterNodes"`
@@ -64,27 +59,27 @@ type Kubernetes struct {
 	MasterPeriod pulumi.IntPtrOutput `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
 	MasterPeriodUnit pulumi.StringPtrOutput `pulumi:"masterPeriodUnit"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	MasterVswitchIds pulumi.StringArrayOutput `pulumi:"masterVswitchIds"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringOutput `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
-	// The network mask used on pods for each node, ranging from `24` to `28`.
-	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
-	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
+	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
+	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The CIDR block for the service network. 
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
@@ -95,20 +90,14 @@ type Kubernetes struct {
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-	Version pulumi.StringOutput `pulumi:"version"`
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrOutput `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
 	WorkerAutoRenewPeriod pulumi.IntPtrOutput `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize pulumi.IntPtrOutput `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
@@ -116,18 +105,17 @@ type Kubernetes struct {
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
-	// (Required, Force new resource) The instance type of worker node.
-	WorkerInstanceType pulumi.StringPtrOutput `pulumi:"workerInstanceType"`
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes KubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber pulumi.IntPtrOutput `pulumi:"workerNumber"`
-	WorkerNumbers pulumi.IntArrayOutput `pulumi:"workerNumbers"`
+	WorkerNumber pulumi.IntOutput `pulumi:"workerNumber"`
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit pulumi.StringPtrOutput `pulumi:"workerPeriodUnit"`
+	WorkerVswitchIds pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
 }
 
 // NewKubernetes registers a new resource with the given unique name, arguments, and options.
@@ -136,11 +124,17 @@ func NewKubernetes(ctx *pulumi.Context,
 	if args == nil || args.MasterInstanceTypes == nil {
 		return nil, errors.New("missing required argument 'MasterInstanceTypes'")
 	}
+	if args == nil || args.MasterVswitchIds == nil {
+		return nil, errors.New("missing required argument 'MasterVswitchIds'")
+	}
 	if args == nil || args.WorkerInstanceTypes == nil {
 		return nil, errors.New("missing required argument 'WorkerInstanceTypes'")
 	}
-	if args == nil || args.WorkerNumbers == nil {
-		return nil, errors.New("missing required argument 'WorkerNumbers'")
+	if args == nil || args.WorkerNumber == nil {
+		return nil, errors.New("missing required argument 'WorkerNumber'")
+	}
+	if args == nil || args.WorkerVswitchIds == nil {
+		return nil, errors.New("missing required argument 'WorkerVswitchIds'")
 	}
 	if args == nil {
 		args = &KubernetesArgs{}
@@ -167,6 +161,7 @@ func GetKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Kubernetes resources.
 type kubernetesState struct {
+	Addons []KubernetesAddon `pulumi:"addons"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -175,29 +170,24 @@ type kubernetesState struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
-	// The network that cluster uses, use `flannel` or `terway`.
-	ClusterNetworkType *string `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections *KubernetesConnections `pulumi:"connections"`
-	// Whether to allow to SSH login kubernetes. Default to false.
+	// kubelet cpu policy. options: static|none. default: none.
+	CpuPolicy *string `pulumi:"cpuPolicy"`
+	// Enable login to the node through SSH. default: false 
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Whether to force the update of kubernetes cluster arguments. Default to false.
-	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Whether to install cloud monitor for the kubernetes' node.
+	// Install cloud monitor agent on ECS. default: true 
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated *bool `pulumi:"isOutdated"`
-	// The keypair of ssh login cluster node, you have to create it first.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
-	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfig *KubernetesLogConfig `pulumi:"logConfig"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
@@ -208,8 +198,7 @@ type kubernetesState struct {
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
 	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
-	// (Required, Force new resource) The instance type of master node.
-	MasterInstanceType *string `pulumi:"masterInstanceType"`
+	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
 	MasterNodes []KubernetesMasterNode `pulumi:"masterNodes"`
@@ -217,27 +206,27 @@ type kubernetesState struct {
 	MasterPeriod *int `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
 	MasterPeriodUnit *string `pulumi:"masterPeriodUnit"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// The network mask used on pods for each node, ranging from `24` to `28`.
-	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	Nodes []string `pulumi:"nodes"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
 	PodCidr *string `pulumi:"podCidr"`
+	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+	PodVswitchIds []string `pulumi:"podVswitchIds"`
+	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The CIDR block for the service network. 
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	SlbId *string `pulumi:"slbId"`
 	SlbInternet *string `pulumi:"slbInternet"`
@@ -251,17 +240,11 @@ type kubernetesState struct {
 	Version *string `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId *string `pulumi:"vpcId"`
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId *string `pulumi:"vswitchId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-	VswitchIds []string `pulumi:"vswitchIds"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
 	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize *int `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
@@ -269,21 +252,21 @@ type kubernetesState struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// (Required, Force new resource) The instance type of worker node.
-	WorkerInstanceType *string `pulumi:"workerInstanceType"`
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes []KubernetesWorkerNode `pulumi:"workerNodes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber *int `pulumi:"workerNumber"`
-	WorkerNumbers []int `pulumi:"workerNumbers"`
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
+	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
 type KubernetesState struct {
+	Addons KubernetesAddonArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -292,29 +275,24 @@ type KubernetesState struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	// The network that cluster uses, use `flannel` or `terway`.
-	ClusterNetworkType pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections KubernetesConnectionsPtrInput
-	// Whether to allow to SSH login kubernetes. Default to false.
+	// kubelet cpu policy. options: static|none. default: none.
+	CpuPolicy pulumi.StringPtrInput
+	// Enable login to the node through SSH. default: false 
 	EnableSsh pulumi.BoolPtrInput
-	// Whether to force the update of kubernetes cluster arguments. Default to false.
-	ForceUpdate pulumi.BoolPtrInput
+	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Whether to install cloud monitor for the kubernetes' node.
+	// Install cloud monitor agent on ECS. default: true 
 	InstallCloudMonitor pulumi.BoolPtrInput
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrInput
-	// The keypair of ssh login cluster node, you have to create it first.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
-	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfig KubernetesLogConfigPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
 	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
@@ -325,8 +303,7 @@ type KubernetesState struct {
 	MasterDiskSize pulumi.IntPtrInput
 	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	MasterInstanceChargeType pulumi.StringPtrInput
-	// (Required, Force new resource) The instance type of master node.
-	MasterInstanceType pulumi.StringPtrInput
+	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes pulumi.StringArrayInput
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
 	MasterNodes KubernetesMasterNodeArrayInput
@@ -334,27 +311,27 @@ type KubernetesState struct {
 	MasterPeriod pulumi.IntPtrInput
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
 	MasterPeriodUnit pulumi.StringPtrInput
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	MasterVswitchIds pulumi.StringArrayInput
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrInput
-	// The network mask used on pods for each node, ranging from `24` to `28`.
-	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	Nodes pulumi.StringArrayInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
 	PodCidr pulumi.StringPtrInput
+	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+	PodVswitchIds pulumi.StringArrayInput
+	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	ProxyMode pulumi.StringPtrInput
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringPtrInput
-	// The CIDR block for the service network. 
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	SlbId pulumi.StringPtrInput
 	SlbInternet pulumi.StringPtrInput
@@ -368,17 +345,11 @@ type KubernetesState struct {
 	Version pulumi.StringPtrInput
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringPtrInput
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId pulumi.StringPtrInput
-	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-	VswitchIds pulumi.StringArrayInput
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
 	WorkerAutoRenewPeriod pulumi.IntPtrInput
-	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory pulumi.StringPtrInput
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
@@ -386,18 +357,17 @@ type KubernetesState struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// (Required, Force new resource) The instance type of worker node.
-	WorkerInstanceType pulumi.StringPtrInput
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes KubernetesWorkerNodeArrayInput
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
 	WorkerNumber pulumi.IntPtrInput
-	WorkerNumbers pulumi.IntArrayInput
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod pulumi.IntPtrInput
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit pulumi.StringPtrInput
+	WorkerVswitchIds pulumi.StringArrayInput
 }
 
 func (KubernetesState) ElementType() reflect.Type {
@@ -405,6 +375,7 @@ func (KubernetesState) ElementType() reflect.Type {
 }
 
 type kubernetesArgs struct {
+	Addons []KubernetesAddon `pulumi:"addons"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -413,27 +384,22 @@ type kubernetesArgs struct {
 	ClientKey *string `pulumi:"clientKey"`
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
-	// The network that cluster uses, use `flannel` or `terway`.
-	ClusterNetworkType *string `pulumi:"clusterNetworkType"`
-	// Whether to allow to SSH login kubernetes. Default to false.
+	// kubelet cpu policy. options: static|none. default: none.
+	CpuPolicy *string `pulumi:"cpuPolicy"`
+	// Enable login to the node through SSH. default: false 
 	EnableSsh *bool `pulumi:"enableSsh"`
-	// Whether to force the update of kubernetes cluster arguments. Default to false.
-	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Whether to install cloud monitor for the kubernetes' node.
+	// Install cloud monitor agent on ECS. default: true 
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated *bool `pulumi:"isOutdated"`
-	// The keypair of ssh login cluster node, you have to create it first.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
-	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfig *KubernetesLogConfig `pulumi:"logConfig"`
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew *bool `pulumi:"masterAutoRenew"`
 	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
@@ -444,30 +410,29 @@ type kubernetesArgs struct {
 	MasterDiskSize *int `pulumi:"masterDiskSize"`
 	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	MasterInstanceChargeType *string `pulumi:"masterInstanceChargeType"`
-	// (Required, Force new resource) The instance type of master node.
-	MasterInstanceType *string `pulumi:"masterInstanceType"`
+	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	MasterPeriod *int `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
 	MasterPeriodUnit *string `pulumi:"masterPeriodUnit"`
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// The network mask used on pods for each node, ranging from `24` to `28`.
-	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
-	Nodes []string `pulumi:"nodes"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
 	PodCidr *string `pulumi:"podCidr"`
-	// The CIDR block for the service network. 
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+	PodVswitchIds []string `pulumi:"podVswitchIds"`
+	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	ProxyMode *string `pulumi:"proxyMode"`
+	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -475,17 +440,11 @@ type kubernetesArgs struct {
 	UserCa *string `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId *string `pulumi:"vswitchId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-	VswitchIds []string `pulumi:"vswitchIds"`
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
 	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize *int `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
@@ -493,20 +452,20 @@ type kubernetesArgs struct {
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
-	// (Required, Force new resource) The instance type of worker node.
-	WorkerInstanceType *string `pulumi:"workerInstanceType"`
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber *int `pulumi:"workerNumber"`
-	WorkerNumbers []int `pulumi:"workerNumbers"`
+	WorkerNumber int `pulumi:"workerNumber"`
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
+	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
 // The set of arguments for constructing a Kubernetes resource.
 type KubernetesArgs struct {
+	Addons KubernetesAddonArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -515,27 +474,22 @@ type KubernetesArgs struct {
 	ClientKey pulumi.StringPtrInput
 	// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
 	ClusterCaCert pulumi.StringPtrInput
-	// The network that cluster uses, use `flannel` or `terway`.
-	ClusterNetworkType pulumi.StringPtrInput
-	// Whether to allow to SSH login kubernetes. Default to false.
+	// kubelet cpu policy. options: static|none. default: none.
+	CpuPolicy pulumi.StringPtrInput
+	// Enable login to the node through SSH. default: false 
 	EnableSsh pulumi.BoolPtrInput
-	// Whether to force the update of kubernetes cluster arguments. Default to false.
-	ForceUpdate pulumi.BoolPtrInput
+	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Whether to install cloud monitor for the kubernetes' node.
+	// Install cloud monitor agent on ECS. default: true 
 	InstallCloudMonitor pulumi.BoolPtrInput
-	// Whether to use outdated instance type. Default to false.
-	IsOutdated pulumi.BoolPtrInput
-	// The keypair of ssh login cluster node, you have to create it first.
+	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
-	// An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a cs kubernetes with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
-	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfig KubernetesLogConfigPtrInput
 	// Enable master payment auto-renew, defaults to false.
 	MasterAutoRenew pulumi.BoolPtrInput
 	// Master payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
@@ -546,30 +500,29 @@ type KubernetesArgs struct {
 	MasterDiskSize pulumi.IntPtrInput
 	// Master payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	MasterInstanceChargeType pulumi.StringPtrInput
-	// (Required, Force new resource) The instance type of master node.
-	MasterInstanceType pulumi.StringPtrInput
+	// The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	MasterInstanceTypes pulumi.StringArrayInput
 	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	MasterPeriod pulumi.IntPtrInput
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
 	MasterPeriodUnit pulumi.StringPtrInput
-	// The kubernetes cluster's name. It is the only in one Alicloud account.
+	MasterVswitchIds pulumi.StringArrayInput
+	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrInput
-	// The network mask used on pods for each node, ranging from `24` to `28`.
-	// Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
-	Nodes pulumi.StringArrayInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-	// Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
 	PodCidr pulumi.StringPtrInput
-	// The CIDR block for the service network. 
-	// It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+	PodVswitchIds pulumi.StringArrayInput
+	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	ProxyMode pulumi.StringPtrInput
+	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -577,17 +530,11 @@ type KubernetesArgs struct {
 	UserCa pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
-	// (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-	VswitchId pulumi.StringPtrInput
-	// The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-	VswitchIds pulumi.StringArrayInput
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
 	WorkerAutoRenewPeriod pulumi.IntPtrInput
-	// The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
 	WorkerDataDiskCategory pulumi.StringPtrInput
-	// The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
 	WorkerDataDiskSize pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
@@ -595,16 +542,15 @@ type KubernetesArgs struct {
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrInput
-	// (Required, Force new resource) The instance type of worker node.
-	WorkerInstanceType pulumi.StringPtrInput
+	// The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
 	WorkerInstanceTypes pulumi.StringArrayInput
 	// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-	WorkerNumber pulumi.IntPtrInput
-	WorkerNumbers pulumi.IntArrayInput
+	WorkerNumber pulumi.IntInput
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod pulumi.IntPtrInput
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit pulumi.StringPtrInput
+	WorkerVswitchIds pulumi.StringArrayInput
 }
 
 func (KubernetesArgs) ElementType() reflect.Type {

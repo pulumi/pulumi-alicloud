@@ -19,6 +19,7 @@ from .get_master_slave_server_groups import *
 from .get_rules import *
 from .get_server_certificates import *
 from .get_server_groups import *
+from .get_zones import *
 from .listener import *
 from .load_balancer import *
 from .master_slave_server_group import *

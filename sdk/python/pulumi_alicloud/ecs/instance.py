@@ -38,6 +38,7 @@ class Instance(pulumi.CustomResource):
     """
     The list of data disks created with instance.
 
+      * `autoSnapshotPolicyId` (`str`) - The ID of the automatic snapshot policy applied to the system disk.
       * `category` (`str`) - The category of the disk:
         - `cloud`: The general cloud disk.
         - `cloud_efficiency`: The efficiency cloud disk.
@@ -196,6 +197,10 @@ class Instance(pulumi.CustomResource):
     The instance status.
     """
     subnet_id: pulumi.Output[str]
+    system_disk_auto_snapshot_policy_id: pulumi.Output[str]
+    """
+    The ID of the automatic snapshot policy applied to the system disk.
+    """
     system_disk_category: pulumi.Output[str]
     """
     Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
@@ -224,7 +229,7 @@ class Instance(pulumi.CustomResource):
     """
     The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
     """
-    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_auto_snapshot_policy_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -283,6 +288,7 @@ class Instance(pulumi.CustomResource):
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+        :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -296,6 +302,7 @@ class Instance(pulumi.CustomResource):
 
         The **data_disks** object supports the following:
 
+          * `autoSnapshotPolicyId` (`pulumi.Input[str]`) - The ID of the automatic snapshot policy applied to the system disk.
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - `cloud`: The general cloud disk.
             - `cloud_efficiency`: The efficiency cloud disk.
@@ -375,6 +382,7 @@ class Instance(pulumi.CustomResource):
             __props__['spot_price_limit'] = spot_price_limit
             __props__['spot_strategy'] = spot_strategy
             __props__['subnet_id'] = subnet_id
+            __props__['system_disk_auto_snapshot_policy_id'] = system_disk_auto_snapshot_policy_id
             __props__['system_disk_category'] = system_disk_category
             __props__['system_disk_size'] = system_disk_size
             __props__['tags'] = tags
@@ -390,7 +398,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, public_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, status=None, subnet_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, public_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, status=None, subnet_id=None, system_disk_auto_snapshot_policy_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -454,6 +462,7 @@ class Instance(pulumi.CustomResource):
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] status: The instance status.
+        :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -467,6 +476,7 @@ class Instance(pulumi.CustomResource):
 
         The **data_disks** object supports the following:
 
+          * `autoSnapshotPolicyId` (`pulumi.Input[str]`) - The ID of the automatic snapshot policy applied to the system disk.
           * `category` (`pulumi.Input[str]`) - The category of the disk:
             - `cloud`: The general cloud disk.
             - `cloud_efficiency`: The efficiency cloud disk.
@@ -529,6 +539,7 @@ class Instance(pulumi.CustomResource):
         __props__["spot_strategy"] = spot_strategy
         __props__["status"] = status
         __props__["subnet_id"] = subnet_id
+        __props__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__["system_disk_category"] = system_disk_category
         __props__["system_disk_size"] = system_disk_size
         __props__["tags"] = tags

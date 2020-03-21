@@ -8,4 +8,5 @@ from .backup_policy import *
 from .get_instance_classes import *
 from .get_instance_engines import *
 from .get_instances import *
+from .get_zones import *
 from .instance import *

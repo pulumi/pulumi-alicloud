@@ -20,7 +20,7 @@ class Alarm(pulumi.CustomResource):
     """
     effective_interval: pulumi.Output[str]
     """
-    The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+    The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
     """
     enabled: pulumi.Output[bool]
     """
@@ -87,7 +87,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
                * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
@@ -163,7 +163,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
-        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
                * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.

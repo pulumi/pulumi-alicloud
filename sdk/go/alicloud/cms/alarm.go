@@ -22,8 +22,8 @@ type Alarm struct {
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
-	EffectiveInterval pulumi.StringOutput `pulumi:"effectiveInterval"`
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
+	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -101,7 +101,7 @@ type alarmState struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -138,7 +138,7 @@ type AlarmState struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -179,7 +179,7 @@ type alarmArgs struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -215,7 +215,7 @@ type AlarmArgs struct {
 	ContactGroups pulumi.StringArrayInput
 	// Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Dimensions pulumi.MapInput
-	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
 	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.

@@ -194,6 +194,9 @@ namespace Pulumi.AliCloud
         [Input("cas")]
         public Input<string>? Cas { get; set; }
 
+        [Input("cbn")]
+        public Input<string>? Cbn { get; set; }
+
         [Input("cdn")]
         public Input<string>? Cdn { get; set; }
 

@@ -22,6 +22,7 @@ type GetInstancesArgs struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	Ids []string `pulumi:"ids"`
 	OutputFile *string `pulumi:"outputFile"`
+	Tags map[string]interface{} `pulumi:"tags"`
 	Version *string `pulumi:"version"`
 }
 
@@ -35,6 +36,7 @@ type GetInstancesResult struct {
 	Ids []string `pulumi:"ids"`
 	Instances []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string `pulumi:"outputFile"`
+	Tags map[string]interface{} `pulumi:"tags"`
 	Version *string `pulumi:"version"`
 }
 

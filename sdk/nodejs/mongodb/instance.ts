@@ -99,6 +99,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    public readonly securityGroupId!: pulumi.Output<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
@@ -107,6 +111,10 @@ export class Instance extends pulumi.CustomResource {
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -146,9 +154,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["replicaSetName"] = state ? state.replicaSetName : undefined;
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             inputs["storageEngine"] = state ? state.storageEngine : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -176,9 +186,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             inputs["storageEngine"] = args ? args.storageEngine : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["replicaSetName"] = undefined /*out*/;
@@ -267,6 +279,10 @@ export interface InstanceState {
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -275,6 +291,10 @@ export interface InstanceState {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -351,6 +371,10 @@ export interface InstanceArgs {
      */
     readonly replicationFactor?: pulumi.Input<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -359,6 +383,10 @@ export interface InstanceArgs {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */

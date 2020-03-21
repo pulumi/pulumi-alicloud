@@ -40,6 +40,8 @@ type Instance struct {
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
+	// Set it to true to make some parameter efficient when modifying them. Default to false.
+	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -149,6 +151,8 @@ type instanceState struct {
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
+	// Set it to true to make some parameter efficient when modifying them. Default to false.
+	ForceRestart *bool `pulumi:"forceRestart"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -219,6 +223,8 @@ type InstanceState struct {
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
+	// Set it to true to make some parameter efficient when modifying them. Default to false.
+	ForceRestart pulumi.BoolPtrInput
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -291,6 +297,8 @@ type instanceArgs struct {
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
+	// Set it to true to make some parameter efficient when modifying them. Default to false.
+	ForceRestart *bool `pulumi:"forceRestart"`
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
@@ -358,6 +366,8 @@ type InstanceArgs struct {
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
+	// Set it to true to make some parameter efficient when modifying them. Default to false.
+	ForceRestart pulumi.BoolPtrInput
 	// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.

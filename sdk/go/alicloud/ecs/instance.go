@@ -108,6 +108,8 @@ type Instance struct {
 	// The instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
+	// The ID of the automatic snapshot policy applied to the system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
@@ -257,6 +259,8 @@ type instanceState struct {
 	// The instance status.
 	Status *string `pulumi:"status"`
 	SubnetId *string `pulumi:"subnetId"`
+	// The ID of the automatic snapshot policy applied to the system disk.
+	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
@@ -370,6 +374,8 @@ type InstanceState struct {
 	// The instance status.
 	Status pulumi.StringPtrInput
 	SubnetId pulumi.StringPtrInput
+	// The ID of the automatic snapshot policy applied to the system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
@@ -483,6 +489,8 @@ type instanceArgs struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	SubnetId *string `pulumi:"subnetId"`
+	// The ID of the automatic snapshot policy applied to the system disk.
+	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
@@ -593,6 +601,8 @@ type InstanceArgs struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	SubnetId pulumi.StringPtrInput
+	// The ID of the automatic snapshot policy applied to the system disk.
+	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.

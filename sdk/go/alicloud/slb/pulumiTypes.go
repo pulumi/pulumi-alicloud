@@ -2800,6 +2800,104 @@ func (o GetServerGroupsSlbServerGroupServerArrayOutput) Index(i pulumi.IntInput)
 	}).(GetServerGroupsSlbServerGroupServerOutput)
 }
 
+type GetZonesZone struct {
+	// ID of the zone.
+	Id string `pulumi:"id"`
+	// A list of slb slave zone ids in which the slb master zone.
+	SlbSlaveZoneIds []string `pulumi:"slbSlaveZoneIds"`
+}
+
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// ID of the zone.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of slb slave zone ids in which the slb master zone.
+	SlbSlaveZoneIds pulumi.StringArrayInput `pulumi:"slbSlaveZoneIds"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct { *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// ID of the zone.
+func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of slb slave zone ids in which the slb master zone.
+func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
+}
+
+type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclEntryListOutput{})
 	pulumi.RegisterOutputType(AclEntryListArrayOutput{})
@@ -2841,4 +2939,6 @@ func init() {
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupServerOutput{})
 	pulumi.RegisterOutputType(GetServerGroupsSlbServerGroupServerArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

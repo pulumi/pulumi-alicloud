@@ -1,0 +1,3 @@
+name: vpc-csharp
+runtime: dotnet
+description: A minimal AliCloud CSharp project for a VPC

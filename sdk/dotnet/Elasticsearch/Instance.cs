@@ -134,6 +134,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource. 
+        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         /// </summary>
         [Output("version")]
@@ -303,6 +311,20 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _publicWhitelists = value;
         }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource. 
+        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
         /// </summary>
@@ -463,6 +485,20 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource. 
+        /// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+        /// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.

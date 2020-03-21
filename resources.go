@@ -220,6 +220,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_instance_attachment":          {Tok: resource(cenMod, "InstanceAttachment")},
 			"alicloud_cen_route_entry":                  {Tok: resource(cenMod, "RouteEntry")},
 			"alicloud_cen_instance_grant":               {Tok: resource(cenMod, "InstanceGrant")},
+			"alicloud_cen_flowlog":                      {Tok: resource(cenMod, "FlowLog")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -590,6 +591,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {Tok: dataSource(elasticsearchMod, "getInstances")},
+			"alicloud_elasticsearch_zones":     {Tok: dataSource(elasticsearchMod, "getZones")},
 
 			// Emr
 			"alicloud_emr_disk_types":     {Tok: dataSource(emrMod, "getDiskTypes")},
@@ -609,9 +611,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_fc_functions": {Tok: dataSource(fcMod, "getFunctions")},
 			"alicloud_fc_services":  {Tok: dataSource(fcMod, "getServices")},
 			"alicloud_fc_triggers":  {Tok: dataSource(fcMod, "getTriggers")},
+			"alicloud_fc_zones":     {Tok: dataSource(fcMod, "getZones")},
 
 			// Gpdb
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
+			"alicloud_gpdb_zones":     {Tok: dataSource(gpdbMod, "getZones")},
 
 			// Kms
 			"alicloud_kms_ciphertext": {Tok: dataSource(kmsMod, "getCiphertext")},
@@ -622,6 +626,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},
 			"alicloud_kvstore_instance_classes": {Tok: dataSource(kvstoreMod, "getInstanceClasses")},
 			"alicloud_kvstore_instance_engines": {Tok: dataSource(kvstoreMod, "getInstanceEngines")},
+			"alicloud_kvstore_zones":            {Tok: dataSource(kvstoreMod, "getZones")},
 
 			// Marketplace
 			"alicloud_market_products": {Tok: dataSource(marketPlaceMod, "getProducts")},
@@ -634,6 +639,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Mongo
 			"alicloud_mongodb_instances": {Tok: dataSource(mongoDbMod, "getInstances")},
+			"alicloud_mongodb_zones":     {Tok: dataSource(mongoDbMod, "getZones")},
 
 			// Nas
 			"alicloud_nas_access_groups": {Tok: dataSource(nasMod, "getAccessGroups")},
@@ -656,6 +662,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_polardb_endpoints": {Tok: dataSource(polarDbMod, "getEndpoints")},
 			"alicloud_polardb_accounts":  {Tok: dataSource(polarDbMod, "getAccounts")},
 			"alicloud_polardb_databases": {Tok: dataSource(polarDbMod, "getDatabases")},
+			"alicloud_polardb_zones":     {Tok: dataSource(polarDbMod, "getZones")},
 
 			// Pvtr
 			"alicloud_pvtz_zone_records": {Tok: dataSource(pvtzMod, "getZoneRecords")},
@@ -673,6 +680,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_instances":        {Tok: dataSource(rdsMod, "getInstances")},
 			"alicloud_db_instance_classes": {Tok: dataSource(rdsMod, "getInstanceClasses")},
 			"alicloud_db_instance_engines": {Tok: dataSource(rdsMod, "getInstanceEngines")},
+			"alicloud_db_zones":            {Tok: dataSource(rdsMod, "getZones")},
 
 			// RocketMq
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},
@@ -694,6 +702,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_slb_domain_extensions":          {Tok: dataSource(slbMod, "getDomainExtensions")},
 			"alicloud_slb_master_slave_server_groups": {Tok: dataSource(slbMod, "getMasterSlaveServerGroups")},
 			"alicloud_slb_server_certificates":        {Tok: dataSource(slbMod, "getServerCertificates")},
+			"alicloud_slb_zones":                      {Tok: dataSource(slbMod, "getZones")},
 
 			// Vpc
 			"alicloud_vpcs":                      {Tok: dataSource(vpcMod, "getNetworks")},
@@ -719,6 +728,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Adb
 			"alicloud_adb_clusters": {Tok: dataSource(adbMod, "getClusters")},
+			"alicloud_adb_zones":    {Tok: dataSource(adbMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

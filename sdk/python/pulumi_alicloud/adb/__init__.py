@@ -7,3 +7,4 @@ from .account import *
 from .backup_policy import *
 from .cluster import *
 from .get_clusters import *
+from .get_zones import *

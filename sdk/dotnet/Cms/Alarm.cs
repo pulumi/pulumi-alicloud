@@ -30,10 +30,10 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Output("effectiveInterval")]
-        public Output<string> EffectiveInterval { get; private set; } = null!;
+        public Output<string?> EffectiveInterval { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable alarm rule. Default to true.
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "0:00-24:00".
+        /// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         /// </summary>
         [Input("effectiveInterval")]
         public Input<string>? EffectiveInterval { get; set; }

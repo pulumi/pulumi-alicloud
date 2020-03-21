@@ -21,6 +21,7 @@ type GetInstancesInstance struct {
 	Id string `pulumi:"id"`
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	Status string `pulumi:"status"`
+	Tags map[string]interface{} `pulumi:"tags"`
 	UpdatedAt string `pulumi:"updatedAt"`
 	Version string `pulumi:"version"`
 	VswitchId string `pulumi:"vswitchId"`
@@ -43,6 +44,7 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
 	Status pulumi.StringInput `pulumi:"status"`
+	Tags pulumi.MapInput `pulumi:"tags"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	Version pulumi.StringInput `pulumi:"version"`
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -131,6 +133,10 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func (v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
 func (o GetInstancesInstanceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func (v GetInstancesInstance) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -163,7 +169,107 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetZonesZone struct {
+	// ID of the zone.
+	Id string `pulumi:"id"`
+	// A list of zone ids in which the multi zone.
+	MultiZoneIds []string `pulumi:"multiZoneIds"`
+}
+
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// ID of the zone.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A list of zone ids in which the multi zone.
+	MultiZoneIds pulumi.StringArrayInput `pulumi:"multiZoneIds"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct { *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// ID of the zone.
+func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zone ids in which the multi zone.
+func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+}
+
+type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

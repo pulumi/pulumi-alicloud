@@ -52,6 +52,7 @@ class Provider(pulumi.ProviderResource):
           * `apigateway` (`pulumi.Input[str]`)
           * `bssopenapi` (`pulumi.Input[str]`)
           * `cas` (`pulumi.Input[str]`)
+          * `cbn` (`pulumi.Input[str]`)
           * `cdn` (`pulumi.Input[str]`)
           * `cen` (`pulumi.Input[str]`)
           * `cms` (`pulumi.Input[str]`)

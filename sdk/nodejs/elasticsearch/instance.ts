@@ -10,28 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
  * 
  * > **NOTE:** At present, `version` can not be modified once instance has been created.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * const instance = new alicloud.elasticsearch.Instance("instance", {
- *     dataNodeAmount: 2,
- *     dataNodeDiskSize: 20,
- *     dataNodeDiskType: "cloudSsd",
- *     dataNodeSpec: "elasticsearch.sn2ne.large",
- *     description: "description",
- *     instanceChargeType: "PostPaid",
- *     password: "Your password",
- *     version: "5.5.3_with_X-Pack",
- *     vswitchId: "some vswitch id",
- *     zoneCount: 2,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
  */
@@ -138,6 +116,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource. 
+     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
      */
     public readonly version!: pulumi.Output<string>;
@@ -181,6 +165,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
             inputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
             inputs["status"] = state ? state.status : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneCount"] = state ? state.zoneCount : undefined;
@@ -218,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
             inputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneCount"] = args ? args.zoneCount : undefined;
@@ -318,6 +304,12 @@ export interface InstanceState {
      */
     readonly status?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource. 
+     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
      */
     readonly version?: pulumi.Input<string>;
@@ -390,6 +382,12 @@ export interface InstanceArgs {
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A mapping of tags to assign to the resource. 
+     * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
+     * - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack` and `6.7_with_X-Pack`.
      */

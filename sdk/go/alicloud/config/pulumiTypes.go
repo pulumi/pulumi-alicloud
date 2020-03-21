@@ -81,6 +81,7 @@ type Endpoints struct {
 	Apigateway *string `pulumi:"apigateway"`
 	Bssopenapi *string `pulumi:"bssopenapi"`
 	Cas *string `pulumi:"cas"`
+	Cbn *string `pulumi:"cbn"`
 	Cdn *string `pulumi:"cdn"`
 	Cen *string `pulumi:"cen"`
 	Cms *string `pulumi:"cms"`
@@ -131,6 +132,7 @@ type EndpointsArgs struct {
 	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
 	Bssopenapi pulumi.StringPtrInput `pulumi:"bssopenapi"`
 	Cas pulumi.StringPtrInput `pulumi:"cas"`
+	Cbn pulumi.StringPtrInput `pulumi:"cbn"`
 	Cdn pulumi.StringPtrInput `pulumi:"cdn"`
 	Cen pulumi.StringPtrInput `pulumi:"cen"`
 	Cms pulumi.StringPtrInput `pulumi:"cms"`
@@ -236,6 +238,10 @@ func (o EndpointsOutput) Bssopenapi() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Cas() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v Endpoints) *string { return v.Cas }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Cbn() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v Endpoints) *string { return v.Cbn }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Cdn() pulumi.StringPtrOutput {

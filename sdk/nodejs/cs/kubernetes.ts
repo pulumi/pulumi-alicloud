@@ -33,6 +33,7 @@ export class Kubernetes extends pulumi.CustomResource {
         return obj['__pulumiType'] === Kubernetes.__pulumiType;
     }
 
+    public readonly addons!: pulumi.Output<outputs.cs.KubernetesAddon[] | undefined>;
     /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
@@ -50,36 +51,31 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly clusterCaCert!: pulumi.Output<string | undefined>;
     /**
-     * The network that cluster uses, use `flannel` or `terway`.
-     */
-    public readonly clusterNetworkType!: pulumi.Output<string | undefined>;
-    /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.KubernetesConnections>;
     /**
-     * Whether to allow to SSH login kubernetes. Default to false.
+     * kubelet cpu policy. options: static|none. default: none.
+     */
+    public readonly cpuPolicy!: pulumi.Output<string | undefined>;
+    /**
+     * Enable login to the node through SSH. default: false 
      */
     public readonly enableSsh!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to force the update of kubernetes cluster arguments. Default to false.
+     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
-    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
-     * Whether to install cloud monitor for the kubernetes' node.
+     * Install cloud monitor agent on ECS. default: true 
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to use outdated instance type. Default to false.
-     */
-    public readonly isOutdated!: pulumi.Output<boolean | undefined>;
-    /**
-     * The keypair of ssh login cluster node, you have to create it first.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly keyName!: pulumi.Output<string | undefined>;
     /**
-     * An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
@@ -90,10 +86,6 @@ export class Kubernetes extends pulumi.CustomResource {
      * The path of kube config, like `~/.kube/config`.
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
-    /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
-     */
-    public readonly logConfig!: pulumi.Output<outputs.cs.KubernetesLogConfig | undefined>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
@@ -115,9 +107,8 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly masterInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * (Required, Force new resource) The instance type of master node.
+     * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    public readonly masterInstanceType!: pulumi.Output<string | undefined>;
     public readonly masterInstanceTypes!: pulumi.Output<string[]>;
     /**
      * List of cluster master nodes. It contains several attributes to `Block Nodes`.
@@ -131,8 +122,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * Master payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     public readonly masterPeriodUnit!: pulumi.Output<string | undefined>;
+    public readonly masterVswitchIds!: pulumi.Output<string[]>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly namePrefix!: pulumi.Output<string | undefined>;
@@ -141,32 +133,35 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly natGatewayId!: pulumi.Output<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
-     * The network mask used on pods for each node, ranging from `24` to `28`.
-     * Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+     * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
     public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
-    public readonly nodes!: pulumi.Output<string[] | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-     * Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
+    /**
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     */
+    public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     */
+    public readonly proxyMode!: pulumi.Output<string | undefined>;
     /**
      * The ID of security group where the current cluster worker node is located.
      */
     public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * The CIDR block for the service network. 
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+     * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     public /*out*/ readonly slbId!: pulumi.Output<string>;
@@ -186,19 +181,11 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    public readonly version!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string | undefined>;
     /**
      * The ID of VPC where the current cluster is located.
      */
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
-    /**
-     * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-     */
-    public readonly vswitchIds!: pulumi.Output<string[] | undefined>;
     /**
      * Enable worker payment auto-renew, defaults to false.
      */
@@ -207,13 +194,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
      */
     public readonly workerAutoRenewPeriod!: pulumi.Output<number | undefined>;
-    /**
-     * The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
-     */
     public readonly workerDataDiskCategory!: pulumi.Output<string | undefined>;
-    /**
-     * The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
-     */
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -228,9 +209,8 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceChargeType!: pulumi.Output<string | undefined>;
     /**
-     * (Required, Force new resource) The instance type of worker node.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    public readonly workerInstanceType!: pulumi.Output<string | undefined>;
     public readonly workerInstanceTypes!: pulumi.Output<string[]>;
     /**
      * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
@@ -239,8 +219,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
-    public readonly workerNumber!: pulumi.Output<number | undefined>;
-    public readonly workerNumbers!: pulumi.Output<number[]>;
+    public readonly workerNumber!: pulumi.Output<number>;
     /**
      * Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
      */
@@ -249,6 +228,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * Worker payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     public readonly workerPeriodUnit!: pulumi.Output<string | undefined>;
+    public readonly workerVswitchIds!: pulumi.Output<string[]>;
 
     /**
      * Create a Kubernetes resource with the given unique name, arguments, and options.
@@ -262,40 +242,39 @@ export class Kubernetes extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KubernetesState | undefined;
+            inputs["addons"] = state ? state.addons : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
-            inputs["clusterNetworkType"] = state ? state.clusterNetworkType : undefined;
             inputs["connections"] = state ? state.connections : undefined;
+            inputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             inputs["enableSsh"] = state ? state.enableSsh : undefined;
-            inputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
-            inputs["isOutdated"] = state ? state.isOutdated : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["masterAutoRenew"] = state ? state.masterAutoRenew : undefined;
             inputs["masterAutoRenewPeriod"] = state ? state.masterAutoRenewPeriod : undefined;
             inputs["masterDiskCategory"] = state ? state.masterDiskCategory : undefined;
             inputs["masterDiskSize"] = state ? state.masterDiskSize : undefined;
             inputs["masterInstanceChargeType"] = state ? state.masterInstanceChargeType : undefined;
-            inputs["masterInstanceType"] = state ? state.masterInstanceType : undefined;
             inputs["masterInstanceTypes"] = state ? state.masterInstanceTypes : undefined;
             inputs["masterNodes"] = state ? state.masterNodes : undefined;
             inputs["masterPeriod"] = state ? state.masterPeriod : undefined;
             inputs["masterPeriodUnit"] = state ? state.masterPeriodUnit : undefined;
+            inputs["masterVswitchIds"] = state ? state.masterVswitchIds : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["natGatewayId"] = state ? state.natGatewayId : undefined;
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             inputs["nodeCidrMask"] = state ? state.nodeCidrMask : undefined;
-            inputs["nodes"] = state ? state.nodes : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["podCidr"] = state ? state.podCidr : undefined;
+            inputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
+            inputs["proxyMode"] = state ? state.proxyMode : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             inputs["slbId"] = state ? state.slbId : undefined;
@@ -305,8 +284,6 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["userCa"] = state ? state.userCa : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
-            inputs["vswitchId"] = state ? state.vswitchId : undefined;
-            inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
             inputs["workerAutoRenew"] = state ? state.workerAutoRenew : undefined;
             inputs["workerAutoRenewPeriod"] = state ? state.workerAutoRenewPeriod : undefined;
             inputs["workerDataDiskCategory"] = state ? state.workerDataDiskCategory : undefined;
@@ -314,61 +291,63 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerDiskCategory"] = state ? state.workerDiskCategory : undefined;
             inputs["workerDiskSize"] = state ? state.workerDiskSize : undefined;
             inputs["workerInstanceChargeType"] = state ? state.workerInstanceChargeType : undefined;
-            inputs["workerInstanceType"] = state ? state.workerInstanceType : undefined;
             inputs["workerInstanceTypes"] = state ? state.workerInstanceTypes : undefined;
             inputs["workerNodes"] = state ? state.workerNodes : undefined;
             inputs["workerNumber"] = state ? state.workerNumber : undefined;
-            inputs["workerNumbers"] = state ? state.workerNumbers : undefined;
             inputs["workerPeriod"] = state ? state.workerPeriod : undefined;
             inputs["workerPeriodUnit"] = state ? state.workerPeriodUnit : undefined;
+            inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
             if (!args || args.masterInstanceTypes === undefined) {
                 throw new Error("Missing required property 'masterInstanceTypes'");
             }
+            if (!args || args.masterVswitchIds === undefined) {
+                throw new Error("Missing required property 'masterVswitchIds'");
+            }
             if (!args || args.workerInstanceTypes === undefined) {
                 throw new Error("Missing required property 'workerInstanceTypes'");
             }
-            if (!args || args.workerNumbers === undefined) {
-                throw new Error("Missing required property 'workerNumbers'");
+            if (!args || args.workerNumber === undefined) {
+                throw new Error("Missing required property 'workerNumber'");
             }
+            if (!args || args.workerVswitchIds === undefined) {
+                throw new Error("Missing required property 'workerVswitchIds'");
+            }
+            inputs["addons"] = args ? args.addons : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
-            inputs["clusterNetworkType"] = args ? args.clusterNetworkType : undefined;
+            inputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             inputs["enableSsh"] = args ? args.enableSsh : undefined;
-            inputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
-            inputs["isOutdated"] = args ? args.isOutdated : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
             inputs["kubeConfig"] = args ? args.kubeConfig : undefined;
-            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["masterAutoRenew"] = args ? args.masterAutoRenew : undefined;
             inputs["masterAutoRenewPeriod"] = args ? args.masterAutoRenewPeriod : undefined;
             inputs["masterDiskCategory"] = args ? args.masterDiskCategory : undefined;
             inputs["masterDiskSize"] = args ? args.masterDiskSize : undefined;
             inputs["masterInstanceChargeType"] = args ? args.masterInstanceChargeType : undefined;
-            inputs["masterInstanceType"] = args ? args.masterInstanceType : undefined;
             inputs["masterInstanceTypes"] = args ? args.masterInstanceTypes : undefined;
             inputs["masterPeriod"] = args ? args.masterPeriod : undefined;
             inputs["masterPeriodUnit"] = args ? args.masterPeriodUnit : undefined;
+            inputs["masterVswitchIds"] = args ? args.masterVswitchIds : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             inputs["nodeCidrMask"] = args ? args.nodeCidrMask : undefined;
-            inputs["nodes"] = args ? args.nodes : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["podCidr"] = args ? args.podCidr : undefined;
+            inputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
+            inputs["proxyMode"] = args ? args.proxyMode : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
             inputs["userCa"] = args ? args.userCa : undefined;
             inputs["version"] = args ? args.version : undefined;
-            inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             inputs["workerAutoRenew"] = args ? args.workerAutoRenew : undefined;
             inputs["workerAutoRenewPeriod"] = args ? args.workerAutoRenewPeriod : undefined;
             inputs["workerDataDiskCategory"] = args ? args.workerDataDiskCategory : undefined;
@@ -376,12 +355,11 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerDiskCategory"] = args ? args.workerDiskCategory : undefined;
             inputs["workerDiskSize"] = args ? args.workerDiskSize : undefined;
             inputs["workerInstanceChargeType"] = args ? args.workerInstanceChargeType : undefined;
-            inputs["workerInstanceType"] = args ? args.workerInstanceType : undefined;
             inputs["workerInstanceTypes"] = args ? args.workerInstanceTypes : undefined;
             inputs["workerNumber"] = args ? args.workerNumber : undefined;
-            inputs["workerNumbers"] = args ? args.workerNumbers : undefined;
             inputs["workerPeriod"] = args ? args.workerPeriod : undefined;
             inputs["workerPeriodUnit"] = args ? args.workerPeriodUnit : undefined;
+            inputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
             inputs["connections"] = undefined /*out*/;
             inputs["masterNodes"] = undefined /*out*/;
             inputs["natGatewayId"] = undefined /*out*/;
@@ -407,6 +385,7 @@ export class Kubernetes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Kubernetes resources.
  */
 export interface KubernetesState {
+    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
     /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
@@ -424,36 +403,31 @@ export interface KubernetesState {
      */
     readonly clusterCaCert?: pulumi.Input<string>;
     /**
-     * The network that cluster uses, use `flannel` or `terway`.
-     */
-    readonly clusterNetworkType?: pulumi.Input<string>;
-    /**
      * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      */
     readonly connections?: pulumi.Input<inputs.cs.KubernetesConnections>;
     /**
-     * Whether to allow to SSH login kubernetes. Default to false.
+     * kubelet cpu policy. options: static|none. default: none.
+     */
+    readonly cpuPolicy?: pulumi.Input<string>;
+    /**
+     * Enable login to the node through SSH. default: false 
      */
     readonly enableSsh?: pulumi.Input<boolean>;
     /**
-     * Whether to force the update of kubernetes cluster arguments. Default to false.
+     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Whether to install cloud monitor for the kubernetes' node.
+     * Install cloud monitor agent on ECS. default: true 
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
-     * Whether to use outdated instance type. Default to false.
-     */
-    readonly isOutdated?: pulumi.Input<boolean>;
-    /**
-     * The keypair of ssh login cluster node, you have to create it first.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
@@ -464,10 +438,6 @@ export interface KubernetesState {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
-    /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
-     */
-    readonly logConfig?: pulumi.Input<inputs.cs.KubernetesLogConfig>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
@@ -489,11 +459,8 @@ export interface KubernetesState {
      */
     readonly masterInstanceChargeType?: pulumi.Input<string>;
     /**
-     * (Required, Force new resource) The instance type of master node.
-     * 
-     * @deprecated Field 'master_instance_type' has been deprecated from provider version 1.16.0. New field 'master_instance_types' replaces it.
+     * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    readonly masterInstanceType?: pulumi.Input<string>;
     readonly masterInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of cluster master nodes. It contains several attributes to `Block Nodes`.
@@ -507,8 +474,9 @@ export interface KubernetesState {
      * Master payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     readonly masterPeriodUnit?: pulumi.Input<string>;
+    readonly masterVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
@@ -517,32 +485,35 @@ export interface KubernetesState {
      */
     readonly natGatewayId?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * The network mask used on pods for each node, ranging from `24` to `28`.
-     * Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+     * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
-    readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-     * Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
      */
     readonly podCidr?: pulumi.Input<string>;
+    /**
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     */
+    readonly podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     */
+    readonly proxyMode?: pulumi.Input<string>;
     /**
      * The ID of security group where the current cluster worker node is located.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
-     * The CIDR block for the service network. 
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+     * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     readonly serviceCidr?: pulumi.Input<string>;
     readonly slbId?: pulumi.Input<string>;
@@ -568,16 +539,6 @@ export interface KubernetesState {
      */
     readonly vpcId?: pulumi.Input<string>;
     /**
-     * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     * 
-     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.16.0. New field 'vswitch_ids' replaces it.
-     */
-    readonly vswitchId?: pulumi.Input<string>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-     */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Enable worker payment auto-renew, defaults to false.
      */
     readonly workerAutoRenew?: pulumi.Input<boolean>;
@@ -585,13 +546,7 @@ export interface KubernetesState {
      * Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
      */
     readonly workerAutoRenewPeriod?: pulumi.Input<number>;
-    /**
-     * The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
-     */
     readonly workerDataDiskCategory?: pulumi.Input<string>;
-    /**
-     * The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
-     */
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -606,11 +561,8 @@ export interface KubernetesState {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * (Required, Force new resource) The instance type of worker node.
-     * 
-     * @deprecated Field 'worker_instance_type' has been deprecated from provider version 1.16.0. New field 'worker_instance_types' replaces it.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    readonly workerInstanceType?: pulumi.Input<string>;
     readonly workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
@@ -618,11 +570,8 @@ export interface KubernetesState {
     readonly workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerNode>[]>;
     /**
      * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-     * 
-     * @deprecated Field 'worker_number' has been deprecated from provider version 1.16.0. New field 'worker_numbers' replaces it.
      */
     readonly workerNumber?: pulumi.Input<number>;
-    readonly workerNumbers?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
      */
@@ -631,12 +580,14 @@ export interface KubernetesState {
      * Worker payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     readonly workerPeriodUnit?: pulumi.Input<string>;
+    readonly workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a Kubernetes resource.
  */
 export interface KubernetesArgs {
+    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
     /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
@@ -654,32 +605,27 @@ export interface KubernetesArgs {
      */
     readonly clusterCaCert?: pulumi.Input<string>;
     /**
-     * The network that cluster uses, use `flannel` or `terway`.
+     * kubelet cpu policy. options: static|none. default: none.
      */
-    readonly clusterNetworkType?: pulumi.Input<string>;
+    readonly cpuPolicy?: pulumi.Input<string>;
     /**
-     * Whether to allow to SSH login kubernetes. Default to false.
+     * Enable login to the node through SSH. default: false 
      */
     readonly enableSsh?: pulumi.Input<boolean>;
     /**
-     * Whether to force the update of kubernetes cluster arguments. Default to false.
+     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
-    readonly forceUpdate?: pulumi.Input<boolean>;
     readonly imageId?: pulumi.Input<string>;
     /**
-     * Whether to install cloud monitor for the kubernetes' node.
+     * Install cloud monitor agent on ECS. default: true 
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
     /**
-     * Whether to use outdated instance type. Default to false.
-     */
-    readonly isOutdated?: pulumi.Input<boolean>;
-    /**
-     * The keypair of ssh login cluster node, you have to create it first.
+     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly keyName?: pulumi.Input<string>;
     /**
-     * An KMS encrypts password used to a cs kubernetes. It is conflicted with `password` and `keyName`.
+     * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly kmsEncryptedPassword?: pulumi.Input<string>;
     /**
@@ -690,10 +636,6 @@ export interface KubernetesArgs {
      * The path of kube config, like `~/.kube/config`.
      */
     readonly kubeConfig?: pulumi.Input<string>;
-    /**
-     * A list of one element containing information about the associated log store. It contains the following attributes:
-     */
-    readonly logConfig?: pulumi.Input<inputs.cs.KubernetesLogConfig>;
     /**
      * Enable master payment auto-renew, defaults to false.
      */
@@ -715,11 +657,8 @@ export interface KubernetesArgs {
      */
     readonly masterInstanceChargeType?: pulumi.Input<string>;
     /**
-     * (Required, Force new resource) The instance type of master node.
-     * 
-     * @deprecated Field 'master_instance_type' has been deprecated from provider version 1.16.0. New field 'master_instance_types' replaces it.
+     * The instance type of master node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    readonly masterInstanceType?: pulumi.Input<string>;
     readonly masterInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
@@ -729,34 +668,38 @@ export interface KubernetesArgs {
      * Master payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     readonly masterPeriodUnit?: pulumi.Input<string>;
+    readonly masterVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The kubernetes cluster's name. It is the only in one Alicloud account.
+     * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * The network mask used on pods for each node, ranging from `24` to `28`.
-     * Larger this number is, less pods can be allocated on each node. Default value is `24`, means you can allocate 256 pods on each node.
+     * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
-    readonly nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The CIDR block for the pod network. It will be allocated automatically when `vswitchIds` is not specified.
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-     * Maximum number of hosts allowed in the cluster: 256. Refer to [Plan Kubernetes CIDR blocks under VPC](https://www.alibabacloud.com/help/doc-detail/64530.htm).
+     * [Flannel Specific] The CIDR block for the pod network when using Flannel. 
      */
     readonly podCidr?: pulumi.Input<string>;
     /**
-     * The CIDR block for the service network. 
-     * It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     */
+    readonly podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     */
+    readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     readonly serviceCidr?: pulumi.Input<string>;
     /**
@@ -772,16 +715,6 @@ export interface KubernetesArgs {
      */
     readonly version?: pulumi.Input<string>;
     /**
-     * (Force new resource) The vswitch where new kubernetes cluster will be located. If it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
-     * 
-     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.16.0. New field 'vswitch_ids' replaces it.
-     */
-    readonly vswitchId?: pulumi.Input<string>;
-    /**
-     * The vswitch where new kubernetes cluster will be located. Specify one or more vswitch's id. It must be in the zone which `availabilityZone` specified.
-     */
-    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Enable worker payment auto-renew, defaults to false.
      */
     readonly workerAutoRenew?: pulumi.Input<boolean>;
@@ -789,13 +722,7 @@ export interface KubernetesArgs {
      * Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
      */
     readonly workerAutoRenewPeriod?: pulumi.Input<number>;
-    /**
-     * The data disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`, if not set, data disk will not be created.
-     */
     readonly workerDataDiskCategory?: pulumi.Input<string>;
-    /**
-     * The data disk size of worker node. Its valid value range [20~32768] in GB. When `workerDataDiskCategory` is presented, it defaults to 40.
-     */
     readonly workerDataDiskSize?: pulumi.Input<number>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
@@ -810,19 +737,13 @@ export interface KubernetesArgs {
      */
     readonly workerInstanceChargeType?: pulumi.Input<string>;
     /**
-     * (Required, Force new resource) The instance type of worker node.
-     * 
-     * @deprecated Field 'worker_instance_type' has been deprecated from provider version 1.16.0. New field 'worker_instance_types' replaces it.
+     * The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
      */
-    readonly workerInstanceType?: pulumi.Input<string>;
     readonly workerInstanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
-     * 
-     * @deprecated Field 'worker_number' has been deprecated from provider version 1.16.0. New field 'worker_numbers' replaces it.
      */
-    readonly workerNumber?: pulumi.Input<number>;
-    readonly workerNumbers: pulumi.Input<pulumi.Input<number>[]>;
+    readonly workerNumber: pulumi.Input<number>;
     /**
      * Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
      */
@@ -831,4 +752,5 @@ export interface KubernetesArgs {
      * Worker payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     readonly workerPeriodUnit?: pulumi.Input<string>;
+    readonly workerVswitchIds: pulumi.Input<pulumi.Input<string>[]>;
 }

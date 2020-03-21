@@ -5,6 +5,7 @@
 export * from "./bandwidthLimit";
 export * from "./bandwidthPackage";
 export * from "./bandwidthPackageAttachment";
+export * from "./flowLog";
 export * from "./getBandwidthLimits";
 export * from "./getBandwidthPackages";
 export * from "./getInstances";

@@ -254,6 +254,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SubnetId { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        [Output("systemDiskAutoSnapshotPolicyId")]
+        public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Output("systemDiskCategory")]
@@ -588,6 +594,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SubnetId { get; set; }
 
         /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        [Input("systemDiskAutoSnapshotPolicyId")]
+        public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -907,6 +919,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SubnetId { get; set; }
 
         /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        [Input("systemDiskAutoSnapshotPolicyId")]
+        public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
         /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -969,6 +987,12 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceDataDisksArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        [Input("autoSnapshotPolicyId")]
+        public Input<string>? AutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
         /// The category of the disk:
         /// - `cloud`: The general cloud disk.
         /// - `cloud_efficiency`: The efficiency cloud disk.
@@ -1026,6 +1050,12 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class InstanceDataDisksGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        [Input("autoSnapshotPolicyId")]
+        public Input<string>? AutoSnapshotPolicyId { get; set; }
+
         /// <summary>
         /// The category of the disk:
         /// - `cloud`: The general cloud disk.
@@ -1090,6 +1120,10 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceDataDisks
     {
         /// <summary>
+        /// The ID of the automatic snapshot policy applied to the system disk.
+        /// </summary>
+        public readonly string? AutoSnapshotPolicyId;
+        /// <summary>
         /// The category of the disk:
         /// - `cloud`: The general cloud disk.
         /// - `cloud_efficiency`: The efficiency cloud disk.
@@ -1129,6 +1163,7 @@ namespace Pulumi.AliCloud.Ecs
 
         [OutputConstructor]
         private InstanceDataDisks(
+            string? autoSnapshotPolicyId,
             string? category,
             bool? deleteWithInstance,
             string? description,
@@ -1137,6 +1172,7 @@ namespace Pulumi.AliCloud.Ecs
             int size,
             string? snapshotId)
         {
+            AutoSnapshotPolicyId = autoSnapshotPolicyId;
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;

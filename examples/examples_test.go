@@ -5,6 +5,7 @@ package examples
 import (
 	"os"
 	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
@@ -13,7 +14,25 @@ import (
 func TestAccVpcTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "vpc"),
+			Dir: path.Join(getCwd(t), "vpc", "ts"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccVpcPython(t *testing.T) {
+	test := getPythonBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "vpc", "python"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestAccVpcCsharp(t *testing.T) {
+	test := getCsharpBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "vpc", "csharp"),
 		})
 
 	integration.ProgramTest(t, &test)
@@ -32,6 +51,36 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	})
 
 	return baseJS
+}
+
+func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	region := getRegion(t)
+	base := getBaseOptions()
+	baseCsharp := base.With(integration.ProgramTestOptions{
+		Config: map[string]string{
+			"alicloud:region": region,
+		},
+		Dependencies: []string{
+			"Pulumi.AliCloud",
+		},
+	})
+
+	return baseCsharp
+}
+
+func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	region := getRegion(t)
+	base := getBaseOptions()
+	basePython := base.With(integration.ProgramTestOptions{
+		Config: map[string]string{
+			"alicloud:region": region,
+		},
+		Dependencies: []string{
+			filepath.Join("..", "sdk", "python", "bin"),
+		},
+	})
+
+	return basePython
 }
 
 func getRegion(t *testing.T) string {

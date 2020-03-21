@@ -68,6 +68,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> EngineVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Output("forceRestart")]
+        public Output<bool?> ForceRestart { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         /// </summary>
         [Output("instanceChargeType")]
@@ -275,6 +281,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> EngineVersion { get; set; } = null!;
 
         /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Input("forceRestart")]
+        public Input<bool>? ForceRestart { get; set; }
+
+        /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.
         /// </summary>
         [Input("instanceChargeType")]
@@ -465,6 +477,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
+
+        /// <summary>
+        /// Set it to true to make some parameter efficient when modifying them. Default to false.
+        /// </summary>
+        [Input("forceRestart")]
+        public Input<bool>? ForceRestart { get; set; }
 
         /// <summary>
         /// Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid.

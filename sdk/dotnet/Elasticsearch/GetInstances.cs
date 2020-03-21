@@ -31,6 +31,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
+
         [Input("version")]
         public string? Version { get; set; }
 
@@ -47,6 +55,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public readonly ImmutableArray<string> Ids;
         public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
         public readonly string? OutputFile;
+        public readonly ImmutableDictionary<string, object>? Tags;
         public readonly string? Version;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -60,6 +69,7 @@ namespace Pulumi.AliCloud.ElasticSearch
             ImmutableArray<string> ids,
             ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
             string? outputFile,
+            ImmutableDictionary<string, object>? tags,
             string? version,
             string id)
         {
@@ -68,6 +78,7 @@ namespace Pulumi.AliCloud.ElasticSearch
             Ids = ids;
             Instances = instances;
             OutputFile = outputFile;
+            Tags = tags;
             Version = version;
             Id = id;
         }
@@ -88,6 +99,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public readonly string Id;
         public readonly string InstanceChargeType;
         public readonly string Status;
+        public readonly ImmutableDictionary<string, object> Tags;
         public readonly string UpdatedAt;
         public readonly string Version;
         public readonly string VswitchId;
@@ -103,6 +115,7 @@ namespace Pulumi.AliCloud.ElasticSearch
             string id,
             string instanceChargeType,
             string status,
+            ImmutableDictionary<string, object> tags,
             string updatedAt,
             string version,
             string vswitchId)
@@ -116,6 +129,7 @@ namespace Pulumi.AliCloud.ElasticSearch
             Id = id;
             InstanceChargeType = instanceChargeType;
             Status = status;
+            Tags = tags;
             UpdatedAt = updatedAt;
             Version = version;
             VswitchId = vswitchId;

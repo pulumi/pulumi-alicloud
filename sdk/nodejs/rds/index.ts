@@ -10,6 +10,7 @@ export * from "./database";
 export * from "./getInstanceClasses";
 export * from "./getInstanceEngines";
 export * from "./getInstances";
+export * from "./getZones";
 export * from "./instance";
 export * from "./readOnlyInstance";
 export * from "./readWriteSplittingConnection";
