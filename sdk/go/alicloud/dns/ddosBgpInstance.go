@@ -33,7 +33,7 @@ type DdosBgpInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -86,7 +86,7 @@ type ddosBgpInstanceState struct {
 	Name *string `pulumi:"name"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
 	Type *string `pulumi:"type"`
 }
 
@@ -103,7 +103,7 @@ type DdosBgpInstanceState struct {
 	Name pulumi.StringPtrInput
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
 	Type pulumi.StringPtrInput
 }
 
@@ -124,7 +124,7 @@ type ddosBgpInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
 	Type *string `pulumi:"type"`
 }
 
@@ -142,11 +142,10 @@ type DdosBgpInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
+	// Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`
 	Type pulumi.StringPtrInput
 }
 
 func (DdosBgpInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosBgpInstanceArgs)(nil)).Elem()
 }
-

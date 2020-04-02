@@ -18,7 +18,7 @@ type GetBastionHostInstancesInstance struct {
 	Id string `pulumi:"id"`
 	// The instance's status.
 	InstanceStatus string `pulumi:"instanceStatus"`
-	LicenseCode string `pulumi:"licenseCode"`
+	LicenseCode    string `pulumi:"licenseCode"`
 	// The instance's private domain name.
 	PrivateDomain string `pulumi:"privateDomain"`
 	// The instance's public domain name.
@@ -54,7 +54,7 @@ type GetBastionHostInstancesInstanceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The instance's status.
 	InstanceStatus pulumi.StringInput `pulumi:"instanceStatus"`
-	LicenseCode pulumi.StringInput `pulumi:"licenseCode"`
+	LicenseCode    pulumi.StringInput `pulumi:"licenseCode"`
 	// The instance's private domain name.
 	PrivateDomain pulumi.StringInput `pulumi:"privateDomain"`
 	// The instance's public domain name.
@@ -109,7 +109,7 @@ func (i GetBastionHostInstancesInstanceArray) ToGetBastionHostInstancesInstanceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetBastionHostInstancesInstanceArrayOutput)
 }
 
-type GetBastionHostInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetBastionHostInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetBastionHostInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBastionHostInstancesInstance)(nil)).Elem()
@@ -125,41 +125,41 @@ func (o GetBastionHostInstancesInstanceOutput) ToGetBastionHostInstancesInstance
 
 // The instance's remark.
 func (o GetBastionHostInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The instance's id.
 func (o GetBastionHostInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The instance's status.
 func (o GetBastionHostInstancesInstanceOutput) InstanceStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
 func (o GetBastionHostInstancesInstanceOutput) LicenseCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
 }
 
 // The instance's private domain name.
 func (o GetBastionHostInstancesInstanceOutput) PrivateDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.PrivateDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.PrivateDomain }).(pulumi.StringOutput)
 }
 
 // The instance's public domain name.
 func (o GetBastionHostInstancesInstanceOutput) PublicDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.PublicDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.PublicDomain }).(pulumi.StringOutput)
 }
 
 // The instance's public network access configuration.
 func (o GetBastionHostInstancesInstanceOutput) PublicNetworkAccess() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
 }
 
 // The instance's security group configuration.
 func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // A map of tags assigned to the bastionhost instance. It must be in the format:
@@ -171,15 +171,15 @@ func (o GetBastionHostInstancesInstanceOutput) SecurityGroupIds() pulumi.StringA
 // }
 // ```
 func (o GetBastionHostInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The instance's vSwitch ID.
 func (o GetBastionHostInstancesInstanceOutput) UserVswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBastionHostInstancesInstance) string { return v.UserVswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBastionHostInstancesInstance) string { return v.UserVswitchId }).(pulumi.StringOutput)
 }
 
-type GetBastionHostInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetBastionHostInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBastionHostInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBastionHostInstancesInstance)(nil)).Elem()
@@ -194,21 +194,21 @@ func (o GetBastionHostInstancesInstanceArrayOutput) ToGetBastionHostInstancesIns
 }
 
 func (o GetBastionHostInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetBastionHostInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBastionHostInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBastionHostInstancesInstance {
 		return vs[0].([]GetBastionHostInstancesInstance)[vs[1].(int)]
 	}).(GetBastionHostInstancesInstanceOutput)
 }
 
 type GetDBAuditInstanceInstance struct {
-	Description string `pulumi:"description"`
-	Id string `pulumi:"id"`
-	InstanceStatus string `pulumi:"instanceStatus"`
-	LicenseCode string `pulumi:"licenseCode"`
-	PrivateDomain string `pulumi:"privateDomain"`
-	PublicDomain string `pulumi:"publicDomain"`
-	PublicNetworkAccess bool `pulumi:"publicNetworkAccess"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	UserVswitchId string `pulumi:"userVswitchId"`
+	Description         string                 `pulumi:"description"`
+	Id                  string                 `pulumi:"id"`
+	InstanceStatus      string                 `pulumi:"instanceStatus"`
+	LicenseCode         string                 `pulumi:"licenseCode"`
+	PrivateDomain       string                 `pulumi:"privateDomain"`
+	PublicDomain        string                 `pulumi:"publicDomain"`
+	PublicNetworkAccess bool                   `pulumi:"publicNetworkAccess"`
+	Tags                map[string]interface{} `pulumi:"tags"`
+	UserVswitchId       string                 `pulumi:"userVswitchId"`
 }
 
 type GetDBAuditInstanceInstanceInput interface {
@@ -219,15 +219,15 @@ type GetDBAuditInstanceInstanceInput interface {
 }
 
 type GetDBAuditInstanceInstanceArgs struct {
-	Description pulumi.StringInput `pulumi:"description"`
-	Id pulumi.StringInput `pulumi:"id"`
-	InstanceStatus pulumi.StringInput `pulumi:"instanceStatus"`
-	LicenseCode pulumi.StringInput `pulumi:"licenseCode"`
-	PrivateDomain pulumi.StringInput `pulumi:"privateDomain"`
-	PublicDomain pulumi.StringInput `pulumi:"publicDomain"`
-	PublicNetworkAccess pulumi.BoolInput `pulumi:"publicNetworkAccess"`
-	Tags pulumi.MapInput `pulumi:"tags"`
-	UserVswitchId pulumi.StringInput `pulumi:"userVswitchId"`
+	Description         pulumi.StringInput `pulumi:"description"`
+	Id                  pulumi.StringInput `pulumi:"id"`
+	InstanceStatus      pulumi.StringInput `pulumi:"instanceStatus"`
+	LicenseCode         pulumi.StringInput `pulumi:"licenseCode"`
+	PrivateDomain       pulumi.StringInput `pulumi:"privateDomain"`
+	PublicDomain        pulumi.StringInput `pulumi:"publicDomain"`
+	PublicNetworkAccess pulumi.BoolInput   `pulumi:"publicNetworkAccess"`
+	Tags                pulumi.MapInput    `pulumi:"tags"`
+	UserVswitchId       pulumi.StringInput `pulumi:"userVswitchId"`
 }
 
 func (GetDBAuditInstanceInstanceArgs) ElementType() reflect.Type {
@@ -263,7 +263,7 @@ func (i GetDBAuditInstanceInstanceArray) ToGetDBAuditInstanceInstanceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDBAuditInstanceInstanceArrayOutput)
 }
 
-type GetDBAuditInstanceInstanceOutput struct { *pulumi.OutputState }
+type GetDBAuditInstanceInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDBAuditInstanceInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDBAuditInstanceInstance)(nil)).Elem()
@@ -278,42 +278,42 @@ func (o GetDBAuditInstanceInstanceOutput) ToGetDBAuditInstanceInstanceOutputWith
 }
 
 func (o GetDBAuditInstanceInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) InstanceStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) LicenseCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.LicenseCode }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) PrivateDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.PrivateDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.PrivateDomain }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) PublicDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.PublicDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.PublicDomain }).(pulumi.StringOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) PublicNetworkAccess() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) bool { return v.PublicNetworkAccess }).(pulumi.BoolOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 func (o GetDBAuditInstanceInstanceOutput) UserVswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDBAuditInstanceInstance) string { return v.UserVswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDBAuditInstanceInstance) string { return v.UserVswitchId }).(pulumi.StringOutput)
 }
 
-type GetDBAuditInstanceInstanceArrayOutput struct { *pulumi.OutputState}
+type GetDBAuditInstanceInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDBAuditInstanceInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDBAuditInstanceInstance)(nil)).Elem()
@@ -328,7 +328,7 @@ func (o GetDBAuditInstanceInstanceArrayOutput) ToGetDBAuditInstanceInstanceArray
 }
 
 func (o GetDBAuditInstanceInstanceArrayOutput) Index(i pulumi.IntInput) GetDBAuditInstanceInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDBAuditInstanceInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDBAuditInstanceInstance {
 		return vs[0].([]GetDBAuditInstanceInstance)[vs[1].(int)]
 	}).(GetDBAuditInstanceInstanceOutput)
 }

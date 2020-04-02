@@ -14,7 +14,7 @@ import (
 type ShardingInstanceMongoList struct {
 	// Mongo node connection string
 	ConnectString *string `pulumi:"connectString"`
-	NodeClass string `pulumi:"nodeClass"`
+	NodeClass     string  `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId *string `pulumi:"nodeId"`
 	// Mongo node port
@@ -32,7 +32,7 @@ type ShardingInstanceMongoListInput interface {
 type ShardingInstanceMongoListArgs struct {
 	// Mongo node connection string
 	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
-	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
+	NodeClass     pulumi.StringInput    `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// Mongo node port
@@ -73,7 +73,7 @@ func (i ShardingInstanceMongoListArray) ToShardingInstanceMongoListArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceMongoListArrayOutput)
 }
 
-type ShardingInstanceMongoListOutput struct { *pulumi.OutputState }
+type ShardingInstanceMongoListOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceMongoListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ShardingInstanceMongoList)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o ShardingInstanceMongoListOutput) ToShardingInstanceMongoListOutputWithCo
 
 // Mongo node connection string
 func (o ShardingInstanceMongoListOutput) ConnectString() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
 }
 
 func (o ShardingInstanceMongoListOutput) NodeClass() pulumi.StringOutput {
-	return o.ApplyT(func (v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
 // The ID of the shard-node.
 func (o ShardingInstanceMongoListOutput) NodeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ShardingInstanceMongoList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
 // Mongo node port
 // * `shardList`
 func (o ShardingInstanceMongoListOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ShardingInstanceMongoList) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ShardingInstanceMongoList) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-type ShardingInstanceMongoListArrayOutput struct { *pulumi.OutputState}
+type ShardingInstanceMongoListArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceMongoListArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ShardingInstanceMongoList)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o ShardingInstanceMongoListArrayOutput) ToShardingInstanceMongoListArrayOu
 }
 
 func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingInstanceMongoListOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ShardingInstanceMongoList {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceMongoList {
 		return vs[0].([]ShardingInstanceMongoList)[vs[1].(int)]
 	}).(ShardingInstanceMongoListOutput)
 }
@@ -187,7 +187,7 @@ func (i ShardingInstanceShardListArray) ToShardingInstanceShardListArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ShardingInstanceShardListArrayOutput)
 }
 
-type ShardingInstanceShardListOutput struct { *pulumi.OutputState }
+type ShardingInstanceShardListOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceShardListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ShardingInstanceShardList)(nil)).Elem()
@@ -202,22 +202,22 @@ func (o ShardingInstanceShardListOutput) ToShardingInstanceShardListOutputWithCo
 }
 
 func (o ShardingInstanceShardListOutput) NodeClass() pulumi.StringOutput {
-	return o.ApplyT(func (v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
 // The ID of the shard-node.
 func (o ShardingInstanceShardListOutput) NodeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ShardingInstanceShardList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ShardingInstanceShardList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
 //
 // - Custom storage space; value range: [10, 1,000]
 // - 10-GB increments. Unit: GB.
 func (o ShardingInstanceShardListOutput) NodeStorage() pulumi.IntOutput {
-	return o.ApplyT(func (v ShardingInstanceShardList) int { return v.NodeStorage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ShardingInstanceShardList) int { return v.NodeStorage }).(pulumi.IntOutput)
 }
 
-type ShardingInstanceShardListArrayOutput struct { *pulumi.OutputState}
+type ShardingInstanceShardListArrayOutput struct{ *pulumi.OutputState }
 
 func (ShardingInstanceShardListArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ShardingInstanceShardList)(nil)).Elem()
@@ -232,7 +232,7 @@ func (o ShardingInstanceShardListArrayOutput) ToShardingInstanceShardListArrayOu
 }
 
 func (o ShardingInstanceShardListArrayOutput) Index(i pulumi.IntInput) ShardingInstanceShardListOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ShardingInstanceShardList {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShardingInstanceShardList {
 		return vs[0].([]ShardingInstanceShardList)[vs[1].(int)]
 	}).(ShardingInstanceShardListOutput)
 }
@@ -359,7 +359,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -375,100 +375,100 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // Instance availability zone.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 // Creation time of the instance in RFC3339 format.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Database engine type. Supported option is `MongoDB`.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 // Database engine version.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 // Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
 func (o GetInstancesInstanceOutput) ExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
 // The ID of the MongoDB instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Sizing of the instance to be queried.
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 // Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Lock status of the instance.
 func (o GetInstancesInstanceOutput) LockMode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
 // Array composed of Mongos.
 func (o GetInstancesInstanceOutput) Mongos() GetInstancesInstanceMongoArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []GetInstancesInstanceMongo { return v.Mongos }).(GetInstancesInstanceMongoArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceMongo { return v.Mongos }).(GetInstancesInstanceMongoArrayOutput)
 }
 
 // The name of the MongoDB instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Classic network or VPC.
 func (o GetInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
 func (o GetInstancesInstanceOutput) Replication() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
 }
 
 // Array composed of shards.
 func (o GetInstancesInstanceOutput) Shards() GetInstancesInstanceShardArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []GetInstancesInstanceShard { return v.Shards }).(GetInstancesInstanceShardArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceShard { return v.Shards }).(GetInstancesInstanceShardArrayOutput)
 }
 
 // Status of the instance.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Shard disk.
 func (o GetInstancesInstanceOutput) Storage() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
 }
 
 // A mapping of tags to assign to the resource.
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -483,7 +483,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -546,7 +546,7 @@ func (i GetInstancesInstanceMongoArray) ToGetInstancesInstanceMongoArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceMongoArrayOutput)
 }
 
-type GetInstancesInstanceMongoOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceMongoOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceMongoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstanceMongo)(nil)).Elem()
@@ -562,20 +562,20 @@ func (o GetInstancesInstanceMongoOutput) ToGetInstancesInstanceMongoOutputWithCo
 
 // Shard instance specification.
 func (o GetInstancesInstanceMongoOutput) Class() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
 }
 
 // Shard instance description.
 func (o GetInstancesInstanceMongoOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Shard instance ID.
 func (o GetInstancesInstanceMongoOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceMongoArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceMongoArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceMongoArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstanceMongo)(nil)).Elem()
@@ -590,7 +590,7 @@ func (o GetInstancesInstanceMongoArrayOutput) ToGetInstancesInstanceMongoArrayOu
 }
 
 func (o GetInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceMongoOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstanceMongo {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceMongo {
 		return vs[0].([]GetInstancesInstanceMongo)[vs[1].(int)]
 	}).(GetInstancesInstanceMongoOutput)
 }
@@ -657,7 +657,7 @@ func (i GetInstancesInstanceShardArray) ToGetInstancesInstanceShardArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceShardArrayOutput)
 }
 
-type GetInstancesInstanceShardOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceShardOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceShardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstanceShard)(nil)).Elem()
@@ -673,25 +673,25 @@ func (o GetInstancesInstanceShardOutput) ToGetInstancesInstanceShardOutputWithCo
 
 // Shard instance specification.
 func (o GetInstancesInstanceShardOutput) Class() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
 }
 
 // Shard instance description.
 func (o GetInstancesInstanceShardOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Shard instance ID.
 func (o GetInstancesInstanceShardOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
 // Shard disk.
 func (o GetInstancesInstanceShardOutput) Storage() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
 }
 
-type GetInstancesInstanceShardArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceShardArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceShardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstanceShard)(nil)).Elem()
@@ -706,7 +706,7 @@ func (o GetInstancesInstanceShardArrayOutput) ToGetInstancesInstanceShardArrayOu
 }
 
 func (o GetInstancesInstanceShardArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceShardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstanceShard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceShard {
 		return vs[0].([]GetInstancesInstanceShard)[vs[1].(int)]
 	}).(GetInstancesInstanceShardOutput)
 }
@@ -765,7 +765,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -781,15 +781,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -804,7 +804,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

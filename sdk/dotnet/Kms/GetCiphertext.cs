@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Kms
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetCiphertext.InvokeAsync() instead")]
         public static Task<GetCiphertextResult> GetCiphertext(GetCiphertextArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCiphertext
+    {
+        public static Task<GetCiphertextResult> InvokeAsync(GetCiphertextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

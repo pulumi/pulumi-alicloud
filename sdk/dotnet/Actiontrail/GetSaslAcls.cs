@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSaslAcls.InvokeAsync() instead")]
         public static Task<GetSaslAclsResult> GetSaslAcls(GetSaslAclsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSaslAcls
+    {
+        /// <summary>
+        /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.66.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
+        /// </summary>
+        public static Task<GetSaslAclsResult> InvokeAsync(GetSaslAclsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -30,7 +30,7 @@ type ImageImport struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayOutput `pulumi:"diskDeviceMappings"`
 	// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
-	ImageName pulumi.StringPtrOutput `pulumi:"imageName"`
+	ImageName   pulumi.StringPtrOutput `pulumi:"imageName"`
 	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrOutput `pulumi:"osType"`
@@ -76,7 +76,7 @@ type imageImportState struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []ImageImportDiskDeviceMapping `pulumi:"diskDeviceMappings"`
 	// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
-	ImageName *string `pulumi:"imageName"`
+	ImageName   *string `pulumi:"imageName"`
 	LicenseType *string `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType *string `pulumi:"osType"`
@@ -92,7 +92,7 @@ type ImageImportState struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayInput
 	// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
-	ImageName pulumi.StringPtrInput
+	ImageName   pulumi.StringPtrInput
 	LicenseType pulumi.StringPtrInput
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrInput
@@ -112,7 +112,7 @@ type imageImportArgs struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []ImageImportDiskDeviceMapping `pulumi:"diskDeviceMappings"`
 	// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
-	ImageName *string `pulumi:"imageName"`
+	ImageName   *string `pulumi:"imageName"`
 	LicenseType *string `pulumi:"licenseType"`
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType *string `pulumi:"osType"`
@@ -129,7 +129,7 @@ type ImageImportArgs struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageImportDiskDeviceMappingArrayInput
 	// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
-	ImageName pulumi.StringPtrInput
+	ImageName   pulumi.StringPtrInput
 	LicenseType pulumi.StringPtrInput
 	// Operating system platform type. Valid values: `windows`, Default is `linux`.
 	OsType pulumi.StringPtrInput
@@ -140,4 +140,3 @@ type ImageImportArgs struct {
 func (ImageImportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageImportArgs)(nil)).Elem()
 }
-

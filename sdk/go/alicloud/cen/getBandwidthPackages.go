@@ -27,22 +27,20 @@ type GetBandwidthPackagesArgs struct {
 	// ID of a CEN instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter CEN Bandwidth Package by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getBandwidthPackages.
 type GetBandwidthPackagesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// ID of CEN instance that owns the CEN Bandwidth Package.
-	InstanceId *string `pulumi:"instanceId"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	InstanceId *string  `pulumi:"instanceId"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of CEN bandwidth package. Each element contains the following attributes:
 	Packages []GetBandwidthPackagesPackage `pulumi:"packages"`
 }
-

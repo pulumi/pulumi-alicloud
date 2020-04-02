@@ -110,4 +110,3 @@ type ImageExportArgs struct {
 func (ImageExportArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageExportArgs)(nil)).Elem()
 }
-

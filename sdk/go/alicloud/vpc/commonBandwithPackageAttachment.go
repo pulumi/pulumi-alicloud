@@ -89,4 +89,3 @@ type CommonBandwithPackageAttachmentArgs struct {
 func (CommonBandwithPackageAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*commonBandwithPackageAttachmentArgs)(nil)).Elem()
 }
-

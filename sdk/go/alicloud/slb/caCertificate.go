@@ -113,4 +113,3 @@ type CaCertificateArgs struct {
 func (CaCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*caCertificateArgs)(nil)).Elem()
 }
-

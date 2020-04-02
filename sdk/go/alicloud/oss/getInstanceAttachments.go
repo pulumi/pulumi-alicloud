@@ -25,10 +25,9 @@ type GetInstanceAttachmentsArgs struct {
 	// The name of OTS instance.
 	InstanceName string `pulumi:"instanceName"`
 	// A regex string to filter results by vpc name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getInstanceAttachments.
 type GetInstanceAttachmentsResult struct {
@@ -37,12 +36,11 @@ type GetInstanceAttachmentsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The instance name.
-	InstanceName string `pulumi:"instanceName"`
-	NameRegex *string `pulumi:"nameRegex"`
+	InstanceName string  `pulumi:"instanceName"`
+	NameRegex    *string `pulumi:"nameRegex"`
 	// A list of vpc names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of vpc ids.
 	VpcIds []string `pulumi:"vpcIds"`
 }
-

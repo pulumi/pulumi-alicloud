@@ -15,7 +15,7 @@ type Ciphertext struct {
 	pulumi.CustomResourceState
 
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob pulumi.StringOutput `pulumi:"ciphertextBlob"`
+	CiphertextBlob    pulumi.StringOutput    `pulumi:"ciphertextBlob"`
 	EncryptionContext pulumi.StringMapOutput `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	// * `encryptionContext` -
@@ -60,7 +60,7 @@ func GetCiphertext(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ciphertext resources.
 type ciphertextState struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob *string `pulumi:"ciphertextBlob"`
+	CiphertextBlob    *string           `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	// * `encryptionContext` -
@@ -72,7 +72,7 @@ type ciphertextState struct {
 
 type CiphertextState struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob pulumi.StringPtrInput
+	CiphertextBlob    pulumi.StringPtrInput
 	EncryptionContext pulumi.StringMapInput
 	// The globally unique ID of the CMK.
 	// * `encryptionContext` -
@@ -110,4 +110,3 @@ type CiphertextArgs struct {
 func (CiphertextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ciphertextArgs)(nil)).Elem()
 }
-

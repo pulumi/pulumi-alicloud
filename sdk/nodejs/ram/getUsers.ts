@@ -57,6 +57,9 @@ export interface GetUsersArgs {
      * Filter results by a specific group name. Returned users are in the specified group. 
      */
     readonly groupName?: string;
+    /**
+     * A list of ram user IDs. 
+     */
     readonly ids?: string[];
     /**
      * A regex string to filter resulting users by their names.

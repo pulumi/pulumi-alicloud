@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Sag qos car resource. 
+// Provides a Sag qos car resource.
 // You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
 //
 // For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
@@ -182,4 +182,3 @@ type QosCarArgs struct {
 func (QosCarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosCarArgs)(nil)).Elem()
 }
-

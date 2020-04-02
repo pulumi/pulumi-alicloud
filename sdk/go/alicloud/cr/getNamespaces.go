@@ -25,22 +25,20 @@ func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.
 // A collection of arguments for invoking getNamespaces.
 type GetNamespacesArgs struct {
 	// A regex string to filter results by namespace name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getNamespaces.
 type GetNamespacesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Container Registry namespaces. Its element is a namespace name.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of namespace names.
 	Names []string `pulumi:"names"`
 	// A list of matched Container Registry namespaces. Each element contains the following attributes:
 	Namespaces []GetNamespacesNamespace `pulumi:"namespaces"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile *string                  `pulumi:"outputFile"`
 }
-

@@ -77,7 +77,7 @@ func (i GetAccessGroupsGroupArray) ToGetAccessGroupsGroupArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessGroupsGroupArrayOutput)
 }
 
-type GetAccessGroupsGroupOutput struct { *pulumi.OutputState }
+type GetAccessGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetAccessGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAccessGroupsGroup)(nil)).Elem()
@@ -93,30 +93,30 @@ func (o GetAccessGroupsGroupOutput) ToGetAccessGroupsGroupOutputWithContext(ctx 
 
 // Filter results by a specific Description.
 func (o GetAccessGroupsGroupOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // AccessGroupName of the AccessGroup.
 func (o GetAccessGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // MountTargetCount block of the AccessGroup
 func (o GetAccessGroupsGroupOutput) MountTargetCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAccessGroupsGroup) int { return v.MountTargetCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAccessGroupsGroup) int { return v.MountTargetCount }).(pulumi.IntOutput)
 }
 
 // RuleCount of the AccessGroup.
 func (o GetAccessGroupsGroupOutput) RuleCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAccessGroupsGroup) int { return v.RuleCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAccessGroupsGroup) int { return v.RuleCount }).(pulumi.IntOutput)
 }
 
 // Filter results by a specific AccessGroupType.
 func (o GetAccessGroupsGroupOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessGroupsGroup) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetAccessGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetAccessGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAccessGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAccessGroupsGroup)(nil)).Elem()
@@ -131,7 +131,7 @@ func (o GetAccessGroupsGroupArrayOutput) ToGetAccessGroupsGroupArrayOutputWithCo
 }
 
 func (o GetAccessGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAccessGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAccessGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessGroupsGroup {
 		return vs[0].([]GetAccessGroupsGroup)[vs[1].(int)]
 	}).(GetAccessGroupsGroupOutput)
 }
@@ -141,11 +141,11 @@ type GetAccessRulesRule struct {
 	AccessRuleId string `pulumi:"accessRuleId"`
 	// Priority of the AccessRule.
 	Priority int `pulumi:"priority"`
-	// Filter results by a specific RWAccess. 
+	// Filter results by a specific RWAccess.
 	RwAccess string `pulumi:"rwAccess"`
-	// Filter results by a specific SourceCidrIp. 
+	// Filter results by a specific SourceCidrIp.
 	SourceCidrIp string `pulumi:"sourceCidrIp"`
-	// Filter results by a specific UserAccess. 
+	// Filter results by a specific UserAccess.
 	UserAccess string `pulumi:"userAccess"`
 }
 
@@ -161,11 +161,11 @@ type GetAccessRulesRuleArgs struct {
 	AccessRuleId pulumi.StringInput `pulumi:"accessRuleId"`
 	// Priority of the AccessRule.
 	Priority pulumi.IntInput `pulumi:"priority"`
-	// Filter results by a specific RWAccess. 
+	// Filter results by a specific RWAccess.
 	RwAccess pulumi.StringInput `pulumi:"rwAccess"`
-	// Filter results by a specific SourceCidrIp. 
+	// Filter results by a specific SourceCidrIp.
 	SourceCidrIp pulumi.StringInput `pulumi:"sourceCidrIp"`
-	// Filter results by a specific UserAccess. 
+	// Filter results by a specific UserAccess.
 	UserAccess pulumi.StringInput `pulumi:"userAccess"`
 }
 
@@ -202,7 +202,7 @@ func (i GetAccessRulesRuleArray) ToGetAccessRulesRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesRuleArrayOutput)
 }
 
-type GetAccessRulesRuleOutput struct { *pulumi.OutputState }
+type GetAccessRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetAccessRulesRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAccessRulesRule)(nil)).Elem()
@@ -218,30 +218,30 @@ func (o GetAccessRulesRuleOutput) ToGetAccessRulesRuleOutputWithContext(ctx cont
 
 // AccessRuleId of the AccessRule.
 func (o GetAccessRulesRuleOutput) AccessRuleId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessRulesRule) string { return v.AccessRuleId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.AccessRuleId }).(pulumi.StringOutput)
 }
 
 // Priority of the AccessRule.
 func (o GetAccessRulesRuleOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAccessRulesRule) int { return v.Priority }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAccessRulesRule) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// Filter results by a specific RWAccess. 
+// Filter results by a specific RWAccess.
 func (o GetAccessRulesRuleOutput) RwAccess() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessRulesRule) string { return v.RwAccess }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.RwAccess }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific SourceCidrIp. 
+// Filter results by a specific SourceCidrIp.
 func (o GetAccessRulesRuleOutput) SourceCidrIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessRulesRule) string { return v.SourceCidrIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.SourceCidrIp }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific UserAccess. 
+// Filter results by a specific UserAccess.
 func (o GetAccessRulesRuleOutput) UserAccess() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccessRulesRule) string { return v.UserAccess }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccessRulesRule) string { return v.UserAccess }).(pulumi.StringOutput)
 }
 
-type GetAccessRulesRuleArrayOutput struct { *pulumi.OutputState}
+type GetAccessRulesRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAccessRulesRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAccessRulesRule)(nil)).Elem()
@@ -256,7 +256,7 @@ func (o GetAccessRulesRuleArrayOutput) ToGetAccessRulesRuleArrayOutputWithContex
 }
 
 func (o GetAccessRulesRuleArrayOutput) Index(i pulumi.IntInput) GetAccessRulesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAccessRulesRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessRulesRule {
 		return vs[0].([]GetAccessRulesRule)[vs[1].(int)]
 	}).(GetAccessRulesRuleOutput)
 }
@@ -270,11 +270,11 @@ type GetFileSystemsSystem struct {
 	Id string `pulumi:"id"`
 	// MeteredSize of the FileSystem.
 	MeteredSize int `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType. 
+	// Filter results by a specific ProtocolType.
 	ProtocolType string `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId string `pulumi:"regionId"`
-	// Filter results by a specific StorageType. 
+	// Filter results by a specific StorageType.
 	StorageType string `pulumi:"storageType"`
 }
 
@@ -294,11 +294,11 @@ type GetFileSystemsSystemArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// MeteredSize of the FileSystem.
 	MeteredSize pulumi.IntInput `pulumi:"meteredSize"`
-	// Filter results by a specific ProtocolType. 
+	// Filter results by a specific ProtocolType.
 	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
 	// ID of the region where the FileSystem is located.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// Filter results by a specific StorageType. 
+	// Filter results by a specific StorageType.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 }
 
@@ -335,7 +335,7 @@ func (i GetFileSystemsSystemArray) ToGetFileSystemsSystemArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetFileSystemsSystemArrayOutput)
 }
 
-type GetFileSystemsSystemOutput struct { *pulumi.OutputState }
+type GetFileSystemsSystemOutput struct{ *pulumi.OutputState }
 
 func (GetFileSystemsSystemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetFileSystemsSystem)(nil)).Elem()
@@ -351,40 +351,40 @@ func (o GetFileSystemsSystemOutput) ToGetFileSystemsSystemOutputWithContext(ctx 
 
 // Time of creation.
 func (o GetFileSystemsSystemOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Destription of the FileSystem.
 func (o GetFileSystemsSystemOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the FileSystem.
 func (o GetFileSystemsSystemOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // MeteredSize of the FileSystem.
 func (o GetFileSystemsSystemOutput) MeteredSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) int { return v.MeteredSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) int { return v.MeteredSize }).(pulumi.IntOutput)
 }
 
-// Filter results by a specific ProtocolType. 
+// Filter results by a specific ProtocolType.
 func (o GetFileSystemsSystemOutput) ProtocolType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.ProtocolType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
 // ID of the region where the FileSystem is located.
 func (o GetFileSystemsSystemOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific StorageType. 
+// Filter results by a specific StorageType.
 func (o GetFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
 }
 
-type GetFileSystemsSystemArrayOutput struct { *pulumi.OutputState}
+type GetFileSystemsSystemArrayOutput struct{ *pulumi.OutputState }
 
 func (GetFileSystemsSystemArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetFileSystemsSystem)(nil)).Elem()
@@ -399,7 +399,7 @@ func (o GetFileSystemsSystemArrayOutput) ToGetFileSystemsSystemArrayOutputWithCo
 }
 
 func (o GetFileSystemsSystemArrayOutput) Index(i pulumi.IntInput) GetFileSystemsSystemOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetFileSystemsSystem {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFileSystemsSystem {
 		return vs[0].([]GetFileSystemsSystem)[vs[1].(int)]
 	}).(GetFileSystemsSystemOutput)
 }
@@ -474,7 +474,7 @@ func (i GetMountTargetsTargetArray) ToGetMountTargetsTargetArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetMountTargetsTargetArrayOutput)
 }
 
-type GetMountTargetsTargetOutput struct { *pulumi.OutputState }
+type GetMountTargetsTargetOutput struct{ *pulumi.OutputState }
 
 func (GetMountTargetsTargetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMountTargetsTarget)(nil)).Elem()
@@ -490,35 +490,35 @@ func (o GetMountTargetsTargetOutput) ToGetMountTargetsTargetOutputWithContext(ct
 
 // Filter results by a specific AccessGroupName.
 func (o GetMountTargetsTargetOutput) AccessGroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.AccessGroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.AccessGroupName }).(pulumi.StringOutput)
 }
 
 // ID of the MountTargetDomain.
 func (o GetMountTargetsTargetOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific MountTargetDomain.
 func (o GetMountTargetsTargetOutput) MountTargetDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.MountTargetDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.MountTargetDomain }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific NetworkType.
 func (o GetMountTargetsTargetOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific VpcId.
 func (o GetMountTargetsTargetOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific VSwitchId.
 func (o GetMountTargetsTargetOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMountTargetsTarget) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMountTargetsTarget) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetMountTargetsTargetArrayOutput struct { *pulumi.OutputState}
+type GetMountTargetsTargetArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMountTargetsTargetArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMountTargetsTarget)(nil)).Elem()
@@ -533,7 +533,7 @@ func (o GetMountTargetsTargetArrayOutput) ToGetMountTargetsTargetArrayOutputWith
 }
 
 func (o GetMountTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetMountTargetsTargetOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMountTargetsTarget {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMountTargetsTarget {
 		return vs[0].([]GetMountTargetsTarget)[vs[1].(int)]
 	}).(GetMountTargetsTargetOutput)
 }

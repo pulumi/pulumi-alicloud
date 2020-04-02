@@ -15,7 +15,7 @@ type App struct {
 
 	// The description of the app. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the app. 
+	// The name of the app.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -51,7 +51,7 @@ func GetApp(ctx *pulumi.Context,
 type appState struct {
 	// The description of the app. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the app. 
+	// The name of the app.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -60,7 +60,7 @@ type appState struct {
 type AppState struct {
 	// The description of the app. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the app. 
+	// The name of the app.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -73,7 +73,7 @@ func (AppState) ElementType() reflect.Type {
 type appArgs struct {
 	// The description of the app. Defaults to null.
 	Description *string `pulumi:"description"`
-	// The name of the app. 
+	// The name of the app.
 	Name *string `pulumi:"name"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -83,7 +83,7 @@ type appArgs struct {
 type AppArgs struct {
 	// The description of the app. Defaults to null.
 	Description pulumi.StringPtrInput
-	// The name of the app. 
+	// The name of the app.
 	Name pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -92,4 +92,3 @@ type AppArgs struct {
 func (AppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appArgs)(nil)).Elem()
 }
-

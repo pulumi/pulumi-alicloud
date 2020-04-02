@@ -57,10 +57,10 @@ type Instance struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
-	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
+	PublicWhitelists  pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource. 
+	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -154,10 +154,10 @@ type instanceState struct {
 	Port *int `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	PublicWhitelists []string `pulumi:"publicWhitelists"`
+	PublicWhitelists  []string `pulumi:"publicWhitelists"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource. 
+	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -206,10 +206,10 @@ type InstanceState struct {
 	Port pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
-	PublicWhitelists pulumi.StringArrayInput
+	PublicWhitelists  pulumi.StringArrayInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource. 
+	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
@@ -254,8 +254,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	PublicWhitelists []string `pulumi:"publicWhitelists"`
-	// A mapping of tags to assign to the resource. 
+	PublicWhitelists  []string `pulumi:"publicWhitelists"`
+	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -297,8 +297,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
-	PublicWhitelists pulumi.StringArrayInput
-	// A mapping of tags to assign to the resource. 
+	PublicWhitelists  pulumi.StringArrayInput
+	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
 	Tags pulumi.MapInput
@@ -313,4 +313,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

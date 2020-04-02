@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
         /// </summary>
+        [Obsolete("Use GetLoadBalancers.InvokeAsync() instead")]
         public static Task<GetLoadBalancersResult> GetLoadBalancers(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetLoadBalancers
+    {
+        /// <summary>
+        /// This data source provides the server load balancers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
+        /// </summary>
+        public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

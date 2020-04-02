@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetMasterSlaveServerGroups.InvokeAsync() instead")]
         public static Task<GetMasterSlaveServerGroupsResult> GetMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMasterSlaveServerGroups
+    {
+        /// <summary>
+        /// This data source provides the master slave server groups related to a server load balancer.
+        /// 
+        /// &gt; **NOTE:** Available in 1.54.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
+        /// </summary>
+        public static Task<GetMasterSlaveServerGroupsResult> InvokeAsync(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

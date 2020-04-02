@@ -61,7 +61,8 @@ type ServiceLogConfigPtrInput interface {
 
 type serviceLogConfigPtrType ServiceLogConfigArgs
 
-func ServiceLogConfigPtr(v *ServiceLogConfigArgs) ServiceLogConfigPtrInput {	return (*serviceLogConfigPtrType)(v)
+func ServiceLogConfigPtr(v *ServiceLogConfigArgs) ServiceLogConfigPtrInput {
+	return (*serviceLogConfigPtrType)(v)
 }
 
 func (*serviceLogConfigPtrType) ElementType() reflect.Type {
@@ -76,7 +77,7 @@ func (i *serviceLogConfigPtrType) ToServiceLogConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceLogConfigPtrOutput)
 }
 
-type ServiceLogConfigOutput struct { *pulumi.OutputState }
+type ServiceLogConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceLogConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceLogConfig)(nil)).Elem()
@@ -99,17 +100,18 @@ func (o ServiceLogConfigOutput) ToServiceLogConfigPtrOutputWithContext(ctx conte
 		return &v
 	}).(ServiceLogConfigPtrOutput)
 }
+
 // The log store name of Logs service.
 func (o ServiceLogConfigOutput) Logstore() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
 }
 
 // The project name of Logs service.
 func (o ServiceLogConfigOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
 }
 
-type ServiceLogConfigPtrOutput struct { *pulumi.OutputState}
+type ServiceLogConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceLogConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceLogConfig)(nil)).Elem()
@@ -124,23 +126,23 @@ func (o ServiceLogConfigPtrOutput) ToServiceLogConfigPtrOutputWithContext(ctx co
 }
 
 func (o ServiceLogConfigPtrOutput) Elem() ServiceLogConfigOutput {
-	return o.ApplyT(func (v *ServiceLogConfig) ServiceLogConfig { return *v }).(ServiceLogConfigOutput)
+	return o.ApplyT(func(v *ServiceLogConfig) ServiceLogConfig { return *v }).(ServiceLogConfigOutput)
 }
 
 // The log store name of Logs service.
 func (o ServiceLogConfigPtrOutput) Logstore() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
 }
 
 // The project name of Logs service.
 func (o ServiceLogConfigPtrOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ServiceVpcConfig struct {
 	// A security group ID associated with the FC service.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	VpcId *string `pulumi:"vpcId"`
+	SecurityGroupId string  `pulumi:"securityGroupId"`
+	VpcId           *string `pulumi:"vpcId"`
 	// A list of vswitch IDs associated with the FC service.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
@@ -154,8 +156,8 @@ type ServiceVpcConfigInput interface {
 
 type ServiceVpcConfigArgs struct {
 	// A security group ID associated with the FC service.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	SecurityGroupId pulumi.StringInput    `pulumi:"securityGroupId"`
+	VpcId           pulumi.StringPtrInput `pulumi:"vpcId"`
 	// A list of vswitch IDs associated with the FC service.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
@@ -189,7 +191,8 @@ type ServiceVpcConfigPtrInput interface {
 
 type serviceVpcConfigPtrType ServiceVpcConfigArgs
 
-func ServiceVpcConfigPtr(v *ServiceVpcConfigArgs) ServiceVpcConfigPtrInput {	return (*serviceVpcConfigPtrType)(v)
+func ServiceVpcConfigPtr(v *ServiceVpcConfigArgs) ServiceVpcConfigPtrInput {
+	return (*serviceVpcConfigPtrType)(v)
 }
 
 func (*serviceVpcConfigPtrType) ElementType() reflect.Type {
@@ -204,7 +207,7 @@ func (i *serviceVpcConfigPtrType) ToServiceVpcConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceVpcConfigPtrOutput)
 }
 
-type ServiceVpcConfigOutput struct { *pulumi.OutputState }
+type ServiceVpcConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceVpcConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServiceVpcConfig)(nil)).Elem()
@@ -227,21 +230,22 @@ func (o ServiceVpcConfigOutput) ToServiceVpcConfigPtrOutputWithContext(ctx conte
 		return &v
 	}).(ServiceVpcConfigPtrOutput)
 }
+
 // A security group ID associated with the FC service.
 func (o ServiceVpcConfigOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 func (o ServiceVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 // A list of vswitch IDs associated with the FC service.
 func (o ServiceVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-type ServiceVpcConfigPtrOutput struct { *pulumi.OutputState}
+type ServiceVpcConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceVpcConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServiceVpcConfig)(nil)).Elem()
@@ -256,21 +260,21 @@ func (o ServiceVpcConfigPtrOutput) ToServiceVpcConfigPtrOutputWithContext(ctx co
 }
 
 func (o ServiceVpcConfigPtrOutput) Elem() ServiceVpcConfigOutput {
-	return o.ApplyT(func (v *ServiceVpcConfig) ServiceVpcConfig { return *v }).(ServiceVpcConfigOutput)
+	return o.ApplyT(func(v *ServiceVpcConfig) ServiceVpcConfig { return *v }).(ServiceVpcConfigOutput)
 }
 
 // A security group ID associated with the FC service.
 func (o ServiceVpcConfigPtrOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 func (o ServiceVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 // A list of vswitch IDs associated with the FC service.
 func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 type GetFunctionsFunction struct {
@@ -367,7 +371,7 @@ func (i GetFunctionsFunctionArray) ToGetFunctionsFunctionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetFunctionsFunctionArrayOutput)
 }
 
-type GetFunctionsFunctionOutput struct { *pulumi.OutputState }
+type GetFunctionsFunctionOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionsFunctionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetFunctionsFunction)(nil)).Elem()
@@ -383,65 +387,65 @@ func (o GetFunctionsFunctionOutput) ToGetFunctionsFunctionOutputWithContext(ctx 
 
 // Checksum (crc64) of the function code.
 func (o GetFunctionsFunctionOutput) CodeChecksum() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.CodeChecksum }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.CodeChecksum }).(pulumi.StringOutput)
 }
 
 // Function code size in bytes.
 func (o GetFunctionsFunctionOutput) CodeSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) int { return v.CodeSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.CodeSize }).(pulumi.IntOutput)
 }
 
 // Function creation time.
 func (o GetFunctionsFunctionOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Function description.
 func (o GetFunctionsFunctionOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // A map that defines environment variables for the function.
 func (o GetFunctionsFunctionOutput) EnvironmentVariables() pulumi.MapOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) map[string]interface{} { return v.EnvironmentVariables }).(pulumi.MapOutput)
 }
 
 // Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
 func (o GetFunctionsFunctionOutput) Handler() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.Handler }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Handler }).(pulumi.StringOutput)
 }
 
 // Function ID.
 func (o GetFunctionsFunctionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Function last modification time.
 func (o GetFunctionsFunctionOutput) LastModificationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.LastModificationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
 // Amount of memory in MB the function can use at runtime.
 func (o GetFunctionsFunctionOutput) MemorySize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) int { return v.MemorySize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.MemorySize }).(pulumi.IntOutput)
 }
 
 // Function name.
 func (o GetFunctionsFunctionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
 func (o GetFunctionsFunctionOutput) Runtime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) string { return v.Runtime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) string { return v.Runtime }).(pulumi.StringOutput)
 }
 
 // Maximum amount of time the function can run in seconds.
 func (o GetFunctionsFunctionOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetFunctionsFunction) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetFunctionsFunction) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-type GetFunctionsFunctionArrayOutput struct { *pulumi.OutputState}
+type GetFunctionsFunctionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetFunctionsFunctionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetFunctionsFunction)(nil)).Elem()
@@ -456,7 +460,7 @@ func (o GetFunctionsFunctionArrayOutput) ToGetFunctionsFunctionArrayOutputWithCo
 }
 
 func (o GetFunctionsFunctionArrayOutput) Index(i pulumi.IntInput) GetFunctionsFunctionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetFunctionsFunction {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFunctionsFunction {
 		return vs[0].([]GetFunctionsFunction)[vs[1].(int)]
 	}).(GetFunctionsFunctionOutput)
 }
@@ -543,7 +547,7 @@ func (i GetServicesServiceArray) ToGetServicesServiceArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceArrayOutput)
 }
 
-type GetServicesServiceOutput struct { *pulumi.OutputState }
+type GetServicesServiceOutput struct{ *pulumi.OutputState }
 
 func (GetServicesServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
@@ -559,50 +563,50 @@ func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx cont
 
 // FC service creation time.
 func (o GetServicesServiceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // FC service description.
 func (o GetServicesServiceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // FC service ID.
 func (o GetServicesServiceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicate whether the service can access to internet or not.
 func (o GetServicesServiceOutput) InternetAccess() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetServicesService) bool { return v.InternetAccess }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetServicesService) bool { return v.InternetAccess }).(pulumi.BoolOutput)
 }
 
 // FC service last modification time.
 func (o GetServicesServiceOutput) LastModificationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.LastModificationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
 // A list of one element containing information about the associated log store. It contains the following attributes:
 func (o GetServicesServiceOutput) LogConfig() GetServicesServiceLogConfigOutput {
-	return o.ApplyT(func (v GetServicesService) GetServicesServiceLogConfig { return v.LogConfig }).(GetServicesServiceLogConfigOutput)
+	return o.ApplyT(func(v GetServicesService) GetServicesServiceLogConfig { return v.LogConfig }).(GetServicesServiceLogConfigOutput)
 }
 
 // FC service name.
 func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // FC service role ARN.
 func (o GetServicesServiceOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesService) string { return v.Role }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesService) string { return v.Role }).(pulumi.StringOutput)
 }
 
 // A list of one element containing information about accessible VPC resources. It contains the following attributes:
 func (o GetServicesServiceOutput) VpcConfig() GetServicesServiceVpcConfigOutput {
-	return o.ApplyT(func (v GetServicesService) GetServicesServiceVpcConfig { return v.VpcConfig }).(GetServicesServiceVpcConfigOutput)
+	return o.ApplyT(func(v GetServicesService) GetServicesServiceVpcConfig { return v.VpcConfig }).(GetServicesServiceVpcConfigOutput)
 }
 
-type GetServicesServiceArrayOutput struct { *pulumi.OutputState}
+type GetServicesServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServicesServiceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
@@ -617,7 +621,7 @@ func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutputWithContex
 }
 
 func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServicesService {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesService {
 		return vs[0].([]GetServicesService)[vs[1].(int)]
 	}).(GetServicesServiceOutput)
 }
@@ -655,7 +659,7 @@ func (i GetServicesServiceLogConfigArgs) ToGetServicesServiceLogConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceLogConfigOutput)
 }
 
-type GetServicesServiceLogConfigOutput struct { *pulumi.OutputState }
+type GetServicesServiceLogConfigOutput struct{ *pulumi.OutputState }
 
 func (GetServicesServiceLogConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServicesServiceLogConfig)(nil)).Elem()
@@ -671,12 +675,12 @@ func (o GetServicesServiceLogConfigOutput) ToGetServicesServiceLogConfigOutputWi
 
 // Log Service store name.
 func (o GetServicesServiceLogConfigOutput) Logstore() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
 }
 
 // Log Service project name.
 func (o GetServicesServiceLogConfigOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type GetServicesServiceVpcConfig struct {
@@ -716,7 +720,7 @@ func (i GetServicesServiceVpcConfigArgs) ToGetServicesServiceVpcConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceVpcConfigOutput)
 }
 
-type GetServicesServiceVpcConfigOutput struct { *pulumi.OutputState }
+type GetServicesServiceVpcConfigOutput struct{ *pulumi.OutputState }
 
 func (GetServicesServiceVpcConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServicesServiceVpcConfig)(nil)).Elem()
@@ -732,17 +736,17 @@ func (o GetServicesServiceVpcConfigOutput) ToGetServicesServiceVpcConfigOutputWi
 
 // Associated security group ID.
 func (o GetServicesServiceVpcConfigOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // Associated VPC ID.
 func (o GetServicesServiceVpcConfigOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServicesServiceVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServicesServiceVpcConfig) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // Associated VSwitch IDs.
 func (o GetServicesServiceVpcConfigOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServicesServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetServicesServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 type GetTriggersTrigger struct {
@@ -823,7 +827,7 @@ func (i GetTriggersTriggerArray) ToGetTriggersTriggerArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggersTriggerArrayOutput)
 }
 
-type GetTriggersTriggerOutput struct { *pulumi.OutputState }
+type GetTriggersTriggerOutput struct{ *pulumi.OutputState }
 
 func (GetTriggersTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTriggersTrigger)(nil)).Elem()
@@ -839,45 +843,45 @@ func (o GetTriggersTriggerOutput) ToGetTriggersTriggerOutputWithContext(ctx cont
 
 // JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
 func (o GetTriggersTriggerOutput) Config() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.Config }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.Config }).(pulumi.StringOutput)
 }
 
 // FC trigger creation time.
 func (o GetTriggersTriggerOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // FC trigger ID.
 func (o GetTriggersTriggerOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 func (o GetTriggersTriggerOutput) InvocationRole() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.InvocationRole }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.InvocationRole }).(pulumi.StringOutput)
 }
 
 // FC trigger last modification time.
 func (o GetTriggersTriggerOutput) LastModificationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.LastModificationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
 // FC trigger name.
 func (o GetTriggersTriggerOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 func (o GetTriggersTriggerOutput) SourceArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.SourceArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.SourceArn }).(pulumi.StringOutput)
 }
 
 // Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mnsTopic`.
 func (o GetTriggersTriggerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTriggersTrigger) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTriggersTrigger) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetTriggersTriggerArrayOutput struct { *pulumi.OutputState}
+type GetTriggersTriggerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTriggersTriggerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTriggersTrigger)(nil)).Elem()
@@ -892,7 +896,7 @@ func (o GetTriggersTriggerArrayOutput) ToGetTriggersTriggerArrayOutputWithContex
 }
 
 func (o GetTriggersTriggerArrayOutput) Index(i pulumi.IntInput) GetTriggersTriggerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTriggersTrigger {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggersTrigger {
 		return vs[0].([]GetTriggersTrigger)[vs[1].(int)]
 	}).(GetTriggersTriggerOutput)
 }
@@ -947,7 +951,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -963,10 +967,10 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -981,7 +985,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

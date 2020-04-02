@@ -112,4 +112,3 @@ type LoginProfileArgs struct {
 func (LoginProfileArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loginProfileArgs)(nil)).Elem()
 }
-

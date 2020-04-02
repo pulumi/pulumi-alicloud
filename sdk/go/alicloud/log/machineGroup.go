@@ -124,4 +124,3 @@ type MachineGroupArgs struct {
 func (MachineGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineGroupArgs)(nil)).Elem()
 }
-

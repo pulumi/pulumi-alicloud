@@ -32,7 +32,7 @@ type GetMountTargetsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// Filter results by a specific MountTargetDomain.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile        *string `pulumi:"outputFile"`
 	// Filter results by a specific NetworkType.
 	Type *string `pulumi:"type"`
 	// Filter results by a specific VpcId.
@@ -41,12 +41,11 @@ type GetMountTargetsArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
-
 // A collection of values returned by getMountTargets.
 type GetMountTargetsResult struct {
 	// AccessGroup of The MountTarget.
 	AccessGroupName *string `pulumi:"accessGroupName"`
-	FileSystemId string `pulumi:"fileSystemId"`
+	FileSystemId    string  `pulumi:"fileSystemId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of MountTargetDomain.
@@ -54,13 +53,12 @@ type GetMountTargetsResult struct {
 	// MountTargetDomain of the MountTarget.
 	// * `type`- NetworkType of The MountTarget.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile        *string `pulumi:"outputFile"`
 	// A list of MountTargetDomains. Each element contains the following attributes:
 	Targets []GetMountTargetsTarget `pulumi:"targets"`
-	Type *string `pulumi:"type"`
+	Type    *string                 `pulumi:"type"`
 	// VpcId of The MountTarget.
 	VpcId *string `pulumi:"vpcId"`
 	// VSwitchId of The MountTarget.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-

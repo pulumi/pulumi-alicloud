@@ -23,7 +23,7 @@ type Account struct {
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
-	// The privilege of account access database. Valid values: 
+	// The privilege of account access database. Valid values:
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
@@ -81,7 +81,7 @@ type accountState struct {
 	AccountName *string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The privilege of account access database. Valid values: 
+	// The privilege of account access database. Valid values:
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
@@ -106,7 +106,7 @@ type AccountState struct {
 	AccountName pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
-	// The privilege of account access database. Valid values: 
+	// The privilege of account access database. Valid values:
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
@@ -135,7 +135,7 @@ type accountArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The privilege of account access database. Valid values: 
+	// The privilege of account access database. Valid values:
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
@@ -161,7 +161,7 @@ type AccountArgs struct {
 	AccountName pulumi.StringInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
-	// The privilege of account access database. Valid values: 
+	// The privilege of account access database. Valid values:
 	// - RoleReadOnly: This value is only for Redis and Memcache
 	// - RoleReadWrite: This value is only for Redis and Memcache
 	// - RoleRepl: This value supports instance to read, write, and open SYNC / PSYNC commands.
@@ -184,4 +184,3 @@ type AccountArgs struct {
 func (AccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountArgs)(nil)).Elem()
 }
-

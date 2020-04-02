@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
         /// </summary>
+        [Obsolete("Use GetResolutionLines.InvokeAsync() instead")]
         public static Task<GetResolutionLinesResult> GetResolutionLines(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetResolutionLines
+    {
+        /// <summary>
+        /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
+        /// </summary>
+        public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

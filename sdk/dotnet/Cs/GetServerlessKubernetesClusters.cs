@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
         /// </summary>
+        [Obsolete("Use GetServerlessKubernetesClusters.InvokeAsync() instead")]
         public static Task<GetServerlessKubernetesClustersResult> GetServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetServerlessKubernetesClusters
+    {
+        /// <summary>
+        /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.58.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
+        /// </summary>
+        public static Task<GetServerlessKubernetesClustersResult> InvokeAsync(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

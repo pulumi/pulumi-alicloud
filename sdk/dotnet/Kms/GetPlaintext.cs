@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Kms
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetPlaintext.InvokeAsync() instead")]
         public static Task<GetPlaintextResult> GetPlaintext(GetPlaintextArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetPlaintext
+    {
+        public static Task<GetPlaintextResult> InvokeAsync(GetPlaintextArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

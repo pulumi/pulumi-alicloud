@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM User Policy attachment resource. 
+// Provides a RAM User Policy attachment resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user_policy_attachment.html.markdown.
 type UserPolicyAttachment struct {
@@ -105,4 +105,3 @@ type UserPolicyAttachmentArgs struct {
 func (UserPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPolicyAttachmentArgs)(nil)).Elem()
 }
-

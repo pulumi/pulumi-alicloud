@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRouteTables.InvokeAsync() instead")]
         public static Task<GetRouteTablesResult> GetRouteTables(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRouteTables
+    {
+        /// <summary>
+        /// This data source provides a list of Route Tables owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
+        /// </summary>
+        public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteTablesResult>("alicloud:vpc/getRouteTables:getRouteTables", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

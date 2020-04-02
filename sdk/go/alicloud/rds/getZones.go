@@ -27,21 +27,19 @@ type GetZonesArgs struct {
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
-	Multi *bool `pulumi:"multi"`
+	Multi      *bool   `pulumi:"multi"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	Multi *bool `pulumi:"multi"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType *string  `pulumi:"instanceChargeType"`
+	Multi              *bool    `pulumi:"multi"`
+	OutputFile         *string  `pulumi:"outputFile"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
-

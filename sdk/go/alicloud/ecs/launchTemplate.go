@@ -27,7 +27,7 @@ type LaunchTemplate struct {
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// Image ID.
-	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	ImageId         pulumi.StringPtrOutput `pulumi:"imageId"`
 	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -58,13 +58,13 @@ type LaunchTemplate struct {
 	// Network type of the instance. Value options: Classic | VPC.
 	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
+	RamRoleName     pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
-	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
+	SecurityGroupId pulumi.StringPtrOutput  `pulumi:"securityGroupId"`
+	SpotPriceLimit  pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -89,7 +89,7 @@ type LaunchTemplate struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	Userdata pulumi.StringPtrOutput `pulumi:"userdata"`
-	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	VpcId    pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -133,7 +133,7 @@ type launchTemplateState struct {
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName *string `pulumi:"hostName"`
 	// Image ID.
-	ImageId *string `pulumi:"imageId"`
+	ImageId         *string `pulumi:"imageId"`
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -164,13 +164,13 @@ type launchTemplateState struct {
 	// Network type of the instance. Value options: Classic | VPC.
 	NetworkType *string `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName *string `pulumi:"ramRoleName"`
+	RamRoleName     *string `pulumi:"ramRoleName"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	SecurityGroupId *string  `pulumi:"securityGroupId"`
+	SpotPriceLimit  *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -195,7 +195,7 @@ type launchTemplateState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	Userdata *string `pulumi:"userdata"`
-	VpcId *string `pulumi:"vpcId"`
+	VpcId    *string `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -212,7 +212,7 @@ type LaunchTemplateState struct {
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrInput
 	// Image ID.
-	ImageId pulumi.StringPtrInput
+	ImageId         pulumi.StringPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -243,13 +243,13 @@ type LaunchTemplateState struct {
 	// Network type of the instance. Value options: Classic | VPC.
 	NetworkType pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName pulumi.StringPtrInput
+	RamRoleName     pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringPtrInput
-	SpotPriceLimit pulumi.Float64PtrInput
+	SpotPriceLimit  pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -274,7 +274,7 @@ type LaunchTemplateState struct {
 	Tags pulumi.MapInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	Userdata pulumi.StringPtrInput
-	VpcId pulumi.StringPtrInput
+	VpcId    pulumi.StringPtrInput
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -295,7 +295,7 @@ type launchTemplateArgs struct {
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName *string `pulumi:"hostName"`
 	// Image ID.
-	ImageId *string `pulumi:"imageId"`
+	ImageId         *string `pulumi:"imageId"`
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -326,13 +326,13 @@ type launchTemplateArgs struct {
 	// Network type of the instance. Value options: Classic | VPC.
 	NetworkType *string `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName *string `pulumi:"ramRoleName"`
+	RamRoleName     *string `pulumi:"ramRoleName"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	SecurityGroupId *string  `pulumi:"securityGroupId"`
+	SpotPriceLimit  *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -357,7 +357,7 @@ type launchTemplateArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	Userdata *string `pulumi:"userdata"`
-	VpcId *string `pulumi:"vpcId"`
+	VpcId    *string `pulumi:"vpcId"`
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
@@ -375,7 +375,7 @@ type LaunchTemplateArgs struct {
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 	HostName pulumi.StringPtrInput
 	// Image ID.
-	ImageId pulumi.StringPtrInput
+	ImageId         pulumi.StringPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
@@ -406,13 +406,13 @@ type LaunchTemplateArgs struct {
 	// Network type of the instance. Value options: Classic | VPC.
 	NetworkType pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
-	RamRoleName pulumi.StringPtrInput
+	RamRoleName     pulumi.StringPtrInput
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringPtrInput
-	SpotPriceLimit pulumi.Float64PtrInput
+	SpotPriceLimit  pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -437,7 +437,7 @@ type LaunchTemplateArgs struct {
 	Tags pulumi.MapInput
 	// User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
 	Userdata pulumi.StringPtrInput
-	VpcId pulumi.StringPtrInput
+	VpcId    pulumi.StringPtrInput
 	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
@@ -447,4 +447,3 @@ type LaunchTemplateArgs struct {
 func (LaunchTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*launchTemplateArgs)(nil)).Elem()
 }
-

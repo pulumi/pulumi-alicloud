@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Yundun
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBastionHostInstances.InvokeAsync() instead")]
         public static Task<GetBastionHostInstancesResult> GetBastionHostInstances(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBastionHostInstances
+    {
+        /// <summary>
+        /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.63.0+ .
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
+        /// </summary>
+        public static Task<GetBastionHostInstancesResult> InvokeAsync(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

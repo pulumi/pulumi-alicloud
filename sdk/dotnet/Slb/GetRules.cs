@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRules.InvokeAsync() instead")]
         public static Task<GetRulesResult> GetRules(GetRulesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRules
+    {
+        /// <summary>
+        /// This data source provides the rules associated with a server load balancer listener.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
+        /// </summary>
+        public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

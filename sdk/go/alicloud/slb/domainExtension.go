@@ -133,4 +133,3 @@ type DomainExtensionArgs struct {
 func (DomainExtensionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainExtensionArgs)(nil)).Elem()
 }
-

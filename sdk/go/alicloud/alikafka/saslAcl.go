@@ -155,4 +155,3 @@ type SaslAclArgs struct {
 func (SaslAclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslAclArgs)(nil)).Elem()
 }
-

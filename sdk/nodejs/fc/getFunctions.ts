@@ -47,6 +47,9 @@ export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getFunctions.
  */
 export interface GetFunctionsArgs {
+    /**
+     * A list of functions ids.
+     */
     readonly ids?: string[];
     /**
      * A regex string to filter results by function name.

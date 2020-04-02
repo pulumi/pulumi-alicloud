@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available scaling rule resources. 
+// This data source provides available scaling rule resources.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
 func GetScalingRules(ctx *pulumi.Context, args *GetScalingRulesArgs, opts ...pulumi.InvokeOption) (*GetScalingRulesResult, error) {
@@ -25,7 +25,7 @@ type GetScalingRulesArgs struct {
 	// A list of scaling rule IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting scaling rules by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the scaling rules belong to.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -33,17 +33,16 @@ type GetScalingRulesArgs struct {
 	Type *string `pulumi:"type"`
 }
 
-
 // A collection of values returned by getScalingRules.
 type GetScalingRulesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of scaling rule ids.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of scaling rule names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of scaling rules. Each element contains the following attributes:
 	Rules []GetScalingRulesRule `pulumi:"rules"`
 	// ID of the scaling group.
@@ -51,4 +50,3 @@ type GetScalingRulesResult struct {
 	// Type of the scaling rule.
 	Type *string `pulumi:"type"`
 }
-

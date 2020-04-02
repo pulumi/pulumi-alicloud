@@ -13,9 +13,9 @@ import (
 // > **NOTE:** Available in 1.36.0+.
 //
 // ## Public ip addresses Block
-//   
+//
 //   The public ip addresses mapping supports the following:
-//   
+//
 //   * `ipAddress`   - The address of the EIP.
 //   * `allocationId` - The ID of the EIP instance.
 //
@@ -34,26 +34,24 @@ type GetCommonBandwidthPackagesArgs struct {
 	// A list of Common Bandwidth Packages IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
-
 
 // A collection of values returned by getCommonBandwidthPackages.
 type GetCommonBandwidthPackagesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Common Bandwidth Packages IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of Common Bandwidth Packages names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of Common Bandwidth Packages. Each element contains the following attributes:
 	Packages []GetCommonBandwidthPackagesPackage `pulumi:"packages"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
-

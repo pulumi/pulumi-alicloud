@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNotifications.InvokeAsync() instead")]
         public static Task<GetNotificationsResult> GetNotifications(GetNotificationsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNotifications
+    {
+        /// <summary>
+        /// This data source provides available notification resources. 
+        /// 
+        /// &gt; **NOTE:** Available in 1.72.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
+        /// </summary>
+        public static Task<GetNotificationsResult> InvokeAsync(GetNotificationsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -29,10 +29,9 @@ type GetTablesArgs struct {
 	// The name of OTS instance.
 	InstanceName string `pulumi:"instanceName"`
 	// A regex string to filter results by table name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getTables.
 type GetTablesResult struct {
@@ -41,12 +40,11 @@ type GetTablesResult struct {
 	// A list of table IDs.
 	Ids []string `pulumi:"ids"`
 	// The OTS instance name.
-	InstanceName string `pulumi:"instanceName"`
-	NameRegex *string `pulumi:"nameRegex"`
+	InstanceName string  `pulumi:"instanceName"`
+	NameRegex    *string `pulumi:"nameRegex"`
 	// A list of table names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of tables. Each element contains the following attributes:
 	Tables []GetTablesTable `pulumi:"tables"`
 }
-

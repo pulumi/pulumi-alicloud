@@ -29,7 +29,7 @@ type SecurityGroup struct {
 	SecurityGroupType pulumi.StringPtrOutput `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The VPC ID.	
+	// The VPC ID.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
@@ -77,7 +77,7 @@ type securityGroupState struct {
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPC ID.	
+	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -98,7 +98,7 @@ type SecurityGroupState struct {
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The VPC ID.	
+	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -123,7 +123,7 @@ type securityGroupArgs struct {
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The VPC ID.	
+	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -145,11 +145,10 @@ type SecurityGroupArgs struct {
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The VPC ID.	
+	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 }
 
 func (SecurityGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupArgs)(nil)).Elem()
 }
-

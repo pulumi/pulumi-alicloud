@@ -32,7 +32,7 @@ type GetLoadBalancersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile  *string `pulumi:"outputFile"`
 	// The Id of resource group which SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Slave availability zone of the SLBs.
@@ -53,7 +53,6 @@ type GetLoadBalancersArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
-
 // A collection of values returned by getLoadBalancers.
 type GetLoadBalancersResult struct {
 	// Service address of the SLB.
@@ -64,12 +63,12 @@ type GetLoadBalancersResult struct {
 	Ids []string `pulumi:"ids"`
 	// Master availability zone of the SLBs.
 	MasterAvailabilityZone *string `pulumi:"masterAvailabilityZone"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex              *string `pulumi:"nameRegex"`
 	// A list of slb names.
 	Names []string `pulumi:"names"`
 	// Network type of the SLB. Possible values: `vpc` and `classic`.
-	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
+	NetworkType     *string `pulumi:"networkType"`
+	OutputFile      *string `pulumi:"outputFile"`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Slave availability zone of the SLBs.
 	SlaveAvailabilityZone *string `pulumi:"slaveAvailabilityZone"`
@@ -82,4 +81,3 @@ type GetLoadBalancersResult struct {
 	// ID of the VSwitch the SLB belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-

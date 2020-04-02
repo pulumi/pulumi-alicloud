@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM Group membership resource. 
+// Provides a RAM Group membership resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
 type GroupMembership struct {
@@ -92,4 +92,3 @@ type GroupMembershipArgs struct {
 func (GroupMembershipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMembershipArgs)(nil)).Elem()
 }
-

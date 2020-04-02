@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceTypes.InvokeAsync() instead")]
         public static Task<GetInstanceTypesResult> GetInstanceTypes(GetInstanceTypesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceTypes
+    {
+        /// <summary>
+        /// The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
+        /// instance types available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

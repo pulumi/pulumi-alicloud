@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides an RDS readonly instance resource. 
+// Provides an RDS readonly instance resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_readonly_instance.html.markdown.
 type ReadOnlyInstance struct {
@@ -196,4 +196,3 @@ type ReadOnlyInstanceArgs struct {
 func (ReadOnlyInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*readOnlyInstanceArgs)(nil)).Elem()
 }
-

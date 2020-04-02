@@ -25,7 +25,7 @@ type GetInstancesArgs struct {
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
 	// ```
@@ -39,7 +39,6 @@ type GetInstancesArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -48,11 +47,10 @@ type GetInstancesResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of instances. Each element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex *string                `pulumi:"nameRegex"`
 	// A list of instance names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The tags of the instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-

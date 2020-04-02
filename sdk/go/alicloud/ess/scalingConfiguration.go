@@ -379,4 +379,3 @@ type ScalingConfigurationArgs struct {
 func (ScalingConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingConfigurationArgs)(nil)).Elem()
 }
-

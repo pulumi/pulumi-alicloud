@@ -25,14 +25,13 @@ type GetServerCertificatesArgs struct {
 	// A list of server certificates IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by server certificate name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getServerCertificates.
 type GetServerCertificatesResult struct {
@@ -41,14 +40,13 @@ type GetServerCertificatesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB server certificates IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of SLB server certificates names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the slb server certificates belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Available in v1.66.0+) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-

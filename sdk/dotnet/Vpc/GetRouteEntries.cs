@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRouteEntries.InvokeAsync() instead")]
         public static Task<GetRouteEntriesResult> GetRouteEntries(GetRouteEntriesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRouteEntries
+    {
+        /// <summary>
+        /// This data source provides a list of Route Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
+        /// </summary>
+        public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

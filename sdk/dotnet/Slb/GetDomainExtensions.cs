@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDomainExtensions.InvokeAsync() instead")]
         public static Task<GetDomainExtensionsResult> GetDomainExtensions(GetDomainExtensionsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomainExtensions
+    {
+        /// <summary>
+        /// This data source provides the domain extensions associated with a server load balancer listener.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
+        /// </summary>
+        public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

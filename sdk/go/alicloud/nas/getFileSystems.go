@@ -27,14 +27,13 @@ type GetFileSystemsArgs struct {
 	// A regex string to filter the results by the ：FileSystem description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of FileSystemId.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
-	// Filter results by a specific ProtocolType. 
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Filter results by a specific ProtocolType.
 	ProtocolType *string `pulumi:"protocolType"`
-	// Filter results by a specific StorageType. 
+	// Filter results by a specific StorageType.
 	StorageType *string `pulumi:"storageType"`
 }
-
 
 // A collection of values returned by getFileSystems.
 type GetFileSystemsResult struct {
@@ -44,8 +43,8 @@ type GetFileSystemsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of FileSystem Id.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// ProtocolType block of the FileSystem
 	ProtocolType *string `pulumi:"protocolType"`
 	// StorageType block of the FileSystem.
@@ -53,4 +52,3 @@ type GetFileSystemsResult struct {
 	// A list of VPCs. Each element contains the following attributes:
 	Systems []GetFileSystemsSystem `pulumi:"systems"`
 }
-

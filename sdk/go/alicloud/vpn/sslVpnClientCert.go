@@ -14,13 +14,13 @@ import (
 type SslVpnClientCert struct {
 	pulumi.CustomResourceState
 
-	CaCert pulumi.StringOutput `pulumi:"caCert"`
-	ClientCert pulumi.StringOutput `pulumi:"clientCert"`
-	ClientConfig pulumi.StringOutput `pulumi:"clientConfig"`
-	ClientKey pulumi.StringOutput `pulumi:"clientKey"`
-	Name pulumi.StringOutput `pulumi:"name"`
+	CaCert         pulumi.StringOutput `pulumi:"caCert"`
+	ClientCert     pulumi.StringOutput `pulumi:"clientCert"`
+	ClientConfig   pulumi.StringOutput `pulumi:"clientConfig"`
+	ClientKey      pulumi.StringOutput `pulumi:"clientKey"`
+	Name           pulumi.StringOutput `pulumi:"name"`
 	SslVpnServerId pulumi.StringOutput `pulumi:"sslVpnServerId"`
-	Status pulumi.StringOutput `pulumi:"status"`
+	Status         pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewSslVpnClientCert registers a new resource with the given unique name, arguments, and options.
@@ -54,23 +54,23 @@ func GetSslVpnClientCert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SslVpnClientCert resources.
 type sslVpnClientCertState struct {
-	CaCert *string `pulumi:"caCert"`
-	ClientCert *string `pulumi:"clientCert"`
-	ClientConfig *string `pulumi:"clientConfig"`
-	ClientKey *string `pulumi:"clientKey"`
-	Name *string `pulumi:"name"`
+	CaCert         *string `pulumi:"caCert"`
+	ClientCert     *string `pulumi:"clientCert"`
+	ClientConfig   *string `pulumi:"clientConfig"`
+	ClientKey      *string `pulumi:"clientKey"`
+	Name           *string `pulumi:"name"`
 	SslVpnServerId *string `pulumi:"sslVpnServerId"`
-	Status *string `pulumi:"status"`
+	Status         *string `pulumi:"status"`
 }
 
 type SslVpnClientCertState struct {
-	CaCert pulumi.StringPtrInput
-	ClientCert pulumi.StringPtrInput
-	ClientConfig pulumi.StringPtrInput
-	ClientKey pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	CaCert         pulumi.StringPtrInput
+	ClientCert     pulumi.StringPtrInput
+	ClientConfig   pulumi.StringPtrInput
+	ClientKey      pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
 	SslVpnServerId pulumi.StringPtrInput
-	Status pulumi.StringPtrInput
+	Status         pulumi.StringPtrInput
 }
 
 func (SslVpnClientCertState) ElementType() reflect.Type {
@@ -78,17 +78,16 @@ func (SslVpnClientCertState) ElementType() reflect.Type {
 }
 
 type sslVpnClientCertArgs struct {
-	Name *string `pulumi:"name"`
-	SslVpnServerId string `pulumi:"sslVpnServerId"`
+	Name           *string `pulumi:"name"`
+	SslVpnServerId string  `pulumi:"sslVpnServerId"`
 }
 
 // The set of arguments for constructing a SslVpnClientCert resource.
 type SslVpnClientCertArgs struct {
-	Name pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
 	SslVpnServerId pulumi.StringInput
 }
 
 func (SslVpnClientCertArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnClientCertArgs)(nil)).Elem()
 }
-

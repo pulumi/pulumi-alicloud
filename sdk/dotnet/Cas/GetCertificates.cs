@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Cas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCertificates.InvokeAsync() instead")]
         public static Task<GetCertificatesResult> GetCertificates(GetCertificatesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCertificates
+    {
+        /// <summary>
+        /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
+        /// </summary>
+        public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

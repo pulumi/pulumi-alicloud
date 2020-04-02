@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceAttachments.InvokeAsync() instead")]
         public static Task<GetInstanceAttachmentsResult> GetInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceAttachments
+    {
+        /// <summary>
+        /// This data source provides the ots instance attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

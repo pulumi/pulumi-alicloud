@@ -32,19 +32,17 @@ type GetSslVpnClientCertsArgs struct {
 	SslVpnServerId *string `pulumi:"sslVpnServerId"`
 }
 
-
 // A collection of values returned by getSslVpnClientCerts.
 type GetSslVpnClientCertsResult struct {
 	Certs []GetSslVpnClientCertsCert `pulumi:"certs"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SSL-VPN client cert IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of SSL-VPN client cert names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the SSL-VPN Server.
 	SslVpnServerId *string `pulumi:"sslVpnServerId"`
 }
-

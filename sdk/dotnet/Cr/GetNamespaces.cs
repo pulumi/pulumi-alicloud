@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNamespaces.InvokeAsync() instead")]
         public static Task<GetNamespacesResult> GetNamespaces(GetNamespacesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNamespaces
+    {
+        /// <summary>
+        /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
+        /// </summary>
+        public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

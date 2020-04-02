@@ -13,7 +13,7 @@ import (
 
 // Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 //
-// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
+// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
 type InstanceGrant struct {
@@ -107,4 +107,3 @@ type InstanceGrantArgs struct {
 func (InstanceGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGrantArgs)(nil)).Elem()
 }
-

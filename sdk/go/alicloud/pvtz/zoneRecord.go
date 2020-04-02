@@ -141,4 +141,3 @@ type ZoneRecordArgs struct {
 func (ZoneRecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneRecordArgs)(nil)).Elem()
 }
-

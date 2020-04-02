@@ -29,10 +29,9 @@ type GetReposArgs struct {
 	// A regex string to filter results by repository name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Name of container registry namespace where the repositories are located in.
-	Namespace *string `pulumi:"namespace"`
+	Namespace  *string `pulumi:"namespace"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getRepos.
 type GetReposResult struct {
@@ -40,14 +39,13 @@ type GetReposResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Container Registry Repositories. Its element is set to `names`.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of repository names.
 	Names []string `pulumi:"names"`
 	// Name of container registry namespace where repo is located.
-	Namespace *string `pulumi:"namespace"`
+	Namespace  *string `pulumi:"namespace"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of matched Container Registry Namespaces. Each element contains the following attributes:
 	Repos []GetReposRepo `pulumi:"repos"`
 }
-

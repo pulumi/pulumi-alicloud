@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
         /// </summary>
+        [Obsolete("Use GetEndpoints.InvokeAsync() instead")]
         public static Task<GetEndpointsResult> GetEndpoints(GetEndpointsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetEndpoints
+    {
+        /// <summary>
+        /// The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available in v1.68.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
+        /// </summary>
+        public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

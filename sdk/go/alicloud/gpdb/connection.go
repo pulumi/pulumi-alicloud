@@ -116,4 +116,3 @@ type ConnectionArgs struct {
 func (ConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionArgs)(nil)).Elem()
 }
-

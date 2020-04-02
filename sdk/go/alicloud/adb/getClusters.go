@@ -27,28 +27,26 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 type GetClustersArgs struct {
 	// A regex string to filter results by cluster description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of ADB cluster IDs. 
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of ADB cluster IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
 	// A list of ADB clusters. Each element contains the following attributes:
-	Clusters []GetClustersCluster `pulumi:"clusters"`
-	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of ADB cluster descriptions. 
+	Clusters         []GetClustersCluster `pulumi:"clusters"`
+	DescriptionRegex *string              `pulumi:"descriptionRegex"`
+	// A list of ADB cluster descriptions.
 	Descriptions []string `pulumi:"descriptions"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of ADB cluster IDs. 
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	// A list of ADB cluster IDs.
+	Ids        []string               `pulumi:"ids"`
+	OutputFile *string                `pulumi:"outputFile"`
+	Tags       map[string]interface{} `pulumi:"tags"`
 }
-

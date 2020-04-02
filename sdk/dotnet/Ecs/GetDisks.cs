@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDisks.InvokeAsync() instead")]
         public static Task<GetDisksResult> GetDisks(GetDisksArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDisks
+    {
+        /// <summary>
+        /// This data source provides the disks of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
+        /// </summary>
+        public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

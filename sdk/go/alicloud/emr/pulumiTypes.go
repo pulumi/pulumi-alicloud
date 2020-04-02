@@ -69,7 +69,7 @@ func (i ClusterBootstrapActionArray) ToClusterBootstrapActionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterBootstrapActionArrayOutput)
 }
 
-type ClusterBootstrapActionOutput struct { *pulumi.OutputState }
+type ClusterBootstrapActionOutput struct{ *pulumi.OutputState }
 
 func (ClusterBootstrapActionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterBootstrapAction)(nil)).Elem()
@@ -85,20 +85,20 @@ func (o ClusterBootstrapActionOutput) ToClusterBootstrapActionOutputWithContext(
 
 // bootstrap action args, e.g. "--a=b".
 func (o ClusterBootstrapActionOutput) Arg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Arg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Arg }).(pulumi.StringPtrOutput)
 }
 
 // bootstrap action name.
 func (o ClusterBootstrapActionOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // bootstrap action path, e.g. "oss://bucket/path".
 func (o ClusterBootstrapActionOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterBootstrapAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-type ClusterBootstrapActionArrayOutput struct { *pulumi.OutputState}
+type ClusterBootstrapActionArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterBootstrapActionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterBootstrapAction)(nil)).Elem()
@@ -113,7 +113,7 @@ func (o ClusterBootstrapActionArrayOutput) ToClusterBootstrapActionArrayOutputWi
 }
 
 func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBootstrapActionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterBootstrapAction {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterBootstrapAction {
 		return vs[0].([]ClusterBootstrapAction)[vs[1].(int)]
 	}).(ClusterBootstrapActionOutput)
 }
@@ -128,7 +128,7 @@ type ClusterHostGroup struct {
 	// Data disk count.
 	DiskCount *string `pulumi:"diskCount"`
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-	DiskType *string `pulumi:"diskType"`
+	DiskType  *string `pulumi:"diskType"`
 	GpuDriver *string `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName *string `pulumi:"hostGroupName"`
@@ -165,7 +165,7 @@ type ClusterHostGroupArgs struct {
 	// Data disk count.
 	DiskCount pulumi.StringPtrInput `pulumi:"diskCount"`
 	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	DiskType  pulumi.StringPtrInput `pulumi:"diskType"`
 	GpuDriver pulumi.StringPtrInput `pulumi:"gpuDriver"`
 	// host group name.
 	HostGroupName pulumi.StringPtrInput `pulumi:"hostGroupName"`
@@ -218,7 +218,7 @@ func (i ClusterHostGroupArray) ToClusterHostGroupArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterHostGroupArrayOutput)
 }
 
-type ClusterHostGroupOutput struct { *pulumi.OutputState }
+type ClusterHostGroupOutput struct{ *pulumi.OutputState }
 
 func (ClusterHostGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterHostGroup)(nil)).Elem()
@@ -234,74 +234,74 @@ func (o ClusterHostGroupOutput) ToClusterHostGroupOutputWithContext(ctx context.
 
 // Auto renew for prepaid, true of false. Default is false.
 func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
 // Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global chargeType value.
 func (o ClusterHostGroupOutput) ChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
 }
 
 // Data disk capacity.
 func (o ClusterHostGroupOutput) DiskCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.DiskCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskCapacity }).(pulumi.StringPtrOutput)
 }
 
 // Data disk count.
 func (o ClusterHostGroupOutput) DiskCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.DiskCount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskCount }).(pulumi.StringPtrOutput)
 }
 
 // Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
 func (o ClusterHostGroupOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterHostGroupOutput) GpuDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.GpuDriver }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.GpuDriver }).(pulumi.StringPtrOutput)
 }
 
 // host group name.
 func (o ClusterHostGroupOutput) HostGroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.HostGroupName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.HostGroupName }).(pulumi.StringPtrOutput)
 }
 
 // host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
 func (o ClusterHostGroupOutput) HostGroupType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.HostGroupType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.HostGroupType }).(pulumi.StringPtrOutput)
 }
 
 // Instance list for cluster scale down. This value follows the json format, e.g. ["instanceId1","instanceId2"]. escape character for " is \".
 func (o ClusterHostGroupOutput) InstanceList() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.InstanceList }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.InstanceList }).(pulumi.StringPtrOutput)
 }
 
 // Host Ecs instance type.
 func (o ClusterHostGroupOutput) InstanceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
 // Host number in this group.
 func (o ClusterHostGroupOutput) NodeCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.NodeCount }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.NodeCount }).(pulumi.StringPtrOutput)
 }
 
 // If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
 func (o ClusterHostGroupOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *int { return v.Period }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // System disk capacity.
 func (o ClusterHostGroupOutput) SysDiskCapacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.SysDiskCapacity }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.SysDiskCapacity }).(pulumi.StringPtrOutput)
 }
 
 // System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
 func (o ClusterHostGroupOutput) SysDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterHostGroup) *string { return v.SysDiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterHostGroup) *string { return v.SysDiskType }).(pulumi.StringPtrOutput)
 }
 
-type ClusterHostGroupArrayOutput struct { *pulumi.OutputState}
+type ClusterHostGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterHostGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterHostGroup)(nil)).Elem()
@@ -316,7 +316,7 @@ func (o ClusterHostGroupArrayOutput) ToClusterHostGroupArrayOutputWithContext(ct
 }
 
 func (o ClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ClusterHostGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterHostGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterHostGroup {
 		return vs[0].([]ClusterHostGroup)[vs[1].(int)]
 	}).(ClusterHostGroupOutput)
 }
@@ -379,7 +379,7 @@ func (i GetDiskTypesTypeArray) ToGetDiskTypesTypeArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDiskTypesTypeArrayOutput)
 }
 
-type GetDiskTypesTypeOutput struct { *pulumi.OutputState }
+type GetDiskTypesTypeOutput struct{ *pulumi.OutputState }
 
 func (GetDiskTypesTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDiskTypesType)(nil)).Elem()
@@ -395,20 +395,20 @@ func (o GetDiskTypesTypeOutput) ToGetDiskTypesTypeOutputWithContext(ctx context.
 
 // The maximum value of the data disk to supported the specific instance type
 func (o GetDiskTypesTypeOutput) Max() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDiskTypesType) int { return v.Max }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDiskTypesType) int { return v.Max }).(pulumi.IntOutput)
 }
 
 // The mininum value of the data disk to supported the specific instance type
 func (o GetDiskTypesTypeOutput) Min() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDiskTypesType) int { return v.Min }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDiskTypesType) int { return v.Min }).(pulumi.IntOutput)
 }
 
 // The value of the data disk or system disk
 func (o GetDiskTypesTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDiskTypesType) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDiskTypesType) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetDiskTypesTypeArrayOutput struct { *pulumi.OutputState}
+type GetDiskTypesTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDiskTypesTypeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDiskTypesType)(nil)).Elem()
@@ -423,7 +423,7 @@ func (o GetDiskTypesTypeArrayOutput) ToGetDiskTypesTypeArrayOutputWithContext(ct
 }
 
 func (o GetDiskTypesTypeArrayOutput) Index(i pulumi.IntInput) GetDiskTypesTypeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDiskTypesType {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskTypesType {
 		return vs[0].([]GetDiskTypesType)[vs[1].(int)]
 	}).(GetDiskTypesTypeOutput)
 }
@@ -486,7 +486,7 @@ func (i GetInstanceTypesTypeArray) ToGetInstanceTypesTypeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesTypeArrayOutput)
 }
 
-type GetInstanceTypesTypeOutput struct { *pulumi.OutputState }
+type GetInstanceTypesTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypesType)(nil)).Elem()
@@ -502,20 +502,20 @@ func (o GetInstanceTypesTypeOutput) ToGetInstanceTypesTypeOutputWithContext(ctx 
 
 // The ID of the instance type.
 func (o GetInstanceTypesTypeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesType) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Local capacity of the applied ecs instance for emr cluster. Unit: GB.
 func (o GetInstanceTypesTypeOutput) LocalStorageCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstanceTypesType) int { return v.LocalStorageCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstanceTypesType) int { return v.LocalStorageCapacity }).(pulumi.IntOutput)
 }
 
 // The supported resources of specific zoneId.
 func (o GetInstanceTypesTypeOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesType) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesType) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetInstanceTypesTypeArrayOutput struct { *pulumi.OutputState}
+type GetInstanceTypesTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesTypeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceTypesType)(nil)).Elem()
@@ -530,7 +530,7 @@ func (o GetInstanceTypesTypeArrayOutput) ToGetInstanceTypesTypeArrayOutputWithCo
 }
 
 func (o GetInstanceTypesTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesTypeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceTypesType {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesType {
 		return vs[0].([]GetInstanceTypesType)[vs[1].(int)]
 	}).(GetInstanceTypesTypeOutput)
 }
@@ -593,7 +593,7 @@ func (i GetMainVersionsMainVersionArray) ToGetMainVersionsMainVersionArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetMainVersionsMainVersionArrayOutput)
 }
 
-type GetMainVersionsMainVersionOutput struct { *pulumi.OutputState }
+type GetMainVersionsMainVersionOutput struct{ *pulumi.OutputState }
 
 func (GetMainVersionsMainVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMainVersionsMainVersion)(nil)).Elem()
@@ -609,20 +609,20 @@ func (o GetMainVersionsMainVersionOutput) ToGetMainVersionsMainVersionOutputWith
 
 // A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
 func (o GetMainVersionsMainVersionOutput) ClusterTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetMainVersionsMainVersion) []string { return v.ClusterTypes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetMainVersionsMainVersion) []string { return v.ClusterTypes }).(pulumi.StringArrayOutput)
 }
 
 // The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
 func (o GetMainVersionsMainVersionOutput) EmrVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMainVersionsMainVersion) string { return v.EmrVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMainVersionsMainVersion) string { return v.EmrVersion }).(pulumi.StringOutput)
 }
 
 // The image id of the emr cluster instance.
 func (o GetMainVersionsMainVersionOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMainVersionsMainVersion) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMainVersionsMainVersion) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-type GetMainVersionsMainVersionArrayOutput struct { *pulumi.OutputState}
+type GetMainVersionsMainVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMainVersionsMainVersionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMainVersionsMainVersion)(nil)).Elem()
@@ -637,7 +637,7 @@ func (o GetMainVersionsMainVersionArrayOutput) ToGetMainVersionsMainVersionArray
 }
 
 func (o GetMainVersionsMainVersionArrayOutput) Index(i pulumi.IntInput) GetMainVersionsMainVersionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMainVersionsMainVersion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMainVersionsMainVersion {
 		return vs[0].([]GetMainVersionsMainVersion)[vs[1].(int)]
 	}).(GetMainVersionsMainVersionOutput)
 }

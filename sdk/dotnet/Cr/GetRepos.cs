@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRepos.InvokeAsync() instead")]
         public static Task<GetReposResult> GetRepos(GetReposArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRepos
+    {
+        /// <summary>
+        /// This data source provides a list Container Registry repositories on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
+        /// </summary>
+        public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -81,4 +81,3 @@ type QosArgs struct {
 func (QosArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosArgs)(nil)).Elem()
 }
-

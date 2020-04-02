@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
         /// </summary>
+        [Obsolete("Use GetConnections.InvokeAsync() instead")]
         public static Task<GetConnectionsResult> GetConnections(GetConnectionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetConnections
+    {
+        /// <summary>
+        /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
+        /// </summary>
+        public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

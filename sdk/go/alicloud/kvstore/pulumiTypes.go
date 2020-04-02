@@ -12,7 +12,7 @@ import (
 )
 
 type InstanceParameter struct {
-	Name string `pulumi:"name"`
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -24,7 +24,7 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -61,7 +61,7 @@ func (i InstanceParameterArray) ToInstanceParameterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterArrayOutput)
 }
 
-type InstanceParameterOutput struct { *pulumi.OutputState }
+type InstanceParameterOutput struct{ *pulumi.OutputState }
 
 func (InstanceParameterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceParameter)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 }
 
 func (o InstanceParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o InstanceParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type InstanceParameterArrayOutput struct { *pulumi.OutputState}
+type InstanceParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceParameterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceParameter)(nil)).Elem()
@@ -98,7 +98,7 @@ func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutputWithContext(
 }
 
 func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceParameter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceParameter {
 		return vs[0].([]InstanceParameter)[vs[1].(int)]
 	}).(InstanceParameterOutput)
 }
@@ -106,7 +106,7 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 type GetInstanceClassesClass struct {
 	// KVStore available instance class.
 	InstanceClass string `pulumi:"instanceClass"`
-	Price string `pulumi:"price"`
+	Price         string `pulumi:"price"`
 }
 
 type GetInstanceClassesClassInput interface {
@@ -119,7 +119,7 @@ type GetInstanceClassesClassInput interface {
 type GetInstanceClassesClassArgs struct {
 	// KVStore available instance class.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	Price pulumi.StringInput `pulumi:"price"`
+	Price         pulumi.StringInput `pulumi:"price"`
 }
 
 func (GetInstanceClassesClassArgs) ElementType() reflect.Type {
@@ -155,7 +155,7 @@ func (i GetInstanceClassesClassArray) ToGetInstanceClassesClassArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceClassesClassArrayOutput)
 }
 
-type GetInstanceClassesClassOutput struct { *pulumi.OutputState }
+type GetInstanceClassesClassOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesClassOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceClassesClass)(nil)).Elem()
@@ -171,14 +171,14 @@ func (o GetInstanceClassesClassOutput) ToGetInstanceClassesClassOutputWithContex
 
 // KVStore available instance class.
 func (o GetInstanceClassesClassOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceClassesClass) string { return v.InstanceClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceClassesClass) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 func (o GetInstanceClassesClassOutput) Price() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceClassesClass) string { return v.Price }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceClassesClass) string { return v.Price }).(pulumi.StringOutput)
 }
 
-type GetInstanceClassesClassArrayOutput struct { *pulumi.OutputState}
+type GetInstanceClassesClassArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceClassesClassArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceClassesClass)(nil)).Elem()
@@ -193,7 +193,7 @@ func (o GetInstanceClassesClassArrayOutput) ToGetInstanceClassesClassArrayOutput
 }
 
 func (o GetInstanceClassesClassArrayOutput) Index(i pulumi.IntInput) GetInstanceClassesClassOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceClassesClass {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceClassesClass {
 		return vs[0].([]GetInstanceClassesClass)[vs[1].(int)]
 	}).(GetInstanceClassesClassOutput)
 }
@@ -256,7 +256,7 @@ func (i GetInstanceEnginesInstanceEngineArray) ToGetInstanceEnginesInstanceEngin
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceEnginesInstanceEngineArrayOutput)
 }
 
-type GetInstanceEnginesInstanceEngineOutput struct { *pulumi.OutputState }
+type GetInstanceEnginesInstanceEngineOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnginesInstanceEngineOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceEnginesInstanceEngine)(nil)).Elem()
@@ -272,20 +272,20 @@ func (o GetInstanceEnginesInstanceEngineOutput) ToGetInstanceEnginesInstanceEngi
 
 // Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 func (o GetInstanceEnginesInstanceEngineOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceEnginesInstanceEngine) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 // Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
 func (o GetInstanceEnginesInstanceEngineOutput) EngineVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceEnginesInstanceEngine) string { return v.EngineVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 // The Zone to launch the KVStore instance.
 func (o GetInstanceEnginesInstanceEngineOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceEnginesInstanceEngine) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetInstanceEnginesInstanceEngineArrayOutput struct { *pulumi.OutputState}
+type GetInstanceEnginesInstanceEngineArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceEnginesInstanceEngineArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceEnginesInstanceEngine)(nil)).Elem()
@@ -300,7 +300,7 @@ func (o GetInstanceEnginesInstanceEngineArrayOutput) ToGetInstanceEnginesInstanc
 }
 
 func (o GetInstanceEnginesInstanceEngineArrayOutput) Index(i pulumi.IntInput) GetInstanceEnginesInstanceEngineOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceEnginesInstanceEngine {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceEnginesInstanceEngine {
 		return vs[0].([]GetInstanceEnginesInstanceEngine)[vs[1].(int)]
 	}).(GetInstanceEnginesInstanceEngineOutput)
 }
@@ -313,7 +313,7 @@ type GetInstancesInstance struct {
 	// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
 	Capacity int `pulumi:"capacity"`
 	// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType string `pulumi:"chargeType"`
+	ChargeType       string `pulumi:"chargeType"`
 	ConnectionDomain string `pulumi:"connectionDomain"`
 	// Instance connection quantity limit. Unit: count.
 	Connections int `pulumi:"connections"`
@@ -322,7 +322,7 @@ type GetInstancesInstance struct {
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of the RKV instance.
-	Id string `pulumi:"id"`
+	Id            string `pulumi:"id"`
 	InstanceClass string `pulumi:"instanceClass"`
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType string `pulumi:"instanceType"`
@@ -337,7 +337,7 @@ type GetInstancesInstance struct {
 	// Status of the instance.
 	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
 	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-	Status string `pulumi:"status"`
+	Status   string `pulumi:"status"`
 	UserName string `pulumi:"userName"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -360,7 +360,7 @@ type GetInstancesInstanceArgs struct {
 	// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
 	// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-	ChargeType pulumi.StringInput `pulumi:"chargeType"`
+	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
 	ConnectionDomain pulumi.StringInput `pulumi:"connectionDomain"`
 	// Instance connection quantity limit. Unit: count.
 	Connections pulumi.IntInput `pulumi:"connections"`
@@ -369,7 +369,7 @@ type GetInstancesInstanceArgs struct {
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of the RKV instance.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id            pulumi.StringInput `pulumi:"id"`
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
@@ -384,7 +384,7 @@ type GetInstancesInstanceArgs struct {
 	// Status of the instance.
 	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
 	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-	Status pulumi.StringInput `pulumi:"status"`
+	Status   pulumi.StringInput `pulumi:"status"`
 	UserName pulumi.StringInput `pulumi:"userName"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -425,7 +425,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -441,99 +441,99 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // Availability zone.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Instance bandwidth limit. Unit: Mbit/s.
 func (o GetInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
 func (o GetInstancesInstanceOutput) Capacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Capacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Capacity }).(pulumi.IntOutput)
 }
 
 // Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) ConnectionDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ConnectionDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
 // Instance connection quantity limit. Unit: count.
 func (o GetInstancesInstanceOutput) Connections() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Connections }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Connections }).(pulumi.IntOutput)
 }
 
 // Creation time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Expiration time. Pay-As-You-Go instances are never expire.
 func (o GetInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The ID of the RKV instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 // Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // The name of the RKV instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Connection port of the instance.
 func (o GetInstancesInstanceOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Private IP address of the instance.
 func (o GetInstancesInstanceOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Status of the instance.
 // * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
 // For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserName }).(pulumi.StringOutput)
 }
 
 // Used to retrieve instances belong to specified VPC.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // Used to retrieve instances belong to specified `vswitch` resources.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -548,7 +548,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -607,7 +607,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -623,15 +623,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -646,7 +646,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

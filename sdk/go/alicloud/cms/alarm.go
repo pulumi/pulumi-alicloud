@@ -50,8 +50,8 @@ type Alarm struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount pulumi.IntPtrOutput `pulumi:"triggeredCount"`
-	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
+	TriggeredCount pulumi.IntPtrOutput    `pulumi:"triggeredCount"`
+	Webhook        pulumi.StringPtrOutput `pulumi:"webhook"`
 }
 
 // NewAlarm registers a new resource with the given unique name, arguments, and options.
@@ -129,8 +129,8 @@ type alarmState struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount *int `pulumi:"triggeredCount"`
-	Webhook *string `pulumi:"webhook"`
+	TriggeredCount *int    `pulumi:"triggeredCount"`
+	Webhook        *string `pulumi:"webhook"`
 }
 
 type AlarmState struct {
@@ -167,7 +167,7 @@ type AlarmState struct {
 	Threshold pulumi.StringPtrInput
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount pulumi.IntPtrInput
-	Webhook pulumi.StringPtrInput
+	Webhook        pulumi.StringPtrInput
 }
 
 func (AlarmState) ElementType() reflect.Type {
@@ -205,8 +205,8 @@ type alarmArgs struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold string `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount *int `pulumi:"triggeredCount"`
-	Webhook *string `pulumi:"webhook"`
+	TriggeredCount *int    `pulumi:"triggeredCount"`
+	Webhook        *string `pulumi:"webhook"`
 }
 
 // The set of arguments for constructing a Alarm resource.
@@ -242,10 +242,9 @@ type AlarmArgs struct {
 	Threshold pulumi.StringInput
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount pulumi.IntPtrInput
-	Webhook pulumi.StringPtrInput
+	Webhook        pulumi.StringPtrInput
 }
 
 func (AlarmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmArgs)(nil)).Elem()
 }
-

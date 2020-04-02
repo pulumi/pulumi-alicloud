@@ -67,7 +67,7 @@ type Rule struct {
 	Scheduler pulumi.StringPtrOutput `pulumi:"scheduler"`
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
-	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
 	StickySession pulumi.StringPtrOutput `pulumi:"stickySession"`
 	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType pulumi.StringPtrOutput `pulumi:"stickySessionType"`
@@ -154,7 +154,7 @@ type ruleState struct {
 	Scheduler *string `pulumi:"scheduler"`
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
 	StickySession *string `pulumi:"stickySession"`
 	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType *string `pulumi:"stickySessionType"`
@@ -205,7 +205,7 @@ type RuleState struct {
 	Scheduler pulumi.StringPtrInput
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId pulumi.StringPtrInput
-	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
 	StickySession pulumi.StringPtrInput
 	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType pulumi.StringPtrInput
@@ -260,7 +260,7 @@ type ruleArgs struct {
 	Scheduler *string `pulumi:"scheduler"`
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
-	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
 	StickySession *string `pulumi:"stickySession"`
 	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType *string `pulumi:"stickySessionType"`
@@ -312,7 +312,7 @@ type RuleArgs struct {
 	Scheduler pulumi.StringPtrInput
 	// ID of a virtual server group that will be forwarded.
 	ServerGroupId pulumi.StringInput
-	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.                                                                                                                                                                                                                                                 
+	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
 	StickySession pulumi.StringPtrInput
 	// Mode for handling the cookie. If `stickySession` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
 	StickySessionType pulumi.StringPtrInput
@@ -326,4 +326,3 @@ type RuleArgs struct {
 func (RuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleArgs)(nil)).Elem()
 }
-

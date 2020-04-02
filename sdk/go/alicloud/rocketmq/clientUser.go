@@ -26,9 +26,9 @@ type ClientUser struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp pulumi.StringPtrOutput `pulumi:"clientIp"`
+	ClientIp             pulumi.StringPtrOutput `pulumi:"clientIp"`
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
-	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
+	KmsEncryptionContext pulumi.MapOutput       `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The ID of the SAG instance created for the SAG APP.
@@ -79,8 +79,8 @@ type clientUserState struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp *string `pulumi:"clientIp"`
-	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	ClientIp             *string                `pulumi:"clientIp"`
+	KmsEncryptedPassword *string                `pulumi:"kmsEncryptedPassword"`
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
@@ -96,7 +96,7 @@ type ClientUserState struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntPtrInput
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp pulumi.StringPtrInput
+	ClientIp             pulumi.StringPtrInput
 	KmsEncryptedPassword pulumi.StringPtrInput
 	KmsEncryptionContext pulumi.MapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
@@ -117,8 +117,8 @@ type clientUserArgs struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp *string `pulumi:"clientIp"`
-	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
+	ClientIp             *string                `pulumi:"clientIp"`
+	KmsEncryptedPassword *string                `pulumi:"kmsEncryptedPassword"`
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
 	Password *string `pulumi:"password"`
@@ -135,7 +135,7 @@ type ClientUserArgs struct {
 	// The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
 	Bandwidth pulumi.IntInput
 	// The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
-	ClientIp pulumi.StringPtrInput
+	ClientIp             pulumi.StringPtrInput
 	KmsEncryptedPassword pulumi.StringPtrInput
 	KmsEncryptionContext pulumi.MapInput
 	// The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
@@ -151,4 +151,3 @@ type ClientUserArgs struct {
 func (ClientUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientUserArgs)(nil)).Elem()
 }
-

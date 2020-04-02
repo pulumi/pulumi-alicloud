@@ -170,4 +170,3 @@ type SslVpnServerArgs struct {
 func (SslVpnServerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslVpnServerArgs)(nil)).Elem()
 }
-

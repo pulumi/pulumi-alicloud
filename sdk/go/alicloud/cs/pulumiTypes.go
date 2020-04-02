@@ -73,7 +73,7 @@ func (i ApplicationServiceArray) ToApplicationServiceArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServiceArrayOutput)
 }
 
-type ApplicationServiceOutput struct { *pulumi.OutputState }
+type ApplicationServiceOutput struct{ *pulumi.OutputState }
 
 func (ApplicationServiceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationService)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o ApplicationServiceOutput) ToApplicationServiceOutputWithContext(ctx cont
 
 // ID of the service.
 func (o ApplicationServiceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationService) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationService) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
 func (o ApplicationServiceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationService) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationService) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The current status of service.
 func (o ApplicationServiceOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationService) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationService) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // The application deploying version. Each updating, it must be different with current. Default to "1.0"
 func (o ApplicationServiceOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApplicationService) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApplicationService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type ApplicationServiceArrayOutput struct { *pulumi.OutputState}
+type ApplicationServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationServiceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApplicationService)(nil)).Elem()
@@ -122,17 +122,17 @@ func (o ApplicationServiceArrayOutput) ToApplicationServiceArrayOutputWithContex
 }
 
 func (o ApplicationServiceArrayOutput) Index(i pulumi.IntInput) ApplicationServiceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApplicationService {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationService {
 		return vs[0].([]ApplicationService)[vs[1].(int)]
 	}).(ApplicationServiceOutput)
 }
 
 type ClusterNode struct {
-	Eip *string `pulumi:"eip"`
-	Id *string `pulumi:"id"`
-	Name *string `pulumi:"name"`
+	Eip       *string `pulumi:"eip"`
+	Id        *string `pulumi:"id"`
+	Name      *string `pulumi:"name"`
 	PrivateIp *string `pulumi:"privateIp"`
-	Status *string `pulumi:"status"`
+	Status    *string `pulumi:"status"`
 }
 
 type ClusterNodeInput interface {
@@ -143,11 +143,11 @@ type ClusterNodeInput interface {
 }
 
 type ClusterNodeArgs struct {
-	Eip pulumi.StringPtrInput `pulumi:"eip"`
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Eip       pulumi.StringPtrInput `pulumi:"eip"`
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status    pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (ClusterNodeArgs) ElementType() reflect.Type {
@@ -183,7 +183,7 @@ func (i ClusterNodeArray) ToClusterNodeArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeArrayOutput)
 }
 
-type ClusterNodeOutput struct { *pulumi.OutputState }
+type ClusterNodeOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterNode)(nil)).Elem()
@@ -198,26 +198,26 @@ func (o ClusterNodeOutput) ToClusterNodeOutputWithContext(ctx context.Context) C
 }
 
 func (o ClusterNodeOutput) Eip() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ClusterNode) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ClusterNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type ClusterNodeArrayOutput struct { *pulumi.OutputState}
+type ClusterNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterNode)(nil)).Elem()
@@ -232,7 +232,7 @@ func (o ClusterNodeArrayOutput) ToClusterNodeArrayOutputWithContext(ctx context.
 }
 
 func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNode {
 		return vs[0].([]ClusterNode)[vs[1].(int)]
 	}).(ClusterNodeOutput)
 }
@@ -289,7 +289,7 @@ func (i KubernetesAddonArray) ToKubernetesAddonArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAddonArrayOutput)
 }
 
-type KubernetesAddonOutput struct { *pulumi.OutputState }
+type KubernetesAddonOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesAddon)(nil)).Elem()
@@ -304,15 +304,15 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Co
 }
 
 func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesAddonOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesAddonArrayOutput struct { *pulumi.OutputState}
+type KubernetesAddonArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAddonArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesAddon)(nil)).Elem()
@@ -327,13 +327,13 @@ func (o KubernetesAddonArrayOutput) ToKubernetesAddonArrayOutputWithContext(ctx 
 }
 
 func (o KubernetesAddonArrayOutput) Index(i pulumi.IntInput) KubernetesAddonOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesAddon {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAddon {
 		return vs[0].([]KubernetesAddon)[vs[1].(int)]
 	}).(KubernetesAddonOutput)
 }
 
 type KubernetesAutoscalerNodepool struct {
-	Id *string `pulumi:"id"`
+	Id     *string `pulumi:"id"`
 	Labels *string `pulumi:"labels"`
 	Taints *string `pulumi:"taints"`
 }
@@ -346,7 +346,7 @@ type KubernetesAutoscalerNodepoolInput interface {
 }
 
 type KubernetesAutoscalerNodepoolArgs struct {
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id     pulumi.StringPtrInput `pulumi:"id"`
 	Labels pulumi.StringPtrInput `pulumi:"labels"`
 	Taints pulumi.StringPtrInput `pulumi:"taints"`
 }
@@ -384,7 +384,7 @@ func (i KubernetesAutoscalerNodepoolArray) ToKubernetesAutoscalerNodepoolArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAutoscalerNodepoolArrayOutput)
 }
 
-type KubernetesAutoscalerNodepoolOutput struct { *pulumi.OutputState }
+type KubernetesAutoscalerNodepoolOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAutoscalerNodepoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesAutoscalerNodepool)(nil)).Elem()
@@ -399,18 +399,18 @@ func (o KubernetesAutoscalerNodepoolOutput) ToKubernetesAutoscalerNodepoolOutput
 }
 
 func (o KubernetesAutoscalerNodepoolOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesAutoscalerNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesAutoscalerNodepoolOutput) Labels() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesAutoscalerNodepool) *string { return v.Labels }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Labels }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesAutoscalerNodepoolOutput) Taints() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesAutoscalerNodepool) *string { return v.Taints }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesAutoscalerNodepool) *string { return v.Taints }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesAutoscalerNodepoolArrayOutput struct { *pulumi.OutputState}
+type KubernetesAutoscalerNodepoolArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAutoscalerNodepoolArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesAutoscalerNodepool)(nil)).Elem()
@@ -425,7 +425,7 @@ func (o KubernetesAutoscalerNodepoolArrayOutput) ToKubernetesAutoscalerNodepoolA
 }
 
 func (o KubernetesAutoscalerNodepoolArrayOutput) Index(i pulumi.IntInput) KubernetesAutoscalerNodepoolOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesAutoscalerNodepool {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesAutoscalerNodepool {
 		return vs[0].([]KubernetesAutoscalerNodepool)[vs[1].(int)]
 	}).(KubernetesAutoscalerNodepoolOutput)
 }
@@ -488,7 +488,8 @@ type KubernetesConnectionsPtrInput interface {
 
 type kubernetesConnectionsPtrType KubernetesConnectionsArgs
 
-func KubernetesConnectionsPtr(v *KubernetesConnectionsArgs) KubernetesConnectionsPtrInput {	return (*kubernetesConnectionsPtrType)(v)
+func KubernetesConnectionsPtr(v *KubernetesConnectionsArgs) KubernetesConnectionsPtrInput {
+	return (*kubernetesConnectionsPtrType)(v)
 }
 
 func (*kubernetesConnectionsPtrType) ElementType() reflect.Type {
@@ -503,7 +504,7 @@ func (i *kubernetesConnectionsPtrType) ToKubernetesConnectionsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConnectionsPtrOutput)
 }
 
-type KubernetesConnectionsOutput struct { *pulumi.OutputState }
+type KubernetesConnectionsOutput struct{ *pulumi.OutputState }
 
 func (KubernetesConnectionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesConnections)(nil)).Elem()
@@ -526,27 +527,28 @@ func (o KubernetesConnectionsOutput) ToKubernetesConnectionsPtrOutputWithContext
 		return &v
 	}).(KubernetesConnectionsPtrOutput)
 }
+
 // API Server Internet endpoint.
 func (o KubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o KubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
 func (o KubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o KubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesConnectionsPtrOutput struct { *pulumi.OutputState}
+type KubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
 
 func (KubernetesConnectionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**KubernetesConnections)(nil)).Elem()
@@ -561,27 +563,27 @@ func (o KubernetesConnectionsPtrOutput) ToKubernetesConnectionsPtrOutputWithCont
 }
 
 func (o KubernetesConnectionsPtrOutput) Elem() KubernetesConnectionsOutput {
-	return o.ApplyT(func (v *KubernetesConnections) KubernetesConnections { return *v }).(KubernetesConnectionsOutput)
+	return o.ApplyT(func(v *KubernetesConnections) KubernetesConnections { return *v }).(KubernetesConnectionsOutput)
 }
 
 // API Server Internet endpoint.
 func (o KubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o KubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
 func (o KubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
 type KubernetesMasterNode struct {
@@ -642,7 +644,7 @@ func (i KubernetesMasterNodeArray) ToKubernetesMasterNodeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesMasterNodeArrayOutput)
 }
 
-type KubernetesMasterNodeOutput struct { *pulumi.OutputState }
+type KubernetesMasterNodeOutput struct{ *pulumi.OutputState }
 
 func (KubernetesMasterNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesMasterNode)(nil)).Elem()
@@ -658,20 +660,20 @@ func (o KubernetesMasterNodeOutput) ToKubernetesMasterNodeOutputWithContext(ctx 
 
 // ID of the node.
 func (o KubernetesMasterNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesMasterNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The private IP address of node.
 func (o KubernetesMasterNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesMasterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesMasterNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesMasterNodeArrayOutput struct { *pulumi.OutputState}
+type KubernetesMasterNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesMasterNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesMasterNode)(nil)).Elem()
@@ -686,7 +688,7 @@ func (o KubernetesMasterNodeArrayOutput) ToKubernetesMasterNodeArrayOutputWithCo
 }
 
 func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMasterNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesMasterNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesMasterNode {
 		return vs[0].([]KubernetesMasterNode)[vs[1].(int)]
 	}).(KubernetesMasterNodeOutput)
 }
@@ -749,7 +751,7 @@ func (i KubernetesWorkerNodeArray) ToKubernetesWorkerNodeArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesWorkerNodeArrayOutput)
 }
 
-type KubernetesWorkerNodeOutput struct { *pulumi.OutputState }
+type KubernetesWorkerNodeOutput struct{ *pulumi.OutputState }
 
 func (KubernetesWorkerNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*KubernetesWorkerNode)(nil)).Elem()
@@ -765,20 +767,20 @@ func (o KubernetesWorkerNodeOutput) ToKubernetesWorkerNodeOutputWithContext(ctx 
 
 // ID of the node.
 func (o KubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o KubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The private IP address of node.
 func (o KubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v KubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v KubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-type KubernetesWorkerNodeArrayOutput struct { *pulumi.OutputState}
+type KubernetesWorkerNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (KubernetesWorkerNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]KubernetesWorkerNode)(nil)).Elem()
@@ -793,13 +795,13 @@ func (o KubernetesWorkerNodeArrayOutput) ToKubernetesWorkerNodeArrayOutputWithCo
 }
 
 func (o KubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) KubernetesWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) KubernetesWorkerNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesWorkerNode {
 		return vs[0].([]KubernetesWorkerNode)[vs[1].(int)]
 	}).(KubernetesWorkerNodeOutput)
 }
 
 type ManagedKubernetesAddon struct {
-	Config *string `pulumi:"config"`
+	Config   *string `pulumi:"config"`
 	Disabled *string `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
@@ -813,7 +815,7 @@ type ManagedKubernetesAddonInput interface {
 }
 
 type ManagedKubernetesAddonArgs struct {
-	Config pulumi.StringPtrInput `pulumi:"config"`
+	Config   pulumi.StringPtrInput `pulumi:"config"`
 	Disabled pulumi.StringPtrInput `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -852,7 +854,7 @@ func (i ManagedKubernetesAddonArray) ToManagedKubernetesAddonArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesAddonArrayOutput)
 }
 
-type ManagedKubernetesAddonOutput struct { *pulumi.OutputState }
+type ManagedKubernetesAddonOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesAddonOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedKubernetesAddon)(nil)).Elem()
@@ -867,19 +869,19 @@ func (o ManagedKubernetesAddonOutput) ToManagedKubernetesAddonOutputWithContext(
 }
 
 func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedKubernetesAddonOutput) Disabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Disabled }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Disabled }).(pulumi.StringPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o ManagedKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesAddonArrayOutput struct { *pulumi.OutputState}
+type ManagedKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesAddonArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedKubernetesAddon)(nil)).Elem()
@@ -894,7 +896,7 @@ func (o ManagedKubernetesAddonArrayOutput) ToManagedKubernetesAddonArrayOutputWi
 }
 
 func (o ManagedKubernetesAddonArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesAddonOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedKubernetesAddon {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesAddon {
 		return vs[0].([]ManagedKubernetesAddon)[vs[1].(int)]
 	}).(ManagedKubernetesAddonOutput)
 }
@@ -957,7 +959,8 @@ type ManagedKubernetesConnectionsPtrInput interface {
 
 type managedKubernetesConnectionsPtrType ManagedKubernetesConnectionsArgs
 
-func ManagedKubernetesConnectionsPtr(v *ManagedKubernetesConnectionsArgs) ManagedKubernetesConnectionsPtrInput {	return (*managedKubernetesConnectionsPtrType)(v)
+func ManagedKubernetesConnectionsPtr(v *ManagedKubernetesConnectionsArgs) ManagedKubernetesConnectionsPtrInput {
+	return (*managedKubernetesConnectionsPtrType)(v)
 }
 
 func (*managedKubernetesConnectionsPtrType) ElementType() reflect.Type {
@@ -972,7 +975,7 @@ func (i *managedKubernetesConnectionsPtrType) ToManagedKubernetesConnectionsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesConnectionsPtrOutput)
 }
 
-type ManagedKubernetesConnectionsOutput struct { *pulumi.OutputState }
+type ManagedKubernetesConnectionsOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesConnectionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedKubernetesConnections)(nil)).Elem()
@@ -995,27 +998,28 @@ func (o ManagedKubernetesConnectionsOutput) ToManagedKubernetesConnectionsPtrOut
 		return &v
 	}).(ManagedKubernetesConnectionsPtrOutput)
 }
+
 // API Server Internet endpoint.
 func (o ManagedKubernetesConnectionsOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o ManagedKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
 func (o ManagedKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o ManagedKubernetesConnectionsOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesConnectionsPtrOutput struct { *pulumi.OutputState}
+type ManagedKubernetesConnectionsPtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesConnectionsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ManagedKubernetesConnections)(nil)).Elem()
@@ -1030,27 +1034,27 @@ func (o ManagedKubernetesConnectionsPtrOutput) ToManagedKubernetesConnectionsPtr
 }
 
 func (o ManagedKubernetesConnectionsPtrOutput) Elem() ManagedKubernetesConnectionsOutput {
-	return o.ApplyT(func (v *ManagedKubernetesConnections) ManagedKubernetesConnections { return *v }).(ManagedKubernetesConnectionsOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) ManagedKubernetesConnections { return *v }).(ManagedKubernetesConnectionsOutput)
 }
 
 // API Server Internet endpoint.
 func (o ManagedKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
 func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesWorkerNode struct {
@@ -1111,7 +1115,7 @@ func (i ManagedKubernetesWorkerNodeArray) ToManagedKubernetesWorkerNodeArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesWorkerNodeArrayOutput)
 }
 
-type ManagedKubernetesWorkerNodeOutput struct { *pulumi.OutputState }
+type ManagedKubernetesWorkerNodeOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesWorkerNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedKubernetesWorkerNode)(nil)).Elem()
@@ -1127,20 +1131,20 @@ func (o ManagedKubernetesWorkerNodeOutput) ToManagedKubernetesWorkerNodeOutputWi
 
 // ID of the node.
 func (o ManagedKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
 func (o ManagedKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The private IP address of node.
 func (o ManagedKubernetesWorkerNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ManagedKubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-type ManagedKubernetesWorkerNodeArrayOutput struct { *pulumi.OutputState}
+type ManagedKubernetesWorkerNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (ManagedKubernetesWorkerNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ManagedKubernetesWorkerNode)(nil)).Elem()
@@ -1155,7 +1159,7 @@ func (o ManagedKubernetesWorkerNodeArrayOutput) ToManagedKubernetesWorkerNodeArr
 }
 
 func (o ManagedKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ManagedKubernetesWorkerNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesWorkerNode {
 		return vs[0].([]ManagedKubernetesWorkerNode)[vs[1].(int)]
 	}).(ManagedKubernetesWorkerNodeOutput)
 }
@@ -1226,7 +1230,7 @@ func (i SwarmNodeArray) ToSwarmNodeArrayOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SwarmNodeArrayOutput)
 }
 
-type SwarmNodeOutput struct { *pulumi.OutputState }
+type SwarmNodeOutput struct{ *pulumi.OutputState }
 
 func (SwarmNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SwarmNode)(nil)).Elem()
@@ -1242,30 +1246,30 @@ func (o SwarmNodeOutput) ToSwarmNodeOutputWithContext(ctx context.Context) Swarm
 
 // The Elastic IP address of node.
 func (o SwarmNodeOutput) Eip() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SwarmNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SwarmNode) *string { return v.Eip }).(pulumi.StringPtrOutput)
 }
 
 // ID of the node.
 func (o SwarmNodeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SwarmNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SwarmNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The container cluster's name. It is the only in one Alicloud account.
 func (o SwarmNodeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SwarmNode) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SwarmNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The private IP address of node.
 func (o SwarmNodeOutput) PrivateIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SwarmNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SwarmNode) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
 // The node current status. It is different with instance status.
 func (o SwarmNodeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SwarmNode) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SwarmNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type SwarmNodeArrayOutput struct { *pulumi.OutputState}
+type SwarmNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (SwarmNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SwarmNode)(nil)).Elem()
@@ -1280,14 +1284,14 @@ func (o SwarmNodeArrayOutput) ToSwarmNodeArrayOutputWithContext(ctx context.Cont
 }
 
 func (o SwarmNodeArrayOutput) Index(i pulumi.IntInput) SwarmNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SwarmNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SwarmNode {
 		return vs[0].([]SwarmNode)[vs[1].(int)]
 	}).(SwarmNodeOutput)
 }
 
 type GetKubernetesClustersCluster struct {
 	// The ID of availability zone.
-	AvailabilityZone string `pulumi:"availabilityZone"`
+	AvailabilityZone   string `pulumi:"availabilityZone"`
 	ClusterNetworkType string `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetKubernetesClustersClusterConnections `pulumi:"connections"`
@@ -1298,38 +1302,38 @@ type GetKubernetesClustersCluster struct {
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName string `pulumi:"keyName"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs []GetKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
-	MasterAutoRenew bool `pulumi:"masterAutoRenew"`
-	MasterAutoRenewPeriod int `pulumi:"masterAutoRenewPeriod"`
+	LogConfigs            []GetKubernetesClustersClusterLogConfig `pulumi:"logConfigs"`
+	MasterAutoRenew       bool                                    `pulumi:"masterAutoRenew"`
+	MasterAutoRenewPeriod int                                     `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node.
 	MasterDiskCategory string `pulumi:"masterDiskCategory"`
 	// The system disk size of master node.
-	MasterDiskSize int `pulumi:"masterDiskSize"`
+	MasterDiskSize           int    `pulumi:"masterDiskSize"`
 	MasterInstanceChargeType string `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node.
 	MasterInstanceTypes []string `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-	MasterNodes []GetKubernetesClustersClusterMasterNode `pulumi:"masterNodes"`
-	MasterPeriod int `pulumi:"masterPeriod"`
-	MasterPeriodUnit string `pulumi:"masterPeriodUnit"`
+	MasterNodes      []GetKubernetesClustersClusterMasterNode `pulumi:"masterNodes"`
+	MasterPeriod     int                                      `pulumi:"masterPeriod"`
+	MasterPeriodUnit string                                   `pulumi:"masterPeriodUnit"`
 	// Node name.
 	Name string `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The network mask used on pods for each node.
-	NodeCidrMask int `pulumi:"nodeCidrMask"`
-	PodCidr string `pulumi:"podCidr"`
+	NodeCidrMask int    `pulumi:"nodeCidrMask"`
+	PodCidr      string `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	ServiceCidr string `pulumi:"serviceCidr"`
+	ServiceCidr     string `pulumi:"serviceCidr"`
 	// Whether internet load balancer for API Server is created
 	SlbInternetEnabled bool `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
-	VswitchIds []string `pulumi:"vswitchIds"`
-	WorkerAutoRenew bool `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod int `pulumi:"workerAutoRenewPeriod"`
+	VswitchIds            []string `pulumi:"vswitchIds"`
+	WorkerAutoRenew       bool     `pulumi:"workerAutoRenew"`
+	WorkerAutoRenewPeriod int      `pulumi:"workerAutoRenewPeriod"`
 	// The data disk size of worker node.
 	WorkerDataDiskCategory string `pulumi:"workerDataDiskCategory"`
 	// The data disk category of worker node.
@@ -1337,15 +1341,15 @@ type GetKubernetesClustersCluster struct {
 	// The system disk category of worker node.
 	WorkerDiskCategory string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node.
-	WorkerDiskSize int `pulumi:"workerDiskSize"`
+	WorkerDiskSize           int    `pulumi:"workerDiskSize"`
 	WorkerInstanceChargeType string `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node.
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes []GetKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
-	WorkerNumbers []int `pulumi:"workerNumbers"`
-	WorkerPeriod int `pulumi:"workerPeriod"`
+	WorkerNumbers    []int  `pulumi:"workerNumbers"`
+	WorkerPeriod     int    `pulumi:"workerPeriod"`
 	WorkerPeriodUnit string `pulumi:"workerPeriodUnit"`
 }
 
@@ -1358,7 +1362,7 @@ type GetKubernetesClustersClusterInput interface {
 
 type GetKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	AvailabilityZone   pulumi.StringInput `pulumi:"availabilityZone"`
 	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
 	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
@@ -1369,38 +1373,38 @@ type GetKubernetesClustersClusterArgs struct {
 	// The keypair of ssh login cluster node, you have to create it first.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
-	LogConfigs GetKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
-	MasterAutoRenew pulumi.BoolInput `pulumi:"masterAutoRenew"`
-	MasterAutoRenewPeriod pulumi.IntInput `pulumi:"masterAutoRenewPeriod"`
+	LogConfigs            GetKubernetesClustersClusterLogConfigArrayInput `pulumi:"logConfigs"`
+	MasterAutoRenew       pulumi.BoolInput                                `pulumi:"masterAutoRenew"`
+	MasterAutoRenewPeriod pulumi.IntInput                                 `pulumi:"masterAutoRenewPeriod"`
 	// The system disk category of master node.
 	MasterDiskCategory pulumi.StringInput `pulumi:"masterDiskCategory"`
 	// The system disk size of master node.
-	MasterDiskSize pulumi.IntInput `pulumi:"masterDiskSize"`
+	MasterDiskSize           pulumi.IntInput    `pulumi:"masterDiskSize"`
 	MasterInstanceChargeType pulumi.StringInput `pulumi:"masterInstanceChargeType"`
 	// The instance type of master node.
 	MasterInstanceTypes pulumi.StringArrayInput `pulumi:"masterInstanceTypes"`
 	// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-	MasterNodes GetKubernetesClustersClusterMasterNodeArrayInput `pulumi:"masterNodes"`
-	MasterPeriod pulumi.IntInput `pulumi:"masterPeriod"`
-	MasterPeriodUnit pulumi.StringInput `pulumi:"masterPeriodUnit"`
+	MasterNodes      GetKubernetesClustersClusterMasterNodeArrayInput `pulumi:"masterNodes"`
+	MasterPeriod     pulumi.IntInput                                  `pulumi:"masterPeriod"`
+	MasterPeriodUnit pulumi.StringInput                               `pulumi:"masterPeriodUnit"`
 	// Node name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The network mask used on pods for each node.
-	NodeCidrMask pulumi.IntInput `pulumi:"nodeCidrMask"`
-	PodCidr pulumi.StringInput `pulumi:"podCidr"`
+	NodeCidrMask pulumi.IntInput    `pulumi:"nodeCidrMask"`
+	PodCidr      pulumi.StringInput `pulumi:"podCidr"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	ServiceCidr pulumi.StringInput `pulumi:"serviceCidr"`
+	ServiceCidr     pulumi.StringInput `pulumi:"serviceCidr"`
 	// Whether internet load balancer for API Server is created
 	SlbInternetEnabled pulumi.BoolInput `pulumi:"slbInternetEnabled"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
-	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	WorkerAutoRenew pulumi.BoolInput `pulumi:"workerAutoRenew"`
-	WorkerAutoRenewPeriod pulumi.IntInput `pulumi:"workerAutoRenewPeriod"`
+	VswitchIds            pulumi.StringArrayInput `pulumi:"vswitchIds"`
+	WorkerAutoRenew       pulumi.BoolInput        `pulumi:"workerAutoRenew"`
+	WorkerAutoRenewPeriod pulumi.IntInput         `pulumi:"workerAutoRenewPeriod"`
 	// The data disk size of worker node.
 	WorkerDataDiskCategory pulumi.StringInput `pulumi:"workerDataDiskCategory"`
 	// The data disk category of worker node.
@@ -1408,16 +1412,16 @@ type GetKubernetesClustersClusterArgs struct {
 	// The system disk category of worker node.
 	WorkerDiskCategory pulumi.StringInput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node.
-	WorkerDiskSize pulumi.IntInput `pulumi:"workerDiskSize"`
+	WorkerDiskSize           pulumi.IntInput    `pulumi:"workerDiskSize"`
 	WorkerInstanceChargeType pulumi.StringInput `pulumi:"workerInstanceChargeType"`
 	// The instance type of worker node.
 	WorkerInstanceTypes pulumi.StringArrayInput `pulumi:"workerInstanceTypes"`
 	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 	WorkerNodes GetKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
-	WorkerNumbers pulumi.IntArrayInput `pulumi:"workerNumbers"`
-	WorkerPeriod pulumi.IntInput `pulumi:"workerPeriod"`
-	WorkerPeriodUnit pulumi.StringInput `pulumi:"workerPeriodUnit"`
+	WorkerNumbers    pulumi.IntArrayInput `pulumi:"workerNumbers"`
+	WorkerPeriod     pulumi.IntInput      `pulumi:"workerPeriod"`
+	WorkerPeriodUnit pulumi.StringInput   `pulumi:"workerPeriodUnit"`
 }
 
 func (GetKubernetesClustersClusterArgs) ElementType() reflect.Type {
@@ -1453,7 +1457,7 @@ func (i GetKubernetesClustersClusterArray) ToGetKubernetesClustersClusterArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterArrayOutput)
 }
 
-type GetKubernetesClustersClusterOutput struct { *pulumi.OutputState }
+type GetKubernetesClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClustersCluster)(nil)).Elem()
@@ -1469,177 +1473,177 @@ func (o GetKubernetesClustersClusterOutput) ToGetKubernetesClustersClusterOutput
 
 // The ID of availability zone.
 func (o GetKubernetesClustersClusterOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
 }
 
 // Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 func (o GetKubernetesClustersClusterOutput) Connections() GetKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) GetKubernetesClustersClusterConnections { return v.Connections }).(GetKubernetesClustersClusterConnectionsOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) GetKubernetesClustersClusterConnections { return v.Connections }).(GetKubernetesClustersClusterConnectionsOutput)
 }
 
 // ID of the node.
 func (o GetKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ID of node image.
 func (o GetKubernetesClustersClusterOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // The keypair of ssh login cluster node, you have to create it first.
 func (o GetKubernetesClustersClusterOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.KeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // A list of one element containing information about the associated log store. It contains the following attributes:
 func (o GetKubernetesClustersClusterOutput) LogConfigs() GetKubernetesClustersClusterLogConfigArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []GetKubernetesClustersClusterLogConfig { return v.LogConfigs }).(GetKubernetesClustersClusterLogConfigArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterLogConfig { return v.LogConfigs }).(GetKubernetesClustersClusterLogConfigArrayOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) MasterAutoRenew() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) bool { return v.MasterAutoRenew }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) bool { return v.MasterAutoRenew }).(pulumi.BoolOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) MasterAutoRenewPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.MasterAutoRenewPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterAutoRenewPeriod }).(pulumi.IntOutput)
 }
 
 // The system disk category of master node.
 func (o GetKubernetesClustersClusterOutput) MasterDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.MasterDiskCategory }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.MasterDiskCategory }).(pulumi.StringOutput)
 }
 
 // The system disk size of master node.
 func (o GetKubernetesClustersClusterOutput) MasterDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.MasterDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterDiskSize }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) MasterInstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.MasterInstanceChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.MasterInstanceChargeType }).(pulumi.StringOutput)
 }
 
 // The instance type of master node.
 func (o GetKubernetesClustersClusterOutput) MasterInstanceTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []string { return v.MasterInstanceTypes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []string { return v.MasterInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
 // List of cluster master nodes. It contains several attributes to `Block Nodes`.
 func (o GetKubernetesClustersClusterOutput) MasterNodes() GetKubernetesClustersClusterMasterNodeArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []GetKubernetesClustersClusterMasterNode { return v.MasterNodes }).(GetKubernetesClustersClusterMasterNodeArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterMasterNode { return v.MasterNodes }).(GetKubernetesClustersClusterMasterNodeArrayOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) MasterPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.MasterPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.MasterPeriod }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) MasterPeriodUnit() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.MasterPeriodUnit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.MasterPeriodUnit }).(pulumi.StringOutput)
 }
 
 // Node name.
 func (o GetKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of nat gateway used to launch kubernetes cluster.
 func (o GetKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
 // The network mask used on pods for each node.
 func (o GetKubernetesClustersClusterOutput) NodeCidrMask() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.NodeCidrMask }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.NodeCidrMask }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) PodCidr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
 }
 
 // The ID of security group where the current cluster worker node is located.
 func (o GetKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) ServiceCidr() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.ServiceCidr }).(pulumi.StringOutput)
 }
 
 // Whether internet load balancer for API Server is created
 func (o GetKubernetesClustersClusterOutput) SlbInternetEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) bool { return v.SlbInternetEnabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) bool { return v.SlbInternetEnabled }).(pulumi.BoolOutput)
 }
 
 // The ID of VPC where the current cluster is located.
 func (o GetKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ID of VSwitches where the current cluster is located.
 func (o GetKubernetesClustersClusterOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) WorkerAutoRenew() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) bool { return v.WorkerAutoRenew }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) bool { return v.WorkerAutoRenew }).(pulumi.BoolOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) WorkerAutoRenewPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
 }
 
 // The data disk size of worker node.
 func (o GetKubernetesClustersClusterOutput) WorkerDataDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.WorkerDataDiskCategory }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerDataDiskCategory }).(pulumi.StringOutput)
 }
 
 // The data disk category of worker node.
 func (o GetKubernetesClustersClusterOutput) WorkerDataDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.WorkerDataDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerDataDiskSize }).(pulumi.IntOutput)
 }
 
 // The system disk category of worker node.
 func (o GetKubernetesClustersClusterOutput) WorkerDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.WorkerDiskCategory }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerDiskCategory }).(pulumi.StringOutput)
 }
 
 // The system disk size of worker node.
 func (o GetKubernetesClustersClusterOutput) WorkerDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.WorkerDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerDiskSize }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) WorkerInstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerInstanceChargeType }).(pulumi.StringOutput)
 }
 
 // The instance type of worker node.
 func (o GetKubernetesClustersClusterOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []string { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []string { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
 // List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 func (o GetKubernetesClustersClusterOutput) WorkerNodes() GetKubernetesClustersClusterWorkerNodeArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []GetKubernetesClustersClusterWorkerNode { return v.WorkerNodes }).(GetKubernetesClustersClusterWorkerNodeArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []GetKubernetesClustersClusterWorkerNode { return v.WorkerNodes }).(GetKubernetesClustersClusterWorkerNodeArrayOutput)
 }
 
 // The ECS instance node number in the current container cluster.
 func (o GetKubernetesClustersClusterOutput) WorkerNumbers() pulumi.IntArrayOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) []int { return v.WorkerNumbers }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) []int { return v.WorkerNumbers }).(pulumi.IntArrayOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) WorkerPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) int { return v.WorkerPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) int { return v.WorkerPeriod }).(pulumi.IntOutput)
 }
 
 func (o GetKubernetesClustersClusterOutput) WorkerPeriodUnit() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersCluster) string { return v.WorkerPeriodUnit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersCluster) string { return v.WorkerPeriodUnit }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClustersClusterArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClustersCluster)(nil)).Elem()
@@ -1654,7 +1658,7 @@ func (o GetKubernetesClustersClusterArrayOutput) ToGetKubernetesClustersClusterA
 }
 
 func (o GetKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) GetKubernetesClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClustersCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClustersCluster {
 		return vs[0].([]GetKubernetesClustersCluster)[vs[1].(int)]
 	}).(GetKubernetesClustersClusterOutput)
 }
@@ -1700,7 +1704,7 @@ func (i GetKubernetesClustersClusterConnectionsArgs) ToGetKubernetesClustersClus
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterConnectionsOutput)
 }
 
-type GetKubernetesClustersClusterConnectionsOutput struct { *pulumi.OutputState }
+type GetKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClustersClusterConnections)(nil)).Elem()
@@ -1716,22 +1720,22 @@ func (o GetKubernetesClustersClusterConnectionsOutput) ToGetKubernetesClustersCl
 
 // API Server Internet endpoint.
 func (o GetKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
 func (o GetKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
 func (o GetKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
 }
 
 // Service Access Domain.
 func (o GetKubernetesClustersClusterConnectionsOutput) ServiceDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
 }
 
 type GetKubernetesClustersClusterLogConfig struct {
@@ -1788,7 +1792,7 @@ func (i GetKubernetesClustersClusterLogConfigArray) ToGetKubernetesClustersClust
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterLogConfigArrayOutput)
 }
 
-type GetKubernetesClustersClusterLogConfigOutput struct { *pulumi.OutputState }
+type GetKubernetesClustersClusterLogConfigOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterLogConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClustersClusterLogConfig)(nil)).Elem()
@@ -1804,15 +1808,15 @@ func (o GetKubernetesClustersClusterLogConfigOutput) ToGetKubernetesClustersClus
 
 // Log Service project name.
 func (o GetKubernetesClustersClusterLogConfigOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterLogConfig) string { return v.Project }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterLogConfig) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Type of collecting logs.
 func (o GetKubernetesClustersClusterLogConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterLogConfig) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterLogConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClustersClusterLogConfigArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClustersClusterLogConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterLogConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClustersClusterLogConfig)(nil)).Elem()
@@ -1827,7 +1831,7 @@ func (o GetKubernetesClustersClusterLogConfigArrayOutput) ToGetKubernetesCluster
 }
 
 func (o GetKubernetesClustersClusterLogConfigArrayOutput) Index(i pulumi.IntInput) GetKubernetesClustersClusterLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClustersClusterLogConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClustersClusterLogConfig {
 		return vs[0].([]GetKubernetesClustersClusterLogConfig)[vs[1].(int)]
 	}).(GetKubernetesClustersClusterLogConfigOutput)
 }
@@ -1890,7 +1894,7 @@ func (i GetKubernetesClustersClusterMasterNodeArray) ToGetKubernetesClustersClus
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterMasterNodeArrayOutput)
 }
 
-type GetKubernetesClustersClusterMasterNodeOutput struct { *pulumi.OutputState }
+type GetKubernetesClustersClusterMasterNodeOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterMasterNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClustersClusterMasterNode)(nil)).Elem()
@@ -1906,20 +1910,20 @@ func (o GetKubernetesClustersClusterMasterNodeOutput) ToGetKubernetesClustersClu
 
 // ID of the node.
 func (o GetKubernetesClustersClusterMasterNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterMasterNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterMasterNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Node name.
 func (o GetKubernetesClustersClusterMasterNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterMasterNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterMasterNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The private IP address of node.
 func (o GetKubernetesClustersClusterMasterNodeOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterMasterNode) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterMasterNode) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClustersClusterMasterNodeArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClustersClusterMasterNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterMasterNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClustersClusterMasterNode)(nil)).Elem()
@@ -1934,7 +1938,7 @@ func (o GetKubernetesClustersClusterMasterNodeArrayOutput) ToGetKubernetesCluste
 }
 
 func (o GetKubernetesClustersClusterMasterNodeArrayOutput) Index(i pulumi.IntInput) GetKubernetesClustersClusterMasterNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClustersClusterMasterNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClustersClusterMasterNode {
 		return vs[0].([]GetKubernetesClustersClusterMasterNode)[vs[1].(int)]
 	}).(GetKubernetesClustersClusterMasterNodeOutput)
 }
@@ -1997,7 +2001,7 @@ func (i GetKubernetesClustersClusterWorkerNodeArray) ToGetKubernetesClustersClus
 	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClustersClusterWorkerNodeArrayOutput)
 }
 
-type GetKubernetesClustersClusterWorkerNodeOutput struct { *pulumi.OutputState }
+type GetKubernetesClustersClusterWorkerNodeOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterWorkerNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKubernetesClustersClusterWorkerNode)(nil)).Elem()
@@ -2013,20 +2017,20 @@ func (o GetKubernetesClustersClusterWorkerNodeOutput) ToGetKubernetesClustersClu
 
 // ID of the node.
 func (o GetKubernetesClustersClusterWorkerNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterWorkerNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterWorkerNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Node name.
 func (o GetKubernetesClustersClusterWorkerNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterWorkerNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterWorkerNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The private IP address of node.
 func (o GetKubernetesClustersClusterWorkerNodeOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKubernetesClustersClusterWorkerNode) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKubernetesClustersClusterWorkerNode) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-type GetKubernetesClustersClusterWorkerNodeArrayOutput struct { *pulumi.OutputState}
+type GetKubernetesClustersClusterWorkerNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKubernetesClustersClusterWorkerNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKubernetesClustersClusterWorkerNode)(nil)).Elem()
@@ -2041,7 +2045,7 @@ func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) ToGetKubernetesCluste
 }
 
 func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInput) GetKubernetesClustersClusterWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKubernetesClustersClusterWorkerNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClustersClusterWorkerNode {
 		return vs[0].([]GetKubernetesClustersClusterWorkerNode)[vs[1].(int)]
 	}).(GetKubernetesClustersClusterWorkerNodeOutput)
 }
@@ -2124,7 +2128,7 @@ func (i GetManagedKubernetesClustersClusterArray) ToGetManagedKubernetesClusters
 	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterArrayOutput)
 }
 
-type GetManagedKubernetesClustersClusterOutput struct { *pulumi.OutputState }
+type GetManagedKubernetesClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetManagedKubernetesClustersClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetManagedKubernetesClustersCluster)(nil)).Elem()
@@ -2140,45 +2144,49 @@ func (o GetManagedKubernetesClustersClusterOutput) ToGetManagedKubernetesCluster
 
 // The ID of availability zone.
 func (o GetManagedKubernetesClustersClusterOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
 func (o GetManagedKubernetesClustersClusterOutput) Connections() GetManagedKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterConnections { return v.Connections }).(GetManagedKubernetesClustersClusterConnectionsOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterConnections {
+		return v.Connections
+	}).(GetManagedKubernetesClustersClusterConnectionsOutput)
 }
 
 // ID of the node.
 func (o GetManagedKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Node name.
 func (o GetManagedKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of nat gateway used to launch kubernetes cluster.
 func (o GetManagedKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
 // The ID of security group where the current cluster worker node is located.
 func (o GetManagedKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // The ID of VPC where the current cluster is located.
 func (o GetManagedKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // List of cluster worker nodes. It contains several attributes to `Block Nodes`.
 func (o GetManagedKubernetesClustersClusterOutput) WorkerNodes() GetManagedKubernetesClustersClusterWorkerNodeArrayOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterWorkerNode { return v.WorkerNodes }).(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterWorkerNode {
+		return v.WorkerNodes
+	}).(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput)
 }
 
-type GetManagedKubernetesClustersClusterArrayOutput struct { *pulumi.OutputState}
+type GetManagedKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetManagedKubernetesClustersClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetManagedKubernetesClustersCluster)(nil)).Elem()
@@ -2193,7 +2201,7 @@ func (o GetManagedKubernetesClustersClusterArrayOutput) ToGetManagedKubernetesCl
 }
 
 func (o GetManagedKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) GetManagedKubernetesClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetManagedKubernetesClustersCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersCluster {
 		return vs[0].([]GetManagedKubernetesClustersCluster)[vs[1].(int)]
 	}).(GetManagedKubernetesClustersClusterOutput)
 }
@@ -2239,7 +2247,7 @@ func (i GetManagedKubernetesClustersClusterConnectionsArgs) ToGetManagedKubernet
 	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterConnectionsOutput)
 }
 
-type GetManagedKubernetesClustersClusterConnectionsOutput struct { *pulumi.OutputState }
+type GetManagedKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
 
 func (GetManagedKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetManagedKubernetesClustersClusterConnections)(nil)).Elem()
@@ -2255,22 +2263,22 @@ func (o GetManagedKubernetesClustersClusterConnectionsOutput) ToGetManagedKubern
 
 // API Server Internet endpoint.
 func (o GetManagedKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
 func (o GetManagedKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
 func (o GetManagedKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
 }
 
 // Service Access Domain.
 func (o GetManagedKubernetesClustersClusterConnectionsOutput) ServiceDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterConnections) string { return v.ServiceDomain }).(pulumi.StringOutput)
 }
 
 type GetManagedKubernetesClustersClusterWorkerNode struct {
@@ -2331,7 +2339,7 @@ func (i GetManagedKubernetesClustersClusterWorkerNodeArray) ToGetManagedKubernet
 	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput)
 }
 
-type GetManagedKubernetesClustersClusterWorkerNodeOutput struct { *pulumi.OutputState }
+type GetManagedKubernetesClustersClusterWorkerNodeOutput struct{ *pulumi.OutputState }
 
 func (GetManagedKubernetesClustersClusterWorkerNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNode)(nil)).Elem()
@@ -2347,20 +2355,20 @@ func (o GetManagedKubernetesClustersClusterWorkerNodeOutput) ToGetManagedKuberne
 
 // ID of the node.
 func (o GetManagedKubernetesClustersClusterWorkerNodeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterWorkerNode) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterWorkerNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Node name.
 func (o GetManagedKubernetesClustersClusterWorkerNodeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterWorkerNode) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterWorkerNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The private IP address of node.
 func (o GetManagedKubernetesClustersClusterWorkerNodeOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetManagedKubernetesClustersClusterWorkerNode) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterWorkerNode) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-type GetManagedKubernetesClustersClusterWorkerNodeArrayOutput struct { *pulumi.OutputState}
+type GetManagedKubernetesClustersClusterWorkerNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetManagedKubernetesClustersClusterWorkerNode)(nil)).Elem()
@@ -2375,7 +2383,7 @@ func (o GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) ToGetManagedKu
 }
 
 func (o GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInput) GetManagedKubernetesClustersClusterWorkerNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetManagedKubernetesClustersClusterWorkerNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersClusterWorkerNode {
 		return vs[0].([]GetManagedKubernetesClustersClusterWorkerNode)[vs[1].(int)]
 	}).(GetManagedKubernetesClustersClusterWorkerNodeOutput)
 }
@@ -2383,8 +2391,8 @@ func (o GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi
 type GetServerlessKubernetesClustersCluster struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
-	// Whether the cluster support delete protection.  
-	DeletionProtection bool `pulumi:"deletionProtection"`
+	// Whether the cluster support delete protection.
+	DeletionProtection          bool `pulumi:"deletionProtection"`
 	EndpointPublicAccessEnabled bool `pulumi:"endpointPublicAccessEnabled"`
 	// The ID of the container cluster.
 	Id string `pulumi:"id"`
@@ -2393,8 +2401,8 @@ type GetServerlessKubernetesClustersCluster struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	SecurityGroupId string                 `pulumi:"securityGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of VSwitch where the current cluster is located.
@@ -2411,8 +2419,8 @@ type GetServerlessKubernetesClustersClusterInput interface {
 type GetServerlessKubernetesClustersClusterArgs struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
-	// Whether the cluster support delete protection.  
-	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// Whether the cluster support delete protection.
+	DeletionProtection          pulumi.BoolInput `pulumi:"deletionProtection"`
 	EndpointPublicAccessEnabled pulumi.BoolInput `pulumi:"endpointPublicAccessEnabled"`
 	// The ID of the container cluster.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -2422,7 +2430,7 @@ type GetServerlessKubernetesClustersClusterArgs struct {
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	// The ID of security group where the current cluster  is located.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags            pulumi.MapInput    `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of VSwitch where the current cluster is located.
@@ -2462,7 +2470,7 @@ func (i GetServerlessKubernetesClustersClusterArray) ToGetServerlessKubernetesCl
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessKubernetesClustersClusterArrayOutput)
 }
 
-type GetServerlessKubernetesClustersClusterOutput struct { *pulumi.OutputState }
+type GetServerlessKubernetesClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetServerlessKubernetesClustersClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServerlessKubernetesClustersCluster)(nil)).Elem()
@@ -2478,53 +2486,55 @@ func (o GetServerlessKubernetesClustersClusterOutput) ToGetServerlessKubernetesC
 
 // Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 func (o GetServerlessKubernetesClustersClusterOutput) Connections() GetServerlessKubernetesClustersClusterConnectionsOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) GetServerlessKubernetesClustersClusterConnections { return v.Connections }).(GetServerlessKubernetesClustersClusterConnectionsOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) GetServerlessKubernetesClustersClusterConnections {
+		return v.Connections
+	}).(GetServerlessKubernetesClustersClusterConnectionsOutput)
 }
 
-// Whether the cluster support delete protection.  
+// Whether the cluster support delete protection.
 func (o GetServerlessKubernetesClustersClusterOutput) DeletionProtection() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o GetServerlessKubernetesClustersClusterOutput) EndpointPublicAccessEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) bool { return v.EndpointPublicAccessEnabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) bool { return v.EndpointPublicAccessEnabled }).(pulumi.BoolOutput)
 }
 
 // The ID of the container cluster.
 func (o GetServerlessKubernetesClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the container cluster.
 func (o GetServerlessKubernetesClustersClusterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of nat gateway used to launch kubernetes cluster.
 func (o GetServerlessKubernetesClustersClusterOutput) NatGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.NatGatewayId }).(pulumi.StringOutput)
 }
 
 // The ID of security group where the current cluster  is located.
 func (o GetServerlessKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 func (o GetServerlessKubernetesClustersClusterOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The ID of VPC where the current cluster is located.
 func (o GetServerlessKubernetesClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ID of VSwitch where the current cluster is located.
 func (o GetServerlessKubernetesClustersClusterOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetServerlessKubernetesClustersClusterArrayOutput struct { *pulumi.OutputState}
+type GetServerlessKubernetesClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServerlessKubernetesClustersClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServerlessKubernetesClustersCluster)(nil)).Elem()
@@ -2539,7 +2549,7 @@ func (o GetServerlessKubernetesClustersClusterArrayOutput) ToGetServerlessKubern
 }
 
 func (o GetServerlessKubernetesClustersClusterArrayOutput) Index(i pulumi.IntInput) GetServerlessKubernetesClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServerlessKubernetesClustersCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerlessKubernetesClustersCluster {
 		return vs[0].([]GetServerlessKubernetesClustersCluster)[vs[1].(int)]
 	}).(GetServerlessKubernetesClustersClusterOutput)
 }
@@ -2581,7 +2591,7 @@ func (i GetServerlessKubernetesClustersClusterConnectionsArgs) ToGetServerlessKu
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerlessKubernetesClustersClusterConnectionsOutput)
 }
 
-type GetServerlessKubernetesClustersClusterConnectionsOutput struct { *pulumi.OutputState }
+type GetServerlessKubernetesClustersClusterConnectionsOutput struct{ *pulumi.OutputState }
 
 func (GetServerlessKubernetesClustersClusterConnectionsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServerlessKubernetesClustersClusterConnections)(nil)).Elem()
@@ -2597,17 +2607,17 @@ func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ToGetServerless
 
 // API Server Internet endpoint.
 func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ApiServerInternet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerInternet }).(pulumi.StringOutput)
 }
 
 // API Server Intranet endpoint.
 func (o GetServerlessKubernetesClustersClusterConnectionsOutput) ApiServerIntranet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.ApiServerIntranet }).(pulumi.StringOutput)
 }
 
 // Master node SSH IP address.
 func (o GetServerlessKubernetesClustersClusterConnectionsOutput) MasterPublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerlessKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerlessKubernetesClustersClusterConnections) string { return v.MasterPublicIp }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -30,7 +30,7 @@ type Image struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayOutput `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
@@ -38,7 +38,7 @@ type Image struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform pulumi.StringPtrOutput `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
@@ -83,7 +83,7 @@ type imageState struct {
 	Description *string `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []ImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force *bool `pulumi:"force"`
@@ -91,7 +91,7 @@ type imageState struct {
 	ImageName *string `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
@@ -109,7 +109,7 @@ type ImageState struct {
 	Description pulumi.StringPtrInput
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayInput
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrInput
@@ -117,7 +117,7 @@ type ImageState struct {
 	ImageName pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
@@ -139,7 +139,7 @@ type imageArgs struct {
 	Description *string `pulumi:"description"`
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []ImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force *bool `pulumi:"force"`
@@ -147,7 +147,7 @@ type imageArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
@@ -166,7 +166,7 @@ type ImageArgs struct {
 	Description pulumi.StringPtrInput
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayInput
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrInput
@@ -174,7 +174,7 @@ type ImageArgs struct {
 	ImageName pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	// Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
@@ -188,4 +188,3 @@ type ImageArgs struct {
 func (ImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageArgs)(nil)).Elem()
 }
-

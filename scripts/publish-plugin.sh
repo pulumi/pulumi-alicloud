@@ -16,10 +16,10 @@ if [ "$(go env GOOS)" = "windows" ]; then
     BIN_SUFFIX=".exe"
 fi
 
-go build \
-   -ldflags "-X github.com/pulumi/pulumi-alicloud/pkg/version.Version=${VERSION}" \
+(cd provider && go build \
+   -ldflags "-X github.com/pulumi/pulumi-alicloud/provider/pkg/version.Version=${VERSION}" \
    -o "${WORK_PATH}/pulumi-resource-alicloud${BIN_SUFFIX}" \
-   "${ROOT}/cmd/pulumi-resource-alicloud"
+   "${ROOT}/cmd/pulumi-resource-alicloud")
 
 # Tar up the plugin
 tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .

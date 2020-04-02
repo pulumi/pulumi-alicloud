@@ -28,13 +28,12 @@ type GetEipsArgs struct {
 	InUse *bool `pulumi:"inUse"`
 	// A list of EIP public IP addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile  *string  `pulumi:"outputFile"`
 	// The Id of resource group which the eips belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getEips.
 type GetEipsResult struct {
@@ -43,14 +42,13 @@ type GetEipsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of EIP IDs.
-	Ids []string `pulumi:"ids"`
-	InUse *bool `pulumi:"inUse"`
+	Ids         []string `pulumi:"ids"`
+	InUse       *bool    `pulumi:"inUse"`
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// (Optional) A list of EIP names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the eips belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
-

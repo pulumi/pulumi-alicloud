@@ -29,7 +29,7 @@ type ImageCopy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates whether to encrypt the image.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
@@ -37,7 +37,7 @@ type ImageCopy struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
 	// The source image ID.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -84,7 +84,7 @@ type imageCopyState struct {
 	Description *string `pulumi:"description"`
 	// Indicates whether to encrypt the image.
 	Encrypted *bool `pulumi:"encrypted"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force *bool `pulumi:"force"`
@@ -92,7 +92,7 @@ type imageCopyState struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId *string `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -106,7 +106,7 @@ type ImageCopyState struct {
 	Description pulumi.StringPtrInput
 	// Indicates whether to encrypt the image.
 	Encrypted pulumi.BoolPtrInput
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrInput
@@ -114,7 +114,7 @@ type ImageCopyState struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringPtrInput
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -132,7 +132,7 @@ type imageCopyArgs struct {
 	Description *string `pulumi:"description"`
 	// Indicates whether to encrypt the image.
 	Encrypted *bool `pulumi:"encrypted"`
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force *bool `pulumi:"force"`
@@ -140,7 +140,7 @@ type imageCopyArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId string `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -155,7 +155,7 @@ type ImageCopyArgs struct {
 	Description pulumi.StringPtrInput
 	// Indicates whether to encrypt the image.
 	Encrypted pulumi.BoolPtrInput
-	// Indicates whether to force delete the custom image, Default is `false`. 
+	// Indicates whether to force delete the custom image, Default is `false`.
 	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
 	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
 	Force pulumi.BoolPtrInput
@@ -163,7 +163,7 @@ type ImageCopyArgs struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringInput
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -175,4 +175,3 @@ type ImageCopyArgs struct {
 func (ImageCopyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageCopyArgs)(nil)).Elem()
 }
-

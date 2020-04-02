@@ -96,4 +96,3 @@ type CustomerGatewayArgs struct {
 func (CustomerGatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customerGatewayArgs)(nil)).Elem()
 }
-

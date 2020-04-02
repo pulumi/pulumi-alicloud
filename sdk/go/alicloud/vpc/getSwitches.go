@@ -29,7 +29,7 @@ type GetSwitchesArgs struct {
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault *bool `pulumi:"isDefault"`
 	// A regex string to filter results by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -41,7 +41,6 @@ type GetSwitchesArgs struct {
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-
 // A collection of values returned by getSwitches.
 type GetSwitchesResult struct {
 	// CIDR block of the VSwitch.
@@ -51,13 +50,13 @@ type GetSwitchesResult struct {
 	// A list of VSwitch IDs.
 	Ids []string `pulumi:"ids"`
 	// Whether the VSwitch is the default one in the region.
-	IsDefault *bool `pulumi:"isDefault"`
+	IsDefault *bool   `pulumi:"isDefault"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of VSwitch names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Names           []string               `pulumi:"names"`
+	OutputFile      *string                `pulumi:"outputFile"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC that owns the VSwitch.
 	VpcId *string `pulumi:"vpcId"`
 	// A list of VSwitches. Each element contains the following attributes:
@@ -65,4 +64,3 @@ type GetSwitchesResult struct {
 	// ID of the availability zone where the VSwitch is located.
 	ZoneId *string `pulumi:"zoneId"`
 }
-

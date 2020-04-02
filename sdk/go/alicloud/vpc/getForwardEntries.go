@@ -34,27 +34,26 @@ type GetForwardEntriesArgs struct {
 	InternalIp *string `pulumi:"internalIp"`
 	// A regex string to filter results by forward entry name.
 	NameRegex *string `pulumi:"nameRegex"`
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of Forward Entries names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getForwardEntries.
 type GetForwardEntriesResult struct {
 	// A list of Forward Entries. Each element contains the following attributes:
 	Entries []GetForwardEntriesEntry `pulumi:"entries"`
 	// The public IP address.
-	ExternalIp *string `pulumi:"externalIp"`
-	ForwardTableId string `pulumi:"forwardTableId"`
+	ExternalIp     *string `pulumi:"externalIp"`
+	ForwardTableId string  `pulumi:"forwardTableId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Forward Entries IDs.
 	Ids []string `pulumi:"ids"`
 	// The private IP address.
 	InternalIp *string `pulumi:"internalIp"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of Forward Entries names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

@@ -41,18 +41,17 @@ type GetInstanceTypesArgs struct {
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
 	// If true, outdated instance types are included in the results. Default to false.
-	IsOutdated *bool `pulumi:"isOutdated"`
+	IsOutdated         *bool   `pulumi:"isOutdated"`
 	KubernetesNodeRole *string `pulumi:"kubernetesNodeRole"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize *float64 `pulumi:"memorySize"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
-	SortedBy *string `pulumi:"sortedBy"`
+	OutputFile  *string `pulumi:"outputFile"`
+	SortedBy    *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 }
-
 
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
@@ -60,24 +59,23 @@ type GetInstanceTypesResult struct {
 	// Number of CPU cores.
 	CpuCoreCount *int `pulumi:"cpuCoreCount"`
 	// The maximum number of network interfaces that an instance type can be attached to.
-	EniAmount *int `pulumi:"eniAmount"`
-	GpuAmount *int `pulumi:"gpuAmount"`
-	GpuSpec *string `pulumi:"gpuSpec"`
+	EniAmount *int    `pulumi:"eniAmount"`
+	GpuAmount *int    `pulumi:"gpuAmount"`
+	GpuSpec   *string `pulumi:"gpuSpec"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance type IDs.
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType *string  `pulumi:"instanceChargeType"`
+	InstanceTypeFamily *string  `pulumi:"instanceTypeFamily"`
 	// A list of image types. Each element contains the following attributes:
-	InstanceTypes []GetInstanceTypesInstanceType `pulumi:"instanceTypes"`
-	IsOutdated *bool `pulumi:"isOutdated"`
-	KubernetesNodeRole *string `pulumi:"kubernetesNodeRole"`
+	InstanceTypes      []GetInstanceTypesInstanceType `pulumi:"instanceTypes"`
+	IsOutdated         *bool                          `pulumi:"isOutdated"`
+	KubernetesNodeRole *string                        `pulumi:"kubernetesNodeRole"`
 	// Size of memory, measured in GB.
-	MemorySize *float64 `pulumi:"memorySize"`
-	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
-	SortedBy *string `pulumi:"sortedBy"`
-	SpotStrategy *string `pulumi:"spotStrategy"`
+	MemorySize   *float64 `pulumi:"memorySize"`
+	NetworkType  *string  `pulumi:"networkType"`
+	OutputFile   *string  `pulumi:"outputFile"`
+	SortedBy     *string  `pulumi:"sortedBy"`
+	SpotStrategy *string  `pulumi:"spotStrategy"`
 }
-

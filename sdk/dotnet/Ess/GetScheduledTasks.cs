@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
         /// </summary>
+        [Obsolete("Use GetScheduledTasks.InvokeAsync() instead")]
         public static Task<GetScheduledTasksResult> GetScheduledTasks(GetScheduledTasksArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetScheduledTasks
+    {
+        /// <summary>
+        /// This data source provides available scheduled task resources. 
+        /// 
+        /// &gt; **NOTE:** Available in 1.72.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
+        /// </summary>
+        public static Task<GetScheduledTasksResult> InvokeAsync(GetScheduledTasksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScheduledTasksResult>("alicloud:ess/getScheduledTasks:getScheduledTasks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -25,12 +25,11 @@ func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getEndpoints.
 type GetEndpointsArgs struct {
-	// PolarDB cluster ID. 
+	// PolarDB cluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// endpoint of the cluster.
 	DbEndpointId *string `pulumi:"dbEndpointId"`
 }
-
 
 // A collection of values returned by getEndpoints.
 type GetEndpointsResult struct {
@@ -42,4 +41,3 @@ type GetEndpointsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
-

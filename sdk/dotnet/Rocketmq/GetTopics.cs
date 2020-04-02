@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTopics.InvokeAsync() instead")]
         public static Task<GetTopicsResult> GetTopics(GetTopicsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTopics
+    {
+        /// <summary>
+        /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
+        /// </summary>
+        public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

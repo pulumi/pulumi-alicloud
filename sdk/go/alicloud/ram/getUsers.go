@@ -22,12 +22,13 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// Filter results by a specific group name. Returned users are in the specified group. 
+	// Filter results by a specific group name. Returned users are in the specified group.
 	GroupName *string `pulumi:"groupName"`
+	// A list of ram user IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting users by their names.
 	// * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -35,21 +36,19 @@ type GetUsersArgs struct {
 	PolicyType *string `pulumi:"policyType"`
 }
 
-
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	GroupName *string `pulumi:"groupName"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of ram user IDs. 
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of ram user names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	PolicyName *string `pulumi:"policyName"`
-	PolicyType *string `pulumi:"policyType"`
+	// A list of ram user IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of ram user names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PolicyName *string  `pulumi:"policyName"`
+	PolicyType *string  `pulumi:"policyType"`
 	// A list of users. Each element contains the following attributes:
 	Users []GetUsersUser `pulumi:"users"`
 }
-

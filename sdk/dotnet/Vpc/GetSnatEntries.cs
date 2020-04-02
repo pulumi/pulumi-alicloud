@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSnatEntries.InvokeAsync() instead")]
         public static Task<GetSnatEntriesResult> GetSnatEntries(GetSnatEntriesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSnatEntries
+    {
+        /// <summary>
+        /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
+        /// </summary>
+        public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

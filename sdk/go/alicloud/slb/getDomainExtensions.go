@@ -29,20 +29,18 @@ type GetDomainExtensionsArgs struct {
 	// IDs of the SLB domain extensions.
 	Ids []string `pulumi:"ids"`
 	// The ID of the SLB instance.
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	LoadBalancerId string  `pulumi:"loadBalancerId"`
+	OutputFile     *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getDomainExtensions.
 type GetDomainExtensionsResult struct {
 	// A list of SLB domain extension. Each element contains the following attributes:
-	Extensions []GetDomainExtensionsExtension `pulumi:"extensions"`
-	FrontendPort int `pulumi:"frontendPort"`
+	Extensions   []GetDomainExtensionsExtension `pulumi:"extensions"`
+	FrontendPort int                            `pulumi:"frontendPort"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id             string   `pulumi:"id"`
+	Ids            []string `pulumi:"ids"`
+	LoadBalancerId string   `pulumi:"loadBalancerId"`
+	OutputFile     *string  `pulumi:"outputFile"`
 }
-

@@ -28,15 +28,13 @@ type LookupCiphertextArgs struct {
 	Plaintext string `pulumi:"plaintext"`
 }
 
-
 // A collection of values returned by getCiphertext.
 type LookupCiphertextResult struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob string `pulumi:"ciphertextBlob"`
+	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	KeyId string `pulumi:"keyId"`
+	Id        string `pulumi:"id"`
+	KeyId     string `pulumi:"keyId"`
 	Plaintext string `pulumi:"plaintext"`
 }
-

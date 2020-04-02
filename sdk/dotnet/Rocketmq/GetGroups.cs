@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetGroups.InvokeAsync() instead")]
         public static Task<GetGroupsResult> GetGroups(GetGroupsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetGroups
+    {
+        /// <summary>
+        /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
+        /// </summary>
+        public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

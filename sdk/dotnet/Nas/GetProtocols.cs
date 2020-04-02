@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProtocols.InvokeAsync() instead")]
         public static Task<GetProtocolsResult> GetProtocols(GetProtocolsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProtocols
+    {
+        /// <summary>
+        /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
+        /// 
+        /// &gt; **NOTE:** Available in 1.42.0
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
+        /// </summary>
+        public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

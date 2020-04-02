@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSslVpnServers.InvokeAsync() instead")]
         public static Task<GetSslVpnServersResult> GetSslVpnServers(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSslVpnServers
+    {
+        /// <summary>
+        /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
+        /// </summary>
+        public static Task<GetSslVpnServersResult> InvokeAsync(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

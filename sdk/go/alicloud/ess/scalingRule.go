@@ -24,7 +24,7 @@ type ScalingRule struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrOutput `pulumi:"adjustmentValue"`
-	Ari pulumi.StringOutput `pulumi:"ari"`
+	Ari             pulumi.StringOutput `pulumi:"ari"`
 	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrOutput `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -35,7 +35,7 @@ type ScalingRule struct {
 	MetricName pulumi.StringPtrOutput `pulumi:"metricName"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringOutput `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrOutput `pulumi:"scalingRuleType"`
@@ -85,8 +85,8 @@ type scalingRuleState struct {
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
-	AdjustmentValue *int `pulumi:"adjustmentValue"`
-	Ari *string `pulumi:"ari"`
+	AdjustmentValue *int    `pulumi:"adjustmentValue"`
+	Ari             *string `pulumi:"ari"`
 	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown *int `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -97,7 +97,7 @@ type scalingRuleState struct {
 	MetricName *string `pulumi:"metricName"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
@@ -118,7 +118,7 @@ type ScalingRuleState struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
-	Ari pulumi.StringPtrInput
+	Ari             pulumi.StringPtrInput
 	// Cool-down time of a scaling rule. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrInput
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -129,7 +129,7 @@ type ScalingRuleState struct {
 	MetricName pulumi.StringPtrInput
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringPtrInput
-	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringPtrInput
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type scalingRuleArgs struct {
 	MetricName *string `pulumi:"metricName"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
-	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
@@ -196,7 +196,7 @@ type ScalingRuleArgs struct {
 	MetricName pulumi.StringPtrInput
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringInput
-	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id. 
+	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringPtrInput
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
@@ -209,4 +209,3 @@ type ScalingRuleArgs struct {
 func (ScalingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingRuleArgs)(nil)).Elem()
 }
-

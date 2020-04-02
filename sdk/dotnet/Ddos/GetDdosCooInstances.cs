@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDdosCooInstances.InvokeAsync() instead")]
         public static Task<GetDdosCooInstancesResult> GetDdosCooInstances(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDdosCooInstances
+    {
+        /// <summary>
+        /// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
+        /// </summary>
+        public static Task<GetDdosCooInstancesResult> InvokeAsync(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -96,4 +96,3 @@ type HAVipArgs struct {
 func (HAVipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipArgs)(nil)).Elem()
 }
-

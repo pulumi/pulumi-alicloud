@@ -65,7 +65,7 @@ func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
 }
 
-type GetAclsAclOutput struct { *pulumi.OutputState }
+type GetAclsAclOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
@@ -81,15 +81,15 @@ func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) Get
 
 // The ID of the ACL. For example "acl-xxx".
 func (o GetAclsAclOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the Acl.
 func (o GetAclsAclOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetAclsAclArrayOutput struct { *pulumi.OutputState}
+type GetAclsAclArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
@@ -104,7 +104,7 @@ func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclsAcl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAcl {
 		return vs[0].([]GetAclsAcl)[vs[1].(int)]
 	}).(GetAclsAclOutput)
 }

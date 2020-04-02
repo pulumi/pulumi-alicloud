@@ -31,12 +31,11 @@ type GetInstanceEnginesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone *bool `pulumi:"multiZone"`
+	MultiZone  *bool   `pulumi:"multiZone"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getInstanceEngines.
 type GetInstanceEnginesResult struct {
@@ -45,12 +44,11 @@ type GetInstanceEnginesResult struct {
 	// DB Instance version.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// A list of Rds available resource. Each element contains the following attributes:
 	InstanceEngines []GetInstanceEnginesInstanceEngine `pulumi:"instanceEngines"`
-	MultiZone *bool `pulumi:"multiZone"`
-	OutputFile *string `pulumi:"outputFile"`
-	ZoneId *string `pulumi:"zoneId"`
+	MultiZone       *bool                              `pulumi:"multiZone"`
+	OutputFile      *string                            `pulumi:"outputFile"`
+	ZoneId          *string                            `pulumi:"zoneId"`
 }
-

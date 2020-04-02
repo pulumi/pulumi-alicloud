@@ -13,7 +13,7 @@ import (
 
 type AclEntryList struct {
 	Comment *string `pulumi:"comment"`
-	Entry string `pulumi:"entry"`
+	Entry   string  `pulumi:"entry"`
 }
 
 type AclEntryListInput interface {
@@ -25,7 +25,7 @@ type AclEntryListInput interface {
 
 type AclEntryListArgs struct {
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Entry pulumi.StringInput `pulumi:"entry"`
+	Entry   pulumi.StringInput    `pulumi:"entry"`
 }
 
 func (AclEntryListArgs) ElementType() reflect.Type {
@@ -61,7 +61,7 @@ func (i AclEntryListArray) ToAclEntryListArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AclEntryListArrayOutput)
 }
 
-type AclEntryListOutput struct { *pulumi.OutputState }
+type AclEntryListOutput struct{ *pulumi.OutputState }
 
 func (AclEntryListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AclEntryList)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o AclEntryListOutput) ToAclEntryListOutputWithContext(ctx context.Context)
 }
 
 func (o AclEntryListOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v AclEntryList) *string { return v.Comment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AclEntryList) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
 func (o AclEntryListOutput) Entry() pulumi.StringOutput {
-	return o.ApplyT(func (v AclEntryList) string { return v.Entry }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AclEntryList) string { return v.Entry }).(pulumi.StringOutput)
 }
 
-type AclEntryListArrayOutput struct { *pulumi.OutputState}
+type AclEntryListArrayOutput struct{ *pulumi.OutputState }
 
 func (AclEntryListArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AclEntryList)(nil)).Elem()
@@ -98,15 +98,15 @@ func (o AclEntryListArrayOutput) ToAclEntryListArrayOutputWithContext(ctx contex
 }
 
 func (o AclEntryListArrayOutput) Index(i pulumi.IntInput) AclEntryListOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AclEntryList {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclEntryList {
 		return vs[0].([]AclEntryList)[vs[1].(int)]
 	}).(AclEntryListOutput)
 }
 
 type BackendServerBackendServer struct {
-	ServerId string `pulumi:"serverId"`
-	Type *string `pulumi:"type"`
-	Weight int `pulumi:"weight"`
+	ServerId string  `pulumi:"serverId"`
+	Type     *string `pulumi:"type"`
+	Weight   int     `pulumi:"weight"`
 }
 
 type BackendServerBackendServerInput interface {
@@ -117,9 +117,9 @@ type BackendServerBackendServerInput interface {
 }
 
 type BackendServerBackendServerArgs struct {
-	ServerId pulumi.StringInput `pulumi:"serverId"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	Weight pulumi.IntInput `pulumi:"weight"`
+	ServerId pulumi.StringInput    `pulumi:"serverId"`
+	Type     pulumi.StringPtrInput `pulumi:"type"`
+	Weight   pulumi.IntInput       `pulumi:"weight"`
 }
 
 func (BackendServerBackendServerArgs) ElementType() reflect.Type {
@@ -155,7 +155,7 @@ func (i BackendServerBackendServerArray) ToBackendServerBackendServerArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServerBackendServerArrayOutput)
 }
 
-type BackendServerBackendServerOutput struct { *pulumi.OutputState }
+type BackendServerBackendServerOutput struct{ *pulumi.OutputState }
 
 func (BackendServerBackendServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BackendServerBackendServer)(nil)).Elem()
@@ -170,18 +170,18 @@ func (o BackendServerBackendServerOutput) ToBackendServerBackendServerOutputWith
 }
 
 func (o BackendServerBackendServerOutput) ServerId() pulumi.StringOutput {
-	return o.ApplyT(func (v BackendServerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BackendServerBackendServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
 func (o BackendServerBackendServerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BackendServerBackendServer) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BackendServerBackendServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func (o BackendServerBackendServerOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v BackendServerBackendServer) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v BackendServerBackendServer) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type BackendServerBackendServerArrayOutput struct { *pulumi.OutputState}
+type BackendServerBackendServerArrayOutput struct{ *pulumi.OutputState }
 
 func (BackendServerBackendServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BackendServerBackendServer)(nil)).Elem()
@@ -196,7 +196,7 @@ func (o BackendServerBackendServerArrayOutput) ToBackendServerBackendServerArray
 }
 
 func (o BackendServerBackendServerArrayOutput) Index(i pulumi.IntInput) BackendServerBackendServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BackendServerBackendServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServerBackendServer {
 		return vs[0].([]BackendServerBackendServer)[vs[1].(int)]
 	}).(BackendServerBackendServerOutput)
 }
@@ -257,7 +257,8 @@ type ListenerXForwardedForPtrInput interface {
 
 type listenerXForwardedForPtrType ListenerXForwardedForArgs
 
-func ListenerXForwardedForPtr(v *ListenerXForwardedForArgs) ListenerXForwardedForPtrInput {	return (*listenerXForwardedForPtrType)(v)
+func ListenerXForwardedForPtr(v *ListenerXForwardedForArgs) ListenerXForwardedForPtrInput {
+	return (*listenerXForwardedForPtrType)(v)
 }
 
 func (*listenerXForwardedForPtrType) ElementType() reflect.Type {
@@ -272,7 +273,7 @@ func (i *listenerXForwardedForPtrType) ToListenerXForwardedForPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerXForwardedForPtrOutput)
 }
 
-type ListenerXForwardedForOutput struct { *pulumi.OutputState }
+type ListenerXForwardedForOutput struct{ *pulumi.OutputState }
 
 func (ListenerXForwardedForOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListenerXForwardedFor)(nil)).Elem()
@@ -296,25 +297,25 @@ func (o ListenerXForwardedForOutput) ToListenerXForwardedForPtrOutputWithContext
 	}).(ListenerXForwardedForPtrOutput)
 }
 func (o ListenerXForwardedForOutput) RetriveClientIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
 func (o ListenerXForwardedForOutput) RetriveSlbId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
 func (o ListenerXForwardedForOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
 func (o ListenerXForwardedForOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
 }
 
-type ListenerXForwardedForPtrOutput struct { *pulumi.OutputState}
+type ListenerXForwardedForPtrOutput struct{ *pulumi.OutputState }
 
 func (ListenerXForwardedForPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ListenerXForwardedFor)(nil)).Elem()
@@ -329,34 +330,34 @@ func (o ListenerXForwardedForPtrOutput) ToListenerXForwardedForPtrOutputWithCont
 }
 
 func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
-	return o.ApplyT(func (v *ListenerXForwardedFor) ListenerXForwardedFor { return *v }).(ListenerXForwardedForOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) ListenerXForwardedFor { return *v }).(ListenerXForwardedForOutput)
 }
 
 func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
 }
 
 type MasterSlaveServerGroupServer struct {
-	Port int `pulumi:"port"`
-	ServerId string `pulumi:"serverId"`
+	Port       int     `pulumi:"port"`
+	ServerId   string  `pulumi:"serverId"`
 	ServerType *string `pulumi:"serverType"`
-	Type *string `pulumi:"type"`
-	Weight *int `pulumi:"weight"`
+	Type       *string `pulumi:"type"`
+	Weight     *int    `pulumi:"weight"`
 }
 
 type MasterSlaveServerGroupServerInput interface {
@@ -367,11 +368,11 @@ type MasterSlaveServerGroupServerInput interface {
 }
 
 type MasterSlaveServerGroupServerArgs struct {
-	Port pulumi.IntInput `pulumi:"port"`
-	ServerId pulumi.StringInput `pulumi:"serverId"`
+	Port       pulumi.IntInput       `pulumi:"port"`
+	ServerId   pulumi.StringInput    `pulumi:"serverId"`
 	ServerType pulumi.StringPtrInput `pulumi:"serverType"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+	Weight     pulumi.IntPtrInput    `pulumi:"weight"`
 }
 
 func (MasterSlaveServerGroupServerArgs) ElementType() reflect.Type {
@@ -407,7 +408,7 @@ func (i MasterSlaveServerGroupServerArray) ToMasterSlaveServerGroupServerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSlaveServerGroupServerArrayOutput)
 }
 
-type MasterSlaveServerGroupServerOutput struct { *pulumi.OutputState }
+type MasterSlaveServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MasterSlaveServerGroupServer)(nil)).Elem()
@@ -422,26 +423,26 @@ func (o MasterSlaveServerGroupServerOutput) ToMasterSlaveServerGroupServerOutput
 }
 
 func (o MasterSlaveServerGroupServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v MasterSlaveServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func (o MasterSlaveServerGroupServerOutput) ServerId() pulumi.StringOutput {
-	return o.ApplyT(func (v MasterSlaveServerGroupServer) string { return v.ServerId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
 func (o MasterSlaveServerGroupServerOutput) ServerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MasterSlaveServerGroupServer) *string { return v.ServerType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) *string { return v.ServerType }).(pulumi.StringPtrOutput)
 }
 
 func (o MasterSlaveServerGroupServerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v MasterSlaveServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func (o MasterSlaveServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v MasterSlaveServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v MasterSlaveServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-type MasterSlaveServerGroupServerArrayOutput struct { *pulumi.OutputState}
+type MasterSlaveServerGroupServerArrayOutput struct{ *pulumi.OutputState }
 
 func (MasterSlaveServerGroupServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]MasterSlaveServerGroupServer)(nil)).Elem()
@@ -456,16 +457,16 @@ func (o MasterSlaveServerGroupServerArrayOutput) ToMasterSlaveServerGroupServerA
 }
 
 func (o MasterSlaveServerGroupServerArrayOutput) Index(i pulumi.IntInput) MasterSlaveServerGroupServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) MasterSlaveServerGroupServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MasterSlaveServerGroupServer {
 		return vs[0].([]MasterSlaveServerGroupServer)[vs[1].(int)]
 	}).(MasterSlaveServerGroupServerOutput)
 }
 
 type ServerGroupServer struct {
-	Port int `pulumi:"port"`
+	Port      int      `pulumi:"port"`
 	ServerIds []string `pulumi:"serverIds"`
-	Type *string `pulumi:"type"`
-	Weight *int `pulumi:"weight"`
+	Type      *string  `pulumi:"type"`
+	Weight    *int     `pulumi:"weight"`
 }
 
 type ServerGroupServerInput interface {
@@ -476,10 +477,10 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	Port pulumi.IntInput `pulumi:"port"`
+	Port      pulumi.IntInput         `pulumi:"port"`
 	ServerIds pulumi.StringArrayInput `pulumi:"serverIds"`
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	Weight    pulumi.IntPtrInput      `pulumi:"weight"`
 }
 
 func (ServerGroupServerArgs) ElementType() reflect.Type {
@@ -515,7 +516,7 @@ func (i ServerGroupServerArray) ToServerGroupServerArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupServerArrayOutput)
 }
 
-type ServerGroupServerOutput struct { *pulumi.OutputState }
+type ServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServerGroupServer)(nil)).Elem()
@@ -530,22 +531,22 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 }
 
 func (o ServerGroupServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v ServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func (o ServerGroupServerOutput) ServerIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v ServerGroupServer) []string { return v.ServerIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v ServerGroupServer) []string { return v.ServerIds }).(pulumi.StringArrayOutput)
 }
 
 func (o ServerGroupServerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-type ServerGroupServerArrayOutput struct { *pulumi.OutputState}
+type ServerGroupServerArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ServerGroupServer)(nil)).Elem()
@@ -560,7 +561,7 @@ func (o ServerGroupServerArrayOutput) ToServerGroupServerArrayOutputWithContext(
 }
 
 func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ServerGroupServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerGroupServer {
 		return vs[0].([]ServerGroupServer)[vs[1].(int)]
 	}).(ServerGroupServerOutput)
 }
@@ -569,7 +570,7 @@ type GetAclsAcl struct {
 	// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
 	EntryLists []GetAclsAclEntryList `pulumi:"entryLists"`
 	// Acl ID.
-	Id string `pulumi:"id"`
+	Id        string `pulumi:"id"`
 	IpVersion string `pulumi:"ipVersion"`
 	// Acl name.
 	Name string `pulumi:"name"`
@@ -592,7 +593,7 @@ type GetAclsAclArgs struct {
 	// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
 	EntryLists GetAclsAclEntryListArrayInput `pulumi:"entryLists"`
 	// Acl ID.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id        pulumi.StringInput `pulumi:"id"`
 	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
 	// Acl name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -637,7 +638,7 @@ func (i GetAclsAclArray) ToGetAclsAclArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclArrayOutput)
 }
 
-type GetAclsAclOutput struct { *pulumi.OutputState }
+type GetAclsAclOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclsAcl)(nil)).Elem()
@@ -653,39 +654,39 @@ func (o GetAclsAclOutput) ToGetAclsAclOutputWithContext(ctx context.Context) Get
 
 // A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
 func (o GetAclsAclOutput) EntryLists() GetAclsAclEntryListArrayOutput {
-	return o.ApplyT(func (v GetAclsAcl) []GetAclsAclEntryList { return v.EntryLists }).(GetAclsAclEntryListArrayOutput)
+	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclEntryList { return v.EntryLists }).(GetAclsAclEntryListArrayOutput)
 }
 
 // Acl ID.
 func (o GetAclsAclOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetAclsAclOutput) IpVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.IpVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Acl name.
 func (o GetAclsAclOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
 func (o GetAclsAclOutput) RelatedListeners() GetAclsAclRelatedListenerArrayOutput {
-	return o.ApplyT(func (v GetAclsAcl) []GetAclsAclRelatedListener { return v.RelatedListeners }).(GetAclsAclRelatedListenerArrayOutput)
+	return o.ApplyT(func(v GetAclsAcl) []GetAclsAclRelatedListener { return v.RelatedListeners }).(GetAclsAclRelatedListenerArrayOutput)
 }
 
 // The Id of resource group which acl belongs.
 func (o GetAclsAclOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAcl) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAcl) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
 func (o GetAclsAclOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetAclsAcl) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetAclsAcl) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetAclsAclArrayOutput struct { *pulumi.OutputState}
+type GetAclsAclArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclsAcl)(nil)).Elem()
@@ -700,14 +701,14 @@ func (o GetAclsAclArrayOutput) ToGetAclsAclArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetAclsAclArrayOutput) Index(i pulumi.IntInput) GetAclsAclOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclsAcl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAcl {
 		return vs[0].([]GetAclsAcl)[vs[1].(int)]
 	}).(GetAclsAclOutput)
 }
 
 type GetAclsAclEntryList struct {
 	Comment string `pulumi:"comment"`
-	Entry string `pulumi:"entry"`
+	Entry   string `pulumi:"entry"`
 }
 
 type GetAclsAclEntryListInput interface {
@@ -719,7 +720,7 @@ type GetAclsAclEntryListInput interface {
 
 type GetAclsAclEntryListArgs struct {
 	Comment pulumi.StringInput `pulumi:"comment"`
-	Entry pulumi.StringInput `pulumi:"entry"`
+	Entry   pulumi.StringInput `pulumi:"entry"`
 }
 
 func (GetAclsAclEntryListArgs) ElementType() reflect.Type {
@@ -755,7 +756,7 @@ func (i GetAclsAclEntryListArray) ToGetAclsAclEntryListArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclEntryListArrayOutput)
 }
 
-type GetAclsAclEntryListOutput struct { *pulumi.OutputState }
+type GetAclsAclEntryListOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclEntryListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclsAclEntryList)(nil)).Elem()
@@ -770,14 +771,14 @@ func (o GetAclsAclEntryListOutput) ToGetAclsAclEntryListOutputWithContext(ctx co
 }
 
 func (o GetAclsAclEntryListOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAclEntryList) string { return v.Comment }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAclEntryList) string { return v.Comment }).(pulumi.StringOutput)
 }
 
 func (o GetAclsAclEntryListOutput) Entry() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAclEntryList) string { return v.Entry }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAclEntryList) string { return v.Entry }).(pulumi.StringOutput)
 }
 
-type GetAclsAclEntryListArrayOutput struct { *pulumi.OutputState}
+type GetAclsAclEntryListArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclEntryListArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclsAclEntryList)(nil)).Elem()
@@ -792,16 +793,16 @@ func (o GetAclsAclEntryListArrayOutput) ToGetAclsAclEntryListArrayOutputWithCont
 }
 
 func (o GetAclsAclEntryListArrayOutput) Index(i pulumi.IntInput) GetAclsAclEntryListOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclsAclEntryList {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAclEntryList {
 		return vs[0].([]GetAclsAclEntryList)[vs[1].(int)]
 	}).(GetAclsAclEntryListOutput)
 }
 
 type GetAclsAclRelatedListener struct {
-	AclType string `pulumi:"aclType"`
-	FrontendPort int `pulumi:"frontendPort"`
+	AclType        string `pulumi:"aclType"`
+	FrontendPort   int    `pulumi:"frontendPort"`
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	Protocol string `pulumi:"protocol"`
+	Protocol       string `pulumi:"protocol"`
 }
 
 type GetAclsAclRelatedListenerInput interface {
@@ -812,10 +813,10 @@ type GetAclsAclRelatedListenerInput interface {
 }
 
 type GetAclsAclRelatedListenerArgs struct {
-	AclType pulumi.StringInput `pulumi:"aclType"`
-	FrontendPort pulumi.IntInput `pulumi:"frontendPort"`
+	AclType        pulumi.StringInput `pulumi:"aclType"`
+	FrontendPort   pulumi.IntInput    `pulumi:"frontendPort"`
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
-	Protocol pulumi.StringInput `pulumi:"protocol"`
+	Protocol       pulumi.StringInput `pulumi:"protocol"`
 }
 
 func (GetAclsAclRelatedListenerArgs) ElementType() reflect.Type {
@@ -851,7 +852,7 @@ func (i GetAclsAclRelatedListenerArray) ToGetAclsAclRelatedListenerArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAclsAclRelatedListenerArrayOutput)
 }
 
-type GetAclsAclRelatedListenerOutput struct { *pulumi.OutputState }
+type GetAclsAclRelatedListenerOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclRelatedListenerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAclsAclRelatedListener)(nil)).Elem()
@@ -866,22 +867,22 @@ func (o GetAclsAclRelatedListenerOutput) ToGetAclsAclRelatedListenerOutputWithCo
 }
 
 func (o GetAclsAclRelatedListenerOutput) AclType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAclRelatedListener) string { return v.AclType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.AclType }).(pulumi.StringOutput)
 }
 
 func (o GetAclsAclRelatedListenerOutput) FrontendPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAclsAclRelatedListener) int { return v.FrontendPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAclsAclRelatedListener) int { return v.FrontendPort }).(pulumi.IntOutput)
 }
 
 func (o GetAclsAclRelatedListenerOutput) LoadBalancerId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAclRelatedListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
 func (o GetAclsAclRelatedListenerOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAclsAclRelatedListener) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAclsAclRelatedListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-type GetAclsAclRelatedListenerArrayOutput struct { *pulumi.OutputState}
+type GetAclsAclRelatedListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAclsAclRelatedListenerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAclsAclRelatedListener)(nil)).Elem()
@@ -896,7 +897,7 @@ func (o GetAclsAclRelatedListenerArrayOutput) ToGetAclsAclRelatedListenerArrayOu
 }
 
 func (o GetAclsAclRelatedListenerArrayOutput) Index(i pulumi.IntInput) GetAclsAclRelatedListenerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAclsAclRelatedListener {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAclsAclRelatedListener {
 		return vs[0].([]GetAclsAclRelatedListener)[vs[1].(int)]
 	}).(GetAclsAclRelatedListenerOutput)
 }
@@ -955,7 +956,7 @@ func (i GetAttachmentsSlbAttachmentArray) ToGetAttachmentsSlbAttachmentArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAttachmentsSlbAttachmentArrayOutput)
 }
 
-type GetAttachmentsSlbAttachmentOutput struct { *pulumi.OutputState }
+type GetAttachmentsSlbAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetAttachmentsSlbAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAttachmentsSlbAttachment)(nil)).Elem()
@@ -971,15 +972,15 @@ func (o GetAttachmentsSlbAttachmentOutput) ToGetAttachmentsSlbAttachmentOutputWi
 
 // ID of the attached ECS instance.
 func (o GetAttachmentsSlbAttachmentOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAttachmentsSlbAttachment) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAttachmentsSlbAttachment) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Weight associated to the ECS instance.
 func (o GetAttachmentsSlbAttachmentOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAttachmentsSlbAttachment) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAttachmentsSlbAttachment) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type GetAttachmentsSlbAttachmentArrayOutput struct { *pulumi.OutputState}
+type GetAttachmentsSlbAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAttachmentsSlbAttachmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAttachmentsSlbAttachment)(nil)).Elem()
@@ -994,7 +995,7 @@ func (o GetAttachmentsSlbAttachmentArrayOutput) ToGetAttachmentsSlbAttachmentArr
 }
 
 func (o GetAttachmentsSlbAttachmentArrayOutput) Index(i pulumi.IntInput) GetAttachmentsSlbAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAttachmentsSlbAttachment {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttachmentsSlbAttachment {
 		return vs[0].([]GetAttachmentsSlbAttachment)[vs[1].(int)]
 	}).(GetAttachmentsSlbAttachmentOutput)
 }
@@ -1057,7 +1058,7 @@ func (i GetBackendServersBackendServerArray) ToGetBackendServersBackendServerArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServersBackendServerArrayOutput)
 }
 
-type GetBackendServersBackendServerOutput struct { *pulumi.OutputState }
+type GetBackendServersBackendServerOutput struct{ *pulumi.OutputState }
 
 func (GetBackendServersBackendServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBackendServersBackendServer)(nil)).Elem()
@@ -1073,20 +1074,20 @@ func (o GetBackendServersBackendServerOutput) ToGetBackendServersBackendServerOu
 
 // backend server ID.
 func (o GetBackendServersBackendServerOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBackendServersBackendServer) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBackendServersBackendServer) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of the backend server.
 func (o GetBackendServersBackendServerOutput) ServerType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBackendServersBackendServer) string { return v.ServerType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBackendServersBackendServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
 // Weight associated to the ECS instance.
 func (o GetBackendServersBackendServerOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v GetBackendServersBackendServer) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetBackendServersBackendServer) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type GetBackendServersBackendServerArrayOutput struct { *pulumi.OutputState}
+type GetBackendServersBackendServerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBackendServersBackendServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBackendServersBackendServer)(nil)).Elem()
@@ -1101,7 +1102,7 @@ func (o GetBackendServersBackendServerArrayOutput) ToGetBackendServersBackendSer
 }
 
 func (o GetBackendServersBackendServerArrayOutput) Index(i pulumi.IntInput) GetBackendServersBackendServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBackendServersBackendServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServersBackendServer {
 		return vs[0].([]GetBackendServersBackendServer)[vs[1].(int)]
 	}).(GetBackendServersBackendServerOutput)
 }
@@ -1196,7 +1197,7 @@ func (i GetCaCertificatesCertificateArray) ToGetCaCertificatesCertificateArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetCaCertificatesCertificateArrayOutput)
 }
 
-type GetCaCertificatesCertificateOutput struct { *pulumi.OutputState }
+type GetCaCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertificatesCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCaCertificatesCertificate)(nil)).Elem()
@@ -1212,60 +1213,60 @@ func (o GetCaCertificatesCertificateOutput) ToGetCaCertificatesCertificateOutput
 
 // CA certificate common name.
 func (o GetCaCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
 // CA certificate created time.
 func (o GetCaCertificatesCertificateOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.CreatedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
 // CA certificate created timestamp.
 func (o GetCaCertificatesCertificateOutput) CreatedTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) int { return v.CreatedTimestamp }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) int { return v.CreatedTimestamp }).(pulumi.IntOutput)
 }
 
 // CA certificate expired time.
 func (o GetCaCertificatesCertificateOutput) ExpiredTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.ExpiredTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
 // CA certificate expired timestamp.
 func (o GetCaCertificatesCertificateOutput) ExpiredTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) int { return v.ExpiredTimestamp }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) int { return v.ExpiredTimestamp }).(pulumi.IntOutput)
 }
 
 // CA certificate fingerprint.
 func (o GetCaCertificatesCertificateOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.Fingerprint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // CA certificate ID.
 func (o GetCaCertificatesCertificateOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // CA certificate name.
 func (o GetCaCertificatesCertificateOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The region Id of CA certificate.
 func (o GetCaCertificatesCertificateOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which ca certificates belongs.
 func (o GetCaCertificatesCertificateOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
 func (o GetCaCertificatesCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetCaCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetCaCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetCaCertificatesCertificateArrayOutput struct { *pulumi.OutputState}
+type GetCaCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCaCertificatesCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCaCertificatesCertificate)(nil)).Elem()
@@ -1280,7 +1281,7 @@ func (o GetCaCertificatesCertificateArrayOutput) ToGetCaCertificatesCertificateA
 }
 
 func (o GetCaCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCaCertificatesCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCaCertificatesCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCaCertificatesCertificate {
 		return vs[0].([]GetCaCertificatesCertificate)[vs[1].(int)]
 	}).(GetCaCertificatesCertificateOutput)
 }
@@ -1343,7 +1344,7 @@ func (i GetDomainExtensionsExtensionArray) ToGetDomainExtensionsExtensionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainExtensionsExtensionArrayOutput)
 }
 
-type GetDomainExtensionsExtensionOutput struct { *pulumi.OutputState }
+type GetDomainExtensionsExtensionOutput struct{ *pulumi.OutputState }
 
 func (GetDomainExtensionsExtensionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDomainExtensionsExtension)(nil)).Elem()
@@ -1359,20 +1360,20 @@ func (o GetDomainExtensionsExtensionOutput) ToGetDomainExtensionsExtensionOutput
 
 // The domain name.
 func (o GetDomainExtensionsExtensionOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainExtensionsExtension) string { return v.Domain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainExtensionsExtension) string { return v.Domain }).(pulumi.StringOutput)
 }
 
 // The ID of the domain extension.
 func (o GetDomainExtensionsExtensionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainExtensionsExtension) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainExtensionsExtension) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ID of the certificate used by the domain name.
 func (o GetDomainExtensionsExtensionOutput) ServerCertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainExtensionsExtension) string { return v.ServerCertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainExtensionsExtension) string { return v.ServerCertificateId }).(pulumi.StringOutput)
 }
 
-type GetDomainExtensionsExtensionArrayOutput struct { *pulumi.OutputState}
+type GetDomainExtensionsExtensionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDomainExtensionsExtensionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDomainExtensionsExtension)(nil)).Elem()
@@ -1387,7 +1388,7 @@ func (o GetDomainExtensionsExtensionArrayOutput) ToGetDomainExtensionsExtensionA
 }
 
 func (o GetDomainExtensionsExtensionArrayOutput) Index(i pulumi.IntInput) GetDomainExtensionsExtensionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDomainExtensionsExtension {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainExtensionsExtension {
 		return vs[0].([]GetDomainExtensionsExtension)[vs[1].(int)]
 	}).(GetDomainExtensionsExtensionOutput)
 }
@@ -1446,7 +1447,7 @@ type GetListenersSlbListener struct {
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
 	Scheduler string `pulumi:"scheduler"`
 	// Security status. Only available when the protocol is `https`.
-	SecurityStatus string `pulumi:"securityStatus"`
+	SecurityStatus      string `pulumi:"securityStatus"`
 	ServerCertificateId string `pulumi:"serverCertificateId"`
 	// ID of the linked VServer group.
 	ServerGroupId string `pulumi:"serverGroupId"`
@@ -1533,7 +1534,7 @@ type GetListenersSlbListenerArgs struct {
 	// Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
 	Scheduler pulumi.StringInput `pulumi:"scheduler"`
 	// Security status. Only available when the protocol is `https`.
-	SecurityStatus pulumi.StringInput `pulumi:"securityStatus"`
+	SecurityStatus      pulumi.StringInput `pulumi:"securityStatus"`
 	ServerCertificateId pulumi.StringInput `pulumi:"serverCertificateId"`
 	// ID of the linked VServer group.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
@@ -1592,7 +1593,7 @@ func (i GetListenersSlbListenerArray) ToGetListenersSlbListenerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetListenersSlbListenerArrayOutput)
 }
 
-type GetListenersSlbListenerOutput struct { *pulumi.OutputState }
+type GetListenersSlbListenerOutput struct{ *pulumi.OutputState }
 
 func (GetListenersSlbListenerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetListenersSlbListener)(nil)).Elem()
@@ -1608,199 +1609,199 @@ func (o GetListenersSlbListenerOutput) ToGetListenersSlbListenerOutputWithContex
 
 // Port opened on the backend server to receive requests.
 func (o GetListenersSlbListenerOutput) BackendPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.BackendPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.BackendPort }).(pulumi.IntOutput)
 }
 
 // Peak bandwidth. If the value is set to -1, the listener is not limited by bandwidth.
 func (o GetListenersSlbListenerOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.Bandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // ID of the CA certificate (only required when two-way authentication is used). Only available when the protocol is `https`.
 func (o GetListenersSlbListenerOutput) CaCertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.CaCertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.CaCertificateId }).(pulumi.StringOutput)
 }
 
 // Cookie configured by the backend server. Only available when the stickySessionType is `server`.
 func (o GetListenersSlbListenerOutput) Cookie() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Cookie }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Cookie }).(pulumi.StringOutput)
 }
 
 // Cookie timeout in seconds. Only available when the stickySessionType is `insert`.
 func (o GetListenersSlbListenerOutput) CookieTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.CookieTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.CookieTimeout }).(pulumi.IntOutput)
 }
 
 // The description of slb listener.
 func (o GetListenersSlbListenerOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
 func (o GetListenersSlbListenerOutput) EnableHttp2() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.EnableHttp2 }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.EnableHttp2 }).(pulumi.StringOutput)
 }
 
 // Connection timeout in seconds for the Layer 4 TCP listener. Only available when the protocol is `tcp`.
 func (o GetListenersSlbListenerOutput) EstablishedTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.EstablishedTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.EstablishedTimeout }).(pulumi.IntOutput)
 }
 
 // Filter listeners by the specified frontend port.
 func (o GetListenersSlbListenerOutput) FrontendPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.FrontendPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.FrontendPort }).(pulumi.IntOutput)
 }
 
 // Indicate whether Gzip compression is enabled or not. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) Gzip() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Gzip }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Gzip }).(pulumi.StringOutput)
 }
 
 // Indicate whether health check is enabled of not. Possible values are `on` and `off`.
 func (o GetListenersSlbListenerOutput) HealthCheck() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.HealthCheck }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.HealthCheck }).(pulumi.StringOutput)
 }
 
 // Port used for health check.
 func (o GetListenersSlbListenerOutput) HealthCheckConnectPort() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
 }
 
 // Amount of time in seconds to wait for the response for a health check.
 func (o GetListenersSlbListenerOutput) HealthCheckConnectTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.HealthCheckConnectTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthCheckConnectTimeout }).(pulumi.IntOutput)
 }
 
 // Domain name used for health check. The SLB sends HTTP head requests to the backend server, the domain is useful when the backend server verifies the host field in the requests. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
 func (o GetListenersSlbListenerOutput) HealthCheckDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.HealthCheckDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.HealthCheckDomain }).(pulumi.StringOutput)
 }
 
 // HTTP status codes indicating that the health check is normal. It can contain several comma-separated values such as "http_2xx,http_3xx". Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
 func (o GetListenersSlbListenerOutput) HealthCheckHttpCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.HealthCheckHttpCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.HealthCheckHttpCode }).(pulumi.StringOutput)
 }
 
 // Time interval between two consecutive health checks.
 func (o GetListenersSlbListenerOutput) HealthCheckInterval() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthCheckInterval }).(pulumi.IntOutput)
 }
 
 // Amount of time in seconds to wait for the response from a health check. If an ECS instance sends no response within the specified timeout period, the health check fails. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) HealthCheckTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.HealthCheckTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthCheckTimeout }).(pulumi.IntOutput)
 }
 
 // Health check method. Possible values are `tcp` and `http`. Only available when the protocol is `tcp`.
 func (o GetListenersSlbListenerOutput) HealthCheckType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.HealthCheckType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
 // URI used for health check. Only available when the protocol is `http`, `https` or `tcp` (in this case healthCheckType must be `http`).
 func (o GetListenersSlbListenerOutput) HealthCheckUri() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.HealthCheckUri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.HealthCheckUri }).(pulumi.StringOutput)
 }
 
 // Number of consecutive successes of health check performed on the same ECS instance (from failure to success).
 func (o GetListenersSlbListenerOutput) HealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
 // Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
 func (o GetListenersSlbListenerOutput) IdleTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.IdleTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.IdleTimeout }).(pulumi.IntOutput)
 }
 
 // ID of the active/standby server group.
 func (o GetListenersSlbListenerOutput) MasterSlaveServerGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.MasterSlaveServerGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.MasterSlaveServerGroupId }).(pulumi.StringOutput)
 }
 
 // Timeout value of the TCP connection in seconds. If the value is 0, the session persistence function is disabled. Only available when the protocol is `tcp`.
 func (o GetListenersSlbListenerOutput) PersistenceTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.PersistenceTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.PersistenceTimeout }).(pulumi.IntOutput)
 }
 
 // Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 func (o GetListenersSlbListenerOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 func (o GetListenersSlbListenerOutput) RequestTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.RequestTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.RequestTimeout }).(pulumi.IntOutput)
 }
 
 // Algorithm used to distribute traffic. Possible values: `wrr` (weighted round robin), `wlc` (weighted least connection) and `rr` (round robin).
 func (o GetListenersSlbListenerOutput) Scheduler() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Scheduler }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Scheduler }).(pulumi.StringOutput)
 }
 
 // Security status. Only available when the protocol is `https`.
 func (o GetListenersSlbListenerOutput) SecurityStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.SecurityStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.SecurityStatus }).(pulumi.StringOutput)
 }
 
 func (o GetListenersSlbListenerOutput) ServerCertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.ServerCertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.ServerCertificateId }).(pulumi.StringOutput)
 }
 
 // ID of the linked VServer group.
 func (o GetListenersSlbListenerOutput) ServerGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.ServerGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
 // ID of the server certificate. Only available when the protocol is `https`.
 func (o GetListenersSlbListenerOutput) SslCertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.SslCertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.SslCertificateId }).(pulumi.StringOutput)
 }
 
 // Listener status.
 func (o GetListenersSlbListenerOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Indicate whether session persistence is enabled or not. If enabled, all session requests from the same client are sent to the same backend server. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) StickySession() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.StickySession }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.StickySession }).(pulumi.StringOutput)
 }
 
 // Method used to handle the cookie. Possible values are `insert` (cookie added to the response) and `server` (cookie set by the backend server). Only available when the protocol is `http` or `https` and stickySession is `on`.
 func (o GetListenersSlbListenerOutput) StickySessionType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.StickySessionType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.StickySessionType }).(pulumi.StringOutput)
 }
 
 // Https listener TLS cipher policy. Valid values are `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`. Default to `tlsCipherPolicy10`.
 func (o GetListenersSlbListenerOutput) TlsCipherPolicy() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.TlsCipherPolicy }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.TlsCipherPolicy }).(pulumi.StringOutput)
 }
 
 // Number of consecutive failures of health check performed on the same ECS instance (from success to failure).
 func (o GetListenersSlbListenerOutput) UnhealthyThreshold() pulumi.IntOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }
 
 // Indicate whether the HTTP header field "X-Forwarded-For" is added or not; it allows the backend server to know about the user's IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) XForwardedFor() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.XForwardedFor }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.XForwardedFor }).(pulumi.StringOutput)
 }
 
 // Indicate whether the HTTP header field "X-Forwarded-For_SLBID" is added or not; it allows the backend server to know about the SLB ID. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) XForwardedForSlbId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.XForwardedForSlbId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.XForwardedForSlbId }).(pulumi.StringOutput)
 }
 
 // Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) XForwardedForSlbIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.XForwardedForSlbIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.XForwardedForSlbIp }).(pulumi.StringOutput)
 }
 
 // Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
 func (o GetListenersSlbListenerOutput) XForwardedForSlbProto() pulumi.StringOutput {
-	return o.ApplyT(func (v GetListenersSlbListener) string { return v.XForwardedForSlbProto }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetListenersSlbListener) string { return v.XForwardedForSlbProto }).(pulumi.StringOutput)
 }
 
-type GetListenersSlbListenerArrayOutput struct { *pulumi.OutputState}
+type GetListenersSlbListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetListenersSlbListenerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetListenersSlbListener)(nil)).Elem()
@@ -1815,7 +1816,7 @@ func (o GetListenersSlbListenerArrayOutput) ToGetListenersSlbListenerArrayOutput
 }
 
 func (o GetListenersSlbListenerArrayOutput) Index(i pulumi.IntInput) GetListenersSlbListenerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetListenersSlbListener {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenersSlbListener {
 		return vs[0].([]GetListenersSlbListener)[vs[1].(int)]
 	}).(GetListenersSlbListenerOutput)
 }
@@ -1934,7 +1935,7 @@ func (i GetLoadBalancersSlbArray) ToGetLoadBalancersSlbArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadBalancersSlbArrayOutput)
 }
 
-type GetLoadBalancersSlbOutput struct { *pulumi.OutputState }
+type GetLoadBalancersSlbOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersSlbOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetLoadBalancersSlb)(nil)).Elem()
@@ -1950,52 +1951,52 @@ func (o GetLoadBalancersSlbOutput) ToGetLoadBalancersSlbOutputWithContext(ctx co
 
 // Service address of the SLBs.
 func (o GetLoadBalancersSlbOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Address }).(pulumi.StringOutput)
 }
 
 // SLB creation time.
 func (o GetLoadBalancersSlbOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // ID of the SLB.
 func (o GetLoadBalancersSlbOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `networkType` is `vpc`.
 func (o GetLoadBalancersSlbOutput) Internet() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) bool { return v.Internet }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) bool { return v.Internet }).(pulumi.BoolOutput)
 }
 
 // Master availability zone of the SLBs.
 func (o GetLoadBalancersSlbOutput) MasterAvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.MasterAvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.MasterAvailabilityZone }).(pulumi.StringOutput)
 }
 
 // SLB name.
 func (o GetLoadBalancersSlbOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Network type of the SLBs. Valid values: `vpc` and `classic`.
 func (o GetLoadBalancersSlbOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // Region ID the SLB belongs to.
 func (o GetLoadBalancersSlbOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Slave availability zone of the SLBs.
 func (o GetLoadBalancersSlbOutput) SlaveAvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.SlaveAvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.SlaveAvailabilityZone }).(pulumi.StringOutput)
 }
 
 // SLB current status. Possible values: `inactive`, `active` and `locked`.
 func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
@@ -2008,20 +2009,20 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 // }
 // ```
 func (o GetLoadBalancersSlbOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // ID of the VPC linked to the SLBs.
 func (o GetLoadBalancersSlbOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // ID of the VSwitch linked to the SLBs.
 func (o GetLoadBalancersSlbOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLoadBalancersSlb) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLoadBalancersSlb) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetLoadBalancersSlbArrayOutput struct { *pulumi.OutputState}
+type GetLoadBalancersSlbArrayOutput struct{ *pulumi.OutputState }
 
 func (GetLoadBalancersSlbArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetLoadBalancersSlb)(nil)).Elem()
@@ -2036,7 +2037,7 @@ func (o GetLoadBalancersSlbArrayOutput) ToGetLoadBalancersSlbArrayOutputWithCont
 }
 
 func (o GetLoadBalancersSlbArrayOutput) Index(i pulumi.IntInput) GetLoadBalancersSlbOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetLoadBalancersSlb {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadBalancersSlb {
 		return vs[0].([]GetLoadBalancersSlb)[vs[1].(int)]
 	}).(GetLoadBalancersSlbOutput)
 }
@@ -2099,7 +2100,7 @@ func (i GetMasterSlaveServerGroupsGroupArray) ToGetMasterSlaveServerGroupsGroupA
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupArrayOutput)
 }
 
-type GetMasterSlaveServerGroupsGroupOutput struct { *pulumi.OutputState }
+type GetMasterSlaveServerGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMasterSlaveServerGroupsGroup)(nil)).Elem()
@@ -2115,20 +2116,20 @@ func (o GetMasterSlaveServerGroupsGroupOutput) ToGetMasterSlaveServerGroupsGroup
 
 // master slave server group ID.
 func (o GetMasterSlaveServerGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // master slave server group name.
 func (o GetMasterSlaveServerGroupsGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // ECS instances associated to the group. Each element contains the following attributes:
 func (o GetMasterSlaveServerGroupsGroupOutput) Servers() GetMasterSlaveServerGroupsGroupServerArrayOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroup) []GetMasterSlaveServerGroupsGroupServer { return v.Servers }).(GetMasterSlaveServerGroupsGroupServerArrayOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroup) []GetMasterSlaveServerGroupsGroupServer { return v.Servers }).(GetMasterSlaveServerGroupsGroupServerArrayOutput)
 }
 
-type GetMasterSlaveServerGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetMasterSlaveServerGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMasterSlaveServerGroupsGroup)(nil)).Elem()
@@ -2143,7 +2144,7 @@ func (o GetMasterSlaveServerGroupsGroupArrayOutput) ToGetMasterSlaveServerGroups
 }
 
 func (o GetMasterSlaveServerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetMasterSlaveServerGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMasterSlaveServerGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMasterSlaveServerGroupsGroup {
 		return vs[0].([]GetMasterSlaveServerGroupsGroup)[vs[1].(int)]
 	}).(GetMasterSlaveServerGroupsGroupOutput)
 }
@@ -2210,7 +2211,7 @@ func (i GetMasterSlaveServerGroupsGroupServerArray) ToGetMasterSlaveServerGroups
 	return pulumi.ToOutputWithContext(ctx, i).(GetMasterSlaveServerGroupsGroupServerArrayOutput)
 }
 
-type GetMasterSlaveServerGroupsGroupServerOutput struct { *pulumi.OutputState }
+type GetMasterSlaveServerGroupsGroupServerOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMasterSlaveServerGroupsGroupServer)(nil)).Elem()
@@ -2226,25 +2227,25 @@ func (o GetMasterSlaveServerGroupsGroupServerOutput) ToGetMasterSlaveServerGroup
 
 // ID of the attached ECS instance.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The port used by the master slave server group.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroupServer) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // The server type of the attached ECS instance.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) ServerType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
 // Weight associated to the ECS instance.
 func (o GetMasterSlaveServerGroupsGroupServerOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v GetMasterSlaveServerGroupsGroupServer) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetMasterSlaveServerGroupsGroupServer) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type GetMasterSlaveServerGroupsGroupServerArrayOutput struct { *pulumi.OutputState}
+type GetMasterSlaveServerGroupsGroupServerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMasterSlaveServerGroupsGroupServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMasterSlaveServerGroupsGroupServer)(nil)).Elem()
@@ -2259,7 +2260,7 @@ func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) ToGetMasterSlaveServer
 }
 
 func (o GetMasterSlaveServerGroupsGroupServerArrayOutput) Index(i pulumi.IntInput) GetMasterSlaveServerGroupsGroupServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMasterSlaveServerGroupsGroupServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMasterSlaveServerGroupsGroupServer {
 		return vs[0].([]GetMasterSlaveServerGroupsGroupServer)[vs[1].(int)]
 	}).(GetMasterSlaveServerGroupsGroupServerOutput)
 }
@@ -2330,7 +2331,7 @@ func (i GetRulesSlbRuleArray) ToGetRulesSlbRuleArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRulesSlbRuleArrayOutput)
 }
 
-type GetRulesSlbRuleOutput struct { *pulumi.OutputState }
+type GetRulesSlbRuleOutput struct{ *pulumi.OutputState }
 
 func (GetRulesSlbRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRulesSlbRule)(nil)).Elem()
@@ -2346,30 +2347,30 @@ func (o GetRulesSlbRuleOutput) ToGetRulesSlbRuleOutputWithContext(ctx context.Co
 
 // Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
 func (o GetRulesSlbRuleOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRulesSlbRule) string { return v.Domain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRulesSlbRule) string { return v.Domain }).(pulumi.StringOutput)
 }
 
 // Rule ID.
 func (o GetRulesSlbRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRulesSlbRule) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRulesSlbRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Rule name.
 func (o GetRulesSlbRuleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRulesSlbRule) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRulesSlbRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // ID of the linked VServer group.
 func (o GetRulesSlbRuleOutput) ServerGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRulesSlbRule) string { return v.ServerGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRulesSlbRule) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
 // Path in the HTTP request where the rule applies (e.g. "/image").
 func (o GetRulesSlbRuleOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRulesSlbRule) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRulesSlbRule) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type GetRulesSlbRuleArrayOutput struct { *pulumi.OutputState}
+type GetRulesSlbRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRulesSlbRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRulesSlbRule)(nil)).Elem()
@@ -2384,7 +2385,7 @@ func (o GetRulesSlbRuleArrayOutput) ToGetRulesSlbRuleArrayOutputWithContext(ctx 
 }
 
 func (o GetRulesSlbRuleArrayOutput) Index(i pulumi.IntInput) GetRulesSlbRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRulesSlbRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesSlbRule {
 		return vs[0].([]GetRulesSlbRule)[vs[1].(int)]
 	}).(GetRulesSlbRuleOutput)
 }
@@ -2393,7 +2394,7 @@ type GetServerCertificatesCertificate struct {
 	// Id of server certificate issued by alibaba cloud.
 	// * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
 	// * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
-	AlicloudCertificateId string `pulumi:"alicloudCertificateId"`
+	AlicloudCertificateId   string `pulumi:"alicloudCertificateId"`
 	AlicloudCertificateName string `pulumi:"alicloudCertificateName"`
 	// Server certificate common name.
 	CommonName string `pulumi:"commonName"`
@@ -2408,8 +2409,8 @@ type GetServerCertificatesCertificate struct {
 	// Server certificate fingerprint.
 	Fingerprint string `pulumi:"fingerprint"`
 	// Server certificate ID.
-	Id string `pulumi:"id"`
-	IsAlicloudCertificate bool `pulumi:"isAlicloudCertificate"`
+	Id                    string `pulumi:"id"`
+	IsAlicloudCertificate bool   `pulumi:"isAlicloudCertificate"`
 	// Server certificate name.
 	Name string `pulumi:"name"`
 	// The Id of resource group which the slb server certificates belongs.
@@ -2431,7 +2432,7 @@ type GetServerCertificatesCertificateArgs struct {
 	// Id of server certificate issued by alibaba cloud.
 	// * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
 	// * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
-	AlicloudCertificateId pulumi.StringInput `pulumi:"alicloudCertificateId"`
+	AlicloudCertificateId   pulumi.StringInput `pulumi:"alicloudCertificateId"`
 	AlicloudCertificateName pulumi.StringInput `pulumi:"alicloudCertificateName"`
 	// Server certificate common name.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
@@ -2446,8 +2447,8 @@ type GetServerCertificatesCertificateArgs struct {
 	// Server certificate fingerprint.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Server certificate ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	IsAlicloudCertificate pulumi.BoolInput `pulumi:"isAlicloudCertificate"`
+	Id                    pulumi.StringInput `pulumi:"id"`
+	IsAlicloudCertificate pulumi.BoolInput   `pulumi:"isAlicloudCertificate"`
 	// Server certificate name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The Id of resource group which the slb server certificates belongs.
@@ -2491,7 +2492,7 @@ func (i GetServerCertificatesCertificateArray) ToGetServerCertificatesCertificat
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerCertificatesCertificateArrayOutput)
 }
 
-type GetServerCertificatesCertificateOutput struct { *pulumi.OutputState }
+type GetServerCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetServerCertificatesCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServerCertificatesCertificate)(nil)).Elem()
@@ -2509,73 +2510,73 @@ func (o GetServerCertificatesCertificateOutput) ToGetServerCertificatesCertifica
 // * `alicloudCertificateName`- Name of server certificate issued by alibaba cloud.
 // * `isAlicloudCertificate`- Is server certificate issued by alibaba cloud or not.
 func (o GetServerCertificatesCertificateOutput) AlicloudCertificateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.AlicloudCertificateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.AlicloudCertificateId }).(pulumi.StringOutput)
 }
 
 func (o GetServerCertificatesCertificateOutput) AlicloudCertificateName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.AlicloudCertificateName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.AlicloudCertificateName }).(pulumi.StringOutput)
 }
 
 // Server certificate common name.
 func (o GetServerCertificatesCertificateOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
 // Server certificate created time.
 func (o GetServerCertificatesCertificateOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.CreatedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
 // Server certificate created timestamp.
 func (o GetServerCertificatesCertificateOutput) CreatedTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) int { return v.CreatedTimestamp }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) int { return v.CreatedTimestamp }).(pulumi.IntOutput)
 }
 
 // Server certificate expired time.
 func (o GetServerCertificatesCertificateOutput) ExpiredTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.ExpiredTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
 // Server certificate expired timestamp.
 func (o GetServerCertificatesCertificateOutput) ExpiredTimestamp() pulumi.IntOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) int { return v.ExpiredTimestamp }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) int { return v.ExpiredTimestamp }).(pulumi.IntOutput)
 }
 
 // Server certificate fingerprint.
 func (o GetServerCertificatesCertificateOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.Fingerprint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // Server certificate ID.
 func (o GetServerCertificatesCertificateOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetServerCertificatesCertificateOutput) IsAlicloudCertificate() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) bool { return v.IsAlicloudCertificate }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) bool { return v.IsAlicloudCertificate }).(pulumi.BoolOutput)
 }
 
 // Server certificate name.
 func (o GetServerCertificatesCertificateOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the slb server certificates belongs.
 func (o GetServerCertificatesCertificateOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 // Server certificate subject alternative name list.
 func (o GetServerCertificatesCertificateOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
 // A mapping of tags to assign to the resource.
 func (o GetServerCertificatesCertificateOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetServerCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetServerCertificatesCertificate) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetServerCertificatesCertificateArrayOutput struct { *pulumi.OutputState}
+type GetServerCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServerCertificatesCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServerCertificatesCertificate)(nil)).Elem()
@@ -2590,7 +2591,7 @@ func (o GetServerCertificatesCertificateArrayOutput) ToGetServerCertificatesCert
 }
 
 func (o GetServerCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetServerCertificatesCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServerCertificatesCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerCertificatesCertificate {
 		return vs[0].([]GetServerCertificatesCertificate)[vs[1].(int)]
 	}).(GetServerCertificatesCertificateOutput)
 }
@@ -2653,7 +2654,7 @@ func (i GetServerGroupsSlbServerGroupArray) ToGetServerGroupsSlbServerGroupArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupArrayOutput)
 }
 
-type GetServerGroupsSlbServerGroupOutput struct { *pulumi.OutputState }
+type GetServerGroupsSlbServerGroupOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServerGroupsSlbServerGroup)(nil)).Elem()
@@ -2669,20 +2670,20 @@ func (o GetServerGroupsSlbServerGroupOutput) ToGetServerGroupsSlbServerGroupOutp
 
 // VServer group ID.
 func (o GetServerGroupsSlbServerGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerGroupsSlbServerGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerGroupsSlbServerGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // VServer group name.
 func (o GetServerGroupsSlbServerGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerGroupsSlbServerGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerGroupsSlbServerGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // ECS instances associated to the group. Each element contains the following attributes:
 func (o GetServerGroupsSlbServerGroupOutput) Servers() GetServerGroupsSlbServerGroupServerArrayOutput {
-	return o.ApplyT(func (v GetServerGroupsSlbServerGroup) []GetServerGroupsSlbServerGroupServer { return v.Servers }).(GetServerGroupsSlbServerGroupServerArrayOutput)
+	return o.ApplyT(func(v GetServerGroupsSlbServerGroup) []GetServerGroupsSlbServerGroupServer { return v.Servers }).(GetServerGroupsSlbServerGroupServerArrayOutput)
 }
 
-type GetServerGroupsSlbServerGroupArrayOutput struct { *pulumi.OutputState}
+type GetServerGroupsSlbServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServerGroupsSlbServerGroup)(nil)).Elem()
@@ -2697,7 +2698,7 @@ func (o GetServerGroupsSlbServerGroupArrayOutput) ToGetServerGroupsSlbServerGrou
 }
 
 func (o GetServerGroupsSlbServerGroupArrayOutput) Index(i pulumi.IntInput) GetServerGroupsSlbServerGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServerGroupsSlbServerGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerGroupsSlbServerGroup {
 		return vs[0].([]GetServerGroupsSlbServerGroup)[vs[1].(int)]
 	}).(GetServerGroupsSlbServerGroupOutput)
 }
@@ -2756,7 +2757,7 @@ func (i GetServerGroupsSlbServerGroupServerArray) ToGetServerGroupsSlbServerGrou
 	return pulumi.ToOutputWithContext(ctx, i).(GetServerGroupsSlbServerGroupServerArrayOutput)
 }
 
-type GetServerGroupsSlbServerGroupServerOutput struct { *pulumi.OutputState }
+type GetServerGroupsSlbServerGroupServerOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupServerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetServerGroupsSlbServerGroupServer)(nil)).Elem()
@@ -2772,15 +2773,15 @@ func (o GetServerGroupsSlbServerGroupServerOutput) ToGetServerGroupsSlbServerGro
 
 // ID of the attached ECS instance.
 func (o GetServerGroupsSlbServerGroupServerOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetServerGroupsSlbServerGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetServerGroupsSlbServerGroupServer) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Weight associated to the ECS instance.
 func (o GetServerGroupsSlbServerGroupServerOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v GetServerGroupsSlbServerGroupServer) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetServerGroupsSlbServerGroupServer) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type GetServerGroupsSlbServerGroupServerArrayOutput struct { *pulumi.OutputState}
+type GetServerGroupsSlbServerGroupServerArrayOutput struct{ *pulumi.OutputState }
 
 func (GetServerGroupsSlbServerGroupServerArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetServerGroupsSlbServerGroupServer)(nil)).Elem()
@@ -2795,7 +2796,7 @@ func (o GetServerGroupsSlbServerGroupServerArrayOutput) ToGetServerGroupsSlbServ
 }
 
 func (o GetServerGroupsSlbServerGroupServerArrayOutput) Index(i pulumi.IntInput) GetServerGroupsSlbServerGroupServerOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetServerGroupsSlbServerGroupServer {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerGroupsSlbServerGroupServer {
 		return vs[0].([]GetServerGroupsSlbServerGroupServer)[vs[1].(int)]
 	}).(GetServerGroupsSlbServerGroupServerOutput)
 }
@@ -2854,7 +2855,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -2870,15 +2871,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of slb slave zone ids in which the slb master zone.
 func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -2893,7 +2894,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

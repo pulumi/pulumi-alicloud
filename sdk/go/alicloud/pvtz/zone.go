@@ -14,7 +14,7 @@ type Zone struct {
 	pulumi.CustomResourceState
 
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	IsPtr pulumi.BoolOutput `pulumi:"isPtr"`
+	IsPtr        pulumi.BoolOutput   `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// The name of the Private Zone.
@@ -26,8 +26,8 @@ type Zone struct {
 	// The count of the Private Zone Record.
 	RecordCount pulumi.IntOutput `pulumi:"recordCount"`
 	// The remark of the Private Zone.
-	Remark pulumi.StringPtrOutput `pulumi:"remark"`
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	Remark     pulumi.StringPtrOutput `pulumi:"remark"`
+	UpdateTime pulumi.StringOutput    `pulumi:"updateTime"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 }
@@ -61,7 +61,7 @@ func GetZone(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
 	CreationTime *string `pulumi:"creationTime"`
-	IsPtr *bool `pulumi:"isPtr"`
+	IsPtr        *bool   `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
 	Lang *string `pulumi:"lang"`
 	// The name of the Private Zone.
@@ -73,7 +73,7 @@ type zoneState struct {
 	// The count of the Private Zone Record.
 	RecordCount *int `pulumi:"recordCount"`
 	// The remark of the Private Zone.
-	Remark *string `pulumi:"remark"`
+	Remark     *string `pulumi:"remark"`
 	UpdateTime *string `pulumi:"updateTime"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -81,7 +81,7 @@ type zoneState struct {
 
 type ZoneState struct {
 	CreationTime pulumi.StringPtrInput
-	IsPtr pulumi.BoolPtrInput
+	IsPtr        pulumi.BoolPtrInput
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrInput
 	// The name of the Private Zone.
@@ -93,7 +93,7 @@ type ZoneState struct {
 	// The count of the Private Zone Record.
 	RecordCount pulumi.IntPtrInput
 	// The remark of the Private Zone.
-	Remark pulumi.StringPtrInput
+	Remark     pulumi.StringPtrInput
 	UpdateTime pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
@@ -137,4 +137,3 @@ type ZoneArgs struct {
 func (ZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneArgs)(nil)).Elem()
 }
-

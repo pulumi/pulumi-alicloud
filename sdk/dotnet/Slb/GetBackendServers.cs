@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBackendServers.InvokeAsync() instead")]
         public static Task<GetBackendServersResult> GetBackendServers(GetBackendServersArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBackendServers
+    {
+        /// <summary>
+        /// This data source provides the server load balancer backend servers related to a server load balancer..
+        /// 
+        /// &gt; **NOTE:** Available in 1.53.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
+        /// </summary>
+        public static Task<GetBackendServersResult> InvokeAsync(GetBackendServersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

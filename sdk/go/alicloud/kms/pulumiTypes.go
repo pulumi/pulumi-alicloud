@@ -85,7 +85,7 @@ func (i GetKeysKeyArray) ToGetKeysKeyArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeyArrayOutput)
 }
 
-type GetKeysKeyOutput struct { *pulumi.OutputState }
+type GetKeysKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKeysKey)(nil)).Elem()
@@ -101,40 +101,40 @@ func (o GetKeysKeyOutput) ToGetKeysKeyOutputWithContext(ctx context.Context) Get
 
 // The Alibaba Cloud Resource Name (ARN) of the key.
 func (o GetKeysKeyOutput) Arn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Arn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Arn }).(pulumi.StringOutput)
 }
 
 // Creation date of key.
 func (o GetKeysKeyOutput) CreationDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.CreationDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
 // The owner of the key.
 func (o GetKeysKeyOutput) Creator() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Creator }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Creator }).(pulumi.StringOutput)
 }
 
 // Deletion date of key.
 func (o GetKeysKeyOutput) DeleteDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.DeleteDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.DeleteDate }).(pulumi.StringOutput)
 }
 
 // Description of the key.
 func (o GetKeysKeyOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the key.
 func (o GetKeysKeyOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 func (o GetKeysKeyOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeysKey) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeysKey) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetKeysKeyArrayOutput struct { *pulumi.OutputState}
+type GetKeysKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKeysKey)(nil)).Elem()
@@ -149,7 +149,7 @@ func (o GetKeysKeyArrayOutput) ToGetKeysKeyArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeysKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKey {
 		return vs[0].([]GetKeysKey)[vs[1].(int)]
 	}).(GetKeysKeyOutput)
 }

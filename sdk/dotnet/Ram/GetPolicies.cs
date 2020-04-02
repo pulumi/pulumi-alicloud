@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
         /// </summary>
+        [Obsolete("Use GetPolicies.InvokeAsync() instead")]
         public static Task<GetPoliciesResult> GetPolicies(GetPoliciesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetPolicies
+    {
+        /// <summary>
+        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
+        /// </summary>
+        public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

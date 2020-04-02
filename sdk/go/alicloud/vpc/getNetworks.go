@@ -29,7 +29,7 @@ type GetNetworksArgs struct {
 	// Indicate whether the VPC is the default one in the specified region.
 	IsDefault *bool `pulumi:"isDefault"`
 	// A regex string to filter VPCs by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -41,7 +41,6 @@ type GetNetworksArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
-
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
 	// CIDR block of the VPC.
@@ -51,18 +50,17 @@ type GetNetworksResult struct {
 	// A list of VPC IDs.
 	Ids []string `pulumi:"ids"`
 	// Whether the VPC is the default VPC in the region.
-	IsDefault *bool `pulumi:"isDefault"`
+	IsDefault *bool   `pulumi:"isDefault"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of VPC names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	Names           []string `pulumi:"names"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// Status of the VPC.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the VPC.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A list of VPCs. Each element contains the following attributes:
-	Vpcs []GetNetworksVpc `pulumi:"vpcs"`
-	VswitchId *string `pulumi:"vswitchId"`
+	Vpcs      []GetNetworksVpc `pulumi:"vpcs"`
+	VswitchId *string          `pulumi:"vswitchId"`
 }
-

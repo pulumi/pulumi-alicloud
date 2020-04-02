@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
         /// </summary>
+        [Obsolete("Use GetZones.InvokeAsync() instead")]
         public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:index/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetZones
+    {
+        /// <summary>
+        /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// 
+        /// 
+        /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
+        /// </summary>
+        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:index/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

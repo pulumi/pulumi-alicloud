@@ -29,9 +29,9 @@ type GetClustersArgs struct {
 	DbType *string `pulumi:"dbType"`
 	// A regex string to filter results by cluster description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of PolarDB cluster IDs. 
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of PolarDB cluster IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// status of the cluster.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -40,23 +40,21 @@ type GetClustersArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
 	// A list of PolarDB clusters. Each element contains the following attributes:
 	Clusters []GetClustersCluster `pulumi:"clusters"`
 	// `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
-	DbType *string `pulumi:"dbType"`
+	DbType           *string `pulumi:"dbType"`
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// A list of RDS cluster descriptions. 
+	// A list of RDS cluster descriptions.
 	Descriptions []string `pulumi:"descriptions"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of RDS cluster IDs. 
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of RDS cluster IDs.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// Status of the cluster.
-	Status *string `pulumi:"status"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }
-

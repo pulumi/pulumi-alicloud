@@ -35,7 +35,7 @@ type ScalingGroup struct {
 	MultiAzPolicy pulumi.StringPtrOutput `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntOutput `pulumi:"onDemandBaseCapacity"`
-	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the first ECS instance attached to the scaling group.
@@ -47,7 +47,7 @@ type ScalingGroup struct {
 	ScalingGroupName pulumi.StringPtrOutput `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntOutput `pulumi:"spotInstancePools"`
-	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolOutput `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -110,7 +110,7 @@ type scalingGroupState struct {
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
-	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the first ECS instance attached to the scaling group.
@@ -122,7 +122,7 @@ type scalingGroupState struct {
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
-	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -152,7 +152,7 @@ type ScalingGroupState struct {
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
-	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the first ECS instance attached to the scaling group.
@@ -164,7 +164,7 @@ type ScalingGroupState struct {
 	ScalingGroupName pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntPtrInput
-	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	VswitchId pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type scalingGroupArgs struct {
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
-	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the first ECS instance attached to the scaling group.
@@ -210,7 +210,7 @@ type scalingGroupArgs struct {
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
-	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -241,7 +241,7 @@ type ScalingGroupArgs struct {
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
-	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
+	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the first ECS instance attached to the scaling group.
@@ -253,7 +253,7 @@ type ScalingGroupArgs struct {
 	ScalingGroupName pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntPtrInput
-	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
+	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	VswitchId pulumi.StringPtrInput
@@ -264,4 +264,3 @@ type ScalingGroupArgs struct {
 func (ScalingGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupArgs)(nil)).Elem()
 }
-

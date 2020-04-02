@@ -60,7 +60,62 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSnapshots.InvokeAsync() instead")]
         public static Task<GetSnapshotsResult> GetSnapshots(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSnapshots
+    {
+        /// <summary>
+        /// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+        /// 
+        /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+        /// 
+        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// 
+        /// ##  Argument Reference
+        /// 
+        /// The following arguments are supported:
+        /// 
+        /// * `instance_id` - (Optional) The specified instance ID.
+        /// * `disk_id` - (Optional) The specified disk ID.
+        /// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
+        ///   * true: Encrypted snapshots.
+        ///   * false: No encryption attribute limit.
+        ///   
+        ///   Default value: false.
+        /// * `ids` - (Optional)  A list of snapshot IDs.
+        /// * `name_regex` - (Optional) A regex string to filter results by snapshot name.
+        /// * `status` - (Optional) The specified snapshot status.
+        ///   * The snapshot status. Optional values:
+        ///   * progressing: The snapshots are being created.
+        ///   * accomplished: The snapshots are ready to use.
+        ///   * failed: The snapshot creation failed.
+        ///   * all: All status.
+        ///   
+        ///   Default value: all.
+        /// 
+        /// * `type` - (Optional) The snapshot category. Optional values:
+        ///   * auto: Auto snapshots.
+        ///   * user: Manual snapshots.
+        ///   * all: Auto and manual snapshots.
+        ///   
+        ///   Default value: all.
+        /// * `source_disk_type` - (Optional) The type of source disk:
+        ///   * System: The snapshots are created for system disks.
+        ///   * Data: The snapshots are created for data disks.
+        ///   
+        /// * `usage` - (Optional) The usage of the snapshot:
+        ///   * image: The snapshots are used to create custom images.
+        ///   * disk: The snapshots are used to CreateDisk.
+        ///   * mage_disk: The snapshots are used to create custom images and data disks.
+        ///   * none: The snapshots are not used yet.
+        /// * `tags` - (Optional) A map of tags assigned to snapshots.
+        /// * `output_file` - (Optional) The name of output file that saves the filter results.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
+        /// </summary>
+        public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -69,11 +124,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("diskId")]
         public string? DiskId { get; set; }
 
+        /// <summary>
+        /// Whether the snapshot is encrypted or not.
+        /// </summary>
         [Input("encrypted")]
         public bool? Encrypted { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of snapshot IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -89,14 +151,29 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Source disk attribute. Value range:
+        /// * System
+        /// * Data
+        /// </summary>
         [Input("sourceDiskType")]
         public string? SourceDiskType { get; set; }
 
+        /// <summary>
+        /// The snapshot status. Value range:
+        /// * progressing
+        /// * accomplished
+        /// * failed
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the snapshot.
+        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -106,6 +183,13 @@ namespace Pulumi.AliCloud.Ecs
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// Whether the snapshots are used to create resources or not. Value range:
+        /// * image
+        /// * disk
+        /// * image_disk
+        /// * none
+        /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
 

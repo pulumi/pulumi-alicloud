@@ -18,8 +18,8 @@ class DomainConfig(pulumi.CustomResource):
     """
     The args of the domain config.
 
-      * `argName` (`str`)
-      * `argValue` (`str`)
+      * `argName` (`str`) - The name of arg.
+      * `argValue` (`str`) - The value of arg.
     """
     function_name: pulumi.Output[str]
     """
@@ -43,8 +43,8 @@ class DomainConfig(pulumi.CustomResource):
 
         The **function_args** object supports the following:
 
-          * `argName` (`pulumi.Input[str]`)
-          * `argValue` (`pulumi.Input[str]`)
+          * `argName` (`pulumi.Input[str]`) - The name of arg.
+          * `argValue` (`pulumi.Input[str]`) - The value of arg.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,8 +93,8 @@ class DomainConfig(pulumi.CustomResource):
 
         The **function_args** object supports the following:
 
-          * `argName` (`pulumi.Input[str]`)
-          * `argValue` (`pulumi.Input[str]`)
+          * `argName` (`pulumi.Input[str]`) - The name of arg.
+          * `argValue` (`pulumi.Input[str]`) - The value of arg.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

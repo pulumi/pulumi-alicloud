@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceClasses.InvokeAsync() instead")]
         public static Task<GetInstanceClassesResult> GetInstanceClasses(GetInstanceClassesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceClasses
+    {
+        /// <summary>
+        /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.49.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

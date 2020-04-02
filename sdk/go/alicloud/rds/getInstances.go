@@ -29,14 +29,14 @@ type GetInstancesArgs struct {
 	DbType *string `pulumi:"dbType"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
-	// A list of RDS instance IDs. 
+	// A list of RDS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Status of the instance.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the DB instances. 
+	// A map of tags assigned to the DB instances.
 	// Note: Before 1.60.0, the value's format is a `json` string which including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `"{\"key1\":\"value1\"}"`
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve instances belong to specified VPC.
@@ -44,7 +44,6 @@ type GetInstancesArgs struct {
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
@@ -56,20 +55,19 @@ type GetInstancesResult struct {
 	Engine *string `pulumi:"engine"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of RDS instance IDs. 
+	// A list of RDS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of RDS instances. Each element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of RDS instance names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of RDS instance names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// Status of the instance.
-	Status *string `pulumi:"status"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC the instance belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch the instance belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-

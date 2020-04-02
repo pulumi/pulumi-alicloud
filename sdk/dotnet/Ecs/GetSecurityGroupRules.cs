@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSecurityGroupRules.InvokeAsync() instead")]
         public static Task<GetSecurityGroupRulesResult> GetSecurityGroupRules(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecurityGroupRules
+    {
+        /// <summary>
+        /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
+        /// Each collection item represents a single `ingress` or `egress` permission rule.
+        /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
+        /// </summary>
+        public static Task<GetSecurityGroupRulesResult> InvokeAsync(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

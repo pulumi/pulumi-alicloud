@@ -672,7 +672,13 @@ export namespace cdn {
     }
 
     export interface DomainConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
         argName: string;
+        /**
+         * The value of arg.
+         */
         argValue: string;
     }
 
@@ -689,19 +695,52 @@ export namespace cdn {
     }
 
     export interface DomainNewCertificateConfig {
+        /**
+         * The SSL certificate name.
+         */
         certName?: string;
+        /**
+         * The SSL certificate type, can be "upload", "cas" and "free".
+         */
         certType?: string;
+        /**
+         * Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
+         */
         forceSet?: string;
+        /**
+         * The SSL private key. This is required if `serverCertificateStatus` is `on`
+         */
         privateKey?: string;
+        /**
+         * The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+         */
         serverCertificate?: string;
+        /**
+         * This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+         */
         serverCertificateStatus?: string;
     }
 
     export interface DomainNewSources {
+        /**
+         * The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+         */
         content: string;
+        /**
+         * The port of source. Valid values are `443` and `80`. Default value is `80`.
+         */
         port?: number;
+        /**
+         * Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+         */
         priority?: number;
+        /**
+         * The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+         */
         type: string;
+        /**
+         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
+         */
         weight?: number;
     }
 

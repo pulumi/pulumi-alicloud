@@ -29,7 +29,7 @@ type AclRule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
 	DestCidr pulumi.StringOutput `pulumi:"destCidr"`
-	// The range of the destination port. Valid value: 80/80. 
+	// The range of the destination port. Valid value: 80/80.
 	DestPortRange pulumi.StringOutput `pulumi:"destPortRange"`
 	// The direction of the ACL rule. Valid values: in|out.
 	Direction pulumi.StringOutput `pulumi:"direction"`
@@ -37,7 +37,7 @@ type AclRule struct {
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// The policy used by the ACL rule. Valid values: accept|drop.
 	Policy pulumi.StringOutput `pulumi:"policy"`
-	// The priority of the ACL rule. Value range: 1 to 100. 
+	// The priority of the ACL rule. Value range: 1 to 100.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
 	SourceCidr pulumi.StringOutput `pulumi:"sourceCidr"`
@@ -103,7 +103,7 @@ type aclRuleState struct {
 	Description *string `pulumi:"description"`
 	// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
 	DestCidr *string `pulumi:"destCidr"`
-	// The range of the destination port. Valid value: 80/80. 
+	// The range of the destination port. Valid value: 80/80.
 	DestPortRange *string `pulumi:"destPortRange"`
 	// The direction of the ACL rule. Valid values: in|out.
 	Direction *string `pulumi:"direction"`
@@ -111,7 +111,7 @@ type aclRuleState struct {
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The policy used by the ACL rule. Valid values: accept|drop.
 	Policy *string `pulumi:"policy"`
-	// The priority of the ACL rule. Value range: 1 to 100. 
+	// The priority of the ACL rule. Value range: 1 to 100.
 	Priority *int `pulumi:"priority"`
 	// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
 	SourceCidr *string `pulumi:"sourceCidr"`
@@ -126,7 +126,7 @@ type AclRuleState struct {
 	Description pulumi.StringPtrInput
 	// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
 	DestCidr pulumi.StringPtrInput
-	// The range of the destination port. Valid value: 80/80. 
+	// The range of the destination port. Valid value: 80/80.
 	DestPortRange pulumi.StringPtrInput
 	// The direction of the ACL rule. Valid values: in|out.
 	Direction pulumi.StringPtrInput
@@ -134,7 +134,7 @@ type AclRuleState struct {
 	IpProtocol pulumi.StringPtrInput
 	// The policy used by the ACL rule. Valid values: accept|drop.
 	Policy pulumi.StringPtrInput
-	// The priority of the ACL rule. Value range: 1 to 100. 
+	// The priority of the ACL rule. Value range: 1 to 100.
 	Priority pulumi.IntPtrInput
 	// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
 	SourceCidr pulumi.StringPtrInput
@@ -153,7 +153,7 @@ type aclRuleArgs struct {
 	Description *string `pulumi:"description"`
 	// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
 	DestCidr string `pulumi:"destCidr"`
-	// The range of the destination port. Valid value: 80/80. 
+	// The range of the destination port. Valid value: 80/80.
 	DestPortRange string `pulumi:"destPortRange"`
 	// The direction of the ACL rule. Valid values: in|out.
 	Direction string `pulumi:"direction"`
@@ -161,7 +161,7 @@ type aclRuleArgs struct {
 	IpProtocol string `pulumi:"ipProtocol"`
 	// The policy used by the ACL rule. Valid values: accept|drop.
 	Policy string `pulumi:"policy"`
-	// The priority of the ACL rule. Value range: 1 to 100. 
+	// The priority of the ACL rule. Value range: 1 to 100.
 	Priority *int `pulumi:"priority"`
 	// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
 	SourceCidr string `pulumi:"sourceCidr"`
@@ -177,7 +177,7 @@ type AclRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// The destination address. It is an IPv4 address range in CIDR format. Default value: 0.0.0.0/0.
 	DestCidr pulumi.StringInput
-	// The range of the destination port. Valid value: 80/80. 
+	// The range of the destination port. Valid value: 80/80.
 	DestPortRange pulumi.StringInput
 	// The direction of the ACL rule. Valid values: in|out.
 	Direction pulumi.StringInput
@@ -185,7 +185,7 @@ type AclRuleArgs struct {
 	IpProtocol pulumi.StringInput
 	// The policy used by the ACL rule. Valid values: accept|drop.
 	Policy pulumi.StringInput
-	// The priority of the ACL rule. Value range: 1 to 100. 
+	// The priority of the ACL rule. Value range: 1 to 100.
 	Priority pulumi.IntPtrInput
 	// The source address. It is an IPv4 address range in the CIDR format. Default value: 0.0.0.0/0.
 	SourceCidr pulumi.StringInput
@@ -196,4 +196,3 @@ type AclRuleArgs struct {
 func (AclRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclRuleArgs)(nil)).Elem()
 }
-

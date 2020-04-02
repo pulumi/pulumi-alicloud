@@ -25,22 +25,20 @@ func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDatabases.
 type GetDatabasesArgs struct {
-	// The polarDB cluster ID. 
+	// The polarDB cluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// A regex string to filter results by database name.
 	NameRegex *string `pulumi:"nameRegex"`
 }
 
-
 // A collection of values returned by getDatabases.
 type GetDatabasesResult struct {
 	// A list of PolarDB cluster databases. Each element contains the following attributes:
-	Databases []GetDatabasesDatabase `pulumi:"databases"`
-	DbClusterId string `pulumi:"dbClusterId"`
+	Databases   []GetDatabasesDatabase `pulumi:"databases"`
+	DbClusterId string                 `pulumi:"dbClusterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// database name of the cluster.
 	Names []string `pulumi:"names"`
 }
-

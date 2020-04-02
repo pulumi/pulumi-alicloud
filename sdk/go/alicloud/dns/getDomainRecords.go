@@ -19,32 +19,30 @@ func GetDomainRecords(ctx *pulumi.Context, args *GetDomainRecordsArgs, opts ...p
 
 // A collection of arguments for invoking getDomainRecords.
 type GetDomainRecordsArgs struct {
-	DomainName string `pulumi:"domainName"`
-	HostRecordRegex *string `pulumi:"hostRecordRegex"`
-	Ids []string `pulumi:"ids"`
-	IsLocked *bool `pulumi:"isLocked"`
-	Line *string `pulumi:"line"`
-	OutputFile *string `pulumi:"outputFile"`
-	Status *string `pulumi:"status"`
-	Type *string `pulumi:"type"`
-	ValueRegex *string `pulumi:"valueRegex"`
+	DomainName      string   `pulumi:"domainName"`
+	HostRecordRegex *string  `pulumi:"hostRecordRegex"`
+	Ids             []string `pulumi:"ids"`
+	IsLocked        *bool    `pulumi:"isLocked"`
+	Line            *string  `pulumi:"line"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	Status          *string  `pulumi:"status"`
+	Type            *string  `pulumi:"type"`
+	ValueRegex      *string  `pulumi:"valueRegex"`
 }
-
 
 // A collection of values returned by getDomainRecords.
 type GetDomainRecordsResult struct {
-	DomainName string `pulumi:"domainName"`
+	DomainName      string  `pulumi:"domainName"`
 	HostRecordRegex *string `pulumi:"hostRecordRegex"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	IsLocked *bool `pulumi:"isLocked"`
-	Line *string `pulumi:"line"`
-	OutputFile *string `pulumi:"outputFile"`
-	Records []GetDomainRecordsRecord `pulumi:"records"`
-	Status *string `pulumi:"status"`
-	Type *string `pulumi:"type"`
-	Urls []string `pulumi:"urls"`
-	ValueRegex *string `pulumi:"valueRegex"`
+	Id         string                   `pulumi:"id"`
+	Ids        []string                 `pulumi:"ids"`
+	IsLocked   *bool                    `pulumi:"isLocked"`
+	Line       *string                  `pulumi:"line"`
+	OutputFile *string                  `pulumi:"outputFile"`
+	Records    []GetDomainRecordsRecord `pulumi:"records"`
+	Status     *string                  `pulumi:"status"`
+	Type       *string                  `pulumi:"type"`
+	Urls       []string                 `pulumi:"urls"`
+	ValueRegex *string                  `pulumi:"valueRegex"`
 }
-

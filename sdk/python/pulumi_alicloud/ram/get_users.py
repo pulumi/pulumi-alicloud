@@ -77,6 +77,7 @@ def get_users(group_name=None,ids=None,name_regex=None,output_file=None,policy_n
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group. 
+    :param list ids: A list of ram user IDs. 
     :param str name_regex: A regex string to filter resulting users by their names.
            * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.

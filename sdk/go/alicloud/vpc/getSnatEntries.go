@@ -25,8 +25,8 @@ func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulum
 // A collection of arguments for invoking getSnatEntries.
 type GetSnatEntriesArgs struct {
 	// A list of Snat Entries IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The public IP of the Snat Entry.
 	SnatIp *string `pulumi:"snatIp"`
 	// The ID of the Snat table.
@@ -35,7 +35,6 @@ type GetSnatEntriesArgs struct {
 	SourceCidr *string `pulumi:"sourceCidr"`
 }
 
-
 // A collection of values returned by getSnatEntries.
 type GetSnatEntriesResult struct {
 	// A list of Snat Entries. Each element contains the following attributes:
@@ -43,12 +42,11 @@ type GetSnatEntriesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Snat Entries IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The public IP of the Snat Entry.
-	SnatIp *string `pulumi:"snatIp"`
-	SnatTableId string `pulumi:"snatTableId"`
+	SnatIp      *string `pulumi:"snatIp"`
+	SnatTableId string  `pulumi:"snatTableId"`
 	// The source CIDR block of the Snat Entry.
 	SourceCidr *string `pulumi:"sourceCidr"`
 }
-

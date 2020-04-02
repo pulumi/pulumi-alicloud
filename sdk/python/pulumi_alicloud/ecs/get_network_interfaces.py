@@ -125,6 +125,14 @@ def get_network_interfaces(ids=None,instance_id=None,name_regex=None,output_file
     * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
+
+
+    :param str instance_id: ID of the instance that the ENI is attached to.
+    :param str private_ip: Primary private IP of the ENI.
+    :param str resource_group_id: The Id of resource group.
+    :param dict tags: A map of tags assigned to the ENI.
+    :param str vpc_id: ID of the VPC that the ENI belongs to.
+    :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
     """
     __args__ = dict()
 

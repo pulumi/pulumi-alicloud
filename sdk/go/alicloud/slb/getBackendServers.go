@@ -27,18 +27,16 @@ type GetBackendServersArgs struct {
 	// List of attached ECS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// ID of the SLB with attachments.
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	LoadBalancerId string  `pulumi:"loadBalancerId"`
+	OutputFile     *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getBackendServers.
 type GetBackendServersResult struct {
 	BackendServers []GetBackendServersBackendServer `pulumi:"backendServers"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id             string   `pulumi:"id"`
+	Ids            []string `pulumi:"ids"`
+	LoadBalancerId string   `pulumi:"loadBalancerId"`
+	OutputFile     *string  `pulumi:"outputFile"`
 }
-

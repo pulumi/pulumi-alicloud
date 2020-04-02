@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccessGroups.InvokeAsync() instead")]
         public static Task<GetAccessGroupsResult> GetAccessGroups(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccessGroups
+    {
+        /// <summary>
+        /// This data source provides user-available access groups. Use when you can create mount points
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
+        /// </summary>
+        public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

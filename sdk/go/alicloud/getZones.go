@@ -45,31 +45,29 @@ type GetZonesArgs struct {
 	Multi *bool `pulumi:"multi"`
 	// Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile  *string `pulumi:"outputFile"`
 	// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 }
-
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	AvailableDiskCategory *string `pulumi:"availableDiskCategory"`
 	AvailableInstanceType *string `pulumi:"availableInstanceType"`
 	// Type of resources that can be created.
-	AvailableResourceCreation *string `pulumi:"availableResourceCreation"`
+	AvailableResourceCreation    *string `pulumi:"availableResourceCreation"`
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
-	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
-	EnableDetails *bool `pulumi:"enableDetails"`
+	AvailableSlbAddressType      *string `pulumi:"availableSlbAddressType"`
+	EnableDetails                *bool   `pulumi:"enableDetails"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	Multi *bool `pulumi:"multi"`
-	NetworkType *string `pulumi:"networkType"`
-	OutputFile *string `pulumi:"outputFile"`
-	SpotStrategy *string `pulumi:"spotStrategy"`
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType *string  `pulumi:"instanceChargeType"`
+	Multi              *bool    `pulumi:"multi"`
+	NetworkType        *string  `pulumi:"networkType"`
+	OutputFile         *string  `pulumi:"outputFile"`
+	SpotStrategy       *string  `pulumi:"spotStrategy"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
-

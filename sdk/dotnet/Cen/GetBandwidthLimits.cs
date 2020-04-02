@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBandwidthLimits.InvokeAsync() instead")]
         public static Task<GetBandwidthLimitsResult> GetBandwidthLimits(GetBandwidthLimitsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBandwidthLimits
+    {
+        /// <summary>
+        /// This data source provides CEN Bandwidth Limits available to the user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
+        /// </summary>
+        public static Task<GetBandwidthLimitsResult> InvokeAsync(GetBandwidthLimitsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthLimitsResult>("alicloud:cen/getBandwidthLimits:getBandwidthLimits", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

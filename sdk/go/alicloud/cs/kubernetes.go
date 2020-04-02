@@ -27,11 +27,11 @@ type Kubernetes struct {
 	Connections KubernetesConnectionsOutput `pulumi:"connections"`
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false 
+	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true 
+	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
@@ -58,10 +58,10 @@ type Kubernetes struct {
 	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	MasterPeriod pulumi.IntPtrOutput `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
-	MasterPeriodUnit pulumi.StringPtrOutput `pulumi:"masterPeriodUnit"`
+	MasterPeriodUnit pulumi.StringPtrOutput   `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds pulumi.StringArrayOutput `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
@@ -71,7 +71,7 @@ type Kubernetes struct {
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
@@ -81,8 +81,8 @@ type Kubernetes struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	SlbId pulumi.StringOutput `pulumi:"slbId"`
-	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
+	SlbId       pulumi.StringOutput    `pulumi:"slbId"`
+	SlbInternet pulumi.StringOutput    `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
@@ -96,9 +96,9 @@ type Kubernetes struct {
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrOutput `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-	WorkerAutoRenewPeriod pulumi.IntPtrOutput `pulumi:"workerAutoRenewPeriod"`
+	WorkerAutoRenewPeriod  pulumi.IntPtrOutput    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
-	WorkerDataDiskSize pulumi.IntPtrOutput `pulumi:"workerDataDiskSize"`
+	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
@@ -114,7 +114,7 @@ type Kubernetes struct {
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-	WorkerPeriodUnit pulumi.StringPtrOutput `pulumi:"workerPeriodUnit"`
+	WorkerPeriodUnit pulumi.StringPtrOutput   `pulumi:"workerPeriodUnit"`
 	WorkerVswitchIds pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
 }
 
@@ -174,11 +174,11 @@ type kubernetesState struct {
 	Connections *KubernetesConnections `pulumi:"connections"`
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false 
+	// Enable login to the node through SSH. default: false
 	EnableSsh *bool `pulumi:"enableSsh"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true 
+	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
@@ -205,10 +205,10 @@ type kubernetesState struct {
 	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	MasterPeriod *int `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
-	MasterPeriodUnit *string `pulumi:"masterPeriodUnit"`
+	MasterPeriodUnit *string  `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
@@ -218,7 +218,7 @@ type kubernetesState struct {
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
@@ -228,7 +228,7 @@ type kubernetesState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
-	SlbId *string `pulumi:"slbId"`
+	SlbId       *string `pulumi:"slbId"`
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -243,9 +243,9 @@ type kubernetesState struct {
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
+	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
-	WorkerDataDiskSize *int `pulumi:"workerDataDiskSize"`
+	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
@@ -261,7 +261,7 @@ type kubernetesState struct {
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
+	WorkerPeriodUnit *string  `pulumi:"workerPeriodUnit"`
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
@@ -279,11 +279,11 @@ type KubernetesState struct {
 	Connections KubernetesConnectionsPtrInput
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy pulumi.StringPtrInput
-	// Enable login to the node through SSH. default: false 
+	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install cloud monitor agent on ECS. default: true 
+	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
@@ -313,7 +313,7 @@ type KubernetesState struct {
 	MasterPeriodUnit pulumi.StringPtrInput
 	MasterVswitchIds pulumi.StringArrayInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
@@ -323,7 +323,7 @@ type KubernetesState struct {
 	NodeCidrMask pulumi.IntPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
@@ -333,7 +333,7 @@ type KubernetesState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
-	SlbId pulumi.StringPtrInput
+	SlbId       pulumi.StringPtrInput
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -348,9 +348,9 @@ type KubernetesState struct {
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-	WorkerAutoRenewPeriod pulumi.IntPtrInput
+	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
-	WorkerDataDiskSize pulumi.IntPtrInput
+	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
@@ -386,11 +386,11 @@ type kubernetesArgs struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy *string `pulumi:"cpuPolicy"`
-	// Enable login to the node through SSH. default: false 
+	// Enable login to the node through SSH. default: false
 	EnableSsh *bool `pulumi:"enableSsh"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
-	// Install cloud monitor agent on ECS. default: true 
+	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
@@ -415,10 +415,10 @@ type kubernetesArgs struct {
 	// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	MasterPeriod *int `pulumi:"masterPeriod"`
 	// Master payment period unit. `Month` or `Week`, defaults to `Month`.
-	MasterPeriodUnit *string `pulumi:"masterPeriodUnit"`
+	MasterPeriodUnit *string  `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -426,7 +426,7 @@ type kubernetesArgs struct {
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
@@ -443,9 +443,9 @@ type kubernetesArgs struct {
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
+	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
-	WorkerDataDiskSize *int `pulumi:"workerDataDiskSize"`
+	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
@@ -459,7 +459,7 @@ type kubernetesArgs struct {
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
+	WorkerPeriodUnit *string  `pulumi:"workerPeriodUnit"`
 	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
 }
 
@@ -476,11 +476,11 @@ type KubernetesArgs struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// kubelet cpu policy. options: static|none. default: none.
 	CpuPolicy pulumi.StringPtrInput
-	// Enable login to the node through SSH. default: false 
+	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
-	// Install cloud monitor agent on ECS. default: true 
+	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
@@ -508,7 +508,7 @@ type KubernetesArgs struct {
 	MasterPeriodUnit pulumi.StringPtrInput
 	MasterVswitchIds pulumi.StringArrayInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrInput
@@ -516,7 +516,7 @@ type KubernetesArgs struct {
 	NodeCidrMask pulumi.IntPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// [Flannel Specific] The CIDR block for the pod network when using Flannel. 
+	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
@@ -533,9 +533,9 @@ type KubernetesArgs struct {
 	// Enable worker payment auto-renew, defaults to false.
 	WorkerAutoRenew pulumi.BoolPtrInput
 	// Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
-	WorkerAutoRenewPeriod pulumi.IntPtrInput
+	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
-	WorkerDataDiskSize pulumi.IntPtrInput
+	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
@@ -556,4 +556,3 @@ type KubernetesArgs struct {
 func (KubernetesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesArgs)(nil)).Elem()
 }
-

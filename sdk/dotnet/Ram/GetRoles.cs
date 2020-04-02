@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRoles.InvokeAsync() instead")]
         public static Task<GetRolesResult> GetRoles(GetRolesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRoles
+    {
+        /// <summary>
+        /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
+        /// </summary>
+        public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -24,6 +35,10 @@ namespace Pulumi.AliCloud.Ram
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ram role IDs. 
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());

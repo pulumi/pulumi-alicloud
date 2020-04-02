@@ -12,7 +12,7 @@ import (
 )
 
 type ClusterParameter struct {
-	Name string `pulumi:"name"`
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -24,7 +24,7 @@ type ClusterParameterInput interface {
 }
 
 type ClusterParameterArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -61,7 +61,7 @@ func (i ClusterParameterArray) ToClusterParameterArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterParameterArrayOutput)
 }
 
-type ClusterParameterOutput struct { *pulumi.OutputState }
+type ClusterParameterOutput struct{ *pulumi.OutputState }
 
 func (ClusterParameterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ClusterParameter)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o ClusterParameterOutput) ToClusterParameterOutputWithContext(ctx context.
 }
 
 func (o ClusterParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterParameter) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o ClusterParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ClusterParameter) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ClusterParameter) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ClusterParameterArrayOutput struct { *pulumi.OutputState}
+type ClusterParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterParameterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ClusterParameter)(nil)).Elem()
@@ -98,7 +98,7 @@ func (o ClusterParameterArrayOutput) ToClusterParameterArrayOutputWithContext(ct
 }
 
 func (o ClusterParameterArrayOutput) Index(i pulumi.IntInput) ClusterParameterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ClusterParameter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterParameter {
 		return vs[0].([]ClusterParameter)[vs[1].(int)]
 	}).(ClusterParameterOutput)
 }
@@ -173,7 +173,7 @@ func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
 }
 
-type GetAccountsAccountOutput struct { *pulumi.OutputState }
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
@@ -189,35 +189,35 @@ func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx cont
 
 // Account description.
 func (o GetAccountsAccountOutput) AccountDescription() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccount) string { return v.AccountDescription }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountDescription }).(pulumi.StringOutput)
 }
 
 // Account lock state, Valid values are `Lock`, `UnLock`.
 func (o GetAccountsAccountOutput) AccountLockState() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccount) string { return v.AccountLockState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountLockState }).(pulumi.StringOutput)
 }
 
 // Account name.
 func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
 // Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
 func (o GetAccountsAccountOutput) AccountStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccount) string { return v.AccountStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountStatus }).(pulumi.StringOutput)
 }
 
 // Account type, Valid values are `Normal`, `Super`.
 func (o GetAccountsAccountOutput) AccountType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccount) string { return v.AccountType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountType }).(pulumi.StringOutput)
 }
 
 // A list of database privilege. Each element contains the following attributes.
 func (o GetAccountsAccountOutput) DatabasePrivileges() GetAccountsAccountDatabasePrivilegeArrayOutput {
-	return o.ApplyT(func (v GetAccountsAccount) []GetAccountsAccountDatabasePrivilege { return v.DatabasePrivileges }).(GetAccountsAccountDatabasePrivilegeArrayOutput)
+	return o.ApplyT(func(v GetAccountsAccount) []GetAccountsAccountDatabasePrivilege { return v.DatabasePrivileges }).(GetAccountsAccountDatabasePrivilegeArrayOutput)
 }
 
-type GetAccountsAccountArrayOutput struct { *pulumi.OutputState}
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
@@ -232,7 +232,7 @@ func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContex
 }
 
 func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAccountsAccount {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
 	}).(GetAccountsAccountOutput)
 }
@@ -240,7 +240,7 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 type GetAccountsAccountDatabasePrivilege struct {
 	// Account privilege of database
 	AccountPrivilege string `pulumi:"accountPrivilege"`
-	// The account owned database name 
+	// The account owned database name
 	DbName string `pulumi:"dbName"`
 }
 
@@ -254,7 +254,7 @@ type GetAccountsAccountDatabasePrivilegeInput interface {
 type GetAccountsAccountDatabasePrivilegeArgs struct {
 	// Account privilege of database
 	AccountPrivilege pulumi.StringInput `pulumi:"accountPrivilege"`
-	// The account owned database name 
+	// The account owned database name
 	DbName pulumi.StringInput `pulumi:"dbName"`
 }
 
@@ -291,7 +291,7 @@ func (i GetAccountsAccountDatabasePrivilegeArray) ToGetAccountsAccountDatabasePr
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountDatabasePrivilegeArrayOutput)
 }
 
-type GetAccountsAccountDatabasePrivilegeOutput struct { *pulumi.OutputState }
+type GetAccountsAccountDatabasePrivilegeOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountDatabasePrivilegeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAccountsAccountDatabasePrivilege)(nil)).Elem()
@@ -307,15 +307,15 @@ func (o GetAccountsAccountDatabasePrivilegeOutput) ToGetAccountsAccountDatabaseP
 
 // Account privilege of database
 func (o GetAccountsAccountDatabasePrivilegeOutput) AccountPrivilege() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccountDatabasePrivilege) string { return v.AccountPrivilege }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccountDatabasePrivilege) string { return v.AccountPrivilege }).(pulumi.StringOutput)
 }
 
-// The account owned database name 
+// The account owned database name
 func (o GetAccountsAccountDatabasePrivilegeOutput) DbName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAccountsAccountDatabasePrivilege) string { return v.DbName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAccountsAccountDatabasePrivilege) string { return v.DbName }).(pulumi.StringOutput)
 }
 
-type GetAccountsAccountDatabasePrivilegeArrayOutput struct { *pulumi.OutputState}
+type GetAccountsAccountDatabasePrivilegeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAccountsAccountDatabasePrivilegeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAccountsAccountDatabasePrivilege)(nil)).Elem()
@@ -330,7 +330,7 @@ func (o GetAccountsAccountDatabasePrivilegeArrayOutput) ToGetAccountsAccountData
 }
 
 func (o GetAccountsAccountDatabasePrivilegeArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountDatabasePrivilegeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAccountsAccountDatabasePrivilege {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccountDatabasePrivilege {
 		return vs[0].([]GetAccountsAccountDatabasePrivilege)[vs[1].(int)]
 	}).(GetAccountsAccountDatabasePrivilegeOutput)
 }
@@ -461,7 +461,7 @@ func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
 }
 
-type GetClustersClusterOutput struct { *pulumi.OutputState }
+type GetClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
@@ -477,105 +477,105 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 
 // Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 func (o GetClustersClusterOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 // The createTime of the db_nodes.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The dbNodeClass of the db_nodes.
 func (o GetClustersClusterOutput) DbNodeClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
 }
 
 // The DBNodeNumber of the PolarDB cluster.
 func (o GetClustersClusterOutput) DbNodeNumber() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersCluster) int { return v.DbNodeNumber }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersCluster) int { return v.DbNodeNumber }).(pulumi.IntOutput)
 }
 
 // The DBNodes of the PolarDB cluster.
 func (o GetClustersClusterOutput) DbNodes() GetClustersClusterDbNodeArrayOutput {
-	return o.ApplyT(func (v GetClustersCluster) []GetClustersClusterDbNode { return v.DbNodes }).(GetClustersClusterDbNodeArrayOutput)
+	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterDbNode { return v.DbNodes }).(GetClustersClusterDbNodeArrayOutput)
 }
 
 // Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
 func (o GetClustersClusterOutput) DbType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.DbType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbType }).(pulumi.StringOutput)
 }
 
 // The DBVersion of the PolarDB cluster.
 func (o GetClustersClusterOutput) DbVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.DbVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbVersion }).(pulumi.StringOutput)
 }
 
 // The DeleteLock of the PolarDB cluster.
 func (o GetClustersClusterOutput) DeleteLock() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersCluster) int { return v.DeleteLock }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersCluster) int { return v.DeleteLock }).(pulumi.IntOutput)
 }
 
 // The description of the PolarDB cluster.
 func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
 func (o GetClustersClusterOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 // Expiration time. Pay-As-You-Go clusters never expire.
 func (o GetClustersClusterOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The expired of the PolarDB cluster.
 func (o GetClustersClusterOutput) Expired() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
 }
 
 // The ID of the PolarDB cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The LockMode of the PolarDB cluster.
 func (o GetClustersClusterOutput) LockMode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
 // The DBClusterNetworkType of the PolarDB cluster.
 func (o GetClustersClusterOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // The regionId of the db_nodes.
 func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // status of the cluster.
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The StorageUsed of the PolarDB cluster.
 func (o GetClustersClusterOutput) StorageUsed() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersCluster) int { return v.StorageUsed }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersCluster) int { return v.StorageUsed }).(pulumi.IntOutput)
 }
 
 // ID of the VPC the cluster belongs to.
 func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The zoneId of the db_nodes.
 func (o GetClustersClusterOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetClustersClusterArrayOutput struct { *pulumi.OutputState}
+type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
@@ -590,7 +590,7 @@ func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContex
 }
 
 func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClustersCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
 		return vs[0].([]GetClustersCluster)[vs[1].(int)]
 	}).(GetClustersClusterOutput)
 }
@@ -677,7 +677,7 @@ func (i GetClustersClusterDbNodeArray) ToGetClustersClusterDbNodeArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterDbNodeArrayOutput)
 }
 
-type GetClustersClusterDbNodeOutput struct { *pulumi.OutputState }
+type GetClustersClusterDbNodeOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterDbNodeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClustersClusterDbNode)(nil)).Elem()
@@ -693,50 +693,50 @@ func (o GetClustersClusterDbNodeOutput) ToGetClustersClusterDbNodeOutputWithCont
 
 // The createTime of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The dbNodeClass of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) DbNodeClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.DbNodeClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.DbNodeClass }).(pulumi.StringOutput)
 }
 
 // The dbNodeId of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) DbNodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.DbNodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.DbNodeId }).(pulumi.StringOutput)
 }
 
 // The dbNodeRole of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) DbNodeRole() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.DbNodeRole }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.DbNodeRole }).(pulumi.StringOutput)
 }
 
 // The dbNodeStatus of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) DbNodeStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.DbNodeStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.DbNodeStatus }).(pulumi.StringOutput)
 }
 
 // The maxConnections of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) MaxConnections() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) int { return v.MaxConnections }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
 // The maxIops of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) MaxIops() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) int { return v.MaxIops }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) int { return v.MaxIops }).(pulumi.IntOutput)
 }
 
 // The regionId of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The zoneId of the db_nodes.
 func (o GetClustersClusterDbNodeOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersClusterDbNode) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersClusterDbNode) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetClustersClusterDbNodeArrayOutput struct { *pulumi.OutputState}
+type GetClustersClusterDbNodeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterDbNodeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClustersClusterDbNode)(nil)).Elem()
@@ -751,7 +751,7 @@ func (o GetClustersClusterDbNodeArrayOutput) ToGetClustersClusterDbNodeArrayOutp
 }
 
 func (o GetClustersClusterDbNodeArrayOutput) Index(i pulumi.IntInput) GetClustersClusterDbNodeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClustersClusterDbNode {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersClusterDbNode {
 		return vs[0].([]GetClustersClusterDbNode)[vs[1].(int)]
 	}).(GetClustersClusterDbNodeOutput)
 }
@@ -826,7 +826,7 @@ func (i GetDatabasesDatabaseArray) ToGetDatabasesDatabaseArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseArrayOutput)
 }
 
-type GetDatabasesDatabaseOutput struct { *pulumi.OutputState }
+type GetDatabasesDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GetDatabasesDatabaseOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDatabasesDatabase)(nil)).Elem()
@@ -842,35 +842,35 @@ func (o GetDatabasesDatabaseOutput) ToGetDatabasesDatabaseOutputWithContext(ctx 
 
 // A list of accounts of database. Each element contains the following attributes.
 func (o GetDatabasesDatabaseOutput) Accounts() GetDatabasesDatabaseAccountArrayOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) []GetDatabasesDatabaseAccount { return v.Accounts }).(GetDatabasesDatabaseAccountArrayOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) []GetDatabasesDatabaseAccount { return v.Accounts }).(GetDatabasesDatabaseAccountArrayOutput)
 }
 
 // The character set name of database.
 func (o GetDatabasesDatabaseOutput) CharacterSetName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) string { return v.CharacterSetName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.CharacterSetName }).(pulumi.StringOutput)
 }
 
 // Database description.
 func (o GetDatabasesDatabaseOutput) DbDescription() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) string { return v.DbDescription }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.DbDescription }).(pulumi.StringOutput)
 }
 
 // Database name.
 func (o GetDatabasesDatabaseOutput) DbName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) string { return v.DbName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.DbName }).(pulumi.StringOutput)
 }
 
 // The status of database.
 func (o GetDatabasesDatabaseOutput) DbStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) string { return v.DbStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.DbStatus }).(pulumi.StringOutput)
 }
 
 // The engine of database.
 func (o GetDatabasesDatabaseOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabase) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-type GetDatabasesDatabaseArrayOutput struct { *pulumi.OutputState}
+type GetDatabasesDatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDatabasesDatabaseArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDatabasesDatabase)(nil)).Elem()
@@ -885,7 +885,7 @@ func (o GetDatabasesDatabaseArrayOutput) ToGetDatabasesDatabaseArrayOutputWithCo
 }
 
 func (o GetDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetDatabasesDatabaseOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDatabasesDatabase {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesDatabase {
 		return vs[0].([]GetDatabasesDatabase)[vs[1].(int)]
 	}).(GetDatabasesDatabaseOutput)
 }
@@ -948,7 +948,7 @@ func (i GetDatabasesDatabaseAccountArray) ToGetDatabasesDatabaseAccountArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasesDatabaseAccountArrayOutput)
 }
 
-type GetDatabasesDatabaseAccountOutput struct { *pulumi.OutputState }
+type GetDatabasesDatabaseAccountOutput struct{ *pulumi.OutputState }
 
 func (GetDatabasesDatabaseAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDatabasesDatabaseAccount)(nil)).Elem()
@@ -964,20 +964,20 @@ func (o GetDatabasesDatabaseAccountOutput) ToGetDatabasesDatabaseAccountOutputWi
 
 // Account name.
 func (o GetDatabasesDatabaseAccountOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabaseAccount) string { return v.AccountName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabaseAccount) string { return v.AccountName }).(pulumi.StringOutput)
 }
 
 // Account status.
 func (o GetDatabasesDatabaseAccountOutput) AccountStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabaseAccount) string { return v.AccountStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabaseAccount) string { return v.AccountStatus }).(pulumi.StringOutput)
 }
 
 // The privilege status of account.
 func (o GetDatabasesDatabaseAccountOutput) PrivilegeStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDatabasesDatabaseAccount) string { return v.PrivilegeStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDatabasesDatabaseAccount) string { return v.PrivilegeStatus }).(pulumi.StringOutput)
 }
 
-type GetDatabasesDatabaseAccountArrayOutput struct { *pulumi.OutputState}
+type GetDatabasesDatabaseAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDatabasesDatabaseAccountArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDatabasesDatabaseAccount)(nil)).Elem()
@@ -992,7 +992,7 @@ func (o GetDatabasesDatabaseAccountArrayOutput) ToGetDatabasesDatabaseAccountArr
 }
 
 func (o GetDatabasesDatabaseAccountArrayOutput) Index(i pulumi.IntInput) GetDatabasesDatabaseAccountOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDatabasesDatabaseAccount {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasesDatabaseAccount {
 		return vs[0].([]GetDatabasesDatabaseAccount)[vs[1].(int)]
 	}).(GetDatabasesDatabaseAccountOutput)
 }
@@ -1071,7 +1071,7 @@ func (i GetEndpointsEndpointArray) ToGetEndpointsEndpointArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointArrayOutput)
 }
 
-type GetEndpointsEndpointOutput struct { *pulumi.OutputState }
+type GetEndpointsEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetEndpointsEndpoint)(nil)).Elem()
@@ -1087,40 +1087,40 @@ func (o GetEndpointsEndpointOutput) ToGetEndpointsEndpointOutputWithContext(ctx 
 
 // A list of endpoint addresses. Each element contains the following attributes.
 func (o GetEndpointsEndpointOutput) AddressItems() GetEndpointsEndpointAddressItemArrayOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) []GetEndpointsEndpointAddressItem { return v.AddressItems }).(GetEndpointsEndpointAddressItemArrayOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) []GetEndpointsEndpointAddressItem { return v.AddressItems }).(GetEndpointsEndpointAddressItemArrayOutput)
 }
 
 // Whether the new node is automatically added to the default cluster address.Options are `Enable` and `Disable`.
 func (o GetEndpointsEndpointOutput) AutoAddNewNodes() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.AutoAddNewNodes }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.AutoAddNewNodes }).(pulumi.StringOutput)
 }
 
 // endpoint of the cluster.
 func (o GetEndpointsEndpointOutput) DbEndpointId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.DbEndpointId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.DbEndpointId }).(pulumi.StringOutput)
 }
 
 // The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
 func (o GetEndpointsEndpointOutput) EndpointConfig() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.EndpointConfig }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.EndpointConfig }).(pulumi.StringOutput)
 }
 
 // Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
 func (o GetEndpointsEndpointOutput) EndpointType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.EndpointType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
 // A list of nodes that connect to the address configuration.
 func (o GetEndpointsEndpointOutput) Nodes() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.Nodes }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.Nodes }).(pulumi.StringOutput)
 }
 
 // Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
 func (o GetEndpointsEndpointOutput) ReadWriteMode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpoint) string { return v.ReadWriteMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpoint) string { return v.ReadWriteMode }).(pulumi.StringOutput)
 }
 
-type GetEndpointsEndpointArrayOutput struct { *pulumi.OutputState}
+type GetEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetEndpointsEndpoint)(nil)).Elem()
@@ -1135,7 +1135,7 @@ func (o GetEndpointsEndpointArrayOutput) ToGetEndpointsEndpointArrayOutputWithCo
 }
 
 func (o GetEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetEndpointsEndpoint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointsEndpoint {
 		return vs[0].([]GetEndpointsEndpoint)[vs[1].(int)]
 	}).(GetEndpointsEndpointOutput)
 }
@@ -1210,7 +1210,7 @@ func (i GetEndpointsEndpointAddressItemArray) ToGetEndpointsEndpointAddressItemA
 	return pulumi.ToOutputWithContext(ctx, i).(GetEndpointsEndpointAddressItemArrayOutput)
 }
 
-type GetEndpointsEndpointAddressItemOutput struct { *pulumi.OutputState }
+type GetEndpointsEndpointAddressItemOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointAddressItemOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetEndpointsEndpointAddressItem)(nil)).Elem()
@@ -1226,35 +1226,35 @@ func (o GetEndpointsEndpointAddressItemOutput) ToGetEndpointsEndpointAddressItem
 
 // Connection instance string.
 func (o GetEndpointsEndpointAddressItemOutput) ConnectionString() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.ConnectionString }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
 // The ip address of connection string.
 func (o GetEndpointsEndpointAddressItemOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.IpAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // IP network type:`Public` or `Private`.
 func (o GetEndpointsEndpointAddressItemOutput) NetType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.NetType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.NetType }).(pulumi.StringOutput)
 }
 
 // Intranet connection port.
 func (o GetEndpointsEndpointAddressItemOutput) Port() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.Port }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.Port }).(pulumi.StringOutput)
 }
 
 // ID of the VPC the instance belongs to.
 func (o GetEndpointsEndpointAddressItemOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // ID of the VSwitch the cluster belongs to.
 func (o GetEndpointsEndpointAddressItemOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEndpointsEndpointAddressItem) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetEndpointsEndpointAddressItemArrayOutput struct { *pulumi.OutputState}
+type GetEndpointsEndpointAddressItemArrayOutput struct{ *pulumi.OutputState }
 
 func (GetEndpointsEndpointAddressItemArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetEndpointsEndpointAddressItem)(nil)).Elem()
@@ -1269,7 +1269,7 @@ func (o GetEndpointsEndpointAddressItemArrayOutput) ToGetEndpointsEndpointAddres
 }
 
 func (o GetEndpointsEndpointAddressItemArrayOutput) Index(i pulumi.IntInput) GetEndpointsEndpointAddressItemOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetEndpointsEndpointAddressItem {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEndpointsEndpointAddressItem {
 		return vs[0].([]GetEndpointsEndpointAddressItem)[vs[1].(int)]
 	}).(GetEndpointsEndpointAddressItemOutput)
 }
@@ -1328,7 +1328,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -1344,15 +1344,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -1367,7 +1367,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

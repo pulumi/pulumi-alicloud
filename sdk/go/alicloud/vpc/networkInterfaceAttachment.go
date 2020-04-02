@@ -94,4 +94,3 @@ type NetworkInterfaceAttachmentArgs struct {
 func (NetworkInterfaceAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceAttachmentArgs)(nil)).Elem()
 }
-

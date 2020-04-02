@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTriggers.InvokeAsync() instead")]
         public static Task<GetTriggersResult> GetTriggers(GetTriggersArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTriggers
+    {
+        /// <summary>
+        /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
+        /// </summary>
+        public static Task<GetTriggersResult> InvokeAsync(GetTriggersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -30,6 +41,10 @@ namespace Pulumi.AliCloud.FC
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of FC triggers ids.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());

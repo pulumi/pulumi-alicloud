@@ -99,6 +99,7 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name. 
     :param str group_name_regex: A regex string to filter results by the group name.
+    :param list ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str version_code: Cloud analysis version code.

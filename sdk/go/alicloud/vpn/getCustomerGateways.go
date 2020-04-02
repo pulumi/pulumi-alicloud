@@ -30,16 +30,14 @@ type GetCustomerGatewaysArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getCustomerGateways.
 type GetCustomerGatewaysResult struct {
 	// A list of VPN customer gateways. Each element contains the following attributes:
 	Gateways []GetCustomerGatewaysGateway `pulumi:"gateways"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	NameRegex  *string  `pulumi:"nameRegex"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

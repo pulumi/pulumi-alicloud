@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Sag qos policy resource. 
+// Provides a Sag qos policy resource.
 // You need to create a QoS policy to set priorities, rate limits, and quintuple rules for different messages.
 //
 // For information about Sag Qos Policy and how to use it, see [What is Qos Policy](https://www.alibabacloud.com/help/doc-detail/140065.htm).
@@ -30,7 +30,7 @@ type QosPolicy struct {
 	DestCidr pulumi.StringOutput `pulumi:"destCidr"`
 	// The destination port range.
 	DestPortRange pulumi.StringOutput `pulumi:"destPortRange"`
-	// The expiration time of the quintuple rule. 
+	// The expiration time of the quintuple rule.
 	EndTime pulumi.StringPtrOutput `pulumi:"endTime"`
 	// The transport layer protocol.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
@@ -103,7 +103,7 @@ type qosPolicyState struct {
 	DestCidr *string `pulumi:"destCidr"`
 	// The destination port range.
 	DestPortRange *string `pulumi:"destPortRange"`
-	// The expiration time of the quintuple rule. 
+	// The expiration time of the quintuple rule.
 	EndTime *string `pulumi:"endTime"`
 	// The transport layer protocol.
 	IpProtocol *string `pulumi:"ipProtocol"`
@@ -128,7 +128,7 @@ type QosPolicyState struct {
 	DestCidr pulumi.StringPtrInput
 	// The destination port range.
 	DestPortRange pulumi.StringPtrInput
-	// The expiration time of the quintuple rule. 
+	// The expiration time of the quintuple rule.
 	EndTime pulumi.StringPtrInput
 	// The transport layer protocol.
 	IpProtocol pulumi.StringPtrInput
@@ -157,7 +157,7 @@ type qosPolicyArgs struct {
 	DestCidr string `pulumi:"destCidr"`
 	// The destination port range.
 	DestPortRange string `pulumi:"destPortRange"`
-	// The expiration time of the quintuple rule. 
+	// The expiration time of the quintuple rule.
 	EndTime *string `pulumi:"endTime"`
 	// The transport layer protocol.
 	IpProtocol string `pulumi:"ipProtocol"`
@@ -183,7 +183,7 @@ type QosPolicyArgs struct {
 	DestCidr pulumi.StringInput
 	// The destination port range.
 	DestPortRange pulumi.StringInput
-	// The expiration time of the quintuple rule. 
+	// The expiration time of the quintuple rule.
 	EndTime pulumi.StringPtrInput
 	// The transport layer protocol.
 	IpProtocol pulumi.StringInput
@@ -204,4 +204,3 @@ type QosPolicyArgs struct {
 func (QosPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosPolicyArgs)(nil)).Elem()
 }
-

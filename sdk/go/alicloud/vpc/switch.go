@@ -132,4 +132,3 @@ type SwitchArgs struct {
 func (SwitchArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*switchArgs)(nil)).Elem()
 }
-

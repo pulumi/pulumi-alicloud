@@ -29,22 +29,20 @@ type GetZonesArgs struct {
 	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
-	EnableDetails *bool `pulumi:"enableDetails"`
-	OutputFile *string `pulumi:"outputFile"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
+	OutputFile    *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
-	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
-	EnableDetails *bool `pulumi:"enableDetails"`
+	AvailableSlbAddressType      *string `pulumi:"availableSlbAddressType"`
+	EnableDetails                *bool   `pulumi:"enableDetails"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
-

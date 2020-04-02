@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available scheduled task resources. 
+// This data source provides available scheduled task resources.
 //
 // > **NOTE:** Available in 1.72.0+
 //
@@ -27,7 +27,7 @@ type GetScheduledTasksArgs struct {
 	// A list of scheduled task IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting scheduled tasks by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction *string `pulumi:"scheduledAction"`
@@ -35,21 +35,19 @@ type GetScheduledTasksArgs struct {
 	ScheduledTaskId *string `pulumi:"scheduledTaskId"`
 }
 
-
 // A collection of values returned by getScheduledTasks.
 type GetScheduledTasksResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of scheduled task ids.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of scheduled task names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction *string `pulumi:"scheduledAction"`
 	ScheduledTaskId *string `pulumi:"scheduledTaskId"`
 	// A list of scheduled tasks. Each element contains the following attributes:
 	Tasks []GetScheduledTasksTask `pulumi:"tasks"`
 }
-

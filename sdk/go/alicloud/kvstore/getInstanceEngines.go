@@ -30,11 +30,10 @@ type GetInstanceEnginesArgs struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile         *string `pulumi:"outputFile"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getInstanceEngines.
 type GetInstanceEnginesResult struct {
@@ -43,12 +42,11 @@ type GetInstanceEnginesResult struct {
 	// KVStore Instance version.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// A list of KVStore available instance engines. Each element contains the following attributes:
 	InstanceEngines []GetInstanceEnginesInstanceEngine `pulumi:"instanceEngines"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile      *string                            `pulumi:"outputFile"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
 }
-

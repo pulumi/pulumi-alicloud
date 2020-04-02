@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCustomerGateways.InvokeAsync() instead")]
         public static Task<GetCustomerGatewaysResult> GetCustomerGateways(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCustomerGateways
+    {
+        /// <summary>
+        /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
+        /// </summary>
+        public static Task<GetCustomerGatewaysResult> InvokeAsync(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

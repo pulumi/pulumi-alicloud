@@ -115,4 +115,3 @@ type AppAttachmentArgs struct {
 func (AppAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appAttachmentArgs)(nil)).Elem()
 }
-

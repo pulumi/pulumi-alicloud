@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_managed_kubernetes_clusters.html.markdown.
         /// </summary>
+        [Obsolete("Use GetManagedKubernetesClusters.InvokeAsync() instead")]
         public static Task<GetManagedKubernetesClustersResult> GetManagedKubernetesClusters(GetManagedKubernetesClustersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetManagedKubernetesClusters
+    {
+        /// <summary>
+        /// This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_managed_kubernetes_clusters.html.markdown.
+        /// </summary>
+        public static Task<GetManagedKubernetesClustersResult> InvokeAsync(GetManagedKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

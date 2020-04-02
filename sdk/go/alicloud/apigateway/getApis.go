@@ -26,13 +26,12 @@ type GetApisArgs struct {
 	ApiId *string `pulumi:"apiId"`
 	// ID of the specified group.
 	GroupId *string `pulumi:"groupId"`
-	// A list of api IDs. 
+	// A list of api IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter api gateway apis by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getApis.
 type GetApisResult struct {
@@ -43,11 +42,10 @@ type GetApisResult struct {
 	GroupId *string `pulumi:"groupId"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of api IDs. 
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of api names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of api IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of api names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

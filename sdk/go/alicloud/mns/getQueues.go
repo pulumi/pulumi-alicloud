@@ -27,16 +27,14 @@ type GetQueuesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getQueues.
 type GetQueuesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	// A list of queue names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of queue names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of queues. Each element contains the following attributes:
 	Queues []GetQueuesQueue `pulumi:"queues"`
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_certificates.html.markdown.
         /// </summary>
+        [Obsolete("Use GetServerCertificates.InvokeAsync() instead")]
         public static Task<GetServerCertificatesResult> GetServerCertificates(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetServerCertificates
+    {
+        /// <summary>
+        /// This data source provides the server certificate list.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_certificates.html.markdown.
+        /// </summary>
+        public static Task<GetServerCertificatesResult> InvokeAsync(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

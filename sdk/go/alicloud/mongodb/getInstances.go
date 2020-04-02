@@ -32,12 +32,11 @@ type GetInstancesArgs struct {
 	// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
 	InstanceType *string `pulumi:"instanceType"`
 	// A regex string to apply to the instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
@@ -53,10 +52,9 @@ type GetInstancesResult struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// A list of MongoDB instances. Its every element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex *string                `pulumi:"nameRegex"`
 	// The names list of MongoDB instances
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Names      []string               `pulumi:"names"`
+	OutputFile *string                `pulumi:"outputFile"`
+	Tags       map[string]interface{} `pulumi:"tags"`
 }
-

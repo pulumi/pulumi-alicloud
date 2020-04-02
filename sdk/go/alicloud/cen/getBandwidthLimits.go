@@ -24,17 +24,15 @@ func GetBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs, opts 
 type GetBandwidthLimitsArgs struct {
 	// A list of CEN instances IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile  *string  `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getBandwidthLimits.
 type GetBandwidthLimitsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string   `pulumi:"id"`
 	InstanceIds []string `pulumi:"instanceIds"`
 	// A list of CEN Bandwidth Limits. Each element contains the following attributes:
-	Limits []GetBandwidthLimitsLimit `pulumi:"limits"`
-	OutputFile *string `pulumi:"outputFile"`
+	Limits     []GetBandwidthLimitsLimit `pulumi:"limits"`
+	OutputFile *string                   `pulumi:"outputFile"`
 }
-

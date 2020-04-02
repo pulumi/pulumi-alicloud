@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
         /// </summary>
+        [Obsolete("Use GetCallerIdentity.InvokeAsync() instead")]
         public static Task<GetCallerIdentityResult> GetCallerIdentity(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCallerIdentity
+    {
+        /// <summary>
+        /// This data source provides the identity of the current user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.65.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
+        /// </summary>
+        public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithVersion());
     }
 

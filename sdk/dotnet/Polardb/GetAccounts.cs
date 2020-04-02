@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccounts.InvokeAsync() instead")]
         public static Task<GetAccountsResult> GetAccounts(GetAccountsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccounts
+    {
+        /// <summary>
+        /// The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+        /// Filters support regular expression for the account name, searches by clusterId.
+        /// 
+        /// &gt; **NOTE:** Available in v1.70.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
+        /// </summary>
+        public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

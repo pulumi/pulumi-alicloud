@@ -92,4 +92,3 @@ type RoleAttachmentArgs struct {
 func (RoleAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAttachmentArgs)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
         /// </summary>
+        [Obsolete("Use GetZones.InvokeAsync() instead")]
         public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetZones
+    {
+        /// <summary>
+        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
+        /// </summary>
+        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

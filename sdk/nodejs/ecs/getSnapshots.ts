@@ -98,15 +98,42 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  */
 export interface GetSnapshotsArgs {
     readonly diskId?: string;
+    /**
+     * Whether the snapshot is encrypted or not.
+     */
     readonly encrypted?: boolean;
+    /**
+     * A list of snapshot IDs.
+     */
     readonly ids?: string[];
     readonly instanceId?: string;
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * Source disk attribute. Value range:
+     * * System
+     * * Data
+     */
     readonly sourceDiskType?: string;
+    /**
+     * The snapshot status. Value range:
+     * * progressing
+     * * accomplished
+     * * failed
+     */
     readonly status?: string;
+    /**
+     * A map of tags assigned to the snapshot.
+     */
     readonly tags?: {[key: string]: any};
     readonly type?: string;
+    /**
+     * Whether the snapshots are used to create resources or not. Value range:
+     * * image
+     * * disk
+     * * imageDisk
+     * * none
+     */
     readonly usage?: string;
 }
 

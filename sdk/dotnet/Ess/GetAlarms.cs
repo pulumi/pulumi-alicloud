@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAlarms.InvokeAsync() instead")]
         public static Task<GetAlarmsResult> GetAlarms(GetAlarmsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAlarms
+    {
+        /// <summary>
+        /// This data source provides available alarm resources. 
+        /// 
+        /// &gt; **NOTE** Available in 1.72.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
+        /// </summary>
+        public static Task<GetAlarmsResult> InvokeAsync(GetAlarmsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

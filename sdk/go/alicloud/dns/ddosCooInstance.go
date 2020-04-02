@@ -157,4 +157,3 @@ type DdosCooInstanceArgs struct {
 func (DdosCooInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ddosCooInstanceArgs)(nil)).Elem()
 }
-

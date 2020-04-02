@@ -65,7 +65,8 @@ type RepoDomainListPtrInput interface {
 
 type repoDomainListPtrType RepoDomainListArgs
 
-func RepoDomainListPtr(v *RepoDomainListArgs) RepoDomainListPtrInput {	return (*repoDomainListPtrType)(v)
+func RepoDomainListPtr(v *RepoDomainListArgs) RepoDomainListPtrInput {
+	return (*repoDomainListPtrType)(v)
 }
 
 func (*repoDomainListPtrType) ElementType() reflect.Type {
@@ -80,7 +81,7 @@ func (i *repoDomainListPtrType) ToRepoDomainListPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepoDomainListPtrOutput)
 }
 
-type RepoDomainListOutput struct { *pulumi.OutputState }
+type RepoDomainListOutput struct{ *pulumi.OutputState }
 
 func (RepoDomainListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RepoDomainList)(nil)).Elem()
@@ -103,22 +104,23 @@ func (o RepoDomainListOutput) ToRepoDomainListPtrOutputWithContext(ctx context.C
 		return &v
 	}).(RepoDomainListPtrOutput)
 }
+
 // Domain of internal endpoint, only in some regions.
 func (o RepoDomainListOutput) Internal() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Internal }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Internal }).(pulumi.StringPtrOutput)
 }
 
 // Domain of public endpoint.
 func (o RepoDomainListOutput) Public() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Public }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Public }).(pulumi.StringPtrOutput)
 }
 
 // Domain of vpc endpoint.
 func (o RepoDomainListOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
-type RepoDomainListPtrOutput struct { *pulumi.OutputState}
+type RepoDomainListPtrOutput struct{ *pulumi.OutputState }
 
 func (RepoDomainListPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RepoDomainList)(nil)).Elem()
@@ -133,22 +135,22 @@ func (o RepoDomainListPtrOutput) ToRepoDomainListPtrOutputWithContext(ctx contex
 }
 
 func (o RepoDomainListPtrOutput) Elem() RepoDomainListOutput {
-	return o.ApplyT(func (v *RepoDomainList) RepoDomainList { return *v }).(RepoDomainListOutput)
+	return o.ApplyT(func(v *RepoDomainList) RepoDomainList { return *v }).(RepoDomainListOutput)
 }
 
 // Domain of internal endpoint, only in some regions.
 func (o RepoDomainListPtrOutput) Internal() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Internal }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Internal }).(pulumi.StringPtrOutput)
 }
 
 // Domain of public endpoint.
 func (o RepoDomainListPtrOutput) Public() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Public }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Public }).(pulumi.StringPtrOutput)
 }
 
 // Domain of vpc endpoint.
 func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
 type GetNamespacesNamespace struct {
@@ -209,7 +211,7 @@ func (i GetNamespacesNamespaceArray) ToGetNamespacesNamespaceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNamespacesNamespaceArrayOutput)
 }
 
-type GetNamespacesNamespaceOutput struct { *pulumi.OutputState }
+type GetNamespacesNamespaceOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNamespacesNamespace)(nil)).Elem()
@@ -225,20 +227,20 @@ func (o GetNamespacesNamespaceOutput) ToGetNamespacesNamespaceOutputWithContext(
 
 // Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
 func (o GetNamespacesNamespaceOutput) AutoCreate() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetNamespacesNamespace) bool { return v.AutoCreate }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetNamespacesNamespace) bool { return v.AutoCreate }).(pulumi.BoolOutput)
 }
 
 // `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
 func (o GetNamespacesNamespaceOutput) DefaultVisibility() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNamespacesNamespace) string { return v.DefaultVisibility }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.DefaultVisibility }).(pulumi.StringOutput)
 }
 
 // Name of Container Registry namespace.
 func (o GetNamespacesNamespaceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNamespacesNamespace) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNamespacesNamespace) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetNamespacesNamespaceArrayOutput struct { *pulumi.OutputState}
+type GetNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNamespacesNamespaceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNamespacesNamespace)(nil)).Elem()
@@ -253,7 +255,7 @@ func (o GetNamespacesNamespaceArrayOutput) ToGetNamespacesNamespaceArrayOutputWi
 }
 
 func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespacesNamespaceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNamespacesNamespace {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamespacesNamespace {
 		return vs[0].([]GetNamespacesNamespace)[vs[1].(int)]
 	}).(GetNamespacesNamespaceOutput)
 }
@@ -328,7 +330,7 @@ func (i GetReposRepoArray) ToGetReposRepoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoArrayOutput)
 }
 
-type GetReposRepoOutput struct { *pulumi.OutputState }
+type GetReposRepoOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetReposRepo)(nil)).Elem()
@@ -344,35 +346,35 @@ func (o GetReposRepoOutput) ToGetReposRepoOutputWithContext(ctx context.Context)
 
 // The repository domain list.
 func (o GetReposRepoOutput) DomainList() GetReposRepoDomainListOutput {
-	return o.ApplyT(func (v GetReposRepo) GetReposRepoDomainList { return v.DomainList }).(GetReposRepoDomainListOutput)
+	return o.ApplyT(func(v GetReposRepo) GetReposRepoDomainList { return v.DomainList }).(GetReposRepoDomainListOutput)
 }
 
 // Name of container registry namespace.
 func (o GetReposRepoOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepo) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepo) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Name of container registry namespace where the repositories are located in.
 func (o GetReposRepoOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepo) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepo) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
 // `PUBLIC` or `PRIVATE`, repository's visibility.
 func (o GetReposRepoOutput) RepoType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepo) string { return v.RepoType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepo) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
 // The repository general information.
 func (o GetReposRepoOutput) Summary() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepo) string { return v.Summary }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepo) string { return v.Summary }).(pulumi.StringOutput)
 }
 
 // A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
 func (o GetReposRepoOutput) Tags() GetReposRepoTagArrayOutput {
-	return o.ApplyT(func (v GetReposRepo) []GetReposRepoTag { return v.Tags }).(GetReposRepoTagArrayOutput)
+	return o.ApplyT(func(v GetReposRepo) []GetReposRepoTag { return v.Tags }).(GetReposRepoTagArrayOutput)
 }
 
-type GetReposRepoArrayOutput struct { *pulumi.OutputState}
+type GetReposRepoArrayOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetReposRepo)(nil)).Elem()
@@ -387,7 +389,7 @@ func (o GetReposRepoArrayOutput) ToGetReposRepoArrayOutputWithContext(ctx contex
 }
 
 func (o GetReposRepoArrayOutput) Index(i pulumi.IntInput) GetReposRepoOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetReposRepo {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReposRepo {
 		return vs[0].([]GetReposRepo)[vs[1].(int)]
 	}).(GetReposRepoOutput)
 }
@@ -429,7 +431,7 @@ func (i GetReposRepoDomainListArgs) ToGetReposRepoDomainListOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoDomainListOutput)
 }
 
-type GetReposRepoDomainListOutput struct { *pulumi.OutputState }
+type GetReposRepoDomainListOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoDomainListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetReposRepoDomainList)(nil)).Elem()
@@ -445,17 +447,17 @@ func (o GetReposRepoDomainListOutput) ToGetReposRepoDomainListOutputWithContext(
 
 // Domain of internal endpoint, only in some regions.
 func (o GetReposRepoDomainListOutput) Internal() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoDomainList) string { return v.Internal }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoDomainList) string { return v.Internal }).(pulumi.StringOutput)
 }
 
 // Domain of public endpoint.
 func (o GetReposRepoDomainListOutput) Public() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoDomainList) string { return v.Public }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoDomainList) string { return v.Public }).(pulumi.StringOutput)
 }
 
 // Domain of vpc endpoint.
 func (o GetReposRepoDomainListOutput) Vpc() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoDomainList) string { return v.Vpc }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoDomainList) string { return v.Vpc }).(pulumi.StringOutput)
 }
 
 type GetReposRepoTag struct {
@@ -532,7 +534,7 @@ func (i GetReposRepoTagArray) ToGetReposRepoTagArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetReposRepoTagArrayOutput)
 }
 
-type GetReposRepoTagOutput struct { *pulumi.OutputState }
+type GetReposRepoTagOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoTagOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetReposRepoTag)(nil)).Elem()
@@ -548,40 +550,40 @@ func (o GetReposRepoTagOutput) ToGetReposRepoTagOutputWithContext(ctx context.Co
 
 // Digest of this image.
 func (o GetReposRepoTagOutput) Digest() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoTag) string { return v.Digest }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoTag) string { return v.Digest }).(pulumi.StringOutput)
 }
 
 // Create time of this image, unix time in nanoseconds.
 func (o GetReposRepoTagOutput) ImageCreate() pulumi.IntOutput {
-	return o.ApplyT(func (v GetReposRepoTag) int { return v.ImageCreate }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetReposRepoTag) int { return v.ImageCreate }).(pulumi.IntOutput)
 }
 
 // Id of this image.
 func (o GetReposRepoTagOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoTag) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoTag) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Status of this image, in bytes.
 func (o GetReposRepoTagOutput) ImageSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetReposRepoTag) int { return v.ImageSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetReposRepoTag) int { return v.ImageSize }).(pulumi.IntOutput)
 }
 
 // Last update time of this image, unix time in nanoseconds.
 func (o GetReposRepoTagOutput) ImageUpdate() pulumi.IntOutput {
-	return o.ApplyT(func (v GetReposRepoTag) int { return v.ImageUpdate }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetReposRepoTag) int { return v.ImageUpdate }).(pulumi.IntOutput)
 }
 
 // Status of this image.
 func (o GetReposRepoTagOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoTag) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoTag) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Tag of this image.
 func (o GetReposRepoTagOutput) Tag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetReposRepoTag) string { return v.Tag }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetReposRepoTag) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-type GetReposRepoTagArrayOutput struct { *pulumi.OutputState}
+type GetReposRepoTagArrayOutput struct{ *pulumi.OutputState }
 
 func (GetReposRepoTagArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetReposRepoTag)(nil)).Elem()
@@ -596,7 +598,7 @@ func (o GetReposRepoTagArrayOutput) ToGetReposRepoTagArrayOutputWithContext(ctx 
 }
 
 func (o GetReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetReposRepoTagOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetReposRepoTag {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReposRepoTag {
 		return vs[0].([]GetReposRepoTag)[vs[1].(int)]
 	}).(GetReposRepoTagOutput)
 }

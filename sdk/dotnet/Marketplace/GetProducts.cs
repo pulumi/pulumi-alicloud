@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
         /// </summary>
+        [Obsolete("Use GetProducts.InvokeAsync() instead")]
         public static Task<GetProductsResult> GetProducts(GetProductsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetProducts
+    {
+        /// <summary>
+        /// This data source provides the Market product items of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.64.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
+        /// </summary>
+        public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -34,7 +34,6 @@ type GetConnectionsArgs struct {
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
-
 // A collection of values returned by getConnections.
 type GetConnectionsResult struct {
 	// A list of VPN connections. Each element contains the following attributes:
@@ -44,12 +43,11 @@ type GetConnectionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) IDs of the VPN connections.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// (Optional) names of the VPN connections.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the VPN gateway.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
-

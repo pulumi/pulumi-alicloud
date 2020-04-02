@@ -23,7 +23,7 @@ type AccountPrivilege struct {
 	DbNames pulumi.StringArrayOutput `pulumi:"dbNames"`
 	// The Id of instance in which account belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The privilege of one account access database. Valid values: 
+	// The privilege of one account access database. Valid values:
 	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
 	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -75,7 +75,7 @@ type accountPrivilegeState struct {
 	DbNames []string `pulumi:"dbNames"`
 	// The Id of instance in which account belongs.
 	InstanceId *string `pulumi:"instanceId"`
-	// The privilege of one account access database. Valid values: 
+	// The privilege of one account access database. Valid values:
 	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
 	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -91,7 +91,7 @@ type AccountPrivilegeState struct {
 	DbNames pulumi.StringArrayInput
 	// The Id of instance in which account belongs.
 	InstanceId pulumi.StringPtrInput
-	// The privilege of one account access database. Valid values: 
+	// The privilege of one account access database. Valid values:
 	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
 	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -111,7 +111,7 @@ type accountPrivilegeArgs struct {
 	DbNames []string `pulumi:"dbNames"`
 	// The Id of instance in which account belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// The privilege of one account access database. Valid values: 
+	// The privilege of one account access database. Valid values:
 	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
 	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -128,7 +128,7 @@ type AccountPrivilegeArgs struct {
 	DbNames pulumi.StringArrayInput
 	// The Id of instance in which account belongs.
 	InstanceId pulumi.StringInput
-	// The privilege of one account access database. Valid values: 
+	// The privilege of one account access database. Valid values:
 	// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
 	// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
@@ -140,4 +140,3 @@ type AccountPrivilegeArgs struct {
 func (AccountPrivilegeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountPrivilegeArgs)(nil)).Elem()
 }
-

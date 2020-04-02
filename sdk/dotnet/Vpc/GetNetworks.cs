@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNetworks.InvokeAsync() instead")]
         public static Task<GetNetworksResult> GetNetworks(GetNetworksArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNetworks
+    {
+        /// <summary>
+        /// This data source provides VPCs available to the user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
+        /// </summary>
+        public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

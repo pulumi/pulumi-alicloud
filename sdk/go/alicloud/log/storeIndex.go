@@ -109,4 +109,3 @@ type StoreIndexArgs struct {
 func (StoreIndexArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*storeIndexArgs)(nil)).Elem()
 }
-

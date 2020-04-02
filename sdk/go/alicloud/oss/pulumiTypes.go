@@ -77,7 +77,7 @@ func (i BucketCorsRuleArray) ToBucketCorsRuleArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsRuleArrayOutput)
 }
 
-type BucketCorsRuleOutput struct { *pulumi.OutputState }
+type BucketCorsRuleOutput struct{ *pulumi.OutputState }
 
 func (BucketCorsRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketCorsRule)(nil)).Elem()
@@ -93,30 +93,30 @@ func (o BucketCorsRuleOutput) ToBucketCorsRuleOutputWithContext(ctx context.Cont
 
 // Specifies which headers are allowed.
 func (o BucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
 // Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
 func (o BucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
 // Specifies which origins are allowed.
 func (o BucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
 // Specifies expose header in the response.
 func (o BucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
 // Specifies time in seconds that browser can cache the response for a preflight request.
 func (o BucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
-type BucketCorsRuleArrayOutput struct { *pulumi.OutputState}
+type BucketCorsRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketCorsRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketCorsRule)(nil)).Elem()
@@ -131,7 +131,7 @@ func (o BucketCorsRuleArrayOutput) ToBucketCorsRuleArrayOutputWithContext(ctx co
 }
 
 func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketCorsRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketCorsRule {
 		return vs[0].([]BucketCorsRule)[vs[1].(int)]
 	}).(BucketCorsRuleOutput)
 }
@@ -202,7 +202,7 @@ func (i BucketLifecycleRuleArray) ToBucketLifecycleRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleArrayOutput)
 }
 
-type BucketLifecycleRuleOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRule)(nil)).Elem()
@@ -218,30 +218,30 @@ func (o BucketLifecycleRuleOutput) ToBucketLifecycleRuleOutputWithContext(ctx co
 
 // Specifies lifecycle rule status.
 func (o BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Specifies a period in the object's expire (documented below).
 func (o BucketLifecycleRuleOutput) Expirations() BucketLifecycleRuleExpirationArrayOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) []BucketLifecycleRuleExpiration { return v.Expirations }).(BucketLifecycleRuleExpirationArrayOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleExpiration { return v.Expirations }).(BucketLifecycleRuleExpirationArrayOutput)
 }
 
 // Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 func (o BucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Object key prefix identifying one or more objects to which the rule applies.
 func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) string { return v.Prefix }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 // Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
 func (o BucketLifecycleRuleOutput) Transitions() BucketLifecycleRuleTransitionArrayOutput {
-	return o.ApplyT(func (v BucketLifecycleRule) []BucketLifecycleRuleTransition { return v.Transitions }).(BucketLifecycleRuleTransitionArrayOutput)
+	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleTransition { return v.Transitions }).(BucketLifecycleRuleTransitionArrayOutput)
 }
 
-type BucketLifecycleRuleArrayOutput struct { *pulumi.OutputState}
+type BucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketLifecycleRule)(nil)).Elem()
@@ -256,7 +256,7 @@ func (o BucketLifecycleRuleArrayOutput) ToBucketLifecycleRuleArrayOutputWithCont
 }
 
 func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketLifecycleRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRule {
 		return vs[0].([]BucketLifecycleRule)[vs[1].(int)]
 	}).(BucketLifecycleRuleOutput)
 }
@@ -315,7 +315,7 @@ func (i BucketLifecycleRuleExpirationArray) ToBucketLifecycleRuleExpirationArray
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleExpirationArrayOutput)
 }
 
-type BucketLifecycleRuleExpirationOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleExpirationOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleExpirationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRuleExpiration)(nil)).Elem()
@@ -331,15 +331,15 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationOutp
 
 // Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-type BucketLifecycleRuleExpirationArrayOutput struct { *pulumi.OutputState}
+type BucketLifecycleRuleExpirationArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleExpirationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketLifecycleRuleExpiration)(nil)).Elem()
@@ -354,7 +354,7 @@ func (o BucketLifecycleRuleExpirationArrayOutput) ToBucketLifecycleRuleExpiratio
 }
 
 func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleExpirationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketLifecycleRuleExpiration {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleExpiration {
 		return vs[0].([]BucketLifecycleRuleExpiration)[vs[1].(int)]
 	}).(BucketLifecycleRuleExpirationOutput)
 }
@@ -364,7 +364,7 @@ type BucketLifecycleRuleTransition struct {
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days *int `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -380,7 +380,7 @@ type BucketLifecycleRuleTransitionArgs struct {
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 }
 
@@ -417,7 +417,7 @@ func (i BucketLifecycleRuleTransitionArray) ToBucketLifecycleRuleTransitionArray
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLifecycleRuleTransitionArrayOutput)
 }
 
-type BucketLifecycleRuleTransitionOutput struct { *pulumi.OutputState }
+type BucketLifecycleRuleTransitionOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleTransitionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLifecycleRuleTransition)(nil)).Elem()
@@ -433,20 +433,20 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 
 // Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLifecycleRuleTransition) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
-type BucketLifecycleRuleTransitionArrayOutput struct { *pulumi.OutputState}
+type BucketLifecycleRuleTransitionArrayOutput struct{ *pulumi.OutputState }
 
 func (BucketLifecycleRuleTransitionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]BucketLifecycleRuleTransition)(nil)).Elem()
@@ -461,7 +461,7 @@ func (o BucketLifecycleRuleTransitionArrayOutput) ToBucketLifecycleRuleTransitio
 }
 
 func (o BucketLifecycleRuleTransitionArrayOutput) Index(i pulumi.IntInput) BucketLifecycleRuleTransitionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) BucketLifecycleRuleTransition {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketLifecycleRuleTransition {
 		return vs[0].([]BucketLifecycleRuleTransition)[vs[1].(int)]
 	}).(BucketLifecycleRuleTransitionOutput)
 }
@@ -516,7 +516,8 @@ type BucketLoggingPtrInput interface {
 
 type bucketLoggingPtrType BucketLoggingArgs
 
-func BucketLoggingPtr(v *BucketLoggingArgs) BucketLoggingPtrInput {	return (*bucketLoggingPtrType)(v)
+func BucketLoggingPtr(v *BucketLoggingArgs) BucketLoggingPtrInput {
+	return (*bucketLoggingPtrType)(v)
 }
 
 func (*bucketLoggingPtrType) ElementType() reflect.Type {
@@ -531,7 +532,7 @@ func (i *bucketLoggingPtrType) ToBucketLoggingPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingPtrOutput)
 }
 
-type BucketLoggingOutput struct { *pulumi.OutputState }
+type BucketLoggingOutput struct{ *pulumi.OutputState }
 
 func (BucketLoggingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketLogging)(nil)).Elem()
@@ -554,17 +555,18 @@ func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Con
 		return &v
 	}).(BucketLoggingPtrOutput)
 }
+
 // The name of the bucket that will receive the log objects.
 func (o BucketLoggingOutput) TargetBucket() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
 // To specify a key prefix for log objects.
 func (o BucketLoggingOutput) TargetPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
 }
 
-type BucketLoggingPtrOutput struct { *pulumi.OutputState}
+type BucketLoggingPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketLoggingPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketLogging)(nil)).Elem()
@@ -579,17 +581,17 @@ func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.
 }
 
 func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func (v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
+	return o.ApplyT(func(v *BucketLogging) BucketLogging { return *v }).(BucketLoggingOutput)
 }
 
 // The name of the bucket that will receive the log objects.
 func (o BucketLoggingPtrOutput) TargetBucket() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
 // To specify a key prefix for log objects.
 func (o BucketLoggingPtrOutput) TargetPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
 }
 
 type BucketRefererConfig struct {
@@ -642,7 +644,8 @@ type BucketRefererConfigPtrInput interface {
 
 type bucketRefererConfigPtrType BucketRefererConfigArgs
 
-func BucketRefererConfigPtr(v *BucketRefererConfigArgs) BucketRefererConfigPtrInput {	return (*bucketRefererConfigPtrType)(v)
+func BucketRefererConfigPtr(v *BucketRefererConfigArgs) BucketRefererConfigPtrInput {
+	return (*bucketRefererConfigPtrType)(v)
 }
 
 func (*bucketRefererConfigPtrType) ElementType() reflect.Type {
@@ -657,7 +660,7 @@ func (i *bucketRefererConfigPtrType) ToBucketRefererConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BucketRefererConfigPtrOutput)
 }
 
-type BucketRefererConfigOutput struct { *pulumi.OutputState }
+type BucketRefererConfigOutput struct{ *pulumi.OutputState }
 
 func (BucketRefererConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketRefererConfig)(nil)).Elem()
@@ -680,17 +683,18 @@ func (o BucketRefererConfigOutput) ToBucketRefererConfigPtrOutputWithContext(ctx
 		return &v
 	}).(BucketRefererConfigPtrOutput)
 }
+
 // Allows referer to be empty. Defaults true.
 func (o BucketRefererConfigOutput) AllowEmpty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }
 
 // The list of referer.
 func (o BucketRefererConfigOutput) Referers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
 }
 
-type BucketRefererConfigPtrOutput struct { *pulumi.OutputState}
+type BucketRefererConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketRefererConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketRefererConfig)(nil)).Elem()
@@ -705,17 +709,17 @@ func (o BucketRefererConfigPtrOutput) ToBucketRefererConfigPtrOutputWithContext(
 }
 
 func (o BucketRefererConfigPtrOutput) Elem() BucketRefererConfigOutput {
-	return o.ApplyT(func (v *BucketRefererConfig) BucketRefererConfig { return *v }).(BucketRefererConfigOutput)
+	return o.ApplyT(func(v *BucketRefererConfig) BucketRefererConfig { return *v }).(BucketRefererConfigOutput)
 }
 
 // Allows referer to be empty. Defaults true.
 func (o BucketRefererConfigPtrOutput) AllowEmpty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }
 
 // The list of referer.
 func (o BucketRefererConfigPtrOutput) Referers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v BucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v BucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
 }
 
 type BucketServerSideEncryptionRule struct {
@@ -764,7 +768,8 @@ type BucketServerSideEncryptionRulePtrInput interface {
 
 type bucketServerSideEncryptionRulePtrType BucketServerSideEncryptionRuleArgs
 
-func BucketServerSideEncryptionRulePtr(v *BucketServerSideEncryptionRuleArgs) BucketServerSideEncryptionRulePtrInput {	return (*bucketServerSideEncryptionRulePtrType)(v)
+func BucketServerSideEncryptionRulePtr(v *BucketServerSideEncryptionRuleArgs) BucketServerSideEncryptionRulePtrInput {
+	return (*bucketServerSideEncryptionRulePtrType)(v)
 }
 
 func (*bucketServerSideEncryptionRulePtrType) ElementType() reflect.Type {
@@ -779,7 +784,7 @@ func (i *bucketServerSideEncryptionRulePtrType) ToBucketServerSideEncryptionRule
 	return pulumi.ToOutputWithContext(ctx, i).(BucketServerSideEncryptionRulePtrOutput)
 }
 
-type BucketServerSideEncryptionRuleOutput struct { *pulumi.OutputState }
+type BucketServerSideEncryptionRuleOutput struct{ *pulumi.OutputState }
 
 func (BucketServerSideEncryptionRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketServerSideEncryptionRule)(nil)).Elem()
@@ -802,12 +807,13 @@ func (o BucketServerSideEncryptionRuleOutput) ToBucketServerSideEncryptionRulePt
 		return &v
 	}).(BucketServerSideEncryptionRulePtrOutput)
 }
+
 // The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 func (o BucketServerSideEncryptionRuleOutput) SseAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
 }
 
-type BucketServerSideEncryptionRulePtrOutput struct { *pulumi.OutputState}
+type BucketServerSideEncryptionRulePtrOutput struct{ *pulumi.OutputState }
 
 func (BucketServerSideEncryptionRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketServerSideEncryptionRule)(nil)).Elem()
@@ -822,12 +828,12 @@ func (o BucketServerSideEncryptionRulePtrOutput) ToBucketServerSideEncryptionRul
 }
 
 func (o BucketServerSideEncryptionRulePtrOutput) Elem() BucketServerSideEncryptionRuleOutput {
-	return o.ApplyT(func (v *BucketServerSideEncryptionRule) BucketServerSideEncryptionRule { return *v }).(BucketServerSideEncryptionRuleOutput)
+	return o.ApplyT(func(v *BucketServerSideEncryptionRule) BucketServerSideEncryptionRule { return *v }).(BucketServerSideEncryptionRuleOutput)
 }
 
 // The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
 }
 
 type BucketVersioning struct {
@@ -876,7 +882,8 @@ type BucketVersioningPtrInput interface {
 
 type bucketVersioningPtrType BucketVersioningArgs
 
-func BucketVersioningPtr(v *BucketVersioningArgs) BucketVersioningPtrInput {	return (*bucketVersioningPtrType)(v)
+func BucketVersioningPtr(v *BucketVersioningArgs) BucketVersioningPtrInput {
+	return (*bucketVersioningPtrType)(v)
 }
 
 func (*bucketVersioningPtrType) ElementType() reflect.Type {
@@ -891,7 +898,7 @@ func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningPtrOutput)
 }
 
-type BucketVersioningOutput struct { *pulumi.OutputState }
+type BucketVersioningOutput struct{ *pulumi.OutputState }
 
 func (BucketVersioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketVersioning)(nil)).Elem()
@@ -914,12 +921,13 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 		return &v
 	}).(BucketVersioningPtrOutput)
 }
+
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
 func (o BucketVersioningOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type BucketVersioningPtrOutput struct { *pulumi.OutputState}
+type BucketVersioningPtrOutput struct{ *pulumi.OutputState }
 
 func (BucketVersioningPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketVersioning)(nil)).Elem()
@@ -934,12 +942,12 @@ func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx co
 }
 
 func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func (v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
+	return o.ApplyT(func(v *BucketVersioning) BucketVersioning { return *v }).(BucketVersioningOutput)
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
 func (o BucketVersioningPtrOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type BucketWebsite struct {
@@ -992,7 +1000,8 @@ type BucketWebsitePtrInput interface {
 
 type bucketWebsitePtrType BucketWebsiteArgs
 
-func BucketWebsitePtr(v *BucketWebsiteArgs) BucketWebsitePtrInput {	return (*bucketWebsitePtrType)(v)
+func BucketWebsitePtr(v *BucketWebsiteArgs) BucketWebsitePtrInput {
+	return (*bucketWebsitePtrType)(v)
 }
 
 func (*bucketWebsitePtrType) ElementType() reflect.Type {
@@ -1007,7 +1016,7 @@ func (i *bucketWebsitePtrType) ToBucketWebsitePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BucketWebsitePtrOutput)
 }
 
-type BucketWebsiteOutput struct { *pulumi.OutputState }
+type BucketWebsiteOutput struct{ *pulumi.OutputState }
 
 func (BucketWebsiteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*BucketWebsite)(nil)).Elem()
@@ -1030,17 +1039,18 @@ func (o BucketWebsiteOutput) ToBucketWebsitePtrOutputWithContext(ctx context.Con
 		return &v
 	}).(BucketWebsitePtrOutput)
 }
+
 // An absolute path to the document to return in case of a 4XX error.
 func (o BucketWebsiteOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
 // Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
 func (o BucketWebsiteOutput) IndexDocument() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
 }
 
-type BucketWebsitePtrOutput struct { *pulumi.OutputState}
+type BucketWebsitePtrOutput struct{ *pulumi.OutputState }
 
 func (BucketWebsitePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**BucketWebsite)(nil)).Elem()
@@ -1055,17 +1065,17 @@ func (o BucketWebsitePtrOutput) ToBucketWebsitePtrOutputWithContext(ctx context.
 }
 
 func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
-	return o.ApplyT(func (v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
+	return o.ApplyT(func(v *BucketWebsite) BucketWebsite { return *v }).(BucketWebsiteOutput)
 }
 
 // An absolute path to the document to return in case of a 4XX error.
 func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
 }
 
 // Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
 func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringOutput {
-	return o.ApplyT(func (v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
+	return o.ApplyT(func(v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
 }
 
 type GetBucketObjectsObject struct {
@@ -1170,7 +1180,7 @@ func (i GetBucketObjectsObjectArray) ToGetBucketObjectsObjectArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectsObjectArrayOutput)
 }
 
-type GetBucketObjectsObjectOutput struct { *pulumi.OutputState }
+type GetBucketObjectsObjectOutput struct{ *pulumi.OutputState }
 
 func (GetBucketObjectsObjectOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketObjectsObject)(nil)).Elem()
@@ -1186,75 +1196,75 @@ func (o GetBucketObjectsObjectOutput) ToGetBucketObjectsObjectOutputWithContext(
 
 // Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
 func (o GetBucketObjectsObjectOutput) Acl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.Acl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.Acl }).(pulumi.StringOutput)
 }
 
 // Caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 func (o GetBucketObjectsObjectOutput) CacheControl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.CacheControl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.CacheControl }).(pulumi.StringOutput)
 }
 
 // Presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 func (o GetBucketObjectsObjectOutput) ContentDisposition() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ContentDisposition }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ContentDisposition }).(pulumi.StringOutput)
 }
 
 // Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 func (o GetBucketObjectsObjectOutput) ContentEncoding() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ContentEncoding }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ContentEncoding }).(pulumi.StringOutput)
 }
 
 // Size of the object in bytes.
 func (o GetBucketObjectsObjectOutput) ContentLength() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ContentLength }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ContentLength }).(pulumi.StringOutput)
 }
 
 // MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
 func (o GetBucketObjectsObjectOutput) ContentMd5() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ContentMd5 }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ContentMd5 }).(pulumi.StringOutput)
 }
 
 // Standard MIME type describing the format of the object data, e.g. "application/octet-stream".
 func (o GetBucketObjectsObjectOutput) ContentType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ContentType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
 // ETag generated for the object (MD5 sum of the object content).
 func (o GetBucketObjectsObjectOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.Etag }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Expiration date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
 func (o GetBucketObjectsObjectOutput) Expires() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.Expires }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.Expires }).(pulumi.StringOutput)
 }
 
 // Object key.
 func (o GetBucketObjectsObjectOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.Key }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Last modification time of the object.
 func (o GetBucketObjectsObjectOutput) LastModificationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.LastModificationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
 // Server-side encryption of the object in OSS. It can be empty or `AES256`.
 func (o GetBucketObjectsObjectOutput) ServerSideEncryption() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.ServerSideEncryption }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.ServerSideEncryption }).(pulumi.StringOutput)
 }
 
 // If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
 func (o GetBucketObjectsObjectOutput) SseKmsKeyId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.SseKmsKeyId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.SseKmsKeyId }).(pulumi.StringOutput)
 }
 
 // Object storage type. Possible values: `Standard`, `IA` and `Archive`.
 func (o GetBucketObjectsObjectOutput) StorageClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketObjectsObject) string { return v.StorageClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketObjectsObject) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
-type GetBucketObjectsObjectArrayOutput struct { *pulumi.OutputState}
+type GetBucketObjectsObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBucketObjectsObjectArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBucketObjectsObject)(nil)).Elem()
@@ -1269,7 +1279,7 @@ func (o GetBucketObjectsObjectArrayOutput) ToGetBucketObjectsObjectArrayOutputWi
 }
 
 func (o GetBucketObjectsObjectArrayOutput) Index(i pulumi.IntInput) GetBucketObjectsObjectOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBucketObjectsObject {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectsObject {
 		return vs[0].([]GetBucketObjectsObject)[vs[1].(int)]
 	}).(GetBucketObjectsObjectOutput)
 }
@@ -1294,7 +1304,7 @@ type GetBucketsBucket struct {
 	// Bucket name.
 	Name string `pulumi:"name"`
 	// Bucket owner.
-	Owner string `pulumi:"owner"`
+	Owner  string  `pulumi:"owner"`
 	Policy *string `pulumi:"policy"`
 	// A list of one element containing referer configuration. It contains the following attributes:
 	RefererConfig GetBucketsBucketRefererConfig `pulumi:"refererConfig"`
@@ -1337,7 +1347,7 @@ type GetBucketsBucketArgs struct {
 	// Bucket name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Bucket owner.
-	Owner pulumi.StringInput `pulumi:"owner"`
+	Owner  pulumi.StringInput    `pulumi:"owner"`
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 	// A list of one element containing referer configuration. It contains the following attributes:
 	RefererConfig GetBucketsBucketRefererConfigInput `pulumi:"refererConfig"`
@@ -1386,7 +1396,7 @@ func (i GetBucketsBucketArray) ToGetBucketsBucketArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketArrayOutput)
 }
 
-type GetBucketsBucketOutput struct { *pulumi.OutputState }
+type GetBucketsBucketOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucket)(nil)).Elem()
@@ -1402,89 +1412,89 @@ func (o GetBucketsBucketOutput) ToGetBucketsBucketOutputWithContext(ctx context.
 
 // Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
 func (o GetBucketsBucketOutput) Acl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.Acl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Acl }).(pulumi.StringOutput)
 }
 
 // A list of CORS rule configurations. Each element contains the following attributes:
 func (o GetBucketsBucketOutput) CorsRules() GetBucketsBucketCorsRuleArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucket) []GetBucketsBucketCorsRule { return v.CorsRules }).(GetBucketsBucketCorsRuleArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucket) []GetBucketsBucketCorsRule { return v.CorsRules }).(GetBucketsBucketCorsRuleArrayOutput)
 }
 
 // Bucket creation date.
 func (o GetBucketsBucketOutput) CreationDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.CreationDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.CreationDate }).(pulumi.StringOutput)
 }
 
 // Internet domain name for accessing the bucket from outside.
 func (o GetBucketsBucketOutput) ExtranetEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.ExtranetEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.ExtranetEndpoint }).(pulumi.StringOutput)
 }
 
 // Intranet domain name for accessing the bucket from an ECS instance in the same region.
 func (o GetBucketsBucketOutput) IntranetEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.IntranetEndpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.IntranetEndpoint }).(pulumi.StringOutput)
 }
 
 // A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
 func (o GetBucketsBucketOutput) LifecycleRules() GetBucketsBucketLifecycleRuleArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucket) []GetBucketsBucketLifecycleRule { return v.LifecycleRules }).(GetBucketsBucketLifecycleRuleArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucket) []GetBucketsBucketLifecycleRule { return v.LifecycleRules }).(GetBucketsBucketLifecycleRuleArrayOutput)
 }
 
 // Region of the data center where the bucket is located.
 func (o GetBucketsBucketOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.Location }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // A list of one element containing configuration parameters used for storing access log information. It contains the following attributes:
 func (o GetBucketsBucketOutput) Logging() GetBucketsBucketLoggingOutput {
-	return o.ApplyT(func (v GetBucketsBucket) GetBucketsBucketLogging { return v.Logging }).(GetBucketsBucketLoggingOutput)
+	return o.ApplyT(func(v GetBucketsBucket) GetBucketsBucketLogging { return v.Logging }).(GetBucketsBucketLoggingOutput)
 }
 
 // Bucket name.
 func (o GetBucketsBucketOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Bucket owner.
 func (o GetBucketsBucketOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.Owner }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 func (o GetBucketsBucketOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetBucketsBucket) *string { return v.Policy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetBucketsBucket) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
 // A list of one element containing referer configuration. It contains the following attributes:
 func (o GetBucketsBucketOutput) RefererConfig() GetBucketsBucketRefererConfigOutput {
-	return o.ApplyT(func (v GetBucketsBucket) GetBucketsBucketRefererConfig { return v.RefererConfig }).(GetBucketsBucketRefererConfigOutput)
+	return o.ApplyT(func(v GetBucketsBucket) GetBucketsBucketRefererConfig { return v.RefererConfig }).(GetBucketsBucketRefererConfigOutput)
 }
 
 // A configuration of default encryption for a bucket. It contains the following attributes:
 func (o GetBucketsBucketOutput) ServerSideEncryptionRule() GetBucketsBucketServerSideEncryptionRuleOutput {
-	return o.ApplyT(func (v GetBucketsBucket) GetBucketsBucketServerSideEncryptionRule { return v.ServerSideEncryptionRule }).(GetBucketsBucketServerSideEncryptionRuleOutput)
+	return o.ApplyT(func(v GetBucketsBucket) GetBucketsBucketServerSideEncryptionRule { return v.ServerSideEncryptionRule }).(GetBucketsBucketServerSideEncryptionRuleOutput)
 }
 
 // Object storage type. Possible values: `Standard`, `IA` and `Archive`.
 func (o GetBucketsBucketOutput) StorageClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucket) string { return v.StorageClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
 // A mapping of tags.
 func (o GetBucketsBucketOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetBucketsBucket) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetBucketsBucket) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // If present , the versioning state has been set on the bucket. It contains the following attribute.
 func (o GetBucketsBucketOutput) Versioning() GetBucketsBucketVersioningOutput {
-	return o.ApplyT(func (v GetBucketsBucket) GetBucketsBucketVersioning { return v.Versioning }).(GetBucketsBucketVersioningOutput)
+	return o.ApplyT(func(v GetBucketsBucket) GetBucketsBucketVersioning { return v.Versioning }).(GetBucketsBucketVersioningOutput)
 }
 
 // A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
 func (o GetBucketsBucketOutput) Website() GetBucketsBucketWebsiteOutput {
-	return o.ApplyT(func (v GetBucketsBucket) GetBucketsBucketWebsite { return v.Website }).(GetBucketsBucketWebsiteOutput)
+	return o.ApplyT(func(v GetBucketsBucket) GetBucketsBucketWebsite { return v.Website }).(GetBucketsBucketWebsiteOutput)
 }
 
-type GetBucketsBucketArrayOutput struct { *pulumi.OutputState}
+type GetBucketsBucketArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBucketsBucket)(nil)).Elem()
@@ -1499,7 +1509,7 @@ func (o GetBucketsBucketArrayOutput) ToGetBucketsBucketArrayOutputWithContext(ct
 }
 
 func (o GetBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBucketsBucket {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketsBucket {
 		return vs[0].([]GetBucketsBucket)[vs[1].(int)]
 	}).(GetBucketsBucketOutput)
 }
@@ -1570,7 +1580,7 @@ func (i GetBucketsBucketCorsRuleArray) ToGetBucketsBucketCorsRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketCorsRuleArrayOutput)
 }
 
-type GetBucketsBucketCorsRuleOutput struct { *pulumi.OutputState }
+type GetBucketsBucketCorsRuleOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketCorsRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketCorsRule)(nil)).Elem()
@@ -1586,30 +1596,30 @@ func (o GetBucketsBucketCorsRuleOutput) ToGetBucketsBucketCorsRuleOutputWithCont
 
 // Control whether the headers specified by Access-Control-Request-Headers in the OPTIONS prefetch command are allowed. Each header specified by Access-Control-Request-Headers must match a value in AllowedHeader. Each rule allows up to one wildcard “*” .
 func (o GetBucketsBucketCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucketCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
 }
 
 // Specify the allowed methods for cross-domain requests. Possible values: `GET`, `PUT`, `DELETE`, `POST` and `HEAD`.
 func (o GetBucketsBucketCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucketCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
 }
 
 // The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard "\*". If "\*" is specified, cross-domain requests of all origins are allowed.
 func (o GetBucketsBucketCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucketCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
 // Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard "\*" is not allowed.
 func (o GetBucketsBucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
 // Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
 func (o GetBucketsBucketCorsRuleOutput) MaxAgeSeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetBucketsBucketCorsRule) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetBucketsBucketCorsRule) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
 }
 
-type GetBucketsBucketCorsRuleArrayOutput struct { *pulumi.OutputState}
+type GetBucketsBucketCorsRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketCorsRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBucketsBucketCorsRule)(nil)).Elem()
@@ -1624,7 +1634,7 @@ func (o GetBucketsBucketCorsRuleArrayOutput) ToGetBucketsBucketCorsRuleArrayOutp
 }
 
 func (o GetBucketsBucketCorsRuleArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketCorsRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBucketsBucketCorsRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketsBucketCorsRule {
 		return vs[0].([]GetBucketsBucketCorsRule)[vs[1].(int)]
 	}).(GetBucketsBucketCorsRuleOutput)
 }
@@ -1691,7 +1701,7 @@ func (i GetBucketsBucketLifecycleRuleArray) ToGetBucketsBucketLifecycleRuleArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketLifecycleRuleArrayOutput)
 }
 
-type GetBucketsBucketLifecycleRuleOutput struct { *pulumi.OutputState }
+type GetBucketsBucketLifecycleRuleOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketLifecycleRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketLifecycleRule)(nil)).Elem()
@@ -1707,25 +1717,25 @@ func (o GetBucketsBucketLifecycleRuleOutput) ToGetBucketsBucketLifecycleRuleOutp
 
 // Indicate whether the rule is enabled or not.
 func (o GetBucketsBucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // A list of one element containing expiration attributes of an object. It contains the following attributes:
 func (o GetBucketsBucketLifecycleRuleOutput) Expiration() GetBucketsBucketLifecycleRuleExpirationOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRule) GetBucketsBucketLifecycleRuleExpiration { return v.Expiration }).(GetBucketsBucketLifecycleRuleExpirationOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRule) GetBucketsBucketLifecycleRuleExpiration { return v.Expiration }).(GetBucketsBucketLifecycleRuleExpirationOutput)
 }
 
 // Unique ID of the rule.
 func (o GetBucketsBucketLifecycleRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Prefix applicable to a rule. Only those objects with a matching prefix can be affected by the rule.
 func (o GetBucketsBucketLifecycleRuleOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRule) string { return v.Prefix }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRule) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-type GetBucketsBucketLifecycleRuleArrayOutput struct { *pulumi.OutputState}
+type GetBucketsBucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBucketsBucketLifecycleRule)(nil)).Elem()
@@ -1740,7 +1750,7 @@ func (o GetBucketsBucketLifecycleRuleArrayOutput) ToGetBucketsBucketLifecycleRul
 }
 
 func (o GetBucketsBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketLifecycleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBucketsBucketLifecycleRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketsBucketLifecycleRule {
 		return vs[0].([]GetBucketsBucketLifecycleRule)[vs[1].(int)]
 	}).(GetBucketsBucketLifecycleRuleOutput)
 }
@@ -1778,7 +1788,7 @@ func (i GetBucketsBucketLifecycleRuleExpirationArgs) ToGetBucketsBucketLifecycle
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketLifecycleRuleExpirationOutput)
 }
 
-type GetBucketsBucketLifecycleRuleExpirationOutput struct { *pulumi.OutputState }
+type GetBucketsBucketLifecycleRuleExpirationOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketLifecycleRuleExpirationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketLifecycleRuleExpiration)(nil)).Elem()
@@ -1794,12 +1804,12 @@ func (o GetBucketsBucketLifecycleRuleExpirationOutput) ToGetBucketsBucketLifecyc
 
 // Date after which the rule to take effect. The format is like 2017-03-09.
 func (o GetBucketsBucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
 // Indicate the number of days after the last object update until the rules take effect.
 func (o GetBucketsBucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetBucketsBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetBucketsBucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
 type GetBucketsBucketLogging struct {
@@ -1835,7 +1845,7 @@ func (i GetBucketsBucketLoggingArgs) ToGetBucketsBucketLoggingOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketLoggingOutput)
 }
 
-type GetBucketsBucketLoggingOutput struct { *pulumi.OutputState }
+type GetBucketsBucketLoggingOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketLoggingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketLogging)(nil)).Elem()
@@ -1851,12 +1861,12 @@ func (o GetBucketsBucketLoggingOutput) ToGetBucketsBucketLoggingOutputWithContex
 
 // Bucket for storing access logs.
 func (o GetBucketsBucketLoggingOutput) TargetBucket() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
 // Prefix of the saved access log file paths.
 func (o GetBucketsBucketLoggingOutput) TargetPrefix() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketLogging) string { return v.TargetPrefix }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketLogging) string { return v.TargetPrefix }).(pulumi.StringOutput)
 }
 
 type GetBucketsBucketRefererConfig struct {
@@ -1892,7 +1902,7 @@ func (i GetBucketsBucketRefererConfigArgs) ToGetBucketsBucketRefererConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketRefererConfigOutput)
 }
 
-type GetBucketsBucketRefererConfigOutput struct { *pulumi.OutputState }
+type GetBucketsBucketRefererConfigOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketRefererConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketRefererConfig)(nil)).Elem()
@@ -1908,12 +1918,12 @@ func (o GetBucketsBucketRefererConfigOutput) ToGetBucketsBucketRefererConfigOutp
 
 // Indicate whether the access request referer field can be empty.
 func (o GetBucketsBucketRefererConfigOutput) AllowEmpty() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetBucketsBucketRefererConfig) bool { return v.AllowEmpty }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetBucketsBucketRefererConfig) bool { return v.AllowEmpty }).(pulumi.BoolOutput)
 }
 
 // Referer access whitelist.
 func (o GetBucketsBucketRefererConfigOutput) Referers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetBucketsBucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetBucketsBucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
 }
 
 type GetBucketsBucketServerSideEncryptionRule struct {
@@ -1945,7 +1955,7 @@ func (i GetBucketsBucketServerSideEncryptionRuleArgs) ToGetBucketsBucketServerSi
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketServerSideEncryptionRuleOutput)
 }
 
-type GetBucketsBucketServerSideEncryptionRuleOutput struct { *pulumi.OutputState }
+type GetBucketsBucketServerSideEncryptionRuleOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketServerSideEncryptionRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketServerSideEncryptionRule)(nil)).Elem()
@@ -1961,7 +1971,7 @@ func (o GetBucketsBucketServerSideEncryptionRuleOutput) ToGetBucketsBucketServer
 
 // The server-side encryption algorithm to use.
 func (o GetBucketsBucketServerSideEncryptionRuleOutput) SseAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
 }
 
 type GetBucketsBucketVersioning struct {
@@ -1993,7 +2003,7 @@ func (i GetBucketsBucketVersioningArgs) ToGetBucketsBucketVersioningOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketVersioningOutput)
 }
 
-type GetBucketsBucketVersioningOutput struct { *pulumi.OutputState }
+type GetBucketsBucketVersioningOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketVersioningOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketVersioning)(nil)).Elem()
@@ -2009,7 +2019,7 @@ func (o GetBucketsBucketVersioningOutput) ToGetBucketsBucketVersioningOutputWith
 
 // A bucket versioning state. Possible values:`Enabled` and `Suspended`.
 func (o GetBucketsBucketVersioningOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketVersioning) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type GetBucketsBucketWebsite struct {
@@ -2045,7 +2055,7 @@ func (i GetBucketsBucketWebsiteArgs) ToGetBucketsBucketWebsiteOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetBucketsBucketWebsiteOutput)
 }
 
-type GetBucketsBucketWebsiteOutput struct { *pulumi.OutputState }
+type GetBucketsBucketWebsiteOutput struct{ *pulumi.OutputState }
 
 func (GetBucketsBucketWebsiteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBucketsBucketWebsite)(nil)).Elem()
@@ -2061,12 +2071,12 @@ func (o GetBucketsBucketWebsiteOutput) ToGetBucketsBucketWebsiteOutputWithContex
 
 // Key of the HTML document containing the error page.
 func (o GetBucketsBucketWebsiteOutput) ErrorDocument() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketWebsite) string { return v.ErrorDocument }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketWebsite) string { return v.ErrorDocument }).(pulumi.StringOutput)
 }
 
 // Key of the HTML document containing the home page.
 func (o GetBucketsBucketWebsiteOutput) IndexDocument() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBucketsBucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBucketsBucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
 }
 
 type GetInstanceAttachmentsAttachment struct {
@@ -2143,7 +2153,7 @@ func (i GetInstanceAttachmentsAttachmentArray) ToGetInstanceAttachmentsAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAttachmentsAttachmentArrayOutput)
 }
 
-type GetInstanceAttachmentsAttachmentOutput struct { *pulumi.OutputState }
+type GetInstanceAttachmentsAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceAttachmentsAttachmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceAttachmentsAttachment)(nil)).Elem()
@@ -2159,40 +2169,40 @@ func (o GetInstanceAttachmentsAttachmentOutput) ToGetInstanceAttachmentsAttachme
 
 // The domain of the instance attachment.
 func (o GetInstanceAttachmentsAttachmentOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.Domain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Domain }).(pulumi.StringOutput)
 }
 
 // The access endpoint of the instance attachment.
 func (o GetInstanceAttachmentsAttachmentOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.Endpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 // The resource ID, the value is same as "instanceName".
 func (o GetInstanceAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of OTS instance.
 func (o GetInstanceAttachmentsAttachmentOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.InstanceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // The region of the instance attachment.
 func (o GetInstanceAttachmentsAttachmentOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.Region }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The ID of attaching VPC to instance.
 func (o GetInstanceAttachmentsAttachmentOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The name of attaching VPC to instance.
 func (o GetInstanceAttachmentsAttachmentOutput) VpcName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceAttachmentsAttachment) string { return v.VpcName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceAttachmentsAttachment) string { return v.VpcName }).(pulumi.StringOutput)
 }
 
-type GetInstanceAttachmentsAttachmentArrayOutput struct { *pulumi.OutputState}
+type GetInstanceAttachmentsAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceAttachmentsAttachmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceAttachmentsAttachment)(nil)).Elem()
@@ -2207,7 +2217,7 @@ func (o GetInstanceAttachmentsAttachmentArrayOutput) ToGetInstanceAttachmentsAtt
 }
 
 func (o GetInstanceAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetInstanceAttachmentsAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceAttachmentsAttachment {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAttachmentsAttachment {
 		return vs[0].([]GetInstanceAttachmentsAttachment)[vs[1].(int)]
 	}).(GetInstanceAttachmentsAttachmentOutput)
 }
@@ -2322,7 +2332,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -2338,47 +2348,47 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
 func (o GetInstancesInstanceOutput) ClusterType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ClusterType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
 // The create time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The instance quota which indicating the maximum number of tables.
 func (o GetInstancesInstanceOutput) EntityQuota() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.EntityQuota }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.EntityQuota }).(pulumi.IntOutput)
 }
 
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Instance name.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
 func (o GetInstancesInstanceOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Network }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Network }).(pulumi.StringOutput)
 }
 
 // The maximum adjustable read capacity unit of the instance.
 func (o GetInstancesInstanceOutput) ReadCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.ReadCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.ReadCapacity }).(pulumi.IntOutput)
 }
 
 // Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the instance. It must be in the format:
@@ -2391,20 +2401,20 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 // }
 // ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The user id of the instance.
 func (o GetInstancesInstanceOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.UserId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserId }).(pulumi.StringOutput)
 }
 
 // The maximum adjustable write capacity unit of the instance.
 func (o GetInstancesInstanceOutput) WriteCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.WriteCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.WriteCapacity }).(pulumi.IntOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -2419,7 +2429,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -2494,7 +2504,7 @@ func (i GetTablesTableArray) ToGetTablesTableArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableArrayOutput)
 }
 
-type GetTablesTableOutput struct { *pulumi.OutputState }
+type GetTablesTableOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
@@ -2510,35 +2520,35 @@ func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Cont
 
 // ID of the table. The value is `<instance_name>:<table_name>`.
 func (o GetTablesTableOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTablesTable) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of OTS instance.
 func (o GetTablesTableOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTablesTable) string { return v.InstanceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTablesTable) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // The maximum number of versions stored in this table.
 func (o GetTablesTableOutput) MaxVersion() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTablesTable) int { return v.MaxVersion }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTablesTable) int { return v.MaxVersion }).(pulumi.IntOutput)
 }
 
 // The property of `TableMeta` which indicates the structure information of a table.
 func (o GetTablesTableOutput) PrimaryKeys() GetTablesTablePrimaryKeyArrayOutput {
-	return o.ApplyT(func (v GetTablesTable) []GetTablesTablePrimaryKey { return v.PrimaryKeys }).(GetTablesTablePrimaryKeyArrayOutput)
+	return o.ApplyT(func(v GetTablesTable) []GetTablesTablePrimaryKey { return v.PrimaryKeys }).(GetTablesTablePrimaryKeyArrayOutput)
 }
 
 // The table name of the OTS which could not be changed.
 func (o GetTablesTableOutput) TableName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTablesTable) string { return v.TableName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTablesTable) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 // The retention time of data stored in this table.
 func (o GetTablesTableOutput) TimeToLive() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTablesTable) int { return v.TimeToLive }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTablesTable) int { return v.TimeToLive }).(pulumi.IntOutput)
 }
 
-type GetTablesTableArrayOutput struct { *pulumi.OutputState}
+type GetTablesTableArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTableArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
@@ -2553,7 +2563,7 @@ func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutputWithContext(ctx co
 }
 
 func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTablesTable {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
 		return vs[0].([]GetTablesTable)[vs[1].(int)]
 	}).(GetTablesTableOutput)
 }
@@ -2608,7 +2618,7 @@ func (i GetTablesTablePrimaryKeyArray) ToGetTablesTablePrimaryKeyArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTablePrimaryKeyArrayOutput)
 }
 
-type GetTablesTablePrimaryKeyOutput struct { *pulumi.OutputState }
+type GetTablesTablePrimaryKeyOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTablePrimaryKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTablesTablePrimaryKey)(nil)).Elem()
@@ -2623,14 +2633,14 @@ func (o GetTablesTablePrimaryKeyOutput) ToGetTablesTablePrimaryKeyOutputWithCont
 }
 
 func (o GetTablesTablePrimaryKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTablesTablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetTablesTablePrimaryKeyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTablesTablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTablesTablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetTablesTablePrimaryKeyArrayOutput struct { *pulumi.OutputState}
+type GetTablesTablePrimaryKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTablesTablePrimaryKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTablesTablePrimaryKey)(nil)).Elem()
@@ -2645,7 +2655,7 @@ func (o GetTablesTablePrimaryKeyArrayOutput) ToGetTablesTablePrimaryKeyArrayOutp
 }
 
 func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesTablePrimaryKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTablesTablePrimaryKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTablePrimaryKey {
 		return vs[0].([]GetTablesTablePrimaryKey)[vs[1].(int)]
 	}).(GetTablesTablePrimaryKeyOutput)
 }

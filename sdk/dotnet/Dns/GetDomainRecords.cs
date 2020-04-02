@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Dns
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetDomainRecords.InvokeAsync() instead")]
         public static Task<GetDomainRecordsResult> GetDomainRecords(GetDomainRecordsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomainRecords
+    {
+        public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

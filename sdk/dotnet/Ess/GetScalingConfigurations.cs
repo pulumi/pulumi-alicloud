@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
         /// </summary>
+        [Obsolete("Use GetScalingConfigurations.InvokeAsync() instead")]
         public static Task<GetScalingConfigurationsResult> GetScalingConfigurations(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetScalingConfigurations
+    {
+        /// <summary>
+        /// This data source provides available scaling configuration resources. 
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
+        /// </summary>
+        public static Task<GetScalingConfigurationsResult> InvokeAsync(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

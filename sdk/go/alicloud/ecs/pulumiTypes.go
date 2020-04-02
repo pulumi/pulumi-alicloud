@@ -73,7 +73,7 @@ func (i ImageDiskDeviceMappingArray) ToImageDiskDeviceMappingArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ImageDiskDeviceMappingArrayOutput)
 }
 
-type ImageDiskDeviceMappingOutput struct { *pulumi.OutputState }
+type ImageDiskDeviceMappingOutput struct{ *pulumi.OutputState }
 
 func (ImageDiskDeviceMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageDiskDeviceMapping)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o ImageDiskDeviceMappingOutput) ToImageDiskDeviceMappingOutputWithContext(
 
 // Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
 func (o ImageDiskDeviceMappingOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
 func (o ImageDiskDeviceMappingOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageDiskDeviceMapping) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
 func (o ImageDiskDeviceMappingOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ImageDiskDeviceMapping) *int { return v.Size }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 // Specifies a snapshot that is used to create a combined custom image.
 func (o ImageDiskDeviceMappingOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageDiskDeviceMapping) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-type ImageDiskDeviceMappingArrayOutput struct { *pulumi.OutputState}
+type ImageDiskDeviceMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageDiskDeviceMappingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ImageDiskDeviceMapping)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o ImageDiskDeviceMappingArrayOutput) ToImageDiskDeviceMappingArrayOutputWi
 }
 
 func (o ImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageDiskDeviceMappingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ImageDiskDeviceMapping {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDiskDeviceMapping {
 		return vs[0].([]ImageDiskDeviceMapping)[vs[1].(int)]
 	}).(ImageDiskDeviceMappingOutput)
 }
@@ -191,7 +191,7 @@ func (i ImageImportDiskDeviceMappingArray) ToImageImportDiskDeviceMappingArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageImportDiskDeviceMappingArrayOutput)
 }
 
-type ImageImportDiskDeviceMappingOutput struct { *pulumi.OutputState }
+type ImageImportDiskDeviceMappingOutput struct{ *pulumi.OutputState }
 
 func (ImageImportDiskDeviceMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageImportDiskDeviceMapping)(nil)).Elem()
@@ -207,29 +207,29 @@ func (o ImageImportDiskDeviceMappingOutput) ToImageImportDiskDeviceMappingOutput
 
 // Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
 func (o ImageImportDiskDeviceMappingOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageImportDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
 func (o ImageImportDiskDeviceMappingOutput) DiskImageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ImageImportDiskDeviceMapping) *int { return v.DiskImageSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *int { return v.DiskImageSize }).(pulumi.IntPtrOutput)
 }
 
 // Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
 func (o ImageImportDiskDeviceMappingOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageImportDiskDeviceMapping) *string { return v.Format }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
 // Save the exported OSS bucket.
 func (o ImageImportDiskDeviceMappingOutput) OssBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageImportDiskDeviceMapping) *string { return v.OssBucket }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssBucket }).(pulumi.StringPtrOutput)
 }
 
 func (o ImageImportDiskDeviceMappingOutput) OssObject() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ImageImportDiskDeviceMapping) *string { return v.OssObject }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssObject }).(pulumi.StringPtrOutput)
 }
 
-type ImageImportDiskDeviceMappingArrayOutput struct { *pulumi.OutputState}
+type ImageImportDiskDeviceMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageImportDiskDeviceMappingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ImageImportDiskDeviceMapping)(nil)).Elem()
@@ -244,7 +244,7 @@ func (o ImageImportDiskDeviceMappingArrayOutput) ToImageImportDiskDeviceMappingA
 }
 
 func (o ImageImportDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageImportDiskDeviceMappingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ImageImportDiskDeviceMapping {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageImportDiskDeviceMapping {
 		return vs[0].([]ImageImportDiskDeviceMapping)[vs[1].(int)]
 	}).(ImageImportDiskDeviceMappingOutput)
 }
@@ -265,7 +265,7 @@ type InstanceDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Encrypted *bool `pulumi:"encrypted"`
+	Encrypted   *bool   `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The size of the data disk.
@@ -302,7 +302,7 @@ type InstanceDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	Encrypted   pulumi.BoolPtrInput   `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The size of the data disk.
@@ -349,7 +349,7 @@ func (i InstanceDataDiskArray) ToInstanceDataDiskArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataDiskArrayOutput)
 }
 
-type InstanceDataDiskOutput struct { *pulumi.OutputState }
+type InstanceDataDiskOutput struct{ *pulumi.OutputState }
 
 func (InstanceDataDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*InstanceDataDisk)(nil)).Elem()
@@ -365,7 +365,7 @@ func (o InstanceDataDiskOutput) ToInstanceDataDiskOutputWithContext(ctx context.
 
 // The ID of the automatic snapshot policy applied to the system disk.
 func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // The category of the disk:
@@ -377,26 +377,26 @@ func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 // Default to `cloudEfficiency`.
 // * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 func (o InstanceDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
 // The description of the data disk.
 func (o InstanceDataDiskOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the data disk.
 func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The size of the data disk.
@@ -406,15 +406,15 @@ func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
 // - cloud_essd：[20, 32768]
 // - ephemeral_ssd: [5, 800]
 func (o InstanceDataDiskOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func (v InstanceDataDisk) int { return v.Size }).(pulumi.IntOutput)
+	return o.ApplyT(func(v InstanceDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
 // The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 func (o InstanceDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v InstanceDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-type InstanceDataDiskArrayOutput struct { *pulumi.OutputState}
+type InstanceDataDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceDataDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]InstanceDataDisk)(nil)).Elem()
@@ -429,7 +429,7 @@ func (o InstanceDataDiskArrayOutput) ToInstanceDataDiskArrayOutputWithContext(ct
 }
 
 func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) InstanceDataDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceDataDisk {
 		return vs[0].([]InstanceDataDisk)[vs[1].(int)]
 	}).(InstanceDataDiskOutput)
 }
@@ -446,7 +446,7 @@ type LaunchTemplateDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Encrypted *bool `pulumi:"encrypted"`
+	Encrypted   *bool   `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The size of the data disk.
@@ -479,7 +479,7 @@ type LaunchTemplateDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	Encrypted   pulumi.BoolPtrInput   `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The size of the data disk.
@@ -526,7 +526,7 @@ func (i LaunchTemplateDataDiskArray) ToLaunchTemplateDataDiskArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateDataDiskArrayOutput)
 }
 
-type LaunchTemplateDataDiskOutput struct { *pulumi.OutputState }
+type LaunchTemplateDataDiskOutput struct{ *pulumi.OutputState }
 
 func (LaunchTemplateDataDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LaunchTemplateDataDisk)(nil)).Elem()
@@ -547,26 +547,26 @@ func (o LaunchTemplateDataDiskOutput) ToLaunchTemplateDataDiskOutputWithContext(
 // - ephemeral_ssd: local SSD Disks
 // - cloud_essd: ESSD cloud Disks.
 func (o LaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 func (o LaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
 // The description of the data disk.
 func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the data disk.
 func (o LaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The size of the data disk.
@@ -576,15 +576,15 @@ func (o LaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 // - cloud_essd：[20, 32768]
 // - ephemeral_ssd: [5, 800]
 func (o LaunchTemplateDataDiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 // The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 func (o LaunchTemplateDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-type LaunchTemplateDataDiskArrayOutput struct { *pulumi.OutputState}
+type LaunchTemplateDataDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (LaunchTemplateDataDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]LaunchTemplateDataDisk)(nil)).Elem()
@@ -599,7 +599,7 @@ func (o LaunchTemplateDataDiskArrayOutput) ToLaunchTemplateDataDiskArrayOutputWi
 }
 
 func (o LaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) LaunchTemplateDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) LaunchTemplateDataDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LaunchTemplateDataDisk {
 		return vs[0].([]LaunchTemplateDataDisk)[vs[1].(int)]
 	}).(LaunchTemplateDataDiskOutput)
 }
@@ -666,7 +666,8 @@ type LaunchTemplateNetworkInterfacesPtrInput interface {
 
 type launchTemplateNetworkInterfacesPtrType LaunchTemplateNetworkInterfacesArgs
 
-func LaunchTemplateNetworkInterfacesPtr(v *LaunchTemplateNetworkInterfacesArgs) LaunchTemplateNetworkInterfacesPtrInput {	return (*launchTemplateNetworkInterfacesPtrType)(v)
+func LaunchTemplateNetworkInterfacesPtr(v *LaunchTemplateNetworkInterfacesArgs) LaunchTemplateNetworkInterfacesPtrInput {
+	return (*launchTemplateNetworkInterfacesPtrType)(v)
 }
 
 func (*launchTemplateNetworkInterfacesPtrType) ElementType() reflect.Type {
@@ -681,7 +682,7 @@ func (i *launchTemplateNetworkInterfacesPtrType) ToLaunchTemplateNetworkInterfac
 	return pulumi.ToOutputWithContext(ctx, i).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
 
-type LaunchTemplateNetworkInterfacesOutput struct { *pulumi.OutputState }
+type LaunchTemplateNetworkInterfacesOutput struct{ *pulumi.OutputState }
 
 func (LaunchTemplateNetworkInterfacesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LaunchTemplateNetworkInterfaces)(nil)).Elem()
@@ -704,32 +705,33 @@ func (o LaunchTemplateNetworkInterfacesOutput) ToLaunchTemplateNetworkInterfaces
 		return &v
 	}).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
+
 // The description of the data disk.
 func (o LaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.
 func (o LaunchTemplateNetworkInterfacesOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The primary private IP address of the ENI.
 func (o LaunchTemplateNetworkInterfacesOutput) PrimaryIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
 }
 
 // The security group ID must be one in the same VPC.
 func (o LaunchTemplateNetworkInterfacesOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o LaunchTemplateNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
-type LaunchTemplateNetworkInterfacesPtrOutput struct { *pulumi.OutputState}
+type LaunchTemplateNetworkInterfacesPtrOutput struct{ *pulumi.OutputState }
 
 func (LaunchTemplateNetworkInterfacesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LaunchTemplateNetworkInterfaces)(nil)).Elem()
@@ -744,32 +746,32 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) ToLaunchTemplateNetworkInterfa
 }
 
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Elem() LaunchTemplateNetworkInterfacesOutput {
-	return o.ApplyT(func (v *LaunchTemplateNetworkInterfaces) LaunchTemplateNetworkInterfaces { return *v }).(LaunchTemplateNetworkInterfacesOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) LaunchTemplateNetworkInterfaces { return *v }).(LaunchTemplateNetworkInterfacesOutput)
 }
 
 // The description of the data disk.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The primary private IP address of the ENI.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) PrimaryIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
 }
 
 // The security group ID must be one in the same VPC.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v LaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
 type GetDisksDisk struct {
@@ -910,7 +912,7 @@ func (i GetDisksDiskArray) ToGetDisksDiskArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDisksDiskArrayOutput)
 }
 
-type GetDisksDiskOutput struct { *pulumi.OutputState }
+type GetDisksDiskOutput struct{ *pulumi.OutputState }
 
 func (GetDisksDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDisksDisk)(nil)).Elem()
@@ -926,87 +928,87 @@ func (o GetDisksDiskOutput) ToGetDisksDiskOutputWithContext(ctx context.Context)
 
 // Disk attachment time.
 func (o GetDisksDiskOutput) AttachedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.AttachedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.AttachedTime }).(pulumi.StringOutput)
 }
 
 // Availability zone of the disk.
 func (o GetDisksDiskOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
 func (o GetDisksDiskOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Category }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
 // Disk creation time.
 func (o GetDisksDiskOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Disk description.
 func (o GetDisksDiskOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Disk detachment time.
 func (o GetDisksDiskOutput) DetachedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.DetachedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.DetachedTime }).(pulumi.StringOutput)
 }
 
 // Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 func (o GetDisksDiskOutput) Encrypted() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Encrypted }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Encrypted }).(pulumi.StringOutput)
 }
 
 // Disk expiration time.
 func (o GetDisksDiskOutput) ExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.ExpirationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
 // ID of the disk.
 func (o GetDisksDiskOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ID of the image from which the disk is created. It is null unless the disk is created using an image.
 func (o GetDisksDiskOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Filter the results by the specified ECS instance ID.
 func (o GetDisksDiskOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Disk name.
 func (o GetDisksDiskOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Region ID the disk belongs to.
 func (o GetDisksDiskOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the disk belongs.
 func (o GetDisksDiskOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Disk size in GiB.
 func (o GetDisksDiskOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDisksDisk) int { return v.Size }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDisksDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
 // Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
 func (o GetDisksDiskOutput) SnapshotId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the disks. It must be in the format:
@@ -1019,15 +1021,15 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 // }
 // ```
 func (o GetDisksDiskOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Disk type. Possible values: `system` and `data`.
 func (o GetDisksDiskOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDisksDisk) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDisksDisk) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetDisksDiskArrayOutput struct { *pulumi.OutputState}
+type GetDisksDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDisksDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDisksDisk)(nil)).Elem()
@@ -1042,7 +1044,7 @@ func (o GetDisksDiskArrayOutput) ToGetDisksDiskArrayOutputWithContext(ctx contex
 }
 
 func (o GetDisksDiskArrayOutput) Index(i pulumi.IntInput) GetDisksDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDisksDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDisksDisk {
 		return vs[0].([]GetDisksDisk)[vs[1].(int)]
 	}).(GetDisksDiskOutput)
 }
@@ -1125,7 +1127,7 @@ func (i GetEipsEipArray) ToGetEipsEipArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetEipsEipArrayOutput)
 }
 
-type GetEipsEipOutput struct { *pulumi.OutputState }
+type GetEipsEipOutput struct{ *pulumi.OutputState }
 
 func (GetEipsEipOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetEipsEip)(nil)).Elem()
@@ -1141,45 +1143,45 @@ func (o GetEipsEipOutput) ToGetEipsEipOutputWithContext(ctx context.Context) Get
 
 // EIP internet max bandwidth in Mbps.
 func (o GetEipsEipOutput) Bandwidth() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.Bandwidth }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
 // Time of creation.
 func (o GetEipsEipOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // ID of the EIP.
 func (o GetEipsEipOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ID of the instance that is being bound.
 func (o GetEipsEipOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The instance type of that the EIP is bound.
 func (o GetEipsEipOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // EIP internet charge type.
 func (o GetEipsEipOutput) InternetChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.InternetChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Public IP Address of the the EIP.
 func (o GetEipsEipOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.IpAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
 func (o GetEipsEipOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetEipsEip) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetEipsEip) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetEipsEipArrayOutput struct { *pulumi.OutputState}
+type GetEipsEipArrayOutput struct{ *pulumi.OutputState }
 
 func (GetEipsEipArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetEipsEip)(nil)).Elem()
@@ -1194,7 +1196,7 @@ func (o GetEipsEipArrayOutput) ToGetEipsEipArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetEipsEipArrayOutput) Index(i pulumi.IntInput) GetEipsEipOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetEipsEip {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEipsEip {
 		return vs[0].([]GetEipsEip)[vs[1].(int)]
 	}).(GetEipsEipOutput)
 }
@@ -1209,35 +1211,35 @@ type GetImagesImage struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings []GetImagesImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
 	// ID of the image.
-	Id string `pulumi:"id"`
+	Id      string `pulumi:"id"`
 	ImageId string `pulumi:"imageId"`
 	// Alias of the image owner.
 	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion string `pulumi:"imageVersion"`
-	IsCopied bool `pulumi:"isCopied"`
+	IsCopied     bool   `pulumi:"isCopied"`
 	IsSelfShared string `pulumi:"isSelfShared"`
 	// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
-	IsSubscribed bool `pulumi:"isSubscribed"`
-	IsSupportIoOptimized bool `pulumi:"isSupportIoOptimized"`
-	Name string `pulumi:"name"`
+	IsSubscribed         bool   `pulumi:"isSubscribed"`
+	IsSupportIoOptimized bool   `pulumi:"isSupportIoOptimized"`
+	Name                 string `pulumi:"name"`
 	// Display Chinese name of the OS.
 	OsName string `pulumi:"osName"`
 	// Display English name of the OS.
 	OsNameEn string `pulumi:"osNameEn"`
-	OsType string `pulumi:"osType"`
+	OsType   string `pulumi:"osType"`
 	Platform string `pulumi:"platform"`
 	// Product code of the image on the image market.
 	ProductCode string `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress string `pulumi:"progress"`
 	// Size of the created disk.
-	Size int `pulumi:"size"`
+	Size  int    `pulumi:"size"`
 	State string `pulumi:"state"`
 	// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
-	Status string `pulumi:"status"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	Usage string `pulumi:"usage"`
+	Status string                 `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
+	Usage  string                 `pulumi:"usage"`
 }
 
 type GetImagesImageInput interface {
@@ -1257,35 +1259,35 @@ type GetImagesImageArgs struct {
 	// Description of the system with disks and snapshots under the image.
 	DiskDeviceMappings GetImagesImageDiskDeviceMappingArrayInput `pulumi:"diskDeviceMappings"`
 	// ID of the image.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id      pulumi.StringInput `pulumi:"id"`
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// Alias of the image owner.
 	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
 	// Version of the image.
 	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
-	IsCopied pulumi.BoolInput `pulumi:"isCopied"`
+	IsCopied     pulumi.BoolInput   `pulumi:"isCopied"`
 	IsSelfShared pulumi.StringInput `pulumi:"isSelfShared"`
 	// Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
-	IsSubscribed pulumi.BoolInput `pulumi:"isSubscribed"`
-	IsSupportIoOptimized pulumi.BoolInput `pulumi:"isSupportIoOptimized"`
-	Name pulumi.StringInput `pulumi:"name"`
+	IsSubscribed         pulumi.BoolInput   `pulumi:"isSubscribed"`
+	IsSupportIoOptimized pulumi.BoolInput   `pulumi:"isSupportIoOptimized"`
+	Name                 pulumi.StringInput `pulumi:"name"`
 	// Display Chinese name of the OS.
 	OsName pulumi.StringInput `pulumi:"osName"`
 	// Display English name of the OS.
 	OsNameEn pulumi.StringInput `pulumi:"osNameEn"`
-	OsType pulumi.StringInput `pulumi:"osType"`
+	OsType   pulumi.StringInput `pulumi:"osType"`
 	Platform pulumi.StringInput `pulumi:"platform"`
 	// Product code of the image on the image market.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// Progress of image creation, presented in percentages.
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// Size of the created disk.
-	Size pulumi.IntInput `pulumi:"size"`
+	Size  pulumi.IntInput    `pulumi:"size"`
 	State pulumi.StringInput `pulumi:"state"`
 	// Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
 	Status pulumi.StringInput `pulumi:"status"`
-	Tags pulumi.MapInput `pulumi:"tags"`
-	Usage pulumi.StringInput `pulumi:"usage"`
+	Tags   pulumi.MapInput    `pulumi:"tags"`
+	Usage  pulumi.StringInput `pulumi:"usage"`
 }
 
 func (GetImagesImageArgs) ElementType() reflect.Type {
@@ -1321,7 +1323,7 @@ func (i GetImagesImageArray) ToGetImagesImageArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageArrayOutput)
 }
 
-type GetImagesImageOutput struct { *pulumi.OutputState }
+type GetImagesImageOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImagesImage)(nil)).Elem()
@@ -1337,115 +1339,115 @@ func (o GetImagesImageOutput) ToGetImagesImageOutputWithContext(ctx context.Cont
 
 // Platform type of the image system: i386 or x86_64.
 func (o GetImagesImageOutput) Architecture() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Architecture }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Time of creation.
 func (o GetImagesImageOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Description of the image.
 func (o GetImagesImageOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Description of the system with disks and snapshots under the image.
 func (o GetImagesImageOutput) DiskDeviceMappings() GetImagesImageDiskDeviceMappingArrayOutput {
-	return o.ApplyT(func (v GetImagesImage) []GetImagesImageDiskDeviceMapping { return v.DiskDeviceMappings }).(GetImagesImageDiskDeviceMappingArrayOutput)
+	return o.ApplyT(func(v GetImagesImage) []GetImagesImageDiskDeviceMapping { return v.DiskDeviceMappings }).(GetImagesImageDiskDeviceMappingArrayOutput)
 }
 
 // ID of the image.
 func (o GetImagesImageOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Alias of the image owner.
 func (o GetImagesImageOutput) ImageOwnerAlias() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
 }
 
 // Version of the image.
 func (o GetImagesImageOutput) ImageVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.ImageVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.ImageVersion }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) IsCopied() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetImagesImage) bool { return v.IsCopied }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetImagesImage) bool { return v.IsCopied }).(pulumi.BoolOutput)
 }
 
 func (o GetImagesImageOutput) IsSelfShared() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.IsSelfShared }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.IsSelfShared }).(pulumi.StringOutput)
 }
 
 // Whether the user has subscribed to the terms of service for the image product corresponding to the ProductCode.
 func (o GetImagesImageOutput) IsSubscribed() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetImagesImage) bool { return v.IsSubscribed }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetImagesImage) bool { return v.IsSubscribed }).(pulumi.BoolOutput)
 }
 
 func (o GetImagesImageOutput) IsSupportIoOptimized() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetImagesImage) bool { return v.IsSupportIoOptimized }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetImagesImage) bool { return v.IsSupportIoOptimized }).(pulumi.BoolOutput)
 }
 
 func (o GetImagesImageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Display Chinese name of the OS.
 func (o GetImagesImageOutput) OsName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.OsName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.OsName }).(pulumi.StringOutput)
 }
 
 // Display English name of the OS.
 func (o GetImagesImageOutput) OsNameEn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.OsNameEn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.OsNameEn }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.OsType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.OsType }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Platform() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
 }
 
 // Product code of the image on the image market.
 func (o GetImagesImageOutput) ProductCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.ProductCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
 // Progress of image creation, presented in percentages.
 func (o GetImagesImageOutput) Progress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Progress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Progress }).(pulumi.StringOutput)
 }
 
 // Size of the created disk.
 func (o GetImagesImageOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func (v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetImagesImage) int { return v.Size }).(pulumi.IntOutput)
 }
 
 func (o GetImagesImageOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetImagesImageOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetImagesImage) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetImagesImage) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 func (o GetImagesImageOutput) Usage() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImage) string { return v.Usage }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImage) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-type GetImagesImageArrayOutput struct { *pulumi.OutputState}
+type GetImagesImageArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImagesImage)(nil)).Elem()
@@ -1460,7 +1462,7 @@ func (o GetImagesImageArrayOutput) ToGetImagesImageArrayOutputWithContext(ctx co
 }
 
 func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesImage {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
 		return vs[0].([]GetImagesImage)[vs[1].(int)]
 	}).(GetImagesImageOutput)
 }
@@ -1523,7 +1525,7 @@ func (i GetImagesImageDiskDeviceMappingArray) ToGetImagesImageDiskDeviceMappingA
 	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageDiskDeviceMappingArrayOutput)
 }
 
-type GetImagesImageDiskDeviceMappingOutput struct { *pulumi.OutputState }
+type GetImagesImageDiskDeviceMappingOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageDiskDeviceMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetImagesImageDiskDeviceMapping)(nil)).Elem()
@@ -1539,20 +1541,20 @@ func (o GetImagesImageDiskDeviceMappingOutput) ToGetImagesImageDiskDeviceMapping
 
 // Device information of the created disk: such as /dev/xvdb.
 func (o GetImagesImageDiskDeviceMappingOutput) Device() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImageDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImageDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
 }
 
 // Size of the created disk.
 func (o GetImagesImageDiskDeviceMappingOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImageDiskDeviceMapping) string { return v.Size }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImageDiskDeviceMapping) string { return v.Size }).(pulumi.StringOutput)
 }
 
 // Snapshot ID.
 func (o GetImagesImageDiskDeviceMappingOutput) SnapshotId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetImagesImageDiskDeviceMapping) string { return v.SnapshotId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetImagesImageDiskDeviceMapping) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-type GetImagesImageDiskDeviceMappingArrayOutput struct { *pulumi.OutputState}
+type GetImagesImageDiskDeviceMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetImagesImageDiskDeviceMappingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetImagesImageDiskDeviceMapping)(nil)).Elem()
@@ -1567,13 +1569,13 @@ func (o GetImagesImageDiskDeviceMappingArrayOutput) ToGetImagesImageDiskDeviceMa
 }
 
 func (o GetImagesImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) GetImagesImageDiskDeviceMappingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetImagesImageDiskDeviceMapping {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImageDiskDeviceMapping {
 		return vs[0].([]GetImagesImageDiskDeviceMapping)[vs[1].(int)]
 	}).(GetImagesImageDiskDeviceMappingOutput)
 }
 
 type GetInstanceTypeFamiliesFamily struct {
-	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 	Generation string `pulumi:"generation"`
 	// ID of the instance type family.
 	Id string `pulumi:"id"`
@@ -1589,7 +1591,7 @@ type GetInstanceTypeFamiliesFamilyInput interface {
 }
 
 type GetInstanceTypeFamiliesFamilyArgs struct {
-	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 	Generation pulumi.StringInput `pulumi:"generation"`
 	// ID of the instance type family.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1630,7 +1632,7 @@ func (i GetInstanceTypeFamiliesFamilyArray) ToGetInstanceTypeFamiliesFamilyArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeFamiliesFamilyArrayOutput)
 }
 
-type GetInstanceTypeFamiliesFamilyOutput struct { *pulumi.OutputState }
+type GetInstanceTypeFamiliesFamilyOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypeFamiliesFamilyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypeFamiliesFamily)(nil)).Elem()
@@ -1644,22 +1646,22 @@ func (o GetInstanceTypeFamiliesFamilyOutput) ToGetInstanceTypeFamiliesFamilyOutp
 	return o
 }
 
-// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 func (o GetInstanceTypeFamiliesFamilyOutput) Generation() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypeFamiliesFamily) string { return v.Generation }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypeFamiliesFamily) string { return v.Generation }).(pulumi.StringOutput)
 }
 
 // ID of the instance type family.
 func (o GetInstanceTypeFamiliesFamilyOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypeFamiliesFamily) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypeFamiliesFamily) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of Zone to launch the instance.
 func (o GetInstanceTypeFamiliesFamilyOutput) ZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetInstanceTypeFamiliesFamily) []string { return v.ZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetInstanceTypeFamiliesFamily) []string { return v.ZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetInstanceTypeFamiliesFamilyArrayOutput struct { *pulumi.OutputState}
+type GetInstanceTypeFamiliesFamilyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypeFamiliesFamilyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceTypeFamiliesFamily)(nil)).Elem()
@@ -1674,7 +1676,7 @@ func (o GetInstanceTypeFamiliesFamilyArrayOutput) ToGetInstanceTypeFamiliesFamil
 }
 
 func (o GetInstanceTypeFamiliesFamilyArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeFamiliesFamilyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceTypeFamiliesFamily {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeFamiliesFamily {
 		return vs[0].([]GetInstanceTypeFamiliesFamily)[vs[1].(int)]
 	}).(GetInstanceTypeFamiliesFamilyOutput)
 }
@@ -1698,7 +1700,7 @@ type GetInstanceTypesInstanceType struct {
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorage `pulumi:"localStorage"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize float64 `pulumi:"memorySize"`
-	Price string `pulumi:"price"`
+	Price      string  `pulumi:"price"`
 }
 
 type GetInstanceTypesInstanceTypeInput interface {
@@ -1727,7 +1729,7 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	LocalStorage GetInstanceTypesInstanceTypeLocalStorageInput `pulumi:"localStorage"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64Input `pulumi:"memorySize"`
-	Price pulumi.StringInput `pulumi:"price"`
+	Price      pulumi.StringInput  `pulumi:"price"`
 }
 
 func (GetInstanceTypesInstanceTypeArgs) ElementType() reflect.Type {
@@ -1763,7 +1765,7 @@ func (i GetInstanceTypesInstanceTypeArray) ToGetInstanceTypesInstanceTypeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeArrayOutput)
 }
 
-type GetInstanceTypesInstanceTypeOutput struct { *pulumi.OutputState }
+type GetInstanceTypesInstanceTypeOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypesInstanceType)(nil)).Elem()
@@ -1779,54 +1781,56 @@ func (o GetInstanceTypesInstanceTypeOutput) ToGetInstanceTypesInstanceTypeOutput
 
 // List of availability zones that support the instance type.
 func (o GetInstanceTypesInstanceTypeOutput) AvailabilityZones() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // The burstable instance attribution:
 func (o GetInstanceTypesInstanceTypeOutput) BurstableInstance() GetInstanceTypesInstanceTypeBurstableInstanceOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeBurstableInstance { return v.BurstableInstance }).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeBurstableInstance {
+		return v.BurstableInstance
+	}).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
 }
 
 // Filter the results to a specific number of cpu cores.
 func (o GetInstanceTypesInstanceTypeOutput) CpuCoreCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) int { return v.CpuCoreCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.CpuCoreCount }).(pulumi.IntOutput)
 }
 
 // Filter the result whose network interface number is no more than `eniAmount`.
 func (o GetInstanceTypesInstanceTypeOutput) EniAmount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) int { return v.EniAmount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) int { return v.EniAmount }).(pulumi.IntOutput)
 }
 
 // The instance type family.
 func (o GetInstanceTypesInstanceTypeOutput) Family() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) string { return v.Family }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Family }).(pulumi.StringOutput)
 }
 
 // The GPU attribution of an instance type:
 func (o GetInstanceTypesInstanceTypeOutput) Gpu() GetInstanceTypesInstanceTypeGpuOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeGpu { return v.Gpu }).(GetInstanceTypesInstanceTypeGpuOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeGpu { return v.Gpu }).(GetInstanceTypesInstanceTypeGpuOutput)
 }
 
 // ID of the instance type.
 func (o GetInstanceTypesInstanceTypeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Local storage of an instance type:
 func (o GetInstanceTypesInstanceTypeOutput) LocalStorage() GetInstanceTypesInstanceTypeLocalStorageOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) GetInstanceTypesInstanceTypeLocalStorage { return v.LocalStorage }).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
 
 // Filter the results to a specific memory size in GB.
 func (o GetInstanceTypesInstanceTypeOutput) MemorySize() pulumi.Float64Output {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) float64 { return v.MemorySize }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) float64 { return v.MemorySize }).(pulumi.Float64Output)
 }
 
 func (o GetInstanceTypesInstanceTypeOutput) Price() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceType) string { return v.Price }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Price }).(pulumi.StringOutput)
 }
 
-type GetInstanceTypesInstanceTypeArrayOutput struct { *pulumi.OutputState}
+type GetInstanceTypesInstanceTypeArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstanceTypesInstanceType)(nil)).Elem()
@@ -1841,7 +1845,7 @@ func (o GetInstanceTypesInstanceTypeArrayOutput) ToGetInstanceTypesInstanceTypeA
 }
 
 func (o GetInstanceTypesInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetInstanceTypesInstanceTypeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstanceTypesInstanceType {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypesInstanceType {
 		return vs[0].([]GetInstanceTypesInstanceType)[vs[1].(int)]
 	}).(GetInstanceTypesInstanceTypeOutput)
 }
@@ -1879,7 +1883,7 @@ func (i GetInstanceTypesInstanceTypeBurstableInstanceArgs) ToGetInstanceTypesIns
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeBurstableInstanceOutput)
 }
 
-type GetInstanceTypesInstanceTypeBurstableInstanceOutput struct { *pulumi.OutputState }
+type GetInstanceTypesInstanceTypeBurstableInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeBurstableInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypesInstanceTypeBurstableInstance)(nil)).Elem()
@@ -1895,12 +1899,12 @@ func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) ToGetInstanceTypesI
 
 // The compute performance benchmark CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) BaselineCredit() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.BaselineCredit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.BaselineCredit }).(pulumi.StringOutput)
 }
 
 // The initial CPU credit of a burstable instance.
 func (o GetInstanceTypesInstanceTypeBurstableInstanceOutput) InitialCredit() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.InitialCredit }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeBurstableInstance) string { return v.InitialCredit }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeGpu struct {
@@ -1936,7 +1940,7 @@ func (i GetInstanceTypesInstanceTypeGpuArgs) ToGetInstanceTypesInstanceTypeGpuOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeGpuOutput)
 }
 
-type GetInstanceTypesInstanceTypeGpuOutput struct { *pulumi.OutputState }
+type GetInstanceTypesInstanceTypeGpuOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeGpuOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypesInstanceTypeGpu)(nil)).Elem()
@@ -1952,12 +1956,12 @@ func (o GetInstanceTypesInstanceTypeGpuOutput) ToGetInstanceTypesInstanceTypeGpu
 
 // The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Amount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeGpu) string { return v.Amount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Amount }).(pulumi.StringOutput)
 }
 
 // The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeGpuOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeGpu) string { return v.Category }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeGpu) string { return v.Category }).(pulumi.StringOutput)
 }
 
 type GetInstanceTypesInstanceTypeLocalStorage struct {
@@ -1997,7 +2001,7 @@ func (i GetInstanceTypesInstanceTypeLocalStorageArgs) ToGetInstanceTypesInstance
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypesInstanceTypeLocalStorageOutput)
 }
 
-type GetInstanceTypesInstanceTypeLocalStorageOutput struct { *pulumi.OutputState }
+type GetInstanceTypesInstanceTypeLocalStorageOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypesInstanceTypeLocalStorageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstanceTypesInstanceTypeLocalStorage)(nil)).Elem()
@@ -2013,17 +2017,17 @@ func (o GetInstanceTypesInstanceTypeLocalStorageOutput) ToGetInstanceTypesInstan
 
 // The number of local storage devices that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Amount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Amount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Amount }).(pulumi.StringOutput)
 }
 
 // The capacity of a local storage in GB.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Capacity() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Capacity }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Capacity }).(pulumi.StringOutput)
 }
 
 // The category of local storage that an instance has been attached to.
 func (o GetInstanceTypesInstanceTypeLocalStorageOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Category }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstanceTypesInstanceTypeLocalStorage) string { return v.Category }).(pulumi.StringOutput)
 }
 
 type GetInstancesInstance struct {
@@ -2184,7 +2188,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -2200,107 +2204,107 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // Availability zone where instances are located.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Instance creation time.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Instance description.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Description of the attached disks.
 func (o GetInstancesInstanceOutput) DiskDeviceMappings() GetInstancesInstanceDiskDeviceMappingArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []GetInstancesInstanceDiskDeviceMapping { return v.DiskDeviceMappings }).(GetInstancesInstanceDiskDeviceMappingArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceDiskDeviceMapping { return v.DiskDeviceMappings }).(GetInstancesInstanceDiskDeviceMappingArrayOutput)
 }
 
 // EIP address the VPC instance is using.
 func (o GetInstancesInstanceOutput) Eip() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Eip }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Eip }).(pulumi.StringOutput)
 }
 
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The image ID of some ECS instance used.
 func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Instance charge type.
 func (o GetInstancesInstanceOutput) InstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
 // Instance type.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Instance network charge type.
 func (o GetInstancesInstanceOutput) InternetChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InternetChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Max output bandwidth for internet.
 func (o GetInstancesInstanceOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
 }
 
 // Key pair the instance is using.
 func (o GetInstancesInstanceOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.KeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // Instance name.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Instance private IP address.
 func (o GetInstancesInstanceOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
 // Instance public IP address.
 func (o GetInstancesInstanceOutput) PublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // The RAM role name which the instance attaches.
 func (o GetInstancesInstanceOutput) RamRoleName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.RamRoleName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RamRoleName }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the instance belongs.
 func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // List of security group IDs the instance belongs to.
 func (o GetInstancesInstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
 // Spot strategy the instance is using.
 func (o GetInstancesInstanceOutput) SpotStrategy() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.SpotStrategy }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SpotStrategy }).(pulumi.StringOutput)
 }
 
 // Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
@@ -2313,20 +2317,20 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 // }
 // ```
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // ID of the VPC linked to the instances.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // ID of the VSwitch linked to the instances.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -2341,7 +2345,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -2408,7 +2412,7 @@ func (i GetInstancesInstanceDiskDeviceMappingArray) ToGetInstancesInstanceDiskDe
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceDiskDeviceMappingArrayOutput)
 }
 
-type GetInstancesInstanceDiskDeviceMappingOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceDiskDeviceMappingOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceDiskDeviceMappingOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstanceDiskDeviceMapping)(nil)).Elem()
@@ -2424,25 +2428,25 @@ func (o GetInstancesInstanceDiskDeviceMappingOutput) ToGetInstancesInstanceDiskD
 
 // Cloud disk category.
 func (o GetInstancesInstanceDiskDeviceMappingOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceDiskDeviceMapping) string { return v.Category }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.Category }).(pulumi.StringOutput)
 }
 
 // Device information of the created disk: such as /dev/xvdb.
 func (o GetInstancesInstanceDiskDeviceMappingOutput) Device() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.Device }).(pulumi.StringOutput)
 }
 
 // Size of the created disk.
 func (o GetInstancesInstanceDiskDeviceMappingOutput) Size() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstanceDiskDeviceMapping) int { return v.Size }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) int { return v.Size }).(pulumi.IntOutput)
 }
 
 // Cloud disk type: system disk or data disk.
 func (o GetInstancesInstanceDiskDeviceMappingOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstanceDiskDeviceMapping) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstanceDiskDeviceMapping) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceDiskDeviceMappingArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceDiskDeviceMappingArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceDiskDeviceMappingArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstanceDiskDeviceMapping)(nil)).Elem()
@@ -2457,7 +2461,7 @@ func (o GetInstancesInstanceDiskDeviceMappingArrayOutput) ToGetInstancesInstance
 }
 
 func (o GetInstancesInstanceDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceDiskDeviceMappingOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstanceDiskDeviceMapping {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstanceDiskDeviceMapping {
 		return vs[0].([]GetInstancesInstanceDiskDeviceMapping)[vs[1].(int)]
 	}).(GetInstancesInstanceDiskDeviceMappingOutput)
 }
@@ -2532,7 +2536,7 @@ func (i GetKeyPairsKeyPairArray) ToGetKeyPairsKeyPairArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsKeyPairArrayOutput)
 }
 
-type GetKeyPairsKeyPairOutput struct { *pulumi.OutputState }
+type GetKeyPairsKeyPairOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPairsKeyPairOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKeyPairsKeyPair)(nil)).Elem()
@@ -2548,35 +2552,35 @@ func (o GetKeyPairsKeyPairOutput) ToGetKeyPairsKeyPairOutputWithContext(ctx cont
 
 // A finger print used to retrieve specified key pair.
 func (o GetKeyPairsKeyPairOutput) FingerPrint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) string { return v.FingerPrint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.FingerPrint }).(pulumi.StringOutput)
 }
 
 // ID of the key pair.
 func (o GetKeyPairsKeyPairOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of ECS instances that has been bound this key pair.
 func (o GetKeyPairsKeyPairOutput) Instances() GetKeyPairsKeyPairInstanceArrayOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) []GetKeyPairsKeyPairInstance { return v.Instances }).(GetKeyPairsKeyPairInstanceArrayOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) []GetKeyPairsKeyPairInstance { return v.Instances }).(GetKeyPairsKeyPairInstanceArrayOutput)
 }
 
 // Name of the key pair.
 func (o GetKeyPairsKeyPairOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the key pair belongs.
 func (o GetKeyPairsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.
 func (o GetKeyPairsKeyPairOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPair) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetKeyPairsKeyPairArrayOutput struct { *pulumi.OutputState}
+type GetKeyPairsKeyPairArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPairsKeyPairArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKeyPairsKeyPair)(nil)).Elem()
@@ -2591,7 +2595,7 @@ func (o GetKeyPairsKeyPairArrayOutput) ToGetKeyPairsKeyPairArrayOutputWithContex
 }
 
 func (o GetKeyPairsKeyPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsKeyPairOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeyPairsKeyPair {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsKeyPair {
 		return vs[0].([]GetKeyPairsKeyPair)[vs[1].(int)]
 	}).(GetKeyPairsKeyPairOutput)
 }
@@ -2599,8 +2603,8 @@ func (o GetKeyPairsKeyPairArrayOutput) Index(i pulumi.IntInput) GetKeyPairsKeyPa
 type GetKeyPairsKeyPairInstance struct {
 	// The ID of the availability zone where the ECS instance is located.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Description string `pulumi:"description"`
-	ImageId string `pulumi:"imageId"`
+	Description      string `pulumi:"description"`
+	ImageId          string `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the ECS instance.
@@ -2613,7 +2617,7 @@ type GetKeyPairsKeyPairInstance struct {
 	// The public IP address or EIP of the ECS instance.
 	PublicIp string `pulumi:"publicIp"`
 	RegionId string `pulumi:"regionId"`
-	Status string `pulumi:"status"`
+	Status   string `pulumi:"status"`
 	// The ID of the VSwitch attached to the ECS instance.
 	VswitchId string `pulumi:"vswitchId"`
 }
@@ -2628,8 +2632,8 @@ type GetKeyPairsKeyPairInstanceInput interface {
 type GetKeyPairsKeyPairInstanceArgs struct {
 	// The ID of the availability zone where the ECS instance is located.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	Description pulumi.StringInput `pulumi:"description"`
-	ImageId pulumi.StringInput `pulumi:"imageId"`
+	Description      pulumi.StringInput `pulumi:"description"`
+	ImageId          pulumi.StringInput `pulumi:"imageId"`
 	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the ECS instance.
@@ -2642,7 +2646,7 @@ type GetKeyPairsKeyPairInstanceArgs struct {
 	// The public IP address or EIP of the ECS instance.
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Status pulumi.StringInput `pulumi:"status"`
+	Status   pulumi.StringInput `pulumi:"status"`
 	// The ID of the VSwitch attached to the ECS instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
@@ -2680,7 +2684,7 @@ func (i GetKeyPairsKeyPairInstanceArray) ToGetKeyPairsKeyPairInstanceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeyPairsKeyPairInstanceArrayOutput)
 }
 
-type GetKeyPairsKeyPairInstanceOutput struct { *pulumi.OutputState }
+type GetKeyPairsKeyPairInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPairsKeyPairInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetKeyPairsKeyPairInstance)(nil)).Elem()
@@ -2696,60 +2700,60 @@ func (o GetKeyPairsKeyPairInstanceOutput) ToGetKeyPairsKeyPairInstanceOutputWith
 
 // The ID of the availability zone where the ECS instance is located.
 func (o GetKeyPairsKeyPairInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 func (o GetKeyPairsKeyPairInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetKeyPairsKeyPairInstanceOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // The ID of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The name of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 func (o GetKeyPairsKeyPairInstanceOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Name of the key pair.
 func (o GetKeyPairsKeyPairInstanceOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // The private IP address of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
 // The public IP address or EIP of the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) PublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 func (o GetKeyPairsKeyPairInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 func (o GetKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The ID of the VSwitch attached to the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetKeyPairsKeyPairInstanceArrayOutput struct { *pulumi.OutputState}
+type GetKeyPairsKeyPairInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetKeyPairsKeyPairInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetKeyPairsKeyPairInstance)(nil)).Elem()
@@ -2764,7 +2768,7 @@ func (o GetKeyPairsKeyPairInstanceArrayOutput) ToGetKeyPairsKeyPairInstanceArray
 }
 
 func (o GetKeyPairsKeyPairInstanceArrayOutput) Index(i pulumi.IntInput) GetKeyPairsKeyPairInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetKeyPairsKeyPairInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyPairsKeyPairInstance {
 		return vs[0].([]GetKeyPairsKeyPairInstance)[vs[1].(int)]
 	}).(GetKeyPairsKeyPairInstanceOutput)
 }
@@ -2879,7 +2883,7 @@ func (i GetNetworkInterfacesInterfaceArray) ToGetNetworkInterfacesInterfaceArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkInterfacesInterfaceArrayOutput)
 }
 
-type GetNetworkInterfacesInterfaceOutput struct { *pulumi.OutputState }
+type GetNetworkInterfacesInterfaceOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkInterfacesInterfaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNetworkInterfacesInterface)(nil)).Elem()
@@ -2895,85 +2899,85 @@ func (o GetNetworkInterfacesInterfaceOutput) ToGetNetworkInterfacesInterfaceOutp
 
 // Creation time of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Description of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ID of the instance that the ENI is attached to.
 func (o GetNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // MAC address of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Mac() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
 }
 
 // Name of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Primary private IP of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
 // A list of secondary private IP address that is assigned to the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PrivateIps() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
 // Public IP of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) PublicIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.PublicIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
 // The Id of resource group.
 func (o GetNetworkInterfacesInterfaceOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A list of security group that the ENI belongs to.
 func (o GetNetworkInterfacesInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
 // Current status of the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the ENI.
 func (o GetNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // ID of the VPC that the ENI belongs to.
 func (o GetNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // ID of the VSwitch that the ENI is linked to.
 func (o GetNetworkInterfacesInterfaceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // ID of the availability zone that the ENI belongs to.
 func (o GetNetworkInterfacesInterfaceOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworkInterfacesInterface) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetNetworkInterfacesInterfaceArrayOutput struct { *pulumi.OutputState}
+type GetNetworkInterfacesInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkInterfacesInterfaceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNetworkInterfacesInterface)(nil)).Elem()
@@ -2988,7 +2992,7 @@ func (o GetNetworkInterfacesInterfaceArrayOutput) ToGetNetworkInterfacesInterfac
 }
 
 func (o GetNetworkInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetNetworkInterfacesInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNetworkInterfacesInterface {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkInterfacesInterface {
 		return vs[0].([]GetNetworkInterfacesInterface)[vs[1].(int)]
 	}).(GetNetworkInterfacesInterfaceOutput)
 }
@@ -2997,7 +3001,7 @@ type GetSecurityGroupRulesRule struct {
 	// The description of the rule.
 	Description string `pulumi:"description"`
 	// Target IP address segment for egress authorization.
-	DestCidrIp string `pulumi:"destCidrIp"`
+	DestCidrIp  string `pulumi:"destCidrIp"`
 	DestGroupId string `pulumi:"destGroupId"`
 	// Alibaba Cloud account of the target security group.
 	DestGroupOwnerAccount string `pulumi:"destGroupOwnerAccount"`
@@ -3014,7 +3018,7 @@ type GetSecurityGroupRulesRule struct {
 	// Rule priority.
 	Priority int `pulumi:"priority"`
 	// Source IP address segment for ingress authorization.
-	SourceCidrIp string `pulumi:"sourceCidrIp"`
+	SourceCidrIp  string `pulumi:"sourceCidrIp"`
 	SourceGroupId string `pulumi:"sourceGroupId"`
 	// Alibaba Cloud account of the source security group.
 	SourceGroupOwnerAccount string `pulumi:"sourceGroupOwnerAccount"`
@@ -3031,7 +3035,7 @@ type GetSecurityGroupRulesRuleArgs struct {
 	// The description of the rule.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Target IP address segment for egress authorization.
-	DestCidrIp pulumi.StringInput `pulumi:"destCidrIp"`
+	DestCidrIp  pulumi.StringInput `pulumi:"destCidrIp"`
 	DestGroupId pulumi.StringInput `pulumi:"destGroupId"`
 	// Alibaba Cloud account of the target security group.
 	DestGroupOwnerAccount pulumi.StringInput `pulumi:"destGroupOwnerAccount"`
@@ -3048,7 +3052,7 @@ type GetSecurityGroupRulesRuleArgs struct {
 	// Rule priority.
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// Source IP address segment for ingress authorization.
-	SourceCidrIp pulumi.StringInput `pulumi:"sourceCidrIp"`
+	SourceCidrIp  pulumi.StringInput `pulumi:"sourceCidrIp"`
 	SourceGroupId pulumi.StringInput `pulumi:"sourceGroupId"`
 	// Alibaba Cloud account of the source security group.
 	SourceGroupOwnerAccount pulumi.StringInput `pulumi:"sourceGroupOwnerAccount"`
@@ -3087,7 +3091,7 @@ func (i GetSecurityGroupRulesRuleArray) ToGetSecurityGroupRulesRuleArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupRulesRuleArrayOutput)
 }
 
-type GetSecurityGroupRulesRuleOutput struct { *pulumi.OutputState }
+type GetSecurityGroupRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetSecurityGroupRulesRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSecurityGroupRulesRule)(nil)).Elem()
@@ -3103,68 +3107,68 @@ func (o GetSecurityGroupRulesRuleOutput) ToGetSecurityGroupRulesRuleOutputWithCo
 
 // The description of the rule.
 func (o GetSecurityGroupRulesRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Target IP address segment for egress authorization.
 func (o GetSecurityGroupRulesRuleOutput) DestCidrIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.DestCidrIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.DestCidrIp }).(pulumi.StringOutput)
 }
 
 func (o GetSecurityGroupRulesRuleOutput) DestGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.DestGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.DestGroupId }).(pulumi.StringOutput)
 }
 
 // Alibaba Cloud account of the target security group.
 func (o GetSecurityGroupRulesRuleOutput) DestGroupOwnerAccount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.DestGroupOwnerAccount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.DestGroupOwnerAccount }).(pulumi.StringOutput)
 }
 
 // Authorization direction. Valid values are: `ingress` or `egress`.
 func (o GetSecurityGroupRulesRuleOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.Direction }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.Direction }).(pulumi.StringOutput)
 }
 
 // The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
 func (o GetSecurityGroupRulesRuleOutput) IpProtocol() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.IpProtocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
 func (o GetSecurityGroupRulesRuleOutput) NicType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.NicType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
 func (o GetSecurityGroupRulesRuleOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.Policy }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // The range of port numbers.
 func (o GetSecurityGroupRulesRuleOutput) PortRange() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.PortRange }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.PortRange }).(pulumi.StringOutput)
 }
 
 // Rule priority.
 func (o GetSecurityGroupRulesRuleOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) int { return v.Priority }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Source IP address segment for ingress authorization.
 func (o GetSecurityGroupRulesRuleOutput) SourceCidrIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.SourceCidrIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.SourceCidrIp }).(pulumi.StringOutput)
 }
 
 func (o GetSecurityGroupRulesRuleOutput) SourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.SourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.SourceGroupId }).(pulumi.StringOutput)
 }
 
 // Alibaba Cloud account of the source security group.
 func (o GetSecurityGroupRulesRuleOutput) SourceGroupOwnerAccount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupRulesRule) string { return v.SourceGroupOwnerAccount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupRulesRule) string { return v.SourceGroupOwnerAccount }).(pulumi.StringOutput)
 }
 
-type GetSecurityGroupRulesRuleArrayOutput struct { *pulumi.OutputState}
+type GetSecurityGroupRulesRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSecurityGroupRulesRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSecurityGroupRulesRule)(nil)).Elem()
@@ -3179,7 +3183,7 @@ func (o GetSecurityGroupRulesRuleArrayOutput) ToGetSecurityGroupRulesRuleArrayOu
 }
 
 func (o GetSecurityGroupRulesRuleArrayOutput) Index(i pulumi.IntInput) GetSecurityGroupRulesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSecurityGroupRulesRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGroupRulesRule {
 		return vs[0].([]GetSecurityGroupRulesRule)[vs[1].(int)]
 	}).(GetSecurityGroupRulesRuleOutput)
 }
@@ -3282,7 +3286,7 @@ func (i GetSecurityGroupsGroupArray) ToGetSecurityGroupsGroupArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGroupsGroupArrayOutput)
 }
 
-type GetSecurityGroupsGroupOutput struct { *pulumi.OutputState }
+type GetSecurityGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetSecurityGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSecurityGroupsGroup)(nil)).Elem()
@@ -3298,37 +3302,37 @@ func (o GetSecurityGroupsGroupOutput) ToGetSecurityGroupsGroupOutputWithContext(
 
 // Creation time of the security group.
 func (o GetSecurityGroupsGroupOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // The description of the security group.
 func (o GetSecurityGroupsGroupOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ID of the security group.
 func (o GetSecurityGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether to allow inner network access.
 func (o GetSecurityGroupsGroupOutput) InnerAccess() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) bool { return v.InnerAccess }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) bool { return v.InnerAccess }).(pulumi.BoolOutput)
 }
 
 // The name of the security group.
 func (o GetSecurityGroupsGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Id of resource group which the securityGroup belongs.
 func (o GetSecurityGroupsGroupOutput) ResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The type of the security group.
 func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.SecurityGroupType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.SecurityGroupType }).(pulumi.StringOutput)
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
@@ -3341,15 +3345,15 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 // }
 // ```
 func (o GetSecurityGroupsGroupOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Used to retrieve security groups that belong to the specified VPC ID.
 func (o GetSecurityGroupsGroupOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSecurityGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSecurityGroupsGroup) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-type GetSecurityGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetSecurityGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSecurityGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSecurityGroupsGroup)(nil)).Elem()
@@ -3364,7 +3368,7 @@ func (o GetSecurityGroupsGroupArrayOutput) ToGetSecurityGroupsGroupArrayOutputWi
 }
 
 func (o GetSecurityGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetSecurityGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSecurityGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGroupsGroup {
 		return vs[0].([]GetSecurityGroupsGroup)[vs[1].(int)]
 	}).(GetSecurityGroupsGroupOutput)
 }
@@ -3489,7 +3493,7 @@ func (i GetSnapshotsSnapshotArray) ToGetSnapshotsSnapshotArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSnapshotsSnapshotArrayOutput)
 }
 
-type GetSnapshotsSnapshotOutput struct { *pulumi.OutputState }
+type GetSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
 
 func (GetSnapshotsSnapshotOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSnapshotsSnapshot)(nil)).Elem()
@@ -3505,64 +3509,64 @@ func (o GetSnapshotsSnapshotOutput) ToGetSnapshotsSnapshotOutputWithContext(ctx 
 
 // Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
 func (o GetSnapshotsSnapshotOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Description of the snapshot.
 func (o GetSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Whether the snapshot is encrypted or not.
 func (o GetSnapshotsSnapshotOutput) Encrypted() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
 // ID of the snapshot.
 func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the snapshot.
 func (o GetSnapshotsSnapshotOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Product code on the image market place.
 func (o GetSnapshotsSnapshotOutput) ProductCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.ProductCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
 // Progress of snapshot creation, presented in percentage.
 func (o GetSnapshotsSnapshotOutput) Progress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Progress }).(pulumi.StringOutput)
 }
 
 // The remaining time of a snapshot creation task, in seconds.
 func (o GetSnapshotsSnapshotOutput) RemainTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RemainTime }).(pulumi.IntOutput)
 }
 
 // The number of days that an automatic snapshot retains in the console for your instance.
 func (o GetSnapshotsSnapshotOutput) RetentionDays() pulumi.IntOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
 // Source disk ID, which is retained after the source disk of the snapshot is deleted.
 func (o GetSnapshotsSnapshotOutput) SourceDiskId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.SourceDiskId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
 // Size of the source disk, measured in GB.
 func (o GetSnapshotsSnapshotOutput) SourceDiskSize() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskSize }).(pulumi.StringOutput)
 }
 
 // Source disk attribute. Value range:
 // * System
 // * Data
 func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.SourceDiskType }).(pulumi.StringOutput)
 }
 
 // The snapshot status. Value range:
@@ -3570,7 +3574,7 @@ func (o GetSnapshotsSnapshotOutput) SourceDiskType() pulumi.StringOutput {
 // * accomplished
 // * failed
 func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Whether the snapshots are used to create resources or not. Value range:
@@ -3579,10 +3583,10 @@ func (o GetSnapshotsSnapshotOutput) Status() pulumi.StringOutput {
 // * imageDisk
 // * none
 func (o GetSnapshotsSnapshotOutput) Usage() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-type GetSnapshotsSnapshotArrayOutput struct { *pulumi.OutputState}
+type GetSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSnapshotsSnapshot)(nil)).Elem()
@@ -3597,7 +3601,7 @@ func (o GetSnapshotsSnapshotArrayOutput) ToGetSnapshotsSnapshotArrayOutputWithCo
 }
 
 func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSnapshotOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSnapshotsSnapshot {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnapshotsSnapshot {
 		return vs[0].([]GetSnapshotsSnapshot)[vs[1].(int)]
 	}).(GetSnapshotsSnapshotOutput)
 }

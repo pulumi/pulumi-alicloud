@@ -73,7 +73,7 @@ func (i ApiConstantParameterArray) ToApiConstantParameterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConstantParameterArrayOutput)
 }
 
-type ApiConstantParameterOutput struct { *pulumi.OutputState }
+type ApiConstantParameterOutput struct{ *pulumi.OutputState }
 
 func (ApiConstantParameterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiConstantParameter)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o ApiConstantParameterOutput) ToApiConstantParameterOutputWithContext(ctx 
 
 // The description of Constant parameter.
 func (o ApiConstantParameterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiConstantParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiConstantParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // System parameter location; values: 'HEAD' and 'QUERY'.
 func (o ApiConstantParameterOutput) In() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiConstantParameter) string { return v.In }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiConstantParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
 func (o ApiConstantParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiConstantParameter) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiConstantParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Constant parameter value.
 func (o ApiConstantParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiConstantParameter) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiConstantParameter) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ApiConstantParameterArrayOutput struct { *pulumi.OutputState}
+type ApiConstantParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiConstantParameterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApiConstantParameter)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o ApiConstantParameterArrayOutput) ToApiConstantParameterArrayOutputWithCo
 }
 
 func (o ApiConstantParameterArrayOutput) Index(i pulumi.IntInput) ApiConstantParameterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApiConstantParameter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiConstantParameter {
 		return vs[0].([]ApiConstantParameter)[vs[1].(int)]
 	}).(ApiConstantParameterOutput)
 }
@@ -189,7 +189,8 @@ type ApiFcServiceConfigPtrInput interface {
 
 type apiFcServiceConfigPtrType ApiFcServiceConfigArgs
 
-func ApiFcServiceConfigPtr(v *ApiFcServiceConfigArgs) ApiFcServiceConfigPtrInput {	return (*apiFcServiceConfigPtrType)(v)
+func ApiFcServiceConfigPtr(v *ApiFcServiceConfigArgs) ApiFcServiceConfigPtrInput {
+	return (*apiFcServiceConfigPtrType)(v)
 }
 
 func (*apiFcServiceConfigPtrType) ElementType() reflect.Type {
@@ -204,7 +205,7 @@ func (i *apiFcServiceConfigPtrType) ToApiFcServiceConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApiFcServiceConfigPtrOutput)
 }
 
-type ApiFcServiceConfigOutput struct { *pulumi.OutputState }
+type ApiFcServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiFcServiceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiFcServiceConfig)(nil)).Elem()
@@ -227,32 +228,33 @@ func (o ApiFcServiceConfigOutput) ToApiFcServiceConfigPtrOutputWithContext(ctx c
 		return &v
 	}).(ApiFcServiceConfigPtrOutput)
 }
+
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 func (o ApiFcServiceConfigOutput) ArnRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
 }
 
 // The function name of function compute service.
 func (o ApiFcServiceConfigOutput) FunctionName() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
 }
 
 // The region that the function compute service belongs to.
 func (o ApiFcServiceConfigOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service name of function compute service.
 func (o ApiFcServiceConfigOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiFcServiceConfigOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-type ApiFcServiceConfigPtrOutput struct { *pulumi.OutputState}
+type ApiFcServiceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiFcServiceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiFcServiceConfig)(nil)).Elem()
@@ -267,37 +269,37 @@ func (o ApiFcServiceConfigPtrOutput) ToApiFcServiceConfigPtrOutputWithContext(ct
 }
 
 func (o ApiFcServiceConfigPtrOutput) Elem() ApiFcServiceConfigOutput {
-	return o.ApplyT(func (v *ApiFcServiceConfig) ApiFcServiceConfig { return *v }).(ApiFcServiceConfigOutput)
+	return o.ApplyT(func(v *ApiFcServiceConfig) ApiFcServiceConfig { return *v }).(ApiFcServiceConfigOutput)
 }
 
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 func (o ApiFcServiceConfigPtrOutput) ArnRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
 }
 
 // The function name of function compute service.
 func (o ApiFcServiceConfigPtrOutput) FunctionName() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
 }
 
 // The region that the function compute service belongs to.
 func (o ApiFcServiceConfigPtrOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service name of function compute service.
 func (o ApiFcServiceConfigPtrOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiFcServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiFcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiFcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 type ApiHttpServiceConfig struct {
 	// The address of backend service.
-	Address string `pulumi:"address"`
+	Address  string  `pulumi:"address"`
 	AoneName *string `pulumi:"aoneName"`
 	// The http method of backend service.
 	Method string `pulumi:"method"`
@@ -316,7 +318,7 @@ type ApiHttpServiceConfigInput interface {
 
 type ApiHttpServiceConfigArgs struct {
 	// The address of backend service.
-	Address pulumi.StringInput `pulumi:"address"`
+	Address  pulumi.StringInput    `pulumi:"address"`
 	AoneName pulumi.StringPtrInput `pulumi:"aoneName"`
 	// The http method of backend service.
 	Method pulumi.StringInput `pulumi:"method"`
@@ -355,7 +357,8 @@ type ApiHttpServiceConfigPtrInput interface {
 
 type apiHttpServiceConfigPtrType ApiHttpServiceConfigArgs
 
-func ApiHttpServiceConfigPtr(v *ApiHttpServiceConfigArgs) ApiHttpServiceConfigPtrInput {	return (*apiHttpServiceConfigPtrType)(v)
+func ApiHttpServiceConfigPtr(v *ApiHttpServiceConfigArgs) ApiHttpServiceConfigPtrInput {
+	return (*apiHttpServiceConfigPtrType)(v)
 }
 
 func (*apiHttpServiceConfigPtrType) ElementType() reflect.Type {
@@ -370,7 +373,7 @@ func (i *apiHttpServiceConfigPtrType) ToApiHttpServiceConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ApiHttpServiceConfigPtrOutput)
 }
 
-type ApiHttpServiceConfigOutput struct { *pulumi.OutputState }
+type ApiHttpServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiHttpServiceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiHttpServiceConfig)(nil)).Elem()
@@ -393,31 +396,32 @@ func (o ApiHttpServiceConfigOutput) ToApiHttpServiceConfigPtrOutputWithContext(c
 		return &v
 	}).(ApiHttpServiceConfigPtrOutput)
 }
+
 // The address of backend service.
 func (o ApiHttpServiceConfigOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
 }
 
 func (o ApiHttpServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiHttpServiceConfigOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiHttpServiceConfigOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiHttpServiceConfigOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-type ApiHttpServiceConfigPtrOutput struct { *pulumi.OutputState}
+type ApiHttpServiceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiHttpServiceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiHttpServiceConfig)(nil)).Elem()
@@ -432,31 +436,31 @@ func (o ApiHttpServiceConfigPtrOutput) ToApiHttpServiceConfigPtrOutputWithContex
 }
 
 func (o ApiHttpServiceConfigPtrOutput) Elem() ApiHttpServiceConfigOutput {
-	return o.ApplyT(func (v *ApiHttpServiceConfig) ApiHttpServiceConfig { return *v }).(ApiHttpServiceConfigOutput)
+	return o.ApplyT(func(v *ApiHttpServiceConfig) ApiHttpServiceConfig { return *v }).(ApiHttpServiceConfigOutput)
 }
 
 // The address of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
 }
 
 func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiHttpServiceConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiHttpServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiHttpServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 type ApiHttpVpcServiceConfig struct {
@@ -519,7 +523,8 @@ type ApiHttpVpcServiceConfigPtrInput interface {
 
 type apiHttpVpcServiceConfigPtrType ApiHttpVpcServiceConfigArgs
 
-func ApiHttpVpcServiceConfigPtr(v *ApiHttpVpcServiceConfigArgs) ApiHttpVpcServiceConfigPtrInput {	return (*apiHttpVpcServiceConfigPtrType)(v)
+func ApiHttpVpcServiceConfigPtr(v *ApiHttpVpcServiceConfigArgs) ApiHttpVpcServiceConfigPtrInput {
+	return (*apiHttpVpcServiceConfigPtrType)(v)
 }
 
 func (*apiHttpVpcServiceConfigPtrType) ElementType() reflect.Type {
@@ -534,7 +539,7 @@ func (i *apiHttpVpcServiceConfigPtrType) ToApiHttpVpcServiceConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ApiHttpVpcServiceConfigPtrOutput)
 }
 
-type ApiHttpVpcServiceConfigOutput struct { *pulumi.OutputState }
+type ApiHttpVpcServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiHttpVpcServiceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiHttpVpcServiceConfig)(nil)).Elem()
@@ -558,30 +563,30 @@ func (o ApiHttpVpcServiceConfigOutput) ToApiHttpVpcServiceConfigPtrOutputWithCon
 	}).(ApiHttpVpcServiceConfigPtrOutput)
 }
 func (o ApiHttpVpcServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiHttpVpcServiceConfigOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
 func (o ApiHttpVpcServiceConfigOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiHttpVpcServiceConfigOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiHttpVpcServiceConfigOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-type ApiHttpVpcServiceConfigPtrOutput struct { *pulumi.OutputState}
+type ApiHttpVpcServiceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiHttpVpcServiceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiHttpVpcServiceConfig)(nil)).Elem()
@@ -596,31 +601,31 @@ func (o ApiHttpVpcServiceConfigPtrOutput) ToApiHttpVpcServiceConfigPtrOutputWith
 }
 
 func (o ApiHttpVpcServiceConfigPtrOutput) Elem() ApiHttpVpcServiceConfigOutput {
-	return o.ApplyT(func (v *ApiHttpVpcServiceConfig) ApiHttpVpcServiceConfig { return *v }).(ApiHttpVpcServiceConfigOutput)
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) ApiHttpVpcServiceConfig { return *v }).(ApiHttpVpcServiceConfigOutput)
 }
 
 func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
 func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
 func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func (v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
 type ApiMockServiceConfig struct {
@@ -671,7 +676,8 @@ type ApiMockServiceConfigPtrInput interface {
 
 type apiMockServiceConfigPtrType ApiMockServiceConfigArgs
 
-func ApiMockServiceConfigPtr(v *ApiMockServiceConfigArgs) ApiMockServiceConfigPtrInput {	return (*apiMockServiceConfigPtrType)(v)
+func ApiMockServiceConfigPtr(v *ApiMockServiceConfigArgs) ApiMockServiceConfigPtrInput {
+	return (*apiMockServiceConfigPtrType)(v)
 }
 
 func (*apiMockServiceConfigPtrType) ElementType() reflect.Type {
@@ -686,7 +692,7 @@ func (i *apiMockServiceConfigPtrType) ToApiMockServiceConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ApiMockServiceConfigPtrOutput)
 }
 
-type ApiMockServiceConfigOutput struct { *pulumi.OutputState }
+type ApiMockServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiMockServiceConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiMockServiceConfig)(nil)).Elem()
@@ -710,15 +716,15 @@ func (o ApiMockServiceConfigOutput) ToApiMockServiceConfigPtrOutputWithContext(c
 	}).(ApiMockServiceConfigPtrOutput)
 }
 func (o ApiMockServiceConfigOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The result of the mock service.
 func (o ApiMockServiceConfigOutput) Result() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiMockServiceConfig) string { return v.Result }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiMockServiceConfig) string { return v.Result }).(pulumi.StringOutput)
 }
 
-type ApiMockServiceConfigPtrOutput struct { *pulumi.OutputState}
+type ApiMockServiceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiMockServiceConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiMockServiceConfig)(nil)).Elem()
@@ -733,16 +739,16 @@ func (o ApiMockServiceConfigPtrOutput) ToApiMockServiceConfigPtrOutputWithContex
 }
 
 func (o ApiMockServiceConfigPtrOutput) Elem() ApiMockServiceConfigOutput {
-	return o.ApplyT(func (v *ApiMockServiceConfig) ApiMockServiceConfig { return *v }).(ApiMockServiceConfigOutput)
+	return o.ApplyT(func(v *ApiMockServiceConfig) ApiMockServiceConfig { return *v }).(ApiMockServiceConfigOutput)
 }
 
 func (o ApiMockServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
 }
 
 // The result of the mock service.
 func (o ApiMockServiceConfigPtrOutput) Result() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiMockServiceConfig) string { return v.Result }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiMockServiceConfig) string { return v.Result }).(pulumi.StringOutput)
 }
 
 type ApiRequestConfig struct {
@@ -807,7 +813,8 @@ type ApiRequestConfigPtrInput interface {
 
 type apiRequestConfigPtrType ApiRequestConfigArgs
 
-func ApiRequestConfigPtr(v *ApiRequestConfigArgs) ApiRequestConfigPtrInput {	return (*apiRequestConfigPtrType)(v)
+func ApiRequestConfigPtr(v *ApiRequestConfigArgs) ApiRequestConfigPtrInput {
+	return (*apiRequestConfigPtrType)(v)
 }
 
 func (*apiRequestConfigPtrType) ElementType() reflect.Type {
@@ -822,7 +829,7 @@ func (i *apiRequestConfigPtrType) ToApiRequestConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApiRequestConfigPtrOutput)
 }
 
-type ApiRequestConfigOutput struct { *pulumi.OutputState }
+type ApiRequestConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiRequestConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiRequestConfig)(nil)).Elem()
@@ -845,32 +852,33 @@ func (o ApiRequestConfigOutput) ToApiRequestConfigPtrOutputWithContext(ctx conte
 		return &v
 	}).(ApiRequestConfigPtrOutput)
 }
+
 // The body format of the api, which support the values of 'STREAM' and 'FORM'
 func (o ApiRequestConfigOutput) BodyFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiRequestConfigOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
 func (o ApiRequestConfigOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiRequestConfigOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
 func (o ApiRequestConfigOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-type ApiRequestConfigPtrOutput struct { *pulumi.OutputState}
+type ApiRequestConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ApiRequestConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApiRequestConfig)(nil)).Elem()
@@ -885,32 +893,32 @@ func (o ApiRequestConfigPtrOutput) ToApiRequestConfigPtrOutputWithContext(ctx co
 }
 
 func (o ApiRequestConfigPtrOutput) Elem() ApiRequestConfigOutput {
-	return o.ApplyT(func (v *ApiRequestConfig) ApiRequestConfig { return *v }).(ApiRequestConfigOutput)
+	return o.ApplyT(func(v *ApiRequestConfig) ApiRequestConfig { return *v }).(ApiRequestConfigOutput)
 }
 
 // The body format of the api, which support the values of 'STREAM' and 'FORM'
 func (o ApiRequestConfigPtrOutput) BodyFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
 func (o ApiRequestConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
 }
 
 // The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
 func (o ApiRequestConfigPtrOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The path of backend service.
 func (o ApiRequestConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
 func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 type ApiRequestParameter struct {
@@ -991,7 +999,7 @@ func (i ApiRequestParameterArray) ToApiRequestParameterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ApiRequestParameterArrayOutput)
 }
 
-type ApiRequestParameterOutput struct { *pulumi.OutputState }
+type ApiRequestParameterOutput struct{ *pulumi.OutputState }
 
 func (ApiRequestParameterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiRequestParameter)(nil)).Elem()
@@ -1007,45 +1015,45 @@ func (o ApiRequestParameterOutput) ToApiRequestParameterOutputWithContext(ctx co
 
 // The default value of the parameter.
 func (o ApiRequestParameterOutput) DefaultValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiRequestParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiRequestParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
 // The description of Constant parameter.
 func (o ApiRequestParameterOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ApiRequestParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ApiRequestParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // System parameter location; values: 'HEAD' and 'QUERY'.
 func (o ApiRequestParameterOutput) In() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.In }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
 // Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
 func (o ApiRequestParameterOutput) InService() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.InService }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.InService }).(pulumi.StringOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
 func (o ApiRequestParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Backend service's parameter name.
 func (o ApiRequestParameterOutput) NameService() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.NameService }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.NameService }).(pulumi.StringOutput)
 }
 
 // Parameter required or not; values: REQUIRED and OPTIONAL.
 func (o ApiRequestParameterOutput) Required() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.Required }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.Required }).(pulumi.StringOutput)
 }
 
 // Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
 func (o ApiRequestParameterOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiRequestParameter) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiRequestParameter) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ApiRequestParameterArrayOutput struct { *pulumi.OutputState}
+type ApiRequestParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiRequestParameterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApiRequestParameter)(nil)).Elem()
@@ -1060,7 +1068,7 @@ func (o ApiRequestParameterArrayOutput) ToApiRequestParameterArrayOutputWithCont
 }
 
 func (o ApiRequestParameterArrayOutput) Index(i pulumi.IntInput) ApiRequestParameterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApiRequestParameter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiRequestParameter {
 		return vs[0].([]ApiRequestParameter)[vs[1].(int)]
 	}).(ApiRequestParameterOutput)
 }
@@ -1123,7 +1131,7 @@ func (i ApiSystemParameterArray) ToApiSystemParameterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ApiSystemParameterArrayOutput)
 }
 
-type ApiSystemParameterOutput struct { *pulumi.OutputState }
+type ApiSystemParameterOutput struct{ *pulumi.OutputState }
 
 func (ApiSystemParameterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApiSystemParameter)(nil)).Elem()
@@ -1139,20 +1147,20 @@ func (o ApiSystemParameterOutput) ToApiSystemParameterOutputWithContext(ctx cont
 
 // System parameter location; values: 'HEAD' and 'QUERY'.
 func (o ApiSystemParameterOutput) In() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiSystemParameter) string { return v.In }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiSystemParameter) string { return v.In }).(pulumi.StringOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
 func (o ApiSystemParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiSystemParameter) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiSystemParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Backend service's parameter name.
 func (o ApiSystemParameterOutput) NameService() pulumi.StringOutput {
-	return o.ApplyT(func (v ApiSystemParameter) string { return v.NameService }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ApiSystemParameter) string { return v.NameService }).(pulumi.StringOutput)
 }
 
-type ApiSystemParameterArrayOutput struct { *pulumi.OutputState}
+type ApiSystemParameterArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiSystemParameterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ApiSystemParameter)(nil)).Elem()
@@ -1167,7 +1175,7 @@ func (o ApiSystemParameterArrayOutput) ToApiSystemParameterArrayOutputWithContex
 }
 
 func (o ApiSystemParameterArrayOutput) Index(i pulumi.IntInput) ApiSystemParameterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ApiSystemParameter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiSystemParameter {
 		return vs[0].([]ApiSystemParameter)[vs[1].(int)]
 	}).(ApiSystemParameterOutput)
 }
@@ -1242,7 +1250,7 @@ func (i GetApisApiArray) ToGetApisApiArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetApisApiArrayOutput)
 }
 
-type GetApisApiOutput struct { *pulumi.OutputState }
+type GetApisApiOutput struct{ *pulumi.OutputState }
 
 func (GetApisApiOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetApisApi)(nil)).Elem()
@@ -1258,35 +1266,35 @@ func (o GetApisApiOutput) ToGetApisApiOutputWithContext(ctx context.Context) Get
 
 // API description.
 func (o GetApisApiOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the specified group.
 func (o GetApisApiOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.GroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The group name that the apis belong to.
 func (o GetApisApiOutput) GroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.GroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
 // API ID, which is generated by the system and globally unique.
 func (o GetApisApiOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // API name.
 func (o GetApisApiOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the region where the API is located.
 func (o GetApisApiOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetApisApi) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetApisApi) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-type GetApisApiArrayOutput struct { *pulumi.OutputState}
+type GetApisApiArrayOutput struct{ *pulumi.OutputState }
 
 func (GetApisApiArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetApisApi)(nil)).Elem()
@@ -1301,7 +1309,7 @@ func (o GetApisApiArrayOutput) ToGetApisApiArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetApisApiArrayOutput) Index(i pulumi.IntInput) GetApisApiOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetApisApi {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApisApi {
 		return vs[0].([]GetApisApi)[vs[1].(int)]
 	}).(GetApisApiOutput)
 }
@@ -1376,7 +1384,7 @@ func (i GetAppsAppArray) ToGetAppsAppArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppArrayOutput)
 }
 
-type GetAppsAppOutput struct { *pulumi.OutputState }
+type GetAppsAppOutput struct{ *pulumi.OutputState }
 
 func (GetAppsAppOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAppsApp)(nil)).Elem()
@@ -1392,35 +1400,35 @@ func (o GetAppsAppOutput) ToGetAppsAppOutputWithContext(ctx context.Context) Get
 
 // App code.
 func (o GetAppsAppOutput) AppCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAppsApp) string { return v.AppCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAppsApp) string { return v.AppCode }).(pulumi.StringOutput)
 }
 
 // Creation time (Greenwich mean time).
 func (o GetAppsAppOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAppsApp) string { return v.CreatedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAppsApp) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
 // App description.
 func (o GetAppsAppOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAppsApp) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAppsApp) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // App ID, which is generated by the system and globally unique.
 func (o GetAppsAppOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAppsApp) int { return v.Id }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAppsApp) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // Last modification time (Greenwich mean time).
 func (o GetAppsAppOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAppsApp) string { return v.ModifiedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAppsApp) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 // App name.
 func (o GetAppsAppOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAppsApp) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAppsApp) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetAppsAppArrayOutput struct { *pulumi.OutputState}
+type GetAppsAppArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAppsAppArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAppsApp)(nil)).Elem()
@@ -1435,7 +1443,7 @@ func (o GetAppsAppArrayOutput) ToGetAppsAppArrayOutputWithContext(ctx context.Co
 }
 
 func (o GetAppsAppArrayOutput) Index(i pulumi.IntInput) GetAppsAppOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAppsApp {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsApp {
 		return vs[0].([]GetAppsApp)[vs[1].(int)]
 	}).(GetAppsAppOutput)
 }
@@ -1534,7 +1542,7 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-type GetGroupsGroupOutput struct { *pulumi.OutputState }
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
@@ -1552,57 +1560,57 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 // - NORMAL: The API group is normal.
 // - LOCKED: Locked due to outstanding payment.
 func (o GetGroupsGroupOutput) BillingStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.BillingStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.BillingStatus }).(pulumi.StringOutput)
 }
 
 // Creation time (Greenwich mean time).
 func (o GetGroupsGroupOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.CreatedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
 // API group description.
 func (o GetGroupsGroupOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // API group ID, which is generated by the system and globally unique.
 func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Locking in invalid state.
 // - NORMAL: The API group is normal.
 // - LOCKED: Locked due to illegality.
 func (o GetGroupsGroupOutput) IllegalStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.IllegalStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.IllegalStatus }).(pulumi.StringOutput)
 }
 
 // Last modification time (Greenwich mean time).
 func (o GetGroupsGroupOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.ModifiedTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 // API group name.
 func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the region where the API group is located.
 func (o GetGroupsGroupOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Second-level domain name automatically assigned to the API group.
 func (o GetGroupsGroupOutput) SubDomain() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.SubDomain }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.SubDomain }).(pulumi.StringOutput)
 }
 
 // Upper QPS limit of the API group; default value: 500, which can be increased by submitting an application.
 func (o GetGroupsGroupOutput) TrafficLimit() pulumi.IntOutput {
-	return o.ApplyT(func (v GetGroupsGroup) int { return v.TrafficLimit }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.TrafficLimit }).(pulumi.IntOutput)
 }
 
-type GetGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
@@ -1617,7 +1625,7 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx co
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
 }

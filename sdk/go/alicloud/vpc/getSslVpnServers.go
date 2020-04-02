@@ -32,20 +32,18 @@ type GetSslVpnServersArgs struct {
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
-
 // A collection of values returned by getSslVpnServers.
 type GetSslVpnServersResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SSL-VPN server IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of SSL-VPN server names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of SSL-VPN servers. Each element contains the following attributes:
 	Servers []GetSslVpnServersServer `pulumi:"servers"`
 	// The ID of the VPN gateway instance.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
-

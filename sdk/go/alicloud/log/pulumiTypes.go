@@ -89,7 +89,7 @@ func (i StoreIndexFieldSearchArray) ToStoreIndexFieldSearchArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchArrayOutput)
 }
 
-type StoreIndexFieldSearchOutput struct { *pulumi.OutputState }
+type StoreIndexFieldSearchOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreIndexFieldSearch)(nil)).Elem()
@@ -105,45 +105,45 @@ func (o StoreIndexFieldSearchOutput) ToStoreIndexFieldSearchOutputWithContext(ct
 
 // The alias of one field.
 func (o StoreIndexFieldSearchOutput) Alias() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *string { return v.Alias }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFieldSearchOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to enable field analytics. Default to true.
 func (o StoreIndexFieldSearchOutput) EnableAnalytics() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *bool { return v.EnableAnalytics }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *bool { return v.EnableAnalytics }).(pulumi.BoolPtrOutput)
 }
 
 // Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFieldSearchOutput) IncludeChinese() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
 }
 
 // Use nested index when type is json
 func (o StoreIndexFieldSearchOutput) JsonKeys() StoreIndexFieldSearchJsonKeyArrayOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) []StoreIndexFieldSearchJsonKey { return v.JsonKeys }).(StoreIndexFieldSearchJsonKeyArrayOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) []StoreIndexFieldSearchJsonKey { return v.JsonKeys }).(StoreIndexFieldSearchJsonKeyArrayOutput)
 }
 
 // When using the jsonKeys field, this field is required.
 func (o StoreIndexFieldSearchOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 func (o StoreIndexFieldSearchOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 // The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
 func (o StoreIndexFieldSearchOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearch) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type StoreIndexFieldSearchArrayOutput struct { *pulumi.OutputState}
+type StoreIndexFieldSearchArrayOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StoreIndexFieldSearch)(nil)).Elem()
@@ -158,7 +158,7 @@ func (o StoreIndexFieldSearchArrayOutput) ToStoreIndexFieldSearchArrayOutputWith
 }
 
 func (o StoreIndexFieldSearchArrayOutput) Index(i pulumi.IntInput) StoreIndexFieldSearchOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StoreIndexFieldSearch {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StoreIndexFieldSearch {
 		return vs[0].([]StoreIndexFieldSearch)[vs[1].(int)]
 	}).(StoreIndexFieldSearchOutput)
 }
@@ -225,7 +225,7 @@ func (i StoreIndexFieldSearchJsonKeyArray) ToStoreIndexFieldSearchJsonKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFieldSearchJsonKeyArrayOutput)
 }
 
-type StoreIndexFieldSearchJsonKeyOutput struct { *pulumi.OutputState }
+type StoreIndexFieldSearchJsonKeyOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchJsonKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreIndexFieldSearchJsonKey)(nil)).Elem()
@@ -241,25 +241,25 @@ func (o StoreIndexFieldSearchJsonKeyOutput) ToStoreIndexFieldSearchJsonKeyOutput
 
 // The alias of one field.
 func (o StoreIndexFieldSearchJsonKeyOutput) Alias() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearchJsonKey) *string { return v.Alias }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
 // Whether to enable statistics. default to true.
 func (o StoreIndexFieldSearchJsonKeyOutput) DocValue() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearchJsonKey) *bool { return v.DocValue }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *bool { return v.DocValue }).(pulumi.BoolPtrOutput)
 }
 
 // When using the jsonKeys field, this field is required.
 func (o StoreIndexFieldSearchJsonKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearchJsonKey) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
 func (o StoreIndexFieldSearchJsonKeyOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFieldSearchJsonKey) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type StoreIndexFieldSearchJsonKeyArrayOutput struct { *pulumi.OutputState}
+type StoreIndexFieldSearchJsonKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFieldSearchJsonKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StoreIndexFieldSearchJsonKey)(nil)).Elem()
@@ -274,7 +274,7 @@ func (o StoreIndexFieldSearchJsonKeyArrayOutput) ToStoreIndexFieldSearchJsonKeyA
 }
 
 func (o StoreIndexFieldSearchJsonKeyArrayOutput) Index(i pulumi.IntInput) StoreIndexFieldSearchJsonKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StoreIndexFieldSearchJsonKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StoreIndexFieldSearchJsonKey {
 		return vs[0].([]StoreIndexFieldSearchJsonKey)[vs[1].(int)]
 	}).(StoreIndexFieldSearchJsonKeyOutput)
 }
@@ -333,7 +333,8 @@ type StoreIndexFullTextPtrInput interface {
 
 type storeIndexFullTextPtrType StoreIndexFullTextArgs
 
-func StoreIndexFullTextPtr(v *StoreIndexFullTextArgs) StoreIndexFullTextPtrInput {	return (*storeIndexFullTextPtrType)(v)
+func StoreIndexFullTextPtr(v *StoreIndexFullTextArgs) StoreIndexFullTextPtrInput {
+	return (*storeIndexFullTextPtrType)(v)
 }
 
 func (*storeIndexFullTextPtrType) ElementType() reflect.Type {
@@ -348,7 +349,7 @@ func (i *storeIndexFullTextPtrType) ToStoreIndexFullTextPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(StoreIndexFullTextPtrOutput)
 }
 
-type StoreIndexFullTextOutput struct { *pulumi.OutputState }
+type StoreIndexFullTextOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFullTextOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreIndexFullText)(nil)).Elem()
@@ -371,22 +372,23 @@ func (o StoreIndexFullTextOutput) ToStoreIndexFullTextPtrOutputWithContext(ctx c
 		return &v
 	}).(StoreIndexFullTextPtrOutput)
 }
+
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
 }
 
 // Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextOutput) IncludeChinese() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
 }
 
 // The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-type StoreIndexFullTextPtrOutput struct { *pulumi.OutputState}
+type StoreIndexFullTextPtrOutput struct{ *pulumi.OutputState }
 
 func (StoreIndexFullTextPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**StoreIndexFullText)(nil)).Elem()
@@ -401,29 +403,29 @@ func (o StoreIndexFullTextPtrOutput) ToStoreIndexFullTextPtrOutputWithContext(ct
 }
 
 func (o StoreIndexFullTextPtrOutput) Elem() StoreIndexFullTextOutput {
-	return o.ApplyT(func (v *StoreIndexFullText) StoreIndexFullText { return *v }).(StoreIndexFullTextOutput)
+	return o.ApplyT(func(v *StoreIndexFullText) StoreIndexFullText { return *v }).(StoreIndexFullTextOutput)
 }
 
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
 }
 
 // Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) IncludeChinese() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
 }
 
 // The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 type StoreShard struct {
 	BeginKey *string `pulumi:"beginKey"`
-	EndKey *string `pulumi:"endKey"`
+	EndKey   *string `pulumi:"endKey"`
 	// The ID of the log project. It formats of `<project>:<name>`.
-	Id *int `pulumi:"id"`
+	Id     *int    `pulumi:"id"`
 	Status *string `pulumi:"status"`
 }
 
@@ -436,9 +438,9 @@ type StoreShardInput interface {
 
 type StoreShardArgs struct {
 	BeginKey pulumi.StringPtrInput `pulumi:"beginKey"`
-	EndKey pulumi.StringPtrInput `pulumi:"endKey"`
+	EndKey   pulumi.StringPtrInput `pulumi:"endKey"`
 	// The ID of the log project. It formats of `<project>:<name>`.
-	Id pulumi.IntPtrInput `pulumi:"id"`
+	Id     pulumi.IntPtrInput    `pulumi:"id"`
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -475,7 +477,7 @@ func (i StoreShardArray) ToStoreShardArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(StoreShardArrayOutput)
 }
 
-type StoreShardOutput struct { *pulumi.OutputState }
+type StoreShardOutput struct{ *pulumi.OutputState }
 
 func (StoreShardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*StoreShard)(nil)).Elem()
@@ -490,23 +492,23 @@ func (o StoreShardOutput) ToStoreShardOutputWithContext(ctx context.Context) Sto
 }
 
 func (o StoreShardOutput) BeginKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreShard) *string { return v.BeginKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreShard) *string { return v.BeginKey }).(pulumi.StringPtrOutput)
 }
 
 func (o StoreShardOutput) EndKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreShard) *string { return v.EndKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreShard) *string { return v.EndKey }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the log project. It formats of `<project>:<name>`.
 func (o StoreShardOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v StoreShard) *int { return v.Id }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v StoreShard) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
 func (o StoreShardOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v StoreShard) *string { return v.Status }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v StoreShard) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type StoreShardArrayOutput struct { *pulumi.OutputState}
+type StoreShardArrayOutput struct{ *pulumi.OutputState }
 
 func (StoreShardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]StoreShard)(nil)).Elem()
@@ -521,7 +523,7 @@ func (o StoreShardArrayOutput) ToStoreShardArrayOutputWithContext(ctx context.Co
 }
 
 func (o StoreShardArrayOutput) Index(i pulumi.IntInput) StoreShardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) StoreShard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StoreShard {
 		return vs[0].([]StoreShard)[vs[1].(int)]
 	}).(StoreShardOutput)
 }

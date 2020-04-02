@@ -89,7 +89,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -105,45 +105,45 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // Creation time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.CreateTime }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.CreateTime }).(pulumi.IntOutput)
 }
 
 // The DRDS instance description.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ID of the DRDS instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // `Classic` for public classic network or `VPC` for private network.
 func (o GetInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // Status of the instance.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The DRDS Instance type.
 func (o GetInstancesInstanceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The DRDS Instance version.
 func (o GetInstancesInstanceOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.Version }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Version }).(pulumi.IntOutput)
 }
 
 // Zone ID the instance belongs to.
 func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -158,7 +158,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }

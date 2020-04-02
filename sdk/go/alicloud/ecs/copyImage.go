@@ -14,15 +14,15 @@ import (
 type CopyImage struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
-	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	ImageName pulumi.StringOutput `pulumi:"imageName"`
-	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	Name pulumi.StringOutput `pulumi:"name"`
-	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
-	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Description    pulumi.StringPtrOutput `pulumi:"description"`
+	Encrypted      pulumi.BoolPtrOutput   `pulumi:"encrypted"`
+	Force          pulumi.BoolPtrOutput   `pulumi:"force"`
+	ImageName      pulumi.StringOutput    `pulumi:"imageName"`
+	KmsKeyId       pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	Name           pulumi.StringOutput    `pulumi:"name"`
+	SourceImageId  pulumi.StringOutput    `pulumi:"sourceImageId"`
+	SourceRegionId pulumi.StringOutput    `pulumi:"sourceRegionId"`
+	Tags           pulumi.MapOutput       `pulumi:"tags"`
 }
 
 // NewCopyImage registers a new resource with the given unique name, arguments, and options.
@@ -59,27 +59,27 @@ func GetCopyImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CopyImage resources.
 type copyImageState struct {
-	Description *string `pulumi:"description"`
-	Encrypted *bool `pulumi:"encrypted"`
-	Force *bool `pulumi:"force"`
-	ImageName *string `pulumi:"imageName"`
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name *string `pulumi:"name"`
-	SourceImageId *string `pulumi:"sourceImageId"`
-	SourceRegionId *string `pulumi:"sourceRegionId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Description    *string                `pulumi:"description"`
+	Encrypted      *bool                  `pulumi:"encrypted"`
+	Force          *bool                  `pulumi:"force"`
+	ImageName      *string                `pulumi:"imageName"`
+	KmsKeyId       *string                `pulumi:"kmsKeyId"`
+	Name           *string                `pulumi:"name"`
+	SourceImageId  *string                `pulumi:"sourceImageId"`
+	SourceRegionId *string                `pulumi:"sourceRegionId"`
+	Tags           map[string]interface{} `pulumi:"tags"`
 }
 
 type CopyImageState struct {
-	Description pulumi.StringPtrInput
-	Encrypted pulumi.BoolPtrInput
-	Force pulumi.BoolPtrInput
-	ImageName pulumi.StringPtrInput
-	KmsKeyId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
-	SourceImageId pulumi.StringPtrInput
+	Description    pulumi.StringPtrInput
+	Encrypted      pulumi.BoolPtrInput
+	Force          pulumi.BoolPtrInput
+	ImageName      pulumi.StringPtrInput
+	KmsKeyId       pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	SourceImageId  pulumi.StringPtrInput
 	SourceRegionId pulumi.StringPtrInput
-	Tags pulumi.MapInput
+	Tags           pulumi.MapInput
 }
 
 func (CopyImageState) ElementType() reflect.Type {
@@ -87,31 +87,30 @@ func (CopyImageState) ElementType() reflect.Type {
 }
 
 type copyImageArgs struct {
-	Description *string `pulumi:"description"`
-	Encrypted *bool `pulumi:"encrypted"`
-	Force *bool `pulumi:"force"`
-	ImageName *string `pulumi:"imageName"`
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name *string `pulumi:"name"`
-	SourceImageId string `pulumi:"sourceImageId"`
-	SourceRegionId string `pulumi:"sourceRegionId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Description    *string                `pulumi:"description"`
+	Encrypted      *bool                  `pulumi:"encrypted"`
+	Force          *bool                  `pulumi:"force"`
+	ImageName      *string                `pulumi:"imageName"`
+	KmsKeyId       *string                `pulumi:"kmsKeyId"`
+	Name           *string                `pulumi:"name"`
+	SourceImageId  string                 `pulumi:"sourceImageId"`
+	SourceRegionId string                 `pulumi:"sourceRegionId"`
+	Tags           map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a CopyImage resource.
 type CopyImageArgs struct {
-	Description pulumi.StringPtrInput
-	Encrypted pulumi.BoolPtrInput
-	Force pulumi.BoolPtrInput
-	ImageName pulumi.StringPtrInput
-	KmsKeyId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
-	SourceImageId pulumi.StringInput
+	Description    pulumi.StringPtrInput
+	Encrypted      pulumi.BoolPtrInput
+	Force          pulumi.BoolPtrInput
+	ImageName      pulumi.StringPtrInput
+	KmsKeyId       pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	SourceImageId  pulumi.StringInput
 	SourceRegionId pulumi.StringInput
-	Tags pulumi.MapInput
+	Tags           pulumi.MapInput
 }
 
 func (CopyImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*copyImageArgs)(nil)).Elem()
 }
-

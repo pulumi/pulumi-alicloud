@@ -31,7 +31,7 @@ type ServerlessKubernetes struct {
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
@@ -96,7 +96,7 @@ type serverlessKubernetesState struct {
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -128,7 +128,7 @@ type ServerlessKubernetesState struct {
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
@@ -164,7 +164,7 @@ type serverlessKubernetesArgs struct {
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -197,7 +197,7 @@ type ServerlessKubernetesArgs struct {
 	// The path of kube config, like `~/.kube/config`.
 	KubeConfig pulumi.StringPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
@@ -214,4 +214,3 @@ type ServerlessKubernetesArgs struct {
 func (ServerlessKubernetesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverlessKubernetesArgs)(nil)).Elem()
 }
-

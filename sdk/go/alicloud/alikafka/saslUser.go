@@ -127,4 +127,3 @@ type SaslUserArgs struct {
 func (SaslUserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*saslUserArgs)(nil)).Elem()
 }
-

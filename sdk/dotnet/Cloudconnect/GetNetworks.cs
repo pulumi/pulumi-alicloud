@@ -20,7 +20,22 @@ namespace Pulumi.AliCloud.CloudConnect
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cloud_connect_networks.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNetworks.InvokeAsync() instead")]
         public static Task<GetNetworksResult> GetNetworks(GetNetworksArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNetworks
+    {
+        /// <summary>
+        /// This data source provides Cloud Connect Networks available to the user.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cloud_connect_networks.html.markdown.
+        /// </summary>
+        public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

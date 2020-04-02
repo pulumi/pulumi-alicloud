@@ -13,7 +13,7 @@ import (
 
 // Provides an ONS topic resource.
 //
-// For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
+// For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html).
 //
 // > **NOTE:** Available in 1.53.0+
 //
@@ -129,4 +129,3 @@ type TopicArgs struct {
 func (TopicArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicArgs)(nil)).Elem()
 }
-

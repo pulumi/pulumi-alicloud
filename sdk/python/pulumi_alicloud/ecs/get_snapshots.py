@@ -162,6 +162,23 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
     * `output_file` - (Optional) The name of output file that saves the filter results.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
+
+
+    :param bool encrypted: Whether the snapshot is encrypted or not.
+    :param list ids: A list of snapshot IDs.
+    :param str source_disk_type: Source disk attribute. Value range:
+           * System
+           * Data
+    :param str status: The snapshot status. Value range:
+           * progressing
+           * accomplished
+           * failed
+    :param dict tags: A map of tags assigned to the snapshot.
+    :param str usage: Whether the snapshots are used to create resources or not. Value range:
+           * image
+           * disk
+           * image_disk
+           * none
     """
     __args__ = dict()
 

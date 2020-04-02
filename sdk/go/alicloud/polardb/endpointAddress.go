@@ -133,4 +133,3 @@ type EndpointAddressArgs struct {
 func (EndpointAddressArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointAddressArgs)(nil)).Elem()
 }
-

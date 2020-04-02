@@ -31,12 +31,11 @@ type GetSecurityGroupRulesArgs struct {
 	// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
-	NicType *string `pulumi:"nicType"`
+	NicType    *string `pulumi:"nicType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
 	Policy *string `pulumi:"policy"`
 }
-
 
 // A collection of values returned by getSecurityGroupRules.
 type GetSecurityGroupRulesResult struct {
@@ -44,7 +43,7 @@ type GetSecurityGroupRulesResult struct {
 	Direction *string `pulumi:"direction"`
 	// The description of the security group that owns the rules.
 	GroupDesc string `pulumi:"groupDesc"`
-	GroupId string `pulumi:"groupId"`
+	GroupId   string `pulumi:"groupId"`
 	// The name of the security group that owns the rules.
 	GroupName string `pulumi:"groupName"`
 	// id is the provider-assigned unique ID for this managed resource.
@@ -52,11 +51,10 @@ type GetSecurityGroupRulesResult struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Network type, `internet` or `intranet`.
-	NicType *string `pulumi:"nicType"`
+	NicType    *string `pulumi:"nicType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Authorization policy. Can be either `accept` or `drop`.
 	Policy *string `pulumi:"policy"`
 	// A list of security group rules. Each element contains the following attributes:
 	Rules []GetSecurityGroupRulesRule `pulumi:"rules"`
 }
-

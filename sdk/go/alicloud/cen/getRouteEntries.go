@@ -25,12 +25,11 @@ type GetRouteEntriesArgs struct {
 	// The destination CIDR block of the route entry to query.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// ID of the CEN instance.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the route table of the VPC or VBR.
 	RouteTableId string `pulumi:"routeTableId"`
 }
-
 
 // A collection of values returned by getRouteEntries.
 type GetRouteEntriesResult struct {
@@ -41,9 +40,8 @@ type GetRouteEntriesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// ID of the CEN child instance.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`
 }
-

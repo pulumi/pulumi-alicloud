@@ -29,17 +29,15 @@ type GetTopicSubscriptionsArgs struct {
 	TopicName string `pulumi:"topicName"`
 }
 
-
 // A collection of values returned by getTopicSubscriptions.
 type GetTopicSubscriptionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// A list of subscription names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of subscriptions. Each element contains the following attributes:
 	Subscriptions []GetTopicSubscriptionsSubscription `pulumi:"subscriptions"`
-	TopicName string `pulumi:"topicName"`
+	TopicName     string                              `pulumi:"topicName"`
 }
-

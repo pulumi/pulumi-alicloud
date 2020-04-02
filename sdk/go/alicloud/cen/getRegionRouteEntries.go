@@ -23,21 +23,19 @@ func GetRegionRouteEntries(ctx *pulumi.Context, args *GetRegionRouteEntriesArgs,
 // A collection of arguments for invoking getRegionRouteEntries.
 type GetRegionRouteEntriesArgs struct {
 	// ID of the CEN instance.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the region.
 	RegionId string `pulumi:"regionId"`
 }
-
 
 // A collection of values returned by getRegionRouteEntries.
 type GetRegionRouteEntriesResult struct {
 	// A list of CEN Route Entries. Each element contains the following attributes:
 	Entries []GetRegionRouteEntriesEntry `pulumi:"entries"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
+	Id         string  `pulumi:"id"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
-	RegionId string `pulumi:"regionId"`
+	RegionId   string  `pulumi:"regionId"`
 }
-

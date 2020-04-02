@@ -20,13 +20,13 @@ type KeyPair struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags            pulumi.MapOutput       `pulumi:"tags"`
 }
 
 // NewKeyPair registers a new resource with the given unique name, arguments, and options.
@@ -61,13 +61,13 @@ type keyPairState struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
-	KeyName *string `pulumi:"keyName"`
+	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
 
 type KeyPairState struct {
@@ -75,13 +75,13 @@ type KeyPairState struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
-	KeyName pulumi.StringPtrInput
+	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags pulumi.MapInput
+	Tags            pulumi.MapInput
 }
 
 func (KeyPairState) ElementType() reflect.Type {
@@ -92,13 +92,13 @@ type keyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
-	KeyName *string `pulumi:"keyName"`
+	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a KeyPair resource.
@@ -106,16 +106,15 @@ type KeyPairArgs struct {
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
-	KeyName pulumi.StringPtrInput
+	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
 	// You can import an existing public key and using Alicloud key pair to manage it.
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	Tags pulumi.MapInput
+	Tags            pulumi.MapInput
 }
 
 func (KeyPairArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairArgs)(nil)).Elem()
 }
-

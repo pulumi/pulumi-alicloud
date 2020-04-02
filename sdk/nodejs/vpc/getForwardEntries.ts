@@ -100,6 +100,9 @@ export interface GetForwardEntriesArgs {
      * A regex string to filter results by forward entry name.
      */
     readonly nameRegex?: string;
+    /**
+     * A list of Forward Entries names.
+     */
     readonly names?: string[];
     readonly outputFile?: string;
 }

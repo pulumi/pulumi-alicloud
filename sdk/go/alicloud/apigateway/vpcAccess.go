@@ -16,11 +16,11 @@ type VpcAccess struct {
 
 	// ID of the instance in VPC (ECS/Server Load Balance).
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The name of the vpc authorization. 
+	// The name of the vpc authorization.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of the port corresponding to the instance.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// The vpc id of the vpc authorization. 
+	// The vpc id of the vpc authorization.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -63,22 +63,22 @@ func GetVpcAccess(ctx *pulumi.Context,
 type vpcAccessState struct {
 	// ID of the instance in VPC (ECS/Server Load Balance).
 	InstanceId *string `pulumi:"instanceId"`
-	// The name of the vpc authorization. 
+	// The name of the vpc authorization.
 	Name *string `pulumi:"name"`
 	// ID of the port corresponding to the instance.
 	Port *int `pulumi:"port"`
-	// The vpc id of the vpc authorization. 
+	// The vpc id of the vpc authorization.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type VpcAccessState struct {
 	// ID of the instance in VPC (ECS/Server Load Balance).
 	InstanceId pulumi.StringPtrInput
-	// The name of the vpc authorization. 
+	// The name of the vpc authorization.
 	Name pulumi.StringPtrInput
 	// ID of the port corresponding to the instance.
 	Port pulumi.IntPtrInput
-	// The vpc id of the vpc authorization. 
+	// The vpc id of the vpc authorization.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -89,11 +89,11 @@ func (VpcAccessState) ElementType() reflect.Type {
 type vpcAccessArgs struct {
 	// ID of the instance in VPC (ECS/Server Load Balance).
 	InstanceId string `pulumi:"instanceId"`
-	// The name of the vpc authorization. 
+	// The name of the vpc authorization.
 	Name *string `pulumi:"name"`
 	// ID of the port corresponding to the instance.
 	Port int `pulumi:"port"`
-	// The vpc id of the vpc authorization. 
+	// The vpc id of the vpc authorization.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -101,15 +101,14 @@ type vpcAccessArgs struct {
 type VpcAccessArgs struct {
 	// ID of the instance in VPC (ECS/Server Load Balance).
 	InstanceId pulumi.StringInput
-	// The name of the vpc authorization. 
+	// The name of the vpc authorization.
 	Name pulumi.StringPtrInput
 	// ID of the port corresponding to the instance.
 	Port pulumi.IntInput
-	// The vpc id of the vpc authorization. 
+	// The vpc id of the vpc authorization.
 	VpcId pulumi.StringInput
 }
 
 func (VpcAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcAccessArgs)(nil)).Elem()
 }
-

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a RAM Group Policy attachment resource. 
+// Provides a RAM Group Policy attachment resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_policy_attachment.html.markdown.
 type GroupPolicyAttachment struct {
@@ -105,4 +105,3 @@ type GroupPolicyAttachmentArgs struct {
 func (GroupPolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupPolicyAttachmentArgs)(nil)).Elem()
 }
-

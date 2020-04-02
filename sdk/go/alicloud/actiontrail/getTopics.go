@@ -25,22 +25,20 @@ func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getTopics.
 type GetTopicsArgs struct {
 	InstanceId string `pulumi:"instanceId"`
-	// A regex string to filter results by the topic name. 
-	NameRegex *string `pulumi:"nameRegex"`
+	// A regex string to filter results by the topic name.
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Id         string  `pulumi:"id"`
+	InstanceId string  `pulumi:"instanceId"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of topic names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of topics. Each element contains the following attributes:
 	Topics []GetTopicsTopic `pulumi:"topics"`
 }
-

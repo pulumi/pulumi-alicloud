@@ -111,4 +111,3 @@ type InstanceAttachmentArgs struct {
 func (InstanceAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceAttachmentArgs)(nil)).Elem()
 }
-
