@@ -16,7 +16,7 @@ import (
 // > **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.
 //
 // > **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.
-//  
+//
 // > **NOTE:** A scaling group can have at most 5 vserver groups attached by default.
 //
 // > **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.
@@ -133,4 +133,3 @@ type ScalingGroupVServerGroupsArgs struct {
 func (ScalingGroupVServerGroupsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*scalingGroupVServerGroupsArgs)(nil)).Elem()
 }
-

@@ -29,7 +29,7 @@ type RouterInterfaceConnection struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringOutput `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId      pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
 	OppositeInterfaceOwnerId pulumi.StringOutput `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringOutput `pulumi:"oppositeRouterId"`
@@ -74,7 +74,7 @@ type routerInterfaceConnectionState struct {
 	// One side router interface ID.
 	InterfaceId *string `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId      *string `pulumi:"oppositeInterfaceId"`
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
@@ -86,7 +86,7 @@ type RouterInterfaceConnectionState struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringPtrInput
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId pulumi.StringPtrInput
+	OppositeInterfaceId      pulumi.StringPtrInput
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringPtrInput
@@ -102,7 +102,7 @@ type routerInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId string `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId string `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId      string  `pulumi:"oppositeInterfaceId"`
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
@@ -115,7 +115,7 @@ type RouterInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringInput
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId pulumi.StringInput
+	OppositeInterfaceId      pulumi.StringInput
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringPtrInput
@@ -126,4 +126,3 @@ type RouterInterfaceConnectionArgs struct {
 func (RouterInterfaceConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceConnectionArgs)(nil)).Elem()
 }
-

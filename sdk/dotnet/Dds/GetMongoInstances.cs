@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Dds
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetMongoInstances.InvokeAsync() instead")]
         public static Task<GetMongoInstancesResult> GetMongoInstances(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMongoInstances
+    {
+        public static Task<GetMongoInstancesResult> InvokeAsync(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

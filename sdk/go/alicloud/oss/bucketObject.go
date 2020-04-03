@@ -220,4 +220,3 @@ type BucketObjectArgs struct {
 func (BucketObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectArgs)(nil)).Elem()
 }
-

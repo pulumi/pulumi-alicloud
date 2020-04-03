@@ -107,4 +107,3 @@ type NotificationArgs struct {
 func (NotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationArgs)(nil)).Elem()
 }
-

@@ -27,20 +27,18 @@ type GetBucketObjectsArgs struct {
 	// Filter results by the given key prefix (such as "path/to/folder/logs-").
 	KeyPrefix *string `pulumi:"keyPrefix"`
 	// A regex string to filter results by key.
-	KeyRegex *string `pulumi:"keyRegex"`
+	KeyRegex   *string `pulumi:"keyRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getBucketObjects.
 type GetBucketObjectsResult struct {
 	BucketName string `pulumi:"bucketName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	KeyPrefix *string `pulumi:"keyPrefix"`
-	KeyRegex *string `pulumi:"keyRegex"`
+	KeyRegex  *string `pulumi:"keyRegex"`
 	// A list of bucket objects. Each element contains the following attributes:
-	Objects []GetBucketObjectsObject `pulumi:"objects"`
-	OutputFile *string `pulumi:"outputFile"`
+	Objects    []GetBucketObjectsObject `pulumi:"objects"`
+	OutputFile *string                  `pulumi:"outputFile"`
 }
-

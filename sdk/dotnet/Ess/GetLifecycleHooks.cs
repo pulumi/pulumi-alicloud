@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
         /// </summary>
+        [Obsolete("Use GetLifecycleHooks.InvokeAsync() instead")]
         public static Task<GetLifecycleHooksResult> GetLifecycleHooks(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetLifecycleHooks
+    {
+        /// <summary>
+        /// This data source provides available lifecycle hook resources. 
+        /// 
+        /// &gt; **NOTE:** Available in 1.72.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
+        /// </summary>
+        public static Task<GetLifecycleHooksResult> InvokeAsync(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

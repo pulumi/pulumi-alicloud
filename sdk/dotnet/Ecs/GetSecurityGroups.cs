@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSecurityGroups.InvokeAsync() instead")]
         public static Task<GetSecurityGroupsResult> GetSecurityGroups(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSecurityGroups
+    {
+        /// <summary>
+        /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
+        /// </summary>
+        public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupsResult>("alicloud:ecs/getSecurityGroups:getSecurityGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

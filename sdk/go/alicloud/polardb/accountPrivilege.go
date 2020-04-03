@@ -117,4 +117,3 @@ type AccountPrivilegeArgs struct {
 func (AccountPrivilegeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountPrivilegeArgs)(nil)).Elem()
 }
-

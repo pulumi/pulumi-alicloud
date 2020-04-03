@@ -24,15 +24,15 @@ func GetTriggers(ctx *pulumi.Context, args *GetTriggersArgs, opts ...pulumi.Invo
 type GetTriggersArgs struct {
 	// FC function name.
 	FunctionName string `pulumi:"functionName"`
+	// A list of FC triggers ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by FC trigger name.
 	// * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// FC service name.
 	ServiceName string `pulumi:"serviceName"`
 }
-
 
 // A collection of values returned by getTriggers.
 type GetTriggersResult struct {
@@ -40,13 +40,12 @@ type GetTriggersResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of FC triggers ids.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of FC triggers names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	ServiceName string `pulumi:"serviceName"`
+	Names       []string `pulumi:"names"`
+	OutputFile  *string  `pulumi:"outputFile"`
+	ServiceName string   `pulumi:"serviceName"`
 	// A list of FC triggers. Each element contains the following attributes:
 	Triggers []GetTriggersTrigger `pulumi:"triggers"`
 }
-

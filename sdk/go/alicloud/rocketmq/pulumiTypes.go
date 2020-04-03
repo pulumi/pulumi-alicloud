@@ -73,7 +73,7 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-type GetGroupsGroupOutput struct { *pulumi.OutputState }
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 
 // The name of the group.
 func (o GetGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
 func (o GetGroupsGroupOutput) IndependentNaming() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetGroupsGroup) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
 }
 
 // The ID of the group owner, which is the Alibaba Cloud UID.
 func (o GetGroupsGroupOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Owner }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 // Remark of the group.
 func (o GetGroupsGroupOutput) Remark() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Remark }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Remark }).(pulumi.StringOutput)
 }
 
-type GetGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx co
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
 }
@@ -197,7 +197,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -213,35 +213,35 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ID of the instance.
 func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Name of the instance.
 func (o GetInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
 func (o GetInstancesInstanceOutput) InstanceStatus() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.InstanceStatus }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InstanceStatus }).(pulumi.IntOutput)
 }
 
 // The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
 func (o GetInstancesInstanceOutput) InstanceType() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.InstanceType }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InstanceType }).(pulumi.IntOutput)
 }
 
 // The automatic release time of an Enterprise Platinum Edition instance.
 func (o GetInstancesInstanceOutput) ReleaseTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.ReleaseTime }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.ReleaseTime }).(pulumi.IntOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -256,7 +256,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -339,7 +339,7 @@ func (i GetTopicsTopicArray) ToGetTopicsTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicArrayOutput)
 }
 
-type GetTopicsTopicOutput struct { *pulumi.OutputState }
+type GetTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTopicsTopic)(nil)).Elem()
@@ -355,45 +355,45 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Cont
 
 // Time of creation.
 func (o GetTopicsTopicOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 func (o GetTopicsTopicOutput) IndependentNaming() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetTopicsTopic) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetTopicsTopic) bool { return v.IndependentNaming }).(pulumi.BoolOutput)
 }
 
 // The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 func (o GetTopicsTopicOutput) MessageType() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTopicsTopic) int { return v.MessageType }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.MessageType }).(pulumi.IntOutput)
 }
 
 // The ID of the topic owner, which is the Alibaba Cloud UID.
 func (o GetTopicsTopicOutput) Owner() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Owner }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 // The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
 func (o GetTopicsTopicOutput) Relation() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTopicsTopic) int { return v.Relation }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.Relation }).(pulumi.IntOutput)
 }
 
 // The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
 func (o GetTopicsTopicOutput) RelationName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.RelationName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.RelationName }).(pulumi.StringOutput)
 }
 
 // Remark of the topic.
 func (o GetTopicsTopicOutput) Remark() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Remark }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Remark }).(pulumi.StringOutput)
 }
 
 // The name of the topic.
 func (o GetTopicsTopicOutput) Topic() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-type GetTopicsTopicArrayOutput struct { *pulumi.OutputState}
+type GetTopicsTopicArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTopicsTopic)(nil)).Elem()
@@ -408,7 +408,7 @@ func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutputWithContext(ctx co
 }
 
 func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTopicsTopic {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicsTopic {
 		return vs[0].([]GetTopicsTopic)[vs[1].(int)]
 	}).(GetTopicsTopicOutput)
 }

@@ -25,10 +25,9 @@ type GetDdosCooInstancesArgs struct {
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getDdosCooInstances.
 type GetDdosCooInstancesResult struct {
@@ -38,9 +37,8 @@ type GetDdosCooInstancesResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of apis. Each element contains the following attributes:
 	Instances []GetDdosCooInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex *string                       `pulumi:"nameRegex"`
 	// A list of instance names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

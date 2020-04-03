@@ -69,7 +69,7 @@ func (i PolicyStatementArray) ToPolicyStatementArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyStatementArrayOutput)
 }
 
-type PolicyStatementOutput struct { *pulumi.OutputState }
+type PolicyStatementOutput struct{ *pulumi.OutputState }
 
 func (PolicyStatementOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PolicyStatement)(nil)).Elem()
@@ -85,20 +85,20 @@ func (o PolicyStatementOutput) ToPolicyStatementOutputWithContext(ctx context.Co
 
 // (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 func (o PolicyStatementOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
 // (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 func (o PolicyStatementOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func (v PolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
+	return o.ApplyT(func(v PolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
 // (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
 func (o PolicyStatementOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v PolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v PolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
-type PolicyStatementArrayOutput struct { *pulumi.OutputState}
+type PolicyStatementArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyStatementArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]PolicyStatement)(nil)).Elem()
@@ -113,7 +113,7 @@ func (o PolicyStatementArrayOutput) ToPolicyStatementArrayOutputWithContext(ctx 
 }
 
 func (o PolicyStatementArrayOutput) Index(i pulumi.IntInput) PolicyStatementOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) PolicyStatement {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyStatement {
 		return vs[0].([]PolicyStatement)[vs[1].(int)]
 	}).(PolicyStatementOutput)
 }
@@ -172,7 +172,7 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-type GetGroupsGroupOutput struct { *pulumi.OutputState }
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
@@ -188,15 +188,15 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 
 // Comments of the group.
 func (o GetGroupsGroupOutput) Comments() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Comments }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Comments }).(pulumi.StringOutput)
 }
 
 // Name of the group.
 func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
@@ -211,7 +211,7 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx co
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
 }
@@ -294,7 +294,7 @@ func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyArrayOutput)
 }
 
-type GetPoliciesPolicyOutput struct { *pulumi.OutputState }
+type GetPoliciesPolicyOutput struct{ *pulumi.OutputState }
 
 func (GetPoliciesPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetPoliciesPolicy)(nil)).Elem()
@@ -310,45 +310,45 @@ func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx contex
 
 // Attachment count of the policy.
 func (o GetPoliciesPolicyOutput) AttachmentCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
 }
 
 // Creation date of the policy.
 func (o GetPoliciesPolicyOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.CreateDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
 // Default version of the policy.
 func (o GetPoliciesPolicyOutput) DefaultVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.DefaultVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.DefaultVersion }).(pulumi.StringOutput)
 }
 
 // Description of the policy.
 func (o GetPoliciesPolicyOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Policy document of the policy.
 func (o GetPoliciesPolicyOutput) Document() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.Document }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Document }).(pulumi.StringOutput)
 }
 
 // Name of the policy.
 func (o GetPoliciesPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Filter results by a specific policy type. Valid values are `Custom` and `System`.
 func (o GetPoliciesPolicyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Update date of the policy.
 func (o GetPoliciesPolicyOutput) UpdateDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
 }
 
-type GetPoliciesPolicyArrayOutput struct { *pulumi.OutputState}
+type GetPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (GetPoliciesPolicyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetPoliciesPolicy)(nil)).Elem()
@@ -363,7 +363,7 @@ func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutputWithContext(
 }
 
 func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetPoliciesPolicy {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoliciesPolicy {
 		return vs[0].([]GetPoliciesPolicy)[vs[1].(int)]
 	}).(GetPoliciesPolicyOutput)
 }
@@ -446,7 +446,7 @@ func (i GetRolesRoleArray) ToGetRolesRoleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleArrayOutput)
 }
 
-type GetRolesRoleOutput struct { *pulumi.OutputState }
+type GetRolesRoleOutput struct{ *pulumi.OutputState }
 
 func (GetRolesRoleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRolesRole)(nil)).Elem()
@@ -462,45 +462,45 @@ func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context)
 
 // Resource descriptor of the role.
 func (o GetRolesRoleOutput) Arn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.Arn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.Arn }).(pulumi.StringOutput)
 }
 
 // Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
 func (o GetRolesRoleOutput) AssumeRolePolicyDocument() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
 }
 
 // Creation date of the role.
 func (o GetRolesRoleOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.CreateDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
 // Description of the role.
 func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Authorization strategy of the role.
 func (o GetRolesRoleOutput) Document() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.Document }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.Document }).(pulumi.StringOutput)
 }
 
 // Id of the role.
 func (o GetRolesRoleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the role.
 func (o GetRolesRoleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Update date of the role.
 func (o GetRolesRoleOutput) UpdateDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRolesRole) string { return v.UpdateDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRolesRole) string { return v.UpdateDate }).(pulumi.StringOutput)
 }
 
-type GetRolesRoleArrayOutput struct { *pulumi.OutputState}
+type GetRolesRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRolesRoleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRolesRole)(nil)).Elem()
@@ -515,7 +515,7 @@ func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutputWithContext(ctx contex
 }
 
 func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRolesRole {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolesRole {
 		return vs[0].([]GetRolesRole)[vs[1].(int)]
 	}).(GetRolesRoleOutput)
 }
@@ -582,7 +582,7 @@ func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
 }
 
-type GetUsersUserOutput struct { *pulumi.OutputState }
+type GetUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
@@ -598,25 +598,25 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 
 // Creation date of the user.
 func (o GetUsersUserOutput) CreateDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetUsersUser) string { return v.CreateDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetUsersUser) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
 // The original id is user name, but it is user id in 1.37.0+.
 func (o GetUsersUserOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Last login date of the user.
 func (o GetUsersUserOutput) LastLoginDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetUsersUser) string { return v.LastLoginDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetUsersUser) string { return v.LastLoginDate }).(pulumi.StringOutput)
 }
 
 // Name of the user.
 func (o GetUsersUserOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetUsersUserArrayOutput struct { *pulumi.OutputState}
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
 
 func (GetUsersUserArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
@@ -631,7 +631,7 @@ func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx contex
 }
 
 func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetUsersUser {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
 		return vs[0].([]GetUsersUser)[vs[1].(int)]
 	}).(GetUsersUserOutput)
 }

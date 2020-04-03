@@ -20,7 +20,7 @@ type ShardingInstance struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -42,8 +42,8 @@ type ShardingInstance struct {
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
-	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
+	ShardLists    ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
+	StorageEngine pulumi.StringOutput                  `pulumi:"storageEngine"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -94,7 +94,7 @@ type shardingInstanceState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -116,8 +116,8 @@ type shardingInstanceState struct {
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
-	StorageEngine *string `pulumi:"storageEngine"`
+	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
+	StorageEngine *string                     `pulumi:"storageEngine"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -132,7 +132,7 @@ type ShardingInstanceState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -154,7 +154,7 @@ type ShardingInstanceState struct {
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists ShardingInstanceShardListArrayInput
+	ShardLists    ShardingInstanceShardListArrayInput
 	StorageEngine pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
@@ -174,7 +174,7 @@ type shardingInstanceArgs struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -194,8 +194,8 @@ type shardingInstanceArgs struct {
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
-	StorageEngine *string `pulumi:"storageEngine"`
+	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
+	StorageEngine *string                     `pulumi:"storageEngine"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -211,7 +211,7 @@ type ShardingInstanceArgs struct {
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
 	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -231,7 +231,7 @@ type ShardingInstanceArgs struct {
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists ShardingInstanceShardListArrayInput
+	ShardLists    ShardingInstanceShardListArrayInput
 	StorageEngine pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
@@ -243,4 +243,3 @@ type ShardingInstanceArgs struct {
 func (ShardingInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*shardingInstanceArgs)(nil)).Elem()
 }
-

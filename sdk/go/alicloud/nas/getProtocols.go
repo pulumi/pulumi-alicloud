@@ -25,21 +25,19 @@ func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.In
 // A collection of arguments for invoking getProtocols.
 type GetProtocolsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
-	// The file system type. Valid Values: Performance and Capacity.  
+	// The file system type. Valid Values: Performance and Capacity.
 	Type string `pulumi:"type"`
-	// String to filter results by zone id. 
+	// String to filter results by zone id.
 	ZoneId *string `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getProtocols.
 type GetProtocolsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of supported protocol type..
 	Protocols []string `pulumi:"protocols"`
-	Type string `pulumi:"type"`
-	ZoneId *string `pulumi:"zoneId"`
+	Type      string   `pulumi:"type"`
+	ZoneId    *string  `pulumi:"zoneId"`
 }
-

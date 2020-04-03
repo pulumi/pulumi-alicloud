@@ -65,7 +65,7 @@ func (i ZoneAttachmentVpcArray) ToZoneAttachmentVpcArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneAttachmentVpcArrayOutput)
 }
 
-type ZoneAttachmentVpcOutput struct { *pulumi.OutputState }
+type ZoneAttachmentVpcOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentVpcOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ZoneAttachmentVpc)(nil)).Elem()
@@ -81,15 +81,15 @@ func (o ZoneAttachmentVpcOutput) ToZoneAttachmentVpcOutputWithContext(ctx contex
 
 // The region of the vpc. If not set, the current region will instead of.
 func (o ZoneAttachmentVpcOutput) RegionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ZoneAttachmentVpc) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ZoneAttachmentVpc) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
 // The Id of the vpc.
 func (o ZoneAttachmentVpcOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v ZoneAttachmentVpc) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ZoneAttachmentVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-type ZoneAttachmentVpcArrayOutput struct { *pulumi.OutputState}
+type ZoneAttachmentVpcArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneAttachmentVpcArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ZoneAttachmentVpc)(nil)).Elem()
@@ -104,7 +104,7 @@ func (o ZoneAttachmentVpcArrayOutput) ToZoneAttachmentVpcArrayOutputWithContext(
 }
 
 func (o ZoneAttachmentVpcArrayOutput) Index(i pulumi.IntInput) ZoneAttachmentVpcOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ZoneAttachmentVpc {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneAttachmentVpc {
 		return vs[0].([]ZoneAttachmentVpc)[vs[1].(int)]
 	}).(ZoneAttachmentVpcOutput)
 }
@@ -116,7 +116,7 @@ type GetZoneRecordsRecord struct {
 	Priority int `pulumi:"priority"`
 	// Resource record of the Private Zone Record.
 	ResourceRecord string `pulumi:"resourceRecord"`
-	Status string `pulumi:"status"`
+	Status         string `pulumi:"status"`
 	// Ttl of the Private Zone Record.
 	Ttl int `pulumi:"ttl"`
 	// Type of the Private Zone Record.
@@ -139,7 +139,7 @@ type GetZoneRecordsRecordArgs struct {
 	Priority pulumi.IntInput `pulumi:"priority"`
 	// Resource record of the Private Zone Record.
 	ResourceRecord pulumi.StringInput `pulumi:"resourceRecord"`
-	Status pulumi.StringInput `pulumi:"status"`
+	Status         pulumi.StringInput `pulumi:"status"`
 	// Ttl of the Private Zone Record.
 	Ttl pulumi.IntInput `pulumi:"ttl"`
 	// Type of the Private Zone Record.
@@ -181,7 +181,7 @@ func (i GetZoneRecordsRecordArray) ToGetZoneRecordsRecordArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetZoneRecordsRecordArrayOutput)
 }
 
-type GetZoneRecordsRecordOutput struct { *pulumi.OutputState }
+type GetZoneRecordsRecordOutput struct{ *pulumi.OutputState }
 
 func (GetZoneRecordsRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZoneRecordsRecord)(nil)).Elem()
@@ -197,39 +197,39 @@ func (o GetZoneRecordsRecordOutput) ToGetZoneRecordsRecordOutputWithContext(ctx 
 
 // ID of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // Priority of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // Resource record of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) ResourceRecord() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) string { return v.ResourceRecord }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.ResourceRecord }).(pulumi.StringOutput)
 }
 
 func (o GetZoneRecordsRecordOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Ttl of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Ttl() pulumi.IntOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
 // Type of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Value of the Private Zone Record.
 func (o GetZoneRecordsRecordOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZoneRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZoneRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetZoneRecordsRecordArrayOutput struct { *pulumi.OutputState}
+type GetZoneRecordsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZoneRecordsRecordArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZoneRecordsRecord)(nil)).Elem()
@@ -244,7 +244,7 @@ func (o GetZoneRecordsRecordArrayOutput) ToGetZoneRecordsRecordArrayOutputWithCo
 }
 
 func (o GetZoneRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetZoneRecordsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZoneRecordsRecord {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZoneRecordsRecord {
 		return vs[0].([]GetZoneRecordsRecord)[vs[1].(int)]
 	}).(GetZoneRecordsRecordOutput)
 }
@@ -327,7 +327,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -343,45 +343,45 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // List of the VPCs is bound to the Private Zone.
 func (o GetZonesZoneOutput) BindVpcs() GetZonesZoneBindVpcArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []GetZonesZoneBindVpc { return v.BindVpcs }).(GetZonesZoneBindVpcArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []GetZonesZoneBindVpc { return v.BindVpcs }).(GetZonesZoneBindVpcArrayOutput)
 }
 
 // Time of creation of the Private Zone.
 func (o GetZonesZoneOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // ID of the Private Zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether the Private Zone is ptr
 func (o GetZonesZoneOutput) IsPtr() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetZonesZone) bool { return v.IsPtr }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetZonesZone) bool { return v.IsPtr }).(pulumi.BoolOutput)
 }
 
 // Name of the Private Zone.
 func (o GetZonesZoneOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Count of the Private Zone Record.
 func (o GetZonesZoneOutput) RecordCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetZonesZone) int { return v.RecordCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetZonesZone) int { return v.RecordCount }).(pulumi.IntOutput)
 }
 
 // Remark of the Private Zone.
 func (o GetZonesZoneOutput) Remark() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Remark }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Remark }).(pulumi.StringOutput)
 }
 
 // Time of update of the Private Zone.
 func (o GetZonesZoneOutput) UpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.UpdateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -396,15 +396,15 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }
 
 type GetZonesZoneBindVpc struct {
 	RegionId string `pulumi:"regionId"`
-	VpcId string `pulumi:"vpcId"`
-	VpcName string `pulumi:"vpcName"`
+	VpcId    string `pulumi:"vpcId"`
+	VpcName  string `pulumi:"vpcName"`
 }
 
 type GetZonesZoneBindVpcInput interface {
@@ -416,8 +416,8 @@ type GetZonesZoneBindVpcInput interface {
 
 type GetZonesZoneBindVpcArgs struct {
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	VpcName pulumi.StringInput `pulumi:"vpcName"`
+	VpcId    pulumi.StringInput `pulumi:"vpcId"`
+	VpcName  pulumi.StringInput `pulumi:"vpcName"`
 }
 
 func (GetZonesZoneBindVpcArgs) ElementType() reflect.Type {
@@ -453,7 +453,7 @@ func (i GetZonesZoneBindVpcArray) ToGetZonesZoneBindVpcArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneBindVpcArrayOutput)
 }
 
-type GetZonesZoneBindVpcOutput struct { *pulumi.OutputState }
+type GetZonesZoneBindVpcOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneBindVpcOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZoneBindVpc)(nil)).Elem()
@@ -468,18 +468,18 @@ func (o GetZonesZoneBindVpcOutput) ToGetZonesZoneBindVpcOutputWithContext(ctx co
 }
 
 func (o GetZonesZoneBindVpcOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZoneBindVpc) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 func (o GetZonesZoneBindVpcOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZoneBindVpc) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 func (o GetZonesZoneBindVpcOutput) VpcName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZoneBindVpc) string { return v.VpcName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZoneBindVpc) string { return v.VpcName }).(pulumi.StringOutput)
 }
 
-type GetZonesZoneBindVpcArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneBindVpcArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneBindVpcArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZoneBindVpc)(nil)).Elem()
@@ -494,7 +494,7 @@ func (o GetZonesZoneBindVpcArrayOutput) ToGetZonesZoneBindVpcArrayOutputWithCont
 }
 
 func (o GetZonesZoneBindVpcArrayOutput) Index(i pulumi.IntInput) GetZonesZoneBindVpcOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZoneBindVpc {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZoneBindVpc {
 		return vs[0].([]GetZonesZoneBindVpc)[vs[1].(int)]
 	}).(GetZonesZoneBindVpcOutput)
 }

@@ -12,25 +12,25 @@ import (
 )
 
 type GetMongoInstancesInstance struct {
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	ChargeType string `pulumi:"chargeType"`
-	CreationTime string `pulumi:"creationTime"`
-	Engine string `pulumi:"engine"`
-	EngineVersion string `pulumi:"engineVersion"`
-	ExpirationTime string `pulumi:"expirationTime"`
-	Id string `pulumi:"id"`
-	InstanceClass string `pulumi:"instanceClass"`
-	InstanceType string `pulumi:"instanceType"`
-	LockMode string `pulumi:"lockMode"`
-	Mongos []GetMongoInstancesInstanceMongo `pulumi:"mongos"`
-	Name string `pulumi:"name"`
-	NetworkType string `pulumi:"networkType"`
-	RegionId string `pulumi:"regionId"`
-	Replication string `pulumi:"replication"`
-	Shards []GetMongoInstancesInstanceShard `pulumi:"shards"`
-	Status string `pulumi:"status"`
-	Storage int `pulumi:"storage"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	AvailabilityZone string                           `pulumi:"availabilityZone"`
+	ChargeType       string                           `pulumi:"chargeType"`
+	CreationTime     string                           `pulumi:"creationTime"`
+	Engine           string                           `pulumi:"engine"`
+	EngineVersion    string                           `pulumi:"engineVersion"`
+	ExpirationTime   string                           `pulumi:"expirationTime"`
+	Id               string                           `pulumi:"id"`
+	InstanceClass    string                           `pulumi:"instanceClass"`
+	InstanceType     string                           `pulumi:"instanceType"`
+	LockMode         string                           `pulumi:"lockMode"`
+	Mongos           []GetMongoInstancesInstanceMongo `pulumi:"mongos"`
+	Name             string                           `pulumi:"name"`
+	NetworkType      string                           `pulumi:"networkType"`
+	RegionId         string                           `pulumi:"regionId"`
+	Replication      string                           `pulumi:"replication"`
+	Shards           []GetMongoInstancesInstanceShard `pulumi:"shards"`
+	Status           string                           `pulumi:"status"`
+	Storage          int                              `pulumi:"storage"`
+	Tags             map[string]interface{}           `pulumi:"tags"`
 }
 
 type GetMongoInstancesInstanceInput interface {
@@ -41,25 +41,25 @@ type GetMongoInstancesInstanceInput interface {
 }
 
 type GetMongoInstancesInstanceArgs struct {
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	ChargeType pulumi.StringInput `pulumi:"chargeType"`
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	Engine pulumi.StringInput `pulumi:"engine"`
-	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
-	Id pulumi.StringInput `pulumi:"id"`
-	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
-	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	LockMode pulumi.StringInput `pulumi:"lockMode"`
-	Mongos GetMongoInstancesInstanceMongoArrayInput `pulumi:"mongos"`
-	Name pulumi.StringInput `pulumi:"name"`
-	NetworkType pulumi.StringInput `pulumi:"networkType"`
-	RegionId pulumi.StringInput `pulumi:"regionId"`
-	Replication pulumi.StringInput `pulumi:"replication"`
-	Shards GetMongoInstancesInstanceShardArrayInput `pulumi:"shards"`
-	Status pulumi.StringInput `pulumi:"status"`
-	Storage pulumi.IntInput `pulumi:"storage"`
-	Tags pulumi.MapInput `pulumi:"tags"`
+	AvailabilityZone pulumi.StringInput                       `pulumi:"availabilityZone"`
+	ChargeType       pulumi.StringInput                       `pulumi:"chargeType"`
+	CreationTime     pulumi.StringInput                       `pulumi:"creationTime"`
+	Engine           pulumi.StringInput                       `pulumi:"engine"`
+	EngineVersion    pulumi.StringInput                       `pulumi:"engineVersion"`
+	ExpirationTime   pulumi.StringInput                       `pulumi:"expirationTime"`
+	Id               pulumi.StringInput                       `pulumi:"id"`
+	InstanceClass    pulumi.StringInput                       `pulumi:"instanceClass"`
+	InstanceType     pulumi.StringInput                       `pulumi:"instanceType"`
+	LockMode         pulumi.StringInput                       `pulumi:"lockMode"`
+	Mongos           GetMongoInstancesInstanceMongoArrayInput `pulumi:"mongos"`
+	Name             pulumi.StringInput                       `pulumi:"name"`
+	NetworkType      pulumi.StringInput                       `pulumi:"networkType"`
+	RegionId         pulumi.StringInput                       `pulumi:"regionId"`
+	Replication      pulumi.StringInput                       `pulumi:"replication"`
+	Shards           GetMongoInstancesInstanceShardArrayInput `pulumi:"shards"`
+	Status           pulumi.StringInput                       `pulumi:"status"`
+	Storage          pulumi.IntInput                          `pulumi:"storage"`
+	Tags             pulumi.MapInput                          `pulumi:"tags"`
 }
 
 func (GetMongoInstancesInstanceArgs) ElementType() reflect.Type {
@@ -95,7 +95,7 @@ func (i GetMongoInstancesInstanceArray) ToGetMongoInstancesInstanceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceArrayOutput)
 }
 
-type GetMongoInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetMongoInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMongoInstancesInstance)(nil)).Elem()
@@ -110,82 +110,82 @@ func (o GetMongoInstancesInstanceOutput) ToGetMongoInstancesInstanceOutputWithCo
 }
 
 func (o GetMongoInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) ExpirationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) LockMode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Mongos() GetMongoInstancesInstanceMongoArrayOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) []GetMongoInstancesInstanceMongo { return v.Mongos }).(GetMongoInstancesInstanceMongoArrayOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceMongo { return v.Mongos }).(GetMongoInstancesInstanceMongoArrayOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Replication() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Replication }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Shards() GetMongoInstancesInstanceShardArrayOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) []GetMongoInstancesInstanceShard { return v.Shards }).(GetMongoInstancesInstanceShardArrayOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) []GetMongoInstancesInstanceShard { return v.Shards }).(GetMongoInstancesInstanceShardArrayOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Storage() pulumi.IntOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) int { return v.Storage }).(pulumi.IntOutput)
 }
 
 func (o GetMongoInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-type GetMongoInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetMongoInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMongoInstancesInstance)(nil)).Elem()
@@ -200,15 +200,15 @@ func (o GetMongoInstancesInstanceArrayOutput) ToGetMongoInstancesInstanceArrayOu
 }
 
 func (o GetMongoInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMongoInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMongoInstancesInstance {
 		return vs[0].([]GetMongoInstancesInstance)[vs[1].(int)]
 	}).(GetMongoInstancesInstanceOutput)
 }
 
 type GetMongoInstancesInstanceMongo struct {
-	Class string `pulumi:"class"`
+	Class       string `pulumi:"class"`
 	Description string `pulumi:"description"`
-	NodeId string `pulumi:"nodeId"`
+	NodeId      string `pulumi:"nodeId"`
 }
 
 type GetMongoInstancesInstanceMongoInput interface {
@@ -219,9 +219,9 @@ type GetMongoInstancesInstanceMongoInput interface {
 }
 
 type GetMongoInstancesInstanceMongoArgs struct {
-	Class pulumi.StringInput `pulumi:"class"`
+	Class       pulumi.StringInput `pulumi:"class"`
 	Description pulumi.StringInput `pulumi:"description"`
-	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	NodeId      pulumi.StringInput `pulumi:"nodeId"`
 }
 
 func (GetMongoInstancesInstanceMongoArgs) ElementType() reflect.Type {
@@ -257,7 +257,7 @@ func (i GetMongoInstancesInstanceMongoArray) ToGetMongoInstancesInstanceMongoArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceMongoArrayOutput)
 }
 
-type GetMongoInstancesInstanceMongoOutput struct { *pulumi.OutputState }
+type GetMongoInstancesInstanceMongoOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceMongoOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMongoInstancesInstanceMongo)(nil)).Elem()
@@ -272,18 +272,18 @@ func (o GetMongoInstancesInstanceMongoOutput) ToGetMongoInstancesInstanceMongoOu
 }
 
 func (o GetMongoInstancesInstanceMongoOutput) Class() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.Class }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceMongoOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceMongoOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceMongo) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-type GetMongoInstancesInstanceMongoArrayOutput struct { *pulumi.OutputState}
+type GetMongoInstancesInstanceMongoArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceMongoArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMongoInstancesInstanceMongo)(nil)).Elem()
@@ -298,16 +298,16 @@ func (o GetMongoInstancesInstanceMongoArrayOutput) ToGetMongoInstancesInstanceMo
 }
 
 func (o GetMongoInstancesInstanceMongoArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceMongoOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMongoInstancesInstanceMongo {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMongoInstancesInstanceMongo {
 		return vs[0].([]GetMongoInstancesInstanceMongo)[vs[1].(int)]
 	}).(GetMongoInstancesInstanceMongoOutput)
 }
 
 type GetMongoInstancesInstanceShard struct {
-	Class string `pulumi:"class"`
+	Class       string `pulumi:"class"`
 	Description string `pulumi:"description"`
-	NodeId string `pulumi:"nodeId"`
-	Storage int `pulumi:"storage"`
+	NodeId      string `pulumi:"nodeId"`
+	Storage     int    `pulumi:"storage"`
 }
 
 type GetMongoInstancesInstanceShardInput interface {
@@ -318,10 +318,10 @@ type GetMongoInstancesInstanceShardInput interface {
 }
 
 type GetMongoInstancesInstanceShardArgs struct {
-	Class pulumi.StringInput `pulumi:"class"`
+	Class       pulumi.StringInput `pulumi:"class"`
 	Description pulumi.StringInput `pulumi:"description"`
-	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	Storage pulumi.IntInput `pulumi:"storage"`
+	NodeId      pulumi.StringInput `pulumi:"nodeId"`
+	Storage     pulumi.IntInput    `pulumi:"storage"`
 }
 
 func (GetMongoInstancesInstanceShardArgs) ElementType() reflect.Type {
@@ -357,7 +357,7 @@ func (i GetMongoInstancesInstanceShardArray) ToGetMongoInstancesInstanceShardArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetMongoInstancesInstanceShardArrayOutput)
 }
 
-type GetMongoInstancesInstanceShardOutput struct { *pulumi.OutputState }
+type GetMongoInstancesInstanceShardOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceShardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetMongoInstancesInstanceShard)(nil)).Elem()
@@ -372,22 +372,22 @@ func (o GetMongoInstancesInstanceShardOutput) ToGetMongoInstancesInstanceShardOu
 }
 
 func (o GetMongoInstancesInstanceShardOutput) Class() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.Class }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceShardOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceShardOutput) NodeId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceShard) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
 func (o GetMongoInstancesInstanceShardOutput) Storage() pulumi.IntOutput {
-	return o.ApplyT(func (v GetMongoInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetMongoInstancesInstanceShard) int { return v.Storage }).(pulumi.IntOutput)
 }
 
-type GetMongoInstancesInstanceShardArrayOutput struct { *pulumi.OutputState}
+type GetMongoInstancesInstanceShardArrayOutput struct{ *pulumi.OutputState }
 
 func (GetMongoInstancesInstanceShardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetMongoInstancesInstanceShard)(nil)).Elem()
@@ -402,7 +402,7 @@ func (o GetMongoInstancesInstanceShardArrayOutput) ToGetMongoInstancesInstanceSh
 }
 
 func (o GetMongoInstancesInstanceShardArrayOutput) Index(i pulumi.IntInput) GetMongoInstancesInstanceShardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetMongoInstancesInstanceShard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMongoInstancesInstanceShard {
 		return vs[0].([]GetMongoInstancesInstanceShard)[vs[1].(int)]
 	}).(GetMongoInstancesInstanceShardOutput)
 }

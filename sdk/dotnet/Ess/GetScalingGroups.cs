@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetScalingGroups.InvokeAsync() instead")]
         public static Task<GetScalingGroupsResult> GetScalingGroups(GetScalingGroupsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetScalingGroups
+    {
+        /// <summary>
+        /// This data source provides available scaling group resources. 
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_groups.html.markdown.
+        /// </summary>
+        public static Task<GetScalingGroupsResult> InvokeAsync(GetScalingGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

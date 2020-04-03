@@ -27,15 +27,13 @@ type GetZonesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of availability zones. Each element contains the following attributes:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
-

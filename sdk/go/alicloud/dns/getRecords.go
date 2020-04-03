@@ -24,36 +24,35 @@ func GetRecords(ctx *pulumi.Context, args *GetRecordsArgs, opts ...pulumi.Invoke
 type GetRecordsArgs struct {
 	// The domain name associated to the records.
 	DomainName string `pulumi:"domainName"`
-	// Host record regex. 
+	// Host record regex.
 	HostRecordRegex *string `pulumi:"hostRecordRegex"`
 	// A list of record IDs.
 	Ids []string `pulumi:"ids"`
 	// Whether the record is locked or not.
 	IsLocked *bool `pulumi:"isLocked"`
-	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
-	Line *string `pulumi:"line"`
+	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	Line       *string `pulumi:"line"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Record status. Valid items are `ENABLE` and `DISABLE`.
 	Status *string `pulumi:"status"`
 	// Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
 	Type *string `pulumi:"type"`
-	// Host record value regex. 
+	// Host record value regex.
 	ValueRegex *string `pulumi:"valueRegex"`
 }
-
 
 // A collection of values returned by getRecords.
 type GetRecordsResult struct {
 	// Name of the domain the record belongs to.
-	DomainName string `pulumi:"domainName"`
+	DomainName      string  `pulumi:"domainName"`
 	HostRecordRegex *string `pulumi:"hostRecordRegex"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of record IDs. 
-	Ids []string `pulumi:"ids"`
-	IsLocked *bool `pulumi:"isLocked"`
-	// ISP line of the record. 
-	Line *string `pulumi:"line"`
+	// A list of record IDs.
+	Ids      []string `pulumi:"ids"`
+	IsLocked *bool    `pulumi:"isLocked"`
+	// ISP line of the record.
+	Line       *string `pulumi:"line"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of records. Each element contains the following attributes:
 	Records []GetRecordsRecord `pulumi:"records"`
@@ -62,7 +61,6 @@ type GetRecordsResult struct {
 	// Type of the record.
 	Type *string `pulumi:"type"`
 	// A list of entire URLs. Each item format as `<host_record>.<domain_name>`.
-	Urls []string `pulumi:"urls"`
-	ValueRegex *string `pulumi:"valueRegex"`
+	Urls       []string `pulumi:"urls"`
+	ValueRegex *string  `pulumi:"valueRegex"`
 }
-

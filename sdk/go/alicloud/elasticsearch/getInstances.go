@@ -19,24 +19,22 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	Version *string `pulumi:"version"`
+	DescriptionRegex *string                `pulumi:"descriptionRegex"`
+	Ids              []string               `pulumi:"ids"`
+	OutputFile       *string                `pulumi:"outputFile"`
+	Tags             map[string]interface{} `pulumi:"tags"`
+	Version          *string                `pulumi:"version"`
 }
-
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	Descriptions []string `pulumi:"descriptions"`
+	DescriptionRegex *string  `pulumi:"descriptionRegex"`
+	Descriptions     []string `pulumi:"descriptions"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	Instances []GetInstancesInstance `pulumi:"instances"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	Version *string `pulumi:"version"`
+	Id         string                 `pulumi:"id"`
+	Ids        []string               `pulumi:"ids"`
+	Instances  []GetInstancesInstance `pulumi:"instances"`
+	OutputFile *string                `pulumi:"outputFile"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	Version    *string                `pulumi:"version"`
 }
-

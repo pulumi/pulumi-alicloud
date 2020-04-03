@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `emr.getMainVersions` data source provides a collection of emr 
+// The `emr.getMainVersions` data source provides a collection of emr
 // main versions available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.59.0+
@@ -33,7 +33,6 @@ type GetMainVersionsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getMainVersions.
 type GetMainVersionsResult struct {
 	ClusterTypes []string `pulumi:"clusterTypes"`
@@ -41,10 +40,9 @@ type GetMainVersionsResult struct {
 	EmrVersion *string `pulumi:"emrVersion"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of emr instance types IDs. 
+	// A list of emr instance types IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of versions of the emr cluster instance. Each element contains the following attributes:
 	MainVersions []GetMainVersionsMainVersion `pulumi:"mainVersions"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile   *string                      `pulumi:"outputFile"`
 }
-

@@ -40,9 +40,9 @@ type Swarm struct {
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
 	// The container cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	NeedSlb pulumi.BoolPtrOutput `pulumi:"needSlb"`
+	NeedSlb    pulumi.BoolPtrOutput   `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrOutput `pulumi:"nodeNumber"`
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -123,9 +123,9 @@ type swarmState struct {
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The container cluster's name. It is the only in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	NeedSlb *bool `pulumi:"needSlb"`
+	NeedSlb    *bool   `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber *int `pulumi:"nodeNumber"`
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -167,9 +167,9 @@ type SwarmState struct {
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
 	// The container cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	NeedSlb pulumi.BoolPtrInput
+	NeedSlb    pulumi.BoolPtrInput
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrInput
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -213,9 +213,9 @@ type swarmArgs struct {
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
 	// The container cluster's name. It is the only in one Alicloud account.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	NeedSlb *bool `pulumi:"needSlb"`
+	NeedSlb    *bool   `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber *int `pulumi:"nodeNumber"`
 	// The password of ECS instance node.
@@ -248,9 +248,9 @@ type SwarmArgs struct {
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
 	// The container cluster's name. It is the only in one Alicloud account.
-	Name pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	NeedSlb pulumi.BoolPtrInput
+	NeedSlb    pulumi.BoolPtrInput
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrInput
 	// The password of ECS instance node.
@@ -267,4 +267,3 @@ type SwarmArgs struct {
 func (SwarmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*swarmArgs)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKeyPairs.InvokeAsync() instead")]
         public static Task<GetKeyPairsResult> GetKeyPairs(GetKeyPairsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKeyPairs
+    {
+        /// <summary>
+        /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
+        /// </summary>
+        public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
         /// </summary>
+        [Obsolete("Use GetUsers.InvokeAsync() instead")]
         public static Task<GetUsersResult> GetUsers(GetUsersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetUsers
+    {
+        /// <summary>
+        /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
+        /// </summary>
+        public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -30,6 +41,10 @@ namespace Pulumi.AliCloud.Ram
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of ram user IDs. 
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());

@@ -26,13 +26,12 @@ func GetAccessGroups(ctx *pulumi.Context, args *GetAccessGroupsArgs, opts ...pul
 type GetAccessGroupsArgs struct {
 	// Filter results by a specific Description.
 	Description *string `pulumi:"description"`
-	// A regex string to filter AccessGroups by name. 
-	NameRegex *string `pulumi:"nameRegex"`
+	// A regex string to filter AccessGroups by name.
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific AccessGroupType.
 	Type *string `pulumi:"type"`
 }
-
 
 // A collection of values returned by getAccessGroups.
 type GetAccessGroupsResult struct {
@@ -43,12 +42,11 @@ type GetAccessGroupsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of AccessGroup IDs, the value is set to `names` .
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of AccessGroup names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// AccessGroupType of the AccessGroup.
 	Type *string `pulumi:"type"`
 }
-

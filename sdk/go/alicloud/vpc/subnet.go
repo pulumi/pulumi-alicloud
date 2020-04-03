@@ -14,12 +14,12 @@ import (
 type Subnet struct {
 	pulumi.CustomResourceState
 
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Name pulumi.StringOutput `pulumi:"name"`
-	Tags pulumi.MapOutput `pulumi:"tags"`
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	AvailabilityZone pulumi.StringOutput    `pulumi:"availabilityZone"`
+	CidrBlock        pulumi.StringOutput    `pulumi:"cidrBlock"`
+	Description      pulumi.StringPtrOutput `pulumi:"description"`
+	Name             pulumi.StringOutput    `pulumi:"name"`
+	Tags             pulumi.MapOutput       `pulumi:"tags"`
+	VpcId            pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
@@ -59,21 +59,21 @@ func GetSubnet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnet resources.
 type subnetState struct {
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	CidrBlock *string `pulumi:"cidrBlock"`
-	Description *string `pulumi:"description"`
-	Name *string `pulumi:"name"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	VpcId *string `pulumi:"vpcId"`
+	AvailabilityZone *string                `pulumi:"availabilityZone"`
+	CidrBlock        *string                `pulumi:"cidrBlock"`
+	Description      *string                `pulumi:"description"`
+	Name             *string                `pulumi:"name"`
+	Tags             map[string]interface{} `pulumi:"tags"`
+	VpcId            *string                `pulumi:"vpcId"`
 }
 
 type SubnetState struct {
 	AvailabilityZone pulumi.StringPtrInput
-	CidrBlock pulumi.StringPtrInput
-	Description pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
-	Tags pulumi.MapInput
-	VpcId pulumi.StringPtrInput
+	CidrBlock        pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Tags             pulumi.MapInput
+	VpcId            pulumi.StringPtrInput
 }
 
 func (SubnetState) ElementType() reflect.Type {
@@ -81,25 +81,24 @@ func (SubnetState) ElementType() reflect.Type {
 }
 
 type subnetArgs struct {
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	CidrBlock string `pulumi:"cidrBlock"`
-	Description *string `pulumi:"description"`
-	Name *string `pulumi:"name"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	VpcId string `pulumi:"vpcId"`
+	AvailabilityZone string                 `pulumi:"availabilityZone"`
+	CidrBlock        string                 `pulumi:"cidrBlock"`
+	Description      *string                `pulumi:"description"`
+	Name             *string                `pulumi:"name"`
+	Tags             map[string]interface{} `pulumi:"tags"`
+	VpcId            string                 `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Subnet resource.
 type SubnetArgs struct {
 	AvailabilityZone pulumi.StringInput
-	CidrBlock pulumi.StringInput
-	Description pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
-	Tags pulumi.MapInput
-	VpcId pulumi.StringInput
+	CidrBlock        pulumi.StringInput
+	Description      pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
+	Tags             pulumi.MapInput
+	VpcId            pulumi.StringInput
 }
 
 func (SubnetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetArgs)(nil)).Elem()
 }
-

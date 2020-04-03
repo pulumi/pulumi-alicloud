@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDdosBgpInstances.InvokeAsync() instead")]
         public static Task<GetDdosBgpInstancesResult> GetDdosBgpInstances(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDdosBgpInstances
+    {
+        /// <summary>
+        /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
+        /// </summary>
+        public static Task<GetDdosBgpInstancesResult> InvokeAsync(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

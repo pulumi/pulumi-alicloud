@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services. 
+// Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
 // You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)
 //
 // > **NOTE:**  Available in 1.47.0+
@@ -28,7 +28,7 @@ type Instance struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Engine pulumi.StringOutput `pulumi:"engine"`
+	Engine      pulumi.StringOutput    `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -82,7 +82,7 @@ type instanceState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description *string `pulumi:"description"`
-	Engine *string `pulumi:"engine"`
+	Engine      *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -103,7 +103,7 @@ type InstanceState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description pulumi.StringPtrInput
-	Engine pulumi.StringPtrInput
+	Engine      pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -128,7 +128,7 @@ type instanceArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description *string `pulumi:"description"`
-	Engine *string `pulumi:"engine"`
+	Engine      *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -150,7 +150,7 @@ type InstanceArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Description pulumi.StringPtrInput
-	Engine pulumi.StringPtrInput
+	Engine      pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
@@ -170,4 +170,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

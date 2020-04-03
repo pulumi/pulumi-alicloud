@@ -117,7 +117,7 @@ func (i GetClustersClusterArray) ToGetClustersClusterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetClustersClusterArrayOutput)
 }
 
-type GetClustersClusterOutput struct { *pulumi.OutputState }
+type GetClustersClusterOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetClustersCluster)(nil)).Elem()
@@ -133,80 +133,80 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 
 // Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
 func (o GetClustersClusterOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 // The CreateTime of the ADB cluster.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The DBNodeClass of the ADB cluster.
 func (o GetClustersClusterOutput) DbNodeClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.DbNodeClass }).(pulumi.StringOutput)
 }
 
 // The DBNodeCount of the ADB cluster.
 func (o GetClustersClusterOutput) DbNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersCluster) int { return v.DbNodeCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersCluster) int { return v.DbNodeCount }).(pulumi.IntOutput)
 }
 
 // The DBNodeStorage of the ADB cluster.
 func (o GetClustersClusterOutput) DbNodeStorage() pulumi.IntOutput {
-	return o.ApplyT(func (v GetClustersCluster) int { return v.DbNodeStorage }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetClustersCluster) int { return v.DbNodeStorage }).(pulumi.IntOutput)
 }
 
 // The description of the ADB cluster.
 func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Expiration time. Pay-As-You-Go clusters never expire.
 func (o GetClustersClusterOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The expired of the ADB cluster.
 func (o GetClustersClusterOutput) Expired() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Expired }).(pulumi.StringOutput)
 }
 
 // The ID of the ADB cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The LockMode of the ADB cluster.
 func (o GetClustersClusterOutput) LockMode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.LockMode }).(pulumi.StringOutput)
 }
 
 // The DBClusterNetworkType of the ADB cluster.
 func (o GetClustersClusterOutput) NetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
 // Region ID the cluster belongs to.
 func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // status of the cluster.
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // ID of the VPC the cluster belongs to.
 func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ZoneId of the ADB cluster.
 func (o GetClustersClusterOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetClustersCluster) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetClustersClusterArrayOutput struct { *pulumi.OutputState}
+type GetClustersClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (GetClustersClusterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetClustersCluster)(nil)).Elem()
@@ -221,7 +221,7 @@ func (o GetClustersClusterArrayOutput) ToGetClustersClusterArrayOutputWithContex
 }
 
 func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClusterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetClustersCluster {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClustersCluster {
 		return vs[0].([]GetClustersCluster)[vs[1].(int)]
 	}).(GetClustersClusterOutput)
 }
@@ -280,7 +280,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -296,15 +296,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -319,7 +319,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

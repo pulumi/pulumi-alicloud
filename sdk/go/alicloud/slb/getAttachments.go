@@ -25,19 +25,17 @@ type GetAttachmentsArgs struct {
 	// List of attached ECS instance IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// ID of the SLB with attachments.
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	LoadBalancerId string  `pulumi:"loadBalancerId"`
+	OutputFile     *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getAttachments.
 type GetAttachmentsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	InstanceIds []string `pulumi:"instanceIds"`
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id             string   `pulumi:"id"`
+	InstanceIds    []string `pulumi:"instanceIds"`
+	LoadBalancerId string   `pulumi:"loadBalancerId"`
+	OutputFile     *string  `pulumi:"outputFile"`
 	// A list of SLB attachments. Each element contains the following attributes:
 	SlbAttachments []GetAttachmentsSlbAttachment `pulumi:"slbAttachments"`
 }
-

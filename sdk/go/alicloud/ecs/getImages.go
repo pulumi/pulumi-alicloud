@@ -8,8 +8,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
-// other public images and the ones available on the image market. 
+// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
+// other public images and the ones available on the image market.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
@@ -25,13 +25,12 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 type GetImagesArgs struct {
 	// If more than one result are returned, select the most recent one.
 	MostRecent *bool `pulumi:"mostRecent"`
-	// A regex string to filter resulting images by name. 
-	NameRegex *string `pulumi:"nameRegex"`
+	// A regex string to filter resulting images by name.
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners *string `pulumi:"owners"`
 }
-
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
@@ -40,10 +39,9 @@ type GetImagesResult struct {
 	// A list of image IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of images. Each element contains the following attributes:
-	Images []GetImagesImage `pulumi:"images"`
-	MostRecent *bool `pulumi:"mostRecent"`
-	NameRegex *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
-	Owners *string `pulumi:"owners"`
+	Images     []GetImagesImage `pulumi:"images"`
+	MostRecent *bool            `pulumi:"mostRecent"`
+	NameRegex  *string          `pulumi:"nameRegex"`
+	OutputFile *string          `pulumi:"outputFile"`
+	Owners     *string          `pulumi:"owners"`
 }
-

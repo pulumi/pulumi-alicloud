@@ -13,7 +13,7 @@ import (
 
 type GetNetworksNetwork struct {
 	// CidrBlock of the CCN instance.
-	CidrBlock string `pulumi:"cidrBlock"`
+	CidrBlock   string `pulumi:"cidrBlock"`
 	Description string `pulumi:"description"`
 	// ID of the CCN instance.
 	Id string `pulumi:"id"`
@@ -32,7 +32,7 @@ type GetNetworksNetworkInput interface {
 
 type GetNetworksNetworkArgs struct {
 	// CidrBlock of the CCN instance.
-	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	CidrBlock   pulumi.StringInput `pulumi:"cidrBlock"`
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the CCN instance.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -75,7 +75,7 @@ func (i GetNetworksNetworkArray) ToGetNetworksNetworkArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksNetworkArrayOutput)
 }
 
-type GetNetworksNetworkOutput struct { *pulumi.OutputState }
+type GetNetworksNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetNetworksNetworkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNetworksNetwork)(nil)).Elem()
@@ -91,29 +91,29 @@ func (o GetNetworksNetworkOutput) ToGetNetworksNetworkOutputWithContext(ctx cont
 
 // CidrBlock of the CCN instance.
 func (o GetNetworksNetworkOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworksNetwork) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworksNetwork) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetNetworksNetworkOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworksNetwork) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworksNetwork) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the CCN instance.
 func (o GetNetworksNetworkOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworksNetwork) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IsDefault of the CCN instance.
 func (o GetNetworksNetworkOutput) IsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetNetworksNetwork) bool { return v.IsDefault }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetNetworksNetwork) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // Name of the CCN instance.
 func (o GetNetworksNetworkOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNetworksNetwork) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNetworksNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetNetworksNetworkArrayOutput struct { *pulumi.OutputState}
+type GetNetworksNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNetworksNetworkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNetworksNetwork)(nil)).Elem()
@@ -128,7 +128,7 @@ func (o GetNetworksNetworkArrayOutput) ToGetNetworksNetworkArrayOutputWithContex
 }
 
 func (o GetNetworksNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworksNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNetworksNetwork {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksNetwork {
 		return vs[0].([]GetNetworksNetwork)[vs[1].(int)]
 	}).(GetNetworksNetworkOutput)
 }

@@ -16,7 +16,7 @@ type GetRegionsRegion struct {
 	Id string `pulumi:"id"`
 	// Name of the region in the local language.
 	LocalName string `pulumi:"localName"`
-	RegionId string `pulumi:"regionId"`
+	RegionId  string `pulumi:"regionId"`
 }
 
 type GetRegionsRegionInput interface {
@@ -31,7 +31,7 @@ type GetRegionsRegionArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the region in the local language.
 	LocalName pulumi.StringInput `pulumi:"localName"`
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	RegionId  pulumi.StringInput `pulumi:"regionId"`
 }
 
 func (GetRegionsRegionArgs) ElementType() reflect.Type {
@@ -67,7 +67,7 @@ func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
 }
 
-type GetRegionsRegionOutput struct { *pulumi.OutputState }
+type GetRegionsRegionOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
@@ -83,19 +83,19 @@ func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.
 
 // ID of the region.
 func (o GetRegionsRegionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsRegion) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the region in the local language.
 func (o GetRegionsRegionOutput) LocalName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsRegion) string { return v.LocalName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.LocalName }).(pulumi.StringOutput)
 }
 
 func (o GetRegionsRegionOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionsRegion) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-type GetRegionsRegionArrayOutput struct { *pulumi.OutputState}
+type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
@@ -110,7 +110,7 @@ func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ct
 }
 
 func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionsRegion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
 		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
 	}).(GetRegionsRegionOutput)
 }
@@ -191,7 +191,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -207,41 +207,41 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // Set of supported disk categories.
 func (o GetZonesZoneOutput) AvailableDiskCategories() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.AvailableDiskCategories }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.AvailableDiskCategories }).(pulumi.StringArrayOutput)
 }
 
 // Allowed instance types.
 func (o GetZonesZoneOutput) AvailableInstanceTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.AvailableInstanceTypes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.AvailableInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
 // Filter the results by a specific resource type.
 // Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
 func (o GetZonesZoneOutput) AvailableResourceCreations() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.AvailableResourceCreations }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.AvailableResourceCreations }).(pulumi.StringArrayOutput)
 }
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the zone in the local language.
 func (o GetZonesZoneOutput) LocalName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.LocalName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.LocalName }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
 // A list of slb slave zone ids in which the slb master zone.
 func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -256,16 +256,16 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }
 
 type ProviderAssumeRole struct {
-	Policy *string `pulumi:"policy"`
-	RoleArn string `pulumi:"roleArn"`
-	SessionExpiration *int `pulumi:"sessionExpiration"`
-	SessionName *string `pulumi:"sessionName"`
+	Policy            *string `pulumi:"policy"`
+	RoleArn           string  `pulumi:"roleArn"`
+	SessionExpiration *int    `pulumi:"sessionExpiration"`
+	SessionName       *string `pulumi:"sessionName"`
 }
 
 type ProviderAssumeRoleInput interface {
@@ -276,10 +276,10 @@ type ProviderAssumeRoleInput interface {
 }
 
 type ProviderAssumeRoleArgs struct {
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	RoleArn pulumi.StringInput `pulumi:"roleArn"`
-	SessionExpiration pulumi.IntPtrInput `pulumi:"sessionExpiration"`
-	SessionName pulumi.StringPtrInput `pulumi:"sessionName"`
+	Policy            pulumi.StringPtrInput `pulumi:"policy"`
+	RoleArn           pulumi.StringInput    `pulumi:"roleArn"`
+	SessionExpiration pulumi.IntPtrInput    `pulumi:"sessionExpiration"`
+	SessionName       pulumi.StringPtrInput `pulumi:"sessionName"`
 }
 
 func (ProviderAssumeRoleArgs) ElementType() reflect.Type {
@@ -311,7 +311,8 @@ type ProviderAssumeRolePtrInput interface {
 
 type providerAssumeRolePtrType ProviderAssumeRoleArgs
 
-func ProviderAssumeRolePtr(v *ProviderAssumeRoleArgs) ProviderAssumeRolePtrInput {	return (*providerAssumeRolePtrType)(v)
+func ProviderAssumeRolePtr(v *ProviderAssumeRoleArgs) ProviderAssumeRolePtrInput {
+	return (*providerAssumeRolePtrType)(v)
 }
 
 func (*providerAssumeRolePtrType) ElementType() reflect.Type {
@@ -326,7 +327,7 @@ func (i *providerAssumeRolePtrType) ToProviderAssumeRolePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRolePtrOutput)
 }
 
-type ProviderAssumeRoleOutput struct { *pulumi.OutputState }
+type ProviderAssumeRoleOutput struct{ *pulumi.OutputState }
 
 func (ProviderAssumeRoleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProviderAssumeRole)(nil)).Elem()
@@ -350,22 +351,22 @@ func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutputWithContext(ctx c
 	}).(ProviderAssumeRolePtrOutput)
 }
 func (o ProviderAssumeRoleOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderAssumeRoleOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 func (o ProviderAssumeRoleOutput) SessionExpiration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }
 
 func (o ProviderAssumeRoleOutput) SessionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
 }
 
-type ProviderAssumeRolePtrOutput struct { *pulumi.OutputState}
+type ProviderAssumeRolePtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderAssumeRolePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ProviderAssumeRole)(nil)).Elem()
@@ -380,67 +381,67 @@ func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutputWithContext(ct
 }
 
 func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
-	return o.ApplyT(func (v *ProviderAssumeRole) ProviderAssumeRole { return *v }).(ProviderAssumeRoleOutput)
+	return o.ApplyT(func(v *ProviderAssumeRole) ProviderAssumeRole { return *v }).(ProviderAssumeRoleOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) SessionExpiration() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
 }
 
 type ProviderEndpoint struct {
-	Actiontrail *string `pulumi:"actiontrail"`
-	Adb *string `pulumi:"adb"`
-	Alikafka *string `pulumi:"alikafka"`
-	Apigateway *string `pulumi:"apigateway"`
-	Bssopenapi *string `pulumi:"bssopenapi"`
-	Cas *string `pulumi:"cas"`
-	Cbn *string `pulumi:"cbn"`
-	Cdn *string `pulumi:"cdn"`
-	Cen *string `pulumi:"cen"`
-	Cms *string `pulumi:"cms"`
-	Cr *string `pulumi:"cr"`
-	Cs *string `pulumi:"cs"`
-	Datahub *string `pulumi:"datahub"`
-	Ddosbgp *string `pulumi:"ddosbgp"`
-	Ddoscoo *string `pulumi:"ddoscoo"`
-	Dds *string `pulumi:"dds"`
-	Dns *string `pulumi:"dns"`
-	Drds *string `pulumi:"drds"`
-	Ecs *string `pulumi:"ecs"`
+	Actiontrail   *string `pulumi:"actiontrail"`
+	Adb           *string `pulumi:"adb"`
+	Alikafka      *string `pulumi:"alikafka"`
+	Apigateway    *string `pulumi:"apigateway"`
+	Bssopenapi    *string `pulumi:"bssopenapi"`
+	Cas           *string `pulumi:"cas"`
+	Cbn           *string `pulumi:"cbn"`
+	Cdn           *string `pulumi:"cdn"`
+	Cen           *string `pulumi:"cen"`
+	Cms           *string `pulumi:"cms"`
+	Cr            *string `pulumi:"cr"`
+	Cs            *string `pulumi:"cs"`
+	Datahub       *string `pulumi:"datahub"`
+	Ddosbgp       *string `pulumi:"ddosbgp"`
+	Ddoscoo       *string `pulumi:"ddoscoo"`
+	Dds           *string `pulumi:"dds"`
+	Dns           *string `pulumi:"dns"`
+	Drds          *string `pulumi:"drds"`
+	Ecs           *string `pulumi:"ecs"`
 	Elasticsearch *string `pulumi:"elasticsearch"`
-	Emr *string `pulumi:"emr"`
-	Ess *string `pulumi:"ess"`
-	Fc *string `pulumi:"fc"`
-	Gpdb *string `pulumi:"gpdb"`
-	Kms *string `pulumi:"kms"`
-	Kvstore *string `pulumi:"kvstore"`
-	Location *string `pulumi:"location"`
-	Log *string `pulumi:"log"`
-	Market *string `pulumi:"market"`
-	Mns *string `pulumi:"mns"`
-	Nas *string `pulumi:"nas"`
-	Ons *string `pulumi:"ons"`
-	Oss *string `pulumi:"oss"`
-	Ots *string `pulumi:"ots"`
-	Polardb *string `pulumi:"polardb"`
-	Pvtz *string `pulumi:"pvtz"`
-	Ram *string `pulumi:"ram"`
-	Rds *string `pulumi:"rds"`
-	Slb *string `pulumi:"slb"`
-	Sts *string `pulumi:"sts"`
-	Vpc *string `pulumi:"vpc"`
+	Emr           *string `pulumi:"emr"`
+	Ess           *string `pulumi:"ess"`
+	Fc            *string `pulumi:"fc"`
+	Gpdb          *string `pulumi:"gpdb"`
+	Kms           *string `pulumi:"kms"`
+	Kvstore       *string `pulumi:"kvstore"`
+	Location      *string `pulumi:"location"`
+	Log           *string `pulumi:"log"`
+	Market        *string `pulumi:"market"`
+	Mns           *string `pulumi:"mns"`
+	Nas           *string `pulumi:"nas"`
+	Ons           *string `pulumi:"ons"`
+	Oss           *string `pulumi:"oss"`
+	Ots           *string `pulumi:"ots"`
+	Polardb       *string `pulumi:"polardb"`
+	Pvtz          *string `pulumi:"pvtz"`
+	Ram           *string `pulumi:"ram"`
+	Rds           *string `pulumi:"rds"`
+	Slb           *string `pulumi:"slb"`
+	Sts           *string `pulumi:"sts"`
+	Vpc           *string `pulumi:"vpc"`
 }
 
 type ProviderEndpointInput interface {
@@ -451,47 +452,47 @@ type ProviderEndpointInput interface {
 }
 
 type ProviderEndpointArgs struct {
-	Actiontrail pulumi.StringPtrInput `pulumi:"actiontrail"`
-	Adb pulumi.StringPtrInput `pulumi:"adb"`
-	Alikafka pulumi.StringPtrInput `pulumi:"alikafka"`
-	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
-	Bssopenapi pulumi.StringPtrInput `pulumi:"bssopenapi"`
-	Cas pulumi.StringPtrInput `pulumi:"cas"`
-	Cbn pulumi.StringPtrInput `pulumi:"cbn"`
-	Cdn pulumi.StringPtrInput `pulumi:"cdn"`
-	Cen pulumi.StringPtrInput `pulumi:"cen"`
-	Cms pulumi.StringPtrInput `pulumi:"cms"`
-	Cr pulumi.StringPtrInput `pulumi:"cr"`
-	Cs pulumi.StringPtrInput `pulumi:"cs"`
-	Datahub pulumi.StringPtrInput `pulumi:"datahub"`
-	Ddosbgp pulumi.StringPtrInput `pulumi:"ddosbgp"`
-	Ddoscoo pulumi.StringPtrInput `pulumi:"ddoscoo"`
-	Dds pulumi.StringPtrInput `pulumi:"dds"`
-	Dns pulumi.StringPtrInput `pulumi:"dns"`
-	Drds pulumi.StringPtrInput `pulumi:"drds"`
-	Ecs pulumi.StringPtrInput `pulumi:"ecs"`
+	Actiontrail   pulumi.StringPtrInput `pulumi:"actiontrail"`
+	Adb           pulumi.StringPtrInput `pulumi:"adb"`
+	Alikafka      pulumi.StringPtrInput `pulumi:"alikafka"`
+	Apigateway    pulumi.StringPtrInput `pulumi:"apigateway"`
+	Bssopenapi    pulumi.StringPtrInput `pulumi:"bssopenapi"`
+	Cas           pulumi.StringPtrInput `pulumi:"cas"`
+	Cbn           pulumi.StringPtrInput `pulumi:"cbn"`
+	Cdn           pulumi.StringPtrInput `pulumi:"cdn"`
+	Cen           pulumi.StringPtrInput `pulumi:"cen"`
+	Cms           pulumi.StringPtrInput `pulumi:"cms"`
+	Cr            pulumi.StringPtrInput `pulumi:"cr"`
+	Cs            pulumi.StringPtrInput `pulumi:"cs"`
+	Datahub       pulumi.StringPtrInput `pulumi:"datahub"`
+	Ddosbgp       pulumi.StringPtrInput `pulumi:"ddosbgp"`
+	Ddoscoo       pulumi.StringPtrInput `pulumi:"ddoscoo"`
+	Dds           pulumi.StringPtrInput `pulumi:"dds"`
+	Dns           pulumi.StringPtrInput `pulumi:"dns"`
+	Drds          pulumi.StringPtrInput `pulumi:"drds"`
+	Ecs           pulumi.StringPtrInput `pulumi:"ecs"`
 	Elasticsearch pulumi.StringPtrInput `pulumi:"elasticsearch"`
-	Emr pulumi.StringPtrInput `pulumi:"emr"`
-	Ess pulumi.StringPtrInput `pulumi:"ess"`
-	Fc pulumi.StringPtrInput `pulumi:"fc"`
-	Gpdb pulumi.StringPtrInput `pulumi:"gpdb"`
-	Kms pulumi.StringPtrInput `pulumi:"kms"`
-	Kvstore pulumi.StringPtrInput `pulumi:"kvstore"`
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	Log pulumi.StringPtrInput `pulumi:"log"`
-	Market pulumi.StringPtrInput `pulumi:"market"`
-	Mns pulumi.StringPtrInput `pulumi:"mns"`
-	Nas pulumi.StringPtrInput `pulumi:"nas"`
-	Ons pulumi.StringPtrInput `pulumi:"ons"`
-	Oss pulumi.StringPtrInput `pulumi:"oss"`
-	Ots pulumi.StringPtrInput `pulumi:"ots"`
-	Polardb pulumi.StringPtrInput `pulumi:"polardb"`
-	Pvtz pulumi.StringPtrInput `pulumi:"pvtz"`
-	Ram pulumi.StringPtrInput `pulumi:"ram"`
-	Rds pulumi.StringPtrInput `pulumi:"rds"`
-	Slb pulumi.StringPtrInput `pulumi:"slb"`
-	Sts pulumi.StringPtrInput `pulumi:"sts"`
-	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+	Emr           pulumi.StringPtrInput `pulumi:"emr"`
+	Ess           pulumi.StringPtrInput `pulumi:"ess"`
+	Fc            pulumi.StringPtrInput `pulumi:"fc"`
+	Gpdb          pulumi.StringPtrInput `pulumi:"gpdb"`
+	Kms           pulumi.StringPtrInput `pulumi:"kms"`
+	Kvstore       pulumi.StringPtrInput `pulumi:"kvstore"`
+	Location      pulumi.StringPtrInput `pulumi:"location"`
+	Log           pulumi.StringPtrInput `pulumi:"log"`
+	Market        pulumi.StringPtrInput `pulumi:"market"`
+	Mns           pulumi.StringPtrInput `pulumi:"mns"`
+	Nas           pulumi.StringPtrInput `pulumi:"nas"`
+	Ons           pulumi.StringPtrInput `pulumi:"ons"`
+	Oss           pulumi.StringPtrInput `pulumi:"oss"`
+	Ots           pulumi.StringPtrInput `pulumi:"ots"`
+	Polardb       pulumi.StringPtrInput `pulumi:"polardb"`
+	Pvtz          pulumi.StringPtrInput `pulumi:"pvtz"`
+	Ram           pulumi.StringPtrInput `pulumi:"ram"`
+	Rds           pulumi.StringPtrInput `pulumi:"rds"`
+	Slb           pulumi.StringPtrInput `pulumi:"slb"`
+	Sts           pulumi.StringPtrInput `pulumi:"sts"`
+	Vpc           pulumi.StringPtrInput `pulumi:"vpc"`
 }
 
 func (ProviderEndpointArgs) ElementType() reflect.Type {
@@ -527,7 +528,7 @@ func (i ProviderEndpointArray) ToProviderEndpointArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderEndpointArrayOutput)
 }
 
-type ProviderEndpointOutput struct { *pulumi.OutputState }
+type ProviderEndpointOutput struct{ *pulumi.OutputState }
 
 func (ProviderEndpointOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ProviderEndpoint)(nil)).Elem()
@@ -542,170 +543,170 @@ func (o ProviderEndpointOutput) ToProviderEndpointOutputWithContext(ctx context.
 }
 
 func (o ProviderEndpointOutput) Actiontrail() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Actiontrail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Actiontrail }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Adb() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Adb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Adb }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Alikafka() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Alikafka }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Alikafka }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Apigateway() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Apigateway }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apigateway }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Bssopenapi() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Bssopenapi }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Bssopenapi }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cas() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cas }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cas }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cbn() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cbn }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cbn }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cdn }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cdn }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cen() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cen }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cen }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cms() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cms }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cms }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cr() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cr }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cr }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Cs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Datahub() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Datahub }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Datahub }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ddosbgp() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ddosbgp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddosbgp }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ddoscoo() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ddoscoo }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ddoscoo }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Dds() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Dds }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dds }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Dns() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Dns }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Dns }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Drds() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Drds }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Drds }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ecs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ecs }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Elasticsearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Elasticsearch }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Emr() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Emr }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Emr }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ess() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ess }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ess }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Fc() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Fc }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Fc }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Gpdb() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Gpdb }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Kms() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Kms }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Kms }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Kvstore() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Kvstore }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Kvstore }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Location }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Log() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Log }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Log }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Market() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Market }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Market }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Mns() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Mns }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Mns }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Nas() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Nas }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Nas }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ons() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ons }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Oss() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Oss }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Oss }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ots() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ots }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ots }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Polardb() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Polardb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Polardb }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Pvtz() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Pvtz }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Ram() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Ram }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Ram }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Rds() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Rds }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Rds }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Slb() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Slb }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Slb }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Sts() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Sts }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Sts }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Vpc }).(pulumi.StringPtrOutput)
 }
 
-type ProviderEndpointArrayOutput struct { *pulumi.OutputState}
+type ProviderEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (ProviderEndpointArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ProviderEndpoint)(nil)).Elem()
@@ -720,7 +721,7 @@ func (o ProviderEndpointArrayOutput) ToProviderEndpointArrayOutputWithContext(ct
 }
 
 func (o ProviderEndpointArrayOutput) Index(i pulumi.IntInput) ProviderEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ProviderEndpoint {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderEndpoint {
 		return vs[0].([]ProviderEndpoint)[vs[1].(int)]
 	}).(ProviderEndpointOutput)
 }

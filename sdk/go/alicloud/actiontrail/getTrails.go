@@ -23,20 +23,18 @@ func GetTrails(ctx *pulumi.Context, args *GetTrailsArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getTrails.
 type GetTrailsArgs struct {
 	// A regex string to filter results action trail name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getTrails.
 type GetTrailsResult struct {
 	// A list of actiontrails. Each element contains the following attributes:
 	Actiontrails []GetTrailsActiontrail `pulumi:"actiontrails"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of trail names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

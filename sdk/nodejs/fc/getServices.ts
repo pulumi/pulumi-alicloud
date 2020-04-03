@@ -46,6 +46,9 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesArgs {
+    /**
+     * A list of FC services ids.
+     */
     readonly ids?: string[];
     /**
      * A regex string to filter results by FC service name.

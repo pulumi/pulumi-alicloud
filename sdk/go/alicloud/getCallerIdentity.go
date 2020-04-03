@@ -33,4 +33,3 @@ type GetCallerIdentityResult struct {
 	// The type of the princiapal. RAMUser for users.
 	IdentityType string `pulumi:"identityType"`
 }
-

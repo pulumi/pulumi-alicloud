@@ -30,14 +30,13 @@ type GetInstancesArgs struct {
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
@@ -49,11 +48,10 @@ type GetInstancesResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex *string                `pulumi:"nameRegex"`
 	// The names list of AnalyticDB for PostgreSQL instance.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	VswitchId *string `pulumi:"vswitchId"`
+	Names      []string               `pulumi:"names"`
+	OutputFile *string                `pulumi:"outputFile"`
+	Tags       map[string]interface{} `pulumi:"tags"`
+	VswitchId  *string                `pulumi:"vswitchId"`
 }
-

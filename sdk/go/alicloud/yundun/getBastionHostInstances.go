@@ -41,18 +41,16 @@ type GetBastionHostInstancesArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getBastionHostInstances.
 type GetBastionHostInstancesResult struct {
-	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	Descriptions []string `pulumi:"descriptions"`
+	DescriptionRegex *string  `pulumi:"descriptionRegex"`
+	Descriptions     []string `pulumi:"descriptions"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of apis. Each element contains the following attributes:
-	Instances []GetBastionHostInstancesInstance `pulumi:"instances"`
-	OutputFile *string `pulumi:"outputFile"`
+	Instances  []GetBastionHostInstancesInstance `pulumi:"instances"`
+	OutputFile *string                           `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-

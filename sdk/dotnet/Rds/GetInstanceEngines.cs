@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_engines.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceEngines.InvokeAsync() instead")]
         public static Task<GetInstanceEnginesResult> GetInstanceEngines(GetInstanceEnginesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:rds/getInstanceEngines:getInstanceEngines", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceEngines
+    {
+        /// <summary>
+        /// This data source provides the RDS instance engines resource available info of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in v1.46.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_engines.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:rds/getInstanceEngines:getInstanceEngines", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

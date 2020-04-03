@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
         /// </summary>
+        [Obsolete("Use GetApps.InvokeAsync() instead")]
         public static Task<GetAppsResult> GetApps(GetAppsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetApps
+    {
+        /// <summary>
+        /// This data source provides the apps of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
+        /// </summary>
+        public static Task<GetAppsResult> InvokeAsync(GetAppsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("alicloud:apigateway/getApps:getApps", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -89,4 +89,3 @@ type HAVipAttachmentArgs struct {
 func (HAVipAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*havipAttachmentArgs)(nil)).Elem()
 }
-

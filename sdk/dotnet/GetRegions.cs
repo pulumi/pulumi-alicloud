@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRegions.InvokeAsync() instead")]
         public static Task<GetRegionsResult> GetRegions(GetRegionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegions
+    {
+        /// <summary>
+        /// This data source provides Alibaba Cloud regions.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
+        /// </summary>
+        public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

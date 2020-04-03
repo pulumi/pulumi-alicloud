@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
         /// </summary>
+        [Obsolete("Use GetBandwidthPackages.InvokeAsync() instead")]
         public static Task<GetBandwidthPackagesResult> GetBandwidthPackages(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetBandwidthPackages
+    {
+        /// <summary>
+        /// This data source provides CEN Bandwidth Packages available to the user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
+        /// </summary>
+        public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

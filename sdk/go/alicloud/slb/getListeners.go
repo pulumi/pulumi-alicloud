@@ -27,12 +27,11 @@ type GetListenersArgs struct {
 	// Filter listeners by the specified frontend port.
 	FrontendPort *int `pulumi:"frontendPort"`
 	// ID of the SLB with listeners.
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	LoadBalancerId string  `pulumi:"loadBalancerId"`
+	OutputFile     *string `pulumi:"outputFile"`
 	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 	Protocol *string `pulumi:"protocol"`
 }
-
 
 // A collection of values returned by getListeners.
 type GetListenersResult struct {
@@ -40,12 +39,11 @@ type GetListenersResult struct {
 	// Frontend port used to receive incoming traffic and distribute it to the backend servers.
 	FrontendPort *int `pulumi:"frontendPort"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Id             string  `pulumi:"id"`
+	LoadBalancerId string  `pulumi:"loadBalancerId"`
+	OutputFile     *string `pulumi:"outputFile"`
 	// Listener protocol. Possible values: `http`, `https`, `tcp` and `udp`.
 	Protocol *string `pulumi:"protocol"`
 	// A list of SLB listeners. Each element contains the following attributes:
 	SlbListeners []GetListenersSlbListener `pulumi:"slbListeners"`
 }
-

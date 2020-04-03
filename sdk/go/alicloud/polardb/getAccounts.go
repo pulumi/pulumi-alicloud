@@ -25,22 +25,20 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
-	// The polarDB cluster ID. 
+	// The polarDB cluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// A regex string to filter results by account name.
 	NameRegex *string `pulumi:"nameRegex"`
 }
 
-
 // A collection of values returned by getAccounts.
 type GetAccountsResult struct {
 	// A list of PolarDB cluster accounts. Each element contains the following attributes:
-	Accounts []GetAccountsAccount `pulumi:"accounts"`
-	DbClusterId string `pulumi:"dbClusterId"`
+	Accounts    []GetAccountsAccount `pulumi:"accounts"`
+	DbClusterId string               `pulumi:"dbClusterId"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// Account name of the cluster.
 	Names []string `pulumi:"names"`
 }
-

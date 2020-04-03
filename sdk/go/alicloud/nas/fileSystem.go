@@ -108,4 +108,3 @@ type FileSystemArgs struct {
 func (FileSystemArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileSystemArgs)(nil)).Elem()
 }
-

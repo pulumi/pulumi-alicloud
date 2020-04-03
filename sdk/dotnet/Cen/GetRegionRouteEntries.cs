@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRegionRouteEntries.InvokeAsync() instead")]
         public static Task<GetRegionRouteEntriesResult> GetRegionRouteEntries(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRegionRouteEntries
+    {
+        /// <summary>
+        /// This data source provides CEN Regional Route Entries available to the user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
+        /// </summary>
+        public static Task<GetRegionRouteEntriesResult> InvokeAsync(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

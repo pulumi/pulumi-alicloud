@@ -16,7 +16,7 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	// Name of the domain group.    
+	// Name of the domain group.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -48,12 +48,12 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// Name of the domain group.    
+	// Name of the domain group.
 	Name *string `pulumi:"name"`
 }
 
 type GroupState struct {
-	// Name of the domain group.    
+	// Name of the domain group.
 	Name pulumi.StringPtrInput
 }
 
@@ -62,17 +62,16 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// Name of the domain group.    
+	// Name of the domain group.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// Name of the domain group.    
+	// Name of the domain group.
 	Name pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
 }
-

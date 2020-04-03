@@ -113,7 +113,7 @@ func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
 }
 
-type GetCertificatesCertificateOutput struct { *pulumi.OutputState }
+type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
@@ -129,75 +129,75 @@ func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWith
 
 // The cert is buy from aliyun or not.
 func (o GetCertificatesCertificateOutput) BuyInAliyun() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) bool { return v.BuyInAliyun }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) bool { return v.BuyInAliyun }).(pulumi.BoolOutput)
 }
 
 // The cert's city.
 func (o GetCertificatesCertificateOutput) City() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.City }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.City }).(pulumi.StringOutput)
 }
 
 // The cert's common name.
 func (o GetCertificatesCertificateOutput) Common() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Common }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Common }).(pulumi.StringOutput)
 }
 
 // The cert's country.
 func (o GetCertificatesCertificateOutput) Country() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Country }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Country }).(pulumi.StringOutput)
 }
 
 // The cert's not valid after time.
 func (o GetCertificatesCertificateOutput) EndDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.EndDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.EndDate }).(pulumi.StringOutput)
 }
 
 // The cert is expired or not.
 func (o GetCertificatesCertificateOutput) Expired() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) bool { return v.Expired }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) bool { return v.Expired }).(pulumi.BoolOutput)
 }
 
 // The cert's finger.
 func (o GetCertificatesCertificateOutput) FingerPrint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.FingerPrint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.FingerPrint }).(pulumi.StringOutput)
 }
 
 // The cert's id.
 func (o GetCertificatesCertificateOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) int { return v.Id }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) int { return v.Id }).(pulumi.IntOutput)
 }
 
 // The cert's .
 func (o GetCertificatesCertificateOutput) Issuer() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Issuer }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
 // The cert's name.
 func (o GetCertificatesCertificateOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The cert's organization.
 func (o GetCertificatesCertificateOutput) OrgName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.OrgName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.OrgName }).(pulumi.StringOutput)
 }
 
 // The cert's province.
 func (o GetCertificatesCertificateOutput) Province() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Province }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Province }).(pulumi.StringOutput)
 }
 
 // The cert's subject alternative name.
 func (o GetCertificatesCertificateOutput) Sans() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.Sans }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Sans }).(pulumi.StringOutput)
 }
 
 // The cert's not valid before time.
 func (o GetCertificatesCertificateOutput) StartDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCertificatesCertificate) string { return v.StartDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.StartDate }).(pulumi.StringOutput)
 }
 
-type GetCertificatesCertificateArrayOutput struct { *pulumi.OutputState}
+type GetCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCertificatesCertificateArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
@@ -212,7 +212,7 @@ func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArray
 }
 
 func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCertificatesCertificate {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificate {
 		return vs[0].([]GetCertificatesCertificate)[vs[1].(int)]
 	}).(GetCertificatesCertificateOutput)
 }

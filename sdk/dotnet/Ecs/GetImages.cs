@@ -17,7 +17,19 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
         /// </summary>
+        [Obsolete("Use GetImages.InvokeAsync() instead")]
         public static Task<GetImagesResult> GetImages(GetImagesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetImages
+    {
+        /// <summary>
+        /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
+        /// other public images and the ones available on the image market. 
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
+        /// </summary>
+        public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:ecs/getImages:getImages", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

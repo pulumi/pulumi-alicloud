@@ -17,7 +17,19 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
         /// </summary>
+        [Obsolete("Use GetRouterInterfaces.InvokeAsync() instead")]
         public static Task<GetRouterInterfacesResult> GetRouterInterfaces(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetRouterInterfaces
+    {
+        /// <summary>
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// that connect VPCs together.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
+        /// </summary>
+        public static Task<GetRouterInterfacesResult> InvokeAsync(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

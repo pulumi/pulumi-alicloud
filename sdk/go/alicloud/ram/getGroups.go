@@ -23,7 +23,7 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
 	// A regex string to filter the returned groups by their names.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
 	PolicyName *string `pulumi:"policyName"`
@@ -33,19 +33,17 @@ type GetGroupsArgs struct {
 	UserName *string `pulumi:"userName"`
 }
 
-
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
 	// A list of groups. Each element contains the following attributes:
 	Groups []GetGroupsGroup `pulumi:"groups"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of ram group names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	PolicyName *string `pulumi:"policyName"`
-	PolicyType *string `pulumi:"policyType"`
-	UserName *string `pulumi:"userName"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PolicyName *string  `pulumi:"policyName"`
+	PolicyType *string  `pulumi:"policyType"`
+	UserName   *string  `pulumi:"userName"`
 }
-

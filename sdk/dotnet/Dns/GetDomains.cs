@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDomains.InvokeAsync() instead")]
         public static Task<GetDomainsResult> GetDomains(GetDomainsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomains
+    {
+        /// <summary>
+        /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
+        /// </summary>
+        public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -42,6 +53,10 @@ namespace Pulumi.AliCloud.Dns
 
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of domain IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());

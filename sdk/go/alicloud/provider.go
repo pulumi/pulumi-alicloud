@@ -18,7 +18,6 @@ import (
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/index.html.markdown.
 type Provider struct {
 	pulumi.ProviderResourceState
-
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -65,20 +64,20 @@ type providerArgs struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
-	AccountId *string `pulumi:"accountId"`
+	AccountId  *string             `pulumi:"accountId"`
 	AssumeRole *ProviderAssumeRole `pulumi:"assumeRole"`
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource *string `pulumi:"configurationSource"`
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
-	EcsRoleName *string `pulumi:"ecsRoleName"`
-	Endpoints []ProviderEndpoint `pulumi:"endpoints"`
-	Fc *string `pulumi:"fc"`
-	LogEndpoint *string `pulumi:"logEndpoint"`
-	MnsEndpoint *string `pulumi:"mnsEndpoint"`
-	OtsInstanceName *string `pulumi:"otsInstanceName"`
+	EcsRoleName     *string            `pulumi:"ecsRoleName"`
+	Endpoints       []ProviderEndpoint `pulumi:"endpoints"`
+	Fc              *string            `pulumi:"fc"`
+	LogEndpoint     *string            `pulumi:"logEndpoint"`
+	MnsEndpoint     *string            `pulumi:"mnsEndpoint"`
+	OtsInstanceName *string            `pulumi:"otsInstanceName"`
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
-	Profile *string `pulumi:"profile"`
+	Profile  *string `pulumi:"profile"`
 	Protocol *string `pulumi:"protocol"`
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region *string `pulumi:"region"`
@@ -101,20 +100,20 @@ type ProviderArgs struct {
 	AccessKey pulumi.StringPtrInput
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
-	AccountId pulumi.StringPtrInput
+	AccountId  pulumi.StringPtrInput
 	AssumeRole ProviderAssumeRolePtrInput
 	// Use this to mark a terraform configuration file source.
 	ConfigurationSource pulumi.StringPtrInput
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
-	EcsRoleName pulumi.StringPtrInput
-	Endpoints ProviderEndpointArrayInput
-	Fc pulumi.StringPtrInput
-	LogEndpoint pulumi.StringPtrInput
-	MnsEndpoint pulumi.StringPtrInput
+	EcsRoleName     pulumi.StringPtrInput
+	Endpoints       ProviderEndpointArrayInput
+	Fc              pulumi.StringPtrInput
+	LogEndpoint     pulumi.StringPtrInput
+	MnsEndpoint     pulumi.StringPtrInput
 	OtsInstanceName pulumi.StringPtrInput
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
-	Profile pulumi.StringPtrInput
+	Profile  pulumi.StringPtrInput
 	Protocol pulumi.StringPtrInput
 	// The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 	Region pulumi.StringPtrInput
@@ -133,4 +132,3 @@ type ProviderArgs struct {
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
 }
-

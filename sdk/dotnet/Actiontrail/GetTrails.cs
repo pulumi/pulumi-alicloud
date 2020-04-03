@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTrails.InvokeAsync() instead")]
         public static Task<GetTrailsResult> GetTrails(GetTrailsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTrails
+    {
+        /// <summary>
+        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
+        /// </summary>
+        public static Task<GetTrailsResult> InvokeAsync(GetTrailsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTrailsResult>("alicloud:actiontrail/getTrails:getTrails", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -27,16 +27,15 @@ type GetAccessRulesArgs struct {
 	// Filter results by a specific AccessGroupName.
 	AccessGroupName string `pulumi:"accessGroupName"`
 	// A list of rule IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
-	// Filter results by a specific RWAccess. 
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// Filter results by a specific RWAccess.
 	RwAccess *string `pulumi:"rwAccess"`
-	// Filter results by a specific SourceCidrIp. 
+	// Filter results by a specific SourceCidrIp.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
-	// Filter results by a specific UserAccess. 
+	// Filter results by a specific UserAccess.
 	UserAccess *string `pulumi:"userAccess"`
 }
-
 
 // A collection of values returned by getAccessRules.
 type GetAccessRulesResult struct {
@@ -44,8 +43,8 @@ type GetAccessRulesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of AccessRules. Each element contains the following attributes:
 	Rules []GetAccessRulesRule `pulumi:"rules"`
 	// RWAccess of the AccessRule.
@@ -55,4 +54,3 @@ type GetAccessRulesResult struct {
 	// UserAccess of the AccessRule
 	UserAccess *string `pulumi:"userAccess"`
 }
-

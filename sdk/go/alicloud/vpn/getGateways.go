@@ -36,7 +36,6 @@ type GetGatewaysArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 }
 
-
 // A collection of values returned by getGateways.
 type GetGatewaysResult struct {
 	// The business status of the VPN gateway.
@@ -46,14 +45,13 @@ type GetGatewaysResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// IDs of the VPN.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// names of the VPN.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the VPN
 	Status *string `pulumi:"status"`
 	// ID of the VPC that the VPN belongs.
 	VpcId *string `pulumi:"vpcId"`
 }
-

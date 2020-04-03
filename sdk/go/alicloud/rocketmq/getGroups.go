@@ -24,13 +24,12 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
-	// A regex string to filter results by the group name. 
+	// A regex string to filter results by the group name.
 	GroupIdRegex *string `pulumi:"groupIdRegex"`
 	// ID of the ONS Instance that owns the groups.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
@@ -40,8 +39,7 @@ type GetGroupsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of group names.
-	Ids []string `pulumi:"ids"`
-	InstanceId string `pulumi:"instanceId"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	InstanceId string   `pulumi:"instanceId"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

@@ -29,7 +29,7 @@ type ReservedInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
 	OfferingType pulumi.StringPtrOutput `pulumi:"offeringType"`
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period       pulumi.IntPtrOutput    `pulumi:"period"`
 	// Term unit. Optional value: Year.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
@@ -83,7 +83,7 @@ type reservedInstanceState struct {
 	Name *string `pulumi:"name"`
 	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
 	OfferingType *string `pulumi:"offeringType"`
-	Period *int `pulumi:"period"`
+	Period       *int    `pulumi:"period"`
 	// Term unit. Optional value: Year.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
@@ -107,7 +107,7 @@ type ReservedInstanceState struct {
 	Name pulumi.StringPtrInput
 	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
 	OfferingType pulumi.StringPtrInput
-	Period pulumi.IntPtrInput
+	Period       pulumi.IntPtrInput
 	// Term unit. Optional value: Year.
 	PeriodUnit pulumi.StringPtrInput
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
@@ -135,7 +135,7 @@ type reservedInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
 	OfferingType *string `pulumi:"offeringType"`
-	Period *int `pulumi:"period"`
+	Period       *int    `pulumi:"period"`
 	// Term unit. Optional value: Year.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
@@ -160,7 +160,7 @@ type ReservedInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// Payment type of the RI. Optional values: `No Upfront`: No upfront payment is required., `Partial Upfront`: A portion of upfront payment is required.`All Upfront`: Full upfront payment is required.
 	OfferingType pulumi.StringPtrInput
-	Period pulumi.IntPtrInput
+	Period       pulumi.IntPtrInput
 	// Term unit. Optional value: Year.
 	PeriodUnit pulumi.StringPtrInput
 	// The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
@@ -176,4 +176,3 @@ type ReservedInstanceArgs struct {
 func (ReservedInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedInstanceArgs)(nil)).Elem()
 }
-

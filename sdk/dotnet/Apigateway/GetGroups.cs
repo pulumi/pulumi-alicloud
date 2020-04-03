@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
         /// </summary>
+        [Obsolete("Use GetGroups.InvokeAsync() instead")]
         public static Task<GetGroupsResult> GetGroups(GetGroupsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetGroups
+    {
+        /// <summary>
+        /// This data source provides the api groups of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
+        /// </summary>
+        public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:apigateway/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

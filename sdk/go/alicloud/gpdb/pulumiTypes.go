@@ -29,7 +29,7 @@ type GetInstancesInstance struct {
 	// The group type.
 	InstanceClass string `pulumi:"instanceClass"`
 	// The number of groups.
-	InstanceGroupCount string `pulumi:"instanceGroupCount"`
+	InstanceGroupCount  string `pulumi:"instanceGroupCount"`
 	InstanceNetworkType string `pulumi:"instanceNetworkType"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
@@ -62,7 +62,7 @@ type GetInstancesInstanceArgs struct {
 	// The group type.
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
 	// The number of groups.
-	InstanceGroupCount pulumi.StringInput `pulumi:"instanceGroupCount"`
+	InstanceGroupCount  pulumi.StringInput `pulumi:"instanceGroupCount"`
 	InstanceNetworkType pulumi.StringInput `pulumi:"instanceNetworkType"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
@@ -103,7 +103,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -119,64 +119,64 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // Instance availability zone.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
 func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
 // The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
 func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // The description of an instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Database engine type. Supported option is `gpdb`.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
 
 // Database engine version.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
 // The instance id.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The group type.
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
 
 // The number of groups.
 func (o GetInstancesInstanceOutput) InstanceGroupCount() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceGroupCount }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceGroupCount }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) InstanceNetworkType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceNetworkType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceNetworkType }).(pulumi.StringOutput)
 }
 
 // Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Status of the instance.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -191,7 +191,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -250,7 +250,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -266,15 +266,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -289,7 +289,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

@@ -129,4 +129,3 @@ type ServerGroupArgs struct {
 func (ServerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverGroupArgs)(nil)).Elem()
 }
-

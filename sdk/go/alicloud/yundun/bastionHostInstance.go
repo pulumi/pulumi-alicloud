@@ -139,4 +139,3 @@ type BastionHostInstanceArgs struct {
 func (BastionHostInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bastionHostInstanceArgs)(nil)).Elem()
 }
-

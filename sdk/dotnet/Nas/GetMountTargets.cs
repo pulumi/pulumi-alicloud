@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
         /// </summary>
+        [Obsolete("Use GetMountTargets.InvokeAsync() instead")]
         public static Task<GetMountTargetsResult> GetMountTargets(GetMountTargetsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMountTargets
+    {
+        /// <summary>
+        /// This data source provides MountTargets available to the user.
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
+        /// </summary>
+        public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

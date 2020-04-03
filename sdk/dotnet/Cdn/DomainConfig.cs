@@ -149,9 +149,15 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class DomainConfigFunctionArgsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of arg.
+        /// </summary>
         [Input("argName", required: true)]
         public Input<string> ArgName { get; set; } = null!;
 
+        /// <summary>
+        /// The value of arg.
+        /// </summary>
         [Input("argValue", required: true)]
         public Input<string> ArgValue { get; set; } = null!;
 
@@ -162,9 +168,15 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class DomainConfigFunctionArgsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of arg.
+        /// </summary>
         [Input("argName", required: true)]
         public Input<string> ArgName { get; set; } = null!;
 
+        /// <summary>
+        /// The value of arg.
+        /// </summary>
         [Input("argValue", required: true)]
         public Input<string> ArgValue { get; set; } = null!;
 
@@ -180,7 +192,13 @@ namespace Pulumi.AliCloud.Cdn
     [OutputType]
     public sealed class DomainConfigFunctionArgs
     {
+        /// <summary>
+        /// The name of arg.
+        /// </summary>
         public readonly string ArgName;
+        /// <summary>
+        /// The value of arg.
+        /// </summary>
         public readonly string ArgValue;
 
         [OutputConstructor]

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstances.InvokeAsync() instead")]
         public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstances
+    {
+        /// <summary>
+        /// This data source provides the ots instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
+        /// </summary>
+        public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

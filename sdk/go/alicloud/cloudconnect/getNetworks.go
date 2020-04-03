@@ -29,22 +29,20 @@ type GetNetworksArgs struct {
 	// A list of CCN instances IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter CCN instances by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getNetworks.
 type GetNetworksResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of CCN instances IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of CCN instances names. 
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of CCN instances names.
 	Names []string `pulumi:"names"`
 	// A list of CCN instances. Each element contains the following attributes:
-	Networks []GetNetworksNetwork `pulumi:"networks"`
-	OutputFile *string `pulumi:"outputFile"`
+	Networks   []GetNetworksNetwork `pulumi:"networks"`
+	OutputFile *string              `pulumi:"outputFile"`
 }
-

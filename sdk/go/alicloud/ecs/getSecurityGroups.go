@@ -25,7 +25,7 @@ type GetSecurityGroupsArgs struct {
 	// A list of Security Group IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the resulting security groups by their names.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -43,7 +43,6 @@ type GetSecurityGroupsArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 }
 
-
 // A collection of values returned by getSecurityGroups.
 type GetSecurityGroupsResult struct {
 	// A list of Security Groups. Each element contains the following attributes:
@@ -51,11 +50,11 @@ type GetSecurityGroupsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Security Group IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of Security Group names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instance.
@@ -63,4 +62,3 @@ type GetSecurityGroupsResult struct {
 	// The ID of the VPC that owns the security group.
 	VpcId *string `pulumi:"vpcId"`
 }
-

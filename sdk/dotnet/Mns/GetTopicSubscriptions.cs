@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTopicSubscriptions.InvokeAsync() instead")]
         public static Task<GetTopicSubscriptionsResult> GetTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTopicSubscriptions
+    {
+        /// <summary>
+        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
+        /// </summary>
+        public static Task<GetTopicSubscriptionsResult> InvokeAsync(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

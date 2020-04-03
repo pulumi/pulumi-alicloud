@@ -73,7 +73,7 @@ func (i GetProductProductArray) ToGetProductProductArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductArrayOutput)
 }
 
-type GetProductProductOutput struct { *pulumi.OutputState }
+type GetProductProductOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProductProduct)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o GetProductProductOutput) ToGetProductProductOutputWithContext(ctx contex
 
 // The code of the product.
 func (o GetProductProductOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProduct) string { return v.Code }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProduct) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // The description of the product.
 func (o GetProductProductOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProduct) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProduct) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name of the product.
 func (o GetProductProductOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProduct) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProduct) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A list of one element containing sku attributes of an object. Each element contains the following attributes:
 func (o GetProductProductOutput) Skuses() GetProductProductSkusArrayOutput {
-	return o.ApplyT(func (v GetProductProduct) []GetProductProductSkus { return v.Skuses }).(GetProductProductSkusArrayOutput)
+	return o.ApplyT(func(v GetProductProduct) []GetProductProductSkus { return v.Skuses }).(GetProductProductSkusArrayOutput)
 }
 
-type GetProductProductArrayOutput struct { *pulumi.OutputState}
+type GetProductProductArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProductProduct)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o GetProductProductArrayOutput) ToGetProductProductArrayOutputWithContext(
 }
 
 func (o GetProductProductArrayOutput) Index(i pulumi.IntInput) GetProductProductOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProduct {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductProduct {
 		return vs[0].([]GetProductProduct)[vs[1].(int)]
 	}).(GetProductProductOutput)
 }
@@ -189,7 +189,7 @@ func (i GetProductProductSkusArray) ToGetProductProductSkusArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusArrayOutput)
 }
 
-type GetProductProductSkusOutput struct { *pulumi.OutputState }
+type GetProductProductSkusOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProductProductSkus)(nil)).Elem()
@@ -205,25 +205,25 @@ func (o GetProductProductSkusOutput) ToGetProductProductSkusOutputWithContext(ct
 
 // The list of custom ECS images, Each element contains the following attributes:
 func (o GetProductProductSkusOutput) Images() GetProductProductSkusImageArrayOutput {
-	return o.ApplyT(func (v GetProductProductSkus) []GetProductProductSkusImage { return v.Images }).(GetProductProductSkusImageArrayOutput)
+	return o.ApplyT(func(v GetProductProductSkus) []GetProductProductSkusImage { return v.Images }).(GetProductProductSkusImageArrayOutput)
 }
 
 // The list of package version details of this product sku, Each element contains the following attributes:
 func (o GetProductProductSkusOutput) PackageVersions() GetProductProductSkusPackageVersionArrayOutput {
-	return o.ApplyT(func (v GetProductProductSkus) []GetProductProductSkusPackageVersion { return v.PackageVersions }).(GetProductProductSkusPackageVersionArrayOutput)
+	return o.ApplyT(func(v GetProductProductSkus) []GetProductProductSkusPackageVersion { return v.PackageVersions }).(GetProductProductSkusPackageVersionArrayOutput)
 }
 
 // The sku code of this product sku.
 func (o GetProductProductSkusOutput) SkuCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkus) string { return v.SkuCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkus) string { return v.SkuCode }).(pulumi.StringOutput)
 }
 
 // The sku name of this product sku.
 func (o GetProductProductSkusOutput) SkuName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkus) string { return v.SkuName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkus) string { return v.SkuName }).(pulumi.StringOutput)
 }
 
-type GetProductProductSkusArrayOutput struct { *pulumi.OutputState}
+type GetProductProductSkusArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProductProductSkus)(nil)).Elem()
@@ -238,7 +238,7 @@ func (o GetProductProductSkusArrayOutput) ToGetProductProductSkusArrayOutputWith
 }
 
 func (o GetProductProductSkusArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProductSkus {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductProductSkus {
 		return vs[0].([]GetProductProductSkus)[vs[1].(int)]
 	}).(GetProductProductSkusOutput)
 }
@@ -301,7 +301,7 @@ func (i GetProductProductSkusImageArray) ToGetProductProductSkusImageArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusImageArrayOutput)
 }
 
-type GetProductProductSkusImageOutput struct { *pulumi.OutputState }
+type GetProductProductSkusImageOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusImageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProductProductSkusImage)(nil)).Elem()
@@ -317,20 +317,20 @@ func (o GetProductProductSkusImageOutput) ToGetProductProductSkusImageOutputWith
 
 // The Ecs image id.
 func (o GetProductProductSkusImageOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkusImage) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // The Ecs image display name.
 func (o GetProductProductSkusImageOutput) ImageName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.ImageName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkusImage) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
 // The Ecs image region.
 func (o GetProductProductSkusImageOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkusImage) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkusImage) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-type GetProductProductSkusImageArrayOutput struct { *pulumi.OutputState}
+type GetProductProductSkusImageArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusImageArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProductProductSkusImage)(nil)).Elem()
@@ -345,7 +345,7 @@ func (o GetProductProductSkusImageArrayOutput) ToGetProductProductSkusImageArray
 }
 
 func (o GetProductProductSkusImageArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusImageOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProductSkusImage {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductProductSkusImage {
 		return vs[0].([]GetProductProductSkusImage)[vs[1].(int)]
 	}).(GetProductProductSkusImageOutput)
 }
@@ -404,7 +404,7 @@ func (i GetProductProductSkusPackageVersionArray) ToGetProductProductSkusPackage
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductProductSkusPackageVersionArrayOutput)
 }
 
-type GetProductProductSkusPackageVersionOutput struct { *pulumi.OutputState }
+type GetProductProductSkusPackageVersionOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusPackageVersionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProductProductSkusPackageVersion)(nil)).Elem()
@@ -420,15 +420,15 @@ func (o GetProductProductSkusPackageVersionOutput) ToGetProductProductSkusPackag
 
 // The package name of this product sku package.
 func (o GetProductProductSkusPackageVersionOutput) PackageName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkusPackageVersion) string { return v.PackageName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkusPackageVersion) string { return v.PackageName }).(pulumi.StringOutput)
 }
 
 // The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
 func (o GetProductProductSkusPackageVersionOutput) PackageVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductProductSkusPackageVersion) string { return v.PackageVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductProductSkusPackageVersion) string { return v.PackageVersion }).(pulumi.StringOutput)
 }
 
-type GetProductProductSkusPackageVersionArrayOutput struct { *pulumi.OutputState}
+type GetProductProductSkusPackageVersionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProductProductSkusPackageVersionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProductProductSkusPackageVersion)(nil)).Elem()
@@ -443,13 +443,13 @@ func (o GetProductProductSkusPackageVersionArrayOutput) ToGetProductProductSkusP
 }
 
 func (o GetProductProductSkusPackageVersionArrayOutput) Index(i pulumi.IntInput) GetProductProductSkusPackageVersionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductProductSkusPackageVersion {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductProductSkusPackageVersion {
 		return vs[0].([]GetProductProductSkusPackageVersion)[vs[1].(int)]
 	}).(GetProductProductSkusPackageVersionOutput)
 }
 
 type GetProductsProduct struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
 	CategoryId int `pulumi:"categoryId"`
 	// The code of the product.
 	Code string `pulumi:"code"`
@@ -489,7 +489,7 @@ type GetProductsProductInput interface {
 }
 
 type GetProductsProductArgs struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
 	CategoryId pulumi.IntInput `pulumi:"categoryId"`
 	// The code of the product.
 	Code pulumi.StringInput `pulumi:"code"`
@@ -554,7 +554,7 @@ func (i GetProductsProductArray) ToGetProductsProductArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetProductsProductArrayOutput)
 }
 
-type GetProductsProductOutput struct { *pulumi.OutputState }
+type GetProductsProductOutput struct{ *pulumi.OutputState }
 
 func (GetProductsProductOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetProductsProduct)(nil)).Elem()
@@ -568,82 +568,82 @@ func (o GetProductsProductOutput) ToGetProductsProductOutputWithContext(ctx cont
 	return o
 }
 
-// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
 func (o GetProductsProductOutput) CategoryId() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProductsProduct) int { return v.CategoryId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProductsProduct) int { return v.CategoryId }).(pulumi.IntOutput)
 }
 
 // The code of the product.
 func (o GetProductsProductOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.Code }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // The delivery date of the product.
 func (o GetProductsProductOutput) DeliveryDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.DeliveryDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.DeliveryDate }).(pulumi.StringOutput)
 }
 
 // The delivery way of the product.
 func (o GetProductsProductOutput) DeliveryWay() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.DeliveryWay }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.DeliveryWay }).(pulumi.StringOutput)
 }
 
 // The image URL of the product.
 func (o GetProductsProductOutput) ImageUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.ImageUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.ImageUrl }).(pulumi.StringOutput)
 }
 
 // The name of the product.
 func (o GetProductsProductOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The operation system of the product.
 func (o GetProductsProductOutput) OperationSystem() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.OperationSystem }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.OperationSystem }).(pulumi.StringOutput)
 }
 
 // The rating information of the product.
 func (o GetProductsProductOutput) Score() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.Score }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.Score }).(pulumi.StringOutput)
 }
 
 // The short description of the product.
 func (o GetProductsProductOutput) ShortDescription() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.ShortDescription }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.ShortDescription }).(pulumi.StringOutput)
 }
 
 // The suggested price of the product.
 func (o GetProductsProductOutput) SuggestedPrice() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.SuggestedPrice }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.SuggestedPrice }).(pulumi.StringOutput)
 }
 
 // The supplier id of the product.
 func (o GetProductsProductOutput) SupplierId() pulumi.IntOutput {
-	return o.ApplyT(func (v GetProductsProduct) int { return v.SupplierId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetProductsProduct) int { return v.SupplierId }).(pulumi.IntOutput)
 }
 
 // The supplier name of the product.
 func (o GetProductsProductOutput) SupplierName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.SupplierName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.SupplierName }).(pulumi.StringOutput)
 }
 
 // The tags of the product.
 func (o GetProductsProductOutput) Tags() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.Tags }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.Tags }).(pulumi.StringOutput)
 }
 
 // The detail page URL of the product.
 func (o GetProductsProductOutput) TargetUrl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.TargetUrl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
 // The warranty date of the product.
 func (o GetProductsProductOutput) WarrantyDate() pulumi.StringOutput {
-	return o.ApplyT(func (v GetProductsProduct) string { return v.WarrantyDate }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetProductsProduct) string { return v.WarrantyDate }).(pulumi.StringOutput)
 }
 
-type GetProductsProductArrayOutput struct { *pulumi.OutputState}
+type GetProductsProductArrayOutput struct{ *pulumi.OutputState }
 
 func (GetProductsProductArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetProductsProduct)(nil)).Elem()
@@ -658,7 +658,7 @@ func (o GetProductsProductArrayOutput) ToGetProductsProductArrayOutputWithContex
 }
 
 func (o GetProductsProductArrayOutput) Index(i pulumi.IntInput) GetProductsProductOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetProductsProduct {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProductsProduct {
 		return vs[0].([]GetProductsProduct)[vs[1].(int)]
 	}).(GetProductsProductOutput)
 }

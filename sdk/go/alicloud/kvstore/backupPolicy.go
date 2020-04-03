@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
+// Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
 type BackupPolicy struct {
@@ -99,4 +99,3 @@ type BackupPolicyArgs struct {
 func (BackupPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backupPolicyArgs)(nil)).Elem()
 }
-

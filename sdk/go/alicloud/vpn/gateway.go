@@ -23,16 +23,16 @@ type Gateway struct {
 	EnableIpsec pulumi.BoolPtrOutput `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
 	// Default to PostPaid.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The internet ip of the VPN.
 	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections pulumi.IntPtrOutput `pulumi:"sslConnections"`
 	// The status of the VPN gateway.
@@ -86,16 +86,16 @@ type gatewayState struct {
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl *bool `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
 	// Default to PostPaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The internet ip of the VPN.
 	InternetIp *string `pulumi:"internetIp"`
 	// The name of the VPN. Defaults to null.
 	Name *string `pulumi:"name"`
-	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections *int `pulumi:"sslConnections"`
 	// The status of the VPN gateway.
@@ -116,16 +116,16 @@ type GatewayState struct {
 	EnableIpsec pulumi.BoolPtrInput
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl pulumi.BoolPtrInput
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
 	// Default to PostPaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The internet ip of the VPN.
 	InternetIp pulumi.StringPtrInput
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringPtrInput
-	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections pulumi.IntPtrInput
 	// The status of the VPN gateway.
@@ -148,14 +148,14 @@ type gatewayArgs struct {
 	EnableIpsec *bool `pulumi:"enableIpsec"`
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl *bool `pulumi:"enableSsl"`
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
 	// Default to PostPaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of the VPN. Defaults to null.
 	Name *string `pulumi:"name"`
-	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections *int `pulumi:"sslConnections"`
 	// The VPN belongs the vpc_id, the field can't be changed.
@@ -173,14 +173,14 @@ type GatewayArgs struct {
 	EnableIpsec pulumi.BoolPtrInput
 	// Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
 	EnableSsl pulumi.BoolPtrInput
-	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+	// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
 	// Default to PostPaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of the VPN. Defaults to null.
 	Name pulumi.StringPtrInput
-	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1. 
+	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
-	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
+	// The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different.
 	// This field is ignored when enableSsl is false.
 	SslConnections pulumi.IntPtrInput
 	// The VPN belongs the vpc_id, the field can't be changed.
@@ -192,4 +192,3 @@ type GatewayArgs struct {
 func (GatewayArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayArgs)(nil)).Elem()
 }
-

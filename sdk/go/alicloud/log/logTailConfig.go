@@ -148,4 +148,3 @@ type LogTailConfigArgs struct {
 func (LogTailConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailConfigArgs)(nil)).Elem()
 }
-

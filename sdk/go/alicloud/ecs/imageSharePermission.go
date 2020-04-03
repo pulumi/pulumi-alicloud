@@ -100,4 +100,3 @@ type ImageSharePermissionArgs struct {
 func (ImageSharePermissionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageSharePermissionArgs)(nil)).Elem()
 }
-

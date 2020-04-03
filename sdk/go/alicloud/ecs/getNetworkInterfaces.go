@@ -42,30 +42,9 @@ func GetNetworkInterfaces(ctx *pulumi.Context, args *GetNetworkInterfacesArgs, o
 // A collection of arguments for invoking getNetworkInterfaces.
 type GetNetworkInterfacesArgs struct {
 	Ids []string `pulumi:"ids"`
-	InstanceId *string `pulumi:"instanceId"`
-	NameRegex *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
-	PrivateIp *string `pulumi:"privateIp"`
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string `pulumi:"type"`
-	VpcId *string `pulumi:"vpcId"`
-	VswitchId *string `pulumi:"vswitchId"`
-}
-
-
-// A collection of values returned by getNetworkInterfaces.
-type GetNetworkInterfacesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
 	// ID of the instance that the ENI is attached to.
 	InstanceId *string `pulumi:"instanceId"`
-	// A list of ENIs. Each element contains the following attributes:
-	Interfaces []GetNetworkInterfacesInterface `pulumi:"interfaces"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Names []string `pulumi:"names"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Primary private IP of the ENI.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -74,10 +53,35 @@ type GetNetworkInterfacesResult struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// A map of tags assigned to the ENI.
 	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string `pulumi:"type"`
+	Type *string                `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId *string `pulumi:"vpcId"`
 	// ID of the VSwitch that the ENI is linked to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
+// A collection of values returned by getNetworkInterfaces.
+type GetNetworkInterfacesResult struct {
+	// id is the provider-assigned unique ID for this managed resource.
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// ID of the instance that the ENI is attached to.
+	InstanceId *string `pulumi:"instanceId"`
+	// A list of ENIs. Each element contains the following attributes:
+	Interfaces []GetNetworkInterfacesInterface `pulumi:"interfaces"`
+	NameRegex  *string                         `pulumi:"nameRegex"`
+	Names      []string                        `pulumi:"names"`
+	OutputFile *string                         `pulumi:"outputFile"`
+	// Primary private IP of the ENI.
+	PrivateIp *string `pulumi:"privateIp"`
+	// The Id of resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// A map of tags assigned to the ENI.
+	Tags map[string]interface{} `pulumi:"tags"`
+	Type *string                `pulumi:"type"`
+	// ID of the VPC that the ENI belongs to.
+	VpcId *string `pulumi:"vpcId"`
+	// ID of the VSwitch that the ENI is linked to.
+	VswitchId *string `pulumi:"vswitchId"`
+}

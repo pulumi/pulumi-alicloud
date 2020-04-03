@@ -28,22 +28,20 @@ type GetInstancesArgs struct {
 	// A list of DRDS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// A list of DRDS descriptions. 
+	// A list of DRDS descriptions.
 	Descriptions []string `pulumi:"descriptions"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of DRDS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of DRDS instances.
-	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
+	Instances  []GetInstancesInstance `pulumi:"instances"`
+	NameRegex  *string                `pulumi:"nameRegex"`
+	OutputFile *string                `pulumi:"outputFile"`
 }
-

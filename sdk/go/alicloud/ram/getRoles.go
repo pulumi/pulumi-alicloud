@@ -22,10 +22,11 @@ func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
+	// A list of ram role IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the role name.
 	// * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -33,20 +34,18 @@ type GetRolesArgs struct {
 	PolicyType *string `pulumi:"policyType"`
 }
 
-
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of ram role IDs. 
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of ram role names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	PolicyName *string `pulumi:"policyName"`
-	PolicyType *string `pulumi:"policyType"`
+	// A list of ram role IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of ram role names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PolicyName *string  `pulumi:"policyName"`
+	PolicyType *string  `pulumi:"policyType"`
 	// A list of roles. Each element contains the following attributes:
 	Roles []GetRolesRole `pulumi:"roles"`
 }
-

@@ -11,8 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource used to create a flow log function in Cloud Enterprise Network (CEN). 
-// By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN. 
+// This resource used to create a flow log function in Cloud Enterprise Network (CEN).
+// By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
 // You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
 //
 // For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
@@ -141,4 +141,3 @@ type FlowLogArgs struct {
 func (FlowLogArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowLogArgs)(nil)).Elem()
 }
-

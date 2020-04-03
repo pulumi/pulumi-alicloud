@@ -41,14 +41,13 @@ type GetAclsArgs struct {
 	// A list of acls IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by acl name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which acl belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getAcls.
 type GetAclsResult struct {
@@ -57,14 +56,13 @@ type GetAclsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB acls IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of SLB acls names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// Resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-

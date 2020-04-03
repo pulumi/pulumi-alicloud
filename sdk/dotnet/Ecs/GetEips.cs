@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
         /// </summary>
+        [Obsolete("Use GetEips.InvokeAsync() instead")]
         public static Task<GetEipsResult> GetEips(GetEipsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetEips
+    {
+        /// <summary>
+        /// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
+        /// </summary>
+        public static Task<GetEipsResult> InvokeAsync(GetEipsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -111,4 +111,3 @@ type NetworkGrantArgs struct {
 func (NetworkGrantArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkGrantArgs)(nil)).Elem()
 }
-

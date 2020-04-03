@@ -25,10 +25,9 @@ func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, o
 // A collection of arguments for invoking getFileCrc64Checksum.
 type GetFileCrc64ChecksumArgs struct {
 	// The name of the file to be computed crc64 checksum.
-	Filename string `pulumi:"filename"`
+	Filename   string  `pulumi:"filename"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getFileCrc64Checksum.
 type GetFileCrc64ChecksumResult struct {
@@ -36,7 +35,6 @@ type GetFileCrc64ChecksumResult struct {
 	Checksum string `pulumi:"checksum"`
 	Filename string `pulumi:"filename"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-

@@ -29,10 +29,9 @@ type GetRulesArgs struct {
 	// ID of the SLB with listener rules.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// A regex string to filter results by rule name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getRules.
 type GetRulesResult struct {
@@ -40,13 +39,12 @@ type GetRulesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB listener rules IDs.
-	Ids []string `pulumi:"ids"`
-	LoadBalancerId string `pulumi:"loadBalancerId"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids            []string `pulumi:"ids"`
+	LoadBalancerId string   `pulumi:"loadBalancerId"`
+	NameRegex      *string  `pulumi:"nameRegex"`
 	// A list of SLB listener rules names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of SLB listener rules. Each element contains the following attributes:
 	SlbRules []GetRulesSlbRule `pulumi:"slbRules"`
 }
-

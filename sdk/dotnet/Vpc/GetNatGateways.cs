@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
         /// </summary>
+        [Obsolete("Use GetNatGateways.InvokeAsync() instead")]
         public static Task<GetNatGatewaysResult> GetNatGateways(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetNatGateways
+    {
+        /// <summary>
+        /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
+        /// </summary>
+        public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -12,19 +12,19 @@ import (
 )
 
 type GetInstancesInstance struct {
-	CreatedAt string `pulumi:"createdAt"`
-	DataNodeAmount int `pulumi:"dataNodeAmount"`
-	DataNodeDiskSize int `pulumi:"dataNodeDiskSize"`
-	DataNodeDiskType string `pulumi:"dataNodeDiskType"`
-	DataNodeSpec string `pulumi:"dataNodeSpec"`
-	Description string `pulumi:"description"`
-	Id string `pulumi:"id"`
-	InstanceChargeType string `pulumi:"instanceChargeType"`
-	Status string `pulumi:"status"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	UpdatedAt string `pulumi:"updatedAt"`
-	Version string `pulumi:"version"`
-	VswitchId string `pulumi:"vswitchId"`
+	CreatedAt          string                 `pulumi:"createdAt"`
+	DataNodeAmount     int                    `pulumi:"dataNodeAmount"`
+	DataNodeDiskSize   int                    `pulumi:"dataNodeDiskSize"`
+	DataNodeDiskType   string                 `pulumi:"dataNodeDiskType"`
+	DataNodeSpec       string                 `pulumi:"dataNodeSpec"`
+	Description        string                 `pulumi:"description"`
+	Id                 string                 `pulumi:"id"`
+	InstanceChargeType string                 `pulumi:"instanceChargeType"`
+	Status             string                 `pulumi:"status"`
+	Tags               map[string]interface{} `pulumi:"tags"`
+	UpdatedAt          string                 `pulumi:"updatedAt"`
+	Version            string                 `pulumi:"version"`
+	VswitchId          string                 `pulumi:"vswitchId"`
 }
 
 type GetInstancesInstanceInput interface {
@@ -35,19 +35,19 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	DataNodeAmount pulumi.IntInput `pulumi:"dataNodeAmount"`
-	DataNodeDiskSize pulumi.IntInput `pulumi:"dataNodeDiskSize"`
-	DataNodeDiskType pulumi.StringInput `pulumi:"dataNodeDiskType"`
-	DataNodeSpec pulumi.StringInput `pulumi:"dataNodeSpec"`
-	Description pulumi.StringInput `pulumi:"description"`
-	Id pulumi.StringInput `pulumi:"id"`
+	CreatedAt          pulumi.StringInput `pulumi:"createdAt"`
+	DataNodeAmount     pulumi.IntInput    `pulumi:"dataNodeAmount"`
+	DataNodeDiskSize   pulumi.IntInput    `pulumi:"dataNodeDiskSize"`
+	DataNodeDiskType   pulumi.StringInput `pulumi:"dataNodeDiskType"`
+	DataNodeSpec       pulumi.StringInput `pulumi:"dataNodeSpec"`
+	Description        pulumi.StringInput `pulumi:"description"`
+	Id                 pulumi.StringInput `pulumi:"id"`
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
-	Status pulumi.StringInput `pulumi:"status"`
-	Tags pulumi.MapInput `pulumi:"tags"`
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	Version pulumi.StringInput `pulumi:"version"`
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	Status             pulumi.StringInput `pulumi:"status"`
+	Tags               pulumi.MapInput    `pulumi:"tags"`
+	UpdatedAt          pulumi.StringInput `pulumi:"updatedAt"`
+	Version            pulumi.StringInput `pulumi:"version"`
+	VswitchId          pulumi.StringInput `pulumi:"vswitchId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -83,7 +83,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -98,58 +98,58 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 }
 
 func (o GetInstancesInstanceOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) DataNodeAmount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.DataNodeAmount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.DataNodeAmount }).(pulumi.IntOutput)
 }
 
 func (o GetInstancesInstanceOutput) DataNodeDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.DataNodeDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.DataNodeDiskSize }).(pulumi.IntOutput)
 }
 
 func (o GetInstancesInstanceOutput) DataNodeDiskType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.DataNodeDiskType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DataNodeDiskType }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) DataNodeSpec() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.DataNodeSpec }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DataNodeSpec }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) InstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func (v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 func (o GetInstancesInstanceOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.UpdatedAt }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Version }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -164,7 +164,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -223,7 +223,7 @@ func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
 }
 
-type GetZonesZoneOutput struct { *pulumi.OutputState }
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
@@ -239,15 +239,15 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 
 // ID of the zone.
 func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A list of zone ids in which the multi zone.
 func (o GetZonesZoneOutput) MultiZoneIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetZonesZone) []string { return v.MultiZoneIds }).(pulumi.StringArrayOutput)
 }
 
-type GetZonesZoneArrayOutput struct { *pulumi.OutputState}
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
@@ -262,7 +262,7 @@ func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx contex
 }
 
 func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetZonesZone {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
 		return vs[0].([]GetZonesZone)[vs[1].(int)]
 	}).(GetZonesZoneOutput)
 }

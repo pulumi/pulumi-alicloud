@@ -25,10 +25,9 @@ type GetRegionsArgs struct {
 	// Set to true to match only the region configured in the provider.
 	Current *bool `pulumi:"current"`
 	// The name of the region to select, such as `eu-central-1`.
-	Name *string `pulumi:"name"`
+	Name       *string `pulumi:"name"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
@@ -36,10 +35,9 @@ type GetRegionsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of region IDs.
-	Ids []string `pulumi:"ids"`
-	Name string `pulumi:"name"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	Name       string   `pulumi:"name"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of regions. Each element contains the following attributes:
 	Regions []GetRegionsRegion `pulumi:"regions"`
 }
-

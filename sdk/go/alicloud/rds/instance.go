@@ -58,7 +58,7 @@ type Instance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
-	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntOutput `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
@@ -70,7 +70,7 @@ type Instance struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
 	SecurityIpMode pulumi.StringPtrOutput `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
@@ -169,7 +169,7 @@ type instanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -181,7 +181,7 @@ type instanceState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
@@ -241,7 +241,7 @@ type InstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
@@ -253,7 +253,7 @@ type InstanceState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
 	SecurityIpMode pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
@@ -315,7 +315,7 @@ type instanceArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
-	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -325,7 +325,7 @@ type instanceArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
@@ -384,7 +384,7 @@ type InstanceArgs struct {
 	InstanceType pulumi.StringInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
-	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300. 
+	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
 	Parameters InstanceParameterArrayInput
@@ -394,7 +394,7 @@ type InstanceArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
+	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode
 	SecurityIpMode pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
@@ -417,4 +417,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

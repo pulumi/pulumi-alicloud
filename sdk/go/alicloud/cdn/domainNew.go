@@ -33,6 +33,7 @@ type DomainNew struct {
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
 	Sources DomainNewSourcesOutput `pulumi:"sources"`
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -85,6 +86,7 @@ type domainNewState struct {
 	Scope *string `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
 	Sources *DomainNewSources `pulumi:"sources"`
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -101,6 +103,7 @@ type DomainNewState struct {
 	Scope pulumi.StringPtrInput
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
 	Sources DomainNewSourcesPtrInput
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
 
@@ -121,6 +124,7 @@ type domainNewArgs struct {
 	Scope *string `pulumi:"scope"`
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
 	Sources DomainNewSources `pulumi:"sources"`
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -138,10 +142,10 @@ type DomainNewArgs struct {
 	Scope pulumi.StringPtrInput
 	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
 	Sources DomainNewSourcesInput
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
 
 func (DomainNewArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainNewArgs)(nil)).Elem()
 }
-

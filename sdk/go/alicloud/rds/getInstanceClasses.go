@@ -35,33 +35,31 @@ type GetInstanceClassesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone *bool `pulumi:"multiZone"`
+	MultiZone  *bool   `pulumi:"multiZone"`
 	OutputFile *string `pulumi:"outputFile"`
-	SortedBy *string `pulumi:"sortedBy"`
+	SortedBy   *string `pulumi:"sortedBy"`
 	// The DB instance storage space required by the user. Valid values: `cloudSsd` and `localSsd`.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-
 // A collection of values returned by getInstanceClasses.
 type GetInstanceClassesResult struct {
-	Category *string `pulumi:"category"`
+	Category        *string `pulumi:"category"`
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
-	Engine *string `pulumi:"engine"`
-	EngineVersion *string `pulumi:"engineVersion"`
+	Engine          *string `pulumi:"engine"`
+	EngineVersion   *string `pulumi:"engineVersion"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Available in 1.60.0+) A list of Rds instance class codes.
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType *string  `pulumi:"instanceChargeType"`
 	// A list of Rds available resource. Each element contains the following attributes:
 	InstanceClasses []GetInstanceClassesInstanceClass `pulumi:"instanceClasses"`
-	MultiZone *bool `pulumi:"multiZone"`
-	OutputFile *string `pulumi:"outputFile"`
-	SortedBy *string `pulumi:"sortedBy"`
-	StorageType *string `pulumi:"storageType"`
-	ZoneId *string `pulumi:"zoneId"`
+	MultiZone       *bool                             `pulumi:"multiZone"`
+	OutputFile      *string                           `pulumi:"outputFile"`
+	SortedBy        *string                           `pulumi:"sortedBy"`
+	StorageType     *string                           `pulumi:"storageType"`
+	ZoneId          *string                           `pulumi:"zoneId"`
 }
-

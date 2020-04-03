@@ -29,10 +29,9 @@ type GetAclsArgs struct {
 	// A list of Sag Acl IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter Sag Acl instances by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getAcls.
 type GetAclsResult struct {
@@ -41,10 +40,9 @@ type GetAclsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Sag Acl IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of Sag Acls names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Sag Acls names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

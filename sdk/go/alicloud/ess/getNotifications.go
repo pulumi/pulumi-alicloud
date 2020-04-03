@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available notification resources. 
+// This data source provides available notification resources.
 //
 // > **NOTE:** Available in 1.72.0+
 //
@@ -25,12 +25,11 @@ func GetNotifications(ctx *pulumi.Context, args *GetNotificationsArgs, opts ...p
 // A collection of arguments for invoking getNotifications.
 type GetNotificationsArgs struct {
 	// A list of notification ids.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// Scaling group id the notifications belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 }
-
 
 // A collection of values returned by getNotifications.
 type GetNotificationsResult struct {
@@ -40,8 +39,7 @@ type GetNotificationsResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of notifications. Each element contains the following attributes:
 	Notifications []GetNotificationsNotification `pulumi:"notifications"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile    *string                        `pulumi:"outputFile"`
 	// ID of the scaling group.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 }
-

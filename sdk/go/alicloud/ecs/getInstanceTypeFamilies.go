@@ -24,17 +24,16 @@ func GetInstanceTypeFamilies(ctx *pulumi.Context, args *GetInstanceTypeFamiliesA
 
 // A collection of arguments for invoking getInstanceTypeFamilies.
 type GetInstanceTypeFamiliesArgs struct {
-	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
+	// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
 	Generation *string `pulumi:"generation"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile         *string `pulumi:"outputFile"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The Zone to launch the instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getInstanceTypeFamilies.
 type GetInstanceTypeFamiliesResult struct {
@@ -44,10 +43,9 @@ type GetInstanceTypeFamiliesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance type family IDs.
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	OutputFile *string `pulumi:"outputFile"`
-	SpotStrategy *string `pulumi:"spotStrategy"`
-	ZoneId *string `pulumi:"zoneId"`
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType *string  `pulumi:"instanceChargeType"`
+	OutputFile         *string  `pulumi:"outputFile"`
+	SpotStrategy       *string  `pulumi:"spotStrategy"`
+	ZoneId             *string  `pulumi:"zoneId"`
 }
-

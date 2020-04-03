@@ -24,7 +24,7 @@ func GetResolutionLines(ctx *pulumi.Context, args *GetResolutionLinesArgs, opts 
 
 // A collection of arguments for invoking getResolutionLines.
 type GetResolutionLinesArgs struct {
-	// Domain Name. 
+	// Domain Name.
 	DomainName *string `pulumi:"domainName"`
 	// language.
 	Lang *string `pulumi:"lang"`
@@ -32,27 +32,25 @@ type GetResolutionLinesArgs struct {
 	LineCodes []string `pulumi:"lineCodes"`
 	// A list of line display names.
 	LineDisplayNames []string `pulumi:"lineDisplayNames"`
-	LineNames []string `pulumi:"lineNames"`
-	OutputFile *string `pulumi:"outputFile"`
+	LineNames        []string `pulumi:"lineNames"`
+	OutputFile       *string  `pulumi:"outputFile"`
 	// The ip of user client.
 	UserClientIp *string `pulumi:"userClientIp"`
 }
-
 
 // A collection of values returned by getResolutionLines.
 type GetResolutionLinesResult struct {
 	DomainName *string `pulumi:"domainName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id   string  `pulumi:"id"`
 	Lang *string `pulumi:"lang"`
 	// Line code.
 	LineCodes []string `pulumi:"lineCodes"`
 	// A list of line display names.
 	LineDisplayNames []string `pulumi:"lineDisplayNames"`
-	LineNames []string `pulumi:"lineNames"`
+	LineNames        []string `pulumi:"lineNames"`
 	// A list of cloud resolution line. Each element contains the following attributes:
-	Lines []GetResolutionLinesLine `pulumi:"lines"`
-	OutputFile *string `pulumi:"outputFile"`
-	UserClientIp *string `pulumi:"userClientIp"`
+	Lines        []GetResolutionLinesLine `pulumi:"lines"`
+	OutputFile   *string                  `pulumi:"outputFile"`
+	UserClientIp *string                  `pulumi:"userClientIp"`
 }
-

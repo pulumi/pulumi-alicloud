@@ -25,7 +25,27 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCommonBandwidthPackages.InvokeAsync() instead")]
         public static Task<GetCommonBandwidthPackagesResult> GetCommonBandwidthPackages(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCommonBandwidthPackages
+    {
+        /// <summary>
+        /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
+        /// ## Public ip addresses Block
+        ///   
+        ///   The public ip addresses mapping supports the following:
+        ///   
+        ///   * `ip_address`   - The address of the EIP.
+        ///   * `allocation_id` - The ID of the EIP instance.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
+        /// </summary>
+        public static Task<GetCommonBandwidthPackagesResult> InvokeAsync(GetCommonBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCommonBandwidthPackagesResult>("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

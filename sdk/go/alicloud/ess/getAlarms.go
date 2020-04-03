@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available alarm resources. 
+// This data source provides available alarm resources.
 //
 // > **NOTE** Available in 1.72.0+
 //
@@ -29,12 +29,11 @@ type GetAlarmsArgs struct {
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
 	// A regex string to filter resulting alarms by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the alarms belong to.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 }
-
 
 // A collection of values returned by getAlarms.
 type GetAlarmsResult struct {
@@ -44,13 +43,12 @@ type GetAlarmsResult struct {
 	Id string `pulumi:"id"`
 	// A list of alarm ids.
 	Ids []string `pulumi:"ids"`
-	// The type for the alarm's associated metric. 
+	// The type for the alarm's associated metric.
 	MetricType *string `pulumi:"metricType"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	// A list of alarm names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The scaling group associated with this alarm.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 }
-

@@ -25,12 +25,11 @@ type GetKeysArgs struct {
 	// A regex string to filter the results by the KMS key description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of KMS key IDs.
-	Ids []string `pulumi:"ids"`
-	OutputFile *string `pulumi:"outputFile"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
 	Status *string `pulumi:"status"`
 }
-
 
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
@@ -40,9 +39,8 @@ type GetKeysResult struct {
 	// A list of KMS key IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of KMS keys. Each element contains the following attributes:
-	Keys []GetKeysKey `pulumi:"keys"`
-	OutputFile *string `pulumi:"outputFile"`
+	Keys       []GetKeysKey `pulumi:"keys"`
+	OutputFile *string      `pulumi:"outputFile"`
 	// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
 	Status *string `pulumi:"status"`
 }
-

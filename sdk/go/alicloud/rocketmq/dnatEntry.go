@@ -160,4 +160,3 @@ type DnatEntryArgs struct {
 func (DnatEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnatEntryArgs)(nil)).Elem()
 }
-

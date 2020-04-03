@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstances.InvokeAsync() instead")]
         public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstances
+    {
+        /// <summary>
+        /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
+        /// </summary>
+        public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

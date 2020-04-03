@@ -25,7 +25,7 @@ type GetPoliciesArgs struct {
 	// Filter results by a specific group name. Returned policies are attached to the specified group.
 	GroupName *string `pulumi:"groupName"`
 	// A regex string to filter resulting policies by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific role name. Returned policies are attached to the specified role.
 	RoleName *string `pulumi:"roleName"`
@@ -35,21 +35,19 @@ type GetPoliciesArgs struct {
 	UserName *string `pulumi:"userName"`
 }
 
-
 // A collection of values returned by getPolicies.
 type GetPoliciesResult struct {
 	GroupName *string `pulumi:"groupName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of ram group names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of policies. Each element contains the following attributes:
 	Policies []GetPoliciesPolicy `pulumi:"policies"`
-	RoleName *string `pulumi:"roleName"`
+	RoleName *string             `pulumi:"roleName"`
 	// Type of the policy.
-	Type *string `pulumi:"type"`
+	Type     *string `pulumi:"type"`
 	UserName *string `pulumi:"userName"`
 }
-

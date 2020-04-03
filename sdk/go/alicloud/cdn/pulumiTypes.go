@@ -69,7 +69,8 @@ type DomainAuthConfigPtrInput interface {
 
 type domainAuthConfigPtrType DomainAuthConfigArgs
 
-func DomainAuthConfigPtr(v *DomainAuthConfigArgs) DomainAuthConfigPtrInput {	return (*domainAuthConfigPtrType)(v)
+func DomainAuthConfigPtr(v *DomainAuthConfigArgs) DomainAuthConfigPtrInput {
+	return (*domainAuthConfigPtrType)(v)
 }
 
 func (*domainAuthConfigPtrType) ElementType() reflect.Type {
@@ -84,7 +85,7 @@ func (i *domainAuthConfigPtrType) ToDomainAuthConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainAuthConfigPtrOutput)
 }
 
-type DomainAuthConfigOutput struct { *pulumi.OutputState }
+type DomainAuthConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainAuthConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainAuthConfig)(nil)).Elem()
@@ -107,27 +108,28 @@ func (o DomainAuthConfigOutput) ToDomainAuthConfigPtrOutputWithContext(ctx conte
 		return &v
 	}).(DomainAuthConfigPtrOutput)
 }
+
 // Auth type of the auth config. Valid values are  `noAuth`, `typeA`, `typeB` and `typeC`. Default value is `noAuth`.
 func (o DomainAuthConfigOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
 // Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
 func (o DomainAuthConfigOutput) MasterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
 }
 
 // Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
 func (o DomainAuthConfigOutput) SlaveKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.SlaveKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.SlaveKey }).(pulumi.StringPtrOutput)
 }
 
 // Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `authType` is `typeB` or `typeC`.
 func (o DomainAuthConfigOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-type DomainAuthConfigPtrOutput struct { *pulumi.OutputState}
+type DomainAuthConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainAuthConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainAuthConfig)(nil)).Elem()
@@ -142,33 +144,33 @@ func (o DomainAuthConfigPtrOutput) ToDomainAuthConfigPtrOutputWithContext(ctx co
 }
 
 func (o DomainAuthConfigPtrOutput) Elem() DomainAuthConfigOutput {
-	return o.ApplyT(func (v *DomainAuthConfig) DomainAuthConfig { return *v }).(DomainAuthConfigOutput)
+	return o.ApplyT(func(v *DomainAuthConfig) DomainAuthConfig { return *v }).(DomainAuthConfigOutput)
 }
 
 // Auth type of the auth config. Valid values are  `noAuth`, `typeA`, `typeB` and `typeC`. Default value is `noAuth`.
 func (o DomainAuthConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
 // Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
 func (o DomainAuthConfigPtrOutput) MasterKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.MasterKey }).(pulumi.StringPtrOutput)
 }
 
 // Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
 func (o DomainAuthConfigPtrOutput) SlaveKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *string { return v.SlaveKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *string { return v.SlaveKey }).(pulumi.StringPtrOutput)
 }
 
 // Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `authType` is `typeB` or `typeC`.
 func (o DomainAuthConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainAuthConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainAuthConfig) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
 type DomainCacheConfig struct {
 	// Cache content of the cache config. It's value is a path string when the `cacheType` is `path`. When the `cacheType` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-	CacheContent string `pulumi:"cacheContent"`
-	CacheId *string `pulumi:"cacheId"`
+	CacheContent string  `pulumi:"cacheContent"`
+	CacheId      *string `pulumi:"cacheId"`
 	// Cache type of the cache config. Valid values are `suffix` and `path`.
 	CacheType string `pulumi:"cacheType"`
 	// Cache time of the cache config.
@@ -186,8 +188,8 @@ type DomainCacheConfigInput interface {
 
 type DomainCacheConfigArgs struct {
 	// Cache content of the cache config. It's value is a path string when the `cacheType` is `path`. When the `cacheType` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-	CacheContent pulumi.StringInput `pulumi:"cacheContent"`
-	CacheId pulumi.StringPtrInput `pulumi:"cacheId"`
+	CacheContent pulumi.StringInput    `pulumi:"cacheContent"`
+	CacheId      pulumi.StringPtrInput `pulumi:"cacheId"`
 	// Cache type of the cache config. Valid values are `suffix` and `path`.
 	CacheType pulumi.StringInput `pulumi:"cacheType"`
 	// Cache time of the cache config.
@@ -229,7 +231,7 @@ func (i DomainCacheConfigArray) ToDomainCacheConfigArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCacheConfigArrayOutput)
 }
 
-type DomainCacheConfigOutput struct { *pulumi.OutputState }
+type DomainCacheConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainCacheConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainCacheConfig)(nil)).Elem()
@@ -245,29 +247,29 @@ func (o DomainCacheConfigOutput) ToDomainCacheConfigOutputWithContext(ctx contex
 
 // Cache content of the cache config. It's value is a path string when the `cacheType` is `path`. When the `cacheType` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
 func (o DomainCacheConfigOutput) CacheContent() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainCacheConfig) string { return v.CacheContent }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainCacheConfig) string { return v.CacheContent }).(pulumi.StringOutput)
 }
 
 func (o DomainCacheConfigOutput) CacheId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCacheConfig) *string { return v.CacheId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCacheConfig) *string { return v.CacheId }).(pulumi.StringPtrOutput)
 }
 
 // Cache type of the cache config. Valid values are `suffix` and `path`.
 func (o DomainCacheConfigOutput) CacheType() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainCacheConfig) string { return v.CacheType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainCacheConfig) string { return v.CacheType }).(pulumi.StringOutput)
 }
 
 // Cache time of the cache config.
 func (o DomainCacheConfigOutput) Ttl() pulumi.IntOutput {
-	return o.ApplyT(func (v DomainCacheConfig) int { return v.Ttl }).(pulumi.IntOutput)
+	return o.ApplyT(func(v DomainCacheConfig) int { return v.Ttl }).(pulumi.IntOutput)
 }
 
 // Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
 func (o DomainCacheConfigOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainCacheConfig) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainCacheConfig) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-type DomainCacheConfigArrayOutput struct { *pulumi.OutputState}
+type DomainCacheConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainCacheConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainCacheConfig)(nil)).Elem()
@@ -282,7 +284,7 @@ func (o DomainCacheConfigArrayOutput) ToDomainCacheConfigArrayOutputWithContext(
 }
 
 func (o DomainCacheConfigArrayOutput) Index(i pulumi.IntInput) DomainCacheConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainCacheConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainCacheConfig {
 		return vs[0].([]DomainCacheConfig)[vs[1].(int)]
 	}).(DomainCacheConfigOutput)
 }
@@ -341,7 +343,8 @@ type DomainCertificateConfigPtrInput interface {
 
 type domainCertificateConfigPtrType DomainCertificateConfigArgs
 
-func DomainCertificateConfigPtr(v *DomainCertificateConfigArgs) DomainCertificateConfigPtrInput {	return (*domainCertificateConfigPtrType)(v)
+func DomainCertificateConfigPtr(v *DomainCertificateConfigArgs) DomainCertificateConfigPtrInput {
+	return (*domainCertificateConfigPtrType)(v)
 }
 
 func (*domainCertificateConfigPtrType) ElementType() reflect.Type {
@@ -356,7 +359,7 @@ func (i *domainCertificateConfigPtrType) ToDomainCertificateConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCertificateConfigPtrOutput)
 }
 
-type DomainCertificateConfigOutput struct { *pulumi.OutputState }
+type DomainCertificateConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainCertificateConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainCertificateConfig)(nil)).Elem()
@@ -379,22 +382,23 @@ func (o DomainCertificateConfigOutput) ToDomainCertificateConfigPtrOutputWithCon
 		return &v
 	}).(DomainCertificateConfigPtrOutput)
 }
+
 // The SSL private key. This is required if `serverCertificateStatus` is `on`
 func (o DomainCertificateConfigOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 func (o DomainCertificateConfigOutput) ServerCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
 }
 
 // This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainCertificateConfigOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
 }
 
-type DomainCertificateConfigPtrOutput struct { *pulumi.OutputState}
+type DomainCertificateConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainCertificateConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainCertificateConfig)(nil)).Elem()
@@ -409,26 +413,28 @@ func (o DomainCertificateConfigPtrOutput) ToDomainCertificateConfigPtrOutputWith
 }
 
 func (o DomainCertificateConfigPtrOutput) Elem() DomainCertificateConfigOutput {
-	return o.ApplyT(func (v *DomainCertificateConfig) DomainCertificateConfig { return *v }).(DomainCertificateConfigOutput)
+	return o.ApplyT(func(v *DomainCertificateConfig) DomainCertificateConfig { return *v }).(DomainCertificateConfigOutput)
 }
 
 // The SSL private key. This is required if `serverCertificateStatus` is `on`
 func (o DomainCertificateConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 func (o DomainCertificateConfigPtrOutput) ServerCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
 }
 
 // This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
 }
 
 type DomainConfigFunctionArg struct {
+	// The name of arg.
 	ArgName string `pulumi:"argName"`
+	// The value of arg.
 	ArgValue string `pulumi:"argValue"`
 }
 
@@ -440,7 +446,9 @@ type DomainConfigFunctionArgInput interface {
 }
 
 type DomainConfigFunctionArgArgs struct {
+	// The name of arg.
 	ArgName pulumi.StringInput `pulumi:"argName"`
+	// The value of arg.
 	ArgValue pulumi.StringInput `pulumi:"argValue"`
 }
 
@@ -477,7 +485,7 @@ func (i DomainConfigFunctionArgArray) ToDomainConfigFunctionArgArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigFunctionArgArrayOutput)
 }
 
-type DomainConfigFunctionArgOutput struct { *pulumi.OutputState }
+type DomainConfigFunctionArgOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigFunctionArgOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainConfigFunctionArg)(nil)).Elem()
@@ -491,15 +499,17 @@ func (o DomainConfigFunctionArgOutput) ToDomainConfigFunctionArgOutputWithContex
 	return o
 }
 
+// The name of arg.
 func (o DomainConfigFunctionArgOutput) ArgName() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainConfigFunctionArg) string { return v.ArgName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainConfigFunctionArg) string { return v.ArgName }).(pulumi.StringOutput)
 }
 
+// The value of arg.
 func (o DomainConfigFunctionArgOutput) ArgValue() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainConfigFunctionArg) string { return v.ArgValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainConfigFunctionArg) string { return v.ArgValue }).(pulumi.StringOutput)
 }
 
-type DomainConfigFunctionArgArrayOutput struct { *pulumi.OutputState}
+type DomainConfigFunctionArgArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainConfigFunctionArgArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainConfigFunctionArg)(nil)).Elem()
@@ -514,7 +524,7 @@ func (o DomainConfigFunctionArgArrayOutput) ToDomainConfigFunctionArgArrayOutput
 }
 
 func (o DomainConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) DomainConfigFunctionArgOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainConfigFunctionArg {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainConfigFunctionArg {
 		return vs[0].([]DomainConfigFunctionArg)[vs[1].(int)]
 	}).(DomainConfigFunctionArgOutput)
 }
@@ -575,7 +585,7 @@ func (i DomainHttpHeaderConfigArray) ToDomainHttpHeaderConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainHttpHeaderConfigArrayOutput)
 }
 
-type DomainHttpHeaderConfigOutput struct { *pulumi.OutputState }
+type DomainHttpHeaderConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainHttpHeaderConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainHttpHeaderConfig)(nil)).Elem()
@@ -590,20 +600,20 @@ func (o DomainHttpHeaderConfigOutput) ToDomainHttpHeaderConfigOutputWithContext(
 }
 
 func (o DomainHttpHeaderConfigOutput) HeaderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainHttpHeaderConfig) *string { return v.HeaderId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainHttpHeaderConfig) *string { return v.HeaderId }).(pulumi.StringPtrOutput)
 }
 
 // Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
 func (o DomainHttpHeaderConfigOutput) HeaderKey() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainHttpHeaderConfig) string { return v.HeaderKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainHttpHeaderConfig) string { return v.HeaderKey }).(pulumi.StringOutput)
 }
 
 // Header value of the http header.
 func (o DomainHttpHeaderConfigOutput) HeaderValue() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainHttpHeaderConfig) string { return v.HeaderValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainHttpHeaderConfig) string { return v.HeaderValue }).(pulumi.StringOutput)
 }
 
-type DomainHttpHeaderConfigArrayOutput struct { *pulumi.OutputState}
+type DomainHttpHeaderConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainHttpHeaderConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DomainHttpHeaderConfig)(nil)).Elem()
@@ -618,17 +628,23 @@ func (o DomainHttpHeaderConfigArrayOutput) ToDomainHttpHeaderConfigArrayOutputWi
 }
 
 func (o DomainHttpHeaderConfigArrayOutput) Index(i pulumi.IntInput) DomainHttpHeaderConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DomainHttpHeaderConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainHttpHeaderConfig {
 		return vs[0].([]DomainHttpHeaderConfig)[vs[1].(int)]
 	}).(DomainHttpHeaderConfigOutput)
 }
 
 type DomainNewCertificateConfig struct {
+	// The SSL certificate name.
 	CertName *string `pulumi:"certName"`
+	// The SSL certificate type, can be "upload", "cas" and "free".
 	CertType *string `pulumi:"certType"`
+	// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 	ForceSet *string `pulumi:"forceSet"`
+	// The SSL private key. This is required if `serverCertificateStatus` is `on`
 	PrivateKey *string `pulumi:"privateKey"`
+	// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 	ServerCertificate *string `pulumi:"serverCertificate"`
+	// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 	ServerCertificateStatus *string `pulumi:"serverCertificateStatus"`
 }
 
@@ -640,11 +656,17 @@ type DomainNewCertificateConfigInput interface {
 }
 
 type DomainNewCertificateConfigArgs struct {
+	// The SSL certificate name.
 	CertName pulumi.StringPtrInput `pulumi:"certName"`
+	// The SSL certificate type, can be "upload", "cas" and "free".
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
+	// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 	ForceSet pulumi.StringPtrInput `pulumi:"forceSet"`
+	// The SSL private key. This is required if `serverCertificateStatus` is `on`
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 	ServerCertificate pulumi.StringPtrInput `pulumi:"serverCertificate"`
+	// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 	ServerCertificateStatus pulumi.StringPtrInput `pulumi:"serverCertificateStatus"`
 }
 
@@ -677,7 +699,8 @@ type DomainNewCertificateConfigPtrInput interface {
 
 type domainNewCertificateConfigPtrType DomainNewCertificateConfigArgs
 
-func DomainNewCertificateConfigPtr(v *DomainNewCertificateConfigArgs) DomainNewCertificateConfigPtrInput {	return (*domainNewCertificateConfigPtrType)(v)
+func DomainNewCertificateConfigPtr(v *DomainNewCertificateConfigArgs) DomainNewCertificateConfigPtrInput {
+	return (*domainNewCertificateConfigPtrType)(v)
 }
 
 func (*domainNewCertificateConfigPtrType) ElementType() reflect.Type {
@@ -692,7 +715,7 @@ func (i *domainNewCertificateConfigPtrType) ToDomainNewCertificateConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewCertificateConfigPtrOutput)
 }
 
-type DomainNewCertificateConfigOutput struct { *pulumi.OutputState }
+type DomainNewCertificateConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainNewCertificateConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainNewCertificateConfig)(nil)).Elem()
@@ -715,31 +738,38 @@ func (o DomainNewCertificateConfigOutput) ToDomainNewCertificateConfigPtrOutputW
 		return &v
 	}).(DomainNewCertificateConfigPtrOutput)
 }
+
+// The SSL certificate name.
 func (o DomainNewCertificateConfigOutput) CertName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
 }
 
+// The SSL certificate type, can be "upload", "cas" and "free".
 func (o DomainNewCertificateConfigOutput) CertType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
+// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 func (o DomainNewCertificateConfigOutput) ForceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
 }
 
+// The SSL private key. This is required if `serverCertificateStatus` is `on`
 func (o DomainNewCertificateConfigOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 func (o DomainNewCertificateConfigOutput) ServerCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
 }
 
+// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainNewCertificateConfigOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
 }
 
-type DomainNewCertificateConfigPtrOutput struct { *pulumi.OutputState}
+type DomainNewCertificateConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainNewCertificateConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainNewCertificateConfig)(nil)).Elem()
@@ -754,38 +784,49 @@ func (o DomainNewCertificateConfigPtrOutput) ToDomainNewCertificateConfigPtrOutp
 }
 
 func (o DomainNewCertificateConfigPtrOutput) Elem() DomainNewCertificateConfigOutput {
-	return o.ApplyT(func (v *DomainNewCertificateConfig) DomainNewCertificateConfig { return *v }).(DomainNewCertificateConfigOutput)
+	return o.ApplyT(func(v *DomainNewCertificateConfig) DomainNewCertificateConfig { return *v }).(DomainNewCertificateConfigOutput)
 }
 
+// The SSL certificate name.
 func (o DomainNewCertificateConfigPtrOutput) CertName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
 }
 
+// The SSL certificate type, can be "upload", "cas" and "free".
 func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
+// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 func (o DomainNewCertificateConfigPtrOutput) ForceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
 }
 
+// The SSL private key. This is required if `serverCertificateStatus` is `on`
 func (o DomainNewCertificateConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
 func (o DomainNewCertificateConfigPtrOutput) ServerCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
 }
 
+// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainNewCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainNewCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
 }
 
 type DomainNewSources struct {
+	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content string `pulumi:"content"`
+	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port *int `pulumi:"port"`
+	// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 	Priority *int `pulumi:"priority"`
+	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 	Type string `pulumi:"type"`
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -797,10 +838,15 @@ type DomainNewSourcesInput interface {
 }
 
 type DomainNewSourcesArgs struct {
+	// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 	Content pulumi.StringInput `pulumi:"content"`
+	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -833,7 +879,8 @@ type DomainNewSourcesPtrInput interface {
 
 type domainNewSourcesPtrType DomainNewSourcesArgs
 
-func DomainNewSourcesPtr(v *DomainNewSourcesArgs) DomainNewSourcesPtrInput {	return (*domainNewSourcesPtrType)(v)
+func DomainNewSourcesPtr(v *DomainNewSourcesArgs) DomainNewSourcesPtrInput {
+	return (*domainNewSourcesPtrType)(v)
 }
 
 func (*domainNewSourcesPtrType) ElementType() reflect.Type {
@@ -848,7 +895,7 @@ func (i *domainNewSourcesPtrType) ToDomainNewSourcesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DomainNewSourcesPtrOutput)
 }
 
-type DomainNewSourcesOutput struct { *pulumi.OutputState }
+type DomainNewSourcesOutput struct{ *pulumi.OutputState }
 
 func (DomainNewSourcesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainNewSources)(nil)).Elem()
@@ -871,27 +918,33 @@ func (o DomainNewSourcesOutput) ToDomainNewSourcesPtrOutputWithContext(ctx conte
 		return &v
 	}).(DomainNewSourcesPtrOutput)
 }
+
+// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 func (o DomainNewSourcesOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainNewSources) string { return v.Content }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainNewSources) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The port of source. Valid values are `443` and `80`. Default value is `80`.
 func (o DomainNewSourcesOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 func (o DomainNewSourcesOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Priority }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 func (o DomainNewSourcesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainNewSources) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainNewSources) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 func (o DomainNewSourcesOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
-type DomainNewSourcesPtrOutput struct { *pulumi.OutputState}
+type DomainNewSourcesPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainNewSourcesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainNewSources)(nil)).Elem()
@@ -906,33 +959,38 @@ func (o DomainNewSourcesPtrOutput) ToDomainNewSourcesPtrOutputWithContext(ctx co
 }
 
 func (o DomainNewSourcesPtrOutput) Elem() DomainNewSourcesOutput {
-	return o.ApplyT(func (v *DomainNewSources) DomainNewSources { return *v }).(DomainNewSourcesOutput)
+	return o.ApplyT(func(v *DomainNewSources) DomainNewSources { return *v }).(DomainNewSourcesOutput)
 }
 
+// The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
 func (o DomainNewSourcesPtrOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainNewSources) string { return v.Content }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainNewSources) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The port of source. Valid values are `443` and `80`. Default value is `80`.
 func (o DomainNewSourcesPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 func (o DomainNewSourcesPtrOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Priority }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 func (o DomainNewSourcesPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v DomainNewSources) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DomainNewSources) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 func (o DomainNewSourcesPtrOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DomainNewSources) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DomainNewSources) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
 type DomainPage404Config struct {
 	// Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
 	CustomPageUrl *string `pulumi:"customPageUrl"`
-	ErrorCode *string `pulumi:"errorCode"`
+	ErrorCode     *string `pulumi:"errorCode"`
 	// Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
 	PageType *string `pulumi:"pageType"`
 }
@@ -947,7 +1005,7 @@ type DomainPage404ConfigInput interface {
 type DomainPage404ConfigArgs struct {
 	// Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
 	CustomPageUrl pulumi.StringPtrInput `pulumi:"customPageUrl"`
-	ErrorCode pulumi.StringPtrInput `pulumi:"errorCode"`
+	ErrorCode     pulumi.StringPtrInput `pulumi:"errorCode"`
 	// Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
 	PageType pulumi.StringPtrInput `pulumi:"pageType"`
 }
@@ -981,7 +1039,8 @@ type DomainPage404ConfigPtrInput interface {
 
 type domainPage404ConfigPtrType DomainPage404ConfigArgs
 
-func DomainPage404ConfigPtr(v *DomainPage404ConfigArgs) DomainPage404ConfigPtrInput {	return (*domainPage404ConfigPtrType)(v)
+func DomainPage404ConfigPtr(v *DomainPage404ConfigArgs) DomainPage404ConfigPtrInput {
+	return (*domainPage404ConfigPtrType)(v)
 }
 
 func (*domainPage404ConfigPtrType) ElementType() reflect.Type {
@@ -996,7 +1055,7 @@ func (i *domainPage404ConfigPtrType) ToDomainPage404ConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainPage404ConfigPtrOutput)
 }
 
-type DomainPage404ConfigOutput struct { *pulumi.OutputState }
+type DomainPage404ConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainPage404ConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainPage404Config)(nil)).Elem()
@@ -1019,21 +1078,22 @@ func (o DomainPage404ConfigOutput) ToDomainPage404ConfigPtrOutputWithContext(ctx
 		return &v
 	}).(DomainPage404ConfigPtrOutput)
 }
+
 // Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
 func (o DomainPage404ConfigOutput) CustomPageUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.CustomPageUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.CustomPageUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainPage404ConfigOutput) ErrorCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
 }
 
 // Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
 func (o DomainPage404ConfigOutput) PageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.PageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.PageType }).(pulumi.StringPtrOutput)
 }
 
-type DomainPage404ConfigPtrOutput struct { *pulumi.OutputState}
+type DomainPage404ConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainPage404ConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainPage404Config)(nil)).Elem()
@@ -1048,25 +1108,25 @@ func (o DomainPage404ConfigPtrOutput) ToDomainPage404ConfigPtrOutputWithContext(
 }
 
 func (o DomainPage404ConfigPtrOutput) Elem() DomainPage404ConfigOutput {
-	return o.ApplyT(func (v *DomainPage404Config) DomainPage404Config { return *v }).(DomainPage404ConfigOutput)
+	return o.ApplyT(func(v *DomainPage404Config) DomainPage404Config { return *v }).(DomainPage404ConfigOutput)
 }
 
 // Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `pageType` value is `charity` and It can not be set when `pageType` value is `default`.
 func (o DomainPage404ConfigPtrOutput) CustomPageUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.CustomPageUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.CustomPageUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o DomainPage404ConfigPtrOutput) ErrorCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
 }
 
 // Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
 func (o DomainPage404ConfigPtrOutput) PageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainPage404Config) *string { return v.PageType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainPage404Config) *string { return v.PageType }).(pulumi.StringPtrOutput)
 }
 
 type DomainParameterFilterConfig struct {
-	// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+	// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
 	Enable *string `pulumi:"enable"`
 	// Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
 	HashKeyArgs []string `pulumi:"hashKeyArgs"`
@@ -1080,7 +1140,7 @@ type DomainParameterFilterConfigInput interface {
 }
 
 type DomainParameterFilterConfigArgs struct {
-	// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+	// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 	// Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
 	HashKeyArgs pulumi.StringArrayInput `pulumi:"hashKeyArgs"`
@@ -1115,7 +1175,8 @@ type DomainParameterFilterConfigPtrInput interface {
 
 type domainParameterFilterConfigPtrType DomainParameterFilterConfigArgs
 
-func DomainParameterFilterConfigPtr(v *DomainParameterFilterConfigArgs) DomainParameterFilterConfigPtrInput {	return (*domainParameterFilterConfigPtrType)(v)
+func DomainParameterFilterConfigPtr(v *DomainParameterFilterConfigArgs) DomainParameterFilterConfigPtrInput {
+	return (*domainParameterFilterConfigPtrType)(v)
 }
 
 func (*domainParameterFilterConfigPtrType) ElementType() reflect.Type {
@@ -1130,7 +1191,7 @@ func (i *domainParameterFilterConfigPtrType) ToDomainParameterFilterConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DomainParameterFilterConfigPtrOutput)
 }
 
-type DomainParameterFilterConfigOutput struct { *pulumi.OutputState }
+type DomainParameterFilterConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainParameterFilterConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainParameterFilterConfig)(nil)).Elem()
@@ -1153,17 +1214,18 @@ func (o DomainParameterFilterConfigOutput) ToDomainParameterFilterConfigPtrOutpu
 		return &v
 	}).(DomainParameterFilterConfigPtrOutput)
 }
-// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+
+// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
 func (o DomainParameterFilterConfigOutput) Enable() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainParameterFilterConfig) *string { return v.Enable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainParameterFilterConfig) *string { return v.Enable }).(pulumi.StringPtrOutput)
 }
 
 // Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
 func (o DomainParameterFilterConfigOutput) HashKeyArgs() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DomainParameterFilterConfig) []string { return v.HashKeyArgs }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DomainParameterFilterConfig) []string { return v.HashKeyArgs }).(pulumi.StringArrayOutput)
 }
 
-type DomainParameterFilterConfigPtrOutput struct { *pulumi.OutputState}
+type DomainParameterFilterConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainParameterFilterConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainParameterFilterConfig)(nil)).Elem()
@@ -1178,17 +1240,17 @@ func (o DomainParameterFilterConfigPtrOutput) ToDomainParameterFilterConfigPtrOu
 }
 
 func (o DomainParameterFilterConfigPtrOutput) Elem() DomainParameterFilterConfigOutput {
-	return o.ApplyT(func (v *DomainParameterFilterConfig) DomainParameterFilterConfig { return *v }).(DomainParameterFilterConfigOutput)
+	return o.ApplyT(func(v *DomainParameterFilterConfig) DomainParameterFilterConfig { return *v }).(DomainParameterFilterConfigOutput)
 }
 
-// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.  
+// This parameter indicates whether or not the `parameterFilterConfig` is enable. Valid values are `on` and `off`. Default value is `off`.
 func (o DomainParameterFilterConfigPtrOutput) Enable() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainParameterFilterConfig) *string { return v.Enable }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainParameterFilterConfig) *string { return v.Enable }).(pulumi.StringPtrOutput)
 }
 
 // Reserved parameters of `parameterFilterConfig`. It's a list of string and consists of at most 10 items.
 func (o DomainParameterFilterConfigPtrOutput) HashKeyArgs() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DomainParameterFilterConfig) []string { return v.HashKeyArgs }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DomainParameterFilterConfig) []string { return v.HashKeyArgs }).(pulumi.StringArrayOutput)
 }
 
 type DomainReferConfig struct {
@@ -1245,7 +1307,8 @@ type DomainReferConfigPtrInput interface {
 
 type domainReferConfigPtrType DomainReferConfigArgs
 
-func DomainReferConfigPtr(v *DomainReferConfigArgs) DomainReferConfigPtrInput {	return (*domainReferConfigPtrType)(v)
+func DomainReferConfigPtr(v *DomainReferConfigArgs) DomainReferConfigPtrInput {
+	return (*domainReferConfigPtrType)(v)
 }
 
 func (*domainReferConfigPtrType) ElementType() reflect.Type {
@@ -1260,7 +1323,7 @@ func (i *domainReferConfigPtrType) ToDomainReferConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DomainReferConfigPtrOutput)
 }
 
-type DomainReferConfigOutput struct { *pulumi.OutputState }
+type DomainReferConfigOutput struct{ *pulumi.OutputState }
 
 func (DomainReferConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DomainReferConfig)(nil)).Elem()
@@ -1283,22 +1346,23 @@ func (o DomainReferConfigOutput) ToDomainReferConfigPtrOutputWithContext(ctx con
 		return &v
 	}).(DomainReferConfigPtrOutput)
 }
+
 // This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainReferConfigOutput) AllowEmpty() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainReferConfig) *string { return v.AllowEmpty }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainReferConfig) *string { return v.AllowEmpty }).(pulumi.StringPtrOutput)
 }
 
 // A list of domain names of the refer config.
 func (o DomainReferConfigOutput) ReferLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DomainReferConfig) []string { return v.ReferLists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DomainReferConfig) []string { return v.ReferLists }).(pulumi.StringArrayOutput)
 }
 
 // Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
 func (o DomainReferConfigOutput) ReferType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainReferConfig) *string { return v.ReferType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainReferConfig) *string { return v.ReferType }).(pulumi.StringPtrOutput)
 }
 
-type DomainReferConfigPtrOutput struct { *pulumi.OutputState}
+type DomainReferConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DomainReferConfigPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DomainReferConfig)(nil)).Elem()
@@ -1313,22 +1377,22 @@ func (o DomainReferConfigPtrOutput) ToDomainReferConfigPtrOutputWithContext(ctx 
 }
 
 func (o DomainReferConfigPtrOutput) Elem() DomainReferConfigOutput {
-	return o.ApplyT(func (v *DomainReferConfig) DomainReferConfig { return *v }).(DomainReferConfigOutput)
+	return o.ApplyT(func(v *DomainReferConfig) DomainReferConfig { return *v }).(DomainReferConfigOutput)
 }
 
 // This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
 func (o DomainReferConfigPtrOutput) AllowEmpty() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainReferConfig) *string { return v.AllowEmpty }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainReferConfig) *string { return v.AllowEmpty }).(pulumi.StringPtrOutput)
 }
 
 // A list of domain names of the refer config.
 func (o DomainReferConfigPtrOutput) ReferLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DomainReferConfig) []string { return v.ReferLists }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DomainReferConfig) []string { return v.ReferLists }).(pulumi.StringArrayOutput)
 }
 
 // Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
 func (o DomainReferConfigPtrOutput) ReferType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DomainReferConfig) *string { return v.ReferType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DomainReferConfig) *string { return v.ReferType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

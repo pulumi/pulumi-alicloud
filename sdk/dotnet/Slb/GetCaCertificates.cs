@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
         /// </summary>
+        [Obsolete("Use GetCaCertificates.InvokeAsync() instead")]
         public static Task<GetCaCertificatesResult> GetCaCertificates(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetCaCertificates
+    {
+        /// <summary>
+        /// This data source provides the CA certificate list.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
+        /// </summary>
+        public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

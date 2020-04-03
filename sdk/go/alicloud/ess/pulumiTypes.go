@@ -12,11 +12,11 @@ import (
 )
 
 type ScalingConfigurationDataDisk struct {
-	Category *string `pulumi:"category"`
-	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
-	Device *string `pulumi:"device"`
-	Size *int `pulumi:"size"`
-	SnapshotId *string `pulumi:"snapshotId"`
+	Category           *string `pulumi:"category"`
+	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
+	Device             *string `pulumi:"device"`
+	Size               *int    `pulumi:"size"`
+	SnapshotId         *string `pulumi:"snapshotId"`
 }
 
 type ScalingConfigurationDataDiskInput interface {
@@ -27,11 +27,11 @@ type ScalingConfigurationDataDiskInput interface {
 }
 
 type ScalingConfigurationDataDiskArgs struct {
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
-	Device pulumi.StringPtrInput `pulumi:"device"`
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	Category           pulumi.StringPtrInput `pulumi:"category"`
+	DeleteWithInstance pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
+	Device             pulumi.StringPtrInput `pulumi:"device"`
+	Size               pulumi.IntPtrInput    `pulumi:"size"`
+	SnapshotId         pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
 func (ScalingConfigurationDataDiskArgs) ElementType() reflect.Type {
@@ -67,7 +67,7 @@ func (i ScalingConfigurationDataDiskArray) ToScalingConfigurationDataDiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationDataDiskArrayOutput)
 }
 
-type ScalingConfigurationDataDiskOutput struct { *pulumi.OutputState }
+type ScalingConfigurationDataDiskOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationDataDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingConfigurationDataDisk)(nil)).Elem()
@@ -82,26 +82,26 @@ func (o ScalingConfigurationDataDiskOutput) ToScalingConfigurationDataDiskOutput
 }
 
 func (o ScalingConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ScalingConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ScalingConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ScalingConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ScalingConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 func (o ScalingConfigurationDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ScalingConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-type ScalingConfigurationDataDiskArrayOutput struct { *pulumi.OutputState}
+type ScalingConfigurationDataDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingConfigurationDataDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ScalingConfigurationDataDisk)(nil)).Elem()
@@ -116,13 +116,13 @@ func (o ScalingConfigurationDataDiskArrayOutput) ToScalingConfigurationDataDiskA
 }
 
 func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ScalingConfigurationDataDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationDataDisk {
 		return vs[0].([]ScalingConfigurationDataDisk)[vs[1].(int)]
 	}).(ScalingConfigurationDataDiskOutput)
 }
 
 type ScalingGroupVServerGroupsVserverGroup struct {
-	LoadbalancerId string `pulumi:"loadbalancerId"`
+	LoadbalancerId    string                                                  `pulumi:"loadbalancerId"`
 	VserverAttributes []ScalingGroupVServerGroupsVserverGroupVserverAttribute `pulumi:"vserverAttributes"`
 }
 
@@ -134,7 +134,7 @@ type ScalingGroupVServerGroupsVserverGroupInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupArgs struct {
-	LoadbalancerId pulumi.StringInput `pulumi:"loadbalancerId"`
+	LoadbalancerId    pulumi.StringInput                                              `pulumi:"loadbalancerId"`
 	VserverAttributes ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput `pulumi:"vserverAttributes"`
 }
 
@@ -171,7 +171,7 @@ func (i ScalingGroupVServerGroupsVserverGroupArray) ToScalingGroupVServerGroupsV
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupArrayOutput)
 }
 
-type ScalingGroupVServerGroupsVserverGroupOutput struct { *pulumi.OutputState }
+type ScalingGroupVServerGroupsVserverGroupOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroup)(nil)).Elem()
@@ -186,14 +186,16 @@ func (o ScalingGroupVServerGroupsVserverGroupOutput) ToScalingGroupVServerGroups
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupOutput) LoadbalancerId() pulumi.StringOutput {
-	return o.ApplyT(func (v ScalingGroupVServerGroupsVserverGroup) string { return v.LoadbalancerId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroup) string { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupOutput) VserverAttributes() ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput {
-	return o.ApplyT(func (v ScalingGroupVServerGroupsVserverGroup) []ScalingGroupVServerGroupsVserverGroupVserverAttribute { return v.VserverAttributes }).(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput)
+	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroup) []ScalingGroupVServerGroupsVserverGroupVserverAttribute {
+		return v.VserverAttributes
+	}).(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput)
 }
 
-type ScalingGroupVServerGroupsVserverGroupArrayOutput struct { *pulumi.OutputState}
+type ScalingGroupVServerGroupsVserverGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ScalingGroupVServerGroupsVserverGroup)(nil)).Elem()
@@ -208,15 +210,15 @@ func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) ToScalingGroupVServerG
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsVserverGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ScalingGroupVServerGroupsVserverGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroupVServerGroupsVserverGroup {
 		return vs[0].([]ScalingGroupVServerGroupsVserverGroup)[vs[1].(int)]
 	}).(ScalingGroupVServerGroupsVserverGroupOutput)
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
-	Port int `pulumi:"port"`
+	Port           int    `pulumi:"port"`
 	VserverGroupId string `pulumi:"vserverGroupId"`
-	Weight int `pulumi:"weight"`
+	Weight         int    `pulumi:"weight"`
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
@@ -227,9 +229,9 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs struct {
-	Port pulumi.IntInput `pulumi:"port"`
+	Port           pulumi.IntInput    `pulumi:"port"`
 	VserverGroupId pulumi.StringInput `pulumi:"vserverGroupId"`
-	Weight pulumi.IntInput `pulumi:"weight"`
+	Weight         pulumi.IntInput    `pulumi:"weight"`
 }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ElementType() reflect.Type {
@@ -265,7 +267,7 @@ func (i ScalingGroupVServerGroupsVserverGroupVserverAttributeArray) ToScalingGro
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput)
 }
 
-type ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput struct { *pulumi.OutputState }
+type ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttribute)(nil)).Elem()
@@ -280,18 +282,18 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGr
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func (v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Port }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) VserverGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v ScalingGroupVServerGroupsVserverGroupVserverAttribute) string { return v.VserverGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) string { return v.VserverGroupId }).(pulumi.StringOutput)
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func (v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Weight }).(pulumi.IntOutput)
+	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Weight }).(pulumi.IntOutput)
 }
 
-type ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput struct { *pulumi.OutputState}
+type ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ScalingGroupVServerGroupsVserverGroupVserverAttribute)(nil)).Elem()
@@ -306,7 +308,7 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) ToScal
 }
 
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) Index(i pulumi.IntInput) ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ScalingGroupVServerGroupsVserverGroupVserverAttribute {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroupVServerGroupsVserverGroupVserverAttribute {
 		return vs[0].([]ScalingGroupVServerGroupsVserverGroupVserverAttribute)[vs[1].(int)]
 	}).(ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput)
 }
@@ -314,7 +316,7 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) Index(
 type ScalingRuleStepAdjustment struct {
 	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
 	MetricIntervalUpperBound *string `pulumi:"metricIntervalUpperBound"`
-	ScalingAdjustment *int `pulumi:"scalingAdjustment"`
+	ScalingAdjustment        *int    `pulumi:"scalingAdjustment"`
 }
 
 type ScalingRuleStepAdjustmentInput interface {
@@ -327,7 +329,7 @@ type ScalingRuleStepAdjustmentInput interface {
 type ScalingRuleStepAdjustmentArgs struct {
 	MetricIntervalLowerBound pulumi.StringPtrInput `pulumi:"metricIntervalLowerBound"`
 	MetricIntervalUpperBound pulumi.StringPtrInput `pulumi:"metricIntervalUpperBound"`
-	ScalingAdjustment pulumi.IntPtrInput `pulumi:"scalingAdjustment"`
+	ScalingAdjustment        pulumi.IntPtrInput    `pulumi:"scalingAdjustment"`
 }
 
 func (ScalingRuleStepAdjustmentArgs) ElementType() reflect.Type {
@@ -363,7 +365,7 @@ func (i ScalingRuleStepAdjustmentArray) ToScalingRuleStepAdjustmentArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleStepAdjustmentArrayOutput)
 }
 
-type ScalingRuleStepAdjustmentOutput struct { *pulumi.OutputState }
+type ScalingRuleStepAdjustmentOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleStepAdjustmentOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ScalingRuleStepAdjustment)(nil)).Elem()
@@ -378,18 +380,18 @@ func (o ScalingRuleStepAdjustmentOutput) ToScalingRuleStepAdjustmentOutputWithCo
 }
 
 func (o ScalingRuleStepAdjustmentOutput) MetricIntervalLowerBound() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ScalingRuleStepAdjustment) *string { return v.MetricIntervalLowerBound }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ScalingRuleStepAdjustment) *string { return v.MetricIntervalLowerBound }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingRuleStepAdjustmentOutput) MetricIntervalUpperBound() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ScalingRuleStepAdjustment) *string { return v.MetricIntervalUpperBound }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ScalingRuleStepAdjustment) *string { return v.MetricIntervalUpperBound }).(pulumi.StringPtrOutput)
 }
 
 func (o ScalingRuleStepAdjustmentOutput) ScalingAdjustment() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ScalingRuleStepAdjustment) *int { return v.ScalingAdjustment }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ScalingRuleStepAdjustment) *int { return v.ScalingAdjustment }).(pulumi.IntPtrOutput)
 }
 
-type ScalingRuleStepAdjustmentArrayOutput struct { *pulumi.OutputState}
+type ScalingRuleStepAdjustmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ScalingRuleStepAdjustmentArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ScalingRuleStepAdjustment)(nil)).Elem()
@@ -404,7 +406,7 @@ func (o ScalingRuleStepAdjustmentArrayOutput) ToScalingRuleStepAdjustmentArrayOu
 }
 
 func (o ScalingRuleStepAdjustmentArrayOutput) Index(i pulumi.IntInput) ScalingRuleStepAdjustmentOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ScalingRuleStepAdjustment {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingRuleStepAdjustment {
 		return vs[0].([]ScalingRuleStepAdjustment)[vs[1].(int)]
 	}).(ScalingRuleStepAdjustmentOutput)
 }
@@ -414,15 +416,15 @@ type GetAlarmsAlarm struct {
 	AlarmActions []string `pulumi:"alarmActions"`
 	// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
 	CloudMonitorGroupId int `pulumi:"cloudMonitorGroupId"`
-	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description string `pulumi:"description"`
-	// The dimension map for the alarm's associated metric. 
+	// The dimension map for the alarm's associated metric.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm.
 	Enable bool `pulumi:"enable"`
-	// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+	// The number of times that needs to satisfies comparison condition before transition into ALARM state.
 	EvaluationCount int `pulumi:"evaluationCount"`
 	// The id of alarm.
 	Id string `pulumi:"id"`
@@ -436,9 +438,9 @@ type GetAlarmsAlarm struct {
 	Period int `pulumi:"period"`
 	// Scaling group id the alarms belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
-	// The state of alarm task. 
+	// The state of alarm task.
 	State string `pulumi:"state"`
-	// The statistic to apply to the alarm's associated metric. 
+	// The statistic to apply to the alarm's associated metric.
 	Statistics string `pulumi:"statistics"`
 	// The value against which the specified statistics is compared.
 	Threshold string `pulumi:"threshold"`
@@ -456,15 +458,15 @@ type GetAlarmsAlarmArgs struct {
 	AlarmActions pulumi.StringArrayInput `pulumi:"alarmActions"`
 	// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
 	CloudMonitorGroupId pulumi.IntInput `pulumi:"cloudMonitorGroupId"`
-	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The dimension map for the alarm's associated metric. 
+	// The dimension map for the alarm's associated metric.
 	Dimensions pulumi.MapInput `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm.
 	Enable pulumi.BoolInput `pulumi:"enable"`
-	// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+	// The number of times that needs to satisfies comparison condition before transition into ALARM state.
 	EvaluationCount pulumi.IntInput `pulumi:"evaluationCount"`
 	// The id of alarm.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -478,9 +480,9 @@ type GetAlarmsAlarmArgs struct {
 	Period pulumi.IntInput `pulumi:"period"`
 	// Scaling group id the alarms belong to.
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
-	// The state of alarm task. 
+	// The state of alarm task.
 	State pulumi.StringInput `pulumi:"state"`
-	// The statistic to apply to the alarm's associated metric. 
+	// The statistic to apply to the alarm's associated metric.
 	Statistics pulumi.StringInput `pulumi:"statistics"`
 	// The value against which the specified statistics is compared.
 	Threshold pulumi.StringInput `pulumi:"threshold"`
@@ -519,7 +521,7 @@ func (i GetAlarmsAlarmArray) ToGetAlarmsAlarmArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAlarmsAlarmArrayOutput)
 }
 
-type GetAlarmsAlarmOutput struct { *pulumi.OutputState }
+type GetAlarmsAlarmOutput struct{ *pulumi.OutputState }
 
 func (GetAlarmsAlarmOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetAlarmsAlarm)(nil)).Elem()
@@ -535,85 +537,85 @@ func (o GetAlarmsAlarmOutput) ToGetAlarmsAlarmOutputWithContext(ctx context.Cont
 
 // The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
 func (o GetAlarmsAlarmOutput) AlarmActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) []string { return v.AlarmActions }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) []string { return v.AlarmActions }).(pulumi.StringArrayOutput)
 }
 
 // Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
 func (o GetAlarmsAlarmOutput) CloudMonitorGroupId() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.CloudMonitorGroupId }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) int { return v.CloudMonitorGroupId }).(pulumi.IntOutput)
 }
 
-// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
+// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
 func (o GetAlarmsAlarmOutput) ComparisonOperator() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.ComparisonOperator }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
 // The description for the alarm.
 func (o GetAlarmsAlarmOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The dimension map for the alarm's associated metric. 
+// The dimension map for the alarm's associated metric.
 func (o GetAlarmsAlarmOutput) Dimensions() pulumi.MapOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) map[string]interface{} { return v.Dimensions }).(pulumi.MapOutput)
 }
 
 // Whether to enable specific ess alarm.
 func (o GetAlarmsAlarmOutput) Enable() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) bool { return v.Enable }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
+// The number of times that needs to satisfies comparison condition before transition into ALARM state.
 func (o GetAlarmsAlarmOutput) EvaluationCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.EvaluationCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) int { return v.EvaluationCount }).(pulumi.IntOutput)
 }
 
 // The id of alarm.
 func (o GetAlarmsAlarmOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 func (o GetAlarmsAlarmOutput) MetricName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.MetricName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 // The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 func (o GetAlarmsAlarmOutput) MetricType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.MetricType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.MetricType }).(pulumi.StringOutput)
 }
 
 // The name for ess alarm.
 func (o GetAlarmsAlarmOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The period in seconds over which the specified statistic is applied.
 func (o GetAlarmsAlarmOutput) Period() pulumi.IntOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) int { return v.Period }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) int { return v.Period }).(pulumi.IntOutput)
 }
 
 // Scaling group id the alarms belong to.
 func (o GetAlarmsAlarmOutput) ScalingGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
-// The state of alarm task. 
+// The state of alarm task.
 func (o GetAlarmsAlarmOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.State }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The statistic to apply to the alarm's associated metric. 
+// The statistic to apply to the alarm's associated metric.
 func (o GetAlarmsAlarmOutput) Statistics() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Statistics }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
 // The value against which the specified statistics is compared.
 func (o GetAlarmsAlarmOutput) Threshold() pulumi.StringOutput {
-	return o.ApplyT(func (v GetAlarmsAlarm) string { return v.Threshold }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
-type GetAlarmsAlarmArrayOutput struct { *pulumi.OutputState}
+type GetAlarmsAlarmArrayOutput struct{ *pulumi.OutputState }
 
 func (GetAlarmsAlarmArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetAlarmsAlarm)(nil)).Elem()
@@ -628,13 +630,13 @@ func (o GetAlarmsAlarmArrayOutput) ToGetAlarmsAlarmArrayOutputWithContext(ctx co
 }
 
 func (o GetAlarmsAlarmArrayOutput) Index(i pulumi.IntInput) GetAlarmsAlarmOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetAlarmsAlarm {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlarmsAlarm {
 		return vs[0].([]GetAlarmsAlarm)[vs[1].(int)]
 	}).(GetAlarmsAlarmOutput)
 }
 
 type GetLifecycleHooksHook struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
 	DefaultResult string `pulumi:"defaultResult"`
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
 	HeartbeatTimeout int `pulumi:"heartbeatTimeout"`
@@ -660,7 +662,7 @@ type GetLifecycleHooksHookInput interface {
 }
 
 type GetLifecycleHooksHookArgs struct {
-	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+	// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
 	DefaultResult pulumi.StringInput `pulumi:"defaultResult"`
 	// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
 	HeartbeatTimeout pulumi.IntInput `pulumi:"heartbeatTimeout"`
@@ -711,7 +713,7 @@ func (i GetLifecycleHooksHookArray) ToGetLifecycleHooksHookArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetLifecycleHooksHookArrayOutput)
 }
 
-type GetLifecycleHooksHookOutput struct { *pulumi.OutputState }
+type GetLifecycleHooksHookOutput struct{ *pulumi.OutputState }
 
 func (GetLifecycleHooksHookOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetLifecycleHooksHook)(nil)).Elem()
@@ -725,47 +727,47 @@ func (o GetLifecycleHooksHookOutput) ToGetLifecycleHooksHookOutputWithContext(ct
 	return o
 }
 
-// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
+// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses.
 func (o GetLifecycleHooksHookOutput) DefaultResult() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.DefaultResult }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.DefaultResult }).(pulumi.StringOutput)
 }
 
 // Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the defaultResult parameter.
 func (o GetLifecycleHooksHookOutput) HeartbeatTimeout() pulumi.IntOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) int { return v.HeartbeatTimeout }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) int { return v.HeartbeatTimeout }).(pulumi.IntOutput)
 }
 
 // ID of the lifecycle hook.
 func (o GetLifecycleHooksHookOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Type of Scaling activity attached to lifecycle hook.
 func (o GetLifecycleHooksHookOutput) LifecycleTransition() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.LifecycleTransition }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.LifecycleTransition }).(pulumi.StringOutput)
 }
 
 // Name of the lifecycle hook.
 func (o GetLifecycleHooksHookOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Arn of notification target.
 func (o GetLifecycleHooksHookOutput) NotificationArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.NotificationArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.NotificationArn }).(pulumi.StringOutput)
 }
 
 // Additional information that you want to include when Auto Scaling sends a message to the notification target.
 func (o GetLifecycleHooksHookOutput) NotificationMetadata() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.NotificationMetadata }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.NotificationMetadata }).(pulumi.StringOutput)
 }
 
 // Scaling group id the lifecycle hooks belong to.
 func (o GetLifecycleHooksHookOutput) ScalingGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetLifecycleHooksHook) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetLifecycleHooksHook) string { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
-type GetLifecycleHooksHookArrayOutput struct { *pulumi.OutputState}
+type GetLifecycleHooksHookArrayOutput struct{ *pulumi.OutputState }
 
 func (GetLifecycleHooksHookArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetLifecycleHooksHook)(nil)).Elem()
@@ -780,7 +782,7 @@ func (o GetLifecycleHooksHookArrayOutput) ToGetLifecycleHooksHookArrayOutputWith
 }
 
 func (o GetLifecycleHooksHookArrayOutput) Index(i pulumi.IntInput) GetLifecycleHooksHookOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetLifecycleHooksHook {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLifecycleHooksHook {
 		return vs[0].([]GetLifecycleHooksHook)[vs[1].(int)]
 	}).(GetLifecycleHooksHookOutput)
 }
@@ -788,7 +790,7 @@ func (o GetLifecycleHooksHookArrayOutput) Index(i pulumi.IntInput) GetLifecycleH
 type GetNotificationsNotification struct {
 	// ID of the notification.
 	Id string `pulumi:"id"`
-	// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+	// The Alibaba Cloud Resource Name (ARN) for the notification object.
 	NotificationArn string `pulumi:"notificationArn"`
 	// The notification types of Auto Scaling events and resource changes.
 	NotificationTypes []string `pulumi:"notificationTypes"`
@@ -806,7 +808,7 @@ type GetNotificationsNotificationInput interface {
 type GetNotificationsNotificationArgs struct {
 	// ID of the notification.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+	// The Alibaba Cloud Resource Name (ARN) for the notification object.
 	NotificationArn pulumi.StringInput `pulumi:"notificationArn"`
 	// The notification types of Auto Scaling events and resource changes.
 	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
@@ -847,7 +849,7 @@ func (i GetNotificationsNotificationArray) ToGetNotificationsNotificationArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsNotificationArrayOutput)
 }
 
-type GetNotificationsNotificationOutput struct { *pulumi.OutputState }
+type GetNotificationsNotificationOutput struct{ *pulumi.OutputState }
 
 func (GetNotificationsNotificationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetNotificationsNotification)(nil)).Elem()
@@ -863,25 +865,25 @@ func (o GetNotificationsNotificationOutput) ToGetNotificationsNotificationOutput
 
 // ID of the notification.
 func (o GetNotificationsNotificationOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNotificationsNotification) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNotificationsNotification) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Alibaba Cloud Resource Name (ARN) for the notification object. 
+// The Alibaba Cloud Resource Name (ARN) for the notification object.
 func (o GetNotificationsNotificationOutput) NotificationArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNotificationsNotification) string { return v.NotificationArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNotificationsNotification) string { return v.NotificationArn }).(pulumi.StringOutput)
 }
 
 // The notification types of Auto Scaling events and resource changes.
 func (o GetNotificationsNotificationOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetNotificationsNotification) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetNotificationsNotification) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
 }
 
 // Scaling group id the notifications belong to.
 func (o GetNotificationsNotificationOutput) ScalingGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetNotificationsNotification) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetNotificationsNotification) string { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
-type GetNotificationsNotificationArrayOutput struct { *pulumi.OutputState}
+type GetNotificationsNotificationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNotificationsNotificationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetNotificationsNotification)(nil)).Elem()
@@ -896,7 +898,7 @@ func (o GetNotificationsNotificationArrayOutput) ToGetNotificationsNotificationA
 }
 
 func (o GetNotificationsNotificationArrayOutput) Index(i pulumi.IntInput) GetNotificationsNotificationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetNotificationsNotification {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsNotification {
 		return vs[0].([]GetNotificationsNotification)[vs[1].(int)]
 	}).(GetNotificationsNotificationOutput)
 }
@@ -1003,7 +1005,7 @@ func (i GetScalingConfigurationsConfigurationArray) ToGetScalingConfigurationsCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationArrayOutput)
 }
 
-type GetScalingConfigurationsConfigurationOutput struct { *pulumi.OutputState }
+type GetScalingConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetScalingConfigurationsConfiguration)(nil)).Elem()
@@ -1019,75 +1021,77 @@ func (o GetScalingConfigurationsConfigurationOutput) ToGetScalingConfigurationsC
 
 // Creation time of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Data disks of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) DataDisks() GetScalingConfigurationsConfigurationDataDiskArrayOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) []GetScalingConfigurationsConfigurationDataDisk { return v.DataDisks }).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) []GetScalingConfigurationsConfigurationDataDisk {
+		return v.DataDisks
+	}).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
 }
 
 // ID of the scaling rule.
 func (o GetScalingConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Image ID of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) ImageId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.ImageId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // Instance type of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Internet charge type of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) InternetChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.InternetChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Internet max bandwidth in of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) int { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) int { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
 }
 
 // Internet max bandwidth of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
 }
 
 // Lifecycle state of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) LifecycleState() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.LifecycleState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
 // Name of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Scaling group id the scaling configurations belong to.
 func (o GetScalingConfigurationsConfigurationOutput) ScalingGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
 // Security group ID of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // System disk category of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) SystemDiskCategory() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) string { return v.SystemDiskCategory }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) string { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
 // System disk size of the scaling configuration.
 func (o GetScalingConfigurationsConfigurationOutput) SystemDiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfiguration) int { return v.SystemDiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfiguration) int { return v.SystemDiskSize }).(pulumi.IntOutput)
 }
 
-type GetScalingConfigurationsConfigurationArrayOutput struct { *pulumi.OutputState}
+type GetScalingConfigurationsConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetScalingConfigurationsConfiguration)(nil)).Elem()
@@ -1102,7 +1106,7 @@ func (o GetScalingConfigurationsConfigurationArrayOutput) ToGetScalingConfigurat
 }
 
 func (o GetScalingConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScalingConfigurationsConfiguration {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfiguration {
 		return vs[0].([]GetScalingConfigurationsConfiguration)[vs[1].(int)]
 	}).(GetScalingConfigurationsConfigurationOutput)
 }
@@ -1173,7 +1177,7 @@ func (i GetScalingConfigurationsConfigurationDataDiskArray) ToGetScalingConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingConfigurationsConfigurationDataDiskArrayOutput)
 }
 
-type GetScalingConfigurationsConfigurationDataDiskOutput struct { *pulumi.OutputState }
+type GetScalingConfigurationsConfigurationDataDiskOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationDataDiskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetScalingConfigurationsConfigurationDataDisk)(nil)).Elem()
@@ -1189,30 +1193,30 @@ func (o GetScalingConfigurationsConfigurationDataDiskOutput) ToGetScalingConfigu
 
 // Category of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Delete_with_instance attribute of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
 // Device attribute of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
 // Size of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 // Size of data disk.
 func (o GetScalingConfigurationsConfigurationDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetScalingConfigurationsConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetScalingConfigurationsConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-type GetScalingConfigurationsConfigurationDataDiskArrayOutput struct { *pulumi.OutputState}
+type GetScalingConfigurationsConfigurationDataDiskArrayOutput struct{ *pulumi.OutputState }
 
 func (GetScalingConfigurationsConfigurationDataDiskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetScalingConfigurationsConfigurationDataDisk)(nil)).Elem()
@@ -1227,14 +1231,14 @@ func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) ToGetScalingCo
 }
 
 func (o GetScalingConfigurationsConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) GetScalingConfigurationsConfigurationDataDiskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScalingConfigurationsConfigurationDataDisk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingConfigurationsConfigurationDataDisk {
 		return vs[0].([]GetScalingConfigurationsConfigurationDataDisk)[vs[1].(int)]
 	}).(GetScalingConfigurationsConfigurationDataDiskOutput)
 }
 
 type GetScalingGroupsGroup struct {
 	// Number of active instances in scaling group.
-	ActiveCapacity int `pulumi:"activeCapacity"`
+	ActiveCapacity             int    `pulumi:"activeCapacity"`
 	ActiveScalingConfiguration string `pulumi:"activeScalingConfiguration"`
 	// Default cooldown time of scaling group.
 	CooldownTime int `pulumi:"cooldownTime"`
@@ -1282,7 +1286,7 @@ type GetScalingGroupsGroupInput interface {
 
 type GetScalingGroupsGroupArgs struct {
 	// Number of active instances in scaling group.
-	ActiveCapacity pulumi.IntInput `pulumi:"activeCapacity"`
+	ActiveCapacity             pulumi.IntInput    `pulumi:"activeCapacity"`
 	ActiveScalingConfiguration pulumi.StringInput `pulumi:"activeScalingConfiguration"`
 	// Default cooldown time of scaling group.
 	CooldownTime pulumi.IntInput `pulumi:"cooldownTime"`
@@ -1354,7 +1358,7 @@ func (i GetScalingGroupsGroupArray) ToGetScalingGroupsGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingGroupsGroupArrayOutput)
 }
 
-type GetScalingGroupsGroupOutput struct { *pulumi.OutputState }
+type GetScalingGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetScalingGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetScalingGroupsGroup)(nil)).Elem()
@@ -1370,100 +1374,100 @@ func (o GetScalingGroupsGroupOutput) ToGetScalingGroupsGroupOutputWithContext(ct
 
 // Number of active instances in scaling group.
 func (o GetScalingGroupsGroupOutput) ActiveCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.ActiveCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.ActiveCapacity }).(pulumi.IntOutput)
 }
 
 func (o GetScalingGroupsGroupOutput) ActiveScalingConfiguration() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.ActiveScalingConfiguration }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.ActiveScalingConfiguration }).(pulumi.StringOutput)
 }
 
 // Default cooldown time of scaling group.
 func (o GetScalingGroupsGroupOutput) CooldownTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.CooldownTime }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.CooldownTime }).(pulumi.IntOutput)
 }
 
 // Creation time of scaling group.
 func (o GetScalingGroupsGroupOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Db instances id which the ECS instance attached to.
 func (o GetScalingGroupsGroupOutput) DbInstanceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) []string { return v.DbInstanceIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.DbInstanceIds }).(pulumi.StringArrayOutput)
 }
 
 // ID of the scaling group.
 func (o GetScalingGroupsGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Active launch template ID for scaling group.
 func (o GetScalingGroupsGroupOutput) LaunchTemplateId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.LaunchTemplateId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.LaunchTemplateId }).(pulumi.StringOutput)
 }
 
 // Version of active launch template.
 func (o GetScalingGroupsGroupOutput) LaunchTemplateVersion() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.LaunchTemplateVersion }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.LaunchTemplateVersion }).(pulumi.StringOutput)
 }
 
 // Lifecycle state of scaling group.
 func (o GetScalingGroupsGroupOutput) LifecycleState() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.LifecycleState }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.LifecycleState }).(pulumi.StringOutput)
 }
 
 // Slb instances id which the ECS instance attached to.
 func (o GetScalingGroupsGroupOutput) LoadBalancerIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.LoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
 // The maximum number of ECS instances.
 func (o GetScalingGroupsGroupOutput) MaxSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.MaxSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.MaxSize }).(pulumi.IntOutput)
 }
 
 // The minimum number of ECS instances.
 func (o GetScalingGroupsGroupOutput) MinSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.MinSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.MinSize }).(pulumi.IntOutput)
 }
 
 // Name of the scaling group.
 // * `activeScalingConfiguration` -Active scaling configuration for scaling group.
 func (o GetScalingGroupsGroupOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Number of pending instances in scaling group.
 func (o GetScalingGroupsGroupOutput) PendingCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.PendingCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.PendingCapacity }).(pulumi.IntOutput)
 }
 
 // Region ID the scaling group belongs to.
 func (o GetScalingGroupsGroupOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Removal policy used to select the ECS instance to remove from the scaling group.
 func (o GetScalingGroupsGroupOutput) RemovalPolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) []string { return v.RemovalPolicies }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.RemovalPolicies }).(pulumi.StringArrayOutput)
 }
 
 // Number of removing instances in scaling group.
 func (o GetScalingGroupsGroupOutput) RemovingCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.RemovingCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.RemovingCapacity }).(pulumi.IntOutput)
 }
 
 // Number of instances in scaling group.
 func (o GetScalingGroupsGroupOutput) TotalCapacity() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) int { return v.TotalCapacity }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) int { return v.TotalCapacity }).(pulumi.IntOutput)
 }
 
 // Vswitches id in which the ECS instance launched.
 func (o GetScalingGroupsGroupOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetScalingGroupsGroup) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetScalingGroupsGroup) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-type GetScalingGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetScalingGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetScalingGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetScalingGroupsGroup)(nil)).Elem()
@@ -1478,7 +1482,7 @@ func (o GetScalingGroupsGroupArrayOutput) ToGetScalingGroupsGroupArrayOutputWith
 }
 
 func (o GetScalingGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetScalingGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScalingGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingGroupsGroup {
 		return vs[0].([]GetScalingGroupsGroup)[vs[1].(int)]
 	}).(GetScalingGroupsGroupOutput)
 }
@@ -1565,7 +1569,7 @@ func (i GetScalingRulesRuleArray) ToGetScalingRulesRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetScalingRulesRuleArrayOutput)
 }
 
-type GetScalingRulesRuleOutput struct { *pulumi.OutputState }
+type GetScalingRulesRuleOutput struct{ *pulumi.OutputState }
 
 func (GetScalingRulesRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetScalingRulesRule)(nil)).Elem()
@@ -1581,50 +1585,50 @@ func (o GetScalingRulesRuleOutput) ToGetScalingRulesRuleOutputWithContext(ctx co
 
 // Adjustment type of the scaling rule.
 func (o GetScalingRulesRuleOutput) AdjustmentType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.AdjustmentType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.AdjustmentType }).(pulumi.StringOutput)
 }
 
 // Adjustment value of the scaling rule.
 func (o GetScalingRulesRuleOutput) AdjustmentValue() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) int { return v.AdjustmentValue }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.AdjustmentValue }).(pulumi.IntOutput)
 }
 
 // Cooldown time of the scaling rule.
 func (o GetScalingRulesRuleOutput) Cooldown() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) int { return v.Cooldown }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.Cooldown }).(pulumi.IntOutput)
 }
 
 // ID of the scaling rule.
 func (o GetScalingRulesRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Min adjustment magnitude of scaling rule.
 func (o GetScalingRulesRuleOutput) MinAdjustmentMagnitude() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) int { return v.MinAdjustmentMagnitude }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) int { return v.MinAdjustmentMagnitude }).(pulumi.IntOutput)
 }
 
 // Name of the scaling rule.
 func (o GetScalingRulesRuleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Scaling group id the scaling rules belong to.
 func (o GetScalingRulesRuleOutput) ScalingGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
 // Ari of scaling rule.
 func (o GetScalingRulesRuleOutput) ScalingRuleAri() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.ScalingRuleAri }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.ScalingRuleAri }).(pulumi.StringOutput)
 }
 
 // Type of scaling rule.
 func (o GetScalingRulesRuleOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScalingRulesRule) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScalingRulesRule) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetScalingRulesRuleArrayOutput struct { *pulumi.OutputState}
+type GetScalingRulesRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (GetScalingRulesRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetScalingRulesRule)(nil)).Elem()
@@ -1639,7 +1643,7 @@ func (o GetScalingRulesRuleArrayOutput) ToGetScalingRulesRuleArrayOutputWithCont
 }
 
 func (o GetScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetScalingRulesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScalingRulesRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScalingRulesRule {
 		return vs[0].([]GetScalingRulesRule)[vs[1].(int)]
 	}).(GetScalingRulesRuleOutput)
 }
@@ -1653,19 +1657,19 @@ type GetScheduledTasksTask struct {
 	LaunchExpirationTime int `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered.
 	LaunchTime string `pulumi:"launchTime"`
-	MaxValue int `pulumi:"maxValue"`
-	MinValue int `pulumi:"minValue"`
+	MaxValue   int    `pulumi:"maxValue"`
+	MinValue   int    `pulumi:"minValue"`
 	// Name of the scheduled task name.
 	Name string `pulumi:"name"`
 	// Specifies the end time after which the scheduled task is no longer repeated.
 	RecurrenceEndTime string `pulumi:"recurrenceEndTime"`
-	// Specifies the recurrence type of the scheduled task. 
+	// Specifies the recurrence type of the scheduled task.
 	RecurrenceType string `pulumi:"recurrenceType"`
-	// Specifies how often a scheduled task recurs. 
+	// Specifies how often a scheduled task recurs.
 	RecurrenceValue string `pulumi:"recurrenceValue"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction string `pulumi:"scheduledAction"`
-	TaskEnabled bool `pulumi:"taskEnabled"`
+	TaskEnabled     bool   `pulumi:"taskEnabled"`
 }
 
 type GetScheduledTasksTaskInput interface {
@@ -1684,19 +1688,19 @@ type GetScheduledTasksTaskArgs struct {
 	LaunchExpirationTime pulumi.IntInput `pulumi:"launchExpirationTime"`
 	// The time at which the scheduled task is triggered.
 	LaunchTime pulumi.StringInput `pulumi:"launchTime"`
-	MaxValue pulumi.IntInput `pulumi:"maxValue"`
-	MinValue pulumi.IntInput `pulumi:"minValue"`
+	MaxValue   pulumi.IntInput    `pulumi:"maxValue"`
+	MinValue   pulumi.IntInput    `pulumi:"minValue"`
 	// Name of the scheduled task name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies the end time after which the scheduled task is no longer repeated.
 	RecurrenceEndTime pulumi.StringInput `pulumi:"recurrenceEndTime"`
-	// Specifies the recurrence type of the scheduled task. 
+	// Specifies the recurrence type of the scheduled task.
 	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
-	// Specifies how often a scheduled task recurs. 
+	// Specifies how often a scheduled task recurs.
 	RecurrenceValue pulumi.StringInput `pulumi:"recurrenceValue"`
 	// The operation to be performed when a scheduled task is triggered.
 	ScheduledAction pulumi.StringInput `pulumi:"scheduledAction"`
-	TaskEnabled pulumi.BoolInput `pulumi:"taskEnabled"`
+	TaskEnabled     pulumi.BoolInput   `pulumi:"taskEnabled"`
 }
 
 func (GetScheduledTasksTaskArgs) ElementType() reflect.Type {
@@ -1732,7 +1736,7 @@ func (i GetScheduledTasksTaskArray) ToGetScheduledTasksTaskArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetScheduledTasksTaskArrayOutput)
 }
 
-type GetScheduledTasksTaskOutput struct { *pulumi.OutputState }
+type GetScheduledTasksTaskOutput struct{ *pulumi.OutputState }
 
 func (GetScheduledTasksTaskOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetScheduledTasksTask)(nil)).Elem()
@@ -1748,62 +1752,62 @@ func (o GetScheduledTasksTaskOutput) ToGetScheduledTasksTaskOutputWithContext(ct
 
 // Description of the scheduled task.
 func (o GetScheduledTasksTaskOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the scheduled task id.
 func (o GetScheduledTasksTaskOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The time period during which a failed scheduled task is retried.
 func (o GetScheduledTasksTaskOutput) LaunchExpirationTime() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.LaunchExpirationTime }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) int { return v.LaunchExpirationTime }).(pulumi.IntOutput)
 }
 
 // The time at which the scheduled task is triggered.
 func (o GetScheduledTasksTaskOutput) LaunchTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.LaunchTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.LaunchTime }).(pulumi.StringOutput)
 }
 
 func (o GetScheduledTasksTaskOutput) MaxValue() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.MaxValue }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) int { return v.MaxValue }).(pulumi.IntOutput)
 }
 
 func (o GetScheduledTasksTaskOutput) MinValue() pulumi.IntOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) int { return v.MinValue }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) int { return v.MinValue }).(pulumi.IntOutput)
 }
 
 // Name of the scheduled task name.
 func (o GetScheduledTasksTaskOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Specifies the end time after which the scheduled task is no longer repeated.
 func (o GetScheduledTasksTaskOutput) RecurrenceEndTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceEndTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.RecurrenceEndTime }).(pulumi.StringOutput)
 }
 
-// Specifies the recurrence type of the scheduled task. 
+// Specifies the recurrence type of the scheduled task.
 func (o GetScheduledTasksTaskOutput) RecurrenceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.RecurrenceType }).(pulumi.StringOutput)
 }
 
-// Specifies how often a scheduled task recurs. 
+// Specifies how often a scheduled task recurs.
 func (o GetScheduledTasksTaskOutput) RecurrenceValue() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.RecurrenceValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.RecurrenceValue }).(pulumi.StringOutput)
 }
 
 // The operation to be performed when a scheduled task is triggered.
 func (o GetScheduledTasksTaskOutput) ScheduledAction() pulumi.StringOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) string { return v.ScheduledAction }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) string { return v.ScheduledAction }).(pulumi.StringOutput)
 }
 
 func (o GetScheduledTasksTaskOutput) TaskEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetScheduledTasksTask) bool { return v.TaskEnabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetScheduledTasksTask) bool { return v.TaskEnabled }).(pulumi.BoolOutput)
 }
 
-type GetScheduledTasksTaskArrayOutput struct { *pulumi.OutputState}
+type GetScheduledTasksTaskArrayOutput struct{ *pulumi.OutputState }
 
 func (GetScheduledTasksTaskArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetScheduledTasksTask)(nil)).Elem()
@@ -1818,7 +1822,7 @@ func (o GetScheduledTasksTaskArrayOutput) ToGetScheduledTasksTaskArrayOutputWith
 }
 
 func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledTasksTaskOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetScheduledTasksTask {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetScheduledTasksTask {
 		return vs[0].([]GetScheduledTasksTask)[vs[1].(int)]
 	}).(GetScheduledTasksTaskOutput)
 }

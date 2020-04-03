@@ -22,14 +22,14 @@ type Instance struct {
 	// Auto-renewal period of an instance, in the unit of the month. It is valid when instanceChargeType is `PrePaid`. Valid value:[1~12], Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The Zone to launch the DB instance.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	BackupId pulumi.StringPtrOutput `pulumi:"backupId"`
+	AvailabilityZone pulumi.StringOutput    `pulumi:"availabilityZone"`
+	BackupId         pulumi.StringPtrOutput `pulumi:"backupId"`
 	// Instance connection domain (only Intranet access supported).
-	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
-	EngineVersion pulumi.StringPtrOutput `pulumi:"engineVersion"`
+	ConnectionDomain pulumi.StringOutput    `pulumi:"connectionDomain"`
+	EngineVersion    pulumi.StringPtrOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
+	InstanceClass      pulumi.StringOutput    `pulumi:"instanceClass"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
@@ -45,13 +45,13 @@ type Instance struct {
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
-	Password pulumi.StringPtrOutput `pulumi:"password"`
+	Password   pulumi.StringPtrOutput       `pulumi:"password"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
+	Period      pulumi.IntPtrOutput      `pulumi:"period"`
+	PrivateIp   pulumi.StringOutput      `pulumi:"privateIp"`
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags        pulumi.MapOutput    `pulumi:"tags"`
 	VpcAuthMode pulumi.StringOutput `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
@@ -99,13 +99,13 @@ type instanceState struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The Zone to launch the DB instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	BackupId *string `pulumi:"backupId"`
+	BackupId         *string `pulumi:"backupId"`
 	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain *string `pulumi:"connectionDomain"`
-	EngineVersion *string `pulumi:"engineVersion"`
+	EngineVersion    *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceClass *string `pulumi:"instanceClass"`
+	InstanceClass      *string `pulumi:"instanceClass"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName *string `pulumi:"instanceName"`
@@ -121,14 +121,14 @@ type instanceState struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	Password *string `pulumi:"password"`
+	Password   *string             `pulumi:"password"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
-	PrivateIp *string `pulumi:"privateIp"`
+	Period      *int     `pulumi:"period"`
+	PrivateIp   *string  `pulumi:"privateIp"`
 	SecurityIps []string `pulumi:"securityIps"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	VpcAuthMode *string `pulumi:"vpcAuthMode"`
+	Tags        map[string]interface{} `pulumi:"tags"`
+	VpcAuthMode *string                `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
 	// * `securityIps`- (Optional) Set the instance's IP whitelist of the default security group.
@@ -145,13 +145,13 @@ type InstanceState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The Zone to launch the DB instance.
 	AvailabilityZone pulumi.StringPtrInput
-	BackupId pulumi.StringPtrInput
+	BackupId         pulumi.StringPtrInput
 	// Instance connection domain (only Intranet access supported).
 	ConnectionDomain pulumi.StringPtrInput
-	EngineVersion pulumi.StringPtrInput
+	EngineVersion    pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceClass pulumi.StringPtrInput
+	InstanceClass      pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName pulumi.StringPtrInput
@@ -167,13 +167,13 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Parameters InstanceParameterArrayInput
-	Password pulumi.StringPtrInput
+	Password   pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
-	PrivateIp pulumi.StringPtrInput
+	Period      pulumi.IntPtrInput
+	PrivateIp   pulumi.StringPtrInput
 	SecurityIps pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags        pulumi.MapInput
 	VpcAuthMode pulumi.StringPtrInput
 	// The ID of VSwitch.
 	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
@@ -195,11 +195,11 @@ type instanceArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The Zone to launch the DB instance.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	BackupId *string `pulumi:"backupId"`
-	EngineVersion *string `pulumi:"engineVersion"`
+	BackupId         *string `pulumi:"backupId"`
+	EngineVersion    *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceClass string `pulumi:"instanceClass"`
+	InstanceClass      string  `pulumi:"instanceClass"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName *string `pulumi:"instanceName"`
@@ -215,14 +215,14 @@ type instanceArgs struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	Password *string `pulumi:"password"`
+	Password   *string             `pulumi:"password"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period *int `pulumi:"period"`
-	PrivateIp *string `pulumi:"privateIp"`
+	Period      *int     `pulumi:"period"`
+	PrivateIp   *string  `pulumi:"privateIp"`
 	SecurityIps []string `pulumi:"securityIps"`
 	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
-	VpcAuthMode *string `pulumi:"vpcAuthMode"`
+	Tags        map[string]interface{} `pulumi:"tags"`
+	VpcAuthMode *string                `pulumi:"vpcAuthMode"`
 	// The ID of VSwitch.
 	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
 	// * `securityIps`- (Optional) Set the instance's IP whitelist of the default security group.
@@ -240,11 +240,11 @@ type InstanceArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The Zone to launch the DB instance.
 	AvailabilityZone pulumi.StringPtrInput
-	BackupId pulumi.StringPtrInput
-	EngineVersion pulumi.StringPtrInput
+	BackupId         pulumi.StringPtrInput
+	EngineVersion    pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceClass pulumi.StringInput
+	InstanceClass      pulumi.StringInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	// * `password`- (Optional, Sensitive) The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
 	InstanceName pulumi.StringPtrInput
@@ -260,13 +260,13 @@ type InstanceArgs struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// Set of parameters needs to be set after instance was launched. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Parameters InstanceParameterArrayInput
-	Password pulumi.StringPtrInput
+	Password   pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
-	Period pulumi.IntPtrInput
-	PrivateIp pulumi.StringPtrInput
+	Period      pulumi.IntPtrInput
+	PrivateIp   pulumi.StringPtrInput
 	SecurityIps pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags        pulumi.MapInput
 	VpcAuthMode pulumi.StringPtrInput
 	// The ID of VSwitch.
 	// * `engineVersion`- (Optional, ForceNew) Engine version. Supported values: 2.8, 4.0 and 5.0. Default value: 2.8. Only 2.8 can be supported for Memcache Instance.
@@ -280,4 +280,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

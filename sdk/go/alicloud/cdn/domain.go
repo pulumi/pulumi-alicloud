@@ -16,11 +16,11 @@ type Domain struct {
 
 	// The auth config of the accelerated domain.
 	AuthConfig DomainAuthConfigPtrOutput `pulumi:"authConfig"`
-	BlockIps pulumi.StringArrayOutput `pulumi:"blockIps"`
+	BlockIps   pulumi.StringArrayOutput  `pulumi:"blockIps"`
 	// The cache configs of the accelerated domain.
 	CacheConfigs DomainCacheConfigArrayOutput `pulumi:"cacheConfigs"`
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringOutput `pulumi:"cdnType"`
+	CdnType           pulumi.StringOutput              `pulumi:"cdnType"`
 	CertificateConfig DomainCertificateConfigPtrOutput `pulumi:"certificateConfig"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
@@ -86,11 +86,11 @@ func GetDomain(ctx *pulumi.Context,
 type domainState struct {
 	// The auth config of the accelerated domain.
 	AuthConfig *DomainAuthConfig `pulumi:"authConfig"`
-	BlockIps []string `pulumi:"blockIps"`
+	BlockIps   []string          `pulumi:"blockIps"`
 	// The cache configs of the accelerated domain.
 	CacheConfigs []DomainCacheConfig `pulumi:"cacheConfigs"`
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType *string `pulumi:"cdnType"`
+	CdnType           *string                  `pulumi:"cdnType"`
 	CertificateConfig *DomainCertificateConfig `pulumi:"certificateConfig"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
@@ -123,11 +123,11 @@ type domainState struct {
 type DomainState struct {
 	// The auth config of the accelerated domain.
 	AuthConfig DomainAuthConfigPtrInput
-	BlockIps pulumi.StringArrayInput
+	BlockIps   pulumi.StringArrayInput
 	// The cache configs of the accelerated domain.
 	CacheConfigs DomainCacheConfigArrayInput
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringPtrInput
+	CdnType           pulumi.StringPtrInput
 	CertificateConfig DomainCertificateConfigPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
@@ -164,11 +164,11 @@ func (DomainState) ElementType() reflect.Type {
 type domainArgs struct {
 	// The auth config of the accelerated domain.
 	AuthConfig *DomainAuthConfig `pulumi:"authConfig"`
-	BlockIps []string `pulumi:"blockIps"`
+	BlockIps   []string          `pulumi:"blockIps"`
 	// The cache configs of the accelerated domain.
 	CacheConfigs []DomainCacheConfig `pulumi:"cacheConfigs"`
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType string `pulumi:"cdnType"`
+	CdnType           string                   `pulumi:"cdnType"`
 	CertificateConfig *DomainCertificateConfig `pulumi:"certificateConfig"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`
@@ -202,11 +202,11 @@ type domainArgs struct {
 type DomainArgs struct {
 	// The auth config of the accelerated domain.
 	AuthConfig DomainAuthConfigPtrInput
-	BlockIps pulumi.StringArrayInput
+	BlockIps   pulumi.StringArrayInput
 	// The cache configs of the accelerated domain.
 	CacheConfigs DomainCacheConfigArrayInput
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
-	CdnType pulumi.StringInput
+	CdnType           pulumi.StringInput
 	CertificateConfig DomainCertificateConfigPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringInput
@@ -239,4 +239,3 @@ type DomainArgs struct {
 func (DomainArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainArgs)(nil)).Elem()
 }
-

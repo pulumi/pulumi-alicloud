@@ -36,7 +36,7 @@ import (
 // * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
 // * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
 // * `serverType` - (Optional) The server type of the backend server. Valid value Master, Slave.
-// * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
+// * `isBackup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_master_slave_server_group.html.markdown.
 type MasterSlaveServerGroup struct {
@@ -46,7 +46,7 @@ type MasterSlaveServerGroup struct {
 	DeleteProtectionValidation pulumi.BoolPtrOutput `pulumi:"deleteProtectionValidation"`
 	// The Load Balancer ID which is used to launch a new master slave server group.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// Name of the master slave server group. 
+	// Name of the master slave server group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
 	Servers MasterSlaveServerGroupServerArrayOutput `pulumi:"servers"`
@@ -87,7 +87,7 @@ type masterSlaveServerGroupState struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// The Load Balancer ID which is used to launch a new master slave server group.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// Name of the master slave server group. 
+	// Name of the master slave server group.
 	Name *string `pulumi:"name"`
 	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
 	Servers []MasterSlaveServerGroupServer `pulumi:"servers"`
@@ -98,7 +98,7 @@ type MasterSlaveServerGroupState struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// The Load Balancer ID which is used to launch a new master slave server group.
 	LoadBalancerId pulumi.StringPtrInput
-	// Name of the master slave server group. 
+	// Name of the master slave server group.
 	Name pulumi.StringPtrInput
 	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
 	Servers MasterSlaveServerGroupServerArrayInput
@@ -113,7 +113,7 @@ type masterSlaveServerGroupArgs struct {
 	DeleteProtectionValidation *bool `pulumi:"deleteProtectionValidation"`
 	// The Load Balancer ID which is used to launch a new master slave server group.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// Name of the master slave server group. 
+	// Name of the master slave server group.
 	Name *string `pulumi:"name"`
 	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
 	Servers []MasterSlaveServerGroupServer `pulumi:"servers"`
@@ -125,7 +125,7 @@ type MasterSlaveServerGroupArgs struct {
 	DeleteProtectionValidation pulumi.BoolPtrInput
 	// The Load Balancer ID which is used to launch a new master slave server group.
 	LoadBalancerId pulumi.StringInput
-	// Name of the master slave server group. 
+	// Name of the master slave server group.
 	Name pulumi.StringPtrInput
 	// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
 	Servers MasterSlaveServerGroupServerArrayInput
@@ -134,4 +134,3 @@ type MasterSlaveServerGroupArgs struct {
 func (MasterSlaveServerGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*masterSlaveServerGroupArgs)(nil)).Elem()
 }
-

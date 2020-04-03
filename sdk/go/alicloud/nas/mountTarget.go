@@ -120,4 +120,3 @@ type MountTargetArgs struct {
 func (MountTargetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*mountTargetArgs)(nil)).Elem()
 }
-

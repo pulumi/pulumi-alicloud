@@ -31,8 +31,8 @@ type GetRouterInterfacesArgs struct {
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
 	// Account ID of the owner of the peer router interface.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
-	OutputFile *string `pulumi:"outputFile"`
-	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+	OutputFile               *string `pulumi:"outputFile"`
+	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
 	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
 	Role *string `pulumi:"role"`
 	// ID of the VRouter located in the local region.
@@ -45,7 +45,6 @@ type GetRouterInterfacesArgs struct {
 	Status *string `pulumi:"status"`
 }
 
-
 // A collection of values returned by getRouterInterfaces.
 type GetRouterInterfacesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -54,14 +53,14 @@ type GetRouterInterfacesResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of router interfaces. Each element contains the following attributes:
 	Interfaces []GetRouterInterfacesInterface `pulumi:"interfaces"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string                        `pulumi:"nameRegex"`
 	// A list of router interface names.
 	Names []string `pulumi:"names"`
 	// Peer router interface ID.
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
 	// Account ID of the owner of the peer router interface.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile               *string `pulumi:"outputFile"`
 	// Router interface role. Possible values: `InitiatingSide` and `AcceptingSide`.
 	Role *string `pulumi:"role"`
 	// ID of the VRouter located in the local region.
@@ -73,4 +72,3 @@ type GetRouterInterfacesResult struct {
 	// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
 	Status *string `pulumi:"status"`
 }
-

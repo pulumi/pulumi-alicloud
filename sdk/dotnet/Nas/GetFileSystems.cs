@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFileSystems.InvokeAsync() instead")]
         public static Task<GetFileSystemsResult> GetFileSystems(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFileSystems
+    {
+        /// <summary>
+        /// This data source provides FileSystems available to the user.
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
+        /// </summary>
+        public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

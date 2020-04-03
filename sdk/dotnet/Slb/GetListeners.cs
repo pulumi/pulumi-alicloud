@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_listeners.html.markdown.
         /// </summary>
+        [Obsolete("Use GetListeners.InvokeAsync() instead")]
         public static Task<GetListenersResult> GetListeners(GetListenersArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetListeners
+    {
+        /// <summary>
+        /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_listeners.html.markdown.
+        /// </summary>
+        public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

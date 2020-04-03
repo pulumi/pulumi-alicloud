@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The `emr.getDiskTypes` data source provides a collection of data disk and 
+// The `emr.getDiskTypes` data source provides a collection of data disk and
 // system disk types available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.60.0+
@@ -32,26 +32,24 @@ type GetDiskTypesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	// The ecs instance type of create emr cluster instance.
-	InstanceType string `pulumi:"instanceType"`
-	OutputFile *string `pulumi:"outputFile"`
+	InstanceType string  `pulumi:"instanceType"`
+	OutputFile   *string `pulumi:"outputFile"`
 	// The Zone to create emr cluster instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-
 // A collection of values returned by getDiskTypes.
 type GetDiskTypesResult struct {
-	ClusterType string `pulumi:"clusterType"`
+	ClusterType         string `pulumi:"clusterType"`
 	DestinationResource string `pulumi:"destinationResource"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of data disk and system disk type IDs. 
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType string `pulumi:"instanceChargeType"`
-	InstanceType string `pulumi:"instanceType"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of data disk and system disk type IDs.
+	Ids                []string `pulumi:"ids"`
+	InstanceChargeType string   `pulumi:"instanceChargeType"`
+	InstanceType       string   `pulumi:"instanceType"`
+	OutputFile         *string  `pulumi:"outputFile"`
 	// A list of emr instance types. Each element contains the following attributes:
-	Types []GetDiskTypesType `pulumi:"types"`
-	ZoneId *string `pulumi:"zoneId"`
+	Types  []GetDiskTypesType `pulumi:"types"`
+	ZoneId *string            `pulumi:"zoneId"`
 }
-

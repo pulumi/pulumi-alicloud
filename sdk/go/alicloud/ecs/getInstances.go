@@ -29,7 +29,7 @@ type GetInstancesArgs struct {
 	// The image ID of some ECS instance used.
 	ImageId *string `pulumi:"imageId"`
 	// A regex string to filter results by instance name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The RAM role name which the instance attaches.
 	RamRoleName *string `pulumi:"ramRoleName"`
@@ -53,7 +53,6 @@ type GetInstancesArgs struct {
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
-
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	// Availability zone the instance belongs to.
@@ -66,10 +65,10 @@ type GetInstancesResult struct {
 	ImageId *string `pulumi:"imageId"`
 	// A list of instances. Each element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of instances names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of instances names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Ram role name.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The Id of resource group.
@@ -83,4 +82,3 @@ type GetInstancesResult struct {
 	// ID of the VSwitch the instance belongs to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
-

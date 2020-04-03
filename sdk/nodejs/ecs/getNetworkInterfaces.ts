@@ -124,15 +124,33 @@ export function getNetworkInterfaces(args?: GetNetworkInterfacesArgs, opts?: pul
  */
 export interface GetNetworkInterfacesArgs {
     readonly ids?: string[];
+    /**
+     * ID of the instance that the ENI is attached to.
+     */
     readonly instanceId?: string;
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * Primary private IP of the ENI.
+     */
     readonly privateIp?: string;
+    /**
+     * The Id of resource group.
+     */
     readonly resourceGroupId?: string;
     readonly securityGroupId?: string;
+    /**
+     * A map of tags assigned to the ENI.
+     */
     readonly tags?: {[key: string]: any};
     readonly type?: string;
+    /**
+     * ID of the VPC that the ENI belongs to.
+     */
     readonly vpcId?: string;
+    /**
+     * ID of the VSwitch that the ENI is linked to.
+     */
     readonly vswitchId?: string;
 }
 

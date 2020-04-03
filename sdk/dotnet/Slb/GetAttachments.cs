@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAttachments.InvokeAsync() instead")]
         public static Task<GetAttachmentsResult> GetAttachments(GetAttachmentsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAttachments
+    {
+        /// <summary>
+        /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
+        /// </summary>
+        public static Task<GetAttachmentsResult> InvokeAsync(GetAttachmentsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

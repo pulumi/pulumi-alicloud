@@ -30,7 +30,7 @@ type GetInstancesInstance struct {
 	Name string `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType string `pulumi:"paidType"`
-	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
+	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus int `pulumi:"serviceStatus"`
 	// The spec type of the instance.
 	SpecType string `pulumi:"specType"`
@@ -70,7 +70,7 @@ type GetInstancesInstanceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The paid type of the instance.
 	PaidType pulumi.StringInput `pulumi:"paidType"`
-	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
+	// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 	ServiceStatus pulumi.IntInput `pulumi:"serviceStatus"`
 	// The spec type of the instance.
 	SpecType pulumi.StringInput `pulumi:"specType"`
@@ -117,7 +117,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -133,80 +133,80 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // The create time of the instance.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The deploy type of the instance. 0: sharing instance, 1: vpc instance, 2: vpc instance(support ip mapping), 3: eip instance, 4: eip/vpc instance, 5: vpc instance.
 func (o GetInstancesInstanceOutput) DeployType() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.DeployType }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.DeployType }).(pulumi.IntOutput)
 }
 
 // The disk size of the instance.
 func (o GetInstancesInstanceOutput) DiskSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.DiskSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.DiskSize }).(pulumi.IntOutput)
 }
 
 // The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 func (o GetInstancesInstanceOutput) DiskType() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.DiskType }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.DiskType }).(pulumi.IntOutput)
 }
 
 // The peak bandwidth of the instance.
 func (o GetInstancesInstanceOutput) EipMax() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.EipMax }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.EipMax }).(pulumi.IntOutput)
 }
 
 // ID of the instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The peak value of io of the instance.
 func (o GetInstancesInstanceOutput) IoMax() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.IoMax }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.IoMax }).(pulumi.IntOutput)
 }
 
 // Name of the instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The paid type of the instance.
 func (o GetInstancesInstanceOutput) PaidType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.PaidType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaidType }).(pulumi.StringOutput)
 }
 
-// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error. 
+// The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
 func (o GetInstancesInstanceOutput) ServiceStatus() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.ServiceStatus }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.ServiceStatus }).(pulumi.IntOutput)
 }
 
 // The spec type of the instance.
 func (o GetInstancesInstanceOutput) SpecType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.SpecType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SpecType }).(pulumi.StringOutput)
 }
 
 // The max num of topic can be create of the instance.
 func (o GetInstancesInstanceOutput) TopicQuota() pulumi.IntOutput {
-	return o.ApplyT(func (v GetInstancesInstance) int { return v.TopicQuota }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.TopicQuota }).(pulumi.IntOutput)
 }
 
 // The ID of attaching VPC to instance.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ID of attaching vswitch to instance.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The ID of attaching zone to instance.
 func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -221,7 +221,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -229,15 +229,15 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 type GetSaslAclsAcl struct {
 	// The operation type of the sasl acl.
 	AclOperationType string `pulumi:"aclOperationType"`
-	// Get results for the specified resource name. 
+	// Get results for the specified resource name.
 	AclResourceName string `pulumi:"aclResourceName"`
 	// The resource pattern type of the sasl acl.
 	AclResourcePatternType string `pulumi:"aclResourcePatternType"`
-	// Get results for the specified resource type. 
+	// Get results for the specified resource type.
 	AclResourceType string `pulumi:"aclResourceType"`
 	// The host of the sasl acl.
 	Host string `pulumi:"host"`
-	// Get results for the specified username. 
+	// Get results for the specified username.
 	Username string `pulumi:"username"`
 }
 
@@ -251,15 +251,15 @@ type GetSaslAclsAclInput interface {
 type GetSaslAclsAclArgs struct {
 	// The operation type of the sasl acl.
 	AclOperationType pulumi.StringInput `pulumi:"aclOperationType"`
-	// Get results for the specified resource name. 
+	// Get results for the specified resource name.
 	AclResourceName pulumi.StringInput `pulumi:"aclResourceName"`
 	// The resource pattern type of the sasl acl.
 	AclResourcePatternType pulumi.StringInput `pulumi:"aclResourcePatternType"`
-	// Get results for the specified resource type. 
+	// Get results for the specified resource type.
 	AclResourceType pulumi.StringInput `pulumi:"aclResourceType"`
 	// The host of the sasl acl.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Get results for the specified username. 
+	// Get results for the specified username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -296,7 +296,7 @@ func (i GetSaslAclsAclArray) ToGetSaslAclsAclArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetSaslAclsAclArrayOutput)
 }
 
-type GetSaslAclsAclOutput struct { *pulumi.OutputState }
+type GetSaslAclsAclOutput struct{ *pulumi.OutputState }
 
 func (GetSaslAclsAclOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSaslAclsAcl)(nil)).Elem()
@@ -312,35 +312,35 @@ func (o GetSaslAclsAclOutput) ToGetSaslAclsAclOutputWithContext(ctx context.Cont
 
 // The operation type of the sasl acl.
 func (o GetSaslAclsAclOutput) AclOperationType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.AclOperationType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.AclOperationType }).(pulumi.StringOutput)
 }
 
-// Get results for the specified resource name. 
+// Get results for the specified resource name.
 func (o GetSaslAclsAclOutput) AclResourceName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.AclResourceName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.AclResourceName }).(pulumi.StringOutput)
 }
 
 // The resource pattern type of the sasl acl.
 func (o GetSaslAclsAclOutput) AclResourcePatternType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.AclResourcePatternType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.AclResourcePatternType }).(pulumi.StringOutput)
 }
 
-// Get results for the specified resource type. 
+// Get results for the specified resource type.
 func (o GetSaslAclsAclOutput) AclResourceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.AclResourceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.AclResourceType }).(pulumi.StringOutput)
 }
 
 // The host of the sasl acl.
 func (o GetSaslAclsAclOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.Host }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Get results for the specified username. 
+// Get results for the specified username.
 func (o GetSaslAclsAclOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslAclsAcl) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type GetSaslAclsAclArrayOutput struct { *pulumi.OutputState}
+type GetSaslAclsAclArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSaslAclsAclArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSaslAclsAcl)(nil)).Elem()
@@ -355,7 +355,7 @@ func (o GetSaslAclsAclArrayOutput) ToGetSaslAclsAclArrayOutputWithContext(ctx co
 }
 
 func (o GetSaslAclsAclArrayOutput) Index(i pulumi.IntInput) GetSaslAclsAclOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSaslAclsAcl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSaslAclsAcl {
 		return vs[0].([]GetSaslAclsAcl)[vs[1].(int)]
 	}).(GetSaslAclsAclOutput)
 }
@@ -414,7 +414,7 @@ func (i GetSaslUsersUserArray) ToGetSaslUsersUserArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSaslUsersUserArrayOutput)
 }
 
-type GetSaslUsersUserOutput struct { *pulumi.OutputState }
+type GetSaslUsersUserOutput struct{ *pulumi.OutputState }
 
 func (GetSaslUsersUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetSaslUsersUser)(nil)).Elem()
@@ -430,15 +430,15 @@ func (o GetSaslUsersUserOutput) ToGetSaslUsersUserOutputWithContext(ctx context.
 
 // The password of the user.
 func (o GetSaslUsersUserOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslUsersUser) string { return v.Password }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // The username of the user.
 func (o GetSaslUsersUserOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func (v GetSaslUsersUser) string { return v.Username }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetSaslUsersUser) string { return v.Username }).(pulumi.StringOutput)
 }
 
-type GetSaslUsersUserArrayOutput struct { *pulumi.OutputState}
+type GetSaslUsersUserArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSaslUsersUserArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetSaslUsersUser)(nil)).Elem()
@@ -453,7 +453,7 @@ func (o GetSaslUsersUserArrayOutput) ToGetSaslUsersUserArrayOutputWithContext(ct
 }
 
 func (o GetSaslUsersUserArrayOutput) Index(i pulumi.IntInput) GetSaslUsersUserOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetSaslUsersUser {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSaslUsersUser {
 		return vs[0].([]GetSaslUsersUser)[vs[1].(int)]
 	}).(GetSaslUsersUserOutput)
 }
@@ -469,7 +469,7 @@ type GetTopicsTopic struct {
 	PartitionNum int `pulumi:"partitionNum"`
 	// Remark of the topic.
 	Remark string `pulumi:"remark"`
-	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause. 
+	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
 	Status int `pulumi:"status"`
 	// The name of the topic.
 	Topic string `pulumi:"topic"`
@@ -493,7 +493,7 @@ type GetTopicsTopicArgs struct {
 	PartitionNum pulumi.IntInput `pulumi:"partitionNum"`
 	// Remark of the topic.
 	Remark pulumi.StringInput `pulumi:"remark"`
-	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause. 
+	// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
 	Status pulumi.IntInput `pulumi:"status"`
 	// The name of the topic.
 	Topic pulumi.StringInput `pulumi:"topic"`
@@ -532,7 +532,7 @@ func (i GetTopicsTopicArray) ToGetTopicsTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicArrayOutput)
 }
 
-type GetTopicsTopicOutput struct { *pulumi.OutputState }
+type GetTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTopicsTopic)(nil)).Elem()
@@ -548,40 +548,40 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Cont
 
 // whether the current topic is kafka compact topic or not.
 func (o GetTopicsTopicOutput) CompactTopic() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetTopicsTopic) bool { return v.CompactTopic }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetTopicsTopic) bool { return v.CompactTopic }).(pulumi.BoolOutput)
 }
 
 // Time of creation.
 func (o GetTopicsTopicOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // whether the current topic is kafka local topic or not.
 func (o GetTopicsTopicOutput) LocalTopic() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetTopicsTopic) bool { return v.LocalTopic }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetTopicsTopic) bool { return v.LocalTopic }).(pulumi.BoolOutput)
 }
 
 // Partition number of the topic.
 func (o GetTopicsTopicOutput) PartitionNum() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTopicsTopic) int { return v.PartitionNum }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.PartitionNum }).(pulumi.IntOutput)
 }
 
 // Remark of the topic.
 func (o GetTopicsTopicOutput) Remark() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Remark }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Remark }).(pulumi.StringOutput)
 }
 
-// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause. 
+// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
 func (o GetTopicsTopicOutput) Status() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTopicsTopic) int { return v.Status }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.Status }).(pulumi.IntOutput)
 }
 
 // The name of the topic.
 func (o GetTopicsTopicOutput) Topic() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-type GetTopicsTopicArrayOutput struct { *pulumi.OutputState}
+type GetTopicsTopicArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTopicsTopic)(nil)).Elem()
@@ -596,7 +596,7 @@ func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutputWithContext(ctx co
 }
 
 func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTopicsTopic {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicsTopic {
 		return vs[0].([]GetTopicsTopic)[vs[1].(int)]
 	}).(GetTopicsTopicOutput)
 }
@@ -675,7 +675,7 @@ func (i GetTrailsActiontrailArray) ToGetTrailsActiontrailArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrailsActiontrailArrayOutput)
 }
 
-type GetTrailsActiontrailOutput struct { *pulumi.OutputState }
+type GetTrailsActiontrailOutput struct{ *pulumi.OutputState }
 
 func (GetTrailsActiontrailOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTrailsActiontrail)(nil)).Elem()
@@ -691,40 +691,40 @@ func (o GetTrailsActiontrailOutput) ToGetTrailsActiontrailOutputWithContext(ctx 
 
 // Indicates whether the event is a read or a write event.
 func (o GetTrailsActiontrailOutput) EventRw() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.EventRw }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.EventRw }).(pulumi.StringOutput)
 }
 
 // The name of the trail.
 func (o GetTrailsActiontrailOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The name of the specified OSS bucket.
 func (o GetTrailsActiontrailOutput) OssBucketName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.OssBucketName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssBucketName }).(pulumi.StringOutput)
 }
 
 // The prefix of the specified OSS bucket name.
 func (o GetTrailsActiontrailOutput) OssKeyPrefix() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.OssKeyPrefix }).(pulumi.StringOutput)
 }
 
 // The role in ActionTrail.
 func (o GetTrailsActiontrailOutput) RoleName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.RoleName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.RoleName }).(pulumi.StringOutput)
 }
 
 // The unique ARN of the Log Service project.
 func (o GetTrailsActiontrailOutput) SlsProjectArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.SlsProjectArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.SlsProjectArn }).(pulumi.StringOutput)
 }
 
 // The unique ARN of the Log Service role.
 func (o GetTrailsActiontrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTrailsActiontrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTrailsActiontrail) string { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
 }
 
-type GetTrailsActiontrailArrayOutput struct { *pulumi.OutputState}
+type GetTrailsActiontrailArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTrailsActiontrailArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTrailsActiontrail)(nil)).Elem()
@@ -739,7 +739,7 @@ func (o GetTrailsActiontrailArrayOutput) ToGetTrailsActiontrailArrayOutputWithCo
 }
 
 func (o GetTrailsActiontrailArrayOutput) Index(i pulumi.IntInput) GetTrailsActiontrailOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTrailsActiontrail {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTrailsActiontrail {
 		return vs[0].([]GetTrailsActiontrail)[vs[1].(int)]
 	}).(GetTrailsActiontrailOutput)
 }

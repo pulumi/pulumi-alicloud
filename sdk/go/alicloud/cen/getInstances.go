@@ -25,10 +25,9 @@ type GetInstancesArgs struct {
 	// A list of CEN instances IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter CEN instances by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
@@ -38,9 +37,8 @@ type GetInstancesResult struct {
 	Ids []string `pulumi:"ids"`
 	// A list of CEN instances. Each element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of CEN instances names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	NameRegex *string                `pulumi:"nameRegex"`
+	// A list of CEN instances names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

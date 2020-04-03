@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
         /// </summary>
+        [Obsolete("Use GetSwitches.InvokeAsync() instead")]
         public static Task<GetSwitchesResult> GetSwitches(GetSwitchesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetSwitches
+    {
+        /// <summary>
+        /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
+        /// </summary>
+        public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

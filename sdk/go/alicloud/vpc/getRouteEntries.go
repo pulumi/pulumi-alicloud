@@ -35,7 +35,6 @@ type GetRouteEntriesArgs struct {
 	Type *string `pulumi:"type"`
 }
 
-
 // A collection of values returned by getRouteEntries.
 type GetRouteEntriesResult struct {
 	// The destination CIDR block of the route entry.
@@ -52,4 +51,3 @@ type GetRouteEntriesResult struct {
 	// The type of the route entry.
 	Type *string `pulumi:"type"`
 }
-

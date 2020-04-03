@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDiskTypes.InvokeAsync() instead")]
         public static Task<GetDiskTypesResult> GetDiskTypes(GetDiskTypesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDiskTypes
+    {
+        /// <summary>
+        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
+        /// system disk types available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
+        /// </summary>
+        public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

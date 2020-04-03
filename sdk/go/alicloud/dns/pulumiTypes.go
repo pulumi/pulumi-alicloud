@@ -12,7 +12,7 @@ import (
 )
 
 type GetDomainGroupsGroup struct {
-	GroupId string `pulumi:"groupId"`
+	GroupId   string `pulumi:"groupId"`
 	GroupName string `pulumi:"groupName"`
 }
 
@@ -24,7 +24,7 @@ type GetDomainGroupsGroupInput interface {
 }
 
 type GetDomainGroupsGroupArgs struct {
-	GroupId pulumi.StringInput `pulumi:"groupId"`
+	GroupId   pulumi.StringInput `pulumi:"groupId"`
 	GroupName pulumi.StringInput `pulumi:"groupName"`
 }
 
@@ -61,7 +61,7 @@ func (i GetDomainGroupsGroupArray) ToGetDomainGroupsGroupArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainGroupsGroupArrayOutput)
 }
 
-type GetDomainGroupsGroupOutput struct { *pulumi.OutputState }
+type GetDomainGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetDomainGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDomainGroupsGroup)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o GetDomainGroupsGroupOutput) ToGetDomainGroupsGroupOutputWithContext(ctx 
 }
 
 func (o GetDomainGroupsGroupOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 func (o GetDomainGroupsGroupOutput) GroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-type GetDomainGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetDomainGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDomainGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDomainGroupsGroup)(nil)).Elem()
@@ -98,22 +98,22 @@ func (o GetDomainGroupsGroupArrayOutput) ToGetDomainGroupsGroupArrayOutputWithCo
 }
 
 func (o GetDomainGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetDomainGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDomainGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainGroupsGroup {
 		return vs[0].([]GetDomainGroupsGroup)[vs[1].(int)]
 	}).(GetDomainGroupsGroupOutput)
 }
 
 type GetDomainRecordsRecord struct {
-	DomainName string `pulumi:"domainName"`
-	HostRecord string `pulumi:"hostRecord"`
-	Line string `pulumi:"line"`
-	Locked bool `pulumi:"locked"`
-	Priority int `pulumi:"priority"`
-	RecordId string `pulumi:"recordId"`
-	Status string `pulumi:"status"`
-	Ttl float64 `pulumi:"ttl"`
-	Type string `pulumi:"type"`
-	Value string `pulumi:"value"`
+	DomainName string  `pulumi:"domainName"`
+	HostRecord string  `pulumi:"hostRecord"`
+	Line       string  `pulumi:"line"`
+	Locked     bool    `pulumi:"locked"`
+	Priority   int     `pulumi:"priority"`
+	RecordId   string  `pulumi:"recordId"`
+	Status     string  `pulumi:"status"`
+	Ttl        float64 `pulumi:"ttl"`
+	Type       string  `pulumi:"type"`
+	Value      string  `pulumi:"value"`
 }
 
 type GetDomainRecordsRecordInput interface {
@@ -124,16 +124,16 @@ type GetDomainRecordsRecordInput interface {
 }
 
 type GetDomainRecordsRecordArgs struct {
-	DomainName pulumi.StringInput `pulumi:"domainName"`
-	HostRecord pulumi.StringInput `pulumi:"hostRecord"`
-	Line pulumi.StringInput `pulumi:"line"`
-	Locked pulumi.BoolInput `pulumi:"locked"`
-	Priority pulumi.IntInput `pulumi:"priority"`
-	RecordId pulumi.StringInput `pulumi:"recordId"`
-	Status pulumi.StringInput `pulumi:"status"`
-	Ttl pulumi.Float64Input `pulumi:"ttl"`
-	Type pulumi.StringInput `pulumi:"type"`
-	Value pulumi.StringInput `pulumi:"value"`
+	DomainName pulumi.StringInput  `pulumi:"domainName"`
+	HostRecord pulumi.StringInput  `pulumi:"hostRecord"`
+	Line       pulumi.StringInput  `pulumi:"line"`
+	Locked     pulumi.BoolInput    `pulumi:"locked"`
+	Priority   pulumi.IntInput     `pulumi:"priority"`
+	RecordId   pulumi.StringInput  `pulumi:"recordId"`
+	Status     pulumi.StringInput  `pulumi:"status"`
+	Ttl        pulumi.Float64Input `pulumi:"ttl"`
+	Type       pulumi.StringInput  `pulumi:"type"`
+	Value      pulumi.StringInput  `pulumi:"value"`
 }
 
 func (GetDomainRecordsRecordArgs) ElementType() reflect.Type {
@@ -169,7 +169,7 @@ func (i GetDomainRecordsRecordArray) ToGetDomainRecordsRecordArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainRecordsRecordArrayOutput)
 }
 
-type GetDomainRecordsRecordOutput struct { *pulumi.OutputState }
+type GetDomainRecordsRecordOutput struct{ *pulumi.OutputState }
 
 func (GetDomainRecordsRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDomainRecordsRecord)(nil)).Elem()
@@ -184,46 +184,46 @@ func (o GetDomainRecordsRecordOutput) ToGetDomainRecordsRecordOutputWithContext(
 }
 
 func (o GetDomainRecordsRecordOutput) DomainName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.DomainName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) HostRecord() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.HostRecord }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.HostRecord }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Line() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Locked() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) bool { return v.Locked }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) RecordId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func (v GetDomainRecordsRecord) float64 { return v.Ttl }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetDomainRecordsRecord) float64 { return v.Ttl }).(pulumi.Float64Output)
 }
 
 func (o GetDomainRecordsRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o GetDomainRecordsRecordOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetDomainRecordsRecordArrayOutput struct { *pulumi.OutputState}
+type GetDomainRecordsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDomainRecordsRecordArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDomainRecordsRecord)(nil)).Elem()
@@ -238,7 +238,7 @@ func (o GetDomainRecordsRecordArrayOutput) ToGetDomainRecordsRecordArrayOutputWi
 }
 
 func (o GetDomainRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetDomainRecordsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDomainRecordsRecord {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainRecordsRecord {
 		return vs[0].([]GetDomainRecordsRecord)[vs[1].(int)]
 	}).(GetDomainRecordsRecordOutput)
 }
@@ -327,7 +327,7 @@ func (i GetDomainsDomainArray) ToGetDomainsDomainArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainsDomainArrayOutput)
 }
 
-type GetDomainsDomainOutput struct { *pulumi.OutputState }
+type GetDomainsDomainOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDomainsDomain)(nil)).Elem()
@@ -343,51 +343,51 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 
 // Specifies whether the domain is from Alibaba Cloud or not.
 func (o GetDomainsDomainOutput) AliDomain() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetDomainsDomain) bool { return v.AliDomain }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.AliDomain }).(pulumi.BoolOutput)
 }
 
 // DNS list of the domain in the analysis system.
 func (o GetDomainsDomainOutput) DnsServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetDomainsDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
 // ID of the domain.
 func (o GetDomainsDomainOutput) DomainId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.DomainId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
 // Name of the domain.
 func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
 // Id of group that contains the domain.
 func (o GetDomainsDomainOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.GroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // Name of group that contains the domain.
 func (o GetDomainsDomainOutput) GroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.GroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
 // Cloud analysis product ID.
 func (o GetDomainsDomainOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Punycode of the Chinese domain.
 func (o GetDomainsDomainOutput) PunyCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.PunyCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.PunyCode }).(pulumi.StringOutput)
 }
 
 // Cloud analysis version code.
 // * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 func (o GetDomainsDomainOutput) VersionCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
 }
 
-type GetDomainsDomainArrayOutput struct { *pulumi.OutputState}
+type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDomainsDomainArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDomainsDomain)(nil)).Elem()
@@ -402,7 +402,7 @@ func (o GetDomainsDomainArrayOutput) ToGetDomainsDomainArrayOutputWithContext(ct
 }
 
 func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDomainsDomain {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainsDomain {
 		return vs[0].([]GetDomainsDomain)[vs[1].(int)]
 	}).(GetDomainsDomainOutput)
 }
@@ -461,7 +461,7 @@ func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
 }
 
-type GetGroupsGroupOutput struct { *pulumi.OutputState }
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
@@ -477,15 +477,15 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 
 // Id of the group.
 func (o GetGroupsGroupOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // Name of the group.
 func (o GetGroupsGroupOutput) GroupName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-type GetGroupsGroupArrayOutput struct { *pulumi.OutputState}
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
@@ -500,7 +500,7 @@ func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx co
 }
 
 func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetGroupsGroup {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
 		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
 	}).(GetGroupsGroupOutput)
 }
@@ -510,7 +510,7 @@ type GetRecordsRecord struct {
 	DomainName string `pulumi:"domainName"`
 	// Host record of the domain.
 	HostRecord string `pulumi:"hostRecord"`
-	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 	Line string `pulumi:"line"`
 	// Indicates whether the record is locked.
 	Locked bool `pulumi:"locked"`
@@ -540,7 +540,7 @@ type GetRecordsRecordArgs struct {
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// Host record of the domain.
 	HostRecord pulumi.StringInput `pulumi:"hostRecord"`
-	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+	// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 	Line pulumi.StringInput `pulumi:"line"`
 	// Indicates whether the record is locked.
 	Locked pulumi.BoolInput `pulumi:"locked"`
@@ -591,7 +591,7 @@ func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordArrayOutput)
 }
 
-type GetRecordsRecordOutput struct { *pulumi.OutputState }
+type GetRecordsRecordOutput struct{ *pulumi.OutputState }
 
 func (GetRecordsRecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
@@ -607,55 +607,55 @@ func (o GetRecordsRecordOutput) ToGetRecordsRecordOutputWithContext(ctx context.
 
 // The domain name associated to the records.
 func (o GetRecordsRecordOutput) DomainName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.DomainName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
 // Host record of the domain.
 func (o GetRecordsRecordOutput) HostRecord() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.HostRecord }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.HostRecord }).(pulumi.StringOutput)
 }
 
-// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+// ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 func (o GetRecordsRecordOutput) Line() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
 }
 
 // Indicates whether the record is locked.
 func (o GetRecordsRecordOutput) Locked() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetRecordsRecord) bool { return v.Locked }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetRecordsRecord) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
 // Priority of the `MX` record.
 func (o GetRecordsRecordOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func (v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // ID of the record.
 func (o GetRecordsRecordOutput) RecordId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
 }
 
 // Record status. Valid items are `ENABLE` and `DISABLE`.
 func (o GetRecordsRecordOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // TTL of the record.
 func (o GetRecordsRecordOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func (v GetRecordsRecord) float64 { return v.Ttl }).(pulumi.Float64Output)
+	return o.ApplyT(func(v GetRecordsRecord) float64 { return v.Ttl }).(pulumi.Float64Output)
 }
 
 // Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
 func (o GetRecordsRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Host record value of the domain.
 func (o GetRecordsRecordOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetRecordsRecordArrayOutput struct { *pulumi.OutputState}
+type GetRecordsRecordArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRecordsRecordArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
@@ -670,7 +670,7 @@ func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutputWithContext(ct
 }
 
 func (o GetRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetRecordsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRecordsRecord {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsRecord {
 		return vs[0].([]GetRecordsRecord)[vs[1].(int)]
 	}).(GetRecordsRecordOutput)
 }
@@ -731,7 +731,7 @@ func (i GetResolutionLinesLineArray) ToGetResolutionLinesLineArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResolutionLinesLineArrayOutput)
 }
 
-type GetResolutionLinesLineOutput struct { *pulumi.OutputState }
+type GetResolutionLinesLineOutput struct{ *pulumi.OutputState }
 
 func (GetResolutionLinesLineOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetResolutionLinesLine)(nil)).Elem()
@@ -746,20 +746,20 @@ func (o GetResolutionLinesLineOutput) ToGetResolutionLinesLineOutputWithContext(
 }
 
 func (o GetResolutionLinesLineOutput) LineCode() pulumi.StringOutput {
-	return o.ApplyT(func (v GetResolutionLinesLine) string { return v.LineCode }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetResolutionLinesLine) string { return v.LineCode }).(pulumi.StringOutput)
 }
 
 // Line display name.
 func (o GetResolutionLinesLineOutput) LineDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetResolutionLinesLine) string { return v.LineDisplayName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetResolutionLinesLine) string { return v.LineDisplayName }).(pulumi.StringOutput)
 }
 
 // Line name.
 func (o GetResolutionLinesLineOutput) LineName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetResolutionLinesLine) string { return v.LineName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetResolutionLinesLine) string { return v.LineName }).(pulumi.StringOutput)
 }
 
-type GetResolutionLinesLineArrayOutput struct { *pulumi.OutputState}
+type GetResolutionLinesLineArrayOutput struct{ *pulumi.OutputState }
 
 func (GetResolutionLinesLineArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetResolutionLinesLine)(nil)).Elem()
@@ -774,7 +774,7 @@ func (o GetResolutionLinesLineArrayOutput) ToGetResolutionLinesLineArrayOutputWi
 }
 
 func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutionLinesLineOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetResolutionLinesLine {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResolutionLinesLine {
 		return vs[0].([]GetResolutionLinesLine)[vs[1].(int)]
 	}).(GetResolutionLinesLineOutput)
 }

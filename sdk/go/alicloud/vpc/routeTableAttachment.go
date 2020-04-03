@@ -89,4 +89,3 @@ type RouteTableAttachmentArgs struct {
 func (RouteTableAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routeTableAttachmentArgs)(nil)).Elem()
 }
-

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFunctions.InvokeAsync() instead")]
         public static Task<GetFunctionsResult> GetFunctions(GetFunctionsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFunctions
+    {
+        /// <summary>
+        /// This data source provides the Function Compute functions of the current Alibaba Cloud user.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
+        /// </summary>
+        public static Task<GetFunctionsResult> InvokeAsync(GetFunctionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -24,6 +35,10 @@ namespace Pulumi.AliCloud.FC
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of functions ids.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());

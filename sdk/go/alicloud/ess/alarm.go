@@ -30,7 +30,7 @@ type Alarm struct {
 	EvaluationCount pulumi.IntPtrOutput `pulumi:"evaluationCount"`
 	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName pulumi.StringOutput `pulumi:"metricName"`
-	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrOutput `pulumi:"metricType"`
 	// The name for ess alarm.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -38,7 +38,7 @@ type Alarm struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// The state of specified alarm.  
+	// The state of specified alarm.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
@@ -102,7 +102,7 @@ type alarmState struct {
 	EvaluationCount *int `pulumi:"evaluationCount"`
 	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName *string `pulumi:"metricName"`
-	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
 	// The name for ess alarm.
 	Name *string `pulumi:"name"`
@@ -110,7 +110,7 @@ type alarmState struct {
 	Period *int `pulumi:"period"`
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// The state of specified alarm.  
+	// The state of specified alarm.
 	State *string `pulumi:"state"`
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics *string `pulumi:"statistics"`
@@ -135,7 +135,7 @@ type AlarmState struct {
 	EvaluationCount pulumi.IntPtrInput
 	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName pulumi.StringPtrInput
-	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput
 	// The name for ess alarm.
 	Name pulumi.StringPtrInput
@@ -143,7 +143,7 @@ type AlarmState struct {
 	Period pulumi.IntPtrInput
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId pulumi.StringPtrInput
-	// The state of specified alarm.  
+	// The state of specified alarm.
 	State pulumi.StringPtrInput
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics pulumi.StringPtrInput
@@ -172,7 +172,7 @@ type alarmArgs struct {
 	EvaluationCount *int `pulumi:"evaluationCount"`
 	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName string `pulumi:"metricName"`
-	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
 	// The name for ess alarm.
 	Name *string `pulumi:"name"`
@@ -204,7 +204,7 @@ type AlarmArgs struct {
 	EvaluationCount pulumi.IntPtrInput
 	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
 	MetricName pulumi.StringInput
-	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system. 
+	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput
 	// The name for ess alarm.
 	Name pulumi.StringPtrInput
@@ -221,4 +221,3 @@ type AlarmArgs struct {
 func (AlarmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alarmArgs)(nil)).Elem()
 }
-

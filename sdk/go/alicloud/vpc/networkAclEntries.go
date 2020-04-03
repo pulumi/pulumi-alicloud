@@ -105,4 +105,3 @@ type NetworkAclEntriesArgs struct {
 func (NetworkAclEntriesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclEntriesArgs)(nil)).Elem()
 }
-

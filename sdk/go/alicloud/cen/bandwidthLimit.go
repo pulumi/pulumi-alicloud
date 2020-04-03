@@ -109,4 +109,3 @@ type BandwidthLimitArgs struct {
 func (BandwidthLimitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthLimitArgs)(nil)).Elem()
 }
-

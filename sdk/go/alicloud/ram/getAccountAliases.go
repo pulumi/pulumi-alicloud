@@ -25,13 +25,11 @@ type GetAccountAliasesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getAccountAliases.
 type GetAccountAliasesResult struct {
 	// Alias of the account.
 	AccountAlias string `pulumi:"accountAlias"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-

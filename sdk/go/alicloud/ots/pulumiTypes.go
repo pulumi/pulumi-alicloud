@@ -65,7 +65,7 @@ func (i TablePrimaryKeyArray) ToTablePrimaryKeyArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TablePrimaryKeyArrayOutput)
 }
 
-type TablePrimaryKeyOutput struct { *pulumi.OutputState }
+type TablePrimaryKeyOutput struct{ *pulumi.OutputState }
 
 func (TablePrimaryKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TablePrimaryKey)(nil)).Elem()
@@ -81,15 +81,15 @@ func (o TablePrimaryKeyOutput) ToTablePrimaryKeyOutputWithContext(ctx context.Co
 
 // Name for primary key.
 func (o TablePrimaryKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v TablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TablePrimaryKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
 func (o TablePrimaryKeyOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v TablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TablePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type TablePrimaryKeyArrayOutput struct { *pulumi.OutputState}
+type TablePrimaryKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (TablePrimaryKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TablePrimaryKey)(nil)).Elem()
@@ -104,7 +104,7 @@ func (o TablePrimaryKeyArrayOutput) ToTablePrimaryKeyArrayOutputWithContext(ctx 
 }
 
 func (o TablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) TablePrimaryKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TablePrimaryKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TablePrimaryKey {
 		return vs[0].([]TablePrimaryKey)[vs[1].(int)]
 	}).(TablePrimaryKeyOutput)
 }

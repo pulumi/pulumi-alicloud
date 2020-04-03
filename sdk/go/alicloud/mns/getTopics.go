@@ -27,16 +27,14 @@ type GetTopicsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 }
 
-
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id         string  `pulumi:"id"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// A list of topic names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// A list of topics. Each element contains the following attributes:
 	Topics []GetTopicsTopic `pulumi:"topics"`
 }
-

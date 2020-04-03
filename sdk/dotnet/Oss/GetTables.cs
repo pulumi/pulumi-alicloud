@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
         /// </summary>
+        [Obsolete("Use GetTables.InvokeAsync() instead")]
         public static Task<GetTablesResult> GetTables(GetTablesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetTables
+    {
+        /// <summary>
+        /// This data source provides the ots tables of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available in v1.40.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
+        /// </summary>
+        public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

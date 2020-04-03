@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccessRules.InvokeAsync() instead")]
         public static Task<GetAccessRulesResult> GetAccessRules(GetAccessRulesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccessRules
+    {
+        /// <summary>
+        /// This data source provides AccessRule available to the user.
+        /// 
+        /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
+        /// </summary>
+        public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccount.InvokeAsync() instead")]
         public static Task<GetAccountResult> GetAccount(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccount
+    {
+        /// <summary>
+        /// This data source provides information about the current account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
+        /// </summary>
+        public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("alicloud:index/getAccount:getAccount", InvokeArgs.Empty, options.WithVersion());
     }
 

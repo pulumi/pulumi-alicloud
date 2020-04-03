@@ -169,4 +169,3 @@ type EipArgs struct {
 func (EipArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eipArgs)(nil)).Elem()
 }
-

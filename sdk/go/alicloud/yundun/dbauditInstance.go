@@ -27,7 +27,7 @@ type DBAuditInstance struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringOutput `pulumi:"planCode"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -76,7 +76,7 @@ type dbauditInstanceState struct {
 	Description *string `pulumi:"description"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode *string `pulumi:"planCode"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -89,7 +89,7 @@ type DBAuditInstanceState struct {
 	Description pulumi.StringPtrInput
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -106,7 +106,7 @@ type dbauditInstanceArgs struct {
 	Description string `pulumi:"description"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
-	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode string `pulumi:"planCode"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -120,7 +120,7 @@ type DBAuditInstanceArgs struct {
 	Description pulumi.StringInput
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
-	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
+	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -131,4 +131,3 @@ type DBAuditInstanceArgs struct {
 func (DBAuditInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbauditInstanceArgs)(nil)).Elem()
 }
-

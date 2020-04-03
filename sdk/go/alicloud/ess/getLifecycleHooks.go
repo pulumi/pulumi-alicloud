@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This data source provides available lifecycle hook resources. 
+// This data source provides available lifecycle hook resources.
 //
 // > **NOTE:** Available in 1.72.0+
 //
@@ -27,12 +27,11 @@ type GetLifecycleHooksArgs struct {
 	// A list of lifecycle hook IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting lifecycle hook by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the lifecycle hooks belong to.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 }
-
 
 // A collection of values returned by getLifecycleHooks.
 type GetLifecycleHooksResult struct {
@@ -41,12 +40,11 @@ type GetLifecycleHooksResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of lifecycle hook ids.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of lifecycle hook names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// ID of the scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 }
-

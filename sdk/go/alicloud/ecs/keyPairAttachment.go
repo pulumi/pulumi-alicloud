@@ -104,4 +104,3 @@ type KeyPairAttachmentArgs struct {
 func (KeyPairAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairAttachmentArgs)(nil)).Elem()
 }
-

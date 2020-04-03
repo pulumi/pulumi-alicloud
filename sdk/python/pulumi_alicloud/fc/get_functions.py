@@ -68,6 +68,7 @@ def get_functions(ids=None,name_regex=None,output_file=None,service_name=None,op
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
 
 
+    :param list ids: A list of functions ids.
     :param str name_regex: A regex string to filter results by function name.
            * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
     :param str service_name: Name of the service that contains the functions to find.

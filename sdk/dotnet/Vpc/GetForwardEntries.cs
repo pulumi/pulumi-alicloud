@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
         /// </summary>
+        [Obsolete("Use GetForwardEntries.InvokeAsync() instead")]
         public static Task<GetForwardEntriesResult> GetForwardEntries(GetForwardEntriesArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetForwardEntries
+    {
+        /// <summary>
+        /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
+        /// </summary>
+        public static Task<GetForwardEntriesResult> InvokeAsync(GetForwardEntriesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -62,6 +75,10 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("names")]
         private List<string>? _names;
+
+        /// <summary>
+        /// A list of Forward Entries names.
+        /// </summary>
         public List<string> Names
         {
             get => _names ?? (_names = new List<string>());

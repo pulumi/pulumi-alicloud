@@ -35,45 +35,43 @@ type GetInstanceClassesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
-	NodeType *string `pulumi:"nodeType"`
+	NodeType   *string `pulumi:"nodeType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// It has been deprecated from 1.68.0.
 	PackageType *string `pulumi:"packageType"`
-	// It has been deprecated from 1.68.0. 
+	// It has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
 	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	ShardNumber *int `pulumi:"shardNumber"`
-	SortedBy *string `pulumi:"sortedBy"`
-	// It has been deprecated from 1.68.0. 
+	ShardNumber *int    `pulumi:"shardNumber"`
+	SortedBy    *string `pulumi:"sortedBy"`
+	// It has been deprecated from 1.68.0.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
-
 // A collection of values returned by getInstanceClasses.
 type GetInstanceClassesResult struct {
 	Architecture *string `pulumi:"architecture"`
 	// A list of KVStore available instance classes when the `sortedBy` is "Price". include:
-	Classes []GetInstanceClassesClass `pulumi:"classes"`
-	EditionType *string `pulumi:"editionType"`
-	Engine *string `pulumi:"engine"`
-	EngineVersion *string `pulumi:"engineVersion"`
+	Classes       []GetInstanceClassesClass `pulumi:"classes"`
+	EditionType   *string                   `pulumi:"editionType"`
+	Engine        *string                   `pulumi:"engine"`
+	EngineVersion *string                   `pulumi:"engineVersion"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// A list of KVStore available instance classes.
 	InstanceClasses []string `pulumi:"instanceClasses"`
-	NodeType *string `pulumi:"nodeType"`
-	OutputFile *string `pulumi:"outputFile"`
-	PackageType *string `pulumi:"packageType"`
-	PerformanceType *string `pulumi:"performanceType"`
-	SeriesType *string `pulumi:"seriesType"`
-	ShardNumber *int `pulumi:"shardNumber"`
-	SortedBy *string `pulumi:"sortedBy"`
-	StorageType *string `pulumi:"storageType"`
-	ZoneId string `pulumi:"zoneId"`
+	NodeType        *string  `pulumi:"nodeType"`
+	OutputFile      *string  `pulumi:"outputFile"`
+	PackageType     *string  `pulumi:"packageType"`
+	PerformanceType *string  `pulumi:"performanceType"`
+	SeriesType      *string  `pulumi:"seriesType"`
+	ShardNumber     *int     `pulumi:"shardNumber"`
+	SortedBy        *string  `pulumi:"sortedBy"`
+	StorageType     *string  `pulumi:"storageType"`
+	ZoneId          string   `pulumi:"zoneId"`
 }
-

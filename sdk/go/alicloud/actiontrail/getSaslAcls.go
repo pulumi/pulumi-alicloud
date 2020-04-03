@@ -24,17 +24,16 @@ func GetSaslAcls(ctx *pulumi.Context, args *GetSaslAclsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getSaslAcls.
 type GetSaslAclsArgs struct {
-	// Get results for the specified resource name. 
+	// Get results for the specified resource name.
 	AclResourceName string `pulumi:"aclResourceName"`
-	// Get results for the specified resource type. 
+	// Get results for the specified resource type.
 	AclResourceType string `pulumi:"aclResourceType"`
 	// ID of the ALIKAFKA Instance that owns the sasl acls.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
-	// Get results for the specified username. 
+	// Get results for the specified username.
 	Username string `pulumi:"username"`
 }
-
 
 // A collection of values returned by getSaslAcls.
 type GetSaslAclsResult struct {
@@ -45,10 +44,9 @@ type GetSaslAclsResult struct {
 	// A list of sasl acls. Each element contains the following attributes:
 	Acls []GetSaslAclsAcl `pulumi:"acls"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
+	Id         string  `pulumi:"id"`
+	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The username of the sasl acl.
 	Username string `pulumi:"username"`
 }
-

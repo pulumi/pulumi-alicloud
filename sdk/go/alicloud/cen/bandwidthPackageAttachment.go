@@ -92,4 +92,3 @@ type BandwidthPackageAttachmentArgs struct {
 func (BandwidthPackageAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bandwidthPackageAttachmentArgs)(nil)).Elem()
 }
-

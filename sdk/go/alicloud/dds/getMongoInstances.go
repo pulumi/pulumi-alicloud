@@ -19,28 +19,26 @@ func GetMongoInstances(ctx *pulumi.Context, args *GetMongoInstancesArgs, opts ..
 
 // A collection of arguments for invoking getMongoInstances.
 type GetMongoInstancesArgs struct {
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	Ids []string `pulumi:"ids"`
-	InstanceClass *string `pulumi:"instanceClass"`
-	InstanceType *string `pulumi:"instanceType"`
-	NameRegex *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	AvailabilityZone *string                `pulumi:"availabilityZone"`
+	Ids              []string               `pulumi:"ids"`
+	InstanceClass    *string                `pulumi:"instanceClass"`
+	InstanceType     *string                `pulumi:"instanceType"`
+	NameRegex        *string                `pulumi:"nameRegex"`
+	OutputFile       *string                `pulumi:"outputFile"`
+	Tags             map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getMongoInstances.
 type GetMongoInstancesResult struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	InstanceClass *string `pulumi:"instanceClass"`
-	InstanceType *string `pulumi:"instanceType"`
-	Instances []GetMongoInstancesInstance `pulumi:"instances"`
-	NameRegex *string `pulumi:"nameRegex"`
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	Id            string                      `pulumi:"id"`
+	Ids           []string                    `pulumi:"ids"`
+	InstanceClass *string                     `pulumi:"instanceClass"`
+	InstanceType  *string                     `pulumi:"instanceType"`
+	Instances     []GetMongoInstancesInstance `pulumi:"instances"`
+	NameRegex     *string                     `pulumi:"nameRegex"`
+	Names         []string                    `pulumi:"names"`
+	OutputFile    *string                     `pulumi:"outputFile"`
+	Tags          map[string]interface{}      `pulumi:"tags"`
 }
-

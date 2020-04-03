@@ -24,10 +24,11 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 type GetDomainsArgs struct {
 	// Specifies whether the domain is from Alibaba Cloud or not.
 	AliDomain *bool `pulumi:"aliDomain"`
-	// A regex string to filter results by the domain name. 
+	// A regex string to filter results by the domain name.
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
 	// A regex string to filter results by the group name.
 	GroupNameRegex *string `pulumi:"groupNameRegex"`
+	// A list of domain IDs.
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
@@ -39,15 +40,14 @@ type GetDomainsArgs struct {
 	VersionCode *string `pulumi:"versionCode"`
 }
 
-
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
 	// Indicates whether the domain is an Alibaba Cloud domain.
-	AliDomain *bool `pulumi:"aliDomain"`
+	AliDomain       *bool   `pulumi:"aliDomain"`
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
 	// A list of domains. Each element contains the following attributes:
-	Domains []GetDomainsDomain `pulumi:"domains"`
-	GroupNameRegex *string `pulumi:"groupNameRegex"`
+	Domains        []GetDomainsDomain `pulumi:"domains"`
+	GroupNameRegex *string            `pulumi:"groupNameRegex"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of domain IDs.
@@ -55,11 +55,10 @@ type GetDomainsResult struct {
 	// Cloud analysis product ID of the domain.
 	InstanceId *string `pulumi:"instanceId"`
 	// A list of domain names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Cloud analysis version code of the domain.
 	VersionCode *string `pulumi:"versionCode"`
 }
-

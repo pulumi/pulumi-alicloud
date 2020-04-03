@@ -20,14 +20,13 @@ func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.In
 // A collection of arguments for invoking getPlaintext.
 type GetPlaintextArgs struct {
 	// The ciphertext to be decrypted.
-	CiphertextBlob string `pulumi:"ciphertextBlob"`
+	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 }
 
-
 // A collection of values returned by getPlaintext.
 type GetPlaintextResult struct {
-	CiphertextBlob string `pulumi:"ciphertextBlob"`
+	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -36,4 +35,3 @@ type GetPlaintextResult struct {
 	// The decrypted plaintext.
 	Plaintext string `pulumi:"plaintext"`
 }
-

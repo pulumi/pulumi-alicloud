@@ -16,7 +16,9 @@ func GetAccessKey(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ACCESS_KEY").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_ACCESS_KEY").(string)
+}
+
 // The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 // Alibaba Cloud console.
 func GetAccountId(ctx *pulumi.Context) string {
@@ -24,14 +26,17 @@ func GetAccountId(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ACCOUNT_ID").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_ACCOUNT_ID").(string)
+}
 func GetAssumeRole(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:assumeRole")
 }
+
 // Use this to mark a terraform configuration file source.
 func GetConfigurationSource(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:configurationSource")
 }
+
 // The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 // of the Alibaba Cloud console.
 func GetEcsRoleName(ctx *pulumi.Context) string {
@@ -39,7 +44,8 @@ func GetEcsRoleName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ECS_ROLE_NAME").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_ECS_ROLE_NAME").(string)
+}
 func GetEndpoints(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:endpoints")
 }
@@ -55,23 +61,28 @@ func GetMnsEndpoint(ctx *pulumi.Context) string {
 func GetOtsInstanceName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:otsInstanceName")
 }
+
 // The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 func GetProfile(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:profile")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string)
+}
 func GetProtocol(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:protocol")
 }
+
 // The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
 func GetRegion(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:region")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_REGION").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_REGION").(string)
+}
+
 // The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud
 // console.
 func GetSecretKey(ctx *pulumi.Context) string {
@@ -79,21 +90,27 @@ func GetSecretKey(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SECRET_KEY").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_SECRET_KEY").(string)
+}
+
 // security token. A security token is only required if you are using Security Token Service.
 func GetSecurityToken(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:securityToken")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SECURITY_TOKEN").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_SECURITY_TOKEN").(string)
+}
+
 // The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 func GetSharedCredentialsFile(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "alicloud:sharedCredentialsFile")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_SHARED_CREDENTIALS_FILE").(string)}
+	return getEnvOrDefault("", nil, "ALICLOUD_SHARED_CREDENTIALS_FILE").(string)
+}
+
 // Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions
 // that are not public (yet).
 func GetSkipRegionValidation(ctx *pulumi.Context) bool {

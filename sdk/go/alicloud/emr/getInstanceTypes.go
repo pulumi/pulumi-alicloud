@@ -33,7 +33,7 @@ type GetInstanceTypesArgs struct {
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	// Filter the specific ecs instance type to create emr cluster.
 	InstanceType *string `pulumi:"instanceType"`
-	OutputFile *string `pulumi:"outputFile"`
+	OutputFile   *string `pulumi:"outputFile"`
 	// Whether the current storage disk is local or not.
 	SupportLocalStorage *bool `pulumi:"supportLocalStorage"`
 	// The specific supported node type list.
@@ -43,23 +43,21 @@ type GetInstanceTypesArgs struct {
 	ZoneId *string `pulumi:"zoneId"`
 }
 
-
 // A collection of values returned by getInstanceTypes.
 type GetInstanceTypesResult struct {
-	ClusterType string `pulumi:"clusterType"`
+	ClusterType         string `pulumi:"clusterType"`
 	DestinationResource string `pulumi:"destinationResource"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of emr instance types IDs. 
-	Ids []string `pulumi:"ids"`
-	InstanceChargeType string `pulumi:"instanceChargeType"`
-	InstanceType *string `pulumi:"instanceType"`
-	OutputFile *string `pulumi:"outputFile"`
-	SupportLocalStorage *bool `pulumi:"supportLocalStorage"`
-	SupportNodeTypes []string `pulumi:"supportNodeTypes"`
+	// A list of emr instance types IDs.
+	Ids                 []string `pulumi:"ids"`
+	InstanceChargeType  string   `pulumi:"instanceChargeType"`
+	InstanceType        *string  `pulumi:"instanceType"`
+	OutputFile          *string  `pulumi:"outputFile"`
+	SupportLocalStorage *bool    `pulumi:"supportLocalStorage"`
+	SupportNodeTypes    []string `pulumi:"supportNodeTypes"`
 	// A list of emr instance types. Each element contains the following attributes:
 	Types []GetInstanceTypesType `pulumi:"types"`
 	// The available zone id in Alibaba Cloud account
 	ZoneId *string `pulumi:"zoneId"`
 }
-

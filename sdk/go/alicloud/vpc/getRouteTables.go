@@ -27,7 +27,7 @@ type GetRouteTablesArgs struct {
 	// A list of Route Tables IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter route tables by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -37,22 +37,20 @@ type GetRouteTablesArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 }
 
-
 // A collection of values returned by getRouteTables.
 type GetRouteTablesResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Route Tables IDs.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
 	// A list of Route Tables names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which route tables belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A list of Route Tables. Each element contains the following attributes:
-	Tables []GetRouteTablesTable `pulumi:"tables"`
-	Tags map[string]interface{} `pulumi:"tags"`
-	VpcId *string `pulumi:"vpcId"`
+	Tables []GetRouteTablesTable  `pulumi:"tables"`
+	Tags   map[string]interface{} `pulumi:"tags"`
+	VpcId  *string                `pulumi:"vpcId"`
 }
-

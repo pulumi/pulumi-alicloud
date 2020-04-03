@@ -32,7 +32,7 @@ type LoadBalancer struct {
 	// Valid
 	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
-	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrOutput `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
@@ -44,7 +44,7 @@ type LoadBalancer struct {
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringOutput `pulumi:"masterZoneId"`
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name         pulumi.StringOutput `pulumi:"name"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
@@ -100,7 +100,7 @@ type loadBalancerState struct {
 	// Valid
 	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -112,7 +112,7 @@ type loadBalancerState struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
-	Name *string `pulumi:"name"`
+	Name         *string `pulumi:"name"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
 	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
@@ -141,7 +141,7 @@ type LoadBalancerState struct {
 	// Valid
 	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth pulumi.IntPtrInput
-	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrInput
@@ -153,7 +153,7 @@ type LoadBalancerState struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
@@ -186,7 +186,7 @@ type loadBalancerArgs struct {
 	// Valid
 	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection *string `pulumi:"deleteProtection"`
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -198,7 +198,7 @@ type loadBalancerArgs struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId *string `pulumi:"masterZoneId"`
-	Name *string `pulumi:"name"`
+	Name         *string `pulumi:"name"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
 	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
@@ -228,7 +228,7 @@ type LoadBalancerArgs struct {
 	// Valid
 	// value is between 1 and 1000, If argument "internetChargeType" is "paybytraffic", then this value will be ignore.
 	Bandwidth pulumi.IntPtrInput
-	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.   
+	// Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
 	DeleteProtection pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrInput
@@ -240,7 +240,7 @@ type LoadBalancerArgs struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	MasterZoneId pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36].
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
@@ -260,4 +260,3 @@ type LoadBalancerArgs struct {
 func (LoadBalancerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerArgs)(nil)).Elem()
 }
-

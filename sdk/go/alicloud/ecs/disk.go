@@ -205,4 +205,3 @@ type DiskArgs struct {
 func (DiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*diskArgs)(nil)).Elem()
 }
-

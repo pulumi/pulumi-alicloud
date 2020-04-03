@@ -23,20 +23,18 @@ func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getBuckets.
 type GetBucketsArgs struct {
 	// A regex string to filter results by bucket name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
-
 
 // A collection of values returned by getBuckets.
 type GetBucketsResult struct {
 	// A list of buckets. Each element contains the following attributes:
 	Buckets []GetBucketsBucket `pulumi:"buckets"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
-	// A list of bucket names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	// A list of bucket names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 }
-

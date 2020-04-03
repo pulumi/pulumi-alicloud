@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
         /// </summary>
+        [Obsolete("Use GetFileCrc64Checksum.InvokeAsync() instead")]
         public static Task<GetFileCrc64ChecksumResult> GetFileCrc64Checksum(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetFileCrc64Checksum
+    {
+        /// <summary>
+        /// This data source compute file crc64 checksum.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
+        /// </summary>
+        public static Task<GetFileCrc64ChecksumResult> InvokeAsync(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

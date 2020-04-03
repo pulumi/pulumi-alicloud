@@ -20,7 +20,22 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceTypes.InvokeAsync() instead")]
         public static Task<GetInstanceTypesResult> GetInstanceTypes(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceTypes
+    {
+        /// <summary>
+        /// This data source provides the ECS instance types of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
+        /// 
+        /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

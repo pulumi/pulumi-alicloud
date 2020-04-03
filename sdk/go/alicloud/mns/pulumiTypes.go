@@ -85,7 +85,7 @@ func (i GetQueuesQueueArray) ToGetQueuesQueueArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesQueueArrayOutput)
 }
 
-type GetQueuesQueueOutput struct { *pulumi.OutputState }
+type GetQueuesQueueOutput struct{ *pulumi.OutputState }
 
 func (GetQueuesQueueOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetQueuesQueue)(nil)).Elem()
@@ -101,40 +101,40 @@ func (o GetQueuesQueueOutput) ToGetQueuesQueueOutputWithContext(ctx context.Cont
 
 // This attribute defines the length of time, in seconds, after which every message sent to the queue is dequeued.
 func (o GetQueuesQueueOutput) DelaySeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetQueuesQueue) int { return v.DelaySeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetQueuesQueue) int { return v.DelaySeconds }).(pulumi.IntOutput)
 }
 
 // The id of the queue, The value is set to `name`.
 func (o GetQueuesQueueOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetQueuesQueue) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // This indicates the maximum length, in bytes, of any message body sent to the queue.
 func (o GetQueuesQueueOutput) MaximumMessageSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetQueuesQueue) int { return v.MaximumMessageSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetQueuesQueue) int { return v.MaximumMessageSize }).(pulumi.IntOutput)
 }
 
 // Messages are deleted from the queue after a specified length of time, whether they have been activated or not. This attribute defines the viability period, in seconds, for every message in the queue.
 func (o GetQueuesQueueOutput) MessageRetentionPeriod() pulumi.IntOutput {
-	return o.ApplyT(func (v GetQueuesQueue) int { return v.MessageRetentionPeriod }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetQueuesQueue) int { return v.MessageRetentionPeriod }).(pulumi.IntOutput)
 }
 
 // The name of the queue
 func (o GetQueuesQueueOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetQueuesQueue) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetQueuesQueue) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out.
 func (o GetQueuesQueueOutput) PollingWaitSeconds() pulumi.IntOutput {
-	return o.ApplyT(func (v GetQueuesQueue) int { return v.PollingWaitSeconds }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetQueuesQueue) int { return v.PollingWaitSeconds }).(pulumi.IntOutput)
 }
 
 // Dequeued messages change from active (visible) status to inactive (invisible) status. This attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period.
 func (o GetQueuesQueueOutput) VisibilityTimeouts() pulumi.IntOutput {
-	return o.ApplyT(func (v GetQueuesQueue) int { return v.VisibilityTimeouts }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetQueuesQueue) int { return v.VisibilityTimeouts }).(pulumi.IntOutput)
 }
 
-type GetQueuesQueueArrayOutput struct { *pulumi.OutputState}
+type GetQueuesQueueArrayOutput struct{ *pulumi.OutputState }
 
 func (GetQueuesQueueArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetQueuesQueue)(nil)).Elem()
@@ -149,7 +149,7 @@ func (o GetQueuesQueueArrayOutput) ToGetQueuesQueueArrayOutputWithContext(ctx co
 }
 
 func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetQueuesQueue {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueuesQueue {
 		return vs[0].([]GetQueuesQueue)[vs[1].(int)]
 	}).(GetQueuesQueueOutput)
 }
@@ -157,7 +157,7 @@ func (o GetQueuesQueueArrayOutput) Index(i pulumi.IntInput) GetQueuesQueueOutput
 type GetTopicSubscriptionsSubscription struct {
 	// Describe the terminal address of the message received in this subscription.
 	// * `filterTag`- A string to filter resulting messages of the topic by their message tag.
-	Endpoint string `pulumi:"endpoint"`
+	Endpoint  string `pulumi:"endpoint"`
 	FilterTag string `pulumi:"filterTag"`
 	// The ID of the topic subscription. The value is set to `name`.
 	Id string `pulumi:"id"`
@@ -182,7 +182,7 @@ type GetTopicSubscriptionsSubscriptionInput interface {
 type GetTopicSubscriptionsSubscriptionArgs struct {
 	// Describe the terminal address of the message received in this subscription.
 	// * `filterTag`- A string to filter resulting messages of the topic by their message tag.
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	Endpoint  pulumi.StringInput `pulumi:"endpoint"`
 	FilterTag pulumi.StringInput `pulumi:"filterTag"`
 	// The ID of the topic subscription. The value is set to `name`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -230,7 +230,7 @@ func (i GetTopicSubscriptionsSubscriptionArray) ToGetTopicSubscriptionsSubscript
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicSubscriptionsSubscriptionArrayOutput)
 }
 
-type GetTopicSubscriptionsSubscriptionOutput struct { *pulumi.OutputState }
+type GetTopicSubscriptionsSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (GetTopicSubscriptionsSubscriptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTopicSubscriptionsSubscription)(nil)).Elem()
@@ -247,40 +247,40 @@ func (o GetTopicSubscriptionsSubscriptionOutput) ToGetTopicSubscriptionsSubscrip
 // Describe the terminal address of the message received in this subscription.
 // * `filterTag`- A string to filter resulting messages of the topic by their message tag.
 func (o GetTopicSubscriptionsSubscriptionOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.Endpoint }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
 func (o GetTopicSubscriptionsSubscriptionOutput) FilterTag() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.FilterTag }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.FilterTag }).(pulumi.StringOutput)
 }
 
 // The ID of the topic subscription. The value is set to `name`.
 func (o GetTopicSubscriptionsSubscriptionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the subscription.
 // * `topicName`- The topic which The subscription belongs to was named with the name.
 func (o GetTopicSubscriptionsSubscriptionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
 func (o GetTopicSubscriptionsSubscriptionOutput) NotifyContentFormat() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.NotifyContentFormat }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.NotifyContentFormat }).(pulumi.StringOutput)
 }
 
 // The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails.
 func (o GetTopicSubscriptionsSubscriptionOutput) NotifyStrategy() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.NotifyStrategy }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.NotifyStrategy }).(pulumi.StringOutput)
 }
 
 // Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 func (o GetTopicSubscriptionsSubscriptionOutput) TopicName() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicSubscriptionsSubscription) string { return v.TopicName }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicSubscriptionsSubscription) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
-type GetTopicSubscriptionsSubscriptionArrayOutput struct { *pulumi.OutputState}
+type GetTopicSubscriptionsSubscriptionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTopicSubscriptionsSubscriptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTopicSubscriptionsSubscription)(nil)).Elem()
@@ -295,7 +295,7 @@ func (o GetTopicSubscriptionsSubscriptionArrayOutput) ToGetTopicSubscriptionsSub
 }
 
 func (o GetTopicSubscriptionsSubscriptionArrayOutput) Index(i pulumi.IntInput) GetTopicSubscriptionsSubscriptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTopicSubscriptionsSubscription {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicSubscriptionsSubscription {
 		return vs[0].([]GetTopicSubscriptionsSubscription)[vs[1].(int)]
 	}).(GetTopicSubscriptionsSubscriptionOutput)
 }
@@ -362,7 +362,7 @@ func (i GetTopicsTopicArray) ToGetTopicsTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetTopicsTopicArrayOutput)
 }
 
-type GetTopicsTopicOutput struct { *pulumi.OutputState }
+type GetTopicsTopicOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetTopicsTopic)(nil)).Elem()
@@ -378,25 +378,25 @@ func (o GetTopicsTopicOutput) ToGetTopicsTopicOutputWithContext(ctx context.Cont
 
 // The id of the topic. The value is set to `name`.
 func (o GetTopicsTopicOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Whether to enable logging.
 func (o GetTopicsTopicOutput) LoggingEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetTopicsTopic) bool { return v.LoggingEnabled }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetTopicsTopic) bool { return v.LoggingEnabled }).(pulumi.BoolOutput)
 }
 
 // This indicates the maximum length, in bytes, of any message body sent to the topic.
 func (o GetTopicsTopicOutput) MaximumMessageSize() pulumi.IntOutput {
-	return o.ApplyT(func (v GetTopicsTopic) int { return v.MaximumMessageSize }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetTopicsTopic) int { return v.MaximumMessageSize }).(pulumi.IntOutput)
 }
 
 // The name of the topic.
 func (o GetTopicsTopicOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetTopicsTopic) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetTopicsTopic) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetTopicsTopicArrayOutput struct { *pulumi.OutputState}
+type GetTopicsTopicArrayOutput struct{ *pulumi.OutputState }
 
 func (GetTopicsTopicArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetTopicsTopic)(nil)).Elem()
@@ -411,7 +411,7 @@ func (o GetTopicsTopicArrayOutput) ToGetTopicsTopicArrayOutputWithContext(ctx co
 }
 
 func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetTopicsTopic {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicsTopic {
 		return vs[0].([]GetTopicsTopic)[vs[1].(int)]
 	}).(GetTopicsTopicOutput)
 }

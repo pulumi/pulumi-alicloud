@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
         /// </summary>
+        [Obsolete("Use GetMainVersions.InvokeAsync() instead")]
         public static Task<GetMainVersionsResult> GetMainVersions(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetMainVersions
+    {
+        /// <summary>
+        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
+        /// main versions available in Alibaba Cloud account when create a emr cluster.
+        /// 
+        /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
+        /// </summary>
+        public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

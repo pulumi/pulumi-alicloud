@@ -51,6 +51,9 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getRoles.
  */
 export interface GetRolesArgs {
+    /**
+     * A list of ram role IDs. 
+     */
     readonly ids?: string[];
     /**
      * A regex string to filter results by the role name.

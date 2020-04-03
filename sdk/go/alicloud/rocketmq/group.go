@@ -13,7 +13,7 @@ import (
 
 // Provides an ONS group resource.
 //
-// For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
+// For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html).
 //
 // > **NOTE:** Available in 1.53.0+
 //
@@ -116,4 +116,3 @@ type GroupArgs struct {
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
 }
-

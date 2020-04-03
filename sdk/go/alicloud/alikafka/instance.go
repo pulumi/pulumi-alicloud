@@ -39,7 +39,7 @@ type Instance struct {
 	IoMax pulumi.IntOutput `pulumi:"ioMax"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrOutput `pulumi:"paidType"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
@@ -113,7 +113,7 @@ type instanceState struct {
 	IoMax *int `pulumi:"ioMax"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
@@ -142,7 +142,7 @@ type InstanceState struct {
 	IoMax pulumi.IntPtrInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
@@ -175,7 +175,7 @@ type instanceArgs struct {
 	IoMax int `pulumi:"ioMax"`
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name *string `pulumi:"name"`
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType *string `pulumi:"paidType"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
@@ -201,7 +201,7 @@ type InstanceArgs struct {
 	IoMax pulumi.IntInput
 	// Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
 	Name pulumi.StringPtrInput
-	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay. 
+	// The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
 	PaidType pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
@@ -216,4 +216,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

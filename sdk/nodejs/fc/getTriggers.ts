@@ -53,6 +53,9 @@ export interface GetTriggersArgs {
      * FC function name.
      */
     readonly functionName: string;
+    /**
+     * A list of FC triggers ids.
+     */
     readonly ids?: string[];
     /**
      * A regex string to filter results by FC trigger name.

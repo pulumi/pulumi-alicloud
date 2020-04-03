@@ -19,7 +19,21 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClusters.InvokeAsync() instead")]
         public static Task<GetClustersResult> GetClusters(GetClustersArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClusters
+    {
+        /// <summary>
+        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
+        /// </summary>
+        public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

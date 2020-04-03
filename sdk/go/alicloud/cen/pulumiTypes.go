@@ -77,7 +77,7 @@ func (i GetBandwidthLimitsLimitArray) ToGetBandwidthLimitsLimitArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthLimitsLimitArrayOutput)
 }
 
-type GetBandwidthLimitsLimitOutput struct { *pulumi.OutputState }
+type GetBandwidthLimitsLimitOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthLimitsLimitOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBandwidthLimitsLimit)(nil)).Elem()
@@ -93,30 +93,30 @@ func (o GetBandwidthLimitsLimitOutput) ToGetBandwidthLimitsLimitOutputWithContex
 
 // The bandwidth limit configured for the interconnected regions communication.
 func (o GetBandwidthLimitsLimitOutput) BandwidthLimit() pulumi.IntOutput {
-	return o.ApplyT(func (v GetBandwidthLimitsLimit) int { return v.BandwidthLimit }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetBandwidthLimitsLimit) int { return v.BandwidthLimit }).(pulumi.IntOutput)
 }
 
 // ID of the CEN instance.
 func (o GetBandwidthLimitsLimitOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthLimitsLimit) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthLimitsLimit) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // ID of local region.
 func (o GetBandwidthLimitsLimitOutput) LocalRegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthLimitsLimit) string { return v.LocalRegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthLimitsLimit) string { return v.LocalRegionId }).(pulumi.StringOutput)
 }
 
 // ID of opposite region.
 func (o GetBandwidthLimitsLimitOutput) OppositeRegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthLimitsLimit) string { return v.OppositeRegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthLimitsLimit) string { return v.OppositeRegionId }).(pulumi.StringOutput)
 }
 
 // Status of the CEN Bandwidth Limit, including "Active" and "Modifying".
 func (o GetBandwidthLimitsLimitOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthLimitsLimit) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthLimitsLimit) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetBandwidthLimitsLimitArrayOutput struct { *pulumi.OutputState}
+type GetBandwidthLimitsLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthLimitsLimitArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBandwidthLimitsLimit)(nil)).Elem()
@@ -131,7 +131,7 @@ func (o GetBandwidthLimitsLimitArrayOutput) ToGetBandwidthLimitsLimitArrayOutput
 }
 
 func (o GetBandwidthLimitsLimitArrayOutput) Index(i pulumi.IntInput) GetBandwidthLimitsLimitOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBandwidthLimitsLimit {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBandwidthLimitsLimit {
 		return vs[0].([]GetBandwidthLimitsLimit)[vs[1].(int)]
 	}).(GetBandwidthLimitsLimitOutput)
 }
@@ -226,7 +226,7 @@ func (i GetBandwidthPackagesPackageArray) ToGetBandwidthPackagesPackageArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetBandwidthPackagesPackageArrayOutput)
 }
 
-type GetBandwidthPackagesPackageOutput struct { *pulumi.OutputState }
+type GetBandwidthPackagesPackageOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthPackagesPackageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetBandwidthPackagesPackage)(nil)).Elem()
@@ -242,60 +242,60 @@ func (o GetBandwidthPackagesPackageOutput) ToGetBandwidthPackagesPackageOutputWi
 
 // The bandwidth in Mbps of the CEN bandwidth package.
 func (o GetBandwidthPackagesPackageOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // The billing method, including "POSTPAY" and "PREPAY".
 func (o GetBandwidthPackagesPackageOutput) BandwidthPackageChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.BandwidthPackageChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BandwidthPackageChargeType }).(pulumi.StringOutput)
 }
 
 // Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
 func (o GetBandwidthPackagesPackageOutput) BusinessStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.BusinessStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
 // Creation time of the CEN bandwidth package.
 func (o GetBandwidthPackagesPackageOutput) CreationTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.CreationTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
 // Description of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Region ID of the interconnected regions.
 func (o GetBandwidthPackagesPackageOutput) GeographicRegionAId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.GeographicRegionAId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.GeographicRegionAId }).(pulumi.StringOutput)
 }
 
 // Region ID of the interconnected regions.
 func (o GetBandwidthPackagesPackageOutput) GeographicRegionBId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.GeographicRegionBId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.GeographicRegionBId }).(pulumi.StringOutput)
 }
 
 // ID of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ID of a CEN instance.
 func (o GetBandwidthPackagesPackageOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Name of the CEN Bandwidth Package.
 func (o GetBandwidthPackagesPackageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
 func (o GetBandwidthPackagesPackageOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetBandwidthPackagesPackage) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetBandwidthPackagesPackageArrayOutput struct { *pulumi.OutputState}
+type GetBandwidthPackagesPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (GetBandwidthPackagesPackageArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetBandwidthPackagesPackage)(nil)).Elem()
@@ -310,7 +310,7 @@ func (o GetBandwidthPackagesPackageArrayOutput) ToGetBandwidthPackagesPackageArr
 }
 
 func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBandwidthPackagesPackageOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetBandwidthPackagesPackage {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBandwidthPackagesPackage {
 		return vs[0].([]GetBandwidthPackagesPackage)[vs[1].(int)]
 	}).(GetBandwidthPackagesPackageOutput)
 }
@@ -385,7 +385,7 @@ func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
 }
 
-type GetInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
@@ -401,35 +401,35 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 
 // List of CEN Bandwidth Package IDs in the specified CEN instance.
 func (o GetInstancesInstanceOutput) BandwidthPackageIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []string { return v.BandwidthPackageIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.BandwidthPackageIds }).(pulumi.StringArrayOutput)
 }
 
 // List of child instance IDs in the specified CEN instance.
 func (o GetInstancesInstanceOutput) ChildInstanceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v GetInstancesInstance) []string { return v.ChildInstanceIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.ChildInstanceIds }).(pulumi.StringArrayOutput)
 }
 
 // Description of the CEN instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the CEN instance.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Name of the CEN instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Status of the CEN instance, including "Creating", "Active" and "Deleting".
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
@@ -444,7 +444,7 @@ func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithCo
 }
 
 func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
 		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
 	}).(GetInstancesInstanceOutput)
 }
@@ -515,7 +515,7 @@ func (i GetRegionRouteEntriesEntryArray) ToGetRegionRouteEntriesEntryArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetRegionRouteEntriesEntryArrayOutput)
 }
 
-type GetRegionRouteEntriesEntryOutput struct { *pulumi.OutputState }
+type GetRegionRouteEntriesEntryOutput struct{ *pulumi.OutputState }
 
 func (GetRegionRouteEntriesEntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRegionRouteEntriesEntry)(nil)).Elem()
@@ -531,30 +531,30 @@ func (o GetRegionRouteEntriesEntryOutput) ToGetRegionRouteEntriesEntryOutputWith
 
 // The destination CIDR block of the route entry.
 func (o GetRegionRouteEntriesEntryOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionRouteEntriesEntry) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionRouteEntriesEntry) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 // ID of the next hop.
 func (o GetRegionRouteEntriesEntryOutput) NextHopId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionRouteEntriesEntry) string { return v.NextHopId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionRouteEntriesEntry) string { return v.NextHopId }).(pulumi.StringOutput)
 }
 
 // ID of the region where the next hop is located.
 func (o GetRegionRouteEntriesEntryOutput) NextHopRegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionRouteEntriesEntry) string { return v.NextHopRegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionRouteEntriesEntry) string { return v.NextHopRegionId }).(pulumi.StringOutput)
 }
 
 // Type of the next hop.
 func (o GetRegionRouteEntriesEntryOutput) NextHopType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionRouteEntriesEntry) string { return v.NextHopType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionRouteEntriesEntry) string { return v.NextHopType }).(pulumi.StringOutput)
 }
 
 // Type of the route entry.
 func (o GetRegionRouteEntriesEntryOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRegionRouteEntriesEntry) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRegionRouteEntriesEntry) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetRegionRouteEntriesEntryArrayOutput struct { *pulumi.OutputState}
+type GetRegionRouteEntriesEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRegionRouteEntriesEntryArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRegionRouteEntriesEntry)(nil)).Elem()
@@ -569,7 +569,7 @@ func (o GetRegionRouteEntriesEntryArrayOutput) ToGetRegionRouteEntriesEntryArray
 }
 
 func (o GetRegionRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetRegionRouteEntriesEntryOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRegionRouteEntriesEntry {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionRouteEntriesEntry {
 		return vs[0].([]GetRegionRouteEntriesEntry)[vs[1].(int)]
 	}).(GetRegionRouteEntriesEntryOutput)
 }
@@ -652,7 +652,7 @@ func (i GetRouteEntriesEntryArray) ToGetRouteEntriesEntryArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryArrayOutput)
 }
 
-type GetRouteEntriesEntryOutput struct { *pulumi.OutputState }
+type GetRouteEntriesEntryOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRouteEntriesEntry)(nil)).Elem()
@@ -668,45 +668,45 @@ func (o GetRouteEntriesEntryOutput) ToGetRouteEntriesEntryOutputWithContext(ctx 
 
 // The destination CIDR block of the route entry to query.
 func (o GetRouteEntriesEntryOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 // A list of conflicted Route Entries. Each element contains the following attributes:
 func (o GetRouteEntriesEntryOutput) Conflicts() GetRouteEntriesEntryConflictArrayOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) []GetRouteEntriesEntryConflict { return v.Conflicts }).(GetRouteEntriesEntryConflictArrayOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) []GetRouteEntriesEntryConflict { return v.Conflicts }).(GetRouteEntriesEntryConflictArrayOutput)
 }
 
 // ID of the next hop.
 func (o GetRouteEntriesEntryOutput) NextHopId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.NextHopId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.NextHopId }).(pulumi.StringOutput)
 }
 
 // Type of the next hop, including "Instance", "HaVip" and "RouterInterface".
 func (o GetRouteEntriesEntryOutput) NextHopType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.NextHopType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.NextHopType }).(pulumi.StringOutput)
 }
 
 // Whether to allow the route entry to be published or removed to or from CEN.
 func (o GetRouteEntriesEntryOutput) OperationalMode() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) bool { return v.OperationalMode }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) bool { return v.OperationalMode }).(pulumi.BoolOutput)
 }
 
 // The publish status of the route entry in CEN, including "Published" and "NonPublished".
 func (o GetRouteEntriesEntryOutput) PublishStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.PublishStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.PublishStatus }).(pulumi.StringOutput)
 }
 
 // ID of the route table of the VPC or VBR.
 func (o GetRouteEntriesEntryOutput) RouteTableId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.RouteTableId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
 // Type of the route entry, including "System", "Custom" and "BGP".
 func (o GetRouteEntriesEntryOutput) RouteType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntry) string { return v.RouteType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntry) string { return v.RouteType }).(pulumi.StringOutput)
 }
 
-type GetRouteEntriesEntryArrayOutput struct { *pulumi.OutputState}
+type GetRouteEntriesEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRouteEntriesEntry)(nil)).Elem()
@@ -721,7 +721,7 @@ func (o GetRouteEntriesEntryArrayOutput) ToGetRouteEntriesEntryArrayOutputWithCo
 }
 
 func (o GetRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetRouteEntriesEntryOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRouteEntriesEntry {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteEntriesEntry {
 		return vs[0].([]GetRouteEntriesEntry)[vs[1].(int)]
 	}).(GetRouteEntriesEntryOutput)
 }
@@ -792,7 +792,7 @@ func (i GetRouteEntriesEntryConflictArray) ToGetRouteEntriesEntryConflictArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouteEntriesEntryConflictArrayOutput)
 }
 
-type GetRouteEntriesEntryConflictOutput struct { *pulumi.OutputState }
+type GetRouteEntriesEntryConflictOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryConflictOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetRouteEntriesEntryConflict)(nil)).Elem()
@@ -808,30 +808,30 @@ func (o GetRouteEntriesEntryConflictOutput) ToGetRouteEntriesEntryConflictOutput
 
 // The destination CIDR block of the route entry to query.
 func (o GetRouteEntriesEntryConflictOutput) CidrBlock() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntryConflict) string { return v.CidrBlock }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntryConflict) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
 // ID of the CEN instance.
 func (o GetRouteEntriesEntryConflictOutput) InstanceId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntryConflict) string { return v.InstanceId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntryConflict) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The type of the CEN child instance.
 func (o GetRouteEntriesEntryConflictOutput) InstanceType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntryConflict) string { return v.InstanceType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntryConflict) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // ID of the region where the conflicted route entry is located.
 func (o GetRouteEntriesEntryConflictOutput) RegionId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntryConflict) string { return v.RegionId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntryConflict) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Reasons of exceptions.
 func (o GetRouteEntriesEntryConflictOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetRouteEntriesEntryConflict) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetRouteEntriesEntryConflict) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetRouteEntriesEntryConflictArrayOutput struct { *pulumi.OutputState}
+type GetRouteEntriesEntryConflictArrayOutput struct{ *pulumi.OutputState }
 
 func (GetRouteEntriesEntryConflictArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetRouteEntriesEntryConflict)(nil)).Elem()
@@ -846,7 +846,7 @@ func (o GetRouteEntriesEntryConflictArrayOutput) ToGetRouteEntriesEntryConflictA
 }
 
 func (o GetRouteEntriesEntryConflictArrayOutput) Index(i pulumi.IntInput) GetRouteEntriesEntryConflictOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetRouteEntriesEntryConflict {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteEntriesEntryConflict {
 		return vs[0].([]GetRouteEntriesEntryConflict)[vs[1].(int)]
 	}).(GetRouteEntriesEntryConflictOutput)
 }

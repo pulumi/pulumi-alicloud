@@ -57,6 +57,9 @@ export class DomainNew extends pulumi.CustomResource {
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
     public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSources>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
@@ -136,6 +139,9 @@ export interface DomainNewState {
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
     readonly sources?: pulumi.Input<inputs.cdn.DomainNewSources>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
@@ -167,5 +173,8 @@ export interface DomainNewArgs {
      * The source address list of the accelerated domain. Defaults to null. See Block Sources.
      */
     readonly sources: pulumi.Input<inputs.cdn.DomainNewSources>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
 }

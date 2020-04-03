@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Yundun
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetDBAuditInstance.InvokeAsync() instead")]
         public static Task<GetDBAuditInstanceResult> GetDBAuditInstance(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDBAuditInstance
+    {
+        public static Task<GetDBAuditInstanceResult> InvokeAsync(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

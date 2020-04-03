@@ -93,7 +93,7 @@ func (i ConnectionIkeConfigArray) ToConnectionIkeConfigArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIkeConfigArrayOutput)
 }
 
-type ConnectionIkeConfigOutput struct { *pulumi.OutputState }
+type ConnectionIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIkeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionIkeConfig)(nil)).Elem()
@@ -109,50 +109,50 @@ func (o ConnectionIkeConfigOutput) ToConnectionIkeConfigOutputWithContext(ctx co
 
 // The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
 func (o ConnectionIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }
 
 // The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
 func (o ConnectionIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
 }
 
 // The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
 func (o ConnectionIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
 // The identification of the VPN gateway.
 func (o ConnectionIkeConfigOutput) IkeLocalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
 }
 
 // The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
 func (o ConnectionIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
 // The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
 func (o ConnectionIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
 // The identification of the customer gateway.
 func (o ConnectionIkeConfigOutput) IkeRemoteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
 }
 
 // The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
 func (o ConnectionIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
 // Used for authentication between the IPsec VPN gateway and the customer gateway.
 func (o ConnectionIkeConfigOutput) Psk() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIkeConfigArrayOutput struct { *pulumi.OutputState}
+type ConnectionIkeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIkeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ConnectionIkeConfig)(nil)).Elem()
@@ -167,7 +167,7 @@ func (o ConnectionIkeConfigArrayOutput) ToConnectionIkeConfigArrayOutputWithCont
 }
 
 func (o ConnectionIkeConfigArrayOutput) Index(i pulumi.IntInput) ConnectionIkeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ConnectionIkeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionIkeConfig {
 		return vs[0].([]ConnectionIkeConfig)[vs[1].(int)]
 	}).(ConnectionIkeConfigOutput)
 }
@@ -234,7 +234,7 @@ func (i ConnectionIpsecConfigArray) ToConnectionIpsecConfigArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIpsecConfigArrayOutput)
 }
 
-type ConnectionIpsecConfigOutput struct { *pulumi.OutputState }
+type ConnectionIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIpsecConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConnectionIpsecConfig)(nil)).Elem()
@@ -250,25 +250,25 @@ func (o ConnectionIpsecConfigOutput) ToConnectionIpsecConfigOutputWithContext(ct
 
 // The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
 func (o ConnectionIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
 }
 
 // The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
 func (o ConnectionIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
 }
 
 // The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
 func (o ConnectionIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v ConnectionIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v ConnectionIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
 // The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
 func (o ConnectionIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIpsecConfigArrayOutput struct { *pulumi.OutputState}
+type ConnectionIpsecConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIpsecConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ConnectionIpsecConfig)(nil)).Elem()
@@ -283,7 +283,7 @@ func (o ConnectionIpsecConfigArrayOutput) ToConnectionIpsecConfigArrayOutputWith
 }
 
 func (o ConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput) ConnectionIpsecConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ConnectionIpsecConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionIpsecConfig {
 		return vs[0].([]ConnectionIpsecConfig)[vs[1].(int)]
 	}).(ConnectionIpsecConfigOutput)
 }
@@ -292,7 +292,7 @@ type GetConnectionsConnection struct {
 	CreateTime string `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	EffectImmediately bool `pulumi:"effectImmediately"`
+	EffectImmediately bool   `pulumi:"effectImmediately"`
 	// ID of the VPN connection.
 	Id string `pulumi:"id"`
 	// The configurations of phase-one negotiation.
@@ -322,7 +322,7 @@ type GetConnectionsConnectionArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
-	EffectImmediately pulumi.BoolInput `pulumi:"effectImmediately"`
+	EffectImmediately pulumi.BoolInput   `pulumi:"effectImmediately"`
 	// ID of the VPN connection.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The configurations of phase-one negotiation.
@@ -374,7 +374,7 @@ func (i GetConnectionsConnectionArray) ToGetConnectionsConnectionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionArrayOutput)
 }
 
-type GetConnectionsConnectionOutput struct { *pulumi.OutputState }
+type GetConnectionsConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetConnectionsConnection)(nil)).Elem()
@@ -389,59 +389,59 @@ func (o GetConnectionsConnectionOutput) ToGetConnectionsConnectionOutputWithCont
 }
 
 func (o GetConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Use the VPN customer gateway ID as the search key.
 func (o GetConnectionsConnectionOutput) CustomerGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
 }
 
 func (o GetConnectionsConnectionOutput) EffectImmediately() pulumi.BoolOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
 }
 
 // ID of the VPN connection.
 func (o GetConnectionsConnectionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The configurations of phase-one negotiation.
 func (o GetConnectionsConnectionOutput) IkeConfigs() GetConnectionsConnectionIkeConfigArrayOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) []GetConnectionsConnectionIkeConfig { return v.IkeConfigs }).(GetConnectionsConnectionIkeConfigArrayOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionIkeConfig { return v.IkeConfigs }).(GetConnectionsConnectionIkeConfigArrayOutput)
 }
 
 // The configurations of phase-two negotiation.
 func (o GetConnectionsConnectionOutput) IpsecConfigs() GetConnectionsConnectionIpsecConfigArrayOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) []GetConnectionsConnectionIpsecConfig { return v.IpsecConfigs }).(GetConnectionsConnectionIpsecConfigArrayOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) []GetConnectionsConnectionIpsecConfig { return v.IpsecConfigs }).(GetConnectionsConnectionIpsecConfigArrayOutput)
 }
 
 // The local subnet of the VPN connection.
 func (o GetConnectionsConnectionOutput) LocalSubnet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.LocalSubnet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.LocalSubnet }).(pulumi.StringOutput)
 }
 
 // The name of the VPN connection.
 func (o GetConnectionsConnectionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The remote subnet of the VPN connection.
 func (o GetConnectionsConnectionOutput) RemoteSubnet() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.RemoteSubnet }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.RemoteSubnet }).(pulumi.StringOutput)
 }
 
 // The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
 func (o GetConnectionsConnectionOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Use the VPN gateway ID as the search key.
 func (o GetConnectionsConnectionOutput) VpnGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetConnectionsConnection) string { return v.VpnGatewayId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetConnectionsConnection) string { return v.VpnGatewayId }).(pulumi.StringOutput)
 }
 
-type GetConnectionsConnectionArrayOutput struct { *pulumi.OutputState}
+type GetConnectionsConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetConnectionsConnection)(nil)).Elem()
@@ -456,27 +456,27 @@ func (o GetConnectionsConnectionArrayOutput) ToGetConnectionsConnectionArrayOutp
 }
 
 func (o GetConnectionsConnectionArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetConnectionsConnection {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnection {
 		return vs[0].([]GetConnectionsConnection)[vs[1].(int)]
 	}).(GetConnectionsConnectionOutput)
 }
 
 type GetConnectionsConnectionIkeConfig struct {
-	// The authentication algorithm of phase-one negotiation. 
+	// The authentication algorithm of phase-one negotiation.
 	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
-	// The encryption algorithm of phase-one negotiation. 
+	// The encryption algorithm of phase-one negotiation.
 	IkeEncAlg *string `pulumi:"ikeEncAlg"`
-	// The SA lifecycle as the result of phase-one negotiation. 
+	// The SA lifecycle as the result of phase-one negotiation.
 	IkeLifetime *int `pulumi:"ikeLifetime"`
 	// The identification of the VPN gateway.
 	IkeLocalId *string `pulumi:"ikeLocalId"`
-	// The negotiation mode of IKE phase-one. 
+	// The negotiation mode of IKE phase-one.
 	IkeMode *string `pulumi:"ikeMode"`
-	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
+	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
 	IkePfs *string `pulumi:"ikePfs"`
 	// The identification of the customer gateway.
 	IkeRemoteId *string `pulumi:"ikeRemoteId"`
-	// The version of the IKE protocol. 
+	// The version of the IKE protocol.
 	IkeVersion *string `pulumi:"ikeVersion"`
 	// Used for authentication between the IPsec VPN gateway and the customer gateway.
 	Psk *string `pulumi:"psk"`
@@ -490,21 +490,21 @@ type GetConnectionsConnectionIkeConfigInput interface {
 }
 
 type GetConnectionsConnectionIkeConfigArgs struct {
-	// The authentication algorithm of phase-one negotiation. 
+	// The authentication algorithm of phase-one negotiation.
 	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
-	// The encryption algorithm of phase-one negotiation. 
+	// The encryption algorithm of phase-one negotiation.
 	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
-	// The SA lifecycle as the result of phase-one negotiation. 
+	// The SA lifecycle as the result of phase-one negotiation.
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
 	// The identification of the VPN gateway.
 	IkeLocalId pulumi.StringPtrInput `pulumi:"ikeLocalId"`
-	// The negotiation mode of IKE phase-one. 
+	// The negotiation mode of IKE phase-one.
 	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
-	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
+	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
 	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
 	// The identification of the customer gateway.
 	IkeRemoteId pulumi.StringPtrInput `pulumi:"ikeRemoteId"`
-	// The version of the IKE protocol. 
+	// The version of the IKE protocol.
 	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
 	// Used for authentication between the IPsec VPN gateway and the customer gateway.
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
@@ -543,7 +543,7 @@ func (i GetConnectionsConnectionIkeConfigArray) ToGetConnectionsConnectionIkeCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIkeConfigArrayOutput)
 }
 
-type GetConnectionsConnectionIkeConfigOutput struct { *pulumi.OutputState }
+type GetConnectionsConnectionIkeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIkeConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetConnectionsConnectionIkeConfig)(nil)).Elem()
@@ -557,52 +557,52 @@ func (o GetConnectionsConnectionIkeConfigOutput) ToGetConnectionsConnectionIkeCo
 	return o
 }
 
-// The authentication algorithm of phase-one negotiation. 
+// The authentication algorithm of phase-one negotiation.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-one negotiation. 
+// The encryption algorithm of phase-one negotiation.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-one negotiation. 
+// The SA lifecycle as the result of phase-one negotiation.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
 // The identification of the VPN gateway.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeLocalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeLocalId }).(pulumi.StringPtrOutput)
 }
 
-// The negotiation mode of IKE phase-one. 
+// The negotiation mode of IKE phase-one.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
+// The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
 func (o GetConnectionsConnectionIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
 // The identification of the customer gateway.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeRemoteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeRemoteId }).(pulumi.StringPtrOutput)
 }
 
-// The version of the IKE protocol. 
+// The version of the IKE protocol.
 func (o GetConnectionsConnectionIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
 // Used for authentication between the IPsec VPN gateway and the customer gateway.
 func (o GetConnectionsConnectionIkeConfigOutput) Psk() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-type GetConnectionsConnectionIkeConfigArrayOutput struct { *pulumi.OutputState}
+type GetConnectionsConnectionIkeConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIkeConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetConnectionsConnectionIkeConfig)(nil)).Elem()
@@ -617,19 +617,19 @@ func (o GetConnectionsConnectionIkeConfigArrayOutput) ToGetConnectionsConnection
 }
 
 func (o GetConnectionsConnectionIkeConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionIkeConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetConnectionsConnectionIkeConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnectionIkeConfig {
 		return vs[0].([]GetConnectionsConnectionIkeConfig)[vs[1].(int)]
 	}).(GetConnectionsConnectionIkeConfigOutput)
 }
 
 type GetConnectionsConnectionIpsecConfig struct {
-	// The authentication algorithm of phase-two negotiation. 
+	// The authentication algorithm of phase-two negotiation.
 	IpsecAuthAlg *string `pulumi:"ipsecAuthAlg"`
-	// The encryption algorithm of phase-two negotiation. 
+	// The encryption algorithm of phase-two negotiation.
 	IpsecEncAlg *string `pulumi:"ipsecEncAlg"`
-	// The SA lifecycle as the result of phase-two negotiation. 
+	// The SA lifecycle as the result of phase-two negotiation.
 	IpsecLifetime *int `pulumi:"ipsecLifetime"`
-	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
+	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
 	IpsecPfs *string `pulumi:"ipsecPfs"`
 }
 
@@ -641,13 +641,13 @@ type GetConnectionsConnectionIpsecConfigInput interface {
 }
 
 type GetConnectionsConnectionIpsecConfigArgs struct {
-	// The authentication algorithm of phase-two negotiation. 
+	// The authentication algorithm of phase-two negotiation.
 	IpsecAuthAlg pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
-	// The encryption algorithm of phase-two negotiation. 
+	// The encryption algorithm of phase-two negotiation.
 	IpsecEncAlg pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
-	// The SA lifecycle as the result of phase-two negotiation. 
+	// The SA lifecycle as the result of phase-two negotiation.
 	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
-	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
+	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
 	IpsecPfs pulumi.StringPtrInput `pulumi:"ipsecPfs"`
 }
 
@@ -684,7 +684,7 @@ func (i GetConnectionsConnectionIpsecConfigArray) ToGetConnectionsConnectionIpse
 	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionsConnectionIpsecConfigArrayOutput)
 }
 
-type GetConnectionsConnectionIpsecConfigOutput struct { *pulumi.OutputState }
+type GetConnectionsConnectionIpsecConfigOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIpsecConfigOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetConnectionsConnectionIpsecConfig)(nil)).Elem()
@@ -698,27 +698,27 @@ func (o GetConnectionsConnectionIpsecConfigOutput) ToGetConnectionsConnectionIps
 	return o
 }
 
-// The authentication algorithm of phase-two negotiation. 
+// The authentication algorithm of phase-two negotiation.
 func (o GetConnectionsConnectionIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-two negotiation. 
+// The encryption algorithm of phase-two negotiation.
 func (o GetConnectionsConnectionIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-two negotiation. 
+// The SA lifecycle as the result of phase-two negotiation.
 func (o GetConnectionsConnectionIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
+// The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
 func (o GetConnectionsConnectionIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v GetConnectionsConnectionIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
 
-type GetConnectionsConnectionIpsecConfigArrayOutput struct { *pulumi.OutputState}
+type GetConnectionsConnectionIpsecConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetConnectionsConnectionIpsecConfigArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetConnectionsConnectionIpsecConfig)(nil)).Elem()
@@ -733,7 +733,7 @@ func (o GetConnectionsConnectionIpsecConfigArrayOutput) ToGetConnectionsConnecti
 }
 
 func (o GetConnectionsConnectionIpsecConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionsConnectionIpsecConfigOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetConnectionsConnectionIpsecConfig {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionsConnectionIpsecConfig {
 		return vs[0].([]GetConnectionsConnectionIpsecConfig)[vs[1].(int)]
 	}).(GetConnectionsConnectionIpsecConfigOutput)
 }
@@ -804,7 +804,7 @@ func (i GetCustomerGatewaysGatewayArray) ToGetCustomerGatewaysGatewayArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetCustomerGatewaysGatewayArrayOutput)
 }
 
-type GetCustomerGatewaysGatewayOutput struct { *pulumi.OutputState }
+type GetCustomerGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetCustomerGatewaysGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetCustomerGatewaysGateway)(nil)).Elem()
@@ -820,30 +820,30 @@ func (o GetCustomerGatewaysGatewayOutput) ToGetCustomerGatewaysGatewayOutputWith
 
 // The creation time of the VPN customer gateway.
 func (o GetCustomerGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the VPN customer gateway.
 func (o GetCustomerGatewaysGatewayOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // ID of the VPN customer gateway .
 func (o GetCustomerGatewaysGatewayOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ip address of the VPN customer gateway.
 func (o GetCustomerGatewaysGatewayOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.IpAddress }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // The name of the VPN customer gateway.
 func (o GetCustomerGatewaysGatewayOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetCustomerGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetCustomerGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetCustomerGatewaysGatewayArrayOutput struct { *pulumi.OutputState}
+type GetCustomerGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GetCustomerGatewaysGatewayArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetCustomerGatewaysGateway)(nil)).Elem()
@@ -858,7 +858,7 @@ func (o GetCustomerGatewaysGatewayArrayOutput) ToGetCustomerGatewaysGatewayArray
 }
 
 func (o GetCustomerGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetCustomerGatewaysGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetCustomerGatewaysGateway {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomerGatewaysGateway {
 		return vs[0].([]GetCustomerGatewaysGateway)[vs[1].(int)]
 	}).(GetCustomerGatewaysGatewayOutput)
 }
@@ -965,7 +965,7 @@ func (i GetGatewaysGatewayArray) ToGetGatewaysGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetGatewaysGatewayArrayOutput)
 }
 
-type GetGatewaysGatewayOutput struct { *pulumi.OutputState }
+type GetGatewaysGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetGatewaysGateway)(nil)).Elem()
@@ -981,75 +981,75 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx cont
 
 // Limit search to specific business status - valid value is "Normal", "FinancialLocked".
 func (o GetGatewaysGatewayOutput) BusinessStatus() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.BusinessStatus }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
 // The creation time of the VPN gateway.
 func (o GetGatewaysGatewayOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the VPN
 func (o GetGatewaysGatewayOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Whether the ipsec function is enabled.
 func (o GetGatewaysGatewayOutput) EnableIpsec() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.EnableIpsec }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EnableIpsec }).(pulumi.StringOutput)
 }
 
 // Whether the ssl function is enabled.
 func (o GetGatewaysGatewayOutput) EnableSsl() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.EnableSsl }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EnableSsl }).(pulumi.StringOutput)
 }
 
 // The expiration time of the VPN gateway.
 func (o GetGatewaysGatewayOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.EndTime }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // ID of the VPN.
 func (o GetGatewaysGatewayOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The charge type of the VPN gateway.
 func (o GetGatewaysGatewayOutput) InstanceChargeType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
 // The internet ip of the VPN.
 func (o GetGatewaysGatewayOutput) InternetIp() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.InternetIp }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.InternetIp }).(pulumi.StringOutput)
 }
 
 // The name of the VPN.
 func (o GetGatewaysGatewayOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The Specification of the VPN
 func (o GetGatewaysGatewayOutput) Specification() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.Specification }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Specification }).(pulumi.StringOutput)
 }
 
 // Total count of ssl vpn connections.
 func (o GetGatewaysGatewayOutput) SslConnections() pulumi.IntOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) int { return v.SslConnections }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) int { return v.SslConnections }).(pulumi.IntOutput)
 }
 
 // Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
 func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Use the VPC ID as the search key.
 func (o GetGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func (v GetGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-type GetGatewaysGatewayArrayOutput struct { *pulumi.OutputState}
+type GetGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
 
 func (GetGatewaysGatewayArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetGatewaysGateway)(nil)).Elem()
@@ -1064,7 +1064,7 @@ func (o GetGatewaysGatewayArrayOutput) ToGetGatewaysGatewayArrayOutputWithContex
 }
 
 func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatewayOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetGatewaysGateway {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewaysGateway {
 		return vs[0].([]GetGatewaysGateway)[vs[1].(int)]
 	}).(GetGatewaysGatewayOutput)
 }

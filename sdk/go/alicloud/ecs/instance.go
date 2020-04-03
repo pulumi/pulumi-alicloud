@@ -16,7 +16,7 @@ type Instance struct {
 
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp pulumi.BoolPtrOutput `pulumi:"allocatePublicIp"`
-	// The automatic release time of the `PostPaid` instance. 
+	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
 	// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
@@ -36,7 +36,7 @@ type Instance struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The description of the data disk.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether to send a dry-run request. Default to false. 
+	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -52,7 +52,7 @@ type Instance struct {
 	IncludeDataDisks pulumi.BoolPtrOutput `pulumi:"includeDataDisks"`
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
+	InstanceName       pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -106,7 +106,7 @@ type Instance struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The instance status.
-	Status pulumi.StringOutput `pulumi:"status"`
+	Status   pulumi.StringOutput `pulumi:"status"`
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -167,7 +167,7 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
-	// The automatic release time of the `PostPaid` instance. 
+	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
 	// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
@@ -187,7 +187,7 @@ type instanceState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	// Specifies whether to send a dry-run request. Default to false. 
+	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
@@ -203,7 +203,7 @@ type instanceState struct {
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceName *string `pulumi:"instanceName"`
+	InstanceName       *string `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType *string `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -257,7 +257,7 @@ type instanceState struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The instance status.
-	Status *string `pulumi:"status"`
+	Status   *string `pulumi:"status"`
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -282,7 +282,7 @@ type instanceState struct {
 type InstanceState struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp pulumi.BoolPtrInput
-	// The automatic release time of the `PostPaid` instance. 
+	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
 	// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
 	AutoReleaseTime pulumi.StringPtrInput
@@ -302,7 +302,7 @@ type InstanceState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput
-	// Specifies whether to send a dry-run request. Default to false. 
+	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
@@ -318,7 +318,7 @@ type InstanceState struct {
 	IncludeDataDisks pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceName pulumi.StringPtrInput
+	InstanceName       pulumi.StringPtrInput
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType pulumi.StringPtrInput
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -372,7 +372,7 @@ type InstanceState struct {
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The instance status.
-	Status pulumi.StringPtrInput
+	Status   pulumi.StringPtrInput
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
@@ -401,7 +401,7 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
-	// The automatic release time of the `PostPaid` instance. 
+	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
 	// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
@@ -421,7 +421,7 @@ type instanceArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	// Specifies whether to send a dry-run request. Default to false. 
+	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
@@ -437,7 +437,7 @@ type instanceArgs struct {
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceName *string `pulumi:"instanceName"`
+	InstanceName       *string `pulumi:"instanceName"`
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType string `pulumi:"instanceType"`
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -488,7 +488,7 @@ type instanceArgs struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	SubnetId *string `pulumi:"subnetId"`
+	SubnetId     *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -513,7 +513,7 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	AllocatePublicIp pulumi.BoolPtrInput
-	// The automatic release time of the `PostPaid` instance. 
+	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
 	// Set it to null can cancel automatic release attribute and the ECS instance will not be released automatically.
 	AutoReleaseTime pulumi.StringPtrInput
@@ -533,7 +533,7 @@ type InstanceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The description of the data disk.
 	Description pulumi.StringPtrInput
-	// Specifies whether to send a dry-run request. Default to false. 
+	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
@@ -549,7 +549,7 @@ type InstanceArgs struct {
 	IncludeDataDisks pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceName pulumi.StringPtrInput
+	InstanceName       pulumi.StringPtrInput
 	// The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
 	InstanceType pulumi.StringInput
 	// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
@@ -600,7 +600,7 @@ type InstanceArgs struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
-	SubnetId pulumi.StringPtrInput
+	SubnetId     pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -624,4 +624,3 @@ type InstanceArgs struct {
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
 }
-

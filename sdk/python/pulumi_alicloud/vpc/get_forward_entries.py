@@ -89,6 +89,7 @@ def get_forward_entries(external_ip=None,forward_table_id=None,ids=None,internal
     :param list ids: A list of Forward Entries IDs.
     :param str internal_ip: The private IP address.
     :param str name_regex: A regex string to filter results by forward entry name.
+    :param list names: A list of Forward Entries names.
     """
     __args__ = dict()
 

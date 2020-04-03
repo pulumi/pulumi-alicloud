@@ -24,12 +24,12 @@ func GetProducts(ctx *pulumi.Context, args *GetProductsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProducts.
 type GetProductsArgs struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
+	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
 	CategoryId *string `pulumi:"categoryId"`
 	// A list of product code.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the product name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
 	ProductType *string `pulumi:"productType"`
@@ -45,7 +45,6 @@ type GetProductsArgs struct {
 	SupplierNameKeyword *string `pulumi:"supplierNameKeyword"`
 }
 
-
 // A collection of values returned by getProducts.
 type GetProductsResult struct {
 	// The category id of the product.
@@ -53,18 +52,17 @@ type GetProductsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of product codes.
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	OutputFile *string `pulumi:"outputFile"`
-	ProductType *string `pulumi:"productType"`
+	Ids         []string `pulumi:"ids"`
+	NameRegex   *string  `pulumi:"nameRegex"`
+	OutputFile  *string  `pulumi:"outputFile"`
+	ProductType *string  `pulumi:"productType"`
 	// A list of products. Each element contains the following attributes:
-	Products []GetProductsProduct `pulumi:"products"`
-	SearchTerm *string `pulumi:"searchTerm"`
-	Sort *string `pulumi:"sort"`
+	Products   []GetProductsProduct `pulumi:"products"`
+	SearchTerm *string              `pulumi:"searchTerm"`
+	Sort       *string              `pulumi:"sort"`
 	// The suggested price of the product.
 	SuggestedPrice *float64 `pulumi:"suggestedPrice"`
 	// The supplier id of the product.
-	SupplierId *string `pulumi:"supplierId"`
+	SupplierId          *string `pulumi:"supplierId"`
 	SupplierNameKeyword *string `pulumi:"supplierNameKeyword"`
 }
-

@@ -31,7 +31,7 @@ type GetDisksArgs struct {
 	// Filter the results by the specified ECS instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by disk name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -49,7 +49,6 @@ type GetDisksArgs struct {
 	Type *string `pulumi:"type"`
 }
 
-
 // A collection of values returned by getDisks.
 type GetDisksResult struct {
 	// Disk category. Possible values: `cloud` (basic cloud disk), `cloudEfficiency` (ultra cloud disk), `ephemeralSsd` (local SSD cloud disk), `cloudSsd` (SSD cloud disk), and `cloudEssd` (ESSD cloud disk).
@@ -59,11 +58,11 @@ type GetDisksResult struct {
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// ID of the related instance. It is `null` unless the `status` is `In_use`.
 	InstanceId *string `pulumi:"instanceId"`
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -72,4 +71,3 @@ type GetDisksResult struct {
 	// Disk type. Possible values: `system` and `data`.
 	Type *string `pulumi:"type"`
 }
-

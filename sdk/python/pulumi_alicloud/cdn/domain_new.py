@@ -18,12 +18,12 @@ class DomainNew(pulumi.CustomResource):
     """
     Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
 
-      * `certName` (`str`)
-      * `certType` (`str`)
-      * `forceSet` (`str`)
-      * `private_key` (`str`)
-      * `server_certificate` (`str`)
-      * `serverCertificateStatus` (`str`)
+      * `certName` (`str`) - The SSL certificate name.
+      * `certType` (`str`) - The SSL certificate type, can be "upload", "cas" and "free".
+      * `forceSet` (`str`) - Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
+      * `private_key` (`str`) - The SSL private key. This is required if `server_certificate_status` is `on`
+      * `server_certificate` (`str`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
+      * `serverCertificateStatus` (`str`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
     """
     domain_name: pulumi.Output[str]
     """
@@ -41,13 +41,16 @@ class DomainNew(pulumi.CustomResource):
     """
     The source address list of the accelerated domain. Defaults to null. See Block Sources.
 
-      * `content` (`str`)
-      * `port` (`float`)
-      * `priority` (`float`)
-      * `type` (`str`)
-      * `weight` (`float`)
+      * `content` (`str`) - The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+      * `port` (`float`) - The port of source. Valid values are `443` and `80`. Default value is `80`.
+      * `priority` (`float`) - Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+      * `type` (`str`) - The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+      * `weight` (`float`) - Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
     """
     tags: pulumi.Output[dict]
+    """
+    A mapping of tags to assign to the resource.
+    """
     def __init__(__self__, resource_name, opts=None, cdn_type=None, certificate_config=None, domain_name=None, resource_group_id=None, scope=None, sources=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
@@ -66,23 +69,24 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         :param pulumi.Input[dict] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **certificate_config** object supports the following:
 
-          * `certName` (`pulumi.Input[str]`)
-          * `certType` (`pulumi.Input[str]`)
-          * `forceSet` (`pulumi.Input[str]`)
-          * `private_key` (`pulumi.Input[str]`)
-          * `server_certificate` (`pulumi.Input[str]`)
-          * `serverCertificateStatus` (`pulumi.Input[str]`)
+          * `certName` (`pulumi.Input[str]`) - The SSL certificate name.
+          * `certType` (`pulumi.Input[str]`) - The SSL certificate type, can be "upload", "cas" and "free".
+          * `forceSet` (`pulumi.Input[str]`) - Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
+          * `private_key` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
+          * `server_certificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
+          * `serverCertificateStatus` (`pulumi.Input[str]`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 
         The **sources** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `priority` (`pulumi.Input[float]`)
-          * `type` (`pulumi.Input[str]`)
-          * `weight` (`pulumi.Input[float]`)
+          * `content` (`pulumi.Input[str]`) - The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+          * `port` (`pulumi.Input[float]`) - The port of source. Valid values are `443` and `80`. Default value is `80`.
+          * `priority` (`pulumi.Input[float]`) - Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+          * `type` (`pulumi.Input[str]`) - The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+          * `weight` (`pulumi.Input[float]`) - Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,23 +139,24 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
         :param pulumi.Input[dict] sources: The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
 
         The **certificate_config** object supports the following:
 
-          * `certName` (`pulumi.Input[str]`)
-          * `certType` (`pulumi.Input[str]`)
-          * `forceSet` (`pulumi.Input[str]`)
-          * `private_key` (`pulumi.Input[str]`)
-          * `server_certificate` (`pulumi.Input[str]`)
-          * `serverCertificateStatus` (`pulumi.Input[str]`)
+          * `certName` (`pulumi.Input[str]`) - The SSL certificate name.
+          * `certType` (`pulumi.Input[str]`) - The SSL certificate type, can be "upload", "cas" and "free".
+          * `forceSet` (`pulumi.Input[str]`) - Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
+          * `private_key` (`pulumi.Input[str]`) - The SSL private key. This is required if `server_certificate_status` is `on`
+          * `server_certificate` (`pulumi.Input[str]`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
+          * `serverCertificateStatus` (`pulumi.Input[str]`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
 
         The **sources** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `port` (`pulumi.Input[float]`)
-          * `priority` (`pulumi.Input[float]`)
-          * `type` (`pulumi.Input[str]`)
-          * `weight` (`pulumi.Input[float]`)
+          * `content` (`pulumi.Input[str]`) - The adress of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+          * `port` (`pulumi.Input[float]`) - The port of source. Valid values are `443` and `80`. Default value is `80`.
+          * `priority` (`pulumi.Input[float]`) - Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+          * `type` (`pulumi.Input[str]`) - The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+          * `weight` (`pulumi.Input[float]`) - Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. 
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

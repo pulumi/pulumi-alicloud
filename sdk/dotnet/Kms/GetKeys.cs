@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
         /// </summary>
+        [Obsolete("Use GetKeys.InvokeAsync() instead")]
         public static Task<GetKeysResult> GetKeys(GetKeysArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetKeys
+    {
+        /// <summary>
+        /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
+        /// </summary>
+        public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

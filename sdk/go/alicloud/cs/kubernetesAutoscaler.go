@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
+// This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
 //
 // > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
 //
-// > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
+// > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group.
 //
 // > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
 //
@@ -27,7 +27,7 @@ type KubernetesAutoscaler struct {
 
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The coolDownDuration option of cluster-autoscaler.  
+	// The coolDownDuration option of cluster-autoscaler.
 	CoolDownDuration pulumi.StringOutput `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringOutput `pulumi:"deferScaleInDuration"`
@@ -82,7 +82,7 @@ func GetKubernetesAutoscaler(ctx *pulumi.Context,
 type kubernetesAutoscalerState struct {
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// The coolDownDuration option of cluster-autoscaler.  
+	// The coolDownDuration option of cluster-autoscaler.
 	CoolDownDuration *string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration *string `pulumi:"deferScaleInDuration"`
@@ -98,7 +98,7 @@ type kubernetesAutoscalerState struct {
 type KubernetesAutoscalerState struct {
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
-	// The coolDownDuration option of cluster-autoscaler.  
+	// The coolDownDuration option of cluster-autoscaler.
 	CoolDownDuration pulumi.StringPtrInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringPtrInput
@@ -118,7 +118,7 @@ func (KubernetesAutoscalerState) ElementType() reflect.Type {
 type kubernetesAutoscalerArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
-	// The coolDownDuration option of cluster-autoscaler.  
+	// The coolDownDuration option of cluster-autoscaler.
 	CoolDownDuration string `pulumi:"coolDownDuration"`
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration string `pulumi:"deferScaleInDuration"`
@@ -135,7 +135,7 @@ type kubernetesAutoscalerArgs struct {
 type KubernetesAutoscalerArgs struct {
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
-	// The coolDownDuration option of cluster-autoscaler.  
+	// The coolDownDuration option of cluster-autoscaler.
 	CoolDownDuration pulumi.StringInput
 	// The deferScaleInDuration option of cluster-autoscaler.
 	DeferScaleInDuration pulumi.StringInput
@@ -151,4 +151,3 @@ type KubernetesAutoscalerArgs struct {
 func (KubernetesAutoscalerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesAutoscalerArgs)(nil)).Elem()
 }
-

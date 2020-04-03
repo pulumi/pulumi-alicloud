@@ -11,7 +11,13 @@ namespace Pulumi.AliCloud.Ram
 {
     public static partial class Invokes
     {
+        [Obsolete("Use GetAccountAlias.InvokeAsync() instead")]
         public static Task<GetAccountAliasResult> GetAccountAlias(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccountAlias
+    {
+        public static Task<GetAccountAliasResult> InvokeAsync(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

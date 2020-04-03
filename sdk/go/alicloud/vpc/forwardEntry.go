@@ -160,4 +160,3 @@ type ForwardEntryArgs struct {
 func (ForwardEntryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*forwardEntryArgs)(nil)).Elem()
 }
-

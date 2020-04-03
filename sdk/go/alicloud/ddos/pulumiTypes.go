@@ -89,7 +89,7 @@ func (i GetDdosBgpInstancesInstanceArray) ToGetDdosBgpInstancesInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosBgpInstancesInstanceArrayOutput)
 }
 
-type GetDdosBgpInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetDdosBgpInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDdosBgpInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDdosBgpInstancesInstance)(nil)).Elem()
@@ -105,45 +105,45 @@ func (o GetDdosBgpInstancesInstanceOutput) ToGetDdosBgpInstancesInstanceOutputWi
 
 // The instance's elastic defend bandwidth.
 func (o GetDdosBgpInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // The instance's base defend bandwidth.
 func (o GetDdosBgpInstancesInstanceOutput) BaseBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) int { return v.BaseBandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) int { return v.BaseBandwidth }).(pulumi.IntOutput)
 }
 
 // The instance's id.
 func (o GetDdosBgpInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The instance's count of ip config.
 func (o GetDdosBgpInstancesInstanceOutput) IpCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) int { return v.IpCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) int { return v.IpCount }).(pulumi.IntOutput)
 }
 
 // The instance's IP version.
 func (o GetDdosBgpInstancesInstanceOutput) IpType() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) string { return v.IpType }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.IpType }).(pulumi.StringOutput)
 }
 
 // The instance's remark.
 func (o GetDdosBgpInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A region of instance.
 func (o GetDdosBgpInstancesInstanceOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The instance's type.
 func (o GetDdosBgpInstancesInstanceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosBgpInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosBgpInstancesInstance) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetDdosBgpInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetDdosBgpInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDdosBgpInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDdosBgpInstancesInstance)(nil)).Elem()
@@ -158,7 +158,7 @@ func (o GetDdosBgpInstancesInstanceArrayOutput) ToGetDdosBgpInstancesInstanceArr
 }
 
 func (o GetDdosBgpInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdosBgpInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDdosBgpInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosBgpInstancesInstance {
 		return vs[0].([]GetDdosBgpInstancesInstance)[vs[1].(int)]
 	}).(GetDdosBgpInstancesInstanceOutput)
 }
@@ -237,7 +237,7 @@ func (i GetDdosCooInstancesInstanceArray) ToGetDdosCooInstancesInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetDdosCooInstancesInstanceArrayOutput)
 }
 
-type GetDdosCooInstancesInstanceOutput struct { *pulumi.OutputState }
+type GetDdosCooInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooInstancesInstanceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GetDdosCooInstancesInstance)(nil)).Elem()
@@ -253,40 +253,40 @@ func (o GetDdosCooInstancesInstanceOutput) ToGetDdosCooInstancesInstanceOutputWi
 
 // The instance's elastic defend bandwidth.
 func (o GetDdosCooInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // The instance's base defend bandwidth.
 func (o GetDdosCooInstancesInstanceOutput) BaseBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) int { return v.BaseBandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.BaseBandwidth }).(pulumi.IntOutput)
 }
 
 // The instance's count of domain retransmission config.
 func (o GetDdosCooInstancesInstanceOutput) DomainCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) int { return v.DomainCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.DomainCount }).(pulumi.IntOutput)
 }
 
 // The instance's id.
 func (o GetDdosCooInstancesInstanceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The instance's remark.
 func (o GetDdosCooInstancesInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The instance's count of port retransmission config.
 func (o GetDdosCooInstancesInstanceOutput) PortCount() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) int { return v.PortCount }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.PortCount }).(pulumi.IntOutput)
 }
 
 // The instance's business bandwidth.
 func (o GetDdosCooInstancesInstanceOutput) ServiceBandwidth() pulumi.IntOutput {
-	return o.ApplyT(func (v GetDdosCooInstancesInstance) int { return v.ServiceBandwidth }).(pulumi.IntOutput)
+	return o.ApplyT(func(v GetDdosCooInstancesInstance) int { return v.ServiceBandwidth }).(pulumi.IntOutput)
 }
 
-type GetDdosCooInstancesInstanceArrayOutput struct { *pulumi.OutputState}
+type GetDdosCooInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDdosCooInstancesInstanceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]GetDdosCooInstancesInstance)(nil)).Elem()
@@ -301,7 +301,7 @@ func (o GetDdosCooInstancesInstanceArrayOutput) ToGetDdosCooInstancesInstanceArr
 }
 
 func (o GetDdosCooInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdosCooInstancesInstanceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) GetDdosCooInstancesInstance {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDdosCooInstancesInstance {
 		return vs[0].([]GetDdosCooInstancesInstance)[vs[1].(int)]
 	}).(GetDdosCooInstancesInstanceOutput)
 }

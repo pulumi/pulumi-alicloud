@@ -18,7 +18,20 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
         /// </summary>
+        [Obsolete("Use GetInstanceTypeFamilies.InvokeAsync() instead")]
         public static Task<GetInstanceTypeFamiliesResult> GetInstanceTypeFamilies(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetInstanceTypeFamilies
+    {
+        /// <summary>
+        /// This data source provides the ECS instance type families of Alibaba Cloud.
+        /// 
+        /// &gt; **NOTE:** Available in 1.54.0+
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
+        /// </summary>
+        public static Task<GetInstanceTypeFamiliesResult> InvokeAsync(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

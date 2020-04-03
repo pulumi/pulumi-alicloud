@@ -27,7 +27,7 @@ type GetKeyPairsArgs struct {
 	// A list of key pair IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the resulting key pairs.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -35,23 +35,21 @@ type GetKeyPairsArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
-
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// Finger print of the key pair.
 	FingerPrint bool `pulumi:"fingerPrint"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of key pairs. Each element contains the following attributes:
-	KeyPairs []GetKeyPairsKeyPair `pulumi:"keyPairs"`
-	NameRegex *string `pulumi:"nameRegex"`
+	KeyPairs  []GetKeyPairsKeyPair `pulumi:"keyPairs"`
+	NameRegex *string              `pulumi:"nameRegex"`
 	// A list of key pair names.
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-

@@ -22,15 +22,14 @@ func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getApps.
 type GetAppsArgs struct {
-	// A list of app IDs. 
+	// A list of app IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter apps by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
-
 
 // A collection of values returned by getApps.
 type GetAppsResult struct {
@@ -38,12 +37,11 @@ type GetAppsResult struct {
 	Apps []GetAppsApp `pulumi:"apps"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of app IDs. 
-	Ids []string `pulumi:"ids"`
-	NameRegex *string `pulumi:"nameRegex"`
-	// A list of app names. 
-	Names []string `pulumi:"names"`
-	OutputFile *string `pulumi:"outputFile"`
-	Tags map[string]interface{} `pulumi:"tags"`
+	// A list of app IDs.
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of app names.
+	Names      []string               `pulumi:"names"`
+	OutputFile *string                `pulumi:"outputFile"`
+	Tags       map[string]interface{} `pulumi:"tags"`
 }
-

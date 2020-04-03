@@ -21,12 +21,12 @@ type Record struct {
 
 	// Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
 	HostRecord pulumi.StringOutput `pulumi:"hostRecord"`
-	Locked pulumi.BoolOutput `pulumi:"locked"`
+	Locked     pulumi.BoolOutput   `pulumi:"locked"`
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value. 
+	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Routing pulumi.StringPtrOutput `pulumi:"routing"`
 	// The record status. `Enable` or `Disable`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -77,12 +77,12 @@ func GetRecord(ctx *pulumi.Context,
 type recordState struct {
 	// Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
 	HostRecord *string `pulumi:"hostRecord"`
-	Locked *bool `pulumi:"locked"`
+	Locked     *bool   `pulumi:"locked"`
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	Name *string `pulumi:"name"`
 	// The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority *int `pulumi:"priority"`
-	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value. 
+	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Routing *string `pulumi:"routing"`
 	// The record status. `Enable` or `Disable`.
 	Status *string `pulumi:"status"`
@@ -97,12 +97,12 @@ type recordState struct {
 type RecordState struct {
 	// Host record for the domain record. This hostRecord can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".
 	HostRecord pulumi.StringPtrInput
-	Locked pulumi.BoolPtrInput
+	Locked     pulumi.BoolPtrInput
 	// Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	Name pulumi.StringPtrInput
 	// The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrInput
-	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value. 
+	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Routing pulumi.StringPtrInput
 	// The record status. `Enable` or `Disable`.
 	Status pulumi.StringPtrInput
@@ -125,7 +125,7 @@ type recordArgs struct {
 	Name *string `pulumi:"name"`
 	// The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority *int `pulumi:"priority"`
-	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value. 
+	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Routing *string `pulumi:"routing"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl *int `pulumi:"ttl"`
@@ -143,7 +143,7 @@ type RecordArgs struct {
 	Name pulumi.StringPtrInput
 	// The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
 	Priority pulumi.IntPtrInput
-	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value. 
+	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using dns.getResolutionLines in data source to get the value.
 	Routing pulumi.StringPtrInput
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrInput
@@ -156,4 +156,3 @@ type RecordArgs struct {
 func (RecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordArgs)(nil)).Elem()
 }
-

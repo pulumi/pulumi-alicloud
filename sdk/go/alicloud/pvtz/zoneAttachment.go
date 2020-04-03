@@ -18,7 +18,7 @@ type ZoneAttachment struct {
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// The user custom IP address.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
-	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayOutput `pulumi:"vpcIds"`
 	// The List of the VPC:
 	Vpcs ZoneAttachmentVpcArrayOutput `pulumi:"vpcs"`
@@ -61,7 +61,7 @@ type zoneAttachmentState struct {
 	Lang *string `pulumi:"lang"`
 	// The user custom IP address.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds []string `pulumi:"vpcIds"`
 	// The List of the VPC:
 	Vpcs []ZoneAttachmentVpc `pulumi:"vpcs"`
@@ -74,7 +74,7 @@ type ZoneAttachmentState struct {
 	Lang pulumi.StringPtrInput
 	// The user custom IP address.
 	UserClientIp pulumi.StringPtrInput
-	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayInput
 	// The List of the VPC:
 	Vpcs ZoneAttachmentVpcArrayInput
@@ -91,7 +91,7 @@ type zoneAttachmentArgs struct {
 	Lang *string `pulumi:"lang"`
 	// The user custom IP address.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds []string `pulumi:"vpcIds"`
 	// The List of the VPC:
 	Vpcs []ZoneAttachmentVpc `pulumi:"vpcs"`
@@ -105,7 +105,7 @@ type ZoneAttachmentArgs struct {
 	Lang pulumi.StringPtrInput
 	// The user custom IP address.
 	UserClientIp pulumi.StringPtrInput
-	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"]. 
+	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayInput
 	// The List of the VPC:
 	Vpcs ZoneAttachmentVpcArrayInput
@@ -116,4 +116,3 @@ type ZoneAttachmentArgs struct {
 func (ZoneAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneAttachmentArgs)(nil)).Elem()
 }
-

@@ -27,28 +27,28 @@ import (
 // load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
 //
 // listener parameter | support protocol | value range |
-// ------------- | ------------- | ------------- | 
-// backendPort | http & https & tcp & udp | 1-65535 | 
+// ------------- | ------------- | ------------- |
+// backendPort | http & https & tcp & udp | 1-65535 |
 // frontendPort | http & https & tcp & udp | 1-65535 |
 // protocol | http & https & tcp & udp |
 // bandwidth | http & https & tcp & udp | -1 / 1-1000 |
 // scheduler | http & https & tcp & udp | wrr rr or wlc |
 // stickySession | http & https | on or off |
-// stickySessionType | http & https | insert or server | 
-// cookieTimeout | http & https | 1-86400  | 
-// cookie | http & https |   | 
-// persistenceTimeout | tcp & udp | 0-3600 | 
-// healthCheck | http & https | on or off | 
-// healthCheckType | tcp | tcp or http | 
-// healthCheckDomain | http & https & tcp | 
-// healthCheckMethod | http & https & tcp | 
-// healthCheckUri | http & https & tcp |  | 
-// healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 | 
-// healthyThreshold | http & https & tcp & udp | 1-10 | 
-// unhealthyThreshold | http & https & tcp & udp | 1-10 | 
+// stickySessionType | http & https | insert or server |
+// cookieTimeout | http & https | 1-86400  |
+// cookie | http & https |   |
+// persistenceTimeout | tcp & udp | 0-3600 |
+// healthCheck | http & https | on or off |
+// healthCheckType | tcp | tcp or http |
+// healthCheckDomain | http & https & tcp |
+// healthCheckMethod | http & https & tcp |
+// healthCheckUri | http & https & tcp |  |
+// healthCheckConnectPort | http & https & tcp & udp | 1-65535 or -520 |
+// healthyThreshold | http & https & tcp & udp | 1-10 |
+// unhealthyThreshold | http & https & tcp & udp | 1-10 |
 // healthCheckTimeout | http & https & tcp & udp | 1-300 |
 // healthCheckInterval | http & https & tcp & udp | 1-50 |
-// healthCheckHttpCode | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx | 
+// healthCheckHttpCode | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx |
 // serverCertificateId | https |  |
 // gzip | http & https | true or false  |
 // xForwardedFor | http & https |  |
@@ -117,14 +117,14 @@ type Listener struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout pulumi.IntPtrOutput `pulumi:"idleTimeout"`
-	InstancePort pulumi.IntPtrOutput `pulumi:"instancePort"`
-	LbPort pulumi.IntPtrOutput `pulumi:"lbPort"`
-	LbProtocol pulumi.StringPtrOutput `pulumi:"lbProtocol"`
+	IdleTimeout  pulumi.IntPtrOutput    `pulumi:"idleTimeout"`
+	InstancePort pulumi.IntPtrOutput    `pulumi:"instancePort"`
+	LbPort       pulumi.IntPtrOutput    `pulumi:"lbPort"`
+	LbProtocol   pulumi.StringPtrOutput `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringOutput `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
+	LoadBalancerId           pulumi.StringOutput    `pulumi:"loadBalancerId"`
 	MasterSlaveServerGroupId pulumi.StringPtrOutput `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrOutput `pulumi:"persistenceTimeout"`
@@ -138,7 +138,7 @@ type Listener struct {
 	ServerCertificateId pulumi.StringOutput `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrOutput `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	SslCertificateId pulumi.StringOutput `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrOutput `pulumi:"stickySession"`
@@ -238,14 +238,14 @@ type listenerState struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout *int `pulumi:"idleTimeout"`
-	InstancePort *int `pulumi:"instancePort"`
-	LbPort *int `pulumi:"lbPort"`
-	LbProtocol *string `pulumi:"lbProtocol"`
+	IdleTimeout  *int    `pulumi:"idleTimeout"`
+	InstancePort *int    `pulumi:"instancePort"`
+	LbPort       *int    `pulumi:"lbPort"`
+	LbProtocol   *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId *string `pulumi:"loadBalancerId"`
+	LoadBalancerId           *string `pulumi:"loadBalancerId"`
 	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
@@ -259,7 +259,7 @@ type listenerState struct {
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession *string `pulumi:"stickySession"`
@@ -323,14 +323,14 @@ type ListenerState struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout pulumi.IntPtrInput
+	IdleTimeout  pulumi.IntPtrInput
 	InstancePort pulumi.IntPtrInput
-	LbPort pulumi.IntPtrInput
-	LbProtocol pulumi.StringPtrInput
+	LbPort       pulumi.IntPtrInput
+	LbProtocol   pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId pulumi.StringPtrInput
+	LoadBalancerId           pulumi.StringPtrInput
 	MasterSlaveServerGroupId pulumi.StringPtrInput
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrInput
@@ -344,7 +344,7 @@ type ListenerState struct {
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	SslCertificateId pulumi.StringPtrInput
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrInput
@@ -412,14 +412,14 @@ type listenerArgs struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout *int `pulumi:"idleTimeout"`
-	InstancePort *int `pulumi:"instancePort"`
-	LbPort *int `pulumi:"lbPort"`
-	LbProtocol *string `pulumi:"lbProtocol"`
+	IdleTimeout  *int    `pulumi:"idleTimeout"`
+	InstancePort *int    `pulumi:"instancePort"`
+	LbPort       *int    `pulumi:"lbPort"`
+	LbProtocol   *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId string `pulumi:"loadBalancerId"`
+	LoadBalancerId           string  `pulumi:"loadBalancerId"`
 	MasterSlaveServerGroupId *string `pulumi:"masterSlaveServerGroupId"`
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout *int `pulumi:"persistenceTimeout"`
@@ -433,7 +433,7 @@ type listenerArgs struct {
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession *string `pulumi:"stickySession"`
@@ -498,14 +498,14 @@ type ListenerArgs struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout pulumi.IntPtrInput
+	IdleTimeout  pulumi.IntPtrInput
 	InstancePort pulumi.IntPtrInput
-	LbPort pulumi.IntPtrInput
-	LbProtocol pulumi.StringPtrInput
+	LbPort       pulumi.IntPtrInput
+	LbProtocol   pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
-	LoadBalancerId pulumi.StringInput
+	LoadBalancerId           pulumi.StringInput
 	MasterSlaveServerGroupId pulumi.StringPtrInput
 	// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
 	PersistenceTimeout pulumi.IntPtrInput
@@ -519,7 +519,7 @@ type ListenerArgs struct {
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	SslCertificateId pulumi.StringPtrInput
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrInput
@@ -536,4 +536,3 @@ type ListenerArgs struct {
 func (ListenerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerArgs)(nil)).Elem()
 }
-

@@ -13,7 +13,7 @@ import (
 
 // Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
 //
-// > **NOTE:** Available in v1.71.0+. 
+// > **NOTE:** Available in v1.71.0+.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/adb_account.html.markdown.
 type Account struct {
@@ -25,7 +25,7 @@ type Account struct {
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
-	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
+	AccountType     pulumi.StringPtrOutput `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -74,7 +74,7 @@ type accountState struct {
 	AccountName *string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
 	AccountPassword *string `pulumi:"accountPassword"`
-	AccountType *string `pulumi:"accountType"`
+	AccountType     *string `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -90,7 +90,7 @@ type AccountState struct {
 	AccountName pulumi.StringPtrInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
 	AccountPassword pulumi.StringPtrInput
-	AccountType pulumi.StringPtrInput
+	AccountType     pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -110,7 +110,7 @@ type accountArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
 	AccountPassword *string `pulumi:"accountPassword"`
-	AccountType *string `pulumi:"accountType"`
+	AccountType     *string `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -127,7 +127,7 @@ type AccountArgs struct {
 	AccountName pulumi.StringInput
 	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
 	AccountPassword pulumi.StringPtrInput
-	AccountType pulumi.StringPtrInput
+	AccountType     pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -139,4 +139,3 @@ type AccountArgs struct {
 func (AccountArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountArgs)(nil)).Elem()
 }
-

@@ -63,6 +63,9 @@ export interface GetDomainsArgs {
      * A regex string to filter results by the group name.
      */
     readonly groupNameRegex?: string;
+    /**
+     * A list of domain IDs.
+     */
     readonly ids?: string[];
     /**
      * Cloud analysis product ID.

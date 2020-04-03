@@ -16,7 +16,18 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAccountAliases.InvokeAsync() instead")]
         public static Task<GetAccountAliasesResult> GetAccountAliases(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAccountAliases
+    {
+        /// <summary>
+        /// This data source provides an alias for the Alibaba Cloud account.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
+        /// </summary>
+        public static Task<GetAccountAliasesResult> InvokeAsync(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

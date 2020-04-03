@@ -111,4 +111,3 @@ type LogTailAttachmentArgs struct {
 func (LogTailAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logTailAttachmentArgs)(nil)).Elem()
 }
-

@@ -32,7 +32,34 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
         /// </summary>
+        [Obsolete("Use GetAcls.InvokeAsync() instead")]
         public static Task<GetAclsResult> GetAcls(GetAclsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetAcls
+    {
+        /// <summary>
+        /// This data source provides the acls in the region.
+        /// 
+        /// ## Entry Block
+        /// 
+        /// The entry mapping supports the following:
+        /// 
+        /// * `entry`   - An IP addresses or CIDR blocks.
+        /// * `comment` - the comment of the entry.
+        /// 
+        /// ## Listener Block
+        /// 
+        /// The Listener mapping supports the following:
+        /// 
+        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
+        /// * `frontend_port` - the listener port.
+        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
+        /// * `acl_type`      - the type of acl (such as white/black).
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
+        /// </summary>
+        public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
