@@ -8,6 +8,7 @@ export * from "./bandwidthPackageAttachment";
 export * from "./flowLog";
 export * from "./getBandwidthLimits";
 export * from "./getBandwidthPackages";
+export * from "./getFlowlogs";
 export * from "./getInstances";
 export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";

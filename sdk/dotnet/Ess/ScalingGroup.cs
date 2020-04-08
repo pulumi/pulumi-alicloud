@@ -26,6 +26,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> DefaultCooldown { get; private set; } = null!;
 
         /// <summary>
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// </summary>
+        [Output("desiredCapacity")]
+        public Output<int?> DesiredCapacity { get; private set; } = null!;
+
+        /// <summary>
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -172,6 +178,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("defaultCooldown")]
         public Input<int>? DefaultCooldown { get; set; }
 
+        /// <summary>
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// </summary>
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
+
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;
 
@@ -297,6 +309,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("defaultCooldown")]
         public Input<int>? DefaultCooldown { get; set; }
+
+        /// <summary>
+        /// Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+        /// </summary>
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
 
         [Input("loadbalancerIds")]
         private InputList<string>? _loadbalancerIds;

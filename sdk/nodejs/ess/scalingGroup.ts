@@ -44,6 +44,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly defaultCooldown!: pulumi.Output<number | undefined>;
     /**
+     * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+     */
+    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -115,6 +119,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             const state = argsOrState as ScalingGroupState | undefined;
             inputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             inputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
+            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
             inputs["maxSize"] = state ? state.maxSize : undefined;
             inputs["minSize"] = state ? state.minSize : undefined;
@@ -137,6 +142,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             }
             inputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
             inputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
+            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
             inputs["maxSize"] = args ? args.maxSize : undefined;
             inputs["minSize"] = args ? args.minSize : undefined;
@@ -175,6 +181,10 @@ export interface ScalingGroupState {
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      */
     readonly defaultCooldown?: pulumi.Input<number>;
+    /**
+     * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+     */
+    readonly desiredCapacity?: pulumi.Input<number>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
@@ -250,6 +260,10 @@ export interface ScalingGroupArgs {
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      */
     readonly defaultCooldown?: pulumi.Input<number>;
+    /**
+     * Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+     */
+    readonly desiredCapacity?: pulumi.Input<number>;
     /**
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.

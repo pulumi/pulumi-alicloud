@@ -75,6 +75,7 @@ class Provider(pulumi.ProviderResource):
           * `location` (`pulumi.Input[str]`)
           * `log` (`pulumi.Input[str]`)
           * `market` (`pulumi.Input[str]`)
+          * `maxcompute` (`pulumi.Input[str]`)
           * `mns` (`pulumi.Input[str]`)
           * `nas` (`pulumi.Input[str]`)
           * `ons` (`pulumi.Input[str]`)

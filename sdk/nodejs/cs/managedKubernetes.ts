@@ -112,7 +112,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -401,7 +401,7 @@ export interface ManagedKubernetesState {
      */
     readonly podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
      */
     readonly podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -558,7 +558,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds` or `masterVswtichIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswtichIds`.but must be in same availability zones.
      */
     readonly podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

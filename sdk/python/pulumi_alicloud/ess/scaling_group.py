@@ -20,6 +20,10 @@ class ScalingGroup(pulumi.CustomResource):
     """
     Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
     """
+    desired_capacity: pulumi.Output[float]
+    """
+    Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
+    """
     loadbalancer_ids: pulumi.Output[list]
     """
     If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
@@ -77,7 +81,7 @@ class ScalingGroup(pulumi.CustomResource):
     """
     List of virtual switch IDs in which the ecs instances to be launched.
     """
-    def __init__(__self__, resource_name, opts=None, db_instance_ids=None, default_cooldown=None, loadbalancer_ids=None, max_size=None, min_size=None, multi_az_policy=None, on_demand_base_capacity=None, on_demand_percentage_above_base_capacity=None, removal_policies=None, scaling_group_name=None, spot_instance_pools=None, spot_instance_remedy=None, vswitch_id=None, vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, db_instance_ids=None, default_cooldown=None, desired_capacity=None, loadbalancer_ids=None, max_size=None, min_size=None, multi_az_policy=None, on_demand_base_capacity=None, on_demand_percentage_above_base_capacity=None, removal_policies=None, scaling_group_name=None, spot_instance_pools=None, spot_instance_remedy=None, vswitch_id=None, vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScalingGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -86,6 +90,7 @@ class ScalingGroup(pulumi.CustomResource):
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
         :param pulumi.Input[float] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
+        :param pulumi.Input[float] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[list] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -127,6 +132,7 @@ class ScalingGroup(pulumi.CustomResource):
 
             __props__['db_instance_ids'] = db_instance_ids
             __props__['default_cooldown'] = default_cooldown
+            __props__['desired_capacity'] = desired_capacity
             __props__['loadbalancer_ids'] = loadbalancer_ids
             if max_size is None:
                 raise TypeError("Missing required property 'max_size'")
@@ -150,7 +156,7 @@ class ScalingGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, db_instance_ids=None, default_cooldown=None, loadbalancer_ids=None, max_size=None, min_size=None, multi_az_policy=None, on_demand_base_capacity=None, on_demand_percentage_above_base_capacity=None, removal_policies=None, scaling_group_name=None, spot_instance_pools=None, spot_instance_remedy=None, vswitch_id=None, vswitch_ids=None):
+    def get(resource_name, id, opts=None, db_instance_ids=None, default_cooldown=None, desired_capacity=None, loadbalancer_ids=None, max_size=None, min_size=None, multi_az_policy=None, on_demand_base_capacity=None, on_demand_percentage_above_base_capacity=None, removal_policies=None, scaling_group_name=None, spot_instance_pools=None, spot_instance_remedy=None, vswitch_id=None, vswitch_ids=None):
         """
         Get an existing ScalingGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -162,6 +168,7 @@ class ScalingGroup(pulumi.CustomResource):
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
         :param pulumi.Input[float] default_cooldown: Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
+        :param pulumi.Input[float] desired_capacity: Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         :param pulumi.Input[list] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
@@ -190,6 +197,7 @@ class ScalingGroup(pulumi.CustomResource):
 
         __props__["db_instance_ids"] = db_instance_ids
         __props__["default_cooldown"] = default_cooldown
+        __props__["desired_capacity"] = desired_capacity
         __props__["loadbalancer_ids"] = loadbalancer_ids
         __props__["max_size"] = max_size
         __props__["min_size"] = min_size

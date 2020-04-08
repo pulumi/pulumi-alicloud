@@ -906,8 +906,7 @@ type ManagedKubernetesConnections struct {
 	ApiServerInternet *string `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet *string `pulumi:"apiServerIntranet"`
-	// Master node SSH IP address.
-	MasterPublicIp *string `pulumi:"masterPublicIp"`
+	MasterPublicIp    *string `pulumi:"masterPublicIp"`
 	// Service Access Domain.
 	ServiceDomain *string `pulumi:"serviceDomain"`
 }
@@ -924,8 +923,7 @@ type ManagedKubernetesConnectionsArgs struct {
 	ApiServerInternet pulumi.StringPtrInput `pulumi:"apiServerInternet"`
 	// API Server Intranet endpoint.
 	ApiServerIntranet pulumi.StringPtrInput `pulumi:"apiServerIntranet"`
-	// Master node SSH IP address.
-	MasterPublicIp pulumi.StringPtrInput `pulumi:"masterPublicIp"`
+	MasterPublicIp    pulumi.StringPtrInput `pulumi:"masterPublicIp"`
 	// Service Access Domain.
 	ServiceDomain pulumi.StringPtrInput `pulumi:"serviceDomain"`
 }
@@ -1009,7 +1007,6 @@ func (o ManagedKubernetesConnectionsOutput) ApiServerIntranet() pulumi.StringPtr
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
-// Master node SSH IP address.
 func (o ManagedKubernetesConnectionsOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }
@@ -1047,7 +1044,6 @@ func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.String
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
 }
 
-// Master node SSH IP address.
 func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
 }

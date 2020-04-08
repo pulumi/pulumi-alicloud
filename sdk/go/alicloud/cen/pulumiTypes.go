@@ -315,6 +315,158 @@ func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBand
 	}).(GetBandwidthPackagesPackageOutput)
 }
 
+type GetFlowlogsFlowlog struct {
+	// The ID of the CEN Instance.
+	CenId string `pulumi:"cenId"`
+	// The description of flowlog.
+	Description string `pulumi:"description"`
+	// ID of the CEN flow log.
+	FlowLogId string `pulumi:"flowLogId"`
+	// The name of flowlog.
+	FlowLogName string `pulumi:"flowLogName"`
+	// ID of the CEN flow log.
+	Id string `pulumi:"id"`
+	// The name of the log store which is in the  `projectName` SLS project.
+	LogStoreName string `pulumi:"logStoreName"`
+	// The name of the SLS project.
+	ProjectName string `pulumi:"projectName"`
+	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	Status string `pulumi:"status"`
+}
+
+type GetFlowlogsFlowlogInput interface {
+	pulumi.Input
+
+	ToGetFlowlogsFlowlogOutput() GetFlowlogsFlowlogOutput
+	ToGetFlowlogsFlowlogOutputWithContext(context.Context) GetFlowlogsFlowlogOutput
+}
+
+type GetFlowlogsFlowlogArgs struct {
+	// The ID of the CEN Instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The description of flowlog.
+	Description pulumi.StringInput `pulumi:"description"`
+	// ID of the CEN flow log.
+	FlowLogId pulumi.StringInput `pulumi:"flowLogId"`
+	// The name of flowlog.
+	FlowLogName pulumi.StringInput `pulumi:"flowLogName"`
+	// ID of the CEN flow log.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the log store which is in the  `projectName` SLS project.
+	LogStoreName pulumi.StringInput `pulumi:"logStoreName"`
+	// The name of the SLS project.
+	ProjectName pulumi.StringInput `pulumi:"projectName"`
+	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetFlowlogsFlowlogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlowlogsFlowlog)(nil)).Elem()
+}
+
+func (i GetFlowlogsFlowlogArgs) ToGetFlowlogsFlowlogOutput() GetFlowlogsFlowlogOutput {
+	return i.ToGetFlowlogsFlowlogOutputWithContext(context.Background())
+}
+
+func (i GetFlowlogsFlowlogArgs) ToGetFlowlogsFlowlogOutputWithContext(ctx context.Context) GetFlowlogsFlowlogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlowlogsFlowlogOutput)
+}
+
+type GetFlowlogsFlowlogArrayInput interface {
+	pulumi.Input
+
+	ToGetFlowlogsFlowlogArrayOutput() GetFlowlogsFlowlogArrayOutput
+	ToGetFlowlogsFlowlogArrayOutputWithContext(context.Context) GetFlowlogsFlowlogArrayOutput
+}
+
+type GetFlowlogsFlowlogArray []GetFlowlogsFlowlogInput
+
+func (GetFlowlogsFlowlogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlowlogsFlowlog)(nil)).Elem()
+}
+
+func (i GetFlowlogsFlowlogArray) ToGetFlowlogsFlowlogArrayOutput() GetFlowlogsFlowlogArrayOutput {
+	return i.ToGetFlowlogsFlowlogArrayOutputWithContext(context.Background())
+}
+
+func (i GetFlowlogsFlowlogArray) ToGetFlowlogsFlowlogArrayOutputWithContext(ctx context.Context) GetFlowlogsFlowlogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlowlogsFlowlogArrayOutput)
+}
+
+type GetFlowlogsFlowlogOutput struct{ *pulumi.OutputState }
+
+func (GetFlowlogsFlowlogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlowlogsFlowlog)(nil)).Elem()
+}
+
+func (o GetFlowlogsFlowlogOutput) ToGetFlowlogsFlowlogOutput() GetFlowlogsFlowlogOutput {
+	return o
+}
+
+func (o GetFlowlogsFlowlogOutput) ToGetFlowlogsFlowlogOutputWithContext(ctx context.Context) GetFlowlogsFlowlogOutput {
+	return o
+}
+
+// The ID of the CEN Instance.
+func (o GetFlowlogsFlowlogOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The description of flowlog.
+func (o GetFlowlogsFlowlogOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ID of the CEN flow log.
+func (o GetFlowlogsFlowlogOutput) FlowLogId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.FlowLogId }).(pulumi.StringOutput)
+}
+
+// The name of flowlog.
+func (o GetFlowlogsFlowlogOutput) FlowLogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.FlowLogName }).(pulumi.StringOutput)
+}
+
+// ID of the CEN flow log.
+func (o GetFlowlogsFlowlogOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the log store which is in the  `projectName` SLS project.
+func (o GetFlowlogsFlowlogOutput) LogStoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.LogStoreName }).(pulumi.StringOutput)
+}
+
+// The name of the SLS project.
+func (o GetFlowlogsFlowlogOutput) ProjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.ProjectName }).(pulumi.StringOutput)
+}
+
+// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+func (o GetFlowlogsFlowlogOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetFlowlogsFlowlogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFlowlogsFlowlogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFlowlogsFlowlog)(nil)).Elem()
+}
+
+func (o GetFlowlogsFlowlogArrayOutput) ToGetFlowlogsFlowlogArrayOutput() GetFlowlogsFlowlogArrayOutput {
+	return o
+}
+
+func (o GetFlowlogsFlowlogArrayOutput) ToGetFlowlogsFlowlogArrayOutputWithContext(ctx context.Context) GetFlowlogsFlowlogArrayOutput {
+	return o
+}
+
+func (o GetFlowlogsFlowlogArrayOutput) Index(i pulumi.IntInput) GetFlowlogsFlowlogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFlowlogsFlowlog {
+		return vs[0].([]GetFlowlogsFlowlog)[vs[1].(int)]
+	}).(GetFlowlogsFlowlogOutput)
+}
+
 type GetInstancesInstance struct {
 	// List of CEN Bandwidth Package IDs in the specified CEN instance.
 	BandwidthPackageIds []string `pulumi:"bandwidthPackageIds"`
@@ -856,6 +1008,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetBandwidthPackagesPackageArrayOutput{})
+	pulumi.RegisterOutputType(GetFlowlogsFlowlogOutput{})
+	pulumi.RegisterOutputType(GetFlowlogsFlowlogArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionRouteEntriesEntryOutput{})

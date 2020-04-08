@@ -3,8 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .alias import *
 from .ciphertext import *
 from .get_ciphertext import *
 from .get_keys import *
 from .get_plaintext import *
 from .key import *
+from .secret import *

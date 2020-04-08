@@ -80,6 +80,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly retentionPeriod!: pulumi.Output<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    public readonly securityGroupId!: pulumi.Output<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
@@ -89,6 +93,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
     public readonly storageEngine!: pulumi.Output<string>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -122,9 +130,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
+            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             inputs["shardLists"] = state ? state.shardLists : undefined;
             inputs["storageEngine"] = state ? state.storageEngine : undefined;
+            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -148,9 +158,11 @@ export class ShardingInstance extends pulumi.CustomResource {
             inputs["mongoLists"] = args ? args.mongoLists : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             inputs["shardLists"] = args ? args.shardLists : undefined;
             inputs["storageEngine"] = args ? args.storageEngine : undefined;
+            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["retentionPeriod"] = undefined /*out*/;
@@ -217,6 +229,10 @@ export interface ShardingInstanceState {
      */
     readonly retentionPeriod?: pulumi.Input<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -226,6 +242,10 @@ export interface ShardingInstanceState {
      */
     readonly shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     readonly storageEngine?: pulumi.Input<string>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
@@ -284,6 +304,10 @@ export interface ShardingInstanceArgs {
      */
     readonly period?: pulumi.Input<number>;
     /**
+     * The Security Group ID of ECS.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -293,6 +317,10 @@ export interface ShardingInstanceArgs {
      */
     readonly shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     readonly storageEngine?: pulumi.Input<string>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */

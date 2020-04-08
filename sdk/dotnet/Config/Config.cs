@@ -123,6 +123,7 @@ namespace Pulumi.AliCloud
         public string? Location { get; set; }
         public string? Log { get; set; }
         public string? Market { get; set; }
+        public string? Maxcompute { get; set; }
         public string? Mns { get; set; }
         public string? Nas { get; set; }
         public string? Ons { get; set; }

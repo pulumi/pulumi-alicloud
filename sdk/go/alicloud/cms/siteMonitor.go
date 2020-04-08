@@ -14,15 +14,16 @@ import (
 type SiteMonitor struct {
 	pulumi.CustomResourceState
 
-	Address     pulumi.StringOutput      `pulumi:"address"`
-	AlertIds    pulumi.StringArrayOutput `pulumi:"alertIds"`
-	CreateTime  pulumi.StringOutput      `pulumi:"createTime"`
-	Interval    pulumi.IntPtrOutput      `pulumi:"interval"`
-	OptionsJson pulumi.StringPtrOutput   `pulumi:"optionsJson"`
-	TaskName    pulumi.StringOutput      `pulumi:"taskName"`
-	TaskState   pulumi.StringOutput      `pulumi:"taskState"`
-	TaskType    pulumi.StringOutput      `pulumi:"taskType"`
-	UpdateTime  pulumi.StringOutput      `pulumi:"updateTime"`
+	Address     pulumi.StringOutput           `pulumi:"address"`
+	AlertIds    pulumi.StringArrayOutput      `pulumi:"alertIds"`
+	CreateTime  pulumi.StringOutput           `pulumi:"createTime"`
+	Interval    pulumi.IntPtrOutput           `pulumi:"interval"`
+	IspCities   SiteMonitorIspCityArrayOutput `pulumi:"ispCities"`
+	OptionsJson pulumi.StringPtrOutput        `pulumi:"optionsJson"`
+	TaskName    pulumi.StringOutput           `pulumi:"taskName"`
+	TaskState   pulumi.StringOutput           `pulumi:"taskState"`
+	TaskType    pulumi.StringOutput           `pulumi:"taskType"`
+	UpdateTime  pulumi.StringOutput           `pulumi:"updateTime"`
 }
 
 // NewSiteMonitor registers a new resource with the given unique name, arguments, and options.
@@ -62,15 +63,16 @@ func GetSiteMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SiteMonitor resources.
 type siteMonitorState struct {
-	Address     *string  `pulumi:"address"`
-	AlertIds    []string `pulumi:"alertIds"`
-	CreateTime  *string  `pulumi:"createTime"`
-	Interval    *int     `pulumi:"interval"`
-	OptionsJson *string  `pulumi:"optionsJson"`
-	TaskName    *string  `pulumi:"taskName"`
-	TaskState   *string  `pulumi:"taskState"`
-	TaskType    *string  `pulumi:"taskType"`
-	UpdateTime  *string  `pulumi:"updateTime"`
+	Address     *string              `pulumi:"address"`
+	AlertIds    []string             `pulumi:"alertIds"`
+	CreateTime  *string              `pulumi:"createTime"`
+	Interval    *int                 `pulumi:"interval"`
+	IspCities   []SiteMonitorIspCity `pulumi:"ispCities"`
+	OptionsJson *string              `pulumi:"optionsJson"`
+	TaskName    *string              `pulumi:"taskName"`
+	TaskState   *string              `pulumi:"taskState"`
+	TaskType    *string              `pulumi:"taskType"`
+	UpdateTime  *string              `pulumi:"updateTime"`
 }
 
 type SiteMonitorState struct {
@@ -78,6 +80,7 @@ type SiteMonitorState struct {
 	AlertIds    pulumi.StringArrayInput
 	CreateTime  pulumi.StringPtrInput
 	Interval    pulumi.IntPtrInput
+	IspCities   SiteMonitorIspCityArrayInput
 	OptionsJson pulumi.StringPtrInput
 	TaskName    pulumi.StringPtrInput
 	TaskState   pulumi.StringPtrInput
@@ -90,12 +93,13 @@ func (SiteMonitorState) ElementType() reflect.Type {
 }
 
 type siteMonitorArgs struct {
-	Address     string   `pulumi:"address"`
-	AlertIds    []string `pulumi:"alertIds"`
-	Interval    *int     `pulumi:"interval"`
-	OptionsJson *string  `pulumi:"optionsJson"`
-	TaskName    string   `pulumi:"taskName"`
-	TaskType    string   `pulumi:"taskType"`
+	Address     string               `pulumi:"address"`
+	AlertIds    []string             `pulumi:"alertIds"`
+	Interval    *int                 `pulumi:"interval"`
+	IspCities   []SiteMonitorIspCity `pulumi:"ispCities"`
+	OptionsJson *string              `pulumi:"optionsJson"`
+	TaskName    string               `pulumi:"taskName"`
+	TaskType    string               `pulumi:"taskType"`
 }
 
 // The set of arguments for constructing a SiteMonitor resource.
@@ -103,6 +107,7 @@ type SiteMonitorArgs struct {
 	Address     pulumi.StringInput
 	AlertIds    pulumi.StringArrayInput
 	Interval    pulumi.IntPtrInput
+	IspCities   SiteMonitorIspCityArrayInput
 	OptionsJson pulumi.StringPtrInput
 	TaskName    pulumi.StringInput
 	TaskType    pulumi.StringInput

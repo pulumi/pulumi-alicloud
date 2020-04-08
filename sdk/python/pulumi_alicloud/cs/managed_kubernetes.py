@@ -33,7 +33,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
       * `api_server_internet` (`str`) - API Server Internet endpoint.
       * `api_server_intranet` (`str`) - API Server Intranet endpoint.
-      * `master_public_ip` (`str`) - Master node SSH IP address.
+      * `master_public_ip` (`str`)
       * `service_domain` (`str`) - Service Access Domain.
     """
     cpu_policy: pulumi.Output[str]
@@ -95,7 +95,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     pod_vswitch_ids: pulumi.Output[list]
     """
-    [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+    [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
     """
     proxy_mode: pulumi.Output[str]
     """
@@ -200,7 +200,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
-        :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
@@ -324,7 +324,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
-        :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -354,7 +354,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
           * `api_server_internet` (`pulumi.Input[str]`) - API Server Internet endpoint.
           * `api_server_intranet` (`pulumi.Input[str]`) - API Server Intranet endpoint.
-          * `master_public_ip` (`pulumi.Input[str]`) - Master node SSH IP address.
+          * `master_public_ip` (`pulumi.Input[str]`)
           * `service_domain` (`pulumi.Input[str]`) - Service Access Domain.
 
         The **worker_nodes** object supports the following:

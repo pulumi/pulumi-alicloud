@@ -18,7 +18,13 @@ class Instance(pulumi.CustomResource):
     """
     The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, __props__=None, __name__=None, __opts__=None):
+    protection_level: pulumi.Output[str]
+    """
+    (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+    - FULL: No overlapping CIDR blocks are allowed.
+    - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+    """
+    def __init__(__self__, resource_name, opts=None, description=None, name=None, protection_level=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 
@@ -30,6 +36,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
         :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        :param pulumi.Input[str] protection_level: (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+               - FULL: No overlapping CIDR blocks are allowed.
+               - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,6 +59,7 @@ class Instance(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
+            __props__['protection_level'] = protection_level
         super(Instance, __self__).__init__(
             'alicloud:cen/instance:Instance',
             resource_name,
@@ -57,7 +67,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, name=None):
+    def get(resource_name, id, opts=None, description=None, name=None, protection_level=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -67,6 +77,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
         :param pulumi.Input[str] name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        :param pulumi.Input[str] protection_level: (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+               - FULL: No overlapping CIDR blocks are allowed.
+               - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -74,6 +87,7 @@ class Instance(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["name"] = name
+        __props__["protection_level"] = protection_level
         return Instance(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

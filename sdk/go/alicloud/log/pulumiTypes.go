@@ -11,6 +11,265 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+type AlertNotificationList struct {
+	// Notice content of alarm.
+	Content string `pulumi:"content"`
+	// Email address list.
+	EmailLists []string `pulumi:"emailLists"`
+	// SMS sending mobile number.
+	MobileLists []string `pulumi:"mobileLists"`
+	// Request address.
+	ServiceUri *string `pulumi:"serviceUri"`
+	// Notification type. support Email, SMS, DingTalk.
+	Type string `pulumi:"type"`
+}
+
+type AlertNotificationListInput interface {
+	pulumi.Input
+
+	ToAlertNotificationListOutput() AlertNotificationListOutput
+	ToAlertNotificationListOutputWithContext(context.Context) AlertNotificationListOutput
+}
+
+type AlertNotificationListArgs struct {
+	// Notice content of alarm.
+	Content pulumi.StringInput `pulumi:"content"`
+	// Email address list.
+	EmailLists pulumi.StringArrayInput `pulumi:"emailLists"`
+	// SMS sending mobile number.
+	MobileLists pulumi.StringArrayInput `pulumi:"mobileLists"`
+	// Request address.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+	// Notification type. support Email, SMS, DingTalk.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertNotificationListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertNotificationList)(nil)).Elem()
+}
+
+func (i AlertNotificationListArgs) ToAlertNotificationListOutput() AlertNotificationListOutput {
+	return i.ToAlertNotificationListOutputWithContext(context.Background())
+}
+
+func (i AlertNotificationListArgs) ToAlertNotificationListOutputWithContext(ctx context.Context) AlertNotificationListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertNotificationListOutput)
+}
+
+type AlertNotificationListArrayInput interface {
+	pulumi.Input
+
+	ToAlertNotificationListArrayOutput() AlertNotificationListArrayOutput
+	ToAlertNotificationListArrayOutputWithContext(context.Context) AlertNotificationListArrayOutput
+}
+
+type AlertNotificationListArray []AlertNotificationListInput
+
+func (AlertNotificationListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertNotificationList)(nil)).Elem()
+}
+
+func (i AlertNotificationListArray) ToAlertNotificationListArrayOutput() AlertNotificationListArrayOutput {
+	return i.ToAlertNotificationListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertNotificationListArray) ToAlertNotificationListArrayOutputWithContext(ctx context.Context) AlertNotificationListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertNotificationListArrayOutput)
+}
+
+type AlertNotificationListOutput struct{ *pulumi.OutputState }
+
+func (AlertNotificationListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertNotificationList)(nil)).Elem()
+}
+
+func (o AlertNotificationListOutput) ToAlertNotificationListOutput() AlertNotificationListOutput {
+	return o
+}
+
+func (o AlertNotificationListOutput) ToAlertNotificationListOutputWithContext(ctx context.Context) AlertNotificationListOutput {
+	return o
+}
+
+// Notice content of alarm.
+func (o AlertNotificationListOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertNotificationList) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Email address list.
+func (o AlertNotificationListOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertNotificationList) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
+}
+
+// SMS sending mobile number.
+func (o AlertNotificationListOutput) MobileLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertNotificationList) []string { return v.MobileLists }).(pulumi.StringArrayOutput)
+}
+
+// Request address.
+func (o AlertNotificationListOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertNotificationList) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
+}
+
+// Notification type. support Email, SMS, DingTalk.
+func (o AlertNotificationListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertNotificationList) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertNotificationListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertNotificationListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertNotificationList)(nil)).Elem()
+}
+
+func (o AlertNotificationListArrayOutput) ToAlertNotificationListArrayOutput() AlertNotificationListArrayOutput {
+	return o
+}
+
+func (o AlertNotificationListArrayOutput) ToAlertNotificationListArrayOutputWithContext(ctx context.Context) AlertNotificationListArrayOutput {
+	return o
+}
+
+func (o AlertNotificationListArrayOutput) Index(i pulumi.IntInput) AlertNotificationListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertNotificationList {
+		return vs[0].([]AlertNotificationList)[vs[1].(int)]
+	}).(AlertNotificationListOutput)
+}
+
+type AlertQueryList struct {
+	// chart title
+	ChartTitle string `pulumi:"chartTitle"`
+	// end time. example: 20s.
+	End string `pulumi:"end"`
+	// Query logstore
+	Logstore string `pulumi:"logstore"`
+	// query corresponding to chart. example: * AND aliyun.
+	Query string `pulumi:"query"`
+	// begin time. example: -60s.
+	Start string `pulumi:"start"`
+	// default Custom. No need to configure this parameter.
+	TimeSpanType *string `pulumi:"timeSpanType"`
+}
+
+type AlertQueryListInput interface {
+	pulumi.Input
+
+	ToAlertQueryListOutput() AlertQueryListOutput
+	ToAlertQueryListOutputWithContext(context.Context) AlertQueryListOutput
+}
+
+type AlertQueryListArgs struct {
+	// chart title
+	ChartTitle pulumi.StringInput `pulumi:"chartTitle"`
+	// end time. example: 20s.
+	End pulumi.StringInput `pulumi:"end"`
+	// Query logstore
+	Logstore pulumi.StringInput `pulumi:"logstore"`
+	// query corresponding to chart. example: * AND aliyun.
+	Query pulumi.StringInput `pulumi:"query"`
+	// begin time. example: -60s.
+	Start pulumi.StringInput `pulumi:"start"`
+	// default Custom. No need to configure this parameter.
+	TimeSpanType pulumi.StringPtrInput `pulumi:"timeSpanType"`
+}
+
+func (AlertQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertQueryList)(nil)).Elem()
+}
+
+func (i AlertQueryListArgs) ToAlertQueryListOutput() AlertQueryListOutput {
+	return i.ToAlertQueryListOutputWithContext(context.Background())
+}
+
+func (i AlertQueryListArgs) ToAlertQueryListOutputWithContext(ctx context.Context) AlertQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryListOutput)
+}
+
+type AlertQueryListArrayInput interface {
+	pulumi.Input
+
+	ToAlertQueryListArrayOutput() AlertQueryListArrayOutput
+	ToAlertQueryListArrayOutputWithContext(context.Context) AlertQueryListArrayOutput
+}
+
+type AlertQueryListArray []AlertQueryListInput
+
+func (AlertQueryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertQueryList)(nil)).Elem()
+}
+
+func (i AlertQueryListArray) ToAlertQueryListArrayOutput() AlertQueryListArrayOutput {
+	return i.ToAlertQueryListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertQueryListArray) ToAlertQueryListArrayOutputWithContext(ctx context.Context) AlertQueryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertQueryListArrayOutput)
+}
+
+type AlertQueryListOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertQueryList)(nil)).Elem()
+}
+
+func (o AlertQueryListOutput) ToAlertQueryListOutput() AlertQueryListOutput {
+	return o
+}
+
+func (o AlertQueryListOutput) ToAlertQueryListOutputWithContext(ctx context.Context) AlertQueryListOutput {
+	return o
+}
+
+// chart title
+func (o AlertQueryListOutput) ChartTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertQueryList) string { return v.ChartTitle }).(pulumi.StringOutput)
+}
+
+// end time. example: 20s.
+func (o AlertQueryListOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertQueryList) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Query logstore
+func (o AlertQueryListOutput) Logstore() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertQueryList) string { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// query corresponding to chart. example: * AND aliyun.
+func (o AlertQueryListOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertQueryList) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// begin time. example: -60s.
+func (o AlertQueryListOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertQueryList) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// default Custom. No need to configure this parameter.
+func (o AlertQueryListOutput) TimeSpanType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertQueryList) *string { return v.TimeSpanType }).(pulumi.StringPtrOutput)
+}
+
+type AlertQueryListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertQueryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertQueryList)(nil)).Elem()
+}
+
+func (o AlertQueryListArrayOutput) ToAlertQueryListArrayOutput() AlertQueryListArrayOutput {
+	return o
+}
+
+func (o AlertQueryListArrayOutput) ToAlertQueryListArrayOutputWithContext(ctx context.Context) AlertQueryListArrayOutput {
+	return o
+}
+
+func (o AlertQueryListArrayOutput) Index(i pulumi.IntInput) AlertQueryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertQueryList {
+		return vs[0].([]AlertQueryList)[vs[1].(int)]
+	}).(AlertQueryListOutput)
+}
+
 type StoreIndexFieldSearch struct {
 	// The alias of one field.
 	Alias *string `pulumi:"alias"`
@@ -529,6 +788,10 @@ func (o StoreShardArrayOutput) Index(i pulumi.IntInput) StoreShardOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlertNotificationListOutput{})
+	pulumi.RegisterOutputType(AlertNotificationListArrayOutput{})
+	pulumi.RegisterOutputType(AlertQueryListOutput{})
+	pulumi.RegisterOutputType(AlertQueryListArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchArrayOutput{})
 	pulumi.RegisterOutputType(StoreIndexFieldSearchJsonKeyOutput{})
