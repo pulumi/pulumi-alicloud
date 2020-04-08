@@ -122,6 +122,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("securityIpLists")]
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
+        /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Output("sslAction")]
+        public Output<string> SslAction { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        /// </summary>
+        [Output("sslStatus")]
+        public Output<string> SslStatus { get; private set; } = null!;
+
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
 
@@ -314,6 +326,12 @@ namespace Pulumi.AliCloud.MongoDB
             set => _securityIpLists = value;
         }
 
+        /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 
@@ -484,6 +502,18 @@ namespace Pulumi.AliCloud.MongoDB
             get => _securityIpLists ?? (_securityIpLists = new InputList<string>());
             set => _securityIpLists = value;
         }
+
+        /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
+        /// <summary>
+        /// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+        /// </summary>
+        [Input("sslStatus")]
+        public Input<string>? SslStatus { get; set; }
 
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }

@@ -20,6 +20,8 @@ type ScalingGroup struct {
 	DbInstanceIds pulumi.StringArrayOutput `pulumi:"dbInstanceIds"`
 	// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
 	DefaultCooldown pulumi.IntPtrOutput `pulumi:"defaultCooldown"`
+	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -95,6 +97,8 @@ type scalingGroupState struct {
 	DbInstanceIds []string `pulumi:"dbInstanceIds"`
 	// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
 	DefaultCooldown *int `pulumi:"defaultCooldown"`
+	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -137,6 +141,8 @@ type ScalingGroupState struct {
 	DbInstanceIds pulumi.StringArrayInput
 	// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
 	DefaultCooldown pulumi.IntPtrInput
+	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+	DesiredCapacity pulumi.IntPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -183,6 +189,8 @@ type scalingGroupArgs struct {
 	DbInstanceIds []string `pulumi:"dbInstanceIds"`
 	// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
 	DefaultCooldown *int `pulumi:"defaultCooldown"`
+	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
@@ -226,6 +234,8 @@ type ScalingGroupArgs struct {
 	DbInstanceIds pulumi.StringArrayInput
 	// Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
 	DefaultCooldown pulumi.IntPtrInput
+	// Expected number of ECS instances in the scaling group. Value range: [min_size, maxSize].
+	DesiredCapacity pulumi.IntPtrInput
 	// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
 	// - The Server Load Balancer instance must be enabled.
 	// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument

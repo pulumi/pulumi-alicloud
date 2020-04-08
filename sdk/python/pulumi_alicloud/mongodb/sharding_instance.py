@@ -62,6 +62,10 @@ class ShardingInstance(pulumi.CustomResource):
     """
     Instance log backup retention days. Available in 1.42.0+.
     """
+    security_group_id: pulumi.Output[str]
+    """
+    The Security Group ID of ECS.
+    """
     security_ip_lists: pulumi.Output[list]
     """
     List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
@@ -78,6 +82,10 @@ class ShardingInstance(pulumi.CustomResource):
         - 10-GB increments. Unit: GB.
     """
     storage_engine: pulumi.Output[str]
+    tde_status: pulumi.Output[str]
+    """
+    The TDE(Transparent Data Encryption) status.
+    """
     vswitch_id: pulumi.Output[str]
     """
     The virtual switch ID to launch DB instances in one VPC.
@@ -87,7 +95,7 @@ class ShardingInstance(pulumi.CustomResource):
     The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
     """
-    def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, mongo_lists=None, name=None, period=None, security_ip_lists=None, shard_lists=None, storage_engine=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, mongo_lists=None, name=None, period=None, security_group_id=None, security_ip_lists=None, shard_lists=None, storage_engine=None, tde_status=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ShardingInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -104,9 +112,11 @@ class ShardingInstance(pulumi.CustomResource):
                * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+        :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[list] shard_lists: the shard-node count can be purchased is in range of [2, 32].
                * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -158,11 +168,13 @@ class ShardingInstance(pulumi.CustomResource):
             __props__['mongo_lists'] = mongo_lists
             __props__['name'] = name
             __props__['period'] = period
+            __props__['security_group_id'] = security_group_id
             __props__['security_ip_lists'] = security_ip_lists
             if shard_lists is None:
                 raise TypeError("Missing required property 'shard_lists'")
             __props__['shard_lists'] = shard_lists
             __props__['storage_engine'] = storage_engine
+            __props__['tde_status'] = tde_status
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
             __props__['retention_period'] = None
@@ -173,7 +185,7 @@ class ShardingInstance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_password=None, backup_periods=None, backup_time=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, mongo_lists=None, name=None, period=None, retention_period=None, security_ip_lists=None, shard_lists=None, storage_engine=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, account_password=None, backup_periods=None, backup_time=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, mongo_lists=None, name=None, period=None, retention_period=None, security_group_id=None, security_ip_lists=None, shard_lists=None, storage_engine=None, tde_status=None, vswitch_id=None, zone_id=None):
         """
         Get an existing ShardingInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -194,9 +206,11 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[float] retention_period: Instance log backup retention days. Available in 1.42.0+.
+        :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[list] shard_lists: the shard-node count can be purchased is in range of [2, 32].
                * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -232,9 +246,11 @@ class ShardingInstance(pulumi.CustomResource):
         __props__["name"] = name
         __props__["period"] = period
         __props__["retention_period"] = retention_period
+        __props__["security_group_id"] = security_group_id
         __props__["security_ip_lists"] = security_ip_lists
         __props__["shard_lists"] = shard_lists
         __props__["storage_engine"] = storage_engine
+        __props__["tde_status"] = tde_status
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
         return ShardingInstance(resource_name, opts=opts, __props__=__props__)

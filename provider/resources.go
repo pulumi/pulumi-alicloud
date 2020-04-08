@@ -56,6 +56,7 @@ const (
 	kvstoreMod       = "KVStore"
 	logMod           = "Log"
 	marketPlaceMod   = "MarketPlace"
+	maxComputeMod    = "MaxCompute"
 	mongoDbMod       = "MongoDB"
 	mnsMod           = "Mns"
 	nasMod           = "Nas"
@@ -337,6 +338,8 @@ func Provider() tfbridge.ProviderInfo {
 			// KMS
 			"alicloud_kms_key":        {Tok: resource(kmsMod, "Key")},
 			"alicloud_kms_ciphertext": {Tok: resource(kmsMod, "Ciphertext")},
+			"alicloud_kms_secret":     {Tok: resource(kmsMod, "Secret")},
+			"alicloud_kms_alias":      {Tok: resource(kmsMod, "Alias")},
 
 			// KVStore
 			"alicloud_kvstore_backup_policy": {Tok: resource(kvstoreMod, "BackupPolicy")},
@@ -350,9 +353,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_log_store_index":    {Tok: resource(logMod, "StoreIndex")},
 			"alicloud_logtail_attachment": {Tok: resource(logMod, "LogTailAttachment")},
 			"alicloud_logtail_config":     {Tok: resource(logMod, "LogTailConfig")},
+			"alicloud_log_alert":          {Tok: resource(logMod, "Alert")},
 
 			// Marketplace
 			"alicloud_market_order": {Tok: resource(marketPlaceMod, "Order")},
+
+			// MaxCompute
+			"alicloud_maxcompute_project": {Tok: resource(maxComputeMod, "Project")},
 
 			// MongoDb
 			"alicloud_mongodb_instance":          {Tok: resource(mongoDbMod, "Instance")},
@@ -545,6 +552,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_instances":            {Tok: dataSource(cenMod, "getInstances")},
 			"alicloud_cen_route_entries":        {Tok: dataSource(cenMod, "getRouteEntries")},
 			"alicloud_cen_region_route_entries": {Tok: dataSource(cenMod, "getRegionRouteEntries")},
+			"alicloud_cen_flowlogs":             {Tok: dataSource(cenMod, "getFlowlogs")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},

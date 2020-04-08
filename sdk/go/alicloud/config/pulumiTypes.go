@@ -104,6 +104,7 @@ type Endpoints struct {
 	Location      *string `pulumi:"location"`
 	Log           *string `pulumi:"log"`
 	Market        *string `pulumi:"market"`
+	Maxcompute    *string `pulumi:"maxcompute"`
 	Mns           *string `pulumi:"mns"`
 	Nas           *string `pulumi:"nas"`
 	Ons           *string `pulumi:"ons"`
@@ -155,6 +156,7 @@ type EndpointsArgs struct {
 	Location      pulumi.StringPtrInput `pulumi:"location"`
 	Log           pulumi.StringPtrInput `pulumi:"log"`
 	Market        pulumi.StringPtrInput `pulumi:"market"`
+	Maxcompute    pulumi.StringPtrInput `pulumi:"maxcompute"`
 	Mns           pulumi.StringPtrInput `pulumi:"mns"`
 	Nas           pulumi.StringPtrInput `pulumi:"nas"`
 	Ons           pulumi.StringPtrInput `pulumi:"ons"`
@@ -330,6 +332,10 @@ func (o EndpointsOutput) Log() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Market() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Market }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Maxcompute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Maxcompute }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Mns() pulumi.StringPtrOutput {

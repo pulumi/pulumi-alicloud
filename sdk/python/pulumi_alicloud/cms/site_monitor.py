@@ -14,16 +14,22 @@ class SiteMonitor(pulumi.CustomResource):
     alert_ids: pulumi.Output[list]
     create_time: pulumi.Output[str]
     interval: pulumi.Output[float]
+    isp_cities: pulumi.Output[list]
     options_json: pulumi.Output[str]
     task_name: pulumi.Output[str]
     task_state: pulumi.Output[str]
     task_type: pulumi.Output[str]
     update_time: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, address=None, alert_ids=None, interval=None, options_json=None, task_name=None, task_type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, address=None, alert_ids=None, interval=None, isp_cities=None, options_json=None, task_name=None, task_type=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a SiteMonitor resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        The **isp_cities** object supports the following:
+
+          * `city` (`pulumi.Input[str]`)
+          * `isp` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,6 +53,7 @@ class SiteMonitor(pulumi.CustomResource):
             __props__['address'] = address
             __props__['alert_ids'] = alert_ids
             __props__['interval'] = interval
+            __props__['isp_cities'] = isp_cities
             __props__['options_json'] = options_json
             if task_name is None:
                 raise TypeError("Missing required property 'task_name'")
@@ -64,7 +71,7 @@ class SiteMonitor(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, address=None, alert_ids=None, create_time=None, interval=None, options_json=None, task_name=None, task_state=None, task_type=None, update_time=None):
+    def get(resource_name, id, opts=None, address=None, alert_ids=None, create_time=None, interval=None, isp_cities=None, options_json=None, task_name=None, task_state=None, task_type=None, update_time=None):
         """
         Get an existing SiteMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -72,6 +79,11 @@ class SiteMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        The **isp_cities** object supports the following:
+
+          * `city` (`pulumi.Input[str]`)
+          * `isp` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -81,6 +93,7 @@ class SiteMonitor(pulumi.CustomResource):
         __props__["alert_ids"] = alert_ids
         __props__["create_time"] = create_time
         __props__["interval"] = interval
+        __props__["isp_cities"] = isp_cities
         __props__["options_json"] = options_json
         __props__["task_name"] = task_name
         __props__["task_state"] = task_state

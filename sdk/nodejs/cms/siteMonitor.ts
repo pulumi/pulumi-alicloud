@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class SiteMonitor extends pulumi.CustomResource {
@@ -35,6 +37,7 @@ export class SiteMonitor extends pulumi.CustomResource {
     public readonly alertIds!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly interval!: pulumi.Output<number | undefined>;
+    public readonly ispCities!: pulumi.Output<outputs.cms.SiteMonitorIspCity[] | undefined>;
     public readonly optionsJson!: pulumi.Output<string | undefined>;
     public readonly taskName!: pulumi.Output<string>;
     public /*out*/ readonly taskState!: pulumi.Output<string>;
@@ -57,6 +60,7 @@ export class SiteMonitor extends pulumi.CustomResource {
             inputs["alertIds"] = state ? state.alertIds : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["interval"] = state ? state.interval : undefined;
+            inputs["ispCities"] = state ? state.ispCities : undefined;
             inputs["optionsJson"] = state ? state.optionsJson : undefined;
             inputs["taskName"] = state ? state.taskName : undefined;
             inputs["taskState"] = state ? state.taskState : undefined;
@@ -76,6 +80,7 @@ export class SiteMonitor extends pulumi.CustomResource {
             inputs["address"] = args ? args.address : undefined;
             inputs["alertIds"] = args ? args.alertIds : undefined;
             inputs["interval"] = args ? args.interval : undefined;
+            inputs["ispCities"] = args ? args.ispCities : undefined;
             inputs["optionsJson"] = args ? args.optionsJson : undefined;
             inputs["taskName"] = args ? args.taskName : undefined;
             inputs["taskType"] = args ? args.taskType : undefined;
@@ -102,6 +107,7 @@ export interface SiteMonitorState {
     readonly alertIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly createTime?: pulumi.Input<string>;
     readonly interval?: pulumi.Input<number>;
+    readonly ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     readonly optionsJson?: pulumi.Input<string>;
     readonly taskName?: pulumi.Input<string>;
     readonly taskState?: pulumi.Input<string>;
@@ -116,6 +122,7 @@ export interface SiteMonitorArgs {
     readonly address: pulumi.Input<string>;
     readonly alertIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly interval?: pulumi.Input<number>;
+    readonly ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     readonly optionsJson?: pulumi.Input<string>;
     readonly taskName: pulumi.Input<string>;
     readonly taskType: pulumi.Input<string>;

@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> PodCidr { get; private set; } = null!;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
@@ -429,7 +429,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -683,7 +683,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _podVswitchIds;
 
         /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids` or `master_vswtich_ids` but must be in same availability zones.
+        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         /// </summary>
         public InputList<string> PodVswitchIds
         {
@@ -891,9 +891,6 @@ namespace Pulumi.AliCloud.CS
         [Input("apiServerIntranet")]
         public Input<string>? ApiServerIntranet { get; set; }
 
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
         [Input("masterPublicIp")]
         public Input<string>? MasterPublicIp { get; set; }
 
@@ -970,9 +967,6 @@ namespace Pulumi.AliCloud.CS
         /// API Server Intranet endpoint.
         /// </summary>
         public readonly string ApiServerIntranet;
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
         public readonly string MasterPublicIp;
         /// <summary>
         /// Service Access Domain.

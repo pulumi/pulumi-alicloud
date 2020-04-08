@@ -854,6 +854,41 @@ export namespace cen {
         status: string;
     }
 
+    export interface GetFlowlogsFlowlog {
+        /**
+         * The ID of the CEN Instance.
+         */
+        cenId: string;
+        /**
+         * The description of flowlog.
+         */
+        description: string;
+        /**
+         * ID of the CEN flow log.
+         */
+        flowLogId: string;
+        /**
+         * The name of flowlog.
+         */
+        flowLogName: string;
+        /**
+         * ID of the CEN flow log.
+         */
+        id: string;
+        /**
+         * The name of the log store which is in the  `projectName` SLS project.
+         */
+        logStoreName: string;
+        /**
+         * The name of the SLS project.
+         */
+        projectName: string;
+        /**
+         * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+         */
+        status: string;
+    }
+
     export interface GetInstancesInstance {
         /**
          * List of CEN Bandwidth Package IDs in the specified CEN instance.
@@ -982,6 +1017,13 @@ export namespace cloudconnect {
          * Name of the CCN instance.
          */
         name: string;
+    }
+}
+
+export namespace cms {
+    export interface SiteMonitorIspCity {
+        city: string;
+        isp: string;
     }
 }
 
@@ -1492,9 +1534,6 @@ export namespace cs {
          * API Server Intranet endpoint.
          */
         apiServerIntranet: string;
-        /**
-         * Master node SSH IP address.
-         */
         masterPublicIp: string;
         /**
          * Service Access Domain.
@@ -3599,6 +3638,56 @@ export namespace kvstore {
 }
 
 export namespace log {
+    export interface AlertNotificationList {
+        /**
+         * Notice content of alarm.
+         */
+        content: string;
+        /**
+         * Email address list.   
+         */
+        emailLists?: string[];
+        /**
+         * SMS sending mobile number.
+         */
+        mobileLists?: string[];
+        /**
+         * Request address.
+         */
+        serviceUri?: string;
+        /**
+         * Notification type. support Email, SMS, DingTalk.
+         */
+        type: string;
+    }
+
+    export interface AlertQueryList {
+        /**
+         * chart title
+         */
+        chartTitle: string;
+        /**
+         * end time. example: 20s.
+         */
+        end: string;
+        /**
+         * Query logstore
+         */
+        logstore: string;
+        /**
+         * query corresponding to chart. example: * AND aliyun.
+         */
+        query: string;
+        /**
+         * begin time. example: -60s.
+         */
+        start: string;
+        /**
+         * default Custom. No need to configure this parameter.
+         */
+        timeSpanType?: string;
+    }
+
     export interface StoreIndexFieldSearch {
         /**
          * The alias of one field.

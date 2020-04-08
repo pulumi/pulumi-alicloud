@@ -263,6 +263,9 @@ namespace Pulumi.AliCloud
         [Input("market")]
         public Input<string>? Market { get; set; }
 
+        [Input("maxcompute")]
+        public Input<string>? Maxcompute { get; set; }
+
         [Input("mns")]
         public Input<string>? Mns { get; set; }
 

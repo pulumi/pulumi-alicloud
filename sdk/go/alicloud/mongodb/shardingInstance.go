@@ -38,12 +38,16 @@ type ShardingInstance struct {
 	Period pulumi.IntOutput `pulumi:"period"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	ShardLists    ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
 	StorageEngine pulumi.StringOutput                  `pulumi:"storageEngine"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -112,12 +116,16 @@ type shardingInstanceState struct {
 	Period *int `pulumi:"period"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
+	// The Security Group ID of ECS.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
 	StorageEngine *string                     `pulumi:"storageEngine"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -150,12 +158,16 @@ type ShardingInstanceState struct {
 	Period pulumi.IntPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	ShardLists    ShardingInstanceShardListArrayInput
 	StorageEngine pulumi.StringPtrInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -190,12 +202,16 @@ type shardingInstanceArgs struct {
 	Name *string `pulumi:"name"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
+	// The Security Group ID of ECS.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
 	StorageEngine *string                     `pulumi:"storageEngine"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -227,12 +243,16 @@ type ShardingInstanceArgs struct {
 	Name pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
+	// The Security Group ID of ECS.
+	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
 	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	ShardLists    ShardingInstanceShardListArrayInput
 	StorageEngine pulumi.StringPtrInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.

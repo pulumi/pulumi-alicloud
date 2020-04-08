@@ -85,6 +85,14 @@ class Instance(pulumi.CustomResource):
     """
     List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
     """
+    ssl_action: pulumi.Output[str]
+    """
+    Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+    """
+    ssl_status: pulumi.Output[str]
+    """
+    Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+    """
     storage_engine: pulumi.Output[str]
     tags: pulumi.Output[dict]
     """
@@ -104,7 +112,7 @@ class Instance(pulumi.CustomResource):
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
     The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
     """
-    def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replication_factor=None, security_group_id=None, security_ip_lists=None, storage_engine=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replication_factor=None, security_group_id=None, security_ip_lists=None, ssl_action=None, storage_engine=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -128,6 +136,7 @@ class Instance(pulumi.CustomResource):
                * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -174,6 +183,7 @@ class Instance(pulumi.CustomResource):
             __props__['replication_factor'] = replication_factor
             __props__['security_group_id'] = security_group_id
             __props__['security_ip_lists'] = security_ip_lists
+            __props__['ssl_action'] = ssl_action
             __props__['storage_engine'] = storage_engine
             __props__['tags'] = tags
             __props__['tde_status'] = tde_status
@@ -181,6 +191,7 @@ class Instance(pulumi.CustomResource):
             __props__['zone_id'] = zone_id
             __props__['replica_set_name'] = None
             __props__['retention_period'] = None
+            __props__['ssl_status'] = None
         super(Instance, __self__).__init__(
             'alicloud:mongodb/instance:Instance',
             resource_name,
@@ -188,7 +199,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replica_set_name=None, replication_factor=None, retention_period=None, security_group_id=None, security_ip_lists=None, storage_engine=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, account_password=None, backup_periods=None, backup_time=None, db_instance_class=None, db_instance_storage=None, engine_version=None, instance_charge_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, name=None, period=None, replica_set_name=None, replication_factor=None, retention_period=None, security_group_id=None, security_ip_lists=None, ssl_action=None, ssl_status=None, storage_engine=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -217,6 +228,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[float] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -246,6 +259,8 @@ class Instance(pulumi.CustomResource):
         __props__["retention_period"] = retention_period
         __props__["security_group_id"] = security_group_id
         __props__["security_ip_lists"] = security_ip_lists
+        __props__["ssl_action"] = ssl_action
+        __props__["ssl_status"] = ssl_status
         __props__["storage_engine"] = storage_engine
         __props__["tags"] = tags
         __props__["tde_status"] = tde_status

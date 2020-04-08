@@ -23,6 +23,9 @@ namespace Pulumi.AliCloud.Cms
         [Output("interval")]
         public Output<int?> Interval { get; private set; } = null!;
 
+        [Output("ispCities")]
+        public Output<ImmutableArray<Outputs.SiteMonitorIspCities>> IspCities { get; private set; } = null!;
+
         [Output("optionsJson")]
         public Output<string?> OptionsJson { get; private set; } = null!;
 
@@ -98,6 +101,14 @@ namespace Pulumi.AliCloud.Cms
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
+        [Input("ispCities")]
+        private InputList<Inputs.SiteMonitorIspCitiesArgs>? _ispCities;
+        public InputList<Inputs.SiteMonitorIspCitiesArgs> IspCities
+        {
+            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCitiesArgs>());
+            set => _ispCities = value;
+        }
+
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
 
@@ -131,6 +142,14 @@ namespace Pulumi.AliCloud.Cms
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
+        [Input("ispCities")]
+        private InputList<Inputs.SiteMonitorIspCitiesGetArgs>? _ispCities;
+        public InputList<Inputs.SiteMonitorIspCitiesGetArgs> IspCities
+        {
+            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCitiesGetArgs>());
+            set => _ispCities = value;
+        }
+
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
 
@@ -149,5 +168,55 @@ namespace Pulumi.AliCloud.Cms
         public SiteMonitorState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class SiteMonitorIspCitiesArgs : Pulumi.ResourceArgs
+    {
+        [Input("city", required: true)]
+        public Input<string> City { get; set; } = null!;
+
+        [Input("isp", required: true)]
+        public Input<string> Isp { get; set; } = null!;
+
+        public SiteMonitorIspCitiesArgs()
+        {
+        }
+    }
+
+    public sealed class SiteMonitorIspCitiesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("city", required: true)]
+        public Input<string> City { get; set; } = null!;
+
+        [Input("isp", required: true)]
+        public Input<string> Isp { get; set; } = null!;
+
+        public SiteMonitorIspCitiesGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class SiteMonitorIspCities
+    {
+        public readonly string City;
+        public readonly string Isp;
+
+        [OutputConstructor]
+        private SiteMonitorIspCities(
+            string city,
+            string isp)
+        {
+            City = city;
+            Isp = isp;
+        }
+    }
     }
 }

@@ -59,6 +59,12 @@ export class Instance extends pulumi.CustomResource {
      * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+     * - FULL: No overlapping CIDR blocks are allowed.
+     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     */
+    public readonly protectionLevel!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -74,10 +80,12 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
         }
         if (!opts) {
             opts = {}
@@ -102,6 +110,12 @@ export interface InstanceState {
      * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+     * - FULL: No overlapping CIDR blocks are allowed.
+     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     */
+    readonly protectionLevel?: pulumi.Input<string>;
 }
 
 /**
@@ -116,4 +130,10 @@ export interface InstanceArgs {
      * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+     * - FULL: No overlapping CIDR blocks are allowed.
+     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     */
+    readonly protectionLevel?: pulumi.Input<string>;
 }

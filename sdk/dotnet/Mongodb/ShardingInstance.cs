@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> RetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The Security Group ID of ECS.
+        /// </summary>
+        [Output("securityGroupId")]
+        public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         /// </summary>
         [Output("securityIpLists")]
@@ -94,6 +100,12 @@ namespace Pulumi.AliCloud.MongoDB
 
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Output("tdeStatus")]
+        public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -234,6 +246,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The Security Group ID of ECS.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -261,6 +279,12 @@ namespace Pulumi.AliCloud.MongoDB
 
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
@@ -368,6 +392,12 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
 
+        /// <summary>
+        /// The Security Group ID of ECS.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -395,6 +425,12 @@ namespace Pulumi.AliCloud.MongoDB
 
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.

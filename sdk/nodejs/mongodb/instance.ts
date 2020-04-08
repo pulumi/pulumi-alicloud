@@ -106,6 +106,14 @@ export class Instance extends pulumi.CustomResource {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
+    /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    public readonly sslAction!: pulumi.Output<string>;
+    /**
+     * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     */
+    public /*out*/ readonly sslStatus!: pulumi.Output<string>;
     public readonly storageEngine!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -156,6 +164,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            inputs["sslAction"] = state ? state.sslAction : undefined;
+            inputs["sslStatus"] = state ? state.sslStatus : undefined;
             inputs["storageEngine"] = state ? state.storageEngine : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
@@ -188,6 +198,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            inputs["sslAction"] = args ? args.sslAction : undefined;
             inputs["storageEngine"] = args ? args.storageEngine : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
@@ -195,6 +206,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["replicaSetName"] = undefined /*out*/;
             inputs["retentionPeriod"] = undefined /*out*/;
+            inputs["sslStatus"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -286,6 +298,14 @@ export interface InstanceState {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    readonly sslAction?: pulumi.Input<string>;
+    /**
+     * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     */
+    readonly sslStatus?: pulumi.Input<string>;
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -378,6 +398,10 @@ export interface InstanceArgs {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    readonly sslAction?: pulumi.Input<string>;
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

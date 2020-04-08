@@ -41,6 +41,7 @@ export interface ProviderEndpoint {
     location?: pulumi.Input<string>;
     log?: pulumi.Input<string>;
     market?: pulumi.Input<string>;
+    maxcompute?: pulumi.Input<string>;
     mns?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
@@ -402,6 +403,13 @@ export namespace cen {
 export namespace cloudconnect {
 }
 
+export namespace cms {
+    export interface SiteMonitorIspCity {
+        city: pulumi.Input<string>;
+        isp: pulumi.Input<string>;
+    }
+}
+
 export namespace cr {
     export interface RepoDomainList {
         /**
@@ -528,9 +536,6 @@ export namespace cs {
          * API Server Intranet endpoint.
          */
         apiServerIntranet?: pulumi.Input<string>;
-        /**
-         * Master node SSH IP address.
-         */
         masterPublicIp?: pulumi.Input<string>;
         /**
          * Service Access Domain.
@@ -877,6 +882,56 @@ export namespace kvstore {
 }
 
 export namespace log {
+    export interface AlertNotificationList {
+        /**
+         * Notice content of alarm.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * Email address list.   
+         */
+        emailLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * SMS sending mobile number.
+         */
+        mobileLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Request address.
+         */
+        serviceUri?: pulumi.Input<string>;
+        /**
+         * Notification type. support Email, SMS, DingTalk.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertQueryList {
+        /**
+         * chart title
+         */
+        chartTitle: pulumi.Input<string>;
+        /**
+         * end time. example: 20s.
+         */
+        end: pulumi.Input<string>;
+        /**
+         * Query logstore
+         */
+        logstore: pulumi.Input<string>;
+        /**
+         * query corresponding to chart. example: * AND aliyun.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * begin time. example: -60s.
+         */
+        start: pulumi.Input<string>;
+        /**
+         * default Custom. No need to configure this parameter.
+         */
+        timeSpanType?: pulumi.Input<string>;
+    }
+
     export interface StoreIndexFieldSearch {
         /**
          * The alias of one field.

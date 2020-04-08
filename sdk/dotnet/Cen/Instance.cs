@@ -30,6 +30,14 @@ namespace Pulumi.AliCloud.Cen
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+        /// - FULL: No overlapping CIDR blocks are allowed.
+        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// </summary>
+        [Output("protectionLevel")]
+        public Output<string?> ProtectionLevel { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -88,6 +96,14 @@ namespace Pulumi.AliCloud.Cen
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+        /// - FULL: No overlapping CIDR blocks are allowed.
+        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// </summary>
+        [Input("protectionLevel")]
+        public Input<string>? ProtectionLevel { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -106,6 +122,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
+        /// - FULL: No overlapping CIDR blocks are allowed.
+        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// </summary>
+        [Input("protectionLevel")]
+        public Input<string>? ProtectionLevel { get; set; }
 
         public InstanceState()
         {
