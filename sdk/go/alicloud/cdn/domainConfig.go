@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a CDN Accelerated Domain resource.
@@ -16,6 +16,8 @@ import (
 // For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
 //
 // > **NOTE:** Available in v1.34.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
 type DomainConfig struct {

@@ -5,10 +5,12 @@
 package slb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the CA certificate list.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
 func GetCaCertificates(ctx *pulumi.Context, args *GetCaCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCaCertificatesResult, error) {

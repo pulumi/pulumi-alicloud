@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
@@ -18,6 +18,8 @@ import (
 // > **NOTE:** Available in 1.62.0+ .
 //
 // > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_dbaudit_instance.html.markdown.
 type DBAuditInstance struct {

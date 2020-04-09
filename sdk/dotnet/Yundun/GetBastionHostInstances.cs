@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Yundun
         /// 
         /// &gt; **NOTE:** Available in 1.63.0+ .
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetBastionHostInstances.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Yundun
         /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.63.0+ .
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
         /// </summary>

@@ -5,12 +5,14 @@
 package cs
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
 //
 // > **NOTE:** Available in 1.58.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
 func GetServerlessKubernetesClusters(ctx *pulumi.Context, args *GetServerlessKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetServerlessKubernetesClustersResult, error) {

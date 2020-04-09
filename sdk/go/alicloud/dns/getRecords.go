@@ -5,10 +5,12 @@
 package dns
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
 func GetRecords(ctx *pulumi.Context, args *GetRecordsArgs, opts ...pulumi.InvokeOption) (*GetRecordsResult, error) {

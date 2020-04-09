@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
  */
-export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> & GetAccessGroupsResult {
+export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,14 +38,12 @@ export function getAccessGroups(args?: GetAccessGroupsArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccessGroupsResult> = pulumi.runtime.invoke("alicloud:nas/getAccessGroups:getAccessGroups", {
+    return pulumi.runtime.invoke("alicloud:nas/getAccessGroups:getAccessGroups", {
         "description": args.description,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "type": args.type,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

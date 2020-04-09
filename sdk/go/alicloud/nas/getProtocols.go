@@ -5,12 +5,14 @@
 package nas
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provide  a data source to retrieve the type of protocol used to create NAS file system.
 //
 // > **NOTE:** Available in 1.42.0
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
 func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.InvokeOption) (*GetProtocolsResult, error) {

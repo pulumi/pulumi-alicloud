@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ecs
         /// Each collection item represents a single `ingress` or `egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
         /// </summary>
         [Obsolete("Use GetSecurityGroupRules.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
         /// Each collection item represents a single `ingress` or `egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
         /// </summary>

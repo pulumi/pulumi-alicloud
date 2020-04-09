@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
         /// </summary>
         [Obsolete("Use GetSaslAcls.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.ActionTrail
         /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.66.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
         /// </summary>

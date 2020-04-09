@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snapshot.html.markdown.
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource

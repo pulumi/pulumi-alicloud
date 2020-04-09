@@ -5,12 +5,14 @@
 package slb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the domain extensions associated with a server load balancer listener.
 //
 // > **NOTE:** Available in 1.60.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
 func GetDomainExtensions(ctx *pulumi.Context, args *GetDomainExtensionsArgs, opts ...pulumi.InvokeOption) (*GetDomainExtensionsResult, error) {

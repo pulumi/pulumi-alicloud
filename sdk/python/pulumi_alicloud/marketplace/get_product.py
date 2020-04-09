@@ -49,6 +49,8 @@ def get_product(available_region=None,product_code=None,opts=None):
 
     > **NOTE:** Available in 1.69.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
 
 

@@ -5,13 +5,15 @@
 package alicloud
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 //
 // > **NOTE:** If one zone is sold out, it will not be exported.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {

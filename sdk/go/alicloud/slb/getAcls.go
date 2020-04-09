@@ -5,10 +5,11 @@
 package slb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the acls in the region.
+//
 //
 // ## Entry Block
 //

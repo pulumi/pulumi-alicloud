@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
         /// </summary>
         [Obsolete("Use GetServices.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.FC
     {
         /// <summary>
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
         /// </summary>

@@ -5,13 +5,15 @@
 package polardb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
 // Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
 //
 // > **NOTE:** Available in v1.68.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
 func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.InvokeOption) (*GetEndpointsResult, error) {

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
         /// </summary>
         [Obsolete("Use GetNotifications.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Ess
         /// This data source provides available notification resources. 
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
         /// </summary>

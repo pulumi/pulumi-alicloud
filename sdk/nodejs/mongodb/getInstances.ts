@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
  */
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,7 +37,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:mongodb/getInstances:getInstances", {
+    return pulumi.runtime.invoke("alicloud:mongodb/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
         "instanceClass": args.instanceClass,
@@ -44,8 +46,6 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "outputFile": args.outputFile,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

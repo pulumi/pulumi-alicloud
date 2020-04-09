@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information.
 // Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
 //
 // > **NOTE:** Available in 1.78.0
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_alert.html.markdown.
 type Alert struct {

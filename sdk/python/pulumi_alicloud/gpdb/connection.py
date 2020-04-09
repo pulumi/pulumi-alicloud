@@ -39,6 +39,8 @@ class Connection(pulumi.CustomResource):
         > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
 
         :param str resource_name: The name of the resource.

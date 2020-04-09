@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
  */
-export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessKubernetesClustersResult> & GetServerlessKubernetesClustersResult {
+export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessKubernetesClustersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,14 +39,12 @@ export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesCl
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServerlessKubernetesClustersResult> = pulumi.runtime.invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", {
+    return pulumi.runtime.invoke("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", {
         "enableDetails": args.enableDetails,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

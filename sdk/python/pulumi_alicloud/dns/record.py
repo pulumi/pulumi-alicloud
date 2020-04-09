@@ -49,6 +49,8 @@ class Record(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_record.html.markdown.
 
         :param str resource_name: The name of the resource.

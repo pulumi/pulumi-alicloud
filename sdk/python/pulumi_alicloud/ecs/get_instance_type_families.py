@@ -68,6 +68,8 @@ def get_instance_type_families(generation=None,instance_charge_type=None,output_
 
     > **NOTE:** Available in 1.54.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
 
 

@@ -58,6 +58,8 @@ def get_regions(current=None,name=None,output_file=None,opts=None):
     """
     This data source provides Alibaba Cloud regions.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
 
 

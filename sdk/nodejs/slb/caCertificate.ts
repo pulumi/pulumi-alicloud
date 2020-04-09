@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * * using CA certificate content
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,18 +27,6 @@ import * as utilities from "../utilities";
  *     caCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
  * -----END CERTIFICATE-----`,
- * });
- * ```
- * 
- * * using CA certificate file
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
- * 
- * const fooFile = new alicloud.slb.CaCertificate("foo-file", {
- *     caCertificate: fs.readFileSync(`./ca_certificate.pem`, "utf-8"),
  * });
  * ```
  *

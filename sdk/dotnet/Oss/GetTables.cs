@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
         /// </summary>
         [Obsolete("Use GetTables.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the ots tables of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
         /// </summary>

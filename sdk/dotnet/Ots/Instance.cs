@@ -13,6 +13,8 @@ namespace Pulumi.AliCloud.Ots
     /// This resource will help you to manager a [Table Store](https://www.alibabacloud.com/help/doc-detail/27280.htm) Instance.
     /// It is foundation of creating data table.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

@@ -70,6 +70,7 @@ def get_common_bandwidth_packages(ids=None,name_regex=None,output_file=None,reso
 
     > **NOTE:** Available in 1.36.0+.
 
+
     ## Public ip addresses Block
       
       The public ip addresses mapping supports the following:

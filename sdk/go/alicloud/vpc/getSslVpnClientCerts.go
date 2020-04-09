@@ -5,10 +5,12 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
 func GetSslVpnClientCerts(ctx *pulumi.Context, args *GetSslVpnClientCertsArgs, opts ...pulumi.InvokeOption) (*GetSslVpnClientCertsResult, error) {

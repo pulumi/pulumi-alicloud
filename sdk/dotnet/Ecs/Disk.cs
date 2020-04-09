@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk.html.markdown.
     /// </summary>
     public partial class Disk : Pulumi.CustomResource

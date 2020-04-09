@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in 1.68.0+.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
     /// </summary>
     public partial class ImageSharePermission : Pulumi.CustomResource

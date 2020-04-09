@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.54.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
         /// </summary>
         [Obsolete("Use GetMasterSlaveServerGroups.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the master slave server groups related to a server load balancer.
         /// 
         /// &gt; **NOTE:** Available in 1.54.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
         /// </summary>

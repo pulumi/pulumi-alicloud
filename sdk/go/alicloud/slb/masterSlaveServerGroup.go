@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
@@ -26,6 +26,7 @@ import (
 // > **NOTE:** One VPC load balancer, its master slave server group can only add the same VPC ECS instances.
 //
 // > **NOTE:** Available in 1.54.0+
+//
 //
 // ## Block servers
 //

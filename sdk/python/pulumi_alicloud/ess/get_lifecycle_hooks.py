@@ -70,6 +70,8 @@ def get_lifecycle_hooks(ids=None,name_regex=None,output_file=None,scaling_group_
 
     > **NOTE:** Available in 1.72.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
 
 

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * * using server_certificate/private content as string example
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,20 +30,6 @@ import * as utilities from "../utilities";
  *     serverCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
  * -----END CERTIFICATE-----`,
- * });
- * ```
- * 
- * * using server_certificate/private file example
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
- * 
- * // create a server certificate
- * const foo = new alicloud.slb.ServerCertificate("foo", {
- *     privateKey: fs.readFileSync(`./private_key.pem`, "utf-8"),
- *     serverCertificate: fs.readFileSync(`./server_certificate.pem`, "utf-8"),
  * });
  * ```
  *

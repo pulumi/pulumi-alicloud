@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
 //
 // > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
 //  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
 type EndpointAddress struct {

@@ -76,6 +76,8 @@ def get_eips(ids=None,in_use=None,ip_addresses=None,output_file=None,resource_gr
     """
     This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
 
 

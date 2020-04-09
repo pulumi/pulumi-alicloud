@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,7 +40,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
  */
-export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> & GetAclsResult {
+export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -47,15 +49,13 @@ export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAclsResult> = pulumi.runtime.invoke("alicloud:slb/getAcls:getAcls", {
+    return pulumi.runtime.invoke("alicloud:slb/getAcls:getAcls", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

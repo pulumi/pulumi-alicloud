@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; **NOTE:** Available in 1.57.0+ .
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetDdosBgpInstances.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Ddos
         /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.57.0+ .
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
         /// </summary>

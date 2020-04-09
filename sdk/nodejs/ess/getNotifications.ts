@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
  */
-export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> & GetNotificationsResult {
+export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,13 +36,11 @@ export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.Invok
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNotificationsResult> = pulumi.runtime.invoke("alicloud:ess/getNotifications:getNotifications", {
+    return pulumi.runtime.invoke("alicloud:ess/getNotifications:getNotifications", {
         "ids": args.ids,
         "outputFile": args.outputFile,
         "scalingGroupId": args.scalingGroupId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

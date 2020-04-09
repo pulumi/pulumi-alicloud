@@ -75,6 +75,8 @@ def get_ca_certificates(ids=None,name_regex=None,output_file=None,resource_group
     """
     This data source provides the CA certificate list.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
 
 

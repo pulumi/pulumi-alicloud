@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM Group Policy attachment resource. 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_policy_attachment.html.markdown.
     /// </summary>
     public partial class GroupPolicyAttachment : Pulumi.CustomResource

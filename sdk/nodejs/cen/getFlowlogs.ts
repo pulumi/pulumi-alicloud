@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * Basic Usage
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
  */
-export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> & GetFlowlogsResult {
+export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,7 +37,7 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFlowlogsResult> = pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
+    return pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
         "description": args.description,
         "ids": args.ids,
@@ -46,8 +46,6 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
         "projectName": args.projectName,
         "status": args.status,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

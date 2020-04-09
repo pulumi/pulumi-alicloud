@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.78.0
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_alert.html.markdown.
     /// </summary>
     public partial class Alert : Pulumi.CustomResource

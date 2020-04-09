@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
  */
-export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> & GetNamespacesResult {
+export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,12 +39,10 @@ export function getNamespaces(args?: GetNamespacesArgs, opts?: pulumi.InvokeOpti
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetNamespacesResult> = pulumi.runtime.invoke("alicloud:cr/getNamespaces:getNamespaces", {
+    return pulumi.runtime.invoke("alicloud:cr/getNamespaces:getNamespaces", {
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

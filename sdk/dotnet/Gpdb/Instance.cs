@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// &gt; **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

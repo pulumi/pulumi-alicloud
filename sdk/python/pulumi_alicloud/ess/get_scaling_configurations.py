@@ -68,6 +68,8 @@ def get_scaling_configurations(ids=None,name_regex=None,output_file=None,scaling
     """
     This data source provides available scaling configuration resources. 
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
 
 

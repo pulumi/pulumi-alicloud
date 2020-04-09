@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.ActionTrail
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
     /// </summary>
     public partial class Trail : Pulumi.CustomResource

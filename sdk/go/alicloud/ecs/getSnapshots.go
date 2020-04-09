@@ -5,7 +5,7 @@
 package ecs
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
@@ -13,6 +13,7 @@ import (
 // For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
 //
 // > **NOTE:**  Available in 1.40.0+.
+//
 //
 // ##  Argument Reference
 //

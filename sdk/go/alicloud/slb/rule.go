@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
@@ -23,6 +23,8 @@ import (
 // > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
 //
 // > **NOTE:** Only rule's virtual server group can be modified.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
 type Rule struct {

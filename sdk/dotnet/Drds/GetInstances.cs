@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// &gt; **NOTE:** Available in 1.35.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstances.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud.Drds
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available in 1.35.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
         /// </summary>

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// &gt; **NOTE:** Available in v1.74.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_zones.html.markdown.
         /// </summary>
         [Obsolete("Use GetZones.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.FC
         /// This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.74.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_zones.html.markdown.
         /// </summary>

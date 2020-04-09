@@ -96,6 +96,8 @@ def get_zones(available_disk_category=None,available_instance_type=None,availabl
 
     > **NOTE:** If one zone is sold out, it will not be exported.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
 
 

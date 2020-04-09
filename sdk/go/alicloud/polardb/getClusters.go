@@ -5,13 +5,15 @@
 package polardb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
 // Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 //
 // > **NOTE:** Available in v1.66.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {

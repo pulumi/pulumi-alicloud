@@ -67,6 +67,8 @@ def get_kubernetes_clusters(enable_details=None,ids=None,name_regex=None,output_
 
     > **NOTE:** Available in v1.34.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
 
 

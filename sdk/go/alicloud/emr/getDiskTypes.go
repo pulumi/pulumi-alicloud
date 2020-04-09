@@ -5,13 +5,15 @@
 package emr
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `emr.getDiskTypes` data source provides a collection of data disk and
 // system disk types available in Alibaba Cloud account when create a emr cluster.
 //
 // > **NOTE:** Available in 1.60.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
 func GetDiskTypes(ctx *pulumi.Context, args *GetDiskTypesArgs, opts ...pulumi.InvokeOption) (*GetDiskTypesResult, error) {

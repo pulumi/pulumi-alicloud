@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> & GetDomainGroupsResult {
+export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -14,13 +14,11 @@ export function getDomainGroups(args?: GetDomainGroupsArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainGroupsResult> = pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
+    return pulumi.runtime.invoke("alicloud:dns/getDomainGroups:getDomainGroups", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

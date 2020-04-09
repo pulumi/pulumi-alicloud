@@ -70,6 +70,8 @@ def get_snat_entries(ids=None,output_file=None,snat_ip=None,snat_table_id=None,s
 
     > **NOTE:** Available in 1.37.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
 
 

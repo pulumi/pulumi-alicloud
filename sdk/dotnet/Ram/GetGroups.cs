@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
         /// </summary>
         [Obsolete("Use GetGroups.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Ram
     {
         /// <summary>
         /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
         /// </summary>

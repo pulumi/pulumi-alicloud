@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a ADB cluster resource. A ADB cluster is an isolated database
@@ -16,6 +16,8 @@ import (
 // databases.
 //
 // > **NOTE:** Available in v1.71.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/adb_cluster.html.markdown.
 type Cluster struct {

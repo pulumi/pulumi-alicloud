@@ -5,12 +5,14 @@
 package ess
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides available alarm resources.
 //
 // > **NOTE** Available in 1.72.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
 func GetAlarms(ctx *pulumi.Context, args *GetAlarmsArgs, opts ...pulumi.InvokeOption) (*GetAlarmsResult, error) {

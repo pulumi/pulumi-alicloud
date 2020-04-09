@@ -70,6 +70,8 @@ def get_tables(ids=None,instance_name=None,name_regex=None,output_file=None,opts
 
     > **NOTE:** Available in v1.40.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
 
 

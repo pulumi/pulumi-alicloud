@@ -63,6 +63,8 @@ def get_images(most_recent=None,name_regex=None,output_file=None,owners=None,opt
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
     other public images and the ones available on the image market. 
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
 
 

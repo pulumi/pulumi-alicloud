@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.KVStore
     /// <summary>
     /// Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It can be associated with IP whitelists and backup configuration which are separate resource providers.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

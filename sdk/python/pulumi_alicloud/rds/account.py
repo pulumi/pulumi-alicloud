@@ -44,6 +44,8 @@ class Account(pulumi.CustomResource):
         """
         Provides an RDS account resource and used to manage databases.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -24,6 +24,8 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
 
         For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -68,6 +68,8 @@ def get_instances(ids=None,name_regex=None,output_file=None,tags=None,opts=None)
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
 
 

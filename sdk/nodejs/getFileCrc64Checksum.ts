@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
  */
-export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulumi.InvokeOptions): Promise<GetFileCrc64ChecksumResult> & GetFileCrc64ChecksumResult {
+export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulumi.InvokeOptions): Promise<GetFileCrc64ChecksumResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,12 +34,10 @@ export function getFileCrc64Checksum(args: GetFileCrc64ChecksumArgs, opts?: pulu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetFileCrc64ChecksumResult> = pulumi.runtime.invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
+    return pulumi.runtime.invoke("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
         "filename": args.filename,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

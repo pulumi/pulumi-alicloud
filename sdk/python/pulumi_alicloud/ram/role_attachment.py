@@ -22,6 +22,8 @@ class RoleAttachment(pulumi.CustomResource):
         """
         Provides a RAM role attachment resource to bind role for several ECS instances.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_attachment.html.markdown.
 
         :param str resource_name: The name of the resource.

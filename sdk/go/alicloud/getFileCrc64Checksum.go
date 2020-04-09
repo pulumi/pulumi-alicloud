@@ -5,12 +5,14 @@
 package alicloud
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source compute file crc64 checksum.
 //
 // > **NOTE:** Available in 1.59.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
 func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, opts ...pulumi.InvokeOption) (*GetFileCrc64ChecksumResult, error) {

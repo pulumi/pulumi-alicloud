@@ -75,6 +75,7 @@ def get_acls(ids=None,name_regex=None,output_file=None,resource_group_id=None,ta
     """
     This data source provides the acls in the region.
 
+
     ## Entry Block
 
     The entry mapping supports the following:

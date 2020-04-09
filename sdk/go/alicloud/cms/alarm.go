@@ -8,11 +8,13 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
 // Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
 type Alarm struct {

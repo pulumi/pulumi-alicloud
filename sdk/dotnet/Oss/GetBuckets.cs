@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
         /// </summary>
         [Obsolete("Use GetBuckets.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Oss
     {
         /// <summary>
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
         /// </summary>

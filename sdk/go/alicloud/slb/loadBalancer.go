@@ -7,7 +7,7 @@ package slb
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides an Application Load Balancer resource.
@@ -16,6 +16,8 @@ import (
 //
 // > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
 // For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
 type LoadBalancer struct {

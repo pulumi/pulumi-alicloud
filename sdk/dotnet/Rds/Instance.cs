@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Rds
     /// environment in the cloud. A DB instance can contain multiple user-created
     /// databases.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

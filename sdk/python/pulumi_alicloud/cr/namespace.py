@@ -30,6 +30,8 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_namespace.html.markdown.
 
         :param str resource_name: The name of the resource.

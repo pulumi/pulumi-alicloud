@@ -104,6 +104,8 @@ def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_
 
     > **NOTE:** Available in v1.49.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
 
 

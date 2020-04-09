@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Mns
         /// <summary>
         /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
         /// </summary>
         [Obsolete("Use GetTopics.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Mns
     {
         /// <summary>
         /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
         /// </summary>

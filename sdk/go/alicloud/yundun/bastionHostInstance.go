@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
@@ -18,6 +18,8 @@ import (
 // > **NOTE:** Available in 1.63.0+ .
 //
 // > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
 type BastionHostInstance struct {

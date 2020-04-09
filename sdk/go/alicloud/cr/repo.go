@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource will help you to manager Container Registry repositories.
@@ -16,6 +16,8 @@ import (
 // > **NOTE:** Available in v1.35.0+.
 //
 // > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
 type Repo struct {

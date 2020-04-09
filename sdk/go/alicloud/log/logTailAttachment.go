@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The Logtail access service is a log collection agent provided by Log Service.
@@ -18,6 +18,8 @@ import (
 // This resource amis to attach one logtail configure to a machine group.
 //
 // > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
 type LogTailAttachment struct {

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
         /// </summary>
         [Obsolete("Use GetSslVpnClientCerts.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
         /// </summary>

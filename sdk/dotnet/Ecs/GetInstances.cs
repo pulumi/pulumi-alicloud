@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstances.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
         /// </summary>

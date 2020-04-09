@@ -34,6 +34,8 @@ class ImageExport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.68.0+.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
 
         :param str resource_name: The name of the resource.

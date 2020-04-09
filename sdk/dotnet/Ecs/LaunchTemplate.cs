@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
     /// </summary>
     public partial class LaunchTemplate : Pulumi.CustomResource

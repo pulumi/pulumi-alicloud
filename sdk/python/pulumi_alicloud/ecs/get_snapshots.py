@@ -121,6 +121,7 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
 
     > **NOTE:**  Available in 1.40.0+.
 
+
     ##  Argument Reference
 
     The following arguments are supported:

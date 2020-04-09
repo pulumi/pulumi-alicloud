@@ -5,12 +5,14 @@
 package ecs
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The `ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
 // Each collection item represents a single `ingress` or `egress` permission rule.
 // The ID of the security group can be provided via a variable or the result from the other data source `ecs.getSecurityGroups`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
 func GetSecurityGroupRules(ctx *pulumi.Context, args *GetSecurityGroupRulesArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupRulesResult, error) {

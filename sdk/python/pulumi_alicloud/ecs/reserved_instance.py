@@ -57,6 +57,8 @@ class ReservedInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.65.0+
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
 
         :param str resource_name: The name of the resource.

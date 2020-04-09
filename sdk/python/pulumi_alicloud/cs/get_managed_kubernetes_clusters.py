@@ -67,6 +67,8 @@ def get_managed_kubernetes_clusters(enable_details=None,ids=None,name_regex=None
 
     > **NOTE:** Available in v1.35.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_managed_kubernetes_clusters.html.markdown.
 
 

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
         /// </summary>
         [Obsolete("Use GetLoadBalancers.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Slb
     {
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
         /// </summary>

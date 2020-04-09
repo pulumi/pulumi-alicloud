@@ -93,6 +93,8 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
     """
     This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
 
 

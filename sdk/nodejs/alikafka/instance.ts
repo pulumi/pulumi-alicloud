@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`]
  * ## Example Usage
  * 
- * Basic Usage
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

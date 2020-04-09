@@ -23,6 +23,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// &gt; **NOTE:** Only rule's virtual server group can be modified.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
     /// </summary>
     public partial class Rule : Pulumi.CustomResource

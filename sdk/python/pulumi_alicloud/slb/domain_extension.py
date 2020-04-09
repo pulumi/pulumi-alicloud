@@ -39,6 +39,8 @@ class DomainExtension(pulumi.CustomResource):
 
         > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
 
         :param str resource_name: The name of the resource.

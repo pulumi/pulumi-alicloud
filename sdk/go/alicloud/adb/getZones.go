@@ -5,12 +5,14 @@
 package adb
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available in v1.73.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_zones.html.markdown.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {

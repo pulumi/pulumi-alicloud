@@ -10,6 +10,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
  */
-export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> & GetRegionsResult {
+export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,13 +34,11 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRegionsResult> = pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
+    return pulumi.runtime.invoke("alicloud:index/getRegions:getRegions", {
         "current": args.current,
         "name": args.name,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

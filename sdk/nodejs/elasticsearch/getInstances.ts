@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> & GetInstancesResult {
+export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -14,15 +14,13 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstancesResult> = pulumi.runtime.invoke("alicloud:elasticsearch/getInstances:getInstances", {
+    return pulumi.runtime.invoke("alicloud:elasticsearch/getInstances:getInstances", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "tags": args.tags,
         "version": args.version,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

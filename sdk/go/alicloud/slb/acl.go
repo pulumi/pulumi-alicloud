@@ -7,7 +7,7 @@ package slb
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // An access control list contains multiple IP addresses or CIDR blocks.
@@ -33,6 +33,7 @@ import (
 // For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 //
 // For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
+//
 //
 //
 // ## Entry Block

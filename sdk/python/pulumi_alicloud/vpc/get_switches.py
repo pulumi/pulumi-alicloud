@@ -97,6 +97,8 @@ def get_switches(cidr_block=None,ids=None,is_default=None,name_regex=None,output
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
 
 

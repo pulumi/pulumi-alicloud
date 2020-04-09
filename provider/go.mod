@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-alicloud/provider
+module github.com/pulumi/pulumi-alicloud/provider/v2
 
 go 1.13
 
@@ -12,7 +12,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.4.1
-	github.com/pulumi/pulumi-terraform-bridge v1.8.4
-	github.com/pulumi/pulumi/sdk v1.13.1
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.0.0-20200402101519-95d9d3e2b896
+	github.com/pulumi/pulumi/sdk/v2 v2.0.0-beta.2.0.20200402101052-1dbf088db686
 	github.com/terraform-providers/terraform-provider-alicloud v1.78.0
 )

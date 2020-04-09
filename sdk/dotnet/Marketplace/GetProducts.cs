@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         /// &gt; **NOTE:** Available in 1.64.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
         /// </summary>
         [Obsolete("Use GetProducts.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.MarketPlace
         /// This data source provides the Market product items of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in 1.64.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
         /// </summary>

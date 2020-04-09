@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.MongoDB
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
         /// Filters support regular expression for the instance name, engine or instance type.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstances.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
         /// Filters support regular expression for the instance name, engine or instance type.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
         /// </summary>

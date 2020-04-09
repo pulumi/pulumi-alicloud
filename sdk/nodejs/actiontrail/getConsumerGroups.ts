@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
  */
-export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> & GetConsumerGroupsResult {
+export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
     if (!opts) {
         opts = {}
     }
@@ -35,13 +37,11 @@ export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.Inv
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetConsumerGroupsResult> = pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
+    return pulumi.runtime.invoke("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", {
         "consumerIdRegex": args.consumerIdRegex,
         "instanceId": args.instanceId,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

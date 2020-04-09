@@ -5,10 +5,12 @@
 package cen
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides CEN Bandwidth Limits available to the user.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
 func GetBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs, opts ...pulumi.InvokeOption) (*GetBandwidthLimitsResult, error) {

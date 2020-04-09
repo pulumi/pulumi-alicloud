@@ -8,12 +8,14 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
 //
 // > **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
 type Database struct {

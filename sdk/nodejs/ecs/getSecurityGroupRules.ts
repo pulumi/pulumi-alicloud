@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
  */
-export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> & GetSecurityGroupRulesResult {
+export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
     if (!opts) {
         opts = {}
     }
@@ -52,7 +52,7 @@ export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pu
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSecurityGroupRulesResult> = pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
+    return pulumi.runtime.invoke("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", {
         "direction": args.direction,
         "groupId": args.groupId,
         "ipProtocol": args.ipProtocol,
@@ -60,8 +60,6 @@ export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pu
         "outputFile": args.outputFile,
         "policy": args.policy,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

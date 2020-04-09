@@ -5,12 +5,13 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.36.0+.
+//
 //
 // ## Public ip addresses Block
 //

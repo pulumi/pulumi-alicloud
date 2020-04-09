@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides an Application Load Balancer Listener resource.
@@ -21,6 +21,7 @@ import (
 // * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 // * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
 // * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+//
 //
 // ## Listener fields and protocol mapping
 //

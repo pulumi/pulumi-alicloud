@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; NOTE: Available in 1.35.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
         /// </summary>
         [Obsolete("Use GetFileSystems.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides FileSystems available to the user.
         /// 
         /// &gt; NOTE: Available in 1.35.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
         /// </summary>

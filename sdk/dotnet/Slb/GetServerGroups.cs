@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
         /// </summary>
         [Obsolete("Use GetServerGroups.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Slb
     {
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
         /// </summary>

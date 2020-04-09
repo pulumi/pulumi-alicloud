@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available in v1.68.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
         /// </summary>
         [Obsolete("Use GetEndpoints.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud.PolarDB
         /// Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available in v1.68.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
         /// </summary>

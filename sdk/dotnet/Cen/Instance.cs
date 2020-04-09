@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

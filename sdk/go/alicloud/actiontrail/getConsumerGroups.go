@@ -5,12 +5,14 @@
 package actiontrail
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 //
 // > **NOTE:** Available in 1.56.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
 func GetConsumerGroups(ctx *pulumi.Context, args *GetConsumerGroupsArgs, opts ...pulumi.InvokeOption) (*GetConsumerGroupsResult, error) {

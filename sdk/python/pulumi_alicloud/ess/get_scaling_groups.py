@@ -61,6 +61,8 @@ def get_scaling_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides available scaling group resources. 
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_groups.html.markdown.
 
 

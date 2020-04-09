@@ -81,6 +81,8 @@ def get_forward_entries(external_ip=None,forward_table_id=None,ids=None,internal
 
     > **NOTE:** Available in 1.37.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
 
 

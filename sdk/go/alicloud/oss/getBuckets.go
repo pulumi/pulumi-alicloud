@@ -5,10 +5,12 @@
 package oss
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the OSS buckets of the current Alibaba Cloud user.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {

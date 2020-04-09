@@ -82,6 +82,8 @@ def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
 
 

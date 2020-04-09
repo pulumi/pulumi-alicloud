@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
  */
-export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> & GetDomainsResult {
+export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +35,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainsResult> = pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
+    return pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
         "aliDomain": args.aliDomain,
         "domainNameRegex": args.domainNameRegex,
         "groupNameRegex": args.groupNameRegex,
@@ -43,8 +45,6 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
         "resourceGroupId": args.resourceGroupId,
         "versionCode": args.versionCode,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
  */
-export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> & GetAppsResult {
+export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,14 +35,12 @@ export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAppsResult> = pulumi.runtime.invoke("alicloud:apigateway/getApps:getApps", {
+    return pulumi.runtime.invoke("alicloud:apigateway/getApps:getApps", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

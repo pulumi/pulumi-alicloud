@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
@@ -16,6 +16,8 @@ import (
 // For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
 //
 // > **NOTE:** Available in v1.34.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_new.html.markdown.
 type DomainNew struct {

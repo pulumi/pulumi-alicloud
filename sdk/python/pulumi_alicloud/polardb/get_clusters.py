@@ -82,6 +82,8 @@ def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,s
 
     > **NOTE:** Available in v1.66.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
 
 

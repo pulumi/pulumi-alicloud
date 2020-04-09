@@ -78,6 +78,8 @@ def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id
 
     > **NOTE:** Available in 1.36.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
 
 

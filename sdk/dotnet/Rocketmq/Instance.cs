@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// &gt; **NOTE:** Available in 1.51.0+
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

@@ -5,10 +5,12 @@
 package fc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the Function Compute triggers of the current Alibaba Cloud user.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
 func GetTriggers(ctx *pulumi.Context, args *GetTriggersArgs, opts ...pulumi.InvokeOption) (*GetTriggersResult, error) {

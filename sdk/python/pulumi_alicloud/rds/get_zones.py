@@ -60,6 +60,8 @@ def get_zones(instance_charge_type=None,multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.73.0+.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_zones.html.markdown.
 
 

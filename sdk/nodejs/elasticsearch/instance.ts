@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
  * 
  * > **NOTE:** At present, `version` can not be modified once instance has been created.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
  */

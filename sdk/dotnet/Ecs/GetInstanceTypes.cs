@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstanceTypes.InvokeAsync() instead")]
@@ -32,6 +34,8 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
         /// </summary>

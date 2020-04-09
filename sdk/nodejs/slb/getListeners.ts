@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_listeners.html.markdown.
  */
-export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> & GetListenersResult {
+export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     if (!opts) {
         opts = {}
     }
@@ -32,15 +34,13 @@ export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetListenersResult> = pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
+    return pulumi.runtime.invoke("alicloud:slb/getListeners:getListeners", {
         "descriptionRegex": args.descriptionRegex,
         "frontendPort": args.frontendPort,
         "loadBalancerId": args.loadBalancerId,
         "outputFile": args.outputFile,
         "protocol": args.protocol,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

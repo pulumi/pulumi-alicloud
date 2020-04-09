@@ -5,10 +5,12 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
 func GetSslVpnServers(ctx *pulumi.Context, args *GetSslVpnServersArgs, opts ...pulumi.InvokeOption) (*GetSslVpnServersResult, error) {

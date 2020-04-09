@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package_attachment.html.markdown.
     /// </summary>
     public partial class BandwidthPackageAttachment : Pulumi.CustomResource

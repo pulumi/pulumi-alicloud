@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Attaches several ECS instances to a specified scaling group or remove them from it.
@@ -16,6 +16,8 @@ import (
 // > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
 //
 // > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
 type Attachment struct {

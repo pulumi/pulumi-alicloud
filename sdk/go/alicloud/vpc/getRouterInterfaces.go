@@ -5,11 +5,13 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
 // that connect VPCs together.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {

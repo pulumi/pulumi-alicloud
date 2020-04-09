@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides information about the current account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
         /// </summary>
         [Obsolete("Use GetAccount.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud
     {
         /// <summary>
         /// This data source provides information about the current account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
         /// </summary>

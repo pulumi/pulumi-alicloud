@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the database name, searches by clusterId.
  * 
  * > **NOTE:** Available in v1.70.0+.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
  */
-export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> & GetDatabasesResult {
+export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,12 +23,10 @@ export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDatabasesResult> = pulumi.runtime.invoke("alicloud:polardb/getDatabases:getDatabases", {
+    return pulumi.runtime.invoke("alicloud:polardb/getDatabases:getDatabases", {
         "dbClusterId": args.dbClusterId,
         "nameRegex": args.nameRegex,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
     /// </summary>
     public partial class RouteEntry : Pulumi.CustomResource

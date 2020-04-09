@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
         /// </summary>
         [Obsolete("Use GetBucketObjects.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Oss
     {
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
         /// </summary>

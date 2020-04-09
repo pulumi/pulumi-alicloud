@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
  */
-export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> & GetDdosCooInstancesResult {
+export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -32,13 +34,11 @@ export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulum
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDdosCooInstancesResult> = pulumi.runtime.invoke("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", {
+    return pulumi.runtime.invoke("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

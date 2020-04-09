@@ -83,6 +83,8 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.66.0+.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_cluster.html.markdown.
 
         :param str resource_name: The name of the resource.

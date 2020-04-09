@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -58,8 +60,6 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * }, {dependsOn: [defaultReadOnlyInstance]});
  * ```
- * 
- * > **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
  */

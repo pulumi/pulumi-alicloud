@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
  */
-export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> & GetAccountResult {
+export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {
         opts = {}
     }
@@ -28,10 +30,8 @@ export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResul
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountResult> = pulumi.runtime.invoke("alicloud:index/getAccount:getAccount", {
+    return pulumi.runtime.invoke("alicloud:index/getAccount:getAccount", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

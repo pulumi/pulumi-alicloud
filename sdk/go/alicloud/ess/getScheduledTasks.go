@@ -5,12 +5,14 @@
 package ess
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides available scheduled task resources.
 //
 // > **NOTE:** Available in 1.72.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
 func GetScheduledTasks(ctx *pulumi.Context, args *GetScheduledTasksArgs, opts ...pulumi.InvokeOption) (*GetScheduledTasksResult, error) {

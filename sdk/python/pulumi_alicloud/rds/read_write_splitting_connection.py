@@ -42,6 +42,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         """
         Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
 
         :param str resource_name: The name of the resource.

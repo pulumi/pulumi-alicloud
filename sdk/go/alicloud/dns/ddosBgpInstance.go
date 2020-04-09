@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
@@ -16,6 +16,8 @@ import (
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
 // > **NOTE:** Available in 1.57.0+ .
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
 type DdosBgpInstance struct {

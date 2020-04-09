@@ -78,6 +78,8 @@ class BucketObject(pulumi.CustomResource):
         """
         Provides a resource to put a object(content or file) to a oss bucket.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
 
         :param str resource_name: The name of the resource.

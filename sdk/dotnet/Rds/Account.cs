@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides an RDS account resource and used to manage databases.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
     /// </summary>
     public partial class Account : Pulumi.CustomResource

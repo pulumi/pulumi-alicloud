@@ -61,6 +61,8 @@ def get_certificates(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
 
 

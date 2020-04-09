@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
@@ -18,6 +18,8 @@ import (
 // > **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
 //
 // > **NOTE:** Available in 1.69.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
 type ImageImport struct {

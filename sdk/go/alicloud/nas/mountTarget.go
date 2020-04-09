@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Nas Mount Target resource.
@@ -20,6 +20,8 @@ import (
 // > NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
 // and it only can be achieved by creating a classic mount target mannually.
 // See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_mount_target.html.markdown.
 type MountTarget struct {

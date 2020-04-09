@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
         /// </summary>
         [Obsolete("Use GetRecords.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Dns
     {
         /// <summary>
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
         /// </summary>

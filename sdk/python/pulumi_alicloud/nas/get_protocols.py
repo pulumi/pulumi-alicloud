@@ -53,6 +53,8 @@ def get_protocols(output_file=None,type=None,zone_id=None,opts=None):
 
     > **NOTE:** Available in 1.42.0
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
 
 

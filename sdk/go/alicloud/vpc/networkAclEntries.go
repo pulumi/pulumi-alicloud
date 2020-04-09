@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a network acl entries resource to create ingress and egress entries.
@@ -18,6 +18,8 @@ import (
 // > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
 //
 // > **NOTE:** Using this resource need to open a whitelist.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
 type NetworkAclEntries struct {

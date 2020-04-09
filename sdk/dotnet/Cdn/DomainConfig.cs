@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
     /// </summary>
     public partial class DomainConfig : Pulumi.CustomResource

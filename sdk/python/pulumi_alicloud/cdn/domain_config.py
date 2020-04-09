@@ -33,6 +33,8 @@ class DomainConfig(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.34.0+.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
 
         :param str resource_name: The name of the resource.

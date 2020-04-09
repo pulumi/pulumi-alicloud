@@ -5,12 +5,14 @@
 package kvstore
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available in v1.51.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
 func GetInstanceEngines(ctx *pulumi.Context, args *GetInstanceEnginesArgs, opts ...pulumi.InvokeOption) (*GetInstanceEnginesResult, error) {

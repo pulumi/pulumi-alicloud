@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
  */
-export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> & GetRolesResult {
+export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,15 +38,13 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRolesResult> = pulumi.runtime.invoke("alicloud:ram/getRoles:getRoles", {
+    return pulumi.runtime.invoke("alicloud:ram/getRoles:getRoles", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

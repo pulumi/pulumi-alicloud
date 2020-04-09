@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
     /// </summary>
     public partial class InstanceGrant : Pulumi.CustomResource

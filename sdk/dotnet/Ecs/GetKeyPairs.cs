@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
         /// </summary>
         [Obsolete("Use GetKeyPairs.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Ecs
     {
         /// <summary>
         /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
         /// </summary>

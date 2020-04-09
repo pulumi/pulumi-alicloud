@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// &gt; **NOTE:** Available in 1.57.0+ .
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
     /// </summary>
     public partial class DdosBgpInstance : Pulumi.CustomResource

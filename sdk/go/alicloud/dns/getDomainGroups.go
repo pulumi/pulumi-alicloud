@@ -5,7 +5,7 @@
 package dns
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 func GetDomainGroups(ctx *pulumi.Context, args *GetDomainGroupsArgs, opts ...pulumi.InvokeOption) (*GetDomainGroupsResult, error) {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This resource will help you to manager cluster-autoscaler in Kubernetes Cluster.
@@ -20,6 +20,8 @@ import (
 // > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
 //
 // > **NOTE:** Available in 1.65.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
 type KubernetesAutoscaler struct {

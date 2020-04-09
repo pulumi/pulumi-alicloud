@@ -5,12 +5,14 @@
 package vpc
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 //
 // > **NOTE:** Available in 1.37.0+.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
 func GetSnatEntries(ctx *pulumi.Context, args *GetSnatEntriesArgs, opts ...pulumi.InvokeOption) (*GetSnatEntriesResult, error) {

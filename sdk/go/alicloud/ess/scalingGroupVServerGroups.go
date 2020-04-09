@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Attaches/Detaches vserver groups to a specified scaling group.
@@ -30,6 +30,7 @@ import (
 // > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
 //
 // > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
+//
 //
 // ## Block vserverGroup
 //

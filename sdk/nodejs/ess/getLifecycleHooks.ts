@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
  */
-export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> & GetLifecycleHooksResult {
+export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,14 +38,12 @@ export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetLifecycleHooksResult> = pulumi.runtime.invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {
+    return pulumi.runtime.invoke("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "scalingGroupId": args.scalingGroupId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

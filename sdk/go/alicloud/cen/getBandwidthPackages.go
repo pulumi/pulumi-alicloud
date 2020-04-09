@@ -5,10 +5,12 @@
 package cen
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides CEN Bandwidth Packages available to the user.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
 func GetBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetBandwidthPackagesResult, error) {

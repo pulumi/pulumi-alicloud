@@ -39,6 +39,8 @@ class SaslUser(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_sasl_user.html.markdown.
 
         :param str resource_name: The name of the resource.

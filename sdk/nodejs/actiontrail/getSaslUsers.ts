@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
  */
-export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> & GetSaslUsersResult {
+export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> {
     if (!opts) {
         opts = {}
     }
@@ -35,13 +37,11 @@ export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSaslUsersResult> = pulumi.runtime.invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
+    return pulumi.runtime.invoke("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
         "instanceId": args.instanceId,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -14,6 +14,9 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket.html.markdown.
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource

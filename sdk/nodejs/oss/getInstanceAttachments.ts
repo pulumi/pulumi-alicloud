@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
  */
-export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> & GetInstanceAttachmentsResult {
+export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
     if (!opts) {
         opts = {}
     }
@@ -34,13 +36,11 @@ export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceAttachmentsResult> = pulumi.runtime.invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {
+    return pulumi.runtime.invoke("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {
         "instanceName": args.instanceName,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

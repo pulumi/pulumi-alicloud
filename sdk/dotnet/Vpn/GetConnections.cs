@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
         /// </summary>
         [Obsolete("Use GetConnections.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
         /// </summary>

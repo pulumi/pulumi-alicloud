@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
  */
-export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> & GetCustomerGatewaysResult {
+export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,13 +38,11 @@ export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulum
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCustomerGatewaysResult> = pulumi.runtime.invoke("alicloud:vpn/getCustomerGateways:getCustomerGateways", {
+    return pulumi.runtime.invoke("alicloud:vpn/getCustomerGateways:getCustomerGateways", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

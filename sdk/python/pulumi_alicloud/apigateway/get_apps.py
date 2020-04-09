@@ -65,6 +65,8 @@ def get_apps(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     This data source provides the apps of the current Alibaba Cloud user.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
 
 

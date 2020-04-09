@@ -37,6 +37,8 @@ class Connection(pulumi.CustomResource):
         > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
 
         :param str resource_name: The name of the resource.

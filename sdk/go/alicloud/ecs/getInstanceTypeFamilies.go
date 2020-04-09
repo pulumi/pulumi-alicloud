@@ -5,12 +5,14 @@
 package ecs
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // This data source provides the ECS instance type families of Alibaba Cloud.
 //
 // > **NOTE:** Available in 1.54.0+
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
 func GetInstanceTypeFamilies(ctx *pulumi.Context, args *GetInstanceTypeFamiliesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypeFamiliesResult, error) {

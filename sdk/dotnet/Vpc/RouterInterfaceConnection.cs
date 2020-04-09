@@ -21,6 +21,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
     /// </summary>
     public partial class RouterInterfaceConnection : Pulumi.CustomResource

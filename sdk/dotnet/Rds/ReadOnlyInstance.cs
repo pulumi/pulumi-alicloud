@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides an RDS readonly instance resource. 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_readonly_instance.html.markdown.
     /// </summary>
     public partial class ReadOnlyInstance : Pulumi.CustomResource

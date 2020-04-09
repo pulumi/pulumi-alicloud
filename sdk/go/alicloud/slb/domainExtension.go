@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
@@ -17,6 +17,8 @@ import (
 // > **NOTE:** Available in 1.60.0+
 //
 // > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
 type DomainExtension struct {

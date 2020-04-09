@@ -57,6 +57,8 @@ def get_domain_extensions(frontend_port=None,ids=None,load_balancer_id=None,outp
 
     > **NOTE:** Available in 1.60.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
 
 

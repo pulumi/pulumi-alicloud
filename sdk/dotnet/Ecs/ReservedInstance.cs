@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
     /// </summary>
     public partial class ReservedInstance : Pulumi.CustomResource

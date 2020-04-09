@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.
     /// 
+    /// 
     /// ## Block vserver_group
     /// 
     /// the vserver_group supports the following:

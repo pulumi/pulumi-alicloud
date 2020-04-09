@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
@@ -23,6 +23,7 @@ import (
 // > **NOTE:** One Classic and Intranet load balancer, its virtual server group can only add Classic ECS instances.
 //
 // > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
+//
 //
 // ## Block servers
 //

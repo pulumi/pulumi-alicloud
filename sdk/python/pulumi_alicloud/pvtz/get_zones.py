@@ -61,6 +61,8 @@ def get_zones(ids=None,keyword=None,output_file=None,opts=None):
     """
     This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
 
 

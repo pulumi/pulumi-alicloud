@@ -54,6 +54,8 @@ def get_topics(name_prefix=None,output_file=None,opts=None):
     """
     This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
 
 

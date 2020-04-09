@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
         /// </summary>
         [Obsolete("Use GetSnatEntries.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
         /// </summary>

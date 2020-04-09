@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:** Available in 1.60.0.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
         /// </summary>
         [Obsolete("Use GetResolutionLines.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
         /// </summary>

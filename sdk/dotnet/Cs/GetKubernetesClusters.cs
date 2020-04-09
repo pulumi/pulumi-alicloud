@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.34.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
         /// </summary>
         [Obsolete("Use GetKubernetesClusters.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available in v1.34.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
         /// </summary>

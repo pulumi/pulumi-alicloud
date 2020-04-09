@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
  */
-export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> & GetSslVpnClientCertsResult {
+export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -34,14 +36,12 @@ export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pul
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSslVpnClientCertsResult> = pulumi.runtime.invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {
+    return pulumi.runtime.invoke("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "sslVpnServerId": args.sslVpnServerId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

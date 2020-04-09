@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
         /// </summary>
         [Obsolete("Use GetPolicies.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Ram
     {
         /// <summary>
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
         /// </summary>

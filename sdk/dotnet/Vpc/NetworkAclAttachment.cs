@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_attachment.html.markdown.
     /// </summary>
     public partial class NetworkAclAttachment : Pulumi.CustomResource

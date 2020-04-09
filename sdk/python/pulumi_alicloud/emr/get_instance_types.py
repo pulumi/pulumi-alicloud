@@ -84,6 +84,8 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
 
     > **NOTE:** Available in 1.59.0+
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
 
 
