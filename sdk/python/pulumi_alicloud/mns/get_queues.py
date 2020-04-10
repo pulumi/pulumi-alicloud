@@ -56,8 +56,6 @@ def get_queues(name_prefix=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_queues.html.markdown.
-
 
     :param str name_prefix: A string to filter resulting queues by their name prefixs.
     """

@@ -71,8 +71,6 @@ def get_roles(ids=None,name_regex=None,output_file=None,policy_name=None,policy_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
-
 
     :param list ids: A list of ram role IDs. 
     :param str name_regex: A regex string to filter results by the role name.

@@ -51,10 +51,6 @@ def get_zones(output_file=None,opts=None):
     This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.74.0+.
-
-
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_zones.html.markdown.
     """
     __args__ = dict()
 

@@ -79,8 +79,6 @@ def get_alarms(ids=None,metric_type=None,name_regex=None,output_file=None,scalin
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
-
 
     :param list ids: A list of alarm IDs.
     :param str metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.

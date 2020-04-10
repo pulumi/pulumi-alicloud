@@ -80,8 +80,6 @@ def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
-
 
     :param list ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.

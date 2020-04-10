@@ -63,8 +63,6 @@ def get_services(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
-
 
     :param list ids: A list of FC services ids.
     :param str name_regex: A regex string to filter results by FC service name.

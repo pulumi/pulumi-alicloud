@@ -92,8 +92,6 @@ def get_acls(ids=None,name_regex=None,output_file=None,resource_group_id=None,ta
     * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
     * `acl_type`      - the type of acl (such as white/black).
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
-
 
     :param list ids: A list of acls IDs to filter results.
     :param str name_regex: A regex string to filter results by acl name.

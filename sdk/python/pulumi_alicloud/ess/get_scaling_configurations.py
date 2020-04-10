@@ -70,8 +70,6 @@ def get_scaling_configurations(ids=None,name_regex=None,output_file=None,scaling
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
-
 
     :param list ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.

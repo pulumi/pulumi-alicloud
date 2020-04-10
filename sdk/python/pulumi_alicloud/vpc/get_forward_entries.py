@@ -83,8 +83,6 @@ def get_forward_entries(external_ip=None,forward_table_id=None,ids=None,internal
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
-
 
     :param str external_ip: The public IP address.
     :param str forward_table_id: The ID of the Forward table.

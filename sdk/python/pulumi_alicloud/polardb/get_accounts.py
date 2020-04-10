@@ -59,8 +59,6 @@ def get_accounts(db_cluster_id=None,name_regex=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
-
 
     :param str db_cluster_id: The polarDB cluster ID. 
     :param str name_regex: A regex string to filter results by account name.

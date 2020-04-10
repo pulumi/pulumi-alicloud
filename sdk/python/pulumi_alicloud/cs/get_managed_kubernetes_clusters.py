@@ -69,8 +69,6 @@ def get_managed_kubernetes_clusters(enable_details=None,ids=None,name_regex=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_managed_kubernetes_clusters.html.markdown.
-
 
     :param list ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.

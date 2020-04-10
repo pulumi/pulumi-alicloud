@@ -62,8 +62,6 @@ def get_sasl_users(instance_id=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
-
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
     :param str name_regex: A regex string to filter results by the username. 

@@ -61,8 +61,6 @@ def get_notifications(ids=None,output_file=None,scaling_group_id=None,opts=None)
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
-
 
     :param list ids: A list of notification ids.
     :param str scaling_group_id: Scaling group id the notifications belong to.

@@ -72,8 +72,6 @@ def get_snat_entries(ids=None,output_file=None,snat_ip=None,snat_table_id=None,s
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
-
 
     :param list ids: A list of Snat Entries IDs.
     :param str snat_ip: The public IP of the Snat Entry.

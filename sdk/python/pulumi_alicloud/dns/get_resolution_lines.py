@@ -77,8 +77,6 @@ def get_resolution_lines(domain_name=None,lang=None,line_codes=None,line_display
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
-
 
     :param str domain_name: Domain Name. 
     :param str lang: language.

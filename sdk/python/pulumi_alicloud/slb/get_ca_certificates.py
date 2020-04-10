@@ -77,8 +77,6 @@ def get_ca_certificates(ids=None,name_regex=None,output_file=None,resource_group
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_ca_certificates.html.markdown.
-
 
     :param list ids: A list of ca certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by ca certificate name.

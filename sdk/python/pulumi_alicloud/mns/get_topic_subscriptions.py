@@ -60,8 +60,6 @@ def get_topic_subscriptions(name_prefix=None,output_file=None,topic_name=None,op
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
-
 
     :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.
     :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.

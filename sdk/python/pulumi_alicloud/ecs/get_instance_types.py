@@ -117,8 +117,6 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
-
 
     :param str availability_zone: The zone where instance types are supported.
     :param float cpu_core_count: Filter the results to a specific number of cpu cores.

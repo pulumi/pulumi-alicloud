@@ -62,8 +62,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
         * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_master_slave_server_group.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.

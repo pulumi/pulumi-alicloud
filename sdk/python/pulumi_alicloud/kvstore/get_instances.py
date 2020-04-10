@@ -99,8 +99,6 @@ def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
-
 
     :param list ids: A list of RKV instance IDs.
     :param str instance_type: Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.

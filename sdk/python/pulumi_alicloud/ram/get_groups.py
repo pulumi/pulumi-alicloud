@@ -68,8 +68,6 @@ def get_groups(name_regex=None,output_file=None,policy_name=None,policy_type=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_groups.html.markdown.
-
 
     :param str name_regex: A regex string to filter the returned groups by their names.
     :param str policy_name: Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.

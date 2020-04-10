@@ -119,8 +119,6 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
-
 
     :param str availability_zone: Availability zone where instances are located.
     :param list ids: A list of ECS instance IDs.

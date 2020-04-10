@@ -74,8 +74,6 @@ def get_apis(api_id=None,group_id=None,ids=None,name_regex=None,output_file=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
-
 
     :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
     :param str group_id: ID of the specified group.

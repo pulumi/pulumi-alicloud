@@ -67,8 +67,6 @@ def get_listeners(description_regex=None,frontend_port=None,load_balancer_id=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_listeners.html.markdown.
-
 
     :param str description_regex: A regex string to filter results by SLB listener description.
     :param float frontend_port: Filter listeners by the specified frontend port.

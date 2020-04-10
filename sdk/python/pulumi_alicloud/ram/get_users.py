@@ -75,8 +75,6 @@ def get_users(group_name=None,ids=None,name_regex=None,output_file=None,policy_n
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
-
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group. 
     :param list ids: A list of ram user IDs. 

@@ -162,8 +162,6 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
     * `tags` - (Optional) A map of tags assigned to snapshots.
     * `output_file` - (Optional) The name of output file that saves the filter results.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
-
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
     :param list ids: A list of snapshot IDs.

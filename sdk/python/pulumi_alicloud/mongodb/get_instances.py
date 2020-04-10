@@ -89,8 +89,6 @@ def get_instances(availability_zone=None,ids=None,instance_class=None,instance_t
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
-
 
     :param str availability_zone: Instance availability zone.
     :param list ids: The ids list of MongoDB instances

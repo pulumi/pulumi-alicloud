@@ -65,8 +65,6 @@ def get_images(most_recent=None,name_regex=None,output_file=None,owners=None,opt
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
-
 
     :param bool most_recent: If more than one result are returned, select the most recent one.
     :param str name_regex: A regex string to filter resulting images by name. 

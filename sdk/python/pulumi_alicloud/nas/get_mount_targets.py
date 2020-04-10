@@ -91,8 +91,6 @@ def get_mount_targets(access_group_name=None,file_system_id=None,ids=None,mount_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
-
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param str file_system_id: The ID of the FileSystem that owns the MountTarget.

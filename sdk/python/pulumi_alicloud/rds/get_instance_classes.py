@@ -90,8 +90,6 @@ def get_instance_classes(category=None,db_instance_class=None,engine=None,engine
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
-
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str db_instance_class: The DB instance class type by the user.

@@ -67,8 +67,6 @@ def get_networks(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cloud_connect_networks.html.markdown.
-
 
     :param list ids: A list of CCN instances IDs.
     :param str name_regex: A regex string to filter CCN instances by name.

@@ -60,8 +60,6 @@ def get_zone_records(ids=None,keyword=None,output_file=None,zone_id=None,opts=No
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
-
 
     :param list ids: A list of Private Zone Record IDs.
     :param str keyword: Keyword for record rr and value.

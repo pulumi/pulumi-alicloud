@@ -70,8 +70,6 @@ def get_instances(ids=None,name_regex=None,output_file=None,tags=None,opts=None)
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
-
 
     :param list ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by instance name.

@@ -55,8 +55,6 @@ def get_protocols(output_file=None,type=None,zone_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
-
 
     :param str type: The file system type. Valid Values: Performance and Capacity.  
     :param str zone_id: String to filter results by zone id. 

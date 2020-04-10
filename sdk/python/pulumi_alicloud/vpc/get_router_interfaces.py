@@ -113,8 +113,6 @@ def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,op
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
-
 
     :param list ids: A list of router interface IDs.
     :param str name_regex: A regex string used to filter by router interface name.

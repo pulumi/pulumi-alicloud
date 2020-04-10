@@ -55,8 +55,6 @@ def get_consumer_groups(consumer_id_regex=None,instance_id=None,output_file=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
-
 
     :param str consumer_id_regex: A regex string to filter results by the consumer group id. 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.

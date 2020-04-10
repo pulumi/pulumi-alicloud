@@ -65,8 +65,6 @@ def get_namespaces(name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
-
 
     :param str name_regex: A regex string to filter results by namespace name.
     """

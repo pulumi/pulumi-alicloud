@@ -67,8 +67,6 @@ def get_ssl_vpn_client_certs(ids=None,name_regex=None,output_file=None,ssl_vpn_s
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
-
 
     :param list ids: IDs of the SSL-VPN client certificates.
     :param str name_regex: A regex string of SSL-VPN client certificate name.

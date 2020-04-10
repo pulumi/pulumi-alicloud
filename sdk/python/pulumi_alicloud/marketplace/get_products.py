@@ -95,8 +95,6 @@ def get_products(category_id=None,ids=None,name_regex=None,output_file=None,prod
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
-
 
     :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
     :param list ids: A list of product code.

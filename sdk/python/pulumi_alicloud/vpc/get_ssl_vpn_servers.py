@@ -70,8 +70,6 @@ def get_ssl_vpn_servers(ids=None,name_regex=None,output_file=None,vpn_gateway_id
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
-
 
     :param list ids: IDs of the SSL-VPN servers.
     :param str name_regex: A regex string of SSL-VPN server name.

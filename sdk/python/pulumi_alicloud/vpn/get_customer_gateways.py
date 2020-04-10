@@ -57,8 +57,6 @@ def get_customer_gateways(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
-
 
     :param list ids: ID of the VPN customer gateways.
     :param str name_regex: A regex string of VPN customer gateways name.

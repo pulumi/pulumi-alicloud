@@ -81,8 +81,6 @@ def get_instances(availability_zone=None,ids=None,name_regex=None,output_file=No
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/gpdb_instances.html.markdown.
-
 
     :param str availability_zone: Instance availability zone.
     :param list ids: A list of instance IDs.

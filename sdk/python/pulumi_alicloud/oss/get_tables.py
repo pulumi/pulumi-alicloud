@@ -72,8 +72,6 @@ def get_tables(ids=None,instance_name=None,name_regex=None,output_file=None,opts
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
-
 
     :param list ids: A list of table IDs.
     :param str instance_name: The name of OTS instance.

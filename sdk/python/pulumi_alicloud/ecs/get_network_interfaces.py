@@ -125,8 +125,6 @@ def get_network_interfaces(ids=None,instance_id=None,name_regex=None,output_file
     * `output_file` - (Optional) The name of output file that saves the filter results.
     * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
-
 
     :param str instance_id: ID of the instance that the ENI is attached to.
     :param str private_ip: Primary private IP of the ENI.

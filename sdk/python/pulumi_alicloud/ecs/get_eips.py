@@ -78,8 +78,6 @@ def get_eips(ids=None,in_use=None,ip_addresses=None,output_file=None,resource_gr
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
-
 
     :param list ids: A list of EIP IDs.
     :param bool in_use: Deprecated since the version 1.8.0 of this provider.

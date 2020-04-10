@@ -72,8 +72,6 @@ def get_nat_gateways(ids=None,name_regex=None,output_file=None,vpc_id=None,opts=
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
-
 
     :param list ids: A list of NAT gateways IDs.
     :param str name_regex: A regex string to filter nat gateways by name.

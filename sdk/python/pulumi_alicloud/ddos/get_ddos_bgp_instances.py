@@ -65,8 +65,6 @@ def get_ddos_bgp_instances(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
-
 
     :param list ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by the instance name.

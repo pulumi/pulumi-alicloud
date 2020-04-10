@@ -63,8 +63,6 @@ def get_zones(ids=None,keyword=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
-
 
     :param list ids: A list of zone IDs. 
     :param str keyword: keyword for zone name.

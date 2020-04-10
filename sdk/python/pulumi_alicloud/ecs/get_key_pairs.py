@@ -81,8 +81,6 @@ def get_key_pairs(finger_print=None,ids=None,name_regex=None,output_file=None,re
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
-
 
     :param bool finger_print: A finger print used to retrieve specified key pair.
     :param list ids: A list of key pair IDs.

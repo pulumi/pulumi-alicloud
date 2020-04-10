@@ -67,8 +67,6 @@ def get_apps(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
-
 
     :param list ids: A list of app IDs. 
     :param str name_regex: A regex string to filter apps by name.

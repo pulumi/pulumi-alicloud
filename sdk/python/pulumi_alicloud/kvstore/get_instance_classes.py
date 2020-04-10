@@ -106,8 +106,6 @@ def get_instance_classes(architecture=None,edition_type=None,engine=None,engine_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
-
 
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
     :param str edition_type: The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.

@@ -116,8 +116,6 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
-
 
     :param str address: Service address of the SLBs.
     :param list ids: A list of SLBs IDs.

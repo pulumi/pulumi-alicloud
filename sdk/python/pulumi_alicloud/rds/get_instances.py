@@ -110,8 +110,6 @@ def get_instances(connection_mode=None,db_type=None,engine=None,ids=None,name_re
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
-
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.

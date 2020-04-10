@@ -51,8 +51,6 @@ def get_product(available_region=None,product_code=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
-
 
     :param str available_region: A available region id used to filter market place Ecs images.
     :param str product_code: The product code of the market product.

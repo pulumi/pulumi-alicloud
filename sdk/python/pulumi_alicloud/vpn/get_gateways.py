@@ -84,8 +84,6 @@ def get_gateways(business_status=None,ids=None,name_regex=None,output_file=None,
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
-
 
     :param str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param list ids: IDs of the VPN.

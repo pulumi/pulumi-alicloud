@@ -79,8 +79,6 @@ def get_access_groups(description=None,name_regex=None,output_file=None,type=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
-
 
     :param str description: Filter results by a specific Description.
     :param str name_regex: A regex string to filter AccessGroups by name. 

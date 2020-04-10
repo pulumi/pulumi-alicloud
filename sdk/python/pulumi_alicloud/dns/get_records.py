@@ -99,8 +99,6 @@ def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_records.html.markdown.
-
 
     :param str domain_name: The domain name associated to the records.
     :param str host_record_regex: Host record regex. 

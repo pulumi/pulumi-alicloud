@@ -68,8 +68,6 @@ class Acl(pulumi.CustomResource):
         * `entry` - (Required) An IP addresses or CIDR blocks.
         * `comment` - (Optional) the comment of the entry.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_acl.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] entry_lists: A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.

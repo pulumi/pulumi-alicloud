@@ -93,8 +93,6 @@ def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
-
 
     :param str cen_id: The ID of the CEN Instance.
     :param str description: The description of flowlog.

@@ -84,8 +84,6 @@ def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,s
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
-
 
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
     :param str description_regex: A regex string to filter results by cluster description.

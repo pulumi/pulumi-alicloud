@@ -93,8 +93,6 @@ def get_security_group_rules(direction=None,group_id=None,ip_protocol=None,nic_t
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
-
 
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.
     :param str group_id: The ID of the security group that owns the rules.

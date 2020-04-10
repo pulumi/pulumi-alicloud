@@ -41,8 +41,6 @@ class BackendServer(pulumi.CustomResource):
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
         * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.

@@ -84,8 +84,6 @@ def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
-
 
     :param list ids: A list of Security Group IDs.
     :param str name_regex: A regex string to filter the resulting security groups by their names.

@@ -54,10 +54,6 @@ def get_caller_identity(opts=None):
     This data source provides the identity of the current user.
 
     > **NOTE:** Available in 1.65.0+.
-
-
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
     """
     __args__ = dict()
 

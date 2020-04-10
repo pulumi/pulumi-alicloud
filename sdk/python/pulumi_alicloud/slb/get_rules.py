@@ -71,8 +71,6 @@ def get_rules(frontend_port=None,ids=None,load_balancer_id=None,name_regex=None,
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
-
 
     :param float frontend_port: SLB listener port.
     :param list ids: A list of rules IDs to filter results.

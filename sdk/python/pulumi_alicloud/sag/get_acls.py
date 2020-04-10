@@ -67,8 +67,6 @@ def get_acls(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/sag_acls.html.markdown.
-
 
     :param list ids: A list of Sag Acl IDs.
     :param str name_regex: A regex string to filter Sag Acl instances by name.

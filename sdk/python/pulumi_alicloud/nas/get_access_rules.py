@@ -79,8 +79,6 @@ def get_access_rules(access_group_name=None,ids=None,output_file=None,rw_access=
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
-
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param list ids: A list of rule IDs.

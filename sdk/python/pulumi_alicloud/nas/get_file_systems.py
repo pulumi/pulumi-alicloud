@@ -79,8 +79,6 @@ def get_file_systems(description_regex=None,ids=None,output_file=None,protocol_t
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
-
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param list ids: A list of FileSystemId.

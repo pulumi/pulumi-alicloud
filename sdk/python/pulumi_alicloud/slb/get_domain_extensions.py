@@ -59,8 +59,6 @@ def get_domain_extensions(frontend_port=None,ids=None,load_balancer_id=None,outp
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
-
 
     :param float frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
     :param list ids: IDs of the SLB domain extensions.

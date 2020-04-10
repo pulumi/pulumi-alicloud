@@ -72,8 +72,6 @@ def get_lifecycle_hooks(ids=None,name_regex=None,output_file=None,scaling_group_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
-
 
     :param list ids: A list of lifecycle hook IDs.
     :param str name_regex: A regex string to filter resulting lifecycle hook by name.

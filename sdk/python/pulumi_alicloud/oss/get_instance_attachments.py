@@ -70,8 +70,6 @@ def get_instance_attachments(instance_name=None,name_regex=None,output_file=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
-
 
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by vpc name.

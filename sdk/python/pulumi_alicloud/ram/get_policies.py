@@ -75,8 +75,6 @@ def get_policies(group_name=None,name_regex=None,output_file=None,role_name=None
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
-
 
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
     :param str name_regex: A regex string to filter resulting policies by name.

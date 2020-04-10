@@ -98,8 +98,6 @@ def get_zones(available_disk_category=None,available_instance_type=None,availabl
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
-
 
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
     :param str available_instance_type: Filter the results by a specific instance type.

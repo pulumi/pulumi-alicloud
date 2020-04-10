@@ -63,8 +63,6 @@ def get_groups(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
-
 
     :param list ids: A list of api group IDs. 
     :param str name_regex: A regex string to filter api gateway groups by name.

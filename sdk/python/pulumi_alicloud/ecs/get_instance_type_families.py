@@ -70,8 +70,6 @@ def get_instance_type_families(generation=None,instance_charge_type=None,output_
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
-
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
     :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.

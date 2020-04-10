@@ -62,8 +62,6 @@ def get_topics(instance_id=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
-
 
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name. 

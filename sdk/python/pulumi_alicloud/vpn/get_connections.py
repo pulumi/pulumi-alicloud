@@ -77,8 +77,6 @@ def get_connections(customer_gateway_id=None,ids=None,name_regex=None,output_fil
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
-
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
     :param list ids: IDs of the VPN connections.

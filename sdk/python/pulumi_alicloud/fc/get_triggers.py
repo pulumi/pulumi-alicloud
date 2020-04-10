@@ -71,8 +71,6 @@ def get_triggers(function_name=None,ids=None,name_regex=None,output_file=None,se
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
-
 
     :param str function_name: FC function name.
     :param list ids: A list of FC triggers ids.

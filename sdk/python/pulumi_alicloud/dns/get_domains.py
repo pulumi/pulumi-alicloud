@@ -95,8 +95,6 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
-
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name. 

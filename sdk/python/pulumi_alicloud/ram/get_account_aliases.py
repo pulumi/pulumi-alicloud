@@ -42,10 +42,6 @@ class AwaitableGetAccountAliasesResult(GetAccountAliasesResult):
 def get_account_aliases(output_file=None,opts=None):
     """
     This data source provides an alias for the Alibaba Cloud account.
-
-
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
     """
     __args__ = dict()
 
