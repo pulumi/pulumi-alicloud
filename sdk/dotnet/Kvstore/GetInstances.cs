@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.KVStore
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstances.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
         /// </summary>

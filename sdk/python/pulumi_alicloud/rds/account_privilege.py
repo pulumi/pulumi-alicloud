@@ -35,7 +35,7 @@ class AccountPrivilege(pulumi.CustomResource):
         """
         Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account_privilege.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

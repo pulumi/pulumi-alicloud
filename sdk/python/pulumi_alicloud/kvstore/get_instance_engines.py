@@ -70,7 +70,7 @@ def get_instance_engines(engine=None,engine_version=None,instance_charge_type=No
 
     > **NOTE:** Available in v1.51.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
+
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.

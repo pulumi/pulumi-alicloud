@@ -50,6 +50,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
         > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
 
+
         ## Block vserver_group
 
         the vserver_group supports the following:
@@ -62,8 +63,6 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         * `vserver_group_id` - (Required) ID of VServer Group.
         * `port` - (Required) - The port will be used for VServer Group backend server.
         * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scalinggroup_vserver_groups.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

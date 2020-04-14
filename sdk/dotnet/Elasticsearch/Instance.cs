@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// 
     /// &gt; **NOTE:** At present, `version` can not be modified once instance has been created.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

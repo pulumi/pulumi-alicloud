@@ -75,7 +75,7 @@ def get_scaling_rules(ids=None,name_regex=None,output_file=None,scaling_group_id
     """
     This data source provides available scaling rule resources. 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
+
 
 
     :param list ids: A list of scaling rule IDs.

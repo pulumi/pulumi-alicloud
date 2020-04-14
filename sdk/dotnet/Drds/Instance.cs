@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/drds_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource

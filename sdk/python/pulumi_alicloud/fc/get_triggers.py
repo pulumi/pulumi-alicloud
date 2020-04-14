@@ -69,7 +69,7 @@ def get_triggers(function_name=None,ids=None,name_regex=None,output_file=None,se
     """
     This data source provides the Function Compute triggers of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
+
 
 
     :param str function_name: FC function name.

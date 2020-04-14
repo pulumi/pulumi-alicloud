@@ -50,6 +50,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.54.0+
 
+
         ## Block servers
 
         The servers mapping supports the following:
@@ -60,8 +61,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
         * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
         * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_master_slave_server_group.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

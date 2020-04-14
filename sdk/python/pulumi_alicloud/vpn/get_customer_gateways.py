@@ -55,7 +55,7 @@ def get_customer_gateways(ids=None,name_regex=None,output_file=None,opts=None):
     """
     The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
+
 
 
     :param list ids: ID of the VPN customer gateways.

@@ -26,7 +26,7 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

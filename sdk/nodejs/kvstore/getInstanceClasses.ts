@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
  */
-export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> & GetInstanceClassesResult {
+export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
     if (!opts) {
         opts = {}
     }
@@ -41,7 +43,7 @@ export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceClassesResult> = pulumi.runtime.invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
+    return pulumi.runtime.invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
         "architecture": args.architecture,
         "editionType": args.editionType,
         "engine": args.engine,
@@ -57,8 +59,6 @@ export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.I
         "storageType": args.storageType,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

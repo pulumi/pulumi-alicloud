@@ -140,7 +140,7 @@ class Instance(pulumi.CustomResource):
         environment in the cloud. A DB instance can contain multiple user-created
         databases.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

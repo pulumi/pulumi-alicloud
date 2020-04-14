@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
  */
-export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> & GetProductsResult {
+export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -37,7 +39,7 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProductsResult> = pulumi.runtime.invoke("alicloud:marketplace/getProducts:getProducts", {
+    return pulumi.runtime.invoke("alicloud:marketplace/getProducts:getProducts", {
         "categoryId": args.categoryId,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
@@ -49,8 +51,6 @@ export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions)
         "supplierId": args.supplierId,
         "supplierNameKeyword": args.supplierNameKeyword,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

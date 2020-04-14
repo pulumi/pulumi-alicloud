@@ -47,7 +47,7 @@ def get_bandwidth_limits(instance_ids=None,output_file=None,opts=None):
     """
     This data source provides CEN Bandwidth Limits available to the user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
+
 
 
     :param list instance_ids: A list of CEN instances IDs.

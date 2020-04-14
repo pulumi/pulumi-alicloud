@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM cloud account alias.
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_account_alias.html.markdown.
     /// </summary>
     public partial class AccountAlias : Pulumi.CustomResource

@@ -108,7 +108,7 @@ def get_instances(connection_mode=None,db_type=None,engine=None,ids=None,name_re
     The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
+
 
 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.

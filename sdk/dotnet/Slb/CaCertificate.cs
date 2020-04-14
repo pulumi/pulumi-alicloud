@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_ca_certificate.html.markdown.
     /// </summary>
     public partial class CaCertificate : Pulumi.CustomResource

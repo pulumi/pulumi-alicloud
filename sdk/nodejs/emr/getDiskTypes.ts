@@ -14,6 +14,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
  */
-export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskTypesResult> & GetDiskTypesResult {
+export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskTypesResult> {
     if (!opts) {
         opts = {}
     }
@@ -39,7 +41,7 @@ export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDiskTypesResult> = pulumi.runtime.invoke("alicloud:emr/getDiskTypes:getDiskTypes", {
+    return pulumi.runtime.invoke("alicloud:emr/getDiskTypes:getDiskTypes", {
         "clusterType": args.clusterType,
         "destinationResource": args.destinationResource,
         "instanceChargeType": args.instanceChargeType,
@@ -47,8 +49,6 @@ export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions
         "outputFile": args.outputFile,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

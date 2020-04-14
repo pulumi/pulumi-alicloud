@@ -60,14 +60,13 @@ class Acl(pulumi.CustomResource):
         For information about acl and how to use it, see [Configure an access control list](https://www.alibabacloud.com/help/doc-detail/85978.htm).
 
 
+
         ## Entry Block
 
         The entry mapping supports the following:
 
         * `entry` - (Required) An IP addresses or CIDR blocks.
         * `comment` - (Optional) the comment of the entry.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_acl.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

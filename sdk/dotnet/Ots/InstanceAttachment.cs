@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ots
     /// <summary>
     /// This resource will help you to bind a VPC to an OTS instance.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance_attachment.html.markdown.
     /// </summary>
     public partial class InstanceAttachment : Pulumi.CustomResource

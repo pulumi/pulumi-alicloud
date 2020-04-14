@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
         /// </summary>
         [Obsolete("Use GetDiskTypes.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud.Emr
         /// system disk types available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
         /// </summary>

@@ -10,10 +10,11 @@ import * as utilities from "../utilities";
  * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  * 
  * > **NOTE:** Available in v1.73.0+.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_zones.html.markdown.
  */
-export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
+export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -22,13 +23,11 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("alicloud:kvstore/getZones:getZones", {
+    return pulumi.runtime.invoke("alicloud:kvstore/getZones:getZones", {
         "instanceChargeType": args.instanceChargeType,
         "multi": args.multi,
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

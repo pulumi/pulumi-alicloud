@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
         /// </summary>
         [Obsolete("Use GetRegions.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud
     {
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
         /// </summary>

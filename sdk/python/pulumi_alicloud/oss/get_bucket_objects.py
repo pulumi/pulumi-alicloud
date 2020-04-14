@@ -55,7 +55,7 @@ def get_bucket_objects(bucket_name=None,key_prefix=None,key_regex=None,output_fi
     """
     This data source provides the objects of an OSS bucket.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
+
 
 
     :param str bucket_name: Name of the bucket that contains the objects to find.

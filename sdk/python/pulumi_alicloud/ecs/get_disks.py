@@ -93,7 +93,7 @@ def get_disks(category=None,encrypted=None,ids=None,instance_id=None,name_regex=
     """
     This data source provides the disks of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/disks.html.markdown.
+
 
 
     :param str category: Disk category. Possible values: `cloud` (basic cloud disk), `cloud_efficiency` (ultra cloud disk), `ephemeral_ssd` (local SSD cloud disk), `cloud_ssd` (SSD cloud disk), and `cloud_essd` (ESSD cloud disk).

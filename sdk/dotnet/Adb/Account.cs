@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// &gt; **NOTE:** Available in v1.71.0+. 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/adb_account.html.markdown.
     /// </summary>
     public partial class Account : Pulumi.CustomResource

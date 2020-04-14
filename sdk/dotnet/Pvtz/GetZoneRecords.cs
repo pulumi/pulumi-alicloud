@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
         /// </summary>
         [Obsolete("Use GetZoneRecords.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Pvtz
     {
         /// <summary>
         /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
         /// </summary>

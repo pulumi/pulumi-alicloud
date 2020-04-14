@@ -57,7 +57,7 @@ def get_databases(db_cluster_id=None,name_regex=None,opts=None):
 
     > **NOTE:** Available in v1.70.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
+
 
 
     :param str db_cluster_id: The polarDB cluster ID. 

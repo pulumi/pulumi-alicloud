@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_zones.html.markdown.
         /// </summary>
         [Obsolete("Use GetZones.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.KVStore
         /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_zones.html.markdown.
         /// </summary>

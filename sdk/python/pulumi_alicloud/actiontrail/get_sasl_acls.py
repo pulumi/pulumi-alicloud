@@ -70,7 +70,7 @@ def get_sasl_acls(acl_resource_name=None,acl_resource_type=None,instance_id=None
 
     > **NOTE:** Available in 1.66.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
+
 
 
     :param str acl_resource_name: Get results for the specified resource name. 

@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a forward resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
     /// </summary>
     public partial class ForwardEntry : Pulumi.CustomResource

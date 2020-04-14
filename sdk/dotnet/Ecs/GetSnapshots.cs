@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
+        /// 
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -72,6 +73,7 @@ namespace Pulumi.AliCloud.Ecs
         /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// 
         /// 
         /// ##  Argument Reference
         /// 

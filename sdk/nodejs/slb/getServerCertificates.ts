@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_certificates.html.markdown.
  */
-export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificatesResult> & GetServerCertificatesResult {
+export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCertificatesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -31,15 +33,13 @@ export function getServerCertificates(args?: GetServerCertificatesArgs, opts?: p
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServerCertificatesResult> = pulumi.runtime.invoke("alicloud:slb/getServerCertificates:getServerCertificates", {
+    return pulumi.runtime.invoke("alicloud:slb/getServerCertificates:getServerCertificates", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

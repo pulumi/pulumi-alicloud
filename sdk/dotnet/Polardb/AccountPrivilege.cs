@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available in v1.67.0+.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_account_privilege.html.markdown.
     /// </summary>
     public partial class AccountPrivilege : Pulumi.CustomResource

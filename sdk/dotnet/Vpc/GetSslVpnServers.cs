@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
         /// </summary>
         [Obsolete("Use GetSslVpnServers.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
         /// </summary>

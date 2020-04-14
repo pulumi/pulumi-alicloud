@@ -73,7 +73,7 @@ def get_users(group_name=None,ids=None,name_regex=None,output_file=None,policy_n
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
+
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group. 

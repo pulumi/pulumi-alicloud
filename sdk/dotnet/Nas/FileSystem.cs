@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_file_system.html.markdown.
     /// </summary>
     public partial class FileSystem : Pulumi.CustomResource

@@ -74,7 +74,7 @@ def get_repos(enable_details=None,name_regex=None,namespace=None,output_file=Non
 
     > **NOTE:** Available in v1.35.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
+
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.

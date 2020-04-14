@@ -188,6 +188,7 @@ class Listener(pulumi.CustomResource):
         * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
         * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 
+
         ## Listener fields and protocol mapping
 
         load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -229,8 +230,6 @@ class Listener(pulumi.CustomResource):
         server_group_id    | http & https & tcp & udp | the id of resource slb.ServerGroup |
 
         The listener mapping supports the following:
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

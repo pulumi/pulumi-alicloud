@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM Group membership resource. 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available scaling rule resources. 
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
         /// </summary>
         [Obsolete("Use GetScalingRules.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Ess
     {
         /// <summary>
         /// This data source provides available scaling rule resources. 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
         /// </summary>

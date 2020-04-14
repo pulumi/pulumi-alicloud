@@ -16,6 +16,9 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
     /// 
+    /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
     /// </summary>
     public partial class ServerCertificate : Pulumi.CustomResource

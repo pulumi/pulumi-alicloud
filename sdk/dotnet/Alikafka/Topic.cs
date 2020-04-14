@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.AliKafka
     /// &gt; **NOTE:**  Only the following regions support create alikafka topic.
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_topic.html.markdown.
     /// </summary>
     public partial class Topic : Pulumi.CustomResource

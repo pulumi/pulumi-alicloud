@@ -61,7 +61,7 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides CEN instances available to the user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_instances.html.markdown.
+
 
 
     :param list ids: A list of CEN instances IDs.

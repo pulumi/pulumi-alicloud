@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Rds
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
         /// </summary>
         [Obsolete("Use GetInstances.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
         /// </summary>

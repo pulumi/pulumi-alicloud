@@ -40,7 +40,7 @@ class DBAuditInstance(pulumi.CustomResource):
 
         > **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_dbaudit_instance.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

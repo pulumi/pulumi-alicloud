@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.KVStore
     /// <summary>
     /// Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource

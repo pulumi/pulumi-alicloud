@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> & GetAccountAliasResult {
+export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAliasResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -15,11 +15,9 @@ export function getAccountAlias(args?: GetAccountAliasArgs, opts?: pulumi.Invoke
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountAliasResult> = pulumi.runtime.invoke("alicloud:ram/getAccountAlias:getAccountAlias", {
+    return pulumi.runtime.invoke("alicloud:ram/getAccountAlias:getAccountAlias", {
         "outputFile": args.outputFile,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -54,7 +54,7 @@ def get_trails(name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of action trail of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
+
 
 
     :param str name_regex: A regex string to filter results action trail name.

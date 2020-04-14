@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.  
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_access_key.html.markdown.
     /// </summary>
     public partial class AccessKey : Pulumi.CustomResource

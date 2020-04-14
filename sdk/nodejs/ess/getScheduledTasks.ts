@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scheduled_tasks.html.markdown.
  */
-export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> & GetScheduledTasksResult {
+export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,15 +38,13 @@ export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.In
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetScheduledTasksResult> = pulumi.runtime.invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", {
+    return pulumi.runtime.invoke("alicloud:ess/getScheduledTasks:getScheduledTasks", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "scheduledAction": args.scheduledAction,
         "scheduledTaskId": args.scheduledTaskId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

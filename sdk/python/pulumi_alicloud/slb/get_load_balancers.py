@@ -114,7 +114,7 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
+
 
 
     :param str address: Service address of the SLBs.

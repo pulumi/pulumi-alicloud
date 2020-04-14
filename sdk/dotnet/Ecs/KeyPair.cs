@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ecs
     /// <summary>
     /// Provides a key pair resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair.html.markdown.
     /// </summary>
     public partial class KeyPair : Pulumi.CustomResource

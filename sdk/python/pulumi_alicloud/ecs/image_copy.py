@@ -57,7 +57,7 @@ class ImageCopy(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.66.0+.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_copy.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

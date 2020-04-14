@@ -46,6 +46,7 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
 
+
         ## Block servers
 
         The servers mapping supports the following:
@@ -54,8 +55,6 @@ class ServerGroup(pulumi.CustomResource):
         * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
         * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

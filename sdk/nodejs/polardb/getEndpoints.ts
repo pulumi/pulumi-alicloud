@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
  * 
  * > **NOTE:** Available in v1.68.0+.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
  */
-export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> & GetEndpointsResult {
+export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,12 +23,10 @@ export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetEndpointsResult> = pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
+    return pulumi.runtime.invoke("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,
         "dbEndpointId": args.dbEndpointId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

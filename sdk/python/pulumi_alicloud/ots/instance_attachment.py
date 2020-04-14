@@ -30,7 +30,7 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         This resource will help you to bind a VPC to an OTS instance.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance_attachment.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

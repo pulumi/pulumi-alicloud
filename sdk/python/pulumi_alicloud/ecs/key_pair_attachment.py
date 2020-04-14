@@ -28,7 +28,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

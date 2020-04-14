@@ -61,7 +61,7 @@ def get_ddos_coo_instances(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
+
 
 
     :param list ids: A list of instance IDs.

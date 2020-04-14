@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
         /// </summary>
         [Obsolete("Use GetFileCrc64Checksum.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud
         /// This data source compute file crc64 checksum.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
         /// </summary>

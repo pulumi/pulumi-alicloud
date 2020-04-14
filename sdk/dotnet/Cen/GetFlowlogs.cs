@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.78.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
         /// </summary>
         [Obsolete("Use GetFlowlogs.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN flow logs available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.78.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
         /// </summary>

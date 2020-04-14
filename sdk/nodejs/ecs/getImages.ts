@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
  */
-export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> & GetImagesResult {
+export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -35,14 +37,12 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetImagesResult> = pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
+    return pulumi.runtime.invoke("alicloud:ecs/getImages:getImages", {
         "mostRecent": args.mostRecent,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "owners": args.owners,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

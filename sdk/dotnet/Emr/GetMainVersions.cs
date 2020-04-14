@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
         /// </summary>
         [Obsolete("Use GetMainVersions.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud.Emr
         /// main versions available in Alibaba Cloud account when create a emr cluster.
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
         /// </summary>

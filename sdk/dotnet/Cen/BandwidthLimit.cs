@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
     /// </summary>
     public partial class BandwidthLimit : Pulumi.CustomResource

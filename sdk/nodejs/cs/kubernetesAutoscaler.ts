@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
- * cluster-autoscaler in Kubernetes Cluster
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

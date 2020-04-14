@@ -16,6 +16,7 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
         /// 
+        /// 
         /// ## Public ip addresses Block
         ///   
         ///   The public ip addresses mapping supports the following:
@@ -35,6 +36,7 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:** Available in 1.36.0+.
+        /// 
         /// 
         /// ## Public ip addresses Block
         ///   

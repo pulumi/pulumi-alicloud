@@ -67,7 +67,7 @@ def get_master_slave_server_groups(ids=None,load_balancer_id=None,name_regex=Non
 
     > **NOTE:** Available in 1.54.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
+
 
 
     :param list ids: A list of master slave server group IDs to filter results.

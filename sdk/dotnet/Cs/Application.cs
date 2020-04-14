@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** At present, this resource only support swarm cluster.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
     /// </summary>
     public partial class Application : Pulumi.CustomResource

@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
         /// </summary>
         [Obsolete("Use GetZones.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud
         /// 
         /// 
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
         /// </summary>

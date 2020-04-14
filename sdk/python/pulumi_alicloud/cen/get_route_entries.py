@@ -64,7 +64,7 @@ def get_route_entries(cidr_block=None,instance_id=None,output_file=None,route_ta
     """
     This data source provides CEN Route Entries available to the user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_route_entries.html.markdown.
+
 
 
     :param str cidr_block: The destination CIDR block of the route entry to query.

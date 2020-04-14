@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
  */
-export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> & GetInstanceEnginesResult {
+export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     if (!opts) {
         opts = {}
     }
@@ -41,15 +43,13 @@ export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.I
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetInstanceEnginesResult> = pulumi.runtime.invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", {
+    return pulumi.runtime.invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", {
         "engine": args.engine,
         "engineVersion": args.engineVersion,
         "instanceChargeType": args.instanceChargeType,
         "outputFile": args.outputFile,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

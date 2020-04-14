@@ -16,6 +16,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
         /// 
+        /// 
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -45,6 +46,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
         /// 
         /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+        /// 
         /// 
         /// ##  Argument Reference
         /// 

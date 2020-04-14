@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// &gt; **NOTE:** Available in v1.71.0+.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
         /// </summary>
         [Obsolete("Use GetClusters.InvokeAsync() instead")]
@@ -30,6 +32,8 @@ namespace Pulumi.AliCloud.Adb
         /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
         /// 
         /// &gt; **NOTE:** Available in v1.71.0+.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
         /// </summary>

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// This data source provides the apis of the current Alibaba Cloud user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
         /// </summary>
         [Obsolete("Use GetApis.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.ApiGateway
     {
         /// <summary>
         /// This data source provides the apis of the current Alibaba Cloud user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
         /// </summary>

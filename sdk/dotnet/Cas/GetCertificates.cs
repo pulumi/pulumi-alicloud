@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Cas
         /// <summary>
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
         /// </summary>
         [Obsolete("Use GetCertificates.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Cas
     {
         /// <summary>
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
         /// </summary>

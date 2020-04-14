@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  * [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
  * 
  * > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_instance.html.markdown.
  */

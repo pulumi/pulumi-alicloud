@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -67,7 +69,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
  */
-export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> & GetSnapshotsResult {
+export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -76,7 +78,7 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSnapshotsResult> = pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
+    return pulumi.runtime.invoke("alicloud:ecs/getSnapshots:getSnapshots", {
         "diskId": args.diskId,
         "encrypted": args.encrypted,
         "ids": args.ids,
@@ -89,8 +91,6 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
         "type": args.type,
         "usage": args.usage,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource

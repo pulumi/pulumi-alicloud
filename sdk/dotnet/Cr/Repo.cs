@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
     /// </summary>
     public partial class Repo : Pulumi.CustomResource

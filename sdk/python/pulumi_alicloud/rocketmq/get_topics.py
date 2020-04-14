@@ -60,7 +60,7 @@ def get_topics(instance_id=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.53.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
+
 
 
     :param str instance_id: ID of the ONS Instance that owns the topics.

@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Using this resource need to open a whitelist.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
     /// </summary>
     public partial class NetworkAclEntries : Pulumi.CustomResource

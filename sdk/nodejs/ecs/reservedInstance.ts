@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * Provides an Reserved Instance resource.
  * 
  * > **NOTE:** Available in 1.65.0+
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
  */

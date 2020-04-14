@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
  */
-export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> & GetProductResult {
+export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
     if (!opts) {
         opts = {}
     }
@@ -35,12 +37,10 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetProductResult> = pulumi.runtime.invoke("alicloud:marketplace/getProduct:getProduct", {
+    return pulumi.runtime.invoke("alicloud:marketplace/getProduct:getProduct", {
         "availableRegion": args.availableRegion,
         "productCode": args.productCode,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

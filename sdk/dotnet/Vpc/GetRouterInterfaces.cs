@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
         /// that connect VPCs together.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
         /// </summary>
         [Obsolete("Use GetRouterInterfaces.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
         /// that connect VPCs together.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
         /// </summary>

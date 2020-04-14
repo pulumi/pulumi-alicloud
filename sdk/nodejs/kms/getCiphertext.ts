@@ -4,7 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> & GetCiphertextResult {
+export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
     if (!opts) {
         opts = {}
     }
@@ -12,13 +12,11 @@ export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptio
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetCiphertextResult> = pulumi.runtime.invoke("alicloud:kms/getCiphertext:getCiphertext", {
+    return pulumi.runtime.invoke("alicloud:kms/getCiphertext:getCiphertext", {
         "encryptionContext": args.encryptionContext,
         "keyId": args.keyId,
         "plaintext": args.plaintext,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
  */
-export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> & GetLoadBalancersResult {
+export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,7 +35,7 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetLoadBalancersResult> = pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
+    return pulumi.runtime.invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", {
         "address": args.address,
         "ids": args.ids,
         "masterAvailabilityZone": args.masterAvailabilityZone,
@@ -46,8 +48,6 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
         "vpcId": args.vpcId,
         "vswitchId": args.vswitchId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -32,7 +32,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
         > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

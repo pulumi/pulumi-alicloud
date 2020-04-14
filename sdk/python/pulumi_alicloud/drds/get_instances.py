@@ -64,7 +64,7 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.35.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
+
 
 
     :param list ids: A list of DRDS instance IDs.

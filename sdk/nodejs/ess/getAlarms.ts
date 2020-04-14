@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
  */
-export function getAlarms(args?: GetAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmsResult> & GetAlarmsResult {
+export function getAlarms(args?: GetAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -40,15 +42,13 @@ export function getAlarms(args?: GetAlarmsArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAlarmsResult> = pulumi.runtime.invoke("alicloud:ess/getAlarms:getAlarms", {
+    return pulumi.runtime.invoke("alicloud:ess/getAlarms:getAlarms", {
         "ids": args.ids,
         "metricType": args.metricType,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "scalingGroupId": args.scalingGroupId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

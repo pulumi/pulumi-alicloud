@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource

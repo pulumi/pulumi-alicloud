@@ -68,7 +68,7 @@ def get_instance_attachments(instance_name=None,name_regex=None,output_file=None
     """
     This data source provides the ots instance attachments of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
+
 
 
     :param str instance_name: The name of OTS instance.

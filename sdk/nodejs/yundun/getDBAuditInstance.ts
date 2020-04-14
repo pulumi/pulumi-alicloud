@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDBAuditInstanceResult> & GetDBAuditInstanceResult {
+export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDBAuditInstanceResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -14,14 +14,12 @@ export function getDBAuditInstance(args?: GetDBAuditInstanceArgs, opts?: pulumi.
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDBAuditInstanceResult> = pulumi.runtime.invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
+    return pulumi.runtime.invoke("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {
         "descriptionRegex": args.descriptionRegex,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "tags": args.tags,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

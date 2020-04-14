@@ -56,7 +56,7 @@ def get_zones(multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.73.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_zones.html.markdown.
+
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch MongoDB instances.

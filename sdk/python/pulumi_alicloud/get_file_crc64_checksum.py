@@ -49,7 +49,7 @@ def get_file_crc64_checksum(filename=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.59.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
+
 
 
     :param str filename: The name of the file to be computed crc64 checksum.

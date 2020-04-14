@@ -68,7 +68,7 @@ def get_clusters(description_regex=None,ids=None,output_file=None,tags=None,opts
 
     > **NOTE:** Available in v1.71.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
+
 
 
     :param str description_regex: A regex string to filter results by cluster description.

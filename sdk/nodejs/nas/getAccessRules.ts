@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
  */
-export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> & GetAccessRulesResult {
+export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
     if (!opts) {
         opts = {}
     }
@@ -36,7 +38,7 @@ export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccessRulesResult> = pulumi.runtime.invoke("alicloud:nas/getAccessRules:getAccessRules", {
+    return pulumi.runtime.invoke("alicloud:nas/getAccessRules:getAccessRules", {
         "accessGroupName": args.accessGroupName,
         "ids": args.ids,
         "outputFile": args.outputFile,
@@ -44,8 +46,6 @@ export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOpt
         "sourceCidrIp": args.sourceCidrIp,
         "userAccess": args.userAccess,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

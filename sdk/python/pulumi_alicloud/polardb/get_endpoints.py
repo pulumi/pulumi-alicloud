@@ -53,7 +53,7 @@ def get_endpoints(db_cluster_id=None,db_endpoint_id=None,opts=None):
 
     > **NOTE:** Available in v1.68.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
+
 
 
     :param str db_cluster_id: PolarDB cluster ID. 

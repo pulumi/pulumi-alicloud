@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// &gt; **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
     /// </summary>
     public partial class Swarm : Pulumi.CustomResource

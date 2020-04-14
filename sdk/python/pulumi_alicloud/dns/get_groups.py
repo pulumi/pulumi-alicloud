@@ -61,7 +61,7 @@ def get_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
+
 
 
     :param list ids: A list of group IDs.

@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,7 +54,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
  */
-export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> & GetSnatEntriesResult {
+export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {
     if (!opts) {
         opts = {}
     }
@@ -60,15 +62,13 @@ export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSnatEntriesResult> = pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
+    return pulumi.runtime.invoke("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,
         "outputFile": args.outputFile,
         "snatIp": args.snatIp,
         "snatTableId": args.snatTableId,
         "sourceCidr": args.sourceCidr,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

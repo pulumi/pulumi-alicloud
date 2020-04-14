@@ -64,7 +64,7 @@ def get_zones(available_slb_address_ip_version=None,available_slb_address_type=N
 
     > **NOTE:** Available in v1.73.0+.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_zones.html.markdown.
+
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.

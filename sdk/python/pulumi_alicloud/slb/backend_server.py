@@ -32,6 +32,7 @@ class BackendServer(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
+
         ## Block servers
 
         The servers mapping supports the following:
@@ -39,8 +40,6 @@ class BackendServer(pulumi.CustomResource):
         * `server_id` - (Required) A list backend server ID (ECS instance ID).
         * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
         * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -70,14 +70,13 @@ def get_common_bandwidth_packages(ids=None,name_regex=None,output_file=None,reso
 
     > **NOTE:** Available in 1.36.0+.
 
+
     ## Public ip addresses Block
       
       The public ip addresses mapping supports the following:
       
       * `ip_address`   - The address of the EIP.
       * `allocation_id` - The ID of the EIP instance.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
 
 
     :param list ids: A list of Common Bandwidth Packages IDs.

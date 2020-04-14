@@ -73,7 +73,7 @@ def get_policies(group_name=None,name_regex=None,output_file=None,role_name=None
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
+
 
 
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.

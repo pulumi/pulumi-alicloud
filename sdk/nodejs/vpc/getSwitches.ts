@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +36,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
  */
-export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> & GetSwitchesResult {
+export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -43,7 +45,7 @@ export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions)
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetSwitchesResult> = pulumi.runtime.invoke("alicloud:vpc/getSwitches:getSwitches", {
+    return pulumi.runtime.invoke("alicloud:vpc/getSwitches:getSwitches", {
         "cidrBlock": args.cidrBlock,
         "ids": args.ids,
         "isDefault": args.isDefault,
@@ -54,8 +56,6 @@ export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions)
         "vpcId": args.vpcId,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

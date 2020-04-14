@@ -75,6 +75,7 @@ def get_acls(ids=None,name_regex=None,output_file=None,resource_group_id=None,ta
     """
     This data source provides the acls in the region.
 
+
     ## Entry Block
 
     The entry mapping supports the following:
@@ -90,8 +91,6 @@ def get_acls(ids=None,name_regex=None,output_file=None,resource_group_id=None,ta
     * `frontend_port` - the listener port.
     * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
     * `acl_type`      - the type of acl (such as white/black).
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
 
 
     :param list ids: A list of acls IDs to filter results.

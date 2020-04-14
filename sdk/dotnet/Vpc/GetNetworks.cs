@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides VPCs available to the user.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
         /// </summary>
         [Obsolete("Use GetNetworks.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// This data source provides VPCs available to the user.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
         /// </summary>

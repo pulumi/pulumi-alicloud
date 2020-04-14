@@ -65,7 +65,7 @@ def get_functions(ids=None,name_regex=None,output_file=None,service_name=None,op
     """
     This data source provides the Function Compute functions of the current Alibaba Cloud user.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
+
 
 
     :param list ids: A list of functions ids.

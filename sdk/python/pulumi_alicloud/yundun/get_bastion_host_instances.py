@@ -64,7 +64,7 @@ def get_bastion_host_instances(description_regex=None,ids=None,output_file=None,
 
     > **NOTE:** Available in 1.63.0+ .
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
+
 
 
     :param str description_regex: A regex string to filter results by the instance description.

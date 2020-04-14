@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM role attachment resource to bind role for several ECS instances.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_attachment.html.markdown.
     /// </summary>
     public partial class RoleAttachment : Pulumi.CustomResource

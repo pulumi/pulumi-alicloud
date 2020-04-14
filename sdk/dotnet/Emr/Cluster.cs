@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// &gt; **NOTE:** Available in 1.57.0+.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource

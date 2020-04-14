@@ -73,7 +73,7 @@ def get_disk_types(cluster_type=None,destination_resource=None,instance_charge_t
 
     > **NOTE:** Available in 1.60.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
+
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.

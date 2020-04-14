@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +38,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_tables.html.markdown.
  */
-export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> & GetRouteTablesResult {
+export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -45,7 +47,7 @@ export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOp
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetRouteTablesResult> = pulumi.runtime.invoke("alicloud:vpc/getRouteTables:getRouteTables", {
+    return pulumi.runtime.invoke("alicloud:vpc/getRouteTables:getRouteTables", {
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -53,8 +55,6 @@ export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOp
         "tags": args.tags,
         "vpcId": args.vpcId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

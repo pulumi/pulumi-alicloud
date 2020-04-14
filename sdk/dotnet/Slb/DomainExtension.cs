@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// &gt; **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
     /// </summary>
     public partial class DomainExtension : Pulumi.CustomResource

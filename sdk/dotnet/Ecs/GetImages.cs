@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
         /// other public images and the ones available on the image market. 
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
         /// </summary>
         [Obsolete("Use GetImages.InvokeAsync() instead")]
@@ -26,6 +28,8 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
         /// other public images and the ones available on the image market. 
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
         /// </summary>

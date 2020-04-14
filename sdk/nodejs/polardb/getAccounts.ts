@@ -11,10 +11,11 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the account name, searches by clusterId.
  * 
  * > **NOTE:** Available in v1.70.0+.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
  */
-export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> & GetAccountsResult {
+export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
     if (!opts) {
         opts = {}
     }
@@ -22,12 +23,10 @@ export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetAccountsResult> = pulumi.runtime.invoke("alicloud:polardb/getAccounts:getAccounts", {
+    return pulumi.runtime.invoke("alicloud:polardb/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,
         "nameRegex": args.nameRegex,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -64,7 +64,7 @@ def get_main_versions(cluster_types=None,emr_version=None,output_file=None,opts=
 
     > **NOTE:** Available in 1.59.0+
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
+
 
 
     :param list cluster_types: The supported clusterType of this emr version.

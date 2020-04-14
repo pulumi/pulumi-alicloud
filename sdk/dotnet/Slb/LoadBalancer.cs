@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
     /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb.html.markdown.
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource

@@ -121,6 +121,7 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
 
     > **NOTE:**  Available in 1.40.0+.
 
+
     ##  Argument Reference
 
     The following arguments are supported:
@@ -160,8 +161,6 @@ def get_snapshots(disk_id=None,encrypted=None,ids=None,instance_id=None,name_reg
       * none: The snapshots are not used yet.
     * `tags` - (Optional) A map of tags assigned to snapshots.
     * `output_file` - (Optional) The name of output file that saves the filter results.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
 
 
     :param bool encrypted: Whether the snapshot is encrypted or not.
