@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.78.0 of the AliCloud Terraform Provider
+_(none)_
 
 ---
+
+## 1.8.0 (2020-04-14)
+* Upgrade to v1.78.0 of the AliCloud Terraform Provider
 
 ## 1.7.0 (2020-04-03)
 * Upgrade to Pulumi v1.13.1
