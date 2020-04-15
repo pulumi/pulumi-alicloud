@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
     /// </summary>
     public partial class EndpointAddress : Pulumi.CustomResource
     {
@@ -72,7 +68,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EndpointAddress(string name, EndpointAddressArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:polardb/endpointAddress:EndpointAddress", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:polardb/endpointAddress:EndpointAddress", name, args ?? new EndpointAddressArgs(), MakeResourceOptions(options, ""))
         {
         }
 

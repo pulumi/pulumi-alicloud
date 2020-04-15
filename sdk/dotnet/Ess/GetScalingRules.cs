@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides available scaling rule resources. 
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetScalingRules.InvokeAsync() instead")]
-        public static Task<GetScalingRulesResult> GetScalingRules(GetScalingRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetScalingRules
     {
         /// <summary>
         /// This data source provides available scaling rule resources. 
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_rules.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetScalingRulesResult> InvokeAsync(GetScalingRulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingRulesResult>("alicloud:ess/getScalingRules:getScalingRules", args ?? new GetScalingRulesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetScalingRulesArgs : Pulumi.InvokeArgs
     {
@@ -75,9 +62,14 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
+
     [OutputType]
     public sealed class GetScalingRulesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of scaling rule ids.
         /// </summary>
@@ -91,7 +83,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// A list of scaling rules. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetScalingRulesRulesResult> Rules;
+        public readonly ImmutableArray<Outputs.GetScalingRulesRuleResult> Rules;
         /// <summary>
         /// ID of the scaling group.
         /// </summary>
@@ -100,22 +92,26 @@ namespace Pulumi.AliCloud.Ess
         /// Type of the scaling rule.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetScalingRulesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetScalingRulesRulesResult> rules,
+
+            ImmutableArray<Outputs.GetScalingRulesRuleResult> rules,
+
             string? scalingGroupId,
-            string? type,
-            string id)
+
+            string? type)
         {
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
@@ -123,75 +119,6 @@ namespace Pulumi.AliCloud.Ess
             Rules = rules;
             ScalingGroupId = scalingGroupId;
             Type = type;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetScalingRulesRulesResult
-    {
-        /// <summary>
-        /// Adjustment type of the scaling rule.
-        /// </summary>
-        public readonly string AdjustmentType;
-        /// <summary>
-        /// Adjustment value of the scaling rule.
-        /// </summary>
-        public readonly int AdjustmentValue;
-        /// <summary>
-        /// Cooldown time of the scaling rule.
-        /// </summary>
-        public readonly int Cooldown;
-        /// <summary>
-        /// ID of the scaling rule.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Min adjustment magnitude of scaling rule.
-        /// </summary>
-        public readonly int MinAdjustmentMagnitude;
-        /// <summary>
-        /// Name of the scaling rule.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Scaling group id the scaling rules belong to.
-        /// </summary>
-        public readonly string ScalingGroupId;
-        /// <summary>
-        /// Ari of scaling rule.
-        /// </summary>
-        public readonly string ScalingRuleAri;
-        /// <summary>
-        /// Type of scaling rule.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetScalingRulesRulesResult(
-            string adjustmentType,
-            int adjustmentValue,
-            int cooldown,
-            string id,
-            int minAdjustmentMagnitude,
-            string name,
-            string scalingGroupId,
-            string scalingRuleAri,
-            string type)
-        {
-            AdjustmentType = adjustmentType;
-            AdjustmentValue = adjustmentValue;
-            Cooldown = cooldown;
-            Id = id;
-            MinAdjustmentMagnitude = minAdjustmentMagnitude;
-            Name = name;
-            ScalingGroupId = scalingGroupId;
-            ScalingRuleAri = scalingRuleAri;
-            Type = type;
-        }
-    }
     }
 }

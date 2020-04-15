@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGroups.InvokeAsync() instead")]
-        public static Task<GetGroupsResult> GetGroups(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:dns/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGroups
     {
         /// <summary>
         /// This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:dns/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:dns/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGroupsArgs : Pulumi.InvokeArgs
     {
@@ -63,13 +50,18 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetGroupsResult
     {
         /// <summary>
         /// A list of groups. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetGroupsGroupsResult> Groups;
+        public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of group IDs. 
         /// </summary>
@@ -80,52 +72,27 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGroupsResult(
-            ImmutableArray<Outputs.GetGroupsGroupsResult> groups,
+            ImmutableArray<Outputs.GetGroupsGroupResult> groups,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Groups = groups;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetGroupsGroupsResult
-    {
-        /// <summary>
-        /// Id of the group.
-        /// </summary>
-        public readonly string GroupId;
-        /// <summary>
-        /// Name of the group.
-        /// </summary>
-        public readonly string GroupName;
-
-        [OutputConstructor]
-        private GetGroupsGroupsResult(
-            string groupId,
-            string groupName)
-        {
-            GroupId = groupId;
-            GroupName = groupName;
-        }
-    }
     }
 }

@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** Available in 1.63.0+
     /// 
     /// &gt; **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_dnat_entry.html.markdown.
     /// </summary>
     public partial class DnatEntry : Pulumi.CustomResource
     {
@@ -75,7 +71,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DnatEntry(string name, DnatEntryArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/dnatEntry:DnatEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rocketmq/dnatEntry:DnatEntry", name, args ?? new DnatEntryArgs(), MakeResourceOptions(options, ""))
         {
         }
 

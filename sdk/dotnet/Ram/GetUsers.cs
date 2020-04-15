@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetUsers.InvokeAsync() instead")]
-        public static Task<GetUsersResult> GetUsers(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetUsers
     {
         /// <summary>
         /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_users.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:ram/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
@@ -82,10 +69,15 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
+
     [OutputType]
     public sealed class GetUsersResult
     {
         public readonly string? GroupName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of ram user IDs. 
         /// </summary>
@@ -101,25 +93,30 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// A list of users. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetUsersUsersResult> Users;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]
         private GetUsersResult(
             string? groupName,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? policyName,
+
             string? policyType,
-            ImmutableArray<Outputs.GetUsersUsersResult> users,
-            string id)
+
+            ImmutableArray<Outputs.GetUsersUserResult> users)
         {
             GroupName = groupName;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
@@ -127,45 +124,6 @@ namespace Pulumi.AliCloud.Ram
             PolicyName = policyName;
             PolicyType = policyType;
             Users = users;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetUsersUsersResult
-    {
-        /// <summary>
-        /// Creation date of the user.
-        /// </summary>
-        public readonly string CreateDate;
-        /// <summary>
-        /// The original id is user name, but it is user id in 1.37.0+.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Last login date of the user.
-        /// </summary>
-        public readonly string LastLoginDate;
-        /// <summary>
-        /// Name of the user.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetUsersUsersResult(
-            string createDate,
-            string id,
-            string lastLoginDate,
-            string name)
-        {
-            CreateDate = createDate;
-            Id = id;
-            LastLoginDate = lastLoginDate;
-            Name = name;
-        }
-    }
     }
 }

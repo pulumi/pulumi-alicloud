@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.PolarDB
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
-        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-        /// 
-        /// &gt; **NOTE:** Available in v1.66.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusters.InvokeAsync() instead")]
-        public static Task<GetClustersResult> GetClusters(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusters
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available in v1.66.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClustersArgs : Pulumi.InvokeArgs
     {
@@ -95,13 +79,14 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
+
     [OutputType]
     public sealed class GetClustersResult
     {
         /// <summary>
         /// A list of PolarDB clusters. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetClustersClustersResult> Clusters;
+        public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         /// <summary>
         /// `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
         /// </summary>
@@ -112,6 +97,10 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of RDS cluster IDs. 
         /// </summary>
         public readonly ImmutableArray<string> Ids;
@@ -121,230 +110,36 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClustersResult(
-            ImmutableArray<Outputs.GetClustersClustersResult> clusters,
+            ImmutableArray<Outputs.GetClustersClusterResult> clusters,
+
             string? dbType,
+
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? outputFile,
+
             string? status,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             Clusters = clusters;
             DbType = dbType;
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             OutputFile = outputFile;
             Status = status;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetClustersClustersDbNodesResult
-    {
-        /// <summary>
-        /// The create_time of the db_nodes.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The db_node_class of the db_nodes.
-        /// </summary>
-        public readonly string DbNodeClass;
-        /// <summary>
-        /// The db_node_id of the db_nodes.
-        /// </summary>
-        public readonly string DbNodeId;
-        /// <summary>
-        /// The db_node_role of the db_nodes.
-        /// </summary>
-        public readonly string DbNodeRole;
-        /// <summary>
-        /// The db_node_status of the db_nodes.
-        /// </summary>
-        public readonly string DbNodeStatus;
-        /// <summary>
-        /// The max_connections of the db_nodes.
-        /// </summary>
-        public readonly int MaxConnections;
-        /// <summary>
-        /// The max_iops of the db_nodes.
-        /// </summary>
-        public readonly int MaxIops;
-        /// <summary>
-        /// The region_id of the db_nodes.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// The zone_id of the db_nodes.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetClustersClustersDbNodesResult(
-            string createTime,
-            string dbNodeClass,
-            string dbNodeId,
-            string dbNodeRole,
-            string dbNodeStatus,
-            int maxConnections,
-            int maxIops,
-            string regionId,
-            string zoneId)
-        {
-            CreateTime = createTime;
-            DbNodeClass = dbNodeClass;
-            DbNodeId = dbNodeId;
-            DbNodeRole = dbNodeRole;
-            DbNodeStatus = dbNodeStatus;
-            MaxConnections = maxConnections;
-            MaxIops = maxIops;
-            RegionId = regionId;
-            ZoneId = zoneId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetClustersClustersResult
-    {
-        /// <summary>
-        /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        /// <summary>
-        /// The create_time of the db_nodes.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The db_node_class of the db_nodes.
-        /// </summary>
-        public readonly string DbNodeClass;
-        /// <summary>
-        /// The DBNodeNumber of the PolarDB cluster.
-        /// </summary>
-        public readonly int DbNodeNumber;
-        /// <summary>
-        /// The DBNodes of the PolarDB cluster.
-        /// </summary>
-        public readonly ImmutableArray<GetClustersClustersDbNodesResult> DbNodes;
-        /// <summary>
-        /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
-        /// </summary>
-        public readonly string DbType;
-        /// <summary>
-        /// The DBVersion of the PolarDB cluster.
-        /// </summary>
-        public readonly string DbVersion;
-        /// <summary>
-        /// The DeleteLock of the PolarDB cluster.
-        /// </summary>
-        public readonly int DeleteLock;
-        /// <summary>
-        /// The description of the PolarDB cluster.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
-        /// </summary>
-        public readonly string Engine;
-        /// <summary>
-        /// Expiration time. Pay-As-You-Go clusters never expire.
-        /// </summary>
-        public readonly string ExpireTime;
-        /// <summary>
-        /// The expired of the PolarDB cluster.
-        /// </summary>
-        public readonly string Expired;
-        /// <summary>
-        /// The ID of the PolarDB cluster.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The LockMode of the PolarDB cluster.
-        /// </summary>
-        public readonly string LockMode;
-        /// <summary>
-        /// The DBClusterNetworkType of the PolarDB cluster.
-        /// </summary>
-        public readonly string NetworkType;
-        /// <summary>
-        /// The region_id of the db_nodes.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// status of the cluster.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The StorageUsed of the PolarDB cluster.
-        /// </summary>
-        public readonly int StorageUsed;
-        /// <summary>
-        /// ID of the VPC the cluster belongs to.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The zone_id of the db_nodes.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetClustersClustersResult(
-            string chargeType,
-            string createTime,
-            string dbNodeClass,
-            int dbNodeNumber,
-            ImmutableArray<GetClustersClustersDbNodesResult> dbNodes,
-            string dbType,
-            string dbVersion,
-            int deleteLock,
-            string description,
-            string engine,
-            string expireTime,
-            string expired,
-            string id,
-            string lockMode,
-            string networkType,
-            string regionId,
-            string status,
-            int storageUsed,
-            string vpcId,
-            string zoneId)
-        {
-            ChargeType = chargeType;
-            CreateTime = createTime;
-            DbNodeClass = dbNodeClass;
-            DbNodeNumber = dbNodeNumber;
-            DbNodes = dbNodes;
-            DbType = dbType;
-            DbVersion = dbVersion;
-            DeleteLock = deleteLock;
-            Description = description;
-            Engine = engine;
-            ExpireTime = expireTime;
-            Expired = expired;
-            Id = id;
-            LockMode = lockMode;
-            NetworkType = networkType;
-            RegionId = regionId;
-            Status = status;
-            StorageUsed = storageUsed;
-            VpcId = vpcId;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

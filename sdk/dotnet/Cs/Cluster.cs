@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> NodeNumber { get; private set; } = null!;
 
         [Output("nodes")]
-        public Output<ImmutableArray<Outputs.ClusterNodes>> Nodes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterNode>> Nodes { get; private set; } = null!;
 
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/cluster:Cluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cs/cluster:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -197,10 +197,10 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeNumber { get; set; }
 
         [Input("nodes")]
-        private InputList<Inputs.ClusterNodesGetArgs>? _nodes;
-        public InputList<Inputs.ClusterNodesGetArgs> Nodes
+        private InputList<Inputs.ClusterNodeGetArgs>? _nodes;
+        public InputList<Inputs.ClusterNodeGetArgs> Nodes
         {
-            get => _nodes ?? (_nodes = new InputList<Inputs.ClusterNodesGetArgs>());
+            get => _nodes ?? (_nodes = new InputList<Inputs.ClusterNodeGetArgs>());
             set => _nodes = value;
         }
 
@@ -228,60 +228,5 @@ namespace Pulumi.AliCloud.CS
         public ClusterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ClusterNodesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("eip")]
-        public Input<string>? Eip { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("privateIp")]
-        public Input<string>? PrivateIp { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        public ClusterNodesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ClusterNodes
-    {
-        public readonly string Eip;
-        public readonly string Id;
-        public readonly string Name;
-        public readonly string PrivateIp;
-        public readonly string Status;
-
-        [OutputConstructor]
-        private ClusterNodes(
-            string eip,
-            string id,
-            string name,
-            string privateIp,
-            string status)
-        {
-            Eip = eip;
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-            Status = status;
-        }
-    }
     }
 }

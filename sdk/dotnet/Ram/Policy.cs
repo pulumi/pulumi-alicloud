@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ram
         /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         /// </summary>
         [Output("statements")]
-        public Output<ImmutableArray<Outputs.PolicyStatements>> Statements { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.PolicyStatement>> Statements { get; private set; } = null!;
 
         /// <summary>
         /// The policy type.
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ram
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ram/policy:Policy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ram/policy:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -130,15 +130,15 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Name { get; set; }
 
         [Input("statements")]
-        private InputList<Inputs.PolicyStatementsArgs>? _statements;
+        private InputList<Inputs.PolicyStatementArgs>? _statements;
 
         /// <summary>
         /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
-        public InputList<Inputs.PolicyStatementsArgs> Statements
+        public InputList<Inputs.PolicyStatementArgs> Statements
         {
-            get => _statements ?? (_statements = new InputList<Inputs.PolicyStatementsArgs>());
+            get => _statements ?? (_statements = new InputList<Inputs.PolicyStatementArgs>());
             set => _statements = value;
         }
 
@@ -186,15 +186,15 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Name { get; set; }
 
         [Input("statements")]
-        private InputList<Inputs.PolicyStatementsGetArgs>? _statements;
+        private InputList<Inputs.PolicyStatementGetArgs>? _statements;
 
         /// <summary>
         /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
-        public InputList<Inputs.PolicyStatementsGetArgs> Statements
+        public InputList<Inputs.PolicyStatementGetArgs> Statements
         {
-            get => _statements ?? (_statements = new InputList<Inputs.PolicyStatementsGetArgs>());
+            get => _statements ?? (_statements = new InputList<Inputs.PolicyStatementGetArgs>());
             set => _statements = value;
         }
 
@@ -213,115 +213,5 @@ namespace Pulumi.AliCloud.Ram
         public PolicyState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class PolicyStatementsArgs : Pulumi.ResourceArgs
-    {
-        [Input("actions", required: true)]
-        private InputList<string>? _actions;
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        /// </summary>
-        public InputList<string> Actions
-        {
-            get => _actions ?? (_actions = new InputList<string>());
-            set => _actions = value;
-        }
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        /// </summary>
-        [Input("effect", required: true)]
-        public Input<string> Effect { get; set; } = null!;
-
-        [Input("resources", required: true)]
-        private InputList<string>? _resources;
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
-        /// </summary>
-        public InputList<string> Resources
-        {
-            get => _resources ?? (_resources = new InputList<string>());
-            set => _resources = value;
-        }
-
-        public PolicyStatementsArgs()
-        {
-        }
-    }
-
-    public sealed class PolicyStatementsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("actions", required: true)]
-        private InputList<string>? _actions;
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        /// </summary>
-        public InputList<string> Actions
-        {
-            get => _actions ?? (_actions = new InputList<string>());
-            set => _actions = value;
-        }
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        /// </summary>
-        [Input("effect", required: true)]
-        public Input<string> Effect { get; set; } = null!;
-
-        [Input("resources", required: true)]
-        private InputList<string>? _resources;
-
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
-        /// </summary>
-        public InputList<string> Resources
-        {
-            get => _resources ?? (_resources = new InputList<string>());
-            set => _resources = value;
-        }
-
-        public PolicyStatementsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class PolicyStatements
-    {
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        /// </summary>
-        public readonly ImmutableArray<string> Actions;
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        /// </summary>
-        public readonly string Effect;
-        /// <summary>
-        /// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
-        /// </summary>
-        public readonly ImmutableArray<string> Resources;
-
-        [OutputConstructor]
-        private PolicyStatements(
-            ImmutableArray<string> actions,
-            string effect,
-            ImmutableArray<string> resources)
-        {
-            Actions = actions;
-            Effect = effect;
-            Resources = resources;
-        }
-    }
     }
 }

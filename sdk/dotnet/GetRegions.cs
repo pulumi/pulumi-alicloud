@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides Alibaba Cloud regions.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegions.InvokeAsync() instead")]
-        public static Task<GetRegionsResult> GetRegions(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegions
     {
         /// <summary>
         /// This data source provides Alibaba Cloud regions.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/regions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionsArgs : Pulumi.InvokeArgs
     {
@@ -57,10 +44,15 @@ namespace Pulumi.AliCloud
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionsResult
     {
         public readonly bool Current;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of region IDs.
         /// </summary>
@@ -70,56 +62,28 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// A list of regions. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRegionsRegionsResult> Regions;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 
         [OutputConstructor]
         private GetRegionsResult(
             bool current,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string name,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetRegionsRegionsResult> regions,
-            string id)
+
+            ImmutableArray<Outputs.GetRegionsRegionResult> regions)
         {
             Current = current;
+            Id = id;
             Ids = ids;
             Name = name;
             OutputFile = outputFile;
             Regions = regions;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRegionsRegionsResult
-    {
-        /// <summary>
-        /// ID of the region.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Name of the region in the local language.
-        /// </summary>
-        public readonly string LocalName;
-        public readonly string RegionId;
-
-        [OutputConstructor]
-        private GetRegionsRegionsResult(
-            string id,
-            string localName,
-            string regionId)
-        {
-            Id = id;
-            LocalName = localName;
-            RegionId = regionId;
-        }
-    }
     }
 }

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The List of the VPC:
         /// </summary>
         [Output("vpcs")]
-        public Output<ImmutableArray<Outputs.ZoneAttachmentVpcs>> Vpcs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ZoneAttachmentVpc>> Vpcs { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Private Zone Record.
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ZoneAttachment(string name, ZoneAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:pvtz/zoneAttachment:ZoneAttachment", name, args ?? new ZoneAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -112,14 +112,14 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         [Input("vpcs")]
-        private InputList<Inputs.ZoneAttachmentVpcsArgs>? _vpcs;
+        private InputList<Inputs.ZoneAttachmentVpcArgs>? _vpcs;
 
         /// <summary>
         /// The List of the VPC:
         /// </summary>
-        public InputList<Inputs.ZoneAttachmentVpcsArgs> Vpcs
+        public InputList<Inputs.ZoneAttachmentVpcArgs> Vpcs
         {
-            get => _vpcs ?? (_vpcs = new InputList<Inputs.ZoneAttachmentVpcsArgs>());
+            get => _vpcs ?? (_vpcs = new InputList<Inputs.ZoneAttachmentVpcArgs>());
             set => _vpcs = value;
         }
 
@@ -161,14 +161,14 @@ namespace Pulumi.AliCloud.Pvtz
         }
 
         [Input("vpcs")]
-        private InputList<Inputs.ZoneAttachmentVpcsGetArgs>? _vpcs;
+        private InputList<Inputs.ZoneAttachmentVpcGetArgs>? _vpcs;
 
         /// <summary>
         /// The List of the VPC:
         /// </summary>
-        public InputList<Inputs.ZoneAttachmentVpcsGetArgs> Vpcs
+        public InputList<Inputs.ZoneAttachmentVpcGetArgs> Vpcs
         {
-            get => _vpcs ?? (_vpcs = new InputList<Inputs.ZoneAttachmentVpcsGetArgs>());
+            get => _vpcs ?? (_vpcs = new InputList<Inputs.ZoneAttachmentVpcGetArgs>());
             set => _vpcs = value;
         }
 
@@ -181,73 +181,5 @@ namespace Pulumi.AliCloud.Pvtz
         public ZoneAttachmentState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ZoneAttachmentVpcsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The region of the vpc. If not set, the current region will instead of.
-        /// </summary>
-        [Input("regionId")]
-        public Input<string>? RegionId { get; set; }
-
-        /// <summary>
-        /// The Id of the vpc.
-        /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
-
-        public ZoneAttachmentVpcsArgs()
-        {
-        }
-    }
-
-    public sealed class ZoneAttachmentVpcsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The region of the vpc. If not set, the current region will instead of.
-        /// </summary>
-        [Input("regionId")]
-        public Input<string>? RegionId { get; set; }
-
-        /// <summary>
-        /// The Id of the vpc.
-        /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
-
-        public ZoneAttachmentVpcsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ZoneAttachmentVpcs
-    {
-        /// <summary>
-        /// The region of the vpc. If not set, the current region will instead of.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// The Id of the vpc.
-        /// </summary>
-        public readonly string VpcId;
-
-        [OutputConstructor]
-        private ZoneAttachmentVpcs(
-            string regionId,
-            string vpcId)
-        {
-            RegionId = regionId;
-            VpcId = vpcId;
-        }
-    }
     }
 }

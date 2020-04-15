@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Log
     /// This resource amis to attach one logtail configure to a machine group.
     /// 
     /// &gt; **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/logtail_attachment.html.markdown.
     /// </summary>
     public partial class LogTailAttachment : Pulumi.CustomResource
     {
@@ -51,7 +47,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LogTailAttachment(string name, LogTailAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:log/logTailAttachment:LogTailAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:log/logTailAttachment:LogTailAttachment", name, args ?? new LogTailAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

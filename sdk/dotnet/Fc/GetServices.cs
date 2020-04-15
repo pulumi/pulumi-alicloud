@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the Function Compute services of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServices.InvokeAsync() instead")]
-        public static Task<GetServicesResult> GetServices(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServices
     {
         /// <summary>
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_services.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServicesArgs : Pulumi.InvokeArgs
     {
@@ -64,9 +51,14 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
+
     [OutputType]
     public sealed class GetServicesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of FC services ids.
         /// </summary>
@@ -80,145 +72,28 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// A list of FC services. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServicesServicesResult> Services;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetServicesServiceResult> Services;
 
         [OutputConstructor]
         private GetServicesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetServicesServicesResult> services,
-            string id)
+
+            ImmutableArray<Outputs.GetServicesServiceResult> services)
         {
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Services = services;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServicesServicesLogConfigResult
-    {
-        /// <summary>
-        /// Log Service store name.
-        /// </summary>
-        public readonly string Logstore;
-        /// <summary>
-        /// Log Service project name.
-        /// </summary>
-        public readonly string Project;
-
-        [OutputConstructor]
-        private GetServicesServicesLogConfigResult(
-            string logstore,
-            string project)
-        {
-            Logstore = logstore;
-            Project = project;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServicesServicesResult
-    {
-        /// <summary>
-        /// FC service creation time.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// FC service description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// FC service ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Indicate whether the service can access to internet or not.
-        /// </summary>
-        public readonly bool InternetAccess;
-        /// <summary>
-        /// FC service last modification time.
-        /// </summary>
-        public readonly string LastModificationTime;
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        public readonly GetServicesServicesLogConfigResult LogConfig;
-        /// <summary>
-        /// FC service name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// FC service role ARN.
-        /// </summary>
-        public readonly string Role;
-        /// <summary>
-        /// A list of one element containing information about accessible VPC resources. It contains the following attributes:
-        /// </summary>
-        public readonly GetServicesServicesVpcConfigResult VpcConfig;
-
-        [OutputConstructor]
-        private GetServicesServicesResult(
-            string creationTime,
-            string description,
-            string id,
-            bool internetAccess,
-            string lastModificationTime,
-            GetServicesServicesLogConfigResult logConfig,
-            string name,
-            string role,
-            GetServicesServicesVpcConfigResult vpcConfig)
-        {
-            CreationTime = creationTime;
-            Description = description;
-            Id = id;
-            InternetAccess = internetAccess;
-            LastModificationTime = lastModificationTime;
-            LogConfig = logConfig;
-            Name = name;
-            Role = role;
-            VpcConfig = vpcConfig;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServicesServicesVpcConfigResult
-    {
-        /// <summary>
-        /// Associated security group ID.
-        /// </summary>
-        public readonly string SecurityGroupId;
-        /// <summary>
-        /// Associated VPC ID.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// Associated VSwitch IDs.
-        /// </summary>
-        public readonly ImmutableArray<string> VswitchIds;
-
-        [OutputConstructor]
-        private GetServicesServicesVpcConfigResult(
-            string securityGroupId,
-            string vpcId,
-            ImmutableArray<string> vswitchIds)
-        {
-            SecurityGroupId = securityGroupId;
-            VpcId = vpcId;
-            VswitchIds = vswitchIds;
-        }
-    }
     }
 }

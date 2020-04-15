@@ -12,10 +12,6 @@ namespace Pulumi.AliCloud.Cms
     /// <summary>
     /// This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
     /// Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cms_alarm.html.markdown.
     /// </summary>
     public partial class Alarm : Pulumi.CustomResource
     {
@@ -128,7 +124,7 @@ namespace Pulumi.AliCloud.Cms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Alarm(string name, AlarmArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cms/alarm:Alarm", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cms/alarm:Alarm", name, args ?? new AlarmArgs(), MakeResourceOptions(options, ""))
         {
         }
 

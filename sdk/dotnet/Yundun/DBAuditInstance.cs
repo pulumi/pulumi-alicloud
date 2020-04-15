@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Yundun
     /// &gt; **NOTE:** Available in 1.62.0+ .
     /// 
     /// &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_dbaudit_instance.html.markdown.
     /// </summary>
     public partial class DBAuditInstance : Pulumi.CustomResource
     {
@@ -63,7 +59,7 @@ namespace Pulumi.AliCloud.Yundun
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DBAuditInstance(string name, DBAuditInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, args ?? new DBAuditInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

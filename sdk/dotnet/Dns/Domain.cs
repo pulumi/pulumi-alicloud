@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Dns
     /// Provides a DNS resource.
     /// 
     /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns.html.markdown.
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {
@@ -59,7 +55,7 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Domain(string name, DomainArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:dns/domain:Domain", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:dns/domain:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 

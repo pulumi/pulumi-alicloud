@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Rds
     /// Provides an RDS instance backup policy resource and used to configure instance backup policy.
     /// 
     /// &gt; **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_backup_policy.html.markdown.
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {
@@ -143,7 +139,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackupPolicy(string name, BackupPolicyArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/backupPolicy:BackupPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/backupPolicy:BackupPolicy", name, args ?? new BackupPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

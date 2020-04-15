@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public App(string name, AppArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:apigateway/app:App", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:apigateway/app:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides CEN Bandwidth Packages available to the user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBandwidthPackages.InvokeAsync() instead")]
-        public static Task<GetBandwidthPackagesResult> GetBandwidthPackages(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBandwidthPackages
     {
         /// <summary>
         /// This data source provides CEN Bandwidth Packages available to the user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_packages.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBandwidthPackagesResult>("alicloud:cen/getBandwidthPackages:getBandwidthPackages", args ?? new GetBandwidthPackagesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBandwidthPackagesArgs : Pulumi.InvokeArgs
     {
@@ -69,9 +56,14 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
+
     [OutputType]
     public sealed class GetBandwidthPackagesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// ID of CEN instance that owns the CEN Bandwidth Package.
@@ -83,109 +75,31 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// A list of CEN bandwidth package. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBandwidthPackagesPackagesResult> Packages;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> Packages;
 
         [OutputConstructor]
         private GetBandwidthPackagesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetBandwidthPackagesPackagesResult> packages,
-            string id)
+
+            ImmutableArray<Outputs.GetBandwidthPackagesPackageResult> packages)
         {
+            Id = id;
             Ids = ids;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Packages = packages;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBandwidthPackagesPackagesResult
-    {
-        /// <summary>
-        /// The bandwidth in Mbps of the CEN bandwidth package.
-        /// </summary>
-        public readonly int Bandwidth;
-        /// <summary>
-        /// The billing method, including "POSTPAY" and "PREPAY".
-        /// </summary>
-        public readonly string BandwidthPackageChargeType;
-        /// <summary>
-        /// Status of the CEN Bandwidth Package, including "Normal", "FinancialLocked" and "SecurityLocked".
-        /// </summary>
-        public readonly string BusinessStatus;
-        /// <summary>
-        /// Creation time of the CEN bandwidth package.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Description of the CEN Bandwidth Package.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Region ID of the interconnected regions.
-        /// </summary>
-        public readonly string GeographicRegionAId;
-        /// <summary>
-        /// Region ID of the interconnected regions.
-        /// </summary>
-        public readonly string GeographicRegionBId;
-        /// <summary>
-        /// ID of the CEN Bandwidth Package.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// ID of a CEN instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// Name of the CEN Bandwidth Package.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Status of the CEN Bandwidth Package in CEN instance, including "Idle" and "InUse".
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetBandwidthPackagesPackagesResult(
-            int bandwidth,
-            string bandwidthPackageChargeType,
-            string businessStatus,
-            string creationTime,
-            string description,
-            string geographicRegionAId,
-            string geographicRegionBId,
-            string id,
-            string instanceId,
-            string name,
-            string status)
-        {
-            Bandwidth = bandwidth;
-            BandwidthPackageChargeType = bandwidthPackageChargeType;
-            BusinessStatus = businessStatus;
-            CreationTime = creationTime;
-            Description = description;
-            GeographicRegionAId = geographicRegionAId;
-            GeographicRegionBId = geographicRegionBId;
-            Id = id;
-            InstanceId = instanceId;
-            Name = name;
-            Status = status;
-        }
-    }
     }
 }

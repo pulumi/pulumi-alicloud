@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Datahub
     /// The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
     /// 
     /// &gt; **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_project.html.markdown.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -53,7 +49,7 @@ namespace Pulumi.AliCloud.Datahub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:datahub/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:datahub/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

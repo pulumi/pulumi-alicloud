@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Ess
         /// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         /// </summary>
         [Output("dataDisks")]
-        public Output<ImmutableArray<Outputs.ScalingConfigurationDataDisks>> DataDisks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ScalingConfigurationDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
         /// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ScalingConfiguration(string name, ScalingConfigurationArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/scalingConfiguration:ScalingConfiguration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/scalingConfiguration:ScalingConfiguration", name, args ?? new ScalingConfigurationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -246,14 +246,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Active { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.ScalingConfigurationDataDisksArgs>? _dataDisks;
+        private InputList<Inputs.ScalingConfigurationDataDiskArgs>? _dataDisks;
 
         /// <summary>
         /// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         /// </summary>
-        public InputList<Inputs.ScalingConfigurationDataDisksArgs> DataDisks
+        public InputList<Inputs.ScalingConfigurationDataDiskArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.ScalingConfigurationDataDisksArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.ScalingConfigurationDataDiskArgs>());
             set => _dataDisks = value;
         }
 
@@ -472,14 +472,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Active { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.ScalingConfigurationDataDisksGetArgs>? _dataDisks;
+        private InputList<Inputs.ScalingConfigurationDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
         /// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
         /// </summary>
-        public InputList<Inputs.ScalingConfigurationDataDisksGetArgs> DataDisks
+        public InputList<Inputs.ScalingConfigurationDataDiskGetArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.ScalingConfigurationDataDisksGetArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.ScalingConfigurationDataDiskGetArgs>());
             set => _dataDisks = value;
         }
 
@@ -687,82 +687,5 @@ namespace Pulumi.AliCloud.Ess
         public ScalingConfigurationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ScalingConfigurationDataDisksArgs : Pulumi.ResourceArgs
-    {
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public ScalingConfigurationDataDisksArgs()
-        {
-        }
-    }
-
-    public sealed class ScalingConfigurationDataDisksGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public ScalingConfigurationDataDisksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ScalingConfigurationDataDisks
-    {
-        public readonly string? Category;
-        public readonly bool? DeleteWithInstance;
-        public readonly string? Device;
-        public readonly int? Size;
-        public readonly string? SnapshotId;
-
-        [OutputConstructor]
-        private ScalingConfigurationDataDisks(
-            string? category,
-            bool? deleteWithInstance,
-            string? device,
-            int? size,
-            string? snapshotId)
-        {
-            Category = category;
-            DeleteWithInstance = deleteWithInstance;
-            Device = device;
-            Size = size;
-            SnapshotId = snapshotId;
-        }
-    }
     }
 }

@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.Cen
     /// For example, a CEN instance is bound to a bandwidth package of 20 Mbps and  the interconnection areas are Mainland China and North America. You can set the cross-region interconnection bandwidth between US West 1 and China East 1, China East 2, China South 1, and so on. However, the total bandwidth set for all the interconnected regions cannot exceed 20  Mbps.
     /// 
     /// For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.
     /// </summary>
     public partial class BandwidthLimit : Pulumi.CustomResource
     {
@@ -49,7 +45,7 @@ namespace Pulumi.AliCloud.Cen
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BandwidthLimit(string name, BandwidthLimitArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cen/bandwidthLimit:BandwidthLimit", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cen/bandwidthLimit:BandwidthLimit", name, args ?? new BandwidthLimitArgs(), MakeResourceOptions(options, ""))
         {
         }
 

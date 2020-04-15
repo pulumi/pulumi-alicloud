@@ -32,8 +32,6 @@ namespace Pulumi.AliCloud.Slb
     /// * `port` - (Required) The port used by the backend server. Valid value range: [1-65535].
     /// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. Default to 100.
     /// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_group.html.markdown.
     /// </summary>
     public partial class ServerGroup : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.AliCloud.Slb
         /// A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         /// </summary>
         [Output("servers")]
-        public Output<ImmutableArray<Outputs.ServerGroupServers>> Servers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServerGroup(string name, ServerGroupArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/serverGroup:ServerGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/serverGroup:ServerGroup", name, args ?? new ServerGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -126,14 +124,14 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         [Input("servers")]
-        private InputList<Inputs.ServerGroupServersArgs>? _servers;
+        private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
         /// A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.ServerGroupServersArgs> Servers
+        public InputList<Inputs.ServerGroupServerArgs> Servers
         {
-            get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServersArgs>());
+            get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServerArgs>());
             set => _servers = value;
         }
 
@@ -163,97 +161,19 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         [Input("servers")]
-        private InputList<Inputs.ServerGroupServersGetArgs>? _servers;
+        private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
         /// A list of ECS instances to be added. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.ServerGroupServersGetArgs> Servers
+        public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
-            get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServersGetArgs>());
+            get => _servers ?? (_servers = new InputList<Inputs.ServerGroupServerGetArgs>());
             set => _servers = value;
         }
 
         public ServerGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ServerGroupServersArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("serverIds", required: true)]
-        private InputList<string>? _serverIds;
-        public InputList<string> ServerIds
-        {
-            get => _serverIds ?? (_serverIds = new InputList<string>());
-            set => _serverIds = value;
-        }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public ServerGroupServersArgs()
-        {
-        }
-    }
-
-    public sealed class ServerGroupServersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("serverIds", required: true)]
-        private InputList<string>? _serverIds;
-        public InputList<string> ServerIds
-        {
-            get => _serverIds ?? (_serverIds = new InputList<string>());
-            set => _serverIds = value;
-        }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public ServerGroupServersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ServerGroupServers
-    {
-        public readonly int Port;
-        public readonly ImmutableArray<string> ServerIds;
-        public readonly string? Type;
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private ServerGroupServers(
-            int port,
-            ImmutableArray<string> serverIds,
-            string? type,
-            int? weight)
-        {
-            Port = port;
-            ServerIds = serverIds;
-            Type = type;
-            Weight = weight;
-        }
-    }
     }
 }

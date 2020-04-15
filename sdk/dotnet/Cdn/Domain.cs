@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Cdn
         /// The cache configs of the accelerated domain.
         /// </summary>
         [Output("cacheConfigs")]
-        public Output<ImmutableArray<Outputs.DomainCacheConfigs>> CacheConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DomainCacheConfig>> CacheConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`, `liveStream`.
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Cdn
         /// The http header configs of the accelerated domain.
         /// </summary>
         [Output("httpHeaderConfigs")]
-        public Output<ImmutableArray<Outputs.DomainHttpHeaderConfigs>> HttpHeaderConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DomainHttpHeaderConfig>> HttpHeaderConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Page Optimize config of the accelerated domain. Valid values are `on` and `off`. Default value is `off`. It can effectively remove the page redundant content, reduce the file size and improve the speed of distribution when this parameter value is `on`.
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Domain(string name, DomainArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cdn/domain:Domain", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cdn/domain:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -175,15 +175,15 @@ namespace Pulumi.AliCloud.Cdn
         }
 
         [Input("cacheConfigs")]
-        private InputList<Inputs.DomainCacheConfigsArgs>? _cacheConfigs;
+        private InputList<Inputs.DomainCacheConfigArgs>? _cacheConfigs;
 
         /// <summary>
         /// The cache configs of the accelerated domain.
         /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
-        public InputList<Inputs.DomainCacheConfigsArgs> CacheConfigs
+        public InputList<Inputs.DomainCacheConfigArgs> CacheConfigs
         {
-            get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigsArgs>());
+            get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigArgs>());
             set => _cacheConfigs = value;
         }
 
@@ -203,15 +203,15 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> DomainName { get; set; } = null!;
 
         [Input("httpHeaderConfigs")]
-        private InputList<Inputs.DomainHttpHeaderConfigsArgs>? _httpHeaderConfigs;
+        private InputList<Inputs.DomainHttpHeaderConfigArgs>? _httpHeaderConfigs;
 
         /// <summary>
         /// The http header configs of the accelerated domain.
         /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
-        public InputList<Inputs.DomainHttpHeaderConfigsArgs> HttpHeaderConfigs
+        public InputList<Inputs.DomainHttpHeaderConfigArgs> HttpHeaderConfigs
         {
-            get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigsArgs>());
+            get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigArgs>());
             set => _httpHeaderConfigs = value;
         }
 
@@ -311,15 +311,15 @@ namespace Pulumi.AliCloud.Cdn
         }
 
         [Input("cacheConfigs")]
-        private InputList<Inputs.DomainCacheConfigsGetArgs>? _cacheConfigs;
+        private InputList<Inputs.DomainCacheConfigGetArgs>? _cacheConfigs;
 
         /// <summary>
         /// The cache configs of the accelerated domain.
         /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
-        public InputList<Inputs.DomainCacheConfigsGetArgs> CacheConfigs
+        public InputList<Inputs.DomainCacheConfigGetArgs> CacheConfigs
         {
-            get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigsGetArgs>());
+            get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigGetArgs>());
             set => _cacheConfigs = value;
         }
 
@@ -339,15 +339,15 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? DomainName { get; set; }
 
         [Input("httpHeaderConfigs")]
-        private InputList<Inputs.DomainHttpHeaderConfigsGetArgs>? _httpHeaderConfigs;
+        private InputList<Inputs.DomainHttpHeaderConfigGetArgs>? _httpHeaderConfigs;
 
         /// <summary>
         /// The http header configs of the accelerated domain.
         /// </summary>
         [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
-        public InputList<Inputs.DomainHttpHeaderConfigsGetArgs> HttpHeaderConfigs
+        public InputList<Inputs.DomainHttpHeaderConfigGetArgs> HttpHeaderConfigs
         {
-            get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigsGetArgs>());
+            get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigGetArgs>());
             set => _httpHeaderConfigs = value;
         }
 
@@ -427,592 +427,5 @@ namespace Pulumi.AliCloud.Cdn
         public DomainState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DomainAuthConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        /// </summary>
-        [Input("authType")]
-        public Input<string>? AuthType { get; set; }
-
-        /// <summary>
-        /// Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        [Input("masterKey")]
-        public Input<string>? MasterKey { get; set; }
-
-        /// <summary>
-        /// Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        [Input("slaveKey")]
-        public Input<string>? SlaveKey { get; set; }
-
-        /// <summary>
-        /// Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        /// </summary>
-        [Input("timeout")]
-        public Input<int>? Timeout { get; set; }
-
-        public DomainAuthConfigArgs()
-        {
-        }
-    }
-
-    public sealed class DomainAuthConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        /// </summary>
-        [Input("authType")]
-        public Input<string>? AuthType { get; set; }
-
-        /// <summary>
-        /// Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        [Input("masterKey")]
-        public Input<string>? MasterKey { get; set; }
-
-        /// <summary>
-        /// Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        [Input("slaveKey")]
-        public Input<string>? SlaveKey { get; set; }
-
-        /// <summary>
-        /// Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        /// </summary>
-        [Input("timeout")]
-        public Input<int>? Timeout { get; set; }
-
-        public DomainAuthConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainCacheConfigsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        /// </summary>
-        [Input("cacheContent", required: true)]
-        public Input<string> CacheContent { get; set; } = null!;
-
-        [Input("cacheId")]
-        public Input<string>? CacheId { get; set; }
-
-        /// <summary>
-        /// Cache type of the cache config. Valid values are `suffix` and `path`.
-        /// </summary>
-        [Input("cacheType", required: true)]
-        public Input<string> CacheType { get; set; } = null!;
-
-        /// <summary>
-        /// Cache time of the cache config.
-        /// </summary>
-        [Input("ttl", required: true)]
-        public Input<int> Ttl { get; set; } = null!;
-
-        /// <summary>
-        /// Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        /// </summary>
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public DomainCacheConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class DomainCacheConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        /// </summary>
-        [Input("cacheContent", required: true)]
-        public Input<string> CacheContent { get; set; } = null!;
-
-        [Input("cacheId")]
-        public Input<string>? CacheId { get; set; }
-
-        /// <summary>
-        /// Cache type of the cache config. Valid values are `suffix` and `path`.
-        /// </summary>
-        [Input("cacheType", required: true)]
-        public Input<string> CacheType { get; set; } = null!;
-
-        /// <summary>
-        /// Cache time of the cache config.
-        /// </summary>
-        [Input("ttl", required: true)]
-        public Input<int> Ttl { get; set; } = null!;
-
-        /// <summary>
-        /// Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        /// </summary>
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public DomainCacheConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainCertificateConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
-
-        /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        [Input("serverCertificate")]
-        public Input<string>? ServerCertificate { get; set; }
-
-        /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        [Input("serverCertificateStatus")]
-        public Input<string>? ServerCertificateStatus { get; set; }
-
-        public DomainCertificateConfigArgs()
-        {
-        }
-    }
-
-    public sealed class DomainCertificateConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
-
-        /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        [Input("serverCertificate")]
-        public Input<string>? ServerCertificate { get; set; }
-
-        /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        [Input("serverCertificateStatus")]
-        public Input<string>? ServerCertificateStatus { get; set; }
-
-        public DomainCertificateConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainHttpHeaderConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("headerId")]
-        public Input<string>? HeaderId { get; set; }
-
-        /// <summary>
-        /// Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        /// </summary>
-        [Input("headerKey", required: true)]
-        public Input<string> HeaderKey { get; set; } = null!;
-
-        /// <summary>
-        /// Header value of the http header.
-        /// </summary>
-        [Input("headerValue", required: true)]
-        public Input<string> HeaderValue { get; set; } = null!;
-
-        public DomainHttpHeaderConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class DomainHttpHeaderConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("headerId")]
-        public Input<string>? HeaderId { get; set; }
-
-        /// <summary>
-        /// Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        /// </summary>
-        [Input("headerKey", required: true)]
-        public Input<string> HeaderKey { get; set; } = null!;
-
-        /// <summary>
-        /// Header value of the http header.
-        /// </summary>
-        [Input("headerValue", required: true)]
-        public Input<string> HeaderValue { get; set; } = null!;
-
-        public DomainHttpHeaderConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainPage404ConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
-        /// </summary>
-        [Input("customPageUrl")]
-        public Input<string>? CustomPageUrl { get; set; }
-
-        [Input("errorCode")]
-        public Input<string>? ErrorCode { get; set; }
-
-        /// <summary>
-        /// Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        /// </summary>
-        [Input("pageType")]
-        public Input<string>? PageType { get; set; }
-
-        public DomainPage404ConfigArgs()
-        {
-        }
-    }
-
-    public sealed class DomainPage404ConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
-        /// </summary>
-        [Input("customPageUrl")]
-        public Input<string>? CustomPageUrl { get; set; }
-
-        [Input("errorCode")]
-        public Input<string>? ErrorCode { get; set; }
-
-        /// <summary>
-        /// Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        /// </summary>
-        [Input("pageType")]
-        public Input<string>? PageType { get; set; }
-
-        public DomainPage404ConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainParameterFilterConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
-        /// </summary>
-        [Input("enable")]
-        public Input<string>? Enable { get; set; }
-
-        [Input("hashKeyArgs")]
-        private InputList<string>? _hashKeyArgs;
-
-        /// <summary>
-        /// Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        /// </summary>
-        public InputList<string> HashKeyArgs
-        {
-            get => _hashKeyArgs ?? (_hashKeyArgs = new InputList<string>());
-            set => _hashKeyArgs = value;
-        }
-
-        public DomainParameterFilterConfigArgs()
-        {
-        }
-    }
-
-    public sealed class DomainParameterFilterConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
-        /// </summary>
-        [Input("enable")]
-        public Input<string>? Enable { get; set; }
-
-        [Input("hashKeyArgs")]
-        private InputList<string>? _hashKeyArgs;
-
-        /// <summary>
-        /// Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        /// </summary>
-        public InputList<string> HashKeyArgs
-        {
-            get => _hashKeyArgs ?? (_hashKeyArgs = new InputList<string>());
-            set => _hashKeyArgs = value;
-        }
-
-        public DomainParameterFilterConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class DomainReferConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        [Input("allowEmpty")]
-        public Input<string>? AllowEmpty { get; set; }
-
-        [Input("referLists", required: true)]
-        private InputList<string>? _referLists;
-
-        /// <summary>
-        /// A list of domain names of the refer config.
-        /// </summary>
-        public InputList<string> ReferLists
-        {
-            get => _referLists ?? (_referLists = new InputList<string>());
-            set => _referLists = value;
-        }
-
-        /// <summary>
-        /// Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        /// </summary>
-        [Input("referType")]
-        public Input<string>? ReferType { get; set; }
-
-        public DomainReferConfigArgs()
-        {
-        }
-    }
-
-    public sealed class DomainReferConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        [Input("allowEmpty")]
-        public Input<string>? AllowEmpty { get; set; }
-
-        [Input("referLists", required: true)]
-        private InputList<string>? _referLists;
-
-        /// <summary>
-        /// A list of domain names of the refer config.
-        /// </summary>
-        public InputList<string> ReferLists
-        {
-            get => _referLists ?? (_referLists = new InputList<string>());
-            set => _referLists = value;
-        }
-
-        /// <summary>
-        /// Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        /// </summary>
-        [Input("referType")]
-        public Input<string>? ReferType { get; set; }
-
-        public DomainReferConfigGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DomainAuthConfig
-    {
-        /// <summary>
-        /// Auth type of the auth config. Valid values are  `no_auth`, `type_a`, `type_b` and `type_c`. Default value is `no_auth`.
-        /// </summary>
-        public readonly string? AuthType;
-        /// <summary>
-        /// Master authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        public readonly string MasterKey;
-        /// <summary>
-        /// Slave authentication key of the auth config. This parameter can have a string of 6 to 32 characters and must contain only alphanumeric characters.
-        /// </summary>
-        public readonly string SlaveKey;
-        /// <summary>
-        /// Authentication cache time of the auth config. Default value is `1800`. It's value is valid only when the `auth_type` is `type_b` or `type_c`.
-        /// </summary>
-        public readonly int? Timeout;
-
-        [OutputConstructor]
-        private DomainAuthConfig(
-            string? authType,
-            string masterKey,
-            string slaveKey,
-            int? timeout)
-        {
-            AuthType = authType;
-            MasterKey = masterKey;
-            SlaveKey = slaveKey;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainCacheConfigs
-    {
-        /// <summary>
-        /// Cache content of the cache config. It's value is a path string when the `cache_type` is `path`. When the `cache_type` is `suffix`, it's value is a string which contains multiple file suffixes separated by commas.
-        /// </summary>
-        public readonly string CacheContent;
-        public readonly string CacheId;
-        /// <summary>
-        /// Cache type of the cache config. Valid values are `suffix` and `path`.
-        /// </summary>
-        public readonly string CacheType;
-        /// <summary>
-        /// Cache time of the cache config.
-        /// </summary>
-        public readonly int Ttl;
-        /// <summary>
-        /// Weight of the cache config. This parameter's value is between 1 and 99. Default value is `1`. The higher the value, the higher the priority.
-        /// </summary>
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private DomainCacheConfigs(
-            string cacheContent,
-            string cacheId,
-            string cacheType,
-            int ttl,
-            int? weight)
-        {
-            CacheContent = cacheContent;
-            CacheId = cacheId;
-            CacheType = cacheType;
-            Ttl = ttl;
-            Weight = weight;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainCertificateConfig
-    {
-        /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        public readonly string? PrivateKey;
-        /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        /// </summary>
-        public readonly string? ServerCertificate;
-        /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        public readonly string? ServerCertificateStatus;
-
-        [OutputConstructor]
-        private DomainCertificateConfig(
-            string? privateKey,
-            string? serverCertificate,
-            string? serverCertificateStatus)
-        {
-            PrivateKey = privateKey;
-            ServerCertificate = serverCertificate;
-            ServerCertificateStatus = serverCertificateStatus;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainHttpHeaderConfigs
-    {
-        public readonly string HeaderId;
-        /// <summary>
-        /// Header key of the http header. Valid values are `Content-Type`, `Cache-Control`, `Content-Disposition`, `Content-Language`，`Expires`, `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` and `Access-Control-Max-Age`.
-        /// </summary>
-        public readonly string HeaderKey;
-        /// <summary>
-        /// Header value of the http header.
-        /// </summary>
-        public readonly string HeaderValue;
-
-        [OutputConstructor]
-        private DomainHttpHeaderConfigs(
-            string headerId,
-            string headerKey,
-            string headerValue)
-        {
-            HeaderId = headerId;
-            HeaderKey = headerKey;
-            HeaderValue = headerValue;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainPage404Config
-    {
-        /// <summary>
-        /// Custom page url of the error page. It must be the full path under the accelerated domain name. It's value must be `http://promotion.alicdn.com/help/oss/error.html` when `page_type` value is `charity` and It can not be set when `page_type` value is `default`.
-        /// </summary>
-        public readonly string? CustomPageUrl;
-        public readonly string ErrorCode;
-        /// <summary>
-        /// Page type of the error page. Valid values are `default`, `charity`, `other`. Default value is `default`.
-        /// </summary>
-        public readonly string? PageType;
-
-        [OutputConstructor]
-        private DomainPage404Config(
-            string? customPageUrl,
-            string errorCode,
-            string? pageType)
-        {
-            CustomPageUrl = customPageUrl;
-            ErrorCode = errorCode;
-            PageType = pageType;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainParameterFilterConfig
-    {
-        /// <summary>
-        /// This parameter indicates whether or not the `parameter_filter_config` is enable. Valid values are `on` and `off`. Default value is `off`.  
-        /// </summary>
-        public readonly string? Enable;
-        /// <summary>
-        /// Reserved parameters of `parameter_filter_config`. It's a list of string and consists of at most 10 items.
-        /// </summary>
-        public readonly ImmutableArray<string> HashKeyArgs;
-
-        [OutputConstructor]
-        private DomainParameterFilterConfig(
-            string? enable,
-            ImmutableArray<string> hashKeyArgs)
-        {
-            Enable = enable;
-            HashKeyArgs = hashKeyArgs;
-        }
-    }
-
-    [OutputType]
-    public sealed class DomainReferConfig
-    {
-        /// <summary>
-        /// This parameter indicates whether or not to allow empty refer access. Valid values are `on` and `off`. Default value is `on`.
-        /// </summary>
-        public readonly string? AllowEmpty;
-        /// <summary>
-        /// A list of domain names of the refer config.
-        /// </summary>
-        public readonly ImmutableArray<string> ReferLists;
-        /// <summary>
-        /// Refer type of the refer config. Valid values are `block` and `allow`. Default value is `block`.
-        /// </summary>
-        public readonly string? ReferType;
-
-        [OutputConstructor]
-        private DomainReferConfig(
-            string? allowEmpty,
-            ImmutableArray<string> referLists,
-            string? referType)
-        {
-            AllowEmpty = allowEmpty;
-            ReferLists = referLists;
-            ReferType = referType;
-        }
-    }
     }
 }

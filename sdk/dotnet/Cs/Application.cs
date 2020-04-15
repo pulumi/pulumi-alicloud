@@ -18,10 +18,6 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
     /// 
     /// &gt; **NOTE:** At present, this resource only support swarm cluster.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_application.html.markdown.
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
@@ -77,7 +73,7 @@ namespace Pulumi.AliCloud.CS
         /// List of services in the application. It contains several attributes to `Block Nodes`.
         /// </summary>
         [Output("services")]
-        public Output<ImmutableArray<Outputs.ApplicationServices>> Services { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationService>> Services { get; private set; } = null!;
 
         /// <summary>
         /// The application deployment template and it must be [Docker Compose format](https://docs.docker.com/compose/).
@@ -100,7 +96,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Application(string name, ApplicationArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/application:Application", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cs/application:Application", name, args ?? new ApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -259,14 +255,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Name { get; set; }
 
         [Input("services")]
-        private InputList<Inputs.ApplicationServicesGetArgs>? _services;
+        private InputList<Inputs.ApplicationServiceGetArgs>? _services;
 
         /// <summary>
         /// List of services in the application. It contains several attributes to `Block Nodes`.
         /// </summary>
-        public InputList<Inputs.ApplicationServicesGetArgs> Services
+        public InputList<Inputs.ApplicationServiceGetArgs> Services
         {
-            get => _services ?? (_services = new InputList<Inputs.ApplicationServicesGetArgs>());
+            get => _services ?? (_services = new InputList<Inputs.ApplicationServiceGetArgs>());
             set => _services = value;
         }
 
@@ -285,78 +281,5 @@ namespace Pulumi.AliCloud.CS
         public ApplicationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApplicationServicesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// ID of the service.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The current status of service.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
-
-        public ApplicationServicesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApplicationServices
-    {
-        /// <summary>
-        /// ID of the service.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The application name. It should be 1-64 characters long, and can contain numbers, English letters and hyphens, but cannot start with hyphens.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The current status of service.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The application deploying version. Each updating, it must be different with current. Default to "1.0"
-        /// </summary>
-        public readonly string Version;
-
-        [OutputConstructor]
-        private ApplicationServices(
-            string id,
-            string name,
-            string status,
-            string version)
-        {
-            Id = id;
-            Name = name;
-            Status = status;
-            Version = version;
-        }
-    }
     }
 }

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ElasticSearch
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides availability zones for Elasticsearch that can be accessed by an Alibaba Cloud account within the region configured in the provider.
-        /// 
-        /// &gt; **NOTE:** Available in v1.73.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/elasticsearch_zones.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetZones.InvokeAsync() instead")]
-        public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:elasticsearch/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZones
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// 
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/elasticsearch_zones.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:elasticsearch/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:elasticsearch/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
@@ -55,9 +40,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
     }
 
+
     [OutputType]
     public sealed class GetZonesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of zone IDs.
         /// </summary>
@@ -67,51 +57,25 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetZonesZonesResult> Zones;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]
         private GetZonesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             bool? multi,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetZonesZonesResult> zones,
-            string id)
+
+            ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            Id = id;
             Ids = ids;
             Multi = multi;
             OutputFile = outputFile;
             Zones = zones;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetZonesZonesResult
-    {
-        /// <summary>
-        /// ID of the zone.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// A list of zone ids in which the multi zone.
-        /// </summary>
-        public readonly ImmutableArray<string> MultiZoneIds;
-
-        [OutputConstructor]
-        private GetZonesZonesResult(
-            string id,
-            ImmutableArray<string> multiZoneIds)
-        {
-            Id = id;
-            MultiZoneIds = multiZoneIds;
-        }
-    }
     }
 }

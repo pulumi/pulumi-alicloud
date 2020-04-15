@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an ECS Launch Template resource.
     /// 
     /// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
     /// </summary>
     public partial class LaunchTemplate : Pulumi.CustomResource
     {
@@ -30,7 +26,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The list of data disks created with instance.
         /// </summary>
         [Output("dataDisks")]
-        public Output<ImmutableArray<Outputs.LaunchTemplateDataDisks>> DataDisks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LaunchTemplateDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
         /// The description of the data disk.
@@ -225,7 +221,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LaunchTemplate(string name, LaunchTemplateArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/launchTemplate:LaunchTemplate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/launchTemplate:LaunchTemplate", name, args ?? new LaunchTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -269,14 +265,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.LaunchTemplateDataDisksArgs>? _dataDisks;
+        private InputList<Inputs.LaunchTemplateDataDiskArgs>? _dataDisks;
 
         /// <summary>
         /// The list of data disks created with instance.
         /// </summary>
-        public InputList<Inputs.LaunchTemplateDataDisksArgs> DataDisks
+        public InputList<Inputs.LaunchTemplateDataDiskArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDisksArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDiskArgs>());
             set => _dataDisks = value;
         }
 
@@ -484,14 +480,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.LaunchTemplateDataDisksGetArgs>? _dataDisks;
+        private InputList<Inputs.LaunchTemplateDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
         /// The list of data disks created with instance.
         /// </summary>
-        public InputList<Inputs.LaunchTemplateDataDisksGetArgs> DataDisks
+        public InputList<Inputs.LaunchTemplateDataDiskGetArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDisksGetArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.LaunchTemplateDataDiskGetArgs>());
             set => _dataDisks = value;
         }
 
@@ -688,298 +684,5 @@ namespace Pulumi.AliCloud.Ecs
         public LaunchTemplateState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class LaunchTemplateDataDisksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("encrypted")]
-        public Input<bool>? Encrypted { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public LaunchTemplateDataDisksArgs()
-        {
-        }
-    }
-
-    public sealed class LaunchTemplateDataDisksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("encrypted")]
-        public Input<bool>? Encrypted { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public LaunchTemplateDataDisksGetArgs()
-        {
-        }
-    }
-
-    public sealed class LaunchTemplateNetworkInterfacesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The primary private IP address of the ENI.
-        /// </summary>
-        [Input("primaryIp")]
-        public Input<string>? PrimaryIp { get; set; }
-
-        /// <summary>
-        /// The security group ID must be one in the same VPC.
-        /// </summary>
-        [Input("securityGroupId")]
-        public Input<string>? SecurityGroupId { get; set; }
-
-        /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
-
-        public LaunchTemplateNetworkInterfacesArgs()
-        {
-        }
-    }
-
-    public sealed class LaunchTemplateNetworkInterfacesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The primary private IP address of the ENI.
-        /// </summary>
-        [Input("primaryIp")]
-        public Input<string>? PrimaryIp { get; set; }
-
-        /// <summary>
-        /// The security group ID must be one in the same VPC.
-        /// </summary>
-        [Input("securityGroupId")]
-        public Input<string>? SecurityGroupId { get; set; }
-
-        /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-        /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
-
-        public LaunchTemplateNetworkInterfacesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class LaunchTemplateDataDisks
-    {
-        /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// </summary>
-        public readonly string? Category;
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        public readonly bool? DeleteWithInstance;
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        public readonly string? Description;
-        public readonly bool? Encrypted;
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        public readonly int? Size;
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        public readonly string? SnapshotId;
-
-        [OutputConstructor]
-        private LaunchTemplateDataDisks(
-            string? category,
-            bool? deleteWithInstance,
-            string? description,
-            bool? encrypted,
-            string? name,
-            int? size,
-            string? snapshotId)
-        {
-            Category = category;
-            DeleteWithInstance = deleteWithInstance;
-            Description = description;
-            Encrypted = encrypted;
-            Name = name;
-            Size = size;
-            SnapshotId = snapshotId;
-        }
-    }
-
-    [OutputType]
-    public sealed class LaunchTemplateNetworkInterfaces
-    {
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// The primary private IP address of the ENI.
-        /// </summary>
-        public readonly string? PrimaryIp;
-        /// <summary>
-        /// The security group ID must be one in the same VPC.
-        /// </summary>
-        public readonly string? SecurityGroupId;
-        /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
-        /// </summary>
-        public readonly string? VswitchId;
-
-        [OutputConstructor]
-        private LaunchTemplateNetworkInterfaces(
-            string? description,
-            string? name,
-            string? primaryIp,
-            string? securityGroupId,
-            string? vswitchId)
-        {
-            Description = description;
-            Name = name;
-            PrimaryIp = primaryIp;
-            SecurityGroupId = securityGroupId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

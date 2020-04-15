@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Nas
     /// For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_file_system.html.markdown.
     /// </summary>
     public partial class FileSystem : Pulumi.CustomResource
     {
@@ -51,7 +47,7 @@ namespace Pulumi.AliCloud.Nas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FileSystem(string name, FileSystemArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:nas/fileSystem:FileSystem", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:nas/fileSystem:FileSystem", name, args ?? new FileSystemArgs(), MakeResourceOptions(options, ""))
         {
         }
 

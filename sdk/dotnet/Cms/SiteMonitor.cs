@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> Interval { get; private set; } = null!;
 
         [Output("ispCities")]
-        public Output<ImmutableArray<Outputs.SiteMonitorIspCities>> IspCities { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SiteMonitorIspCity>> IspCities { get; private set; } = null!;
 
         [Output("optionsJson")]
         public Output<string?> OptionsJson { get; private set; } = null!;
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Cms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SiteMonitor(string name, SiteMonitorArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cms/siteMonitor:SiteMonitor", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cms/siteMonitor:SiteMonitor", name, args ?? new SiteMonitorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -102,10 +102,10 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Interval { get; set; }
 
         [Input("ispCities")]
-        private InputList<Inputs.SiteMonitorIspCitiesArgs>? _ispCities;
-        public InputList<Inputs.SiteMonitorIspCitiesArgs> IspCities
+        private InputList<Inputs.SiteMonitorIspCityArgs>? _ispCities;
+        public InputList<Inputs.SiteMonitorIspCityArgs> IspCities
         {
-            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCitiesArgs>());
+            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCityArgs>());
             set => _ispCities = value;
         }
 
@@ -143,10 +143,10 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? Interval { get; set; }
 
         [Input("ispCities")]
-        private InputList<Inputs.SiteMonitorIspCitiesGetArgs>? _ispCities;
-        public InputList<Inputs.SiteMonitorIspCitiesGetArgs> IspCities
+        private InputList<Inputs.SiteMonitorIspCityGetArgs>? _ispCities;
+        public InputList<Inputs.SiteMonitorIspCityGetArgs> IspCities
         {
-            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCitiesGetArgs>());
+            get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCityGetArgs>());
             set => _ispCities = value;
         }
 
@@ -168,55 +168,5 @@ namespace Pulumi.AliCloud.Cms
         public SiteMonitorState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SiteMonitorIspCitiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("city", required: true)]
-        public Input<string> City { get; set; } = null!;
-
-        [Input("isp", required: true)]
-        public Input<string> Isp { get; set; } = null!;
-
-        public SiteMonitorIspCitiesArgs()
-        {
-        }
-    }
-
-    public sealed class SiteMonitorIspCitiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("city", required: true)]
-        public Input<string> City { get; set; } = null!;
-
-        [Input("isp", required: true)]
-        public Input<string> Isp { get; set; } = null!;
-
-        public SiteMonitorIspCitiesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SiteMonitorIspCities
-    {
-        public readonly string City;
-        public readonly string Isp;
-
-        [OutputConstructor]
-        private SiteMonitorIspCities(
-            string city,
-            string isp)
-        {
-            City = city;
-            Isp = isp;
-        }
-    }
     }
 }

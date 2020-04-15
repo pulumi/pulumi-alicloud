@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.PolarDB
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.polardb.getDatabases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
-        /// Filters support regular expression for the database name, searches by clusterId.
-        /// 
-        /// &gt; **NOTE:** Available in v1.70.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDatabases.InvokeAsync() instead")]
-        public static Task<GetDatabasesResult> GetDatabases(GetDatabasesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDatabases
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available in v1.70.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_databases.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDatabasesArgs : Pulumi.InvokeArgs
     {
@@ -60,115 +44,42 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
+
     [OutputType]
     public sealed class GetDatabasesResult
     {
         /// <summary>
         /// A list of PolarDB cluster databases. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDatabasesDatabasesResult> Databases;
+        public readonly ImmutableArray<Outputs.GetDatabasesDatabaseResult> Databases;
         public readonly string DbClusterId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? NameRegex;
         /// <summary>
         /// database name of the cluster.
         /// </summary>
         public readonly ImmutableArray<string> Names;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDatabasesResult(
-            ImmutableArray<Outputs.GetDatabasesDatabasesResult> databases,
+            ImmutableArray<Outputs.GetDatabasesDatabaseResult> databases,
+
             string dbClusterId,
+
+            string id,
+
             string? nameRegex,
-            ImmutableArray<string> names,
-            string id)
+
+            ImmutableArray<string> names)
         {
             Databases = databases;
             DbClusterId = dbClusterId;
+            Id = id;
             NameRegex = nameRegex;
             Names = names;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDatabasesDatabasesAccountsResult
-    {
-        /// <summary>
-        /// Account name.
-        /// </summary>
-        public readonly string AccountName;
-        /// <summary>
-        /// Account status.
-        /// </summary>
-        public readonly string AccountStatus;
-        /// <summary>
-        /// The privilege status of account.
-        /// </summary>
-        public readonly string PrivilegeStatus;
-
-        [OutputConstructor]
-        private GetDatabasesDatabasesAccountsResult(
-            string accountName,
-            string accountStatus,
-            string privilegeStatus)
-        {
-            AccountName = accountName;
-            AccountStatus = accountStatus;
-            PrivilegeStatus = privilegeStatus;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetDatabasesDatabasesResult
-    {
-        /// <summary>
-        /// A list of accounts of database. Each element contains the following attributes.
-        /// </summary>
-        public readonly ImmutableArray<GetDatabasesDatabasesAccountsResult> Accounts;
-        /// <summary>
-        /// The character set name of database.
-        /// </summary>
-        public readonly string CharacterSetName;
-        /// <summary>
-        /// Database description.
-        /// </summary>
-        public readonly string DbDescription;
-        /// <summary>
-        /// Database name.
-        /// </summary>
-        public readonly string DbName;
-        /// <summary>
-        /// The status of database.
-        /// </summary>
-        public readonly string DbStatus;
-        /// <summary>
-        /// The engine of database.
-        /// </summary>
-        public readonly string Engine;
-
-        [OutputConstructor]
-        private GetDatabasesDatabasesResult(
-            ImmutableArray<GetDatabasesDatabasesAccountsResult> accounts,
-            string characterSetName,
-            string dbDescription,
-            string dbName,
-            string dbStatus,
-            string engine)
-        {
-            Accounts = accounts;
-            CharacterSetName = characterSetName;
-            DbDescription = dbDescription;
-            DbName = dbName;
-            DbStatus = dbStatus;
-            Engine = engine;
-        }
-    }
     }
 }

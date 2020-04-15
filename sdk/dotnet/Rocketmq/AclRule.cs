@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** Available in 1.60.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_acl_rule.html.markdown.
     /// </summary>
     public partial class AclRule : Pulumi.CustomResource
     {
@@ -93,7 +89,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AclRule(string name, AclRuleArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/aclRule:AclRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rocketmq/aclRule:AclRule", name, args ?? new AclRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

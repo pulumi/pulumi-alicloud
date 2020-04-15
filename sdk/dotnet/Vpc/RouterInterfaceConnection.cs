@@ -20,10 +20,6 @@ namespace Pulumi.AliCloud.Vpc
     /// &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
     /// 
     /// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.
     /// </summary>
     public partial class RouterInterfaceConnection : Pulumi.CustomResource
     {
@@ -63,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouterInterfaceConnection(string name, RouterInterfaceConnectionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/routerInterfaceConnection:RouterInterfaceConnection", name, args ?? new RouterInterfaceConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -13,11 +13,6 @@ namespace Pulumi.AliCloud.Oss
     /// Provides a resource to create a oss bucket and set its attribution.
     /// 
     /// &gt; **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket.html.markdown.
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {
@@ -34,7 +29,7 @@ namespace Pulumi.AliCloud.Oss
         /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         /// </summary>
         [Output("corsRules")]
-        public Output<ImmutableArray<Outputs.BucketCorsRules>> CorsRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.BucketCorsRule>> CorsRules { get; private set; } = null!;
 
         /// <summary>
         /// The creation date of the bucket.
@@ -64,7 +59,7 @@ namespace Pulumi.AliCloud.Oss
         /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         /// </summary>
         [Output("lifecycleRules")]
-        public Output<ImmutableArray<Outputs.BucketLifecycleRules>> LifecycleRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.BucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
         /// The location of the bucket.
@@ -141,7 +136,7 @@ namespace Pulumi.AliCloud.Oss
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Bucket(string name, BucketArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:oss/bucket:Bucket", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:oss/bucket:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -188,14 +183,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? BucketName { get; set; }
 
         [Input("corsRules")]
-        private InputList<Inputs.BucketCorsRulesArgs>? _corsRules;
+        private InputList<Inputs.BucketCorsRuleArgs>? _corsRules;
 
         /// <summary>
         /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         /// </summary>
-        public InputList<Inputs.BucketCorsRulesArgs> CorsRules
+        public InputList<Inputs.BucketCorsRuleArgs> CorsRules
         {
-            get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRulesArgs>());
+            get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRuleArgs>());
             set => _corsRules = value;
         }
 
@@ -206,14 +201,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("lifecycleRules")]
-        private InputList<Inputs.BucketLifecycleRulesArgs>? _lifecycleRules;
+        private InputList<Inputs.BucketLifecycleRuleArgs>? _lifecycleRules;
 
         /// <summary>
         /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         /// </summary>
-        public InputList<Inputs.BucketLifecycleRulesArgs> LifecycleRules
+        public InputList<Inputs.BucketLifecycleRuleArgs> LifecycleRules
         {
-            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRulesArgs>());
+            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRuleArgs>());
             set => _lifecycleRules = value;
         }
 
@@ -294,14 +289,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? BucketName { get; set; }
 
         [Input("corsRules")]
-        private InputList<Inputs.BucketCorsRulesGetArgs>? _corsRules;
+        private InputList<Inputs.BucketCorsRuleGetArgs>? _corsRules;
 
         /// <summary>
         /// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         /// </summary>
-        public InputList<Inputs.BucketCorsRulesGetArgs> CorsRules
+        public InputList<Inputs.BucketCorsRuleGetArgs> CorsRules
         {
-            get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRulesGetArgs>());
+            get => _corsRules ?? (_corsRules = new InputList<Inputs.BucketCorsRuleGetArgs>());
             set => _corsRules = value;
         }
 
@@ -330,14 +325,14 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? IntranetEndpoint { get; set; }
 
         [Input("lifecycleRules")]
-        private InputList<Inputs.BucketLifecycleRulesGetArgs>? _lifecycleRules;
+        private InputList<Inputs.BucketLifecycleRuleGetArgs>? _lifecycleRules;
 
         /// <summary>
         /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         /// </summary>
-        public InputList<Inputs.BucketLifecycleRulesGetArgs> LifecycleRules
+        public InputList<Inputs.BucketLifecycleRuleGetArgs> LifecycleRules
         {
-            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRulesGetArgs>());
+            get => _lifecycleRules ?? (_lifecycleRules = new InputList<Inputs.BucketLifecycleRuleGetArgs>());
             set => _lifecycleRules = value;
         }
 
@@ -416,725 +411,5 @@ namespace Pulumi.AliCloud.Oss
         public BucketState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class BucketCorsRulesArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedHeaders")]
-        private InputList<string>? _allowedHeaders;
-
-        /// <summary>
-        /// Specifies which headers are allowed.
-        /// </summary>
-        public InputList<string> AllowedHeaders
-        {
-            get => _allowedHeaders ?? (_allowedHeaders = new InputList<string>());
-            set => _allowedHeaders = value;
-        }
-
-        [Input("allowedMethods", required: true)]
-        private InputList<string>? _allowedMethods;
-
-        /// <summary>
-        /// Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        /// </summary>
-        public InputList<string> AllowedMethods
-        {
-            get => _allowedMethods ?? (_allowedMethods = new InputList<string>());
-            set => _allowedMethods = value;
-        }
-
-        [Input("allowedOrigins", required: true)]
-        private InputList<string>? _allowedOrigins;
-
-        /// <summary>
-        /// Specifies which origins are allowed.
-        /// </summary>
-        public InputList<string> AllowedOrigins
-        {
-            get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
-            set => _allowedOrigins = value;
-        }
-
-        [Input("exposeHeaders")]
-        private InputList<string>? _exposeHeaders;
-
-        /// <summary>
-        /// Specifies expose header in the response.
-        /// </summary>
-        public InputList<string> ExposeHeaders
-        {
-            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
-            set => _exposeHeaders = value;
-        }
-
-        /// <summary>
-        /// Specifies time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        [Input("maxAgeSeconds")]
-        public Input<int>? MaxAgeSeconds { get; set; }
-
-        public BucketCorsRulesArgs()
-        {
-        }
-    }
-
-    public sealed class BucketCorsRulesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedHeaders")]
-        private InputList<string>? _allowedHeaders;
-
-        /// <summary>
-        /// Specifies which headers are allowed.
-        /// </summary>
-        public InputList<string> AllowedHeaders
-        {
-            get => _allowedHeaders ?? (_allowedHeaders = new InputList<string>());
-            set => _allowedHeaders = value;
-        }
-
-        [Input("allowedMethods", required: true)]
-        private InputList<string>? _allowedMethods;
-
-        /// <summary>
-        /// Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        /// </summary>
-        public InputList<string> AllowedMethods
-        {
-            get => _allowedMethods ?? (_allowedMethods = new InputList<string>());
-            set => _allowedMethods = value;
-        }
-
-        [Input("allowedOrigins", required: true)]
-        private InputList<string>? _allowedOrigins;
-
-        /// <summary>
-        /// Specifies which origins are allowed.
-        /// </summary>
-        public InputList<string> AllowedOrigins
-        {
-            get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
-            set => _allowedOrigins = value;
-        }
-
-        [Input("exposeHeaders")]
-        private InputList<string>? _exposeHeaders;
-
-        /// <summary>
-        /// Specifies expose header in the response.
-        /// </summary>
-        public InputList<string> ExposeHeaders
-        {
-            get => _exposeHeaders ?? (_exposeHeaders = new InputList<string>());
-            set => _exposeHeaders = value;
-        }
-
-        /// <summary>
-        /// Specifies time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        [Input("maxAgeSeconds")]
-        public Input<int>? MaxAgeSeconds { get; set; }
-
-        public BucketCorsRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies lifecycle rule status.
-        /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
-
-        [Input("expirations")]
-        private InputList<BucketLifecycleRulesExpirationsArgs>? _expirations;
-
-        /// <summary>
-        /// Specifies a period in the object's expire (documented below).
-        /// </summary>
-        public InputList<BucketLifecycleRulesExpirationsArgs> Expirations
-        {
-            get => _expirations ?? (_expirations = new InputList<BucketLifecycleRulesExpirationsArgs>());
-            set => _expirations = value;
-        }
-
-        /// <summary>
-        /// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies.
-        /// </summary>
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
-
-        [Input("transitions")]
-        private InputList<BucketLifecycleRulesTransitionsArgs>? _transitions;
-
-        /// <summary>
-        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
-        /// </summary>
-        public InputList<BucketLifecycleRulesTransitionsArgs> Transitions
-        {
-            get => _transitions ?? (_transitions = new InputList<BucketLifecycleRulesTransitionsArgs>());
-            set => _transitions = value;
-        }
-
-        public BucketLifecycleRulesArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesExpirationsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        /// </summary>
-        [Input("date")]
-        public Input<string>? Date { get; set; }
-
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        [Input("days")]
-        public Input<int>? Days { get; set; }
-
-        public BucketLifecycleRulesExpirationsArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesExpirationsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        /// </summary>
-        [Input("date")]
-        public Input<string>? Date { get; set; }
-
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        [Input("days")]
-        public Input<int>? Days { get; set; }
-
-        public BucketLifecycleRulesExpirationsGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies lifecycle rule status.
-        /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
-
-        [Input("expirations")]
-        private InputList<BucketLifecycleRulesExpirationsGetArgs>? _expirations;
-
-        /// <summary>
-        /// Specifies a period in the object's expire (documented below).
-        /// </summary>
-        public InputList<BucketLifecycleRulesExpirationsGetArgs> Expirations
-        {
-            get => _expirations ?? (_expirations = new InputList<BucketLifecycleRulesExpirationsGetArgs>());
-            set => _expirations = value;
-        }
-
-        /// <summary>
-        /// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies.
-        /// </summary>
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
-
-        [Input("transitions")]
-        private InputList<BucketLifecycleRulesTransitionsGetArgs>? _transitions;
-
-        /// <summary>
-        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
-        /// </summary>
-        public InputList<BucketLifecycleRulesTransitionsGetArgs> Transitions
-        {
-            get => _transitions ?? (_transitions = new InputList<BucketLifecycleRulesTransitionsGetArgs>());
-            set => _transitions = value;
-        }
-
-        public BucketLifecycleRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesTransitionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
-        /// </summary>
-        [Input("createdBeforeDate")]
-        public Input<string>? CreatedBeforeDate { get; set; }
-
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        [Input("days")]
-        public Input<int>? Days { get; set; }
-
-        /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
-        /// </summary>
-        [Input("storageClass")]
-        public Input<string>? StorageClass { get; set; }
-
-        public BucketLifecycleRulesTransitionsArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLifecycleRulesTransitionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
-        /// </summary>
-        [Input("createdBeforeDate")]
-        public Input<string>? CreatedBeforeDate { get; set; }
-
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        [Input("days")]
-        public Input<int>? Days { get; set; }
-
-        /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
-        /// </summary>
-        [Input("storageClass")]
-        public Input<string>? StorageClass { get; set; }
-
-        public BucketLifecycleRulesTransitionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLoggingArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the bucket that will receive the log objects.
-        /// </summary>
-        [Input("targetBucket", required: true)]
-        public Input<string> TargetBucket { get; set; } = null!;
-
-        /// <summary>
-        /// To specify a key prefix for log objects.
-        /// </summary>
-        [Input("targetPrefix")]
-        public Input<string>? TargetPrefix { get; set; }
-
-        public BucketLoggingArgs()
-        {
-        }
-    }
-
-    public sealed class BucketLoggingGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of the bucket that will receive the log objects.
-        /// </summary>
-        [Input("targetBucket", required: true)]
-        public Input<string> TargetBucket { get; set; } = null!;
-
-        /// <summary>
-        /// To specify a key prefix for log objects.
-        /// </summary>
-        [Input("targetPrefix")]
-        public Input<string>? TargetPrefix { get; set; }
-
-        public BucketLoggingGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketRefererConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Allows referer to be empty. Defaults true.
-        /// </summary>
-        [Input("allowEmpty")]
-        public Input<bool>? AllowEmpty { get; set; }
-
-        [Input("referers", required: true)]
-        private InputList<string>? _referers;
-
-        /// <summary>
-        /// The list of referer.
-        /// </summary>
-        public InputList<string> Referers
-        {
-            get => _referers ?? (_referers = new InputList<string>());
-            set => _referers = value;
-        }
-
-        public BucketRefererConfigArgs()
-        {
-        }
-    }
-
-    public sealed class BucketRefererConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Allows referer to be empty. Defaults true.
-        /// </summary>
-        [Input("allowEmpty")]
-        public Input<bool>? AllowEmpty { get; set; }
-
-        [Input("referers", required: true)]
-        private InputList<string>? _referers;
-
-        /// <summary>
-        /// The list of referer.
-        /// </summary>
-        public InputList<string> Referers
-        {
-            get => _referers ?? (_referers = new InputList<string>());
-            set => _referers = value;
-        }
-
-        public BucketRefererConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketServerSideEncryptionRuleArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-        /// </summary>
-        [Input("sseAlgorithm", required: true)]
-        public Input<string> SseAlgorithm { get; set; } = null!;
-
-        public BucketServerSideEncryptionRuleArgs()
-        {
-        }
-    }
-
-    public sealed class BucketServerSideEncryptionRuleGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-        /// </summary>
-        [Input("sseAlgorithm", required: true)]
-        public Input<string> SseAlgorithm { get; set; } = null!;
-
-        public BucketServerSideEncryptionRuleGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketVersioningArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-        /// </summary>
-        [Input("status", required: true)]
-        public Input<string> Status { get; set; } = null!;
-
-        public BucketVersioningArgs()
-        {
-        }
-    }
-
-    public sealed class BucketVersioningGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-        /// </summary>
-        [Input("status", required: true)]
-        public Input<string> Status { get; set; } = null!;
-
-        public BucketVersioningGetArgs()
-        {
-        }
-    }
-
-    public sealed class BucketWebsiteArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An absolute path to the document to return in case of a 4XX error.
-        /// </summary>
-        [Input("errorDocument")]
-        public Input<string>? ErrorDocument { get; set; }
-
-        /// <summary>
-        /// Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-        /// </summary>
-        [Input("indexDocument", required: true)]
-        public Input<string> IndexDocument { get; set; } = null!;
-
-        public BucketWebsiteArgs()
-        {
-        }
-    }
-
-    public sealed class BucketWebsiteGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An absolute path to the document to return in case of a 4XX error.
-        /// </summary>
-        [Input("errorDocument")]
-        public Input<string>? ErrorDocument { get; set; }
-
-        /// <summary>
-        /// Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-        /// </summary>
-        [Input("indexDocument", required: true)]
-        public Input<string> IndexDocument { get; set; } = null!;
-
-        public BucketWebsiteGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class BucketCorsRules
-    {
-        /// <summary>
-        /// Specifies which headers are allowed.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedHeaders;
-        /// <summary>
-        /// Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedMethods;
-        /// <summary>
-        /// Specifies which origins are allowed.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedOrigins;
-        /// <summary>
-        /// Specifies expose header in the response.
-        /// </summary>
-        public readonly ImmutableArray<string> ExposeHeaders;
-        /// <summary>
-        /// Specifies time in seconds that browser can cache the response for a preflight request.
-        /// </summary>
-        public readonly int? MaxAgeSeconds;
-
-        [OutputConstructor]
-        private BucketCorsRules(
-            ImmutableArray<string> allowedHeaders,
-            ImmutableArray<string> allowedMethods,
-            ImmutableArray<string> allowedOrigins,
-            ImmutableArray<string> exposeHeaders,
-            int? maxAgeSeconds)
-        {
-            AllowedHeaders = allowedHeaders;
-            AllowedMethods = allowedMethods;
-            AllowedOrigins = allowedOrigins;
-            ExposeHeaders = exposeHeaders;
-            MaxAgeSeconds = maxAgeSeconds;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketLifecycleRules
-    {
-        /// <summary>
-        /// Specifies lifecycle rule status.
-        /// </summary>
-        public readonly bool Enabled;
-        /// <summary>
-        /// Specifies a period in the object's expire (documented below).
-        /// </summary>
-        public readonly ImmutableArray<BucketLifecycleRulesExpirations> Expirations;
-        /// <summary>
-        /// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies.
-        /// </summary>
-        public readonly string Prefix;
-        /// <summary>
-        /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
-        /// </summary>
-        public readonly ImmutableArray<BucketLifecycleRulesTransitions> Transitions;
-
-        [OutputConstructor]
-        private BucketLifecycleRules(
-            bool enabled,
-            ImmutableArray<BucketLifecycleRulesExpirations> expirations,
-            string id,
-            string prefix,
-            ImmutableArray<BucketLifecycleRulesTransitions> transitions)
-        {
-            Enabled = enabled;
-            Expirations = expirations;
-            Id = id;
-            Prefix = prefix;
-            Transitions = transitions;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketLifecycleRulesExpirations
-    {
-        /// <summary>
-        /// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        /// </summary>
-        public readonly string? Date;
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        public readonly int? Days;
-
-        [OutputConstructor]
-        private BucketLifecycleRulesExpirations(
-            string? date,
-            int? days)
-        {
-            Date = date;
-            Days = days;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketLifecycleRulesTransitions
-    {
-        /// <summary>
-        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
-        /// </summary>
-        public readonly string? CreatedBeforeDate;
-        /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// </summary>
-        public readonly int? Days;
-        /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
-        /// </summary>
-        public readonly string? StorageClass;
-
-        [OutputConstructor]
-        private BucketLifecycleRulesTransitions(
-            string? createdBeforeDate,
-            int? days,
-            string? storageClass)
-        {
-            CreatedBeforeDate = createdBeforeDate;
-            Days = days;
-            StorageClass = storageClass;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketLogging
-    {
-        /// <summary>
-        /// The name of the bucket that will receive the log objects.
-        /// </summary>
-        public readonly string TargetBucket;
-        /// <summary>
-        /// To specify a key prefix for log objects.
-        /// </summary>
-        public readonly string? TargetPrefix;
-
-        [OutputConstructor]
-        private BucketLogging(
-            string targetBucket,
-            string? targetPrefix)
-        {
-            TargetBucket = targetBucket;
-            TargetPrefix = targetPrefix;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketRefererConfig
-    {
-        /// <summary>
-        /// Allows referer to be empty. Defaults true.
-        /// </summary>
-        public readonly bool AllowEmpty;
-        /// <summary>
-        /// The list of referer.
-        /// </summary>
-        public readonly ImmutableArray<string> Referers;
-
-        [OutputConstructor]
-        private BucketRefererConfig(
-            bool allowEmpty,
-            ImmutableArray<string> referers)
-        {
-            AllowEmpty = allowEmpty;
-            Referers = referers;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketServerSideEncryptionRule
-    {
-        /// <summary>
-        /// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-        /// </summary>
-        public readonly string SseAlgorithm;
-
-        [OutputConstructor]
-        private BucketServerSideEncryptionRule(string sseAlgorithm)
-        {
-            SseAlgorithm = sseAlgorithm;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketVersioning
-    {
-        /// <summary>
-        /// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private BucketVersioning(string status)
-        {
-            Status = status;
-        }
-    }
-
-    [OutputType]
-    public sealed class BucketWebsite
-    {
-        /// <summary>
-        /// An absolute path to the document to return in case of a 4XX error.
-        /// </summary>
-        public readonly string? ErrorDocument;
-        /// <summary>
-        /// Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-        /// </summary>
-        public readonly string IndexDocument;
-
-        [OutputConstructor]
-        private BucketWebsite(
-            string? errorDocument,
-            string indexDocument)
-        {
-            ErrorDocument = errorDocument;
-            IndexDocument = indexDocument;
-        }
-    }
     }
 }

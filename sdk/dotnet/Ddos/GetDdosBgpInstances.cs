@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ddos
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.57.0+ .
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDdosBgpInstances.InvokeAsync() instead")]
-        public static Task<GetDdosBgpInstancesResult> GetDdosBgpInstances(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDdosBgpInstances
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// &gt; **NOTE:** Available in 1.57.0+ .
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddosbgp_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosBgpInstancesResult> InvokeAsync(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDdosBgpInstancesArgs : Pulumi.InvokeArgs
     {
@@ -67,9 +52,14 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
+
     [OutputType]
     public sealed class GetDdosBgpInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of instance IDs.
         /// </summary>
@@ -77,95 +67,34 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// A list of apis. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDdosBgpInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetDdosBgpInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of instance names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDdosBgpInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetDdosBgpInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetDdosBgpInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDdosBgpInstancesInstancesResult
-    {
-        /// <summary>
-        /// The instance's elastic defend bandwidth.
-        /// </summary>
-        public readonly int Bandwidth;
-        /// <summary>
-        /// The instance's base defend bandwidth.
-        /// </summary>
-        public readonly int BaseBandwidth;
-        /// <summary>
-        /// The instance's id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The instance's count of ip config.
-        /// </summary>
-        public readonly int IpCount;
-        /// <summary>
-        /// The instance's IP version.
-        /// </summary>
-        public readonly string IpType;
-        /// <summary>
-        /// The instance's remark.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// A region of instance.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
-        /// The instance's type.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetDdosBgpInstancesInstancesResult(
-            int bandwidth,
-            int baseBandwidth,
-            string id,
-            int ipCount,
-            string ipType,
-            string name,
-            string region,
-            string type)
-        {
-            Bandwidth = bandwidth;
-            BaseBandwidth = baseBandwidth;
-            Id = id;
-            IpCount = ipCount;
-            IpType = ipType;
-            Name = name;
-            Region = region;
-            Type = type;
-        }
-    }
     }
 }

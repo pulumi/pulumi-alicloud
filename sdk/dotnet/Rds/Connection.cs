@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {
@@ -60,7 +56,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/connection:Connection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

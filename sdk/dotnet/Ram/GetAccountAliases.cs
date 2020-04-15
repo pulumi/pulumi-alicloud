@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides an alias for the Alibaba Cloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccountAliases.InvokeAsync() instead")]
-        public static Task<GetAccountAliasesResult> GetAccountAliases(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccountAliases
     {
         /// <summary>
         /// This data source provides an alias for the Alibaba Cloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_account_aliases.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountAliasesResult> InvokeAsync(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasesResult>("alicloud:ram/getAccountAliases:getAccountAliases", args ?? new GetAccountAliasesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountAliasesArgs : Pulumi.InvokeArgs
     {
@@ -45,6 +32,7 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountAliasesResult
     {
@@ -52,21 +40,23 @@ namespace Pulumi.AliCloud.Ram
         /// Alias of the account.
         /// </summary>
         public readonly string AccountAlias;
-        public readonly string? OutputFile;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetAccountAliasesResult(
             string accountAlias,
-            string? outputFile,
-            string id)
+
+            string id,
+
+            string? outputFile)
         {
             AccountAlias = accountAlias;
-            OutputFile = outputFile;
             Id = id;
+            OutputFile = outputFile;
         }
     }
 }

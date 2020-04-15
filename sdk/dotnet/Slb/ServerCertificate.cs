@@ -15,11 +15,6 @@ namespace Pulumi.AliCloud.Slb
     /// For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
     /// 
     /// For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
     /// </summary>
     public partial class ServerCertificate : Pulumi.CustomResource
     {
@@ -86,7 +81,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServerCertificate(string name, ServerCertificateArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:slb/serverCertificate:ServerCertificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/serverCertificate:ServerCertificate", name, args ?? new ServerCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 

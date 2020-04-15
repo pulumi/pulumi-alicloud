@@ -9,37 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
-        /// 
-        /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
-        /// 
-        /// 
-        /// ##  Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `ids` - (Optional)  A list of ENI IDs.
-        /// * `name_regex` - (Optional) A regex string to filter results by ENI name.
-        /// * `vpc_id` - (Optional) The VPC ID linked to ENIs.
-        /// * `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.
-        /// * `private_ip` - (Optional) The primary private IP address of the ENI.
-        /// * `security_group_id` - (Optional) The security group ID linked to ENIs.
-        /// * `name` - (Optional) The name of the ENIs.
-        /// * `type` - (Optional) The type of ENIs, Only support for "Primary" or "Secondary".
-        /// * `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.
-        /// * `tags` - (Optional) A map of tags assigned to ENIs.
-        /// * `output_file` - (Optional) The name of output file that saves the filter results.
-        /// * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetworkInterfaces.InvokeAsync() instead")]
-        public static Task<GetNetworkInterfacesResult> GetNetworkInterfaces(GetNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetworkInterfaces
     {
         /// <summary>
@@ -47,7 +16,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
         /// 
-        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -64,12 +34,11 @@ namespace Pulumi.AliCloud.Ecs
         /// * `tags` - (Optional) A map of tags assigned to ENIs.
         /// * `output_file` - (Optional) The name of output file that saves the filter results.
         /// * `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/network_interfaces.html.markdown.
         /// </summary>
         public static Task<GetNetworkInterfacesResult> InvokeAsync(GetNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworkInterfacesArgs : Pulumi.InvokeArgs
     {
@@ -140,9 +109,14 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworkInterfacesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// ID of the instance that the ENI is attached to.
@@ -151,7 +125,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A list of ENIs. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNetworkInterfacesInterfacesResult> Interfaces;
+        public readonly ImmutableArray<Outputs.GetNetworkInterfacesInterfaceResult> Interfaces;
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
@@ -177,28 +151,38 @@ namespace Pulumi.AliCloud.Ecs
         /// ID of the VSwitch that the ENI is linked to.
         /// </summary>
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworkInterfacesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceId,
-            ImmutableArray<Outputs.GetNetworkInterfacesInterfacesResult> interfaces,
+
+            ImmutableArray<Outputs.GetNetworkInterfacesInterfaceResult> interfaces,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? privateIp,
+
             string? resourceGroupId,
+
             string? securityGroupId,
+
             ImmutableDictionary<string, object>? tags,
+
             string? type,
+
             string? vpcId,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
+            Id = id;
             Ids = ids;
             InstanceId = instanceId;
             Interfaces = interfaces;
@@ -212,117 +196,6 @@ namespace Pulumi.AliCloud.Ecs
             Type = type;
             VpcId = vpcId;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNetworkInterfacesInterfacesResult
-    {
-        /// <summary>
-        /// Creation time of the ENI.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Description of the ENI.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the ENI.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// ID of the instance that the ENI is attached to.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// MAC address of the ENI.
-        /// </summary>
-        public readonly string Mac;
-        /// <summary>
-        /// Name of the ENI.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Primary private IP of the ENI.
-        /// </summary>
-        public readonly string PrivateIp;
-        /// <summary>
-        /// A list of secondary private IP address that is assigned to the ENI.
-        /// </summary>
-        public readonly ImmutableArray<string> PrivateIps;
-        /// <summary>
-        /// Public IP of the ENI.
-        /// </summary>
-        public readonly string PublicIp;
-        /// <summary>
-        /// The Id of resource group.
-        /// </summary>
-        public readonly string ResourceGroupId;
-        /// <summary>
-        /// A list of security group that the ENI belongs to.
-        /// </summary>
-        public readonly ImmutableArray<string> SecurityGroups;
-        /// <summary>
-        /// Current status of the ENI.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// A map of tags assigned to the ENI.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// ID of the VPC that the ENI belongs to.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// ID of the VSwitch that the ENI is linked to.
-        /// </summary>
-        public readonly string VswitchId;
-        /// <summary>
-        /// ID of the availability zone that the ENI belongs to.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetNetworkInterfacesInterfacesResult(
-            string creationTime,
-            string description,
-            string id,
-            string instanceId,
-            string mac,
-            string name,
-            string privateIp,
-            ImmutableArray<string> privateIps,
-            string publicIp,
-            string resourceGroupId,
-            ImmutableArray<string> securityGroups,
-            string status,
-            ImmutableDictionary<string, object>? tags,
-            string vpcId,
-            string vswitchId,
-            string zoneId)
-        {
-            CreationTime = creationTime;
-            Description = description;
-            Id = id;
-            InstanceId = instanceId;
-            Mac = mac;
-            Name = name;
-            PrivateIp = privateIp;
-            PrivateIps = privateIps;
-            PublicIp = publicIp;
-            ResourceGroupId = resourceGroupId;
-            SecurityGroups = securityGroups;
-            Status = status;
-            Tags = tags;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

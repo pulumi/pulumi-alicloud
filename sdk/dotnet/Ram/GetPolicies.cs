@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetPolicies.InvokeAsync() instead")]
-        public static Task<GetPoliciesResult> GetPolicies(GetPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPolicies
     {
         /// <summary>
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_policies.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPoliciesArgs : Pulumi.InvokeArgs
     {
@@ -75,10 +62,15 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
+
     [OutputType]
     public sealed class GetPoliciesResult
     {
         public readonly string? GroupName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of ram group names.
@@ -88,31 +80,36 @@ namespace Pulumi.AliCloud.Ram
         /// <summary>
         /// A list of policies. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetPoliciesPoliciesResult> Policies;
+        public readonly ImmutableArray<Outputs.GetPoliciesPolicyResult> Policies;
         public readonly string? RoleName;
         /// <summary>
         /// Type of the policy.
         /// </summary>
         public readonly string? Type;
         public readonly string? UserName;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetPoliciesResult(
             string? groupName,
+
+            string id,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetPoliciesPoliciesResult> policies,
+
+            ImmutableArray<Outputs.GetPoliciesPolicyResult> policies,
+
             string? roleName,
+
             string? type,
-            string? userName,
-            string id)
+
+            string? userName)
         {
             GroupName = groupName;
+            Id = id;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
@@ -120,69 +117,6 @@ namespace Pulumi.AliCloud.Ram
             RoleName = roleName;
             Type = type;
             UserName = userName;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetPoliciesPoliciesResult
-    {
-        /// <summary>
-        /// Attachment count of the policy.
-        /// </summary>
-        public readonly int AttachmentCount;
-        /// <summary>
-        /// Creation date of the policy.
-        /// </summary>
-        public readonly string CreateDate;
-        /// <summary>
-        /// Default version of the policy.
-        /// </summary>
-        public readonly string DefaultVersion;
-        /// <summary>
-        /// Description of the policy.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Policy document of the policy.
-        /// </summary>
-        public readonly string Document;
-        /// <summary>
-        /// Name of the policy.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// Update date of the policy.
-        /// </summary>
-        public readonly string UpdateDate;
-
-        [OutputConstructor]
-        private GetPoliciesPoliciesResult(
-            int attachmentCount,
-            string createDate,
-            string defaultVersion,
-            string description,
-            string document,
-            string name,
-            string type,
-            string updateDate)
-        {
-            AttachmentCount = attachmentCount;
-            CreateDate = createDate;
-            DefaultVersion = defaultVersion;
-            Description = description;
-            Document = document;
-            Name = name;
-            Type = type;
-            UpdateDate = updateDate;
-        }
-    }
     }
 }

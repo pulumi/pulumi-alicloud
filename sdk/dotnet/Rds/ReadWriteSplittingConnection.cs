@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
     /// </summary>
     public partial class ReadWriteSplittingConnection : Pulumi.CustomResource
     {
@@ -69,7 +65,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ReadWriteSplittingConnection(string name, ReadWriteSplittingConnectionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection", name, args ?? new ReadWriteSplittingConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

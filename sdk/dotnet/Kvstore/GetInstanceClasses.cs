@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.KVStore
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.49.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceClasses.InvokeAsync() instead")]
-        public static Task<GetInstanceClassesResult> GetInstanceClasses(GetInstanceClassesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceClasses
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; **NOTE:** Available in v1.49.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_classes.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceClassesArgs : Pulumi.InvokeArgs
     {
@@ -124,6 +109,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceClassesResult
     {
@@ -131,10 +117,14 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// A list of KVStore available instance classes when the `sorted_by` is "Price". include:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceClassesClassesResult> Classes;
+        public readonly ImmutableArray<Outputs.GetInstanceClassesClassResult> Classes;
         public readonly string? EditionType;
         public readonly string? Engine;
         public readonly string? EngineVersion;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? InstanceChargeType;
         /// <summary>
         /// A list of KVStore available instance classes.
@@ -149,36 +139,49 @@ namespace Pulumi.AliCloud.KVStore
         public readonly string? SortedBy;
         public readonly string? StorageType;
         public readonly string ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceClassesResult(
             string? architecture,
-            ImmutableArray<Outputs.GetInstanceClassesClassesResult> classes,
+
+            ImmutableArray<Outputs.GetInstanceClassesClassResult> classes,
+
             string? editionType,
+
             string? engine,
+
             string? engineVersion,
+
+            string id,
+
             string? instanceChargeType,
+
             ImmutableArray<string> instanceClasses,
+
             string? nodeType,
+
             string? outputFile,
+
             string? packageType,
+
             string? performanceType,
+
             string? seriesType,
+
             int? shardNumber,
+
             string? sortedBy,
+
             string? storageType,
-            string zoneId,
-            string id)
+
+            string zoneId)
         {
             Architecture = architecture;
             Classes = classes;
             EditionType = editionType;
             Engine = engine;
             EngineVersion = engineVersion;
+            Id = id;
             InstanceChargeType = instanceChargeType;
             InstanceClasses = instanceClasses;
             NodeType = nodeType;
@@ -190,30 +193,6 @@ namespace Pulumi.AliCloud.KVStore
             SortedBy = sortedBy;
             StorageType = storageType;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceClassesClassesResult
-    {
-        /// <summary>
-        /// KVStore available instance class.
-        /// </summary>
-        public readonly string InstanceClass;
-        public readonly string Price;
-
-        [OutputConstructor]
-        private GetInstanceClassesClassesResult(
-            string instanceClass,
-            string price)
-        {
-            InstanceClass = instanceClass;
-            Price = price;
-        }
-    }
     }
 }

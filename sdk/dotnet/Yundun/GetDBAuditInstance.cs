@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetDBAuditInstance.InvokeAsync() instead")]
-        public static Task<GetDBAuditInstanceResult> GetDBAuditInstance(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDBAuditInstance
     {
         public static Task<GetDBAuditInstanceResult> InvokeAsync(GetDBAuditInstanceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDBAuditInstanceResult>("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", args ?? new GetDBAuditInstanceArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDBAuditInstanceArgs : Pulumi.InvokeArgs
     {
@@ -50,78 +45,44 @@ namespace Pulumi.AliCloud.Yundun
         }
     }
 
+
     [OutputType]
     public sealed class GetDBAuditInstanceResult
     {
         public readonly string? DescriptionRegex;
         public readonly ImmutableArray<string> Descriptions;
-        public readonly ImmutableArray<string> Ids;
-        public readonly ImmutableArray<Outputs.GetDBAuditInstanceInstancesResult> Instances;
-        public readonly string? OutputFile;
-        public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly ImmutableArray<Outputs.GetDBAuditInstanceInstanceResult> Instances;
+        public readonly string? OutputFile;
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetDBAuditInstanceResult(
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetDBAuditInstanceInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetDBAuditInstanceInstanceResult> instances,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             Instances = instances;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDBAuditInstanceInstancesResult
-    {
-        public readonly string Description;
-        public readonly string Id;
-        public readonly string InstanceStatus;
-        public readonly string LicenseCode;
-        public readonly string PrivateDomain;
-        public readonly string PublicDomain;
-        public readonly bool PublicNetworkAccess;
-        public readonly ImmutableDictionary<string, object>? Tags;
-        public readonly string UserVswitchId;
-
-        [OutputConstructor]
-        private GetDBAuditInstanceInstancesResult(
-            string description,
-            string id,
-            string instanceStatus,
-            string licenseCode,
-            string privateDomain,
-            string publicDomain,
-            bool publicNetworkAccess,
-            ImmutableDictionary<string, object>? tags,
-            string userVswitchId)
-        {
-            Description = description;
-            Id = id;
-            InstanceStatus = instanceStatus;
-            LicenseCode = licenseCode;
-            PrivateDomain = privateDomain;
-            PublicDomain = publicDomain;
-            PublicNetworkAccess = publicNetworkAccess;
-            Tags = tags;
-            UserVswitchId = userVswitchId;
-        }
-    }
     }
 }

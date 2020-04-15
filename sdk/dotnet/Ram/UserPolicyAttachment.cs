@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM User Policy attachment resource. 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user_policy_attachment.html.markdown.
     /// </summary>
     public partial class UserPolicyAttachment : Pulumi.CustomResource
     {
@@ -45,7 +41,7 @@ namespace Pulumi.AliCloud.Ram
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public UserPolicyAttachment(string name, UserPolicyAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, args ?? new UserPolicyAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

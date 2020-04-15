@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides VPCs available to the user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetworks.InvokeAsync() instead")]
-        public static Task<GetNetworksResult> GetNetworks(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetworks
     {
         /// <summary>
         /// This data source provides VPCs available to the user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpcs.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworksArgs : Pulumi.InvokeArgs
     {
@@ -105,6 +92,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworksResult
     {
@@ -112,6 +100,10 @@ namespace Pulumi.AliCloud.Vpc
         /// CIDR block of the VPC.
         /// </summary>
         public readonly string? CidrBlock;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of VPC IDs.
         /// </summary>
@@ -138,29 +130,37 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of VPCs. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNetworksVpcsResult> Vpcs;
+        public readonly ImmutableArray<Outputs.GetNetworksVpcResult> Vpcs;
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworksResult(
             string? cidrBlock,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             bool? isDefault,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? resourceGroupId,
+
             string? status,
+
             ImmutableDictionary<string, object>? tags,
-            ImmutableArray<Outputs.GetNetworksVpcsResult> vpcs,
-            string? vswitchId,
-            string id)
+
+            ImmutableArray<Outputs.GetNetworksVpcResult> vpcs,
+
+            string? vswitchId)
         {
             CidrBlock = cidrBlock;
+            Id = id;
             Ids = ids;
             IsDefault = isDefault;
             NameRegex = nameRegex;
@@ -171,93 +171,6 @@ namespace Pulumi.AliCloud.Vpc
             Tags = tags;
             Vpcs = vpcs;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNetworksVpcsResult
-    {
-        /// <summary>
-        /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Description of the VPC
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the VPC.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Indicate whether the VPC is the default one in the specified region.
-        /// </summary>
-        public readonly bool IsDefault;
-        /// <summary>
-        /// ID of the region where the VPC is located.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Route table ID of the VRouter.
-        /// </summary>
-        public readonly string RouteTableId;
-        /// <summary>
-        /// Filter results by a specific status. Valid value are `Pending` and `Available`.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
-        /// <summary>
-        /// Name of the VPC.
-        /// </summary>
-        public readonly string VpcName;
-        /// <summary>
-        /// ID of the VRouter.
-        /// </summary>
-        public readonly string VrouterId;
-        /// <summary>
-        /// List of VSwitch IDs in the specified VPC
-        /// </summary>
-        public readonly ImmutableArray<string> VswitchIds;
-
-        [OutputConstructor]
-        private GetNetworksVpcsResult(
-            string cidrBlock,
-            string creationTime,
-            string description,
-            string id,
-            bool isDefault,
-            string regionId,
-            string routeTableId,
-            string status,
-            ImmutableDictionary<string, object> tags,
-            string vpcName,
-            string vrouterId,
-            ImmutableArray<string> vswitchIds)
-        {
-            CidrBlock = cidrBlock;
-            CreationTime = creationTime;
-            Description = description;
-            Id = id;
-            IsDefault = isDefault;
-            RegionId = regionId;
-            RouteTableId = routeTableId;
-            Status = status;
-            Tags = tags;
-            VpcName = vpcName;
-            VrouterId = vrouterId;
-            VswitchIds = vswitchIds;
-        }
-    }
     }
 }

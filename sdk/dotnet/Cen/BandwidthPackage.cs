@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Cen
     /// Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
     /// 
     /// For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_package.html.markdown.
     /// </summary>
     public partial class BandwidthPackage : Pulumi.CustomResource
     {
@@ -77,7 +73,7 @@ namespace Pulumi.AliCloud.Cen
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BandwidthPackage(string name, BandwidthPackageArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cen/bandwidthPackage:BandwidthPackage", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cen/bandwidthPackage:BandwidthPackage", name, args ?? new BandwidthPackageArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
     /// Provides a resource to put a object(content or file) to a oss bucket.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
     /// </summary>
     public partial class BucketObject : Pulumi.CustomResource
     {
@@ -123,7 +119,7 @@ namespace Pulumi.AliCloud.Oss
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketObject(string name, BucketObjectArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:oss/bucketObject:BucketObject", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:oss/bucketObject:BucketObject", name, args ?? new BucketObjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

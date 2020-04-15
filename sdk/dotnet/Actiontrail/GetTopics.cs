@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_topics.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTopics.InvokeAsync() instead")]
-        public static Task<GetTopicsResult> GetTopics(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTopics
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.56.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_topics.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:actiontrail/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTopicsArgs : Pulumi.InvokeArgs
     {
@@ -58,9 +43,14 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
+
     [OutputType]
     public sealed class GetTopicsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
@@ -71,83 +61,28 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTopicsTopicsResult> Topics;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
 
         [OutputConstructor]
         private GetTopicsResult(
+            string id,
+
             string instanceId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetTopicsTopicsResult> topics,
-            string id)
+
+            ImmutableArray<Outputs.GetTopicsTopicResult> topics)
         {
+            Id = id;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Topics = topics;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTopicsTopicsResult
-    {
-        /// <summary>
-        /// whether the current topic is kafka compact topic or not.
-        /// </summary>
-        public readonly bool CompactTopic;
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// whether the current topic is kafka local topic or not.
-        /// </summary>
-        public readonly bool LocalTopic;
-        /// <summary>
-        /// Partition number of the topic.
-        /// </summary>
-        public readonly int PartitionNum;
-        /// <summary>
-        /// Remark of the topic.
-        /// </summary>
-        public readonly string Remark;
-        /// <summary>
-        /// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause. 
-        /// </summary>
-        public readonly int Status;
-        /// <summary>
-        /// The name of the topic.
-        /// </summary>
-        public readonly string Topic;
-
-        [OutputConstructor]
-        private GetTopicsTopicsResult(
-            bool compactTopic,
-            string createTime,
-            bool localTopic,
-            int partitionNum,
-            string remark,
-            int status,
-            string topic)
-        {
-            CompactTopic = compactTopic;
-            CreateTime = createTime;
-            LocalTopic = localTopic;
-            PartitionNum = partitionNum;
-            Remark = remark;
-            Status = status;
-            Topic = topic;
-        }
-    }
     }
 }

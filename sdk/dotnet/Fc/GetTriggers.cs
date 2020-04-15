@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTriggers.InvokeAsync() instead")]
-        public static Task<GetTriggersResult> GetTriggers(GetTriggersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTriggers
     {
         /// <summary>
         /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_triggers.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTriggersResult> InvokeAsync(GetTriggersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTriggersResult>("alicloud:fc/getTriggers:getTriggers", args ?? new GetTriggersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTriggersArgs : Pulumi.InvokeArgs
     {
@@ -76,10 +63,15 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
+
     [OutputType]
     public sealed class GetTriggersResult
     {
         public readonly string FunctionName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of FC triggers ids.
         /// </summary>
@@ -94,93 +86,34 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// A list of FC triggers. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTriggersTriggersResult> Triggers;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTriggersTriggerResult> Triggers;
 
         [OutputConstructor]
         private GetTriggersResult(
             string functionName,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string serviceName,
-            ImmutableArray<Outputs.GetTriggersTriggersResult> triggers,
-            string id)
+
+            ImmutableArray<Outputs.GetTriggersTriggerResult> triggers)
         {
             FunctionName = functionName;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ServiceName = serviceName;
             Triggers = triggers;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTriggersTriggersResult
-    {
-        /// <summary>
-        /// JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
-        /// </summary>
-        public readonly string Config;
-        /// <summary>
-        /// FC trigger creation time.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// FC trigger ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-        /// </summary>
-        public readonly string InvocationRole;
-        /// <summary>
-        /// FC trigger last modification time.
-        /// </summary>
-        public readonly string LastModificationTime;
-        /// <summary>
-        /// FC trigger name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
-        /// </summary>
-        public readonly string SourceArn;
-        /// <summary>
-        /// Type of the trigger. Valid values: `oss`, `log`, `timer`, `http` and `mns_topic`.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetTriggersTriggersResult(
-            string config,
-            string creationTime,
-            string id,
-            string invocationRole,
-            string lastModificationTime,
-            string name,
-            string sourceArn,
-            string type)
-        {
-            Config = config;
-            CreationTime = creationTime;
-            Id = id;
-            InvocationRole = invocationRole;
-            LastModificationTime = lastModificationTime;
-            Name = name;
-            SourceArn = sourceArn;
-            Type = type;
-        }
-    }
     }
 }

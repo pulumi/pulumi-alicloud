@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the objects of an OSS bucket.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBucketObjects.InvokeAsync() instead")]
-        public static Task<GetBucketObjectsResult> GetBucketObjects(GetBucketObjectsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBucketObjects
     {
         /// <summary>
         /// This data source provides the objects of an OSS bucket.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectsResult> InvokeAsync(GetBucketObjectsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectsResult>("alicloud:oss/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBucketObjectsArgs : Pulumi.InvokeArgs
     {
@@ -63,135 +50,43 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
+
     [OutputType]
     public sealed class GetBucketObjectsResult
     {
         public readonly string BucketName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? KeyPrefix;
         public readonly string? KeyRegex;
         /// <summary>
         /// A list of bucket objects. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBucketObjectsObjectsResult> Objects;
+        public readonly ImmutableArray<Outputs.GetBucketObjectsObjectResult> Objects;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBucketObjectsResult(
             string bucketName,
+
+            string id,
+
             string? keyPrefix,
+
             string? keyRegex,
-            ImmutableArray<Outputs.GetBucketObjectsObjectsResult> objects,
-            string? outputFile,
-            string id)
+
+            ImmutableArray<Outputs.GetBucketObjectsObjectResult> objects,
+
+            string? outputFile)
         {
             BucketName = bucketName;
+            Id = id;
             KeyPrefix = keyPrefix;
             KeyRegex = keyRegex;
             Objects = objects;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBucketObjectsObjectsResult
-    {
-        /// <summary>
-        /// Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
-        /// </summary>
-        public readonly string Acl;
-        /// <summary>
-        /// Caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        /// </summary>
-        public readonly string CacheControl;
-        /// <summary>
-        /// Presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        /// </summary>
-        public readonly string ContentDisposition;
-        /// <summary>
-        /// Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        /// </summary>
-        public readonly string ContentEncoding;
-        /// <summary>
-        /// Size of the object in bytes.
-        /// </summary>
-        public readonly string ContentLength;
-        /// <summary>
-        /// MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
-        /// </summary>
-        public readonly string ContentMd5;
-        /// <summary>
-        /// Standard MIME type describing the format of the object data, e.g. "application/octet-stream".
-        /// </summary>
-        public readonly string ContentType;
-        /// <summary>
-        /// ETag generated for the object (MD5 sum of the object content).
-        /// </summary>
-        public readonly string Etag;
-        /// <summary>
-        /// Expiration date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
-        /// </summary>
-        public readonly string Expires;
-        /// <summary>
-        /// Object key.
-        /// </summary>
-        public readonly string Key;
-        /// <summary>
-        /// Last modification time of the object.
-        /// </summary>
-        public readonly string LastModificationTime;
-        /// <summary>
-        /// Server-side encryption of the object in OSS. It can be empty or `AES256`.
-        /// </summary>
-        public readonly string ServerSideEncryption;
-        /// <summary>
-        /// If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
-        /// </summary>
-        public readonly string SseKmsKeyId;
-        /// <summary>
-        /// Object storage type. Possible values: `Standard`, `IA` and `Archive`.
-        /// </summary>
-        public readonly string StorageClass;
-
-        [OutputConstructor]
-        private GetBucketObjectsObjectsResult(
-            string acl,
-            string cacheControl,
-            string contentDisposition,
-            string contentEncoding,
-            string contentLength,
-            string contentMd5,
-            string contentType,
-            string etag,
-            string expires,
-            string key,
-            string lastModificationTime,
-            string serverSideEncryption,
-            string sseKmsKeyId,
-            string storageClass)
-        {
-            Acl = acl;
-            CacheControl = cacheControl;
-            ContentDisposition = contentDisposition;
-            ContentEncoding = contentEncoding;
-            ContentLength = contentLength;
-            ContentMd5 = contentMd5;
-            ContentType = contentType;
-            Etag = etag;
-            Expires = expires;
-            Key = key;
-            LastModificationTime = lastModificationTime;
-            ServerSideEncryption = serverSideEncryption;
-            SseKmsKeyId = sseKmsKeyId;
-            StorageClass = storageClass;
-        }
-    }
     }
 }

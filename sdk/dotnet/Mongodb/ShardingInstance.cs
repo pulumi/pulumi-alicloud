@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Output("mongoLists")]
-        public Output<ImmutableArray<Outputs.ShardingInstanceMongoLists>> MongoLists { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
 
         /// <summary>
         /// The name of DB instance. It a string of 2 to 256 characters.
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Output("shardLists")]
-        public Output<ImmutableArray<Outputs.ShardingInstanceShardLists>> ShardLists { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
 
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ShardingInstance(string name, ShardingInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:mongodb/shardingInstance:ShardingInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:mongodb/shardingInstance:ShardingInstance", name, args ?? new ShardingInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -222,15 +222,15 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         [Input("mongoLists", required: true)]
-        private InputList<Inputs.ShardingInstanceMongoListsArgs>? _mongoLists;
+        private InputList<Inputs.ShardingInstanceMongoListArgs>? _mongoLists;
 
         /// <summary>
         /// The mongo-node count can be purchased is in range of [2, 32].
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
-        public InputList<Inputs.ShardingInstanceMongoListsArgs> MongoLists
+        public InputList<Inputs.ShardingInstanceMongoListArgs> MongoLists
         {
-            get => _mongoLists ?? (_mongoLists = new InputList<Inputs.ShardingInstanceMongoListsArgs>());
+            get => _mongoLists ?? (_mongoLists = new InputList<Inputs.ShardingInstanceMongoListArgs>());
             set => _mongoLists = value;
         }
 
@@ -265,15 +265,15 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         [Input("shardLists", required: true)]
-        private InputList<Inputs.ShardingInstanceShardListsArgs>? _shardLists;
+        private InputList<Inputs.ShardingInstanceShardListArgs>? _shardLists;
 
         /// <summary>
         /// the shard-node count can be purchased is in range of [2, 32].
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
-        public InputList<Inputs.ShardingInstanceShardListsArgs> ShardLists
+        public InputList<Inputs.ShardingInstanceShardListArgs> ShardLists
         {
-            get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListsArgs>());
+            get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListArgs>());
             set => _shardLists = value;
         }
 
@@ -362,15 +362,15 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         [Input("mongoLists")]
-        private InputList<Inputs.ShardingInstanceMongoListsGetArgs>? _mongoLists;
+        private InputList<Inputs.ShardingInstanceMongoListGetArgs>? _mongoLists;
 
         /// <summary>
         /// The mongo-node count can be purchased is in range of [2, 32].
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
-        public InputList<Inputs.ShardingInstanceMongoListsGetArgs> MongoLists
+        public InputList<Inputs.ShardingInstanceMongoListGetArgs> MongoLists
         {
-            get => _mongoLists ?? (_mongoLists = new InputList<Inputs.ShardingInstanceMongoListsGetArgs>());
+            get => _mongoLists ?? (_mongoLists = new InputList<Inputs.ShardingInstanceMongoListGetArgs>());
             set => _mongoLists = value;
         }
 
@@ -411,15 +411,15 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         [Input("shardLists")]
-        private InputList<Inputs.ShardingInstanceShardListsGetArgs>? _shardLists;
+        private InputList<Inputs.ShardingInstanceShardListGetArgs>? _shardLists;
 
         /// <summary>
         /// the shard-node count can be purchased is in range of [2, 32].
         /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
-        public InputList<Inputs.ShardingInstanceShardListsGetArgs> ShardLists
+        public InputList<Inputs.ShardingInstanceShardListGetArgs> ShardLists
         {
-            get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListsGetArgs>());
+            get => _shardLists ?? (_shardLists = new InputList<Inputs.ShardingInstanceShardListGetArgs>());
             set => _shardLists = value;
         }
 
@@ -448,178 +448,5 @@ namespace Pulumi.AliCloud.MongoDB
         public ShardingInstanceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ShardingInstanceMongoListsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Mongo node connection string
-        /// </summary>
-        [Input("connectString")]
-        public Input<string>? ConnectString { get; set; }
-
-        [Input("nodeClass", required: true)]
-        public Input<string> NodeClass { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        [Input("nodeId")]
-        public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// Mongo node port
-        /// * `shard_list`
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        public ShardingInstanceMongoListsArgs()
-        {
-        }
-    }
-
-    public sealed class ShardingInstanceMongoListsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Mongo node connection string
-        /// </summary>
-        [Input("connectString")]
-        public Input<string>? ConnectString { get; set; }
-
-        [Input("nodeClass", required: true)]
-        public Input<string> NodeClass { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        [Input("nodeId")]
-        public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// Mongo node port
-        /// * `shard_list`
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
-        public ShardingInstanceMongoListsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ShardingInstanceShardListsArgs : Pulumi.ResourceArgs
-    {
-        [Input("nodeClass", required: true)]
-        public Input<string> NodeClass { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        [Input("nodeId")]
-        public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// 
-        /// - Custom storage space; value range: [10, 1,000]
-        /// - 10-GB increments. Unit: GB.
-        /// </summary>
-        [Input("nodeStorage", required: true)]
-        public Input<int> NodeStorage { get; set; } = null!;
-
-        public ShardingInstanceShardListsArgs()
-        {
-        }
-    }
-
-    public sealed class ShardingInstanceShardListsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("nodeClass", required: true)]
-        public Input<string> NodeClass { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        [Input("nodeId")]
-        public Input<string>? NodeId { get; set; }
-
-        /// <summary>
-        /// 
-        /// - Custom storage space; value range: [10, 1,000]
-        /// - 10-GB increments. Unit: GB.
-        /// </summary>
-        [Input("nodeStorage", required: true)]
-        public Input<int> NodeStorage { get; set; } = null!;
-
-        public ShardingInstanceShardListsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ShardingInstanceMongoLists
-    {
-        /// <summary>
-        /// Mongo node connection string
-        /// </summary>
-        public readonly string ConnectString;
-        public readonly string NodeClass;
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        public readonly string NodeId;
-        /// <summary>
-        /// Mongo node port
-        /// * `shard_list`
-        /// </summary>
-        public readonly int Port;
-
-        [OutputConstructor]
-        private ShardingInstanceMongoLists(
-            string connectString,
-            string nodeClass,
-            string nodeId,
-            int port)
-        {
-            ConnectString = connectString;
-            NodeClass = nodeClass;
-            NodeId = nodeId;
-            Port = port;
-        }
-    }
-
-    [OutputType]
-    public sealed class ShardingInstanceShardLists
-    {
-        public readonly string NodeClass;
-        /// <summary>
-        /// The ID of the shard-node.
-        /// </summary>
-        public readonly string NodeId;
-        /// <summary>
-        /// 
-        /// - Custom storage space; value range: [10, 1,000]
-        /// - 10-GB increments. Unit: GB.
-        /// </summary>
-        public readonly int NodeStorage;
-
-        [OutputConstructor]
-        private ShardingInstanceShardLists(
-            string nodeClass,
-            string nodeId,
-            int nodeStorage)
-        {
-            NodeClass = nodeClass;
-            NodeId = nodeId;
-            NodeStorage = nodeStorage;
-        }
-    }
     }
 }

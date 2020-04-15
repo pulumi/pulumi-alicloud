@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
     /// 
     /// &gt; **NOTE:** Available in 1.68.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
     /// </summary>
     public partial class ImageExport : Pulumi.CustomResource
     {
@@ -53,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageExport(string name, ImageExportArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/imageExport:ImageExport", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/imageExport:ImageExport", name, args ?? new ImageExportArgs(), MakeResourceOptions(options, ""))
         {
         }
 

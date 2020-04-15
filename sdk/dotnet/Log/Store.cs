@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> ShardCount { get; private set; } = null!;
 
         [Output("shards")]
-        public Output<ImmutableArray<Outputs.StoreShards>> Shards { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StoreShard>> Shards { get; private set; } = null!;
 
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Store(string name, StoreArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:log/store:Store", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:log/store:Store", name, args ?? new StoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -212,70 +212,15 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? ShardCount { get; set; }
 
         [Input("shards")]
-        private InputList<Inputs.StoreShardsGetArgs>? _shards;
-        public InputList<Inputs.StoreShardsGetArgs> Shards
+        private InputList<Inputs.StoreShardGetArgs>? _shards;
+        public InputList<Inputs.StoreShardGetArgs> Shards
         {
-            get => _shards ?? (_shards = new InputList<Inputs.StoreShardsGetArgs>());
+            get => _shards ?? (_shards = new InputList<Inputs.StoreShardGetArgs>());
             set => _shards = value;
         }
 
         public StoreState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class StoreShardsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("beginKey")]
-        public Input<string>? BeginKey { get; set; }
-
-        [Input("endKey")]
-        public Input<string>? EndKey { get; set; }
-
-        /// <summary>
-        /// The ID of the log project. It formats of `&lt;project&gt;:&lt;name&gt;`.
-        /// </summary>
-        [Input("id")]
-        public Input<int>? Id { get; set; }
-
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        public StoreShardsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class StoreShards
-    {
-        public readonly string BeginKey;
-        public readonly string EndKey;
-        /// <summary>
-        /// The ID of the log project. It formats of `&lt;project&gt;:&lt;name&gt;`.
-        /// </summary>
-        public readonly int Id;
-        public readonly string Status;
-
-        [OutputConstructor]
-        private StoreShards(
-            string beginKey,
-            string endKey,
-            int id,
-            string status)
-        {
-            BeginKey = beginKey;
-            EndKey = endKey;
-            Id = id;
-            Status = status;
-        }
-    }
     }
 }

@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM Group membership resource. 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {
@@ -39,7 +35,7 @@ namespace Pulumi.AliCloud.Ram
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupMembership(string name, GroupMembershipArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ram/groupMembership:GroupMembership", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ram/groupMembership:GroupMembership", name, args ?? new GroupMembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
 

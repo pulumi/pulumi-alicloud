@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides available scaling configuration resources. 
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetScalingConfigurations.InvokeAsync() instead")]
-        public static Task<GetScalingConfigurationsResult> GetScalingConfigurations(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetScalingConfigurations
     {
         /// <summary>
         /// This data source provides available scaling configuration resources. 
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetScalingConfigurationsResult> InvokeAsync(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetScalingConfigurationsResult>("alicloud:ess/getScalingConfigurations:getScalingConfigurations", args ?? new GetScalingConfigurationsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetScalingConfigurationsArgs : Pulumi.InvokeArgs
     {
@@ -69,13 +56,18 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
+
     [OutputType]
     public sealed class GetScalingConfigurationsResult
     {
         /// <summary>
         /// A list of scaling rules. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationsResult> Configurations;
+        public readonly ImmutableArray<Outputs.GetScalingConfigurationsConfigurationResult> Configurations;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of scaling configuration ids.
         /// </summary>
@@ -90,166 +82,30 @@ namespace Pulumi.AliCloud.Ess
         /// ID of the scaling group.
         /// </summary>
         public readonly string? ScalingGroupId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetScalingConfigurationsResult(
-            ImmutableArray<Outputs.GetScalingConfigurationsConfigurationsResult> configurations,
+            ImmutableArray<Outputs.GetScalingConfigurationsConfigurationResult> configurations,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? scalingGroupId,
-            string id)
+
+            string? scalingGroupId)
         {
             Configurations = configurations;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ScalingGroupId = scalingGroupId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetScalingConfigurationsConfigurationsDataDisksResult
-    {
-        /// <summary>
-        /// Category of data disk.
-        /// </summary>
-        public readonly string? Category;
-        /// <summary>
-        /// Delete_with_instance attribute of data disk.
-        /// </summary>
-        public readonly bool? DeleteWithInstance;
-        /// <summary>
-        /// Device attribute of data disk.
-        /// </summary>
-        public readonly string? Device;
-        /// <summary>
-        /// Size of data disk.
-        /// </summary>
-        public readonly int? Size;
-        /// <summary>
-        /// Size of data disk.
-        /// </summary>
-        public readonly string? SnapshotId;
-
-        [OutputConstructor]
-        private GetScalingConfigurationsConfigurationsDataDisksResult(
-            string? category,
-            bool? deleteWithInstance,
-            string? device,
-            int? size,
-            string? snapshotId)
-        {
-            Category = category;
-            DeleteWithInstance = deleteWithInstance;
-            Device = device;
-            Size = size;
-            SnapshotId = snapshotId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetScalingConfigurationsConfigurationsResult
-    {
-        /// <summary>
-        /// Creation time of the scaling configuration.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Data disks of the scaling configuration.
-        /// </summary>
-        public readonly ImmutableArray<GetScalingConfigurationsConfigurationsDataDisksResult> DataDisks;
-        /// <summary>
-        /// ID of the scaling rule.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Image ID of the scaling configuration.
-        /// </summary>
-        public readonly string ImageId;
-        /// <summary>
-        /// Instance type of the scaling configuration.
-        /// </summary>
-        public readonly string InstanceType;
-        /// <summary>
-        /// Internet charge type of the scaling configuration.
-        /// </summary>
-        public readonly string InternetChargeType;
-        /// <summary>
-        /// Internet max bandwidth in of the scaling configuration.
-        /// </summary>
-        public readonly int InternetMaxBandwidthIn;
-        /// <summary>
-        /// Internet max bandwidth of the scaling configuration.
-        /// </summary>
-        public readonly int InternetMaxBandwidthOut;
-        /// <summary>
-        /// Lifecycle state of the scaling configuration.
-        /// </summary>
-        public readonly string LifecycleState;
-        /// <summary>
-        /// Name of the scaling configuration.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Scaling group id the scaling configurations belong to.
-        /// </summary>
-        public readonly string ScalingGroupId;
-        /// <summary>
-        /// Security group ID of the scaling configuration.
-        /// </summary>
-        public readonly string SecurityGroupId;
-        /// <summary>
-        /// System disk category of the scaling configuration.
-        /// </summary>
-        public readonly string SystemDiskCategory;
-        /// <summary>
-        /// System disk size of the scaling configuration.
-        /// </summary>
-        public readonly int SystemDiskSize;
-
-        [OutputConstructor]
-        private GetScalingConfigurationsConfigurationsResult(
-            string creationTime,
-            ImmutableArray<GetScalingConfigurationsConfigurationsDataDisksResult> dataDisks,
-            string id,
-            string imageId,
-            string instanceType,
-            string internetChargeType,
-            int internetMaxBandwidthIn,
-            int internetMaxBandwidthOut,
-            string lifecycleState,
-            string name,
-            string scalingGroupId,
-            string securityGroupId,
-            string systemDiskCategory,
-            int systemDiskSize)
-        {
-            CreationTime = creationTime;
-            DataDisks = dataDisks;
-            Id = id;
-            ImageId = imageId;
-            InstanceType = instanceType;
-            InternetChargeType = internetChargeType;
-            InternetMaxBandwidthIn = internetMaxBandwidthIn;
-            InternetMaxBandwidthOut = internetMaxBandwidthOut;
-            LifecycleState = lifecycleState;
-            Name = name;
-            ScalingGroupId = scalingGroupId;
-            SecurityGroupId = securityGroupId;
-            SystemDiskCategory = systemDiskCategory;
-            SystemDiskSize = systemDiskSize;
-        }
-    }
     }
 }

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpn
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetCustomerGateways.InvokeAsync() instead")]
-        public static Task<GetCustomerGatewaysResult> GetCustomerGateways(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCustomerGateways
     {
         /// <summary>
         /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_customer_gateways.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomerGatewaysResult> InvokeAsync(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCustomerGatewaysResult>("alicloud:vpn/getCustomerGateways:getCustomerGateways", args ?? new GetCustomerGatewaysArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCustomerGatewaysArgs : Pulumi.InvokeArgs
     {
@@ -66,81 +53,43 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
+
     [OutputType]
     public sealed class GetCustomerGatewaysResult
     {
         /// <summary>
         /// A list of VPN customer gateways. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetCustomerGatewaysGatewaysResult> Gateways;
-        public readonly ImmutableArray<string> Ids;
-        public readonly string? NameRegex;
-        public readonly ImmutableArray<string> Names;
-        public readonly string? OutputFile;
+        public readonly ImmutableArray<Outputs.GetCustomerGatewaysGatewayResult> Gateways;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetCustomerGatewaysResult(
-            ImmutableArray<Outputs.GetCustomerGatewaysGatewaysResult> gateways,
+            ImmutableArray<Outputs.GetCustomerGatewaysGatewayResult> gateways,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Gateways = gateways;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetCustomerGatewaysGatewaysResult
-    {
-        /// <summary>
-        /// The creation time of the VPN customer gateway.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The description of the VPN customer gateway.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the VPN customer gateway .
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The ip address of the VPN customer gateway.
-        /// </summary>
-        public readonly string IpAddress;
-        /// <summary>
-        /// The name of the VPN customer gateway.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetCustomerGatewaysGatewaysResult(
-            string createTime,
-            string description,
-            string id,
-            string ipAddress,
-            string name)
-        {
-            CreateTime = createTime;
-            Description = description;
-            Id = id;
-            IpAddress = ipAddress;
-            Name = name;
-        }
-    }
     }
 }

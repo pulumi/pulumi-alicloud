@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Kms
 {
     /// <summary>
     /// A kms key can help user to protect data security in the transmission process.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_key.html.markdown.
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {
@@ -58,7 +54,7 @@ namespace Pulumi.AliCloud.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Key(string name, KeyArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:kms/key:Key", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:kms/key:Key", name, args ?? new KeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

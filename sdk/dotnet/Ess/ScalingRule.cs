@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Ess
         /// Steps for StepScalingRule. See Block stepAdjustment below for details.
         /// </summary>
         [Output("stepAdjustments")]
-        public Output<ImmutableArray<Outputs.ScalingRuleStepAdjustments>> StepAdjustments { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ScalingRuleStepAdjustment>> StepAdjustments { get; private set; } = null!;
 
         /// <summary>
         /// The target value for the metric.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ScalingRule(string name, ScalingRuleArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/scalingRule:ScalingRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/scalingRule:ScalingRule", name, args ?? new ScalingRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -193,14 +193,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingRuleType { get; set; }
 
         [Input("stepAdjustments")]
-        private InputList<Inputs.ScalingRuleStepAdjustmentsArgs>? _stepAdjustments;
+        private InputList<Inputs.ScalingRuleStepAdjustmentArgs>? _stepAdjustments;
 
         /// <summary>
         /// Steps for StepScalingRule. See Block stepAdjustment below for details.
         /// </summary>
-        public InputList<Inputs.ScalingRuleStepAdjustmentsArgs> StepAdjustments
+        public InputList<Inputs.ScalingRuleStepAdjustmentArgs> StepAdjustments
         {
-            get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.ScalingRuleStepAdjustmentsArgs>());
+            get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.ScalingRuleStepAdjustmentArgs>());
             set => _stepAdjustments = value;
         }
 
@@ -281,14 +281,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingRuleType { get; set; }
 
         [Input("stepAdjustments")]
-        private InputList<Inputs.ScalingRuleStepAdjustmentsGetArgs>? _stepAdjustments;
+        private InputList<Inputs.ScalingRuleStepAdjustmentGetArgs>? _stepAdjustments;
 
         /// <summary>
         /// Steps for StepScalingRule. See Block stepAdjustment below for details.
         /// </summary>
-        public InputList<Inputs.ScalingRuleStepAdjustmentsGetArgs> StepAdjustments
+        public InputList<Inputs.ScalingRuleStepAdjustmentGetArgs> StepAdjustments
         {
-            get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.ScalingRuleStepAdjustmentsGetArgs>());
+            get => _stepAdjustments ?? (_stepAdjustments = new InputList<Inputs.ScalingRuleStepAdjustmentGetArgs>());
             set => _stepAdjustments = value;
         }
 
@@ -301,64 +301,5 @@ namespace Pulumi.AliCloud.Ess
         public ScalingRuleState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ScalingRuleStepAdjustmentsArgs : Pulumi.ResourceArgs
-    {
-        [Input("metricIntervalLowerBound")]
-        public Input<string>? MetricIntervalLowerBound { get; set; }
-
-        [Input("metricIntervalUpperBound")]
-        public Input<string>? MetricIntervalUpperBound { get; set; }
-
-        [Input("scalingAdjustment")]
-        public Input<int>? ScalingAdjustment { get; set; }
-
-        public ScalingRuleStepAdjustmentsArgs()
-        {
-        }
-    }
-
-    public sealed class ScalingRuleStepAdjustmentsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("metricIntervalLowerBound")]
-        public Input<string>? MetricIntervalLowerBound { get; set; }
-
-        [Input("metricIntervalUpperBound")]
-        public Input<string>? MetricIntervalUpperBound { get; set; }
-
-        [Input("scalingAdjustment")]
-        public Input<int>? ScalingAdjustment { get; set; }
-
-        public ScalingRuleStepAdjustmentsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ScalingRuleStepAdjustments
-    {
-        public readonly string? MetricIntervalLowerBound;
-        public readonly string? MetricIntervalUpperBound;
-        public readonly int? ScalingAdjustment;
-
-        [OutputConstructor]
-        private ScalingRuleStepAdjustments(
-            string? metricIntervalLowerBound,
-            string? metricIntervalUpperBound,
-            int? scalingAdjustment)
-        {
-            MetricIntervalLowerBound = metricIntervalLowerBound;
-            MetricIntervalUpperBound = metricIntervalUpperBound;
-            ScalingAdjustment = scalingAdjustment;
-        }
-    }
     }
 }

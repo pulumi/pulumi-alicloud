@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Nas
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides MountTargets available to the user.
-        /// 
-        /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetMountTargets.InvokeAsync() instead")]
-        public static Task<GetMountTargetsResult> GetMountTargets(GetMountTargetsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetMountTargets
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; NOTE: Available in 1.35.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMountTargetsResult>("alicloud:nas/getMountTargets:getMountTargets", args ?? new GetMountTargetsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetMountTargetsArgs : Pulumi.InvokeArgs
     {
@@ -97,6 +82,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
+
     [OutputType]
     public sealed class GetMountTargetsResult
     {
@@ -105,6 +91,10 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         public readonly string? AccessGroupName;
         public readonly string FileSystemId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of MountTargetDomain.
         /// </summary>
@@ -118,7 +108,7 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// A list of MountTargetDomains. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMountTargetsTargetsResult> Targets;
+        public readonly ImmutableArray<Outputs.GetMountTargetsTargetResult> Targets;
         public readonly string? Type;
         /// <summary>
         /// VpcId of The MountTarget.
@@ -128,26 +118,32 @@ namespace Pulumi.AliCloud.Nas
         /// VSwitchId of The MountTarget.
         /// </summary>
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetMountTargetsResult(
             string? accessGroupName,
+
             string fileSystemId,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? mountTargetDomain,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetMountTargetsTargetsResult> targets,
+
+            ImmutableArray<Outputs.GetMountTargetsTargetResult> targets,
+
             string? type,
+
             string? vpcId,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
             AccessGroupName = accessGroupName;
             FileSystemId = fileSystemId;
+            Id = id;
             Ids = ids;
             MountTargetDomain = mountTargetDomain;
             OutputFile = outputFile;
@@ -155,57 +151,6 @@ namespace Pulumi.AliCloud.Nas
             Type = type;
             VpcId = vpcId;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetMountTargetsTargetsResult
-    {
-        /// <summary>
-        /// Filter results by a specific AccessGroupName.
-        /// </summary>
-        public readonly string AccessGroupName;
-        /// <summary>
-        /// ID of the MountTargetDomain.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Filter results by a specific MountTargetDomain.
-        /// </summary>
-        public readonly string MountTargetDomain;
-        /// <summary>
-        /// Filter results by a specific NetworkType.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// Filter results by a specific VpcId.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// Filter results by a specific VSwitchId.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetMountTargetsTargetsResult(
-            string accessGroupName,
-            string id,
-            string mountTargetDomain,
-            string type,
-            string vpcId,
-            string vswitchId)
-        {
-            AccessGroupName = accessGroupName;
-            Id = id;
-            MountTargetDomain = mountTargetDomain;
-            Type = type;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

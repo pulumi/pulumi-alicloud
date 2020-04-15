@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.CS
     /// This resource will help you to manager a Swarm Cluster.
     /// 
     /// &gt; **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
     /// </summary>
     public partial class Swarm : Pulumi.CustomResource
     {
@@ -90,7 +86,7 @@ namespace Pulumi.AliCloud.CS
         /// List of cluster nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
         [Output("nodes")]
-        public Output<ImmutableArray<Outputs.SwarmNodes>> Nodes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SwarmNode>> Nodes { get; private set; } = null!;
 
         /// <summary>
         /// The password of ECS instance node.
@@ -144,7 +140,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Swarm(string name, SwarmArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/swarm:Swarm", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cs/swarm:Swarm", name, args ?? new SwarmArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -336,14 +332,14 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeNumber { get; set; }
 
         [Input("nodes")]
-        private InputList<Inputs.SwarmNodesGetArgs>? _nodes;
+        private InputList<Inputs.SwarmNodeGetArgs>? _nodes;
 
         /// <summary>
         /// List of cluster nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
-        public InputList<Inputs.SwarmNodesGetArgs> Nodes
+        public InputList<Inputs.SwarmNodeGetArgs> Nodes
         {
-            get => _nodes ?? (_nodes = new InputList<Inputs.SwarmNodesGetArgs>());
+            get => _nodes ?? (_nodes = new InputList<Inputs.SwarmNodeGetArgs>());
             set => _nodes = value;
         }
 
@@ -393,90 +389,5 @@ namespace Pulumi.AliCloud.CS
         public SwarmState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SwarmNodesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The Elastic IP address of node.
-        /// </summary>
-        [Input("eip")]
-        public Input<string>? Eip { get; set; }
-
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The container cluster's name. It is the only in one Alicloud account.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        [Input("privateIp")]
-        public Input<string>? PrivateIp { get; set; }
-
-        /// <summary>
-        /// The node current status. It is different with instance status.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
-        public SwarmNodesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SwarmNodes
-    {
-        /// <summary>
-        /// The Elastic IP address of node.
-        /// </summary>
-        public readonly string Eip;
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The container cluster's name. It is the only in one Alicloud account.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        public readonly string PrivateIp;
-        /// <summary>
-        /// The node current status. It is different with instance status.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private SwarmNodes(
-            string eip,
-            string id,
-            string name,
-            string privateIp,
-            string status)
-        {
-            Eip = eip;
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-            Status = status;
-        }
-    }
     }
 }

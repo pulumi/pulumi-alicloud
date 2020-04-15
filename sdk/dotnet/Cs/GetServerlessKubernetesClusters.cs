@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in 1.58.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServerlessKubernetesClusters.InvokeAsync() instead")]
-        public static Task<GetServerlessKubernetesClustersResult> GetServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServerlessKubernetesClusters
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in 1.58.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerlessKubernetesClustersResult> InvokeAsync(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServerlessKubernetesClustersArgs : Pulumi.InvokeArgs
     {
@@ -70,14 +55,19 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
+
     [OutputType]
     public sealed class GetServerlessKubernetesClustersResult
     {
         /// <summary>
         /// A list of matched Kubernetes clusters. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServerlessKubernetesClustersClustersResult> Clusters;
+        public readonly ImmutableArray<Outputs.GetServerlessKubernetesClustersClusterResult> Clusters;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of matched Kubernetes clusters' ids.
         /// </summary>
@@ -88,124 +78,30 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetServerlessKubernetesClustersResult(
-            ImmutableArray<Outputs.GetServerlessKubernetesClustersClustersResult> clusters,
+            ImmutableArray<Outputs.GetServerlessKubernetesClustersClusterResult> clusters,
+
             bool? enableDetails,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Clusters = clusters;
             EnableDetails = enableDetails;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServerlessKubernetesClustersClustersConnectionsResult
-    {
-        /// <summary>
-        /// API Server Internet endpoint.
-        /// </summary>
-        public readonly string ApiServerInternet;
-        /// <summary>
-        /// API Server Intranet endpoint.
-        /// </summary>
-        public readonly string ApiServerIntranet;
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
-        public readonly string MasterPublicIp;
-
-        [OutputConstructor]
-        private GetServerlessKubernetesClustersClustersConnectionsResult(
-            string apiServerInternet,
-            string apiServerIntranet,
-            string masterPublicIp)
-        {
-            ApiServerInternet = apiServerInternet;
-            ApiServerIntranet = apiServerIntranet;
-            MasterPublicIp = masterPublicIp;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServerlessKubernetesClustersClustersResult
-    {
-        /// <summary>
-        /// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
-        /// </summary>
-        public readonly GetServerlessKubernetesClustersClustersConnectionsResult Connections;
-        /// <summary>
-        /// Whether the cluster support delete protection.  
-        /// </summary>
-        public readonly bool DeletionProtection;
-        public readonly bool EndpointPublicAccessEnabled;
-        /// <summary>
-        /// The ID of the container cluster.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the container cluster.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The ID of nat gateway used to launch kubernetes cluster.
-        /// </summary>
-        public readonly string NatGatewayId;
-        /// <summary>
-        /// The ID of security group where the current cluster  is located.
-        /// </summary>
-        public readonly string SecurityGroupId;
-        public readonly ImmutableDictionary<string, object> Tags;
-        /// <summary>
-        /// The ID of VPC where the current cluster is located.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The ID of VSwitch where the current cluster is located.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetServerlessKubernetesClustersClustersResult(
-            GetServerlessKubernetesClustersClustersConnectionsResult connections,
-            bool deletionProtection,
-            bool endpointPublicAccessEnabled,
-            string id,
-            string name,
-            string natGatewayId,
-            string securityGroupId,
-            ImmutableDictionary<string, object> tags,
-            string vpcId,
-            string vswitchId)
-        {
-            Connections = connections;
-            DeletionProtection = deletionProtection;
-            EndpointPublicAccessEnabled = endpointPublicAccessEnabled;
-            Id = id;
-            Name = name;
-            NatGatewayId = natGatewayId;
-            SecurityGroupId = securityGroupId;
-            Tags = tags;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

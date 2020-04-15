@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// constant_parameters defines the constant parameters of the api.
         /// </summary>
         [Output("constantParameters")]
-        public Output<ImmutableArray<Outputs.ApiConstantParameters>> ConstantParameters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApiConstantParameter>> ConstantParameters { get; private set; } = null!;
 
         /// <summary>
         /// The description of Constant parameter.
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// request_parameters defines the request parameters of the api.
         /// </summary>
         [Output("requestParameters")]
-        public Output<ImmutableArray<Outputs.ApiRequestParameters>> RequestParameters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApiRequestParameter>> RequestParameters { get; private set; } = null!;
 
         /// <summary>
         /// The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// system_parameters defines the system parameters of the api.
         /// </summary>
         [Output("systemParameters")]
-        public Output<ImmutableArray<Outputs.ApiSystemParameters>> SystemParameters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApiSystemParameter>> SystemParameters { get; private set; } = null!;
 
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Api(string name, ApiArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:apigateway/api:Api", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:apigateway/api:Api", name, args ?? new ApiArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -154,14 +154,14 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> AuthType { get; set; } = null!;
 
         [Input("constantParameters")]
-        private InputList<Inputs.ApiConstantParametersArgs>? _constantParameters;
+        private InputList<Inputs.ApiConstantParameterArgs>? _constantParameters;
 
         /// <summary>
         /// constant_parameters defines the constant parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiConstantParametersArgs> ConstantParameters
+        public InputList<Inputs.ApiConstantParameterArgs> ConstantParameters
         {
-            get => _constantParameters ?? (_constantParameters = new InputList<Inputs.ApiConstantParametersArgs>());
+            get => _constantParameters ?? (_constantParameters = new InputList<Inputs.ApiConstantParameterArgs>());
             set => _constantParameters = value;
         }
 
@@ -214,14 +214,14 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiRequestConfigArgs> RequestConfig { get; set; } = null!;
 
         [Input("requestParameters")]
-        private InputList<Inputs.ApiRequestParametersArgs>? _requestParameters;
+        private InputList<Inputs.ApiRequestParameterArgs>? _requestParameters;
 
         /// <summary>
         /// request_parameters defines the request parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiRequestParametersArgs> RequestParameters
+        public InputList<Inputs.ApiRequestParameterArgs> RequestParameters
         {
-            get => _requestParameters ?? (_requestParameters = new InputList<Inputs.ApiRequestParametersArgs>());
+            get => _requestParameters ?? (_requestParameters = new InputList<Inputs.ApiRequestParameterArgs>());
             set => _requestParameters = value;
         }
 
@@ -244,14 +244,14 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         [Input("systemParameters")]
-        private InputList<Inputs.ApiSystemParametersArgs>? _systemParameters;
+        private InputList<Inputs.ApiSystemParameterArgs>? _systemParameters;
 
         /// <summary>
         /// system_parameters defines the system parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiSystemParametersArgs> SystemParameters
+        public InputList<Inputs.ApiSystemParameterArgs> SystemParameters
         {
-            get => _systemParameters ?? (_systemParameters = new InputList<Inputs.ApiSystemParametersArgs>());
+            get => _systemParameters ?? (_systemParameters = new InputList<Inputs.ApiSystemParameterArgs>());
             set => _systemParameters = value;
         }
 
@@ -275,14 +275,14 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? AuthType { get; set; }
 
         [Input("constantParameters")]
-        private InputList<Inputs.ApiConstantParametersGetArgs>? _constantParameters;
+        private InputList<Inputs.ApiConstantParameterGetArgs>? _constantParameters;
 
         /// <summary>
         /// constant_parameters defines the constant parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiConstantParametersGetArgs> ConstantParameters
+        public InputList<Inputs.ApiConstantParameterGetArgs> ConstantParameters
         {
-            get => _constantParameters ?? (_constantParameters = new InputList<Inputs.ApiConstantParametersGetArgs>());
+            get => _constantParameters ?? (_constantParameters = new InputList<Inputs.ApiConstantParameterGetArgs>());
             set => _constantParameters = value;
         }
 
@@ -335,14 +335,14 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<Inputs.ApiRequestConfigGetArgs>? RequestConfig { get; set; }
 
         [Input("requestParameters")]
-        private InputList<Inputs.ApiRequestParametersGetArgs>? _requestParameters;
+        private InputList<Inputs.ApiRequestParameterGetArgs>? _requestParameters;
 
         /// <summary>
         /// request_parameters defines the request parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiRequestParametersGetArgs> RequestParameters
+        public InputList<Inputs.ApiRequestParameterGetArgs> RequestParameters
         {
-            get => _requestParameters ?? (_requestParameters = new InputList<Inputs.ApiRequestParametersGetArgs>());
+            get => _requestParameters ?? (_requestParameters = new InputList<Inputs.ApiRequestParameterGetArgs>());
             set => _requestParameters = value;
         }
 
@@ -365,858 +365,19 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         [Input("systemParameters")]
-        private InputList<Inputs.ApiSystemParametersGetArgs>? _systemParameters;
+        private InputList<Inputs.ApiSystemParameterGetArgs>? _systemParameters;
 
         /// <summary>
         /// system_parameters defines the system parameters of the api.
         /// </summary>
-        public InputList<Inputs.ApiSystemParametersGetArgs> SystemParameters
+        public InputList<Inputs.ApiSystemParameterGetArgs> SystemParameters
         {
-            get => _systemParameters ?? (_systemParameters = new InputList<Inputs.ApiSystemParametersGetArgs>());
+            get => _systemParameters ?? (_systemParameters = new InputList<Inputs.ApiSystemParameterGetArgs>());
             set => _systemParameters = value;
         }
 
         public ApiState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApiConstantParametersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Constant parameter value.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ApiConstantParametersArgs()
-        {
-        }
-    }
-
-    public sealed class ApiConstantParametersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Constant parameter value.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ApiConstantParametersGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiFcServiceConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
-        [Input("arnRole")]
-        public Input<string>? ArnRole { get; set; }
-
-        /// <summary>
-        /// The function name of function compute service.
-        /// </summary>
-        [Input("functionName", required: true)]
-        public Input<string> FunctionName { get; set; } = null!;
-
-        /// <summary>
-        /// The region that the function compute service belongs to.
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// The service name of function compute service.
-        /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiFcServiceConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ApiFcServiceConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
-        [Input("arnRole")]
-        public Input<string>? ArnRole { get; set; }
-
-        /// <summary>
-        /// The function name of function compute service.
-        /// </summary>
-        [Input("functionName", required: true)]
-        public Input<string> FunctionName { get; set; } = null!;
-
-        /// <summary>
-        /// The region that the function compute service belongs to.
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// The service name of function compute service.
-        /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiFcServiceConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiHttpServiceConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The address of backend service.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiHttpServiceConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ApiHttpServiceConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The address of backend service.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiHttpServiceConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiHttpVpcServiceConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiHttpVpcServiceConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ApiHttpVpcServiceConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        [Input("timeout", required: true)]
-        public Input<int> Timeout { get; set; } = null!;
-
-        public ApiHttpVpcServiceConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiMockServiceConfigArgs : Pulumi.ResourceArgs
-    {
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The result of the mock service.
-        /// </summary>
-        [Input("result", required: true)]
-        public Input<string> Result { get; set; } = null!;
-
-        public ApiMockServiceConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ApiMockServiceConfigGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("aoneName")]
-        public Input<string>? AoneName { get; set; }
-
-        /// <summary>
-        /// The result of the mock service.
-        /// </summary>
-        [Input("result", required: true)]
-        public Input<string> Result { get; set; } = null!;
-
-        public ApiMockServiceConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiRequestConfigArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The body format of the api, which support the values of 'STREAM' and 'FORM'
-        /// </summary>
-        [Input("bodyFormat")]
-        public Input<string>? BodyFormat { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
-        /// </summary>
-        [Input("mode", required: true)]
-        public Input<string> Mode { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        public ApiRequestConfigArgs()
-        {
-        }
-    }
-
-    public sealed class ApiRequestConfigGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The body format of the api, which support the values of 'STREAM' and 'FORM'
-        /// </summary>
-        [Input("bodyFormat")]
-        public Input<string>? BodyFormat { get; set; }
-
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        [Input("method", required: true)]
-        public Input<string> Method { get; set; } = null!;
-
-        /// <summary>
-        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
-        /// </summary>
-        [Input("mode", required: true)]
-        public Input<string> Mode { get; set; } = null!;
-
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        /// </summary>
-        [Input("protocol", required: true)]
-        public Input<string> Protocol { get; set; } = null!;
-
-        public ApiRequestConfigGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiRequestParametersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The default value of the parameter.
-        /// </summary>
-        [Input("defaultValue")]
-        public Input<string>? DefaultValue { get; set; }
-
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        /// </summary>
-        [Input("inService", required: true)]
-        public Input<string> InService { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        [Input("nameService", required: true)]
-        public Input<string> NameService { get; set; } = null!;
-
-        /// <summary>
-        /// Parameter required or not; values: REQUIRED and OPTIONAL.
-        /// </summary>
-        [Input("required", required: true)]
-        public Input<string> Required { get; set; } = null!;
-
-        /// <summary>
-        /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public ApiRequestParametersArgs()
-        {
-        }
-    }
-
-    public sealed class ApiRequestParametersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The default value of the parameter.
-        /// </summary>
-        [Input("defaultValue")]
-        public Input<string>? DefaultValue { get; set; }
-
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        /// </summary>
-        [Input("inService", required: true)]
-        public Input<string> InService { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        [Input("nameService", required: true)]
-        public Input<string> NameService { get; set; } = null!;
-
-        /// <summary>
-        /// Parameter required or not; values: REQUIRED and OPTIONAL.
-        /// </summary>
-        [Input("required", required: true)]
-        public Input<string> Required { get; set; } = null!;
-
-        /// <summary>
-        /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public ApiRequestParametersGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApiSystemParametersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        [Input("nameService", required: true)]
-        public Input<string> NameService { get; set; } = null!;
-
-        public ApiSystemParametersArgs()
-        {
-        }
-    }
-
-    public sealed class ApiSystemParametersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        [Input("in", required: true)]
-        public Input<string> In { get; set; } = null!;
-
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        [Input("nameService", required: true)]
-        public Input<string> NameService { get; set; } = null!;
-
-        public ApiSystemParametersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApiConstantParameters
-    {
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        public readonly string In;
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Constant parameter value.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ApiConstantParameters(
-            string? description,
-            string @in,
-            string name,
-            string value)
-        {
-            Description = description;
-            In = @in;
-            Name = name;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiFcServiceConfig
-    {
-        /// <summary>
-        /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-        /// </summary>
-        public readonly string? ArnRole;
-        /// <summary>
-        /// The function name of function compute service.
-        /// </summary>
-        public readonly string FunctionName;
-        /// <summary>
-        /// The region that the function compute service belongs to.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
-        /// The service name of function compute service.
-        /// </summary>
-        public readonly string ServiceName;
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        public readonly int Timeout;
-
-        [OutputConstructor]
-        private ApiFcServiceConfig(
-            string? arnRole,
-            string functionName,
-            string region,
-            string serviceName,
-            int timeout)
-        {
-            ArnRole = arnRole;
-            FunctionName = functionName;
-            Region = region;
-            ServiceName = serviceName;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiHttpServiceConfig
-    {
-        /// <summary>
-        /// The address of backend service.
-        /// </summary>
-        public readonly string Address;
-        public readonly string? AoneName;
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        public readonly string Method;
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        public readonly string Path;
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        public readonly int Timeout;
-
-        [OutputConstructor]
-        private ApiHttpServiceConfig(
-            string address,
-            string? aoneName,
-            string method,
-            string path,
-            int timeout)
-        {
-            Address = address;
-            AoneName = aoneName;
-            Method = method;
-            Path = path;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiHttpVpcServiceConfig
-    {
-        public readonly string? AoneName;
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        public readonly string Method;
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        public readonly string Path;
-        /// <summary>
-        /// Backend service time-out time; unit: millisecond.
-        /// </summary>
-        public readonly int Timeout;
-
-        [OutputConstructor]
-        private ApiHttpVpcServiceConfig(
-            string? aoneName,
-            string method,
-            string name,
-            string path,
-            int timeout)
-        {
-            AoneName = aoneName;
-            Method = method;
-            Name = name;
-            Path = path;
-            Timeout = timeout;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiMockServiceConfig
-    {
-        public readonly string? AoneName;
-        /// <summary>
-        /// The result of the mock service.
-        /// </summary>
-        public readonly string Result;
-
-        [OutputConstructor]
-        private ApiMockServiceConfig(
-            string? aoneName,
-            string result)
-        {
-            AoneName = aoneName;
-            Result = result;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiRequestConfig
-    {
-        /// <summary>
-        /// The body format of the api, which support the values of 'STREAM' and 'FORM'
-        /// </summary>
-        public readonly string? BodyFormat;
-        /// <summary>
-        /// The http method of backend service.
-        /// </summary>
-        public readonly string Method;
-        /// <summary>
-        /// The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
-        /// </summary>
-        public readonly string Mode;
-        /// <summary>
-        /// The path of backend service.
-        /// </summary>
-        public readonly string Path;
-        /// <summary>
-        /// The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-        /// </summary>
-        public readonly string Protocol;
-
-        [OutputConstructor]
-        private ApiRequestConfig(
-            string? bodyFormat,
-            string method,
-            string mode,
-            string path,
-            string protocol)
-        {
-            BodyFormat = bodyFormat;
-            Method = method;
-            Mode = mode;
-            Path = path;
-            Protocol = protocol;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiRequestParameters
-    {
-        /// <summary>
-        /// The default value of the parameter.
-        /// </summary>
-        public readonly string? DefaultValue;
-        /// <summary>
-        /// The description of Constant parameter.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        public readonly string In;
-        /// <summary>
-        /// Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
-        /// </summary>
-        public readonly string InService;
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        public readonly string NameService;
-        /// <summary>
-        /// Parameter required or not; values: REQUIRED and OPTIONAL.
-        /// </summary>
-        public readonly string Required;
-        /// <summary>
-        /// Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE"
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private ApiRequestParameters(
-            string? defaultValue,
-            string? description,
-            string @in,
-            string inService,
-            string name,
-            string nameService,
-            string required,
-            string type)
-        {
-            DefaultValue = defaultValue;
-            Description = description;
-            In = @in;
-            InService = inService;
-            Name = name;
-            NameService = nameService;
-            Required = required;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApiSystemParameters
-    {
-        /// <summary>
-        /// System parameter location; values: 'HEAD' and 'QUERY'.
-        /// </summary>
-        public readonly string In;
-        /// <summary>
-        /// System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Backend service's parameter name.
-        /// </summary>
-        public readonly string NameService;
-
-        [OutputConstructor]
-        private ApiSystemParameters(
-            string @in,
-            string name,
-            string nameService)
-        {
-            In = @in;
-            Name = name;
-            NameService = nameService;
-        }
-    }
     }
 }

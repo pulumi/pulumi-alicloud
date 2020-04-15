@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Vpc
     /// Provides a network acl resource to add network acls.
     /// 
     /// &gt; **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl.html.markdown.
     /// </summary>
     public partial class NetworkAcl : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkAcl(string name, NetworkAclArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/networkAcl:NetworkAcl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/networkAcl:NetworkAcl", name, args ?? new NetworkAclArgs(), MakeResourceOptions(options, ""))
         {
         }
 

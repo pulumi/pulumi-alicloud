@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the domain extensions associated with a server load balancer listener.
-        /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDomainExtensions.InvokeAsync() instead")]
-        public static Task<GetDomainExtensionsResult> GetDomainExtensions(GetDomainExtensionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDomainExtensions
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_domain_extensions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDomainExtensionsArgs : Pulumi.InvokeArgs
     {
@@ -73,69 +58,43 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetDomainExtensionsResult
     {
         /// <summary>
         /// A list of SLB domain extension. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDomainExtensionsExtensionsResult> Extensions;
+        public readonly ImmutableArray<Outputs.GetDomainExtensionsExtensionResult> Extensions;
         public readonly int FrontendPort;
-        public readonly ImmutableArray<string> Ids;
-        public readonly string LoadBalancerId;
-        public readonly string? OutputFile;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly string LoadBalancerId;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetDomainExtensionsResult(
-            ImmutableArray<Outputs.GetDomainExtensionsExtensionsResult> extensions,
+            ImmutableArray<Outputs.GetDomainExtensionsExtensionResult> extensions,
+
             int frontendPort,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string loadBalancerId,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Extensions = extensions;
             FrontendPort = frontendPort;
+            Id = id;
             Ids = ids;
             LoadBalancerId = loadBalancerId;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDomainExtensionsExtensionsResult
-    {
-        /// <summary>
-        /// The domain name.
-        /// </summary>
-        public readonly string Domain;
-        /// <summary>
-        /// The ID of the domain extension.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The ID of the certificate used by the domain name.
-        /// </summary>
-        public readonly string ServerCertificateId;
-
-        [OutputConstructor]
-        private GetDomainExtensionsExtensionsResult(
-            string domain,
-            string id,
-            string serverCertificateId)
-        {
-            Domain = domain;
-            Id = id;
-            ServerCertificateId = serverCertificateId;
-        }
-    }
     }
 }

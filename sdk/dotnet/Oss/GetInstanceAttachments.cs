@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the ots instance attachments of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceAttachments.InvokeAsync() instead")]
-        public static Task<GetInstanceAttachmentsResult> GetInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceAttachments
     {
         /// <summary>
         /// This data source provides the ots instance attachments of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instance_attachments.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceAttachmentsArgs : Pulumi.InvokeArgs
     {
@@ -57,13 +44,18 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceAttachmentsResult
     {
         /// <summary>
         /// A list of instance attachments. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceAttachmentsAttachmentsResult> Attachments;
+        public readonly ImmutableArray<Outputs.GetInstanceAttachmentsAttachmentResult> Attachments;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The instance name.
         /// </summary>
@@ -78,84 +70,30 @@ namespace Pulumi.AliCloud.Oss
         /// A list of vpc ids.
         /// </summary>
         public readonly ImmutableArray<string> VpcIds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceAttachmentsResult(
-            ImmutableArray<Outputs.GetInstanceAttachmentsAttachmentsResult> attachments,
+            ImmutableArray<Outputs.GetInstanceAttachmentsAttachmentResult> attachments,
+
+            string id,
+
             string instanceName,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<string> vpcIds,
-            string id)
+
+            ImmutableArray<string> vpcIds)
         {
             Attachments = attachments;
+            Id = id;
             InstanceName = instanceName;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             VpcIds = vpcIds;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceAttachmentsAttachmentsResult
-    {
-        /// <summary>
-        /// The domain of the instance attachment.
-        /// </summary>
-        public readonly string Domain;
-        /// <summary>
-        /// The access endpoint of the instance attachment.
-        /// </summary>
-        public readonly string Endpoint;
-        /// <summary>
-        /// The resource ID, the value is same as "instance_name".
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of OTS instance.
-        /// </summary>
-        public readonly string InstanceName;
-        /// <summary>
-        /// The region of the instance attachment.
-        /// </summary>
-        public readonly string Region;
-        /// <summary>
-        /// The ID of attaching VPC to instance.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The name of attaching VPC to instance.
-        /// </summary>
-        public readonly string VpcName;
-
-        [OutputConstructor]
-        private GetInstanceAttachmentsAttachmentsResult(
-            string domain,
-            string endpoint,
-            string id,
-            string instanceName,
-            string region,
-            string vpcId,
-            string vpcName)
-        {
-            Domain = domain;
-            Endpoint = endpoint;
-            Id = id;
-            InstanceName = instanceName;
-            Region = region;
-            VpcId = vpcId;
-            VpcName = vpcName;
-        }
-    }
     }
 }

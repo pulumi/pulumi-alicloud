@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Cen
     /// Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
     /// 
     /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.
     /// </summary>
     public partial class InstanceGrant : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.Cen
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGrant(string name, InstanceGrantArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cen/instanceGrant:InstanceGrant", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cen/instanceGrant:InstanceGrant", name, args ?? new InstanceGrantArgs(), MakeResourceOptions(options, ""))
         {
         }
 

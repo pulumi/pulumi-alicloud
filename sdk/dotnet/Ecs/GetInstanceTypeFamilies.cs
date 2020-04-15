@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the ECS instance type families of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceTypeFamilies.InvokeAsync() instead")]
-        public static Task<GetInstanceTypeFamiliesResult> GetInstanceTypeFamilies(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceTypeFamilies
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** Available in 1.54.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypeFamiliesResult> InvokeAsync(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypeFamiliesResult>("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", args ?? new GetInstanceTypeFamiliesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceTypeFamiliesArgs : Pulumi.InvokeArgs
     {
@@ -73,14 +58,19 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceTypeFamiliesResult
     {
-        public readonly ImmutableArray<Outputs.GetInstanceTypeFamiliesFamiliesResult> Families;
+        public readonly ImmutableArray<Outputs.GetInstanceTypeFamiliesFamilyResult> Families;
         /// <summary>
         /// The generation of the instance type family.
         /// </summary>
         public readonly string? Generation;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of instance type family IDs.
         /// </summary>
@@ -89,62 +79,33 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? OutputFile;
         public readonly string? SpotStrategy;
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceTypeFamiliesResult(
-            ImmutableArray<Outputs.GetInstanceTypeFamiliesFamiliesResult> families,
+            ImmutableArray<Outputs.GetInstanceTypeFamiliesFamilyResult> families,
+
             string? generation,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceChargeType,
+
             string? outputFile,
+
             string? spotStrategy,
-            string? zoneId,
-            string id)
+
+            string? zoneId)
         {
             Families = families;
             Generation = generation;
+            Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             OutputFile = outputFile;
             SpotStrategy = spotStrategy;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceTypeFamiliesFamiliesResult
-    {
-        /// <summary>
-        /// The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3` and `ecs-4`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm). 
-        /// </summary>
-        public readonly string Generation;
-        /// <summary>
-        /// ID of the instance type family.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// A list of Zone to launch the instance.
-        /// </summary>
-        public readonly ImmutableArray<string> ZoneIds;
-
-        [OutputConstructor]
-        private GetInstanceTypeFamiliesFamiliesResult(
-            string generation,
-            string id,
-            ImmutableArray<string> zoneIds)
-        {
-            Generation = generation;
-            Id = id;
-            ZoneIds = zoneIds;
-        }
-    }
     }
 }

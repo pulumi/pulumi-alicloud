@@ -37,8 +37,6 @@ namespace Pulumi.AliCloud.Slb
     /// * `type` - (Optional, Available in 1.51.0+) Type of the backend server. Valid value ecs, eni. Default to eni.
     /// * `server_type` - (Optional) The server type of the backend server. Valid value Master, Slave.
     /// * `is_backup` - (Removed from v1.63.0) Determine if the server is executing. Valid value 0, 1. 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_master_slave_server_group.html.markdown.
     /// </summary>
     public partial class MasterSlaveServerGroup : Pulumi.CustomResource
     {
@@ -64,7 +62,7 @@ namespace Pulumi.AliCloud.Slb
         /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         /// </summary>
         [Output("servers")]
-        public Output<ImmutableArray<Outputs.MasterSlaveServerGroupServers>> Servers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.MasterSlaveServerGroupServer>> Servers { get; private set; } = null!;
 
 
         /// <summary>
@@ -75,7 +73,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MasterSlaveServerGroup(string name, MasterSlaveServerGroupArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, args ?? new MasterSlaveServerGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -131,14 +129,14 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         [Input("servers")]
-        private InputList<Inputs.MasterSlaveServerGroupServersArgs>? _servers;
+        private InputList<Inputs.MasterSlaveServerGroupServerArgs>? _servers;
 
         /// <summary>
         /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.MasterSlaveServerGroupServersArgs> Servers
+        public InputList<Inputs.MasterSlaveServerGroupServerArgs> Servers
         {
-            get => _servers ?? (_servers = new InputList<Inputs.MasterSlaveServerGroupServersArgs>());
+            get => _servers ?? (_servers = new InputList<Inputs.MasterSlaveServerGroupServerArgs>());
             set => _servers = value;
         }
 
@@ -168,96 +166,19 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? Name { get; set; }
 
         [Input("servers")]
-        private InputList<Inputs.MasterSlaveServerGroupServersGetArgs>? _servers;
+        private InputList<Inputs.MasterSlaveServerGroupServerGetArgs>? _servers;
 
         /// <summary>
         /// A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.MasterSlaveServerGroupServersGetArgs> Servers
+        public InputList<Inputs.MasterSlaveServerGroupServerGetArgs> Servers
         {
-            get => _servers ?? (_servers = new InputList<Inputs.MasterSlaveServerGroupServersGetArgs>());
+            get => _servers ?? (_servers = new InputList<Inputs.MasterSlaveServerGroupServerGetArgs>());
             set => _servers = value;
         }
 
         public MasterSlaveServerGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class MasterSlaveServerGroupServersArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("serverId", required: true)]
-        public Input<string> ServerId { get; set; } = null!;
-
-        [Input("serverType")]
-        public Input<string>? ServerType { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public MasterSlaveServerGroupServersArgs()
-        {
-        }
-    }
-
-    public sealed class MasterSlaveServerGroupServersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("serverId", required: true)]
-        public Input<string> ServerId { get; set; } = null!;
-
-        [Input("serverType")]
-        public Input<string>? ServerType { get; set; }
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight")]
-        public Input<int>? Weight { get; set; }
-
-        public MasterSlaveServerGroupServersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class MasterSlaveServerGroupServers
-    {
-        public readonly int Port;
-        public readonly string ServerId;
-        public readonly string? ServerType;
-        public readonly string? Type;
-        public readonly int? Weight;
-
-        [OutputConstructor]
-        private MasterSlaveServerGroupServers(
-            int port,
-            string serverId,
-            string? serverType,
-            string? type,
-            int? weight)
-        {
-            Port = port;
-            ServerId = serverId;
-            ServerType = serverType;
-            Type = type;
-            Weight = weight;
-        }
-    }
     }
 }

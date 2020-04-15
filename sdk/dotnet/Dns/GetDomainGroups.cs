@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetDomainGroups.InvokeAsync() instead")]
-        public static Task<GetDomainGroupsResult> GetDomainGroups(GetDomainGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDomainGroups
     {
         public static Task<GetDomainGroupsResult> InvokeAsync(GetDomainGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainGroupsResult>("alicloud:dns/getDomainGroups:getDomainGroups", args ?? new GetDomainGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDomainGroupsArgs : Pulumi.InvokeArgs
     {
@@ -42,54 +37,40 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetDomainGroupsResult
     {
-        public readonly ImmutableArray<Outputs.GetDomainGroupsGroupsResult> Groups;
-        public readonly ImmutableArray<string> Ids;
-        public readonly string? NameRegex;
-        public readonly ImmutableArray<string> Names;
-        public readonly string? OutputFile;
+        public readonly ImmutableArray<Outputs.GetDomainGroupsGroupResult> Groups;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetDomainGroupsResult(
-            ImmutableArray<Outputs.GetDomainGroupsGroupsResult> groups,
+            ImmutableArray<Outputs.GetDomainGroupsGroupResult> groups,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Groups = groups;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDomainGroupsGroupsResult
-    {
-        public readonly string GroupId;
-        public readonly string GroupName;
-
-        [OutputConstructor]
-        private GetDomainGroupsGroupsResult(
-            string groupId,
-            string groupName)
-        {
-            GroupId = groupId;
-            GroupName = groupName;
-        }
-    }
     }
 }

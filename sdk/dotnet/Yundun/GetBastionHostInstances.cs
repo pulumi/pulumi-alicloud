@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.63.0+ .
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBastionHostInstances.InvokeAsync() instead")]
-        public static Task<GetBastionHostInstancesResult> GetBastionHostInstances(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBastionHostInstances
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Yundun
         /// 
         /// &gt; **NOTE:** Available in 1.63.0+ .
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBastionHostInstancesResult> InvokeAsync(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBastionHostInstancesResult>("alicloud:yundun/getBastionHostInstances:getBastionHostInstances", args ?? new GetBastionHostInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBastionHostInstancesArgs : Pulumi.InvokeArgs
     {
@@ -89,121 +74,50 @@ namespace Pulumi.AliCloud.Yundun
         }
     }
 
+
     [OutputType]
     public sealed class GetBastionHostInstancesResult
     {
         public readonly string? DescriptionRegex;
         public readonly ImmutableArray<string> Descriptions;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// A list of apis. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetBastionHostInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetBastionHostInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
         /// <summary>
         /// A map of tags assigned to the bastionhost instance.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetBastionHostInstancesResult(
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetBastionHostInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetBastionHostInstancesInstanceResult> instances,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             Instances = instances;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBastionHostInstancesInstancesResult
-    {
-        /// <summary>
-        /// The instance's remark.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The instance's id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The instance's status.
-        /// </summary>
-        public readonly string InstanceStatus;
-        public readonly string LicenseCode;
-        /// <summary>
-        /// The instance's private domain name.
-        /// </summary>
-        public readonly string PrivateDomain;
-        /// <summary>
-        /// The instance's public domain name.
-        /// </summary>
-        public readonly string PublicDomain;
-        /// <summary>
-        /// The instance's public network access configuration.
-        /// </summary>
-        public readonly bool PublicNetworkAccess;
-        /// <summary>
-        /// The instance's security group configuration.
-        /// </summary>
-        public readonly ImmutableArray<string> SecurityGroupIds;
-        /// <summary>
-        /// A map of tags assigned to the bastionhost instance. It must be in the format:
-        /// ```
-        /// data "alicloud.yundun.getBastionHostInstances" "instance" {
-        /// tags = {
-        /// tagKey1 = "tagValue1"
-        /// }
-        /// }
-        /// ```
-        /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// The instance's vSwitch ID.
-        /// </summary>
-        public readonly string UserVswitchId;
-
-        [OutputConstructor]
-        private GetBastionHostInstancesInstancesResult(
-            string description,
-            string id,
-            string instanceStatus,
-            string licenseCode,
-            string privateDomain,
-            string publicDomain,
-            bool publicNetworkAccess,
-            ImmutableArray<string> securityGroupIds,
-            ImmutableDictionary<string, object>? tags,
-            string userVswitchId)
-        {
-            Description = description;
-            Id = id;
-            InstanceStatus = instanceStatus;
-            LicenseCode = licenseCode;
-            PrivateDomain = privateDomain;
-            PublicDomain = publicDomain;
-            PublicNetworkAccess = publicNetworkAccess;
-            SecurityGroupIds = securityGroupIds;
-            Tags = tags;
-            UserVswitchId = userVswitchId;
-        }
-    }
     }
 }

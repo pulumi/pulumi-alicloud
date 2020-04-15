@@ -43,8 +43,6 @@ namespace Pulumi.AliCloud.Ess
     /// * `vserver_group_id` - (Required) ID of VServer Group.
     /// * `port` - (Required) - The port will be used for VServer Group backend server.
     /// * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_scalinggroup_vserver_groups.markdown.
     /// </summary>
     public partial class ScalingGroupVServerGroups : Pulumi.CustomResource
     {
@@ -64,7 +62,7 @@ namespace Pulumi.AliCloud.Ess
         /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         /// </summary>
         [Output("vserverGroups")]
-        public Output<ImmutableArray<Outputs.ScalingGroupVServerGroupsVserverGroups>> VserverGroups { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ScalingGroupVServerGroupsVserverGroup>> VserverGroups { get; private set; } = null!;
 
 
         /// <summary>
@@ -75,7 +73,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ScalingGroupVServerGroups(string name, ScalingGroupVServerGroupsArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups", name, args ?? new ScalingGroupVServerGroupsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -125,14 +123,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<string> ScalingGroupId { get; set; } = null!;
 
         [Input("vserverGroups", required: true)]
-        private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsArgs>? _vserverGroups;
+        private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs>? _vserverGroups;
 
         /// <summary>
         /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         /// </summary>
-        public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsArgs> VserverGroups
+        public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs> VserverGroups
         {
-            get => _vserverGroups ?? (_vserverGroups = new InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsArgs>());
+            get => _vserverGroups ?? (_vserverGroups = new InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs>());
             set => _vserverGroups = value;
         }
 
@@ -156,130 +154,19 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingGroupId { get; set; }
 
         [Input("vserverGroups")]
-        private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsGetArgs>? _vserverGroups;
+        private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs>? _vserverGroups;
 
         /// <summary>
         /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
         /// </summary>
-        public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsGetArgs> VserverGroups
+        public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs> VserverGroups
         {
-            get => _vserverGroups ?? (_vserverGroups = new InputList<Inputs.ScalingGroupVServerGroupsVserverGroupsGetArgs>());
+            get => _vserverGroups ?? (_vserverGroups = new InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs>());
             set => _vserverGroups = value;
         }
 
         public ScalingGroupVServerGroupsState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ScalingGroupVServerGroupsVserverGroupsArgs : Pulumi.ResourceArgs
-    {
-        [Input("loadbalancerId", required: true)]
-        public Input<string> LoadbalancerId { get; set; } = null!;
-
-        [Input("vserverAttributes", required: true)]
-        private InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesArgs>? _vserverAttributes;
-        public InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesArgs> VserverAttributes
-        {
-            get => _vserverAttributes ?? (_vserverAttributes = new InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesArgs>());
-            set => _vserverAttributes = value;
-        }
-
-        public ScalingGroupVServerGroupsVserverGroupsArgs()
-        {
-        }
-    }
-
-    public sealed class ScalingGroupVServerGroupsVserverGroupsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("loadbalancerId", required: true)]
-        public Input<string> LoadbalancerId { get; set; } = null!;
-
-        [Input("vserverAttributes", required: true)]
-        private InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesGetArgs>? _vserverAttributes;
-        public InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesGetArgs> VserverAttributes
-        {
-            get => _vserverAttributes ?? (_vserverAttributes = new InputList<ScalingGroupVServerGroupsVserverGroupsVserverAttributesGetArgs>());
-            set => _vserverAttributes = value;
-        }
-
-        public ScalingGroupVServerGroupsVserverGroupsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ScalingGroupVServerGroupsVserverGroupsVserverAttributesArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("vserverGroupId", required: true)]
-        public Input<string> VserverGroupId { get; set; } = null!;
-
-        [Input("weight", required: true)]
-        public Input<int> Weight { get; set; } = null!;
-
-        public ScalingGroupVServerGroupsVserverGroupsVserverAttributesArgs()
-        {
-        }
-    }
-
-    public sealed class ScalingGroupVServerGroupsVserverGroupsVserverAttributesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
-
-        [Input("vserverGroupId", required: true)]
-        public Input<string> VserverGroupId { get; set; } = null!;
-
-        [Input("weight", required: true)]
-        public Input<int> Weight { get; set; } = null!;
-
-        public ScalingGroupVServerGroupsVserverGroupsVserverAttributesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ScalingGroupVServerGroupsVserverGroups
-    {
-        public readonly string LoadbalancerId;
-        public readonly ImmutableArray<ScalingGroupVServerGroupsVserverGroupsVserverAttributes> VserverAttributes;
-
-        [OutputConstructor]
-        private ScalingGroupVServerGroupsVserverGroups(
-            string loadbalancerId,
-            ImmutableArray<ScalingGroupVServerGroupsVserverGroupsVserverAttributes> vserverAttributes)
-        {
-            LoadbalancerId = loadbalancerId;
-            VserverAttributes = vserverAttributes;
-        }
-    }
-
-    [OutputType]
-    public sealed class ScalingGroupVServerGroupsVserverGroupsVserverAttributes
-    {
-        public readonly int Port;
-        public readonly string VserverGroupId;
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private ScalingGroupVServerGroupsVserverGroupsVserverAttributes(
-            int port,
-            string vserverGroupId,
-            int weight)
-        {
-            Port = port;
-            VserverGroupId = vserverGroupId;
-            Weight = weight;
-        }
-    }
     }
 }

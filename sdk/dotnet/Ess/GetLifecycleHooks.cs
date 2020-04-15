@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides available lifecycle hook resources. 
-        /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetLifecycleHooks.InvokeAsync() instead")]
-        public static Task<GetLifecycleHooksResult> GetLifecycleHooks(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetLifecycleHooks
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecycleHooksResult> InvokeAsync(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecycleHooksResult>("alicloud:ess/getLifecycleHooks:getLifecycleHooks", args ?? new GetLifecycleHooksArgs(), options.WithVersion());
     }
+
 
     public sealed class GetLifecycleHooksArgs : Pulumi.InvokeArgs
     {
@@ -73,13 +58,18 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
+
     [OutputType]
     public sealed class GetLifecycleHooksResult
     {
         /// <summary>
         /// A list of lifecycle hooks. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetLifecycleHooksHooksResult> Hooks;
+        public readonly ImmutableArray<Outputs.GetLifecycleHooksHookResult> Hooks;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of lifecycle hook ids.
         /// </summary>
@@ -94,90 +84,30 @@ namespace Pulumi.AliCloud.Ess
         /// ID of the scaling group.
         /// </summary>
         public readonly string? ScalingGroupId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetLifecycleHooksResult(
-            ImmutableArray<Outputs.GetLifecycleHooksHooksResult> hooks,
+            ImmutableArray<Outputs.GetLifecycleHooksHookResult> hooks,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? scalingGroupId,
-            string id)
+
+            string? scalingGroupId)
         {
             Hooks = hooks;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ScalingGroupId = scalingGroupId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetLifecycleHooksHooksResult
-    {
-        /// <summary>
-        /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. 
-        /// </summary>
-        public readonly string DefaultResult;
-        /// <summary>
-        /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter.
-        /// </summary>
-        public readonly int HeartbeatTimeout;
-        /// <summary>
-        /// ID of the lifecycle hook.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Type of Scaling activity attached to lifecycle hook.
-        /// </summary>
-        public readonly string LifecycleTransition;
-        /// <summary>
-        /// Name of the lifecycle hook.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The Arn of notification target.
-        /// </summary>
-        public readonly string NotificationArn;
-        /// <summary>
-        /// Additional information that you want to include when Auto Scaling sends a message to the notification target.
-        /// </summary>
-        public readonly string NotificationMetadata;
-        /// <summary>
-        /// Scaling group id the lifecycle hooks belong to.
-        /// </summary>
-        public readonly string ScalingGroupId;
-
-        [OutputConstructor]
-        private GetLifecycleHooksHooksResult(
-            string defaultResult,
-            int heartbeatTimeout,
-            string id,
-            string lifecycleTransition,
-            string name,
-            string notificationArn,
-            string notificationMetadata,
-            string scalingGroupId)
-        {
-            DefaultResult = defaultResult;
-            HeartbeatTimeout = heartbeatTimeout;
-            Id = id;
-            LifecycleTransition = lifecycleTransition;
-            Name = name;
-            NotificationArn = notificationArn;
-            NotificationMetadata = notificationMetadata;
-            ScalingGroupId = scalingGroupId;
-        }
-    }
     }
 }

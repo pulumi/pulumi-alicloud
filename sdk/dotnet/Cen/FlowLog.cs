@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Cen
     /// For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.73.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_flowlog.html.markdown.
     /// </summary>
     public partial class FlowLog : Pulumi.CustomResource
     {
@@ -69,7 +65,7 @@ namespace Pulumi.AliCloud.Cen
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FlowLog(string name, FlowLogArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cen/flowLog:FlowLog", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cen/flowLog:FlowLog", name, args ?? new FlowLogArgs(), MakeResourceOptions(options, ""))
         {
         }
 

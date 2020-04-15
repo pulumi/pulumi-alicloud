@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Emr
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.emr.getMainVersions` data source provides a collection of emr 
-        /// main versions available in Alibaba Cloud account when create a emr cluster.
-        /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetMainVersions.InvokeAsync() instead")]
-        public static Task<GetMainVersionsResult> GetMainVersions(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetMainVersions
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_main_versions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMainVersionsResult>("alicloud:emr/getMainVersions:getMainVersions", args ?? new GetMainVersionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetMainVersionsArgs : Pulumi.InvokeArgs
     {
@@ -70,6 +54,7 @@ namespace Pulumi.AliCloud.Emr
         }
     }
 
+
     [OutputType]
     public sealed class GetMainVersionsResult
     {
@@ -79,66 +64,39 @@ namespace Pulumi.AliCloud.Emr
         /// </summary>
         public readonly string? EmrVersion;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of emr instance types IDs. 
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// A list of versions of the emr cluster instance. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMainVersionsMainVersionsResult> MainVersions;
+        public readonly ImmutableArray<Outputs.GetMainVersionsMainVersionResult> MainVersions;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetMainVersionsResult(
             ImmutableArray<string> clusterTypes,
+
             string? emrVersion,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetMainVersionsMainVersionsResult> mainVersions,
-            string? outputFile,
-            string id)
+
+            ImmutableArray<Outputs.GetMainVersionsMainVersionResult> mainVersions,
+
+            string? outputFile)
         {
             ClusterTypes = clusterTypes;
             EmrVersion = emrVersion;
+            Id = id;
             Ids = ids;
             MainVersions = mainVersions;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetMainVersionsMainVersionsResult
-    {
-        /// <summary>
-        /// A list of cluster types the emr cluster supported. Possible values: `HADOOP`, `ZOOKEEPER`, `KAFKA`, `DRUID`.
-        /// </summary>
-        public readonly ImmutableArray<string> ClusterTypes;
-        /// <summary>
-        /// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
-        /// </summary>
-        public readonly string EmrVersion;
-        /// <summary>
-        /// The image id of the emr cluster instance.
-        /// </summary>
-        public readonly string ImageId;
-
-        [OutputConstructor]
-        private GetMainVersionsMainVersionsResult(
-            ImmutableArray<string> clusterTypes,
-            string emrVersion,
-            string imageId)
-        {
-            ClusterTypes = clusterTypes;
-            EmrVersion = emrVersion;
-            ImageId = imageId;
-        }
-    }
     }
 }

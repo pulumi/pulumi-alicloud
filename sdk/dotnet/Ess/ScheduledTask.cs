@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ScheduledTask(string name, ScheduledTaskArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/scheduledTask:ScheduledTask", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/scheduledTask:ScheduledTask", name, args ?? new ScheduledTaskArgs(), MakeResourceOptions(options, ""))
         {
         }
 

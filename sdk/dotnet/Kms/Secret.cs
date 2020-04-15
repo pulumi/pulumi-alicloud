@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Kms
     /// This resouce used to create a secret and store its initial version.
     /// 
     /// &gt; **NOTE:** Available in 1.76.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_secret.html.markdown.
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
@@ -101,7 +97,7 @@ namespace Pulumi.AliCloud.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Secret(string name, SecretArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:kms/secret:Secret", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:kms/secret:Secret", name, args ?? new SecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 

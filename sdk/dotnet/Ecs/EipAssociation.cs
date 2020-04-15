@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EipAssociation(string name, EipAssociationArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/eipAssociation:EipAssociation", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/eipAssociation:EipAssociation", name, args ?? new EipAssociationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

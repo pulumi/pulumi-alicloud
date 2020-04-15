@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
-        /// that connect VPCs together.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRouterInterfaces.InvokeAsync() instead")]
-        public static Task<GetRouterInterfacesResult> GetRouterInterfaces(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRouterInterfaces
     {
         /// <summary>
         /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
         /// that connect VPCs together.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/router_interfaces.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterInterfacesResult> InvokeAsync(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRouterInterfacesArgs : Pulumi.InvokeArgs
     {
@@ -108,9 +94,14 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetRouterInterfacesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of router interface IDs.
         /// </summary>
@@ -118,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of router interfaces. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRouterInterfacesInterfacesResult> Interfaces;
+        public readonly ImmutableArray<Outputs.GetRouterInterfacesInterfaceResult> Interfaces;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of router interface names.
@@ -153,27 +144,36 @@ namespace Pulumi.AliCloud.Vpc
         /// Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
         /// </summary>
         public readonly string? Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRouterInterfacesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetRouterInterfacesInterfacesResult> interfaces,
+
+            ImmutableArray<Outputs.GetRouterInterfacesInterfaceResult> interfaces,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? oppositeInterfaceId,
+
             string? oppositeInterfaceOwnerId,
+
             string? outputFile,
+
             string? role,
+
             string? routerId,
+
             string? routerType,
+
             string? specification,
-            string? status,
-            string id)
+
+            string? status)
         {
+            Id = id;
             Ids = ids;
             Interfaces = interfaces;
             NameRegex = nameRegex;
@@ -186,130 +186,6 @@ namespace Pulumi.AliCloud.Vpc
             RouterType = routerType;
             Specification = specification;
             Status = status;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRouterInterfacesInterfacesResult
-    {
-        /// <summary>
-        /// ID of the access point used by the VBR.
-        /// </summary>
-        public readonly string AccessPointId;
-        /// <summary>
-        /// Router interface creation time.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Router interface description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Source IP address used to perform health check on the physical connection.
-        /// </summary>
-        public readonly string HealthCheckSourceIp;
-        /// <summary>
-        /// Destination IP address used to perform health check on the physical connection.
-        /// </summary>
-        public readonly string HealthCheckTargetIp;
-        /// <summary>
-        /// Router interface ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Router interface name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ID of the peer router interface.
-        /// </summary>
-        public readonly string OppositeInterfaceId;
-        /// <summary>
-        /// Account ID of the owner of the peer router interface.
-        /// </summary>
-        public readonly string OppositeInterfaceOwnerId;
-        /// <summary>
-        /// Peer router region ID.
-        /// </summary>
-        public readonly string OppositeRegionId;
-        /// <summary>
-        /// Peer router ID.
-        /// </summary>
-        public readonly string OppositeRouterId;
-        /// <summary>
-        /// Router type in the peer region. Possible values: `VRouter` and `VBR`.
-        /// </summary>
-        public readonly string OppositeRouterType;
-        /// <summary>
-        /// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
-        /// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
-        /// </summary>
-        public readonly string Role;
-        /// <summary>
-        /// ID of the VRouter located in the local region.
-        /// </summary>
-        public readonly string RouterId;
-        /// <summary>
-        /// Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
-        /// </summary>
-        public readonly string RouterType;
-        /// <summary>
-        /// Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
-        /// </summary>
-        public readonly string Specification;
-        /// <summary>
-        /// Expected status. Valid values are `Active`, `Inactive` and `Idle`.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// ID of the VPC that owns the router in the local region.
-        /// </summary>
-        public readonly string VpcId;
-
-        [OutputConstructor]
-        private GetRouterInterfacesInterfacesResult(
-            string accessPointId,
-            string creationTime,
-            string description,
-            string healthCheckSourceIp,
-            string healthCheckTargetIp,
-            string id,
-            string name,
-            string oppositeInterfaceId,
-            string oppositeInterfaceOwnerId,
-            string oppositeRegionId,
-            string oppositeRouterId,
-            string oppositeRouterType,
-            string role,
-            string routerId,
-            string routerType,
-            string specification,
-            string status,
-            string vpcId)
-        {
-            AccessPointId = accessPointId;
-            CreationTime = creationTime;
-            Description = description;
-            HealthCheckSourceIp = healthCheckSourceIp;
-            HealthCheckTargetIp = healthCheckTargetIp;
-            Id = id;
-            Name = name;
-            OppositeInterfaceId = oppositeInterfaceId;
-            OppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-            OppositeRegionId = oppositeRegionId;
-            OppositeRouterId = oppositeRouterId;
-            OppositeRouterType = oppositeRouterType;
-            Role = role;
-            RouterId = routerId;
-            RouterType = routerType;
-            Specification = specification;
-            Status = status;
-            VpcId = vpcId;
-        }
-    }
     }
 }

@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Ots
     /// 
     /// &gt; **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
     /// you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_table.html.markdown.
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {
@@ -43,7 +39,7 @@ namespace Pulumi.AliCloud.Ots
         /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         /// </summary>
         [Output("primaryKeys")]
-        public Output<ImmutableArray<Outputs.TablePrimaryKeys>> PrimaryKeys { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.
@@ -66,7 +62,7 @@ namespace Pulumi.AliCloud.Ots
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Table(string name, TableArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ots/table:Table", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ots/table:Table", name, args ?? new TableArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -122,14 +118,14 @@ namespace Pulumi.AliCloud.Ots
         public Input<int> MaxVersion { get; set; } = null!;
 
         [Input("primaryKeys", required: true)]
-        private InputList<Inputs.TablePrimaryKeysArgs>? _primaryKeys;
+        private InputList<Inputs.TablePrimaryKeyArgs>? _primaryKeys;
 
         /// <summary>
         /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         /// </summary>
-        public InputList<Inputs.TablePrimaryKeysArgs> PrimaryKeys
+        public InputList<Inputs.TablePrimaryKeyArgs> PrimaryKeys
         {
-            get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeysArgs>());
+            get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeyArgs>());
             set => _primaryKeys = value;
         }
 
@@ -171,14 +167,14 @@ namespace Pulumi.AliCloud.Ots
         public Input<int>? MaxVersion { get; set; }
 
         [Input("primaryKeys")]
-        private InputList<Inputs.TablePrimaryKeysGetArgs>? _primaryKeys;
+        private InputList<Inputs.TablePrimaryKeyGetArgs>? _primaryKeys;
 
         /// <summary>
         /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four.
         /// </summary>
-        public InputList<Inputs.TablePrimaryKeysGetArgs> PrimaryKeys
+        public InputList<Inputs.TablePrimaryKeyGetArgs> PrimaryKeys
         {
-            get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeysGetArgs>());
+            get => _primaryKeys ?? (_primaryKeys = new InputList<Inputs.TablePrimaryKeyGetArgs>());
             set => _primaryKeys = value;
         }
 
@@ -197,73 +193,5 @@ namespace Pulumi.AliCloud.Ots
         public TableState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TablePrimaryKeysArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Name for primary key.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public TablePrimaryKeysArgs()
-        {
-        }
-    }
-
-    public sealed class TablePrimaryKeysGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Name for primary key.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public TablePrimaryKeysGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TablePrimaryKeys
-    {
-        /// <summary>
-        /// Name for primary key.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private TablePrimaryKeys(
-            string name,
-            string type)
-        {
-            Name = name;
-            Type = type;
-        }
-    }
     }
 }

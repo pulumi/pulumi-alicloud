@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Sag
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides Sag Acls available to the user.
-        /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
-        /// 
-        /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/sag_acls.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAcls.InvokeAsync() instead")]
-        public static Task<GetAclsResult> GetAcls(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAcls
     {
         /// <summary>
@@ -35,13 +18,13 @@ namespace Pulumi.AliCloud.Sag
         /// 
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/sag_acls.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:sag/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclsArgs : Pulumi.InvokeArgs
     {
@@ -71,13 +54,18 @@ namespace Pulumi.AliCloud.Sag
         }
     }
 
+
     [OutputType]
     public sealed class GetAclsResult
     {
         /// <summary>
         /// A list of Sag Acls. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAclsAclsResult> Acls;
+        public readonly ImmutableArray<Outputs.GetAclsAclResult> Acls;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of Sag Acl IDs.
         /// </summary>
@@ -88,52 +76,27 @@ namespace Pulumi.AliCloud.Sag
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAclsResult(
-            ImmutableArray<Outputs.GetAclsAclsResult> acls,
+            ImmutableArray<Outputs.GetAclsAclResult> acls,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Acls = acls;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAclsAclsResult
-    {
-        /// <summary>
-        /// The ID of the ACL. For example "acl-xxx".
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the Acl.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetAclsAclsResult(
-            string id,
-            string name)
-        {
-            Id = id;
-            Name = name;
-        }
-    }
     }
 }

@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.Cdn
     /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
     /// </summary>
     public partial class DomainConfig : Pulumi.CustomResource
     {
@@ -32,7 +28,7 @@ namespace Pulumi.AliCloud.Cdn
         /// The args of the domain config.
         /// </summary>
         [Output("functionArgs")]
-        public Output<ImmutableArray<Outputs.DomainConfigFunctionArgs>> FunctionArgs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DomainConfigFunctionArg>> FunctionArgs { get; private set; } = null!;
 
         /// <summary>
         /// The name of the domain config.
@@ -49,7 +45,7 @@ namespace Pulumi.AliCloud.Cdn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainConfig(string name, DomainConfigArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cdn/domainConfig:DomainConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cdn/domainConfig:DomainConfig", name, args ?? new DomainConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -93,14 +89,14 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> DomainName { get; set; } = null!;
 
         [Input("functionArgs", required: true)]
-        private InputList<Inputs.DomainConfigFunctionArgsArgs>? _functionArgs;
+        private InputList<Inputs.DomainConfigFunctionArgArgs>? _functionArgs;
 
         /// <summary>
         /// The args of the domain config.
         /// </summary>
-        public InputList<Inputs.DomainConfigFunctionArgsArgs> FunctionArgs
+        public InputList<Inputs.DomainConfigFunctionArgArgs> FunctionArgs
         {
-            get => _functionArgs ?? (_functionArgs = new InputList<Inputs.DomainConfigFunctionArgsArgs>());
+            get => _functionArgs ?? (_functionArgs = new InputList<Inputs.DomainConfigFunctionArgArgs>());
             set => _functionArgs = value;
         }
 
@@ -124,14 +120,14 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? DomainName { get; set; }
 
         [Input("functionArgs")]
-        private InputList<Inputs.DomainConfigFunctionArgsGetArgs>? _functionArgs;
+        private InputList<Inputs.DomainConfigFunctionArgGetArgs>? _functionArgs;
 
         /// <summary>
         /// The args of the domain config.
         /// </summary>
-        public InputList<Inputs.DomainConfigFunctionArgsGetArgs> FunctionArgs
+        public InputList<Inputs.DomainConfigFunctionArgGetArgs> FunctionArgs
         {
-            get => _functionArgs ?? (_functionArgs = new InputList<Inputs.DomainConfigFunctionArgsGetArgs>());
+            get => _functionArgs ?? (_functionArgs = new InputList<Inputs.DomainConfigFunctionArgGetArgs>());
             set => _functionArgs = value;
         }
 
@@ -144,73 +140,5 @@ namespace Pulumi.AliCloud.Cdn
         public DomainConfigState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DomainConfigFunctionArgsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of arg.
-        /// </summary>
-        [Input("argName", required: true)]
-        public Input<string> ArgName { get; set; } = null!;
-
-        /// <summary>
-        /// The value of arg.
-        /// </summary>
-        [Input("argValue", required: true)]
-        public Input<string> ArgValue { get; set; } = null!;
-
-        public DomainConfigFunctionArgsArgs()
-        {
-        }
-    }
-
-    public sealed class DomainConfigFunctionArgsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name of arg.
-        /// </summary>
-        [Input("argName", required: true)]
-        public Input<string> ArgName { get; set; } = null!;
-
-        /// <summary>
-        /// The value of arg.
-        /// </summary>
-        [Input("argValue", required: true)]
-        public Input<string> ArgValue { get; set; } = null!;
-
-        public DomainConfigFunctionArgsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DomainConfigFunctionArgs
-    {
-        /// <summary>
-        /// The name of arg.
-        /// </summary>
-        public readonly string ArgName;
-        /// <summary>
-        /// The value of arg.
-        /// </summary>
-        public readonly string ArgValue;
-
-        [OutputConstructor]
-        private DomainConfigFunctionArgs(
-            string argName,
-            string argValue)
-        {
-            ArgName = argName;
-            ArgValue = argValue;
-        }
-    }
     }
 }

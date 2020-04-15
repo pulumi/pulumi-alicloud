@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.PolarDB
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.polardb.getEndpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
-        /// Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
-        /// 
-        /// &gt; **NOTE:** Available in v1.68.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetEndpoints.InvokeAsync() instead")]
-        public static Task<GetEndpointsResult> GetEndpoints(GetEndpointsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetEndpoints
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available in v1.68.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetEndpointsArgs : Pulumi.InvokeArgs
     {
@@ -60,6 +44,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
+
     [OutputType]
     public sealed class GetEndpointsResult
     {
@@ -71,7 +56,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <summary>
         /// A list of PolarDB cluster endpoints. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetEndpointsEndpointsResult> Endpoints;
+        public readonly ImmutableArray<Outputs.GetEndpointsEndpointResult> Endpoints;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -80,8 +65,11 @@ namespace Pulumi.AliCloud.PolarDB
         [OutputConstructor]
         private GetEndpointsResult(
             string dbClusterId,
+
             string? dbEndpointId,
-            ImmutableArray<Outputs.GetEndpointsEndpointsResult> endpoints,
+
+            ImmutableArray<Outputs.GetEndpointsEndpointResult> endpoints,
+
             string id)
         {
             DbClusterId = dbClusterId;
@@ -89,107 +77,5 @@ namespace Pulumi.AliCloud.PolarDB
             Endpoints = endpoints;
             Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetEndpointsEndpointsAddressItemsResult
-    {
-        /// <summary>
-        /// Connection instance string.
-        /// </summary>
-        public readonly string ConnectionString;
-        /// <summary>
-        /// The ip address of connection string.
-        /// </summary>
-        public readonly string IpAddress;
-        /// <summary>
-        /// IP network type:`Public` or `Private`.
-        /// </summary>
-        public readonly string NetType;
-        /// <summary>
-        /// Intranet connection port.
-        /// </summary>
-        public readonly string Port;
-        /// <summary>
-        /// ID of the VPC the instance belongs to.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// ID of the VSwitch the cluster belongs to.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetEndpointsEndpointsAddressItemsResult(
-            string connectionString,
-            string ipAddress,
-            string netType,
-            string port,
-            string vpcId,
-            string vswitchId)
-        {
-            ConnectionString = connectionString;
-            IpAddress = ipAddress;
-            NetType = netType;
-            Port = port;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetEndpointsEndpointsResult
-    {
-        /// <summary>
-        /// A list of endpoint addresses. Each element contains the following attributes.
-        /// </summary>
-        public readonly ImmutableArray<GetEndpointsEndpointsAddressItemsResult> AddressItems;
-        /// <summary>
-        /// Whether the new node is automatically added to the default cluster address.Options are `Enable` and `Disable`.
-        /// </summary>
-        public readonly string AutoAddNewNodes;
-        /// <summary>
-        /// endpoint of the cluster.
-        /// </summary>
-        public readonly string DbEndpointId;
-        /// <summary>
-        /// The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
-        /// </summary>
-        public readonly string EndpointConfig;
-        /// <summary>
-        /// Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
-        /// </summary>
-        public readonly string EndpointType;
-        /// <summary>
-        /// A list of nodes that connect to the address configuration.
-        /// </summary>
-        public readonly string Nodes;
-        /// <summary>
-        /// Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
-        /// </summary>
-        public readonly string ReadWriteMode;
-
-        [OutputConstructor]
-        private GetEndpointsEndpointsResult(
-            ImmutableArray<GetEndpointsEndpointsAddressItemsResult> addressItems,
-            string autoAddNewNodes,
-            string dbEndpointId,
-            string endpointConfig,
-            string endpointType,
-            string nodes,
-            string readWriteMode)
-        {
-            AddressItems = addressItems;
-            AutoAddNewNodes = autoAddNewNodes;
-            DbEndpointId = dbEndpointId;
-            EndpointConfig = endpointConfig;
-            EndpointType = endpointType;
-            Nodes = nodes;
-            ReadWriteMode = readWriteMode;
-        }
-    }
     }
 }

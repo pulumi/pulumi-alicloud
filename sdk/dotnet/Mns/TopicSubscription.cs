@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Mns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TopicSubscription(string name, TopicSubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:mns/topicSubscription:TopicSubscription", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:mns/topicSubscription:TopicSubscription", name, args ?? new TopicSubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

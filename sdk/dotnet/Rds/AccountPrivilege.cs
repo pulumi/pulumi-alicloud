@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account_privilege.html.markdown.
     /// </summary>
     public partial class AccountPrivilege : Pulumi.CustomResource
     {
@@ -56,7 +52,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountPrivilege(string name, AccountPrivilegeArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/accountPrivilege:AccountPrivilege", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/accountPrivilege:AccountPrivilege", name, args ?? new AccountPrivilegeArgs(), MakeResourceOptions(options, ""))
         {
         }
 

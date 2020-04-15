@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MarketPlace
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the Market product items of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in 1.64.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProducts.InvokeAsync() instead")]
-        public static Task<GetProductsResult> GetProducts(GetProductsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProducts
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         /// &gt; **NOTE:** Available in 1.64.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_products.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductsResult> InvokeAsync(GetProductsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:marketplace/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProductsArgs : Pulumi.InvokeArgs
     {
@@ -109,6 +94,7 @@ namespace Pulumi.AliCloud.MarketPlace
         }
     }
 
+
     [OutputType]
     public sealed class GetProductsResult
     {
@@ -116,6 +102,10 @@ namespace Pulumi.AliCloud.MarketPlace
         /// The category id of the product.
         /// </summary>
         public readonly string? CategoryId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of product codes.
         /// </summary>
@@ -126,7 +116,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// <summary>
         /// A list of products. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetProductsProductsResult> Products;
+        public readonly ImmutableArray<Outputs.GetProductsProductResult> Products;
         public readonly string? SearchTerm;
         public readonly string? Sort;
         /// <summary>
@@ -138,27 +128,35 @@ namespace Pulumi.AliCloud.MarketPlace
         /// </summary>
         public readonly string? SupplierId;
         public readonly string? SupplierNameKeyword;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProductsResult(
             string? categoryId,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             string? outputFile,
+
             string? productType,
-            ImmutableArray<Outputs.GetProductsProductsResult> products,
+
+            ImmutableArray<Outputs.GetProductsProductResult> products,
+
             string? searchTerm,
+
             string? sort,
+
             double? suggestedPrice,
+
             string? supplierId,
-            string? supplierNameKeyword,
-            string id)
+
+            string? supplierNameKeyword)
         {
             CategoryId = categoryId;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             OutputFile = outputFile;
@@ -169,111 +167,6 @@ namespace Pulumi.AliCloud.MarketPlace
             SuggestedPrice = suggestedPrice;
             SupplierId = supplierId;
             SupplierNameKeyword = supplierNameKeyword;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProductsProductsResult
-    {
-        /// <summary>
-        /// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm). 
-        /// </summary>
-        public readonly int CategoryId;
-        /// <summary>
-        /// The code of the product.
-        /// </summary>
-        public readonly string Code;
-        /// <summary>
-        /// The delivery date of the product.
-        /// </summary>
-        public readonly string DeliveryDate;
-        /// <summary>
-        /// The delivery way of the product.
-        /// </summary>
-        public readonly string DeliveryWay;
-        /// <summary>
-        /// The image URL of the product.
-        /// </summary>
-        public readonly string ImageUrl;
-        /// <summary>
-        /// The name of the product.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The operation system of the product.
-        /// </summary>
-        public readonly string OperationSystem;
-        /// <summary>
-        /// The rating information of the product.
-        /// </summary>
-        public readonly string Score;
-        /// <summary>
-        /// The short description of the product.
-        /// </summary>
-        public readonly string ShortDescription;
-        /// <summary>
-        /// The suggested price of the product.
-        /// </summary>
-        public readonly string SuggestedPrice;
-        /// <summary>
-        /// The supplier id of the product.
-        /// </summary>
-        public readonly int SupplierId;
-        /// <summary>
-        /// The supplier name of the product.
-        /// </summary>
-        public readonly string SupplierName;
-        /// <summary>
-        /// The tags of the product.
-        /// </summary>
-        public readonly string Tags;
-        /// <summary>
-        /// The detail page URL of the product.
-        /// </summary>
-        public readonly string TargetUrl;
-        /// <summary>
-        /// The warranty date of the product.
-        /// </summary>
-        public readonly string WarrantyDate;
-
-        [OutputConstructor]
-        private GetProductsProductsResult(
-            int categoryId,
-            string code,
-            string deliveryDate,
-            string deliveryWay,
-            string imageUrl,
-            string name,
-            string operationSystem,
-            string score,
-            string shortDescription,
-            string suggestedPrice,
-            int supplierId,
-            string supplierName,
-            string tags,
-            string targetUrl,
-            string warrantyDate)
-        {
-            CategoryId = categoryId;
-            Code = code;
-            DeliveryDate = deliveryDate;
-            DeliveryWay = deliveryWay;
-            ImageUrl = imageUrl;
-            Name = name;
-            OperationSystem = operationSystem;
-            Score = score;
-            ShortDescription = shortDescription;
-            SuggestedPrice = suggestedPrice;
-            SupplierId = supplierId;
-            SupplierName = supplierName;
-            Tags = tags;
-            TargetUrl = targetUrl;
-            WarrantyDate = warrantyDate;
-        }
-    }
     }
 }

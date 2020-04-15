@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CS
     public partial class Kubernetes : Pulumi.CustomResource
     {
         [Output("addons")]
-        public Output<ImmutableArray<Outputs.KubernetesAddons>> Addons { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.CS
         /// List of cluster master nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
         [Output("masterNodes")]
-        public Output<ImmutableArray<Outputs.KubernetesMasterNodes>> MasterNodes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesMasterNode>> MasterNodes { get; private set; } = null!;
 
         /// <summary>
         /// Master payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.CS
         /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
         [Output("workerNodes")]
-        public Output<ImmutableArray<Outputs.KubernetesWorkerNodes>> WorkerNodes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
 
         /// <summary>
         /// The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Kubernetes(string name, KubernetesArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/kubernetes:Kubernetes", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cs/kubernetes:Kubernetes", name, args ?? new KubernetesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -364,10 +364,10 @@ namespace Pulumi.AliCloud.CS
     public sealed class KubernetesArgs : Pulumi.ResourceArgs
     {
         [Input("addons")]
-        private InputList<Inputs.KubernetesAddonsArgs>? _addons;
-        public InputList<Inputs.KubernetesAddonsArgs> Addons
+        private InputList<Inputs.KubernetesAddonArgs>? _addons;
+        public InputList<Inputs.KubernetesAddonArgs> Addons
         {
-            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonsArgs>());
+            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonArgs>());
             set => _addons = value;
         }
 
@@ -668,10 +668,10 @@ namespace Pulumi.AliCloud.CS
     public sealed class KubernetesState : Pulumi.ResourceArgs
     {
         [Input("addons")]
-        private InputList<Inputs.KubernetesAddonsGetArgs>? _addons;
-        public InputList<Inputs.KubernetesAddonsGetArgs> Addons
+        private InputList<Inputs.KubernetesAddonGetArgs>? _addons;
+        public InputList<Inputs.KubernetesAddonGetArgs> Addons
         {
-            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonsGetArgs>());
+            get => _addons ?? (_addons = new InputList<Inputs.KubernetesAddonGetArgs>());
             set => _addons = value;
         }
 
@@ -802,14 +802,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         [Input("masterNodes")]
-        private InputList<Inputs.KubernetesMasterNodesGetArgs>? _masterNodes;
+        private InputList<Inputs.KubernetesMasterNodeGetArgs>? _masterNodes;
 
         /// <summary>
         /// List of cluster master nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
-        public InputList<Inputs.KubernetesMasterNodesGetArgs> MasterNodes
+        public InputList<Inputs.KubernetesMasterNodeGetArgs> MasterNodes
         {
-            get => _masterNodes ?? (_masterNodes = new InputList<Inputs.KubernetesMasterNodesGetArgs>());
+            get => _masterNodes ?? (_masterNodes = new InputList<Inputs.KubernetesMasterNodeGetArgs>());
             set => _masterNodes = value;
         }
 
@@ -987,14 +987,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         [Input("workerNodes")]
-        private InputList<Inputs.KubernetesWorkerNodesGetArgs>? _workerNodes;
+        private InputList<Inputs.KubernetesWorkerNodeGetArgs>? _workerNodes;
 
         /// <summary>
         /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         /// </summary>
-        public InputList<Inputs.KubernetesWorkerNodesGetArgs> WorkerNodes
+        public InputList<Inputs.KubernetesWorkerNodeGetArgs> WorkerNodes
         {
-            get => _workerNodes ?? (_workerNodes = new InputList<Inputs.KubernetesWorkerNodesGetArgs>());
+            get => _workerNodes ?? (_workerNodes = new InputList<Inputs.KubernetesWorkerNodeGetArgs>());
             set => _workerNodes = value;
         }
 
@@ -1027,235 +1027,5 @@ namespace Pulumi.AliCloud.CS
         public KubernetesState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class KubernetesAddonsArgs : Pulumi.ResourceArgs
-    {
-        [Input("config")]
-        public Input<string>? Config { get; set; }
-
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public KubernetesAddonsArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesAddonsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("config")]
-        public Input<string>? Config { get; set; }
-
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        public KubernetesAddonsGetArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesConnectionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// API Server Internet endpoint.
-        /// </summary>
-        [Input("apiServerInternet")]
-        public Input<string>? ApiServerInternet { get; set; }
-
-        /// <summary>
-        /// API Server Intranet endpoint.
-        /// </summary>
-        [Input("apiServerIntranet")]
-        public Input<string>? ApiServerIntranet { get; set; }
-
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
-        [Input("masterPublicIp")]
-        public Input<string>? MasterPublicIp { get; set; }
-
-        /// <summary>
-        /// Service Access Domain.
-        /// </summary>
-        [Input("serviceDomain")]
-        public Input<string>? ServiceDomain { get; set; }
-
-        public KubernetesConnectionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesMasterNodesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        [Input("privateIp")]
-        public Input<string>? PrivateIp { get; set; }
-
-        public KubernetesMasterNodesGetArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesWorkerNodesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        [Input("privateIp")]
-        public Input<string>? PrivateIp { get; set; }
-
-        public KubernetesWorkerNodesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class KubernetesAddons
-    {
-        public readonly string? Config;
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        public readonly string? Name;
-
-        [OutputConstructor]
-        private KubernetesAddons(
-            string? config,
-            string? name)
-        {
-            Config = config;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class KubernetesConnections
-    {
-        /// <summary>
-        /// API Server Internet endpoint.
-        /// </summary>
-        public readonly string ApiServerInternet;
-        /// <summary>
-        /// API Server Intranet endpoint.
-        /// </summary>
-        public readonly string ApiServerIntranet;
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
-        public readonly string MasterPublicIp;
-        /// <summary>
-        /// Service Access Domain.
-        /// </summary>
-        public readonly string ServiceDomain;
-
-        [OutputConstructor]
-        private KubernetesConnections(
-            string apiServerInternet,
-            string apiServerIntranet,
-            string masterPublicIp,
-            string serviceDomain)
-        {
-            ApiServerInternet = apiServerInternet;
-            ApiServerIntranet = apiServerIntranet;
-            MasterPublicIp = masterPublicIp;
-            ServiceDomain = serviceDomain;
-        }
-    }
-
-    [OutputType]
-    public sealed class KubernetesMasterNodes
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        public readonly string PrivateIp;
-
-        [OutputConstructor]
-        private KubernetesMasterNodes(
-            string id,
-            string name,
-            string privateIp)
-        {
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-        }
-    }
-
-    [OutputType]
-    public sealed class KubernetesWorkerNodes
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        public readonly string PrivateIp;
-
-        [OutputConstructor]
-        private KubernetesWorkerNodes(
-            string id,
-            string name,
-            string privateIp)
-        {
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-        }
-    }
     }
 }

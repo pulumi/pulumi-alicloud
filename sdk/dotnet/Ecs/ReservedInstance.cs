@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an Reserved Instance resource.
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
     /// </summary>
     public partial class ReservedInstance : Pulumi.CustomResource
     {
@@ -92,7 +88,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ReservedInstance(string name, ReservedInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/reservedInstance:ReservedInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/reservedInstance:ReservedInstance", name, args ?? new ReservedInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

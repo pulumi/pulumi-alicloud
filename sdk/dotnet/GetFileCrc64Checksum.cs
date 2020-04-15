@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source compute file crc64 checksum.
-        /// 
-        /// &gt; **NOTE:** Available in 1.59.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFileCrc64Checksum.InvokeAsync() instead")]
-        public static Task<GetFileCrc64ChecksumResult> GetFileCrc64Checksum(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFileCrc64Checksum
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/file_crc64_checksum.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileCrc64ChecksumResult> InvokeAsync(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFileCrc64ChecksumResult>("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", args ?? new GetFileCrc64ChecksumArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFileCrc64ChecksumArgs : Pulumi.InvokeArgs
     {
@@ -55,6 +40,7 @@ namespace Pulumi.AliCloud
         }
     }
 
+
     [OutputType]
     public sealed class GetFileCrc64ChecksumResult
     {
@@ -63,23 +49,26 @@ namespace Pulumi.AliCloud
         /// </summary>
         public readonly string Checksum;
         public readonly string Filename;
-        public readonly string? OutputFile;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetFileCrc64ChecksumResult(
             string checksum,
+
             string filename,
-            string? outputFile,
-            string id)
+
+            string id,
+
+            string? outputFile)
         {
             Checksum = checksum;
             Filename = filename;
-            OutputFile = outputFile;
             Id = id;
+            OutputFile = outputFile;
         }
     }
 }

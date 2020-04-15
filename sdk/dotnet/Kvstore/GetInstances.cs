@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.KVStore
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -106,9 +92,14 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of RKV instance IDs.
         /// </summary>
@@ -123,7 +114,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// A list of RKV instances. Its every element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
@@ -140,26 +131,34 @@ namespace Pulumi.AliCloud.KVStore
         /// VSwitch ID the instance belongs to.
         /// </summary>
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceClass,
+
             string? instanceType,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? status,
+
             ImmutableDictionary<string, object>? tags,
+
             string? vpcId,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
+            Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
             InstanceType = instanceType;
@@ -171,128 +170,6 @@ namespace Pulumi.AliCloud.KVStore
             Tags = tags;
             VpcId = vpcId;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        public readonly string AvailabilityZone;
-        /// <summary>
-        /// Instance bandwidth limit. Unit: Mbit/s.
-        /// </summary>
-        public readonly int Bandwidth;
-        /// <summary>
-        /// Capacity of the applied ApsaraDB for Redis instance. Unit: MB.
-        /// </summary>
-        public readonly int Capacity;
-        /// <summary>
-        /// Billing method. Value options: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        public readonly string ConnectionDomain;
-        /// <summary>
-        /// Instance connection quantity limit. Unit: count.
-        /// </summary>
-        public readonly int Connections;
-        /// <summary>
-        /// Creation time of the instance.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// Expiration time. Pay-As-You-Go instances are never expire.
-        /// </summary>
-        public readonly string ExpireTime;
-        /// <summary>
-        /// The ID of the RKV instance.
-        /// </summary>
-        public readonly string Id;
-        public readonly string InstanceClass;
-        /// <summary>
-        /// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
-        /// </summary>
-        public readonly string InstanceType;
-        /// <summary>
-        /// The name of the RKV instance.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Connection port of the instance.
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// Private IP address of the instance.
-        /// </summary>
-        public readonly string PrivateIp;
-        /// <summary>
-        /// Region ID the instance belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Status of the instance.
-        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
-        /// </summary>
-        public readonly string Status;
-        public readonly string UserName;
-        /// <summary>
-        /// Used to retrieve instances belong to specified VPC.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string availabilityZone,
-            int bandwidth,
-            int capacity,
-            string chargeType,
-            string connectionDomain,
-            int connections,
-            string createTime,
-            string expireTime,
-            string id,
-            string instanceClass,
-            string instanceType,
-            string name,
-            int port,
-            string privateIp,
-            string regionId,
-            string status,
-            string userName,
-            string vpcId,
-            string vswitchId)
-        {
-            AvailabilityZone = availabilityZone;
-            Bandwidth = bandwidth;
-            Capacity = capacity;
-            ChargeType = chargeType;
-            ConnectionDomain = connectionDomain;
-            Connections = connections;
-            CreateTime = createTime;
-            ExpireTime = expireTime;
-            Id = id;
-            InstanceClass = instanceClass;
-            InstanceType = instanceType;
-            Name = name;
-            Port = port;
-            PrivateIp = privateIp;
-            RegionId = regionId;
-            Status = status;
-            UserName = userName;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

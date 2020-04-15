@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CloudConnect
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides Cloud Connect Networks available to the user.
-        /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cloud_connect_networks.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNetworks.InvokeAsync() instead")]
-        public static Task<GetNetworksResult> GetNetworks(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNetworks
     {
         /// <summary>
@@ -35,13 +18,13 @@ namespace Pulumi.AliCloud.CloudConnect
         /// 
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cloud_connect_networks.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:cloudconnect/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNetworksArgs : Pulumi.InvokeArgs
     {
@@ -71,9 +54,14 @@ namespace Pulumi.AliCloud.CloudConnect
         }
     }
 
+
     [OutputType]
     public sealed class GetNetworksResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of CCN instances IDs.
         /// </summary>
@@ -86,69 +74,29 @@ namespace Pulumi.AliCloud.CloudConnect
         /// <summary>
         /// A list of CCN instances. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNetworksNetworksResult> Networks;
+        public readonly ImmutableArray<Outputs.GetNetworksNetworkResult> Networks;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNetworksResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            ImmutableArray<Outputs.GetNetworksNetworksResult> networks,
-            string? outputFile,
-            string id)
+
+            ImmutableArray<Outputs.GetNetworksNetworkResult> networks,
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             Networks = networks;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNetworksNetworksResult
-    {
-        /// <summary>
-        /// CidrBlock of the CCN instance.
-        /// </summary>
-        public readonly string CidrBlock;
-        public readonly string Description;
-        /// <summary>
-        /// ID of the CCN instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// IsDefault of the CCN instance.
-        /// </summary>
-        public readonly bool IsDefault;
-        /// <summary>
-        /// Name of the CCN instance.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetNetworksNetworksResult(
-            string cidrBlock,
-            string description,
-            string id,
-            bool isDefault,
-            string name)
-        {
-            CidrBlock = cidrBlock;
-            Description = description;
-            Id = id;
-            IsDefault = isDefault;
-            Name = name;
-        }
-    }
     }
 }

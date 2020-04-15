@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the server load balancers of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetLoadBalancers.InvokeAsync() instead")]
-        public static Task<GetLoadBalancersResult> GetLoadBalancers(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetLoadBalancers
     {
         /// <summary>
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetLoadBalancersArgs : Pulumi.InvokeArgs
     {
@@ -125,6 +112,7 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetLoadBalancersResult
     {
@@ -132,6 +120,10 @@ namespace Pulumi.AliCloud.Slb
         /// Service address of the SLB.
         /// </summary>
         public readonly string? Address;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of slb IDs.
         /// </summary>
@@ -158,7 +150,7 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A list of SLBs. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetLoadBalancersSlbsResult> Slbs;
+        public readonly ImmutableArray<Outputs.GetLoadBalancersSlbResult> Slbs;
         /// <summary>
         /// A map of tags assigned to the SLB instance.
         /// </summary>
@@ -171,29 +163,39 @@ namespace Pulumi.AliCloud.Slb
         /// ID of the VSwitch the SLB belongs to.
         /// </summary>
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetLoadBalancersResult(
             string? address,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? masterAvailabilityZone,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? networkType,
+
             string? outputFile,
+
             string? resourceGroupId,
+
             string? slaveAvailabilityZone,
-            ImmutableArray<Outputs.GetLoadBalancersSlbsResult> slbs,
+
+            ImmutableArray<Outputs.GetLoadBalancersSlbResult> slbs,
+
             ImmutableDictionary<string, object>? tags,
+
             string? vpcId,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
             Address = address;
+            Id = id;
             Ids = ids;
             MasterAvailabilityZone = masterAvailabilityZone;
             NameRegex = nameRegex;
@@ -206,107 +208,6 @@ namespace Pulumi.AliCloud.Slb
             Tags = tags;
             VpcId = vpcId;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetLoadBalancersSlbsResult
-    {
-        /// <summary>
-        /// Service address of the SLBs.
-        /// </summary>
-        public readonly string Address;
-        /// <summary>
-        /// SLB creation time.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// ID of the SLB.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// SLB addressType: internet if `true`, intranet if `false`. Must be `false` when `network_type` is `vpc`.
-        /// </summary>
-        public readonly bool Internet;
-        /// <summary>
-        /// Master availability zone of the SLBs.
-        /// </summary>
-        public readonly string MasterAvailabilityZone;
-        /// <summary>
-        /// SLB name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Network type of the SLBs. Valid values: `vpc` and `classic`.
-        /// </summary>
-        public readonly string NetworkType;
-        /// <summary>
-        /// Region ID the SLB belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Slave availability zone of the SLBs.
-        /// </summary>
-        public readonly string SlaveAvailabilityZone;
-        /// <summary>
-        /// SLB current status. Possible values: `inactive`, `active` and `locked`.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        /// ```
-        /// data "alicloud.slb.getLoadBalancers" "taggedInstances" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
-        /// }
-        /// ```
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
-        /// <summary>
-        /// ID of the VPC linked to the SLBs.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// ID of the VSwitch linked to the SLBs.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetLoadBalancersSlbsResult(
-            string address,
-            string creationTime,
-            string id,
-            bool internet,
-            string masterAvailabilityZone,
-            string name,
-            string networkType,
-            string regionId,
-            string slaveAvailabilityZone,
-            string status,
-            ImmutableDictionary<string, object> tags,
-            string vpcId,
-            string vswitchId)
-        {
-            Address = address;
-            CreationTime = creationTime;
-            Id = id;
-            Internet = internet;
-            MasterAvailabilityZone = masterAvailabilityZone;
-            Name = name;
-            NetworkType = networkType;
-            RegionId = regionId;
-            SlaveAvailabilityZone = slaveAvailabilityZone;
-            Status = status;
-            Tags = tags;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

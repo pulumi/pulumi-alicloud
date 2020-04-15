@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpn
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetConnections.InvokeAsync() instead")]
-        public static Task<GetConnectionsResult> GetConnections(GetConnectionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetConnections
     {
         /// <summary>
         /// The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_connections.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:vpn/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetConnectionsArgs : Pulumi.InvokeArgs
     {
@@ -78,17 +65,22 @@ namespace Pulumi.AliCloud.Vpn
         }
     }
 
+
     [OutputType]
     public sealed class GetConnectionsResult
     {
         /// <summary>
         /// A list of VPN connections. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetConnectionsConnectionsResult> Connections;
+        public readonly ImmutableArray<Outputs.GetConnectionsConnectionResult> Connections;
         /// <summary>
         /// ID of the VPN customer gateway.
         /// </summary>
         public readonly string? CustomerGatewayId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Optional) IDs of the VPN connections.
         /// </summary>
@@ -103,202 +95,33 @@ namespace Pulumi.AliCloud.Vpn
         /// ID of the VPN gateway.
         /// </summary>
         public readonly string? VpnGatewayId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetConnectionsResult(
-            ImmutableArray<Outputs.GetConnectionsConnectionsResult> connections,
+            ImmutableArray<Outputs.GetConnectionsConnectionResult> connections,
+
             string? customerGatewayId,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? vpnGatewayId,
-            string id)
+
+            string? vpnGatewayId)
         {
             Connections = connections;
             CustomerGatewayId = customerGatewayId;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             VpnGatewayId = vpnGatewayId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetConnectionsConnectionsIkeConfigsResult
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-one negotiation. 
-        /// </summary>
-        public readonly string? IkeAuthAlg;
-        /// <summary>
-        /// The encryption algorithm of phase-one negotiation. 
-        /// </summary>
-        public readonly string? IkeEncAlg;
-        /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. 
-        /// </summary>
-        public readonly int? IkeLifetime;
-        /// <summary>
-        /// The identification of the VPN gateway.
-        /// </summary>
-        public readonly string? IkeLocalId;
-        /// <summary>
-        /// The negotiation mode of IKE phase-one. 
-        /// </summary>
-        public readonly string? IkeMode;
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. 
-        /// </summary>
-        public readonly string? IkePfs;
-        /// <summary>
-        /// The identification of the customer gateway.
-        /// </summary>
-        public readonly string? IkeRemoteId;
-        /// <summary>
-        /// The version of the IKE protocol. 
-        /// </summary>
-        public readonly string? IkeVersion;
-        /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
-        /// </summary>
-        public readonly string? Psk;
-
-        [OutputConstructor]
-        private GetConnectionsConnectionsIkeConfigsResult(
-            string? ikeAuthAlg,
-            string? ikeEncAlg,
-            int? ikeLifetime,
-            string? ikeLocalId,
-            string? ikeMode,
-            string? ikePfs,
-            string? ikeRemoteId,
-            string? ikeVersion,
-            string? psk)
-        {
-            IkeAuthAlg = ikeAuthAlg;
-            IkeEncAlg = ikeEncAlg;
-            IkeLifetime = ikeLifetime;
-            IkeLocalId = ikeLocalId;
-            IkeMode = ikeMode;
-            IkePfs = ikePfs;
-            IkeRemoteId = ikeRemoteId;
-            IkeVersion = ikeVersion;
-            Psk = psk;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetConnectionsConnectionsIpsecConfigsResult
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-two negotiation. 
-        /// </summary>
-        public readonly string? IpsecAuthAlg;
-        /// <summary>
-        /// The encryption algorithm of phase-two negotiation. 
-        /// </summary>
-        public readonly string? IpsecEncAlg;
-        /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. 
-        /// </summary>
-        public readonly int? IpsecLifetime;
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. 
-        /// </summary>
-        public readonly string? IpsecPfs;
-
-        [OutputConstructor]
-        private GetConnectionsConnectionsIpsecConfigsResult(
-            string? ipsecAuthAlg,
-            string? ipsecEncAlg,
-            int? ipsecLifetime,
-            string? ipsecPfs)
-        {
-            IpsecAuthAlg = ipsecAuthAlg;
-            IpsecEncAlg = ipsecEncAlg;
-            IpsecLifetime = ipsecLifetime;
-            IpsecPfs = ipsecPfs;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetConnectionsConnectionsResult
-    {
-        public readonly string CreateTime;
-        /// <summary>
-        /// Use the VPN customer gateway ID as the search key.
-        /// </summary>
-        public readonly string CustomerGatewayId;
-        public readonly bool EffectImmediately;
-        /// <summary>
-        /// ID of the VPN connection.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The configurations of phase-one negotiation.
-        /// </summary>
-        public readonly ImmutableArray<GetConnectionsConnectionsIkeConfigsResult> IkeConfigs;
-        /// <summary>
-        /// The configurations of phase-two negotiation.
-        /// </summary>
-        public readonly ImmutableArray<GetConnectionsConnectionsIpsecConfigsResult> IpsecConfigs;
-        /// <summary>
-        /// The local subnet of the VPN connection.
-        /// </summary>
-        public readonly string LocalSubnet;
-        /// <summary>
-        /// The name of the VPN connection.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The remote subnet of the VPN connection.
-        /// </summary>
-        public readonly string RemoteSubnet;
-        /// <summary>
-        /// The status of the VPN connection, valid value:ike_sa_not_established, ike_sa_established, ipsec_sa_not_established, ipsec_sa_established.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// Use the VPN gateway ID as the search key.
-        /// </summary>
-        public readonly string VpnGatewayId;
-
-        [OutputConstructor]
-        private GetConnectionsConnectionsResult(
-            string createTime,
-            string customerGatewayId,
-            bool effectImmediately,
-            string id,
-            ImmutableArray<GetConnectionsConnectionsIkeConfigsResult> ikeConfigs,
-            ImmutableArray<GetConnectionsConnectionsIpsecConfigsResult> ipsecConfigs,
-            string localSubnet,
-            string name,
-            string remoteSubnet,
-            string status,
-            string vpnGatewayId)
-        {
-            CreateTime = createTime;
-            CustomerGatewayId = customerGatewayId;
-            EffectImmediately = effectImmediately;
-            Id = id;
-            IkeConfigs = ikeConfigs;
-            IpsecConfigs = ipsecConfigs;
-            LocalSubnet = localSubnet;
-            Name = name;
-            RemoteSubnet = remoteSubnet;
-            Status = status;
-            VpnGatewayId = vpnGatewayId;
-        }
-    }
     }
 }

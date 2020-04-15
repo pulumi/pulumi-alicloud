@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Log
     /// Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
     /// 
     /// &gt; **NOTE:** Available in 1.78.0
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_alert.html.markdown.
     /// </summary>
     public partial class Alert : Pulumi.CustomResource
     {
@@ -58,7 +54,7 @@ namespace Pulumi.AliCloud.Log
         /// Alarm information notification list.
         /// </summary>
         [Output("notificationLists")]
-        public Output<ImmutableArray<Outputs.AlertNotificationLists>> NotificationLists { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AlertNotificationList>> NotificationLists { get; private set; } = null!;
 
         /// <summary>
         /// Notification threshold, which is not notified until the number of triggers is reached. The default is 1.
@@ -76,7 +72,7 @@ namespace Pulumi.AliCloud.Log
         /// Multiple conditions for configured alarm query.
         /// </summary>
         [Output("queryLists")]
-        public Output<ImmutableArray<Outputs.AlertQueryLists>> QueryLists { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AlertQueryList>> QueryLists { get; private set; } = null!;
 
         /// <summary>
         /// Execution interval. 60 seconds minimum, such as 60s, 1h.
@@ -105,7 +101,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Alert(string name, AlertArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:log/alert:Alert", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:log/alert:Alert", name, args ?? new AlertArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -176,14 +172,14 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MuteUntil { get; set; }
 
         [Input("notificationLists", required: true)]
-        private InputList<Inputs.AlertNotificationListsArgs>? _notificationLists;
+        private InputList<Inputs.AlertNotificationListArgs>? _notificationLists;
 
         /// <summary>
         /// Alarm information notification list.
         /// </summary>
-        public InputList<Inputs.AlertNotificationListsArgs> NotificationLists
+        public InputList<Inputs.AlertNotificationListArgs> NotificationLists
         {
-            get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListsArgs>());
+            get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListArgs>());
             set => _notificationLists = value;
         }
 
@@ -200,14 +196,14 @@ namespace Pulumi.AliCloud.Log
         public Input<string> ProjectName { get; set; } = null!;
 
         [Input("queryLists", required: true)]
-        private InputList<Inputs.AlertQueryListsArgs>? _queryLists;
+        private InputList<Inputs.AlertQueryListArgs>? _queryLists;
 
         /// <summary>
         /// Multiple conditions for configured alarm query.
         /// </summary>
-        public InputList<Inputs.AlertQueryListsArgs> QueryLists
+        public InputList<Inputs.AlertQueryListArgs> QueryLists
         {
-            get => _queryLists ?? (_queryLists = new InputList<Inputs.AlertQueryListsArgs>());
+            get => _queryLists ?? (_queryLists = new InputList<Inputs.AlertQueryListArgs>());
             set => _queryLists = value;
         }
 
@@ -270,14 +266,14 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? MuteUntil { get; set; }
 
         [Input("notificationLists")]
-        private InputList<Inputs.AlertNotificationListsGetArgs>? _notificationLists;
+        private InputList<Inputs.AlertNotificationListGetArgs>? _notificationLists;
 
         /// <summary>
         /// Alarm information notification list.
         /// </summary>
-        public InputList<Inputs.AlertNotificationListsGetArgs> NotificationLists
+        public InputList<Inputs.AlertNotificationListGetArgs> NotificationLists
         {
-            get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListsGetArgs>());
+            get => _notificationLists ?? (_notificationLists = new InputList<Inputs.AlertNotificationListGetArgs>());
             set => _notificationLists = value;
         }
 
@@ -294,14 +290,14 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? ProjectName { get; set; }
 
         [Input("queryLists")]
-        private InputList<Inputs.AlertQueryListsGetArgs>? _queryLists;
+        private InputList<Inputs.AlertQueryListGetArgs>? _queryLists;
 
         /// <summary>
         /// Multiple conditions for configured alarm query.
         /// </summary>
-        public InputList<Inputs.AlertQueryListsGetArgs> QueryLists
+        public InputList<Inputs.AlertQueryListGetArgs> QueryLists
         {
-            get => _queryLists ?? (_queryLists = new InputList<Inputs.AlertQueryListsGetArgs>());
+            get => _queryLists ?? (_queryLists = new InputList<Inputs.AlertQueryListGetArgs>());
             set => _queryLists = value;
         }
 
@@ -326,283 +322,5 @@ namespace Pulumi.AliCloud.Log
         public AlertState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AlertNotificationListsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Notice content of alarm.
-        /// </summary>
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
-
-        [Input("emailLists")]
-        private InputList<string>? _emailLists;
-
-        /// <summary>
-        /// Email address list.   
-        /// </summary>
-        public InputList<string> EmailLists
-        {
-            get => _emailLists ?? (_emailLists = new InputList<string>());
-            set => _emailLists = value;
-        }
-
-        [Input("mobileLists")]
-        private InputList<string>? _mobileLists;
-
-        /// <summary>
-        /// SMS sending mobile number.
-        /// </summary>
-        public InputList<string> MobileLists
-        {
-            get => _mobileLists ?? (_mobileLists = new InputList<string>());
-            set => _mobileLists = value;
-        }
-
-        /// <summary>
-        /// Request address.
-        /// </summary>
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Notification type. support Email, SMS, DingTalk.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public AlertNotificationListsArgs()
-        {
-        }
-    }
-
-    public sealed class AlertNotificationListsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Notice content of alarm.
-        /// </summary>
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
-
-        [Input("emailLists")]
-        private InputList<string>? _emailLists;
-
-        /// <summary>
-        /// Email address list.   
-        /// </summary>
-        public InputList<string> EmailLists
-        {
-            get => _emailLists ?? (_emailLists = new InputList<string>());
-            set => _emailLists = value;
-        }
-
-        [Input("mobileLists")]
-        private InputList<string>? _mobileLists;
-
-        /// <summary>
-        /// SMS sending mobile number.
-        /// </summary>
-        public InputList<string> MobileLists
-        {
-            get => _mobileLists ?? (_mobileLists = new InputList<string>());
-            set => _mobileLists = value;
-        }
-
-        /// <summary>
-        /// Request address.
-        /// </summary>
-        [Input("serviceUri")]
-        public Input<string>? ServiceUri { get; set; }
-
-        /// <summary>
-        /// Notification type. support Email, SMS, DingTalk.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public AlertNotificationListsGetArgs()
-        {
-        }
-    }
-
-    public sealed class AlertQueryListsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// chart title
-        /// </summary>
-        [Input("chartTitle", required: true)]
-        public Input<string> ChartTitle { get; set; } = null!;
-
-        /// <summary>
-        /// end time. example: 20s.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// Query logstore
-        /// </summary>
-        [Input("logstore", required: true)]
-        public Input<string> Logstore { get; set; } = null!;
-
-        /// <summary>
-        /// query corresponding to chart. example: * AND aliyun.
-        /// </summary>
-        [Input("query", required: true)]
-        public Input<string> Query { get; set; } = null!;
-
-        /// <summary>
-        /// begin time. example: -60s.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        /// <summary>
-        /// default Custom. No need to configure this parameter.
-        /// </summary>
-        [Input("timeSpanType")]
-        public Input<string>? TimeSpanType { get; set; }
-
-        public AlertQueryListsArgs()
-        {
-        }
-    }
-
-    public sealed class AlertQueryListsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// chart title
-        /// </summary>
-        [Input("chartTitle", required: true)]
-        public Input<string> ChartTitle { get; set; } = null!;
-
-        /// <summary>
-        /// end time. example: 20s.
-        /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
-
-        /// <summary>
-        /// Query logstore
-        /// </summary>
-        [Input("logstore", required: true)]
-        public Input<string> Logstore { get; set; } = null!;
-
-        /// <summary>
-        /// query corresponding to chart. example: * AND aliyun.
-        /// </summary>
-        [Input("query", required: true)]
-        public Input<string> Query { get; set; } = null!;
-
-        /// <summary>
-        /// begin time. example: -60s.
-        /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
-
-        /// <summary>
-        /// default Custom. No need to configure this parameter.
-        /// </summary>
-        [Input("timeSpanType")]
-        public Input<string>? TimeSpanType { get; set; }
-
-        public AlertQueryListsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AlertNotificationLists
-    {
-        /// <summary>
-        /// Notice content of alarm.
-        /// </summary>
-        public readonly string Content;
-        /// <summary>
-        /// Email address list.   
-        /// </summary>
-        public readonly ImmutableArray<string> EmailLists;
-        /// <summary>
-        /// SMS sending mobile number.
-        /// </summary>
-        public readonly ImmutableArray<string> MobileLists;
-        /// <summary>
-        /// Request address.
-        /// </summary>
-        public readonly string? ServiceUri;
-        /// <summary>
-        /// Notification type. support Email, SMS, DingTalk.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private AlertNotificationLists(
-            string content,
-            ImmutableArray<string> emailLists,
-            ImmutableArray<string> mobileLists,
-            string? serviceUri,
-            string type)
-        {
-            Content = content;
-            EmailLists = emailLists;
-            MobileLists = mobileLists;
-            ServiceUri = serviceUri;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class AlertQueryLists
-    {
-        /// <summary>
-        /// chart title
-        /// </summary>
-        public readonly string ChartTitle;
-        /// <summary>
-        /// end time. example: 20s.
-        /// </summary>
-        public readonly string End;
-        /// <summary>
-        /// Query logstore
-        /// </summary>
-        public readonly string Logstore;
-        /// <summary>
-        /// query corresponding to chart. example: * AND aliyun.
-        /// </summary>
-        public readonly string Query;
-        /// <summary>
-        /// begin time. example: -60s.
-        /// </summary>
-        public readonly string Start;
-        /// <summary>
-        /// default Custom. No need to configure this parameter.
-        /// </summary>
-        public readonly string? TimeSpanType;
-
-        [OutputConstructor]
-        private AlertQueryLists(
-            string chartTitle,
-            string end,
-            string logstore,
-            string query,
-            string start,
-            string? timeSpanType)
-        {
-            ChartTitle = chartTitle;
-            End = end;
-            Logstore = logstore;
-            Query = query;
-            Start = start;
-            TimeSpanType = timeSpanType;
-        }
-    }
     }
 }

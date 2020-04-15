@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Nas
     /// &gt; NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
     /// and it only can be achieved by creating a classic mount target mannually.
     /// See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_mount_target.html.markdown.
     /// </summary>
     public partial class MountTarget : Pulumi.CustomResource
     {
@@ -59,7 +55,7 @@ namespace Pulumi.AliCloud.Nas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MountTarget(string name, MountTargetArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:nas/mountTarget:MountTarget", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:nas/mountTarget:MountTarget", name, args ?? new MountTargetArgs(), MakeResourceOptions(options, ""))
         {
         }
 

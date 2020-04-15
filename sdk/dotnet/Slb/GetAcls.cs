@@ -9,40 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the acls in the region.
-        /// 
-        /// 
-        /// ## Entry Block
-        /// 
-        /// The entry mapping supports the following:
-        /// 
-        /// * `entry`   - An IP addresses or CIDR blocks.
-        /// * `comment` - the comment of the entry.
-        /// 
-        /// ## Listener Block
-        /// 
-        /// The Listener mapping supports the following:
-        /// 
-        /// * `load_balancer_id` - the id of load balancer instance, the listener belongs to.
-        /// * `frontend_port` - the listener port.
-        /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
-        /// * `acl_type`      - the type of acl (such as white/black).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAcls.InvokeAsync() instead")]
-        public static Task<GetAclsResult> GetAcls(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAcls
     {
         /// <summary>
         /// This data source provides the acls in the region.
         /// 
-        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ## Entry Block
         /// 
         /// The entry mapping supports the following:
@@ -58,12 +31,11 @@ namespace Pulumi.AliCloud.Slb
         /// * `frontend_port` - the listener port.
         /// * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
         /// * `acl_type`      - the type of acl (such as white/black).
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAclsResult>("alicloud:slb/getAcls:getAcls", args ?? new GetAclsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAclsArgs : Pulumi.InvokeArgs
     {
@@ -111,13 +83,18 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetAclsResult
     {
         /// <summary>
         /// A list of SLB  acls. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAclsAclsResult> Acls;
+        public readonly ImmutableArray<Outputs.GetAclsAclResult> Acls;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SLB acls IDs.
         /// </summary>
@@ -136,121 +113,33 @@ namespace Pulumi.AliCloud.Slb
         /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAclsResult(
-            ImmutableArray<Outputs.GetAclsAclsResult> acls,
+            ImmutableArray<Outputs.GetAclsAclResult> acls,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? resourceGroupId,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             Acls = acls;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ResourceGroupId = resourceGroupId;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAclsAclsEntryListsResult
-    {
-        public readonly string Comment;
-        public readonly string Entry;
-
-        [OutputConstructor]
-        private GetAclsAclsEntryListsResult(
-            string comment,
-            string entry)
-        {
-            Comment = comment;
-            Entry = entry;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAclsAclsRelatedListenersResult
-    {
-        public readonly string AclType;
-        public readonly int FrontendPort;
-        public readonly string LoadBalancerId;
-        public readonly string Protocol;
-
-        [OutputConstructor]
-        private GetAclsAclsRelatedListenersResult(
-            string aclType,
-            int frontendPort,
-            string loadBalancerId,
-            string protocol)
-        {
-            AclType = aclType;
-            FrontendPort = frontendPort;
-            LoadBalancerId = loadBalancerId;
-            Protocol = protocol;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAclsAclsResult
-    {
-        /// <summary>
-        /// A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
-        /// </summary>
-        public readonly ImmutableArray<GetAclsAclsEntryListsResult> EntryLists;
-        /// <summary>
-        /// Acl ID.
-        /// </summary>
-        public readonly string Id;
-        public readonly string IpVersion;
-        /// <summary>
-        /// Acl name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
-        /// </summary>
-        public readonly ImmutableArray<GetAclsAclsRelatedListenersResult> RelatedListeners;
-        /// <summary>
-        /// The Id of resource group which acl belongs.
-        /// </summary>
-        public readonly string ResourceGroupId;
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
-
-        [OutputConstructor]
-        private GetAclsAclsResult(
-            ImmutableArray<GetAclsAclsEntryListsResult> entryLists,
-            string id,
-            string ipVersion,
-            string name,
-            ImmutableArray<GetAclsAclsRelatedListenersResult> relatedListeners,
-            string resourceGroupId,
-            ImmutableDictionary<string, object>? tags)
-        {
-            EntryLists = entryLists;
-            Id = id;
-            IpVersion = ipVersion;
-            Name = name;
-            RelatedListeners = relatedListeners;
-            ResourceGroupId = resourceGroupId;
-            Tags = tags;
-        }
-    }
     }
 }

@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetDomainRecords.InvokeAsync() instead")]
-        public static Task<GetDomainRecordsResult> GetDomainRecords(GetDomainRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDomainRecords
     {
         public static Task<GetDomainRecordsResult> InvokeAsync(GetDomainRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainRecordsResult>("alicloud:dns/getDomainRecords:getDomainRecords", args ?? new GetDomainRecordsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDomainRecordsArgs : Pulumi.InvokeArgs
     {
@@ -60,42 +55,55 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetDomainRecordsResult
     {
         public readonly string DomainName;
         public readonly string? HostRecordRegex;
-        public readonly ImmutableArray<string> Ids;
-        public readonly bool? IsLocked;
-        public readonly string? Line;
-        public readonly string? OutputFile;
-        public readonly ImmutableArray<Outputs.GetDomainRecordsRecordsResult> Records;
-        public readonly string? Status;
-        public readonly string? Type;
-        public readonly ImmutableArray<string> Urls;
-        public readonly string? ValueRegex;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly bool? IsLocked;
+        public readonly string? Line;
+        public readonly string? OutputFile;
+        public readonly ImmutableArray<Outputs.GetDomainRecordsRecordResult> Records;
+        public readonly string? Status;
+        public readonly string? Type;
+        public readonly ImmutableArray<string> Urls;
+        public readonly string? ValueRegex;
 
         [OutputConstructor]
         private GetDomainRecordsResult(
             string domainName,
+
             string? hostRecordRegex,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             bool? isLocked,
+
             string? line,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetDomainRecordsRecordsResult> records,
+
+            ImmutableArray<Outputs.GetDomainRecordsRecordResult> records,
+
             string? status,
+
             string? type,
+
             ImmutableArray<string> urls,
-            string? valueRegex,
-            string id)
+
+            string? valueRegex)
         {
             DomainName = domainName;
             HostRecordRegex = hostRecordRegex;
+            Id = id;
             Ids = ids;
             IsLocked = isLocked;
             Line = line;
@@ -105,51 +113,6 @@ namespace Pulumi.AliCloud.Dns
             Type = type;
             Urls = urls;
             ValueRegex = valueRegex;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDomainRecordsRecordsResult
-    {
-        public readonly string DomainName;
-        public readonly string HostRecord;
-        public readonly string Line;
-        public readonly bool Locked;
-        public readonly int Priority;
-        public readonly string RecordId;
-        public readonly string Status;
-        public readonly double Ttl;
-        public readonly string Type;
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetDomainRecordsRecordsResult(
-            string domainName,
-            string hostRecord,
-            string line,
-            bool locked,
-            int priority,
-            string recordId,
-            string status,
-            double ttl,
-            string type,
-            string value)
-        {
-            DomainName = domainName;
-            HostRecord = hostRecord;
-            Line = line;
-            Locked = locked;
-            Priority = priority;
-            RecordId = recordId;
-            Status = status;
-            Ttl = ttl;
-            Type = type;
-            Value = value;
-        }
-    }
     }
 }

@@ -9,62 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
-        /// 
-        /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-        /// 
-        /// &gt; **NOTE:**  Available in 1.40.0+.
-        /// 
-        /// 
-        /// ##  Argument Reference
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `instance_id` - (Optional) The specified instance ID.
-        /// * `disk_id` - (Optional) The specified disk ID.
-        /// * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
-        ///   * true: Encrypted snapshots.
-        ///   * false: No encryption attribute limit.
-        ///   
-        ///   Default value: false.
-        /// * `ids` - (Optional)  A list of snapshot IDs.
-        /// * `name_regex` - (Optional) A regex string to filter results by snapshot name.
-        /// * `status` - (Optional) The specified snapshot status.
-        ///   * The snapshot status. Optional values:
-        ///   * progressing: The snapshots are being created.
-        ///   * accomplished: The snapshots are ready to use.
-        ///   * failed: The snapshot creation failed.
-        ///   * all: All status.
-        ///   
-        ///   Default value: all.
-        /// 
-        /// * `type` - (Optional) The snapshot category. Optional values:
-        ///   * auto: Auto snapshots.
-        ///   * user: Manual snapshots.
-        ///   * all: Auto and manual snapshots.
-        ///   
-        ///   Default value: all.
-        /// * `source_disk_type` - (Optional) The type of source disk:
-        ///   * System: The snapshots are created for system disks.
-        ///   * Data: The snapshots are created for data disks.
-        ///   
-        /// * `usage` - (Optional) The usage of the snapshot:
-        ///   * image: The snapshots are used to create custom images.
-        ///   * disk: The snapshots are used to CreateDisk.
-        ///   * mage_disk: The snapshots are used to create custom images and data disks.
-        ///   * none: The snapshots are not used yet.
-        /// * `tags` - (Optional) A map of tags assigned to snapshots.
-        /// * `output_file` - (Optional) The name of output file that saves the filter results.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSnapshots.InvokeAsync() instead")]
-        public static Task<GetSnapshotsResult> GetSnapshots(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSnapshots
     {
         /// <summary>
@@ -74,7 +18,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
-        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -114,12 +59,11 @@ namespace Pulumi.AliCloud.Ecs
         ///   * none: The snapshots are not used yet.
         /// * `tags` - (Optional) A map of tags assigned to snapshots.
         /// * `output_file` - (Optional) The name of output file that saves the filter results.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSnapshotsArgs : Pulumi.InvokeArgs
     {
@@ -200,6 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
+
     [OutputType]
     public sealed class GetSnapshotsResult
     {
@@ -208,6 +153,10 @@ namespace Pulumi.AliCloud.Ecs
         /// Whether the snapshot is encrypted or not.
         /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of snapshot IDs.
         /// </summary>
@@ -222,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A list of snapshots. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSnapshotsSnapshotsResult> Snapshots;
+        public readonly ImmutableArray<Outputs.GetSnapshotsSnapshotResult> Snapshots;
         /// <summary>
         /// Source disk attribute. Value range:
         /// * System
@@ -249,30 +198,40 @@ namespace Pulumi.AliCloud.Ecs
         /// * none
         /// </summary>
         public readonly string? Usage;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSnapshotsResult(
             string? diskId,
+
             bool? encrypted,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetSnapshotsSnapshotsResult> snapshots,
+
+            ImmutableArray<Outputs.GetSnapshotsSnapshotResult> snapshots,
+
             string? sourceDiskType,
+
             string? status,
+
             ImmutableDictionary<string, object>? tags,
+
             string? type,
-            string? usage,
-            string id)
+
+            string? usage)
         {
             DiskId = diskId;
             Encrypted = encrypted;
+            Id = id;
             Ids = ids;
             InstanceId = instanceId;
             NameRegex = nameRegex;
@@ -284,114 +243,6 @@ namespace Pulumi.AliCloud.Ecs
             Tags = tags;
             Type = type;
             Usage = usage;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSnapshotsSnapshotsResult
-    {
-        /// <summary>
-        /// Creation time. Time of creation. It is represented according to ISO8601, and UTC time is used. Format: YYYY-MM-DDThh:mmZ.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Description of the snapshot.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Whether the snapshot is encrypted or not.
-        /// </summary>
-        public readonly bool Encrypted;
-        /// <summary>
-        /// ID of the snapshot.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Name of the snapshot.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Product code on the image market place.
-        /// </summary>
-        public readonly string ProductCode;
-        /// <summary>
-        /// Progress of snapshot creation, presented in percentage.
-        /// </summary>
-        public readonly string Progress;
-        /// <summary>
-        /// The remaining time of a snapshot creation task, in seconds.
-        /// </summary>
-        public readonly int RemainTime;
-        /// <summary>
-        /// The number of days that an automatic snapshot retains in the console for your instance.
-        /// </summary>
-        public readonly int RetentionDays;
-        /// <summary>
-        /// Source disk ID, which is retained after the source disk of the snapshot is deleted.
-        /// </summary>
-        public readonly string SourceDiskId;
-        /// <summary>
-        /// Size of the source disk, measured in GB.
-        /// </summary>
-        public readonly string SourceDiskSize;
-        /// <summary>
-        /// Source disk attribute. Value range:
-        /// * System
-        /// * Data
-        /// </summary>
-        public readonly string SourceDiskType;
-        /// <summary>
-        /// The snapshot status. Value range:
-        /// * progressing
-        /// * accomplished
-        /// * failed
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// Whether the snapshots are used to create resources or not. Value range:
-        /// * image
-        /// * disk
-        /// * image_disk
-        /// * none
-        /// </summary>
-        public readonly string Usage;
-
-        [OutputConstructor]
-        private GetSnapshotsSnapshotsResult(
-            string creationTime,
-            string description,
-            bool encrypted,
-            string id,
-            string name,
-            string productCode,
-            string progress,
-            int remainTime,
-            int retentionDays,
-            string sourceDiskId,
-            string sourceDiskSize,
-            string sourceDiskType,
-            string status,
-            string usage)
-        {
-            CreationTime = creationTime;
-            Description = description;
-            Encrypted = encrypted;
-            Id = id;
-            Name = name;
-            ProductCode = productCode;
-            Progress = progress;
-            RemainTime = remainTime;
-            RetentionDays = retentionDays;
-            SourceDiskId = sourceDiskId;
-            SourceDiskSize = sourceDiskSize;
-            SourceDiskType = sourceDiskType;
-            Status = status;
-            Usage = usage;
-        }
-    }
     }
 }

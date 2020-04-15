@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides available notification resources. 
-        /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNotifications.InvokeAsync() instead")]
-        public static Task<GetNotificationsResult> GetNotifications(GetNotificationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNotifications
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationsResult> InvokeAsync(GetNotificationsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("alicloud:ess/getNotifications:getNotifications", args ?? new GetNotificationsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNotificationsArgs : Pulumi.InvokeArgs
     {
@@ -67,9 +52,14 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
+
     [OutputType]
     public sealed class GetNotificationsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of notification ids.
         /// </summary>
@@ -77,68 +67,30 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// A list of notifications. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNotificationsNotificationsResult> Notifications;
+        public readonly ImmutableArray<Outputs.GetNotificationsNotificationResult> Notifications;
         public readonly string? OutputFile;
         /// <summary>
         /// ID of the scaling group.
         /// </summary>
         public readonly string ScalingGroupId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNotificationsResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetNotificationsNotificationsResult> notifications,
+
+            ImmutableArray<Outputs.GetNotificationsNotificationResult> notifications,
+
             string? outputFile,
-            string scalingGroupId,
-            string id)
+
+            string scalingGroupId)
         {
+            Id = id;
             Ids = ids;
             Notifications = notifications;
             OutputFile = outputFile;
             ScalingGroupId = scalingGroupId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNotificationsNotificationsResult
-    {
-        /// <summary>
-        /// ID of the notification.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) for the notification object. 
-        /// </summary>
-        public readonly string NotificationArn;
-        /// <summary>
-        /// The notification types of Auto Scaling events and resource changes.
-        /// </summary>
-        public readonly ImmutableArray<string> NotificationTypes;
-        /// <summary>
-        /// Scaling group id the notifications belong to.
-        /// </summary>
-        public readonly string ScalingGroupId;
-
-        [OutputConstructor]
-        private GetNotificationsNotificationsResult(
-            string id,
-            string notificationArn,
-            ImmutableArray<string> notificationTypes,
-            string scalingGroupId)
-        {
-            Id = id;
-            NotificationArn = notificationArn;
-            NotificationTypes = notificationTypes;
-            ScalingGroupId = scalingGroupId;
-        }
-    }
     }
 }

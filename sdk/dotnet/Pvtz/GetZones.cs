@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Pvtz
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetZones.InvokeAsync() instead")]
-        public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZones
     {
         /// <summary>
         /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zones.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:pvtz/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
@@ -63,9 +50,14 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
+
     [OutputType]
     public sealed class GetZonesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of zone IDs. 
         /// </summary>
@@ -79,108 +71,28 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// A list of zones. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetZonesZonesResult> Zones;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]
         private GetZonesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? keyword,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetZonesZonesResult> zones,
-            string id)
+
+            ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            Id = id;
             Ids = ids;
             Keyword = keyword;
             Names = names;
             OutputFile = outputFile;
             Zones = zones;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetZonesZonesBindVpcsResult
-    {
-        public readonly string RegionId;
-        public readonly string VpcId;
-        public readonly string VpcName;
-
-        [OutputConstructor]
-        private GetZonesZonesBindVpcsResult(
-            string regionId,
-            string vpcId,
-            string vpcName)
-        {
-            RegionId = regionId;
-            VpcId = vpcId;
-            VpcName = vpcName;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetZonesZonesResult
-    {
-        /// <summary>
-        /// List of the VPCs is bound to the Private Zone.
-        /// </summary>
-        public readonly ImmutableArray<GetZonesZonesBindVpcsResult> BindVpcs;
-        /// <summary>
-        /// Time of creation of the Private Zone.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// ID of the Private Zone.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Whether the Private Zone is ptr
-        /// </summary>
-        public readonly bool IsPtr;
-        /// <summary>
-        /// Name of the Private Zone.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Count of the Private Zone Record.
-        /// </summary>
-        public readonly int RecordCount;
-        /// <summary>
-        /// Remark of the Private Zone.
-        /// </summary>
-        public readonly string Remark;
-        /// <summary>
-        /// Time of update of the Private Zone.
-        /// </summary>
-        public readonly string UpdateTime;
-
-        [OutputConstructor]
-        private GetZonesZonesResult(
-            ImmutableArray<GetZonesZonesBindVpcsResult> bindVpcs,
-            string creationTime,
-            string id,
-            bool isPtr,
-            string name,
-            int recordCount,
-            string remark,
-            string updateTime)
-        {
-            BindVpcs = bindVpcs;
-            CreationTime = creationTime;
-            Id = id;
-            IsPtr = isPtr;
-            Name = name;
-            RecordCount = recordCount;
-            Remark = remark;
-            UpdateTime = updateTime;
-        }
-    }
     }
 }

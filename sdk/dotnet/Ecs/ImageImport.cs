@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
     /// 
     /// &gt; **NOTE:** Available in 1.69.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
     /// </summary>
     public partial class ImageImport : Pulumi.CustomResource
     {
@@ -40,7 +36,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
         [Output("diskDeviceMappings")]
-        public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMappings>> DiskDeviceMappings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
         /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
@@ -72,7 +68,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageImport(string name, ImageImportArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/imageImport:ImageImport", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/imageImport:ImageImport", name, args ?? new ImageImportArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -122,14 +118,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         [Input("diskDeviceMappings", required: true)]
-        private InputList<Inputs.ImageImportDiskDeviceMappingsArgs>? _diskDeviceMappings;
+        private InputList<Inputs.ImageImportDiskDeviceMappingArgs>? _diskDeviceMappings;
 
         /// <summary>
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
-        public InputList<Inputs.ImageImportDiskDeviceMappingsArgs> DiskDeviceMappings
+        public InputList<Inputs.ImageImportDiskDeviceMappingArgs> DiskDeviceMappings
         {
-            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageImportDiskDeviceMappingsArgs>());
+            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageImportDiskDeviceMappingArgs>());
             set => _diskDeviceMappings = value;
         }
 
@@ -174,14 +170,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         [Input("diskDeviceMappings")]
-        private InputList<Inputs.ImageImportDiskDeviceMappingsGetArgs>? _diskDeviceMappings;
+        private InputList<Inputs.ImageImportDiskDeviceMappingGetArgs>? _diskDeviceMappings;
 
         /// <summary>
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
-        public InputList<Inputs.ImageImportDiskDeviceMappingsGetArgs> DiskDeviceMappings
+        public InputList<Inputs.ImageImportDiskDeviceMappingGetArgs> DiskDeviceMappings
         {
-            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageImportDiskDeviceMappingsGetArgs>());
+            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageImportDiskDeviceMappingGetArgs>());
             set => _diskDeviceMappings = value;
         }
 
@@ -209,118 +205,5 @@ namespace Pulumi.AliCloud.Ecs
         public ImageImportState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ImageImportDiskDeviceMappingsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        /// <summary>
-        /// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
-        /// </summary>
-        [Input("diskImageSize")]
-        public Input<int>? DiskImageSize { get; set; }
-
-        /// <summary>
-        /// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
-        /// </summary>
-        [Input("format")]
-        public Input<string>? Format { get; set; }
-
-        /// <summary>
-        /// Save the exported OSS bucket.
-        /// </summary>
-        [Input("ossBucket")]
-        public Input<string>? OssBucket { get; set; }
-
-        [Input("ossObject")]
-        public Input<string>? OssObject { get; set; }
-
-        public ImageImportDiskDeviceMappingsArgs()
-        {
-        }
-    }
-
-    public sealed class ImageImportDiskDeviceMappingsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        /// <summary>
-        /// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
-        /// </summary>
-        [Input("diskImageSize")]
-        public Input<int>? DiskImageSize { get; set; }
-
-        /// <summary>
-        /// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
-        /// </summary>
-        [Input("format")]
-        public Input<string>? Format { get; set; }
-
-        /// <summary>
-        /// Save the exported OSS bucket.
-        /// </summary>
-        [Input("ossBucket")]
-        public Input<string>? OssBucket { get; set; }
-
-        [Input("ossObject")]
-        public Input<string>? OssObject { get; set; }
-
-        public ImageImportDiskDeviceMappingsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ImageImportDiskDeviceMappings
-    {
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        public readonly string Device;
-        /// <summary>
-        /// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
-        /// </summary>
-        public readonly int? DiskImageSize;
-        /// <summary>
-        /// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
-        /// </summary>
-        public readonly string Format;
-        /// <summary>
-        /// Save the exported OSS bucket.
-        /// </summary>
-        public readonly string? OssBucket;
-        public readonly string? OssObject;
-
-        [OutputConstructor]
-        private ImageImportDiskDeviceMappings(
-            string device,
-            int? diskImageSize,
-            string format,
-            string? ossBucket,
-            string? ossObject)
-        {
-            Device = device;
-            DiskImageSize = diskImageSize;
-            Format = format;
-            OssBucket = ossBucket;
-            OssObject = ossObject;
-        }
-    }
     }
 }

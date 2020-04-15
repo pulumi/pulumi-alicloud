@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Vpc
     /// Provides a network acl attachment resource to associate network acls to vswitches.
     /// 
     /// &gt; **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_attachment.html.markdown.
     /// </summary>
     public partial class NetworkAclAttachment : Pulumi.CustomResource
     {
@@ -30,7 +26,7 @@ namespace Pulumi.AliCloud.Vpc
         /// List of the resources associated with the network acl. The details see Block Resources.
         /// </summary>
         [Output("resources")]
-        public Output<ImmutableArray<Outputs.NetworkAclAttachmentResources>> Resources { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NetworkAclAttachmentResource>> Resources { get; private set; } = null!;
 
 
         /// <summary>
@@ -41,7 +37,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkAclAttachment(string name, NetworkAclAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, args ?? new NetworkAclAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -85,14 +81,14 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> NetworkAclId { get; set; } = null!;
 
         [Input("resources", required: true)]
-        private InputList<Inputs.NetworkAclAttachmentResourcesArgs>? _resources;
+        private InputList<Inputs.NetworkAclAttachmentResourceArgs>? _resources;
 
         /// <summary>
         /// List of the resources associated with the network acl. The details see Block Resources.
         /// </summary>
-        public InputList<Inputs.NetworkAclAttachmentResourcesArgs> Resources
+        public InputList<Inputs.NetworkAclAttachmentResourceArgs> Resources
         {
-            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclAttachmentResourcesArgs>());
+            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclAttachmentResourceArgs>());
             set => _resources = value;
         }
 
@@ -110,87 +106,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NetworkAclId { get; set; }
 
         [Input("resources")]
-        private InputList<Inputs.NetworkAclAttachmentResourcesGetArgs>? _resources;
+        private InputList<Inputs.NetworkAclAttachmentResourceGetArgs>? _resources;
 
         /// <summary>
         /// List of the resources associated with the network acl. The details see Block Resources.
         /// </summary>
-        public InputList<Inputs.NetworkAclAttachmentResourcesGetArgs> Resources
+        public InputList<Inputs.NetworkAclAttachmentResourceGetArgs> Resources
         {
-            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclAttachmentResourcesGetArgs>());
+            get => _resources ?? (_resources = new InputList<Inputs.NetworkAclAttachmentResourceGetArgs>());
             set => _resources = value;
         }
 
         public NetworkAclAttachmentState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NetworkAclAttachmentResourcesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The resource id that the network acl will associate with.
-        /// </summary>
-        [Input("resourceId", required: true)]
-        public Input<string> ResourceId { get; set; } = null!;
-
-        /// <summary>
-        /// The resource id that the network acl will associate with. Only support `VSwitch` now.
-        /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
-
-        public NetworkAclAttachmentResourcesArgs()
-        {
-        }
-    }
-
-    public sealed class NetworkAclAttachmentResourcesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The resource id that the network acl will associate with.
-        /// </summary>
-        [Input("resourceId", required: true)]
-        public Input<string> ResourceId { get; set; } = null!;
-
-        /// <summary>
-        /// The resource id that the network acl will associate with. Only support `VSwitch` now.
-        /// </summary>
-        [Input("resourceType", required: true)]
-        public Input<string> ResourceType { get; set; } = null!;
-
-        public NetworkAclAttachmentResourcesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NetworkAclAttachmentResources
-    {
-        /// <summary>
-        /// The resource id that the network acl will associate with.
-        /// </summary>
-        public readonly string ResourceId;
-        /// <summary>
-        /// The resource id that the network acl will associate with. Only support `VSwitch` now.
-        /// </summary>
-        public readonly string ResourceType;
-
-        [OutputConstructor]
-        private NetworkAclAttachmentResources(
-            string resourceId,
-            string resourceType)
-        {
-            ResourceId = resourceId;
-            ResourceType = resourceType;
-        }
-    }
     }
 }

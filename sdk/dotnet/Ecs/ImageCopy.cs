@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_copy.html.markdown.
     /// </summary>
     public partial class ImageCopy : Pulumi.CustomResource
     {
@@ -88,7 +84,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageCopy(string name, ImageCopyArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/imageCopy:ImageCopy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/imageCopy:ImageCopy", name, args ?? new ImageCopyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -15,11 +15,6 @@ namespace Pulumi.AliCloud.Slb
     /// For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
     /// 
     /// For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_ca_certificate.html.markdown.
     /// </summary>
     public partial class CaCertificate : Pulumi.CustomResource
     {
@@ -56,7 +51,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CaCertificate(string name, CaCertificateArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/caCertificate:CaCertificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/caCertificate:CaCertificate", name, args ?? new CaCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 

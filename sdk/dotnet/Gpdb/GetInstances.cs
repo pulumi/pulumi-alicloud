@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Gpdb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.gpdb.getInstances` data source provides a collection of AnalyticDB for PostgreSQL instances available in Alicloud account.
-        /// Filters support regular expression for the instance name or availability_zone.
-        /// 
-        /// &gt; **NOTE:**  Available in 1.47.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/gpdb_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:gpdb/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Gpdb
         /// 
         /// &gt; **NOTE:**  Available in 1.47.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/gpdb_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:gpdb/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:gpdb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -93,6 +77,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
@@ -101,13 +86,17 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         public readonly string? AvailabilityZone;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The ids list of AnalyticDB for PostgreSQL instances.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// A list of AnalyticDB for PostgreSQL instances. Its every element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// The names list of AnalyticDB for PostgreSQL instance.
@@ -116,24 +105,29 @@ namespace Pulumi.AliCloud.Gpdb
         public readonly string? OutputFile;
         public readonly ImmutableDictionary<string, object>? Tags;
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
             string? availabilityZone,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             ImmutableDictionary<string, object>? tags,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
             AvailabilityZone = availabilityZone;
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
@@ -141,90 +135,6 @@ namespace Pulumi.AliCloud.Gpdb
             OutputFile = outputFile;
             Tags = tags;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// Instance availability zone.
-        /// </summary>
-        public readonly string AvailabilityZone;
-        /// <summary>
-        /// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        /// <summary>
-        /// The time when you create an instance. The format is YYYY-MM-DDThh:mm:ssZ, such as 2011-05-30T12:11:4Z.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// The description of an instance.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Database engine type. Supported option is `gpdb`.
-        /// </summary>
-        public readonly string Engine;
-        /// <summary>
-        /// Database engine version.
-        /// </summary>
-        public readonly string EngineVersion;
-        /// <summary>
-        /// The instance id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The group type.
-        /// </summary>
-        public readonly string InstanceClass;
-        /// <summary>
-        /// The number of groups.
-        /// </summary>
-        public readonly string InstanceGroupCount;
-        public readonly string InstanceNetworkType;
-        /// <summary>
-        /// Region ID the instance belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Status of the instance.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string availabilityZone,
-            string chargeType,
-            string creationTime,
-            string description,
-            string engine,
-            string engineVersion,
-            string id,
-            string instanceClass,
-            string instanceGroupCount,
-            string instanceNetworkType,
-            string regionId,
-            string status)
-        {
-            AvailabilityZone = availabilityZone;
-            ChargeType = chargeType;
-            CreationTime = creationTime;
-            Description = description;
-            Engine = engine;
-            EngineVersion = engineVersion;
-            Id = id;
-            InstanceClass = instanceClass;
-            InstanceGroupCount = instanceGroupCount;
-            InstanceNetworkType = instanceNetworkType;
-            RegionId = regionId;
-            Status = status;
-        }
-    }
     }
 }

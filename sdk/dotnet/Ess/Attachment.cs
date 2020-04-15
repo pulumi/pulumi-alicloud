@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.Ess
     /// &gt; **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
     /// 
     /// &gt; **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {
@@ -49,7 +45,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Attachment(string name, AttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/attachment:Attachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/attachment:Attachment", name, args ?? new AttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

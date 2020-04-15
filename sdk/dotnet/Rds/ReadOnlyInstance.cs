@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS readonly instance resource. 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_readonly_instance.html.markdown.
     /// </summary>
     public partial class ReadOnlyInstance : Pulumi.CustomResource
     {
@@ -64,7 +60,7 @@ namespace Pulumi.AliCloud.Rds
         /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         /// </summary>
         [Output("parameters")]
-        public Output<ImmutableArray<Outputs.ReadOnlyInstanceParameters>> Parameters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ReadOnlyInstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// RDS database connection port.
@@ -101,7 +97,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ReadOnlyInstance(string name, ReadOnlyInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, args ?? new ReadOnlyInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -169,14 +165,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> MasterDbInstanceId { get; set; } = null!;
 
         [Input("parameters")]
-        private InputList<Inputs.ReadOnlyInstanceParametersArgs>? _parameters;
+        private InputList<Inputs.ReadOnlyInstanceParameterArgs>? _parameters;
 
         /// <summary>
         /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         /// </summary>
-        public InputList<Inputs.ReadOnlyInstanceParametersArgs> Parameters
+        public InputList<Inputs.ReadOnlyInstanceParameterArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParametersArgs>());
+            get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParameterArgs>());
             set => _parameters = value;
         }
 
@@ -256,14 +252,14 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? MasterDbInstanceId { get; set; }
 
         [Input("parameters")]
-        private InputList<Inputs.ReadOnlyInstanceParametersGetArgs>? _parameters;
+        private InputList<Inputs.ReadOnlyInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
         /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         /// </summary>
-        public InputList<Inputs.ReadOnlyInstanceParametersGetArgs> Parameters
+        public InputList<Inputs.ReadOnlyInstanceParameterGetArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParametersGetArgs>());
+            get => _parameters ?? (_parameters = new InputList<Inputs.ReadOnlyInstanceParameterGetArgs>());
             set => _parameters = value;
         }
 
@@ -302,55 +298,5 @@ namespace Pulumi.AliCloud.Rds
         public ReadOnlyInstanceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ReadOnlyInstanceParametersArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ReadOnlyInstanceParametersArgs()
-        {
-        }
-    }
-
-    public sealed class ReadOnlyInstanceParametersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ReadOnlyInstanceParametersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ReadOnlyInstanceParameters
-    {
-        public readonly string Name;
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ReadOnlyInstanceParameters(
-            string name,
-            string value)
-        {
-            Name = name;
-            Value = value;
-        }
-    }
     }
 }

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSaslUsers.InvokeAsync() instead")]
-        public static Task<GetSaslUsersResult> GetSaslUsers(GetSaslUsersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSaslUsers
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_users.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSaslUsersResult> InvokeAsync(GetSaslUsersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSaslUsersArgs : Pulumi.InvokeArgs
     {
@@ -61,9 +46,14 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
+
     [OutputType]
     public sealed class GetSaslUsersResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
@@ -74,53 +64,28 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// A list of sasl users. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSaslUsersUsersResult> Users;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetSaslUsersUserResult> Users;
 
         [OutputConstructor]
         private GetSaslUsersResult(
+            string id,
+
             string instanceId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetSaslUsersUsersResult> users,
-            string id)
+
+            ImmutableArray<Outputs.GetSaslUsersUserResult> users)
         {
+            Id = id;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Users = users;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSaslUsersUsersResult
-    {
-        /// <summary>
-        /// The password of the user.
-        /// </summary>
-        public readonly string Password;
-        /// <summary>
-        /// The username of the user.
-        /// </summary>
-        public readonly string Username;
-
-        [OutputConstructor]
-        private GetSaslUsersUsersResult(
-            string password,
-            string username)
-        {
-            Password = password;
-            Username = username;
-        }
-    }
     }
 }

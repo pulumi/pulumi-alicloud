@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Vpc
     /// Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
     /// 
     /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
     /// </summary>
     public partial class NetworkInterfaceAttachment : Pulumi.CustomResource
     {
@@ -41,7 +37,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkInterfaceAttachment(string name, NetworkInterfaceAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/networkInterfaceAttachment:NetworkInterfaceAttachment", name, args ?? new NetworkInterfaceAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

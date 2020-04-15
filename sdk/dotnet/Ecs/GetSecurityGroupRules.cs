@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
-        /// Each collection item represents a single `ingress` or `egress` permission rule.
-        /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSecurityGroupRules.InvokeAsync() instead")]
-        public static Task<GetSecurityGroupRulesResult> GetSecurityGroupRules(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSecurityGroupRules
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ecs
         /// Each collection item represents a single `ingress` or `egress` permission rule.
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupRulesResult> InvokeAsync(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRulesResult>("alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules", args ?? new GetSecurityGroupRulesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSecurityGroupRulesArgs : Pulumi.InvokeArgs
     {
@@ -79,6 +64,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
+
     [OutputType]
     public sealed class GetSecurityGroupRulesResult
     {
@@ -96,6 +82,10 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
         /// </summary>
         public readonly string? IpProtocol;
@@ -111,121 +101,40 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A list of security group rules. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSecurityGroupRulesRulesResult> Rules;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetSecurityGroupRulesRuleResult> Rules;
 
         [OutputConstructor]
         private GetSecurityGroupRulesResult(
             string? direction,
+
             string groupDesc,
+
             string groupId,
+
             string groupName,
+
+            string id,
+
             string? ipProtocol,
+
             string? nicType,
+
             string? outputFile,
+
             string? policy,
-            ImmutableArray<Outputs.GetSecurityGroupRulesRulesResult> rules,
-            string id)
+
+            ImmutableArray<Outputs.GetSecurityGroupRulesRuleResult> rules)
         {
             Direction = direction;
             GroupDesc = groupDesc;
             GroupId = groupId;
             GroupName = groupName;
+            Id = id;
             IpProtocol = ipProtocol;
             NicType = nicType;
             OutputFile = outputFile;
             Policy = policy;
             Rules = rules;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSecurityGroupRulesRulesResult
-    {
-        /// <summary>
-        /// The description of the rule.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Target IP address segment for egress authorization.
-        /// </summary>
-        public readonly string DestCidrIp;
-        public readonly string DestGroupId;
-        /// <summary>
-        /// Alibaba Cloud account of the target security group.
-        /// </summary>
-        public readonly string DestGroupOwnerAccount;
-        /// <summary>
-        /// Authorization direction. Valid values are: `ingress` or `egress`.
-        /// </summary>
-        public readonly string Direction;
-        /// <summary>
-        /// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
-        /// </summary>
-        public readonly string IpProtocol;
-        /// <summary>
-        /// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
-        /// </summary>
-        public readonly string NicType;
-        /// <summary>
-        /// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
-        /// </summary>
-        public readonly string Policy;
-        /// <summary>
-        /// The range of port numbers.
-        /// </summary>
-        public readonly string PortRange;
-        /// <summary>
-        /// Rule priority.
-        /// </summary>
-        public readonly int Priority;
-        /// <summary>
-        /// Source IP address segment for ingress authorization.
-        /// </summary>
-        public readonly string SourceCidrIp;
-        public readonly string SourceGroupId;
-        /// <summary>
-        /// Alibaba Cloud account of the source security group.
-        /// </summary>
-        public readonly string SourceGroupOwnerAccount;
-
-        [OutputConstructor]
-        private GetSecurityGroupRulesRulesResult(
-            string description,
-            string destCidrIp,
-            string destGroupId,
-            string destGroupOwnerAccount,
-            string direction,
-            string ipProtocol,
-            string nicType,
-            string policy,
-            string portRange,
-            int priority,
-            string sourceCidrIp,
-            string sourceGroupId,
-            string sourceGroupOwnerAccount)
-        {
-            Description = description;
-            DestCidrIp = destCidrIp;
-            DestGroupId = destGroupId;
-            DestGroupOwnerAccount = destGroupOwnerAccount;
-            Direction = direction;
-            IpProtocol = ipProtocol;
-            NicType = nicType;
-            Policy = policy;
-            PortRange = portRange;
-            Priority = priority;
-            SourceCidrIp = sourceCidrIp;
-            SourceGroupId = sourceGroupId;
-            SourceGroupOwnerAccount = sourceGroupOwnerAccount;
-        }
-    }
     }
 }

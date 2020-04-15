@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Adb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
-        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
-        /// 
-        /// &gt; **NOTE:** Available in v1.71.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetClusters.InvokeAsync() instead")]
-        public static Task<GetClustersResult> GetClusters(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetClusters
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// &gt; **NOTE:** Available in v1.71.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetClustersArgs : Pulumi.InvokeArgs
     {
@@ -83,150 +67,53 @@ namespace Pulumi.AliCloud.Adb
         }
     }
 
+
     [OutputType]
     public sealed class GetClustersResult
     {
         /// <summary>
         /// A list of ADB clusters. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetClustersClustersResult> Clusters;
+        public readonly ImmutableArray<Outputs.GetClustersClusterResult> Clusters;
         public readonly string? DescriptionRegex;
         /// <summary>
         /// A list of ADB cluster descriptions. 
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of ADB cluster IDs. 
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetClustersResult(
-            ImmutableArray<Outputs.GetClustersClustersResult> clusters,
+            ImmutableArray<Outputs.GetClustersClusterResult> clusters,
+
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             Clusters = clusters;
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetClustersClustersResult
-    {
-        /// <summary>
-        /// Billing method. Value options: `PostPaid` for Pay-As-You-Go and `PrePaid` for subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        /// <summary>
-        /// The CreateTime of the ADB cluster.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The DBNodeClass of the ADB cluster.
-        /// </summary>
-        public readonly string DbNodeClass;
-        /// <summary>
-        /// The DBNodeCount of the ADB cluster.
-        /// </summary>
-        public readonly int DbNodeCount;
-        /// <summary>
-        /// The DBNodeStorage of the ADB cluster.
-        /// </summary>
-        public readonly int DbNodeStorage;
-        /// <summary>
-        /// The description of the ADB cluster.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Expiration time. Pay-As-You-Go clusters never expire.
-        /// </summary>
-        public readonly string ExpireTime;
-        /// <summary>
-        /// The expired of the ADB cluster.
-        /// </summary>
-        public readonly string Expired;
-        /// <summary>
-        /// The ID of the ADB cluster.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The LockMode of the ADB cluster.
-        /// </summary>
-        public readonly string LockMode;
-        /// <summary>
-        /// The DBClusterNetworkType of the ADB cluster.
-        /// </summary>
-        public readonly string NetworkType;
-        /// <summary>
-        /// Region ID the cluster belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// status of the cluster.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// ID of the VPC the cluster belongs to.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The ZoneId of the ADB cluster.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetClustersClustersResult(
-            string chargeType,
-            string createTime,
-            string dbNodeClass,
-            int dbNodeCount,
-            int dbNodeStorage,
-            string description,
-            string expireTime,
-            string expired,
-            string id,
-            string lockMode,
-            string networkType,
-            string regionId,
-            string status,
-            string vpcId,
-            string zoneId)
-        {
-            ChargeType = chargeType;
-            CreateTime = createTime;
-            DbNodeClass = dbNodeClass;
-            DbNodeCount = dbNodeCount;
-            DbNodeStorage = dbNodeStorage;
-            Description = description;
-            ExpireTime = expireTime;
-            Expired = expired;
-            Id = id;
-            LockMode = lockMode;
-            NetworkType = networkType;
-            RegionId = regionId;
-            Status = status;
-            VpcId = vpcId;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

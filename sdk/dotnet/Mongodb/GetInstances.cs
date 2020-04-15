@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MongoDB
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, engine or instance type.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
         /// Filters support regular expression for the instance name, engine or instance type.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -95,6 +81,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
@@ -102,6 +89,10 @@ namespace Pulumi.AliCloud.MongoDB
         /// Instance availability zone.
         /// </summary>
         public readonly string? AvailabilityZone;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The ids list of MongoDB instances
         /// </summary>
@@ -117,7 +108,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// A list of MongoDB instances. Its every element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// The names list of MongoDB instances
@@ -125,25 +116,31 @@ namespace Pulumi.AliCloud.MongoDB
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
             string? availabilityZone,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceClass,
+
             string? instanceType,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             AvailabilityZone = availabilityZone;
+            Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
             InstanceType = instanceType;
@@ -152,197 +149,6 @@ namespace Pulumi.AliCloud.MongoDB
             Names = names;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesMongosResult
-    {
-        /// <summary>
-        /// Shard instance specification.
-        /// </summary>
-        public readonly string Class;
-        /// <summary>
-        /// Shard instance description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Shard instance ID.
-        /// </summary>
-        public readonly string NodeId;
-
-        [OutputConstructor]
-        private GetInstancesInstancesMongosResult(
-            string @class,
-            string description,
-            string nodeId)
-        {
-            Class = @class;
-            Description = description;
-            NodeId = nodeId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// Instance availability zone.
-        /// </summary>
-        public readonly string AvailabilityZone;
-        /// <summary>
-        /// Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        /// <summary>
-        /// Creation time of the instance in RFC3339 format.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Database engine type. Supported option is `MongoDB`.
-        /// </summary>
-        public readonly string Engine;
-        /// <summary>
-        /// Database engine version.
-        /// </summary>
-        public readonly string EngineVersion;
-        /// <summary>
-        /// Expiration time in RFC3339 format. Pay-As-You-Go instances are never expire.
-        /// </summary>
-        public readonly string ExpirationTime;
-        /// <summary>
-        /// The ID of the MongoDB instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Sizing of the instance to be queried.
-        /// </summary>
-        public readonly string InstanceClass;
-        /// <summary>
-        /// Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
-        /// </summary>
-        public readonly string InstanceType;
-        /// <summary>
-        /// Lock status of the instance.
-        /// </summary>
-        public readonly string LockMode;
-        /// <summary>
-        /// Array composed of Mongos.
-        /// </summary>
-        public readonly ImmutableArray<GetInstancesInstancesMongosResult> Mongos;
-        /// <summary>
-        /// The name of the MongoDB instance.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Classic network or VPC.
-        /// </summary>
-        public readonly string NetworkType;
-        /// <summary>
-        /// Region ID the instance belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Replication factor corresponds to number of nodes. Optional values are `1` for single node and `3` for three nodes replica set.
-        /// </summary>
-        public readonly string Replication;
-        /// <summary>
-        /// Array composed of shards.
-        /// </summary>
-        public readonly ImmutableArray<GetInstancesInstancesShardsResult> Shards;
-        /// <summary>
-        /// Status of the instance.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// Shard disk.
-        /// </summary>
-        public readonly int Storage;
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string availabilityZone,
-            string chargeType,
-            string creationTime,
-            string engine,
-            string engineVersion,
-            string expirationTime,
-            string id,
-            string instanceClass,
-            string instanceType,
-            string lockMode,
-            ImmutableArray<GetInstancesInstancesMongosResult> mongos,
-            string name,
-            string networkType,
-            string regionId,
-            string replication,
-            ImmutableArray<GetInstancesInstancesShardsResult> shards,
-            string status,
-            int storage,
-            ImmutableDictionary<string, object> tags)
-        {
-            AvailabilityZone = availabilityZone;
-            ChargeType = chargeType;
-            CreationTime = creationTime;
-            Engine = engine;
-            EngineVersion = engineVersion;
-            ExpirationTime = expirationTime;
-            Id = id;
-            InstanceClass = instanceClass;
-            InstanceType = instanceType;
-            LockMode = lockMode;
-            Mongos = mongos;
-            Name = name;
-            NetworkType = networkType;
-            RegionId = regionId;
-            Replication = replication;
-            Shards = shards;
-            Status = status;
-            Storage = storage;
-            Tags = tags;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstancesInstancesShardsResult
-    {
-        /// <summary>
-        /// Shard instance specification.
-        /// </summary>
-        public readonly string Class;
-        /// <summary>
-        /// Shard instance description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Shard instance ID.
-        /// </summary>
-        public readonly string NodeId;
-        /// <summary>
-        /// Shard disk.
-        /// </summary>
-        public readonly int Storage;
-
-        [OutputConstructor]
-        private GetInstancesInstancesShardsResult(
-            string @class,
-            string description,
-            string nodeId,
-            int storage)
-        {
-            Class = @class;
-            Description = description;
-            NodeId = nodeId;
-            Storage = storage;
-        }
-    }
     }
 }

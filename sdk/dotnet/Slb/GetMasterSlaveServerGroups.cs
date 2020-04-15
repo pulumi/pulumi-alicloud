@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the master slave server groups related to a server load balancer.
-        /// 
-        /// &gt; **NOTE:** Available in 1.54.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetMasterSlaveServerGroups.InvokeAsync() instead")]
-        public static Task<GetMasterSlaveServerGroupsResult> GetMasterSlaveServerGroups(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetMasterSlaveServerGroups
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.54.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_master_slave_server_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetMasterSlaveServerGroupsResult> InvokeAsync(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMasterSlaveServerGroupsResult>("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", args ?? new GetMasterSlaveServerGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetMasterSlaveServerGroupsArgs : Pulumi.InvokeArgs
     {
@@ -73,13 +58,18 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetMasterSlaveServerGroupsResult
     {
         /// <summary>
         /// A list of SLB master slave server groups. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetMasterSlaveServerGroupsGroupsResult> Groups;
+        public readonly ImmutableArray<Outputs.GetMasterSlaveServerGroupsGroupResult> Groups;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SLB master slave server groups IDs.
         /// </summary>
@@ -91,94 +81,30 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetMasterSlaveServerGroupsResult(
-            ImmutableArray<Outputs.GetMasterSlaveServerGroupsGroupsResult> groups,
+            ImmutableArray<Outputs.GetMasterSlaveServerGroupsGroupResult> groups,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string loadBalancerId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Groups = groups;
+            Id = id;
             Ids = ids;
             LoadBalancerId = loadBalancerId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetMasterSlaveServerGroupsGroupsResult
-    {
-        /// <summary>
-        /// master slave server group ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// master slave server group name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ECS instances associated to the group. Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetMasterSlaveServerGroupsGroupsServersResult> Servers;
-
-        [OutputConstructor]
-        private GetMasterSlaveServerGroupsGroupsResult(
-            string id,
-            string name,
-            ImmutableArray<GetMasterSlaveServerGroupsGroupsServersResult> servers)
-        {
-            Id = id;
-            Name = name;
-            Servers = servers;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMasterSlaveServerGroupsGroupsServersResult
-    {
-        /// <summary>
-        /// ID of the attached ECS instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// The port used by the master slave server group.
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// The server type of the attached ECS instance.
-        /// </summary>
-        public readonly string ServerType;
-        /// <summary>
-        /// Weight associated to the ECS instance.
-        /// </summary>
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private GetMasterSlaveServerGroupsGroupsServersResult(
-            string instanceId,
-            int port,
-            string serverType,
-            int weight)
-        {
-            InstanceId = instanceId;
-            Port = port;
-            ServerType = serverType;
-            Weight = weight;
-        }
-    }
     }
 }

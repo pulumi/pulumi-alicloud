@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the identity of the current user.
-        /// 
-        /// &gt; **NOTE:** Available in 1.65.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
-        /// </summary>
-        [Obsolete("Use GetCallerIdentity.InvokeAsync() instead")]
-        public static Task<GetCallerIdentityResult> GetCallerIdentity(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCallerIdentity
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in 1.65.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetCallerIdentityResult>("alicloud:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithVersion());
     }
+
 
     [OutputType]
     public sealed class GetCallerIdentityResult
@@ -51,25 +36,28 @@ namespace Pulumi.AliCloud
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// The type of the princiapal. RAMUser for users.
-        /// </summary>
-        public readonly string IdentityType;
-        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The type of the princiapal. RAMUser for users.
+        /// </summary>
+        public readonly string IdentityType;
 
         [OutputConstructor]
         private GetCallerIdentityResult(
             string accountId,
+
             string arn,
-            string identityType,
-            string id)
+
+            string id,
+
+            string identityType)
         {
             AccountId = accountId;
             Arn = arn;
-            IdentityType = identityType;
             Id = id;
+            IdentityType = identityType;
         }
     }
 }

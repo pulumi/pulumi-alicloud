@@ -9,33 +9,19 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Rds
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
-        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
         /// The `alicloud.rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -114,6 +100,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
@@ -130,13 +117,17 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string? Engine;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of RDS instance IDs. 
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// A list of RDS instances. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of RDS instance names. 
@@ -156,30 +147,39 @@ namespace Pulumi.AliCloud.Rds
         /// ID of the VSwitch the instance belongs to.
         /// </summary>
         public readonly string? VswitchId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
             string? connectionMode,
+
             string? dbType,
+
             string? engine,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? status,
+
             ImmutableDictionary<string, object>? tags,
+
             string? vpcId,
-            string? vswitchId,
-            string id)
+
+            string? vswitchId)
         {
             ConnectionMode = connectionMode;
             DbType = dbType;
             Engine = engine;
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
@@ -189,165 +189,6 @@ namespace Pulumi.AliCloud.Rds
             Tags = tags;
             VpcId = vpcId;
             VswitchId = vswitchId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// Availability zone.
-        /// </summary>
-        public readonly string AvailabilityZone;
-        /// <summary>
-        /// Billing method. Value options: `Postpaid` for Pay-As-You-Go and `Prepaid` for subscription.
-        /// </summary>
-        public readonly string ChargeType;
-        /// <summary>
-        /// `Standard` for standard access mode and `Safe` for high security access mode.
-        /// </summary>
-        public readonly string ConnectionMode;
-        /// <summary>
-        /// (Available in 1.70.3+) RDS database connection string.
-        /// </summary>
-        public readonly string ConnectionString;
-        /// <summary>
-        /// Creation time of the instance.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// (Available in 1.70.3+) The storage type of the instance.
-        /// </summary>
-        public readonly string DbInstanceStorageType;
-        /// <summary>
-        /// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
-        /// </summary>
-        public readonly string DbType;
-        /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
-        /// </summary>
-        public readonly string Engine;
-        /// <summary>
-        /// Database version.
-        /// </summary>
-        public readonly string EngineVersion;
-        /// <summary>
-        /// Expiration time. Pay-As-You-Go instances never expire.
-        /// </summary>
-        public readonly string ExpireTime;
-        /// <summary>
-        /// If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
-        /// </summary>
-        public readonly string GuardInstanceId;
-        /// <summary>
-        /// The ID of the RDS instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// (Available in 1.70.3+) User-defined DB instance storage space.
-        /// </summary>
-        public readonly int InstanceStorage;
-        /// <summary>
-        /// Sizing of the RDS instance.
-        /// </summary>
-        public readonly string InstanceType;
-        /// <summary>
-        /// ID of the primary instance. If this parameter is not returned, the current instance is a primary instance.
-        /// </summary>
-        public readonly string MasterInstanceId;
-        /// <summary>
-        /// The name of the RDS instance.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// `Internet` for public network or `Intranet` for private network.
-        /// </summary>
-        public readonly string NetType;
-        /// <summary>
-        /// (Available in 1.70.3+) RDS database connection port.
-        /// </summary>
-        public readonly string Port;
-        /// <summary>
-        /// A list of IDs of read-only instances attached to the primary instance.
-        /// </summary>
-        public readonly ImmutableArray<string> ReadonlyInstanceIds;
-        /// <summary>
-        /// Region ID the instance belongs to.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Status of the instance.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// If a temporary instance is attached to the current instance, the ID of the temporary instance applies.
-        /// </summary>
-        public readonly string TempInstanceId;
-        /// <summary>
-        /// Used to retrieve instances belong to specified VPC.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// Used to retrieve instances belong to specified `vswitch` resources.
-        /// </summary>
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string availabilityZone,
-            string chargeType,
-            string connectionMode,
-            string connectionString,
-            string createTime,
-            string dbInstanceStorageType,
-            string dbType,
-            string engine,
-            string engineVersion,
-            string expireTime,
-            string guardInstanceId,
-            string id,
-            int instanceStorage,
-            string instanceType,
-            string masterInstanceId,
-            string name,
-            string netType,
-            string port,
-            ImmutableArray<string> readonlyInstanceIds,
-            string regionId,
-            string status,
-            string tempInstanceId,
-            string vpcId,
-            string vswitchId)
-        {
-            AvailabilityZone = availabilityZone;
-            ChargeType = chargeType;
-            ConnectionMode = connectionMode;
-            ConnectionString = connectionString;
-            CreateTime = createTime;
-            DbInstanceStorageType = dbInstanceStorageType;
-            DbType = dbType;
-            Engine = engine;
-            EngineVersion = engineVersion;
-            ExpireTime = expireTime;
-            GuardInstanceId = guardInstanceId;
-            Id = id;
-            InstanceStorage = instanceStorage;
-            InstanceType = instanceType;
-            MasterInstanceId = masterInstanceId;
-            Name = name;
-            NetType = netType;
-            Port = port;
-            ReadonlyInstanceIds = readonlyInstanceIds;
-            RegionId = regionId;
-            Status = status;
-            TempInstanceId = tempInstanceId;
-            VpcId = vpcId;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

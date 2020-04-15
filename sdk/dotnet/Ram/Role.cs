@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ram
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ram/role:Role", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ram/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

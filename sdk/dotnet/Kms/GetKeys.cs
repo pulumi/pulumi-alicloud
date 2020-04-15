@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKeys.InvokeAsync() instead")]
-        public static Task<GetKeysResult> GetKeys(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKeys
     {
         /// <summary>
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kms_keys.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("alicloud:kms/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKeysArgs : Pulumi.InvokeArgs
     {
@@ -69,10 +56,15 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetKeysResult
     {
         public readonly string? DescriptionRegex;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of KMS key IDs.
         /// </summary>
@@ -80,88 +72,33 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// A list of KMS keys. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetKeysKeysResult> Keys;
+        public readonly ImmutableArray<Outputs.GetKeysKeyResult> Keys;
         public readonly string? OutputFile;
         /// <summary>
         /// Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
         /// </summary>
         public readonly string? Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKeysResult(
             string? descriptionRegex,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetKeysKeysResult> keys,
+
+            ImmutableArray<Outputs.GetKeysKeyResult> keys,
+
             string? outputFile,
-            string? status,
-            string id)
+
+            string? status)
         {
             DescriptionRegex = descriptionRegex;
+            Id = id;
             Ids = ids;
             Keys = keys;
             OutputFile = outputFile;
             Status = status;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKeysKeysResult
-    {
-        /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the key.
-        /// </summary>
-        public readonly string Arn;
-        /// <summary>
-        /// Creation date of key.
-        /// </summary>
-        public readonly string CreationDate;
-        /// <summary>
-        /// The owner of the key.
-        /// </summary>
-        public readonly string Creator;
-        /// <summary>
-        /// Deletion date of key.
-        /// </summary>
-        public readonly string DeleteDate;
-        /// <summary>
-        /// Description of the key.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the key.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetKeysKeysResult(
-            string arn,
-            string creationDate,
-            string creator,
-            string deleteDate,
-            string description,
-            string id,
-            string status)
-        {
-            Arn = arn;
-            CreationDate = creationDate;
-            Creator = creator;
-            DeleteDate = deleteDate;
-            Description = description;
-            Id = id;
-            Status = status;
-        }
-    }
     }
 }

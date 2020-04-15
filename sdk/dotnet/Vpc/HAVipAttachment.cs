@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HAVipAttachment(string name, HAVipAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/hAVipAttachment:HAVipAttachment", name, args ?? new HAVipAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

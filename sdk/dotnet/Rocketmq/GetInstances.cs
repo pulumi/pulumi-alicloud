@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ONS Instances in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.52.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; **NOTE:** Available in 1.52.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:rocketmq/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -67,9 +52,14 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of instance IDs.
         /// </summary>
@@ -77,83 +67,34 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// A list of instances. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of instance names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// ID of the instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// ID of the instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// Name of the instance.
-        /// </summary>
-        public readonly string InstanceName;
-        /// <summary>
-        /// The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-        /// </summary>
-        public readonly int InstanceStatus;
-        /// <summary>
-        /// The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
-        /// </summary>
-        public readonly int InstanceType;
-        /// <summary>
-        /// The automatic release time of an Enterprise Platinum Edition instance.
-        /// </summary>
-        public readonly int ReleaseTime;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string id,
-            string instanceId,
-            string instanceName,
-            int instanceStatus,
-            int instanceType,
-            int releaseTime)
-        {
-            Id = id;
-            InstanceId = instanceId;
-            InstanceName = instanceName;
-            InstanceStatus = instanceStatus;
-            InstanceType = instanceType;
-            ReleaseTime = releaseTime;
-        }
-    }
     }
 }

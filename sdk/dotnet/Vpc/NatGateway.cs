@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Vpc
         /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         /// </summary>
         [Output("bandwidthPackages")]
-        public Output<ImmutableArray<Outputs.NatGatewayBandwidthPackages>> BandwidthPackages { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.NatGatewayBandwidthPackage>> BandwidthPackages { get; private set; } = null!;
 
         /// <summary>
         /// Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NatGateway(string name, NatGatewayArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/natGateway:NatGateway", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/natGateway:NatGateway", name, args ?? new NatGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,14 +124,14 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NatGatewayArgs : Pulumi.ResourceArgs
     {
         [Input("bandwidthPackages")]
-        private InputList<Inputs.NatGatewayBandwidthPackagesArgs>? _bandwidthPackages;
+        private InputList<Inputs.NatGatewayBandwidthPackageArgs>? _bandwidthPackages;
 
         /// <summary>
         /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         /// </summary>
-        public InputList<Inputs.NatGatewayBandwidthPackagesArgs> BandwidthPackages
+        public InputList<Inputs.NatGatewayBandwidthPackageArgs> BandwidthPackages
         {
-            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackagesArgs>());
+            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackageArgs>());
             set => _bandwidthPackages = value;
         }
 
@@ -191,14 +191,14 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? BandwidthPackageIds { get; set; }
 
         [Input("bandwidthPackages")]
-        private InputList<Inputs.NatGatewayBandwidthPackagesGetArgs>? _bandwidthPackages;
+        private InputList<Inputs.NatGatewayBandwidthPackageGetArgs>? _bandwidthPackages;
 
         /// <summary>
         /// A list of bandwidth packages for the nat gatway. Only support nat gateway created before 00:00 on November 4, 2017. Available in v1.13.0+ and v1.7.1-.
         /// </summary>
-        public InputList<Inputs.NatGatewayBandwidthPackagesGetArgs> BandwidthPackages
+        public InputList<Inputs.NatGatewayBandwidthPackageGetArgs> BandwidthPackages
         {
-            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackagesGetArgs>());
+            get => _bandwidthPackages ?? (_bandwidthPackages = new InputList<Inputs.NatGatewayBandwidthPackageGetArgs>());
             set => _bandwidthPackages = value;
         }
 
@@ -259,73 +259,5 @@ namespace Pulumi.AliCloud.Vpc
         public NatGatewayState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class NatGatewayBandwidthPackagesArgs : Pulumi.ResourceArgs
-    {
-        [Input("bandwidth", required: true)]
-        public Input<int> Bandwidth { get; set; } = null!;
-
-        [Input("ipCount", required: true)]
-        public Input<int> IpCount { get; set; } = null!;
-
-        [Input("publicIpAddresses")]
-        public Input<string>? PublicIpAddresses { get; set; }
-
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
-
-        public NatGatewayBandwidthPackagesArgs()
-        {
-        }
-    }
-
-    public sealed class NatGatewayBandwidthPackagesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("bandwidth", required: true)]
-        public Input<int> Bandwidth { get; set; } = null!;
-
-        [Input("ipCount", required: true)]
-        public Input<int> IpCount { get; set; } = null!;
-
-        [Input("publicIpAddresses")]
-        public Input<string>? PublicIpAddresses { get; set; }
-
-        [Input("zone")]
-        public Input<string>? Zone { get; set; }
-
-        public NatGatewayBandwidthPackagesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class NatGatewayBandwidthPackages
-    {
-        public readonly int Bandwidth;
-        public readonly int IpCount;
-        public readonly string PublicIpAddresses;
-        public readonly string Zone;
-
-        [OutputConstructor]
-        private NatGatewayBandwidthPackages(
-            int bandwidth,
-            int ipCount,
-            string publicIpAddresses,
-            string zone)
-        {
-            Bandwidth = bandwidth;
-            IpCount = ipCount;
-            PublicIpAddresses = publicIpAddresses;
-            Zone = zone;
-        }
-    }
     }
 }

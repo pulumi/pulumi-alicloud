@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the ots tables of the current Alibaba Cloud user.
-        /// 
-        /// &gt; **NOTE:** Available in v1.40.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTables.InvokeAsync() instead")]
-        public static Task<GetTablesResult> GetTables(GetTablesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTables
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_tables.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? new GetTablesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTablesArgs : Pulumi.InvokeArgs
     {
@@ -73,9 +58,14 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
+
     [OutputType]
     public sealed class GetTablesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of table IDs.
         /// </summary>
@@ -93,95 +83,31 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// A list of tables. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTablesTablesResult> Tables;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTablesTableResult> Tables;
 
         [OutputConstructor]
         private GetTablesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string instanceName,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetTablesTablesResult> tables,
-            string id)
+
+            ImmutableArray<Outputs.GetTablesTableResult> tables)
         {
+            Id = id;
             Ids = ids;
             InstanceName = instanceName;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Tables = tables;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTablesTablesPrimaryKeysResult
-    {
-        public readonly string Name;
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetTablesTablesPrimaryKeysResult(
-            string name,
-            string type)
-        {
-            Name = name;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetTablesTablesResult
-    {
-        /// <summary>
-        /// ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of OTS instance.
-        /// </summary>
-        public readonly string InstanceName;
-        /// <summary>
-        /// The maximum number of versions stored in this table.
-        /// </summary>
-        public readonly int MaxVersion;
-        /// <summary>
-        /// The property of `TableMeta` which indicates the structure information of a table.
-        /// </summary>
-        public readonly ImmutableArray<GetTablesTablesPrimaryKeysResult> PrimaryKeys;
-        /// <summary>
-        /// The table name of the OTS which could not be changed.
-        /// </summary>
-        public readonly string TableName;
-        /// <summary>
-        /// The retention time of data stored in this table.
-        /// </summary>
-        public readonly int TimeToLive;
-
-        [OutputConstructor]
-        private GetTablesTablesResult(
-            string id,
-            string instanceName,
-            int maxVersion,
-            ImmutableArray<GetTablesTablesPrimaryKeysResult> primaryKeys,
-            string tableName,
-            int timeToLive)
-        {
-            Id = id;
-            InstanceName = instanceName;
-            MaxVersion = maxVersion;
-            PrimaryKeys = primaryKeys;
-            TableName = tableName;
-            TimeToLive = timeToLive;
-        }
-    }
     }
 }

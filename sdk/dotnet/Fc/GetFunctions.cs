@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the Function Compute functions of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFunctions.InvokeAsync() instead")]
-        public static Task<GetFunctionsResult> GetFunctions(GetFunctionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFunctions
     {
         /// <summary>
         /// This data source provides the Function Compute functions of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionsResult> InvokeAsync(GetFunctionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionsResult>("alicloud:fc/getFunctions:getFunctions", args ?? new GetFunctionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFunctionsArgs : Pulumi.InvokeArgs
     {
@@ -70,13 +57,18 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
+
     [OutputType]
     public sealed class GetFunctionsResult
     {
         /// <summary>
         /// A list of functions. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFunctionsFunctionsResult> Functions;
+        public readonly ImmutableArray<Outputs.GetFunctionsFunctionResult> Functions;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of functions ids.
         /// </summary>
@@ -88,114 +80,30 @@ namespace Pulumi.AliCloud.FC
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string ServiceName;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFunctionsResult(
-            ImmutableArray<Outputs.GetFunctionsFunctionsResult> functions,
+            ImmutableArray<Outputs.GetFunctionsFunctionResult> functions,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string serviceName,
-            string id)
+
+            string serviceName)
         {
             Functions = functions;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ServiceName = serviceName;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetFunctionsFunctionsResult
-    {
-        /// <summary>
-        /// Checksum (crc64) of the function code.
-        /// </summary>
-        public readonly string CodeChecksum;
-        /// <summary>
-        /// Function code size in bytes.
-        /// </summary>
-        public readonly int CodeSize;
-        /// <summary>
-        /// Function creation time.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Function description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// A map that defines environment variables for the function.
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> EnvironmentVariables;
-        /// <summary>
-        /// Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
-        /// </summary>
-        public readonly string Handler;
-        /// <summary>
-        /// Function ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Function last modification time.
-        /// </summary>
-        public readonly string LastModificationTime;
-        /// <summary>
-        /// Amount of memory in MB the function can use at runtime.
-        /// </summary>
-        public readonly int MemorySize;
-        /// <summary>
-        /// Function name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
-        /// </summary>
-        public readonly string Runtime;
-        /// <summary>
-        /// Maximum amount of time the function can run in seconds.
-        /// </summary>
-        public readonly int Timeout;
-
-        [OutputConstructor]
-        private GetFunctionsFunctionsResult(
-            string codeChecksum,
-            int codeSize,
-            string creationTime,
-            string description,
-            ImmutableDictionary<string, object> environmentVariables,
-            string handler,
-            string id,
-            string lastModificationTime,
-            int memorySize,
-            string name,
-            string runtime,
-            int timeout)
-        {
-            CodeChecksum = codeChecksum;
-            CodeSize = codeSize;
-            CreationTime = creationTime;
-            Description = description;
-            EnvironmentVariables = environmentVariables;
-            Handler = handler;
-            Id = id;
-            LastModificationTime = lastModificationTime;
-            MemorySize = memorySize;
-            Name = name;
-            Runtime = runtime;
-            Timeout = timeout;
-        }
-    }
     }
 }

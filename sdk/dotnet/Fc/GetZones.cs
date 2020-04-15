@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.FC
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
-        /// 
-        /// &gt; **NOTE:** Available in v1.74.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_zones.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetZones.InvokeAsync() instead")]
-        public static Task<GetZonesResult> GetZones(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:fc/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZones
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.FC
         /// 
         /// &gt; **NOTE:** Available in v1.74.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_zones.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:fc/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:fc/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
@@ -49,9 +34,14 @@ namespace Pulumi.AliCloud.FC
         }
     }
 
+
     [OutputType]
     public sealed class GetZonesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of zone IDs.
         /// </summary>
@@ -60,42 +50,22 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// A list of availability zones. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetZonesZonesResult> Zones;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]
         private GetZonesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetZonesZonesResult> zones,
-            string id)
+
+            ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
+            Id = id;
             Ids = ids;
             OutputFile = outputFile;
             Zones = zones;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetZonesZonesResult
-    {
-        /// <summary>
-        /// ID of the zone.
-        /// </summary>
-        public readonly string Id;
-
-        [OutputConstructor]
-        private GetZonesZonesResult(string id)
-        {
-            Id = id;
-        }
-    }
     }
 }

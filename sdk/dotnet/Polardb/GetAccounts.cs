@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.PolarDB
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.polardb.getAccounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
-        /// Filters support regular expression for the account name, searches by clusterId.
-        /// 
-        /// &gt; **NOTE:** Available in v1.70.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccounts.InvokeAsync() instead")]
-        public static Task<GetAccountsResult> GetAccounts(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccounts
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available in v1.70.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_accounts.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:polardb/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountsArgs : Pulumi.InvokeArgs
     {
@@ -60,109 +44,42 @@ namespace Pulumi.AliCloud.PolarDB
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountsResult
     {
         /// <summary>
         /// A list of PolarDB cluster accounts. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAccountsAccountsResult> Accounts;
+        public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
         public readonly string DbClusterId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? NameRegex;
         /// <summary>
         /// Account name of the cluster.
         /// </summary>
         public readonly ImmutableArray<string> Names;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAccountsResult(
-            ImmutableArray<Outputs.GetAccountsAccountsResult> accounts,
+            ImmutableArray<Outputs.GetAccountsAccountResult> accounts,
+
             string dbClusterId,
+
+            string id,
+
             string? nameRegex,
-            ImmutableArray<string> names,
-            string id)
+
+            ImmutableArray<string> names)
         {
             Accounts = accounts;
             DbClusterId = dbClusterId;
+            Id = id;
             NameRegex = nameRegex;
             Names = names;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAccountsAccountsDatabasePrivilegesResult
-    {
-        /// <summary>
-        /// Account privilege of database
-        /// </summary>
-        public readonly string AccountPrivilege;
-        /// <summary>
-        /// The account owned database name 
-        /// </summary>
-        public readonly string DbName;
-
-        [OutputConstructor]
-        private GetAccountsAccountsDatabasePrivilegesResult(
-            string accountPrivilege,
-            string dbName)
-        {
-            AccountPrivilege = accountPrivilege;
-            DbName = dbName;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetAccountsAccountsResult
-    {
-        /// <summary>
-        /// Account description.
-        /// </summary>
-        public readonly string AccountDescription;
-        /// <summary>
-        /// Account lock state, Valid values are `Lock`, `UnLock`.
-        /// </summary>
-        public readonly string AccountLockState;
-        /// <summary>
-        /// Account name.
-        /// </summary>
-        public readonly string AccountName;
-        /// <summary>
-        /// Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
-        /// </summary>
-        public readonly string AccountStatus;
-        /// <summary>
-        /// Account type, Valid values are `Normal`, `Super`.
-        /// </summary>
-        public readonly string AccountType;
-        /// <summary>
-        /// A list of database privilege. Each element contains the following attributes.
-        /// </summary>
-        public readonly ImmutableArray<GetAccountsAccountsDatabasePrivilegesResult> DatabasePrivileges;
-
-        [OutputConstructor]
-        private GetAccountsAccountsResult(
-            string accountDescription,
-            string accountLockState,
-            string accountName,
-            string accountStatus,
-            string accountType,
-            ImmutableArray<GetAccountsAccountsDatabasePrivilegesResult> databasePrivileges)
-        {
-            AccountDescription = accountDescription;
-            AccountLockState = accountLockState;
-            AccountName = accountName;
-            AccountStatus = accountStatus;
-            AccountType = accountType;
-            DatabasePrivileges = databasePrivileges;
-        }
-    }
     }
 }

@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAttachments.InvokeAsync() instead")]
-        public static Task<GetAttachmentsResult> GetAttachments(GetAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAttachments
     {
         /// <summary>
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_attachments.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAttachmentsResult> InvokeAsync(GetAttachmentsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAttachmentsResult>("alicloud:slb/getAttachments:getAttachments", args ?? new GetAttachmentsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAttachmentsArgs : Pulumi.InvokeArgs
     {
@@ -63,60 +50,39 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetAttachmentsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly ImmutableArray<string> InstanceIds;
         public readonly string LoadBalancerId;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of SLB attachments. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAttachmentsSlbAttachmentsResult> SlbAttachments;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetAttachmentsSlbAttachmentResult> SlbAttachments;
 
         [OutputConstructor]
         private GetAttachmentsResult(
+            string id,
+
             ImmutableArray<string> instanceIds,
+
             string loadBalancerId,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetAttachmentsSlbAttachmentsResult> slbAttachments,
-            string id)
+
+            ImmutableArray<Outputs.GetAttachmentsSlbAttachmentResult> slbAttachments)
         {
+            Id = id;
             InstanceIds = instanceIds;
             LoadBalancerId = loadBalancerId;
             OutputFile = outputFile;
             SlbAttachments = slbAttachments;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAttachmentsSlbAttachmentsResult
-    {
-        /// <summary>
-        /// ID of the attached ECS instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// Weight associated to the ECS instance.
-        /// </summary>
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private GetAttachmentsSlbAttachmentsResult(
-            string instanceId,
-            int weight)
-        {
-            InstanceId = instanceId;
-            Weight = weight;
-        }
-    }
     }
 }

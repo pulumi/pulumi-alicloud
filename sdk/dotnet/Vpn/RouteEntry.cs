@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouteEntry(string name, RouteEntryArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpn/routeEntry:RouteEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpn/routeEntry:RouteEntry", name, args ?? new RouteEntryArgs(), MakeResourceOptions(options, ""))
         {
         }
 

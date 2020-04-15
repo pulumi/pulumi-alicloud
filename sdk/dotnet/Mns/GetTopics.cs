@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Mns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTopics.InvokeAsync() instead")]
-        public static Task<GetTopicsResult> GetTopics(GetTopicsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTopics
     {
         /// <summary>
         /// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topics.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTopicsArgs : Pulumi.InvokeArgs
     {
@@ -51,9 +38,14 @@ namespace Pulumi.AliCloud.Mns
         }
     }
 
+
     [OutputType]
     public sealed class GetTopicsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? NamePrefix;
         /// <summary>
         /// A list of topic names.
@@ -63,63 +55,25 @@ namespace Pulumi.AliCloud.Mns
         /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTopicsTopicsResult> Topics;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
 
         [OutputConstructor]
         private GetTopicsResult(
+            string id,
+
             string? namePrefix,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetTopicsTopicsResult> topics,
-            string id)
+
+            ImmutableArray<Outputs.GetTopicsTopicResult> topics)
         {
+            Id = id;
             NamePrefix = namePrefix;
             Names = names;
             OutputFile = outputFile;
             Topics = topics;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTopicsTopicsResult
-    {
-        /// <summary>
-        /// The id of the topic. The value is set to `name`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Whether to enable logging.
-        /// </summary>
-        public readonly bool LoggingEnabled;
-        /// <summary>
-        /// This indicates the maximum length, in bytes, of any message body sent to the topic.
-        /// </summary>
-        public readonly int MaximumMessageSize;
-        /// <summary>
-        /// The name of the topic.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetTopicsTopicsResult(
-            string id,
-            bool loggingEnabled,
-            int maximumMessageSize,
-            string name)
-        {
-            Id = id;
-            LoggingEnabled = loggingEnabled;
-            MaximumMessageSize = maximumMessageSize;
-            Name = name;
-        }
-    }
     }
 }

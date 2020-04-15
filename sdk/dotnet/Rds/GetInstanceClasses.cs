@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Rds
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the RDS instance classes resource available info of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.46.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceClasses.InvokeAsync() instead")]
-        public static Task<GetInstanceClassesResult> GetInstanceClasses(GetInstanceClassesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceClasses
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.46.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:rds/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceClassesArgs : Pulumi.InvokeArgs
     {
@@ -100,6 +85,7 @@ namespace Pulumi.AliCloud.Rds
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceClassesResult
     {
@@ -108,6 +94,10 @@ namespace Pulumi.AliCloud.Rds
         public readonly string? Engine;
         public readonly string? EngineVersion;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// (Available in 1.60.0+) A list of Rds instance class codes.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
@@ -115,37 +105,46 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// A list of Rds available resource. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceClassesInstanceClassesResult> InstanceClasses;
+        public readonly ImmutableArray<Outputs.GetInstanceClassesInstanceClassResult> InstanceClasses;
         public readonly bool? MultiZone;
         public readonly string? OutputFile;
         public readonly string? SortedBy;
         public readonly string? StorageType;
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceClassesResult(
             string? category,
+
             string? dbInstanceClass,
+
             string? engine,
+
             string? engineVersion,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceChargeType,
-            ImmutableArray<Outputs.GetInstanceClassesInstanceClassesResult> instanceClasses,
+
+            ImmutableArray<Outputs.GetInstanceClassesInstanceClassResult> instanceClasses,
+
             bool? multiZone,
+
             string? outputFile,
+
             string? sortedBy,
+
             string? storageType,
-            string? zoneId,
-            string id)
+
+            string? zoneId)
         {
             Category = category;
             DbInstanceClass = dbInstanceClass;
             Engine = engine;
             EngineVersion = engineVersion;
+            Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceClasses = instanceClasses;
@@ -154,92 +153,6 @@ namespace Pulumi.AliCloud.Rds
             SortedBy = sortedBy;
             StorageType = storageType;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceClassesInstanceClassesResult
-    {
-        /// <summary>
-        /// DB Instance available class.
-        /// </summary>
-        public readonly string InstanceClass;
-        public readonly string Price;
-        /// <summary>
-        /// DB Instance available storage range.
-        /// </summary>
-        public readonly GetInstanceClassesInstanceClassesStorageRangeResult StorageRange;
-        /// <summary>
-        /// A list of Zone to launch the DB instance.
-        /// </summary>
-        public readonly ImmutableArray<GetInstanceClassesInstanceClassesZoneIdsResult> ZoneIds;
-
-        [OutputConstructor]
-        private GetInstanceClassesInstanceClassesResult(
-            string instanceClass,
-            string price,
-            GetInstanceClassesInstanceClassesStorageRangeResult storageRange,
-            ImmutableArray<GetInstanceClassesInstanceClassesZoneIdsResult> zoneIds)
-        {
-            InstanceClass = instanceClass;
-            Price = price;
-            StorageRange = storageRange;
-            ZoneIds = zoneIds;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstanceClassesInstanceClassesStorageRangeResult
-    {
-        /// <summary>
-        /// DB Instance available storage max value.
-        /// </summary>
-        public readonly string Max;
-        /// <summary>
-        /// DB Instance available storage min value.
-        /// </summary>
-        public readonly string Min;
-        /// <summary>
-        /// DB Instance available storage increase step.
-        /// </summary>
-        public readonly string Step;
-
-        [OutputConstructor]
-        private GetInstanceClassesInstanceClassesStorageRangeResult(
-            string max,
-            string min,
-            string step)
-        {
-            Max = max;
-            Min = min;
-            Step = step;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstanceClassesInstanceClassesZoneIdsResult
-    {
-        /// <summary>
-        /// The Zone to launch the DB instance
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
-        /// </summary>
-        public readonly ImmutableArray<string> SubZoneIds;
-
-        [OutputConstructor]
-        private GetInstanceClassesInstanceClassesZoneIdsResult(
-            string id,
-            ImmutableArray<string> subZoneIds)
-        {
-            Id = id;
-            SubZoneIds = subZoneIds;
-        }
-    }
     }
 }

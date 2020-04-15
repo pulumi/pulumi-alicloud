@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the server load balancer backend servers related to a server load balancer..
-        /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetBackendServers.InvokeAsync() instead")]
-        public static Task<GetBackendServersResult> GetBackendServers(GetBackendServersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetBackendServers
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_backend_servers.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetBackendServersResult> InvokeAsync(GetBackendServersArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBackendServersResult>("alicloud:slb/getBackendServers:getBackendServers", args ?? new GetBackendServersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetBackendServersArgs : Pulumi.InvokeArgs
     {
@@ -67,63 +52,36 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetBackendServersResult
     {
-        public readonly ImmutableArray<Outputs.GetBackendServersBackendServersResult> BackendServers;
-        public readonly ImmutableArray<string> Ids;
-        public readonly string LoadBalancerId;
-        public readonly string? OutputFile;
+        public readonly ImmutableArray<Outputs.GetBackendServersBackendServerResult> BackendServers;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly string LoadBalancerId;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetBackendServersResult(
-            ImmutableArray<Outputs.GetBackendServersBackendServersResult> backendServers,
+            ImmutableArray<Outputs.GetBackendServersBackendServerResult> backendServers,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string loadBalancerId,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             BackendServers = backendServers;
+            Id = id;
             Ids = ids;
             LoadBalancerId = loadBalancerId;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetBackendServersBackendServersResult
-    {
-        /// <summary>
-        /// backend server ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Type of the backend server.
-        /// </summary>
-        public readonly string ServerType;
-        /// <summary>
-        /// Weight associated to the ECS instance.
-        /// </summary>
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private GetBackendServersBackendServersResult(
-            string id,
-            string serverType,
-            int weight)
-        {
-            Id = id;
-            ServerType = serverType;
-            Weight = weight;
-        }
-    }
     }
 }

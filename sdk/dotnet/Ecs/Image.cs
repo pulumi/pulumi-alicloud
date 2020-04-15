@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
     /// 
     /// &gt; **NOTE:**  Available in 1.64.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image.html.markdown.
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {
@@ -42,7 +38,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
         [Output("diskDeviceMappings")]
-        public Output<ImmutableArray<Outputs.ImageDiskDeviceMappings>> DiskDeviceMappings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ImageDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether to force delete the custom image, Default is `false`. 
@@ -100,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Image(string name, ImageArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/image:Image", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/image:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -150,14 +146,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         [Input("diskDeviceMappings")]
-        private InputList<Inputs.ImageDiskDeviceMappingsArgs>? _diskDeviceMappings;
+        private InputList<Inputs.ImageDiskDeviceMappingArgs>? _diskDeviceMappings;
 
         /// <summary>
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
-        public InputList<Inputs.ImageDiskDeviceMappingsArgs> DiskDeviceMappings
+        public InputList<Inputs.ImageDiskDeviceMappingArgs> DiskDeviceMappings
         {
-            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageDiskDeviceMappingsArgs>());
+            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageDiskDeviceMappingArgs>());
             set => _diskDeviceMappings = value;
         }
 
@@ -234,14 +230,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         [Input("diskDeviceMappings")]
-        private InputList<Inputs.ImageDiskDeviceMappingsGetArgs>? _diskDeviceMappings;
+        private InputList<Inputs.ImageDiskDeviceMappingGetArgs>? _diskDeviceMappings;
 
         /// <summary>
         /// Description of the system with disks and snapshots under the image.
         /// </summary>
-        public InputList<Inputs.ImageDiskDeviceMappingsGetArgs> DiskDeviceMappings
+        public InputList<Inputs.ImageDiskDeviceMappingGetArgs> DiskDeviceMappings
         {
-            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageDiskDeviceMappingsGetArgs>());
+            get => _diskDeviceMappings ?? (_diskDeviceMappings = new InputList<Inputs.ImageDiskDeviceMappingGetArgs>());
             set => _diskDeviceMappings = value;
         }
 
@@ -301,109 +297,5 @@ namespace Pulumi.AliCloud.Ecs
         public ImageState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ImageDiskDeviceMappingsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
-        /// </summary>
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
-
-        /// <summary>
-        /// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public ImageDiskDeviceMappingsArgs()
-        {
-        }
-    }
-
-    public sealed class ImageDiskDeviceMappingsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
-        /// </summary>
-        [Input("device")]
-        public Input<string>? Device { get; set; }
-
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
-
-        /// <summary>
-        /// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
-        /// </summary>
-        [Input("size")]
-        public Input<int>? Size { get; set; }
-
-        /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public ImageDiskDeviceMappingsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ImageDiskDeviceMappings
-    {
-        /// <summary>
-        /// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
-        /// </summary>
-        public readonly string Device;
-        /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        /// </summary>
-        public readonly string DiskType;
-        /// <summary>
-        /// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
-        /// </summary>
-        public readonly int Size;
-        /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
-        /// </summary>
-        public readonly string SnapshotId;
-
-        [OutputConstructor]
-        private ImageDiskDeviceMappings(
-            string device,
-            string diskType,
-            int size,
-            string snapshotId)
-        {
-            Device = device;
-            DiskType = diskType;
-            Size = size;
-            SnapshotId = snapshotId;
-        }
-    }
     }
 }

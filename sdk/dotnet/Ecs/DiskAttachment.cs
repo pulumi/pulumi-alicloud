@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
     /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/disk_attachment.html.markdown.
     /// </summary>
     public partial class DiskAttachment : Pulumi.CustomResource
     {
@@ -45,7 +41,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DiskAttachment(string name, DiskAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/diskAttachment:DiskAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/diskAttachment:DiskAttachment", name, args ?? new DiskAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

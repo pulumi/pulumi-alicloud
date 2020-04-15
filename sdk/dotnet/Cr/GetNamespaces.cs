@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CR
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list Container Registry namespaces on Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.35.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNamespaces.InvokeAsync() instead")]
-        public static Task<GetNamespacesResult> GetNamespaces(GetNamespacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNamespaces
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_namespaces.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNamespacesArgs : Pulumi.InvokeArgs
     {
@@ -55,9 +40,14 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
+
     [OutputType]
     public sealed class GetNamespacesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of matched Container Registry namespaces. Its element is a namespace name.
         /// </summary>
@@ -70,60 +60,29 @@ namespace Pulumi.AliCloud.CR
         /// <summary>
         /// A list of matched Container Registry namespaces. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNamespacesNamespacesResult> Namespaces;
+        public readonly ImmutableArray<Outputs.GetNamespacesNamespaceResult> Namespaces;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNamespacesResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            ImmutableArray<Outputs.GetNamespacesNamespacesResult> namespaces,
-            string? outputFile,
-            string id)
+
+            ImmutableArray<Outputs.GetNamespacesNamespaceResult> namespaces,
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             Namespaces = namespaces;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNamespacesNamespacesResult
-    {
-        /// <summary>
-        /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
-        /// </summary>
-        public readonly bool AutoCreate;
-        /// <summary>
-        /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
-        /// </summary>
-        public readonly string DefaultVisibility;
-        /// <summary>
-        /// Name of Container Registry namespace.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private GetNamespacesNamespacesResult(
-            bool autoCreate,
-            string defaultVisibility,
-            string name)
-        {
-            AutoCreate = autoCreate;
-            DefaultVisibility = defaultVisibility;
-            Name = name;
-        }
-    }
     }
 }

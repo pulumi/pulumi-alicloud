@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
-        /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetForwardEntries.InvokeAsync() instead")]
-        public static Task<GetForwardEntriesResult> GetForwardEntries(GetForwardEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetForwardEntries
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardEntriesResult> InvokeAsync(GetForwardEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetForwardEntriesArgs : Pulumi.InvokeArgs
     {
@@ -97,18 +82,23 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetForwardEntriesResult
     {
         /// <summary>
         /// A list of Forward Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetForwardEntriesEntriesResult> Entries;
+        public readonly ImmutableArray<Outputs.GetForwardEntriesEntryResult> Entries;
         /// <summary>
         /// The public IP address.
         /// </summary>
         public readonly string? ExternalIp;
         public readonly string ForwardTableId;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of Forward Entries IDs.
         /// </summary>
@@ -123,94 +113,36 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetForwardEntriesResult(
-            ImmutableArray<Outputs.GetForwardEntriesEntriesResult> entries,
+            ImmutableArray<Outputs.GetForwardEntriesEntryResult> entries,
+
             string? externalIp,
+
             string forwardTableId,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? internalIp,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Entries = entries;
             ExternalIp = externalIp;
             ForwardTableId = forwardTableId;
+            Id = id;
             Ids = ids;
             InternalIp = internalIp;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetForwardEntriesEntriesResult
-    {
-        /// <summary>
-        /// The public IP address.
-        /// </summary>
-        public readonly string ExternalIp;
-        /// <summary>
-        /// The public port.
-        /// </summary>
-        public readonly string ExternalPort;
-        /// <summary>
-        /// The ID of the Forward Entry.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The private IP address.
-        /// </summary>
-        public readonly string InternalIp;
-        /// <summary>
-        /// The private port.
-        /// </summary>
-        public readonly string InternalPort;
-        /// <summary>
-        /// The protocol type.
-        /// </summary>
-        public readonly string IpProtocol;
-        /// <summary>
-        /// The forward entry name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The status of the Forward Entry.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetForwardEntriesEntriesResult(
-            string externalIp,
-            string externalPort,
-            string id,
-            string internalIp,
-            string internalPort,
-            string ipProtocol,
-            string name,
-            string status)
-        {
-            ExternalIp = externalIp;
-            ExternalPort = externalPort;
-            Id = id;
-            InternalIp = internalIp;
-            InternalPort = internalPort;
-            IpProtocol = ipProtocol;
-            Name = name;
-            Status = status;
-        }
-    }
     }
 }

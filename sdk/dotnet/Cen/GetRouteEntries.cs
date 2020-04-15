@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides CEN Route Entries available to the user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_route_entries.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRouteEntries.InvokeAsync() instead")]
-        public static Task<GetRouteEntriesResult> GetRouteEntries(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRouteEntries
     {
         /// <summary>
         /// This data source provides CEN Route Entries available to the user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_route_entries.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:cen/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRouteEntriesArgs : Pulumi.InvokeArgs
     {
@@ -63,6 +50,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
+
     [OutputType]
     public sealed class GetRouteEntriesResult
     {
@@ -73,7 +61,11 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// A list of CEN Route Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRouteEntriesEntriesResult> Entries;
+        public readonly ImmutableArray<Outputs.GetRouteEntriesEntryResult> Entries;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// ID of the CEN child instance.
         /// </summary>
@@ -83,128 +75,27 @@ namespace Pulumi.AliCloud.Cen
         /// ID of the route table.
         /// </summary>
         public readonly string RouteTableId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRouteEntriesResult(
             string? cidrBlock,
-            ImmutableArray<Outputs.GetRouteEntriesEntriesResult> entries,
+
+            ImmutableArray<Outputs.GetRouteEntriesEntryResult> entries,
+
+            string id,
+
             string instanceId,
+
             string? outputFile,
-            string routeTableId,
-            string id)
+
+            string routeTableId)
         {
             CidrBlock = cidrBlock;
             Entries = entries;
+            Id = id;
             InstanceId = instanceId;
             OutputFile = outputFile;
             RouteTableId = routeTableId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRouteEntriesEntriesConflictsResult
-    {
-        /// <summary>
-        /// The destination CIDR block of the route entry to query.
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// ID of the CEN instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// The type of the CEN child instance.
-        /// </summary>
-        public readonly string InstanceType;
-        /// <summary>
-        /// ID of the region where the conflicted route entry is located.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Reasons of exceptions.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetRouteEntriesEntriesConflictsResult(
-            string cidrBlock,
-            string instanceId,
-            string instanceType,
-            string regionId,
-            string status)
-        {
-            CidrBlock = cidrBlock;
-            InstanceId = instanceId;
-            InstanceType = instanceType;
-            RegionId = regionId;
-            Status = status;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetRouteEntriesEntriesResult
-    {
-        /// <summary>
-        /// The destination CIDR block of the route entry to query.
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// A list of conflicted Route Entries. Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetRouteEntriesEntriesConflictsResult> Conflicts;
-        /// <summary>
-        /// ID of the next hop.
-        /// </summary>
-        public readonly string NextHopId;
-        /// <summary>
-        /// Type of the next hop, including "Instance", "HaVip" and "RouterInterface".
-        /// </summary>
-        public readonly string NextHopType;
-        /// <summary>
-        /// Whether to allow the route entry to be published or removed to or from CEN.
-        /// </summary>
-        public readonly bool OperationalMode;
-        /// <summary>
-        /// The publish status of the route entry in CEN, including "Published" and "NonPublished".
-        /// </summary>
-        public readonly string PublishStatus;
-        /// <summary>
-        /// ID of the route table of the VPC or VBR.
-        /// </summary>
-        public readonly string RouteTableId;
-        /// <summary>
-        /// Type of the route entry, including "System", "Custom" and "BGP".
-        /// </summary>
-        public readonly string RouteType;
-
-        [OutputConstructor]
-        private GetRouteEntriesEntriesResult(
-            string cidrBlock,
-            ImmutableArray<GetRouteEntriesEntriesConflictsResult> conflicts,
-            string nextHopId,
-            string nextHopType,
-            bool operationalMode,
-            string publishStatus,
-            string routeTableId,
-            string routeType)
-        {
-            CidrBlock = cidrBlock;
-            Conflicts = conflicts;
-            NextHopId = nextHopId;
-            NextHopType = nextHopType;
-            OperationalMode = operationalMode;
-            PublishStatus = publishStatus;
-            RouteTableId = routeTableId;
-            RouteType = routeType;
-        }
-    }
     }
 }

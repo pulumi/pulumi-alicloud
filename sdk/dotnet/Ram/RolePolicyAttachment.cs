@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM Role attachment resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_policy_attachment.html.markdown.
     /// </summary>
     public partial class RolePolicyAttachment : Pulumi.CustomResource
     {
@@ -45,7 +41,7 @@ namespace Pulumi.AliCloud.Ram
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RolePolicyAttachment(string name, RolePolicyAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment", name, args ?? new RolePolicyAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

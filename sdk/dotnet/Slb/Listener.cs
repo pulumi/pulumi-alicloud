@@ -63,8 +63,6 @@ namespace Pulumi.AliCloud.Slb
     /// server_group_id    | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud.slb.ServerGroup |
     /// 
     /// The listener mapping supports the following:
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
     /// </summary>
     public partial class Listener : Pulumi.CustomResource
     {
@@ -323,7 +321,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Listener(string name, ListenerArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/listener:Listener", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/listener:Listener", name, args ?? new ListenerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -862,100 +860,5 @@ namespace Pulumi.AliCloud.Slb
         public ListenerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ListenerXForwardedForArgs : Pulumi.ResourceArgs
-    {
-        [Input("retriveClientIp")]
-        public Input<bool>? RetriveClientIp { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
-        /// </summary>
-        [Input("retriveSlbId")]
-        public Input<bool>? RetriveSlbId { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
-        /// </summary>
-        [Input("retriveSlbIp")]
-        public Input<bool>? RetriveSlbIp { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
-        /// </summary>
-        [Input("retriveSlbProto")]
-        public Input<bool>? RetriveSlbProto { get; set; }
-
-        public ListenerXForwardedForArgs()
-        {
-        }
-    }
-
-    public sealed class ListenerXForwardedForGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("retriveClientIp")]
-        public Input<bool>? RetriveClientIp { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
-        /// </summary>
-        [Input("retriveSlbId")]
-        public Input<bool>? RetriveSlbId { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
-        /// </summary>
-        [Input("retriveSlbIp")]
-        public Input<bool>? RetriveSlbIp { get; set; }
-
-        /// <summary>
-        /// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
-        /// </summary>
-        [Input("retriveSlbProto")]
-        public Input<bool>? RetriveSlbProto { get; set; }
-
-        public ListenerXForwardedForGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ListenerXForwardedFor
-    {
-        public readonly bool RetriveClientIp;
-        /// <summary>
-        /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
-        /// </summary>
-        public readonly bool? RetriveSlbId;
-        /// <summary>
-        /// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
-        /// </summary>
-        public readonly bool? RetriveSlbIp;
-        /// <summary>
-        /// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
-        /// </summary>
-        public readonly bool? RetriveSlbProto;
-
-        [OutputConstructor]
-        private ListenerXForwardedFor(
-            bool retriveClientIp,
-            bool? retriveSlbId,
-            bool? retriveSlbIp,
-            bool? retriveSlbProto)
-        {
-            RetriveClientIp = retriveClientIp;
-            RetriveSlbId = retriveSlbId;
-            RetriveSlbIp = retriveSlbIp;
-            RetriveSlbProto = retriveSlbProto;
-        }
-    }
     }
 }

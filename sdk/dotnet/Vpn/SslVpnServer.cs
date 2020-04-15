@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SslVpnServer(string name, SslVpnServerArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpn/sslVpnServer:SslVpnServer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpn/sslVpnServer:SslVpnServer", name, args ?? new SslVpnServerArgs(), MakeResourceOptions(options, ""))
         {
         }
 

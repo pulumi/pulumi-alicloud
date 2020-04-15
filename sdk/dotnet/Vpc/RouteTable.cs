@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouteTable(string name, RouteTableArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/routeTable:RouteTable", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/routeTable:RouteTable", name, args ?? new RouteTableArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -16,10 +16,6 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** Available in 1.60.0+
     /// 
     /// &gt; **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
     /// </summary>
     public partial class DomainExtension : Pulumi.CustomResource
     {
@@ -62,7 +58,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainExtension(string name, DomainExtensionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/domainExtension:DomainExtension", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/domainExtension:DomainExtension", name, args ?? new DomainExtensionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

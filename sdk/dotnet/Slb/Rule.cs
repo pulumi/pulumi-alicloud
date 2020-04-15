@@ -22,10 +22,6 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
     /// 
     /// &gt; **NOTE:** Only rule's virtual server group can be modified.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
     /// </summary>
     public partial class Rule : Pulumi.CustomResource
     {
@@ -174,7 +170,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Rule(string name, RuleArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/rule:Rule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/rule:Rule", name, args ?? new RuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

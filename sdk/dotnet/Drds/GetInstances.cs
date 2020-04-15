@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Drds
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        ///  The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
-        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
-        /// 
-        /// &gt; **NOTE:** Available in 1.35.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// &gt; **NOTE:** Available in 1.35.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -69,6 +53,7 @@ namespace Pulumi.AliCloud.Drds
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
@@ -77,97 +62,40 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of DRDS instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// A list of DRDS instances.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// Creation time of the instance.
-        /// </summary>
-        public readonly int CreateTime;
-        /// <summary>
-        /// The DRDS instance description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The ID of the DRDS instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// `Classic` for public classic network or `VPC` for private network.
-        /// </summary>
-        public readonly string NetworkType;
-        /// <summary>
-        /// Status of the instance.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The DRDS Instance type.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// The DRDS Instance version.
-        /// </summary>
-        public readonly int Version;
-        /// <summary>
-        /// Zone ID the instance belongs to.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            int createTime,
-            string description,
-            string id,
-            string networkType,
-            string status,
-            string type,
-            int version,
-            string zoneId)
-        {
-            CreateTime = createTime;
-            Description = description;
-            Id = id;
-            NetworkType = networkType;
-            Status = status;
-            Type = type;
-            Version = version;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

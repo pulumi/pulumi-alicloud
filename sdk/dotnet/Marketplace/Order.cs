@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.MarketPlace
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Order(string name, OrderArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:marketplace/order:Order", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:marketplace/order:Order", name, args ?? new OrderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

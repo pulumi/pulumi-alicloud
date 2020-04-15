@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_group.html.markdown.
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
@@ -55,7 +51,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/group:Group", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rocketmq/group:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

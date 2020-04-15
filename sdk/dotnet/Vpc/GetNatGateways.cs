@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
-        /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetNatGateways.InvokeAsync() instead")]
-        public static Task<GetNatGatewaysResult> GetNatGateways(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetNatGateways
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nat_gateways.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysArgs(), options.WithVersion());
     }
+
 
     public sealed class GetNatGatewaysArgs : Pulumi.InvokeArgs
     {
@@ -73,13 +58,18 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetNatGatewaysResult
     {
         /// <summary>
         /// A list of Nat gateways. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNatGatewaysGatewaysResult> Gateways;
+        public readonly ImmutableArray<Outputs.GetNatGatewaysGatewayResult> Gateways;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Optional) A list of Nat gateways IDs.
         /// </summary>
@@ -94,96 +84,30 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the VPC.
         /// </summary>
         public readonly string? VpcId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetNatGatewaysResult(
-            ImmutableArray<Outputs.GetNatGatewaysGatewaysResult> gateways,
+            ImmutableArray<Outputs.GetNatGatewaysGatewayResult> gateways,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? vpcId,
-            string id)
+
+            string? vpcId)
         {
             Gateways = gateways;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             VpcId = vpcId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetNatGatewaysGatewaysResult
-    {
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// The description of the NAT gateway.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The forward table id. 
-        /// </summary>
-        public readonly string ForwardTableId;
-        /// <summary>
-        /// The ID of the NAT gateway.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Name of the NAT gateway.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The snat table id.
-        /// </summary>
-        public readonly string SnatTableId;
-        /// <summary>
-        /// The specification of the NAT gateway.
-        /// </summary>
-        public readonly string Spec;
-        /// <summary>
-        /// The status of the NAT gateway.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The ID of the VPC.
-        /// </summary>
-        public readonly string VpcId;
-
-        [OutputConstructor]
-        private GetNatGatewaysGatewaysResult(
-            string creationTime,
-            string description,
-            string forwardTableId,
-            string id,
-            string name,
-            string snatTableId,
-            string spec,
-            string status,
-            string vpcId)
-        {
-            CreationTime = creationTime;
-            Description = description;
-            ForwardTableId = forwardTableId;
-            Id = id;
-            Name = name;
-            SnatTableId = snatTableId;
-            Spec = spec;
-            Status = status;
-            VpcId = vpcId;
-        }
-    }
     }
 }

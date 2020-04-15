@@ -42,8 +42,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// * `entry` - (Required) An IP addresses or CIDR blocks.
     /// * `comment` - (Optional) the comment of the entry.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_acl.html.markdown.
     /// </summary>
     public partial class Acl : Pulumi.CustomResource
     {
@@ -51,7 +49,7 @@ namespace Pulumi.AliCloud.Slb
         /// A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         /// </summary>
         [Output("entryLists")]
-        public Output<ImmutableArray<Outputs.AclEntryLists>> EntryLists { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AclEntryList>> EntryLists { get; private set; } = null!;
 
         /// <summary>
         /// The IP Version of access control list is the type of its entry (IP addresses or CIDR blocks). It values ipv4/ipv6. Our plugin provides a default ip_version: "ipv4".
@@ -86,7 +84,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Acl(string name, AclArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:slb/acl:Acl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/acl:Acl", name, args ?? new AclArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,14 +122,14 @@ namespace Pulumi.AliCloud.Slb
     public sealed class AclArgs : Pulumi.ResourceArgs
     {
         [Input("entryLists")]
-        private InputList<Inputs.AclEntryListsArgs>? _entryLists;
+        private InputList<Inputs.AclEntryListArgs>? _entryLists;
 
         /// <summary>
         /// A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         /// </summary>
-        public InputList<Inputs.AclEntryListsArgs> EntryLists
+        public InputList<Inputs.AclEntryListArgs> EntryLists
         {
-            get => _entryLists ?? (_entryLists = new InputList<Inputs.AclEntryListsArgs>());
+            get => _entryLists ?? (_entryLists = new InputList<Inputs.AclEntryListArgs>());
             set => _entryLists = value;
         }
 
@@ -173,14 +171,14 @@ namespace Pulumi.AliCloud.Slb
     public sealed class AclState : Pulumi.ResourceArgs
     {
         [Input("entryLists")]
-        private InputList<Inputs.AclEntryListsGetArgs>? _entryLists;
+        private InputList<Inputs.AclEntryListGetArgs>? _entryLists;
 
         /// <summary>
         /// A list of entry (IP addresses or CIDR blocks) to be added. At most 50 etnry can be supported in one resource. It contains two sub-fields as `Entry Block` follows.
         /// </summary>
-        public InputList<Inputs.AclEntryListsGetArgs> EntryLists
+        public InputList<Inputs.AclEntryListGetArgs> EntryLists
         {
-            get => _entryLists ?? (_entryLists = new InputList<Inputs.AclEntryListsGetArgs>());
+            get => _entryLists ?? (_entryLists = new InputList<Inputs.AclEntryListGetArgs>());
             set => _entryLists = value;
         }
 
@@ -217,55 +215,5 @@ namespace Pulumi.AliCloud.Slb
         public AclState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AclEntryListsArgs : Pulumi.ResourceArgs
-    {
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        [Input("entry", required: true)]
-        public Input<string> Entry { get; set; } = null!;
-
-        public AclEntryListsArgs()
-        {
-        }
-    }
-
-    public sealed class AclEntryListsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        [Input("entry", required: true)]
-        public Input<string> Entry { get; set; } = null!;
-
-        public AclEntryListsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AclEntryLists
-    {
-        public readonly string? Comment;
-        public readonly string Entry;
-
-        [OutputConstructor]
-        private AclEntryLists(
-            string? comment,
-            string entry)
-        {
-            Comment = comment;
-            Entry = entry;
-        }
-    }
     }
 }

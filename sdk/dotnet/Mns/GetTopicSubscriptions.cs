@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Mns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTopicSubscriptions.InvokeAsync() instead")]
-        public static Task<GetTopicSubscriptionsResult> GetTopicSubscriptions(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTopicSubscriptions
     {
         /// <summary>
         /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicSubscriptionsResult> InvokeAsync(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTopicSubscriptionsArgs : Pulumi.InvokeArgs
     {
@@ -57,9 +44,14 @@ namespace Pulumi.AliCloud.Mns
         }
     }
 
+
     [OutputType]
     public sealed class GetTopicSubscriptionsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? NamePrefix;
         /// <summary>
         /// A list of subscription names.
@@ -69,83 +61,29 @@ namespace Pulumi.AliCloud.Mns
         /// <summary>
         /// A list of subscriptions. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTopicSubscriptionsSubscriptionsResult> Subscriptions;
+        public readonly ImmutableArray<Outputs.GetTopicSubscriptionsSubscriptionResult> Subscriptions;
         public readonly string TopicName;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetTopicSubscriptionsResult(
+            string id,
+
             string? namePrefix,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetTopicSubscriptionsSubscriptionsResult> subscriptions,
-            string topicName,
-            string id)
+
+            ImmutableArray<Outputs.GetTopicSubscriptionsSubscriptionResult> subscriptions,
+
+            string topicName)
         {
+            Id = id;
             NamePrefix = namePrefix;
             Names = names;
             OutputFile = outputFile;
             Subscriptions = subscriptions;
             TopicName = topicName;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTopicSubscriptionsSubscriptionsResult
-    {
-        /// <summary>
-        /// Describe the terminal address of the message received in this subscription.
-        /// * `filter_tag`- A string to filter resulting messages of the topic by their message tag.
-        /// </summary>
-        public readonly string Endpoint;
-        public readonly string FilterTag;
-        /// <summary>
-        /// The ID of the topic subscription. The value is set to `name`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the subscription.
-        /// * `topic_name`- The topic which The subscription belongs to was named with the name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
-        /// </summary>
-        public readonly string NotifyContentFormat;
-        /// <summary>
-        /// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails.
-        /// </summary>
-        public readonly string NotifyStrategy;
-        /// <summary>
-        /// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-        /// </summary>
-        public readonly string TopicName;
-
-        [OutputConstructor]
-        private GetTopicSubscriptionsSubscriptionsResult(
-            string endpoint,
-            string filterTag,
-            string id,
-            string name,
-            string notifyContentFormat,
-            string notifyStrategy,
-            string topicName)
-        {
-            Endpoint = endpoint;
-            FilterTag = filterTag;
-            Id = id;
-            Name = name;
-            NotifyContentFormat = notifyContentFormat;
-            NotifyStrategy = notifyStrategy;
-            TopicName = topicName;
-        }
-    }
     }
 }

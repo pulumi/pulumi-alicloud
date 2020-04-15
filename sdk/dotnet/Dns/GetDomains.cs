@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDomains.InvokeAsync() instead")]
-        public static Task<GetDomainsResult> GetDomains(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDomains
     {
         /// <summary>
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDomainsArgs : Pulumi.InvokeArgs
     {
@@ -94,6 +81,7 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetDomainsResult
     {
@@ -105,8 +93,12 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// A list of domains. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDomainsDomainsResult> Domains;
+        public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly string? GroupNameRegex;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of domain IDs.
         /// </summary>
@@ -128,105 +120,42 @@ namespace Pulumi.AliCloud.Dns
         /// Cloud analysis version code of the domain.
         /// </summary>
         public readonly string? VersionCode;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDomainsResult(
             bool? aliDomain,
+
             string? domainNameRegex,
-            ImmutableArray<Outputs.GetDomainsDomainsResult> domains,
+
+            ImmutableArray<Outputs.GetDomainsDomainResult> domains,
+
             string? groupNameRegex,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceId,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? resourceGroupId,
-            string? versionCode,
-            string id)
+
+            string? versionCode)
         {
             AliDomain = aliDomain;
             DomainNameRegex = domainNameRegex;
             Domains = domains;
             GroupNameRegex = groupNameRegex;
+            Id = id;
             Ids = ids;
             InstanceId = instanceId;
             Names = names;
             OutputFile = outputFile;
             ResourceGroupId = resourceGroupId;
             VersionCode = versionCode;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDomainsDomainsResult
-    {
-        /// <summary>
-        /// Specifies whether the domain is from Alibaba Cloud or not.
-        /// </summary>
-        public readonly bool AliDomain;
-        /// <summary>
-        /// DNS list of the domain in the analysis system.
-        /// </summary>
-        public readonly ImmutableArray<string> DnsServers;
-        /// <summary>
-        /// ID of the domain.
-        /// </summary>
-        public readonly string DomainId;
-        /// <summary>
-        /// Name of the domain.
-        /// </summary>
-        public readonly string DomainName;
-        /// <summary>
-        /// Id of group that contains the domain.
-        /// </summary>
-        public readonly string GroupId;
-        /// <summary>
-        /// Name of group that contains the domain.
-        /// </summary>
-        public readonly string GroupName;
-        /// <summary>
-        /// Cloud analysis product ID.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// Punycode of the Chinese domain.
-        /// </summary>
-        public readonly string PunyCode;
-        /// <summary>
-        /// Cloud analysis version code.
-        /// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
-        /// </summary>
-        public readonly string VersionCode;
-
-        [OutputConstructor]
-        private GetDomainsDomainsResult(
-            bool aliDomain,
-            ImmutableArray<string> dnsServers,
-            string domainId,
-            string domainName,
-            string groupId,
-            string groupName,
-            string instanceId,
-            string punyCode,
-            string versionCode)
-        {
-            AliDomain = aliDomain;
-            DnsServers = dnsServers;
-            DomainId = domainId;
-            DomainName = domainName;
-            GroupId = groupId;
-            GroupName = groupName;
-            InstanceId = instanceId;
-            PunyCode = punyCode;
-            VersionCode = versionCode;
-        }
-    }
     }
 }

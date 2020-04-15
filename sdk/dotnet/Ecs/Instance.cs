@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The list of data disks created with instance.
         /// </summary>
         [Output("dataDisks")]
-        public Output<ImmutableArray<Outputs.InstanceDataDisks>> DataDisks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
         /// Whether enable the deletion protection or not.
@@ -308,7 +308,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -380,14 +380,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? CreditSpecification { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.InstanceDataDisksArgs>? _dataDisks;
+        private InputList<Inputs.InstanceDataDiskArgs>? _dataDisks;
 
         /// <summary>
         /// The list of data disks created with instance.
         /// </summary>
-        public InputList<Inputs.InstanceDataDisksArgs> DataDisks
+        public InputList<Inputs.InstanceDataDiskArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDisksArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDiskArgs>());
             set => _dataDisks = value;
         }
 
@@ -693,14 +693,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? CreditSpecification { get; set; }
 
         [Input("dataDisks")]
-        private InputList<Inputs.InstanceDataDisksGetArgs>? _dataDisks;
+        private InputList<Inputs.InstanceDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
         /// The list of data disks created with instance.
         /// </summary>
-        public InputList<Inputs.InstanceDataDisksGetArgs> DataDisks
+        public InputList<Inputs.InstanceDataDiskGetArgs> DataDisks
         {
-            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDisksGetArgs>());
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.InstanceDataDiskGetArgs>());
             set => _dataDisks = value;
         }
 
@@ -979,208 +979,5 @@ namespace Pulumi.AliCloud.Ecs
         public InstanceState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class InstanceDataDisksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
-        /// </summary>
-        [Input("autoSnapshotPolicyId")]
-        public Input<string>? AutoSnapshotPolicyId { get; set; }
-
-        /// <summary>
-        /// The category of the disk:
-        /// - `cloud`: The general cloud disk.
-        /// - `cloud_efficiency`: The efficiency cloud disk.
-        /// - `cloud_ssd`: The SSD cloud disk.
-        /// - `cloud_essd`: The ESSD cloud disk.
-        /// - `ephemeral_ssd`: The local SSD disk.
-        /// Default to `cloud_efficiency`.
-        /// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
-        /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("encrypted")]
-        public Input<bool>? Encrypted { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        [Input("size", required: true)]
-        public Input<int> Size { get; set; } = null!;
-
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public InstanceDataDisksArgs()
-        {
-        }
-    }
-
-    public sealed class InstanceDataDisksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
-        /// </summary>
-        [Input("autoSnapshotPolicyId")]
-        public Input<string>? AutoSnapshotPolicyId { get; set; }
-
-        /// <summary>
-        /// The category of the disk:
-        /// - `cloud`: The general cloud disk.
-        /// - `cloud_efficiency`: The efficiency cloud disk.
-        /// - `cloud_ssd`: The SSD cloud disk.
-        /// - `cloud_essd`: The ESSD cloud disk.
-        /// - `ephemeral_ssd`: The local SSD disk.
-        /// Default to `cloud_efficiency`.
-        /// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
-        /// </summary>
-        [Input("category")]
-        public Input<string>? Category { get; set; }
-
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        [Input("deleteWithInstance")]
-        public Input<bool>? DeleteWithInstance { get; set; }
-
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("encrypted")]
-        public Input<bool>? Encrypted { get; set; }
-
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        [Input("size", required: true)]
-        public Input<int> Size { get; set; } = null!;
-
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        [Input("snapshotId")]
-        public Input<string>? SnapshotId { get; set; }
-
-        public InstanceDataDisksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class InstanceDataDisks
-    {
-        /// <summary>
-        /// The ID of the automatic snapshot policy applied to the system disk.
-        /// </summary>
-        public readonly string? AutoSnapshotPolicyId;
-        /// <summary>
-        /// The category of the disk:
-        /// - `cloud`: The general cloud disk.
-        /// - `cloud_efficiency`: The efficiency cloud disk.
-        /// - `cloud_ssd`: The SSD cloud disk.
-        /// - `cloud_essd`: The ESSD cloud disk.
-        /// - `ephemeral_ssd`: The local SSD disk.
-        /// Default to `cloud_efficiency`.
-        /// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
-        /// </summary>
-        public readonly string? Category;
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// </summary>
-        public readonly bool? DeleteWithInstance;
-        /// <summary>
-        /// The description of the data disk.
-        /// </summary>
-        public readonly string? Description;
-        public readonly bool? Encrypted;
-        /// <summary>
-        /// The name of the data disk.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
-        public readonly int Size;
-        /// <summary>
-        /// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-        /// </summary>
-        public readonly string? SnapshotId;
-
-        [OutputConstructor]
-        private InstanceDataDisks(
-            string? autoSnapshotPolicyId,
-            string? category,
-            bool? deleteWithInstance,
-            string? description,
-            bool? encrypted,
-            string? name,
-            int size,
-            string? snapshotId)
-        {
-            AutoSnapshotPolicyId = autoSnapshotPolicyId;
-            Category = category;
-            DeleteWithInstance = deleteWithInstance;
-            Description = description;
-            Encrypted = encrypted;
-            Name = name;
-            Size = size;
-            SnapshotId = snapshotId;
-        }
-    }
     }
 }

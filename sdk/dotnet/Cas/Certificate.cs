@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Cas
     /// &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+ .
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cas_certificate.html.markdown.
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {
@@ -51,7 +47,7 @@ namespace Pulumi.AliCloud.Cas
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Certificate(string name, CertificateArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cas/certificate:Certificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cas/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Alarm(string name, AlarmArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/alarm:Alarm", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/alarm:Alarm", name, args ?? new AlarmArgs(), MakeResourceOptions(options, ""))
         {
         }
 

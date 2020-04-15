@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of Route Entries owned by an Alibaba Cloud account.
-        /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRouteEntries.InvokeAsync() instead")]
-        public static Task<GetRouteEntriesResult> GetRouteEntries(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRouteEntries
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRouteEntriesArgs : Pulumi.InvokeArgs
     {
@@ -73,6 +58,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetRouteEntriesResult
     {
@@ -83,7 +69,11 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of Route Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRouteEntriesEntriesResult> Entries;
+        public readonly ImmutableArray<Outputs.GetRouteEntriesEntryResult> Entries;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The instance ID of the next hop.
         /// </summary>
@@ -97,78 +87,30 @@ namespace Pulumi.AliCloud.Vpc
         /// The type of the route entry.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetRouteEntriesResult(
             string? cidrBlock,
-            ImmutableArray<Outputs.GetRouteEntriesEntriesResult> entries,
+
+            ImmutableArray<Outputs.GetRouteEntriesEntryResult> entries,
+
+            string id,
+
             string? instanceId,
+
             string? outputFile,
+
             string routeTableId,
-            string? type,
-            string id)
+
+            string? type)
         {
             CidrBlock = cidrBlock;
             Entries = entries;
+            Id = id;
             InstanceId = instanceId;
             OutputFile = outputFile;
             RouteTableId = routeTableId;
             Type = type;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRouteEntriesEntriesResult
-    {
-        /// <summary>
-        /// The destination CIDR block of the route entry.
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// The instance ID of the next hop.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// The type of the next hop.
-        /// </summary>
-        public readonly string NextHopType;
-        /// <summary>
-        /// The ID of the router table to which the route entry belongs.
-        /// </summary>
-        public readonly string RouteTableId;
-        /// <summary>
-        /// The status of the route entry.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// The type of the route entry.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetRouteEntriesEntriesResult(
-            string cidrBlock,
-            string instanceId,
-            string nextHopType,
-            string routeTableId,
-            string status,
-            string type)
-        {
-            CidrBlock = cidrBlock;
-            InstanceId = instanceId;
-            NextHopType = nextHopType;
-            RouteTableId = routeTableId;
-            Status = status;
-            Type = type;
-        }
-    }
     }
 }

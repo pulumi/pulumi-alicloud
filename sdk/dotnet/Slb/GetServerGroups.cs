@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the VServer groups related to a server load balancer.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServerGroups.InvokeAsync() instead")]
-        public static Task<GetServerGroupsResult> GetServerGroups(GetServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServerGroups
     {
         /// <summary>
         /// This data source provides the VServer groups related to a server load balancer.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServerGroupsArgs : Pulumi.InvokeArgs
     {
@@ -69,9 +56,14 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetServerGroupsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SLB VServer groups IDs.
         /// </summary>
@@ -86,83 +78,31 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A list of SLB VServer groups. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetServerGroupsSlbServerGroupsResult> SlbServerGroups;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetServerGroupsSlbServerGroupResult> SlbServerGroups;
 
         [OutputConstructor]
         private GetServerGroupsResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string loadBalancerId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetServerGroupsSlbServerGroupsResult> slbServerGroups,
-            string id)
+
+            ImmutableArray<Outputs.GetServerGroupsSlbServerGroupResult> slbServerGroups)
         {
+            Id = id;
             Ids = ids;
             LoadBalancerId = loadBalancerId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             SlbServerGroups = slbServerGroups;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServerGroupsSlbServerGroupsResult
-    {
-        /// <summary>
-        /// VServer group ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// VServer group name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ECS instances associated to the group. Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetServerGroupsSlbServerGroupsServersResult> Servers;
-
-        [OutputConstructor]
-        private GetServerGroupsSlbServerGroupsResult(
-            string id,
-            string name,
-            ImmutableArray<GetServerGroupsSlbServerGroupsServersResult> servers)
-        {
-            Id = id;
-            Name = name;
-            Servers = servers;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServerGroupsSlbServerGroupsServersResult
-    {
-        /// <summary>
-        /// ID of the attached ECS instance.
-        /// </summary>
-        public readonly string InstanceId;
-        /// <summary>
-        /// Weight associated to the ECS instance.
-        /// </summary>
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private GetServerGroupsSlbServerGroupsServersResult(
-            string instanceId,
-            int weight)
-        {
-            InstanceId = instanceId;
-            Weight = weight;
-        }
-    }
     }
 }

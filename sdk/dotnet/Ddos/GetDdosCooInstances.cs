@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ddos
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDdosCooInstances.InvokeAsync() instead")]
-        public static Task<GetDdosCooInstancesResult> GetDdosCooInstances(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDdosCooInstances
     {
         /// <summary>
         /// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ddoscoo_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooInstancesResult> InvokeAsync(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooInstancesResult>("alicloud:ddos/getDdosCooInstances:getDdosCooInstances", args ?? new GetDdosCooInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDdosCooInstancesArgs : Pulumi.InvokeArgs
     {
@@ -63,9 +50,14 @@ namespace Pulumi.AliCloud.Ddos
         }
     }
 
+
     [OutputType]
     public sealed class GetDdosCooInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of instance IDs.
         /// </summary>
@@ -73,89 +65,34 @@ namespace Pulumi.AliCloud.Ddos
         /// <summary>
         /// A list of apis. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDdosCooInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetDdosCooInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of instance names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDdosCooInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetDdosCooInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetDdosCooInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDdosCooInstancesInstancesResult
-    {
-        /// <summary>
-        /// The instance's elastic defend bandwidth.
-        /// </summary>
-        public readonly int Bandwidth;
-        /// <summary>
-        /// The instance's base defend bandwidth.
-        /// </summary>
-        public readonly int BaseBandwidth;
-        /// <summary>
-        /// The instance's count of domain retransmission config.
-        /// </summary>
-        public readonly int DomainCount;
-        /// <summary>
-        /// The instance's id.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The instance's remark.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The instance's count of port retransmission config.
-        /// </summary>
-        public readonly int PortCount;
-        /// <summary>
-        /// The instance's business bandwidth.
-        /// </summary>
-        public readonly int ServiceBandwidth;
-
-        [OutputConstructor]
-        private GetDdosCooInstancesInstancesResult(
-            int bandwidth,
-            int baseBandwidth,
-            int domainCount,
-            string id,
-            string name,
-            int portCount,
-            int serviceBandwidth)
-        {
-            Bandwidth = bandwidth;
-            BaseBandwidth = baseBandwidth;
-            DomainCount = domainCount;
-            Id = id;
-            Name = name;
-            PortCount = portCount;
-            ServiceBandwidth = serviceBandwidth;
-        }
-    }
     }
 }

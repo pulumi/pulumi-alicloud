@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Oss
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the ots instances of the current Alibaba Cloud user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:oss/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -83,9 +70,14 @@ namespace Pulumi.AliCloud.Oss
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of instance IDs.
         /// </summary>
@@ -93,7 +85,7 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// A list of instances. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of instance names.
@@ -104,122 +96,30 @@ namespace Pulumi.AliCloud.Oss
         /// The tags of the instance.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
-        /// </summary>
-        public readonly string ClusterType;
-        /// <summary>
-        /// The create time of the instance.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The description of the instance.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The instance quota which indicating the maximum number of tables.
-        /// </summary>
-        public readonly int EntityQuota;
-        /// <summary>
-        /// ID of the instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Instance name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        /// </summary>
-        public readonly string Network;
-        /// <summary>
-        /// The maximum adjustable read capacity unit of the instance.
-        /// </summary>
-        public readonly int ReadCapacity;
-        /// <summary>
-        /// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// A map of tags assigned to the instance. It must be in the format:
-        /// ```
-        /// data "alicloud.oss.getInstances" "instances_ds" {
-        /// tags = {
-        /// tagKey1 = "tagValue1",
-        /// tagKey2 = "tagValue2"
-        /// }
-        /// }
-        /// ```
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Tags;
-        /// <summary>
-        /// The user id of the instance.
-        /// </summary>
-        public readonly string UserId;
-        /// <summary>
-        /// The maximum adjustable write capacity unit of the instance.
-        /// </summary>
-        public readonly int WriteCapacity;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string clusterType,
-            string createTime,
-            string description,
-            int entityQuota,
-            string id,
-            string name,
-            string network,
-            int readCapacity,
-            string status,
-            ImmutableDictionary<string, object> tags,
-            string userId,
-            int writeCapacity)
-        {
-            ClusterType = clusterType;
-            CreateTime = createTime;
-            Description = description;
-            EntityQuota = entityQuota;
-            Id = id;
-            Name = name;
-            Network = network;
-            ReadCapacity = readCapacity;
-            Status = status;
-            Tags = tags;
-            UserId = userId;
-            WriteCapacity = writeCapacity;
-        }
-    }
     }
 }

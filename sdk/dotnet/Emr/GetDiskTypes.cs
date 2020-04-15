@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Emr
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.emr.getDiskTypes` data source provides a collection of data disk and 
-        /// system disk types available in Alibaba Cloud account when create a emr cluster.
-        /// 
-        /// &gt; **NOTE:** Available in 1.60.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetDiskTypes.InvokeAsync() instead")]
-        public static Task<GetDiskTypesResult> GetDiskTypes(GetDiskTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetDiskTypes
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_disk_types.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetDiskTypesArgs : Pulumi.InvokeArgs
     {
@@ -81,11 +65,16 @@ namespace Pulumi.AliCloud.Emr
         }
     }
 
+
     [OutputType]
     public sealed class GetDiskTypesResult
     {
         public readonly string ClusterType;
         public readonly string DestinationResource;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of data disk and system disk type IDs. 
         /// </summary>
@@ -96,66 +85,38 @@ namespace Pulumi.AliCloud.Emr
         /// <summary>
         /// A list of emr instance types. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetDiskTypesTypesResult> Types;
+        public readonly ImmutableArray<Outputs.GetDiskTypesTypeResult> Types;
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetDiskTypesResult(
             string clusterType,
+
             string destinationResource,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string instanceChargeType,
+
             string instanceType,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetDiskTypesTypesResult> types,
-            string? zoneId,
-            string id)
+
+            ImmutableArray<Outputs.GetDiskTypesTypeResult> types,
+
+            string? zoneId)
         {
             ClusterType = clusterType;
             DestinationResource = destinationResource;
+            Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceType = instanceType;
             OutputFile = outputFile;
             Types = types;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetDiskTypesTypesResult
-    {
-        /// <summary>
-        /// The maximum value of the data disk to supported the specific instance type
-        /// </summary>
-        public readonly int Max;
-        /// <summary>
-        /// The mininum value of the data disk to supported the specific instance type
-        /// </summary>
-        public readonly int Min;
-        /// <summary>
-        /// The value of the data disk or system disk
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetDiskTypesTypesResult(
-            int max,
-            int min,
-            string value)
-        {
-            Max = max;
-            Min = min;
-            Value = value;
-        }
-    }
     }
 }

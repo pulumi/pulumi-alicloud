@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5". 
     /// 
     /// &gt; **NOTE:** Available in 1.51.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -63,7 +59,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rocketmq/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

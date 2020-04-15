@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CustomerGateway(string name, CustomerGatewayArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpn/customerGateway:CustomerGateway", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpn/customerGateway:CustomerGateway", name, args ?? new CustomerGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 

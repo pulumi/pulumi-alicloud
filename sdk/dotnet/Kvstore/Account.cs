@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.KVStore
     /// Provides a kvstore account resource and used to manage databases.
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_account.html.markdown.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
@@ -83,7 +79,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:kvstore/account:Account", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:kvstore/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 

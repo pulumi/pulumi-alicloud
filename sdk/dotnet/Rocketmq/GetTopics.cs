@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetTopics.InvokeAsync() instead")]
-        public static Task<GetTopicsResult> GetTopics(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetTopics
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:rocketmq/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetTopicsArgs : Pulumi.InvokeArgs
     {
@@ -61,9 +46,14 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
+
     [OutputType]
     public sealed class GetTopicsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string InstanceId;
         public readonly string? NameRegex;
         /// <summary>
@@ -74,89 +64,28 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// A list of topics. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetTopicsTopicsResult> Topics;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetTopicsTopicResult> Topics;
 
         [OutputConstructor]
         private GetTopicsResult(
+            string id,
+
             string instanceId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetTopicsTopicsResult> topics,
-            string id)
+
+            ImmutableArray<Outputs.GetTopicsTopicResult> topics)
         {
+            Id = id;
             InstanceId = instanceId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Topics = topics;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetTopicsTopicsResult
-    {
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// Indicates whether namespaces are available. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
-        /// </summary>
-        public readonly bool IndependentNaming;
-        /// <summary>
-        /// The type of the message. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
-        /// </summary>
-        public readonly int MessageType;
-        /// <summary>
-        /// The ID of the topic owner, which is the Alibaba Cloud UID.
-        /// </summary>
-        public readonly string Owner;
-        /// <summary>
-        /// The relation ID. Read [Fields in PublishInfoDo](https://www.alibabacloud.com/help/doc-detail/29590.html) for further details.
-        /// </summary>
-        public readonly int Relation;
-        /// <summary>
-        /// The name of the relation, for example, owner, publishable, subscribable, and publishable and subscribable.
-        /// </summary>
-        public readonly string RelationName;
-        /// <summary>
-        /// Remark of the topic.
-        /// </summary>
-        public readonly string Remark;
-        /// <summary>
-        /// The name of the topic.
-        /// </summary>
-        public readonly string Topic;
-
-        [OutputConstructor]
-        private GetTopicsTopicsResult(
-            string createTime,
-            bool independentNaming,
-            int messageType,
-            string owner,
-            int relation,
-            string relationName,
-            string remark,
-            string topic)
-        {
-            CreateTime = createTime;
-            IndependentNaming = independentNaming;
-            MessageType = messageType;
-            Owner = owner;
-            Relation = relation;
-            RelationName = relationName;
-            Remark = remark;
-            Topic = topic;
-        }
-    }
     }
 }

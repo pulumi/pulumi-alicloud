@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Rds
     /// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
     /// 
     /// &gt; **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
@@ -57,7 +53,7 @@ namespace Pulumi.AliCloud.Rds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rds/database:Database", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:rds/database:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 

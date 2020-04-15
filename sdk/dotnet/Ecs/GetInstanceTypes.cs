@@ -9,23 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the ECS instance types of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `is_outdated` to true.
-        /// 
-        /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceTypes.InvokeAsync() instead")]
-        public static Task<GetInstanceTypesResult> GetInstanceTypes(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceTypes
     {
         /// <summary>
@@ -35,13 +18,13 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:ecs/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
     {
@@ -125,6 +108,7 @@ namespace Pulumi.AliCloud.Ecs
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceTypesResult
     {
@@ -140,6 +124,10 @@ namespace Pulumi.AliCloud.Ecs
         public readonly int? GpuAmount;
         public readonly string? GpuSpec;
         /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// A list of instance type IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
@@ -148,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// A list of image types. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypesResult> InstanceTypes;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesInstanceTypeResult> InstanceTypes;
         public readonly bool? IsOutdated;
         public readonly string? KubernetesNodeRole;
         /// <summary>
@@ -159,36 +147,49 @@ namespace Pulumi.AliCloud.Ecs
         public readonly string? OutputFile;
         public readonly string? SortedBy;
         public readonly string? SpotStrategy;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceTypesResult(
             string? availabilityZone,
+
             int? cpuCoreCount,
+
             int? eniAmount,
+
             int? gpuAmount,
+
             string? gpuSpec,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceChargeType,
+
             string? instanceTypeFamily,
-            ImmutableArray<Outputs.GetInstanceTypesInstanceTypesResult> instanceTypes,
+
+            ImmutableArray<Outputs.GetInstanceTypesInstanceTypeResult> instanceTypes,
+
             bool? isOutdated,
+
             string? kubernetesNodeRole,
+
             double? memorySize,
+
             string? networkType,
+
             string? outputFile,
+
             string? sortedBy,
-            string? spotStrategy,
-            string id)
+
+            string? spotStrategy)
         {
             AvailabilityZone = availabilityZone;
             CpuCoreCount = cpuCoreCount;
             EniAmount = eniAmount;
             GpuAmount = gpuAmount;
             GpuSpec = gpuSpec;
+            Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceTypeFamily = instanceTypeFamily;
@@ -200,150 +201,6 @@ namespace Pulumi.AliCloud.Ecs
             OutputFile = outputFile;
             SortedBy = sortedBy;
             SpotStrategy = spotStrategy;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceTypesInstanceTypesBurstableInstanceResult
-    {
-        /// <summary>
-        /// The compute performance benchmark CPU credit of a burstable instance.
-        /// </summary>
-        public readonly string BaselineCredit;
-        /// <summary>
-        /// The initial CPU credit of a burstable instance.
-        /// </summary>
-        public readonly string InitialCredit;
-
-        [OutputConstructor]
-        private GetInstanceTypesInstanceTypesBurstableInstanceResult(
-            string baselineCredit,
-            string initialCredit)
-        {
-            BaselineCredit = baselineCredit;
-            InitialCredit = initialCredit;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstanceTypesInstanceTypesGpuResult
-    {
-        /// <summary>
-        /// The number of local storage devices that an instance has been attached to.
-        /// </summary>
-        public readonly string Amount;
-        /// <summary>
-        /// The category of local storage that an instance has been attached to.
-        /// </summary>
-        public readonly string Category;
-
-        [OutputConstructor]
-        private GetInstanceTypesInstanceTypesGpuResult(
-            string amount,
-            string category)
-        {
-            Amount = amount;
-            Category = category;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstanceTypesInstanceTypesLocalStorageResult
-    {
-        /// <summary>
-        /// The number of local storage devices that an instance has been attached to.
-        /// </summary>
-        public readonly string Amount;
-        /// <summary>
-        /// The capacity of a local storage in GB.
-        /// </summary>
-        public readonly string Capacity;
-        /// <summary>
-        /// The category of local storage that an instance has been attached to.
-        /// </summary>
-        public readonly string Category;
-
-        [OutputConstructor]
-        private GetInstanceTypesInstanceTypesLocalStorageResult(
-            string amount,
-            string capacity,
-            string category)
-        {
-            Amount = amount;
-            Capacity = capacity;
-            Category = category;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetInstanceTypesInstanceTypesResult
-    {
-        /// <summary>
-        /// List of availability zones that support the instance type.
-        /// </summary>
-        public readonly ImmutableArray<string> AvailabilityZones;
-        /// <summary>
-        /// The burstable instance attribution:
-        /// </summary>
-        public readonly GetInstanceTypesInstanceTypesBurstableInstanceResult BurstableInstance;
-        /// <summary>
-        /// Filter the results to a specific number of cpu cores.
-        /// </summary>
-        public readonly int CpuCoreCount;
-        /// <summary>
-        /// Filter the result whose network interface number is no more than `eni_amount`.
-        /// </summary>
-        public readonly int EniAmount;
-        /// <summary>
-        /// The instance type family.
-        /// </summary>
-        public readonly string Family;
-        /// <summary>
-        /// The GPU attribution of an instance type:
-        /// </summary>
-        public readonly GetInstanceTypesInstanceTypesGpuResult Gpu;
-        /// <summary>
-        /// ID of the instance type.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Local storage of an instance type:
-        /// </summary>
-        public readonly GetInstanceTypesInstanceTypesLocalStorageResult LocalStorage;
-        /// <summary>
-        /// Filter the results to a specific memory size in GB.
-        /// </summary>
-        public readonly double MemorySize;
-        public readonly string Price;
-
-        [OutputConstructor]
-        private GetInstanceTypesInstanceTypesResult(
-            ImmutableArray<string> availabilityZones,
-            GetInstanceTypesInstanceTypesBurstableInstanceResult burstableInstance,
-            int cpuCoreCount,
-            int eniAmount,
-            string family,
-            GetInstanceTypesInstanceTypesGpuResult gpu,
-            string id,
-            GetInstanceTypesInstanceTypesLocalStorageResult localStorage,
-            double memorySize,
-            string price)
-        {
-            AvailabilityZones = availabilityZones;
-            BurstableInstance = burstableInstance;
-            CpuCoreCount = cpuCoreCount;
-            EniAmount = eniAmount;
-            Family = family;
-            Gpu = gpu;
-            Id = id;
-            LocalStorage = localStorage;
-            MemorySize = memorySize;
-            Price = price;
-        }
-    }
     }
 }

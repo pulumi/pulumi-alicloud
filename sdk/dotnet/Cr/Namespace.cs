@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.CR
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_namespace.html.markdown.
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {
@@ -49,7 +45,7 @@ namespace Pulumi.AliCloud.CR
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Namespace(string name, NamespaceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cr/namespace:Namespace", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cr/namespace:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

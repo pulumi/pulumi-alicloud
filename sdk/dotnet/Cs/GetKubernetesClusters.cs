@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CS
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.34.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetKubernetesClusters.InvokeAsync() instead")]
-        public static Task<GetKubernetesClustersResult> GetKubernetesClusters(GetKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetKubernetesClusters
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.34.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_kubernetes_clusters.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesClustersResult> InvokeAsync(GetKubernetesClustersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClustersResult>("alicloud:cs/getKubernetesClusters:getKubernetesClusters", args ?? new GetKubernetesClustersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetKubernetesClustersArgs : Pulumi.InvokeArgs
     {
@@ -70,14 +55,19 @@ namespace Pulumi.AliCloud.CS
         }
     }
 
+
     [OutputType]
     public sealed class GetKubernetesClustersResult
     {
         /// <summary>
         /// A list of matched Kubernetes clusters. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetKubernetesClustersClustersResult> Clusters;
+        public readonly ImmutableArray<Outputs.GetKubernetesClustersClusterResult> Clusters;
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of matched Kubernetes clusters' ids.
         /// </summary>
@@ -88,337 +78,30 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetKubernetesClustersResult(
-            ImmutableArray<Outputs.GetKubernetesClustersClustersResult> clusters,
+            ImmutableArray<Outputs.GetKubernetesClustersClusterResult> clusters,
+
             bool? enableDetails,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Clusters = clusters;
             EnableDetails = enableDetails;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetKubernetesClustersClustersConnectionsResult
-    {
-        /// <summary>
-        /// API Server Internet endpoint.
-        /// </summary>
-        public readonly string ApiServerInternet;
-        /// <summary>
-        /// API Server Intranet endpoint.
-        /// </summary>
-        public readonly string ApiServerIntranet;
-        /// <summary>
-        /// Master node SSH IP address.
-        /// </summary>
-        public readonly string MasterPublicIp;
-        /// <summary>
-        /// Service Access Domain.
-        /// </summary>
-        public readonly string ServiceDomain;
-
-        [OutputConstructor]
-        private GetKubernetesClustersClustersConnectionsResult(
-            string apiServerInternet,
-            string apiServerIntranet,
-            string masterPublicIp,
-            string serviceDomain)
-        {
-            ApiServerInternet = apiServerInternet;
-            ApiServerIntranet = apiServerIntranet;
-            MasterPublicIp = masterPublicIp;
-            ServiceDomain = serviceDomain;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetKubernetesClustersClustersLogConfigsResult
-    {
-        /// <summary>
-        /// Log Service project name.
-        /// </summary>
-        public readonly string Project;
-        /// <summary>
-        /// Type of collecting logs.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetKubernetesClustersClustersLogConfigsResult(
-            string project,
-            string type)
-        {
-            Project = project;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetKubernetesClustersClustersMasterNodesResult
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Node name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        public readonly string PrivateIp;
-
-        [OutputConstructor]
-        private GetKubernetesClustersClustersMasterNodesResult(
-            string id,
-            string name,
-            string privateIp)
-        {
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetKubernetesClustersClustersResult
-    {
-        /// <summary>
-        /// The ID of availability zone.
-        /// </summary>
-        public readonly string AvailabilityZone;
-        public readonly string ClusterNetworkType;
-        /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
-        /// </summary>
-        public readonly GetKubernetesClustersClustersConnectionsResult Connections;
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The ID of node image.
-        /// </summary>
-        public readonly string ImageId;
-        /// <summary>
-        /// The keypair of ssh login cluster node, you have to create it first.
-        /// </summary>
-        public readonly string KeyName;
-        /// <summary>
-        /// A list of one element containing information about the associated log store. It contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetKubernetesClustersClustersLogConfigsResult> LogConfigs;
-        public readonly bool MasterAutoRenew;
-        public readonly int MasterAutoRenewPeriod;
-        /// <summary>
-        /// The system disk category of master node.
-        /// </summary>
-        public readonly string MasterDiskCategory;
-        /// <summary>
-        /// The system disk size of master node.
-        /// </summary>
-        public readonly int MasterDiskSize;
-        public readonly string MasterInstanceChargeType;
-        /// <summary>
-        /// The instance type of master node.
-        /// </summary>
-        public readonly ImmutableArray<string> MasterInstanceTypes;
-        /// <summary>
-        /// List of cluster master nodes. It contains several attributes to `Block Nodes`.
-        /// </summary>
-        public readonly ImmutableArray<GetKubernetesClustersClustersMasterNodesResult> MasterNodes;
-        public readonly int MasterPeriod;
-        public readonly string MasterPeriodUnit;
-        /// <summary>
-        /// Node name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The ID of nat gateway used to launch kubernetes cluster.
-        /// </summary>
-        public readonly string NatGatewayId;
-        /// <summary>
-        /// The network mask used on pods for each node.
-        /// </summary>
-        public readonly int NodeCidrMask;
-        public readonly string PodCidr;
-        /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
-        /// </summary>
-        public readonly string SecurityGroupId;
-        public readonly string ServiceCidr;
-        /// <summary>
-        /// Whether internet load balancer for API Server is created
-        /// </summary>
-        public readonly bool SlbInternetEnabled;
-        /// <summary>
-        /// The ID of VPC where the current cluster is located.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The ID of VSwitches where the current cluster is located.
-        /// </summary>
-        public readonly ImmutableArray<string> VswitchIds;
-        public readonly bool WorkerAutoRenew;
-        public readonly int WorkerAutoRenewPeriod;
-        /// <summary>
-        /// The data disk size of worker node.
-        /// </summary>
-        public readonly string WorkerDataDiskCategory;
-        /// <summary>
-        /// The data disk category of worker node.
-        /// </summary>
-        public readonly int WorkerDataDiskSize;
-        /// <summary>
-        /// The system disk category of worker node.
-        /// </summary>
-        public readonly string WorkerDiskCategory;
-        /// <summary>
-        /// The system disk size of worker node.
-        /// </summary>
-        public readonly int WorkerDiskSize;
-        public readonly string WorkerInstanceChargeType;
-        /// <summary>
-        /// The instance type of worker node.
-        /// </summary>
-        public readonly ImmutableArray<string> WorkerInstanceTypes;
-        /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
-        /// </summary>
-        public readonly ImmutableArray<GetKubernetesClustersClustersWorkerNodesResult> WorkerNodes;
-        /// <summary>
-        /// The ECS instance node number in the current container cluster.
-        /// </summary>
-        public readonly ImmutableArray<int> WorkerNumbers;
-        public readonly int WorkerPeriod;
-        public readonly string WorkerPeriodUnit;
-
-        [OutputConstructor]
-        private GetKubernetesClustersClustersResult(
-            string availabilityZone,
-            string clusterNetworkType,
-            GetKubernetesClustersClustersConnectionsResult connections,
-            string id,
-            string imageId,
-            string keyName,
-            ImmutableArray<GetKubernetesClustersClustersLogConfigsResult> logConfigs,
-            bool masterAutoRenew,
-            int masterAutoRenewPeriod,
-            string masterDiskCategory,
-            int masterDiskSize,
-            string masterInstanceChargeType,
-            ImmutableArray<string> masterInstanceTypes,
-            ImmutableArray<GetKubernetesClustersClustersMasterNodesResult> masterNodes,
-            int masterPeriod,
-            string masterPeriodUnit,
-            string name,
-            string natGatewayId,
-            int nodeCidrMask,
-            string podCidr,
-            string securityGroupId,
-            string serviceCidr,
-            bool slbInternetEnabled,
-            string vpcId,
-            ImmutableArray<string> vswitchIds,
-            bool workerAutoRenew,
-            int workerAutoRenewPeriod,
-            string workerDataDiskCategory,
-            int workerDataDiskSize,
-            string workerDiskCategory,
-            int workerDiskSize,
-            string workerInstanceChargeType,
-            ImmutableArray<string> workerInstanceTypes,
-            ImmutableArray<GetKubernetesClustersClustersWorkerNodesResult> workerNodes,
-            ImmutableArray<int> workerNumbers,
-            int workerPeriod,
-            string workerPeriodUnit)
-        {
-            AvailabilityZone = availabilityZone;
-            ClusterNetworkType = clusterNetworkType;
-            Connections = connections;
-            Id = id;
-            ImageId = imageId;
-            KeyName = keyName;
-            LogConfigs = logConfigs;
-            MasterAutoRenew = masterAutoRenew;
-            MasterAutoRenewPeriod = masterAutoRenewPeriod;
-            MasterDiskCategory = masterDiskCategory;
-            MasterDiskSize = masterDiskSize;
-            MasterInstanceChargeType = masterInstanceChargeType;
-            MasterInstanceTypes = masterInstanceTypes;
-            MasterNodes = masterNodes;
-            MasterPeriod = masterPeriod;
-            MasterPeriodUnit = masterPeriodUnit;
-            Name = name;
-            NatGatewayId = natGatewayId;
-            NodeCidrMask = nodeCidrMask;
-            PodCidr = podCidr;
-            SecurityGroupId = securityGroupId;
-            ServiceCidr = serviceCidr;
-            SlbInternetEnabled = slbInternetEnabled;
-            VpcId = vpcId;
-            VswitchIds = vswitchIds;
-            WorkerAutoRenew = workerAutoRenew;
-            WorkerAutoRenewPeriod = workerAutoRenewPeriod;
-            WorkerDataDiskCategory = workerDataDiskCategory;
-            WorkerDataDiskSize = workerDataDiskSize;
-            WorkerDiskCategory = workerDiskCategory;
-            WorkerDiskSize = workerDiskSize;
-            WorkerInstanceChargeType = workerInstanceChargeType;
-            WorkerInstanceTypes = workerInstanceTypes;
-            WorkerNodes = workerNodes;
-            WorkerNumbers = workerNumbers;
-            WorkerPeriod = workerPeriod;
-            WorkerPeriodUnit = workerPeriodUnit;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetKubernetesClustersClustersWorkerNodesResult
-    {
-        /// <summary>
-        /// ID of the node.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Node name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The private IP address of node.
-        /// </summary>
-        public readonly string PrivateIp;
-
-        [OutputConstructor]
-        private GetKubernetesClustersClustersWorkerNodesResult(
-            string id,
-            string name,
-            string privateIp)
-        {
-            Id = id;
-            Name = name;
-            PrivateIp = privateIp;
-        }
-    }
     }
 }

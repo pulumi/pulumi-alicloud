@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
     /// 
     /// &gt; **NOTE:** Available in 1.68.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_share_permission.html.markdown.
     /// </summary>
     public partial class ImageSharePermission : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageSharePermission(string name, ImageSharePermissionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/imageSharePermission:ImageSharePermission", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/imageSharePermission:ImageSharePermission", name, args ?? new ImageSharePermissionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

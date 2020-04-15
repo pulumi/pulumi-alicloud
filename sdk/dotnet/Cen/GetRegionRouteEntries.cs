@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides CEN Regional Route Entries available to the user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRegionRouteEntries.InvokeAsync() instead")]
-        public static Task<GetRegionRouteEntriesResult> GetRegionRouteEntries(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRegionRouteEntries
     {
         /// <summary>
         /// This data source provides CEN Regional Route Entries available to the user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionRouteEntriesResult> InvokeAsync(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRegionRouteEntriesArgs : Pulumi.InvokeArgs
     {
@@ -57,78 +44,39 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
+
     [OutputType]
     public sealed class GetRegionRouteEntriesResult
     {
         /// <summary>
         /// A list of CEN Route Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRegionRouteEntriesEntriesResult> Entries;
-        public readonly string InstanceId;
-        public readonly string? OutputFile;
-        public readonly string RegionId;
+        public readonly ImmutableArray<Outputs.GetRegionRouteEntriesEntryResult> Entries;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string InstanceId;
+        public readonly string? OutputFile;
+        public readonly string RegionId;
 
         [OutputConstructor]
         private GetRegionRouteEntriesResult(
-            ImmutableArray<Outputs.GetRegionRouteEntriesEntriesResult> entries,
+            ImmutableArray<Outputs.GetRegionRouteEntriesEntryResult> entries,
+
+            string id,
+
             string instanceId,
+
             string? outputFile,
-            string regionId,
-            string id)
+
+            string regionId)
         {
             Entries = entries;
+            Id = id;
             InstanceId = instanceId;
             OutputFile = outputFile;
             RegionId = regionId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRegionRouteEntriesEntriesResult
-    {
-        /// <summary>
-        /// The destination CIDR block of the route entry.
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// ID of the next hop.
-        /// </summary>
-        public readonly string NextHopId;
-        /// <summary>
-        /// ID of the region where the next hop is located.
-        /// </summary>
-        public readonly string NextHopRegionId;
-        /// <summary>
-        /// Type of the next hop.
-        /// </summary>
-        public readonly string NextHopType;
-        /// <summary>
-        /// Type of the route entry.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetRegionRouteEntriesEntriesResult(
-            string cidrBlock,
-            string nextHopId,
-            string nextHopRegionId,
-            string nextHopType,
-            string type)
-        {
-            CidrBlock = cidrBlock;
-            NextHopId = nextHopId;
-            NextHopRegionId = nextHopRegionId;
-            NextHopType = nextHopType;
-            Type = type;
-        }
-    }
     }
 }

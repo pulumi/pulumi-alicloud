@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Kms
     /// Create an alias for the master key (CMK).
     /// 
     /// &gt; **NOTE:** Available in v1.77.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_alias.html.markdown.
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {
@@ -41,7 +37,7 @@ namespace Pulumi.AliCloud.Kms
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Alias(string name, AliasArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:kms/alias:Alias", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:kms/alias:Alias", name, args ?? new AliasArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -17,10 +17,6 @@ namespace Pulumi.AliCloud.Yundun
     /// &gt; **NOTE:** Available in 1.63.0+ .
     /// 
     /// &gt; **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/yundun_bastionhost_instance.html.markdown.
     /// </summary>
     public partial class BastionHostInstance : Pulumi.CustomResource
     {
@@ -66,7 +62,7 @@ namespace Pulumi.AliCloud.Yundun
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BastionHostInstance(string name, BastionHostInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:yundun/bastionHostInstance:BastionHostInstance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:yundun/bastionHostInstance:BastionHostInstance", name, args ?? new BastionHostInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

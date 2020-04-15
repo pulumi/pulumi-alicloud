@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.RocketMQ
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.53.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGroups.InvokeAsync() instead")]
-        public static Task<GetGroupsResult> GetGroups(GetGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGroups
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.RocketMQ
         /// 
         /// &gt; **NOTE:** Available in 1.53.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:rocketmq/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGroupsArgs : Pulumi.InvokeArgs
     {
@@ -61,6 +46,7 @@ namespace Pulumi.AliCloud.RocketMQ
         }
     }
 
+
     [OutputType]
     public sealed class GetGroupsResult
     {
@@ -68,71 +54,38 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <summary>
         /// A list of groups. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetGroupsGroupsResult> Groups;
+        public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of group names.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string InstanceId;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGroupsResult(
             string? groupIdRegex,
-            ImmutableArray<Outputs.GetGroupsGroupsResult> groups,
+
+            ImmutableArray<Outputs.GetGroupsGroupResult> groups,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string instanceId,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             GroupIdRegex = groupIdRegex;
             Groups = groups;
+            Id = id;
             Ids = ids;
             InstanceId = instanceId;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetGroupsGroupsResult
-    {
-        /// <summary>
-        /// The name of the group.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
-        /// </summary>
-        public readonly bool IndependentNaming;
-        /// <summary>
-        /// The ID of the group owner, which is the Alibaba Cloud UID.
-        /// </summary>
-        public readonly string Owner;
-        /// <summary>
-        /// Remark of the group.
-        /// </summary>
-        public readonly string Remark;
-
-        [OutputConstructor]
-        private GetGroupsGroupsResult(
-            string id,
-            bool independentNaming,
-            string owner,
-            string remark)
-        {
-            Id = id;
-            IndependentNaming = independentNaming;
-            Owner = owner;
-            Remark = remark;
-        }
-    }
     }
 }

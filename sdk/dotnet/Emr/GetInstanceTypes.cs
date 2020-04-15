@@ -9,22 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Emr
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
-        /// instance types available in Alibaba Cloud account when create a emr cluster.
-        /// 
-        /// &gt; **NOTE:** Available in 1.59.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceTypes.InvokeAsync() instead")]
-        public static Task<GetInstanceTypesResult> GetInstanceTypes(GetInstanceTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceTypes
     {
         /// <summary>
@@ -33,13 +17,13 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceTypesArgs : Pulumi.InvokeArgs
     {
@@ -100,11 +84,16 @@ namespace Pulumi.AliCloud.Emr
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceTypesResult
     {
         public readonly string ClusterType;
         public readonly string DestinationResource;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of emr instance types IDs. 
         /// </summary>
@@ -117,32 +106,39 @@ namespace Pulumi.AliCloud.Emr
         /// <summary>
         /// A list of emr instance types. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceTypesTypesResult> Types;
+        public readonly ImmutableArray<Outputs.GetInstanceTypesTypeResult> Types;
         /// <summary>
         /// The available zone id in Alibaba Cloud account
         /// </summary>
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceTypesResult(
             string clusterType,
+
             string destinationResource,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string instanceChargeType,
+
             string? instanceType,
+
             string? outputFile,
+
             bool? supportLocalStorage,
+
             ImmutableArray<string> supportNodeTypes,
-            ImmutableArray<Outputs.GetInstanceTypesTypesResult> types,
-            string? zoneId,
-            string id)
+
+            ImmutableArray<Outputs.GetInstanceTypesTypeResult> types,
+
+            string? zoneId)
         {
             ClusterType = clusterType;
             DestinationResource = destinationResource;
+            Id = id;
             Ids = ids;
             InstanceChargeType = instanceChargeType;
             InstanceType = instanceType;
@@ -151,39 +147,6 @@ namespace Pulumi.AliCloud.Emr
             SupportNodeTypes = supportNodeTypes;
             Types = types;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceTypesTypesResult
-    {
-        /// <summary>
-        /// The ID of the instance type.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Local capacity of the applied ecs instance for emr cluster. Unit: GB.
-        /// </summary>
-        public readonly int LocalStorageCapacity;
-        /// <summary>
-        /// The supported resources of specific zoneId.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetInstanceTypesTypesResult(
-            string id,
-            int localStorageCapacity,
-            string zoneId)
-        {
-            Id = id;
-            LocalStorageCapacity = localStorageCapacity;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

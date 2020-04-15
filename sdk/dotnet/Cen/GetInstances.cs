@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides CEN instances available to the user.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_instances.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         /// <summary>
         /// This data source provides CEN instances available to the user.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_instances.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:cen/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -63,9 +50,14 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of CEN instances IDs.
         /// </summary>
@@ -73,83 +65,34 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// A list of CEN instances. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? NameRegex;
         /// <summary>
         /// A list of CEN instances names. 
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstancesResult(
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
+            Id = id;
             Ids = ids;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        /// <summary>
-        /// List of CEN Bandwidth Package IDs in the specified CEN instance.
-        /// </summary>
-        public readonly ImmutableArray<string> BandwidthPackageIds;
-        /// <summary>
-        /// List of child instance IDs in the specified CEN instance.
-        /// </summary>
-        public readonly ImmutableArray<string> ChildInstanceIds;
-        /// <summary>
-        /// Description of the CEN instance.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the CEN instance.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Name of the CEN instance.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Status of the CEN instance, including "Creating", "Active" and "Deleting".
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            ImmutableArray<string> bandwidthPackageIds,
-            ImmutableArray<string> childInstanceIds,
-            string description,
-            string id,
-            string name,
-            string status)
-        {
-            BandwidthPackageIds = bandwidthPackageIds;
-            ChildInstanceIds = childInstanceIds;
-            Description = description;
-            Id = id;
-            Name = name;
-            Status = status;
-        }
-    }
     }
 }

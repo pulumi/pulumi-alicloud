@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ElasticSearch
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetInstances.InvokeAsync() instead")]
-        public static Task<GetInstancesResult> GetInstances(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:elasticsearch/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstances
     {
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:elasticsearch/getInstances:getInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:elasticsearch/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstancesArgs : Pulumi.InvokeArgs
     {
@@ -53,93 +48,48 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
     }
 
+
     [OutputType]
     public sealed class GetInstancesResult
     {
         public readonly string? DescriptionRegex;
         public readonly ImmutableArray<string> Descriptions;
-        public readonly ImmutableArray<string> Ids;
-        public readonly ImmutableArray<Outputs.GetInstancesInstancesResult> Instances;
-        public readonly string? OutputFile;
-        public readonly ImmutableDictionary<string, object>? Tags;
-        public readonly string? Version;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
+        public readonly string? OutputFile;
+        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly string? Version;
 
         [OutputConstructor]
         private GetInstancesResult(
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
-            ImmutableArray<Outputs.GetInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
+
             string? outputFile,
+
             ImmutableDictionary<string, object>? tags,
-            string? version,
-            string id)
+
+            string? version)
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             Instances = instances;
             OutputFile = outputFile;
             Tags = tags;
             Version = version;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstancesInstancesResult
-    {
-        public readonly string CreatedAt;
-        public readonly int DataNodeAmount;
-        public readonly int DataNodeDiskSize;
-        public readonly string DataNodeDiskType;
-        public readonly string DataNodeSpec;
-        public readonly string Description;
-        public readonly string Id;
-        public readonly string InstanceChargeType;
-        public readonly string Status;
-        public readonly ImmutableDictionary<string, object> Tags;
-        public readonly string UpdatedAt;
-        public readonly string Version;
-        public readonly string VswitchId;
-
-        [OutputConstructor]
-        private GetInstancesInstancesResult(
-            string createdAt,
-            int dataNodeAmount,
-            int dataNodeDiskSize,
-            string dataNodeDiskType,
-            string dataNodeSpec,
-            string description,
-            string id,
-            string instanceChargeType,
-            string status,
-            ImmutableDictionary<string, object> tags,
-            string updatedAt,
-            string version,
-            string vswitchId)
-        {
-            CreatedAt = createdAt;
-            DataNodeAmount = dataNodeAmount;
-            DataNodeDiskSize = dataNodeDiskSize;
-            DataNodeDiskType = dataNodeDiskType;
-            DataNodeSpec = dataNodeSpec;
-            Description = description;
-            Id = id;
-            InstanceChargeType = instanceChargeType;
-            Status = status;
-            Tags = tags;
-            UpdatedAt = updatedAt;
-            Version = version;
-            VswitchId = vswitchId;
-        }
-    }
     }
 }

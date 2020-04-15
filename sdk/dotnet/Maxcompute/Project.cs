@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.MaxCompute
     /// The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
     /// 
     /// -&gt;**NOTE:** Available in 1.77.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/maxcompute_project.html.markdown.
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:maxcompute/project:Project", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:maxcompute/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 

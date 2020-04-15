@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
-        /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSnatEntries.InvokeAsync() instead")]
-        public static Task<GetSnatEntriesResult> GetSnatEntries(GetSnatEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSnatEntries
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSnatEntriesArgs : Pulumi.InvokeArgs
     {
@@ -79,13 +64,18 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetSnatEntriesResult
     {
         /// <summary>
         /// A list of Snat Entries. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSnatEntriesEntriesResult> Entries;
+        public readonly ImmutableArray<Outputs.GetSnatEntriesEntryResult> Entries;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// (Optional) A list of Snat Entries IDs.
         /// </summary>
@@ -100,66 +90,30 @@ namespace Pulumi.AliCloud.Vpc
         /// The source CIDR block of the Snat Entry.
         /// </summary>
         public readonly string? SourceCidr;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSnatEntriesResult(
-            ImmutableArray<Outputs.GetSnatEntriesEntriesResult> entries,
+            ImmutableArray<Outputs.GetSnatEntriesEntryResult> entries,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? outputFile,
+
             string? snatIp,
+
             string snatTableId,
-            string? sourceCidr,
-            string id)
+
+            string? sourceCidr)
         {
             Entries = entries;
+            Id = id;
             Ids = ids;
             OutputFile = outputFile;
             SnatIp = snatIp;
             SnatTableId = snatTableId;
             SourceCidr = sourceCidr;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSnatEntriesEntriesResult
-    {
-        /// <summary>
-        /// The ID of the Snat Entry.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The public IP of the Snat Entry.
-        /// </summary>
-        public readonly string SnatIp;
-        /// <summary>
-        /// The source CIDR block of the Snat Entry.
-        /// </summary>
-        public readonly string SourceCidr;
-        /// <summary>
-        /// The status of the Snat Entry.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetSnatEntriesEntriesResult(
-            string id,
-            string snatIp,
-            string sourceCidr,
-            string status)
-        {
-            Id = id;
-            SnatIp = snatIp;
-            SourceCidr = sourceCidr;
-            Status = status;
-        }
-    }
     }
 }

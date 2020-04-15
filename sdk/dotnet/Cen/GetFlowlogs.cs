@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides CEN flow logs available to the user.
-        /// 
-        /// &gt; **NOTE:** Available in 1.78.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFlowlogs.InvokeAsync() instead")]
-        public static Task<GetFlowlogsResult> GetFlowlogs(GetFlowlogsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFlowlogs
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.78.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_flowlogs.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlowlogsResult> InvokeAsync(GetFlowlogsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFlowlogsResult>("alicloud:cen/getFlowlogs:getFlowlogs", args ?? new GetFlowlogsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFlowlogsArgs : Pulumi.InvokeArgs
     {
@@ -94,6 +79,7 @@ namespace Pulumi.AliCloud.Cen
         }
     }
 
+
     [OutputType]
     public sealed class GetFlowlogsResult
     {
@@ -105,7 +91,11 @@ namespace Pulumi.AliCloud.Cen
         /// The description of flowlog.
         /// </summary>
         public readonly string? Description;
-        public readonly ImmutableArray<Outputs.GetFlowlogsFlowlogsResult> Flowlogs;
+        public readonly ImmutableArray<Outputs.GetFlowlogsFlowlogResult> Flowlogs;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of CEN flow log IDs.
         /// </summary>
@@ -127,96 +117,39 @@ namespace Pulumi.AliCloud.Cen
         /// The status of flowlog.
         /// </summary>
         public readonly string? Status;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetFlowlogsResult(
             string? cenId,
+
             string? description,
-            ImmutableArray<Outputs.GetFlowlogsFlowlogsResult> flowlogs,
+
+            ImmutableArray<Outputs.GetFlowlogsFlowlogResult> flowlogs,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? logStoreName,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? projectName,
-            string? status,
-            string id)
+
+            string? status)
         {
             CenId = cenId;
             Description = description;
             Flowlogs = flowlogs;
+            Id = id;
             Ids = ids;
             LogStoreName = logStoreName;
             NameRegex = nameRegex;
             Names = names;
             ProjectName = projectName;
             Status = status;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetFlowlogsFlowlogsResult
-    {
-        /// <summary>
-        /// The ID of the CEN Instance.
-        /// </summary>
-        public readonly string CenId;
-        /// <summary>
-        /// The description of flowlog.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the CEN flow log.
-        /// </summary>
-        public readonly string FlowLogId;
-        /// <summary>
-        /// The name of flowlog.
-        /// </summary>
-        public readonly string FlowLogName;
-        /// <summary>
-        /// ID of the CEN flow log.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
-        /// </summary>
-        public readonly string LogStoreName;
-        /// <summary>
-        /// The name of the SLS project.
-        /// </summary>
-        public readonly string ProjectName;
-        /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetFlowlogsFlowlogsResult(
-            string cenId,
-            string description,
-            string flowLogId,
-            string flowLogName,
-            string id,
-            string logStoreName,
-            string projectName,
-            string status)
-        {
-            CenId = cenId;
-            Description = description;
-            FlowLogId = flowLogId;
-            FlowLogName = flowLogName;
-            Id = id;
-            LogStoreName = logStoreName;
-            ProjectName = projectName;
-            Status = status;
-        }
-    }
     }
 }

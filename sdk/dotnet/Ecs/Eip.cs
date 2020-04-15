@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Eip(string name, EipArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/eip:Eip", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/eip:Eip", name, args ?? new EipArgs(), MakeResourceOptions(options, ""))
         {
         }
 

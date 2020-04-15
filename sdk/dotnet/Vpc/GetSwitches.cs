@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSwitches.InvokeAsync() instead")]
-        public static Task<GetSwitchesResult> GetSwitches(GetSwitchesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSwitches
     {
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSwitchesArgs : Pulumi.InvokeArgs
     {
@@ -105,6 +92,7 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetSwitchesResult
     {
@@ -112,6 +100,10 @@ namespace Pulumi.AliCloud.Vpc
         /// CIDR block of the VSwitch.
         /// </summary>
         public readonly string? CidrBlock;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of VSwitch IDs.
         /// </summary>
@@ -135,32 +127,40 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of VSwitches. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSwitchesVswitchesResult> Vswitches;
+        public readonly ImmutableArray<Outputs.GetSwitchesVswitchResult> Vswitches;
         /// <summary>
         /// ID of the availability zone where the VSwitch is located.
         /// </summary>
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSwitchesResult(
             string? cidrBlock,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             bool? isDefault,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
+
             string? resourceGroupId,
+
             ImmutableDictionary<string, object>? tags,
+
             string? vpcId,
-            ImmutableArray<Outputs.GetSwitchesVswitchesResult> vswitches,
-            string? zoneId,
-            string id)
+
+            ImmutableArray<Outputs.GetSwitchesVswitchResult> vswitches,
+
+            string? zoneId)
         {
             CidrBlock = cidrBlock;
+            Id = id;
             Ids = ids;
             IsDefault = isDefault;
             NameRegex = nameRegex;
@@ -171,75 +171,6 @@ namespace Pulumi.AliCloud.Vpc
             VpcId = vpcId;
             Vswitches = vswitches;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSwitchesVswitchesResult
-    {
-        /// <summary>
-        /// Filter results by a specific CIDR block. For example: "172.16.0.0/12".
-        /// </summary>
-        public readonly string CidrBlock;
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreationTime;
-        /// <summary>
-        /// Description of the VSwitch.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the VSwitch.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// List of ECS instance IDs in the specified VSwitch.
-        /// </summary>
-        public readonly ImmutableArray<string> InstanceIds;
-        /// <summary>
-        /// Indicate whether the VSwitch is created by the system.
-        /// </summary>
-        public readonly bool IsDefault;
-        /// <summary>
-        /// Name of the VSwitch.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ID of the VPC that owns the VSwitch.
-        /// </summary>
-        public readonly string VpcId;
-        /// <summary>
-        /// The availability zone of the VSwitch.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetSwitchesVswitchesResult(
-            string cidrBlock,
-            string creationTime,
-            string description,
-            string id,
-            ImmutableArray<string> instanceIds,
-            bool isDefault,
-            string name,
-            string vpcId,
-            string zoneId)
-        {
-            CidrBlock = cidrBlock;
-            CreationTime = creationTime;
-            Description = description;
-            Id = id;
-            InstanceIds = instanceIds;
-            IsDefault = isDefault;
-            Name = name;
-            VpcId = vpcId;
-            ZoneId = zoneId;
-        }
-    }
     }
 }

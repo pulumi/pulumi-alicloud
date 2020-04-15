@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.ActionTrail
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.56.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetConsumerGroups.InvokeAsync() instead")]
-        public static Task<GetConsumerGroupsResult> GetConsumerGroups(GetConsumerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetConsumerGroups
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.56.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetConsumerGroupsResult> InvokeAsync(GetConsumerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetConsumerGroupsArgs : Pulumi.InvokeArgs
     {
@@ -61,6 +46,7 @@ namespace Pulumi.AliCloud.ActionTrail
         }
     }
 
+
     [OutputType]
     public sealed class GetConsumerGroupsResult
     {
@@ -69,26 +55,30 @@ namespace Pulumi.AliCloud.ActionTrail
         /// A list of consumer group ids.
         /// </summary>
         public readonly ImmutableArray<string> ConsumerIds;
-        public readonly string InstanceId;
-        public readonly string? OutputFile;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string InstanceId;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetConsumerGroupsResult(
             string? consumerIdRegex,
+
             ImmutableArray<string> consumerIds,
+
+            string id,
+
             string instanceId,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             ConsumerIdRegex = consumerIdRegex;
             ConsumerIds = consumerIds;
+            Id = id;
             InstanceId = instanceId;
             OutputFile = outputFile;
-            Id = id;
         }
     }
 }

@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.Vpc
     /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
     /// 
     /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs. 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {
@@ -91,7 +87,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkInterface(string name, NetworkInterfaceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/networkInterface:NetworkInterface", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/networkInterface:NetworkInterface", name, args ?? new NetworkInterfaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

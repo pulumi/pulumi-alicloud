@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecurityGroup(string name, SecurityGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/securityGroup:SecurityGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/securityGroup:SecurityGroup", name, args ?? new SecurityGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -13,15 +13,11 @@ namespace Pulumi.AliCloud.Emr
     /// Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
     /// 
     /// &gt; **NOTE:** Available in 1.57.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
         [Output("bootstrapActions")]
-        public Output<ImmutableArray<Outputs.ClusterBootstrapActions>> BootstrapActions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterBootstrapAction>> BootstrapActions { get; private set; } = null!;
 
         /// <summary>
         /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
@@ -54,7 +50,7 @@ namespace Pulumi.AliCloud.Emr
         /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         /// </summary>
         [Output("hostGroups")]
-        public Output<ImmutableArray<Outputs.ClusterHostGroups>> HostGroups { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterHostGroup>> HostGroups { get; private set; } = null!;
 
         [Output("isOpenPublicIp")]
         public Output<bool?> IsOpenPublicIp { get; private set; } = null!;
@@ -125,7 +121,7 @@ namespace Pulumi.AliCloud.Emr
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:emr/cluster:Cluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:emr/cluster:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -163,10 +159,10 @@ namespace Pulumi.AliCloud.Emr
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
         [Input("bootstrapActions")]
-        private InputList<Inputs.ClusterBootstrapActionsArgs>? _bootstrapActions;
-        public InputList<Inputs.ClusterBootstrapActionsArgs> BootstrapActions
+        private InputList<Inputs.ClusterBootstrapActionArgs>? _bootstrapActions;
+        public InputList<Inputs.ClusterBootstrapActionArgs> BootstrapActions
         {
-            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionsArgs>());
+            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionArgs>());
             set => _bootstrapActions = value;
         }
 
@@ -198,14 +194,14 @@ namespace Pulumi.AliCloud.Emr
         public Input<bool>? HighAvailabilityEnable { get; set; }
 
         [Input("hostGroups")]
-        private InputList<Inputs.ClusterHostGroupsArgs>? _hostGroups;
+        private InputList<Inputs.ClusterHostGroupArgs>? _hostGroups;
 
         /// <summary>
         /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         /// </summary>
-        public InputList<Inputs.ClusterHostGroupsArgs> HostGroups
+        public InputList<Inputs.ClusterHostGroupArgs> HostGroups
         {
-            get => _hostGroups ?? (_hostGroups = new InputList<Inputs.ClusterHostGroupsArgs>());
+            get => _hostGroups ?? (_hostGroups = new InputList<Inputs.ClusterHostGroupArgs>());
             set => _hostGroups = value;
         }
 
@@ -288,10 +284,10 @@ namespace Pulumi.AliCloud.Emr
     public sealed class ClusterState : Pulumi.ResourceArgs
     {
         [Input("bootstrapActions")]
-        private InputList<Inputs.ClusterBootstrapActionsGetArgs>? _bootstrapActions;
-        public InputList<Inputs.ClusterBootstrapActionsGetArgs> BootstrapActions
+        private InputList<Inputs.ClusterBootstrapActionGetArgs>? _bootstrapActions;
+        public InputList<Inputs.ClusterBootstrapActionGetArgs> BootstrapActions
         {
-            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionsGetArgs>());
+            get => _bootstrapActions ?? (_bootstrapActions = new InputList<Inputs.ClusterBootstrapActionGetArgs>());
             set => _bootstrapActions = value;
         }
 
@@ -323,14 +319,14 @@ namespace Pulumi.AliCloud.Emr
         public Input<bool>? HighAvailabilityEnable { get; set; }
 
         [Input("hostGroups")]
-        private InputList<Inputs.ClusterHostGroupsGetArgs>? _hostGroups;
+        private InputList<Inputs.ClusterHostGroupGetArgs>? _hostGroups;
 
         /// <summary>
         /// Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         /// </summary>
-        public InputList<Inputs.ClusterHostGroupsGetArgs> HostGroups
+        public InputList<Inputs.ClusterHostGroupGetArgs> HostGroups
         {
-            get => _hostGroups ?? (_hostGroups = new InputList<Inputs.ClusterHostGroupsGetArgs>());
+            get => _hostGroups ?? (_hostGroups = new InputList<Inputs.ClusterHostGroupGetArgs>());
             set => _hostGroups = value;
         }
 
@@ -408,358 +404,5 @@ namespace Pulumi.AliCloud.Emr
         public ClusterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ClusterBootstrapActionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// bootstrap action args, e.g. "--a=b".
-        /// </summary>
-        [Input("arg")]
-        public Input<string>? Arg { get; set; }
-
-        /// <summary>
-        /// bootstrap action name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// bootstrap action path, e.g. "oss://bucket/path".
-        /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        public ClusterBootstrapActionsArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterBootstrapActionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// bootstrap action args, e.g. "--a=b".
-        /// </summary>
-        [Input("arg")]
-        public Input<string>? Arg { get; set; }
-
-        /// <summary>
-        /// bootstrap action name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// bootstrap action path, e.g. "oss://bucket/path".
-        /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
-
-        public ClusterBootstrapActionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterHostGroupsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
-        /// </summary>
-        [Input("autoRenew")]
-        public Input<bool>? AutoRenew { get; set; }
-
-        /// <summary>
-        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
-        /// </summary>
-        [Input("chargeType")]
-        public Input<string>? ChargeType { get; set; }
-
-        /// <summary>
-        /// Data disk capacity.
-        /// </summary>
-        [Input("diskCapacity")]
-        public Input<string>? DiskCapacity { get; set; }
-
-        /// <summary>
-        /// Data disk count.
-        /// </summary>
-        [Input("diskCount")]
-        public Input<string>? DiskCount { get; set; }
-
-        /// <summary>
-        /// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        /// </summary>
-        [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
-
-        [Input("gpuDriver")]
-        public Input<string>? GpuDriver { get; set; }
-
-        /// <summary>
-        /// host group name.
-        /// </summary>
-        [Input("hostGroupName")]
-        public Input<string>? HostGroupName { get; set; }
-
-        /// <summary>
-        /// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        /// </summary>
-        [Input("hostGroupType")]
-        public Input<string>? HostGroupType { get; set; }
-
-        /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
-        /// </summary>
-        [Input("instanceList")]
-        public Input<string>? InstanceList { get; set; }
-
-        /// <summary>
-        /// Host Ecs instance type.
-        /// </summary>
-        [Input("instanceType")]
-        public Input<string>? InstanceType { get; set; }
-
-        /// <summary>
-        /// Host number in this group.
-        /// </summary>
-        [Input("nodeCount")]
-        public Input<string>? NodeCount { get; set; }
-
-        /// <summary>
-        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-        /// </summary>
-        [Input("period")]
-        public Input<int>? Period { get; set; }
-
-        /// <summary>
-        /// System disk capacity.
-        /// </summary>
-        [Input("sysDiskCapacity")]
-        public Input<string>? SysDiskCapacity { get; set; }
-
-        /// <summary>
-        /// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-        /// </summary>
-        [Input("sysDiskType")]
-        public Input<string>? SysDiskType { get; set; }
-
-        public ClusterHostGroupsArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterHostGroupsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
-        /// </summary>
-        [Input("autoRenew")]
-        public Input<bool>? AutoRenew { get; set; }
-
-        /// <summary>
-        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
-        /// </summary>
-        [Input("chargeType")]
-        public Input<string>? ChargeType { get; set; }
-
-        /// <summary>
-        /// Data disk capacity.
-        /// </summary>
-        [Input("diskCapacity")]
-        public Input<string>? DiskCapacity { get; set; }
-
-        /// <summary>
-        /// Data disk count.
-        /// </summary>
-        [Input("diskCount")]
-        public Input<string>? DiskCount { get; set; }
-
-        /// <summary>
-        /// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        /// </summary>
-        [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
-
-        [Input("gpuDriver")]
-        public Input<string>? GpuDriver { get; set; }
-
-        /// <summary>
-        /// host group name.
-        /// </summary>
-        [Input("hostGroupName")]
-        public Input<string>? HostGroupName { get; set; }
-
-        /// <summary>
-        /// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        /// </summary>
-        [Input("hostGroupType")]
-        public Input<string>? HostGroupType { get; set; }
-
-        /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
-        /// </summary>
-        [Input("instanceList")]
-        public Input<string>? InstanceList { get; set; }
-
-        /// <summary>
-        /// Host Ecs instance type.
-        /// </summary>
-        [Input("instanceType")]
-        public Input<string>? InstanceType { get; set; }
-
-        /// <summary>
-        /// Host number in this group.
-        /// </summary>
-        [Input("nodeCount")]
-        public Input<string>? NodeCount { get; set; }
-
-        /// <summary>
-        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-        /// </summary>
-        [Input("period")]
-        public Input<int>? Period { get; set; }
-
-        /// <summary>
-        /// System disk capacity.
-        /// </summary>
-        [Input("sysDiskCapacity")]
-        public Input<string>? SysDiskCapacity { get; set; }
-
-        /// <summary>
-        /// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-        /// </summary>
-        [Input("sysDiskType")]
-        public Input<string>? SysDiskType { get; set; }
-
-        public ClusterHostGroupsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ClusterBootstrapActions
-    {
-        /// <summary>
-        /// bootstrap action args, e.g. "--a=b".
-        /// </summary>
-        public readonly string? Arg;
-        /// <summary>
-        /// bootstrap action name.
-        /// </summary>
-        public readonly string? Name;
-        /// <summary>
-        /// bootstrap action path, e.g. "oss://bucket/path".
-        /// </summary>
-        public readonly string? Path;
-
-        [OutputConstructor]
-        private ClusterBootstrapActions(
-            string? arg,
-            string? name,
-            string? path)
-        {
-            Arg = arg;
-            Name = name;
-            Path = path;
-        }
-    }
-
-    [OutputType]
-    public sealed class ClusterHostGroups
-    {
-        /// <summary>
-        /// Auto renew for prepaid, true of false. Default is false.
-        /// </summary>
-        public readonly bool? AutoRenew;
-        /// <summary>
-        /// Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
-        /// </summary>
-        public readonly string? ChargeType;
-        /// <summary>
-        /// Data disk capacity.
-        /// </summary>
-        public readonly string? DiskCapacity;
-        /// <summary>
-        /// Data disk count.
-        /// </summary>
-        public readonly string? DiskCount;
-        /// <summary>
-        /// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        /// </summary>
-        public readonly string? DiskType;
-        public readonly string? GpuDriver;
-        /// <summary>
-        /// host group name.
-        /// </summary>
-        public readonly string? HostGroupName;
-        /// <summary>
-        /// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        /// </summary>
-        public readonly string? HostGroupType;
-        /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
-        /// </summary>
-        public readonly string? InstanceList;
-        /// <summary>
-        /// Host Ecs instance type.
-        /// </summary>
-        public readonly string? InstanceType;
-        /// <summary>
-        /// Host number in this group.
-        /// </summary>
-        public readonly string? NodeCount;
-        /// <summary>
-        /// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-        /// </summary>
-        public readonly int? Period;
-        /// <summary>
-        /// System disk capacity.
-        /// </summary>
-        public readonly string? SysDiskCapacity;
-        /// <summary>
-        /// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-        /// </summary>
-        public readonly string? SysDiskType;
-
-        [OutputConstructor]
-        private ClusterHostGroups(
-            bool? autoRenew,
-            string? chargeType,
-            string? diskCapacity,
-            string? diskCount,
-            string? diskType,
-            string? gpuDriver,
-            string? hostGroupName,
-            string? hostGroupType,
-            string? instanceList,
-            string? instanceType,
-            string? nodeCount,
-            int? period,
-            string? sysDiskCapacity,
-            string? sysDiskType)
-        {
-            AutoRenew = autoRenew;
-            ChargeType = chargeType;
-            DiskCapacity = diskCapacity;
-            DiskCount = diskCount;
-            DiskType = diskType;
-            GpuDriver = gpuDriver;
-            HostGroupName = hostGroupName;
-            HostGroupType = hostGroupType;
-            InstanceList = instanceList;
-            InstanceType = instanceType;
-            NodeCount = nodeCount;
-            Period = period;
-            SysDiskCapacity = sysDiskCapacity;
-            SysDiskType = sysDiskType;
-        }
-    }
     }
 }

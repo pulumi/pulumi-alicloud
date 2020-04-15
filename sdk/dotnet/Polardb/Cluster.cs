@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// databases.
     /// 
     /// &gt; **NOTE:** Available in v1.66.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_cluster.html.markdown.
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
@@ -68,7 +64,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         /// </summary>
         [Output("parameters")]
-        public Output<ImmutableArray<Outputs.ClusterParameters>> Parameters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ClusterParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. Currently, the resource can not supports change pay type.
@@ -123,7 +119,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:polardb/cluster:Cluster", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:polardb/cluster:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -203,14 +199,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ModifyType { get; set; }
 
         [Input("parameters")]
-        private InputList<Inputs.ClusterParametersArgs>? _parameters;
+        private InputList<Inputs.ClusterParameterArgs>? _parameters;
 
         /// <summary>
         /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         /// </summary>
-        public InputList<Inputs.ClusterParametersArgs> Parameters
+        public InputList<Inputs.ClusterParameterArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParametersArgs>());
+            get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParameterArgs>());
             set => _parameters = value;
         }
 
@@ -320,14 +316,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ModifyType { get; set; }
 
         [Input("parameters")]
-        private InputList<Inputs.ClusterParametersGetArgs>? _parameters;
+        private InputList<Inputs.ClusterParameterGetArgs>? _parameters;
 
         /// <summary>
         /// Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
         /// </summary>
-        public InputList<Inputs.ClusterParametersGetArgs> Parameters
+        public InputList<Inputs.ClusterParameterGetArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParametersGetArgs>());
+            get => _parameters ?? (_parameters = new InputList<Inputs.ClusterParameterGetArgs>());
             set => _parameters = value;
         }
 
@@ -390,55 +386,5 @@ namespace Pulumi.AliCloud.PolarDB
         public ClusterState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ClusterParametersArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ClusterParametersArgs()
-        {
-        }
-    }
-
-    public sealed class ClusterParametersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ClusterParametersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ClusterParameters
-    {
-        public readonly string Name;
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ClusterParameters(
-            string name,
-            string value)
-        {
-            Name = name;
-            Value = value;
-        }
-    }
     }
 }

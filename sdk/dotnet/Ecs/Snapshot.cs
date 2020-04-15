@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an ECS snapshot resource.
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snapshot.html.markdown.
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {
@@ -53,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Snapshot(string name, SnapshotArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/snapshot:Snapshot", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/snapshot:Snapshot", name, args ?? new SnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
 

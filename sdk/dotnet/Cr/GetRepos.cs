@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.CR
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list Container Registry repositories on Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.35.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRepos.InvokeAsync() instead")]
-        public static Task<GetReposResult> GetRepos(GetReposArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRepos
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cr_repos.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetReposResult> InvokeAsync(GetReposArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetReposResult>("alicloud:cr/getRepos:getRepos", args ?? new GetReposArgs(), options.WithVersion());
     }
+
 
     public sealed class GetReposArgs : Pulumi.InvokeArgs
     {
@@ -67,10 +52,15 @@ namespace Pulumi.AliCloud.CR
         }
     }
 
+
     [OutputType]
     public sealed class GetReposResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of matched Container Registry Repositories. Its element is set to `names`.
         /// </summary>
@@ -88,161 +78,34 @@ namespace Pulumi.AliCloud.CR
         /// <summary>
         /// A list of matched Container Registry Namespaces. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetReposReposResult> Repos;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetReposRepoResult> Repos;
 
         [OutputConstructor]
         private GetReposResult(
             bool? enableDetails,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? @namespace,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetReposReposResult> repos,
-            string id)
+
+            ImmutableArray<Outputs.GetReposRepoResult> repos)
         {
             EnableDetails = enableDetails;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             Namespace = @namespace;
             OutputFile = outputFile;
             Repos = repos;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetReposReposDomainListResult
-    {
-        /// <summary>
-        /// Domain of internal endpoint, only in some regions.
-        /// </summary>
-        public readonly string Internal;
-        /// <summary>
-        /// Domain of public endpoint.
-        /// </summary>
-        public readonly string Public;
-        /// <summary>
-        /// Domain of vpc endpoint.
-        /// </summary>
-        public readonly string Vpc;
-
-        [OutputConstructor]
-        private GetReposReposDomainListResult(
-            string @internal,
-            string @public,
-            string vpc)
-        {
-            Internal = @internal;
-            Public = @public;
-            Vpc = vpc;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetReposReposResult
-    {
-        /// <summary>
-        /// The repository domain list.
-        /// </summary>
-        public readonly GetReposReposDomainListResult DomainList;
-        /// <summary>
-        /// Name of container registry namespace.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Name of container registry namespace where the repositories are located in.
-        /// </summary>
-        public readonly string Namespace;
-        /// <summary>
-        /// `PUBLIC` or `PRIVATE`, repository's visibility.
-        /// </summary>
-        public readonly string RepoType;
-        /// <summary>
-        /// The repository general information.
-        /// </summary>
-        public readonly string Summary;
-        /// <summary>
-        /// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
-        /// </summary>
-        public readonly ImmutableArray<GetReposReposTagsResult> Tags;
-
-        [OutputConstructor]
-        private GetReposReposResult(
-            GetReposReposDomainListResult domainList,
-            string name,
-            string @namespace,
-            string repoType,
-            string summary,
-            ImmutableArray<GetReposReposTagsResult> tags)
-        {
-            DomainList = domainList;
-            Name = name;
-            Namespace = @namespace;
-            RepoType = repoType;
-            Summary = summary;
-            Tags = tags;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetReposReposTagsResult
-    {
-        /// <summary>
-        /// Digest of this image.
-        /// </summary>
-        public readonly string Digest;
-        /// <summary>
-        /// Create time of this image, unix time in nanoseconds.
-        /// </summary>
-        public readonly int ImageCreate;
-        /// <summary>
-        /// Id of this image.
-        /// </summary>
-        public readonly string ImageId;
-        /// <summary>
-        /// Status of this image, in bytes.
-        /// </summary>
-        public readonly int ImageSize;
-        /// <summary>
-        /// Last update time of this image, unix time in nanoseconds.
-        /// </summary>
-        public readonly int ImageUpdate;
-        /// <summary>
-        /// Status of this image.
-        /// </summary>
-        public readonly string Status;
-        /// <summary>
-        /// Tag of this image.
-        /// </summary>
-        public readonly string Tag;
-
-        [OutputConstructor]
-        private GetReposReposTagsResult(
-            string digest,
-            int imageCreate,
-            string imageId,
-            int imageSize,
-            int imageUpdate,
-            string status,
-            string tag)
-        {
-            Digest = digest;
-            ImageCreate = imageCreate;
-            ImageId = imageId;
-            ImageSize = imageSize;
-            ImageUpdate = imageUpdate;
-            Status = status;
-            Tag = tag;
-        }
-    }
     }
 }

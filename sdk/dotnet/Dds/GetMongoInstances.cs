@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dds
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetMongoInstances.InvokeAsync() instead")]
-        public static Task<GetMongoInstancesResult> GetMongoInstances(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetMongoInstances
     {
         public static Task<GetMongoInstancesResult> InvokeAsync(GetMongoInstancesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetMongoInstancesResult>("alicloud:dds/getMongoInstances:getMongoInstances", args ?? new GetMongoInstancesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetMongoInstancesArgs : Pulumi.InvokeArgs
     {
@@ -59,37 +54,48 @@ namespace Pulumi.AliCloud.Dds
         }
     }
 
+
     [OutputType]
     public sealed class GetMongoInstancesResult
     {
         public readonly string? AvailabilityZone;
-        public readonly ImmutableArray<string> Ids;
-        public readonly string? InstanceClass;
-        public readonly string? InstanceType;
-        public readonly ImmutableArray<Outputs.GetMongoInstancesInstancesResult> Instances;
-        public readonly string? NameRegex;
-        public readonly ImmutableArray<string> Names;
-        public readonly string? OutputFile;
-        public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> Ids;
+        public readonly string? InstanceClass;
+        public readonly string? InstanceType;
+        public readonly ImmutableArray<Outputs.GetMongoInstancesInstanceResult> Instances;
+        public readonly string? NameRegex;
+        public readonly ImmutableArray<string> Names;
+        public readonly string? OutputFile;
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetMongoInstancesResult(
             string? availabilityZone,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? instanceClass,
+
             string? instanceType,
-            ImmutableArray<Outputs.GetMongoInstancesInstancesResult> instances,
+
+            ImmutableArray<Outputs.GetMongoInstancesInstanceResult> instances,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableDictionary<string, object>? tags,
-            string id)
+
+            ImmutableDictionary<string, object>? tags)
         {
             AvailabilityZone = availabilityZone;
+            Id = id;
             Ids = ids;
             InstanceClass = instanceClass;
             InstanceType = instanceType;
@@ -98,119 +104,6 @@ namespace Pulumi.AliCloud.Dds
             Names = names;
             OutputFile = outputFile;
             Tags = tags;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetMongoInstancesInstancesMongosResult
-    {
-        public readonly string Class;
-        public readonly string Description;
-        public readonly string NodeId;
-
-        [OutputConstructor]
-        private GetMongoInstancesInstancesMongosResult(
-            string @class,
-            string description,
-            string nodeId)
-        {
-            Class = @class;
-            Description = description;
-            NodeId = nodeId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMongoInstancesInstancesResult
-    {
-        public readonly string AvailabilityZone;
-        public readonly string ChargeType;
-        public readonly string CreationTime;
-        public readonly string Engine;
-        public readonly string EngineVersion;
-        public readonly string ExpirationTime;
-        public readonly string Id;
-        public readonly string InstanceClass;
-        public readonly string InstanceType;
-        public readonly string LockMode;
-        public readonly ImmutableArray<GetMongoInstancesInstancesMongosResult> Mongos;
-        public readonly string Name;
-        public readonly string NetworkType;
-        public readonly string RegionId;
-        public readonly string Replication;
-        public readonly ImmutableArray<GetMongoInstancesInstancesShardsResult> Shards;
-        public readonly string Status;
-        public readonly int Storage;
-        public readonly ImmutableDictionary<string, object> Tags;
-
-        [OutputConstructor]
-        private GetMongoInstancesInstancesResult(
-            string availabilityZone,
-            string chargeType,
-            string creationTime,
-            string engine,
-            string engineVersion,
-            string expirationTime,
-            string id,
-            string instanceClass,
-            string instanceType,
-            string lockMode,
-            ImmutableArray<GetMongoInstancesInstancesMongosResult> mongos,
-            string name,
-            string networkType,
-            string regionId,
-            string replication,
-            ImmutableArray<GetMongoInstancesInstancesShardsResult> shards,
-            string status,
-            int storage,
-            ImmutableDictionary<string, object> tags)
-        {
-            AvailabilityZone = availabilityZone;
-            ChargeType = chargeType;
-            CreationTime = creationTime;
-            Engine = engine;
-            EngineVersion = engineVersion;
-            ExpirationTime = expirationTime;
-            Id = id;
-            InstanceClass = instanceClass;
-            InstanceType = instanceType;
-            LockMode = lockMode;
-            Mongos = mongos;
-            Name = name;
-            NetworkType = networkType;
-            RegionId = regionId;
-            Replication = replication;
-            Shards = shards;
-            Status = status;
-            Storage = storage;
-            Tags = tags;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetMongoInstancesInstancesShardsResult
-    {
-        public readonly string Class;
-        public readonly string Description;
-        public readonly string NodeId;
-        public readonly int Storage;
-
-        [OutputConstructor]
-        private GetMongoInstancesInstancesShardsResult(
-            string @class,
-            string description,
-            string nodeId,
-            int storage)
-        {
-            Class = @class;
-            Description = description;
-            NodeId = nodeId;
-            Storage = storage;
-        }
-    }
     }
 }

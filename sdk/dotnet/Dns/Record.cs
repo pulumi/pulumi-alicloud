@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Dns
     /// Provides a DNS Record resource.
     /// 
     /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_record.html.markdown.
     /// </summary>
     public partial class Record : Pulumi.CustomResource
     {
@@ -80,7 +76,7 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Record(string name, RecordArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:dns/record:Record", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:dns/record:Record", name, args ?? new RecordArgs(), MakeResourceOptions(options, ""))
         {
         }
 

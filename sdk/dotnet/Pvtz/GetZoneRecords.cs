@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Pvtz
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetZoneRecords.InvokeAsync() instead")]
-        public static Task<GetZoneRecordsResult> GetZoneRecords(GetZoneRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZoneRecords
     {
         /// <summary>
         /// This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/pvtz_zone_records.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneRecordsResult> InvokeAsync(GetZoneRecordsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZoneRecordsArgs : Pulumi.InvokeArgs
     {
@@ -69,9 +56,14 @@ namespace Pulumi.AliCloud.Pvtz
         }
     }
 
+
     [OutputType]
     public sealed class GetZoneRecordsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of Private Zone Record IDs.
         /// </summary>
@@ -81,81 +73,29 @@ namespace Pulumi.AliCloud.Pvtz
         /// <summary>
         /// A list of zone records. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetZoneRecordsRecordsResult> Records;
+        public readonly ImmutableArray<Outputs.GetZoneRecordsRecordResult> Records;
         public readonly string ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetZoneRecordsResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? keyword,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetZoneRecordsRecordsResult> records,
-            string zoneId,
-            string id)
+
+            ImmutableArray<Outputs.GetZoneRecordsRecordResult> records,
+
+            string zoneId)
         {
+            Id = id;
             Ids = ids;
             Keyword = keyword;
             OutputFile = outputFile;
             Records = records;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetZoneRecordsRecordsResult
-    {
-        /// <summary>
-        /// ID of the Private Zone Record.
-        /// </summary>
-        public readonly int Id;
-        /// <summary>
-        /// Priority of the Private Zone Record.
-        /// </summary>
-        public readonly int Priority;
-        /// <summary>
-        /// Resource record of the Private Zone Record.
-        /// </summary>
-        public readonly string ResourceRecord;
-        public readonly string Status;
-        /// <summary>
-        /// Ttl of the Private Zone Record.
-        /// </summary>
-        public readonly int Ttl;
-        /// <summary>
-        /// Type of the Private Zone Record.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// Value of the Private Zone Record.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetZoneRecordsRecordsResult(
-            int id,
-            int priority,
-            string resourceRecord,
-            string status,
-            int ttl,
-            string type,
-            string value)
-        {
-            Id = id;
-            Priority = priority;
-            ResourceRecord = resourceRecord;
-            Status = status;
-            Ttl = ttl;
-            Type = type;
-            Value = value;
-        }
-    }
     }
 }

@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.ActionTrail
     /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
     /// </summary>
     public partial class Trail : Pulumi.CustomResource
     {
@@ -71,7 +67,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Trail(string name, TrailArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:actiontrail/trail:Trail", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:actiontrail/trail:Trail", name, args ?? new TrailArgs(), MakeResourceOptions(options, ""))
         {
         }
 

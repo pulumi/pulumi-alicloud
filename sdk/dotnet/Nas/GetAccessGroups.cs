@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Nas
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides user-available access groups. Use when you can create mount points
-        /// 
-        /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAccessGroups.InvokeAsync() instead")]
-        public static Task<GetAccessGroupsResult> GetAccessGroups(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccessGroups
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; NOTE: Available in 1.35.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccessGroupsResult>("alicloud:nas/getAccessGroups:getAccessGroups", args ?? new GetAccessGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccessGroupsArgs : Pulumi.InvokeArgs
     {
@@ -67,6 +52,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
+
     [OutputType]
     public sealed class GetAccessGroupsResult
     {
@@ -77,7 +63,11 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// A list of AccessGroups. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAccessGroupsGroupsResult> Groups;
+        public readonly ImmutableArray<Outputs.GetAccessGroupsGroupResult> Groups;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of AccessGroup IDs, the value is set to `names` .
         /// </summary>
@@ -92,74 +82,33 @@ namespace Pulumi.AliCloud.Nas
         /// AccessGroupType of the AccessGroup.
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAccessGroupsResult(
             string? description,
-            ImmutableArray<Outputs.GetAccessGroupsGroupsResult> groups,
+
+            ImmutableArray<Outputs.GetAccessGroupsGroupResult> groups,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? type,
-            string id)
+
+            string? type)
         {
             Description = description;
             Groups = groups;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Type = type;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAccessGroupsGroupsResult
-    {
-        /// <summary>
-        /// Filter results by a specific Description.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// AccessGroupName of the AccessGroup.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// MountTargetCount block of the AccessGroup
-        /// </summary>
-        public readonly int MountTargetCount;
-        /// <summary>
-        /// RuleCount of the AccessGroup.
-        /// </summary>
-        public readonly int RuleCount;
-        /// <summary>
-        /// Filter results by a specific AccessGroupType.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private GetAccessGroupsGroupsResult(
-            string description,
-            string id,
-            int mountTargetCount,
-            int ruleCount,
-            string type)
-        {
-            Description = description;
-            Id = id;
-            MountTargetCount = mountTargetCount;
-            RuleCount = ruleCount;
-            Type = type;
-        }
-    }
     }
 }

@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.Ecs
     /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
     /// &gt; **NOTE:** Available in 1.42.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snapshot_policy.html.markdown.
     /// </summary>
     public partial class SnapshotPolicy : Pulumi.CustomResource
     {
@@ -61,7 +57,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SnapshotPolicy(string name, SnapshotPolicyArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/snapshotPolicy:SnapshotPolicy", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/snapshotPolicy:SnapshotPolicy", name, args ?? new SnapshotPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 

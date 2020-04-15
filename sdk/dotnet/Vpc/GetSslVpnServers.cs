@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSslVpnServers.InvokeAsync() instead")]
-        public static Task<GetSslVpnServersResult> GetSslVpnServers(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSslVpnServers
     {
         /// <summary>
         /// The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSslVpnServersResult> InvokeAsync(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSslVpnServersArgs : Pulumi.InvokeArgs
     {
@@ -72,9 +59,14 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetSslVpnServersResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SSL-VPN server IDs.
         /// </summary>
@@ -88,125 +80,35 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// A list of SSL-VPN servers. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetSslVpnServersServersResult> Servers;
+        public readonly ImmutableArray<Outputs.GetSslVpnServersServerResult> Servers;
         /// <summary>
         /// The ID of the VPN gateway instance.
         /// </summary>
         public readonly string? VpnGatewayId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSslVpnServersResult(
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetSslVpnServersServersResult> servers,
-            string? vpnGatewayId,
-            string id)
+
+            ImmutableArray<Outputs.GetSslVpnServersServerResult> servers,
+
+            string? vpnGatewayId)
         {
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             Servers = servers;
             VpnGatewayId = vpnGatewayId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSslVpnServersServersResult
-    {
-        /// <summary>
-        /// The encryption algorithm used.
-        /// </summary>
-        public readonly string Cipher;
-        /// <summary>
-        /// The IP address pool of the client.
-        /// </summary>
-        public readonly string ClientIpPool;
-        /// <summary>
-        /// Whether to compress.
-        /// </summary>
-        public readonly bool Compress;
-        /// <summary>
-        /// The number of current connections.
-        /// </summary>
-        public readonly int Connections;
-        /// <summary>
-        /// The time of creation.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The ID of the SSL-VPN server.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The public IP.
-        /// </summary>
-        public readonly string InternetIp;
-        /// <summary>
-        /// The local subnet of the VPN connection.
-        /// </summary>
-        public readonly string LocalSubnet;
-        /// <summary>
-        /// The maximum number of connections.
-        /// </summary>
-        public readonly int MaxConnections;
-        /// <summary>
-        /// The name of the SSL-VPN server.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The port used by the SSL-VPN server.
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
-        /// The protocol used by the SSL-VPN server.
-        /// </summary>
-        public readonly string Proto;
-        /// <summary>
-        /// Use the VPN gateway ID as the search key.
-        /// </summary>
-        public readonly string VpnGatewayId;
-
-        [OutputConstructor]
-        private GetSslVpnServersServersResult(
-            string cipher,
-            string clientIpPool,
-            bool compress,
-            int connections,
-            string createTime,
-            string id,
-            string internetIp,
-            string localSubnet,
-            int maxConnections,
-            string name,
-            int port,
-            string proto,
-            string vpnGatewayId)
-        {
-            Cipher = cipher;
-            ClientIpPool = clientIpPool;
-            Compress = compress;
-            Connections = connections;
-            CreateTime = createTime;
-            Id = id;
-            InternetIp = internetIp;
-            LocalSubnet = localSubnet;
-            MaxConnections = maxConnections;
-            Name = name;
-            Port = port;
-            Proto = proto;
-            VpnGatewayId = vpnGatewayId;
-        }
-    }
     }
 }

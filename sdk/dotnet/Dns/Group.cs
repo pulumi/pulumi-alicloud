@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
     /// Provides a DNS Group resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_group.html.markdown.
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
@@ -33,7 +29,7 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("alicloud:dns/group:Group", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:dns/group:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

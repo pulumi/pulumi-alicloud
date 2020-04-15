@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Drds
     /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/drds_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -83,7 +79,7 @@ namespace Pulumi.AliCloud.Drds
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:drds/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:drds/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

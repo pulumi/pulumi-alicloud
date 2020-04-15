@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// &gt; **NOTE:** Available in 1.60.0.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetResolutionLines.InvokeAsync() instead")]
-        public static Task<GetResolutionLinesResult> GetResolutionLines(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetResolutionLines
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:** Available in 1.60.0.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_resolution_lines.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetResolutionLinesResult>("alicloud:dns/getResolutionLines:getResolutionLines", args ?? new GetResolutionLinesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetResolutionLinesArgs : Pulumi.InvokeArgs
     {
@@ -99,10 +84,15 @@ namespace Pulumi.AliCloud.Dns
         }
     }
 
+
     [OutputType]
     public sealed class GetResolutionLinesResult
     {
         public readonly string? DomainName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? Lang;
         /// <summary>
         /// Line code.
@@ -116,27 +106,32 @@ namespace Pulumi.AliCloud.Dns
         /// <summary>
         /// A list of cloud resolution line. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetResolutionLinesLinesResult> Lines;
+        public readonly ImmutableArray<Outputs.GetResolutionLinesLineResult> Lines;
         public readonly string? OutputFile;
         public readonly string? UserClientIp;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetResolutionLinesResult(
             string? domainName,
+
+            string id,
+
             string? lang,
+
             ImmutableArray<string> lineCodes,
+
             ImmutableArray<string> lineDisplayNames,
+
             ImmutableArray<string> lineNames,
-            ImmutableArray<Outputs.GetResolutionLinesLinesResult> lines,
+
+            ImmutableArray<Outputs.GetResolutionLinesLineResult> lines,
+
             string? outputFile,
-            string? userClientIp,
-            string id)
+
+            string? userClientIp)
         {
             DomainName = domainName;
+            Id = id;
             Lang = lang;
             LineCodes = lineCodes;
             LineDisplayNames = lineDisplayNames;
@@ -144,36 +139,6 @@ namespace Pulumi.AliCloud.Dns
             Lines = lines;
             OutputFile = outputFile;
             UserClientIp = userClientIp;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetResolutionLinesLinesResult
-    {
-        public readonly string LineCode;
-        /// <summary>
-        /// Line display name.
-        /// </summary>
-        public readonly string LineDisplayName;
-        /// <summary>
-        /// Line name.
-        /// </summary>
-        public readonly string LineName;
-
-        [OutputConstructor]
-        private GetResolutionLinesLinesResult(
-            string lineCode,
-            string lineDisplayName,
-            string lineName)
-        {
-            LineCode = lineCode;
-            LineDisplayName = lineDisplayName;
-            LineName = lineName;
-        }
-    }
     }
 }

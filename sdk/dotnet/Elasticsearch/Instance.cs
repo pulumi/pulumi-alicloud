@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// &gt; **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
     /// 
     /// &gt; **NOTE:** At present, `version` can not be modified once instance has been created.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -170,7 +166,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:elasticsearch/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:elasticsearch/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

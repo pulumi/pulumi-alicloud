@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.MarketPlace
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the Market product item details of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in 1.69.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProduct.InvokeAsync() instead")]
-        public static Task<GetProductResult> GetProduct(GetProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProduct
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.MarketPlace
         /// 
         /// &gt; **NOTE:** Available in 1.69.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/market_product.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProductResult>("alicloud:marketplace/getProduct:getProduct", args ?? new GetProductArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProductArgs : Pulumi.InvokeArgs
     {
@@ -58,153 +43,35 @@ namespace Pulumi.AliCloud.MarketPlace
         }
     }
 
+
     [OutputType]
     public sealed class GetProductResult
     {
         public readonly string? AvailableRegion;
         /// <summary>
-        /// A product. It contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetProductProductsResult> Products;
-        public readonly string ProductCode;
-        /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string ProductCode;
+        /// <summary>
+        /// A product. It contains the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProductProductResult> Products;
 
         [OutputConstructor]
         private GetProductResult(
             string? availableRegion,
-            ImmutableArray<Outputs.GetProductProductsResult> products,
+
+            string id,
+
             string productCode,
-            string id)
+
+            ImmutableArray<Outputs.GetProductProductResult> products)
         {
             AvailableRegion = availableRegion;
-            Products = products;
-            ProductCode = productCode;
             Id = id;
+            ProductCode = productCode;
+            Products = products;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetProductProductsResult
-    {
-        /// <summary>
-        /// The code of the product.
-        /// </summary>
-        public readonly string Code;
-        /// <summary>
-        /// The description of the product.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The name of the product.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// A list of one element containing sku attributes of an object. Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetProductProductsSkusesResult> Skuses;
-
-        [OutputConstructor]
-        private GetProductProductsResult(
-            string code,
-            string description,
-            string name,
-            ImmutableArray<GetProductProductsSkusesResult> skuses)
-        {
-            Code = code;
-            Description = description;
-            Name = name;
-            Skuses = skuses;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProductProductsSkusesImagesResult
-    {
-        /// <summary>
-        /// The Ecs image id.
-        /// </summary>
-        public readonly string ImageId;
-        /// <summary>
-        /// The Ecs image display name.
-        /// </summary>
-        public readonly string ImageName;
-        /// <summary>
-        /// The Ecs image region.
-        /// </summary>
-        public readonly string RegionId;
-
-        [OutputConstructor]
-        private GetProductProductsSkusesImagesResult(
-            string imageId,
-            string imageName,
-            string regionId)
-        {
-            ImageId = imageId;
-            ImageName = imageName;
-            RegionId = regionId;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProductProductsSkusesPackageVersionsResult
-    {
-        /// <summary>
-        /// The package name of this product sku package.
-        /// </summary>
-        public readonly string PackageName;
-        /// <summary>
-        /// The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
-        /// </summary>
-        public readonly string PackageVersion;
-
-        [OutputConstructor]
-        private GetProductProductsSkusesPackageVersionsResult(
-            string packageName,
-            string packageVersion)
-        {
-            PackageName = packageName;
-            PackageVersion = packageVersion;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetProductProductsSkusesResult
-    {
-        /// <summary>
-        /// The list of custom ECS images, Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetProductProductsSkusesImagesResult> Images;
-        /// <summary>
-        /// The list of package version details of this product sku, Each element contains the following attributes:
-        /// </summary>
-        public readonly ImmutableArray<GetProductProductsSkusesPackageVersionsResult> PackageVersions;
-        /// <summary>
-        /// The sku code of this product sku.
-        /// </summary>
-        public readonly string SkuCode;
-        /// <summary>
-        /// The sku name of this product sku.
-        /// </summary>
-        public readonly string SkuName;
-
-        [OutputConstructor]
-        private GetProductProductsSkusesResult(
-            ImmutableArray<GetProductProductsSkusesImagesResult> images,
-            ImmutableArray<GetProductProductsSkusesPackageVersionsResult> packageVersions,
-            string skuCode,
-            string skuName)
-        {
-            Images = images;
-            PackageVersions = packageVersions;
-            SkuCode = skuCode;
-            SkuName = skuName;
-        }
-    }
     }
 }

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ess
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides available alarm resources. 
-        /// 
-        /// &gt; **NOTE** Available in 1.72.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetAlarms.InvokeAsync() instead")]
-        public static Task<GetAlarmsResult> GetAlarms(GetAlarmsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAlarms
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// &gt; **NOTE** Available in 1.72.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_alarms.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlarmsResult> InvokeAsync(GetAlarmsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAlarmsResult>("alicloud:ess/getAlarms:getAlarms", args ?? new GetAlarmsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAlarmsArgs : Pulumi.InvokeArgs
     {
@@ -79,13 +64,18 @@ namespace Pulumi.AliCloud.Ess
         }
     }
 
+
     [OutputType]
     public sealed class GetAlarmsResult
     {
         /// <summary>
         /// A list of alarms. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetAlarmsAlarmsResult> Alarms;
+        public readonly ImmutableArray<Outputs.GetAlarmsAlarmResult> Alarms;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of alarm ids.
         /// </summary>
@@ -104,140 +94,33 @@ namespace Pulumi.AliCloud.Ess
         /// The scaling group associated with this alarm.
         /// </summary>
         public readonly string? ScalingGroupId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetAlarmsResult(
-            ImmutableArray<Outputs.GetAlarmsAlarmsResult> alarms,
+            ImmutableArray<Outputs.GetAlarmsAlarmResult> alarms,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? metricType,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? scalingGroupId,
-            string id)
+
+            string? scalingGroupId)
         {
             Alarms = alarms;
+            Id = id;
             Ids = ids;
             MetricType = metricType;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             ScalingGroupId = scalingGroupId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetAlarmsAlarmsResult
-    {
-        /// <summary>
-        /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
-        /// </summary>
-        public readonly ImmutableArray<string> AlarmActions;
-        /// <summary>
-        /// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
-        /// </summary>
-        public readonly int CloudMonitorGroupId;
-        /// <summary>
-        /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. 
-        /// </summary>
-        public readonly string ComparisonOperator;
-        /// <summary>
-        /// The description for the alarm.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The dimension map for the alarm's associated metric. 
-        /// </summary>
-        public readonly ImmutableDictionary<string, object> Dimensions;
-        /// <summary>
-        /// Whether to enable specific ess alarm.
-        /// </summary>
-        public readonly bool Enable;
-        /// <summary>
-        /// The number of times that needs to satisfies comparison condition before transition into ALARM state. 
-        /// </summary>
-        public readonly int EvaluationCount;
-        /// <summary>
-        /// The id of alarm.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
-        /// </summary>
-        public readonly string MetricName;
-        /// <summary>
-        /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
-        /// </summary>
-        public readonly string MetricType;
-        /// <summary>
-        /// The name for ess alarm.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The period in seconds over which the specified statistic is applied.
-        /// </summary>
-        public readonly int Period;
-        /// <summary>
-        /// Scaling group id the alarms belong to.
-        /// </summary>
-        public readonly string ScalingGroupId;
-        /// <summary>
-        /// The state of alarm task. 
-        /// </summary>
-        public readonly string State;
-        /// <summary>
-        /// The statistic to apply to the alarm's associated metric. 
-        /// </summary>
-        public readonly string Statistics;
-        /// <summary>
-        /// The value against which the specified statistics is compared.
-        /// </summary>
-        public readonly string Threshold;
-
-        [OutputConstructor]
-        private GetAlarmsAlarmsResult(
-            ImmutableArray<string> alarmActions,
-            int cloudMonitorGroupId,
-            string comparisonOperator,
-            string description,
-            ImmutableDictionary<string, object> dimensions,
-            bool enable,
-            int evaluationCount,
-            string id,
-            string metricName,
-            string metricType,
-            string name,
-            int period,
-            string scalingGroupId,
-            string state,
-            string statistics,
-            string threshold)
-        {
-            AlarmActions = alarmActions;
-            CloudMonitorGroupId = cloudMonitorGroupId;
-            ComparisonOperator = comparisonOperator;
-            Description = description;
-            Dimensions = dimensions;
-            Enable = enable;
-            EvaluationCount = evaluationCount;
-            Id = id;
-            MetricName = metricName;
-            MetricType = metricType;
-            Name = name;
-            Period = period;
-            ScalingGroupId = scalingGroupId;
-            State = state;
-            Statistics = statistics;
-            Threshold = threshold;
-        }
-    }
     }
 }

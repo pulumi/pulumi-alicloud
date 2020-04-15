@@ -22,8 +22,6 @@ namespace Pulumi.AliCloud.Slb
     /// * `server_id` - (Required) A list backend server ID (ECS instance ID).
     /// * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
     /// * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
     /// </summary>
     public partial class BackendServer : Pulumi.CustomResource
     {
@@ -31,7 +29,7 @@ namespace Pulumi.AliCloud.Slb
         /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         /// </summary>
         [Output("backendServers")]
-        public Output<ImmutableArray<Outputs.BackendServerBackendServers>> BackendServers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.BackendServerBackendServer>> BackendServers { get; private set; } = null!;
 
         /// <summary>
         /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
@@ -54,7 +52,7 @@ namespace Pulumi.AliCloud.Slb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendServer(string name, BackendServerArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:slb/backendServer:BackendServer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:slb/backendServer:BackendServer", name, args ?? new BackendServerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -92,14 +90,14 @@ namespace Pulumi.AliCloud.Slb
     public sealed class BackendServerArgs : Pulumi.ResourceArgs
     {
         [Input("backendServers")]
-        private InputList<Inputs.BackendServerBackendServersArgs>? _backendServers;
+        private InputList<Inputs.BackendServerBackendServerArgs>? _backendServers;
 
         /// <summary>
         /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.BackendServerBackendServersArgs> BackendServers
+        public InputList<Inputs.BackendServerBackendServerArgs> BackendServers
         {
-            get => _backendServers ?? (_backendServers = new InputList<Inputs.BackendServerBackendServersArgs>());
+            get => _backendServers ?? (_backendServers = new InputList<Inputs.BackendServerBackendServerArgs>());
             set => _backendServers = value;
         }
 
@@ -123,14 +121,14 @@ namespace Pulumi.AliCloud.Slb
     public sealed class BackendServerState : Pulumi.ResourceArgs
     {
         [Input("backendServers")]
-        private InputList<Inputs.BackendServerBackendServersGetArgs>? _backendServers;
+        private InputList<Inputs.BackendServerBackendServerGetArgs>? _backendServers;
 
         /// <summary>
         /// A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         /// </summary>
-        public InputList<Inputs.BackendServerBackendServersGetArgs> BackendServers
+        public InputList<Inputs.BackendServerBackendServerGetArgs> BackendServers
         {
-            get => _backendServers ?? (_backendServers = new InputList<Inputs.BackendServerBackendServersGetArgs>());
+            get => _backendServers ?? (_backendServers = new InputList<Inputs.BackendServerBackendServerGetArgs>());
             set => _backendServers = value;
         }
 
@@ -149,64 +147,5 @@ namespace Pulumi.AliCloud.Slb
         public BackendServerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class BackendServerBackendServersArgs : Pulumi.ResourceArgs
-    {
-        [Input("serverId", required: true)]
-        public Input<string> ServerId { get; set; } = null!;
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight", required: true)]
-        public Input<int> Weight { get; set; } = null!;
-
-        public BackendServerBackendServersArgs()
-        {
-        }
-    }
-
-    public sealed class BackendServerBackendServersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("serverId", required: true)]
-        public Input<string> ServerId { get; set; } = null!;
-
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("weight", required: true)]
-        public Input<int> Weight { get; set; } = null!;
-
-        public BackendServerBackendServersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class BackendServerBackendServers
-    {
-        public readonly string ServerId;
-        public readonly string? Type;
-        public readonly int Weight;
-
-        [OutputConstructor]
-        private BackendServerBackendServers(
-            string serverId,
-            string? type,
-            int weight)
-        {
-            ServerId = serverId;
-            Type = type;
-            Weight = weight;
-        }
-    }
     }
 }

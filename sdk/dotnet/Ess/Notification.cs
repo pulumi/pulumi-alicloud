@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Ess
     /// Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.55.0+
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_notification.html.markdown.
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Notification(string name, NotificationArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ess/notification:Notification", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ess/notification:Notification", name, args ?? new NotificationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

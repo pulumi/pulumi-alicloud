@@ -27,13 +27,13 @@ namespace Pulumi.AliCloud.Vpn
         /// The configurations of phase-one negotiation.
         /// </summary>
         [Output("ikeConfigs")]
-        public Output<ImmutableArray<Outputs.ConnectionIkeConfigs>> IkeConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ConnectionIkeConfig>> IkeConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The configurations of phase-two negotiation.
         /// </summary>
         [Output("ipsecConfigs")]
-        public Output<ImmutableArray<Outputs.ConnectionIpsecConfigs>> IpsecConfigs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ConnectionIpsecConfig>> IpsecConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpn/connection:Connection", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpn/connection:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,26 +124,26 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EffectImmediately { get; set; }
 
         [Input("ikeConfigs")]
-        private InputList<Inputs.ConnectionIkeConfigsArgs>? _ikeConfigs;
+        private InputList<Inputs.ConnectionIkeConfigArgs>? _ikeConfigs;
 
         /// <summary>
         /// The configurations of phase-one negotiation.
         /// </summary>
-        public InputList<Inputs.ConnectionIkeConfigsArgs> IkeConfigs
+        public InputList<Inputs.ConnectionIkeConfigArgs> IkeConfigs
         {
-            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigsArgs>());
+            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigArgs>());
             set => _ikeConfigs = value;
         }
 
         [Input("ipsecConfigs")]
-        private InputList<Inputs.ConnectionIpsecConfigsArgs>? _ipsecConfigs;
+        private InputList<Inputs.ConnectionIpsecConfigArgs>? _ipsecConfigs;
 
         /// <summary>
         /// The configurations of phase-two negotiation.
         /// </summary>
-        public InputList<Inputs.ConnectionIpsecConfigsArgs> IpsecConfigs
+        public InputList<Inputs.ConnectionIpsecConfigArgs> IpsecConfigs
         {
-            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigsArgs>());
+            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigArgs>());
             set => _ipsecConfigs = value;
         }
 
@@ -203,26 +203,26 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EffectImmediately { get; set; }
 
         [Input("ikeConfigs")]
-        private InputList<Inputs.ConnectionIkeConfigsGetArgs>? _ikeConfigs;
+        private InputList<Inputs.ConnectionIkeConfigGetArgs>? _ikeConfigs;
 
         /// <summary>
         /// The configurations of phase-one negotiation.
         /// </summary>
-        public InputList<Inputs.ConnectionIkeConfigsGetArgs> IkeConfigs
+        public InputList<Inputs.ConnectionIkeConfigGetArgs> IkeConfigs
         {
-            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigsGetArgs>());
+            get => _ikeConfigs ?? (_ikeConfigs = new InputList<Inputs.ConnectionIkeConfigGetArgs>());
             set => _ikeConfigs = value;
         }
 
         [Input("ipsecConfigs")]
-        private InputList<Inputs.ConnectionIpsecConfigsGetArgs>? _ipsecConfigs;
+        private InputList<Inputs.ConnectionIpsecConfigGetArgs>? _ipsecConfigs;
 
         /// <summary>
         /// The configurations of phase-two negotiation.
         /// </summary>
-        public InputList<Inputs.ConnectionIpsecConfigsGetArgs> IpsecConfigs
+        public InputList<Inputs.ConnectionIpsecConfigGetArgs> IpsecConfigs
         {
-            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigsGetArgs>());
+            get => _ipsecConfigs ?? (_ipsecConfigs = new InputList<Inputs.ConnectionIpsecConfigGetArgs>());
             set => _ipsecConfigs = value;
         }
 
@@ -271,295 +271,5 @@ namespace Pulumi.AliCloud.Vpn
         public ConnectionState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ConnectionIkeConfigsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        [Input("ikeAuthAlg")]
-        public Input<string>? IkeAuthAlg { get; set; }
-
-        /// <summary>
-        /// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
-        /// </summary>
-        [Input("ikeEncAlg")]
-        public Input<string>? IkeEncAlg { get; set; }
-
-        /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        [Input("ikeLifetime")]
-        public Input<int>? IkeLifetime { get; set; }
-
-        /// <summary>
-        /// The identification of the VPN gateway.
-        /// </summary>
-        [Input("ikeLocalId")]
-        public Input<string>? IkeLocalId { get; set; }
-
-        /// <summary>
-        /// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
-        /// </summary>
-        [Input("ikeMode")]
-        public Input<string>? IkeMode { get; set; }
-
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
-        /// </summary>
-        [Input("ikePfs")]
-        public Input<string>? IkePfs { get; set; }
-
-        /// <summary>
-        /// The identification of the customer gateway.
-        /// </summary>
-        [Input("ikeRemoteId")]
-        public Input<string>? IkeRemoteId { get; set; }
-
-        /// <summary>
-        /// The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
-        /// </summary>
-        [Input("ikeVersion")]
-        public Input<string>? IkeVersion { get; set; }
-
-        /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
-        /// </summary>
-        [Input("psk")]
-        public Input<string>? Psk { get; set; }
-
-        public ConnectionIkeConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class ConnectionIkeConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        [Input("ikeAuthAlg")]
-        public Input<string>? IkeAuthAlg { get; set; }
-
-        /// <summary>
-        /// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
-        /// </summary>
-        [Input("ikeEncAlg")]
-        public Input<string>? IkeEncAlg { get; set; }
-
-        /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        [Input("ikeLifetime")]
-        public Input<int>? IkeLifetime { get; set; }
-
-        /// <summary>
-        /// The identification of the VPN gateway.
-        /// </summary>
-        [Input("ikeLocalId")]
-        public Input<string>? IkeLocalId { get; set; }
-
-        /// <summary>
-        /// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
-        /// </summary>
-        [Input("ikeMode")]
-        public Input<string>? IkeMode { get; set; }
-
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
-        /// </summary>
-        [Input("ikePfs")]
-        public Input<string>? IkePfs { get; set; }
-
-        /// <summary>
-        /// The identification of the customer gateway.
-        /// </summary>
-        [Input("ikeRemoteId")]
-        public Input<string>? IkeRemoteId { get; set; }
-
-        /// <summary>
-        /// The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
-        /// </summary>
-        [Input("ikeVersion")]
-        public Input<string>? IkeVersion { get; set; }
-
-        /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
-        /// </summary>
-        [Input("psk")]
-        public Input<string>? Psk { get; set; }
-
-        public ConnectionIkeConfigsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ConnectionIpsecConfigsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        [Input("ipsecAuthAlg")]
-        public Input<string>? IpsecAuthAlg { get; set; }
-
-        /// <summary>
-        /// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
-        /// </summary>
-        [Input("ipsecEncAlg")]
-        public Input<string>? IpsecEncAlg { get; set; }
-
-        /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        [Input("ipsecLifetime")]
-        public Input<int>? IpsecLifetime { get; set; }
-
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
-        /// </summary>
-        [Input("ipsecPfs")]
-        public Input<string>? IpsecPfs { get; set; }
-
-        public ConnectionIpsecConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class ConnectionIpsecConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        [Input("ipsecAuthAlg")]
-        public Input<string>? IpsecAuthAlg { get; set; }
-
-        /// <summary>
-        /// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
-        /// </summary>
-        [Input("ipsecEncAlg")]
-        public Input<string>? IpsecEncAlg { get; set; }
-
-        /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        [Input("ipsecLifetime")]
-        public Input<int>? IpsecLifetime { get; set; }
-
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
-        /// </summary>
-        [Input("ipsecPfs")]
-        public Input<string>? IpsecPfs { get; set; }
-
-        public ConnectionIpsecConfigsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ConnectionIkeConfigs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-one negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        public readonly string? IkeAuthAlg;
-        /// <summary>
-        /// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes
-        /// </summary>
-        public readonly string? IkeEncAlg;
-        /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        public readonly int? IkeLifetime;
-        /// <summary>
-        /// The identification of the VPN gateway.
-        /// </summary>
-        public readonly string? IkeLocalId;
-        /// <summary>
-        /// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: main
-        /// </summary>
-        public readonly string? IkeMode;
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
-        /// </summary>
-        public readonly string? IkePfs;
-        /// <summary>
-        /// The identification of the customer gateway.
-        /// </summary>
-        public readonly string? IkeRemoteId;
-        /// <summary>
-        /// The version of the IKE protocol. Valid value: ikev1 | ikev2. Default value: ikev1
-        /// </summary>
-        public readonly string? IkeVersion;
-        /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
-        /// </summary>
-        public readonly string? Psk;
-
-        [OutputConstructor]
-        private ConnectionIkeConfigs(
-            string? ikeAuthAlg,
-            string? ikeEncAlg,
-            int? ikeLifetime,
-            string? ikeLocalId,
-            string? ikeMode,
-            string? ikePfs,
-            string? ikeRemoteId,
-            string? ikeVersion,
-            string? psk)
-        {
-            IkeAuthAlg = ikeAuthAlg;
-            IkeEncAlg = ikeEncAlg;
-            IkeLifetime = ikeLifetime;
-            IkeLocalId = ikeLocalId;
-            IkeMode = ikeMode;
-            IkePfs = ikePfs;
-            IkeRemoteId = ikeRemoteId;
-            IkeVersion = ikeVersion;
-            Psk = psk;
-        }
-    }
-
-    [OutputType]
-    public sealed class ConnectionIpsecConfigs
-    {
-        /// <summary>
-        /// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
-        /// </summary>
-        public readonly string? IpsecAuthAlg;
-        /// <summary>
-        /// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
-        /// </summary>
-        public readonly string? IpsecEncAlg;
-        /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
-        /// </summary>
-        public readonly int? IpsecLifetime;
-        /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
-        /// </summary>
-        public readonly string? IpsecPfs;
-
-        [OutputConstructor]
-        private ConnectionIpsecConfigs(
-            string? ipsecAuthAlg,
-            string? ipsecEncAlg,
-            int? ipsecLifetime,
-            string? ipsecPfs)
-        {
-            IpsecAuthAlg = ipsecAuthAlg;
-            IpsecEncAlg = ipsecEncAlg;
-            IpsecLifetime = ipsecLifetime;
-            IpsecPfs = ipsecPfs;
-        }
-    }
     }
 }

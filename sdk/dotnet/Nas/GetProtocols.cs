@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Nas
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Provide  a data source to retrieve the type of protocol used to create NAS file system.
-        /// 
-        /// &gt; **NOTE:** Available in 1.42.0
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetProtocols.InvokeAsync() instead")]
-        public static Task<GetProtocolsResult> GetProtocols(GetProtocolsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetProtocols
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; **NOTE:** Available in 1.42.0
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetProtocolsResult>("alicloud:nas/getProtocols:getProtocols", args ?? new GetProtocolsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetProtocolsArgs : Pulumi.InvokeArgs
     {
@@ -61,9 +46,14 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
+
     [OutputType]
     public sealed class GetProtocolsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? OutputFile;
         /// <summary>
         /// A list of supported protocol type..
@@ -71,24 +61,24 @@ namespace Pulumi.AliCloud.Nas
         public readonly ImmutableArray<string> Protocols;
         public readonly string Type;
         public readonly string? ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetProtocolsResult(
+            string id,
+
             string? outputFile,
+
             ImmutableArray<string> protocols,
+
             string type,
-            string? zoneId,
-            string id)
+
+            string? zoneId)
         {
+            Id = id;
             OutputFile = outputFile;
             Protocols = protocols;
             Type = type;
             ZoneId = zoneId;
-            Id = id;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CommonBandwithPackageAttachment(string name, CommonBandwithPackageAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, args ?? new CommonBandwithPackageAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Nas
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides FileSystems available to the user.
-        /// 
-        /// &gt; NOTE: Available in 1.35.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetFileSystems.InvokeAsync() instead")]
-        public static Task<GetFileSystemsResult> GetFileSystems(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetFileSystems
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// &gt; NOTE: Available in 1.35.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_file_systems.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetFileSystemsResult>("alicloud:nas/getFileSystems:getFileSystems", args ?? new GetFileSystemsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetFileSystemsArgs : Pulumi.InvokeArgs
     {
@@ -79,6 +64,7 @@ namespace Pulumi.AliCloud.Nas
         }
     }
 
+
     [OutputType]
     public sealed class GetFileSystemsResult
     {
@@ -87,6 +73,10 @@ namespace Pulumi.AliCloud.Nas
         /// A list of FileSystem descriptions.
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of FileSystem Id.
         /// </summary>
@@ -103,87 +93,34 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// A list of VPCs. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetFileSystemsSystemsResult> Systems;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetFileSystemsSystemResult> Systems;
 
         [OutputConstructor]
         private GetFileSystemsResult(
             string? descriptionRegex,
+
             ImmutableArray<string> descriptions,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? outputFile,
+
             string? protocolType,
+
             string? storageType,
-            ImmutableArray<Outputs.GetFileSystemsSystemsResult> systems,
-            string id)
+
+            ImmutableArray<Outputs.GetFileSystemsSystemResult> systems)
         {
             DescriptionRegex = descriptionRegex;
             Descriptions = descriptions;
+            Id = id;
             Ids = ids;
             OutputFile = outputFile;
             ProtocolType = protocolType;
             StorageType = storageType;
             Systems = systems;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetFileSystemsSystemsResult
-    {
-        /// <summary>
-        /// Time of creation.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// Destription of the FileSystem.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// ID of the FileSystem.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// MeteredSize of the FileSystem.
-        /// </summary>
-        public readonly int MeteredSize;
-        /// <summary>
-        /// Filter results by a specific ProtocolType. 
-        /// </summary>
-        public readonly string ProtocolType;
-        /// <summary>
-        /// ID of the region where the FileSystem is located.
-        /// </summary>
-        public readonly string RegionId;
-        /// <summary>
-        /// Filter results by a specific StorageType. 
-        /// </summary>
-        public readonly string StorageType;
-
-        [OutputConstructor]
-        private GetFileSystemsSystemsResult(
-            string createTime,
-            string description,
-            string id,
-            int meteredSize,
-            string protocolType,
-            string regionId,
-            string storageType)
-        {
-            CreateTime = createTime;
-            Description = description;
-            Id = id;
-            MeteredSize = meteredSize;
-            ProtocolType = protocolType;
-            RegionId = regionId;
-            StorageType = storageType;
-        }
-    }
     }
 }

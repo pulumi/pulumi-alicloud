@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Datahub
 {
     /// <summary>
     /// The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/datahub_subscription.html.markdown.
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {
@@ -63,7 +59,7 @@ namespace Pulumi.AliCloud.Datahub
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subscription(string name, SubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:datahub/subscription:Subscription", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:datahub/subscription:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 

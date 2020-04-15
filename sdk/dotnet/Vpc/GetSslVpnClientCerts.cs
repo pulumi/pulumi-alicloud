@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Vpc
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetSslVpnClientCerts.InvokeAsync() instead")]
-        public static Task<GetSslVpnClientCertsResult> GetSslVpnClientCerts(GetSslVpnClientCertsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnClientCertsResult>("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetSslVpnClientCerts
     {
         /// <summary>
         /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSslVpnClientCertsResult> InvokeAsync(GetSslVpnClientCertsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnClientCertsResult>("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnClientCertsResult>("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", args ?? new GetSslVpnClientCertsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetSslVpnClientCertsArgs : Pulumi.InvokeArgs
     {
@@ -72,10 +59,15 @@ namespace Pulumi.AliCloud.Vpc
         }
     }
 
+
     [OutputType]
     public sealed class GetSslVpnClientCertsResult
     {
-        public readonly ImmutableArray<Outputs.GetSslVpnClientCertsCertsResult> Certs;
+        public readonly ImmutableArray<Outputs.GetSslVpnClientCertsCertResult> Certs;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SSL-VPN client cert IDs.
         /// </summary>
@@ -90,78 +82,30 @@ namespace Pulumi.AliCloud.Vpc
         /// ID of the SSL-VPN Server.
         /// </summary>
         public readonly string? SslVpnServerId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetSslVpnClientCertsResult(
-            ImmutableArray<Outputs.GetSslVpnClientCertsCertsResult> certs,
+            ImmutableArray<Outputs.GetSslVpnClientCertsCertResult> certs,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            string? sslVpnServerId,
-            string id)
+
+            string? sslVpnServerId)
         {
             Certs = certs;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             SslVpnServerId = sslVpnServerId;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetSslVpnClientCertsCertsResult
-    {
-        /// <summary>
-        /// The time of creation.
-        /// </summary>
-        public readonly string CreateTime;
-        /// <summary>
-        /// The expiration time of the client certificate.
-        /// </summary>
-        public readonly int EndTime;
-        /// <summary>
-        /// ID of the SSL-VPN client certificate.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// The name of the SSL-VPN client certificate.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Use the SSL-VPN server ID as the search key.
-        /// </summary>
-        public readonly string SslVpnServerId;
-        /// <summary>
-        /// The status of the client certificate. valid value:expiring-soon, normal, expired.
-        /// </summary>
-        public readonly string Status;
-
-        [OutputConstructor]
-        private GetSslVpnClientCertsCertsResult(
-            string createTime,
-            int endTime,
-            string id,
-            string name,
-            string sslVpnServerId,
-            string status)
-        {
-            CreateTime = createTime;
-            EndTime = endTime;
-            Id = id;
-            Name = name;
-            SslVpnServerId = sslVpnServerId;
-            Status = status;
-        }
-    }
     }
 }

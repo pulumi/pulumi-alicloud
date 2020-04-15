@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RouteTableAttachment(string name, RouteTableAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/routeTableAttachment:RouteTableAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/routeTableAttachment:RouteTableAttachment", name, args ?? new RouteTableAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

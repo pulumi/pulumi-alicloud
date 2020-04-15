@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cas
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetCertificates.InvokeAsync() instead")]
-        public static Task<GetCertificatesResult> GetCertificates(GetCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCertificates
     {
         /// <summary>
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCertificatesArgs : Pulumi.InvokeArgs
     {
@@ -63,13 +50,18 @@ namespace Pulumi.AliCloud.Cas
         }
     }
 
+
     [OutputType]
     public sealed class GetCertificatesResult
     {
         /// <summary>
         /// A list of apis. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetCertificatesCertificatesResult> Certificates;
+        public readonly ImmutableArray<Outputs.GetCertificatesCertificateResult> Certificates;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of cert IDs.
         /// </summary>
@@ -80,124 +72,27 @@ namespace Pulumi.AliCloud.Cas
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetCertificatesResult(
-            ImmutableArray<Outputs.GetCertificatesCertificatesResult> certificates,
+            ImmutableArray<Outputs.GetCertificatesCertificateResult> certificates,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
-            string? outputFile,
-            string id)
+
+            string? outputFile)
         {
             Certificates = certificates;
+            Id = id;
             Ids = ids;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetCertificatesCertificatesResult
-    {
-        /// <summary>
-        /// The cert is buy from aliyun or not.
-        /// </summary>
-        public readonly bool BuyInAliyun;
-        /// <summary>
-        /// The cert's city.
-        /// </summary>
-        public readonly string City;
-        /// <summary>
-        /// The cert's common name.
-        /// </summary>
-        public readonly string Common;
-        /// <summary>
-        /// The cert's country.
-        /// </summary>
-        public readonly string Country;
-        /// <summary>
-        /// The cert's not valid after time.
-        /// </summary>
-        public readonly string EndDate;
-        /// <summary>
-        /// The cert is expired or not.
-        /// </summary>
-        public readonly bool Expired;
-        /// <summary>
-        /// The cert's finger.
-        /// </summary>
-        public readonly string FingerPrint;
-        /// <summary>
-        /// The cert's id.
-        /// </summary>
-        public readonly int Id;
-        /// <summary>
-        /// The cert's .
-        /// </summary>
-        public readonly string Issuer;
-        /// <summary>
-        /// The cert's name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The cert's organization.
-        /// </summary>
-        public readonly string OrgName;
-        /// <summary>
-        /// The cert's province.
-        /// </summary>
-        public readonly string Province;
-        /// <summary>
-        /// The cert's subject alternative name.
-        /// </summary>
-        public readonly string Sans;
-        /// <summary>
-        /// The cert's not valid before time.
-        /// </summary>
-        public readonly string StartDate;
-
-        [OutputConstructor]
-        private GetCertificatesCertificatesResult(
-            bool buyInAliyun,
-            string city,
-            string common,
-            string country,
-            string endDate,
-            bool expired,
-            string fingerPrint,
-            int id,
-            string issuer,
-            string name,
-            string orgName,
-            string province,
-            string sans,
-            string startDate)
-        {
-            BuyInAliyun = buyInAliyun;
-            City = city;
-            Common = common;
-            Country = country;
-            EndDate = endDate;
-            Expired = expired;
-            FingerPrint = fingerPrint;
-            Id = id;
-            Issuer = issuer;
-            Name = name;
-            OrgName = orgName;
-            Province = province;
-            Sans = sans;
-            StartDate = startDate;
-        }
-    }
     }
 }

@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetPlaintext.InvokeAsync() instead")]
-        public static Task<GetPlaintextResult> GetPlaintext(GetPlaintextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetPlaintext
     {
         public static Task<GetPlaintextResult> InvokeAsync(GetPlaintextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPlaintextResult>("alicloud:kms/getPlaintext:getPlaintext", args ?? new GetPlaintextArgs(), options.WithVersion());
     }
+
 
     public sealed class GetPlaintextArgs : Pulumi.InvokeArgs
     {
@@ -42,11 +37,16 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetPlaintextResult
     {
         public readonly string CiphertextBlob;
         public readonly ImmutableDictionary<string, string>? EncryptionContext;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The globally unique ID of the CMK. It is the ID of the CMK used to decrypt ciphertext.
         /// </summary>
@@ -55,24 +55,24 @@ namespace Pulumi.AliCloud.Kms
         /// The decrypted plaintext.
         /// </summary>
         public readonly string Plaintext;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetPlaintextResult(
             string ciphertextBlob,
+
             ImmutableDictionary<string, string>? encryptionContext,
+
+            string id,
+
             string keyId,
-            string plaintext,
-            string id)
+
+            string plaintext)
         {
             CiphertextBlob = ciphertextBlob;
             EncryptionContext = encryptionContext;
+            Id = id;
             KeyId = keyId;
             Plaintext = plaintext;
-            Id = id;
         }
     }
 }

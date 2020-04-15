@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.Gpdb
     /// [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
     /// 
     /// &gt; **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_instance.html.markdown.
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
@@ -89,7 +85,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:gpdb/instance:Instance", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:gpdb/instance:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,10 +11,6 @@ namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
     /// Provides a forward resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
     /// </summary>
     public partial class ForwardEntry : Pulumi.CustomResource
     {
@@ -75,7 +71,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ForwardEntry(string name, ForwardEntryArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:vpc/forwardEntry:ForwardEntry", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:vpc/forwardEntry:ForwardEntry", name, args ?? new ForwardEntryArgs(), MakeResourceOptions(options, ""))
         {
         }
 

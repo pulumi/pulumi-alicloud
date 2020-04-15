@@ -15,10 +15,6 @@ namespace Pulumi.AliCloud.CR
     /// &gt; **NOTE:** Available in v1.35.0+.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_repo.html.markdown.
     /// </summary>
     public partial class Repo : Pulumi.CustomResource
     {
@@ -67,7 +63,7 @@ namespace Pulumi.AliCloud.CR
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repo(string name, RepoArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cr/repo:Repo", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cr/repo:Repo", name, args ?? new RepoArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -180,66 +176,5 @@ namespace Pulumi.AliCloud.CR
         public RepoState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class RepoDomainListGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Domain of internal endpoint, only in some regions.
-        /// </summary>
-        [Input("internal")]
-        public Input<string>? Internal { get; set; }
-
-        /// <summary>
-        /// Domain of public endpoint.
-        /// </summary>
-        [Input("public")]
-        public Input<string>? Public { get; set; }
-
-        /// <summary>
-        /// Domain of vpc endpoint.
-        /// </summary>
-        [Input("vpc")]
-        public Input<string>? Vpc { get; set; }
-
-        public RepoDomainListGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class RepoDomainList
-    {
-        /// <summary>
-        /// Domain of internal endpoint, only in some regions.
-        /// </summary>
-        public readonly string Internal;
-        /// <summary>
-        /// Domain of public endpoint.
-        /// </summary>
-        public readonly string Public;
-        /// <summary>
-        /// Domain of vpc endpoint.
-        /// </summary>
-        public readonly string Vpc;
-
-        [OutputConstructor]
-        private RepoDomainList(
-            string @internal,
-            string @public,
-            string vpc)
-        {
-            Internal = @internal;
-            Public = @public;
-            Vpc = vpc;
-        }
-    }
     }
 }

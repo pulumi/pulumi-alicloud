@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Log
         /// List configurations of field search index. Valid item as follows:
         /// </summary>
         [Output("fieldSearches")]
-        public Output<ImmutableArray<Outputs.StoreIndexFieldSearches>> FieldSearches { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StoreIndexFieldSearch>> FieldSearches { get; private set; } = null!;
 
         /// <summary>
         /// The configuration of full text index. Valid item as follows:
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StoreIndex(string name, StoreIndexArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:log/storeIndex:StoreIndex", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:log/storeIndex:StoreIndex", name, args ?? new StoreIndexArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -82,14 +82,14 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreIndexArgs : Pulumi.ResourceArgs
     {
         [Input("fieldSearches")]
-        private InputList<Inputs.StoreIndexFieldSearchesArgs>? _fieldSearches;
+        private InputList<Inputs.StoreIndexFieldSearchArgs>? _fieldSearches;
 
         /// <summary>
         /// List configurations of field search index. Valid item as follows:
         /// </summary>
-        public InputList<Inputs.StoreIndexFieldSearchesArgs> FieldSearches
+        public InputList<Inputs.StoreIndexFieldSearchArgs> FieldSearches
         {
-            get => _fieldSearches ?? (_fieldSearches = new InputList<Inputs.StoreIndexFieldSearchesArgs>());
+            get => _fieldSearches ?? (_fieldSearches = new InputList<Inputs.StoreIndexFieldSearchArgs>());
             set => _fieldSearches = value;
         }
 
@@ -119,14 +119,14 @@ namespace Pulumi.AliCloud.Log
     public sealed class StoreIndexState : Pulumi.ResourceArgs
     {
         [Input("fieldSearches")]
-        private InputList<Inputs.StoreIndexFieldSearchesGetArgs>? _fieldSearches;
+        private InputList<Inputs.StoreIndexFieldSearchGetArgs>? _fieldSearches;
 
         /// <summary>
         /// List configurations of field search index. Valid item as follows:
         /// </summary>
-        public InputList<Inputs.StoreIndexFieldSearchesGetArgs> FieldSearches
+        public InputList<Inputs.StoreIndexFieldSearchGetArgs> FieldSearches
         {
-            get => _fieldSearches ?? (_fieldSearches = new InputList<Inputs.StoreIndexFieldSearchesGetArgs>());
+            get => _fieldSearches ?? (_fieldSearches = new InputList<Inputs.StoreIndexFieldSearchGetArgs>());
             set => _fieldSearches = value;
         }
 
@@ -151,367 +151,5 @@ namespace Pulumi.AliCloud.Log
         public StoreIndexState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class StoreIndexFieldSearchesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        [Input("alias")]
-        public Input<string>? Alias { get; set; }
-
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("caseSensitive")]
-        public Input<bool>? CaseSensitive { get; set; }
-
-        /// <summary>
-        /// Whether to enable field analytics. Default to true.
-        /// </summary>
-        [Input("enableAnalytics")]
-        public Input<bool>? EnableAnalytics { get; set; }
-
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("includeChinese")]
-        public Input<bool>? IncludeChinese { get; set; }
-
-        [Input("jsonKeys")]
-        private InputList<StoreIndexFieldSearchesJsonKeysArgs>? _jsonKeys;
-
-        /// <summary>
-        /// Use nested index when type is json
-        /// </summary>
-        public InputList<StoreIndexFieldSearchesJsonKeysArgs> JsonKeys
-        {
-            get => _jsonKeys ?? (_jsonKeys = new InputList<StoreIndexFieldSearchesJsonKeysArgs>());
-            set => _jsonKeys = value;
-        }
-
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
-
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public StoreIndexFieldSearchesArgs()
-        {
-        }
-    }
-
-    public sealed class StoreIndexFieldSearchesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        [Input("alias")]
-        public Input<string>? Alias { get; set; }
-
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("caseSensitive")]
-        public Input<bool>? CaseSensitive { get; set; }
-
-        /// <summary>
-        /// Whether to enable field analytics. Default to true.
-        /// </summary>
-        [Input("enableAnalytics")]
-        public Input<bool>? EnableAnalytics { get; set; }
-
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("includeChinese")]
-        public Input<bool>? IncludeChinese { get; set; }
-
-        [Input("jsonKeys")]
-        private InputList<StoreIndexFieldSearchesJsonKeysGetArgs>? _jsonKeys;
-
-        /// <summary>
-        /// Use nested index when type is json
-        /// </summary>
-        public InputList<StoreIndexFieldSearchesJsonKeysGetArgs> JsonKeys
-        {
-            get => _jsonKeys ?? (_jsonKeys = new InputList<StoreIndexFieldSearchesJsonKeysGetArgs>());
-            set => _jsonKeys = value;
-        }
-
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
-
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public StoreIndexFieldSearchesGetArgs()
-        {
-        }
-    }
-
-    public sealed class StoreIndexFieldSearchesJsonKeysArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        [Input("alias")]
-        public Input<string>? Alias { get; set; }
-
-        /// <summary>
-        /// Whether to enable statistics. default to true.
-        /// </summary>
-        [Input("docValue")]
-        public Input<bool>? DocValue { get; set; }
-
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public StoreIndexFieldSearchesJsonKeysArgs()
-        {
-        }
-    }
-
-    public sealed class StoreIndexFieldSearchesJsonKeysGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        [Input("alias")]
-        public Input<string>? Alias { get; set; }
-
-        /// <summary>
-        /// Whether to enable statistics. default to true.
-        /// </summary>
-        [Input("docValue")]
-        public Input<bool>? DocValue { get; set; }
-
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public StoreIndexFieldSearchesJsonKeysGetArgs()
-        {
-        }
-    }
-
-    public sealed class StoreIndexFullTextArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("caseSensitive")]
-        public Input<bool>? CaseSensitive { get; set; }
-
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("includeChinese")]
-        public Input<bool>? IncludeChinese { get; set; }
-
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
-
-        public StoreIndexFullTextArgs()
-        {
-        }
-    }
-
-    public sealed class StoreIndexFullTextGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("caseSensitive")]
-        public Input<bool>? CaseSensitive { get; set; }
-
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("includeChinese")]
-        public Input<bool>? IncludeChinese { get; set; }
-
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
-
-        public StoreIndexFullTextGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class StoreIndexFieldSearches
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        public readonly string? Alias;
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly bool? CaseSensitive;
-        /// <summary>
-        /// Whether to enable field analytics. Default to true.
-        /// </summary>
-        public readonly bool? EnableAnalytics;
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly bool? IncludeChinese;
-        /// <summary>
-        /// Use nested index when type is json
-        /// </summary>
-        public readonly ImmutableArray<StoreIndexFieldSearchesJsonKeys> JsonKeys;
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly string? Token;
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private StoreIndexFieldSearches(
-            string? alias,
-            bool? caseSensitive,
-            bool? enableAnalytics,
-            bool? includeChinese,
-            ImmutableArray<StoreIndexFieldSearchesJsonKeys> jsonKeys,
-            string name,
-            string? token,
-            string? type)
-        {
-            Alias = alias;
-            CaseSensitive = caseSensitive;
-            EnableAnalytics = enableAnalytics;
-            IncludeChinese = includeChinese;
-            JsonKeys = jsonKeys;
-            Name = name;
-            Token = token;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class StoreIndexFieldSearchesJsonKeys
-    {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
-        public readonly string? Alias;
-        /// <summary>
-        /// Whether to enable statistics. default to true.
-        /// </summary>
-        public readonly bool? DocValue;
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private StoreIndexFieldSearchesJsonKeys(
-            string? alias,
-            bool? docValue,
-            string name,
-            string? type)
-        {
-            Alias = alias;
-            DocValue = docValue;
-            Name = name;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class StoreIndexFullText
-    {
-        /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly bool? CaseSensitive;
-        /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly bool? IncludeChinese;
-        /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
-        /// </summary>
-        public readonly string? Token;
-
-        [OutputConstructor]
-        private StoreIndexFullText(
-            bool? caseSensitive,
-            bool? includeChinese,
-            string? token)
-        {
-            CaseSensitive = caseSensitive;
-            IncludeChinese = includeChinese;
-            Token = token;
-        }
-    }
     }
 }

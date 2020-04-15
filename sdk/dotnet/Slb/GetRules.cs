@@ -9,31 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the rules associated with a server load balancer listener.
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetRules.InvokeAsync() instead")]
-        public static Task<GetRulesResult> GetRules(GetRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetRules
     {
         /// <summary>
         /// This data source provides the rules associated with a server load balancer listener.
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_rules.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetRulesResult>("alicloud:slb/getRules:getRules", args ?? new GetRulesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetRulesArgs : Pulumi.InvokeArgs
     {
@@ -75,10 +62,15 @@ namespace Pulumi.AliCloud.Slb
         }
     }
 
+
     [OutputType]
     public sealed class GetRulesResult
     {
         public readonly int FrontendPort;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// A list of SLB listener rules IDs.
         /// </summary>
@@ -93,75 +85,34 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// A list of SLB listener rules. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRulesSlbRulesResult> SlbRules;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetRulesSlbRuleResult> SlbRules;
 
         [OutputConstructor]
         private GetRulesResult(
             int frontendPort,
+
+            string id,
+
             ImmutableArray<string> ids,
+
             string loadBalancerId,
+
             string? nameRegex,
+
             ImmutableArray<string> names,
+
             string? outputFile,
-            ImmutableArray<Outputs.GetRulesSlbRulesResult> slbRules,
-            string id)
+
+            ImmutableArray<Outputs.GetRulesSlbRuleResult> slbRules)
         {
             FrontendPort = frontendPort;
+            Id = id;
             Ids = ids;
             LoadBalancerId = loadBalancerId;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
             SlbRules = slbRules;
-            Id = id;
         }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetRulesSlbRulesResult
-    {
-        /// <summary>
-        /// Domain name in the HTTP request where the rule applies (e.g. "*.aliyun.com").
-        /// </summary>
-        public readonly string Domain;
-        /// <summary>
-        /// Rule ID.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Rule name.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ID of the linked VServer group.
-        /// </summary>
-        public readonly string ServerGroupId;
-        /// <summary>
-        /// Path in the HTTP request where the rule applies (e.g. "/image").
-        /// </summary>
-        public readonly string Url;
-
-        [OutputConstructor]
-        private GetRulesSlbRulesResult(
-            string domain,
-            string id,
-            string name,
-            string serverGroupId,
-            string url)
-        {
-            Domain = domain;
-            Id = id;
-            Name = name;
-            ServerGroupId = serverGroupId;
-            Url = url;
-        }
-    }
     }
 }

@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides a key pair attachment resource to bind key pair for several ECS instances.
     /// 
     /// &gt; **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/key_pair_attachment.html.markdown.
     /// </summary>
     public partial class KeyPairAttachment : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyPairAttachment(string name, KeyPairAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:ecs/keyPairAttachment:KeyPairAttachment", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:ecs/keyPairAttachment:KeyPairAttachment", name, args ?? new KeyPairAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 

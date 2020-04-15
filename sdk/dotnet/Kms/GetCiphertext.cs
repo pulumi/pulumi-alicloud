@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetCiphertext.InvokeAsync() instead")]
-        public static Task<GetCiphertextResult> GetCiphertext(GetCiphertextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetCiphertext
     {
         public static Task<GetCiphertextResult> InvokeAsync(GetCiphertextArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetCiphertextResult>("alicloud:kms/getCiphertext:getCiphertext", args ?? new GetCiphertextArgs(), options.WithVersion());
     }
+
 
     public sealed class GetCiphertextArgs : Pulumi.InvokeArgs
     {
@@ -50,6 +45,7 @@ namespace Pulumi.AliCloud.Kms
         }
     }
 
+
     [OutputType]
     public sealed class GetCiphertextResult
     {
@@ -58,26 +54,30 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly string CiphertextBlob;
         public readonly ImmutableDictionary<string, string>? EncryptionContext;
-        public readonly string KeyId;
-        public readonly string Plaintext;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string KeyId;
+        public readonly string Plaintext;
 
         [OutputConstructor]
         private GetCiphertextResult(
             string ciphertextBlob,
+
             ImmutableDictionary<string, string>? encryptionContext,
+
+            string id,
+
             string keyId,
-            string plaintext,
-            string id)
+
+            string plaintext)
         {
             CiphertextBlob = ciphertextBlob;
             EncryptionContext = encryptionContext;
+            Id = id;
             KeyId = keyId;
             Plaintext = plaintext;
-            Id = id;
         }
     }
 }

@@ -9,17 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ram
 {
-    public static partial class Invokes
-    {
-        [Obsolete("Use GetAccountAlias.InvokeAsync() instead")]
-        public static Task<GetAccountAliasResult> GetAccountAlias(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetAccountAlias
     {
         public static Task<GetAccountAliasResult> InvokeAsync(GetAccountAliasArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountAliasResult>("alicloud:ram/getAccountAlias:getAccountAlias", args ?? new GetAccountAliasArgs(), options.WithVersion());
     }
+
 
     public sealed class GetAccountAliasArgs : Pulumi.InvokeArgs
     {
@@ -31,25 +26,28 @@ namespace Pulumi.AliCloud.Ram
         }
     }
 
+
     [OutputType]
     public sealed class GetAccountAliasResult
     {
         public readonly string AccountAlias;
-        public readonly string? OutputFile;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? OutputFile;
 
         [OutputConstructor]
         private GetAccountAliasResult(
             string accountAlias,
-            string? outputFile,
-            string id)
+
+            string id,
+
+            string? outputFile)
         {
             AccountAlias = accountAlias;
-            OutputFile = outputFile;
             Id = id;
+            OutputFile = outputFile;
         }
     }
 }

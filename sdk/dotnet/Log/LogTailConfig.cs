@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LogTailConfig(string name, LogTailConfigArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:log/logTailConfig:LogTailConfig", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:log/logTailConfig:LogTailConfig", name, args ?? new LogTailConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -9,21 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.KVStore
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
-        /// 
-        /// &gt; **NOTE:** Available in v1.51.0+
-        /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetInstanceEngines.InvokeAsync() instead")]
-        public static Task<GetInstanceEnginesResult> GetInstanceEngines(GetInstanceEnginesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetInstanceEngines
     {
         /// <summary>
@@ -31,13 +16,13 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// &gt; **NOTE:** Available in v1.51.0+
         /// 
-        /// 
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetInstanceEnginesArgs : Pulumi.InvokeArgs
     {
@@ -73,6 +58,7 @@ namespace Pulumi.AliCloud.KVStore
         }
     }
 
+
     [OutputType]
     public sealed class GetInstanceEnginesResult
     {
@@ -84,70 +70,44 @@ namespace Pulumi.AliCloud.KVStore
         /// KVStore Instance version.
         /// </summary>
         public readonly string? EngineVersion;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         public readonly string? InstanceChargeType;
         /// <summary>
         /// A list of KVStore available instance engines. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetInstanceEnginesInstanceEnginesResult> InstanceEngines;
+        public readonly ImmutableArray<Outputs.GetInstanceEnginesInstanceEngineResult> InstanceEngines;
         public readonly string? OutputFile;
         /// <summary>
         /// The Zone to launch the KVStore instance.
         /// </summary>
         public readonly string ZoneId;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetInstanceEnginesResult(
             string? engine,
+
             string? engineVersion,
+
+            string id,
+
             string? instanceChargeType,
-            ImmutableArray<Outputs.GetInstanceEnginesInstanceEnginesResult> instanceEngines,
+
+            ImmutableArray<Outputs.GetInstanceEnginesInstanceEngineResult> instanceEngines,
+
             string? outputFile,
-            string zoneId,
-            string id)
-        {
-            Engine = engine;
-            EngineVersion = engineVersion;
-            InstanceChargeType = instanceChargeType;
-            InstanceEngines = instanceEngines;
-            OutputFile = outputFile;
-            ZoneId = zoneId;
-            Id = id;
-        }
-    }
 
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetInstanceEnginesInstanceEnginesResult
-    {
-        /// <summary>
-        /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// </summary>
-        public readonly string Engine;
-        /// <summary>
-        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
-        /// </summary>
-        public readonly string EngineVersion;
-        /// <summary>
-        /// The Zone to launch the KVStore instance.
-        /// </summary>
-        public readonly string ZoneId;
-
-        [OutputConstructor]
-        private GetInstanceEnginesInstanceEnginesResult(
-            string engine,
-            string engineVersion,
             string zoneId)
         {
             Engine = engine;
             EngineVersion = engineVersion;
+            Id = id;
+            InstanceChargeType = instanceChargeType;
+            InstanceEngines = instanceEngines;
+            OutputFile = outputFile;
             ZoneId = zoneId;
         }
-    }
     }
 }

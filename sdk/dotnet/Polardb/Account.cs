@@ -13,10 +13,6 @@ namespace Pulumi.AliCloud.PolarDB
     /// Provides a PolarDB account resource and used to manage databases.
     /// 
     /// &gt; **NOTE:** Available in v1.67.0+. 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_account.html.markdown.
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {
@@ -71,7 +67,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:polardb/account:Account", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:polardb/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 

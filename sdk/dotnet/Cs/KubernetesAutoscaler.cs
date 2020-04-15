@@ -19,10 +19,6 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
     /// </summary>
     public partial class KubernetesAutoscaler : Pulumi.CustomResource
     {
@@ -51,7 +47,7 @@ namespace Pulumi.AliCloud.CS
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
         /// </summary>
         [Output("nodepools")]
-        public Output<ImmutableArray<Outputs.KubernetesAutoscalerNodepools>> Nodepools { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KubernetesAutoscalerNodepool>> Nodepools { get; private set; } = null!;
 
         /// <summary>
         /// The utilization option of cluster-autoscaler.
@@ -68,7 +64,7 @@ namespace Pulumi.AliCloud.CS
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KubernetesAutoscaler(string name, KubernetesAutoscalerArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("alicloud:cs/kubernetesAutoscaler:KubernetesAutoscaler", name, args ?? new KubernetesAutoscalerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -124,7 +120,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string> DeferScaleInDuration { get; set; } = null!;
 
         [Input("nodepools")]
-        private InputList<Inputs.KubernetesAutoscalerNodepoolsArgs>? _nodepools;
+        private InputList<Inputs.KubernetesAutoscalerNodepoolArgs>? _nodepools;
 
         /// <summary>
         /// 
@@ -132,9 +128,9 @@ namespace Pulumi.AliCloud.CS
         /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
         /// </summary>
-        public InputList<Inputs.KubernetesAutoscalerNodepoolsArgs> Nodepools
+        public InputList<Inputs.KubernetesAutoscalerNodepoolArgs> Nodepools
         {
-            get => _nodepools ?? (_nodepools = new InputList<Inputs.KubernetesAutoscalerNodepoolsArgs>());
+            get => _nodepools ?? (_nodepools = new InputList<Inputs.KubernetesAutoscalerNodepoolArgs>());
             set => _nodepools = value;
         }
 
@@ -170,7 +166,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? DeferScaleInDuration { get; set; }
 
         [Input("nodepools")]
-        private InputList<Inputs.KubernetesAutoscalerNodepoolsGetArgs>? _nodepools;
+        private InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>? _nodepools;
 
         /// <summary>
         /// 
@@ -178,9 +174,9 @@ namespace Pulumi.AliCloud.CS
         /// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
         /// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
         /// </summary>
-        public InputList<Inputs.KubernetesAutoscalerNodepoolsGetArgs> Nodepools
+        public InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs> Nodepools
         {
-            get => _nodepools ?? (_nodepools = new InputList<Inputs.KubernetesAutoscalerNodepoolsGetArgs>());
+            get => _nodepools ?? (_nodepools = new InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>());
             set => _nodepools = value;
         }
 
@@ -193,64 +189,5 @@ namespace Pulumi.AliCloud.CS
         public KubernetesAutoscalerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class KubernetesAutoscalerNodepoolsArgs : Pulumi.ResourceArgs
-    {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("labels")]
-        public Input<string>? Labels { get; set; }
-
-        [Input("taints")]
-        public Input<string>? Taints { get; set; }
-
-        public KubernetesAutoscalerNodepoolsArgs()
-        {
-        }
-    }
-
-    public sealed class KubernetesAutoscalerNodepoolsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("labels")]
-        public Input<string>? Labels { get; set; }
-
-        [Input("taints")]
-        public Input<string>? Taints { get; set; }
-
-        public KubernetesAutoscalerNodepoolsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class KubernetesAutoscalerNodepools
-    {
-        public readonly string? Id;
-        public readonly string? Labels;
-        public readonly string? Taints;
-
-        [OutputConstructor]
-        private KubernetesAutoscalerNodepools(
-            string? id,
-            string? labels,
-            string? taints)
-        {
-            Id = id;
-            Labels = labels;
-            Taints = taints;
-        }
-    }
     }
 }
