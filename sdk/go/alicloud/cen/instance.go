@@ -19,10 +19,12 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-	// - FULL: No overlapping CIDR blocks are allowed.
-	// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
-	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
+	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
+	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
+	// The Cen Instance current status.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -57,10 +59,12 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name *string `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-	// - FULL: No overlapping CIDR blocks are allowed.
-	// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// The Cen Instance current status.
+	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type InstanceState struct {
@@ -68,10 +72,12 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name pulumi.StringPtrInput
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-	// - FULL: No overlapping CIDR blocks are allowed.
-	// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel pulumi.StringPtrInput
+	// The Cen Instance current status.
+	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -83,10 +89,10 @@ type instanceArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name *string `pulumi:"name"`
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-	// - FULL: No overlapping CIDR blocks are allowed.
-	// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -95,10 +101,10 @@ type InstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
 	Name pulumi.StringPtrInput
-	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-	// - FULL: No overlapping CIDR blocks are allowed.
-	// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
 	ProtectionLevel pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

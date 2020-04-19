@@ -29,12 +29,22 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-        /// - FULL: No overlapping CIDR blocks are allowed.
-        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
         /// </summary>
         [Output("protectionLevel")]
-        public Output<string?> ProtectionLevel { get; private set; } = null!;
+        public Output<string> ProtectionLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cen Instance current status.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -95,12 +105,22 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-        /// - FULL: No overlapping CIDR blocks are allowed.
-        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public InstanceArgs()
         {
@@ -122,12 +142,28 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-        /// - FULL: No overlapping CIDR blocks are allowed.
-        /// - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// The Cen Instance current status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public InstanceState()
         {

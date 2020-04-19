@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         /// </summary>
         [Output("sqlCollectorConfigValue")]
         public Output<int?> SqlCollectorConfigValue { get; private set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }

@@ -51,7 +51,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     """
     private_zone: pulumi.Output[bool]
     """
-    Whether to create internet  eip for API Server. Default to false.
+    Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
     """
     tags: pulumi.Output[dict]
     """
@@ -81,7 +81,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
-        :param pulumi.Input[bool] private_zone: Whether to create internet  eip for API Server. Default to false.
+        :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
@@ -147,7 +147,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
-        :param pulumi.Input[bool] private_zone: Whether to create internet  eip for API Server. Default to false.
+        :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.

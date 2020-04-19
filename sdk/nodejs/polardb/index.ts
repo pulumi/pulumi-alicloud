@@ -7,6 +7,7 @@ export * from "./accountPrivilege";
 export * from "./backupPolicy";
 export * from "./cluster";
 export * from "./database";
+export * from "./endpoint";
 export * from "./endpointAddress";
 export * from "./getAccounts";
 export * from "./getClusters";

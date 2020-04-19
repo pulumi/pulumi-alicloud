@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         /// </summary>
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Whether to create internet  eip for API Server. Default to false.
+        /// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }

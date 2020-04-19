@@ -43,6 +43,7 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
         "ids": args.ids,
         "logStoreName": args.logStoreName,
         "nameRegex": args.nameRegex,
+        "outputFile": args.outputFile,
         "projectName": args.projectName,
         "status": args.status,
     }, opts);
@@ -72,6 +73,7 @@ export interface GetFlowlogsArgs {
      * A regex string to filter CEN flow logs by name.
      */
     readonly nameRegex?: string;
+    readonly outputFile?: string;
     /**
      * The name of the SLS project.
      */
@@ -108,6 +110,7 @@ export interface GetFlowlogsResult {
      * A list of CEN flow log names. 
      */
     readonly names: string[];
+    readonly outputFile?: string;
     /**
      * The name of the SLS project.
      */

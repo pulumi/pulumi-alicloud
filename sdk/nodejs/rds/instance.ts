@@ -205,7 +205,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
-     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
     public readonly sqlCollectorConfigValue!: pulumi.Output<number | undefined>;
     /**
@@ -423,7 +423,7 @@ export interface InstanceState {
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
     readonly sqlCollectorConfigValue?: pulumi.Input<number>;
     /**
@@ -544,7 +544,7 @@ export interface InstanceArgs {
      */
     readonly securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+     * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      */
     readonly sqlCollectorConfigValue?: pulumi.Input<number>;
     /**

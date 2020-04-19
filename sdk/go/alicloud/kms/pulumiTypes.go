@@ -10,6 +10,123 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type GetAliasesAlias struct {
+	// The unique identifier of the alias.
+	AliasName string `pulumi:"aliasName"`
+	// ID of the alias. The value is same as KMS alias_name.
+	Id string `pulumi:"id"`
+	// ID of the key.
+	KeyId string `pulumi:"keyId"`
+}
+
+// GetAliasesAliasInput is an input type that accepts GetAliasesAliasArgs and GetAliasesAliasOutput values.
+// You can construct a concrete instance of `GetAliasesAliasInput` via:
+//
+// 		 GetAliasesAliasArgs{...}
+//
+type GetAliasesAliasInput interface {
+	pulumi.Input
+
+	ToGetAliasesAliasOutput() GetAliasesAliasOutput
+	ToGetAliasesAliasOutputWithContext(context.Context) GetAliasesAliasOutput
+}
+
+type GetAliasesAliasArgs struct {
+	// The unique identifier of the alias.
+	AliasName pulumi.StringInput `pulumi:"aliasName"`
+	// ID of the alias. The value is same as KMS alias_name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of the key.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+}
+
+func (GetAliasesAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAliasesAlias)(nil)).Elem()
+}
+
+func (i GetAliasesAliasArgs) ToGetAliasesAliasOutput() GetAliasesAliasOutput {
+	return i.ToGetAliasesAliasOutputWithContext(context.Background())
+}
+
+func (i GetAliasesAliasArgs) ToGetAliasesAliasOutputWithContext(ctx context.Context) GetAliasesAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAliasesAliasOutput)
+}
+
+// GetAliasesAliasArrayInput is an input type that accepts GetAliasesAliasArray and GetAliasesAliasArrayOutput values.
+// You can construct a concrete instance of `GetAliasesAliasArrayInput` via:
+//
+// 		 GetAliasesAliasArray{ GetAliasesAliasArgs{...} }
+//
+type GetAliasesAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetAliasesAliasArrayOutput() GetAliasesAliasArrayOutput
+	ToGetAliasesAliasArrayOutputWithContext(context.Context) GetAliasesAliasArrayOutput
+}
+
+type GetAliasesAliasArray []GetAliasesAliasInput
+
+func (GetAliasesAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAliasesAlias)(nil)).Elem()
+}
+
+func (i GetAliasesAliasArray) ToGetAliasesAliasArrayOutput() GetAliasesAliasArrayOutput {
+	return i.ToGetAliasesAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetAliasesAliasArray) ToGetAliasesAliasArrayOutputWithContext(ctx context.Context) GetAliasesAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAliasesAliasArrayOutput)
+}
+
+type GetAliasesAliasOutput struct{ *pulumi.OutputState }
+
+func (GetAliasesAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAliasesAlias)(nil)).Elem()
+}
+
+func (o GetAliasesAliasOutput) ToGetAliasesAliasOutput() GetAliasesAliasOutput {
+	return o
+}
+
+func (o GetAliasesAliasOutput) ToGetAliasesAliasOutputWithContext(ctx context.Context) GetAliasesAliasOutput {
+	return o
+}
+
+// The unique identifier of the alias.
+func (o GetAliasesAliasOutput) AliasName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAliasesAlias) string { return v.AliasName }).(pulumi.StringOutput)
+}
+
+// ID of the alias. The value is same as KMS alias_name.
+func (o GetAliasesAliasOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAliasesAlias) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of the key.
+func (o GetAliasesAliasOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAliasesAlias) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+type GetAliasesAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAliasesAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAliasesAlias)(nil)).Elem()
+}
+
+func (o GetAliasesAliasArrayOutput) ToGetAliasesAliasArrayOutput() GetAliasesAliasArrayOutput {
+	return o
+}
+
+func (o GetAliasesAliasArrayOutput) ToGetAliasesAliasArrayOutputWithContext(ctx context.Context) GetAliasesAliasArrayOutput {
+	return o
+}
+
+func (o GetAliasesAliasArrayOutput) Index(i pulumi.IntInput) GetAliasesAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAliasesAlias {
+		return vs[0].([]GetAliasesAlias)[vs[1].(int)]
+	}).(GetAliasesAliasOutput)
+}
+
 type GetKeysKey struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
 	Arn string `pulumi:"arn"`
@@ -164,6 +281,8 @@ func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetAliasesAliasOutput{})
+	pulumi.RegisterOutputType(GetAliasesAliasArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
 }
