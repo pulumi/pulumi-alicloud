@@ -8,6 +8,7 @@ from .account_privilege import *
 from .backup_policy import *
 from .cluster import *
 from .database import *
+from .endpoint import *
 from .endpoint_address import *
 from .get_accounts import *
 from .get_clusters import *

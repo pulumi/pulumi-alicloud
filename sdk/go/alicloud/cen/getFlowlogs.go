@@ -30,7 +30,8 @@ type GetFlowlogsArgs struct {
 	// The name of the log store which is in the  `projectName` SLS project.
 	LogStoreName *string `pulumi:"logStoreName"`
 	// A regex string to filter CEN flow logs by name.
-	NameRegex *string `pulumi:"nameRegex"`
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
 	// The name of the SLS project.
 	ProjectName *string `pulumi:"projectName"`
 	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
@@ -52,7 +53,8 @@ type GetFlowlogsResult struct {
 	LogStoreName *string `pulumi:"logStoreName"`
 	NameRegex    *string `pulumi:"nameRegex"`
 	// A list of CEN flow log names.
-	Names []string `pulumi:"names"`
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
 	// The name of the SLS project.
 	ProjectName *string `pulumi:"projectName"`
 	// The status of flowlog.

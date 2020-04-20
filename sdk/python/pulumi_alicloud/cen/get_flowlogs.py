@@ -13,7 +13,7 @@ class GetFlowlogsResult:
     """
     A collection of values returned by getFlowlogs.
     """
-    def __init__(__self__, cen_id=None, description=None, flowlogs=None, id=None, ids=None, log_store_name=None, name_regex=None, names=None, project_name=None, status=None):
+    def __init__(__self__, cen_id=None, description=None, flowlogs=None, id=None, ids=None, log_store_name=None, name_regex=None, names=None, output_file=None, project_name=None, status=None):
         if cen_id and not isinstance(cen_id, str):
             raise TypeError("Expected argument 'cen_id' to be a str")
         __self__.cen_id = cen_id
@@ -56,6 +56,9 @@ class GetFlowlogsResult:
         """
         A list of CEN flow log names. 
         """
+        if output_file and not isinstance(output_file, str):
+            raise TypeError("Expected argument 'output_file' to be a str")
+        __self__.output_file = output_file
         if project_name and not isinstance(project_name, str):
             raise TypeError("Expected argument 'project_name' to be a str")
         __self__.project_name = project_name
@@ -82,10 +85,11 @@ class AwaitableGetFlowlogsResult(GetFlowlogsResult):
             log_store_name=self.log_store_name,
             name_regex=self.name_regex,
             names=self.names,
+            output_file=self.output_file,
             project_name=self.project_name,
             status=self.status)
 
-def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_regex=None,project_name=None,status=None,opts=None):
+def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_regex=None,output_file=None,project_name=None,status=None,opts=None):
     """
     This data source provides CEN flow logs available to the user.
 
@@ -110,6 +114,7 @@ def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_
     __args__['ids'] = ids
     __args__['logStoreName'] = log_store_name
     __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
     __args__['projectName'] = project_name
     __args__['status'] = status
     if opts is None:
@@ -127,5 +132,6 @@ def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_
         log_store_name=__ret__.get('logStoreName'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
+        output_file=__ret__.get('outputFile'),
         project_name=__ret__.get('projectName'),
         status=__ret__.get('status'))

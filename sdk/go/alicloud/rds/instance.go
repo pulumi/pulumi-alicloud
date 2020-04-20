@@ -71,7 +71,7 @@ type Instance struct {
 	SecurityIpMode pulumi.StringPtrOutput `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
-	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrOutput `pulumi:"sqlCollectorStatus"`
@@ -182,7 +182,7 @@ type instanceState struct {
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
-	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
@@ -254,7 +254,7 @@ type InstanceState struct {
 	SecurityIpMode pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
-	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput
@@ -326,7 +326,7 @@ type instanceArgs struct {
 	SecurityIpMode *string `pulumi:"securityIpMode"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps []string `pulumi:"securityIps"`
-	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
@@ -395,7 +395,7 @@ type InstanceArgs struct {
 	SecurityIpMode pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIps pulumi.StringArrayInput
-	// The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput

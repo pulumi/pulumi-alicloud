@@ -271,8 +271,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_record": {Tok: resource(dnsMod, "Record")},
 
 			// DDos
-			"alicloud_ddosbgp_instance": {Tok: resource(dnsMod, "DdosBgpInstance")},
-			"alicloud_ddoscoo_instance": {Tok: resource(dnsMod, "DdosCooInstance")},
+			"alicloud_ddosbgp_instance":      {Tok: resource(dnsMod, "DdosBgpInstance")},
+			"alicloud_ddoscoo_instance":      {Tok: resource(dnsMod, "DdosCooInstance")},
+			"alicloud_dns_domain_attachment": {Tok: resource(dnsMod, "DomainAttachment")},
+			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -404,6 +406,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_polardb_cluster":          {Tok: resource(polarDbMod, "Cluster")},
 			"alicloud_polardb_database":         {Tok: resource(polarDbMod, "Database")},
 			"alicloud_polardb_endpoint_address": {Tok: resource(polarDbMod, "EndpointAddress")},
+			"alicloud_polardb_endpoint":         {Tok: resource(polarDbMod, "Endpoint")},
 
 			// Pvtz
 			"alicloud_pvtz_zone":            {Tok: resource(pvtzMod, "Zone")},
@@ -580,6 +583,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_groups":           {Tok: dataSource(dnsMod, "getGroups")},
 			"alicloud_dns_records":          {Tok: dataSource(dnsMod, "getRecords")},
 			"alicloud_dns_resolution_lines": {Tok: dataSource(dnsMod, "getResolutionLines")},
+			"alicloud_dns_domain_txt_guid":  {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -629,6 +633,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kms_ciphertext": {Tok: dataSource(kmsMod, "getCiphertext")},
 			"alicloud_kms_plaintext":  {Tok: dataSource(kmsMod, "getPlaintext")},
 			"alicloud_kms_keys":       {Tok: dataSource(kmsMod, "getKeys")},
+			"alicloud_kms_aliases":    {Tok: dataSource(kmsMod, "getAliases")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},

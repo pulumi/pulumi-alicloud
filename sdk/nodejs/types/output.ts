@@ -3492,6 +3492,21 @@ export namespace gpdb {
 }
 
 export namespace kms {
+    export interface GetAliasesAlias {
+        /**
+         * The unique identifier of the alias.
+         */
+        aliasName: string;
+        /**
+         * ID of the alias. The value is same as KMS alias_name.
+         */
+        id: string;
+        /**
+         * ID of the key.
+         */
+        keyId: string;
+    }
+
     export interface GetKeysKey {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the key.
@@ -5176,10 +5191,6 @@ export namespace ram {
          * The original id is user name, but it is user id in 1.37.0+.
          */
         id: string;
-        /**
-         * Last login date of the user.
-         */
-        lastLoginDate: string;
         /**
          * Name of the user.
          */

@@ -62,6 +62,9 @@ namespace Pulumi.AliCloud.Cen
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        [Input("outputFile")]
+        public string? OutputFile { get; set; }
+
         /// <summary>
         /// The name of the SLS project.
         /// </summary>
@@ -109,6 +112,7 @@ namespace Pulumi.AliCloud.Cen
         /// A list of CEN flow log names. 
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        public readonly string? OutputFile;
         /// <summary>
         /// The name of the SLS project.
         /// </summary>
@@ -136,6 +140,8 @@ namespace Pulumi.AliCloud.Cen
 
             ImmutableArray<string> names,
 
+            string? outputFile,
+
             string? projectName,
 
             string? status)
@@ -148,6 +154,7 @@ namespace Pulumi.AliCloud.Cen
             LogStoreName = logStoreName;
             NameRegex = nameRegex;
             Names = names;
+            OutputFile = outputFile;
             ProjectName = projectName;
             Status = status;
         }

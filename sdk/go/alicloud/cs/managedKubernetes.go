@@ -70,7 +70,7 @@ type ManagedKubernetes struct {
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	Version pulumi.StringOutput `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// Enable worker payment auto-renew, defaults to false.

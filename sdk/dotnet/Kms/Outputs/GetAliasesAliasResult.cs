@@ -7,36 +7,36 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Ram.Outputs
+namespace Pulumi.AliCloud.Kms.Outputs
 {
 
     [OutputType]
-    public sealed class GetUsersUserResult
+    public sealed class GetAliasesAliasResult
     {
         /// <summary>
-        /// Creation date of the user.
+        /// The unique identifier of the alias.
         /// </summary>
-        public readonly string CreateDate;
+        public readonly string AliasName;
         /// <summary>
-        /// The original id is user name, but it is user id in 1.37.0+.
+        /// ID of the alias. The value is same as KMS alias_name.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the user.
+        /// ID of the key.
         /// </summary>
-        public readonly string Name;
+        public readonly string KeyId;
 
         [OutputConstructor]
-        private GetUsersUserResult(
-            string createDate,
+        private GetAliasesAliasResult(
+            string aliasName,
 
             string id,
 
-            string name)
+            string keyId)
         {
-            CreateDate = createDate;
+            AliasName = aliasName;
             Id = id;
-            Name = name;
+            KeyId = keyId;
         }
     }
 }

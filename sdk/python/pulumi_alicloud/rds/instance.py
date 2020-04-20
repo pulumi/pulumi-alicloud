@@ -112,7 +112,7 @@ class Instance(pulumi.CustomResource):
     """
     sql_collector_config_value: pulumi.Output[float]
     """
-    The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+    The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
     """
     sql_collector_status: pulumi.Output[str]
     """
@@ -176,7 +176,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -291,7 +291,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_group_ids: , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode 
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `1`, `30`, `180`, `365`, `1095`, `1825`, `1` is the initial value, and can't change it to `1`.
+        :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

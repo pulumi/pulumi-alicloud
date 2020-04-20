@@ -34,7 +34,7 @@ type ServerlessKubernetes struct {
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -99,7 +99,7 @@ type serverlessKubernetesState struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -131,7 +131,7 @@ type ServerlessKubernetesState struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
-	// Whether to create internet  eip for API Server. Default to false.
+	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
@@ -167,7 +167,7 @@ type serverlessKubernetesArgs struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Whether to create internet  eip for API Server. Default to false.
+	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone *bool `pulumi:"privateZone"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -200,7 +200,7 @@ type ServerlessKubernetesArgs struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
 	NewNatGateway pulumi.BoolPtrInput
-	// Whether to create internet  eip for API Server. Default to false.
+	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput

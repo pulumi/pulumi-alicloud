@@ -73,7 +73,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     public readonly privateZone!: pulumi.Output<boolean | undefined>;
     /**
@@ -193,7 +193,7 @@ export interface ServerlessKubernetesState {
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**
@@ -254,7 +254,7 @@ export interface ServerlessKubernetesArgs {
      */
     readonly newNatGateway?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet  eip for API Server. Default to false.
+     * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**

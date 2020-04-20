@@ -60,11 +60,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-     * - FULL: No overlapping CIDR blocks are allowed.
-     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
      */
-    public readonly protectionLevel!: pulumi.Output<string | undefined>;
+    public readonly protectionLevel!: pulumi.Output<string>;
+    /**
+     * The Cen Instance current status.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -81,11 +87,15 @@ export class Instance extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["protectionLevel"] = state ? state.protectionLevel : undefined;
+            inputs["status"] = state ? state.status : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -111,11 +121,17 @@ export interface InstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-     * - FULL: No overlapping CIDR blocks are allowed.
-     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
      */
     readonly protectionLevel?: pulumi.Input<string>;
+    /**
+     * The Cen Instance current status.
+     */
+    readonly status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -131,9 +147,11 @@ export interface InstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping. Valid values:
-     * - FULL: No overlapping CIDR blocks are allowed.
-     * - REDUCE: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * (Available in 1.76.0+) Indicates the allowed level of CIDR block overlapping.
      */
     readonly protectionLevel?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: pulumi.Input<{[key: string]: any}>;
 }
