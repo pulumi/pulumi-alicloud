@@ -1122,7 +1122,7 @@ export namespace oss {
          */
         days?: pulumi.Input<number>;
         /**
-         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
          */
         storageClass?: pulumi.Input<string>;
     }
@@ -1140,7 +1140,7 @@ export namespace oss {
 
     export interface BucketRefererConfig {
         /**
-         * Allows referer to be empty. Defaults true.
+         * Allows referer to be empty. Defaults false.
          */
         allowEmpty?: pulumi.Input<boolean>;
         /**

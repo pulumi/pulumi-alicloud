@@ -393,7 +393,7 @@ type BucketLifecycleRuleTransition struct {
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days *int `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -414,7 +414,7 @@ type BucketLifecycleRuleTransitionArgs struct {
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
 	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 }
 
@@ -480,7 +480,7 @@ func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 func (o BucketLifecycleRuleTransitionOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
@@ -648,7 +648,7 @@ func (o BucketLoggingPtrOutput) TargetPrefix() pulumi.StringPtrOutput {
 }
 
 type BucketRefererConfig struct {
-	// Allows referer to be empty. Defaults true.
+	// Allows referer to be empty. Defaults false.
 	AllowEmpty *bool `pulumi:"allowEmpty"`
 	// The list of referer.
 	Referers []string `pulumi:"referers"`
@@ -667,7 +667,7 @@ type BucketRefererConfigInput interface {
 }
 
 type BucketRefererConfigArgs struct {
-	// Allows referer to be empty. Defaults true.
+	// Allows referer to be empty. Defaults false.
 	AllowEmpty pulumi.BoolPtrInput `pulumi:"allowEmpty"`
 	// The list of referer.
 	Referers pulumi.StringArrayInput `pulumi:"referers"`
@@ -751,7 +751,7 @@ func (o BucketRefererConfigOutput) ToBucketRefererConfigPtrOutputWithContext(ctx
 	}).(BucketRefererConfigPtrOutput)
 }
 
-// Allows referer to be empty. Defaults true.
+// Allows referer to be empty. Defaults false.
 func (o BucketRefererConfigOutput) AllowEmpty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }
@@ -779,7 +779,7 @@ func (o BucketRefererConfigPtrOutput) Elem() BucketRefererConfigOutput {
 	return o.ApplyT(func(v *BucketRefererConfig) BucketRefererConfig { return *v }).(BucketRefererConfigOutput)
 }
 
-// Allows referer to be empty. Defaults true.
+// Allows referer to be empty. Defaults false.
 func (o BucketRefererConfigPtrOutput) AllowEmpty() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
 }

@@ -12,7 +12,7 @@ from .. import utilities, tables
 class Bucket(pulumi.CustomResource):
     acl: pulumi.Output[str]
     """
-    The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+    The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
     """
     bucket: pulumi.Output[str]
     cors_rules: pulumi.Output[list]
@@ -55,7 +55,7 @@ class Bucket(pulumi.CustomResource):
       * `transitions` (`list`) - Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         * `createdBeforeDate` (`str`) - Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         * `days` (`float`) - Specifies the number of days after object creation when the specific rule action takes effect.
-        * `storage_class` (`str`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        * `storage_class` (`str`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
     """
     location: pulumi.Output[str]
     """
@@ -78,13 +78,13 @@ class Bucket(pulumi.CustomResource):
     """
     policy: pulumi.Output[str]
     """
-    Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+    Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
     """
     referer_config: pulumi.Output[dict]
     """
     The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 
-      * `allowEmpty` (`bool`) - Allows referer to be empty. Defaults true.
+      * `allowEmpty` (`bool`) - Allows referer to be empty. Defaults false.
       * `referers` (`list`) - The list of referer.
     """
     server_side_encryption_rule: pulumi.Output[dict]
@@ -95,7 +95,7 @@ class Bucket(pulumi.CustomResource):
     """
     storage_class: pulumi.Output[str]
     """
-    Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+    Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
     """
     tags: pulumi.Output[dict]
     """
@@ -125,16 +125,16 @@ class Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         :param pulumi.Input[list] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[list] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm) (documented below).
         :param pulumi.Input[dict] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[dict] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[dict] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[dict] versioning: A state of versioning (documented below).
         :param pulumi.Input[dict] website: A website object(documented below).
@@ -159,7 +159,7 @@ class Bucket(pulumi.CustomResource):
           * `transitions` (`pulumi.Input[list]`) - Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
             * `createdBeforeDate` (`pulumi.Input[str]`) - Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
             * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+            * `storage_class` (`pulumi.Input[str]`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
 
         The **logging** object supports the following:
 
@@ -168,7 +168,7 @@ class Bucket(pulumi.CustomResource):
 
         The **referer_config** object supports the following:
 
-          * `allowEmpty` (`pulumi.Input[bool]`) - Allows referer to be empty. Defaults true.
+          * `allowEmpty` (`pulumi.Input[bool]`) - Allows referer to be empty. Defaults false.
           * `referers` (`pulumi.Input[list]`) - The list of referer.
 
         The **server_side_encryption_rule** object supports the following:
@@ -235,7 +235,7 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         :param pulumi.Input[list] cors_rules: A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
         :param pulumi.Input[str] creation_date: The creation date of the bucket.
         :param pulumi.Input[str] extranet_endpoint: The extranet access endpoint of the bucket.
@@ -246,10 +246,10 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[dict] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] owner: The bucket owner.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[dict] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[dict] server_side_encryption_rule: A configuration of server-side encryption (documented below).
-        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
         :param pulumi.Input[dict] versioning: A state of versioning (documented below).
         :param pulumi.Input[dict] website: A website object(documented below).
@@ -274,7 +274,7 @@ class Bucket(pulumi.CustomResource):
           * `transitions` (`pulumi.Input[list]`) - Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
             * `createdBeforeDate` (`pulumi.Input[str]`) - Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
             * `days` (`pulumi.Input[float]`) - Specifies the number of days after object creation when the specific rule action takes effect.
-            * `storage_class` (`pulumi.Input[str]`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+            * `storage_class` (`pulumi.Input[str]`) - Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
 
         The **logging** object supports the following:
 
@@ -283,7 +283,7 @@ class Bucket(pulumi.CustomResource):
 
         The **referer_config** object supports the following:
 
-          * `allowEmpty` (`pulumi.Input[bool]`) - Allows referer to be empty. Defaults true.
+          * `allowEmpty` (`pulumi.Input[bool]`) - Allows referer to be empty. Defaults false.
           * `referers` (`pulumi.Input[list]`) - The list of referer.
 
         The **server_side_encryption_rule** object supports the following:

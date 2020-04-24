@@ -264,7 +264,7 @@ export namespace adb {
          */
         regionId: string;
         /**
-         * status of the cluster.
+         * Status of the cluster.
          */
         status: string;
         /**
@@ -893,11 +893,11 @@ export namespace cen {
         /**
          * List of CEN Bandwidth Package IDs in the specified CEN instance.
          */
-        bandwidthPackageIds: string[];
+        cenBandwidthPackageIds: string[];
         /**
-         * List of child instance IDs in the specified CEN instance.
+         * ID of the CEN instance.
          */
-        childInstanceIds: string[];
+        cenId: string;
         /**
          * Description of the CEN instance.
          */
@@ -911,9 +911,17 @@ export namespace cen {
          */
         name: string;
         /**
+         * Indicates the allowed level of CIDR block overlapping.
+         */
+        protectionLevel: string;
+        /**
          * Status of the CEN instance, including "Creating", "Active" and "Deleting".
          */
         status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
     }
 
     export interface GetRegionRouteEntriesEntry {
@@ -4325,7 +4333,7 @@ export namespace oss {
          */
         days?: number;
         /**
-         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+         * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
          */
         storageClass?: string;
     }
@@ -4343,7 +4351,7 @@ export namespace oss {
 
     export interface BucketRefererConfig {
         /**
-         * Allows referer to be empty. Defaults true.
+         * Allows referer to be empty. Defaults false.
          */
         allowEmpty: boolean;
         /**

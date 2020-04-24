@@ -35,7 +35,7 @@ type GetClustersCluster struct {
 	NetworkType string `pulumi:"networkType"`
 	// Region ID the cluster belongs to.
 	RegionId string `pulumi:"regionId"`
-	// status of the cluster.
+	// Status of the cluster.
 	Status string `pulumi:"status"`
 	// ID of the VPC the cluster belongs to.
 	VpcId string `pulumi:"vpcId"`
@@ -80,7 +80,7 @@ type GetClustersClusterArgs struct {
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// Region ID the cluster belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// status of the cluster.
+	// Status of the cluster.
 	Status pulumi.StringInput `pulumi:"status"`
 	// ID of the VPC the cluster belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -200,7 +200,7 @@ func (o GetClustersClusterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// status of the cluster.
+// Status of the cluster.
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }

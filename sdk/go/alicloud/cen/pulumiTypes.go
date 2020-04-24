@@ -498,17 +498,21 @@ func (o GetFlowlogsFlowlogArrayOutput) Index(i pulumi.IntInput) GetFlowlogsFlowl
 
 type GetInstancesInstance struct {
 	// List of CEN Bandwidth Package IDs in the specified CEN instance.
-	BandwidthPackageIds []string `pulumi:"bandwidthPackageIds"`
-	// List of child instance IDs in the specified CEN instance.
-	ChildInstanceIds []string `pulumi:"childInstanceIds"`
+	CenBandwidthPackageIds []string `pulumi:"cenBandwidthPackageIds"`
+	// ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
 	// Description of the CEN instance.
 	Description string `pulumi:"description"`
 	// ID of the CEN instance.
 	Id string `pulumi:"id"`
 	// Name of the CEN instance.
 	Name string `pulumi:"name"`
+	// Indicates the allowed level of CIDR block overlapping.
+	ProtectionLevel string `pulumi:"protectionLevel"`
 	// Status of the CEN instance, including "Creating", "Active" and "Deleting".
 	Status string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -525,17 +529,21 @@ type GetInstancesInstanceInput interface {
 
 type GetInstancesInstanceArgs struct {
 	// List of CEN Bandwidth Package IDs in the specified CEN instance.
-	BandwidthPackageIds pulumi.StringArrayInput `pulumi:"bandwidthPackageIds"`
-	// List of child instance IDs in the specified CEN instance.
-	ChildInstanceIds pulumi.StringArrayInput `pulumi:"childInstanceIds"`
+	CenBandwidthPackageIds pulumi.StringArrayInput `pulumi:"cenBandwidthPackageIds"`
+	// ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
 	// Description of the CEN instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// ID of the CEN instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the CEN instance.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Indicates the allowed level of CIDR block overlapping.
+	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
 	// Status of the CEN instance, including "Creating", "Active" and "Deleting".
 	Status pulumi.StringInput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -591,13 +599,13 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 }
 
 // List of CEN Bandwidth Package IDs in the specified CEN instance.
-func (o GetInstancesInstanceOutput) BandwidthPackageIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancesInstance) []string { return v.BandwidthPackageIds }).(pulumi.StringArrayOutput)
+func (o GetInstancesInstanceOutput) CenBandwidthPackageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.CenBandwidthPackageIds }).(pulumi.StringArrayOutput)
 }
 
-// List of child instance IDs in the specified CEN instance.
-func (o GetInstancesInstanceOutput) ChildInstanceIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstancesInstance) []string { return v.ChildInstanceIds }).(pulumi.StringArrayOutput)
+// ID of the CEN instance.
+func (o GetInstancesInstanceOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.CenId }).(pulumi.StringOutput)
 }
 
 // Description of the CEN instance.
@@ -615,9 +623,19 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Indicates the allowed level of CIDR block overlapping.
+func (o GetInstancesInstanceOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
 // Status of the CEN instance, including "Creating", "Active" and "Deleting".
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

@@ -39,6 +39,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -55,6 +56,10 @@ export interface GetInstancesArgs {
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
 }
 
 /**
@@ -75,6 +80,10 @@ export interface GetInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A map of tags assigned to the Cen Instance.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

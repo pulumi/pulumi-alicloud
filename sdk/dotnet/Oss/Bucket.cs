@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Oss
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<Outputs.BucketServerSideEncryptionRule?> ServerSideEncryptionRule { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<bool>? LoggingIsenable { get; set; }
 
         /// <summary>
-        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Owner { get; set; }
 
         /// <summary>
-        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+        /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleGetArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+        /// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }

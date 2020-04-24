@@ -42,11 +42,11 @@ import * as utilities from "../utilities";
  *     payType: "PostPaid",
  *     vswitchId: defaultSwitch.id,
  * });
- * const account = new alicloud.rds.Account("account", {
+ * const account = new alicloud.adb.Account("account", {
  *     accountDescription: name,
  *     accountName: "tftestnormal",
  *     accountPassword: "Test12345",
- *     dbClusterId: alicloud_db_instance_instance.id,
+ *     dbClusterId: cluster.id,
  * });
  * ```
  *
@@ -88,10 +88,9 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     public readonly accountPassword!: pulumi.Output<string | undefined>;
-    public readonly accountType!: pulumi.Output<string | undefined>;
     /**
      * The Id of cluster in which account belongs.
      */
@@ -120,7 +119,6 @@ export class Account extends pulumi.CustomResource {
             inputs["accountDescription"] = state ? state.accountDescription : undefined;
             inputs["accountName"] = state ? state.accountName : undefined;
             inputs["accountPassword"] = state ? state.accountPassword : undefined;
-            inputs["accountType"] = state ? state.accountType : undefined;
             inputs["dbClusterId"] = state ? state.dbClusterId : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
@@ -135,7 +133,6 @@ export class Account extends pulumi.CustomResource {
             inputs["accountDescription"] = args ? args.accountDescription : undefined;
             inputs["accountName"] = args ? args.accountName : undefined;
             inputs["accountPassword"] = args ? args.accountPassword : undefined;
-            inputs["accountType"] = args ? args.accountType : undefined;
             inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
@@ -164,10 +161,9 @@ export interface AccountState {
      */
     readonly accountName?: pulumi.Input<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     readonly accountPassword?: pulumi.Input<string>;
-    readonly accountType?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */
@@ -195,10 +191,9 @@ export interface AccountArgs {
      */
     readonly accountName: pulumi.Input<string>;
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
      */
     readonly accountPassword?: pulumi.Input<string>;
-    readonly accountType?: pulumi.Input<string>;
     /**
      * The Id of cluster in which account belongs.
      */

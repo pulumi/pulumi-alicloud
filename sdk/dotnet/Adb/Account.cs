@@ -29,13 +29,10 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("accountPassword")]
         public Output<string?> AccountPassword { get; private set; } = null!;
-
-        [Output("accountType")]
-        public Output<string?> AccountType { get; private set; } = null!;
 
         /// <summary>
         /// The Id of cluster in which account belongs.
@@ -114,13 +111,10 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> AccountName { get; set; } = null!;
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
-
-        [Input("accountType")]
-        public Input<string>? AccountType { get; set; }
 
         /// <summary>
         /// The Id of cluster in which account belongs.
@@ -166,13 +160,10 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        /// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }
-
-        [Input("accountType")]
-        public Input<string>? AccountType { get; set; }
 
         /// <summary>
         /// The Id of cluster in which account belongs.
