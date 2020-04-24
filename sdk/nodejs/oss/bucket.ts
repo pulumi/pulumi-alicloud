@@ -56,7 +56,7 @@ export class Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     public readonly acl!: pulumi.Output<string | undefined>;
     public readonly bucket!: pulumi.Output<string | undefined>;
@@ -101,7 +101,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly owner!: pulumi.Output<string>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
@@ -113,7 +113,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
      */
     public readonly storageClass!: pulumi.Output<string | undefined>;
     /**
@@ -198,7 +198,7 @@ export class Bucket extends pulumi.CustomResource {
  */
 export interface BucketState {
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     readonly acl?: pulumi.Input<string>;
     readonly bucket?: pulumi.Input<string>;
@@ -245,7 +245,7 @@ export interface BucketState {
      */
     readonly owner?: pulumi.Input<string>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
     readonly policy?: pulumi.Input<string>;
     /**
@@ -257,7 +257,7 @@ export interface BucketState {
      */
     readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
      */
     readonly storageClass?: pulumi.Input<string>;
     /**
@@ -279,7 +279,7 @@ export interface BucketState {
  */
 export interface BucketArgs {
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
      */
     readonly acl?: pulumi.Input<string>;
     readonly bucket?: pulumi.Input<string>;
@@ -306,7 +306,7 @@ export interface BucketArgs {
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
      */
     readonly policy?: pulumi.Input<string>;
     /**
@@ -318,7 +318,7 @@ export interface BucketArgs {
      */
     readonly serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
     /**
-     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`. 
+     * Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
      */
     readonly storageClass?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketRefererConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allows referer to be empty. Defaults true.
+        /// Allows referer to be empty. Defaults false.
         /// </summary>
         [Input("allowEmpty")]
         public Input<bool>? AllowEmpty { get; set; }

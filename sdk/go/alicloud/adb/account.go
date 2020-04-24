@@ -20,9 +20,8 @@ type Account struct {
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
-	AccountType     pulumi.StringPtrOutput `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -69,9 +68,8 @@ type accountState struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	AccountName *string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
-	AccountType     *string `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -85,9 +83,8 @@ type AccountState struct {
 	AccountDescription pulumi.StringPtrInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	AccountName pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
-	AccountType     pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -105,9 +102,8 @@ type accountArgs struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	AccountName string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
-	AccountType     *string `pulumi:"accountType"`
 	// The Id of cluster in which account belongs.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
@@ -122,9 +118,8 @@ type AccountArgs struct {
 	AccountDescription pulumi.StringPtrInput
 	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
 	AccountName pulumi.StringInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
-	AccountType     pulumi.StringPtrInput
 	// The Id of cluster in which account belongs.
 	DbClusterId pulumi.StringInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.

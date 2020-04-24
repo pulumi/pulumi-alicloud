@@ -13,7 +13,7 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, id=None, ids=None, instances=None, name_regex=None, names=None, output_file=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -44,6 +44,12 @@ class GetInstancesResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         __self__.output_file = output_file
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        __self__.tags = tags
+        """
+        A map of tags assigned to the Cen Instance.
+        """
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -55,9 +61,10 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             instances=self.instances,
             name_regex=self.name_regex,
             names=self.names,
-            output_file=self.output_file)
+            output_file=self.output_file,
+            tags=self.tags)
 
-def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
+def get_instances(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     This data source provides CEN instances available to the user.
 
@@ -66,6 +73,7 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
 
     :param list ids: A list of CEN instances IDs.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param dict tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
 
@@ -73,6 +81,7 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['tags'] = tags
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -85,4 +94,5 @@ def get_instances(ids=None,name_regex=None,output_file=None,opts=None):
         instances=__ret__.get('instances'),
         name_regex=__ret__.get('nameRegex'),
         names=__ret__.get('names'),
-        output_file=__ret__.get('outputFile'))
+        output_file=__ret__.get('outputFile'),
+        tags=__ret__.get('tags'))

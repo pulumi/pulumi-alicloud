@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// status of the cluster.
+        /// Status of the cluster.
         /// </summary>
         public readonly string Status;
         /// <summary>

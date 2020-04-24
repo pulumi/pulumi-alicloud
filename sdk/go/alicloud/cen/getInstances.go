@@ -24,6 +24,8 @@ type GetInstancesArgs struct {
 	// A regex string to filter CEN instances by name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
@@ -38,4 +40,6 @@ type GetInstancesResult struct {
 	// A list of CEN instances names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// A map of tags assigned to the Cen Instance.
+	Tags map[string]interface{} `pulumi:"tags"`
 }

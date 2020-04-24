@@ -45,6 +45,18 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
+
         public GetInstancesArgs()
         {
         }
@@ -72,6 +84,10 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A map of tags assigned to the Cen Instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -85,7 +101,9 @@ namespace Pulumi.AliCloud.Cen
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            ImmutableDictionary<string, object>? tags)
         {
             Id = id;
             Ids = ids;
@@ -93,6 +111,7 @@ namespace Pulumi.AliCloud.Cen
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Tags = tags;
         }
     }
 }

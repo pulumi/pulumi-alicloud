@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketRefererConfig
     {
         /// <summary>
-        /// Allows referer to be empty. Defaults true.
+        /// Allows referer to be empty. Defaults false.
         /// </summary>
         public readonly bool? AllowEmpty;
         /// <summary>

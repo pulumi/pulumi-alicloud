@@ -16,11 +16,11 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// <summary>
         /// List of CEN Bandwidth Package IDs in the specified CEN instance.
         /// </summary>
-        public readonly ImmutableArray<string> BandwidthPackageIds;
+        public readonly ImmutableArray<string> CenBandwidthPackageIds;
         /// <summary>
-        /// List of child instance IDs in the specified CEN instance.
+        /// ID of the CEN instance.
         /// </summary>
-        public readonly ImmutableArray<string> ChildInstanceIds;
+        public readonly string CenId;
         /// <summary>
         /// Description of the CEN instance.
         /// </summary>
@@ -34,15 +34,23 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Indicates the allowed level of CIDR block overlapping.
+        /// </summary>
+        public readonly string ProtectionLevel;
+        /// <summary>
         /// Status of the CEN instance, including "Creating", "Active" and "Deleting".
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
-            ImmutableArray<string> bandwidthPackageIds,
+            ImmutableArray<string> cenBandwidthPackageIds,
 
-            ImmutableArray<string> childInstanceIds,
+            string cenId,
 
             string description,
 
@@ -50,14 +58,20 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string name,
 
-            string status)
+            string protectionLevel,
+
+            string status,
+
+            ImmutableDictionary<string, object> tags)
         {
-            BandwidthPackageIds = bandwidthPackageIds;
-            ChildInstanceIds = childInstanceIds;
+            CenBandwidthPackageIds = cenBandwidthPackageIds;
+            CenId = cenId;
             Description = description;
             Id = id;
             Name = name;
+            ProtectionLevel = protectionLevel;
             Status = status;
+            Tags = tags;
         }
     }
 }

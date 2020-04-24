@@ -15,7 +15,7 @@ import (
 type Bucket struct {
 	pulumi.CustomResourceState
 
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
 	Acl    pulumi.StringPtrOutput `pulumi:"acl"`
 	Bucket pulumi.StringPtrOutput `pulumi:"bucket"`
 	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
@@ -38,13 +38,13 @@ type Bucket struct {
 	LoggingIsenable pulumi.BoolPtrOutput `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrOutput `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrOutput `pulumi:"serverSideEncryptionRule"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -82,7 +82,7 @@ func GetBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
 	Acl    *string `pulumi:"acl"`
 	Bucket *string `pulumi:"bucket"`
 	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
@@ -105,13 +105,13 @@ type bucketState struct {
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner *string `pulumi:"owner"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy *string `pulumi:"policy"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -122,7 +122,7 @@ type bucketState struct {
 }
 
 type BucketState struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
 	Acl    pulumi.StringPtrInput
 	Bucket pulumi.StringPtrInput
 	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
@@ -145,13 +145,13 @@ type BucketState struct {
 	LoggingIsenable pulumi.BoolPtrInput
 	// The bucket owner.
 	Owner pulumi.StringPtrInput
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
@@ -166,7 +166,7 @@ func (BucketState) ElementType() reflect.Type {
 }
 
 type bucketArgs struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
 	Acl    *string `pulumi:"acl"`
 	Bucket *string `pulumi:"bucket"`
 	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
@@ -179,13 +179,13 @@ type bucketArgs struct {
 	Logging *BucketLogging `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy *string `pulumi:"policy"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -197,7 +197,7 @@ type bucketArgs struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
 	Acl    pulumi.StringPtrInput
 	Bucket pulumi.StringPtrInput
 	// A rule of [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm) (documented below). The items of core rule are no more than 10 for every OSS bucket.
@@ -210,13 +210,13 @@ type BucketArgs struct {
 	Logging BucketLoggingPtrInput
 	// The flag of using logging enable container. Defaults true.
 	LoggingIsenable pulumi.BoolPtrInput
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm) (documented below).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
-	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`, `Standard`.
+	// Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput

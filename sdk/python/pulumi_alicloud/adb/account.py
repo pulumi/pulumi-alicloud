@@ -20,9 +20,8 @@ class Account(pulumi.CustomResource):
     """
     account_password: pulumi.Output[str]
     """
-    Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+    Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
     """
-    account_type: pulumi.Output[str]
     db_cluster_id: pulumi.Output[str]
     """
     The Id of cluster in which account belongs.
@@ -35,7 +34,7 @@ class Account(pulumi.CustomResource):
     """
     An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
     """
-    def __init__(__self__, resource_name, opts=None, account_description=None, account_name=None, account_password=None, account_type=None, db_cluster_id=None, kms_encrypted_password=None, kms_encryption_context=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_description=None, account_name=None, account_password=None, db_cluster_id=None, kms_encrypted_password=None, kms_encryption_context=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
 
@@ -47,7 +46,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -74,7 +73,6 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_name'")
             __props__['account_name'] = account_name
             __props__['account_password'] = account_password
-            __props__['account_type'] = account_type
             if db_cluster_id is None:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__['db_cluster_id'] = db_cluster_id
@@ -87,7 +85,7 @@ class Account(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_description=None, account_name=None, account_password=None, account_type=None, db_cluster_id=None, kms_encrypted_password=None, kms_encryption_context=None):
+    def get(resource_name, id, opts=None, account_description=None, account_name=None, account_password=None, db_cluster_id=None, kms_encrypted_password=None, kms_encryption_context=None):
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -97,7 +95,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] db_cluster_id: The Id of cluster in which account belongs.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -109,7 +107,6 @@ class Account(pulumi.CustomResource):
         __props__["account_description"] = account_description
         __props__["account_name"] = account_name
         __props__["account_password"] = account_password
-        __props__["account_type"] = account_type
         __props__["db_cluster_id"] = db_cluster_id
         __props__["kms_encrypted_password"] = kms_encrypted_password
         __props__["kms_encryption_context"] = kms_encryption_context
