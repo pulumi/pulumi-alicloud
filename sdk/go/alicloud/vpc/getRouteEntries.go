@@ -38,7 +38,7 @@ type GetRouteEntriesResult struct {
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// A list of Route Entries. Each element contains the following attributes:
 	Entries []GetRouteEntriesEntry `pulumi:"entries"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The instance ID of the next hop.
 	InstanceId *string `pulumi:"instanceId"`

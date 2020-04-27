@@ -20,7 +20,6 @@ type ShardingInstance struct {
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -29,7 +28,6 @@ type ShardingInstance struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// The mongo-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	MongoLists ShardingInstanceMongoListArrayOutput `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -42,9 +40,9 @@ type ShardingInstance struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists    ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
-	StorageEngine pulumi.StringOutput                  `pulumi:"storageEngine"`
+	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -98,7 +96,6 @@ type shardingInstanceState struct {
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -107,7 +104,6 @@ type shardingInstanceState struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The mongo-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
@@ -120,9 +116,9 @@ type shardingInstanceState struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
-	StorageEngine *string                     `pulumi:"storageEngine"`
+	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+	StorageEngine *string `pulumi:"storageEngine"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -140,7 +136,6 @@ type ShardingInstanceState struct {
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringPtrInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
@@ -149,7 +144,6 @@ type ShardingInstanceState struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The mongo-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
@@ -162,8 +156,8 @@ type ShardingInstanceState struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists    ShardingInstanceShardListArrayInput
+	ShardLists ShardingInstanceShardListArrayInput
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput
@@ -186,7 +180,6 @@ type shardingInstanceArgs struct {
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -195,7 +188,6 @@ type shardingInstanceArgs struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// The mongo-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
@@ -206,9 +198,9 @@ type shardingInstanceArgs struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// the shard-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists    []ShardingInstanceShardList `pulumi:"shardLists"`
-	StorageEngine *string                     `pulumi:"storageEngine"`
+	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+	StorageEngine *string `pulumi:"storageEngine"`
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -227,7 +219,6 @@ type ShardingInstanceArgs struct {
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`.
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	EngineVersion pulumi.StringInput
 	// Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput
@@ -236,7 +227,6 @@ type ShardingInstanceArgs struct {
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
 	// The mongo-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
@@ -247,8 +237,8 @@ type ShardingInstanceArgs struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
 	// the shard-node count can be purchased is in range of [2, 32].
-	// * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-	ShardLists    ShardingInstanceShardListArrayInput
+	ShardLists ShardingInstanceShardListArrayInput
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
 	// The TDE(Transparent Data Encryption) status.
 	TdeStatus pulumi.StringPtrInput

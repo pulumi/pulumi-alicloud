@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultProduct = alicloud.marketplace.getProduct({
+ * const defaultProduct = pulumi.output(alicloud.marketplace.getProduct({
  *     productCode: "cmapi022206",
- * });
+ * }, { async: true }));
  * 
  * export const productName = defaultProduct.products[0].name;
  * export const firstProductSkuCode = defaultProduct.products[0].skuses[0].skuCode;
@@ -68,7 +68,7 @@ export interface GetProductResult {
     readonly products: outputs.marketplace.GetProductProduct[];
     readonly productCode: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

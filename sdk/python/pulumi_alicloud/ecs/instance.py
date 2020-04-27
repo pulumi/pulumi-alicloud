@@ -46,10 +46,9 @@ class Instance(pulumi.CustomResource):
         - `cloud_essd`: The ESSD cloud disk.
         - `ephemeral_ssd`: The local SSD disk.
         Default to `cloud_efficiency`.
-        * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
       * `delete_with_instance` (`bool`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
       * `description` (`str`) - The description of the data disk.
-      * `encrypted` (`bool`)
+      * `encrypted` (`bool`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
       * `name` (`str`) - The name of the data disk.
       * `size` (`float`) - The size of the data disk.
         - cloud：[5, 2000]
@@ -310,10 +309,9 @@ class Instance(pulumi.CustomResource):
             - `cloud_essd`: The ESSD cloud disk.
             - `ephemeral_ssd`: The local SSD disk.
             Default to `cloud_efficiency`.
-            * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
           * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]
@@ -484,10 +482,9 @@ class Instance(pulumi.CustomResource):
             - `cloud_essd`: The ESSD cloud disk.
             - `ephemeral_ssd`: The local SSD disk.
             Default to `cloud_efficiency`.
-            * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
           * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]

@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const thisDomainTxtGuid = alicloud.dns.getDomainTxtGuid({
+ * const thisDomainTxtGuid = pulumi.output(alicloud.dns.getDomainTxtGuid({
  *     domainName: "test111.abc",
  *     type: "ADD_SUB_DOMAIN",
- * });
+ * }, { async: true }));
  * 
  * export const rr = thisDomainTxtGuid.rr;
  * export const value = thisDomainTxtGuid.value;
@@ -81,7 +81,7 @@ export interface GetDomainTxtGuidResult {
      */
     readonly value: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

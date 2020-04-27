@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const vpcsDs = alicloud.vpc.getNetworks({
+ * const vpcsDs = pulumi.output(alicloud.vpc.getNetworks({
  *     cidrBlock: "172.16.0.0/12",
  *     nameRegex: "^foo",
  *     status: "Available",
- * });
+ * }, { async: true }));
  * 
  * export const firstVpcId = vpcsDs.vpcs[0].id;
  * ```
@@ -126,7 +126,7 @@ export interface GetNetworksResult {
     readonly vpcs: outputs.vpc.GetNetworksVpc[];
     readonly vswitchId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const zonesIds = alicloud.polardb.getZones();
+ * const zonesIds = pulumi.output(alicloud.polardb.getZones({ async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_zones.html.markdown.
@@ -66,7 +66,7 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.polardb.GetZonesZone[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ds = alicloud.ess.getScheduledTasks({
+ * const ds = pulumi.output(alicloud.ess.getScheduledTasks({
  *     nameRegex: "scheduledTaskName",
  *     scheduledTaskId: "scheduledTaskId",
- * });
+ * }, { async: true }));
  * 
  * export const firstScheduledTask = ds.tasks[0].id;
  * ```
@@ -94,7 +94,7 @@ export interface GetScheduledTasksResult {
      */
     readonly tasks: outputs.ess.GetScheduledTasksTask[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

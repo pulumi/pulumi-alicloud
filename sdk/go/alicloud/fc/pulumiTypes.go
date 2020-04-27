@@ -143,13 +143,23 @@ func (o ServiceLogConfigPtrOutput) Elem() ServiceLogConfigOutput {
 }
 
 // The log store name of Logs service.
-func (o ServiceLogConfigPtrOutput) Logstore() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceLogConfig) string { return v.Logstore }).(pulumi.StringOutput)
+func (o ServiceLogConfigPtrOutput) Logstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Logstore
+	}).(pulumi.StringPtrOutput)
 }
 
 // The project name of Logs service.
-func (o ServiceLogConfigPtrOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceLogConfig) string { return v.Project }).(pulumi.StringOutput)
+func (o ServiceLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceVpcConfig struct {
@@ -291,17 +301,32 @@ func (o ServiceVpcConfigPtrOutput) Elem() ServiceVpcConfigOutput {
 }
 
 // A security group ID associated with the FC service.
-func (o ServiceVpcConfigPtrOutput) SecurityGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+func (o ServiceVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceVpcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ServiceVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ServiceVpcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of vswitch IDs associated with the FC service.
 func (o ServiceVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServiceVpcConfig) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServiceVpcConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchIds
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetFunctionsFunction struct {

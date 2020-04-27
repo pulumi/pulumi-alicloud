@@ -25,9 +25,9 @@ import * as utilities from "../utilities";
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "192.168.0.0/24",
  * });
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     availabilityZone: defaultZones.zones[0].id,
  *     cidrBlock: "192.168.0.0/24",
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *     type: "Secondary",
  *     vpcId: vpcId,
  *     vswitchId: vswitchId,
- * }));
+ * }, { async: true }));
  * 
  * export const eni0Name = defaultNetworkInterfaces.interfaces[0].name;
  * ```
@@ -193,7 +193,7 @@ export interface GetNetworkInterfacesResult {
      */
     readonly vswitchId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

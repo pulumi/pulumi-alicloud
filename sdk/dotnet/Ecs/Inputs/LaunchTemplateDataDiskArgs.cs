@@ -35,6 +35,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// -(Optional, Bool) Encrypted the data in this disk.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 

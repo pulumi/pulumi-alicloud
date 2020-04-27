@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const groupsDs = alicloud.ram.getGroups({
+ * const groupsDs = pulumi.output(alicloud.ram.getGroups({
  *     nameRegex: "^group[0-9]*",
  *     outputFile: "groups.txt",
  *     userName: "user1",
- * });
+ * }, { async: true }));
  * 
  * export const firstGroupName = groupsDs.groups[0].name;
  * ```
@@ -87,7 +87,7 @@ export interface GetGroupsResult {
     readonly policyType?: string;
     readonly userName?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

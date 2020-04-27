@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     groupIdRegex: groupId,
  *     instanceId: instanceId,
  *     outputFile: "groups.txt",
- * }));
+ * }, { async: true }));
  * 
  * export const firstGroupName = groupsDs.groups[0].groupId;
  * ```
@@ -87,7 +87,7 @@ export interface GetGroupsResult {
     readonly instanceId: string;
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

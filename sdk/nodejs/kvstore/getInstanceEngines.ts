@@ -19,16 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const resourcesZones = alicloud.getZones({
+ * const resourcesZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "KVStore",
- * });
- * const resourcesInstanceEngines = alicloud.kvstore.getInstanceEngines({
+ * }, { async: true }));
+ * const resourcesInstanceEngines = resourcesZones.apply(resourcesZones => alicloud.kvstore.getInstanceEngines({
  *     engine: "Redis",
  *     engineVersion: "5.0",
  *     instanceChargeType: "PrePaid",
  *     outputFile: "./engines.txt",
  *     zoneId: resourcesZones.zones[0].id,
- * });
+ * }, { async: true }));
  * 
  * export const firstKvstoreInstanceClass = resourcesInstanceEngines.instanceEngines[0].engine;
  * ```
@@ -98,7 +98,7 @@ export interface GetInstanceEnginesResult {
      */
     readonly zoneId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

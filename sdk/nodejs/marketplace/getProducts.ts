@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultProducts = alicloud.marketplace.getProducts({
+ * const defaultProducts = pulumi.output(alicloud.marketplace.getProducts({
  *     categoryId: "53690006",
  *     productType: "SERVICE",
  *     sort: "created_on-desc",
- * });
+ * }, { async: true }));
  * 
  * export const firstProductCode = defaultProducts.productItems.0.code;
  * export const productCodes = defaultProducts.ids!;
@@ -127,7 +127,7 @@ export interface GetProductsResult {
     readonly supplierId?: string;
     readonly supplierNameKeyword?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

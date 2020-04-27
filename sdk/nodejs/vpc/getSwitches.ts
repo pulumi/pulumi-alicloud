@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
  * 
- * const defaultZones = alicloud.getZones();
+ * const defaultZones = pulumi.output(alicloud.getZones({ async: true }));
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  * });
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultSwitches = vswitch.name.apply(name => alicloud.vpc.getSwitches({
  *     nameRegex: name,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
@@ -134,7 +134,7 @@ export interface GetSwitchesResult {
      */
     readonly zoneId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

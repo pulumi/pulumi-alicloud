@@ -40,7 +40,7 @@ type GetSaslAclsResult struct {
 	AclResourceType string `pulumi:"aclResourceType"`
 	// A list of sasl acls. Each element contains the following attributes:
 	Acls []GetSaslAclsAcl `pulumi:"acls"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`

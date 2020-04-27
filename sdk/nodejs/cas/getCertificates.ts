@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const certs = alicloud.cas.getCertificates({
+ * const certs = pulumi.output(alicloud.cas.getCertificates({
  *     nameRegex: "^cas",
  *     outputFile: `./cas_certificates.json`,
- * });
+ * }, { async: true }));
  * 
  * export const cert = certs.certificates[0].id;
  * ```
@@ -76,7 +76,7 @@ export interface GetCertificatesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

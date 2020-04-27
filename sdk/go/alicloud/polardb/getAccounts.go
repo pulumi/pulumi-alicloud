@@ -33,7 +33,7 @@ type GetAccountsResult struct {
 	// A list of PolarDB cluster accounts. Each element contains the following attributes:
 	Accounts    []GetAccountsAccount `pulumi:"accounts"`
 	DbClusterId string               `pulumi:"dbClusterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// Account name of the cluster.

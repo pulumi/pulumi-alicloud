@@ -59,7 +59,7 @@ type GetInstanceTypesResult struct {
 	EniAmount *int    `pulumi:"eniAmount"`
 	GpuAmount *int    `pulumi:"gpuAmount"`
 	GpuSpec   *string `pulumi:"gpuSpec"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance type IDs.
 	Ids                []string `pulumi:"ids"`

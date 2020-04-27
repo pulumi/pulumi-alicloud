@@ -25,7 +25,6 @@ class ShardingInstance(pulumi.CustomResource):
     engine_version: pulumi.Output[str]
     """
     Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-    * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
     """
     instance_charge_type: pulumi.Output[str]
     """
@@ -42,10 +41,9 @@ class ShardingInstance(pulumi.CustomResource):
     mongo_lists: pulumi.Output[list]
     """
     The mongo-node count can be purchased is in range of [2, 32].
-    * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 
       * `connectString` (`str`) - Mongo node connection string
-      * `nodeClass` (`str`)
+      * `nodeClass` (`str`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
       * `nodeId` (`str`) - The ID of the shard-node.
       * `port` (`float`) - Mongo node port
         * `shard_list`
@@ -73,15 +71,17 @@ class ShardingInstance(pulumi.CustomResource):
     shard_lists: pulumi.Output[list]
     """
     the shard-node count can be purchased is in range of [2, 32].
-    * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 
-      * `nodeClass` (`str`)
+      * `nodeClass` (`str`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
       * `nodeId` (`str`) - The ID of the shard-node.
       * `nodeStorage` (`float`) - 
         - Custom storage space; value range: [10, 1,000]
         - 10-GB increments. Unit: GB.
     """
     storage_engine: pulumi.Output[str]
+    """
+    Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+    """
     tde_status: pulumi.Output[str]
     """
     The TDE(Transparent Data Encryption) status.
@@ -104,18 +104,16 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[list] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-               * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[list] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
-               * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[list] shard_lists: the shard-node count can be purchased is in range of [2, 32].
-               * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -124,14 +122,14 @@ class ShardingInstance(pulumi.CustomResource):
         The **mongo_lists** object supports the following:
 
           * `connectString` (`pulumi.Input[str]`) - Mongo node connection string
-          * `nodeClass` (`pulumi.Input[str]`)
+          * `nodeClass` (`pulumi.Input[str]`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `port` (`pulumi.Input[float]`) - Mongo node port
             * `shard_list`
 
         The **shard_lists** object supports the following:
 
-          * `nodeClass` (`pulumi.Input[str]`)
+          * `nodeClass` (`pulumi.Input[str]`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `nodeStorage` (`pulumi.Input[float]`) - 
             - Custom storage space; value range: [10, 1,000]
@@ -197,19 +195,17 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[list] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-               * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[dict] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[list] mongo_lists: The mongo-node count can be purchased is in range of [2, 32].
-               * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[float] retention_period: Instance log backup retention days. Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[list] shard_lists: the shard-node count can be purchased is in range of [2, 32].
-               * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[str] storage_engine: Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. MongoDB sharding instance does not support multiple-zone.
@@ -218,14 +214,14 @@ class ShardingInstance(pulumi.CustomResource):
         The **mongo_lists** object supports the following:
 
           * `connectString` (`pulumi.Input[str]`) - Mongo node connection string
-          * `nodeClass` (`pulumi.Input[str]`)
+          * `nodeClass` (`pulumi.Input[str]`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `port` (`pulumi.Input[float]`) - Mongo node port
             * `shard_list`
 
         The **shard_lists** object supports the following:
 
-          * `nodeClass` (`pulumi.Input[str]`)
+          * `nodeClass` (`pulumi.Input[str]`) - -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
           * `nodeId` (`pulumi.Input[str]`) - The ID of the shard-node.
           * `nodeStorage` (`pulumi.Input[float]`) - 
             - Custom storage space; value range: [10, 1,000]

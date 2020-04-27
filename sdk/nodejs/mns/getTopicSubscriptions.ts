@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const subscriptions = alicloud.mns.getTopicSubscriptions({
+ * const subscriptions = pulumi.output(alicloud.mns.getTopicSubscriptions({
  *     namePrefix: "tf-",
  *     topicName: "topicName",
- * });
+ * }, { async: true }));
  * 
  * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;
  * ```
@@ -72,7 +72,7 @@ export interface GetTopicSubscriptionsResult {
     readonly subscriptions: outputs.mns.GetTopicSubscriptionsSubscription[];
     readonly topicName: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

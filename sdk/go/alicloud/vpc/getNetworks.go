@@ -42,7 +42,7 @@ type GetNetworksArgs struct {
 type GetNetworksResult struct {
 	// CIDR block of the VPC.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of VPC IDs.
 	Ids []string `pulumi:"ids"`

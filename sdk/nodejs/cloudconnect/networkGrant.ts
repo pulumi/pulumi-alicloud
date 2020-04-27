@@ -27,15 +27,15 @@ import * as utilities from "../utilities";
  *     region: "cn-hangzhou",
  *     secretKey: "xxxxxx",
  * });
- * const cen = new alicloud.cen.Instance("cen", {}, {provider: cenAccount});
+ * const cen = new alicloud.cen.Instance("cen", {}, { provider: cenAccount });
  * const ccn = new alicloud.cloudconnect.Network("ccn", {
  *     isDefault: true,
- * }, {provider: ccnAccount});
+ * }, { provider: ccnAccount });
  * const defaultNetworkGrant = new alicloud.cloudconnect.NetworkGrant("default", {
  *     ccnId: ccn.id,
  *     cenId: cen.id,
  *     cenUid: "xxxxxx",
- * }, {dependsOn: [cen, ccn]});
+ * }, { dependsOn: [cen, ccn] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_grant.html.markdown.

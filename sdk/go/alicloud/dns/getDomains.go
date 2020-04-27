@@ -25,7 +25,7 @@ type GetDomainsArgs struct {
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
 	// A regex string to filter results by the group name.
 	GroupNameRegex *string `pulumi:"groupNameRegex"`
-	// A list of domain IDs.
+	// - A list of domain IDs.
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
@@ -33,7 +33,6 @@ type GetDomainsArgs struct {
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Cloud analysis version code.
-	// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 	VersionCode *string `pulumi:"versionCode"`
 }
 
@@ -45,7 +44,7 @@ type GetDomainsResult struct {
 	// A list of domains. Each element contains the following attributes:
 	Domains        []GetDomainsDomain `pulumi:"domains"`
 	GroupNameRegex *string            `pulumi:"groupNameRegex"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of domain IDs.
 	Ids []string `pulumi:"ids"`

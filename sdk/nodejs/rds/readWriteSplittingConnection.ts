@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbInstancevpc";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     connectionPrefix: "t-con-123",
  *     distributionType: "Standard",
  *     instanceId: defaultInstance.id,
- * }, {dependsOn: [defaultReadOnlyInstance]});
+ * }, { dependsOn: [defaultReadOnlyInstance] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.

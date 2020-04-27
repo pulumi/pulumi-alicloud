@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEndpointsEndpointResult> Endpoints;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
 

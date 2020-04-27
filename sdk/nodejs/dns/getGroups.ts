@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const groupsDs = alicloud.dns.getGroups({
+ * const groupsDs = pulumi.output(alicloud.dns.getGroups({
  *     nameRegex: "^y[A-Za-z]+",
  *     outputFile: "groups.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstGroupName = groupsDs.groups[0].groupName;
  * ```
@@ -76,7 +76,7 @@ export interface GetGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -97,7 +97,7 @@ type GetSnapshotsResult struct {
 	DiskId *string `pulumi:"diskId"`
 	// Whether the snapshot is encrypted or not.
 	Encrypted *bool `pulumi:"encrypted"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of snapshot IDs.
 	Ids        []string `pulumi:"ids"`

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const defaultNetworks = alicloud_cloud_connect_networks_default.id.apply(id => alicloud.cloudconnect.getNetworks({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }));
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
  *     cidrBlock: "192.168.0.0/24",
  *     description: "tf-testAccCloudConnectNetworkDescription",
@@ -83,7 +83,7 @@ export interface GetNetworksResult {
     readonly networks: outputs.cloudconnect.GetNetworksNetwork[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

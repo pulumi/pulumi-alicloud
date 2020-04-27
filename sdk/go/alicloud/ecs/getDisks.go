@@ -54,7 +54,7 @@ type GetDisksResult struct {
 	Disks []GetDisksDisk `pulumi:"disks"`
 	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// ID of the related instance. It is `null` unless the `status` is `In_use`.

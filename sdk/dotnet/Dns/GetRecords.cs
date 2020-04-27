@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Dns
         public readonly string DomainName;
         public readonly string? HostRecordRegex;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

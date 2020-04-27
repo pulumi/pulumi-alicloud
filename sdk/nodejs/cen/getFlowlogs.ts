@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultFlowlogs = alicloud.cen.getFlowlogs({
+ * const defaultFlowlogs = pulumi.output(alicloud.cen.getFlowlogs({
  *     ids: ["flowlog-tig1xxxxx"],
  *     nameRegex: "^foo",
- * });
+ * }, { async: true }));
  * 
  * export const firstCenFlowlogId = alicloud_cen_instances_default.flowlogs.0.id;
  * ```
@@ -120,7 +120,7 @@ export interface GetFlowlogsResult {
      */
     readonly status?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

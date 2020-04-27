@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.SlbBeckendServers({
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbBackendServerId = sampleDs.backendServers.0.id;
  * ```
@@ -67,7 +67,7 @@ export interface GetBackendServersResult {
     readonly loadBalancerId: string;
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

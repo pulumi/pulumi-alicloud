@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const bucketObjectsDs = alicloud.oss.getBucketObjects({
+ * const bucketObjectsDs = pulumi.output(alicloud.oss.getBucketObjects({
  *     bucketName: "sampleBucket",
  *     keyRegex: "sample/sample_object.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstObjectKey = bucketObjectsDs.objects[0].key;
  * ```
@@ -75,7 +75,7 @@ export interface GetBucketObjectsResult {
     readonly objects: outputs.oss.GetBucketObjectsObject[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

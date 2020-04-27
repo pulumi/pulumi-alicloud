@@ -44,7 +44,7 @@ type GetRouterInterfacesArgs struct {
 
 // A collection of values returned by getRouterInterfaces.
 type GetRouterInterfacesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of router interface IDs.
 	Ids []string `pulumi:"ids"`

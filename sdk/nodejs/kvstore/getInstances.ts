@@ -43,6 +43,10 @@ export interface GetInstancesArgs {
      * A list of RKV instance IDs.
      */
     readonly ids?: string[];
+    /**
+     * Type of the applied ApsaraDB for Redis instance.
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     */
     readonly instanceClass?: string;
     /**
      * Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -55,8 +59,6 @@ export interface GetInstancesArgs {
     readonly outputFile?: string;
     /**
      * Status of the instance.
-     * * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      */
     readonly status?: string;
     /**
@@ -109,7 +111,7 @@ export interface GetInstancesResult {
      */
     readonly vswitchId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const eipsDs = alicloud.ecs.getEips();
+ * const eipsDs = pulumi.output(alicloud.ecs.getEips({ async: true }));
  * 
  * export const firstEipId = eipsDs.eips[0].id;
  * ```
@@ -97,7 +97,7 @@ export interface GetEipsResult {
     readonly resourceGroupId?: string;
     readonly tags?: {[key: string]: any};
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

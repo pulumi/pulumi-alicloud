@@ -33,7 +33,7 @@ type GetDatabasesResult struct {
 	// A list of PolarDB cluster databases. Each element contains the following attributes:
 	Databases   []GetDatabasesDatabase `pulumi:"databases"`
 	DbClusterId string                 `pulumi:"dbClusterId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// database name of the cluster.

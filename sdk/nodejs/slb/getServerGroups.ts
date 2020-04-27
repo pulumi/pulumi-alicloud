@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getServerGroups({
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbServerGroupId = sampleDs.slbServerGroups[0].id;
  * ```
@@ -81,7 +81,7 @@ export interface GetServerGroupsResult {
      */
     readonly slbServerGroups: outputs.slb.GetServerGroupsSlbServerGroup[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

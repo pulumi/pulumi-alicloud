@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     ids: [id],
  *     nameRegex: name,
  *     outputFile: "instances.txt",
- * }));
+ * }, { async: true }));
  * 
  * export const firstInstanceId = instancesDs.instances[0].instanceId;
  * ```
@@ -85,7 +85,7 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

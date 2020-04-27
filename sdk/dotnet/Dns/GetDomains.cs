@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Dns
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of domain IDs.
+        /// - A list of domain IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -71,7 +71,6 @@ namespace Pulumi.AliCloud.Dns
 
         /// <summary>
         /// Cloud analysis version code.
-        /// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
         /// </summary>
         [Input("versionCode")]
         public string? VersionCode { get; set; }
@@ -96,7 +95,7 @@ namespace Pulumi.AliCloud.Dns
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly string? GroupNameRegex;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

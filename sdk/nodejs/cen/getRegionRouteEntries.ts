@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const entry = alicloud.cen.getRegionRouteEntries({
+ * const entry = pulumi.output(alicloud.cen.getRegionRouteEntries({
  *     instanceId: "cen-id1",
  *     regionId: "cn-beijing",
- * });
+ * }, { async: true }));
  * 
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
  * ```
@@ -68,7 +68,7 @@ export interface GetRegionRouteEntriesResult {
     readonly outputFile?: string;
     readonly regionId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

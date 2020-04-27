@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const scalinggroupsDs = alicloud.ess.getScalingGroups({
+ * const scalinggroupsDs = pulumi.output(alicloud.ess.getScalingGroups({
  *     ids: [
  *         "scalingGroupId1",
  *         "scalingGroupId2",
  *     ],
  *     nameRegex: "scalingGroupName",
- * });
+ * }, { async: true }));
  * 
  * export const firstScalingGroup = scalinggroupsDs.groups[0].id;
  * ```
@@ -80,7 +80,7 @@ export interface GetScalingGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

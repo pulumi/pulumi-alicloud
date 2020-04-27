@@ -25,7 +25,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// - `cloud_essd`: The ESSD cloud disk.
         /// - `ephemeral_ssd`: The local SSD disk.
         /// Default to `cloud_efficiency`.
-        /// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -36,6 +35,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The description of the data disk.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+        /// </summary>
         public readonly bool? Encrypted;
         /// <summary>
         /// The name of the data disk.

@@ -35,11 +35,13 @@ export class Ciphertext extends pulumi.CustomResource {
      * The ciphertext of the data key encrypted with the primary CMK version.
      */
     public /*out*/ readonly ciphertextBlob!: pulumi.Output<string>;
+    /**
+     * -
+     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
     public readonly encryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The globally unique ID of the CMK.
-     * * `encryptionContext` -
-     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     public readonly keyId!: pulumi.Output<string>;
     /**
@@ -95,11 +97,13 @@ export interface CiphertextState {
      * The ciphertext of the data key encrypted with the primary CMK version.
      */
     readonly ciphertextBlob?: pulumi.Input<string>;
+    /**
+     * -
+     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
     readonly encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The globally unique ID of the CMK.
-     * * `encryptionContext` -
-     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     readonly keyId?: pulumi.Input<string>;
     /**
@@ -112,11 +116,13 @@ export interface CiphertextState {
  * The set of arguments for constructing a Ciphertext resource.
  */
 export interface CiphertextArgs {
+    /**
+     * -
+     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
     readonly encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The globally unique ID of the CMK.
-     * * `encryptionContext` -
-     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     readonly keyId: pulumi.Input<string>;
     /**

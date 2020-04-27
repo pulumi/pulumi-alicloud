@@ -647,7 +647,6 @@ export namespace ecs {
          * - `cloudEssd`: The ESSD cloud disk.
          * - `ephemeralSsd`: The local SSD disk.
          * Default to `cloudEfficiency`.
-         * * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
          */
         category?: pulumi.Input<string>;
         /**
@@ -658,6 +657,9 @@ export namespace ecs {
          * The description of the data disk.
          */
         description?: pulumi.Input<string>;
+        /**
+         * -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+         */
         encrypted?: pulumi.Input<boolean>;
         /**
          * The name of the data disk.
@@ -696,6 +698,9 @@ export namespace ecs {
          * The description of the data disk.
          */
         description?: pulumi.Input<string>;
+        /**
+         * -(Optional, Bool) Encrypted the data in this disk.
+         */
         encrypted?: pulumi.Input<boolean>;
         /**
          * The name of the data disk.
@@ -1024,6 +1029,9 @@ export namespace mongodb {
          * Mongo node connection string
          */
         connectString?: pulumi.Input<string>;
+        /**
+         * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         */
         nodeClass: pulumi.Input<string>;
         /**
          * The ID of the shard-node.
@@ -1037,6 +1045,9 @@ export namespace mongodb {
     }
 
     export interface ShardingInstanceShardList {
+        /**
+         * -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         */
         nodeClass: pulumi.Input<string>;
         /**
          * The ID of the shard-node.

@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const typesDs = alicloud.ecs.getInstanceTypes({
+ * const typesDs = pulumi.output(alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * });
+ * }, { async: true }));
  * const instance = new alicloud.ecs.Instance("instance", {
  *     instanceType: typesDs.instanceTypes[0].id,
  * });
@@ -149,7 +149,7 @@ export interface GetInstanceTypesResult {
     readonly sortedBy?: string;
     readonly spotStrategy?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

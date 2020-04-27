@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const recordsDs = pulumi.all([alicloud_pvtz_zone_record_foo.value, alicloud_pvtz_zone_basic.id]).apply(([value, id]) => alicloud.pvtz.getZoneRecords({
  *     keyword: value,
  *     zoneId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstRecordId = recordsDs.records[0].id;
  * ```
@@ -78,7 +78,7 @@ export interface GetZoneRecordsResult {
     readonly records: outputs.pvtz.GetZoneRecordsRecord[];
     readonly zoneId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

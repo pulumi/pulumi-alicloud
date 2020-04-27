@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const polardbClustersDs = alicloud.polardb.getClusters({
+ * const polardbClustersDs = pulumi.output(alicloud.polardb.getClusters({
  *     descriptionRegex: "pc-\\w+",
  *     status: "Running",
- * });
+ * }, { async: true }));
  * 
  * export const firstPolardbClusterId = polardbClustersDs.clusters[0].id;
  * ```
@@ -106,7 +106,7 @@ export interface GetClustersResult {
     readonly status?: string;
     readonly tags?: {[key: string]: any};
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

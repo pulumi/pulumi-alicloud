@@ -22,7 +22,6 @@ type Alarm struct {
 	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
-	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
@@ -47,8 +46,9 @@ type Alarm struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount pulumi.IntPtrOutput    `pulumi:"triggeredCount"`
-	Webhook        pulumi.StringPtrOutput `pulumi:"webhook"`
+	TriggeredCount pulumi.IntPtrOutput `pulumi:"triggeredCount"`
+	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
 }
 
 // NewAlarm registers a new resource with the given unique name, arguments, and options.
@@ -101,7 +101,6 @@ type alarmState struct {
 	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
-	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled *bool `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
@@ -126,8 +125,9 @@ type alarmState struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount *int    `pulumi:"triggeredCount"`
-	Webhook        *string `pulumi:"webhook"`
+	TriggeredCount *int `pulumi:"triggeredCount"`
+	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+	Webhook *string `pulumi:"webhook"`
 }
 
 type AlarmState struct {
@@ -138,7 +138,6 @@ type AlarmState struct {
 	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
-	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
@@ -164,7 +163,8 @@ type AlarmState struct {
 	Threshold pulumi.StringPtrInput
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount pulumi.IntPtrInput
-	Webhook        pulumi.StringPtrInput
+	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+	Webhook pulumi.StringPtrInput
 }
 
 func (AlarmState) ElementType() reflect.Type {
@@ -179,7 +179,6 @@ type alarmArgs struct {
 	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
 	// Whether to enable alarm rule. Default to true.
-	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled *bool `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
@@ -202,8 +201,9 @@ type alarmArgs struct {
 	// Alarm threshold value, which must be a numeric value currently.
 	Threshold string `pulumi:"threshold"`
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
-	TriggeredCount *int    `pulumi:"triggeredCount"`
-	Webhook        *string `pulumi:"webhook"`
+	TriggeredCount *int `pulumi:"triggeredCount"`
+	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+	Webhook *string `pulumi:"webhook"`
 }
 
 // The set of arguments for constructing a Alarm resource.
@@ -215,7 +215,6 @@ type AlarmArgs struct {
 	// The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
 	// Whether to enable alarm rule. Default to true.
-	// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
 	Enabled pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
@@ -239,7 +238,8 @@ type AlarmArgs struct {
 	Threshold pulumi.StringInput
 	// Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
 	TriggeredCount pulumi.IntPtrInput
-	Webhook        pulumi.StringPtrInput
+	// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+	Webhook pulumi.StringPtrInput
 }
 
 func (AlarmArgs) ElementType() reflect.Type {

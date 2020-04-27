@@ -19,7 +19,9 @@ func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.In
 // A collection of arguments for invoking getPlaintext.
 type GetPlaintextArgs struct {
 	// The ciphertext to be decrypted.
-	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
+	CiphertextBlob string `pulumi:"ciphertextBlob"`
+	// -
+	// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 }
 
@@ -27,7 +29,7 @@ type GetPlaintextArgs struct {
 type GetPlaintextResult struct {
 	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The globally unique ID of the CMK. It is the ID of the CMK used to decrypt ciphertext.
 	KeyId string `pulumi:"keyId"`

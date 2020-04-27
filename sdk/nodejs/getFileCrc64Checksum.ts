@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultFileCrc64Checksum = alicloud.getFileCrc64Checksum({
+ * const defaultFileCrc64Checksum = pulumi.output(alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
- * });
+ * }, { async: true }));
  * 
  * export const fileCrc64Checksum = alicloud_file_crc64_checksum_defualt.checksum;
  * ```
@@ -62,7 +62,7 @@ export interface GetFileCrc64ChecksumResult {
     readonly filename: string;
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const queues = alicloud.mns.getQueues({
+ * const queues = pulumi.output(alicloud.mns.getQueues({
  *     namePrefix: "tf-",
- * });
+ * }, { async: true }));
  * 
  * export const firstQueueId = queues.queues[0].id;
  * ```
@@ -66,7 +66,7 @@ export interface GetQueuesResult {
      */
     readonly queues: outputs.mns.GetQueuesQueue[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

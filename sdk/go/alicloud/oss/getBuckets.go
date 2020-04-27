@@ -28,7 +28,7 @@ type GetBucketsArgs struct {
 type GetBucketsResult struct {
 	// A list of buckets. Each element contains the following attributes:
 	Buckets []GetBucketsBucket `pulumi:"buckets"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of bucket names.

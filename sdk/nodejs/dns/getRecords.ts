@@ -16,13 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const recordsDs = alicloud.dns.getRecords({
+ * const recordsDs = pulumi.output(alicloud.dns.getRecords({
  *     domainName: "xiaozhu.top",
  *     hostRecordRegex: "^@",
  *     isLocked: false,
  *     outputFile: "records.txt",
  *     type: "A",
- * });
+ * }, { async: true }));
  * 
  * export const firstRecordId = recordsDs.records[0].recordId;
  * ```
@@ -126,7 +126,7 @@ export interface GetRecordsResult {
     readonly urls: string[];
     readonly valueRegex?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

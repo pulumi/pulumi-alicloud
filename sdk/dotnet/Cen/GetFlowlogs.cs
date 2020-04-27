@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Cen
         public readonly string? Description;
         public readonly ImmutableArray<Outputs.GetFlowlogsFlowlogResult> Flowlogs;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const disksDs = alicloud.ecs.getDisks({
+ * const disksDs = pulumi.output(alicloud.ecs.getDisks({
  *     nameRegex: "sampleDisk",
- * });
+ * }, { async: true }));
  * 
  * export const firstDiskId = disksDs.disks[0].id;
  * ```
@@ -131,7 +131,7 @@ export interface GetDisksResult {
      */
     readonly type?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

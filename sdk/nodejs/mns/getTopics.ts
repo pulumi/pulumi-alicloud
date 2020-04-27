@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const topics = alicloud.mns.getTopics({
+ * const topics = pulumi.output(alicloud.mns.getTopics({
  *     namePrefix: "tf-",
- * });
+ * }, { async: true }));
  * 
  * export const firstTopicId = topics.topics[0].id;
  * ```
@@ -66,7 +66,7 @@ export interface GetTopicsResult {
      */
     readonly topics: outputs.mns.GetTopicsTopic[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

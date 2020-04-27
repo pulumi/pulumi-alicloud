@@ -720,17 +720,32 @@ func (o StoreIndexFullTextPtrOutput) Elem() StoreIndexFullTextOutput {
 
 // Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *StoreIndexFullText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) IncludeChinese() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *StoreIndexFullText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeChinese
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 func (o StoreIndexFullTextPtrOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *StoreIndexFullText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
 }
 
 type StoreShard struct {

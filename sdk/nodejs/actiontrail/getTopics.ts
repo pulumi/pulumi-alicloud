@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const topicsDs = alicloud.actiontrail.getTopics({
+ * const topicsDs = pulumi.output(alicloud.actiontrail.getTopics({
  *     instanceId: "xxx",
  *     nameRegex: "alikafkaTopicName",
  *     outputFile: "topics.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstTopicName = topicsDs.topics[0].topic;
  * ```
@@ -72,7 +72,7 @@ export interface GetTopicsResult {
      */
     readonly topics: outputs.actiontrail.GetTopicsTopic[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

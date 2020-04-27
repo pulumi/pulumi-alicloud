@@ -30,7 +30,7 @@ type GetScalingGroupsArgs struct {
 type GetScalingGroupsResult struct {
 	// A list of scaling groups. Each element contains the following attributes:
 	Groups []GetScalingGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of scaling group ids.
 	Ids       []string `pulumi:"ids"`

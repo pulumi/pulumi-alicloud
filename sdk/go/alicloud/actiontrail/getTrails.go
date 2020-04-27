@@ -28,7 +28,7 @@ type GetTrailsArgs struct {
 type GetTrailsResult struct {
 	// A list of actiontrails. Each element contains the following attributes:
 	Actiontrails []GetTrailsActiontrail `pulumi:"actiontrails"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of trail names.

@@ -367,22 +367,42 @@ func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
 }
 
 func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetriveClientIp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetriveSlbId
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetriveSlbIp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetriveSlbProto
+	}).(pulumi.BoolPtrOutput)
 }
 
 type MasterSlaveServerGroupServer struct {

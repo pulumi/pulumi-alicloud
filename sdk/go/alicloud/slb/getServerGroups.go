@@ -30,7 +30,7 @@ type GetServerGroupsArgs struct {
 
 // A collection of values returned by getServerGroups.
 type GetServerGroupsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB VServer groups IDs.
 	Ids            []string `pulumi:"ids"`

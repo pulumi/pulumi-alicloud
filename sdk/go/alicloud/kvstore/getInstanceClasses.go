@@ -57,7 +57,7 @@ type GetInstanceClassesResult struct {
 	EditionType   *string                   `pulumi:"editionType"`
 	Engine        *string                   `pulumi:"engine"`
 	EngineVersion *string                   `pulumi:"engineVersion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// A list of KVStore available instance classes.

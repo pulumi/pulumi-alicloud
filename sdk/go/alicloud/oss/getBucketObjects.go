@@ -31,7 +31,7 @@ type GetBucketObjectsArgs struct {
 // A collection of values returned by getBucketObjects.
 type GetBucketObjectsResult struct {
 	BucketName string `pulumi:"bucketName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	KeyPrefix *string `pulumi:"keyPrefix"`
 	KeyRegex  *string `pulumi:"keyRegex"`

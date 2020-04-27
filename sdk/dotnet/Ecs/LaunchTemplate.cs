@@ -142,6 +142,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// </summary>
         [Output("spotPriceLimit")]
         public Output<double?> SpotPriceLimit { get; private set; } = null!;
 
@@ -390,6 +393,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
 
@@ -605,6 +611,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+        /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
 

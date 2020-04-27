@@ -38,10 +38,10 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testAccEssVserverGroupsAttachment";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *     minSize: 2,
  *     scalingGroupName: name,
  *     vswitchIds: [defaultSwitch.id],
- * }, {dependsOn: [...defaultListener]});
+ * }, { dependsOn: [...defaultListener] });
  * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("default", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     vserverGroups: [{

@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "snat-entry-example-name";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
  * });
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * });
  * const fooSnatEntries = fooSnatEntry.snatTableId.apply(snatTableId => alicloud.vpc.getSnatEntries({
  *     snatTableId: snatTableId,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snat_entries.html.markdown.
@@ -117,7 +117,7 @@ export interface GetSnatEntriesResult {
      */
     readonly sourceCidr?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

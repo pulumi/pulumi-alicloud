@@ -99,7 +99,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Number of replica set nodes. Valid values: [3, 5, 7]
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
@@ -134,6 +133,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Output("sslStatus")]
         public Output<string> SslStatus { get; private set; } = null!;
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
 
@@ -303,7 +305,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Number of replica set nodes. Valid values: [3, 5, 7]
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
@@ -332,6 +333,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 
@@ -474,7 +478,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Number of replica set nodes. Valid values: [3, 5, 7]
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
@@ -515,6 +518,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("sslStatus")]
         public Input<string>? SslStatus { get; set; }
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 

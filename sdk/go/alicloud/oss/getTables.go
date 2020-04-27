@@ -32,7 +32,7 @@ type GetTablesArgs struct {
 
 // A collection of values returned by getTables.
 type GetTablesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of table IDs.
 	Ids []string `pulumi:"ids"`

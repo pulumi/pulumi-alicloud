@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const currentRegionDs = alicloud.getRegions({
+ * const currentRegionDs = pulumi.output(alicloud.getRegions({
  *     current: true,
- * });
+ * }, { async: true }));
  * 
  * export const currentRegionId = currentRegionDs.regions[0].id;
  * ```
@@ -72,7 +72,7 @@ export interface GetRegionsResult {
      */
     readonly regions: outputs.GetRegionsRegion[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

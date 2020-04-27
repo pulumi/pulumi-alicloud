@@ -26,7 +26,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         /// - `cloud_essd`: The ESSD cloud disk.
         /// - `ephemeral_ssd`: The local SSD disk.
         /// Default to `cloud_efficiency`.
-        /// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -43,6 +42,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 

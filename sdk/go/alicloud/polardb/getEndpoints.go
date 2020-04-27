@@ -35,6 +35,6 @@ type GetEndpointsResult struct {
 	DbEndpointId *string `pulumi:"dbEndpointId"`
 	// A list of PolarDB cluster endpoints. Each element contains the following attributes:
 	Endpoints []GetEndpointsEndpoint `pulumi:"endpoints"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }

@@ -35,7 +35,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Whether to enable alarm rule. Default to true.
-        /// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -112,6 +111,9 @@ namespace Pulumi.AliCloud.Cms
         [Output("triggeredCount")]
         public Output<int?> TriggeredCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+        /// </summary>
         [Output("webhook")]
         public Output<string?> Webhook { get; private set; } = null!;
 
@@ -193,7 +195,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Whether to enable alarm rule. Default to true.
-        /// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -264,6 +265,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("triggeredCount")]
         public Input<int>? TriggeredCount { get; set; }
 
+        /// <summary>
+        /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+        /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }
 
@@ -306,7 +310,6 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// Whether to enable alarm rule. Default to true.
-        /// * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -383,6 +386,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("triggeredCount")]
         public Input<int>? TriggeredCount { get; set; }
 
+        /// <summary>
+        /// The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+        /// </summary>
         [Input("webhook")]
         public Input<string>? Webhook { get; set; }
 

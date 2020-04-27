@@ -45,7 +45,7 @@ type GetFlowlogsResult struct {
 	// The description of flowlog.
 	Description *string              `pulumi:"description"`
 	Flowlogs    []GetFlowlogsFlowlog `pulumi:"flowlogs"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of CEN flow log IDs.
 	Ids []string `pulumi:"ids"`

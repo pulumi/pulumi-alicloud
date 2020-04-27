@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const instanceBastionHostInstances = alicloud.yundun.getBastionHostInstances({
+ * const instanceBastionHostInstances = pulumi.output(alicloud.yundun.getBastionHostInstances({
  *     nameRegex: "^bastionhost",
- * });
+ * }, { async: true }));
  * 
  * export const instance = alicloud_yundun_bastionhost_instances_instance.map(v => v.id);
  * ```
@@ -90,7 +90,7 @@ export interface GetBastionHostInstancesResult {
      */
     readonly tags?: {[key: string]: any};
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

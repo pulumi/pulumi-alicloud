@@ -35,7 +35,7 @@ type GetDomainExtensionsResult struct {
 	// A list of SLB domain extension. Each element contains the following attributes:
 	Extensions   []GetDomainExtensionsExtension `pulumi:"extensions"`
 	FrontendPort int                            `pulumi:"frontendPort"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id             string   `pulumi:"id"`
 	Ids            []string `pulumi:"ids"`
 	LoadBalancerId string   `pulumi:"loadBalancerId"`

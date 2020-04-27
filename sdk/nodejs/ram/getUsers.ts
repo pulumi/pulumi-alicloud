@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const usersDs = alicloud.ram.getUsers({
+ * const usersDs = pulumi.output(alicloud.ram.getUsers({
  *     groupName: "group1",
  *     nameRegex: "^user",
  *     outputFile: "users.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * });
+ * }, { async: true }));
  * 
  * export const firstUserId = usersDs.users[0].id;
  * ```
@@ -58,12 +58,11 @@ export interface GetUsersArgs {
      */
     readonly groupName?: string;
     /**
-     * A list of ram user IDs. 
+     * - A list of ram user IDs. 
      */
     readonly ids?: string[];
     /**
      * A regex string to filter resulting users by their names.
-     * * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -99,7 +98,7 @@ export interface GetUsersResult {
      */
     readonly users: outputs.ram.GetUsersUser[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

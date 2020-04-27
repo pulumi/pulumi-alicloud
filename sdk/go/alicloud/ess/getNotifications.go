@@ -30,7 +30,7 @@ type GetNotificationsArgs struct {
 
 // A collection of values returned by getNotifications.
 type GetNotificationsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of notification ids.
 	Ids []string `pulumi:"ids"`

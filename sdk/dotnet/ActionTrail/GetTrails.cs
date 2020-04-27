@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTrailsActiontrailResult> Actiontrails;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? NameRegex;

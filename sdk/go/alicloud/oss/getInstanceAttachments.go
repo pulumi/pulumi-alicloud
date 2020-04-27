@@ -30,7 +30,7 @@ type GetInstanceAttachmentsArgs struct {
 type GetInstanceAttachmentsResult struct {
 	// A list of instance attachments. Each element contains the following attributes:
 	Attachments []GetInstanceAttachmentsAttachment `pulumi:"attachments"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The instance name.
 	InstanceName string  `pulumi:"instanceName"`

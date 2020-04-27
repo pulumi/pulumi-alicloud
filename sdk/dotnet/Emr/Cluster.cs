@@ -31,9 +31,15 @@ namespace Pulumi.AliCloud.Emr
         [Output("clusterType")]
         public Output<string> ClusterType { get; private set; } = null!;
 
+        /// <summary>
+        /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        /// </summary>
         [Output("depositType")]
         public Output<string?> DepositType { get; private set; } = null!;
 
+        /// <summary>
+        /// High security cluster (true) or not. Default value is false.
+        /// </summary>
         [Output("easEnable")]
         public Output<bool?> EasEnable { get; private set; } = null!;
 
@@ -43,6 +49,9 @@ namespace Pulumi.AliCloud.Emr
         [Output("emrVer")]
         public Output<string> EmrVer { get; private set; } = null!;
 
+        /// <summary>
+        /// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+        /// </summary>
         [Output("highAvailabilityEnable")]
         public Output<bool?> HighAvailabilityEnable { get; private set; } = null!;
 
@@ -55,9 +64,15 @@ namespace Pulumi.AliCloud.Emr
         [Output("isOpenPublicIp")]
         public Output<bool?> IsOpenPublicIp { get; private set; } = null!;
 
+        /// <summary>
+        /// Ssh key pair.
+        /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
+        /// <summary>
+        /// Master ssh password.
+        /// </summary>
         [Output("masterPwd")]
         public Output<string?> MasterPwd { get; private set; } = null!;
 
@@ -67,15 +82,27 @@ namespace Pulumi.AliCloud.Emr
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional software list.
+        /// </summary>
         [Output("optionSoftwareLists")]
         public Output<ImmutableArray<string>> OptionSoftwareLists { get; private set; } = null!;
 
+        /// <summary>
+        /// This specify the related cluster id, if this cluster is a Gateway.
+        /// </summary>
         [Output("relatedClusterId")]
         public Output<string?> RelatedClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// Security Group ID for Cluster, you can also specify this key for each host group.
+        /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// If this is set true, we can ssh into cluster. Default value is false.
+        /// </summary>
         [Output("sshEnable")]
         public Output<bool?> SshEnable { get; private set; } = null!;
 
@@ -85,29 +112,26 @@ namespace Pulumi.AliCloud.Emr
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Use local metadb. Default is false.
+        /// </summary>
         [Output("useLocalMetadb")]
         public Output<bool?> UseLocalMetadb { get; private set; } = null!;
 
+        /// <summary>
+        /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        /// </summary>
         [Output("userDefinedEmrEcsRole")]
         public Output<string?> UserDefinedEmrEcsRole { get; private set; } = null!;
 
+        /// <summary>
+        /// Global vswitch id, you can also specify it in host group.
+        /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// Zone ID, e.g. cn-huhehaote-a
-        /// * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-        /// * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-        /// * `option_software_list` (Optional, ForceNew) Optional software list.
-        /// * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        /// * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-        /// * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-        /// * `master_pwd` (Optional, ForceNew) Master ssh password.
-        /// * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-        /// * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-        /// * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-        /// * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-        /// * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -178,9 +202,15 @@ namespace Pulumi.AliCloud.Emr
         [Input("clusterType", required: true)]
         public Input<string> ClusterType { get; set; } = null!;
 
+        /// <summary>
+        /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        /// </summary>
         [Input("depositType")]
         public Input<string>? DepositType { get; set; }
 
+        /// <summary>
+        /// High security cluster (true) or not. Default value is false.
+        /// </summary>
         [Input("easEnable")]
         public Input<bool>? EasEnable { get; set; }
 
@@ -190,6 +220,9 @@ namespace Pulumi.AliCloud.Emr
         [Input("emrVer", required: true)]
         public Input<string> EmrVer { get; set; } = null!;
 
+        /// <summary>
+        /// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+        /// </summary>
         [Input("highAvailabilityEnable")]
         public Input<bool>? HighAvailabilityEnable { get; set; }
 
@@ -208,9 +241,15 @@ namespace Pulumi.AliCloud.Emr
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 
+        /// <summary>
+        /// Ssh key pair.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// Master ssh password.
+        /// </summary>
         [Input("masterPwd")]
         public Input<string>? MasterPwd { get; set; }
 
@@ -222,18 +261,31 @@ namespace Pulumi.AliCloud.Emr
 
         [Input("optionSoftwareLists")]
         private InputList<string>? _optionSoftwareLists;
+
+        /// <summary>
+        /// Optional software list.
+        /// </summary>
         public InputList<string> OptionSoftwareLists
         {
             get => _optionSoftwareLists ?? (_optionSoftwareLists = new InputList<string>());
             set => _optionSoftwareLists = value;
         }
 
+        /// <summary>
+        /// This specify the related cluster id, if this cluster is a Gateway.
+        /// </summary>
         [Input("relatedClusterId")]
         public Input<string>? RelatedClusterId { get; set; }
 
+        /// <summary>
+        /// Security Group ID for Cluster, you can also specify this key for each host group.
+        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// If this is set true, we can ssh into cluster. Default value is false.
+        /// </summary>
         [Input("sshEnable")]
         public Input<bool>? SshEnable { get; set; }
 
@@ -249,29 +301,26 @@ namespace Pulumi.AliCloud.Emr
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Use local metadb. Default is false.
+        /// </summary>
         [Input("useLocalMetadb")]
         public Input<bool>? UseLocalMetadb { get; set; }
 
+        /// <summary>
+        /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        /// </summary>
         [Input("userDefinedEmrEcsRole")]
         public Input<string>? UserDefinedEmrEcsRole { get; set; }
 
+        /// <summary>
+        /// Global vswitch id, you can also specify it in host group.
+        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// Zone ID, e.g. cn-huhehaote-a
-        /// * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-        /// * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-        /// * `option_software_list` (Optional, ForceNew) Optional software list.
-        /// * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        /// * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-        /// * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-        /// * `master_pwd` (Optional, ForceNew) Master ssh password.
-        /// * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-        /// * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-        /// * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-        /// * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-        /// * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -303,9 +352,15 @@ namespace Pulumi.AliCloud.Emr
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
 
+        /// <summary>
+        /// Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        /// </summary>
         [Input("depositType")]
         public Input<string>? DepositType { get; set; }
 
+        /// <summary>
+        /// High security cluster (true) or not. Default value is false.
+        /// </summary>
         [Input("easEnable")]
         public Input<bool>? EasEnable { get; set; }
 
@@ -315,6 +370,9 @@ namespace Pulumi.AliCloud.Emr
         [Input("emrVer")]
         public Input<string>? EmrVer { get; set; }
 
+        /// <summary>
+        /// High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+        /// </summary>
         [Input("highAvailabilityEnable")]
         public Input<bool>? HighAvailabilityEnable { get; set; }
 
@@ -333,9 +391,15 @@ namespace Pulumi.AliCloud.Emr
         [Input("isOpenPublicIp")]
         public Input<bool>? IsOpenPublicIp { get; set; }
 
+        /// <summary>
+        /// Ssh key pair.
+        /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
+        /// <summary>
+        /// Master ssh password.
+        /// </summary>
         [Input("masterPwd")]
         public Input<string>? MasterPwd { get; set; }
 
@@ -347,18 +411,31 @@ namespace Pulumi.AliCloud.Emr
 
         [Input("optionSoftwareLists")]
         private InputList<string>? _optionSoftwareLists;
+
+        /// <summary>
+        /// Optional software list.
+        /// </summary>
         public InputList<string> OptionSoftwareLists
         {
             get => _optionSoftwareLists ?? (_optionSoftwareLists = new InputList<string>());
             set => _optionSoftwareLists = value;
         }
 
+        /// <summary>
+        /// This specify the related cluster id, if this cluster is a Gateway.
+        /// </summary>
         [Input("relatedClusterId")]
         public Input<string>? RelatedClusterId { get; set; }
 
+        /// <summary>
+        /// Security Group ID for Cluster, you can also specify this key for each host group.
+        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        /// <summary>
+        /// If this is set true, we can ssh into cluster. Default value is false.
+        /// </summary>
         [Input("sshEnable")]
         public Input<bool>? SshEnable { get; set; }
 
@@ -374,29 +451,26 @@ namespace Pulumi.AliCloud.Emr
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Use local metadb. Default is false.
+        /// </summary>
         [Input("useLocalMetadb")]
         public Input<bool>? UseLocalMetadb { get; set; }
 
+        /// <summary>
+        /// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        /// </summary>
         [Input("userDefinedEmrEcsRole")]
         public Input<string>? UserDefinedEmrEcsRole { get; set; }
 
+        /// <summary>
+        /// Global vswitch id, you can also specify it in host group.
+        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// Zone ID, e.g. cn-huhehaote-a
-        /// * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-        /// * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-        /// * `option_software_list` (Optional, ForceNew) Optional software list.
-        /// * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-        /// * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-        /// * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-        /// * `master_pwd` (Optional, ForceNew) Master ssh password.
-        /// * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-        /// * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-        /// * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-        /// * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-        /// * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

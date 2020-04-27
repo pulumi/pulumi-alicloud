@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const zonesIds = alicloud.elasticsearch.getZones();
+ * const zonesIds = pulumi.output(alicloud.elasticsearch.getZones({ async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/elasticsearch_zones.html.markdown.
@@ -65,7 +65,7 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.elasticsearch.GetZonesZone[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

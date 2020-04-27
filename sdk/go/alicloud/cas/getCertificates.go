@@ -30,7 +30,7 @@ type GetCertificatesArgs struct {
 type GetCertificatesResult struct {
 	// A list of apis. Each element contains the following attributes:
 	Certificates []GetCertificatesCertificate `pulumi:"certificates"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of cert IDs.
 	Ids       []string `pulumi:"ids"`

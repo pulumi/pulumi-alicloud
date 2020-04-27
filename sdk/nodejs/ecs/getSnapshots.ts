@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const snapshots = alicloud.ecs.getSnapshots({
+ * const snapshots = pulumi.output(alicloud.ecs.getSnapshots({
  *     ids: ["s-123456890abcdef"],
  *     nameRegex: "tf-testAcc-snapshot",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ##  Argument Reference
@@ -188,7 +188,7 @@ export interface GetSnapshotsResult {
      */
     readonly usage?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

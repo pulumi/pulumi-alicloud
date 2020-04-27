@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "adbClusterconfig";
  * const creation = config.get("creation") || "ADB";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });

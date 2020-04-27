@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ram user IDs. 
+        /// - A list of ram user IDs. 
         /// </summary>
         public List<string> Ids
         {
@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.Ram
 
         /// <summary>
         /// A regex string to filter resulting users by their names.
-        /// * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -75,7 +74,7 @@ namespace Pulumi.AliCloud.Ram
     {
         public readonly string? GroupName;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

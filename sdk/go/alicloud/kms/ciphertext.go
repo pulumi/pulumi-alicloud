@@ -14,11 +14,11 @@ type Ciphertext struct {
 	pulumi.CustomResourceState
 
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob    pulumi.StringOutput    `pulumi:"ciphertextBlob"`
+	CiphertextBlob pulumi.StringOutput `pulumi:"ciphertextBlob"`
+	// -
+	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext pulumi.StringMapOutput `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext pulumi.StringOutput `pulumi:"plaintext"`
@@ -59,11 +59,11 @@ func GetCiphertext(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Ciphertext resources.
 type ciphertextState struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob    *string           `pulumi:"ciphertextBlob"`
+	CiphertextBlob *string `pulumi:"ciphertextBlob"`
+	// -
+	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId *string `pulumi:"keyId"`
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext *string `pulumi:"plaintext"`
@@ -71,11 +71,11 @@ type ciphertextState struct {
 
 type CiphertextState struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
-	CiphertextBlob    pulumi.StringPtrInput
+	CiphertextBlob pulumi.StringPtrInput
+	// -
+	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext pulumi.StringMapInput
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId pulumi.StringPtrInput
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext pulumi.StringPtrInput
@@ -86,10 +86,10 @@ func (CiphertextState) ElementType() reflect.Type {
 }
 
 type ciphertextArgs struct {
+	// -
+	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId string `pulumi:"keyId"`
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext string `pulumi:"plaintext"`
@@ -97,10 +97,10 @@ type ciphertextArgs struct {
 
 // The set of arguments for constructing a Ciphertext resource.
 type CiphertextArgs struct {
+	// -
+	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext pulumi.StringMapInput
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId pulumi.StringInput
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext pulumi.StringInput

@@ -18,7 +18,7 @@ class GetInstancesResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -101,11 +101,11 @@ def get_instances(ids=None,instance_class=None,instance_type=None,name_regex=Non
 
 
     :param list ids: A list of RKV instance IDs.
+    :param str instance_class: Type of the applied ApsaraDB for Redis instance.
+           For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
     :param str instance_type: Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str status: Status of the instance.
-           * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
-           For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
     :param dict tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.

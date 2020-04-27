@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

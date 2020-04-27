@@ -40,7 +40,7 @@ type GetCommonBandwidthPackagesArgs struct {
 
 // A collection of values returned by getCommonBandwidthPackages.
 type GetCommonBandwidthPackagesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Common Bandwidth Packages IDs.
 	Ids       []string `pulumi:"ids"`

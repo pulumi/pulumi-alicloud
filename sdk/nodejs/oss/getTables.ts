@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const tablesDs = alicloud.oss.getTables({
+ * const tablesDs = pulumi.output(alicloud.oss.getTables({
  *     instanceName: "sample-instance",
  *     nameRegex: "sample-table",
  *     outputFile: "tables.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstTableId = tablesDs.tables[0].id;
  * ```
@@ -88,7 +88,7 @@ export interface GetTablesResult {
      */
     readonly tables: outputs.oss.GetTablesTable[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

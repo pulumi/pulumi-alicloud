@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const dataApigatwayApis = alicloud.apigateway.getApis({
+ * const dataApigatwayApis = pulumi.output(alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
- * });
+ * }, { async: true }));
  * 
  * export const firstApiId = alicloud_api_gateway_apis_data_apigatway.apis.0.id;
  * ```
@@ -93,7 +93,7 @@ export interface GetApisResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

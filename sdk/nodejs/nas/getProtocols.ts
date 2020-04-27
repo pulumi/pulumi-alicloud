@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultProtocols = alicloud.nas.getProtocols({
+ * const defaultProtocols = pulumi.output(alicloud.nas.getProtocols({
  *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
- * });
+ * }, { async: true }));
  * 
  * export const nasProtocolsProtocol = defaultProtocols.protocols[0];
  * ```
@@ -71,7 +71,7 @@ export interface GetProtocolsResult {
     readonly type: string;
     readonly zoneId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

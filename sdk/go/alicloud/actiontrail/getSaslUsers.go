@@ -30,7 +30,7 @@ type GetSaslUsersArgs struct {
 
 // A collection of values returned by getSaslUsers.
 type GetSaslUsersResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	InstanceId string  `pulumi:"instanceId"`
 	NameRegex  *string `pulumi:"nameRegex"`

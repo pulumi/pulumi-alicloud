@@ -18,7 +18,7 @@ class GetServicesResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -64,9 +64,8 @@ def get_services(ids=None,name_regex=None,output_file=None,opts=None):
 
 
 
-    :param list ids: A list of FC services ids.
+    :param list ids: - A list of FC services ids.
     :param str name_regex: A regex string to filter results by FC service name.
-           * `ids` (Optional, Available in 1.53.0+) - A list of FC services ids.
     """
     __args__ = dict()
 

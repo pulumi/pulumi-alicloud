@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
+ * const instanceDdosBgpInstances = pulumi.output(alicloud.ddos.getDdosBgpInstances({
  *     nameRegex: "^ddosbgp",
- * });
+ * }, { async: true }));
  * 
  * export const instance = alicloud_ddosbgp_instances_instance.map(v => v.id);
  * ```
@@ -77,7 +77,7 @@ export interface GetDdosBgpInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const imagesDs = alicloud.ecs.getImages({
+ * const imagesDs = pulumi.output(alicloud.ecs.getImages({
  *     nameRegex: "^centos_6",
  *     owners: "system",
- * });
+ * }, { async: true }));
  * 
  * export const firstImageId = imagesDs.images[0].id;
  * ```
@@ -81,7 +81,7 @@ export interface GetImagesResult {
     readonly outputFile?: string;
     readonly owners?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

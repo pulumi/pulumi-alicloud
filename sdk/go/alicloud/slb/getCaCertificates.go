@@ -34,7 +34,7 @@ type GetCaCertificatesArgs struct {
 type GetCaCertificatesResult struct {
 	// A list of SLB ca certificates. Each element contains the following attributes:
 	Certificates []GetCaCertificatesCertificate `pulumi:"certificates"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB ca certificates IDs.
 	Ids       []string `pulumi:"ids"`

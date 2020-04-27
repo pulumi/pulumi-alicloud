@@ -30,7 +30,7 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// A list of api groups. Each element contains the following attributes:
 	Groups []GetGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of api group IDs.
 	Ids       []string `pulumi:"ids"`

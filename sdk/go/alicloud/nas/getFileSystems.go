@@ -37,7 +37,7 @@ type GetFileSystemsResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of FileSystem descriptions.
 	Descriptions []string `pulumi:"descriptions"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of FileSystem Id.
 	Ids        []string `pulumi:"ids"`

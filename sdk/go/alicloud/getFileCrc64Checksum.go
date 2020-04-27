@@ -31,7 +31,7 @@ type GetFileCrc64ChecksumResult struct {
 	// the file checksum of crc64.
 	Checksum string `pulumi:"checksum"`
 	Filename string `pulumi:"filename"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 }

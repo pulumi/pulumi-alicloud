@@ -18,10 +18,10 @@ func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...p
 
 // A collection of arguments for invoking getCiphertext.
 type LookupCiphertextArgs struct {
+	// -
+	// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
-	// * `encryptionContext` -
-	// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	KeyId string `pulumi:"keyId"`
 	// The plaintext to be encrypted which must be encoded in Base64.
 	Plaintext string `pulumi:"plaintext"`
@@ -32,7 +32,7 @@ type LookupCiphertextResult struct {
 	// The ciphertext of the data key encrypted with the primary CMK version.
 	CiphertextBlob    string            `pulumi:"ciphertextBlob"`
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string `pulumi:"id"`
 	KeyId     string `pulumi:"keyId"`
 	Plaintext string `pulumi:"plaintext"`

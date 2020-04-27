@@ -19,10 +19,9 @@ func GetFunctions(ctx *pulumi.Context, args *GetFunctionsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFunctions.
 type GetFunctionsArgs struct {
-	// A list of functions ids.
+	// - A list of functions ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by function name.
-	// * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Name of the service that contains the functions to find.
@@ -33,7 +32,7 @@ type GetFunctionsArgs struct {
 type GetFunctionsResult struct {
 	// A list of functions. Each element contains the following attributes:
 	Functions []GetFunctionsFunction `pulumi:"functions"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of functions ids.
 	Ids       []string `pulumi:"ids"`

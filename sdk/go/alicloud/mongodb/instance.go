@@ -44,7 +44,6 @@ type Instance struct {
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringOutput `pulumi:"replicaSetName"`
 	// Number of replica set nodes. Valid values: [3, 5, 7]
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
@@ -55,7 +54,8 @@ type Instance struct {
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
 	SslAction pulumi.StringOutput `pulumi:"sslAction"`
 	// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
-	SslStatus     pulumi.StringOutput `pulumi:"sslStatus"`
+	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -137,7 +137,6 @@ type instanceState struct {
 	// The name of the mongo replica set
 	ReplicaSetName *string `pulumi:"replicaSetName"`
 	// Number of replica set nodes. Valid values: [3, 5, 7]
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
@@ -148,7 +147,8 @@ type instanceState struct {
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
 	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
-	SslStatus     *string `pulumi:"sslStatus"`
+	SslStatus *string `pulumi:"sslStatus"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -194,7 +194,6 @@ type InstanceState struct {
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringPtrInput
 	// Number of replica set nodes. Valid values: [3, 5, 7]
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor pulumi.IntPtrInput
 	// Instance log backup retention days. Available in 1.42.0+.
 	RetentionPeriod pulumi.IntPtrInput
@@ -205,7 +204,8 @@ type InstanceState struct {
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
 	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
-	SslStatus     pulumi.StringPtrInput
+	SslStatus pulumi.StringPtrInput
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -253,14 +253,14 @@ type instanceArgs struct {
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
 	// Number of replica set nodes. Valid values: [3, 5, 7]
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-	SslAction     *string `pulumi:"sslAction"`
+	SslAction *string `pulumi:"sslAction"`
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine *string `pulumi:"storageEngine"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -305,14 +305,14 @@ type InstanceArgs struct {
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
 	// Number of replica set nodes. Valid values: [3, 5, 7]
-	// * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	ReplicationFactor pulumi.IntPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
-	SslAction     pulumi.StringPtrInput
+	SslAction pulumi.StringPtrInput
+	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

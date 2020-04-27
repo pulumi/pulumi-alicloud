@@ -33,7 +33,7 @@ type GetReposArgs struct {
 // A collection of values returned by getRepos.
 type GetReposResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Container Registry Repositories. Its element is set to `names`.
 	Ids       []string `pulumi:"ids"`

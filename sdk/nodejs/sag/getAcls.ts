@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const defaultAcls = alicloud_sag_acls_default.id.apply(id => alicloud.sag.getAcls({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }));
+ * }, { async: true }));
  * const defaultAcl = new alicloud.rocketmq.Acl("default", {});
  * ```
  *
@@ -79,7 +79,7 @@ export interface GetAclsResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

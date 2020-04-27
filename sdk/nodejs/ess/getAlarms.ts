@@ -19,14 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const alarmDs = alicloud.EssAlarm({
+ * const alarmDs = pulumi.output(alicloud.EssAlarm({
  *     ids: [
  *         "alarmId1",
  *         "alarmId2",
  *     ],
  *     nameRegex: "alarmName",
  *     scalingGroupId: "scalingGroupId",
- * });
+ * }, { async: true }));
  * 
  * export const firstScalingRule = alicloud_alarms_alarm_ds.configurations.0.id;
  * ```
@@ -101,7 +101,7 @@ export interface GetAlarmsResult {
      */
     readonly scalingGroupId?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

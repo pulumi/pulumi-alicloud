@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const domainsDs = alicloud.dns.getDomains({
+ * const domainsDs = pulumi.output(alicloud.dns.getDomains({
  *     domainNameRegex: "^hegu",
  *     outputFile: "domains.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstDomainId = domainsDs.domains[0].domainId;
  * ```
@@ -64,7 +64,7 @@ export interface GetDomainsArgs {
      */
     readonly groupNameRegex?: string;
     /**
-     * A list of domain IDs.
+     * - A list of domain IDs.
      */
     readonly ids?: string[];
     /**
@@ -78,7 +78,6 @@ export interface GetDomainsArgs {
     readonly resourceGroupId?: string;
     /**
      * Cloud analysis version code.
-     * * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
      */
     readonly versionCode?: string;
 }
@@ -119,7 +118,7 @@ export interface GetDomainsResult {
      */
     readonly versionCode?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

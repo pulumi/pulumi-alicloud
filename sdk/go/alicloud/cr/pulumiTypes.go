@@ -153,17 +153,32 @@ func (o RepoDomainListPtrOutput) Elem() RepoDomainListOutput {
 
 // Domain of internal endpoint, only in some regions.
 func (o RepoDomainListPtrOutput) Internal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoDomainList) *string { return v.Internal }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RepoDomainList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Internal
+	}).(pulumi.StringPtrOutput)
 }
 
 // Domain of public endpoint.
 func (o RepoDomainListPtrOutput) Public() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoDomainList) *string { return v.Public }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RepoDomainList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Public
+	}).(pulumi.StringPtrOutput)
 }
 
 // Domain of vpc endpoint.
 func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepoDomainList) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RepoDomainList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vpc
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetNamespacesNamespace struct {

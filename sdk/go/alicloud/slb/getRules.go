@@ -33,7 +33,7 @@ type GetRulesArgs struct {
 // A collection of values returned by getRules.
 type GetRulesResult struct {
 	FrontendPort int `pulumi:"frontendPort"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB listener rules IDs.
 	Ids            []string `pulumi:"ids"`

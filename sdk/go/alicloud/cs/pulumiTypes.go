@@ -621,22 +621,42 @@ func (o KubernetesConnectionsPtrOutput) Elem() KubernetesConnectionsOutput {
 
 // API Server Internet endpoint.
 func (o KubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *KubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerInternet
+	}).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o KubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *KubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerIntranet
+	}).(pulumi.StringPtrOutput)
 }
 
 // Master node SSH IP address.
 func (o KubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *KubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MasterPublicIp
+	}).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *KubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 type KubernetesMasterNode struct {
@@ -1133,21 +1153,41 @@ func (o ManagedKubernetesConnectionsPtrOutput) Elem() ManagedKubernetesConnectio
 
 // API Server Internet endpoint.
 func (o ManagedKubernetesConnectionsPtrOutput) ApiServerInternet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerInternet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerInternet
+	}).(pulumi.StringPtrOutput)
 }
 
 // API Server Intranet endpoint.
 func (o ManagedKubernetesConnectionsPtrOutput) ApiServerIntranet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ApiServerIntranet }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerIntranet
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedKubernetesConnectionsPtrOutput) MasterPublicIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.MasterPublicIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MasterPublicIp
+	}).(pulumi.StringPtrOutput)
 }
 
 // Service Access Domain.
 func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesConnections) *string { return v.ServiceDomain }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ManagedKubernetesConnections) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDomain
+	}).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesWorkerNode struct {

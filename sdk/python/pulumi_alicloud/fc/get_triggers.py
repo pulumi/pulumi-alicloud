@@ -21,7 +21,7 @@ class GetTriggersResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -73,9 +73,8 @@ def get_triggers(function_name=None,ids=None,name_regex=None,output_file=None,se
 
 
     :param str function_name: FC function name.
-    :param list ids: A list of FC triggers ids.
+    :param list ids: - A list of FC triggers ids.
     :param str name_regex: A regex string to filter results by FC trigger name.
-           * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
     :param str service_name: FC service name.
     """
     __args__ = dict()

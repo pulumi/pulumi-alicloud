@@ -29,7 +29,7 @@ type GetRegionsArgs struct {
 // A collection of values returned by getRegions.
 type GetRegionsResult struct {
 	Current bool `pulumi:"current"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of region IDs.
 	Ids        []string `pulumi:"ids"`

@@ -351,7 +351,9 @@ type GetInstancesInstance struct {
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of the RKV instance.
-	Id            string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Type of the applied ApsaraDB for Redis instance.
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceClass string `pulumi:"instanceClass"`
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType string `pulumi:"instanceType"`
@@ -364,8 +366,6 @@ type GetInstancesInstance struct {
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
 	// Status of the instance.
-	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	Status   string `pulumi:"status"`
 	UserName string `pulumi:"userName"`
 	// Used to retrieve instances belong to specified VPC.
@@ -403,7 +403,9 @@ type GetInstancesInstanceArgs struct {
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of the RKV instance.
-	Id            pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Type of the applied ApsaraDB for Redis instance.
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	InstanceClass pulumi.StringInput `pulumi:"instanceClass"`
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
@@ -416,8 +418,6 @@ type GetInstancesInstanceArgs struct {
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// Status of the instance.
-	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	Status   pulumi.StringInput `pulumi:"status"`
 	UserName pulumi.StringInput `pulumi:"userName"`
 	// Used to retrieve instances belong to specified VPC.
@@ -522,6 +522,8 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Type of the applied ApsaraDB for Redis instance.
+// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
@@ -552,8 +554,6 @@ func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 }
 
 // Status of the instance.
-// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }

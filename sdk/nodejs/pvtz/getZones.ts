@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const pvtzZonesDs = alicloud_pvtz_zone_basic.zoneName.apply(zoneName => alicloud.pvtz.getZones({
  *     keyword: zoneName,
- * }));
+ * }, { async: true }));
  * 
  * export const firstZoneId = pvtzZonesDs.zones[0].id;
  * ```
@@ -76,7 +76,7 @@ export interface GetZonesResult {
      */
     readonly zones: outputs.pvtz.GetZonesZone[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -16,6 +16,9 @@ class Instance(pulumi.CustomResource):
     The name of DB instance. It a string of 2 to 256 characters.
     """
     engine: pulumi.Output[str]
+    """
+    Database engine: gpdb. System Default value: gpdb.
+    """
     engine_version: pulumi.Output[str]
     """
     Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
@@ -61,6 +64,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).
@@ -116,6 +120,7 @@ class Instance(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] engine: Database engine: gpdb. System Default value: gpdb.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
         :param pulumi.Input[str] instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/86942.htm).

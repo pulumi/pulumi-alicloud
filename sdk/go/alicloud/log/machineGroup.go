@@ -13,10 +13,9 @@ import (
 type MachineGroup struct {
 	pulumi.CustomResourceState
 
-	// The machine identification.
+	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists pulumi.StringArrayOutput `pulumi:"identifyLists"`
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType pulumi.StringPtrOutput `pulumi:"identifyType"`
 	// The machine group name, which is unique in the same project.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -60,10 +59,9 @@ func GetMachineGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MachineGroup resources.
 type machineGroupState struct {
-	// The machine identification.
+	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists []string `pulumi:"identifyLists"`
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType *string `pulumi:"identifyType"`
 	// The machine group name, which is unique in the same project.
 	Name *string `pulumi:"name"`
@@ -74,10 +72,9 @@ type machineGroupState struct {
 }
 
 type MachineGroupState struct {
-	// The machine identification.
+	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists pulumi.StringArrayInput
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType pulumi.StringPtrInput
 	// The machine group name, which is unique in the same project.
 	Name pulumi.StringPtrInput
@@ -92,10 +89,9 @@ func (MachineGroupState) ElementType() reflect.Type {
 }
 
 type machineGroupArgs struct {
-	// The machine identification.
+	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists []string `pulumi:"identifyLists"`
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType *string `pulumi:"identifyType"`
 	// The machine group name, which is unique in the same project.
 	Name *string `pulumi:"name"`
@@ -107,10 +103,9 @@ type machineGroupArgs struct {
 
 // The set of arguments for constructing a MachineGroup resource.
 type MachineGroupArgs struct {
-	// The machine identification.
+	// The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyLists pulumi.StringArrayInput
 	// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-	// * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
 	IdentifyType pulumi.StringPtrInput
 	// The machine group name, which is unique in the same project.
 	Name pulumi.StringPtrInput

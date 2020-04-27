@@ -31,7 +31,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -56,7 +55,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The mongo-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Output("mongoLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
@@ -93,11 +91,13 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// the shard-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         [Output("shardLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Output("storageEngine")]
         public Output<string> StorageEngine { get; private set; } = null!;
 
@@ -192,7 +192,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -226,7 +225,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The mongo-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListArgs> MongoLists
         {
@@ -269,7 +267,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// the shard-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListArgs> ShardLists
         {
@@ -277,6 +274,9 @@ namespace Pulumi.AliCloud.MongoDB
             set => _shardLists = value;
         }
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 
@@ -332,7 +332,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-        /// * `storage_engine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -366,7 +365,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The mongo-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListGetArgs> MongoLists
         {
@@ -415,7 +413,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// the shard-node count can be purchased is in range of [2, 32].
-        /// * `node_class` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListGetArgs> ShardLists
         {
@@ -423,6 +420,9 @@ namespace Pulumi.AliCloud.MongoDB
             set => _shardLists = value;
         }
 
+        /// <summary>
+        /// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+        /// </summary>
         [Input("storageEngine")]
         public Input<string>? StorageEngine { get; set; }
 

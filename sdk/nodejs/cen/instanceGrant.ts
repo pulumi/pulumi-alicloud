@@ -29,21 +29,21 @@ import * as utilities from "../utilities";
  *     accessKey: "access456",
  *     secretKey: "secret456",
  * });
- * const cen = new alicloud.cen.Instance("cen", {}, {provider: account2});
+ * const cen = new alicloud.cen.Instance("cen", {}, { provider: account2 });
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "192.168.0.0/16",
- * }, {provider: account1});
+ * }, { provider: account1 });
  * const fooInstanceGrant = new alicloud.cen.InstanceGrant("foo", {
  *     cenId: cen.id,
  *     cenOwnerId: "uid2",
  *     childInstanceId: vpc.id,
- * }, {provider: account1});
+ * }, { provider: account1 });
  * const fooInstanceAttachment = new alicloud.cen.InstanceAttachment("foo", {
  *     childInstanceId: vpc.id,
  *     childInstanceOwnerId: "uid1",
  *     childInstanceRegionId: "cn-qingdao",
  *     instanceId: cen.id,
- * }, {provider: account2,dependsOn: [fooInstanceGrant]});
+ * }, { provider: account2, dependsOn: [fooInstanceGrant] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_instance_grant.html.markdown.

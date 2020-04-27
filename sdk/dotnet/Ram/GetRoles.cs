@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ram role IDs. 
+        /// - A list of ram role IDs. 
         /// </summary>
         public List<string> Ids
         {
@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.Ram
 
         /// <summary>
         /// A regex string to filter results by the role name.
-        /// * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -68,7 +67,7 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetRolesResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

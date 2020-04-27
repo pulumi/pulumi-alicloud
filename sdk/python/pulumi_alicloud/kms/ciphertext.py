@@ -15,11 +15,13 @@ class Ciphertext(pulumi.CustomResource):
     The ciphertext of the data key encrypted with the primary CMK version.
     """
     encryption_context: pulumi.Output[dict]
+    """
+    -
+    (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+    """
     key_id: pulumi.Output[str]
     """
     The globally unique ID of the CMK.
-    * `encryption_context` -
-    (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     """
     plaintext: pulumi.Output[str]
     """
@@ -30,9 +32,9 @@ class Ciphertext(pulumi.CustomResource):
         Create a Ciphertext resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
-               * `encryption_context` -
+        :param pulumi.Input[dict] encryption_context: -
                (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
         if __name__ is not None:
@@ -76,9 +78,9 @@ class Ciphertext(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ciphertext_blob: The ciphertext of the data key encrypted with the primary CMK version.
-        :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
-               * `encryption_context` -
+        :param pulumi.Input[dict] encryption_context: -
                (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

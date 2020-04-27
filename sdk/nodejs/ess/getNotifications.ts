@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ds = alicloud.ess.getNotifications({
+ * const ds = pulumi.output(alicloud.ess.getNotifications({
  *     scalingGroupId: "scalingGroupId",
- * });
+ * }, { async: true }));
  * 
  * export const firstNotification = ds.notifications[0].id;
  * ```
@@ -76,7 +76,7 @@ export interface GetNotificationsResult {
      */
     readonly scalingGroupId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  * const creation = config.get("creation") || "PolarDB";
  * const name = config.get("name") || "polardbconnectionbasic";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });

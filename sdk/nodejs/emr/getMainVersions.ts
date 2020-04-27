@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultMainVersions = alicloud.emr.getMainVersions({
+ * const defaultMainVersions = pulumi.output(alicloud.emr.getMainVersions({
  *     clusterTypes: [
  *         "HADOOP",
  *         "ZOOKEEPER",
  *     ],
  *     emrVersion: "EMR-3.22.0",
- * });
+ * }, { async: true }));
  * 
  * export const firstMainVersion = defaultMainVersions.mainVersions[0].emrVersion;
  * export const thisClusterTypes = defaultMainVersions.mainVersions[0].clusterTypes;
@@ -85,7 +85,7 @@ export interface GetMainVersionsResult {
     readonly mainVersions: outputs.emr.GetMainVersionsMainVersion[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

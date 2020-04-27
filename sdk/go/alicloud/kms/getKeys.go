@@ -31,7 +31,7 @@ type GetKeysArgs struct {
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of KMS key IDs.
 	Ids []string `pulumi:"ids"`

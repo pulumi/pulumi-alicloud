@@ -22,19 +22,19 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccRouteEntryConfig";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ * }, { async: true }));
+ * const defaultInstanceTypes = defaultZones.apply(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones[0].id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
- * });
- * const defaultImages = alicloud.ecs.getImages({
+ * }, { async: true }));
+ * const defaultImages = pulumi.output(alicloud.ecs.getImages({
  *     mostRecent: true,
  *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
- * });
+ * }, { async: true }));
  * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "10.1.0.0/21",
  * });
@@ -79,7 +79,7 @@ import * as utilities from "../utilities";
  * });
  * const fooRouteEntries = fooRouteEntry.routeTableId.apply(routeTableId => alicloud.vpc.getRouteEntries({
  *     routeTableId: routeTableId,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
@@ -150,7 +150,7 @@ export interface GetRouteEntriesResult {
      */
     readonly type?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

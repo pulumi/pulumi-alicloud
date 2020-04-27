@@ -30,7 +30,7 @@ type GetProductArgs struct {
 // A collection of values returned by getProduct.
 type GetProductResult struct {
 	AvailableRegion *string `pulumi:"availableRegion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string `pulumi:"id"`
 	ProductCode string `pulumi:"productCode"`
 	// A product. It contains the following attributes:

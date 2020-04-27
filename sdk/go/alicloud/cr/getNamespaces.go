@@ -28,7 +28,7 @@ type GetNamespacesArgs struct {
 
 // A collection of values returned by getNamespaces.
 type GetNamespacesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Container Registry namespaces. Its element is a namespace name.
 	Ids       []string `pulumi:"ids"`

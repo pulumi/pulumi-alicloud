@@ -30,7 +30,7 @@ type GetBandwidthPackagesArgs struct {
 
 // A collection of values returned by getBandwidthPackages.
 type GetBandwidthPackagesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// ID of CEN instance that owns the CEN Bandwidth Package.

@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const images = alicloud.ecs.getImages({
+ * const images = pulumi.output(alicloud.ecs.getImages({
  *     owners: "system",
- * });
- * const instances = alicloud.ecs.getInstances();
+ * }, { async: true }));
+ * const instances = pulumi.output(alicloud.ecs.getInstances({ async: true }));
  * const template = new alicloud.ecs.LaunchTemplate("template", {
  *     dataDisks: [
  *         {
@@ -187,6 +187,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * The security group ID must be one in the same VPC.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     */
     public readonly spotPriceLimit!: pulumi.Output<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -414,6 +417,9 @@ export interface LaunchTemplateState {
      * The security group ID must be one in the same VPC.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     */
     readonly spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -552,6 +558,9 @@ export interface LaunchTemplateArgs {
      * The security group ID must be one in the same VPC.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+     */
     readonly spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:

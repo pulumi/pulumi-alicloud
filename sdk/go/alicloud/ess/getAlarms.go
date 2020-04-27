@@ -36,7 +36,7 @@ type GetAlarmsArgs struct {
 type GetAlarmsResult struct {
 	// A list of alarms. Each element contains the following attributes:
 	Alarms []GetAlarmsAlarm `pulumi:"alarms"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of alarm ids.
 	Ids []string `pulumi:"ids"`

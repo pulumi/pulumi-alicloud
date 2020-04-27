@@ -91,7 +91,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
     /**
      * Number of replica set nodes. Valid values: [3, 5, 7]
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     public readonly replicationFactor!: pulumi.Output<number>;
     /**
@@ -114,6 +113,9 @@ export class Instance extends pulumi.CustomResource {
      * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -283,7 +285,6 @@ export interface InstanceState {
     readonly replicaSetName?: pulumi.Input<string>;
     /**
      * Number of replica set nodes. Valid values: [3, 5, 7]
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly replicationFactor?: pulumi.Input<number>;
     /**
@@ -306,6 +307,9 @@ export interface InstanceState {
      * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
      */
     readonly sslStatus?: pulumi.Input<string>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
@@ -387,7 +391,6 @@ export interface InstanceArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * Number of replica set nodes. Valid values: [3, 5, 7]
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly replicationFactor?: pulumi.Input<number>;
     /**
@@ -402,6 +405,9 @@ export interface InstanceArgs {
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
      */
     readonly sslAction?: pulumi.Input<string>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

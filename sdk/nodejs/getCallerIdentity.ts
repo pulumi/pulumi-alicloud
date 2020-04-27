@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const current = alicloud.getCallerIdentity();
+ * const current = pulumi.output(alicloud.getCallerIdentity({ async: true }));
  * 
  * export const currentUserArn = current.id;
  * ```
@@ -53,7 +53,7 @@ export interface GetCallerIdentityResult {
      */
     readonly identityType: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

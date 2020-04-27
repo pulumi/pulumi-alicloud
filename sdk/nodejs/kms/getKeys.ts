@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const kmsKeysDs = alicloud.kms.getKeys({
+ * const kmsKeysDs = pulumi.output(alicloud.kms.getKeys({
  *     descriptionRegex: "Hello KMS",
  *     outputFile: "kms_keys.json",
- * });
+ * }, { async: true }));
  * 
  * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
@@ -82,7 +82,7 @@ export interface GetKeysResult {
      */
     readonly status?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

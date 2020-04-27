@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const k8sClusters = alicloud.cs.getServerlessKubernetesClusters({
+ * const k8sClusters = pulumi.output(alicloud.cs.getServerlessKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
- * });
+ * }, { async: true }));
  * 
  * export const output = k8sClusters.clusters;
  * ```
@@ -83,7 +83,7 @@ export interface GetServerlessKubernetesClustersResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getAttachments({
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbAttachmentInstanceId = sampleDs.slbAttachments[0].instanceId;
  * ```
@@ -68,7 +68,7 @@ export interface GetAttachmentsResult {
      */
     readonly slbAttachments: outputs.slb.GetAttachmentsSlbAttachment[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

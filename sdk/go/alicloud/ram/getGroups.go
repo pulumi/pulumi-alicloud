@@ -34,7 +34,7 @@ type GetGroupsArgs struct {
 type GetGroupsResult struct {
 	// A list of groups. Each element contains the following attributes:
 	Groups []GetGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of ram group names.

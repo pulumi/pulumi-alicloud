@@ -20,12 +20,21 @@ class Cluster(pulumi.CustomResource):
     EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
     """
     deposit_type: pulumi.Output[str]
+    """
+    Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+    """
     eas_enable: pulumi.Output[bool]
+    """
+    High security cluster (true) or not. Default value is false.
+    """
     emr_ver: pulumi.Output[str]
     """
     EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
     """
     high_availability_enable: pulumi.Output[bool]
+    """
+    High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
+    """
     host_groups: pulumi.Output[list]
     """
     Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
@@ -47,37 +56,52 @@ class Cluster(pulumi.CustomResource):
     """
     is_open_public_ip: pulumi.Output[bool]
     key_pair_name: pulumi.Output[str]
+    """
+    Ssh key pair.
+    """
     master_pwd: pulumi.Output[str]
+    """
+    Master ssh password.
+    """
     name: pulumi.Output[str]
     """
     bootstrap action name.
     """
     option_software_lists: pulumi.Output[list]
+    """
+    Optional software list.
+    """
     related_cluster_id: pulumi.Output[str]
+    """
+    This specify the related cluster id, if this cluster is a Gateway.
+    """
     security_group_id: pulumi.Output[str]
+    """
+    Security Group ID for Cluster, you can also specify this key for each host group.
+    """
     ssh_enable: pulumi.Output[bool]
+    """
+    If this is set true, we can ssh into cluster. Default value is false.
+    """
     tags: pulumi.Output[dict]
     """
     A mapping of tags to assign to the resource.
     """
     use_local_metadb: pulumi.Output[bool]
+    """
+    Use local metadb. Default is false.
+    """
     user_defined_emr_ecs_role: pulumi.Output[str]
+    """
+    Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+    """
     vswitch_id: pulumi.Output[str]
+    """
+    Global vswitch id, you can also specify it in host group.
+    """
     zone_id: pulumi.Output[str]
     """
     Zone ID, e.g. cn-huhehaote-a
-    * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-    * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-    * `option_software_list` (Optional, ForceNew) Optional software list.
-    * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-    * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-    * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-    * `master_pwd` (Optional, ForceNew) Master ssh password.
-    * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-    * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-    * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-    * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-    * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
     """
     def __init__(__self__, resource_name, opts=None, bootstrap_actions=None, charge_type=None, cluster_type=None, deposit_type=None, eas_enable=None, emr_ver=None, high_availability_enable=None, host_groups=None, is_open_public_ip=None, key_pair_name=None, master_pwd=None, name=None, option_software_lists=None, related_cluster_id=None, security_group_id=None, ssh_enable=None, tags=None, use_local_metadb=None, user_defined_emr_ecs_role=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -91,23 +115,23 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
+        :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
+        :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[list] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[str] key_pair_name: Ssh key pair.
+        :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[list] option_software_lists: Optional software list.
+        :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
+        :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
+        :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
+        :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
-               * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-               * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-               * `option_software_list` (Optional, ForceNew) Optional software list.
-               * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-               * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-               * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-               * `master_pwd` (Optional, ForceNew) Master ssh password.
-               * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-               * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-               * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-               * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-               * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
 
         The **bootstrap_actions** object supports the following:
 
@@ -193,23 +217,23 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charge_type: Charge Type for this group of hosts: PostPaid or PrePaid. If this is not specified, charge type will follow global charge_type value.
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
+        :param pulumi.Input[str] deposit_type: Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
+        :param pulumi.Input[bool] eas_enable: High security cluster (true) or not. Default value is false.
         :param pulumi.Input[str] emr_ver: EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
+        :param pulumi.Input[bool] high_availability_enable: High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         :param pulumi.Input[list] host_groups: Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
+        :param pulumi.Input[str] key_pair_name: Ssh key pair.
+        :param pulumi.Input[str] master_pwd: Master ssh password.
         :param pulumi.Input[str] name: bootstrap action name.
+        :param pulumi.Input[list] option_software_lists: Optional software list.
+        :param pulumi.Input[str] related_cluster_id: This specify the related cluster id, if this cluster is a Gateway.
+        :param pulumi.Input[str] security_group_id: Security Group ID for Cluster, you can also specify this key for each host group.
+        :param pulumi.Input[bool] ssh_enable: If this is set true, we can ssh into cluster. Default value is false.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[bool] use_local_metadb: Use local metadb. Default is false.
+        :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
+        :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
-               * `security_group_id` (Optional, ForceNew) Security Group ID for Cluster, you can also specify this key for each host group.
-               * `vswitch_id` (Optional, ForceNew) Global vswitch id, you can also specify it in host group.
-               * `option_software_list` (Optional, ForceNew) Optional software list.
-               * `high_availability_enable` (Optional, ForceNew) High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
-               * `use_local_metadb` (Optional, ForceNew) Use local metadb. Default is false.
-               * `ssh_enable` (Optional, ForceNew) If this is set true, we can ssh into cluster. Default value is false.
-               * `master_pwd` (Optional, ForceNew) Master ssh password.
-               * `eas_enable` (Optional, ForceNew) High security cluster (true) or not. Default value is false.
-               * `user_defined_emr_ecs_role` (Optional, ForceNew) Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
-               * `key_pair_name` (Optional, ForceNew) Ssh key pair.
-               * `deposit_type` (Optional, ForceNew) Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
-               * `related_cluster_id` (Optional, ForceNew) This specify the related cluster id, if this cluster is a Gateway.
 
         The **bootstrap_actions** object supports the following:
 

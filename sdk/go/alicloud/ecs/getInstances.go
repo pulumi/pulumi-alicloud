@@ -54,7 +54,7 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	// Availability zone the instance belongs to.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ECS instance IDs.
 	Ids []string `pulumi:"ids"`

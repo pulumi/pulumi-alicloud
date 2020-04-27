@@ -39,7 +39,7 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	// Instance availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The ids list of AnalyticDB for PostgreSQL instances.
 	Ids []string `pulumi:"ids"`

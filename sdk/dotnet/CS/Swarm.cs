@@ -73,6 +73,9 @@ namespace Pulumi.AliCloud.CS
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+        /// </summary>
         [Output("needSlb")]
         public Output<bool?> NeedSlb { get; private set; } = null!;
 
@@ -96,7 +99,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to release EIP after creating swarm cluster successfully. Default to false.
-        /// * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         /// </summary>
         [Output("releaseEip")]
         public Output<bool?> ReleaseEip { get; private set; } = null!;
@@ -226,6 +228,9 @@ namespace Pulumi.AliCloud.CS
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        /// <summary>
+        /// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+        /// </summary>
         [Input("needSlb")]
         public Input<bool>? NeedSlb { get; set; }
 
@@ -243,7 +248,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to release EIP after creating swarm cluster successfully. Default to false.
-        /// * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         /// </summary>
         [Input("releaseEip")]
         public Input<bool>? ReleaseEip { get; set; }
@@ -322,6 +326,9 @@ namespace Pulumi.AliCloud.CS
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        /// <summary>
+        /// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+        /// </summary>
         [Input("needSlb")]
         public Input<bool>? NeedSlb { get; set; }
 
@@ -351,7 +358,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to release EIP after creating swarm cluster successfully. Default to false.
-        /// * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         /// </summary>
         [Input("releaseEip")]
         public Input<bool>? ReleaseEip { get; set; }

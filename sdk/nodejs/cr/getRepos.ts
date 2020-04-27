@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const myRepos = alicloud.cr.getRepos({
+ * const myRepos = pulumi.output(alicloud.cr.getRepos({
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
- * });
+ * }, { async: true }));
  * 
  * export const output = myRepos.repos;
  * ```
@@ -90,7 +90,7 @@ export interface GetReposResult {
      */
     readonly repos: outputs.cr.GetReposRepo[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

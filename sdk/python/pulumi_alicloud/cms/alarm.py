@@ -25,7 +25,6 @@ class Alarm(pulumi.CustomResource):
     enabled: pulumi.Output[bool]
     """
     Whether to enable alarm rule. Default to true.
-    * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
     """
     end_time: pulumi.Output[float]
     """
@@ -76,6 +75,9 @@ class Alarm(pulumi.CustomResource):
     Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
     """
     webhook: pulumi.Output[str]
+    """
+    The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+    """
     def __init__(__self__, resource_name, opts=None, contact_groups=None, dimensions=None, effective_interval=None, enabled=None, end_time=None, metric=None, name=None, operator=None, period=None, project=None, silence_time=None, start_time=None, statistics=None, threshold=None, triggered_count=None, webhook=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
@@ -89,7 +91,6 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-               * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
@@ -101,6 +102,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] statistics: Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -165,7 +167,6 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[dict] dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It foramt as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default to true.
-               * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         :param pulumi.Input[float] end_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] metric: Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkin_rate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The alarm rule name.
@@ -178,6 +179,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] status: The current alarm rule status.
         :param pulumi.Input[str] threshold: Alarm threshold value, which must be a numeric value currently.
         :param pulumi.Input[float] triggered_count: Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
+        :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

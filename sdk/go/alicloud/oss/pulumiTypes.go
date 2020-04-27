@@ -638,13 +638,23 @@ func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
 }
 
 // The name of the bucket that will receive the log objects.
-func (o BucketLoggingPtrOutput) TargetBucket() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
+func (o BucketLoggingPtrOutput) TargetBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetBucket
+	}).(pulumi.StringPtrOutput)
 }
 
 // To specify a key prefix for log objects.
 func (o BucketLoggingPtrOutput) TargetPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketRefererConfig struct {
@@ -781,12 +791,22 @@ func (o BucketRefererConfigPtrOutput) Elem() BucketRefererConfigOutput {
 
 // Allows referer to be empty. Defaults false.
 func (o BucketRefererConfigPtrOutput) AllowEmpty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BucketRefererConfig) *bool { return v.AllowEmpty }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *BucketRefererConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowEmpty
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The list of referer.
 func (o BucketRefererConfigPtrOutput) Referers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketRefererConfig) []string { return v.Referers }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *BucketRefererConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Referers
+	}).(pulumi.StringArrayOutput)
 }
 
 type BucketServerSideEncryptionRule struct {
@@ -913,8 +933,13 @@ func (o BucketServerSideEncryptionRulePtrOutput) Elem() BucketServerSideEncrypti
 }
 
 // The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
-func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
+func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerSideEncryptionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SseAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketVersioning struct {
@@ -1041,8 +1066,13 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-func (o BucketVersioningPtrOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+func (o BucketVersioningPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 type BucketWebsite struct {
@@ -1179,12 +1209,22 @@ func (o BucketWebsitePtrOutput) Elem() BucketWebsiteOutput {
 
 // An absolute path to the document to return in case of a 4XX error.
 func (o BucketWebsitePtrOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketWebsite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorDocument
+	}).(pulumi.StringPtrOutput)
 }
 
 // Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketWebsite) string { return v.IndexDocument }).(pulumi.StringOutput)
+func (o BucketWebsitePtrOutput) IndexDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketWebsite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IndexDocument
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetBucketObjectsObject struct {

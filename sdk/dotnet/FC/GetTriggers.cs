@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of FC triggers ids.
+        /// - A list of FC triggers ids.
         /// </summary>
         public List<string> Ids
         {
@@ -44,7 +44,6 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// A regex string to filter results by FC trigger name.
-        /// * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -69,7 +68,7 @@ namespace Pulumi.AliCloud.FC
     {
         public readonly string FunctionName;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

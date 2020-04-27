@@ -54,6 +54,9 @@ export class TopicSubscription extends pulumi.CustomResource {
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
     public readonly notifyStrategy!: pulumi.Output<string | undefined>;
+    /**
+     * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+     */
     public readonly topicName!: pulumi.Output<string>;
 
     /**
@@ -127,6 +130,9 @@ export interface TopicSubscriptionState {
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
     readonly notifyStrategy?: pulumi.Input<string>;
+    /**
+     * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+     */
     readonly topicName?: pulumi.Input<string>;
 }
 
@@ -157,5 +163,8 @@ export interface TopicSubscriptionArgs {
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
      */
     readonly notifyStrategy?: pulumi.Input<string>;
+    /**
+     * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+     */
     readonly topicName: pulumi.Input<string>;
 }

@@ -37,7 +37,7 @@ type GetConnectionsResult struct {
 	Connections []GetConnectionsConnection `pulumi:"connections"`
 	// ID of the VPN customer gateway.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) IDs of the VPN connections.
 	Ids       []string `pulumi:"ids"`

@@ -32,7 +32,7 @@ type GetAliasesArgs struct {
 type GetAliasesResult struct {
 	// A list of KMS User alias. Each element contains the following attributes:
 	Aliases []GetAliasesAlias `pulumi:"aliases"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of kms aliases IDs. The value is same as KMS alias_name.
 	Ids       []string `pulumi:"ids"`
