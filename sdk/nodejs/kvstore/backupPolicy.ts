@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * const multiAz = config.get("multiAz") || "false";
  * const name = config.get("name") || "kvstorebackuppolicyvpc";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });

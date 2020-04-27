@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultProtocols = alicloud.nas.getProtocols({
+ * const defaultProtocols = pulumi.output(alicloud.nas.getProtocols({
  *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
- * });
+ * }, { async: true }));
  * 
  * export const nasProtocolsProtocol = defaultProtocols.protocols[0];
  * ```

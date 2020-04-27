@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const zonesIds = alicloud.slb.getZones();
+ * const zonesIds = pulumi.output(alicloud.slb.getZones({ async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_zones.html.markdown.

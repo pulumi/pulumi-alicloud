@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const gpdb = alicloud.gpdb.getInstances({
+ * const gpdb = pulumi.output(alicloud.gpdb.getInstances({
  *     availabilityZone: "cn-beijing-c",
  *     nameRegex: "gp-.+\\d+",
  *     outputFile: "instances.txt",
- * });
+ * }, { async: true }));
  * 
  * export const instanceId = gpdb.instances[0].id;
  * ```

@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const defaultInstanceTypeFamilies = alicloud.ecs.getInstanceTypeFamilies({
+ * const defaultInstanceTypeFamilies = pulumi.output(alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
- * });
+ * }, { async: true }));
  * 
  * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.instanceTypeFamilies.0.id;
  * export const instanceIds = defaultInstanceTypeFamilies.ids;

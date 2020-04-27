@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ds = alicloud.ess.getLifecycleHooks({
+ * const ds = pulumi.output(alicloud.ess.getLifecycleHooks({
  *     nameRegex: "lifecyclehookName",
  *     scalingGroupId: "scalingGroupId",
- * });
+ * }, { async: true }));
  * 
  * export const firstLifecycleHook = ds.hooks[0].id;
  * ```

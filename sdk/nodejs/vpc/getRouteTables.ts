@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const fooRouteTables = fooRouteTable.id.apply(id => alicloud.vpc.getRouteTables({
  *     ids: [id],
- * }));
+ * }, { async: true }));
  * 
  * export const routeTableIds = fooRouteTables.ids!;
  * ```

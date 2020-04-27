@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  * const username = config.get("username") || "testusername";
  * const password = config.get("password") || "testpassword";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
  * });

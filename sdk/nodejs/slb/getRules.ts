@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getRules({
  *     frontendPort: 80,
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbRuleId = sampleDs.slbRules[0].id;
  * ```

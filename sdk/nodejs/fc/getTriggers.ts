@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const fcTriggersDs = alicloud.fc.getTriggers({
+ * const fcTriggersDs = pulumi.output(alicloud.fc.getTriggers({
  *     functionName: "sampleFunction",
  *     nameRegex: "sampleFcTrigger",
  *     serviceName: "sampleService",
- * });
+ * }, { async: true }));
  * 
  * export const firstFcTriggerName = fcTriggersDs.triggers[0].name;
  * ```

@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const foo = alicloud.nas.getAccessRules({
+ * const foo = pulumi.output(alicloud.nas.getAccessRules({
  *     accessGroupName: "tf-testAccAccessGroupsdatasource",
  *     rwAccess: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
  *     userAccess: "noSquash",
- * });
+ * }, { async: true }));
  * 
  * export const alicloudNasAccessRulesId = foo.rules[0].id;
  * ```

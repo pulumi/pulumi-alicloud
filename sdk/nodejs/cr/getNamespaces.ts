@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const myNamespaces = alicloud.cr.getNamespaces({
+ * const myNamespaces = pulumi.output(alicloud.cr.getNamespaces({
  *     nameRegex: "my-namespace",
  *     outputFile: "my-namespace-json",
- * });
+ * }, { async: true }));
  * 
  * export const output = myNamespaces.namespaces;
  * ```

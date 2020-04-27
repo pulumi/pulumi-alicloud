@@ -30,10 +30,10 @@ import * as utilities from "../utilities";
  * });
  * const vpc1 = new alicloud.vpc.Network("vpc1", {
  *     cidrBlock: "192.168.0.0/16",
- * }, {provider: fra});
+ * }, { provider: fra });
  * const vpc2 = new alicloud.vpc.Network("vpc2", {
  *     cidrBlock: "172.16.0.0/12",
- * }, {provider: sh});
+ * }, { provider: sh });
  * const cen = new alicloud.cen.Instance("cen", {
  *     description: "tf-testAccCenBandwidthLimitConfigDescription",
  * });
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *         "eu-central-1",
  *         "cn-shanghai",
  *     ],
- * }, {dependsOn: [bwpAttach, vpcAttach1, vpcAttach2]});
+ * }, { dependsOn: [bwpAttach, vpcAttach1, vpcAttach2] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_bandwidth_limit.html.markdown.

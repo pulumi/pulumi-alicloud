@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const cenInstancesDs = alicloud.cen.getInstances({
+ * const cenInstancesDs = pulumi.output(alicloud.cen.getInstances({
  *     ids: ["cen-id1"],
  *     nameRegex: "^foo",
- * });
+ * }, { async: true }));
  * 
  * export const firstCenInstanceId = cenInstancesDs.instances[0].id;
  * ```

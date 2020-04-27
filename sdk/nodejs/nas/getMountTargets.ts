@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const mt = alicloud.nas.getMountTargets({
+ * const mt = pulumi.output(alicloud.nas.getMountTargets({
  *     accessGroupName: "tf-testAccNasConfig",
  *     fileSystemId: "1a2sc4d",
- * });
+ * }, { async: true }));
  * 
  * export const alicloudNasMountTargetsId = mt.targets[0].id;
  * ```

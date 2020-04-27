@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     instanceId: instanceId,
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
- * }));
+ * }, { async: true }));
  * 
  * export const firstTopicName = topicsDs.topics[0].topic;
  * ```

@@ -18,13 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const saslAclsDs = alicloud.actiontrail.getSaslAcls({
+ * const saslAclsDs = pulumi.output(alicloud.actiontrail.getSaslAcls({
  *     aclResourceName: "testTopic",
  *     aclResourceType: "Topic",
  *     instanceId: "xxx",
  *     outputFile: "saslAcls.txt",
  *     username: "username",
- * });
+ * }, { async: true }));
  * 
  * export const firstSaslAclUsername = saslAclsDs.acls[0].username;
  * ```

@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("foo", {
  *     interfaceId: initiate.id,
  *     oppositeInterfaceId: opposite.id,
- * }, {dependsOn: [barRouterInterfaceConnection]});
+ * }, { dependsOn: [barRouterInterfaceConnection] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/router_interface_connection.html.markdown.

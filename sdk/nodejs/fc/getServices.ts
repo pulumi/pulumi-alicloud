@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const fcServicesDs = alicloud.fc.getServices({
+ * const fcServicesDs = pulumi.output(alicloud.fc.getServices({
  *     nameRegex: "sampleFcService",
- * });
+ * }, { async: true }));
  * 
  * export const firstFcServiceName = fcServicesDs.services[0].name;
  * ```

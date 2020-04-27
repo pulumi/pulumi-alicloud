@@ -17,14 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const scalingrulesDs = alicloud.ess.getScalingRules({
+ * const scalingrulesDs = pulumi.output(alicloud.ess.getScalingRules({
  *     ids: [
  *         "scalingRuleId1",
  *         "scalingRuleId2",
  *     ],
  *     nameRegex: "scalingRuleName",
  *     scalingGroupId: "scalingGroupId",
- * });
+ * }, { async: true }));
  * 
  * export const firstScalingRule = scalingrulesDs.rules[0].id;
  * ```

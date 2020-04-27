@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const groupsDs = alicloud.ram.getGroups({
+ * const groupsDs = pulumi.output(alicloud.ram.getGroups({
  *     nameRegex: "^group[0-9]*",
  *     outputFile: "groups.txt",
  *     userName: "user1",
- * });
+ * }, { async: true }));
  * 
  * export const firstGroupName = groupsDs.groups[0].name;
  * ```

@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const bwp = alicloud.cen.getBandwidthPackages({
+ * const bwp = pulumi.output(alicloud.cen.getBandwidthPackages({
  *     instanceId: "cen-id1",
  *     nameRegex: "^foo",
- * });
+ * }, { async: true }));
  * 
  * export const firstCenBandwidthPackageId = bwp.packages[0].id;
  * ```

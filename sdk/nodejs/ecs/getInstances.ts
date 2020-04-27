@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const instancesDs = alicloud.ecs.getInstances({
+ * const instancesDs = pulumi.output(alicloud.ecs.getInstances({
  *     nameRegex: "webServer",
  *     status: "Running",
- * });
+ * }, { async: true }));
  * 
  * export const firstInstanceId = instancesDs.instances[0].id;
  * export const instanceIds = instancesDs.ids!;

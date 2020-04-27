@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const fooCommonBandwidthPackages = fooCommonBandwithPackage.id.apply(id => alicloud.vpc.getCommonBandwidthPackages({
  *     ids: [id],
  *     nameRegex: "^tf-testAcc.*",
- * }));
+ * }, { async: true }));
  * ```
  * 
  * ## Public ip addresses Block

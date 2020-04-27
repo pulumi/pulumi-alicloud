@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const instanceBastionHostInstances = alicloud.yundun.getBastionHostInstances({
+ * const instanceBastionHostInstances = pulumi.output(alicloud.yundun.getBastionHostInstances({
  *     nameRegex: "^bastionhost",
- * });
+ * }, { async: true }));
  * 
  * export const instance = alicloud_yundun_bastionhost_instances_instance.map(v => v.id);
  * ```

@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const slbsDs = alicloud.slb.getLoadBalancers({
+ * const slbsDs = pulumi.output(alicloud.slb.getLoadBalancers({
  *     nameRegex: "sampleSlb",
- * });
+ * }, { async: true }));
  * 
  * export const firstSlbId = slbsDs.slbs[0].id;
  * ```

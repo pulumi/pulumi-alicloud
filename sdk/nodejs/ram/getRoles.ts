@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const rolesDs = alicloud.ram.getRoles({
+ * const rolesDs = pulumi.output(alicloud.ram.getRoles({
  *     nameRegex: ".*test.*",
  *     outputFile: "roles.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
- * });
+ * }, { async: true }));
  * 
  * export const firstRoleId = rolesDs.roles[0].id;
  * ```

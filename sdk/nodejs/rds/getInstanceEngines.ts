@@ -19,12 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const resources = alicloud.rds.getInstanceEngines({
+ * const resources = pulumi.output(alicloud.rds.getInstanceEngines({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceChargeType: "PostPaid",
  *     outputFile: "./engines.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstDbCategory = resources.instanceEngines[0].category;
  * ```

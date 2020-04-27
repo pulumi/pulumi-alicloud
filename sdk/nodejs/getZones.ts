@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const zonesDs = alicloud.getZones({
+ * const zonesDs = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudSsd",
  *     availableInstanceType: "ecs.n4.large",
- * });
+ * }, { async: true }));
  * // Create an ECS instance with the first matched zone
  * const instance = new alicloud.ecs.Instance("instance", {
  *     availabilityZone: zonesDs.zones[0].id,

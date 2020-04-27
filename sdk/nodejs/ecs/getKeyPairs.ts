@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultKeyPairs = defaultKeyPair.keyName.apply(keyName => alicloud.ecs.getKeyPairs({
  *     nameRegex: keyName,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.

@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const bucketObjectsDs = alicloud.oss.getBucketObjects({
+ * const bucketObjectsDs = pulumi.output(alicloud.oss.getBucketObjects({
  *     bucketName: "sampleBucket",
  *     keyRegex: "sample/sample_object.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstObjectKey = bucketObjectsDs.objects[0].key;
  * ```

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const vpnGateways = alicloud.vpn.getGateways({
+ * const vpnGateways = pulumi.output(alicloud.vpn.getGateways({
  *     businessStatus: "Normal",
  *     ids: [
  *         "fake-vpn-id1",
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     outputFile: "/tmp/vpns",
  *     status: "active",
  *     vpcId: "fake-vpc-id",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.

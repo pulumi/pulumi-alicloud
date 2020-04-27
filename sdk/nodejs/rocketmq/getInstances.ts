@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     ids: [id],
  *     nameRegex: name,
  *     outputFile: "instances.txt",
- * }));
+ * }, { async: true }));
  * 
  * export const firstInstanceId = instancesDs.instances[0].instanceId;
  * ```

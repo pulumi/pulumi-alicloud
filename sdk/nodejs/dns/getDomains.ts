@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const domainsDs = alicloud.dns.getDomains({
+ * const domainsDs = pulumi.output(alicloud.dns.getDomains({
  *     domainNameRegex: "^hegu",
  *     outputFile: "domains.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstDomainId = domainsDs.domains[0].domainId;
  * ```

@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const functionsDs = alicloud.fc.getFunctions({
+ * const functionsDs = pulumi.output(alicloud.fc.getFunctions({
  *     nameRegex: "sampleFcFunction",
  *     serviceName: "sampleService",
- * });
+ * }, { async: true }));
  * 
  * export const firstFcFunctionName = functionsDs.functions[0].name;
  * ```

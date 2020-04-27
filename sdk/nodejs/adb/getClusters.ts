@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const adbClustersDs = alicloud.adb.getClusters({
+ * const adbClustersDs = pulumi.output(alicloud.adb.getClusters({
  *     descriptionRegex: "am-\\w+",
  *     status: "Running",
- * });
+ * }, { async: true }));
  * 
  * export const firstAdbClusterId = adbClustersDs.clusters[0].id;
  * ```

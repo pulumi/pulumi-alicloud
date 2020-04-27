@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const foo = alicloud.vpc.getSslVpnServers({
+ * const foo = pulumi.output(alicloud.vpc.getSslVpnServers({
  *     ids: ["fake-server-id"],
  *     nameRegex: "^foo",
  *     outputFile: "/tmp/sslserver",
  *     vpnGatewayId: "fake-vpn-id",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_servers.html.markdown.

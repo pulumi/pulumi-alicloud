@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const mongo = alicloud.mongodb.getInstances({
+ * const mongo = pulumi.output(alicloud.mongodb.getInstances({
  *     availabilityZone: "eu-central-1a",
  *     instanceClass: "dds.mongo.mid",
  *     instanceType: "replicate",
  *     nameRegex: "dds-.+\\d+",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_instances.html.markdown.

@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const saslUsersDs = alicloud.actiontrail.getSaslUsers({
+ * const saslUsersDs = pulumi.output(alicloud.actiontrail.getSaslUsers({
  *     instanceId: "xxx",
  *     nameRegex: "username",
  *     outputFile: "saslUsers.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstSaslUsername = saslUsersDs.users[0].username;
  * ```

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * 
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getMasterSlaveServerGroups({
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbServerGroupId = sampleDs.groups[0].id;
  * ```

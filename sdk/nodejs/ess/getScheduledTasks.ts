@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ds = alicloud.ess.getScheduledTasks({
+ * const ds = pulumi.output(alicloud.ess.getScheduledTasks({
  *     nameRegex: "scheduledTaskName",
  *     scheduledTaskId: "scheduledTaskId",
- * });
+ * }, { async: true }));
  * 
  * export const firstScheduledTask = ds.tasks[0].id;
  * ```

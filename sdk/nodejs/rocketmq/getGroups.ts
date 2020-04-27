@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     groupIdRegex: groupId,
  *     instanceId: instanceId,
  *     outputFile: "groups.txt",
- * }));
+ * }, { async: true }));
  * 
  * export const firstGroupName = groupsDs.groups[0].groupId;
  * ```

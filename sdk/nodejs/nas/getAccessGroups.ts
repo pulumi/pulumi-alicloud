@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ag = alicloud.nas.getAccessGroups({
+ * const ag = pulumi.output(alicloud.nas.getAccessGroups({
  *     description: "tf-testAccAccessGroupsdatasource",
  *     nameRegex: "^foo",
  *     type: "Classic",
- * });
+ * }, { async: true }));
  * 
  * export const alicloudNasAccessGroupsId = ag.groups[0].id;
  * ```

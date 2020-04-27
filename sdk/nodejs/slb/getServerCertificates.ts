@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const sampleDs = alicloud.slb.getServerCertificates();
+ * const sampleDs = pulumi.output(alicloud.slb.getServerCertificates({ async: true }));
  * 
  * export const firstSlbServerCertificateId = sampleDs.certificates[0].id;
  * ```

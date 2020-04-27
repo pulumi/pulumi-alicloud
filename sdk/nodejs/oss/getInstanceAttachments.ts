@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const attachmentsDs = alicloud.oss.getInstanceAttachments({
+ * const attachmentsDs = pulumi.output(alicloud.oss.getInstanceAttachments({
  *     instanceName: "sample-instance",
  *     nameRegex: "testvpc",
  *     outputFile: "attachments.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstOtsAttachmentId = attachmentsDs.attachments[0].id;
  * ```

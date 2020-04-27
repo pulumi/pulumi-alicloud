@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const policiesDs = alicloud.ram.getPolicies({
+ * const policiesDs = pulumi.output(alicloud.ram.getPolicies({
  *     groupName: "group1",
  *     outputFile: "policies.txt",
  *     type: "System",
  *     userName: "user1",
- * });
+ * }, { async: true }));
  * 
  * export const firstPolicyName = policiesDs.policies[0].name;
  * ```

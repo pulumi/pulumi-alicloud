@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const instancesDs = alicloud.oss.getInstances({
+ * const instancesDs = pulumi.output(alicloud.oss.getInstances({
  *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstInstanceId = instancesDs.instances[0].id;
  * ```

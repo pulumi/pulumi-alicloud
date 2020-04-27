@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const polardbClustersDs = alicloud.polardb.getClusters({
+ * const polardbClustersDs = pulumi.output(alicloud.polardb.getClusters({
  *     descriptionRegex: "pc-\\w+",
  *     status: "Running",
- * });
+ * }, { async: true }));
  * 
  * export const firstPolardbClusterId = polardbClustersDs.clusters[0].id;
  * ```

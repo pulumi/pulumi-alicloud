@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "forward-entry-config-example-name";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
  * });
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultForwardEntries = defaultForwardEntry.forwardTableId.apply(forwardTableId => alicloud.vpc.getForwardEntries({
  *     forwardTableId: forwardTableId,
- * }));
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.

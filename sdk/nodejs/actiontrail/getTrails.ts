@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const trails = alicloud.actiontrail.getTrails({
+ * const trails = pulumi.output(alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
- * });
+ * }, { async: true }));
  * 
  * export const firstTrailName = trails.actiontrails[0].name;
  * ```

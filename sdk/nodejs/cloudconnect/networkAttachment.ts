@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkAttachment = new alicloud.cloudconnect.NetworkAttachment("default", {
  *     ccnId: ccn.id,
  *     sagId: "sag-xxxxx",
- * }, {dependsOn: [ccn]});
+ * }, { dependsOn: [ccn] });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_attachment.html.markdown.

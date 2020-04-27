@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * 
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getListeners({
  *     loadBalancerId: id,
- * }));
+ * }, { async: true }));
  * 
  * export const firstSlbListenerProtocol = sampleDs.slbListeners[0].protocol;
  * ```

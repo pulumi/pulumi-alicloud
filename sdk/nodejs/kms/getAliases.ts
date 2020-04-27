@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const kmsAliases = alicloud.kms.getAliases({
+ * const kmsAliases = pulumi.output(alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     nameRegex: "alias/tf-testKmsAlias_123",
- * });
+ * }, { async: true }));
  * 
  * export const firstKeyId = alicloud_kms_keys_kms_keys_ds.keys.0.id;
  * ```

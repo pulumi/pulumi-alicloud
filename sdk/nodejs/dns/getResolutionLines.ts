@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const resolutionLinesDs = alicloud.dns.getResolutionLines({
+ * const resolutionLinesDs = pulumi.output(alicloud.dns.getResolutionLines({
  *     lineCodes: ["cnUnicomShanxi"],
  *     outputFile: "support_lines.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstLineCode = resolutionLinesDs.lines[0].lineCode;
  * ```

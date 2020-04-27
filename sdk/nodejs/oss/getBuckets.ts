@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const ossBucketsDs = alicloud.oss.getBuckets({
+ * const ossBucketsDs = pulumi.output(alicloud.oss.getBuckets({
  *     nameRegex: "sampleOssBucket",
- * });
+ * }, { async: true }));
  * 
  * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
  * ```

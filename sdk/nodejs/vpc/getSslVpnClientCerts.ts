@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const foo = alicloud.vpc.getSslVpnClientCerts({
+ * const foo = pulumi.output(alicloud.vpc.getSslVpnClientCerts({
  *     ids: ["fake-cert-id"],
  *     nameRegex: "^foo",
  *     outputFile: "/tmp/clientcert",
  *     sslVpnServerId: "fake-server-id",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ssl_vpn_client_certs.html.markdown.

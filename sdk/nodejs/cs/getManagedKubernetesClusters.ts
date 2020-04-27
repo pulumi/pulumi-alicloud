@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * 
  * // Declare the data source
- * const k8sClusters = alicloud.cs.getManagedKubernetesClusters({
+ * const k8sClusters = pulumi.output(alicloud.cs.getManagedKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
- * });
+ * }, { async: true }));
  * 
  * export const output = k8sClusters.clusters;
  * ```

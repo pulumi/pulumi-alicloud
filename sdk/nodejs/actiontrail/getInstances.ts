@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
  * 
- * const defaultZones = alicloud.getZones({
+ * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
- * });
+ * }, { async: true }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
  * });
@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  *     topicQuota: 50,
  *     vswitchId: defaultSwitch.id,
  * });
- * const instancesDs = alicloud.actiontrail.getInstances({
+ * const instancesDs = pulumi.output(alicloud.actiontrail.getInstances({
  *     nameRegex: "alikafkaInstanceName",
  *     outputFile: "instances.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstInstanceName = instancesDs.instances[0].name;
  * ```

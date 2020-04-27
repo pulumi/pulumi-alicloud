@@ -18,11 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
+ * const consumerGroupsDs = pulumi.output(alicloud.actiontrail.getConsumerGroups({
  *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
  *     outputFile: "consumerGroups.txt",
- * });
+ * }, { async: true }));
  * 
  * export const firstGroupName = consumerGroupsDs.consumerIds[0];
  * ```

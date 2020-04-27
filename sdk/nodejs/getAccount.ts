@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * 
- * const current = alicloud.getAccount();
+ * const current = pulumi.output(alicloud.getAccount({ async: true }));
  * 
  * export const currentAccountId = current.id;
  * ```
