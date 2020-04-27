@@ -43,7 +43,7 @@ type GetForwardEntriesResult struct {
 	// The public IP address.
 	ExternalIp     *string `pulumi:"externalIp"`
 	ForwardTableId string  `pulumi:"forwardTableId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Forward Entries IDs.
 	Ids []string `pulumi:"ids"`

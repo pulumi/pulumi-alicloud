@@ -36,7 +36,7 @@ type GetSnatEntriesArgs struct {
 type GetSnatEntriesResult struct {
 	// A list of Snat Entries. Each element contains the following attributes:
 	Entries []GetSnatEntriesEntry `pulumi:"entries"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of Snat Entries IDs.
 	Ids        []string `pulumi:"ids"`

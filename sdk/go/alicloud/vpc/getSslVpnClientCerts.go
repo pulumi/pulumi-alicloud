@@ -32,7 +32,7 @@ type GetSslVpnClientCertsArgs struct {
 // A collection of values returned by getSslVpnClientCerts.
 type GetSslVpnClientCertsResult struct {
 	Certs []GetSslVpnClientCertsCert `pulumi:"certs"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SSL-VPN client cert IDs.
 	Ids       []string `pulumi:"ids"`

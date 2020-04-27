@@ -12,12 +12,11 @@ from .. import utilities, tables
 class MachineGroup(pulumi.CustomResource):
     identify_lists: pulumi.Output[list]
     """
-    The machine identification.
+    The specific machine identification, which can be an IP address or user-defined identity.
     """
     identify_type: pulumi.Output[str]
     """
     The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-    * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
     """
     name: pulumi.Output[str]
     """
@@ -36,9 +35,8 @@ class MachineGroup(pulumi.CustomResource):
         Create a MachineGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] identify_lists: The machine identification.
+        :param pulumi.Input[list] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[str] identify_type: The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-               * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[str] name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the machine group belongs.
         :param pulumi.Input[str] topic: The topic of a machine group.
@@ -84,9 +82,8 @@ class MachineGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] identify_lists: The machine identification.
+        :param pulumi.Input[list] identify_lists: The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[str] identify_type: The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-               * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
         :param pulumi.Input[str] name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the machine group belongs.
         :param pulumi.Input[str] topic: The topic of a machine group.

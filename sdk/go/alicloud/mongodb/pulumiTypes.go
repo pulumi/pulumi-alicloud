@@ -13,7 +13,8 @@ import (
 type ShardingInstanceMongoList struct {
 	// Mongo node connection string
 	ConnectString *string `pulumi:"connectString"`
-	NodeClass     string  `pulumi:"nodeClass"`
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	NodeClass string `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId *string `pulumi:"nodeId"`
 	// Mongo node port
@@ -36,7 +37,8 @@ type ShardingInstanceMongoListInput interface {
 type ShardingInstanceMongoListArgs struct {
 	// Mongo node connection string
 	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
-	NodeClass     pulumi.StringInput    `pulumi:"nodeClass"`
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// Mongo node port
@@ -101,6 +103,7 @@ func (o ShardingInstanceMongoListOutput) ConnectString() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
 }
 
+// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 func (o ShardingInstanceMongoListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
@@ -137,6 +140,7 @@ func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingI
 }
 
 type ShardingInstanceShardList struct {
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId *string `pulumi:"nodeId"`
@@ -159,6 +163,7 @@ type ShardingInstanceShardListInput interface {
 }
 
 type ShardingInstanceShardListArgs struct {
+	// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
 	// The ID of the shard-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
@@ -220,6 +225,7 @@ func (o ShardingInstanceShardListOutput) ToShardingInstanceShardListOutputWithCo
 	return o
 }
 
+// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 func (o ShardingInstanceShardListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
 }

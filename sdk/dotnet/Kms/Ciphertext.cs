@@ -17,13 +17,15 @@ namespace Pulumi.AliCloud.Kms
         [Output("ciphertextBlob")]
         public Output<string> CiphertextBlob { get; private set; } = null!;
 
+        /// <summary>
+        /// -
+        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
         [Output("encryptionContext")]
         public Output<ImmutableDictionary<string, string>?> EncryptionContext { get; private set; } = null!;
 
         /// <summary>
         /// The globally unique ID of the CMK.
-        /// * `encryption_context` -
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
@@ -82,6 +84,11 @@ namespace Pulumi.AliCloud.Kms
     {
         [Input("encryptionContext")]
         private InputMap<string>? _encryptionContext;
+
+        /// <summary>
+        /// -
+        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
         public InputMap<string> EncryptionContext
         {
             get => _encryptionContext ?? (_encryptionContext = new InputMap<string>());
@@ -90,8 +97,6 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The globally unique ID of the CMK.
-        /// * `encryption_context` -
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
@@ -117,6 +122,11 @@ namespace Pulumi.AliCloud.Kms
 
         [Input("encryptionContext")]
         private InputMap<string>? _encryptionContext;
+
+        /// <summary>
+        /// -
+        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
         public InputMap<string> EncryptionContext
         {
             get => _encryptionContext ?? (_encryptionContext = new InputMap<string>());
@@ -125,8 +135,6 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The globally unique ID of the CMK.
-        /// * `encryption_context` -
-        /// (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }

@@ -297,27 +297,52 @@ func (o ApiFcServiceConfigPtrOutput) Elem() ApiFcServiceConfigOutput {
 
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 func (o ApiFcServiceConfigPtrOutput) ArnRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArnRole
+	}).(pulumi.StringPtrOutput)
 }
 
 // The function name of function compute service.
-func (o ApiFcServiceConfigPtrOutput) FunctionName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+func (o ApiFcServiceConfigPtrOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FunctionName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The region that the function compute service belongs to.
-func (o ApiFcServiceConfigPtrOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
+func (o ApiFcServiceConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 // The service name of function compute service.
-func (o ApiFcServiceConfigPtrOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o ApiFcServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
-func (o ApiFcServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+func (o ApiFcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ApiHttpServiceConfig struct {
@@ -477,27 +502,52 @@ func (o ApiHttpServiceConfigPtrOutput) Elem() ApiHttpServiceConfigOutput {
 }
 
 // The address of backend service.
-func (o ApiHttpServiceConfigPtrOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Address }).(pulumi.StringOutput)
+func (o ApiHttpServiceConfigPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ApiHttpServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AoneName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
-func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+func (o ApiHttpServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
 }
 
 // The path of backend service.
-func (o ApiHttpServiceConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+func (o ApiHttpServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
-func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v ApiHttpServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+func (o ApiHttpServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApiHttpServiceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ApiHttpVpcServiceConfig struct {
@@ -656,27 +706,52 @@ func (o ApiHttpVpcServiceConfigPtrOutput) Elem() ApiHttpVpcServiceConfigOutput {
 }
 
 func (o ApiHttpVpcServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AoneName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
-func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Method }).(pulumi.StringOutput)
+func (o ApiHttpVpcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
 }
 
 // System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html)
-func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Name }).(pulumi.StringOutput)
+func (o ApiHttpVpcServiceConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The path of backend service.
-func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) string { return v.Path }).(pulumi.StringOutput)
+func (o ApiHttpVpcServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
-func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntOutput {
-	return o.ApplyT(func(v ApiHttpVpcServiceConfig) int { return v.Timeout }).(pulumi.IntOutput)
+func (o ApiHttpVpcServiceConfigPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApiHttpVpcServiceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type ApiMockServiceConfig struct {
@@ -808,12 +883,22 @@ func (o ApiMockServiceConfigPtrOutput) Elem() ApiMockServiceConfigOutput {
 }
 
 func (o ApiMockServiceConfigPtrOutput) AoneName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiMockServiceConfig) *string { return v.AoneName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApiMockServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AoneName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The result of the mock service.
-func (o ApiMockServiceConfigPtrOutput) Result() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiMockServiceConfig) string { return v.Result }).(pulumi.StringOutput)
+func (o ApiMockServiceConfigPtrOutput) Result() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiMockServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Result
+	}).(pulumi.StringPtrOutput)
 }
 
 type ApiRequestConfig struct {
@@ -977,27 +1062,52 @@ func (o ApiRequestConfigPtrOutput) Elem() ApiRequestConfigOutput {
 
 // The body format of the api, which support the values of 'STREAM' and 'FORM'
 func (o ApiRequestConfigPtrOutput) BodyFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiRequestConfig) *string { return v.BodyFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ApiRequestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BodyFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 // The http method of backend service.
-func (o ApiRequestConfigPtrOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiRequestConfig) string { return v.Method }).(pulumi.StringOutput)
+func (o ApiRequestConfigPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiRequestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
 }
 
 // The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'
-func (o ApiRequestConfigPtrOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiRequestConfig) string { return v.Mode }).(pulumi.StringOutput)
+func (o ApiRequestConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiRequestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The path of backend service.
-func (o ApiRequestConfigPtrOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiRequestConfig) string { return v.Path }).(pulumi.StringOutput)
+func (o ApiRequestConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiRequestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
 }
 
 // The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'
-func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiRequestConfig) string { return v.Protocol }).(pulumi.StringOutput)
+func (o ApiRequestConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiRequestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Protocol
+	}).(pulumi.StringPtrOutput)
 }
 
 type ApiRequestParameter struct {

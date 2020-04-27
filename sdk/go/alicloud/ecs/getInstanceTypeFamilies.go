@@ -37,7 +37,7 @@ type GetInstanceTypeFamiliesResult struct {
 	Families []GetInstanceTypeFamiliesFamily `pulumi:"families"`
 	// The generation of the instance type family.
 	Generation *string `pulumi:"generation"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of instance type family IDs.
 	Ids                []string `pulumi:"ids"`

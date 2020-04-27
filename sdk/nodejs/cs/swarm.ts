@@ -99,6 +99,9 @@ export class Swarm extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly namePrefix!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     */
     public readonly needSlb!: pulumi.Output<boolean | undefined>;
     /**
      * The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -114,7 +117,6 @@ export class Swarm extends pulumi.CustomResource {
     public readonly password!: pulumi.Output<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
     public readonly releaseEip!: pulumi.Output<boolean | undefined>;
     /**
@@ -255,6 +257,9 @@ export interface SwarmState {
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
+    /**
+     * Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     */
     readonly needSlb?: pulumi.Input<boolean>;
     /**
      * The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -270,7 +275,6 @@ export interface SwarmState {
     readonly password?: pulumi.Input<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
     readonly releaseEip?: pulumi.Input<boolean>;
     /**
@@ -334,6 +338,9 @@ export interface SwarmArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly namePrefix?: pulumi.Input<string>;
+    /**
+     * Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+     */
     readonly needSlb?: pulumi.Input<boolean>;
     /**
      * The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -345,7 +352,6 @@ export interface SwarmArgs {
     readonly password: pulumi.Input<string>;
     /**
      * Whether to release EIP after creating swarm cluster successfully. Default to false.
-     * * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
      */
     readonly releaseEip?: pulumi.Input<boolean>;
     /**

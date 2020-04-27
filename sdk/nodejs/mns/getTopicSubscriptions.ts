@@ -72,7 +72,7 @@ export interface GetTopicSubscriptionsResult {
     readonly subscriptions: outputs.mns.GetTopicSubscriptionsSubscription[];
     readonly topicName: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

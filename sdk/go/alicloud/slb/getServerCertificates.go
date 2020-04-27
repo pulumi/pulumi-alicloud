@@ -34,7 +34,7 @@ type GetServerCertificatesArgs struct {
 type GetServerCertificatesResult struct {
 	// A list of SLB server certificates. Each element contains the following attributes:
 	Certificates []GetServerCertificatesCertificate `pulumi:"certificates"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB server certificates IDs.
 	Ids       []string `pulumi:"ids"`

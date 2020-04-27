@@ -26,7 +26,7 @@ type GetTopicsArgs struct {
 
 // A collection of values returned by getTopics.
 type GetTopicsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// A list of topic names.

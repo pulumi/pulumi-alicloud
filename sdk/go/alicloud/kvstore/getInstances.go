@@ -21,16 +21,16 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
 	// A list of RKV instance IDs.
-	Ids           []string `pulumi:"ids"`
-	InstanceClass *string  `pulumi:"instanceClass"`
+	Ids []string `pulumi:"ids"`
+	// Type of the applied ApsaraDB for Redis instance.
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	InstanceClass *string `pulumi:"instanceClass"`
 	// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType *string `pulumi:"instanceType"`
 	// A regex string to apply to the instance name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Status of the instance.
-	// * `instanceClass`- (Optional) Type of the applied ApsaraDB for Redis instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
 	Status *string `pulumi:"status"`
 	// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -42,7 +42,7 @@ type GetInstancesArgs struct {
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of RKV instance IDs.
 	Ids           []string `pulumi:"ids"`

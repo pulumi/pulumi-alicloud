@@ -48,6 +48,9 @@ class Swarm(pulumi.CustomResource):
     """
     name_prefix: pulumi.Output[str]
     need_slb: pulumi.Output[bool]
+    """
+    Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+    """
     node_number: pulumi.Output[float]
     """
     The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
@@ -69,7 +72,6 @@ class Swarm(pulumi.CustomResource):
     release_eip: pulumi.Output[bool]
     """
     Whether to release EIP after creating swarm cluster successfully. Default to false.
-    * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
     """
     security_group_id: pulumi.Output[str]
     """
@@ -114,10 +116,10 @@ class Swarm(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The type of ECS instance node.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] name: The container cluster's name. It is the only in one Alicloud account.
+        :param pulumi.Input[bool] need_slb: Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         :param pulumi.Input[float] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
         :param pulumi.Input[str] password: The password of ECS instance node.
         :param pulumi.Input[bool] release_eip: Whether to release EIP after creating swarm cluster successfully. Default to false.
-               * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         :param pulumi.Input[float] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         :param pulumi.Input[str] vswitch_id: The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
         """
@@ -192,11 +194,11 @@ class Swarm(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The type of ECS instance node.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] name: The container cluster's name. It is the only in one Alicloud account.
+        :param pulumi.Input[bool] need_slb: Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         :param pulumi.Input[float] node_number: The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
         :param pulumi.Input[list] nodes: List of cluster nodes. It contains several attributes to `Block Nodes`.
         :param pulumi.Input[str] password: The password of ECS instance node.
         :param pulumi.Input[bool] release_eip: Whether to release EIP after creating swarm cluster successfully. Default to false.
-               * `need_slb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
         :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
         :param pulumi.Input[float] size: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
         :param pulumi.Input[str] slb_id: The ID of load balancer where the current cluster worker node is located.

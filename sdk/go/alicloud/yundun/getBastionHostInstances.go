@@ -42,7 +42,7 @@ type GetBastionHostInstancesArgs struct {
 type GetBastionHostInstancesResult struct {
 	DescriptionRegex *string  `pulumi:"descriptionRegex"`
 	Descriptions     []string `pulumi:"descriptions"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of apis. Each element contains the following attributes:

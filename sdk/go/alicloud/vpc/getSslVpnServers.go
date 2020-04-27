@@ -31,7 +31,7 @@ type GetSslVpnServersArgs struct {
 
 // A collection of values returned by getSslVpnServers.
 type GetSslVpnServersResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SSL-VPN server IDs.
 	Ids       []string `pulumi:"ids"`

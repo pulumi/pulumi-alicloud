@@ -29,7 +29,7 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	DescriptionRegex *string  `pulumi:"descriptionRegex"`
 	Descriptions     []string `pulumi:"descriptions"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string                 `pulumi:"id"`
 	Ids        []string               `pulumi:"ids"`
 	Instances  []GetInstancesInstance `pulumi:"instances"`

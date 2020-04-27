@@ -47,7 +47,6 @@ export class ShardingInstance extends pulumi.CustomResource {
     public readonly backupTime!: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -64,7 +63,6 @@ export class ShardingInstance extends pulumi.CustomResource {
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The mongo-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     public readonly mongoLists!: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
     /**
@@ -89,9 +87,11 @@ export class ShardingInstance extends pulumi.CustomResource {
     public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
      * the shard-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
      * The TDE(Transparent Data Encryption) status.
@@ -196,7 +196,6 @@ export interface ShardingInstanceState {
     readonly backupTime?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly engineVersion?: pulumi.Input<string>;
     /**
@@ -213,7 +212,6 @@ export interface ShardingInstanceState {
     readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The mongo-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     readonly mongoLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -238,9 +236,11 @@ export interface ShardingInstanceState {
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * the shard-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     readonly shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status.
@@ -275,7 +275,6 @@ export interface ShardingInstanceArgs {
     readonly backupTime?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/zh/doc-detail/61884.htm) `EngineVersion`. 
-     * * `storageEngine` (Optional, ForceNew) Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
      */
     readonly engineVersion: pulumi.Input<string>;
     /**
@@ -292,7 +291,6 @@ export interface ShardingInstanceArgs {
     readonly kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
      * The mongo-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     readonly mongoLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -313,9 +311,11 @@ export interface ShardingInstanceArgs {
     readonly securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * the shard-node count can be purchased is in range of [2, 32].
-     * * `nodeClass` -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
     readonly shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
+    /**
+     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     */
     readonly storageEngine?: pulumi.Input<string>;
     /**
      * The TDE(Transparent Data Encryption) status.

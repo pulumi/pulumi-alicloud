@@ -34,7 +34,7 @@ type GetAclsArgs struct {
 type GetAclsResult struct {
 	// A list of Sag Acls. Each element contains the following attributes:
 	Acls []GetAclsAcl `pulumi:"acls"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Sag Acl IDs.
 	Ids       []string `pulumi:"ids"`

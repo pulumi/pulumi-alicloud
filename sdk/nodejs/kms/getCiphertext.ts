@@ -24,11 +24,13 @@ export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptio
  * A collection of arguments for invoking getCiphertext.
  */
 export interface GetCiphertextArgs {
+    /**
+     * -
+     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
     readonly encryptionContext?: {[key: string]: string};
     /**
      * The globally unique ID of the CMK.
-     * * `encryptionContext` -
-     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     readonly keyId: string;
     /**
@@ -49,7 +51,7 @@ export interface GetCiphertextResult {
     readonly keyId: string;
     readonly plaintext: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

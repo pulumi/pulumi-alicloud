@@ -278,13 +278,13 @@ type InstanceDataDisk struct {
 	// - `cloudEssd`: The ESSD cloud disk.
 	// - `ephemeralSsd`: The local SSD disk.
 	// Default to `cloudEfficiency`.
-	// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Encrypted   *bool   `pulumi:"encrypted"`
+	// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The size of the data disk.
@@ -320,13 +320,13 @@ type InstanceDataDiskArgs struct {
 	// - `cloudEssd`: The ESSD cloud disk.
 	// - `ephemeralSsd`: The local SSD disk.
 	// Default to `cloudEfficiency`.
-	// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Encrypted   pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The size of the data disk.
@@ -404,7 +404,6 @@ func (o InstanceDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 // - `cloudEssd`: The ESSD cloud disk.
 // - `ephemeralSsd`: The local SSD disk.
 // Default to `cloudEfficiency`.
-// * `encrypted` -(Optional, Bool, ForceNew) Encrypted the data in this disk.
 func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -419,6 +418,7 @@ func (o InstanceDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
 func (o InstanceDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -475,7 +475,8 @@ type LaunchTemplateDataDisk struct {
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	Encrypted   *bool   `pulumi:"encrypted"`
+	// -(Optional, Bool) Encrypted the data in this disk.
+	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The size of the data disk.
@@ -513,7 +514,8 @@ type LaunchTemplateDataDiskArgs struct {
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Encrypted   pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	// -(Optional, Bool) Encrypted the data in this disk.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The size of the data disk.
@@ -599,6 +601,7 @@ func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// -(Optional, Bool) Encrypted the data in this disk.
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -804,27 +807,52 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) Elem() LaunchTemplateNetworkIn
 
 // The description of the data disk.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The primary private IP address of the ENI.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) PrimaryIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.PrimaryIp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIp
+	}).(pulumi.StringPtrOutput)
 }
 
 // The security group ID must be one in the same VPC.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o LaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetDisksDisk struct {

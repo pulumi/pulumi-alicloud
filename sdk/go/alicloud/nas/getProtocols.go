@@ -30,7 +30,7 @@ type GetProtocolsArgs struct {
 
 // A collection of values returned by getProtocols.
 type GetProtocolsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 	// A list of supported protocol type..

@@ -33,7 +33,7 @@ type GetDomainRecordsArgs struct {
 type GetDomainRecordsResult struct {
 	DomainName      string  `pulumi:"domainName"`
 	HostRecordRegex *string `pulumi:"hostRecordRegex"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string                   `pulumi:"id"`
 	Ids        []string                 `pulumi:"ids"`
 	IsLocked   *bool                    `pulumi:"isLocked"`

@@ -418,19 +418,39 @@ func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
 }
 
 func (o ProviderAssumeRolePtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.Policy }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ProviderAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderAssumeRolePtrOutput) RoleArn() pulumi.StringOutput {
-	return o.ApplyT(func(v ProviderAssumeRole) string { return v.RoleArn }).(pulumi.StringOutput)
+func (o ProviderAssumeRolePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) SessionExpiration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ProviderAssumeRole) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ProviderAssumeRole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiration
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProviderAssumeRole) *string { return v.SessionName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ProviderAssumeRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ProviderEndpoint struct {

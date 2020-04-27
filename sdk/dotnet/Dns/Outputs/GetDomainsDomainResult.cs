@@ -47,7 +47,6 @@ namespace Pulumi.AliCloud.Dns.Outputs
         public readonly string PunyCode;
         /// <summary>
         /// Cloud analysis version code.
-        /// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
         /// </summary>
         public readonly string VersionCode;
 

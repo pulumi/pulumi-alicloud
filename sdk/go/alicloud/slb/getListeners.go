@@ -35,7 +35,7 @@ type GetListenersResult struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// Frontend port used to receive incoming traffic and distribute it to the backend servers.
 	FrontendPort *int `pulumi:"frontendPort"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id             string  `pulumi:"id"`
 	LoadBalancerId string  `pulumi:"loadBalancerId"`
 	OutputFile     *string `pulumi:"outputFile"`

@@ -21,10 +21,9 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 type GetUsersArgs struct {
 	// Filter results by a specific group name. Returned users are in the specified group.
 	GroupName *string `pulumi:"groupName"`
-	// A list of ram user IDs.
+	// - A list of ram user IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting users by their names.
-	// * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
@@ -36,7 +35,7 @@ type GetUsersArgs struct {
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	GroupName *string `pulumi:"groupName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ram user IDs.
 	Ids       []string `pulumi:"ids"`

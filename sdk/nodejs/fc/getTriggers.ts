@@ -54,12 +54,11 @@ export interface GetTriggersArgs {
      */
     readonly functionName: string;
     /**
-     * A list of FC triggers ids.
+     * - A list of FC triggers ids.
      */
     readonly ids?: string[];
     /**
      * A regex string to filter results by FC trigger name.
-     * * `ids` (Optional, Available in 1.53.0+) - A list of FC triggers ids.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -90,7 +89,7 @@ export interface GetTriggersResult {
      */
     readonly triggers: outputs.fc.GetTriggersTrigger[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

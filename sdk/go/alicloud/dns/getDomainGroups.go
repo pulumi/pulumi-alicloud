@@ -26,7 +26,7 @@ type GetDomainGroupsArgs struct {
 // A collection of values returned by getDomainGroups.
 type GetDomainGroupsResult struct {
 	Groups []GetDomainGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	Ids        []string `pulumi:"ids"`
 	NameRegex  *string  `pulumi:"nameRegex"`

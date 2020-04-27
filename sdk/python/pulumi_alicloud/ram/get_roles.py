@@ -18,7 +18,7 @@ class GetRolesResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -72,9 +72,8 @@ def get_roles(ids=None,name_regex=None,output_file=None,policy_name=None,policy_
 
 
 
-    :param list ids: A list of ram role IDs. 
+    :param list ids: - A list of ram role IDs. 
     :param str name_regex: A regex string to filter results by the role name.
-           * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """

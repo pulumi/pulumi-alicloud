@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         public readonly string? Engine;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

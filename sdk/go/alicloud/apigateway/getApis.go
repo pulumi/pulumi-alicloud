@@ -37,7 +37,7 @@ type GetApisResult struct {
 	Apis []GetApisApi `pulumi:"apis"`
 	// The group id that the apis belong to.
 	GroupId *string `pulumi:"groupId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of api IDs.
 	Ids       []string `pulumi:"ids"`

@@ -26,7 +26,7 @@ class LaunchTemplate(pulumi.CustomResource):
         - cloud_essd: ESSD cloud Disks.
       * `delete_with_instance` (`bool`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
       * `description` (`str`) - The description of the data disk.
-      * `encrypted` (`bool`)
+      * `encrypted` (`bool`) - -(Optional, Bool) Encrypted the data in this disk.
       * `name` (`str`) - The name of the data disk.
       * `size` (`float`) - The size of the data disk.
         - cloud：[5, 2000]
@@ -119,6 +119,9 @@ class LaunchTemplate(pulumi.CustomResource):
     The security group ID must be one in the same VPC.
     """
     spot_price_limit: pulumi.Output[float]
+    """
+    -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+    """
     spot_strategy: pulumi.Output[str]
     """
     The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
@@ -201,6 +204,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -231,7 +235,7 @@ class LaunchTemplate(pulumi.CustomResource):
             - cloud_essd: ESSD cloud Disks.
           * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool) Encrypted the data in this disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]
@@ -338,6 +342,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[float] spot_price_limit: -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
                - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -368,7 +373,7 @@ class LaunchTemplate(pulumi.CustomResource):
             - cloud_essd: ESSD cloud Disks.
           * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`)
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool) Encrypted the data in this disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]

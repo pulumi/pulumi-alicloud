@@ -37,6 +37,10 @@ namespace Pulumi.AliCloud.KVStore
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Type of the applied ApsaraDB for Redis instance.
+        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
 
@@ -57,8 +61,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// Status of the instance.
-        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -97,7 +99,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstancesResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

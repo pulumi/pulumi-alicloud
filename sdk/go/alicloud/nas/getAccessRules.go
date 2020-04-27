@@ -37,7 +37,7 @@ type GetAccessRulesArgs struct {
 // A collection of values returned by getAccessRules.
 type GetAccessRulesResult struct {
 	AccessGroupName string `pulumi:"accessGroupName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
 	Ids        []string `pulumi:"ids"`

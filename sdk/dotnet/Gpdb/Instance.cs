@@ -31,6 +31,9 @@ namespace Pulumi.AliCloud.Gpdb
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Database engine: gpdb. System Default value: gpdb.
+        /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
@@ -131,6 +134,9 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Database engine: gpdb. System Default value: gpdb.
+        /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
@@ -204,6 +210,9 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Database engine: gpdb. System Default value: gpdb.
+        /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 

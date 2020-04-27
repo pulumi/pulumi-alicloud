@@ -39,7 +39,7 @@ type GetGatewaysResult struct {
 	BusinessStatus *string `pulumi:"businessStatus"`
 	// A list of VPN gateways. Each element contains the following attributes:
 	Gateways []GetGatewaysGateway `pulumi:"gateways"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// IDs of the VPN.
 	Ids       []string `pulumi:"ids"`

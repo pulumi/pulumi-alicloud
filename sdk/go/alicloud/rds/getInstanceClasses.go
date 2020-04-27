@@ -47,7 +47,7 @@ type GetInstanceClassesResult struct {
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	Engine          *string `pulumi:"engine"`
 	EngineVersion   *string `pulumi:"engineVersion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Available in 1.60.0+) A list of Rds instance class codes.
 	Ids                []string `pulumi:"ids"`

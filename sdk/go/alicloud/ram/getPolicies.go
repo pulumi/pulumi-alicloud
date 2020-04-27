@@ -35,7 +35,7 @@ type GetPoliciesArgs struct {
 // A collection of values returned by getPolicies.
 type GetPoliciesResult struct {
 	GroupName *string `pulumi:"groupName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	NameRegex *string `pulumi:"nameRegex"`
 	// A list of ram group names.

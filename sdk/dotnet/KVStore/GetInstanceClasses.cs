@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.KVStore
         public readonly string? Engine;
         public readonly string? EngineVersion;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? InstanceChargeType;

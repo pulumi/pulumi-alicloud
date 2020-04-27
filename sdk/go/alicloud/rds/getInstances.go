@@ -50,7 +50,7 @@ type GetInstancesResult struct {
 	DbType *string `pulumi:"dbType"`
 	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL` and `PPAS`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of RDS instance IDs.
 	Ids []string `pulumi:"ids"`

@@ -50,6 +50,9 @@ export class Instance extends pulumi.CustomResource {
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Database engine: gpdb. System Default value: gpdb.
+     */
     public readonly engine!: pulumi.Output<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
@@ -141,6 +144,9 @@ export interface InstanceState {
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Database engine: gpdb. System Default value: gpdb.
+     */
     readonly engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.
@@ -181,6 +187,9 @@ export interface InstanceArgs {
      * The name of DB instance. It a string of 2 to 256 characters.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Database engine: gpdb. System Default value: gpdb.
+     */
     readonly engine?: pulumi.Input<string>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/86908.htm) `EngineVersion`.

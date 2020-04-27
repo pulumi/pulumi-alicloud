@@ -39,7 +39,8 @@ type Swarm struct {
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
-	NeedSlb    pulumi.BoolPtrOutput   `pulumi:"needSlb"`
+	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	NeedSlb pulumi.BoolPtrOutput `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrOutput `pulumi:"nodeNumber"`
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -47,7 +48,6 @@ type Swarm struct {
 	// The password of ECS instance node.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip pulumi.BoolPtrOutput `pulumi:"releaseEip"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -122,7 +122,8 @@ type swarmState struct {
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	NeedSlb    *bool   `pulumi:"needSlb"`
+	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	NeedSlb *bool `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber *int `pulumi:"nodeNumber"`
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -130,7 +131,6 @@ type swarmState struct {
 	// The password of ECS instance node.
 	Password *string `pulumi:"password"`
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip *bool `pulumi:"releaseEip"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -166,7 +166,8 @@ type SwarmState struct {
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	NeedSlb    pulumi.BoolPtrInput
+	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	NeedSlb pulumi.BoolPtrInput
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrInput
 	// List of cluster nodes. It contains several attributes to `Block Nodes`.
@@ -174,7 +175,6 @@ type SwarmState struct {
 	// The password of ECS instance node.
 	Password pulumi.StringPtrInput
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip pulumi.BoolPtrInput
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringPtrInput
@@ -212,13 +212,13 @@ type swarmArgs struct {
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
-	NeedSlb    *bool   `pulumi:"needSlb"`
+	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	NeedSlb *bool `pulumi:"needSlb"`
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber *int `pulumi:"nodeNumber"`
 	// The password of ECS instance node.
 	Password string `pulumi:"password"`
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip *bool `pulumi:"releaseEip"`
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size *int `pulumi:"size"`
@@ -247,13 +247,13 @@ type SwarmArgs struct {
 	// The container cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
-	NeedSlb    pulumi.BoolPtrInput
+	// Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
+	NeedSlb pulumi.BoolPtrInput
 	// The ECS node number of the container cluster. Its value choices are 1~50, and default to 1.
 	NodeNumber pulumi.IntPtrInput
 	// The password of ECS instance node.
 	Password pulumi.StringInput
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
-	// * `needSlb`- (ForceNew) Whether to create the default simple routing Server Load Balancer instance for the cluster. The default value is true.
 	ReleaseEip pulumi.BoolPtrInput
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size pulumi.IntPtrInput

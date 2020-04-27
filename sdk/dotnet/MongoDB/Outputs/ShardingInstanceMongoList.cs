@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// Mongo node connection string
         /// </summary>
         public readonly string? ConnectString;
+        /// <summary>
+        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// </summary>
         public readonly string NodeClass;
         /// <summary>
         /// The ID of the shard-node.

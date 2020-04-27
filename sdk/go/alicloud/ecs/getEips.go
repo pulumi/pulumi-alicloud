@@ -36,7 +36,7 @@ type GetEipsArgs struct {
 type GetEipsResult struct {
 	// A list of EIPs. Each element contains the following attributes:
 	Eips []GetEipsEip `pulumi:"eips"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of EIP IDs.
 	Ids         []string `pulumi:"ids"`

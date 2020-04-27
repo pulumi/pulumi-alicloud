@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetRouteTablesResult
     {
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

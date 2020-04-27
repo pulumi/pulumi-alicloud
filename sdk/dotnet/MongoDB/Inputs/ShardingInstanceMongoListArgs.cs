@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         [Input("connectString")]
         public Input<string>? ConnectString { get; set; }
 
+        /// <summary>
+        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// </summary>
         [Input("nodeClass", required: true)]
         public Input<string> NodeClass { get; set; } = null!;
 

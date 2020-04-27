@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Nas
         public readonly string? AccessGroupName;
         public readonly string FileSystemId;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

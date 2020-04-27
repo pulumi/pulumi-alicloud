@@ -27,6 +27,10 @@ export interface GetPlaintextArgs {
      * The ciphertext to be decrypted.
      */
     readonly ciphertextBlob: string;
+    /**
+     * -
+     * (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     */
     readonly encryptionContext?: {[key: string]: string};
 }
 
@@ -45,7 +49,7 @@ export interface GetPlaintextResult {
      */
     readonly plaintext: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

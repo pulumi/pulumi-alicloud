@@ -34,7 +34,7 @@ type GetLifecycleHooksArgs struct {
 type GetLifecycleHooksResult struct {
 	// A list of lifecycle hooks. Each element contains the following attributes:
 	Hooks []GetLifecycleHooksHook `pulumi:"hooks"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of lifecycle hook ids.
 	Ids       []string `pulumi:"ids"`

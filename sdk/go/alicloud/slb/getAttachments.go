@@ -28,7 +28,7 @@ type GetAttachmentsArgs struct {
 
 // A collection of values returned by getAttachments.
 type GetAttachmentsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id             string   `pulumi:"id"`
 	InstanceIds    []string `pulumi:"instanceIds"`
 	LoadBalancerId string   `pulumi:"loadBalancerId"`

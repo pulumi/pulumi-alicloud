@@ -26,7 +26,7 @@ type GetAccountAliasesArgs struct {
 type GetAccountAliasesResult struct {
 	// Alias of the account.
 	AccountAlias string `pulumi:"accountAlias"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	OutputFile *string `pulumi:"outputFile"`
 }

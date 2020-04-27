@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Slb
     {
         public readonly ImmutableArray<Outputs.GetBackendServersBackendServerResult> BackendServers;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;

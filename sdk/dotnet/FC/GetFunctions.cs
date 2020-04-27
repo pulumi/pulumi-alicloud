@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.FC
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of functions ids.
+        /// - A list of functions ids.
         /// </summary>
         public List<string> Ids
         {
@@ -38,7 +38,6 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// A regex string to filter results by function name.
-        /// * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -66,7 +65,7 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionsFunctionResult> Functions;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

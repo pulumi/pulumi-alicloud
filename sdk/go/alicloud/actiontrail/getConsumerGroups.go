@@ -33,7 +33,7 @@ type GetConsumerGroupsResult struct {
 	ConsumerIdRegex *string `pulumi:"consumerIdRegex"`
 	// A list of consumer group ids.
 	ConsumerIds []string `pulumi:"consumerIds"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`

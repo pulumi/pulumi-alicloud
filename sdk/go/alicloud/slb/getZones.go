@@ -35,7 +35,7 @@ type GetZonesResult struct {
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
 	AvailableSlbAddressType      *string `pulumi:"availableSlbAddressType"`
 	EnableDetails                *bool   `pulumi:"enableDetails"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of zone IDs.
 	Ids        []string `pulumi:"ids"`

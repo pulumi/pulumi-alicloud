@@ -44,6 +44,9 @@ namespace Pulumi.AliCloud.Mns
         [Output("notifyStrategy")]
         public Output<string?> NotifyStrategy { get; private set; } = null!;
 
+        /// <summary>
+        /// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+        /// </summary>
         [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
 
@@ -126,6 +129,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("notifyStrategy")]
         public Input<string>? NotifyStrategy { get; set; }
 
+        /// <summary>
+        /// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+        /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
 
@@ -169,6 +175,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("notifyStrategy")]
         public Input<string>? NotifyStrategy { get; set; }
 
+        /// <summary>
+        /// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+        /// </summary>
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }
 

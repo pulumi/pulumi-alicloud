@@ -25,7 +25,7 @@ type GetCallerIdentityResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The Alibaba Cloud Resource Name (ARN) of the user making the call.
 	Arn string `pulumi:"arn"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The type of the princiapal. RAMUser for users.
 	IdentityType string `pulumi:"identityType"`

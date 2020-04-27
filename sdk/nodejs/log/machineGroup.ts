@@ -34,12 +34,11 @@ export class MachineGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The machine identification.
+     * The specific machine identification, which can be an IP address or user-defined identity.
      */
     public readonly identifyLists!: pulumi.Output<string[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
     public readonly identifyType!: pulumi.Output<string | undefined>;
     /**
@@ -102,12 +101,11 @@ export class MachineGroup extends pulumi.CustomResource {
  */
 export interface MachineGroupState {
     /**
-     * The machine identification.
+     * The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyType?: pulumi.Input<string>;
     /**
@@ -129,12 +127,11 @@ export interface MachineGroupState {
  */
 export interface MachineGroupArgs {
     /**
-     * The machine identification.
+     * The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyLists: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-     * * `identifyList`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
      */
     readonly identifyType?: pulumi.Input<string>;
     /**

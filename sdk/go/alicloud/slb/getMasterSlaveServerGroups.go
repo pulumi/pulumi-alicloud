@@ -34,7 +34,7 @@ type GetMasterSlaveServerGroupsArgs struct {
 type GetMasterSlaveServerGroupsResult struct {
 	// A list of SLB master slave server groups. Each element contains the following attributes:
 	Groups []GetMasterSlaveServerGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of SLB master slave server groups IDs.
 	Ids            []string `pulumi:"ids"`

@@ -58,12 +58,11 @@ export interface GetUsersArgs {
      */
     readonly groupName?: string;
     /**
-     * A list of ram user IDs. 
+     * - A list of ram user IDs. 
      */
     readonly ids?: string[];
     /**
      * A regex string to filter resulting users by their names.
-     * * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -99,7 +98,7 @@ export interface GetUsersResult {
      */
     readonly users: outputs.ram.GetUsersUser[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

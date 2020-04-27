@@ -30,7 +30,7 @@ type GetMongoInstancesArgs struct {
 // A collection of values returned by getMongoInstances.
 type GetMongoInstancesResult struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id            string                      `pulumi:"id"`
 	Ids           []string                    `pulumi:"ids"`
 	InstanceClass *string                     `pulumi:"instanceClass"`

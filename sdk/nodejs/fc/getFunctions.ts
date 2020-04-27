@@ -48,12 +48,11 @@ export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetFunctionsArgs {
     /**
-     * A list of functions ids.
+     * - A list of functions ids.
      */
     readonly ids?: string[];
     /**
      * A regex string to filter results by function name.
-     * * `ids` (Optional, Available in 1.53.0+) - A list of functions ids.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -83,7 +82,7 @@ export interface GetFunctionsResult {
     readonly outputFile?: string;
     readonly serviceName: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

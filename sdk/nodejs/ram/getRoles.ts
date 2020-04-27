@@ -52,12 +52,11 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRolesArgs {
     /**
-     * A list of ram role IDs. 
+     * - A list of ram role IDs. 
      */
     readonly ids?: string[];
     /**
      * A regex string to filter results by the role name.
-     * * `ids` (Optional, Available 1.53.0+) - A list of ram role IDs.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -92,7 +91,7 @@ export interface GetRolesResult {
      */
     readonly roles: outputs.ram.GetRolesRole[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

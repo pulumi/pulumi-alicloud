@@ -36,7 +36,7 @@ type GetKeyPairsArgs struct {
 type GetKeyPairsResult struct {
 	// Finger print of the key pair.
 	FingerPrint bool `pulumi:"fingerPrint"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`
 	// A list of key pairs. Each element contains the following attributes:

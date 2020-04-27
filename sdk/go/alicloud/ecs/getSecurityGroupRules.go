@@ -43,7 +43,7 @@ type GetSecurityGroupRulesResult struct {
 	GroupId   string `pulumi:"groupId"`
 	// The name of the security group that owns the rules.
 	GroupName string `pulumi:"groupName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`

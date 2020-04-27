@@ -40,7 +40,7 @@ type GetInstanceEnginesResult struct {
 	Engine *string `pulumi:"engine"`
 	// DB Instance version.
 	EngineVersion *string `pulumi:"engineVersion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// A list of Rds available resource. Each element contains the following attributes:

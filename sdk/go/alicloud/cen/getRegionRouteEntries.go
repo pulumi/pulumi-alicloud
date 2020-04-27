@@ -30,7 +30,7 @@ type GetRegionRouteEntriesArgs struct {
 type GetRegionRouteEntriesResult struct {
 	// A list of CEN Route Entries. Each element contains the following attributes:
 	Entries []GetRegionRouteEntriesEntry `pulumi:"entries"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id         string  `pulumi:"id"`
 	InstanceId string  `pulumi:"instanceId"`
 	OutputFile *string `pulumi:"outputFile"`

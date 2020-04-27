@@ -34,7 +34,7 @@ type GetScheduledTasksArgs struct {
 
 // A collection of values returned by getScheduledTasks.
 type GetScheduledTasksResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of scheduled task ids.
 	Ids       []string `pulumi:"ids"`

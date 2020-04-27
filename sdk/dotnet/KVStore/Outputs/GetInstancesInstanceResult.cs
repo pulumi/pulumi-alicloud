@@ -46,6 +46,10 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// The ID of the RKV instance.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Type of the applied ApsaraDB for Redis instance.
+        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// </summary>
         public readonly string InstanceClass;
         /// <summary>
         /// Database type. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -69,8 +73,6 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         public readonly string RegionId;
         /// <summary>
         /// Status of the instance.
-        /// * `instance_class`- (Optional) Type of the applied ApsaraDB for Redis instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
         /// </summary>
         public readonly string Status;
         public readonly string UserName;

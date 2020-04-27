@@ -32,7 +32,7 @@ type GetAppsArgs struct {
 type GetAppsResult struct {
 	// A list of apps. Each element contains the following attributes:
 	Apps []GetAppsApp `pulumi:"apps"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of app IDs.
 	Ids       []string `pulumi:"ids"`

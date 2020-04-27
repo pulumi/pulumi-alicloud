@@ -68,7 +68,7 @@ export interface GetRegionRouteEntriesResult {
     readonly outputFile?: string;
     readonly regionId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

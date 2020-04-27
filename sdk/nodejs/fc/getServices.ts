@@ -47,12 +47,11 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetServicesArgs {
     /**
-     * A list of FC services ids.
+     * - A list of FC services ids.
      */
     readonly ids?: string[];
     /**
      * A regex string to filter results by FC service name.
-     * * `ids` (Optional, Available in 1.53.0+) - A list of FC services ids.
      */
     readonly nameRegex?: string;
     readonly outputFile?: string;
@@ -77,7 +76,7 @@ export interface GetServicesResult {
      */
     readonly services: outputs.fc.GetServicesService[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

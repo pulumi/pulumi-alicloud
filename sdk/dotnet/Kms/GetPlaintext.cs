@@ -26,6 +26,11 @@ namespace Pulumi.AliCloud.Kms
 
         [Input("encryptionContext")]
         private Dictionary<string, string>? _encryptionContext;
+
+        /// <summary>
+        /// -
+        /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// </summary>
         public Dictionary<string, string> EncryptionContext
         {
             get => _encryptionContext ?? (_encryptionContext = new Dictionary<string, string>());
@@ -44,7 +49,7 @@ namespace Pulumi.AliCloud.Kms
         public readonly string CiphertextBlob;
         public readonly ImmutableDictionary<string, string>? EncryptionContext;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

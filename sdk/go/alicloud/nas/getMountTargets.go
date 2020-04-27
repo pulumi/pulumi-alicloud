@@ -43,7 +43,7 @@ type GetMountTargetsResult struct {
 	// AccessGroup of The MountTarget.
 	AccessGroupName *string `pulumi:"accessGroupName"`
 	FileSystemId    string  `pulumi:"fileSystemId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of MountTargetDomain.
 	Ids []string `pulumi:"ids"`

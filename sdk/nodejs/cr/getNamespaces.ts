@@ -75,7 +75,7 @@ export interface GetNamespacesResult {
     readonly namespaces: outputs.cr.GetNamespacesNamespace[];
     readonly outputFile?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

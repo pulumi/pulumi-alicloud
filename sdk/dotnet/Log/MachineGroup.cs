@@ -12,14 +12,13 @@ namespace Pulumi.AliCloud.Log
     public partial class MachineGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// The machine identification.
+        /// The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         [Output("identifyLists")]
         public Output<ImmutableArray<string>> IdentifyLists { get; private set; } = null!;
 
         /// <summary>
         /// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-        /// * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         [Output("identifyType")]
         public Output<string?> IdentifyType { get; private set; } = null!;
@@ -92,7 +91,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<string>? _identifyLists;
 
         /// <summary>
-        /// The machine identification.
+        /// The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         public InputList<string> IdentifyLists
         {
@@ -102,7 +101,6 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-        /// * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         [Input("identifyType")]
         public Input<string>? IdentifyType { get; set; }
@@ -136,7 +134,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<string>? _identifyLists;
 
         /// <summary>
-        /// The machine identification.
+        /// The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         public InputList<string> IdentifyLists
         {
@@ -146,7 +144,6 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
-        /// * `identify_list`- (Required) The specific machine identification, which can be an IP address or user-defined identity.
         /// </summary>
         [Input("identifyType")]
         public Input<string>? IdentifyType { get; set; }

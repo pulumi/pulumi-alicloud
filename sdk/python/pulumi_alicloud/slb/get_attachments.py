@@ -18,7 +18,7 @@ class GetAttachmentsResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if instance_ids and not isinstance(instance_ids, list):
             raise TypeError("Expected argument 'instance_ids' to be a list")

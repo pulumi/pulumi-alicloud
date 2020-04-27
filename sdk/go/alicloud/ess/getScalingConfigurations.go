@@ -32,7 +32,7 @@ type GetScalingConfigurationsArgs struct {
 type GetScalingConfigurationsResult struct {
 	// A list of scaling rules. Each element contains the following attributes:
 	Configurations []GetScalingConfigurationsConfiguration `pulumi:"configurations"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of scaling configuration ids.
 	Ids       []string `pulumi:"ids"`

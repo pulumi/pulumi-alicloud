@@ -44,7 +44,7 @@ type GetInstanceTypesArgs struct {
 type GetInstanceTypesResult struct {
 	ClusterType         string `pulumi:"clusterType"`
 	DestinationResource string `pulumi:"destinationResource"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of emr instance types IDs.
 	Ids                 []string `pulumi:"ids"`

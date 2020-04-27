@@ -60,8 +60,9 @@ type LaunchTemplate struct {
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId pulumi.StringPtrOutput  `pulumi:"securityGroupId"`
-	SpotPriceLimit  pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
+	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	SpotPriceLimit pulumi.Float64PtrOutput `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -166,8 +167,9 @@ type launchTemplateState struct {
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string  `pulumi:"securityGroupId"`
-	SpotPriceLimit  *float64 `pulumi:"spotPriceLimit"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -246,7 +248,8 @@ type LaunchTemplateState struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringPtrInput
-	SpotPriceLimit  pulumi.Float64PtrInput
+	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -328,8 +331,9 @@ type launchTemplateArgs struct {
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// The security group ID must be one in the same VPC.
-	SecurityGroupId *string  `pulumi:"securityGroupId"`
-	SpotPriceLimit  *float64 `pulumi:"spotPriceLimit"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.
@@ -409,7 +413,8 @@ type LaunchTemplateArgs struct {
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringPtrInput
-	SpotPriceLimit  pulumi.Float64PtrInput
+	// -(Optional) 	Sets the maximum hourly instance price. Supports up to three decimal places.
+	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
 	// - NoSpot: Normal Pay-As-You-Go instance.
 	// - SpotWithPriceLimit: Sets the maximum price for a spot instance.

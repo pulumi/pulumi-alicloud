@@ -45,7 +45,6 @@ export class Alarm extends pulumi.CustomResource {
     public readonly effectiveInterval!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable alarm rule. Default to true.
-     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -96,6 +95,9 @@ export class Alarm extends pulumi.CustomResource {
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
     public readonly triggeredCount!: pulumi.Output<number | undefined>;
+    /**
+     * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+     */
     public readonly webhook!: pulumi.Output<string | undefined>;
 
     /**
@@ -191,7 +193,6 @@ export interface AlarmState {
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
-     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
@@ -246,6 +247,9 @@ export interface AlarmState {
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
     readonly triggeredCount?: pulumi.Input<number>;
+    /**
+     * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+     */
     readonly webhook?: pulumi.Input<string>;
 }
 
@@ -267,7 +271,6 @@ export interface AlarmArgs {
     readonly effectiveInterval?: pulumi.Input<string>;
     /**
      * Whether to enable alarm rule. Default to true.
-     * * `webhook`- (Optional, Available in 1.46.0+) The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      */
     readonly enabled?: pulumi.Input<boolean>;
     /**
@@ -318,5 +321,8 @@ export interface AlarmArgs {
      * Number of consecutive times it has been detected that the values exceed the threshold. Default to 3.
      */
     readonly triggeredCount?: pulumi.Input<number>;
+    /**
+     * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
+     */
     readonly webhook?: pulumi.Input<string>;
 }

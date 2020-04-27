@@ -34,7 +34,7 @@ type GetServerlessKubernetesClustersResult struct {
 	// A list of matched Kubernetes clusters. Each element contains the following attributes:
 	Clusters      []GetServerlessKubernetesClustersCluster `pulumi:"clusters"`
 	EnableDetails *bool                                    `pulumi:"enableDetails"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of matched Kubernetes clusters' ids.
 	Ids       []string `pulumi:"ids"`

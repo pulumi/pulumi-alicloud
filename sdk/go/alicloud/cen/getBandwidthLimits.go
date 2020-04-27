@@ -26,7 +26,7 @@ type GetBandwidthLimitsArgs struct {
 
 // A collection of values returned by getBandwidthLimits.
 type GetBandwidthLimitsResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id          string   `pulumi:"id"`
 	InstanceIds []string `pulumi:"instanceIds"`
 	// A list of CEN Bandwidth Limits. Each element contains the following attributes:

@@ -40,7 +40,7 @@ type GetClustersResult struct {
 	DescriptionRegex *string              `pulumi:"descriptionRegex"`
 	// A list of ADB cluster descriptions.
 	Descriptions []string `pulumi:"descriptions"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of ADB cluster IDs.
 	Ids        []string               `pulumi:"ids"`

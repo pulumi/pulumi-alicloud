@@ -280,7 +280,6 @@ type GetDomainsDomain struct {
 	// Punycode of the Chinese domain.
 	PunyCode string `pulumi:"punyCode"`
 	// Cloud analysis version code.
-	// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 	VersionCode string `pulumi:"versionCode"`
 }
 
@@ -314,7 +313,6 @@ type GetDomainsDomainArgs struct {
 	// Punycode of the Chinese domain.
 	PunyCode pulumi.StringInput `pulumi:"punyCode"`
 	// Cloud analysis version code.
-	// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
 }
 
@@ -411,7 +409,6 @@ func (o GetDomainsDomainOutput) PunyCode() pulumi.StringOutput {
 }
 
 // Cloud analysis version code.
-// * `ids` (Optional, Available in 1.53.0+) - A list of domain IDs.
 func (o GetDomainsDomainOutput) VersionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
 }

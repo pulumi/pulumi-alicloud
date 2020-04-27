@@ -26,7 +26,8 @@ type TopicSubscription struct {
 	NotifyContentFormat pulumi.StringPtrOutput `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
 	NotifyStrategy pulumi.StringPtrOutput `pulumi:"notifyStrategy"`
-	TopicName      pulumi.StringOutput    `pulumi:"topicName"`
+	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
 // NewTopicSubscription registers a new resource with the given unique name, arguments, and options.
@@ -76,7 +77,8 @@ type topicSubscriptionState struct {
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
-	TopicName      *string `pulumi:"topicName"`
+	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName *string `pulumi:"topicName"`
 }
 
 type TopicSubscriptionState struct {
@@ -93,7 +95,8 @@ type TopicSubscriptionState struct {
 	NotifyContentFormat pulumi.StringPtrInput
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
 	NotifyStrategy pulumi.StringPtrInput
-	TopicName      pulumi.StringPtrInput
+	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName pulumi.StringPtrInput
 }
 
 func (TopicSubscriptionState) ElementType() reflect.Type {
@@ -114,7 +117,8 @@ type topicSubscriptionArgs struct {
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
-	TopicName      string  `pulumi:"topicName"`
+	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a TopicSubscription resource.
@@ -132,7 +136,8 @@ type TopicSubscriptionArgs struct {
 	NotifyContentFormat pulumi.StringPtrInput
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. the attribute has two value EXPONENTIAL_DECAY_RETR or BACKOFF_RETRY. Default value to BACKOFF_RETRY .
 	NotifyStrategy pulumi.StringPtrInput
-	TopicName      pulumi.StringInput
+	// The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
+	TopicName pulumi.StringInput
 }
 
 func (TopicSubscriptionArgs) ElementType() reflect.Type {

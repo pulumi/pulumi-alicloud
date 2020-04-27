@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         public readonly string? CustomerGatewayId;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

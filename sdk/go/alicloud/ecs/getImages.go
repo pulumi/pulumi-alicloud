@@ -31,7 +31,7 @@ type GetImagesArgs struct {
 
 // A collection of values returned by getImages.
 type GetImagesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of image IDs.
 	Ids []string `pulumi:"ids"`

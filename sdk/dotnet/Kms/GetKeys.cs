@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Kms
     {
         public readonly string? DescriptionRegex;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>

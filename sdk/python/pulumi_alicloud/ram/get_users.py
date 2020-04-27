@@ -21,7 +21,7 @@ class GetUsersResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
@@ -77,9 +77,8 @@ def get_users(group_name=None,ids=None,name_regex=None,output_file=None,policy_n
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group. 
-    :param list ids: A list of ram user IDs. 
+    :param list ids: - A list of ram user IDs. 
     :param str name_regex: A regex string to filter resulting users by their names.
-           * `ids` (Optional, Available 1.53.0+) - A list of ram user IDs.
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """

@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     [OutputType]
     public sealed class ShardingInstanceShardList
     {
+        /// <summary>
+        /// -(Required) Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// </summary>
         public readonly string NodeClass;
         /// <summary>
         /// The ID of the shard-node.

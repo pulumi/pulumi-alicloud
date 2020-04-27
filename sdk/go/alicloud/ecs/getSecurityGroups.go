@@ -44,7 +44,7 @@ type GetSecurityGroupsArgs struct {
 type GetSecurityGroupsResult struct {
 	// A list of Security Groups. Each element contains the following attributes:
 	Groups []GetSecurityGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Security Group IDs.
 	Ids       []string `pulumi:"ids"`

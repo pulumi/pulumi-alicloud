@@ -46,7 +46,7 @@ type GetProductsArgs struct {
 type GetProductsResult struct {
 	// The category id of the product.
 	CategoryId *string `pulumi:"categoryId"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of product codes.
 	Ids         []string `pulumi:"ids"`
