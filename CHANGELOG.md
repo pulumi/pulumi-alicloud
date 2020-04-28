@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Regenerate datasource examples to be async
-* Upgrade to pulumi-terraform-bridge v2.1.0
+_(none)_
 
 ---
+
+## 2.2.0 (2020-04-28)
+* Regenerate datasource examples to be async
+* Upgrade to pulumi-terraform-bridge v2.1.0
 
 ## v2.1.1 (2020-04-24)
 * Upgrade to v1.80.1 of the AliCloud terraform provider
