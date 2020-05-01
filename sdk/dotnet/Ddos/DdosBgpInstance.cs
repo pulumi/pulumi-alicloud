@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Dns
+namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
     /// Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
@@ -15,12 +15,7 @@ namespace Pulumi.AliCloud.Dns
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
     /// &gt; **NOTE:** Available in 1.57.0+ .
-    /// 
-    /// 
-    /// 
-    /// Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance
     /// </summary>
-    [Obsolete(@"alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance")]
     public partial class DdosBgpInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -74,12 +69,12 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DdosBgpInstance(string name, DdosBgpInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:dns/ddosBgpInstance:DdosBgpInstance", name, args ?? new DdosBgpInstanceArgs(), MakeResourceOptions(options, ""))
+            : base("alicloud:ddos/ddosBgpInstance:DdosBgpInstance", name, args ?? new DdosBgpInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DdosBgpInstance(string name, Input<string> id, DdosBgpInstanceState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:dns/ddosBgpInstance:DdosBgpInstance", name, state, MakeResourceOptions(options, id))
+            : base("alicloud:ddos/ddosBgpInstance:DdosBgpInstance", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -87,7 +82,7 @@ namespace Pulumi.AliCloud.Dns
         {
             var defaultOptions = new CustomResourceOptions
             {
-                Version = Utilities.Version,
+                Version = Utilities.Version,                Aliases = { new Alias { Type = "alicloud:dns/ddosBgpInstance:DdosBgpInstance"} },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

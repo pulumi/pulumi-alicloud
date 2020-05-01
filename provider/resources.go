@@ -282,10 +282,6 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
 			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
 
-			// DDos
-			"alicloud_ddosbgp_instance": {Tok: resource(dnsMod, "DdosBgpInstance")},
-			"alicloud_ddoscoo_instance": {Tok: resource(dnsMod, "DdosCooInstance")},
-
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
 
@@ -789,6 +785,10 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
+	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
+		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
+	prov.RenameResourceWithAlias("alicloud_ddoscoo_instance", resource(dnsMod, "DdosCooInstance"),
+		resource(ddosMod, "DdosCooInstance"), dnsMod, ddosMod, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

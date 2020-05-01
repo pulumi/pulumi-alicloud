@@ -33,7 +33,6 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddoscoo_instance.html.markdown.
  */
-/** @deprecated alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance */
 export class DdosCooInstance extends pulumi.CustomResource {
     /**
      * Get an existing DdosCooInstance resource's state with the given name, ID, and optional extra
@@ -44,12 +43,11 @@ export class DdosCooInstance extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DdosCooInstanceState, opts?: pulumi.CustomResourceOptions): DdosCooInstance {
-        pulumi.log.warn("DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance")
         return new DdosCooInstance(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'alicloud:dns/ddosCooInstance:DdosCooInstance';
+    public static readonly __pulumiType = 'alicloud:ddos/ddosCooInstance:DdosCooInstance';
 
     /**
      * Returns true if the given object is an instance of DdosCooInstance.  This is designed to work even
@@ -98,11 +96,8 @@ export class DdosCooInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance */
     constructor(name: string, args: DdosCooInstanceArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance */
     constructor(name: string, argsOrState?: DdosCooInstanceArgs | DdosCooInstanceState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DdosCooInstanceState | undefined;
@@ -145,6 +140,8 @@ export class DdosCooInstance extends pulumi.CustomResource {
         if (!opts.version) {
             opts.version = utilities.getVersion();
         }
+        const aliasOpts = { aliases: [{ type: "alicloud:dns/ddosCooInstance:DdosCooInstance" }] };
+        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
         super(DdosCooInstance.__pulumiType, name, inputs, opts);
     }
 }

@@ -3,5 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .ddos_bgp_instance import *
+from .ddos_coo_instance import *
 from .get_ddos_bgp_instances import *
 from .get_ddos_coo_instances import *

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Dns
+namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
     /// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
@@ -17,12 +17,7 @@ namespace Pulumi.AliCloud.Dns
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
     /// &gt; **NOTE:** Available in 1.37.0+ .
-    /// 
-    /// 
-    /// 
-    /// Deprecated: alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance
     /// </summary>
-    [Obsolete(@"alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance")]
     public partial class DdosCooInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -76,12 +71,12 @@ namespace Pulumi.AliCloud.Dns
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DdosCooInstance(string name, DdosCooInstanceArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:dns/ddosCooInstance:DdosCooInstance", name, args ?? new DdosCooInstanceArgs(), MakeResourceOptions(options, ""))
+            : base("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, args ?? new DdosCooInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DdosCooInstance(string name, Input<string> id, DdosCooInstanceState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:dns/ddosCooInstance:DdosCooInstance", name, state, MakeResourceOptions(options, id))
+            : base("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -89,7 +84,7 @@ namespace Pulumi.AliCloud.Dns
         {
             var defaultOptions = new CustomResourceOptions
             {
-                Version = Utilities.Version,
+                Version = Utilities.Version,                Aliases = { new Alias { Type = "alicloud:dns/ddosCooInstance:DdosCooInstance"} },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -95,6 +95,8 @@
         "datahub/project.ts",
         "datahub/subscription.ts",
         "datahub/topic.ts",
+        "ddos/ddosBgpInstance.ts",
+        "ddos/ddosCooInstance.ts",
         "ddos/getDdosBgpInstances.ts",
         "ddos/getDdosCooInstances.ts",
         "ddos/index.ts",
