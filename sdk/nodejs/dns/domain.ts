@@ -4,27 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DNS resource.
- * 
- * > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * 
- * // Add a new Domain.
- * const dns = new alicloud.dns.Domain("dns", {
- *     groupId: "85ab8713-4a30-4de4-9d20-155ff830f651",
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns.html.markdown.
- */
+/** @deprecated This resource has been deprecated in favour of DnsDomain */
 export class Domain extends pulumi.CustomResource {
     /**
      * Get an existing Domain resource's state with the given name, ID, and optional extra
@@ -35,6 +15,7 @@ export class Domain extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DomainState, opts?: pulumi.CustomResourceOptions): Domain {
+        pulumi.log.warn("Domain is deprecated: This resource has been deprecated in favour of DnsDomain")
         return new Domain(name, <any>state, { ...opts, id: id });
     }
 
@@ -80,8 +61,11 @@ export class Domain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated This resource has been deprecated in favour of DnsDomain */
     constructor(name: string, args?: DomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated This resource has been deprecated in favour of DnsDomain */
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Domain is deprecated: This resource has been deprecated in favour of DnsDomain")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DomainState | undefined;

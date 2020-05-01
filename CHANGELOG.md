@@ -2,7 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.81.0 of the AliCloud terraform provider
+* Upgrade to pulumi-terraform-bridge v2.1.1
+* Rename `dns.DdosBgpInstance` to `ddos.DdosBgpInstance`
+* Rename `dns.DdosCooInstance` to `ddos.DdosCooInstance`
 
 ---
 

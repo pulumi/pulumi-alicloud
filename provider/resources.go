@@ -44,6 +44,7 @@ const (
 	datahubMod       = "Datahub"
 	ddsMod           = "Dds"
 	ddosMod          = "Ddos"
+	dmsMod           = "Dms"
 	dnsMod           = "Dns"
 	drdsMod          = "Drds"
 	ecsMod           = "Ecs"
@@ -52,6 +53,7 @@ const (
 	essMod           = "Ess"
 	fcMod            = "FC"
 	gpdbMod          = "Gpdb"
+	hbaseMod         = "Hbase"
 	kmsMod           = "Kms"
 	kvstoreMod       = "KVStore"
 	logMod           = "Log"
@@ -176,6 +178,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_adb_account":       {Tok: resource(adbMod, "Account")},
 			"alicloud_adb_backup_policy": {Tok: resource(adbMod, "BackupPolicy")},
 			"alicloud_adb_cluster":       {Tok: resource(adbMod, "Cluster")},
+			"alicloud_adb_connection":    {Tok: resource(adbMod, "Connection")},
 
 			// AliKafka
 			"alicloud_alikafka_consumer_group": {Tok: resource(aliKafaMod, "ConsumerGroup")},
@@ -265,40 +268,44 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_read_write_splitting_connection": {Tok: resource(rdsMod, "ReadWriteSplittingConnection")},
 			"alicloud_db_readonly_instance":               {Tok: resource(rdsMod, "ReadOnlyInstance")},
 
-			// DNS
-			"alicloud_dns":        {Tok: resource(dnsMod, "Domain")},
-			"alicloud_dns_group":  {Tok: resource(dnsMod, "Group")},
-			"alicloud_dns_record": {Tok: resource(dnsMod, "Record")},
+			// DMS
+			"alicloud_dms_enterprise_instance": {Tok: resource(dmsMod, "EnterpriseInstance")},
 
-			// DDos
-			"alicloud_ddosbgp_instance":      {Tok: resource(dnsMod, "DdosBgpInstance")},
-			"alicloud_ddoscoo_instance":      {Tok: resource(dnsMod, "DdosCooInstance")},
+			// DNS
+			"alicloud_dns": {
+				Tok:                resource(dnsMod, "Domain"),
+				DeprecationMessage: "This resource has been deprecated in favour of DnsDomain",
+			},
+			"alicloud_dns_group":             {Tok: resource(dnsMod, "Group")},
+			"alicloud_dns_record":            {Tok: resource(dnsMod, "Record")},
 			"alicloud_dns_domain_attachment": {Tok: resource(dnsMod, "DomainAttachment")},
 			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
+			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
 
 			// ECS
-			"alicloud_disk":                   {Tok: resource(ecsMod, "Disk")},
-			"alicloud_disk_attachment":        {Tok: resource(ecsMod, "DiskAttachment")},
-			"alicloud_launch_template":        {Tok: resource(ecsMod, "LaunchTemplate")},
-			"alicloud_eip":                    {Tok: resource(ecsMod, "Eip")},
-			"alicloud_eip_association":        {Tok: resource(ecsMod, "EipAssociation")},
-			"alicloud_instance":               {Tok: resource(ecsMod, "Instance")},
-			"alicloud_key_pair":               {Tok: resource(ecsMod, "KeyPair")},
-			"alicloud_key_pair_attachment":    {Tok: resource(ecsMod, "KeyPairAttachment")},
-			"alicloud_image":                  {Tok: resource(ecsMod, "Image")},
-			"alicloud_image_copy":             {Tok: resource(ecsMod, "ImageCopy")},
-			"alicloud_image_export":           {Tok: resource(ecsMod, "ImageExport")},
-			"alicloud_image_share_permission": {Tok: resource(ecsMod, "ImageSharePermission")},
-			"alicloud_security_group":         {Tok: resource(ecsMod, "SecurityGroup")},
-			"alicloud_security_group_rule":    {Tok: resource(ecsMod, "SecurityGroupRule")},
-			"alicloud_reserved_instance":      {Tok: resource(ecsMod, "ReservedInstance")},
-			"alicloud_snapshot":               {Tok: resource(ecsMod, "Snapshot")},
-			"alicloud_snapshot_policy":        {Tok: resource(ecsMod, "SnapshotPolicy")},
-			"alicloud_copy_image":             {Tok: resource(ecsMod, "CopyImage")},
-			"alicloud_image_import":           {Tok: resource(ecsMod, "ImageImport")},
+			"alicloud_auto_provisioning_group": {Tok: resource(ecsMod, "AutoProvisioningGroup")},
+			"alicloud_disk":                    {Tok: resource(ecsMod, "Disk")},
+			"alicloud_disk_attachment":         {Tok: resource(ecsMod, "DiskAttachment")},
+			"alicloud_launch_template":         {Tok: resource(ecsMod, "LaunchTemplate")},
+			"alicloud_eip":                     {Tok: resource(ecsMod, "Eip")},
+			"alicloud_eip_association":         {Tok: resource(ecsMod, "EipAssociation")},
+			"alicloud_instance":                {Tok: resource(ecsMod, "Instance")},
+			"alicloud_key_pair":                {Tok: resource(ecsMod, "KeyPair")},
+			"alicloud_key_pair_attachment":     {Tok: resource(ecsMod, "KeyPairAttachment")},
+			"alicloud_image":                   {Tok: resource(ecsMod, "Image")},
+			"alicloud_image_copy":              {Tok: resource(ecsMod, "ImageCopy")},
+			"alicloud_image_export":            {Tok: resource(ecsMod, "ImageExport")},
+			"alicloud_image_share_permission":  {Tok: resource(ecsMod, "ImageSharePermission")},
+			"alicloud_security_group":          {Tok: resource(ecsMod, "SecurityGroup")},
+			"alicloud_security_group_rule":     {Tok: resource(ecsMod, "SecurityGroupRule")},
+			"alicloud_reserved_instance":       {Tok: resource(ecsMod, "ReservedInstance")},
+			"alicloud_snapshot":                {Tok: resource(ecsMod, "Snapshot")},
+			"alicloud_snapshot_policy":         {Tok: resource(ecsMod, "SnapshotPolicy")},
+			"alicloud_copy_image":              {Tok: resource(ecsMod, "CopyImage")},
+			"alicloud_image_import":            {Tok: resource(ecsMod, "ImageImport")},
 
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
@@ -337,6 +344,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_gpdb_connection": {Tok: resource(gpdbMod, "Connection")},
 			"alicloud_gpdb_instance":   {Tok: resource(gpdbMod, "Instance")},
 
+			// Hbase
+			"alicloud_hbase_instance": {Tok: resource(hbaseMod, "Instance")},
+
 			// KMS
 			"alicloud_kms_key":        {Tok: resource(kmsMod, "Key")},
 			"alicloud_kms_ciphertext": {Tok: resource(kmsMod, "Ciphertext")},
@@ -356,6 +366,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_logtail_attachment": {Tok: resource(logMod, "LogTailAttachment")},
 			"alicloud_logtail_config":     {Tok: resource(logMod, "LogTailConfig")},
 			"alicloud_log_alert":          {Tok: resource(logMod, "Alert")},
+			"alicloud_log_audit":          {Tok: resource(logMod, "Audit")},
 
 			// Marketplace
 			"alicloud_market_order": {Tok: resource(marketPlaceMod, "Order")},
@@ -629,6 +640,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_gpdb_instances": {Tok: dataSource(gpdbMod, "getInstances")},
 			"alicloud_gpdb_zones":     {Tok: dataSource(gpdbMod, "getZones")},
 
+			// Hbase
+			"alicloud_hbase_instances": {Tok: dataSource(hbaseMod, "getInstances")},
+			"alicloud_hbase_zones":     {Tok: dataSource(hbaseMod, "getZones")},
+
 			// Kms
 			"alicloud_kms_ciphertext": {Tok: dataSource(kmsMod, "getCiphertext")},
 			"alicloud_kms_plaintext":  {Tok: dataSource(kmsMod, "getPlaintext")},
@@ -671,11 +686,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ots_tables":               {Tok: dataSource(ossMod, "getTables")},
 
 			// PolarDb
-			"alicloud_polardb_clusters":  {Tok: dataSource(polarDbMod, "getClusters")},
-			"alicloud_polardb_endpoints": {Tok: dataSource(polarDbMod, "getEndpoints")},
-			"alicloud_polardb_accounts":  {Tok: dataSource(polarDbMod, "getAccounts")},
-			"alicloud_polardb_databases": {Tok: dataSource(polarDbMod, "getDatabases")},
-			"alicloud_polardb_zones":     {Tok: dataSource(polarDbMod, "getZones")},
+			"alicloud_polardb_clusters":     {Tok: dataSource(polarDbMod, "getClusters")},
+			"alicloud_polardb_endpoints":    {Tok: dataSource(polarDbMod, "getEndpoints")},
+			"alicloud_polardb_accounts":     {Tok: dataSource(polarDbMod, "getAccounts")},
+			"alicloud_polardb_databases":    {Tok: dataSource(polarDbMod, "getDatabases")},
+			"alicloud_polardb_zones":        {Tok: dataSource(polarDbMod, "getZones")},
+			"alicloud_polardb_node_classes": {Tok: dataSource(polarDbMod, "getNodeClasses")},
 
 			// Pvtr
 			"alicloud_pvtz_zone_records": {Tok: dataSource(pvtzMod, "getZoneRecords")},
@@ -769,6 +785,10 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
+	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
+		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
+	prov.RenameResourceWithAlias("alicloud_ddoscoo_instance", resource(dnsMod, "DdosCooInstance"),
+		resource(ddosMod, "DdosCooInstance"), dnsMod, ddosMod, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

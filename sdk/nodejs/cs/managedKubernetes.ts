@@ -142,6 +142,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly userCa!: pulumi.Output<string | undefined>;
     /**
+     * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+     */
+    public readonly userData!: pulumi.Output<string | undefined>;
+    /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
     public readonly version!: pulumi.Output<string>;
@@ -164,7 +168,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly workerDiskCategory!: pulumi.Output<string | undefined>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     public readonly workerDiskSize!: pulumi.Output<number | undefined>;
     /**
@@ -235,6 +239,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["slbInternetEnabled"] = state ? state.slbInternetEnabled : undefined;
             inputs["slbIntranet"] = state ? state.slbIntranet : undefined;
             inputs["userCa"] = state ? state.userCa : undefined;
+            inputs["userData"] = state ? state.userData : undefined;
             inputs["version"] = state ? state.version : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["workerAutoRenew"] = state ? state.workerAutoRenew : undefined;
@@ -285,6 +290,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
             inputs["userCa"] = args ? args.userCa : undefined;
+            inputs["userData"] = args ? args.userData : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["workerAutoRenew"] = args ? args.workerAutoRenew : undefined;
             inputs["workerAutoRenewPeriod"] = args ? args.workerAutoRenewPeriod : undefined;
@@ -431,6 +437,10 @@ export interface ManagedKubernetesState {
      */
     readonly userCa?: pulumi.Input<string>;
     /**
+     * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+     */
+    readonly userData?: pulumi.Input<string>;
+    /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
     readonly version?: pulumi.Input<string>;
@@ -453,7 +463,7 @@ export interface ManagedKubernetesState {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**
@@ -578,6 +588,10 @@ export interface ManagedKubernetesArgs {
      */
     readonly userCa?: pulumi.Input<string>;
     /**
+     * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+     */
+    readonly userData?: pulumi.Input<string>;
+    /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
     readonly version?: pulumi.Input<string>;
@@ -596,7 +610,7 @@ export interface ManagedKubernetesArgs {
      */
     readonly workerDiskCategory?: pulumi.Input<string>;
     /**
-     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+     * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
     readonly workerDiskSize?: pulumi.Input<number>;
     /**

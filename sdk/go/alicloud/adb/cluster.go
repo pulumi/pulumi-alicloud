@@ -47,7 +47,7 @@ type Cluster struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -66,6 +66,9 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args == nil || args.DbNodeStorage == nil {
 		return nil, errors.New("missing required argument 'DbNodeStorage'")
+	}
+	if args == nil || args.VswitchId == nil {
+		return nil, errors.New("missing required argument 'VswitchId'")
 	}
 	if args == nil {
 		args = &ClusterArgs{}
@@ -195,7 +198,7 @@ type clusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId *string `pulumi:"vswitchId"`
+	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the DB cluster.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -231,7 +234,7 @@ type ClusterArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
 	// The virtual switch ID to launch DB instances in one VPC.
-	VswitchId pulumi.StringPtrInput
+	VswitchId pulumi.StringInput
 	// The Zone to launch the DB cluster.
 	ZoneId pulumi.StringPtrInput
 }

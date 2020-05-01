@@ -15,6 +15,10 @@ import (
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
 // > **NOTE:** Available in 1.57.0+ .
+//
+//
+//
+// Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState
 

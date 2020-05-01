@@ -180,6 +180,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> UserCa { get; private set; } = null!;
 
         /// <summary>
+        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// </summary>
+        [Output("userData")]
+        public Output<string?> UserData { get; private set; } = null!;
+
+        /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         /// </summary>
         [Output("version")]
@@ -216,7 +222,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> WorkerDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Output("workerDiskSize")]
         public Output<int?> WorkerDiskSize { get; private set; } = null!;
@@ -462,6 +468,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
+        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         /// </summary>
         [Input("version")]
@@ -492,7 +504,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }
@@ -734,6 +746,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? UserCa { get; set; }
 
         /// <summary>
+        /// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
         /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         /// </summary>
         [Input("version")]
@@ -770,7 +788,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? WorkerDiskCategory { get; set; }
 
         /// <summary>
-        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+        /// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         /// </summary>
         [Input("workerDiskSize")]
         public Input<int>? WorkerDiskSize { get; set; }

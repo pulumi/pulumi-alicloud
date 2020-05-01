@@ -88,6 +88,8 @@ type Kubernetes struct {
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrOutput `pulumi:"userCa"`
+	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
@@ -100,7 +102,7 @@ type Kubernetes struct {
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrOutput `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrOutput `pulumi:"workerInstanceChargeType"`
@@ -235,6 +237,8 @@ type kubernetesState struct {
 	SlbIntranet *string `pulumi:"slbIntranet"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
+	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
 	// The ID of VPC where the current cluster is located.
@@ -247,7 +251,7 @@ type kubernetesState struct {
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -340,6 +344,8 @@ type KubernetesState struct {
 	SlbIntranet pulumi.StringPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
+	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
 	// The ID of VPC where the current cluster is located.
@@ -352,7 +358,7 @@ type KubernetesState struct {
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrInput
@@ -437,6 +443,8 @@ type kubernetesArgs struct {
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa *string `pulumi:"userCa"`
+	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	UserData *string `pulumi:"userData"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
 	// Enable worker payment auto-renew, defaults to false.
@@ -447,7 +455,7 @@ type kubernetesArgs struct {
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize *int `pulumi:"workerDiskSize"`
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType *string `pulumi:"workerInstanceChargeType"`
@@ -527,6 +535,8 @@ type KubernetesArgs struct {
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
 	UserCa pulumi.StringPtrInput
+	// Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+	UserData pulumi.StringPtrInput
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput
 	// Enable worker payment auto-renew, defaults to false.
@@ -537,7 +547,7 @@ type KubernetesArgs struct {
 	WorkerDataDiskSize     pulumi.IntPtrInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
-	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
 	WorkerDiskSize pulumi.IntPtrInput
 	// Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
 	WorkerInstanceChargeType pulumi.StringPtrInput

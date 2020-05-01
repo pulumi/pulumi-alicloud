@@ -132,7 +132,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The Zone to launch the DB cluster.
      */
@@ -178,6 +178,9 @@ export class Cluster extends pulumi.CustomResource {
             }
             if (!args || args.dbNodeStorage === undefined) {
                 throw new Error("Missing required property 'dbNodeStorage'");
+            }
+            if (!args || args.vswitchId === undefined) {
+                throw new Error("Missing required property 'vswitchId'");
             }
             inputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             inputs["dbClusterCategory"] = args ? args.dbClusterCategory : undefined;
@@ -335,7 +338,7 @@ export interface ClusterArgs {
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    readonly vswitchId: pulumi.Input<string>;
     /**
      * The Zone to launch the DB cluster.
      */

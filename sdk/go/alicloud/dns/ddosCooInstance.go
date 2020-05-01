@@ -17,6 +17,10 @@ import (
 // > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 //
 // > **NOTE:** Available in 1.37.0+ .
+//
+//
+//
+// Deprecated: alicloud.dns.DdosCooInstance has been deprecated in favour of alicloud.ddos.DdosCooInstance
 type DdosCooInstance struct {
 	pulumi.CustomResourceState
 

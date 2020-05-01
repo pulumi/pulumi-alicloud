@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
+
+        /// <summary>
         /// The db_node_class of cluster node.
         /// </summary>
         [Output("dbNodeClass")]
@@ -278,6 +284,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
+
+        /// <summary>
+        /// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
         /// The db_node_class of cluster node.

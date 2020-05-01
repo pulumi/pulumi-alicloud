@@ -24,16 +24,16 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         [Output("preferredBackupPeriods")]
         public Output<ImmutableArray<string>> PreferredBackupPeriods { get; private set; } = null!;
 
         /// <summary>
-        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         /// </summary>
         [Output("preferredBackupTime")]
-        public Output<string?> PreferredBackupTime { get; private set; } = null!;
+        public Output<string> PreferredBackupTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -87,11 +87,11 @@ namespace Pulumi.AliCloud.Adb
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
 
-        [Input("preferredBackupPeriods")]
+        [Input("preferredBackupPeriods", required: true)]
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {
@@ -100,10 +100,10 @@ namespace Pulumi.AliCloud.Adb
         }
 
         /// <summary>
-        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         /// </summary>
-        [Input("preferredBackupTime")]
-        public Input<string>? PreferredBackupTime { get; set; }
+        [Input("preferredBackupTime", required: true)]
+        public Input<string> PreferredBackupTime { get; set; } = null!;
 
         public BackupPolicyArgs()
         {
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Adb
         private InputList<string>? _preferredBackupPeriods;
 
         /// <summary>
-        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+        /// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         /// </summary>
         public InputList<string> PreferredBackupPeriods
         {
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Adb
         }
 
         /// <summary>
-        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+        /// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
         /// </summary>
         [Input("preferredBackupTime")]
         public Input<string>? PreferredBackupTime { get; set; }

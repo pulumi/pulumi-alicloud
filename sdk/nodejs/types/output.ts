@@ -1856,6 +1856,14 @@ export namespace drds {
 }
 
 export namespace ecs {
+    export interface AutoProvisioningGroupLaunchTemplateConfig {
+        instanceType?: string;
+        maxPrice: string;
+        priority?: string;
+        vswitchId: string;
+        weightedCapacity?: string;
+    }
+
     export interface GetDisksDisk {
         /**
          * Disk attachment time.
@@ -3503,6 +3511,107 @@ export namespace gpdb {
     }
 }
 
+export namespace hbase {
+    export interface GetInstancesInstance {
+        /**
+         * the Backup Status of the instance.
+         */
+        backupStatus: string;
+        /**
+         * core node disk size, unit:GB.
+         */
+        coreDiskSize: number;
+        /**
+         * cloud_ssd or cloud_efficiency
+         */
+        coreDiskType: string;
+        /**
+         * hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         */
+        coreInstanceType: string;
+        /**
+         * same with "coreInstanceQuantity"
+         */
+        coreNodeCount: number;
+        createdTime: string;
+        /**
+         * the switch of delete protection.
+         */
+        deletionProtection: boolean;
+        /**
+         * the engine of the instance.
+         */
+        engine: string;
+        /**
+         * the engineVersion of the instance.
+         */
+        engineVersion: string;
+        /**
+         * the expire time of the instance.
+         */
+        expireTime: string;
+        /**
+         * The ID of the HBase instance.
+         */
+        id: string;
+        /**
+         * hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         */
+        masterInstanceType: string;
+        /**
+         * the node count of master
+         */
+        masterNodeCount: number;
+        /**
+         * The name of the HBase instance.
+         */
+        name: string;
+        /**
+         * Classic network or VPC.
+         */
+        networkType: string;
+        /**
+         * Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
+         */
+        payType: string;
+        /**
+         * Region ID the instance belongs to. 
+         */
+        regionId: string;
+        /**
+         * Status of the instance.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags?: {[key: string]: any};
+        /**
+         * VPC ID the instance belongs to.
+         */
+        vpcId: string;
+        /**
+         * VSwitch ID the instance belongs to.
+         */
+        vswitchId: string;
+        /**
+         * Zone ID the instance belongs to.
+         */
+        zoneId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
+    }
+}
+
 export namespace kms {
     export interface GetAliasesAlias {
         /**
@@ -5024,6 +5133,35 @@ export namespace polardb {
          * ID of the VSwitch the cluster belongs to.
          */
         vswitchId: string;
+    }
+
+    export interface GetNodeClassesClass {
+        /**
+         * A list of PolarDB node classes in the zone.
+         */
+        supportedEngines: outputs.polardb.GetNodeClassesClassSupportedEngine[];
+        /**
+         * The Zone to launch the PolarDB cluster.
+         */
+        zoneId: string;
+    }
+
+    export interface GetNodeClassesClassSupportedEngine {
+        /**
+         * A list of PolarDB node available classes.
+         */
+        availableResources: outputs.polardb.GetNodeClassesClassSupportedEngineAvailableResource[];
+        /**
+         * In the zone, the database type supports classes in the following available_resources.
+         */
+        engine: string;
+    }
+
+    export interface GetNodeClassesClassSupportedEngineAvailableResource {
+        /**
+         * The PolarDB node class type by the user.
+         */
+        dbNodeClass: string;
     }
 
     export interface GetZonesZone {

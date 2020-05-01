@@ -28,6 +28,7 @@ export interface ProviderEndpoint {
     ddosbgp?: pulumi.Input<string>;
     ddoscoo?: pulumi.Input<string>;
     dds?: pulumi.Input<string>;
+    dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
@@ -595,6 +596,14 @@ export namespace drds {
 }
 
 export namespace ecs {
+    export interface AutoProvisioningGroupLaunchTemplateConfig {
+        instanceType?: pulumi.Input<string>;
+        maxPrice: pulumi.Input<string>;
+        priority?: pulumi.Input<string>;
+        vswitchId: pulumi.Input<string>;
+        weightedCapacity?: pulumi.Input<string>;
+    }
+
     export interface ImageDiskDeviceMapping {
         /**
          * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
@@ -874,6 +883,9 @@ export namespace fc {
 }
 
 export namespace gpdb {
+}
+
+export namespace hbase {
 }
 
 export namespace kms {

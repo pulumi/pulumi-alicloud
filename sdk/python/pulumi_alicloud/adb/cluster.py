@@ -140,6 +140,8 @@ class Cluster(pulumi.CustomResource):
             __props__['renewal_status'] = renewal_status
             __props__['security_ips'] = security_ips
             __props__['tags'] = tags
+            if vswitch_id is None:
+                raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
         super(Cluster, __self__).__init__(

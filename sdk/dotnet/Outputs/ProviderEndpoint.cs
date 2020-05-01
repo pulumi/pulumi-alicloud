@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Ddosbgp;
         public readonly string? Ddoscoo;
         public readonly string? Dds;
+        public readonly string? DmsEnterprise;
         public readonly string? Dns;
         public readonly string? Drds;
         public readonly string? Ecs;
@@ -89,6 +90,8 @@ namespace Pulumi.AliCloud.Outputs
             string? ddoscoo,
 
             string? dds,
+
+            string? dmsEnterprise,
 
             string? dns,
 
@@ -158,6 +161,7 @@ namespace Pulumi.AliCloud.Outputs
             Ddosbgp = ddosbgp;
             Ddoscoo = ddoscoo;
             Dds = dds;
+            DmsEnterprise = dmsEnterprise;
             Dns = dns;
             Drds = drds;
             Ecs = ecs;

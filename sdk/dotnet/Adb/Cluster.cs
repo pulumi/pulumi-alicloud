@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Adb
         /// The virtual switch ID to launch DB instances in one VPC.
         /// </summary>
         [Output("vswitchId")]
-        public Output<string?> VswitchId { get; private set; } = null!;
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster.
@@ -251,8 +251,8 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC.
         /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
+        [Input("vswitchId", required: true)]
+        public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
         /// The Zone to launch the DB cluster.

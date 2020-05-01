@@ -9,9 +9,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DNS resource.
 //
-// > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+// Deprecated: This resource has been deprecated in favour of DnsDomain
 type Domain struct {
 	pulumi.CustomResourceState
 

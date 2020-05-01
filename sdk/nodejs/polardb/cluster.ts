@@ -80,6 +80,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
+     * (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+     */
+    public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
      * The dbNodeClass of cluster node.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
+            inputs["connectionString"] = state ? state.connectionString : undefined;
             inputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             inputs["dbType"] = state ? state.dbType : undefined;
             inputs["dbVersion"] = state ? state.dbVersion : undefined;
@@ -191,6 +196,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+            inputs["connectionString"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -211,6 +217,10 @@ export interface ClusterState {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+     */
+    readonly connectionString?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      */

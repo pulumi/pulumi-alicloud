@@ -10,6 +10,126 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AutoProvisioningGroupLaunchTemplateConfig struct {
+	InstanceType     *string `pulumi:"instanceType"`
+	MaxPrice         string  `pulumi:"maxPrice"`
+	Priority         *string `pulumi:"priority"`
+	VswitchId        string  `pulumi:"vswitchId"`
+	WeightedCapacity *string `pulumi:"weightedCapacity"`
+}
+
+// AutoProvisioningGroupLaunchTemplateConfigInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArgs and AutoProvisioningGroupLaunchTemplateConfigOutput values.
+// You can construct a concrete instance of `AutoProvisioningGroupLaunchTemplateConfigInput` via:
+//
+// 		 AutoProvisioningGroupLaunchTemplateConfigArgs{...}
+//
+type AutoProvisioningGroupLaunchTemplateConfigInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupLaunchTemplateConfigOutput() AutoProvisioningGroupLaunchTemplateConfigOutput
+	ToAutoProvisioningGroupLaunchTemplateConfigOutputWithContext(context.Context) AutoProvisioningGroupLaunchTemplateConfigOutput
+}
+
+type AutoProvisioningGroupLaunchTemplateConfigArgs struct {
+	InstanceType     pulumi.StringPtrInput `pulumi:"instanceType"`
+	MaxPrice         pulumi.StringInput    `pulumi:"maxPrice"`
+	Priority         pulumi.StringPtrInput `pulumi:"priority"`
+	VswitchId        pulumi.StringInput    `pulumi:"vswitchId"`
+	WeightedCapacity pulumi.StringPtrInput `pulumi:"weightedCapacity"`
+}
+
+func (AutoProvisioningGroupLaunchTemplateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfig)(nil)).Elem()
+}
+
+func (i AutoProvisioningGroupLaunchTemplateConfigArgs) ToAutoProvisioningGroupLaunchTemplateConfigOutput() AutoProvisioningGroupLaunchTemplateConfigOutput {
+	return i.ToAutoProvisioningGroupLaunchTemplateConfigOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioningGroupLaunchTemplateConfigArgs) ToAutoProvisioningGroupLaunchTemplateConfigOutputWithContext(ctx context.Context) AutoProvisioningGroupLaunchTemplateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupLaunchTemplateConfigOutput)
+}
+
+// AutoProvisioningGroupLaunchTemplateConfigArrayInput is an input type that accepts AutoProvisioningGroupLaunchTemplateConfigArray and AutoProvisioningGroupLaunchTemplateConfigArrayOutput values.
+// You can construct a concrete instance of `AutoProvisioningGroupLaunchTemplateConfigArrayInput` via:
+//
+// 		 AutoProvisioningGroupLaunchTemplateConfigArray{ AutoProvisioningGroupLaunchTemplateConfigArgs{...} }
+//
+type AutoProvisioningGroupLaunchTemplateConfigArrayInput interface {
+	pulumi.Input
+
+	ToAutoProvisioningGroupLaunchTemplateConfigArrayOutput() AutoProvisioningGroupLaunchTemplateConfigArrayOutput
+	ToAutoProvisioningGroupLaunchTemplateConfigArrayOutputWithContext(context.Context) AutoProvisioningGroupLaunchTemplateConfigArrayOutput
+}
+
+type AutoProvisioningGroupLaunchTemplateConfigArray []AutoProvisioningGroupLaunchTemplateConfigInput
+
+func (AutoProvisioningGroupLaunchTemplateConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProvisioningGroupLaunchTemplateConfig)(nil)).Elem()
+}
+
+func (i AutoProvisioningGroupLaunchTemplateConfigArray) ToAutoProvisioningGroupLaunchTemplateConfigArrayOutput() AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+	return i.ToAutoProvisioningGroupLaunchTemplateConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProvisioningGroupLaunchTemplateConfigArray) ToAutoProvisioningGroupLaunchTemplateConfigArrayOutputWithContext(ctx context.Context) AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProvisioningGroupLaunchTemplateConfigArrayOutput)
+}
+
+type AutoProvisioningGroupLaunchTemplateConfigOutput struct{ *pulumi.OutputState }
+
+func (AutoProvisioningGroupLaunchTemplateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfig)(nil)).Elem()
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) ToAutoProvisioningGroupLaunchTemplateConfigOutput() AutoProvisioningGroupLaunchTemplateConfigOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) ToAutoProvisioningGroupLaunchTemplateConfigOutputWithContext(ctx context.Context) AutoProvisioningGroupLaunchTemplateConfigOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) MaxPrice() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.MaxPrice }).(pulumi.StringOutput)
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigOutput) WeightedCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProvisioningGroupLaunchTemplateConfig) *string { return v.WeightedCapacity }).(pulumi.StringPtrOutput)
+}
+
+type AutoProvisioningGroupLaunchTemplateConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProvisioningGroupLaunchTemplateConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProvisioningGroupLaunchTemplateConfig)(nil)).Elem()
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigArrayOutput) ToAutoProvisioningGroupLaunchTemplateConfigArrayOutput() AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigArrayOutput) ToAutoProvisioningGroupLaunchTemplateConfigArrayOutputWithContext(ctx context.Context) AutoProvisioningGroupLaunchTemplateConfigArrayOutput {
+	return o
+}
+
+func (o AutoProvisioningGroupLaunchTemplateConfigArrayOutput) Index(i pulumi.IntInput) AutoProvisioningGroupLaunchTemplateConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProvisioningGroupLaunchTemplateConfig {
+		return vs[0].([]AutoProvisioningGroupLaunchTemplateConfig)[vs[1].(int)]
+	}).(AutoProvisioningGroupLaunchTemplateConfigOutput)
+}
+
 type ImageDiskDeviceMapping struct {
 	// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
 	Device *string `pulumi:"device"`
@@ -3843,6 +3963,8 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 }
 
 func init() {
+	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigOutput{})
+	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingOutput{})
