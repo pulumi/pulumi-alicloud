@@ -40,13 +40,13 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
-     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     public readonly preferredBackupPeriods!: pulumi.Output<string[]>;
     /**
-     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    public readonly preferredBackupTime!: pulumi.Output<string | undefined>;
+    public readonly preferredBackupTime!: pulumi.Output<string>;
 
     /**
      * Create a BackupPolicy resource with the given unique name, arguments, and options.
@@ -68,6 +68,12 @@ export class BackupPolicy extends pulumi.CustomResource {
             const args = argsOrState as BackupPolicyArgs | undefined;
             if (!args || args.dbClusterId === undefined) {
                 throw new Error("Missing required property 'dbClusterId'");
+            }
+            if (!args || args.preferredBackupPeriods === undefined) {
+                throw new Error("Missing required property 'preferredBackupPeriods'");
+            }
+            if (!args || args.preferredBackupTime === undefined) {
+                throw new Error("Missing required property 'preferredBackupTime'");
             }
             inputs["dbClusterId"] = args ? args.dbClusterId : undefined;
             inputs["preferredBackupPeriods"] = args ? args.preferredBackupPeriods : undefined;
@@ -98,11 +104,11 @@ export interface BackupPolicyState {
      */
     readonly dbClusterId?: pulumi.Input<string>;
     /**
-     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
     readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
     readonly preferredBackupTime?: pulumi.Input<string>;
 }
@@ -116,11 +122,11 @@ export interface BackupPolicyArgs {
      */
     readonly dbClusterId: pulumi.Input<string>;
     /**
-     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+     * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    readonly preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly preferredBackupPeriods: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+     * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      */
-    readonly preferredBackupTime?: pulumi.Input<string>;
+    readonly preferredBackupTime: pulumi.Input<string>;
 }

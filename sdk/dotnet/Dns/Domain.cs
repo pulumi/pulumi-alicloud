@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
-    /// Provides a DNS resource.
     /// 
-    /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+    /// Deprecated: This resource has been deprecated in favour of DnsDomain
     /// </summary>
+    [Obsolete(@"This resource has been deprecated in favour of DnsDomain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

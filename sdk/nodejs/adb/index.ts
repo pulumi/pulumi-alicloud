@@ -5,5 +5,6 @@
 export * from "./account";
 export * from "./backupPolicy";
 export * from "./cluster";
+export * from "./connection";
 export * from "./getClusters";
 export * from "./getZones";

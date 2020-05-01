@@ -20,6 +20,8 @@ type Cluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
+	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -91,6 +93,8 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -126,6 +130,8 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
+	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.

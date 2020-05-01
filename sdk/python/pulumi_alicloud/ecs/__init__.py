@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .auto_provisioning_group import *
 from .copy_image import *
 from .disk import *
 from .disk_attachment import *

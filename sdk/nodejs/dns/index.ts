@@ -4,6 +4,7 @@
 // Export members:
 export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
+export * from "./dnsDomain";
 export * from "./domain";
 export * from "./domainAttachment";
 export * from "./getDomainGroups";

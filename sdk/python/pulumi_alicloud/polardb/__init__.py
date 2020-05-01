@@ -14,4 +14,5 @@ from .get_accounts import *
 from .get_clusters import *
 from .get_databases import *
 from .get_endpoints import *
+from .get_node_classes import *
 from .get_zones import *

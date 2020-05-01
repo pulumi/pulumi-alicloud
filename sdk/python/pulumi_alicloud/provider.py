@@ -60,6 +60,7 @@ class Provider(pulumi.ProviderResource):
           * `ddosbgp` (`pulumi.Input[str]`)
           * `ddoscoo` (`pulumi.Input[str]`)
           * `dds` (`pulumi.Input[str]`)
+          * `dmsEnterprise` (`pulumi.Input[str]`)
           * `dns` (`pulumi.Input[str]`)
           * `drds` (`pulumi.Input[str]`)
           * `ecs` (`pulumi.Input[str]`)

@@ -17,10 +17,10 @@ type BackupPolicy struct {
 	BackupRetentionPeriod pulumi.StringOutput `pulumi:"backupRetentionPeriod"`
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
-	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
 	PreferredBackupPeriods pulumi.StringArrayOutput `pulumi:"preferredBackupPeriods"`
-	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-	PreferredBackupTime pulumi.StringPtrOutput `pulumi:"preferredBackupTime"`
+	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+	PreferredBackupTime pulumi.StringOutput `pulumi:"preferredBackupTime"`
 }
 
 // NewBackupPolicy registers a new resource with the given unique name, arguments, and options.
@@ -28,6 +28,12 @@ func NewBackupPolicy(ctx *pulumi.Context,
 	name string, args *BackupPolicyArgs, opts ...pulumi.ResourceOption) (*BackupPolicy, error) {
 	if args == nil || args.DbClusterId == nil {
 		return nil, errors.New("missing required argument 'DbClusterId'")
+	}
+	if args == nil || args.PreferredBackupPeriods == nil {
+		return nil, errors.New("missing required argument 'PreferredBackupPeriods'")
+	}
+	if args == nil || args.PreferredBackupTime == nil {
+		return nil, errors.New("missing required argument 'PreferredBackupTime'")
 	}
 	if args == nil {
 		args = &BackupPolicyArgs{}
@@ -58,9 +64,9 @@ type backupPolicyState struct {
 	BackupRetentionPeriod *string `pulumi:"backupRetentionPeriod"`
 	// The Id of cluster that can run database.
 	DbClusterId *string `pulumi:"dbClusterId"`
-	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
-	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
 	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
 }
 
@@ -69,9 +75,9 @@ type BackupPolicyState struct {
 	BackupRetentionPeriod pulumi.StringPtrInput
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringPtrInput
-	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
 	PreferredBackupPeriods pulumi.StringArrayInput
-	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
+	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrInput
 }
 
@@ -82,20 +88,20 @@ func (BackupPolicyState) ElementType() reflect.Type {
 type backupPolicyArgs struct {
 	// The Id of cluster that can run database.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
-	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
+	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+	PreferredBackupTime string `pulumi:"preferredBackupTime"`
 }
 
 // The set of arguments for constructing a BackupPolicy resource.
 type BackupPolicyArgs struct {
 	// The Id of cluster that can run database.
 	DbClusterId pulumi.StringInput
-	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Tuesday", "Thursday", "Saturday"].
+	// ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
 	PreferredBackupPeriods pulumi.StringArrayInput
-	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
-	PreferredBackupTime pulumi.StringPtrInput
+	// ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
+	PreferredBackupTime pulumi.StringInput
 }
 
 func (BackupPolicyArgs) ElementType() reflect.Type {

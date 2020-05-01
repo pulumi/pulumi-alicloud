@@ -123,6 +123,10 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
     """
+    user_data: pulumi.Output[str]
+    """
+    Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+    """
     version: pulumi.Output[str]
     """
     Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
@@ -147,7 +151,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     worker_disk_size: pulumi.Output[float]
     """
-    The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+    The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
     """
     worker_instance_charge_type: pulumi.Output[str]
     """
@@ -178,7 +182,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     Worker payment period unit. `Month` or `Week`, defaults to `Month`.
     """
     worker_vswitch_ids: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, user_data=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ManagedKubernetes resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -205,11 +209,12 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
+        :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
         :param pulumi.Input[list] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
@@ -263,6 +268,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['service_cidr'] = service_cidr
             __props__['slb_internet_enabled'] = slb_internet_enabled
             __props__['user_ca'] = user_ca
+            __props__['user_data'] = user_data
             __props__['version'] = version
             __props__['worker_auto_renew'] = worker_auto_renew
             __props__['worker_auto_renew_period'] = worker_auto_renew_period
@@ -297,7 +303,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None):
+    def get(resource_name, id, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, user_data=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None):
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -331,12 +337,13 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
+        :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
         :param pulumi.Input[float] worker_auto_renew_period: Worker payment auto-renew period. When period unit is `Month`, it can be one of {“1”, “2”, “3”, “6”, “12”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”}.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 20.
+        :param pulumi.Input[float] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type. `PrePaid` or `PostPaid`, defaults to `PostPaid`.
         :param pulumi.Input[list] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         :param pulumi.Input[list] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
@@ -397,6 +404,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["slb_internet_enabled"] = slb_internet_enabled
         __props__["slb_intranet"] = slb_intranet
         __props__["user_ca"] = user_ca
+        __props__["user_data"] = user_data
         __props__["version"] = version
         __props__["vpc_id"] = vpc_id
         __props__["worker_auto_renew"] = worker_auto_renew

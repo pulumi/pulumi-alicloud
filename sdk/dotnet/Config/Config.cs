@@ -106,6 +106,7 @@ namespace Pulumi.AliCloud
                 public string? Ddosbgp { get; set; } = null!;
                 public string? Ddoscoo { get; set; } = null!;
                 public string? Dds { get; set; } = null!;
+                public string? DmsEnterprise { get; set; } = null!;
                 public string? Dns { get; set; } = null!;
                 public string? Drds { get; set; } = null!;
                 public string? Ecs { get; set; } = null!;

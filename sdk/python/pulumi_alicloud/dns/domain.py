@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
 class Domain(pulumi.CustomResource):
     dns_servers: pulumi.Output[list]
     """
@@ -30,13 +31,11 @@ class Domain(pulumi.CustomResource):
     """
     The Id of resource group which the dns belongs.
     """
+    warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, group_id=None, name=None, resource_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DNS resource.
 
-        > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-
-
+        Deprecated: This resource has been deprecated in favour of DnsDomain
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -44,6 +43,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the dns belongs.
         """
+        pulumi.log.warn("Domain is deprecated: This resource has been deprecated in favour of DnsDomain")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

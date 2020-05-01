@@ -1363,6 +1363,323 @@ func (o GetEndpointsEndpointAddressItemArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetEndpointsEndpointAddressItemOutput)
 }
 
+type GetNodeClassesClass struct {
+	// A list of PolarDB node classes in the zone.
+	SupportedEngines []GetNodeClassesClassSupportedEngine `pulumi:"supportedEngines"`
+	// The Zone to launch the PolarDB cluster.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetNodeClassesClassInput is an input type that accepts GetNodeClassesClassArgs and GetNodeClassesClassOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassInput` via:
+//
+// 		 GetNodeClassesClassArgs{...}
+//
+type GetNodeClassesClassInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassOutput() GetNodeClassesClassOutput
+	ToGetNodeClassesClassOutputWithContext(context.Context) GetNodeClassesClassOutput
+}
+
+type GetNodeClassesClassArgs struct {
+	// A list of PolarDB node classes in the zone.
+	SupportedEngines GetNodeClassesClassSupportedEngineArrayInput `pulumi:"supportedEngines"`
+	// The Zone to launch the PolarDB cluster.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetNodeClassesClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClass)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassArgs) ToGetNodeClassesClassOutput() GetNodeClassesClassOutput {
+	return i.ToGetNodeClassesClassOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassArgs) ToGetNodeClassesClassOutputWithContext(ctx context.Context) GetNodeClassesClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassOutput)
+}
+
+// GetNodeClassesClassArrayInput is an input type that accepts GetNodeClassesClassArray and GetNodeClassesClassArrayOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassArrayInput` via:
+//
+// 		 GetNodeClassesClassArray{ GetNodeClassesClassArgs{...} }
+//
+type GetNodeClassesClassArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassArrayOutput() GetNodeClassesClassArrayOutput
+	ToGetNodeClassesClassArrayOutputWithContext(context.Context) GetNodeClassesClassArrayOutput
+}
+
+type GetNodeClassesClassArray []GetNodeClassesClassInput
+
+func (GetNodeClassesClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClass)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassArray) ToGetNodeClassesClassArrayOutput() GetNodeClassesClassArrayOutput {
+	return i.ToGetNodeClassesClassArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassArray) ToGetNodeClassesClassArrayOutputWithContext(ctx context.Context) GetNodeClassesClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassArrayOutput)
+}
+
+type GetNodeClassesClassOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClass)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassOutput) ToGetNodeClassesClassOutput() GetNodeClassesClassOutput {
+	return o
+}
+
+func (o GetNodeClassesClassOutput) ToGetNodeClassesClassOutputWithContext(ctx context.Context) GetNodeClassesClassOutput {
+	return o
+}
+
+// A list of PolarDB node classes in the zone.
+func (o GetNodeClassesClassOutput) SupportedEngines() GetNodeClassesClassSupportedEngineArrayOutput {
+	return o.ApplyT(func(v GetNodeClassesClass) []GetNodeClassesClassSupportedEngine { return v.SupportedEngines }).(GetNodeClassesClassSupportedEngineArrayOutput)
+}
+
+// The Zone to launch the PolarDB cluster.
+func (o GetNodeClassesClassOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeClassesClass) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetNodeClassesClassArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClass)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassArrayOutput) ToGetNodeClassesClassArrayOutput() GetNodeClassesClassArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassArrayOutput) ToGetNodeClassesClassArrayOutputWithContext(ctx context.Context) GetNodeClassesClassArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassArrayOutput) Index(i pulumi.IntInput) GetNodeClassesClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeClassesClass {
+		return vs[0].([]GetNodeClassesClass)[vs[1].(int)]
+	}).(GetNodeClassesClassOutput)
+}
+
+type GetNodeClassesClassSupportedEngine struct {
+	// A list of PolarDB node available classes.
+	AvailableResources []GetNodeClassesClassSupportedEngineAvailableResource `pulumi:"availableResources"`
+	// In the zone, the database type supports classes in the following available_resources.
+	Engine string `pulumi:"engine"`
+}
+
+// GetNodeClassesClassSupportedEngineInput is an input type that accepts GetNodeClassesClassSupportedEngineArgs and GetNodeClassesClassSupportedEngineOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassSupportedEngineInput` via:
+//
+// 		 GetNodeClassesClassSupportedEngineArgs{...}
+//
+type GetNodeClassesClassSupportedEngineInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassSupportedEngineOutput() GetNodeClassesClassSupportedEngineOutput
+	ToGetNodeClassesClassSupportedEngineOutputWithContext(context.Context) GetNodeClassesClassSupportedEngineOutput
+}
+
+type GetNodeClassesClassSupportedEngineArgs struct {
+	// A list of PolarDB node available classes.
+	AvailableResources GetNodeClassesClassSupportedEngineAvailableResourceArrayInput `pulumi:"availableResources"`
+	// In the zone, the database type supports classes in the following available_resources.
+	Engine pulumi.StringInput `pulumi:"engine"`
+}
+
+func (GetNodeClassesClassSupportedEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClassSupportedEngine)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassSupportedEngineArgs) ToGetNodeClassesClassSupportedEngineOutput() GetNodeClassesClassSupportedEngineOutput {
+	return i.ToGetNodeClassesClassSupportedEngineOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassSupportedEngineArgs) ToGetNodeClassesClassSupportedEngineOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassSupportedEngineOutput)
+}
+
+// GetNodeClassesClassSupportedEngineArrayInput is an input type that accepts GetNodeClassesClassSupportedEngineArray and GetNodeClassesClassSupportedEngineArrayOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassSupportedEngineArrayInput` via:
+//
+// 		 GetNodeClassesClassSupportedEngineArray{ GetNodeClassesClassSupportedEngineArgs{...} }
+//
+type GetNodeClassesClassSupportedEngineArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassSupportedEngineArrayOutput() GetNodeClassesClassSupportedEngineArrayOutput
+	ToGetNodeClassesClassSupportedEngineArrayOutputWithContext(context.Context) GetNodeClassesClassSupportedEngineArrayOutput
+}
+
+type GetNodeClassesClassSupportedEngineArray []GetNodeClassesClassSupportedEngineInput
+
+func (GetNodeClassesClassSupportedEngineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClassSupportedEngine)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassSupportedEngineArray) ToGetNodeClassesClassSupportedEngineArrayOutput() GetNodeClassesClassSupportedEngineArrayOutput {
+	return i.ToGetNodeClassesClassSupportedEngineArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassSupportedEngineArray) ToGetNodeClassesClassSupportedEngineArrayOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassSupportedEngineArrayOutput)
+}
+
+type GetNodeClassesClassSupportedEngineOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassSupportedEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClassSupportedEngine)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassSupportedEngineOutput) ToGetNodeClassesClassSupportedEngineOutput() GetNodeClassesClassSupportedEngineOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineOutput) ToGetNodeClassesClassSupportedEngineOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineOutput {
+	return o
+}
+
+// A list of PolarDB node available classes.
+func (o GetNodeClassesClassSupportedEngineOutput) AvailableResources() GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput {
+	return o.ApplyT(func(v GetNodeClassesClassSupportedEngine) []GetNodeClassesClassSupportedEngineAvailableResource {
+		return v.AvailableResources
+	}).(GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput)
+}
+
+// In the zone, the database type supports classes in the following available_resources.
+func (o GetNodeClassesClassSupportedEngineOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeClassesClassSupportedEngine) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+type GetNodeClassesClassSupportedEngineArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassSupportedEngineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClassSupportedEngine)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassSupportedEngineArrayOutput) ToGetNodeClassesClassSupportedEngineArrayOutput() GetNodeClassesClassSupportedEngineArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineArrayOutput) ToGetNodeClassesClassSupportedEngineArrayOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineArrayOutput) Index(i pulumi.IntInput) GetNodeClassesClassSupportedEngineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeClassesClassSupportedEngine {
+		return vs[0].([]GetNodeClassesClassSupportedEngine)[vs[1].(int)]
+	}).(GetNodeClassesClassSupportedEngineOutput)
+}
+
+type GetNodeClassesClassSupportedEngineAvailableResource struct {
+	// The PolarDB node class type by the user.
+	DbNodeClass string `pulumi:"dbNodeClass"`
+}
+
+// GetNodeClassesClassSupportedEngineAvailableResourceInput is an input type that accepts GetNodeClassesClassSupportedEngineAvailableResourceArgs and GetNodeClassesClassSupportedEngineAvailableResourceOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassSupportedEngineAvailableResourceInput` via:
+//
+// 		 GetNodeClassesClassSupportedEngineAvailableResourceArgs{...}
+//
+type GetNodeClassesClassSupportedEngineAvailableResourceInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassSupportedEngineAvailableResourceOutput() GetNodeClassesClassSupportedEngineAvailableResourceOutput
+	ToGetNodeClassesClassSupportedEngineAvailableResourceOutputWithContext(context.Context) GetNodeClassesClassSupportedEngineAvailableResourceOutput
+}
+
+type GetNodeClassesClassSupportedEngineAvailableResourceArgs struct {
+	// The PolarDB node class type by the user.
+	DbNodeClass pulumi.StringInput `pulumi:"dbNodeClass"`
+}
+
+func (GetNodeClassesClassSupportedEngineAvailableResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClassSupportedEngineAvailableResource)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassSupportedEngineAvailableResourceArgs) ToGetNodeClassesClassSupportedEngineAvailableResourceOutput() GetNodeClassesClassSupportedEngineAvailableResourceOutput {
+	return i.ToGetNodeClassesClassSupportedEngineAvailableResourceOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassSupportedEngineAvailableResourceArgs) ToGetNodeClassesClassSupportedEngineAvailableResourceOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineAvailableResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassSupportedEngineAvailableResourceOutput)
+}
+
+// GetNodeClassesClassSupportedEngineAvailableResourceArrayInput is an input type that accepts GetNodeClassesClassSupportedEngineAvailableResourceArray and GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput values.
+// You can construct a concrete instance of `GetNodeClassesClassSupportedEngineAvailableResourceArrayInput` via:
+//
+// 		 GetNodeClassesClassSupportedEngineAvailableResourceArray{ GetNodeClassesClassSupportedEngineAvailableResourceArgs{...} }
+//
+type GetNodeClassesClassSupportedEngineAvailableResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutput() GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput
+	ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutputWithContext(context.Context) GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput
+}
+
+type GetNodeClassesClassSupportedEngineAvailableResourceArray []GetNodeClassesClassSupportedEngineAvailableResourceInput
+
+func (GetNodeClassesClassSupportedEngineAvailableResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClassSupportedEngineAvailableResource)(nil)).Elem()
+}
+
+func (i GetNodeClassesClassSupportedEngineAvailableResourceArray) ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutput() GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput {
+	return i.ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeClassesClassSupportedEngineAvailableResourceArray) ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput)
+}
+
+type GetNodeClassesClassSupportedEngineAvailableResourceOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassSupportedEngineAvailableResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeClassesClassSupportedEngineAvailableResource)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassSupportedEngineAvailableResourceOutput) ToGetNodeClassesClassSupportedEngineAvailableResourceOutput() GetNodeClassesClassSupportedEngineAvailableResourceOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineAvailableResourceOutput) ToGetNodeClassesClassSupportedEngineAvailableResourceOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineAvailableResourceOutput {
+	return o
+}
+
+// The PolarDB node class type by the user.
+func (o GetNodeClassesClassSupportedEngineAvailableResourceOutput) DbNodeClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeClassesClassSupportedEngineAvailableResource) string { return v.DbNodeClass }).(pulumi.StringOutput)
+}
+
+type GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeClassesClassSupportedEngineAvailableResource)(nil)).Elem()
+}
+
+func (o GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutput() GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) ToGetNodeClassesClassSupportedEngineAvailableResourceArrayOutputWithContext(ctx context.Context) GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput {
+	return o
+}
+
+func (o GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput) Index(i pulumi.IntInput) GetNodeClassesClassSupportedEngineAvailableResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeClassesClassSupportedEngineAvailableResource {
+		return vs[0].([]GetNodeClassesClassSupportedEngineAvailableResource)[vs[1].(int)]
+	}).(GetNodeClassesClassSupportedEngineAvailableResourceOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -1490,6 +1807,12 @@ func init() {
 	pulumi.RegisterOutputType(GetEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemOutput{})
 	pulumi.RegisterOutputType(GetEndpointsEndpointAddressItemArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineAvailableResourceOutput{})
+	pulumi.RegisterOutputType(GetNodeClassesClassSupportedEngineAvailableResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

@@ -14,6 +14,10 @@ class Cluster(pulumi.CustomResource):
     """
     Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
     """
+    connection_string: pulumi.Output[str]
+    """
+    (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
+    """
     db_node_class: pulumi.Output[str]
     """
     The db_node_class of cluster node.
@@ -148,6 +152,7 @@ class Cluster(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
+            __props__['connection_string'] = None
         super(Cluster, __self__).__init__(
             'alicloud:polardb/cluster:Cluster',
             resource_name,
@@ -155,7 +160,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew_period=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, modify_type=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew_period=None, connection_string=None, db_node_class=None, db_type=None, db_version=None, description=None, maintain_time=None, modify_type=None, parameters=None, pay_type=None, period=None, renewal_status=None, security_ips=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -164,6 +169,7 @@ class Cluster(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
+        :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
@@ -191,6 +197,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["auto_renew_period"] = auto_renew_period
+        __props__["connection_string"] = connection_string
         __props__["db_node_class"] = db_node_class
         __props__["db_type"] = db_type
         __props__["db_version"] = db_version

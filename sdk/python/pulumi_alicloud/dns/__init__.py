@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
+from .dns_domain import *
 from .domain import *
 from .domain_attachment import *
 from .get_domain_groups import *
