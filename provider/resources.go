@@ -29,51 +29,54 @@ const (
 	// packages:
 	alicloudPkg = "alicloud"
 	// modules:
-	alicloudMod      = "index"
-	actionTrailMod   = "ActionTrail"
-	adbMod           = "Adb"
-	aliKafaMod       = "AliKafka"
-	apiGatewayMod    = "ApiGateway"
-	casMod           = "Cas"
-	cdnMod           = "Cdn"
-	cenMod           = "Cen"
-	cloudConnectMod  = "CloudConnect"
-	cmsMod           = "Cms"
-	crMod            = "CR"
-	csMod            = "CS"
-	datahubMod       = "Datahub"
-	ddsMod           = "Dds"
-	ddosMod          = "Ddos"
-	dmsMod           = "Dms"
-	dnsMod           = "Dns"
-	drdsMod          = "Drds"
-	ecsMod           = "Ecs"
-	elasticsearchMod = "ElasticSearch"
-	emrMod           = "Emr"
-	essMod           = "Ess"
-	fcMod            = "FC"
-	gpdbMod          = "Gpdb"
-	hbaseMod         = "Hbase"
-	kmsMod           = "Kms"
-	kvstoreMod       = "KVStore"
-	logMod           = "Log"
-	marketPlaceMod   = "MarketPlace"
-	maxComputeMod    = "MaxCompute"
-	mongoDbMod       = "MongoDB"
-	mnsMod           = "Mns"
-	nasMod           = "Nas"
-	ossMod           = "Oss"
-	otsMod           = "Ots"
-	polarDbMod       = "PolarDB"
-	pvtzMod          = "Pvtz"
-	ramMod           = "Ram"
-	rocketMqMod      = "RocketMQ"
-	rdsMod           = "Rds"
-	sagMod           = "Sag"
-	slbMod           = "Slb"
-	vpcMod           = "Vpc"
-	vpnMod           = "Vpn"
-	yundunMod        = "Yundun"
+	alicloudMod        = "index"
+	actionTrailMod     = "ActionTrail"
+	adbMod             = "Adb"
+	aliKafaMod         = "AliKafka"
+	apiGatewayMod      = "ApiGateway"
+	casMod             = "Cas"
+	cdnMod             = "Cdn"
+	cenMod             = "Cen"
+	cloudConnectMod    = "CloudConnect"
+	cmsMod             = "Cms"
+	crMod              = "CR"
+	csMod              = "CS"
+	datahubMod         = "Datahub"
+	ddsMod             = "Dds"
+	ddosMod            = "Ddos"
+	dmsMod             = "Dms"
+	dnsMod             = "Dns"
+	drdsMod            = "Drds"
+	ecsMod             = "Ecs"
+	edasMod            = "Edas"
+	elasticsearchMod   = "ElasticSearch"
+	emrMod             = "Emr"
+	essMod             = "Ess"
+	fcMod              = "FC"
+	gpdbMod            = "Gpdb"
+	hbaseMod           = "Hbase"
+	kmsMod             = "Kms"
+	kvstoreMod         = "KVStore"
+	logMod             = "Log"
+	marketPlaceMod     = "MarketPlace"
+	maxComputeMod      = "MaxCompute"
+	mongoDbMod         = "MongoDB"
+	mnsMod             = "Mns"
+	nasMod             = "Nas"
+	ossMod             = "Oss"
+	otsMod             = "Ots"
+	polarDbMod         = "PolarDB"
+	pvtzMod            = "Pvtz"
+	ramMod             = "Ram"
+	resourceManagerMod = "ResourceManager"
+	rocketMqMod        = "RocketMQ"
+	rdsMod             = "Rds"
+	sagMod             = "Sag"
+	slbMod             = "Slb"
+	vpcMod             = "Vpc"
+	vpnMod             = "Vpn"
+	wafMod             = "Waf"
+	yundunMod          = "Yundun"
 )
 
 var namespaceMap = map[string]string{
@@ -225,6 +228,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_route_entry":                  {Tok: resource(cenMod, "RouteEntry")},
 			"alicloud_cen_instance_grant":               {Tok: resource(cenMod, "InstanceGrant")},
 			"alicloud_cen_flowlog":                      {Tok: resource(cenMod, "FlowLog")},
+			"alicloud_cen_route_map":                    {Tok: resource(cenMod, "RouteMap")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -306,6 +310,15 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snapshot_policy":         {Tok: resource(ecsMod, "SnapshotPolicy")},
 			"alicloud_copy_image":              {Tok: resource(ecsMod, "CopyImage")},
 			"alicloud_image_import":            {Tok: resource(ecsMod, "ImageImport")},
+
+			// Edas
+			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
+			"alicloud_edas_deploy_group":                {Tok: resource(edasMod, "DeployGroup")},
+			"alicloud_edas_application_scale":           {Tok: resource(edasMod, "ApplicationScale")},
+			"alicloud_edas_slb_attachment":              {Tok: resource(edasMod, "SlbAttachment")},
+			"alicloud_edas_cluster":                     {Tok: resource(edasMod, "Cluster")},
+			"alicloud_edas_instance_cluster_attachment": {Tok: resource(edasMod, "InstanceClusterAttachment")},
+			"alicloud_edas_application_deployment":      {Tok: resource(edasMod, "ApplicationDeployment")},
 
 			// ESS
 			"alicloud_ess_alarm":      {Tok: resource(essMod, "Alarm")},
@@ -447,6 +460,12 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_user_policy_attachment":  {Tok: resource(ramMod, "UserPolicyAttachment")},
 			"alicloud_ram_account_password_policy": {Tok: resource(ramMod, "AccountPasswordPolicy")},
 
+			// ResourceManager
+			"alicloud_resource_manager_handshake":      {Tok: resource(resourceManagerMod, "Handshake")},
+			"alicloud_resource_manager_folder":         {Tok: resource(resourceManagerMod, "Folder")},
+			"alicloud_resource_manager_resource_group": {Tok: resource(resourceManagerMod, "ResourceGroup")},
+			"alicloud_resource_manager_role":           {Tok: resource(resourceManagerMod, "Role")},
+
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
 			"alicloud_ons_instance": {Tok: resource(rocketMqMod, "Instance")},
@@ -531,6 +550,16 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpn_gateway":          {Tok: resource(vpnMod, "Gateway")},
 			"alicloud_vpn_route_entry":      {Tok: resource(vpnMod, "RouteEntry")},
 
+			// Waf
+			"alicloud_waf_domain": {
+				Tok: resource(wafMod, "Domain"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"domain": {
+						CSharpName: "DomainName",
+					},
+				},
+			},
+
 			// Yundun
 			"alicloud_yundun_bastionhost_instance": {Tok: resource(yundunMod, "BastionHostInstance")},
 			"alicloud_yundun_dbaudit_instance":     {Tok: resource(yundunMod, "DBAuditInstance")},
@@ -611,6 +640,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_instance_type_families": {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
 			"alicloud_network_interfaces":     {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
 			"alicloud_snapshots":              {Tok: dataSource(ecsMod, "getSnapshots")},
+
+			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
+			"alicloud_edas_deploy_groups": {Tok: dataSource(edasMod, "getDeployGroups")},
+			"alicloud_edas_clusters":      {Tok: dataSource(edasMod, "getClusters")},
 
 			// Elasticsearch
 			"alicloud_elasticsearch_instances": {Tok: dataSource(elasticsearchMod, "getInstances")},

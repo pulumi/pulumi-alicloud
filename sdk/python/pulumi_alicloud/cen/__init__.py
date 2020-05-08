@@ -17,3 +17,4 @@ from .instance import *
 from .instance_attachment import *
 from .instance_grant import *
 from .route_entry import *
+from .route_map import *

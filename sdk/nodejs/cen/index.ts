@@ -16,3 +16,4 @@ export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./instanceGrant";
 export * from "./routeEntry";
+export * from "./routeMap";

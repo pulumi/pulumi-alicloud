@@ -36,6 +36,8 @@ type ServerlessKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -101,6 +103,8 @@ type serverlessKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone *bool `pulumi:"privateZone"`
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
@@ -133,6 +137,8 @@ type ServerlessKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
 	PrivateZone pulumi.BoolPtrInput
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId pulumi.StringPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster .
 	Tags pulumi.MapInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.

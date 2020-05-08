@@ -53,6 +53,10 @@ class ServerlessKubernetes(pulumi.CustomResource):
     """
     Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
     """
+    security_group_id: pulumi.Output[str]
+    """
+    The ID of security group where the current cluster worker node is located.
+    """
     tags: pulumi.Output[dict]
     """
     Default nil, A map of tags assigned to the kubernetes cluster .
@@ -121,6 +125,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             if vswitch_id is None:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
+            __props__['security_group_id'] = None
         super(ServerlessKubernetes, __self__).__init__(
             'alicloud:cs/serverlessKubernetes:ServerlessKubernetes',
             resource_name,
@@ -128,7 +133,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, tags=None, vpc_id=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, client_cert=None, client_key=None, cluster_ca_cert=None, deletion_protection=None, endpoint_public_access_enabled=None, force_update=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, private_zone=None, security_group_id=None, tags=None, vpc_id=None, vswitch_id=None):
         """
         Get an existing ServerlessKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -148,6 +153,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true.
         :param pulumi.Input[bool] private_zone: Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
+        :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
         :param pulumi.Input[dict] tags: Default nil, A map of tags assigned to the kubernetes cluster .
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
         :param pulumi.Input[str] vswitch_id: The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
@@ -167,6 +173,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__["name_prefix"] = name_prefix
         __props__["new_nat_gateway"] = new_nat_gateway
         __props__["private_zone"] = private_zone
+        __props__["security_group_id"] = security_group_id
         __props__["tags"] = tags
         __props__["vpc_id"] = vpc_id
         __props__["vswitch_id"] = vswitch_id

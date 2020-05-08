@@ -132,6 +132,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("rds")]
         public Input<string>? Rds { get; set; }
 
+        [Input("resourcemanager")]
+        public Input<string>? Resourcemanager { get; set; }
+
         [Input("slb")]
         public Input<string>? Slb { get; set; }
 
@@ -140,6 +143,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("vpc")]
         public Input<string>? Vpc { get; set; }
+
+        [Input("wafOpenapi")]
+        public Input<string>? WafOpenapi { get; set; }
 
         public ProviderEndpointArgs()
         {

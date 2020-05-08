@@ -71,7 +71,7 @@ export class Audit extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * .Multi-account configuration, please fill in multiple aliuid.
+     * Multi-account configuration, please fill in multiple aliuid.
      */
     public readonly multiAccounts!: pulumi.Output<string[] | undefined>;
     /**
@@ -132,7 +132,7 @@ export interface AuditState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * .Multi-account configuration, please fill in multiple aliuid.
+     * Multi-account configuration, please fill in multiple aliuid.
      */
     readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -154,7 +154,7 @@ export interface AuditArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * .Multi-account configuration, please fill in multiple aliuid.
+     * Multi-account configuration, please fill in multiple aliuid.
      */
     readonly multiAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**

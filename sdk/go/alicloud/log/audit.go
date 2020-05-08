@@ -22,7 +22,7 @@ type Audit struct {
 	Aliuid pulumi.StringOutput `pulumi:"aliuid"`
 	// Name of SLS log audit.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// .Multi-account configuration, please fill in multiple aliuid.
+	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayOutput `pulumi:"multiAccounts"`
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapOutput `pulumi:"variableMap"`
@@ -66,7 +66,7 @@ type auditState struct {
 	Aliuid *string `pulumi:"aliuid"`
 	// Name of SLS log audit.
 	DisplayName *string `pulumi:"displayName"`
-	// .Multi-account configuration, please fill in multiple aliuid.
+	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts []string `pulumi:"multiAccounts"`
 	// Log audit detailed configuration.
 	VariableMap map[string]interface{} `pulumi:"variableMap"`
@@ -77,7 +77,7 @@ type AuditState struct {
 	Aliuid pulumi.StringPtrInput
 	// Name of SLS log audit.
 	DisplayName pulumi.StringPtrInput
-	// .Multi-account configuration, please fill in multiple aliuid.
+	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayInput
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapInput
@@ -92,7 +92,7 @@ type auditArgs struct {
 	Aliuid string `pulumi:"aliuid"`
 	// Name of SLS log audit.
 	DisplayName string `pulumi:"displayName"`
-	// .Multi-account configuration, please fill in multiple aliuid.
+	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts []string `pulumi:"multiAccounts"`
 	// Log audit detailed configuration.
 	VariableMap map[string]interface{} `pulumi:"variableMap"`
@@ -104,7 +104,7 @@ type AuditArgs struct {
 	Aliuid pulumi.StringInput
 	// Name of SLS log audit.
 	DisplayName pulumi.StringInput
-	// .Multi-account configuration, please fill in multiple aliuid.
+	// Multi-account configuration, please fill in multiple aliuid.
 	MultiAccounts pulumi.StringArrayInput
 	// Log audit detailed configuration.
 	VariableMap pulumi.MapInput

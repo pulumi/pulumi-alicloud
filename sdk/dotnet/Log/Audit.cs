@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// .Multi-account configuration, please fill in multiple aliuid.
+        /// Multi-account configuration, please fill in multiple aliuid.
         /// </summary>
         [Output("multiAccounts")]
         public Output<ImmutableArray<string>> MultiAccounts { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<string>? _multiAccounts;
 
         /// <summary>
-        /// .Multi-account configuration, please fill in multiple aliuid.
+        /// Multi-account configuration, please fill in multiple aliuid.
         /// </summary>
         public InputList<string> MultiAccounts
         {
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<string>? _multiAccounts;
 
         /// <summary>
-        /// .Multi-account configuration, please fill in multiple aliuid.
+        /// Multi-account configuration, please fill in multiple aliuid.
         /// </summary>
         public InputList<string> MultiAccounts
         {

@@ -25,7 +25,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
       * `loadbalancerId` (`str`)
       * `vserverAttributes` (`list`)
         * `port` (`float`)
-        * `vserverGroupId` (`str`)
+        * `vserver_group_id` (`str`)
         * `weight` (`float`)
     """
     def __init__(__self__, resource_name, opts=None, force=None, scaling_group_id=None, vserver_groups=None, __props__=None, __name__=None, __opts__=None):
@@ -75,7 +75,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
           * `loadbalancerId` (`pulumi.Input[str]`)
           * `vserverAttributes` (`pulumi.Input[list]`)
             * `port` (`pulumi.Input[float]`)
-            * `vserverGroupId` (`pulumi.Input[str]`)
+            * `vserver_group_id` (`pulumi.Input[str]`)
             * `weight` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
@@ -126,7 +126,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
           * `loadbalancerId` (`pulumi.Input[str]`)
           * `vserverAttributes` (`pulumi.Input[list]`)
             * `port` (`pulumi.Input[float]`)
-            * `vserverGroupId` (`pulumi.Input[str]`)
+            * `vserver_group_id` (`pulumi.Input[str]`)
             * `weight` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

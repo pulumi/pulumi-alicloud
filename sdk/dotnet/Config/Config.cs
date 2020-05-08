@@ -130,9 +130,11 @@ namespace Pulumi.AliCloud
                 public string? Pvtz { get; set; } = null!;
                 public string? Ram { get; set; } = null!;
                 public string? Rds { get; set; } = null!;
+                public string? Resourcemanager { get; set; } = null!;
                 public string? Slb { get; set; } = null!;
                 public string? Sts { get; set; } = null!;
                 public string? Vpc { get; set; } = null!;
+                public string? WafOpenapi { get; set; } = null!;
             }
         }
     }
