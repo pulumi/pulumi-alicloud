@@ -20,7 +20,7 @@ class Audit(pulumi.CustomResource):
     """
     multi_accounts: pulumi.Output[list]
     """
-    .Multi-account configuration, please fill in multiple aliuid.
+    Multi-account configuration, please fill in multiple aliuid.
     """
     variable_map: pulumi.Output[dict]
     """
@@ -40,7 +40,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
-        :param pulumi.Input[list] multi_accounts: .Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[list] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
         :param pulumi.Input[dict] variable_map: Log audit detailed configuration.
         """
         if __name__ is not None:
@@ -85,7 +85,7 @@ class Audit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliuid: Aliuid value of your account.
         :param pulumi.Input[str] display_name: Name of SLS log audit.
-        :param pulumi.Input[list] multi_accounts: .Multi-account configuration, please fill in multiple aliuid.
+        :param pulumi.Input[list] multi_accounts: Multi-account configuration, please fill in multiple aliuid.
         :param pulumi.Input[dict] variable_map: Log audit detailed configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

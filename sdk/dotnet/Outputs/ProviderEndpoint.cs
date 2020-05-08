@@ -53,9 +53,11 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Pvtz;
         public readonly string? Ram;
         public readonly string? Rds;
+        public readonly string? Resourcemanager;
         public readonly string? Slb;
         public readonly string? Sts;
         public readonly string? Vpc;
+        public readonly string? WafOpenapi;
 
         [OutputConstructor]
         private ProviderEndpoint(
@@ -139,11 +141,15 @@ namespace Pulumi.AliCloud.Outputs
 
             string? rds,
 
+            string? resourcemanager,
+
             string? slb,
 
             string? sts,
 
-            string? vpc)
+            string? vpc,
+
+            string? wafOpenapi)
         {
             Actiontrail = actiontrail;
             Adb = adb;
@@ -185,9 +191,11 @@ namespace Pulumi.AliCloud.Outputs
             Pvtz = pvtz;
             Ram = ram;
             Rds = rds;
+            Resourcemanager = resourcemanager;
             Slb = slb;
             Sts = sts;
             Vpc = vpc;
+            WafOpenapi = wafOpenapi;
         }
     }
 }

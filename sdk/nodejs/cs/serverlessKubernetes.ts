@@ -77,6 +77,10 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly privateZone!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of security group where the current cluster worker node is located.
+     */
+    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster .
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -112,6 +116,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["namePrefix"] = state ? state.namePrefix : undefined;
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             inputs["privateZone"] = state ? state.privateZone : undefined;
+            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -137,6 +142,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
+            inputs["securityGroupId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -196,6 +202,10 @@ export interface ServerlessKubernetesState {
      * Enable Privatezone if you need to use the service discovery feature within the serverless cluster. Default to false.
      */
     readonly privateZone?: pulumi.Input<boolean>;
+    /**
+     * The ID of security group where the current cluster worker node is located.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster .
      */

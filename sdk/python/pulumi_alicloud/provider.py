@@ -84,9 +84,11 @@ class Provider(pulumi.ProviderResource):
           * `pvtz` (`pulumi.Input[str]`)
           * `ram` (`pulumi.Input[str]`)
           * `rds` (`pulumi.Input[str]`)
+          * `resourcemanager` (`pulumi.Input[str]`)
           * `slb` (`pulumi.Input[str]`)
           * `sts` (`pulumi.Input[str]`)
           * `vpc` (`pulumi.Input[str]`)
+          * `wafOpenapi` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

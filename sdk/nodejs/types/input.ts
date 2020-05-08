@@ -52,9 +52,11 @@ export interface ProviderEndpoint {
     pvtz?: pulumi.Input<string>;
     ram?: pulumi.Input<string>;
     rds?: pulumi.Input<string>;
+    resourcemanager?: pulumi.Input<string>;
     slb?: pulumi.Input<string>;
     sts?: pulumi.Input<string>;
     vpc?: pulumi.Input<string>;
+    wafOpenapi?: pulumi.Input<string>;
 }
 
 export namespace actiontrail {
@@ -754,6 +756,9 @@ export namespace ecs {
     }
 }
 
+export namespace edas {
+}
+
 export namespace elasticsearch {
 }
 
@@ -1260,6 +1265,16 @@ export namespace rds {
     }
 }
 
+export namespace resourcemanager {
+    export interface ResourceGroupRegionStatus {
+        regionId?: pulumi.Input<string>;
+        /**
+         * The status of the resource group.
+         */
+        status?: pulumi.Input<string>;
+    }
+}
+
 export namespace rocketmq {
 }
 
@@ -1449,6 +1464,13 @@ export namespace vpn {
          * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
          */
         ipsecPfs?: pulumi.Input<string>;
+    }
+}
+
+export namespace waf {
+    export interface DomainLogHeader {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
     }
 }
 

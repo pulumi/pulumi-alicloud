@@ -77,6 +77,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> PrivateZone { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of security group where the current cluster worker node is located.
+        /// </summary>
+        [Output("securityGroupId")]
+        public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Default nil, A map of tags assigned to the kubernetes cluster .
         /// </summary>
         [Output("tags")]
@@ -300,6 +306,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
+
+        /// <summary>
+        /// The ID of security group where the current cluster worker node is located.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

@@ -2732,6 +2732,161 @@ export namespace ecs {
     }
 }
 
+export namespace edas {
+    export interface GetApplicationsApplication {
+        /**
+         * The ID of the application that you want to deploy.
+         */
+        appId: string;
+        /**
+         * The name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
+         */
+        appName: string;
+        /**
+         * The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
+         */
+        applicationType: string;
+        /**
+         * The package ID of Enterprise Distributed Application Service (EDAS) Container.
+         */
+        buildPackageId: number;
+        /**
+         * The ID of the cluster that you want to create the application.
+         */
+        clusterId: string;
+        /**
+         * The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+         */
+        clusterType: number;
+        /**
+         * Application's creation time.
+         */
+        createTime: number;
+        /**
+         * The URL for health checking of the application.
+         */
+        healthCheckUrl: string;
+        /**
+         * Number of instances.
+         */
+        instanceCount: number;
+        /**
+         * The ID of the namespace the application belongs to.
+         */
+        regionId: string;
+        /**
+         * Number of running instances.
+         */
+        runningInstanceCount: number;
+        /**
+         * The ID of the SLB instance that is going to be bound.
+         */
+        slbId: string;
+        /**
+         * The IP address that is allocated to the bound SLB instance.
+         */
+        slbIp: string;
+        /**
+         * The port of intranet SLB.
+         */
+        slbPort: number;
+    }
+
+    export interface GetClustersCluster {
+        /**
+         * The ID of the cluster that you want to create the application.
+         */
+        clusterId: string;
+        /**
+         * The name of the cluster.
+         */
+        clusterName: string;
+        /**
+         * The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+         */
+        clusterType: number;
+        /**
+         * The total number of CPUs in the cluster.
+         */
+        cpu: number;
+        /**
+         * The number of used CPUs in the cluster.
+         */
+        cpuUsed: number;
+        /**
+         * Cluster's creation time.
+         */
+        createTime: number;
+        /**
+         * The total amount of memory in the cluser. Unit: MB.
+         */
+        mem: number;
+        /**
+         * The amount of used memory in the cluser. Unit: MB.
+         */
+        memUsed: number;
+        /**
+         * The network type of the cluster. Valid values: 1: classic network. 2: VPC.
+         */
+        networkMode: number;
+        /**
+         * The number of the Elastic Compute Service (ECS) instances that are deployed to the cluster.
+         */
+        nodeNum: number;
+        /**
+         * The ID of the namespace the application belongs to.
+         */
+        regionId: string;
+        /**
+         * The time when the cluster was last updated.
+         */
+        updateTime: number;
+        /**
+         * The ID of the Virtual Private Cloud (VPC) for the cluster.
+         */
+        vpcId: string;
+    }
+
+    export interface GetDeployGroupsGroup {
+        /**
+         * ID of the EDAS application.
+         */
+        appId: string;
+        /**
+         * The version of the deployment package for the application.
+         */
+        appVersionId: string;
+        /**
+         * The ID of the cluster that you want to create the application.
+         */
+        clusterId: string;
+        /**
+         * The time when the instance group was created.
+         */
+        createTime: number;
+        /**
+         * The ID of the instance group.
+         */
+        groupId: string;
+        /**
+         * The name of the instance group. The length cannot exceed 64 characters.
+         */
+        groupName: string;
+        /**
+         * The type of the instance group. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+         */
+        groupType: number;
+        /**
+         * The version of the deployment package for the instance group that was created.
+         */
+        packageVersionId: string;
+        /**
+         * The time when the instance group was updated.
+         */
+        updateTime: number;
+    }
+}
+
 export namespace elasticsearch {
     export interface GetInstancesInstance {
         createdAt: string;
@@ -5565,6 +5720,16 @@ export namespace rds {
     }
 }
 
+export namespace resourcemanager {
+    export interface ResourceGroupRegionStatus {
+        regionId: string;
+        /**
+         * The status of the resource group.
+         */
+        status: string;
+    }
+}
+
 export namespace rocketmq {
     export interface GetGroupsGroup {
         /**
@@ -6964,6 +7129,13 @@ export namespace vpn {
          * Use the VPC ID as the search key.
          */
         vpcId: string;
+    }
+}
+
+export namespace waf {
+    export interface DomainLogHeader {
+        key?: string;
+        value?: string;
     }
 }
 
