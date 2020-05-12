@@ -11,6 +11,31 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** At present, `version` can not be modified once instance has been created.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const instance = new alicloud.elasticsearch.Instance("instance", {
+ *     instanceChargeType: "PostPaid",
+ *     dataNodeAmount: "2",
+ *     dataNodeSpec: "elasticsearch.sn2ne.large",
+ *     dataNodeDiskSize: "20",
+ *     dataNodeDiskType: "cloudSsd",
+ *     vswitchId: "some vswitch id",
+ *     password: "Your password",
+ *     version: "5.5.3_with_X-Pack",
+ *     description: "description",
+ *     zoneCount: "2",
+ *     tags: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
  */

@@ -48,6 +48,22 @@ class SlbAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.SlbAttachment("default",
+            app_id=var["app_id"],
+            slb_id=var["slb_id"],
+            slb_ip=var["slb_ip"],
+            type=var["type"],
+            listener_port=var["listener_port"],
+            vserver_group_id=var["vserver_group_id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

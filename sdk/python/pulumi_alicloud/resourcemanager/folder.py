@@ -27,6 +27,16 @@ class Folder(pulumi.CustomResource):
 
         > **NOTE:** A maximum of five levels of folders can be created under the root folder.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.resourcemanager.Folder("example", folder_name="test")
+        ```
 
 
         :param str resource_name: The name of the resource.

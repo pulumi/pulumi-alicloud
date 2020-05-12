@@ -68,6 +68,18 @@ def get_instances(ids=None,name_regex=None,output_file=None,tags=None,opts=None)
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instances_ds = alicloud.oss.get_instances(name_regex="sample-instance",
+        output_file="instances.txt")
+    pulumi.export("firstInstanceId", instances_ds.instances[0]["id"])
+    ```
 
 
 

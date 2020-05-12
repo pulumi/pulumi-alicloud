@@ -70,6 +70,19 @@ def get_tables(ids=None,instance_name=None,name_regex=None,output_file=None,opts
 
     > **NOTE:** Available in v1.40.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    tables_ds = alicloud.oss.get_tables(instance_name="sample-instance",
+        name_regex="sample-table",
+        output_file="tables.txt")
+    pulumi.export("firstTableId", tables_ds.tables[0]["id"])
+    ```
 
 
 

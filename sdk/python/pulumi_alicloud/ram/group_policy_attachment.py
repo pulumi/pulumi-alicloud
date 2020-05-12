@@ -26,6 +26,44 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         """
         Provides a RAM Group Policy attachment resource. 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM Group Policy attachment.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        policy = alicloud.ram.Policy("policy",
+            description="this is a policy test",
+            document=\"\"\"    {
+              "Statement": [
+                {
+                  "Action": [
+                    "oss:ListObjects",
+                    "oss:GetObject"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    "acs:oss:*:*:mybucket",
+                    "acs:oss:*:*:mybucket/*"
+                  ]
+                }
+              ],
+                "Version": "1"
+            }
+          
+        \"\"\",
+            force=True)
+        attach = alicloud.ram.GroupPolicyAttachment("attach",
+            group_name=group.name,
+            policy_name=policy.name,
+            policy_type=policy.type)
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -32,6 +32,19 @@ class Certificate(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.35.0+ .
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Certificate.
+        cert = alicloud.cas.Certificate("cert",
+            cert=(lambda path: open(path).read())(f"{path['module']}/test.crt"),
+            key=(lambda path: open(path).read())(f"{path['module']}/test.key"))
+        ```
 
 
         :param str resource_name: The name of the resource.

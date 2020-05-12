@@ -77,6 +77,18 @@ def get_file_systems(description_regex=None,ids=None,output_file=None,protocol_t
 
     > NOTE: Available in 1.35.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fs = alicloud.nas.get_file_systems(description=alicloud_nas_file_system["foo"]["description"],
+        protocol_type="NFS")
+    pulumi.export("alicloudNasFileSystemsId", fs.systems[0]["id"])
+    ```
 
 
 

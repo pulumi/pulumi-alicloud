@@ -93,6 +93,17 @@ def get_disks(category=None,encrypted=None,ids=None,instance_id=None,name_regex=
     """
     This data source provides the disks of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
+    pulumi.export("firstDiskId", disks_ds.disks[0]["id"])
+    ```
 
 
 

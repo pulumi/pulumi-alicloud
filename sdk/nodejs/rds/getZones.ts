@@ -11,6 +11,19 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in v1.73.0+.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const zonesIds = alicloud.rds.getZones({});
+ * // Create an RDS instance with the first matched zone
+ * const db = new alicloud.rds.Instance("db", {zoneId: zonesIds.then(zonesIds => zonesIds.zones[0])});
+ * // Other properties...
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_zones.html.markdown.
  */

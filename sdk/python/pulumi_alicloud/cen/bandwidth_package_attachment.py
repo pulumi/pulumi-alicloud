@@ -22,6 +22,26 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         """
         Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
+        cen = alicloud.cen.Instance("cen", description="tf-testAccCenBandwidthPackageAttachmentDescription")
+        bwp = alicloud.cen.BandwidthPackage("bwp",
+            bandwidth=20,
+            geographic_region_ids=[
+                "China",
+                "Asia-Pacific",
+            ])
+        foo = alicloud.cen.BandwidthPackageAttachment("foo",
+            bandwidth_package_id=bwp.id,
+            instance_id=cen.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

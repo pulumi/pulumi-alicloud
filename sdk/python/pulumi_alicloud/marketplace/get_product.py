@@ -49,6 +49,19 @@ def get_product(available_region=None,product_code=None,opts=None):
 
     > **NOTE:** Available in 1.69.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.marketplace.get_product(product_code="cmapi022206")
+    pulumi.export("productName", default.products[0]["name"])
+    pulumi.export("firstProductSkuCode", default.products[0]["skuses"][0]["skuCode"])
+    pulumi.export("firstProductPackageVersion", default.products[0]["skuses"][0]["packageVersions"][0]["package_version"])
+    ```
 
 
 

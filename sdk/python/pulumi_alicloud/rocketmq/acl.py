@@ -24,6 +24,16 @@ class Acl(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rocketmq.Acl("default")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -65,12 +65,7 @@ class Disk(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, name=None, resource_group_id=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a ECS disk resource.
-
-        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
-
-
-
+        Create a Disk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The Zone to create the disk in.

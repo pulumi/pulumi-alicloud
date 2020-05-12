@@ -74,13 +74,7 @@ class Alert(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, alert_description=None, alert_displayname=None, alert_name=None, condition=None, dashboard=None, mute_until=None, notification_lists=None, notify_threshold=None, project_name=None, query_lists=None, schedule_interval=None, schedule_type=None, throttling=None, __props__=None, __name__=None, __opts__=None):
         """
-        Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information. 
-        Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
-
-        > **NOTE:** Available in 1.78.0
-
-
-
+        Create a Alert resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_description: Alert description.

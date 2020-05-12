@@ -79,6 +79,18 @@ def get_key_pairs(finger_print=None,ids=None,name_regex=None,output_file=None,re
     """
     This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
+    default_key_pairs = default_key_pair.key_name.apply(lambda key_name: alicloud.ecs.get_key_pairs(name_regex=key_name))
+    ```
 
 
 

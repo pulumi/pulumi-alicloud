@@ -65,6 +65,19 @@ def get_ssl_vpn_client_certs(ids=None,name_regex=None,output_file=None,ssl_vpn_s
     """
     The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpc.get_ssl_vpn_client_certs(ids=["fake-cert-id"],
+        name_regex="^foo",
+        output_file="/tmp/clientcert",
+        ssl_vpn_server_id="fake-server-id")
+    ```
 
 
 

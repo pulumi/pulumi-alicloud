@@ -41,6 +41,16 @@ class ResourceGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.82.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.resourcemanager.ResourceGroup("example", display_name="testrd")
+        ```
 
 
         :param str resource_name: The name of the resource.

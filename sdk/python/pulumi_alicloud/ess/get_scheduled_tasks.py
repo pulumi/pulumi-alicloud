@@ -74,6 +74,18 @@ def get_scheduled_tasks(ids=None,name_regex=None,output_file=None,scheduled_acti
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
+        scheduled_task_id="scheduled_task_id")
+    pulumi.export("firstScheduledTask", ds.tasks[0]["id"])
+    ```
 
 
 

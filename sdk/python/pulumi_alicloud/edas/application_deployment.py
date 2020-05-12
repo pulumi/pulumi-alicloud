@@ -36,6 +36,20 @@ class ApplicationDeployment(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.ApplicationDeployment("default",
+            app_id=var["app_id"],
+            group_id=var["group_id"],
+            package_version=var["package_version"],
+            war_url=var["war_url"])
+        ```
 
 
         :param str resource_name: The name of the resource.

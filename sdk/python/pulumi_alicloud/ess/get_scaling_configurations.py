@@ -68,6 +68,22 @@ def get_scaling_configurations(ids=None,name_regex=None,output_file=None,scaling
     """
     This data source provides available scaling configuration resources. 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(ids=[
+            "scaling_configuration_id1",
+            "scaling_configuration_id2",
+        ],
+        name_regex="scaling_configuration_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0]["id"])
+    ```
 
 
 

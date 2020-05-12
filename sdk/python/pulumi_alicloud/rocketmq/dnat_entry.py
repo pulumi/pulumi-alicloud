@@ -48,6 +48,23 @@ class DnatEntry(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.rocketmq.DnatEntry("default",
+            external_ip="1.0.0.2",
+            external_port="1",
+            internal_ip="10.0.0.2",
+            internal_port="20",
+            ip_protocol="tcp",
+            sag_id="sag-3rb1t3iagy3w0zgwy9",
+            type="Intranet")
+        ```
 
 
         :param str resource_name: The name of the resource.

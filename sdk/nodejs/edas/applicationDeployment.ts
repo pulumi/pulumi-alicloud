@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.edas.ApplicationDeployment("default", {
+ *     appId: var.app_id,
+ *     groupId: var.group_id,
+ *     packageVersion: var.package_version,
+ *     warUrl: var.war_url,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_application_deployment.html.markdown.
  */

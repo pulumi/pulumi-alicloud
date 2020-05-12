@@ -57,6 +57,23 @@ class ImageCopy(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.66.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageCopy("default",
+            description="test-image",
+            image_name="test-image",
+            source_image_id="m-bp1gxyhdswlsn18tu***",
+            source_region_id="cn-hangzhou",
+            tags={
+                "FinanceDept": "FinanceDeptJoshua",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

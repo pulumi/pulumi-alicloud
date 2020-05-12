@@ -60,6 +60,19 @@ def get_sasl_users(instance_id=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.66.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sasl_users_ds = alicloud.actiontrail.get_sasl_users(instance_id="xxx",
+        name_regex="username",
+        output_file="saslUsers.txt")
+    pulumi.export("firstSaslUsername", sasl_users_ds.users[0]["username"])
+    ```
 
 
 

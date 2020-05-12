@@ -45,6 +45,41 @@ class EndpointAddress(pulumi.CustomResource):
         > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
          To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "PolarDB"
+        name = config.get("name")
+        if name is None:
+            name = "polardbconnectionbasic"
+        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            availability_zone=default_zones.zones[0]["id"])
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+            db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid",
+            db_node_class="polar.mysql.x4.large",
+            vswitch_id=default_switch.id,
+            description=name)
+        default_endpoints = default_cluster.id.apply(lambda id: alicloud.polardb.get_endpoints(db_cluster_id=id))
+        endpoint = alicloud.polardb.EndpointAddress("endpoint",
+            db_cluster_id=default_cluster.id,
+            db_endpoint_id=default_endpoints.endpoints[0]["db_endpoint_id"],
+            connection_prefix="testpolardbconn",
+            net_type="Public")
+        ```
 
 
         :param str resource_name: The name of the resource.

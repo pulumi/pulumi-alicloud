@@ -59,6 +59,17 @@ def get_notifications(ids=None,output_file=None,scaling_group_id=None,opts=None)
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
+    pulumi.export("firstNotification", ds.notifications[0]["id"])
+    ```
 
 
 

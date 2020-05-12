@@ -46,6 +46,32 @@ class Role(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.82.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a Resource Manager role.
+        example = alicloud.resourcemanager.Role("example",
+            assume_role_policy_document=\"\"\"     {
+                  "Statement": [
+                       {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "RAM":"acs:ram::103755469187****:root"
+                            }
+                        }
+                  ],
+                  "Version": "1"
+             }
+        	 
+        \"\"\",
+            role_name="testrd")
+        ```
 
 
         :param str resource_name: The name of the resource.

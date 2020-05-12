@@ -67,6 +67,18 @@ def get_serverless_kubernetes_clusters(enable_details=None,ids=None,name_regex=N
 
     > **NOTE:** Available in 1.58.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    k8s_clusters = alicloud.cs.get_serverless_kubernetes_clusters(name_regex="my-first-k8s",
+        output_file="my-first-k8s-json")
+    pulumi.export("output", k8s_clusters.clusters)
+    ```
 
 
 

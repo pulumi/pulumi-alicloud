@@ -57,6 +57,24 @@ class ReservedInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.65.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ReservedInstance("default",
+            instance_type="ecs.g6.large",
+            instance_amount="1",
+            period_unit="Year",
+            offering_type="All Upfront",
+            description="ReservedInstance",
+            zone_id="cn-shanghai-g",
+            scope="Zone",
+            period="1")
+        ```
 
 
         :param str resource_name: The name of the resource.

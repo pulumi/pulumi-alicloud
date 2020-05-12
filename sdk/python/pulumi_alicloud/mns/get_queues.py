@@ -54,6 +54,17 @@ def get_queues(name_prefix=None,output_file=None,opts=None):
     """
     This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    queues = alicloud.mns.get_queues(name_prefix="tf-")
+    pulumi.export("firstQueueId", queues.queues[0]["id"])
+    ```
 
 
 

@@ -36,6 +36,16 @@ class Instance(pulumi.CustomResource):
 
         For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        cen = alicloud.cen.Instance("cen", description="an example for cen")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -63,6 +63,18 @@ def get_applications(ids=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.82.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    applications = alicloud.edas.get_applications(ids=["xxx"],
+        output_file="application.txt")
+    pulumi.export("firstApplicationName", applications.applications[0]["appName"])
+    ```
 
 
 

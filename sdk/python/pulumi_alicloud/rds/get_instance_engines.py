@@ -71,6 +71,20 @@ def get_instance_engines(engine=None,engine_version=None,instance_charge_type=No
 
     > **NOTE:** Available in v1.46.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_engines(engine="MySQL",
+        engine_version="5.6",
+        instance_charge_type="PostPaid",
+        output_file="./engines.txt")
+    pulumi.export("firstDbCategory", resources.instance_engines[0]["category"])
+    ```
 
 
 

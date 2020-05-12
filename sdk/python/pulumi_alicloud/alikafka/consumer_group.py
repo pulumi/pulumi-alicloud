@@ -31,6 +31,35 @@ class ConsumerGroup(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka consumer group.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        consumer_id = config.get("consumerId")
+        if consumer_id is None:
+            consumer_id = "CID-alikafkaGroupDatasourceName"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            availability_zone=default_zones.zones[0]["id"],
+            cidr_block="172.16.0.0/24",
+            vpc_id=default_network.id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            deploy_type="5",
+            disk_size="500",
+            disk_type="1",
+            io_max="20",
+            topic_quota="50",
+            vswitch_id=default_switch.id)
+        default_consumer_group = alicloud.alikafka.ConsumerGroup("defaultConsumerGroup",
+            consumer_id=consumer_id,
+            instance_id=default_instance.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

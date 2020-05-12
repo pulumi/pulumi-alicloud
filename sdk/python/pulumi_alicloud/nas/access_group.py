@@ -30,6 +30,18 @@ class AccessGroup(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.33.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.AccessGroup("foo",
+            description="test_AccessG",
+            type="Classic")
+        ```
 
 
         :param str resource_name: The name of the resource.

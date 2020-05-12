@@ -75,6 +75,17 @@ def get_instances(availability_zone=None,ids=None,name_regex=None,output_file=No
 
     > **NOTE:**  Available in 1.67.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
+        name_regex="tf_testAccHBase")
+    ```
 
 
 

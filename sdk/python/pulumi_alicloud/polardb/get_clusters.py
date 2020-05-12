@@ -82,6 +82,18 @@ def get_clusters(db_type=None,description_regex=None,ids=None,output_file=None,s
 
     > **NOTE:** Available in v1.66.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    polardb_clusters_ds = alicloud.polardb.get_clusters(description_regex="pc-\\w+",
+        status="Running")
+    pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0]["id"])
+    ```
 
 
 

@@ -61,6 +61,17 @@ def get_ddos_coo_instances(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_ddos_coo_instances = alicloud.ddos.get_ddos_coo_instances(name_regex="^ddoscoo")
+    pulumi.export("instance", [__item["id"] for __item in alicloud_ddoscoo_instances["instance"]])
+    ```
 
 
 

@@ -53,6 +53,19 @@ def get_consumer_groups(consumer_id_regex=None,instance_id=None,output_file=None
 
     > **NOTE:** Available in 1.56.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(consumer_id_regex="CID-alikafkaGroupDatasourceName",
+        instance_id="xxx",
+        output_file="consumerGroups.txt")
+    pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
+    ```
 
 
 

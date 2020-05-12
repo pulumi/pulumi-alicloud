@@ -64,6 +64,16 @@ def get_zones(available_slb_address_ip_version=None,available_slb_address_type=N
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.slb.get_zones()
+    ```
 
 
 

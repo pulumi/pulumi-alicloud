@@ -30,6 +30,18 @@ class Namespace(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        my_namespace = alicloud.cr.Namespace("my-namespace",
+            auto_create=False,
+            default_visibility="PUBLIC")
+        ```
 
 
         :param str resource_name: The name of the resource.

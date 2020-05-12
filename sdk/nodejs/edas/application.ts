@@ -9,6 +9,29 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.edas.Application("default", {
+ *     applicationName: "xxx",
+ *     clusterId: "xxx",
+ *     packageType: "JAR",
+ *     buildPackId: xxx,
+ *     descriotion: "xxx",
+ *     healthCheckUrl: "xxx",
+ *     logicalRegionId: "cn-xxxx:xxx",
+ *     componentIds: xxx,
+ *     ecuInfos: ["xxx"],
+ *     groupId: "xxx",
+ *     packageVersion: "xxx",
+ *     warUrl: "http://xxx",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_application.html.markdown.
  */

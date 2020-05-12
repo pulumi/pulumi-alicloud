@@ -73,6 +73,20 @@ def get_policies(group_name=None,name_regex=None,output_file=None,role_name=None
     """
     This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    policies_ds = alicloud.ram.get_policies(group_name="group1",
+        output_file="policies.txt",
+        type="System",
+        user_name="user1")
+    pulumi.export("firstPolicyName", policies_ds.policies[0]["name"])
+    ```
 
 
 

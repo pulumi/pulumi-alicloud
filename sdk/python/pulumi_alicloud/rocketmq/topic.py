@@ -38,6 +38,28 @@ class Topic(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "onsInstanceName"
+        topic = config.get("topic")
+        if topic is None:
+            topic = "onsTopicName"
+        default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
+        default_topic = alicloud.rocketmq.Topic("defaultTopic",
+            instance_id=default_instance.id,
+            message_type=0,
+            remark="dafault_ons_topic_remark",
+            topic=topic)
+        ```
 
 
         :param str resource_name: The name of the resource.

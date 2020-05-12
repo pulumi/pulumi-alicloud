@@ -44,6 +44,21 @@ class Trail(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.35.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new action trail.
+        foo = alicloud.actiontrail.Trail("foo",
+            event_rw="Write-test",
+            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
+            oss_key_prefix="at-product-account-audit-B",
+            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"])
+        ```
 
 
         :param str resource_name: The name of the resource.

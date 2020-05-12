@@ -32,6 +32,19 @@ class FileSystem(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.33.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.nas.FileSystem("foo",
+            description="tf-testAccNasConfig",
+            protocol_type="NFS",
+            storage_type="Performance")
+        ```
 
 
         :param str resource_name: The name of the resource.

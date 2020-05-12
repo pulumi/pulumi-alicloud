@@ -51,6 +51,17 @@ def get_attachments(instance_ids=None,load_balancer_id=None,output_file=None,opt
     """
     This data source provides the server load balancer attachments of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_attachments(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbAttachmentInstanceId", sample_ds.slb_attachments[0]["instance_id"])
+    ```
 
 
 

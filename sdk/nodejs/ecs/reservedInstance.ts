@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.65.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.ecs.ReservedInstance("default", {
+ *     instanceType: "ecs.g6.large",
+ *     instanceAmount: "1",
+ *     periodUnit: "Year",
+ *     offeringType: "All Upfront",
+ *     description: "ReservedInstance",
+ *     zoneId: "cn-shanghai-g",
+ *     scope: "Zone",
+ *     period: "1",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/reserved_instance.html.markdown.
  */

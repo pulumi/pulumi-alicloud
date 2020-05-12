@@ -60,12 +60,7 @@ class Secret(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, encryption_key_id=None, force_delete_without_recovery=None, recovery_window_in_days=None, secret_data=None, secret_data_type=None, secret_name=None, tags=None, version_id=None, version_stages=None, __props__=None, __name__=None, __opts__=None):
         """
-        This resouce used to create a secret and store its initial version.
-
-        > **NOTE:** Available in 1.76.0+.
-
-
-
+        Create a Secret resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the secret.

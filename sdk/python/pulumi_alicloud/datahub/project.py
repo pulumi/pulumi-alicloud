@@ -28,12 +28,7 @@ class Project(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, comment=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
-        The project is the basic unit of resource management in Datahub Service and is used to isolate and control resources. It contains a set of Topics. You can manage the datahub sources of an application by using projects. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
-
-        > **NOTE:** Currently Datahub service only can be supported in the regions: cn-beijing, cn-hangzhou, cn-shanghai, cn-shenzhen,  ap-southeast-1.
-
-
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub project. It cannot be longer than 255 characters.

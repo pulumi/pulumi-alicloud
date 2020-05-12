@@ -101,6 +101,24 @@ class Swarm(pulumi.CustomResource):
 
         > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        my_cluster = alicloud.cs.Swarm("myCluster",
+            cidr_block="172.18.0.0/24",
+            disk_category="cloud_efficiency",
+            disk_size=20,
+            image_id=var["image_id"],
+            instance_type="ecs.n4.small",
+            node_number=2,
+            password="Yourpassword1234",
+            vswitch_id=var["vswitch_id"])
+        ```
 
 
         :param str resource_name: The name of the resource.

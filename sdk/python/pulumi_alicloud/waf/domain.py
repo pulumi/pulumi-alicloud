@@ -93,6 +93,31 @@ class Domain(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+ .
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        domain = alicloud.waf.Domain("domain",
+            cluster_type="PhysicalCluster",
+            domain="www.aliyun.com",
+            http2_ports=443,
+            http_ports=80,
+            http_to_user_ip="Off",
+            https_ports=443,
+            https_redirect="Off",
+            instance_id="waf-123455",
+            is_access_product="On",
+            load_balancing="IpHash",
+            log_headers=[{
+                "key": "foo",
+                "value": "http",
+            }],
+            source_ips=["1.1.1.1"])
+        ```
 
 
         :param str resource_name: The name of the resource.

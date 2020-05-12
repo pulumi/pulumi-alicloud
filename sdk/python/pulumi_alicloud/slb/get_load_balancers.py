@@ -114,6 +114,17 @@ def get_load_balancers(address=None,ids=None,master_availability_zone=None,name_
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    slbs_ds = alicloud.slb.get_load_balancers(name_regex="sample_slb")
+    pulumi.export("firstSlbId", slbs_ds.slbs[0]["id"])
+    ```
 
 
 

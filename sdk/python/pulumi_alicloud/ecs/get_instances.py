@@ -117,6 +117,19 @@ def get_instances(availability_zone=None,ids=None,image_id=None,name_regex=None,
     """
     The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instances_ds = alicloud.ecs.get_instances(name_regex="web_server",
+        status="Running")
+    pulumi.export("firstInstanceId", instances_ds.instances[0]["id"])
+    pulumi.export("instanceIds", instances_ds.ids)
+    ```
 
 
 

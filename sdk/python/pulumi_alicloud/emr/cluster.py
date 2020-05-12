@@ -109,6 +109,331 @@ class Cluster(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.57.0+.
 
+        ## Example Usage
+
+        ### 1. Create A Cluster
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_main_versions = alicloud.emr.get_main_versions()
+        default_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            support_local_storage=False,
+            instance_charge_type="PostPaid",
+            support_node_types=[
+                "MASTER",
+                "CORE",
+                "TASK",
+            ])
+        data_disk = alicloud.emr.get_disk_types(destination_resource="DataDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        system_disk = alicloud.emr.get_disk_types(destination_resource="SystemDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if var.vpc_id ==  else 0 == True)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=var["vpc_cidr"]))
+        default_security_group = []
+        for range in [{"value": i} for i in range(0, 1 if var.security_group_id ==  else 0 == True)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"defaultSecurityGroup-{range['value']}", vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # VSwitch Resource for Module
+        vswitch = []
+        for range in [{"value": i} for i in range(0, 1 if var.vswitch_id ==  else 0 == True)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                availability_zone=default_instance_types.types[0]["zone_id"] if var["availability_zone"] == "" else var["availability_zone"],
+                cidr_block=var["vswitch_cidr"],
+                vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # Ram role Resource for Module
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+                "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                    "Service": [
+                        "emr.aliyuncs.com", 
+                        "ecs.aliyuncs.com"
+                    ]
+                    }
+                }
+                ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a role test.",
+            force=True)
+        default_cluster = alicloud.emr.Cluster("defaultCluster",
+            emr_ver=default_main_versions.main_versions[0]["emrVersion"],
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            host_group=[
+                {
+                    "hostGroupName": "master_group",
+                    "hostGroupType": "MASTER",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "1",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "core_group",
+                    "hostGroupType": "CORE",
+                    "nodeCount": "3",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "task_group",
+                    "hostGroupType": "TASK",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+            ],
+            high_availability_enable=True,
+            zone_id=default_instance_types.types[0]["zone_id"],
+            security_group_id=default_security_group["id"] if var["security_group_id"] == "" else var["security_group_id"],
+            is_open_public_ip=True,
+            charge_type="PostPaid",
+            vswitch_id=vswitch["id"] if var["vswitch_id"] == "" else var["vswitch_id"],
+            user_defined_emr_ecs_role=default_role.name,
+            ssh_enable=True,
+            master_pwd="ABCtest1234!")
+        ```
+
+        ### 2. Scale Up
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_main_versions = alicloud.emr.get_main_versions()
+        default_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            support_local_storage=False,
+            instance_charge_type="PostPaid",
+            support_node_types=[
+                "MASTER",
+                "CORE",
+                "TASK",
+            ])
+        data_disk = alicloud.emr.get_disk_types(destination_resource="DataDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        system_disk = alicloud.emr.get_disk_types(destination_resource="SystemDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if var.vpc_id ==  else 0 == True)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=var["vpc_cidr"]))
+        default_security_group = []
+        for range in [{"value": i} for i in range(0, 1 if var.security_group_id ==  else 0 == True)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"defaultSecurityGroup-{range['value']}", vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # VSwitch Resource for Module
+        vswitch = []
+        for range in [{"value": i} for i in range(0, 1 if var.vswitch_id ==  else 0 == True)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                availability_zone=default_instance_types.types[0]["zone_id"] if var["availability_zone"] == "" else var["availability_zone"],
+                cidr_block=var["vswitch_cidr"],
+                vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # Ram role Resource for Module
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+                "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                    "Service": [
+                        "emr.aliyuncs.com", 
+                        "ecs.aliyuncs.com"
+                    ]
+                    }
+                }
+                ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a role test.",
+            force=True)
+        default_cluster = alicloud.emr.Cluster("defaultCluster",
+            emr_ver=default_main_versions.main_versions[0]["emrVersion"],
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            host_group=[
+                {
+                    "hostGroupName": "master_group",
+                    "hostGroupType": "MASTER",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "1",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "core_group",
+                    "hostGroupType": "CORE",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "task_group",
+                    "hostGroupType": "TASK",
+                    "nodeCount": "4",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+            ],
+            high_availability_enable=True,
+            zone_id=default_instance_types.types[0]["zone_id"],
+            security_group_id=default_security_group["id"] if var["security_group_id"] == "" else var["security_group_id"],
+            is_open_public_ip=True,
+            charge_type="PostPaid",
+            vswitch_id=vswitch["id"] if var["vswitch_id"] == "" else var["vswitch_id"],
+            user_defined_emr_ecs_role=default_role.name,
+            ssh_enable=True,
+            master_pwd="ABCtest1234!")
+        ```
+
+        ### 3. Scale Down
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_main_versions = alicloud.emr.get_main_versions()
+        default_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            support_local_storage=False,
+            instance_charge_type="PostPaid",
+            support_node_types=[
+                "MASTER",
+                "CORE",
+                "TASK",
+            ])
+        data_disk = alicloud.emr.get_disk_types(destination_resource="DataDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        system_disk = alicloud.emr.get_disk_types(destination_resource="SystemDisk",
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            instance_charge_type="PostPaid",
+            instance_type=default_instance_types.types[0]["id"],
+            zone_id=default_instance_types.types[0]["zone_id"])
+        vpc = []
+        for range in [{"value": i} for i in range(0, 1 if var.vpc_id ==  else 0 == True)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=var["vpc_cidr"]))
+        default_security_group = []
+        for range in [{"value": i} for i in range(0, 1 if var.security_group_id ==  else 0 == True)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"defaultSecurityGroup-{range['value']}", vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # VSwitch Resource for Module
+        vswitch = []
+        for range in [{"value": i} for i in range(0, 1 if var.vswitch_id ==  else 0 == True)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+                availability_zone=default_instance_types.types[0]["zone_id"] if var["availability_zone"] == "" else var["availability_zone"],
+                cidr_block=var["vswitch_cidr"],
+                vpc_id=vpc["id"] if var["vpc_id"] == "" else var["vpc_id"]))
+        # Ram role Resource for Module
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"    {
+                "Statement": [
+                {
+                    "Action": "sts:AssumeRole",
+                    "Effect": "Allow",
+                    "Principal": {
+                    "Service": [
+                        "emr.aliyuncs.com", 
+                        "ecs.aliyuncs.com"
+                    ]
+                    }
+                }
+                ],
+                "Version": "1"
+            }
+        \"\"\",
+            description="this is a role test.",
+            force=True)
+        default_cluster = alicloud.emr.Cluster("defaultCluster",
+            emr_ver=default_main_versions.main_versions[0]["emrVersion"],
+            cluster_type=default_main_versions.main_versions[0]["clusterTypes"],
+            host_group=[
+                {
+                    "hostGroupName": "master_group",
+                    "hostGroupType": "MASTER",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "1",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "core_group",
+                    "hostGroupType": "CORE",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+                {
+                    "hostGroupName": "task_group",
+                    "hostGroupType": "TASK",
+                    "nodeCount": "2",
+                    "instanceType": default_instance_types.types[0]["id"],
+                    "diskType": data_disk.types[0]["value"],
+                    "diskCapacity": data_disk.types[0]["min"] if data_disk.types[0]["min"] > 160 else 160,
+                    "diskCount": "4",
+                    "sysDiskType": system_disk.types[0]["value"],
+                    "sysDiskCapacity": system_disk.types[0]["min"] if system_disk.types[0]["min"] > 160 else 160,
+                },
+            ],
+            high_availability_enable=True,
+            zone_id=default_instance_types.types[0]["zone_id"],
+            security_group_id=default_security_group["id"] if var["security_group_id"] == "" else var["security_group_id"],
+            is_open_public_ip=True,
+            charge_type="PostPaid",
+            vswitch_id=vswitch["id"] if var["vswitch_id"] == "" else var["vswitch_id"],
+            user_defined_emr_ecs_role=default_role.name,
+            ssh_enable=True,
+            master_pwd="ABCtest1234!")
+        ```
 
 
         :param str resource_name: The name of the resource.

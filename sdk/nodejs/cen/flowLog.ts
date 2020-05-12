@@ -4,18 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * This resource used to create a flow log function in Cloud Enterprise Network (CEN). 
- * By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN. 
- * You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
- * 
- * For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
- * 
- * > **NOTE:** Available in 1.73.0+
- * 
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_flowlog.html.markdown.
- */
 export class FlowLog extends pulumi.CustomResource {
     /**
      * Get an existing FlowLog resource's state with the given name, ID, and optional extra

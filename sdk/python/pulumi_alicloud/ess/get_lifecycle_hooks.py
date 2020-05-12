@@ -70,6 +70,18 @@ def get_lifecycle_hooks(ids=None,name_regex=None,output_file=None,scaling_group_
 
     > **NOTE:** Available in 1.72.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
+        scaling_group_id="scaling_group_id")
+    pulumi.export("firstLifecycleHook", ds.hooks[0]["id"])
+    ```
 
 
 

@@ -58,6 +58,17 @@ def get_regions(current=None,name=None,output_file=None,opts=None):
     """
     This data source provides Alibaba Cloud regions.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    current_region_ds = alicloud.get_regions(current=True)
+    pulumi.export("currentRegionId", current_region_ds.regions[0]["id"])
+    ```
 
 
 

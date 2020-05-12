@@ -28,6 +28,19 @@ class NetworkAcl(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl",
+            description="network_acl",
+            vpc_id=default_network.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

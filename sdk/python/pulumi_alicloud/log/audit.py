@@ -34,6 +34,24 @@ class Audit(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.81.0
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Audit("example",
+            aliuid="12345678",
+            display_name="tf-audit-test",
+            variable_map={
+                "actiontrail_enabled": "true",
+                "actiontrail_ttl": "180",
+                "oss_access_enabled": "true",
+                "oss_access_ttl": "180",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

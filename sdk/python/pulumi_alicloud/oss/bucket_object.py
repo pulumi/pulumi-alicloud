@@ -78,6 +78,34 @@ class BucketObject(pulumi.CustomResource):
         """
         Provides a resource to put a object(content or file) to a oss bucket.
 
+        ## Example Usage
+
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        object_source = alicloud.oss.BucketObject("object-source",
+            bucket="your_bucket_name",
+            key="new_object_key",
+            source="path/to/file")
+        ```
+
+        ### Uploading a content to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.oss.Bucket("example",
+            acl="public-read",
+            bucket="your_bucket_name")
+        object_content = alicloud.oss.BucketObject("object-content",
+            bucket=example.bucket,
+            content="the content that you want to upload.",
+            key="new_object_key")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -53,6 +53,19 @@ def get_protocols(output_file=None,type=None,zone_id=None,opts=None):
 
     > **NOTE:** Available in 1.42.0
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.nas.get_protocols(output_file="protocols.txt",
+        type="Performance",
+        zone_id="cn-beijing-e")
+    pulumi.export("nasProtocolsProtocol", default.protocols[0])
+    ```
 
 
 

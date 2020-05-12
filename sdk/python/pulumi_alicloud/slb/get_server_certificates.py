@@ -75,6 +75,17 @@ def get_server_certificates(ids=None,name_regex=None,output_file=None,resource_g
     """
     This data source provides the server certificate list.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_server_certificates()
+    pulumi.export("firstSlbServerCertificateId", sample_ds.certificates[0]["id"])
+    ```
 
 
 

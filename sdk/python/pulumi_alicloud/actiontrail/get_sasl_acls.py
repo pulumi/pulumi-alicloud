@@ -70,6 +70,21 @@ def get_sasl_acls(acl_resource_name=None,acl_resource_type=None,instance_id=None
 
     > **NOTE:** Available in 1.66.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(acl_resource_name="testTopic",
+        acl_resource_type="Topic",
+        instance_id="xxx",
+        output_file="saslAcls.txt",
+        username="username")
+    pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0]["username"])
+    ```
 
 
 

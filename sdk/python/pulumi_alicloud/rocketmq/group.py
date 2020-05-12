@@ -34,6 +34,27 @@ class Group(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "onsInstanceName"
+        group_id = config.get("groupId")
+        if group_id is None:
+            group_id = "GID-onsGroupDatasourceName"
+        default_instance = alicloud.rocketmq.Instance("defaultInstance", remark="default_ons_instance_remark")
+        default_group = alicloud.rocketmq.Group("defaultGroup",
+            group_id=group_id,
+            instance_id=default_instance.id,
+            remark="dafault_ons_group_remark")
+        ```
 
 
         :param str resource_name: The name of the resource.

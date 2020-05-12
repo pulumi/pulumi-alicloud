@@ -89,6 +89,18 @@ def get_mount_targets(access_group_name=None,file_system_id=None,ids=None,mount_
 
     > NOTE: Available in 1.35.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    mt = alicloud.nas.get_mount_targets(access_group_name="tf-testAccNasConfig",
+        file_system_id="1a2sc4d")
+    pulumi.export("alicloudNasMountTargetsId", mt.targets[0]["id"])
+    ```
 
 
 

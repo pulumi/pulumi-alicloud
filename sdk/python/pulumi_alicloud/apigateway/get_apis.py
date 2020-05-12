@@ -72,6 +72,17 @@ def get_apis(api_id=None,group_id=None,ids=None,name_regex=None,output_file=None
     """
     This data source provides the apis of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
+    pulumi.export("firstApiId", data["apigateway.getApis"]["data_apigatway"]["apis"][0]["id"])
+    ```
 
 
 

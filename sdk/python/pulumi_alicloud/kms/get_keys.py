@@ -61,6 +61,18 @@ def get_keys(description_regex=None,ids=None,output_file=None,status=None,opts=N
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_keys_ds = alicloud.kms.get_keys(description_regex="Hello KMS",
+        output_file="kms_keys.json")
+    pulumi.export("firstKeyId", kms_keys_ds.keys[0]["id"])
+    ```
 
 
 

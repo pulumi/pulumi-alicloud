@@ -64,6 +64,18 @@ def get_route_entries(cidr_block=None,instance_id=None,output_file=None,route_ta
     """
     This data source provides CEN Route Entries available to the user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    entry = alicloud.cen.get_route_entries(instance_id="cen-id1",
+        route_table_id="vtb-id1")
+    pulumi.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries[0]["cidr_block"])
+    ```
 
 
 

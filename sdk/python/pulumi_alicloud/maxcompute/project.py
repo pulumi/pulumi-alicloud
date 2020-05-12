@@ -28,6 +28,18 @@ class Project(pulumi.CustomResource):
 
         ->**NOTE:** Available in 1.77.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.maxcompute.Project("example",
+            order_type="PayAsYouGo",
+            specification_type="OdpsStandard")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -75,6 +75,17 @@ def get_ca_certificates(ids=None,name_regex=None,output_file=None,resource_group
     """
     This data source provides the CA certificate list.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_ca_certificates()
+    pulumi.export("firstSlbCaCertificateId", sample_ds.certificates[0]["id"])
+    ```
 
 
 

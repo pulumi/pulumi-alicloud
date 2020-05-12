@@ -97,6 +97,21 @@ def get_records(domain_name=None,host_record_regex=None,ids=None,is_locked=None,
     """
     This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_records(domain_name="xiaozhu.top",
+        host_record_regex="^@",
+        is_locked=False,
+        output_file="records.txt",
+        type="A")
+    pulumi.export("firstRecordId", records_ds.records[0]["record_id"])
+    ```
 
 
 

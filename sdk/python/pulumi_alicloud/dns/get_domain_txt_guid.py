@@ -64,6 +64,19 @@ def get_domain_txt_guid(domain_name=None,lang=None,output_file=None,type=None,op
 
     > **NOTE:** Available in v1.80.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.dns.get_domain_txt_guid(domain_name="test111.abc",
+        type="ADD_SUB_DOMAIN")
+    pulumi.export("rr", this.rr)
+    pulumi.export("value", this.value)
+    ```
 
 
 

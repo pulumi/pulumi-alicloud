@@ -47,6 +47,17 @@ def get_bandwidth_limits(instance_ids=None,output_file=None,opts=None):
     """
     This data source provides CEN Bandwidth Limits available to the user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bwl = alicloud.cen.get_bandwidth_limits(instance_ids=["cen-id1"])
+    pulumi.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits[0]["localRegionId"])
+    ```
 
 
 

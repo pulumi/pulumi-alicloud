@@ -78,6 +78,25 @@ def get_route_tables(ids=None,name_regex=None,output_file=None,resource_group_id
 
     > **NOTE:** Available in 1.36.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "route-tables-datasource-example-name"
+    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
+        description=name,
+        vpc_id=foo_network.id)
+    foo_route_tables = foo_route_table.id.apply(lambda id: alicloud.vpc.get_route_tables(ids=[id]))
+    pulumi.export("routeTableIds", foo_route_tables.ids)
+    ```
 
 
 

@@ -61,6 +61,18 @@ def get_certificates(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    certs = alicloud.cas.get_certificates(name_regex="^cas",
+        output_file=f"{path['module']}/cas_certificates.json")
+    pulumi.export("cert", certs.certificates[0]["id"])
+    ```
 
 
 

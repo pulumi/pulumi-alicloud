@@ -22,6 +22,37 @@ class GroupMembership(pulumi.CustomResource):
         """
         Provides a RAM Group membership resource. 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a RAM Group membership.
+        group = alicloud.ram.Group("group",
+            comments="this is a group comments.",
+            force=True)
+        user = alicloud.ram.User("user",
+            comments="yoyoyo",
+            display_name="user_display_name",
+            email="hello.uuu@aaa.com",
+            force=True,
+            mobile="86-18688888888")
+        user1 = alicloud.ram.User("user1",
+            comments="yoyoyo",
+            display_name="user_display_name1",
+            email="hello.uuu@aaa.com",
+            force=True,
+            mobile="86-18688888889")
+        membership = alicloud.ram.GroupMembership("membership",
+            group_name=group.name,
+            user_names=[
+                user.name,
+                user1.name,
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

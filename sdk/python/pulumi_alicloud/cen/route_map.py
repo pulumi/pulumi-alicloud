@@ -133,6 +133,57 @@ class RouteMap(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        default_instance = alicloud.cen.Instance("defaultInstance")
+        vpc00_region = pulumi.providers.Alicloud("vpc00Region", region="cn-hangzhou")
+        vpc01_region = pulumi.providers.Alicloud("vpc01Region", region="cn-shanghai")
+        vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12")
+        vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12")
+        default00 = alicloud.cen.InstanceAttachment("default00",
+            child_instance_id=vpc00.id,
+            child_instance_region_id="cn-hangzhou",
+            instance_id=default_instance.id)
+        default01 = alicloud.cen.InstanceAttachment("default01",
+            child_instance_id=vpc01.id,
+            child_instance_region_id="cn-shanghai",
+            instance_id=default_instance.id)
+        default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
+            as_path_match_mode="Include",
+            cen_id=alicloud_cen_instance["cen"]["id"],
+            cen_region_id="cn-hangzhou",
+            cidr_match_mode="Include",
+            community_match_mode="Include",
+            community_operate_mode="Additive",
+            description="test-desc",
+            destination_child_instance_types=["VPC"],
+            destination_cidr_blocks=[vpc01.cidr_block],
+            destination_instance_ids=[vpc01.id],
+            destination_instance_ids_reverse_match="false",
+            destination_route_table_ids=[vpc01.route_table_id],
+            map_result="Permit",
+            match_asns=["65501"],
+            match_community_sets=["65501:1"],
+            next_priority="1",
+            operate_community_sets=["65501:1"],
+            preference="20",
+            prepend_as_paths=["65501"],
+            priority="1",
+            route_types=["System"],
+            source_child_instance_types=["VPC"],
+            source_instance_ids=[vpc00.id],
+            source_instance_ids_reverse_match="false",
+            source_region_ids=["cn-hangzhou"],
+            source_route_table_ids=[vpc00.route_table_id],
+            transmit_direction="RegionIn")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -115,6 +115,18 @@ def get_instance_types(availability_zone=None,cpu_core_count=None,eni_amount=Non
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
+        memory_size=2)
+    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0]["id"])
+    ```
 
 
 

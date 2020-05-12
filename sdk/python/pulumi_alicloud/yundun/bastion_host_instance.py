@@ -33,16 +33,7 @@ class BastionHostInstance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, license_code=None, period=None, security_group_ids=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Cloud Bastionhost instance resource ("Yundun_bastionhost" is the short term of this product).
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
-        > **NOTE:** Available in 1.63.0+ .
-
-        > **NOTE:** In order to destroy Cloud Bastionhost instance , users are required to apply for white list first
-
-
-
+        Create a BastionHostInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.

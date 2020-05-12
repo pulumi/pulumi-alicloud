@@ -12,6 +12,44 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const config = new pulumi.Config();
+ * const creation = config.get("creation") || "PolarDB";
+ * const name = config.get("name") || "polardbconnectionbasic";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: creation,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones[0].id),
+ * });
+ * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
+ *     dbNodeClass: "polar.mysql.x4.large",
+ *     vswitchId: defaultSwitch.id,
+ *     description: name,
+ * });
+ * const defaultEndpoints = defaultCluster.id.apply(id => alicloud.polardb.getEndpoints({
+ *     dbClusterId: id,
+ * }));
+ * const endpoint = new alicloud.polardb.EndpointAddress("endpoint", {
+ *     dbClusterId: defaultCluster.id,
+ *     dbEndpointId: defaultEndpoints.endpoints[0].dbEndpointId,
+ *     connectionPrefix: "testpolardbconn",
+ *     netType: "Public",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
  */

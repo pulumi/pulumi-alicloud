@@ -54,6 +54,17 @@ def get_topics(name_prefix=None,output_file=None,opts=None):
     """
     This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    topics = alicloud.mns.get_topics(name_prefix="tf-")
+    pulumi.export("firstTopicId", topics.topics[0]["id"])
+    ```
 
 
 

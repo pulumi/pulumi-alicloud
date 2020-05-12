@@ -12,6 +12,23 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in v1.68.0+.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const polardbClustersDs = alicloud.polardb.getClusters({
+ *     descriptionRegex: "pc-\\w+",
+ *     status: "Running",
+ * });
+ * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getEndpoints({
+ *     dbClusterId: polardbClustersDs.clusters[0].id,
+ * }));
+ * export const ends = default.then(_default => _default.endpoints[0].dbEndpointId);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_endpoints.html.markdown.
  */

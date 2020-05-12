@@ -54,6 +54,17 @@ def get_buckets(name_regex=None,output_file=None,opts=None):
     """
     This data source provides the OSS buckets of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
+    pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0]["name"])
+    ```
 
 
 

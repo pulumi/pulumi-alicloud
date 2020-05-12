@@ -18,6 +18,17 @@ class Group(pulumi.CustomResource):
         """
         Provides a DNS Group resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a new Domain group.
+        group = alicloud.dns.Group("group")
+        ```
 
 
         :param str resource_name: The name of the resource.

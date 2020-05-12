@@ -62,6 +62,18 @@ def get_bandwidth_packages(ids=None,instance_id=None,name_regex=None,output_file
     """
     This data source provides CEN Bandwidth Packages available to the user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bwp = alicloud.cen.get_bandwidth_packages(instance_id="cen-id1",
+        name_regex="^foo")
+    pulumi.export("firstCenBandwidthPackageId", bwp.packages[0]["id"])
+    ```
 
 
 

@@ -35,6 +35,19 @@ class Key(pulumi.CustomResource):
         """
         A kms key can help user to protect data security in the transmission process.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        key = alicloud.kms.Key("key",
+            deletion_window_in_days="7",
+            description="Hello KMS",
+            is_enabled=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

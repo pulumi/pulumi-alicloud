@@ -61,6 +61,17 @@ def get_services(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the Function Compute services of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    fc_services_ds = alicloud.fc.get_services(name_regex="sample_fc_service")
+    pulumi.export("firstFcServiceName", fc_services_ds.services[0]["name"])
+    ```
 
 
 

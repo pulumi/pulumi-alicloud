@@ -38,6 +38,28 @@ class MountTarget(pulumi.CustomResource):
         and it only can be achieved by creating a classic mount target mannually.
         See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo_file_system = alicloud.nas.FileSystem("fooFileSystem",
+            description="tf-testAccNasConfigFs",
+            protocol_type="NFS",
+            storage_type="Performance")
+        foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
+            description="tf-testAccNasConfig",
+            type="Classic")
+        bar = alicloud.nas.AccessGroup("bar",
+            description="tf-testAccNasConfig-2",
+            type="Classic")
+        foo_mount_target = alicloud.nas.MountTarget("fooMountTarget",
+            access_group_name=foo_access_group.id,
+            file_system_id=foo_file_system.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

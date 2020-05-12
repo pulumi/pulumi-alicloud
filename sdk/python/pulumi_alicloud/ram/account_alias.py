@@ -19,6 +19,17 @@ class AccountAlias(pulumi.CustomResource):
         Provides a RAM cloud account alias.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a alias for cloud account.
+        alias = alicloud.ram.AccountAlias("alias", account_alias="hallo")
+        ```
 
 
         :param str resource_name: The name of the resource.

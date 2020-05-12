@@ -63,6 +63,19 @@ def get_deploy_groups(app_id=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.82.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups = alicloud.edas.get_deploy_groups(app_id="xxx",
+        ids=["xxx"],
+        output_file="groups.txt")
+    pulumi.export("firstGroupName", groups.groups[0]["group_name"])
+    ```
 
 
 

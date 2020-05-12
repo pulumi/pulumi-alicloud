@@ -34,6 +34,19 @@ class ImageExport(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.68.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageExport("default",
+            image_id="m-bp1gxy***",
+            oss_bucket="ecsimageexportconfig",
+            oss_prefix="ecsExport")
+        ```
 
 
         :param str resource_name: The name of the resource.
