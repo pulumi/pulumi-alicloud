@@ -51,6 +51,17 @@ def get_zones(output_file=None,opts=None):
     This data source provides availability zones for FunctionCompute that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.74.0+.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.fc.get_zones()
+    ```
     """
     __args__ = dict()
 

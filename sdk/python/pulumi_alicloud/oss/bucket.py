@@ -121,6 +121,18 @@ class Bucket(pulumi.CustomResource):
         > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        bucket_acl = alicloud.oss.Bucket("bucket-acl",
+            acl="private",
+            bucket="bucket-170309-acl")
+        ```
 
 
         :param str resource_name: The name of the resource.

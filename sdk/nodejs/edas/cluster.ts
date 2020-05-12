@@ -9,6 +9,22 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.edas.Cluster("default", {
+ *     clusterName: var.cluster_name,
+ *     clusterType: var.cluster_type,
+ *     networkMode: var.network_mode,
+ *     logicalRegionId: var.logical_region_id,
+ *     vpcId: var.vpc_id,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_cluster.html.markdown.
  */

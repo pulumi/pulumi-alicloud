@@ -70,6 +70,22 @@ def get_instance_engines(engine=None,engine_version=None,instance_charge_type=No
 
     > **NOTE:** Available in v1.51.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_instance_engines = alicloud.kvstore.get_instance_engines(engine="Redis",
+        engine_version="5.0",
+        instance_charge_type="PrePaid",
+        output_file="./engines.txt",
+        zone_id=resources_zones.zones[0]["id"])
+    pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0]["engine"])
+    ```
 
 
 

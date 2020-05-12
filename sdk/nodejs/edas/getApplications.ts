@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const applications = alicloud.edas.getApplications({
+ *     ids: ["xxx"],
+ *     outputFile: "application.txt",
+ * });
+ * export const firstApplicationName = applications.then(applications => applications.applications[0].appName);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/edas_applications.html.markdown.
  */

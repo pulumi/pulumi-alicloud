@@ -64,6 +64,17 @@ def get_bastion_host_instances(description_regex=None,ids=None,output_file=None,
 
     > **NOTE:** Available in 1.63.0+ .
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    instance_bastion_host_instances = alicloud.yundun.get_bastion_host_instances(name_regex="^bastionhost")
+    pulumi.export("instance", [__item["id"] for __item in alicloud_yundun_bastionhost_instances["instance"]])
+    ```
 
 
 

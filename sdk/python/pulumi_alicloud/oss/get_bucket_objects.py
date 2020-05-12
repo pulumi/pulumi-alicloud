@@ -55,6 +55,18 @@ def get_bucket_objects(bucket_name=None,key_prefix=None,key_regex=None,output_fi
     """
     This data source provides the objects of an OSS bucket.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    bucket_objects_ds = alicloud.oss.get_bucket_objects(bucket_name="sample_bucket",
+        key_regex="sample/sample_object.txt")
+    pulumi.export("firstObjectKey", bucket_objects_ds.objects[0]["key"])
+    ```
 
 
 

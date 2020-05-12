@@ -36,10 +36,7 @@ class Subscription(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, comment=None, project_name=None, topic_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
-
-
-
+        Create a Subscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub subscription. It cannot be longer than 255 characters.

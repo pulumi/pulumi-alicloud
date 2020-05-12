@@ -75,6 +75,19 @@ def get_connections(customer_gateway_id=None,ids=None,name_regex=None,output_fil
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpn.get_connections(customer_gateway_id="fake-cgw-id",
+        ids=["fake-conn-id"],
+        output_file="/tmp/vpnconn",
+        vpn_gateway_id="fake-vpn-id")
+    ```
 
 
 

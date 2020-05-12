@@ -65,6 +65,17 @@ def get_apps(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
     """
     This data source provides the apps of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
+    pulumi.export("firstAppId", data_apigatway.apps[0]["id"])
+    ```
 
 
 

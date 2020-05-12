@@ -63,6 +63,18 @@ def get_namespaces(name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.35.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_namespaces = alicloud.cr.get_namespaces(name_regex="my-namespace",
+        output_file="my-namespace-json")
+    pulumi.export("output", my_namespaces.namespaces)
+    ```
 
 
 

@@ -75,6 +75,17 @@ def get_acls(ids=None,name_regex=None,output_file=None,resource_group_id=None,ta
     """
     This data source provides the acls in the region.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_acls()
+    pulumi.export("firstSlbAclId", sample_ds.acls[0]["id"])
+    ```
 
     ## Entry Block
 

@@ -67,6 +67,19 @@ def get_clusters(ids=None,logical_region_id=None,name_regex=None,output_file=Non
 
     > **NOTE:** Available in 1.82.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    clusters = alicloud.edas.get_clusters(logical_region_id="cn-shenzhen:xxx",
+        ids=["addfs-dfsasd"],
+        output_file="clusters.txt")
+    pulumi.export("firstClusterName", data["actiontrail.getConsumerGroups"]["clusters"]["clusters"][0]["cluster_name"])
+    ```
 
 
 

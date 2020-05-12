@@ -79,6 +79,19 @@ def get_instances(availability_zone=None,ids=None,name_regex=None,output_file=No
 
     > **NOTE:**  Available in 1.47.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    gpdb = alicloud.gpdb.get_instances(availability_zone="cn-beijing-c",
+        name_regex="gp-.+\\d+",
+        output_file="instances.txt")
+    pulumi.export("instanceId", gpdb.instances[0]["id"])
+    ```
 
 
 

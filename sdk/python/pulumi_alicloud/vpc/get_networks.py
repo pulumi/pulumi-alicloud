@@ -97,6 +97,19 @@ def get_networks(cidr_block=None,ids=None,is_default=None,name_regex=None,output
     """
     This data source provides VPCs available to the user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
+        name_regex="^foo",
+        status="Available")
+    pulumi.export("firstVpcId", vpcs_ds.vpcs[0]["id"])
+    ```
 
 
 

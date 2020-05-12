@@ -27,6 +27,32 @@ class NetworkAclAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "NatGatewayConfigSpec"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            availability_zone=default_zones.zones[0]["id"],
+            cidr_block="172.16.0.0/21",
+            vpc_id=default_network.id)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            network_acl_id=default_network_acl.id,
+            resources=[{
+                "resourceId": default_switch.id,
+                "resourceType": "VSwitch",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

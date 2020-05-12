@@ -111,6 +111,18 @@ def get_router_interfaces(ids=None,name_regex=None,opposite_interface_id=None,op
     This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
     that connect VPCs together.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    router_interfaces_ds = alicloud.vpc.get_router_interfaces(name_regex="^testenv",
+        status="Active")
+    pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0]["id"])
+    ```
 
 
 

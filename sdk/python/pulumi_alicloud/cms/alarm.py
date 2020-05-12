@@ -80,11 +80,7 @@ class Alarm(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, contact_groups=None, dimensions=None, effective_interval=None, enabled=None, end_time=None, metric=None, name=None, operator=None, period=None, project=None, silence_time=None, start_time=None, statistics=None, threshold=None, triggered_count=None, webhook=None, __props__=None, __name__=None, __opts__=None):
         """
-        This resource provides a alarm rule resource and it can be used to monitor several cloud services according different metrics.
-        Details for [alarm rule](https://www.alibabacloud.com/help/doc-detail/28608.htm).
-
-
-
+        Create a Alarm resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] contact_groups: List contact groups of the alarm rule, which must have been created on the console.

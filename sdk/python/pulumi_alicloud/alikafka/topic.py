@@ -47,6 +47,39 @@ class Topic(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka topic.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            availability_zone=default_zones.zones[0]["id"],
+            cidr_block="172.16.0.0/24",
+            vpc_id=default_network.id)
+        default_instance = alicloud.alikafka.Instance("defaultInstance",
+            deploy_type="5",
+            disk_size="500",
+            disk_type="1",
+            io_max="20",
+            topic_quota="50",
+            vswitch_id=default_switch.id)
+        config = pulumi.Config()
+        topic = config.get("topic")
+        if topic is None:
+            topic = "alikafkaTopicName"
+        default_topic = alicloud.alikafka.Topic("defaultTopic",
+            compact_topic="false",
+            instance_id=default_instance.id,
+            local_topic="false",
+            partition_num="12",
+            remark="dafault_kafka_topic_remark",
+            topic=topic)
+        ```
 
 
         :param str resource_name: The name of the resource.

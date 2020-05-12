@@ -60,6 +60,19 @@ def get_topics(instance_id=None,name_regex=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.56.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    topics_ds = alicloud.actiontrail.get_topics(instance_id="xxx",
+        name_regex="alikafkaTopicName",
+        output_file="topics.txt")
+    pulumi.export("firstTopicName", topics_ds.topics[0]["topic"])
+    ```
 
 
 

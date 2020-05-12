@@ -108,6 +108,22 @@ def get_instances(connection_mode=None,db_type=None,engine=None,ids=None,name_re
     The `rds.getInstances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\d+",
+        status="Running",
+        tags={
+            "size": "tiny",
+            "type": "database",
+        })
+    pulumi.export("firstDbInstanceId", db_instances_ds.instances[0]["id"])
+    ```
 
 
 

@@ -88,6 +88,20 @@ def get_instance_classes(category=None,db_instance_class=None,engine=None,engine
 
     > **NOTE:** Available in v1.46.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources = alicloud.rds.get_instance_classes(engine="MySQL",
+        engine_version="5.6",
+        instance_charge_type="PostPaid",
+        output_file="./classes.txt")
+    pulumi.export("firstDbInstanceClass", resources.instance_classes[0]["instance_class"])
+    ```
 
 
 

@@ -32,6 +32,25 @@ class Database(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.66.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        cluster = alicloud.polardb.Cluster("cluster",
+            db_node_class=var["clusterclass"],
+            db_type="MySQL",
+            db_version="8.0",
+            description="testDB",
+            pay_type="PostPaid",
+            vswitch_id="polar.mysql.x4.large")
+        default = alicloud.polardb.Database("default",
+            db_cluster_id=cluster.id,
+            db_name="tftestdatabase")
+        ```
 
 
         :param str resource_name: The name of the resource.

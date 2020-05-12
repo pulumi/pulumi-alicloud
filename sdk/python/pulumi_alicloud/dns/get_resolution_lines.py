@@ -75,6 +75,18 @@ def get_resolution_lines(domain_name=None,lang=None,line_codes=None,line_display
 
     > **NOTE:** Available in 1.60.0.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resolution_lines_ds = alicloud.dns.get_resolution_lines(line_codes=["cn_unicom_shanxi"],
+        output_file="support_lines.txt")
+    pulumi.export("firstLineCode", resolution_lines_ds.lines[0]["lineCode"])
+    ```
 
 
 

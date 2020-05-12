@@ -58,6 +58,18 @@ def get_zone_records(ids=None,keyword=None,output_file=None,zone_id=None,opts=No
     """
     This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
+        zone_id=alicloud_pvtz_zone["basic"]["id"])
+    pulumi.export("firstRecordId", records_ds.records[0]["id"])
+    ```
 
 
 

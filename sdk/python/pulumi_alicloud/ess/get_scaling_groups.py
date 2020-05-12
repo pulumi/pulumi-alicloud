@@ -61,6 +61,21 @@ def get_scaling_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides available scaling group resources. 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    scalinggroups_ds = alicloud.ess.get_scaling_groups(ids=[
+            "scaling_group_id1",
+            "scaling_group_id2",
+        ],
+        name_regex="scaling_group_name")
+    pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0]["id"])
+    ```
 
 
 

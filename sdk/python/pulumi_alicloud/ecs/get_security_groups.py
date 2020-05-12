@@ -82,6 +82,21 @@ def get_security_groups(ids=None,name_regex=None,output_file=None,resource_group
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sec_groups_ds = alicloud.ecs.get_security_groups(name_regex="^web-",
+        output_file="web_access.json")
+    # In conjunction with a VPC
+    primary_vpc_ds = alicloud.vpc.Network("primaryVpcDs")
+    primary_sec_groups_ds = primary_vpc_ds.id.apply(lambda id: alicloud.ecs.get_security_groups(vpc_id=id))
+    pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0]["id"])
+    ```
 
 
 

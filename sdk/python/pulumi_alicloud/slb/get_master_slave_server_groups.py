@@ -67,6 +67,17 @@ def get_master_slave_server_groups(ids=None,load_balancer_id=None,name_regex=Non
 
     > **NOTE:** Available in 1.54.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_master_slave_server_groups(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbServerGroupId", sample_ds.groups[0]["id"])
+    ```
 
 
 

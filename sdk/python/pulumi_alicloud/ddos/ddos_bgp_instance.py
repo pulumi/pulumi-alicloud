@@ -46,6 +46,20 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.57.0+ .
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            bandwidth="201",
+            base_bandwidth="20",
+            ip_count="100",
+            ip_type="IPv4")
+        ```
 
 
         :param str resource_name: The name of the resource.

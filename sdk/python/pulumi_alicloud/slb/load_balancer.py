@@ -80,15 +80,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, address=None, address_ip_version=None, address_type=None, bandwidth=None, delete_protection=None, instance_charge_type=None, internet=None, internet_charge_type=None, master_zone_id=None, name=None, period=None, resource_group_id=None, slave_zone_id=None, specification=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an Application Load Balancer resource.
-
-        > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-
-        > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-        For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-
-
-
+        Create a LoadBalancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.

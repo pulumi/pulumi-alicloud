@@ -37,6 +37,18 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         > **NOTE:** Available in 1.82.0+
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.InstanceClusterAttachment("default",
+            cluster_id=var["cluster_id"],
+            instance_ids=var["instance_ids"])
+        ```
 
 
         :param str resource_name: The name of the resource.

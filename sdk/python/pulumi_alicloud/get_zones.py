@@ -96,6 +96,19 @@ def get_zones(available_disk_category=None,available_instance_type=None,availabl
 
     > **NOTE:** If one zone is sold out, it will not be exported.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
+        available_instance_type="ecs.n4.large")
+    # Create an ECS instance with the first matched zone
+    instance = alicloud.ecs.Instance("instance", availability_zone=zones_ds.zones[0]["id"])
+    ```
 
 
 

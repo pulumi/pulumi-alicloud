@@ -31,6 +31,18 @@ class AwaitableGetAccountResult(GetAccountResult):
 def get_account(opts=None):
     """
     This data source provides information about the current account.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    current = alicloud.get_account()
+    pulumi.export("currentAccountId", current.id)
+    ```
     """
     __args__ = dict()
 

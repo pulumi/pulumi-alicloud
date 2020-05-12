@@ -33,10 +33,7 @@ class AccountPrivilege(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, account_name=None, db_names=None, instance_id=None, privilege=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an RDS account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
-
-
-
+        Create a AccountPrivilege resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: A specified account name.

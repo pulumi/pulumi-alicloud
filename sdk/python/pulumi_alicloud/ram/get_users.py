@@ -73,6 +73,21 @@ def get_users(group_name=None,ids=None,name_regex=None,output_file=None,policy_n
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    users_ds = alicloud.ram.get_users(group_name="group1",
+        name_regex="^user",
+        output_file="users.txt",
+        policy_name="AliyunACSDefaultAccess",
+        policy_type="Custom")
+    pulumi.export("firstUserId", users_ds.users[0]["id"])
+    ```
 
 
 

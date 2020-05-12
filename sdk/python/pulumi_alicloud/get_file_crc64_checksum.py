@@ -49,6 +49,17 @@ def get_file_crc64_checksum(filename=None,output_file=None,opts=None):
 
     > **NOTE:** Available in 1.59.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.get_file_crc64_checksum(filename="exampleFileName")
+    pulumi.export("fileCrc64Checksum", data[".getFileCrc64Checksum"]["defualt"]["checksum"])
+    ```
 
 
 

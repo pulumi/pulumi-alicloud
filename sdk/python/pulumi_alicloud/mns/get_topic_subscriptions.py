@@ -58,6 +58,18 @@ def get_topic_subscriptions(name_prefix=None,output_file=None,topic_name=None,op
     """
     This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    subscriptions = alicloud.mns.get_topic_subscriptions(name_prefix="tf-",
+        topic_name="topic_name")
+    pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0]["id"])
+    ```
 
 
 

@@ -29,6 +29,18 @@ class DeployGroup(pulumi.CustomResource):
         > **NOTE:** Available in 1.82.0+
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.DeployGroup("default",
+            app_id=var["app_id"],
+            group_name=var["group_name"])
+        ```
 
 
         :param str resource_name: The name of the resource.

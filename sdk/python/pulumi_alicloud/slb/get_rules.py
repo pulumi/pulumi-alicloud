@@ -69,6 +69,18 @@ def get_rules(frontend_port=None,ids=None,load_balancer_id=None,name_regex=None,
     """
     This data source provides the rules associated with a server load balancer listener.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_rules(frontend_port=80,
+        load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0]["id"])
+    ```
 
 
 

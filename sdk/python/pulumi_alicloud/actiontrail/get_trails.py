@@ -54,6 +54,17 @@ def get_trails(name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of action trail of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    trails = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
+    pulumi.export("firstTrailName", trails.actiontrails[0]["name"])
+    ```
 
 
 

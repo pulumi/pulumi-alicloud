@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.edas.ApplicationScale("default", {
+ *     appId: var.app_id,
+ *     deployGroup: var.deploy_group,
+ *     ecuInfos: var.ecu_info,
+ *     forceStatus: var.force_status,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_application_scale.html.markdown.
  */

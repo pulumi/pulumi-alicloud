@@ -95,6 +95,18 @@ def get_flowlogs(cen_id=None,description=None,ids=None,log_store_name=None,name_
 
     > **NOTE:** Available in 1.78.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
+        name_regex="^foo")
+    pulumi.export("firstCenFlowlogId", data["cen.getInstances"]["default"]["flowlogs"][0]["id"])
+    ```
 
 
 

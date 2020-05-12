@@ -87,6 +87,19 @@ def get_instances(availability_zone=None,ids=None,instance_class=None,instance_t
     The `mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
     Filters support regular expression for the instance name, engine or instance type.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    mongo = alicloud.mongodb.get_instances(availability_zone="eu-central-1a",
+        instance_class="dds.mongo.mid",
+        instance_type="replicate",
+        name_regex="dds-.+\\d+")
+    ```
 
 
 

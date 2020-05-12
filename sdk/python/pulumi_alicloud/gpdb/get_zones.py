@@ -56,6 +56,19 @@ def get_zones(multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.gpdb.get_zones()
+    # Create an Gpdb instance with the first matched zone
+    hbase = alicloud.hbase.Instance("hbase", availability_zone=zones_ids.zones[0]["id"])
+    # Other properties...
+    ```
 
 
 

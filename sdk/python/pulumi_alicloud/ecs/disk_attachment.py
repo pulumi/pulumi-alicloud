@@ -24,10 +24,7 @@ class DiskAttachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, device_name=None, disk_id=None, instance_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-
-
-
+        Create a DiskAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.

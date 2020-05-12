@@ -74,6 +74,18 @@ def get_repos(enable_details=None,name_regex=None,namespace=None,output_file=Non
 
     > **NOTE:** Available in v1.35.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cr.get_repos(name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
 
 
 

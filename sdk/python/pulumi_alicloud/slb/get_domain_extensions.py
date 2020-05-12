@@ -57,6 +57,18 @@ def get_domain_extensions(frontend_port=None,ids=None,load_balancer_id=None,outp
 
     > **NOTE:** Available in 1.60.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.slb.get_domain_extensions(frontend_port="fake-port",
+        ids=["fake-de-id"],
+        load_balancer_id="fake-lb-id")
+    ```
 
 
 

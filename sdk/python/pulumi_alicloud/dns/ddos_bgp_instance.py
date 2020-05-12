@@ -48,6 +48,20 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.57.0+ .
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        instance = alicloud.ddos.DdosBgpInstance("instance",
+            bandwidth="201",
+            base_bandwidth="20",
+            ip_count="100",
+            ip_type="IPv4")
+        ```
 
 
         Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance

@@ -60,6 +60,19 @@ def get_zones(instance_charge_type=None,multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.rds.get_zones()
+    # Create an RDS instance with the first matched zone
+    db = alicloud.rds.Instance("db", zone_id=zones_ids.zones[0])
+    # Other properties...
+    ```
 
 
 

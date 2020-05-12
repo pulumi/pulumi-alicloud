@@ -84,6 +84,25 @@ def get_instance_types(cluster_type=None,destination_resource=None,instance_char
 
     > **NOTE:** Available in 1.59.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
+        destination_resource="InstanceType",
+        instance_charge_type="PostPaid",
+        instance_type="ecs.g5.2xlarge",
+        support_local_storage=False,
+        support_node_types=[
+            "MASTER",
+            "CORE",
+        ])
+    pulumi.export("firstInstanceType", default.types[0]["id"])
+    ```
 
 
 

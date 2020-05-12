@@ -75,6 +75,21 @@ def get_node_classes(db_node_class=None,db_type=None,db_version=None,output_file
 
     > **NOTE:** Available in v1.81.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    resources_zones = alicloud.get_zones(available_resource_creation="PolarDB")
+    resources_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+        db_version="5.6",
+        pay_type="Postpaid",
+        zone_id=resources_zones.zones[0]["id"])
+    pulumi.export("firstPolardbNodeClass", resources_node_classes.classes)
+    ```
 
 
 

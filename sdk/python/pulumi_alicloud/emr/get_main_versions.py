@@ -64,6 +64,22 @@ def get_main_versions(cluster_types=None,emr_version=None,output_file=None,opts=
 
     > **NOTE:** Available in 1.59.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.emr.get_main_versions(cluster_types=[
+            "HADOOP",
+            "ZOOKEEPER",
+        ],
+        emr_version="EMR-3.22.0")
+    pulumi.export("firstMainVersion", default.main_versions[0]["emrVersion"])
+    pulumi.export("thisClusterTypes", default.main_versions[0]["clusterTypes"])
+    ```
 
 
 

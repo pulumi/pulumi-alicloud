@@ -36,6 +36,20 @@ class ApplicationScale(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.82.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.edas.ApplicationScale("default",
+            app_id=var["app_id"],
+            deploy_group=var["deploy_group"],
+            ecu_infos=var["ecu_info"],
+            force_status=var["force_status"])
+        ```
 
 
         :param str resource_name: The name of the resource.

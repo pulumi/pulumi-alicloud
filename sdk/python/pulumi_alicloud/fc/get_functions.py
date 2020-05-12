@@ -65,6 +65,18 @@ def get_functions(ids=None,name_regex=None,output_file=None,service_name=None,op
     """
     This data source provides the Function Compute functions of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    functions_ds = alicloud.fc.get_functions(name_regex="sample_fc_function",
+        service_name="sample_service")
+    pulumi.export("firstFcFunctionName", functions_ds.functions[0]["name"])
+    ```
 
 
 

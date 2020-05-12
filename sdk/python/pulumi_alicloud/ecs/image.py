@@ -70,6 +70,25 @@ class Image(pulumi.CustomResource):
 
         > **NOTE:**  Available in 1.64.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.Image("default",
+            architecture="x86_64",
+            description="test-image",
+            image_name="test-image",
+            instance_id="i-bp1g6zv0ce8oghu7k***",
+            platform="CentOS",
+            resource_group_id="rg-bp67acfmxazb4ph***",
+            tags={
+                "FinanceDept": "FinanceDeptJoshua",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

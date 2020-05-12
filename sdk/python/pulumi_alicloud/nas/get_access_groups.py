@@ -77,6 +77,19 @@ def get_access_groups(description=None,name_regex=None,output_file=None,type=Non
 
     > NOTE: Available in 1.35.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    ag = alicloud.nas.get_access_groups(description="tf-testAccAccessGroupsdatasource",
+        name_regex="^foo",
+        type="Classic")
+    pulumi.export("alicloudNasAccessGroupsId", ag.groups[0]["id"])
+    ```
 
 
 

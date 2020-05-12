@@ -793,7 +793,6 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_adb_zones":    {Tok: dataSource(adbMod, "getZones")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 			},

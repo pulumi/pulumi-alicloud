@@ -54,6 +54,18 @@ def get_caller_identity(opts=None):
     This data source provides the identity of the current user.
 
     > **NOTE:** Available in 1.65.0+.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    current = alicloud.get_caller_identity()
+    pulumi.export("currentUserArn", current.id)
+    ```
     """
     __args__ = dict()
 

@@ -30,6 +30,18 @@ class ImageSharePermission(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.68.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.ImageSharePermission("default",
+            account_id="1234567890",
+            image_id="m-bp1gxyh***")
+        ```
 
 
         :param str resource_name: The name of the resource.

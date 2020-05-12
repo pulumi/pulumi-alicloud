@@ -49,6 +49,20 @@ class Record(pulumi.CustomResource):
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain record
+        record = alicloud.dns.Record("record",
+            host_record="@",
+            type="A",
+            value="192.168.99.99")
+        ```
 
 
         :param str resource_name: The name of the resource.

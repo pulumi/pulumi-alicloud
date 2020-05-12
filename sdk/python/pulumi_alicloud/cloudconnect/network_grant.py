@@ -32,6 +32,27 @@ class NetworkGrant(pulumi.CustomResource):
 
         > **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_pulumi as pulumi
+
+        ccn_account = pulumi.providers.Alicloud("ccnAccount")
+        cen_account = pulumi.providers.Alicloud("cenAccount",
+            access_key="xxxxxx",
+            region="cn-hangzhou",
+            secret_key="xxxxxx")
+        cen = alicloud.cen.Instance("cen")
+        ccn = alicloud.cloudconnect.Network("ccn", is_default="true")
+        default = alicloud.cloudconnect.NetworkGrant("default",
+            ccn_id=ccn.id,
+            cen_id=cen.id,
+            cen_uid="xxxxxx")
+        ```
 
 
         :param str resource_name: The name of the resource.

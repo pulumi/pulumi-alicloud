@@ -56,6 +56,16 @@ def get_zones(multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.73.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.elasticsearch.get_zones()
+    ```
 
 
 

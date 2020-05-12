@@ -35,6 +35,20 @@ class CaCertificate(pulumi.CustomResource):
         For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # create a CA certificate
+        foo = alicloud.slb.CaCertificate("foo", ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
+        -----END CERTIFICATE-----
+        \"\"\")
+        ```
 
 
         :param str resource_name: The name of the resource.

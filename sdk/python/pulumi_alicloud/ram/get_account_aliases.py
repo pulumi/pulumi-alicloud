@@ -42,6 +42,18 @@ class AwaitableGetAccountAliasesResult(GetAccountAliasesResult):
 def get_account_aliases(output_file=None,opts=None):
     """
     This data source provides an alias for the Alibaba Cloud account.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    alias_ds = alicloud.ram.get_account_aliases(output_file="alias.txt")
+    pulumi.export("accountAlias", alias_ds.account_alias)
+    ```
     """
     __args__ = dict()
 

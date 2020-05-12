@@ -39,13 +39,7 @@ class Table(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, deviation_cell_version_in_sec=None, instance_name=None, max_version=None, primary_keys=None, table_name=None, time_to_live=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an OTS table resource.
-
-        > **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
-        you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
-
-
-
+        Create a Table resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.

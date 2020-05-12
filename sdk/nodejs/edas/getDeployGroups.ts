@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const groups = alicloud.edas.getDeployGroups({
+ *     appId: "xxx",
+ *     ids: ["xxx"],
+ *     outputFile: "groups.txt",
+ * });
+ * export const firstGroupName = groups.then(groups => groups.groups[0].groupName);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/edas_deploy_groups.html.markdown.
  */

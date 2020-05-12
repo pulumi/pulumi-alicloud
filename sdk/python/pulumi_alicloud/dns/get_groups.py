@@ -61,6 +61,18 @@ def get_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.dns.get_groups(name_regex="^y[A-Za-z]+",
+        output_file="groups.txt")
+    pulumi.export("firstGroupName", groups_ds.groups[0]["group_name"])
+    ```
 
 
 

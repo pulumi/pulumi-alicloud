@@ -63,6 +63,18 @@ def get_aliases(ids=None,name_regex=None,output_file=None,opts=None):
      
     > **NOTE:** Available in v1.79.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
+        name_regex="alias/tf-testKmsAlias_123")
+    pulumi.export("firstKeyId", data["kms.getKeys"]["kms_keys_ds"]["keys"][0]["id"])
+    ```
 
 
 

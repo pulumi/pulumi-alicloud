@@ -65,6 +65,17 @@ def get_server_groups(ids=None,load_balancer_id=None,name_regex=None,output_file
     """
     This data source provides the VServer groups related to a server load balancer.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_server_groups(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0]["id"])
+    ```
 
 
 

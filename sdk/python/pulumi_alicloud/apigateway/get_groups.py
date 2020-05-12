@@ -61,6 +61,17 @@ def get_groups(ids=None,name_regex=None,output_file=None,opts=None):
     """
     This data source provides the api groups of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    data_apigatway = alicloud.apigateway.get_groups(output_file="outgroups")
+    pulumi.export("firstGroupId", data_apigatway.groups[0]["id"])
+    ```
 
 
 

@@ -65,6 +65,17 @@ def get_listeners(description_regex=None,frontend_port=None,load_balancer_id=Non
     """
     This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    sample_ds = alicloud.slb.get_listeners(load_balancer_id=alicloud_slb["sample_slb"]["id"])
+    pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0]["protocol"])
+    ```
 
 
 

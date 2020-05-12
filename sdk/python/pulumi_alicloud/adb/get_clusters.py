@@ -68,6 +68,18 @@ def get_clusters(description_regex=None,ids=None,output_file=None,tags=None,opts
 
     > **NOTE:** Available in v1.71.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    adb_clusters_ds = alicloud.adb.get_clusters(description_regex="am-\\w+",
+        status="Running")
+    pulumi.export("firstAdbClusterId", adb_clusters_ds.clusters[0]["id"])
+    ```
 
 
 

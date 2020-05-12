@@ -55,6 +55,21 @@ def get_customer_gateways(ids=None,name_regex=None,output_file=None,opts=None):
     """
     The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.vpn.get_customer_gateways(ids=[
+            "fake-id1",
+            "fake-id2",
+        ],
+        name_regex="testAcc*",
+        output_file="/tmp/cgws")
+    ```
 
 
 

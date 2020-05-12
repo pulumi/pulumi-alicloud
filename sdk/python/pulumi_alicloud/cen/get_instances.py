@@ -68,6 +68,18 @@ def get_instances(ids=None,name_regex=None,output_file=None,tags=None,opts=None)
     """
     This data source provides CEN instances available to the user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cen_instances_ds = alicloud.cen.get_instances(ids=["cen-id1"],
+        name_regex="^foo")
+    pulumi.export("firstCenInstanceId", cen_instances_ds.instances[0]["id"])
+    ```
 
 
 

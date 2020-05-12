@@ -68,6 +68,19 @@ def get_instance_attachments(instance_name=None,name_regex=None,output_file=None
     """
     This data source provides the ots instance attachments of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    attachments_ds = alicloud.oss.get_instance_attachments(instance_name="sample-instance",
+        name_regex="testvpc",
+        output_file="attachments.txt")
+    pulumi.export("firstOtsAttachmentId", attachments_ds.attachments[0]["id"])
+    ```
 
 
 

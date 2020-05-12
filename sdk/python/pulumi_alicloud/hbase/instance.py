@@ -90,6 +90,25 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
 
+        ## Example Usage
+
+        ### Create a hbase instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.hbase.Instance("default",
+            cold_storage_size=0,
+            core_disk_size=400,
+            core_disk_type="cloud_efficiency",
+            core_instance_quantity=2,
+            core_instance_type="hbase.sn1.large",
+            engine_version="2.0",
+            master_instance_type="hbase.sn1.large",
+            pay_type="PostPaid",
+            zone_id="cn-shenzhen-b")
+        ```
 
 
         :param str resource_name: The name of the resource.

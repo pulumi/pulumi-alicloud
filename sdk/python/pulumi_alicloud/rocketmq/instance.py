@@ -40,6 +40,16 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.51.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.rocketmq.Instance("example", remark="tf-example-ons-instance-remark")
+        ```
 
 
         :param str resource_name: The name of the resource.

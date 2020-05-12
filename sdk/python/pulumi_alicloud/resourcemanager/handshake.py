@@ -53,6 +53,20 @@ class Handshake(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.82.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Add a Resource Manager handshake.
+        example = alicloud.resourcemanager.Handshake("example",
+            note="test resource manager handshake",
+            target_entity="1182775234******",
+            target_type="Account")
+        ```
 
 
         :param str resource_name: The name of the resource.

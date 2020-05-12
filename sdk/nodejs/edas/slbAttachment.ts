@@ -9,6 +9,23 @@ import * as utilities from "../utilities";
  * 
  * > **NOTE:** Available in 1.82.0+
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * 
+ * const default = new alicloud.edas.SlbAttachment("default", {
+ *     appId: var.app_id,
+ *     slbId: var.slb_id,
+ *     slbIp: var.slb_ip,
+ *     type: var.type,
+ *     listenerPort: var.listener_port,
+ *     vserverGroupId: var.vserver_group_id,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_slb_attachment.html.markdown.
  */

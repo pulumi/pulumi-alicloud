@@ -53,14 +53,7 @@ class DomainNew(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cdn_type=None, certificate_config=None, domain_name=None, resource_group_id=None, scope=None, sources=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
-
-        For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
-
-        > **NOTE:** Available in v1.34.0+.
-
-
-
+        Create a DomainNew resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.

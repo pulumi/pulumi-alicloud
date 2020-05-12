@@ -24,16 +24,7 @@ class LogTailAttachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, logtail_config_name=None, machine_group_name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        The Logtail access service is a log collection agent provided by Log Service.
-        You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
-        Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
-
-        This resource amis to attach one logtail configure to a machine group.
-
-        > **NOTE:** One logtail configure can be attached to multiple machine groups and one machine group can attach several logtail configures.
-
-
-
+        Create a LogTailAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] logtail_config_name: The Logtail configuration name, which is unique in the same project.

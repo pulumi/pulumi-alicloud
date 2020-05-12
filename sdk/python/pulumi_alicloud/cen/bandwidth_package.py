@@ -48,6 +48,21 @@ class BandwidthPackage(pulumi.CustomResource):
 
         For information about CEN and how to use it, see [Manage bandwidth packages](https://www.alibabacloud.com/help/doc-detail/65982.htm).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        foo = alicloud.cen.BandwidthPackage("foo",
+            bandwidth=5,
+            geographic_region_ids=[
+                "China",
+                "Asia-Pacific",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

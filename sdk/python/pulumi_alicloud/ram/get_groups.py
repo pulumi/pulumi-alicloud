@@ -66,6 +66,19 @@ def get_groups(name_regex=None,output_file=None,policy_name=None,policy_type=Non
     """
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
+        output_file="groups.txt",
+        user_name="user1")
+    pulumi.export("firstGroupName", groups_ds.groups[0]["name"])
+    ```
 
 
 

@@ -63,6 +63,18 @@ def get_images(most_recent=None,name_regex=None,output_file=None,owners=None,opt
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
     other public images and the ones available on the image market. 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
+        owners="system")
+    pulumi.export("firstImageId", images_ds.images[0]["id"])
+    ```
 
 
 

@@ -24,6 +24,19 @@ class Alias(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.77.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        this_key = alicloud.kms.Key("thisKey")
+        this_alias = alicloud.kms.Alias("thisAlias",
+            alias_name="alias/test_kms_alias",
+            key_id=this_key.id)
+        ```
 
 
         :param str resource_name: The name of the resource.
