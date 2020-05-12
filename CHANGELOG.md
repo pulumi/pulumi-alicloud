@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.82.0 of the AliCloud terraform provider
-* Upgrade to pulumi-terraform-bridge v2.3.1
+_(none)_
 
 ---
+
+## 2.4.0 (2020-05-12)
+* Upgrade to v1.82.0 of the AliCloud terraform provider
+* Upgrade to pulumi-terraform-bridge v2.3.1
 
 ## 2.3.0 (2020-05-01)
 * Upgrade to v1.81.0 of the AliCloud terraform provider
