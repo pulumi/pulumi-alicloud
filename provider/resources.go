@@ -229,6 +229,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_instance_grant":               {Tok: resource(cenMod, "InstanceGrant")},
 			"alicloud_cen_flowlog":                      {Tok: resource(cenMod, "FlowLog")},
 			"alicloud_cen_route_map":                    {Tok: resource(cenMod, "RouteMap")},
+			"alicloud_cen_private_zone":                 {Tok: resource(cenMod, "PrivateZone")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -465,6 +466,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_folder":         {Tok: resource(resourceManagerMod, "Folder")},
 			"alicloud_resource_manager_resource_group": {Tok: resource(resourceManagerMod, "ResourceGroup")},
 			"alicloud_resource_manager_role":           {Tok: resource(resourceManagerMod, "Role")},
+			"alicloud_resource_manager_account":        {Tok: resource(resourceManagerMod, "Account")},
+			"alicloud_resource_manager_policy":         {Tok: resource(resourceManagerMod, "Policy")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
@@ -559,6 +562,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"alicloud_waf_instance": {Tok: resource(wafMod, "Instance")},
 
 			// Yundun
 			"alicloud_yundun_bastionhost_instance": {Tok: resource(yundunMod, "BastionHostInstance")},

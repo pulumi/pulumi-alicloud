@@ -15,5 +15,6 @@ export * from "./getRouteEntries";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./instanceGrant";
+export * from "./privateZone";
 export * from "./routeEntry";
 export * from "./routeMap";

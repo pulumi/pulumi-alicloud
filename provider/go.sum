@@ -102,8 +102,8 @@ github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRF
 github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190329064014-6e358769c32a/go.mod h1:T9M45xf79ahXVelWoOBmH0y4aC1t5kXO5BxwyakgIGA=
 github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190412020505-60e2075261b6/go.mod h1:T9M45xf79ahXVelWoOBmH0y4aC1t5kXO5BxwyakgIGA=
 github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190620160927-9418d7b0cd0f/go.mod h1:myCDvQSzCW+wB1WAlocEru4wMGJxy+vlxHdhegi1CDQ=
-github.com/aliyun/alibaba-cloud-sdk-go v1.61.163 h1:zTLeZyNWZKK8YhzXYgUZ1SFk4IjOO3YwlvEY5rYTW4g=
-github.com/aliyun/alibaba-cloud-sdk-go v1.61.163/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.191 h1:ubhK69C6jnrAYX2tdoh9zNKxRJKrx6ZApmarE/a5BxA=
+github.com/aliyun/alibaba-cloud-sdk-go v1.61.191/go.mod h1:pUKYbK5JQ+1Dfxk80P0qxGqe5dkxDoabbZS7zOcouyA=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0 h1:nvOIS4LOMKF65MCDkJgAMZXNk5MdbbfFcA3Dk9WwsXM=
 github.com/aliyun/aliyun-datahub-sdk-go v0.0.0-20180929121038-c1c85baca7c0/go.mod h1:GwtZxKUD+aLBrtlkEcyPNAx+jRkBioEC7EKOlQ26lTc=
 github.com/aliyun/aliyun-log-go-sdk v0.1.6 h1:xtTQNaJ768Fj+TYFNTeBaqP3nDXJaDTWAi/qp9Fgclo=
@@ -841,8 +841,8 @@ github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81P
 github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BSTlc8jOjh0niykqEGVXOLXdi9o0r0kR8tCYiMvjFgw=
-github.com/terraform-providers/terraform-provider-alicloud v1.82.0 h1:Dru1ES12imBSNYnBmOupytH1s49vZ/+Rzf8fq9PZexE=
-github.com/terraform-providers/terraform-provider-alicloud v1.82.0/go.mod h1:l8lFrAFVHi0gnq5M7ja8m16gSKbaCs2SoYHR9MGNveE=
+github.com/terraform-providers/terraform-provider-alicloud v1.83.0 h1:7Xzf53xdN4FpN9CmK5Mv1u/uf8dMQ/NmqtFAj7IDLIE=
+github.com/terraform-providers/terraform-provider-alicloud v1.83.0/go.mod h1:deJQ0y7z7RISi+myDnG2I+zCcLb+g9P3fusPJ5+Hp94=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=

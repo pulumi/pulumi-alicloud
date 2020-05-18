@@ -2,7 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./account";
 export * from "./folder";
 export * from "./handshake";
+export * from "./policy";
 export * from "./resourceGroup";
 export * from "./role";

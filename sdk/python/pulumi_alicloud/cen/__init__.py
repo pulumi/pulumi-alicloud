@@ -16,5 +16,6 @@ from .get_route_entries import *
 from .instance import *
 from .instance_attachment import *
 from .instance_grant import *
+from .private_zone import *
 from .route_entry import *
 from .route_map import *
