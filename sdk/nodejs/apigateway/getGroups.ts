@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the api groups of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const dataApigatway = pulumi.output(alicloud.apigateway.getGroups({
  *     outputFile: "outgroups",
  * }, { async: true }));
- * 
+ *
  * export const firstGroupId = dataApigatway.groups[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_groups.html.markdown.
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};

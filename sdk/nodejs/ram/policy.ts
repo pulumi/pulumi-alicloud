@@ -134,7 +134,6 @@ export interface PolicyState {
     readonly name?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
-     * 
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     readonly statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
@@ -144,7 +143,6 @@ export interface PolicyState {
     readonly type?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
-     * 
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     readonly version?: pulumi.Input<string>;
@@ -172,13 +170,11 @@ export interface PolicyArgs {
     readonly name?: pulumi.Input<string>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
-     * 
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     readonly statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
     /**
      * (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
-     * 
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     readonly version?: pulumi.Input<string>;

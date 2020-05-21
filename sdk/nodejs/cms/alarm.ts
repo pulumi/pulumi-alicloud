@@ -197,7 +197,6 @@ export interface AlarmState {
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-     * 
      * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
     readonly endTime?: pulumi.Input<number>;
@@ -227,7 +226,6 @@ export interface AlarmState {
     readonly silenceTime?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-     * 
      * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
     readonly startTime?: pulumi.Input<number>;
@@ -275,7 +273,6 @@ export interface AlarmArgs {
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-     * 
      * @deprecated Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
     readonly endTime?: pulumi.Input<number>;
@@ -305,7 +302,6 @@ export interface AlarmArgs {
     readonly silenceTime?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
-     * 
      * @deprecated Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
      */
     readonly startTime?: pulumi.Input<number>;

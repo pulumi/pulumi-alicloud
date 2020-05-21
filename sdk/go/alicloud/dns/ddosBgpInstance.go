@@ -16,9 +16,7 @@ import (
 //
 // > **NOTE:** Available in 1.57.0+ .
 //
-//
-//
-// Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance
+// Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance
 type DdosBgpInstance struct {
 	pulumi.CustomResourceState
 

@@ -6,26 +6,24 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Nas Access Group resource.
- * 
+ *
  * In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
- * 
+ *
  * > **NOTE:** Available in v1.33.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const foo = new alicloud.nas.AccessGroup("foo", {
  *     description: "test_AccessG",
  *     type: "Classic",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_group.html.markdown.
  */
 export class AccessGroup extends pulumi.CustomResource {
     /**

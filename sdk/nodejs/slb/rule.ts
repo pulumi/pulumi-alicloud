@@ -9,28 +9,28 @@ import * as utilities from "../utilities";
 /**
  * A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
  * You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
- * 
+ *
  * > **NOTE:** One virtual backend server group can be attached in multiple forwarding rules.
- * 
+ *
  * > **NOTE:** At least one "Domain" or "Url" must be specified when creating a new rule.
- * 
+ *
  * > **NOTE:** Having the same 'Domain' and 'Url' rule can not be created repeatedly in the one listener.
- * 
+ *
  * > **NOTE:** Rule only be created in the `HTTP` or `HTTPS` listener.
- * 
+ *
  * > **NOTE:** Only rule's virtual server group can be modified.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "slbrulebasicconfig";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
@@ -110,8 +110,6 @@ import * as utilities from "../utilities";
  *     url: "/image",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_rule.html.markdown.
  */
 export class Rule extends pulumi.CustomResource {
     /**

@@ -7,24 +7,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const subscriptions = pulumi.output(alicloud.mns.getTopicSubscriptions({
  *     namePrefix: "tf-",
  *     topicName: "topicName",
  * }, { async: true }));
- * 
+ *
  * export const firstTopicSubscriptionId = subscriptions.subscriptions[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mns_topic_subscriptions.html.markdown.
  */
 export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
     if (!opts) {

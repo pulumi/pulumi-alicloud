@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a network acl attachment resource to associate network acls to vswitches.
- * 
+ *
  * > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "NatGatewayConfigSpec";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -44,8 +44,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_attachment.html.markdown.
  */
 export class NetworkAclAttachment extends pulumi.CustomResource {
     /**

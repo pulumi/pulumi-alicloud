@@ -34,7 +34,8 @@ type ImageCopy struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	Name     pulumi.StringOutput    `pulumi:"name"`
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The source image ID.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -89,7 +90,8 @@ type imageCopyState struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name     *string `pulumi:"name"`
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	Name *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId *string `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -111,7 +113,8 @@ type ImageCopyState struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	Name     pulumi.StringPtrInput
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	Name pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringPtrInput
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -137,7 +140,8 @@ type imageCopyArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	Name     *string `pulumi:"name"`
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	Name *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId string `pulumi:"sourceImageId"`
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
@@ -160,7 +164,8 @@ type ImageCopyArgs struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	Name     pulumi.StringPtrInput
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	Name pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringInput
 	// The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.

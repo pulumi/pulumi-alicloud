@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM User access key resource.
- * 
+ *
  * > **NOTE:**  You should set the `secretFile` if you want to get the access key.  
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a new RAM access key for user.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     userName: user.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_access_key.html.markdown.
  */
 export class AccessKey extends pulumi.CustomResource {
     /**

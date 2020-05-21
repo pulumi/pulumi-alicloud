@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the ECS instance types of Alibaba Cloud.
- * 
+ *
  * > **NOTE:** By default, only the upgraded instance types are returned. If you want to get outdated instance types, you must set `isOutdated` to true.
- * 
+ *
  * > **NOTE:** If one instance type is sold out, it will not be exported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Declare the data source
  * const typesDs = pulumi.output(alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     instanceType: typesDs.instanceTypes[0].id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_types.html.markdown.
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};

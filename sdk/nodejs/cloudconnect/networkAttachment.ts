@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
- * 
+ *
  * For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/doc-detail/124230.htm).
- * 
+ *
  * > **NOTE:** Available in 1.64.0+
- * 
+ *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const ccn = new alicloud.cloudconnect.Network("ccn", {
  *     isDefault: true,
  * });
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     sagId: "sag-xxxxx",
  * }, { dependsOn: [ccn] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cloud_connect_network_attachment.html.markdown.
  */
 export class NetworkAttachment extends pulumi.CustomResource {
     /**

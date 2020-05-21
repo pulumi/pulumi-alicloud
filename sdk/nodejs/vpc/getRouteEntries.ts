@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Route Entries owned by an Alibaba Cloud account.
- * 
+ *
  * > **NOTE:** Available in 1.37.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccRouteEntryConfig";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -81,8 +81,6 @@ import * as utilities from "../utilities";
  *     routeTableId: routeTableId,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/route_entries.html.markdown.
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
     if (!opts) {

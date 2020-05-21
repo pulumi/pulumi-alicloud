@@ -8,26 +8,24 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
  * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
- * 
+ *
  * > **NOTE:** Available in v1.71.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const adbClustersDs = pulumi.output(alicloud.adb.getClusters({
  *     descriptionRegex: "am-\\w+",
  *     status: "Running",
  * }, { async: true }));
- * 
+ *
  * export const firstAdbClusterId = adbClustersDs.clusters[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/adb_clusters.html.markdown.
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};

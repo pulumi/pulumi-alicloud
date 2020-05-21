@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of EDAS deploy groups in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const groups = alicloud.edas.getDeployGroups({
  *     appId: "xxx",
  *     ids: ["xxx"],
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstGroupName = groups.then(groups => groups.groups[0].groupName);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/edas_deploy_groups.html.markdown.
  */
 export function getDeployGroups(args: GetDeployGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeployGroupsResult> {
     if (!opts) {

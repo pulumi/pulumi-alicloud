@@ -6,25 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an EDAS deploy group resource.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const default = new alicloud.edas.DeployGroup("default", {
  *     appId: var.app_id,
  *     groupName: var.group_name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_deploy_group.html.markdown.
  */
 export class DeployGroup extends pulumi.CustomResource {
     /**

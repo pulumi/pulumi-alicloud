@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ECS snapshot policy resource.
- * 
+ *
  * For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
- * 
+ *
  * > **NOTE:** Available in 1.42.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const sp = new alicloud.ecs.SnapshotPolicy("sp", {
  *     repeatWeekdays: [
  *         "1",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/snapshot_policy.html.markdown.
  */
 export class SnapshotPolicy extends pulumi.CustomResource {
     /**

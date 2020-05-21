@@ -8,27 +8,25 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
- * 
+ *
  * > **NOTE:** Available in 1.58.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Declare the data source
  * const k8sClusters = pulumi.output(alicloud.cs.getServerlessKubernetesClusters({
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
  * }, { async: true }));
- * 
+ *
  * export const output = k8sClusters.clusters;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cs_serverless_kubernetes_clusters.html.markdown.
  */
 export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessKubernetesClustersResult> {
     args = args || {};

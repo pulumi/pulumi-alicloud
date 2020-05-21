@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an EDAS cluster resource.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const default = new alicloud.edas.Cluster("default", {
  *     clusterName: var.cluster_name,
  *     clusterType: var.cluster_type,
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     vpcId: var.vpc_id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

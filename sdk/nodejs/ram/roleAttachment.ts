@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM role attachment resource to bind role for several ECS instances.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "ecsInstanceVPCExample";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
@@ -89,8 +89,6 @@ import * as utilities from "../utilities";
  *     roleName: role.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_attachment.html.markdown.
  */
 export class RoleAttachment extends pulumi.CustomResource {
     /**

@@ -7,24 +7,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const groupsDs = pulumi.output(alicloud.dns.getGroups({
  *     nameRegex: "^y[A-Za-z]+",
  *     outputFile: "groups.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstGroupName = groupsDs.groups[0].groupName;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_groups.html.markdown.
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};

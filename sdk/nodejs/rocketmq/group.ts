@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ONS group resource.
- * 
+ *
  * For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
- * 
+ *
  * > **NOTE:** Available in 1.53.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
- * 
+ *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
  *     remark: "defaultOnsInstanceRemark",
  * });
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     remark: "dafaultOnsGroupRemark",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**

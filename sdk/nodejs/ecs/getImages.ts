@@ -9,24 +9,22 @@ import * as utilities from "../utilities";
 /**
  * This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud, 
  * other public images and the ones available on the image market. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const imagesDs = pulumi.output(alicloud.ecs.getImages({
  *     nameRegex: "^centos_6",
  *     owners: "system",
  * }, { async: true }));
- * 
+ *
  * export const firstImageId = imagesDs.images[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/images.html.markdown.
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};

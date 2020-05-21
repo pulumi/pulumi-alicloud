@@ -6,22 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an RDS connection resource to allocate an Internet connection string for RDS instance.
- * 
+ *
  * > **NOTE:** Each RDS instance will allocate a intranet connnection string automatically and its prifix is RDS instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbconnectionbasic";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -46,8 +46,6 @@ import * as utilities from "../utilities";
  *     instanceId: instance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**

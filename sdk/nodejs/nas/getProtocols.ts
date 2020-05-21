@@ -7,27 +7,25 @@ import * as utilities from "../utilities";
 
 /**
  * Provide  a data source to retrieve the type of protocol used to create NAS file system.
- * 
+ *
  * > **NOTE:** Available in 1.42.0
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultProtocols = pulumi.output(alicloud.nas.getProtocols({
  *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
  * }, { async: true }));
- * 
+ *
  * export const nasProtocolsProtocol = defaultProtocols.protocols[0];
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_protocols.html.markdown.
  */
 export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions): Promise<GetProtocolsResult> {
     if (!opts) {

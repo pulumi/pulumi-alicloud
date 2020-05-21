@@ -6,22 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Attaches several ECS instances to a specified scaling group or remove them from it.
- * 
+ *
  * > **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
- * 
+ *
  * > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "essattachmentconfig";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
@@ -99,8 +99,6 @@ import * as utilities from "../utilities";
  *     scalingGroupId: defaultScalingGroup.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_attachment.html.markdown.
  */
 export class Attachment extends pulumi.CustomResource {
     /**

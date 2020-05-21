@@ -35,8 +35,12 @@ type GetInstanceClassesArgs struct {
 	NodeType   *string `pulumi:"nodeType"`
 	OutputFile *string `pulumi:"outputFile"`
 	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'package_type' has been deprecated from 1.68.0.
 	PackageType *string `pulumi:"packageType"`
 	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
 	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
@@ -44,6 +48,8 @@ type GetInstanceClassesArgs struct {
 	ShardNumber *int    `pulumi:"shardNumber"`
 	SortedBy    *string `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.
+	//
+	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
 	StorageType *string `pulumi:"storageType"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
@@ -64,11 +70,14 @@ type GetInstanceClassesResult struct {
 	InstanceClasses []string `pulumi:"instanceClasses"`
 	NodeType        *string  `pulumi:"nodeType"`
 	OutputFile      *string  `pulumi:"outputFile"`
-	PackageType     *string  `pulumi:"packageType"`
-	PerformanceType *string  `pulumi:"performanceType"`
-	SeriesType      *string  `pulumi:"seriesType"`
-	ShardNumber     *int     `pulumi:"shardNumber"`
-	SortedBy        *string  `pulumi:"sortedBy"`
-	StorageType     *string  `pulumi:"storageType"`
-	ZoneId          string   `pulumi:"zoneId"`
+	// Deprecated: The parameter 'package_type' has been deprecated from 1.68.0.
+	PackageType *string `pulumi:"packageType"`
+	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
+	PerformanceType *string `pulumi:"performanceType"`
+	SeriesType      *string `pulumi:"seriesType"`
+	ShardNumber     *int    `pulumi:"shardNumber"`
+	SortedBy        *string `pulumi:"sortedBy"`
+	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
+	StorageType *string `pulumi:"storageType"`
+	ZoneId      string  `pulumi:"zoneId"`
 }

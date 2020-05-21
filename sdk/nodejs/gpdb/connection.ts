@@ -6,24 +6,24 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a connection resource to allocate an Internet connection string for instance.
- * 
+ *
  * > **NOTE:**  Available in 1.48.0+
- * 
+ *
  * > **NOTE:** Each instance will allocate a intranet connection string automatically and its prefix is instance ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Gpdb";
  * const name = config.get("name") || "gpdbConnectionBasic";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -48,8 +48,6 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/gpdb_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**

@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 /**
  * Provides a Sag qos car resource. 
  * You need to create a QoS car to set priorities, rate limits, and quintuple rules for different messages.
- * 
+ *
  * For information about Sag Qos Car and how to use it, see [What is Qos Car](https://www.alibabacloud.com/help/doc-detail/140065.htm).
- * 
+ *
  * > **NOTE:** Available in 1.60.0+
- * 
+ *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultQos = new alicloud.rocketmq.Qos("default", {});
  * const defaultQosCar = new alicloud.rocketmq.QosCar("default", {
  *     description: "tf-testSagQosCarDescription",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     qosId: defaultQos.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_qos_car.html.markdown.
  */
 export class QosCar extends pulumi.CustomResource {
     /**

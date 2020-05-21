@@ -24,7 +24,8 @@ type Network struct {
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
-	RouterId      pulumi.StringOutput `pulumi:"routerId"`
+	RouterId pulumi.StringOutput `pulumi:"routerId"`
+	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -72,7 +73,8 @@ type networkState struct {
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
-	RouterId      *string `pulumi:"routerId"`
+	RouterId *string `pulumi:"routerId"`
+	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId *string `pulumi:"routerTableId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -90,7 +92,8 @@ type NetworkState struct {
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId pulumi.StringPtrInput
 	// The ID of the router created by default on VPC creation.
-	RouterId      pulumi.StringPtrInput
+	RouterId pulumi.StringPtrInput
+	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
 	RouterTableId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput

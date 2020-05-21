@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides bind the domain name to the DNS instance resource.
- * 
+ *
  * > **NOTE:** Available in v1.80.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const dns = new alicloud.dns.DomainAttachment("dns", {
  *     domainNames: [
  *         "test111.abc",
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     instanceId: "dns-cn-mp91lyq9xxxx",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_domain_attachment.html.markdown.
  */
 export class DomainAttachment extends pulumi.CustomResource {
     /**

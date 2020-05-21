@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available scaling configuration resources. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const scalingconfigurationsDs = pulumi.output(alicloud.ess.getScalingConfigurations({
  *     ids: [
  *         "scalingConfigurationId1",
@@ -25,11 +25,9 @@ import * as utilities from "../utilities";
  *     nameRegex: "scalingConfigurationName",
  *     scalingGroupId: "scalingGroupId",
  * }, { async: true }));
- * 
+ *
  * export const firstScalingRule = scalingconfigurationsDs.configurations[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_configurations.html.markdown.
  */
 export function getScalingConfigurations(args?: GetScalingConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingConfigurationsResult> {
     args = args || {};

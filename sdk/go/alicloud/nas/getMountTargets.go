@@ -28,6 +28,8 @@ type GetMountTargetsArgs struct {
 	// A list of MountTargetDomain.
 	Ids []string `pulumi:"ids"`
 	// Filter results by a specific MountTargetDomain.
+	//
+	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
 	OutputFile        *string `pulumi:"outputFile"`
 	// Filter results by a specific NetworkType.
@@ -49,6 +51,8 @@ type GetMountTargetsResult struct {
 	Ids []string `pulumi:"ids"`
 	// MountTargetDomain of the MountTarget.
 	// * `type`- NetworkType of The MountTarget.
+	//
+	// Deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
 	OutputFile        *string `pulumi:"outputFile"`
 	// A list of MountTargetDomains. Each element contains the following attributes:

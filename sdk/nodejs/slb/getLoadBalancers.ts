@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the server load balancers of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const slbsDs = pulumi.output(alicloud.slb.getLoadBalancers({
  *     nameRegex: "sampleSlb",
  * }, { async: true }));
- * 
+ *
  * export const firstSlbId = slbsDs.slbs[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slbs.html.markdown.
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};

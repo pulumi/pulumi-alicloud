@@ -20,6 +20,8 @@ func GetApis(ctx *pulumi.Context, args *GetApisArgs, opts ...pulumi.InvokeOption
 // A collection of arguments for invoking getApis.
 type GetApisArgs struct {
 	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+	//
+	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
 	ApiId *string `pulumi:"apiId"`
 	// ID of the specified group.
 	GroupId *string `pulumi:"groupId"`
@@ -32,6 +34,7 @@ type GetApisArgs struct {
 
 // A collection of values returned by getApis.
 type GetApisResult struct {
+	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
 	ApiId *string `pulumi:"apiId"`
 	// A list of apis. Each element contains the following attributes:
 	Apis []GetApisApi `pulumi:"apis"`

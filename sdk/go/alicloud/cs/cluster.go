@@ -28,10 +28,11 @@ type Cluster struct {
 	Password        pulumi.StringOutput    `pulumi:"password"`
 	ReleaseEip      pulumi.BoolPtrOutput   `pulumi:"releaseEip"`
 	SecurityGroupId pulumi.StringOutput    `pulumi:"securityGroupId"`
-	Size            pulumi.IntPtrOutput    `pulumi:"size"`
-	SlbId           pulumi.StringOutput    `pulumi:"slbId"`
-	VpcId           pulumi.StringOutput    `pulumi:"vpcId"`
-	VswitchId       pulumi.StringOutput    `pulumi:"vswitchId"`
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	Size      pulumi.IntPtrOutput `pulumi:"size"`
+	SlbId     pulumi.StringOutput `pulumi:"slbId"`
+	VpcId     pulumi.StringOutput `pulumi:"vpcId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -89,10 +90,11 @@ type clusterState struct {
 	Password        *string       `pulumi:"password"`
 	ReleaseEip      *bool         `pulumi:"releaseEip"`
 	SecurityGroupId *string       `pulumi:"securityGroupId"`
-	Size            *int          `pulumi:"size"`
-	SlbId           *string       `pulumi:"slbId"`
-	VpcId           *string       `pulumi:"vpcId"`
-	VswitchId       *string       `pulumi:"vswitchId"`
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	Size      *int    `pulumi:"size"`
+	SlbId     *string `pulumi:"slbId"`
+	VpcId     *string `pulumi:"vpcId"`
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type ClusterState struct {
@@ -111,10 +113,11 @@ type ClusterState struct {
 	Password        pulumi.StringPtrInput
 	ReleaseEip      pulumi.BoolPtrInput
 	SecurityGroupId pulumi.StringPtrInput
-	Size            pulumi.IntPtrInput
-	SlbId           pulumi.StringPtrInput
-	VpcId           pulumi.StringPtrInput
-	VswitchId       pulumi.StringPtrInput
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	Size      pulumi.IntPtrInput
+	SlbId     pulumi.StringPtrInput
+	VpcId     pulumi.StringPtrInput
+	VswitchId pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -134,8 +137,9 @@ type clusterArgs struct {
 	NodeNumber   *int    `pulumi:"nodeNumber"`
 	Password     string  `pulumi:"password"`
 	ReleaseEip   *bool   `pulumi:"releaseEip"`
-	Size         *int    `pulumi:"size"`
-	VswitchId    string  `pulumi:"vswitchId"`
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	Size      *int   `pulumi:"size"`
+	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -152,8 +156,9 @@ type ClusterArgs struct {
 	NodeNumber   pulumi.IntPtrInput
 	Password     pulumi.StringInput
 	ReleaseEip   pulumi.BoolPtrInput
-	Size         pulumi.IntPtrInput
-	VswitchId    pulumi.StringInput
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	Size      pulumi.IntPtrInput
+	VswitchId pulumi.StringInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

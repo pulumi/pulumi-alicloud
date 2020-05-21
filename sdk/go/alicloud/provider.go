@@ -67,12 +67,16 @@ type providerArgs struct {
 	ConfigurationSource *string `pulumi:"configurationSource"`
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
-	EcsRoleName     *string            `pulumi:"ecsRoleName"`
-	Endpoints       []ProviderEndpoint `pulumi:"endpoints"`
-	Fc              *string            `pulumi:"fc"`
-	LogEndpoint     *string            `pulumi:"logEndpoint"`
-	MnsEndpoint     *string            `pulumi:"mnsEndpoint"`
-	OtsInstanceName *string            `pulumi:"otsInstanceName"`
+	EcsRoleName *string            `pulumi:"ecsRoleName"`
+	Endpoints   []ProviderEndpoint `pulumi:"endpoints"`
+	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
+	Fc *string `pulumi:"fc"`
+	// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
+	LogEndpoint *string `pulumi:"logEndpoint"`
+	// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
+	MnsEndpoint *string `pulumi:"mnsEndpoint"`
+	// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
+	OtsInstanceName *string `pulumi:"otsInstanceName"`
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 	Profile  *string `pulumi:"profile"`
 	Protocol *string `pulumi:"protocol"`
@@ -103,11 +107,15 @@ type ProviderArgs struct {
 	ConfigurationSource pulumi.StringPtrInput
 	// The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
 	// of the Alibaba Cloud console.
-	EcsRoleName     pulumi.StringPtrInput
-	Endpoints       ProviderEndpointArrayInput
-	Fc              pulumi.StringPtrInput
-	LogEndpoint     pulumi.StringPtrInput
-	MnsEndpoint     pulumi.StringPtrInput
+	EcsRoleName pulumi.StringPtrInput
+	Endpoints   ProviderEndpointArrayInput
+	// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
+	Fc pulumi.StringPtrInput
+	// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
+	LogEndpoint pulumi.StringPtrInput
+	// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
+	MnsEndpoint pulumi.StringPtrInput
+	// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
 	OtsInstanceName pulumi.StringPtrInput
 	// The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
 	Profile  pulumi.StringPtrInput

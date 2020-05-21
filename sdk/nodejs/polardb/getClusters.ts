@@ -9,26 +9,24 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.polardb.getClusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
  * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
- * 
+ *
  * > **NOTE:** Available in v1.66.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const polardbClustersDs = pulumi.output(alicloud.polardb.getClusters({
  *     descriptionRegex: "pc-\\w+",
  *     status: "Running",
  * }, { async: true }));
- * 
+ *
  * export const firstPolardbClusterId = polardbClustersDs.clusters[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_clusters.html.markdown.
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};

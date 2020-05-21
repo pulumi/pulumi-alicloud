@@ -7,28 +7,26 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides AccessRule available to the user.
- * 
+ *
  * > NOTE: Available in 1.35.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const foo = pulumi.output(alicloud.nas.getAccessRules({
  *     accessGroupName: "tf-testAccAccessGroupsdatasource",
  *     rwAccess: "RDWR",
  *     sourceCidrIp: "168.1.1.0/16",
  *     userAccess: "noSquash",
  * }, { async: true }));
- * 
+ *
  * export const alicloudNasAccessRulesId = foo.rules[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_access_rules.html.markdown.
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
     if (!opts) {

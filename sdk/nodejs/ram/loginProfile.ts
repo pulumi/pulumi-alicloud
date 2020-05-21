@@ -6,16 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM User Login Profile resource.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a RAM login profile.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     userName: user.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_login_profile.html.markdown.
  */
 export class LoginProfile extends pulumi.CustomResource {
     /**

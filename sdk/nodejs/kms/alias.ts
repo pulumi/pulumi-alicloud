@@ -6,25 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Create an alias for the master key (CMK).
- * 
+ *
  * > **NOTE:** Available in v1.77.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const thisKey = new alicloud.kms.Key("thisKey", {});
  * const thisAlias = new alicloud.kms.Alias("thisAlias", {
  *     aliasName: "alias/test_kms_alias",
  *     keyId: thisKey.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kms_alias.html.markdown.
  */
 export class Alias extends pulumi.CustomResource {
     /**

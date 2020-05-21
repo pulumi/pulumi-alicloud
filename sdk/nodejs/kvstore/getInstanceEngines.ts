@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
- * 
+ *
  * > **NOTE:** Available in v1.51.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const resourcesZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "KVStore",
  * }, { async: true }));
@@ -29,11 +29,9 @@ import * as utilities from "../utilities";
  *     outputFile: "./engines.txt",
  *     zoneId: resourcesZones.zones[0].id,
  * }, { async: true }));
- * 
+ *
  * export const firstKvstoreInstanceClass = resourcesInstanceEngines.instanceEngines[0].engine;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instance_engines.html.markdown.
  */
 export function getInstanceEngines(args: GetInstanceEnginesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceEnginesResult> {
     if (!opts) {

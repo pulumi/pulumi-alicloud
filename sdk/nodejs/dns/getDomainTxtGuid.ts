@@ -7,27 +7,25 @@ import * as utilities from "../utilities";
 
 /**
  * Provides the generation of txt records to realize the retrieval and verification of domain names.
- * 
+ *
  * > **NOTE:** Available in v1.80.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const thisDomainTxtGuid = pulumi.output(alicloud.dns.getDomainTxtGuid({
  *     domainName: "test111.abc",
  *     type: "ADD_SUB_DOMAIN",
  * }, { async: true }));
- * 
+ *
  * export const rr = thisDomainTxtGuid.rr;
  * export const value = thisDomainTxtGuid.value;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domain_txt_guid.html.markdown.
  */
 export function getDomainTxtGuid(args: GetDomainTxtGuidArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTxtGuidResult> {
     if (!opts) {

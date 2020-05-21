@@ -23,12 +23,18 @@ type Role struct {
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	//
+	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	RamUsers pulumi.StringArrayOutput `pulumi:"ramUsers"`
 	// The role ID.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	//
+	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -71,12 +77,18 @@ type roleState struct {
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	//
+	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	RamUsers []string `pulumi:"ramUsers"`
 	// The role ID.
 	RoleId *string `pulumi:"roleId"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	//
+	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Services []string `pulumi:"services"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
 }
 
@@ -92,12 +104,18 @@ type RoleState struct {
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	//
+	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	RamUsers pulumi.StringArrayInput
 	// The role ID.
 	RoleId pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	//
+	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Services pulumi.StringArrayInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
 }
 
@@ -115,10 +133,16 @@ type roleArgs struct {
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	//
+	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	RamUsers []string `pulumi:"ramUsers"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	//
+	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Services []string `pulumi:"services"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
 }
 
@@ -133,10 +157,16 @@ type RoleArgs struct {
 	// Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of ram users who can assume the RAM role. The format of each item in this list is `acs:ram::${account_id}:root` or `acs:ram::${account_id}:user/${user_name}`, such as `acs:ram::1234567890000:root` and `acs:ram::1234567890001:user/Mary`. The `${user_name}` is the name of a RAM user which must exists in the Alicloud account indicated by the `${account_id}`.
+	//
+	// Deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	RamUsers pulumi.StringArrayInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
+	//
+	// Deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Services pulumi.StringArrayInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
 }
 

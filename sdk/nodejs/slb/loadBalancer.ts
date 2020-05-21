@@ -191,7 +191,6 @@ export interface LoadBalancerState {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     * 
      * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
      */
     readonly internet?: pulumi.Input<boolean>;
@@ -267,7 +266,6 @@ export interface LoadBalancerArgs {
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
      * Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
-     * 
      * @deprecated Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
      */
     readonly internet?: pulumi.Input<boolean>;

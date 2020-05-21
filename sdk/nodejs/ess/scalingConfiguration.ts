@@ -274,7 +274,6 @@ export interface ScalingConfigurationState {
     readonly imageId?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
-     * 
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
     readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -304,7 +303,6 @@ export interface ScalingConfigurationState {
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     readonly ioOptimized?: pulumi.Input<string>;
@@ -406,7 +404,6 @@ export interface ScalingConfigurationArgs {
     readonly imageId: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
-     * 
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
     readonly instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -436,7 +433,6 @@ export interface ScalingConfigurationArgs {
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     readonly ioOptimized?: pulumi.Input<string>;

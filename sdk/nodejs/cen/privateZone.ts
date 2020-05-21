@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
  * This topic describes how to configure PrivateZone access. 
  * PrivateZone is a VPC-based resolution and management service for private domain names. 
  * After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
- * 
+ *
  * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
- * 
+ *
  * > **NOTE:** Available in 1.83.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultInstance = new alicloud.cen.Instance("default", {});
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/12",
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     hostVpcId: defaultNetwork.id,
  * }, { dependsOn: [defaultInstanceAttachment] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_private_zone.html.markdown.
  */
 export class PrivateZone extends pulumi.CustomResource {
     /**

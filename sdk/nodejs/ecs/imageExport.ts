@@ -8,31 +8,29 @@ import * as utilities from "../utilities";
 
 /**
  * Export a custom image to the OSS bucket in the same region as the custom image.
- * 
+ *
  * > **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.
- * 
+ *
  * > **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.
- * 
+ *
  * > **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
- * 
+ *
  * > **NOTE:** Available in 1.68.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultImageExport = new alicloud.ecs.ImageExport("default", {
  *     imageId: "m-bp1gxy***",
  *     ossBucket: "ecsimageexportconfig",
  *     ossPrefix: "ecsExport",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_export.html.markdown.
  */
 export class ImageExport extends pulumi.CustomResource {
     /**

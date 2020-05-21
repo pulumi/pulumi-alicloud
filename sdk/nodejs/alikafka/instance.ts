@@ -6,27 +6,27 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ALIKAFKA instance resource.
- * 
+ *
  * > **NOTE:** Available in 1.59.0+
- * 
+ *
  * > **NOTE:** ALIKAFKA instance resource only support create post pay instance. Creation or modification may took about 10-40 minutes.
- * 
+ *
  * > **NOTE:** Only the following regions support create alikafka pre paid instance.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
- * 
+ *
  * > **NOTE:** Only the following regions support create alikafka post paid instance.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`]
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -47,8 +47,6 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

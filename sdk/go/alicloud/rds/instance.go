@@ -64,6 +64,8 @@ type Instance struct {
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	//
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
@@ -175,6 +177,8 @@ type instanceState struct {
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	//
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -247,6 +251,8 @@ type InstanceState struct {
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	//
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -319,6 +325,8 @@ type instanceArgs struct {
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	//
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -388,6 +396,8 @@ type InstanceArgs struct {
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	//
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput

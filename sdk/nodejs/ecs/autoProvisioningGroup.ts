@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and payAsYouGo instances to rapidly deploy clusters.
- * 
+ *
  * > **NOTE:** Available in 1.79.0+
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "autoProvisioningGroup";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
@@ -59,17 +59,15 @@ import * as utilities from "../utilities";
  *     totalTargetCapacity: "4",
  * });
  * ```
- * 
+ *
  * ## Block config
- * 
+ *
  * The config mapping supports the following:
  * * `instanceType` - (Optional) The instance type of the Nth extended configurations of the launch template.
  * * `maxPrice` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.
  * * `vswitchId` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.
  * * `weightedCapacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.
  * * `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/auto_provisioning_group.html.markdown.
  */
 export class AutoProvisioningGroup extends pulumi.CustomResource {
     /**

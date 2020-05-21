@@ -34,6 +34,8 @@ type LoadBalancer struct {
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+	//
+	// Deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet pulumi.BoolOutput `pulumi:"internet"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -102,6 +104,8 @@ type loadBalancerState struct {
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+	//
+	// Deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet *bool `pulumi:"internet"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -143,6 +147,8 @@ type LoadBalancerState struct {
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrInput
 	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+	//
+	// Deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet pulumi.BoolPtrInput
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -188,6 +194,8 @@ type loadBalancerArgs struct {
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+	//
+	// Deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet *bool `pulumi:"internet"`
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".
@@ -230,6 +238,8 @@ type LoadBalancerArgs struct {
 	// The billing method of the load balancer. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	InstanceChargeType pulumi.StringPtrInput
 	// Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
+	//
+	// Deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.
 	Internet pulumi.BoolPtrInput
 	// Valid
 	// values are `PayByBandwidth`, `PayByTraffic`. If this value is "PayByBandwidth", then argument "internet" must be "true". Default is "PayByTraffic". If load balancer launched in VPC, this value must be "PayByTraffic".

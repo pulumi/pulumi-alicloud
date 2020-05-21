@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the apps of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const dataApigatway = pulumi.output(alicloud.apigateway.getApps({
  *     outputFile: "outapps",
  * }, { async: true }));
- * 
+ *
  * export const firstAppId = dataApigatway.apps[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apps.html.markdown.
  */
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};

@@ -137,7 +137,6 @@ export interface RouteEntryState {
     readonly routeTableId?: pulumi.Input<string>;
     /**
      * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
-     * 
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
     readonly routerId?: pulumi.Input<string>;
@@ -175,7 +174,6 @@ export interface RouteEntryArgs {
     readonly routeTableId: pulumi.Input<string>;
     /**
      * This argument has beeb deprecated. Please use other arguments to launch a custom route entry.
-     * 
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
     readonly routerId?: pulumi.Input<string>;

@@ -8,24 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a network acl entries resource to create ingress and egress entries.
- * 
+ *
  * > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
- * 
+ *
  * > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
- * 
+ *
  * > **NOTE:** Using this resource need to open a whitelist.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "NetworkAclEntries";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -69,8 +69,6 @@ import * as utilities from "../utilities";
  *     networkAclId: defaultNetworkAcl.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_acl_entries.html.markdown.
  */
 export class NetworkAclEntries extends pulumi.CustomResource {
     /**

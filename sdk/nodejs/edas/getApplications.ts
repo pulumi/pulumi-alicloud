@@ -7,25 +7,23 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of EDAS application in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const applications = alicloud.edas.getApplications({
  *     ids: ["xxx"],
  *     outputFile: "application.txt",
  * });
  * export const firstApplicationName = applications.then(applications => applications.applications[0].appName);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/edas_applications.html.markdown.
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};

@@ -14,6 +14,8 @@ type RouterInterface struct {
 	pulumi.CustomResourceState
 
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId pulumi.StringOutput `pulumi:"accessPointId"`
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -27,16 +29,26 @@ type RouterInterface struct {
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrOutput `pulumi:"oppositeAccessPointId"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId pulumi.StringOutput `pulumi:"oppositeInterfaceOwnerId"`
 	// The Region of peer side.
 	OppositeRegion pulumi.StringOutput `pulumi:"oppositeRegion"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId pulumi.StringOutput `pulumi:"oppositeRouterId"`
 	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringOutput `pulumi:"oppositeRouterType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -91,6 +103,8 @@ func GetRouterInterface(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RouterInterface resources.
 type routerInterfaceState struct {
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId *string `pulumi:"accessPointId"`
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description *string `pulumi:"description"`
@@ -104,16 +118,26 @@ type routerInterfaceState struct {
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// The Region of peer side.
 	OppositeRegion *string `pulumi:"oppositeRegion"`
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
 	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
@@ -129,6 +153,8 @@ type routerInterfaceState struct {
 
 type RouterInterfaceState struct {
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId pulumi.StringPtrInput
 	// Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
 	Description pulumi.StringPtrInput
@@ -142,16 +168,26 @@ type RouterInterfaceState struct {
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// The Region of peer side.
 	OppositeRegion pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	//
+	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
@@ -182,6 +218,8 @@ type routerInterfaceArgs struct {
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name *string `pulumi:"name"`
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
 	// The Region of peer side.
 	OppositeRegion string `pulumi:"oppositeRegion"`
@@ -211,6 +249,8 @@ type RouterInterfaceArgs struct {
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringPtrInput
 	// It has been deprecated from version 1.11.0.
+	//
+	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrInput
 	// The Region of peer side.
 	OppositeRegion pulumi.StringInput

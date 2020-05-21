@@ -7,24 +7,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const certs = pulumi.output(alicloud.cas.getCertificates({
  *     nameRegex: "^cas",
  *     outputFile: `./cas_certificates.json`,
  * }, { async: true }));
- * 
+ *
  * export const cert = certs.certificates[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cas_certificates.html.markdown.
  */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     args = args || {};

@@ -22,6 +22,8 @@ type GetEipsArgs struct {
 	// A list of EIP IDs.
 	Ids []string `pulumi:"ids"`
 	// Deprecated since the version 1.8.0 of this provider.
+	//
+	// Deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.
 	InUse *bool `pulumi:"inUse"`
 	// A list of EIP public IP addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
@@ -39,7 +41,8 @@ type GetEipsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Optional) A list of EIP IDs.
-	Ids         []string `pulumi:"ids"`
+	Ids []string `pulumi:"ids"`
+	// Deprecated: Field 'in_use' has been deprecated from provider version 1.8.0.
 	InUse       *bool    `pulumi:"inUse"`
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// (Optional) A list of EIP names.

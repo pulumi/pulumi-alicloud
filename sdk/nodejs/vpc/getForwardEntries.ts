@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
- * 
+ *
  * > **NOTE:** Available in 1.37.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "forward-entry-config-example-name";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -54,8 +54,6 @@ import * as utilities from "../utilities";
  *     forwardTableId: forwardTableId,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/forward_entries.html.markdown.
  */
 export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
     if (!opts) {

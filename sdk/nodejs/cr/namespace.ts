@@ -6,26 +6,24 @@ import * as utilities from "../utilities";
 
 /**
  * This resource will help you to manager Container Registry namespaces.
- * 
+ *
  * > **NOTE:** Available in v1.34.0+.
- * 
+ *
  * > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const myNamespace = new alicloud.cr.Namespace("my-namespace", {
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cr_namespace.html.markdown.
  */
 export class Namespace extends pulumi.CustomResource {
     /**

@@ -90,7 +90,6 @@ export class DiskAttachment extends pulumi.CustomResource {
 export interface DiskAttachmentState {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-     * 
      * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;
@@ -110,7 +109,6 @@ export interface DiskAttachmentState {
 export interface DiskAttachmentArgs {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
-     * 
      * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;

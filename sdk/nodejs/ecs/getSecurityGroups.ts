@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Filter security groups and print the results into a file
  * const secGroupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
  *     nameRegex: "^web-",
@@ -27,11 +27,9 @@ import * as utilities from "../utilities";
  * const primarySecGroupsDs = primaryVpcDs.id.apply(id => alicloud.ecs.getSecurityGroups({
  *     vpcId: id,
  * }, { async: true }));
- * 
+ *
  * export const firstGroupId = primarySecGroupsDs.groups[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_groups.html.markdown.
  */
 export function getSecurityGroups(args?: GetSecurityGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupsResult> {
     args = args || {};

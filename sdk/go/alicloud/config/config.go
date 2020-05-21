@@ -48,15 +48,23 @@ func GetEcsRoleName(ctx *pulumi.Context) string {
 func GetEndpoints(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:endpoints")
 }
+
+// Deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
 func GetFc(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:fc")
 }
+
+// Deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
 func GetLogEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:logEndpoint")
 }
+
+// Deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
 func GetMnsEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:mnsEndpoint")
 }
+
+// Deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
 func GetOtsInstanceName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:otsInstanceName")
 }

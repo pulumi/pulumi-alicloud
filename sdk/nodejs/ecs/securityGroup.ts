@@ -120,7 +120,6 @@ export interface SecurityGroupState {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-     * 
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
@@ -162,7 +161,6 @@ export interface SecurityGroupArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
-     * 
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;

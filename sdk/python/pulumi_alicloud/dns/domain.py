@@ -34,9 +34,7 @@ class Domain(pulumi.CustomResource):
     warnings.warn("This resource has been deprecated in favour of DnsDomain", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, group_id=None, name=None, resource_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
-
-        Deprecated: This resource has been deprecated in favour of DnsDomain
-
+        Create a Domain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Id of the group in which the domain will add. If not supplied, then use default group.

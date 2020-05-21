@@ -14,6 +14,8 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	//
+	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrOutput `pulumi:"allocatePublicIp"`
 	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -61,6 +63,8 @@ type Instance struct {
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
@@ -165,6 +169,8 @@ func GetInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	//
+	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
 	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -212,6 +218,8 @@ type instanceState struct {
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -280,6 +288,8 @@ type instanceState struct {
 
 type InstanceState struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	//
+	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrInput
 	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -327,6 +337,8 @@ type InstanceState struct {
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -399,6 +411,8 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	//
+	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
 	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -446,6 +460,8 @@ type instanceArgs struct {
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -511,6 +527,8 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	//
+	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrInput
 	// The automatic release time of the `PostPaid` instance.
 	// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
@@ -558,6 +576,8 @@ type InstanceArgs struct {
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput

@@ -60,7 +60,8 @@ type Kubernetes struct {
 	MasterPeriodUnit pulumi.StringPtrOutput   `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds pulumi.StringArrayOutput `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringOutput    `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringOutput `pulumi:"natGatewayId"`
@@ -80,8 +81,9 @@ type Kubernetes struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	SlbId       pulumi.StringOutput    `pulumi:"slbId"`
-	SlbInternet pulumi.StringOutput    `pulumi:"slbInternet"`
+	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	SlbId       pulumi.StringOutput `pulumi:"slbId"`
+	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
@@ -209,7 +211,8 @@ type kubernetesState struct {
 	MasterPeriodUnit *string  `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId *string `pulumi:"natGatewayId"`
@@ -229,6 +232,7 @@ type kubernetesState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
+	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 	SlbId       *string `pulumi:"slbId"`
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -316,7 +320,8 @@ type KubernetesState struct {
 	MasterPeriodUnit pulumi.StringPtrInput
 	MasterVswitchIds pulumi.StringArrayInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringPtrInput
@@ -336,6 +341,7 @@ type KubernetesState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
+	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 	SlbId       pulumi.StringPtrInput
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -423,7 +429,8 @@ type kubernetesArgs struct {
 	MasterPeriodUnit *string  `pulumi:"masterPeriodUnit"`
 	MasterVswitchIds []string `pulumi:"masterVswitchIds"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
@@ -515,7 +522,8 @@ type KubernetesArgs struct {
 	MasterPeriodUnit pulumi.StringPtrInput
 	MasterVswitchIds pulumi.StringArrayInput
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
 	NewNatGateway pulumi.BoolPtrInput

@@ -6,18 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a DMS Enterprise Instance resource.
- * 
+ *
  * > **NOTE:** API users must first register in DMS.
  * > **NOTE:** Available in 1.81.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
  *     databasePassword: "Yourpassword123",
  *     databaseUser: "yourUserName",
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     tid: 12345,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dms_enterprise_instance.html.markdown.
  */
 export class EnterpriseInstance extends pulumi.CustomResource {
     /**

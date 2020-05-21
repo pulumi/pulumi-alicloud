@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the OSS buckets of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const ossBucketsDs = pulumi.output(alicloud.oss.getBuckets({
  *     nameRegex: "sampleOssBucket",
  * }, { async: true }));
- * 
+ *
  * export const firstOssBucketName = ossBucketsDs.buckets[0].name;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_buckets.html.markdown.
  */
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};

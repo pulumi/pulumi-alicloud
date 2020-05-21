@@ -35,6 +35,8 @@ type Bucket struct {
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging BucketLoggingPtrOutput `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
+	//
+	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable pulumi.BoolPtrOutput `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -102,6 +104,8 @@ type bucketState struct {
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging *BucketLogging `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
+	//
+	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner *string `pulumi:"owner"`
@@ -142,6 +146,8 @@ type BucketState struct {
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging BucketLoggingPtrInput
 	// The flag of using logging enable container. Defaults true.
+	//
+	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable pulumi.BoolPtrInput
 	// The bucket owner.
 	Owner pulumi.StringPtrInput
@@ -178,6 +184,8 @@ type bucketArgs struct {
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging *BucketLogging `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
+	//
+	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy *string `pulumi:"policy"`
@@ -209,6 +217,8 @@ type BucketArgs struct {
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
 	Logging BucketLoggingPtrInput
 	// The flag of using logging enable container. Defaults true.
+	//
+	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable pulumi.BoolPtrInput
 	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
 	Policy pulumi.StringPtrInput

@@ -30,6 +30,8 @@ type NatGateway struct {
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
 	SnatTableIds pulumi.StringOutput `pulumi:"snatTableIds"`
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+	//
+	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec pulumi.StringPtrOutput `pulumi:"spec"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrOutput `pulumi:"specification"`
@@ -85,6 +87,8 @@ type natGatewayState struct {
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
 	SnatTableIds *string `pulumi:"snatTableIds"`
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+	//
+	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec *string `pulumi:"spec"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
@@ -110,6 +114,8 @@ type NatGatewayState struct {
 	// The nat gateway will auto create a snap and forward item, the `snatTableIds` is the created one.
 	SnatTableIds pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+	//
+	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec pulumi.StringPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput
@@ -133,6 +139,8 @@ type natGatewayArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period *int `pulumi:"period"`
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+	//
+	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec *string `pulumi:"spec"`
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification *string `pulumi:"specification"`
@@ -153,6 +161,8 @@ type NatGatewayArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Default to 1. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	Period pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+	//
+	// Deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
 	Spec pulumi.StringPtrInput
 	// The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Default to `Small`. Details refer to [Nat Gateway Specification](https://www.alibabacloud.com/help/doc-detail/42757.htm).
 	Specification pulumi.StringPtrInput

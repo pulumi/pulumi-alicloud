@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ALIKAFKA topic resource.
- * 
+ *
  * > **NOTE:** Available in 1.56.0+
- * 
+ *
  * > **NOTE:**  Only the following regions support create alikafka topic.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const topic = config.get("topic") || "alikafkaTopicName";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -51,8 +51,6 @@ import * as utilities from "../utilities";
  *     topic: topic,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_topic.html.markdown.
  */
 export class Topic extends pulumi.CustomResource {
     /**

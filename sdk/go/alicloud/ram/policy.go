@@ -23,10 +23,14 @@ type Policy struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+	//
+	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayOutput `pulumi:"statements"`
 	// The policy type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -69,10 +73,14 @@ type policyState struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+	//
+	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
 	// The policy type.
 	Type *string `pulumi:"type"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
 }
 
@@ -88,10 +96,14 @@ type PolicyState struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+	//
+	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
 	// The policy type.
 	Type pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
 }
 
@@ -109,8 +121,12 @@ type policyArgs struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name *string `pulumi:"name"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+	//
+	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
 }
 
@@ -125,8 +141,12 @@ type PolicyArgs struct {
 	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
 	Name pulumi.StringPtrInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified.
+	//
+	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
 	// (It has been deprecated from version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	//
+	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
 }
 

@@ -8,24 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instancesDs = pulumi.output(alicloud.oss.getInstances({
  *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstInstanceId = instancesDs.instances[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ots_instances.html.markdown.
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

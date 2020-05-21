@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of EDAS clusters in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const clusters = alicloud.edas.getClusters({
  *     logicalRegionId: "cn-shenzhen:xxx",
  *     ids: ["addfs-dfsasd"],
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstClusterName = data.alicloud_alikafka_consumer_groups.clusters.clusters[0].cluster_name;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/edas_clusters.html.markdown.
  */
 export function getClusters(args: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     if (!opts) {

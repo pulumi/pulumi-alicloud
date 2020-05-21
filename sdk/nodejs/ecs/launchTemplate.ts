@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ECS Launch Template resource.
- * 
+ *
  * For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const images = pulumi.output(alicloud.ecs.getImages({
  *     owners: "system",
  * }, { async: true }));
@@ -73,8 +73,6 @@ import * as utilities from "../utilities";
  *     zoneId: "beijing-a",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/launch_template.html.markdown.
  */
 export class LaunchTemplate extends pulumi.CustomResource {
     /**

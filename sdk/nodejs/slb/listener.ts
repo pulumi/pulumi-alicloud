@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Application Load Balancer Listener resource.
- * 
+ *
  * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
- * 
+ *
  * For information about listener and how to use it, to see the following:
- * 
+ *
  * * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
  * * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
  * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
  * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testcreatehttplistener";
  * const ipVersion = config.get("ipVersion") || "ipv4";
- * 
+ *
  * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
  *     internet: true,
  *     internetChargeType: "PayByTraffic",
@@ -77,11 +77,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ## Listener fields and protocol mapping
- * 
+ *
  * load balance support 4 protocal to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
- * 
+ *
  * listener parameter | support protocol | value range |
  * ------------- | ------------- | ------------- | 
  * backendPort | http & https & tcp & udp | 1-65535 | 
@@ -117,10 +117,8 @@ import * as utilities from "../utilities";
  * enableHttp2    |https          | on or off |
  * tlsCipherPolicy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tlsCipherPolicy12Strict |
  * serverGroupId    | http & https & tcp & udp | the id of resource alicloud.slb.ServerGroup |
- * 
- * The listener mapping supports the following:
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_listener.html.markdown.
+ * The listener mapping supports the following:
  */
 export class Listener extends pulumi.CustomResource {
     /**
@@ -573,7 +571,6 @@ export interface ListenerState {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
-     * 
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;
@@ -741,7 +738,6 @@ export interface ListenerArgs {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
-     * 
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;

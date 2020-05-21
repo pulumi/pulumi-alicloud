@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ONS Groups in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.53.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const groupId = config.get("groupId") || "GID-onsGroupDatasourceName";
- * 
+ *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
  *     remark: "defaultOnsInstanceRemark",
  * });
@@ -35,11 +35,9 @@ import * as utilities from "../utilities";
  *     instanceId: instanceId,
  *     outputFile: "groups.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstGroupName = groupsDs.groups[0].groupId;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_groups.html.markdown.
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     if (!opts) {

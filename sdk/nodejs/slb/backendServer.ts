@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Add a group of backend servers (ECS or ENI instance) to the Server Load Balancer or remove them from it.
- * 
+ *
  * > **NOTE:** Available in 1.53.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "slbbackendservertest";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudEfficiency",
  *     availableResourceCreation: "VSwitch",
@@ -79,16 +79,14 @@ import * as utilities from "../utilities";
  *     loadBalancerId: defaultLoadBalancer.id,
  * });
  * ```
- * 
+ *
  * ## Block servers
- * 
+ *
  * The servers mapping supports the following:
- * 
+ *
  * * `serverId` - (Required) A list backend server ID (ECS instance ID).
  * * `weight` - (Optional) Weight of the backend server. Valid value range: [0-100]. 
  * * `type` - (Optional) Type of the backend server. Valid value ecs, eni. Default to eni.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_backend_server.html.markdown.
  */
 export class BackendServer extends pulumi.CustomResource {
     /**

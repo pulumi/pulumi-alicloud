@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
  * Provides a HBase instance resource supports replica set instances only. the HBase provides stable, reliable, and automatic scalable database services. 
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://help.aliyun.com/product/49055.html)
- * 
+ *
  * > **NOTE:**  Available in 1.67.0+
- * 
+ *
  * > **NOTE:**  The following regions don't support create Classic network HBase instance.
  * [`cn-hangzhou`,`cn-shanghai`,`cn-qingdao`,`cn-beijing`,`cn-shenzhen`,`ap-southeast-1a`,.....]
  * the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
- * 
+ *
  * > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a hbase instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultInstance = new alicloud.hbase.Instance("default", {
  *     coldStorageSize: 0,
  *     coreDiskSize: 400,
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     zoneId: "cn-shenzhen-b",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/hbase_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

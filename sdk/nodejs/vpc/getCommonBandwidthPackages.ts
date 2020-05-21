@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
- * 
+ *
  * > **NOTE:** Available in 1.36.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
  *     bandwidth: 2,
  *     description: "tf-testAcc-CommonBandwidthPackage",
@@ -28,15 +28,13 @@ import * as utilities from "../utilities";
  *     nameRegex: "^tf-testAcc.*",
  * }, { async: true }));
  * ```
- * 
+ *
  * ## Public ip addresses Block
  *   
  *   The public ip addresses mapping supports the following:
  *   
  *   * `ipAddress`   - The address of the EIP.
  *   * `allocationId` - The ID of the EIP instance.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/common_bandwidth_packages.html.markdown.
  */
 export function getCommonBandwidthPackages(args?: GetCommonBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetCommonBandwidthPackagesResult> {
     args = args || {};
