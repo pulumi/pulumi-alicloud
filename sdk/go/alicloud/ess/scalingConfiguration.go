@@ -24,6 +24,8 @@ type ScalingConfiguration struct {
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	//
+	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
@@ -38,6 +40,8 @@ type ScalingConfiguration struct {
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
@@ -122,6 +126,8 @@ type scalingConfigurationState struct {
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId *string `pulumi:"imageId"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	//
+	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
@@ -136,6 +142,8 @@ type scalingConfigurationState struct {
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -187,6 +195,8 @@ type ScalingConfigurationState struct {
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringPtrInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	//
+	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
@@ -201,6 +211,8 @@ type ScalingConfigurationState struct {
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -256,6 +268,8 @@ type scalingConfigurationArgs struct {
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId string `pulumi:"imageId"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	//
+	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
@@ -270,6 +284,8 @@ type scalingConfigurationArgs struct {
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -322,6 +338,8 @@ type ScalingConfigurationArgs struct {
 	// ID of an image file, indicating the image resource selected when an instance is enabled.
 	ImageId pulumi.StringInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	//
+	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
@@ -336,6 +354,8 @@ type ScalingConfigurationArgs struct {
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	//
+	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput

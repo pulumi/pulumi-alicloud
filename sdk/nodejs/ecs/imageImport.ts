@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
- * 
+ *
  * > **NOTE:** You must upload the image file to the object storage OSS in advance.
- * 
+ *
  * > **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
- * 
+ *
  * > **NOTE:** Available in 1.69.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const thisImageImport = new alicloud.ecs.ImageImport("this", {
  *     architecture: "x8664",
  *     description: "test import image",
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     platform: "Ubuntu",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_import.html.markdown.
  */
 export class ImageImport extends pulumi.CustomResource {
     /**

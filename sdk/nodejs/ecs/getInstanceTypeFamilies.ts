@@ -8,26 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the ECS instance type families of Alibaba Cloud.
- * 
+ *
  * > **NOTE:** Available in 1.54.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultInstanceTypeFamilies = pulumi.output(alicloud.ecs.getInstanceTypeFamilies({
  *     instanceChargeType: "PrePaid",
  * }, { async: true }));
- * 
+ *
  * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.instanceTypeFamilies.0.id;
  * export const instanceIds = defaultInstanceTypeFamilies.ids;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instance_type_families.html.markdown.
  */
 export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};

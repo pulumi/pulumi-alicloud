@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({ async: true }));
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
@@ -33,8 +33,6 @@ import * as utilities from "../utilities";
  *     nameRegex: name,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vswitches.html.markdown.
  */
 export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
     args = args || {};

@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
  * This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
  * You can use the route map function to filter routes and modify route attributes.
  * By doing so, you can manage the communication between networks attached to a CEN. 
- * 
+ *
  * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultInstance = new alicloud.cen.Instance("default", {});
  * const vpc00Region = new alicloud.Provider("vpc00Region", {
  *     region: "cn-hangzhou",
@@ -74,8 +74,6 @@ import * as utilities from "../utilities";
  *     transmitDirection: "RegionIn",
  * }, { dependsOn: [default00, default01] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_map.html.markdown.
  */
 export class RouteMap extends pulumi.CustomResource {
     /**

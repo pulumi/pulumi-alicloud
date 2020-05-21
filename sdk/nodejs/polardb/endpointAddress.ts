@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a PolarDB endpoint address resource to allocate an Internet endpoint address string for PolarDB instance.
- * 
+ *
  * > **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "PolarDB";
  * const name = config.get("name") || "polardbconnectionbasic";
@@ -50,8 +50,6 @@ import * as utilities from "../utilities";
  *     netType: "Public",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_endpoint_address.html.markdown.
  */
 export class EndpointAddress extends pulumi.CustomResource {
     /**

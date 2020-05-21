@@ -8,28 +8,26 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the RDS instance classes resource available info of Alibaba Cloud.
- * 
+ *
  * > **NOTE:** Available in v1.46.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const resources = pulumi.output(alicloud.rds.getInstanceClasses({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceChargeType: "PostPaid",
  *     outputFile: "./classes.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstDbInstanceClass = resources.instanceClasses[0].instanceClass;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/db_instance_classes.html.markdown.
  */
 export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClassesResult> {
     args = args || {};

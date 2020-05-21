@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Create an DNS Instance resource.
- * 
+ *
  * > **NOTE:** Available in v1.80.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const thisInstance = new alicloud.dns.Instance("this", {
  *     dnsSecurity: "no",
  *     domainNumbers: "2",
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     versionCode: "versionPersonal",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/dns_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

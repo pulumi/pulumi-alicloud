@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the PolarDB node classes resource available info of Alibaba Cloud.
- * 
+ *
  * > **NOTE:** Available in v1.81.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const resourcesZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "PolarDB",
  * }, { async: true }));
@@ -28,11 +28,9 @@ import * as utilities from "../utilities";
  *     payType: "Postpaid",
  *     zoneId: resourcesZones.zones[0].id,
  * }, { async: true }));
- * 
+ *
  * export const firstPolardbNodeClass = resourcesNodeClasses.classes;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/polardb_node_classes.html.markdown.
  */
 export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeClassesResult> {
     if (!opts) {

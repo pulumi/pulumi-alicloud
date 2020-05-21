@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "KVStore";
  * const multiAz = config.get("multiAz") || "false";
  * const name = config.get("name") || "kvstorebackuppolicyvpc";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -49,8 +49,6 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_backup_policy.html.markdown.
  */
 export class BackupPolicy extends pulumi.CustomResource {
     /**

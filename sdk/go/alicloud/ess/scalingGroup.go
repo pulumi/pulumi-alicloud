@@ -51,6 +51,8 @@ type ScalingGroup struct {
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolOutput `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// List of virtual switch IDs in which the ecs instances to be launched.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
@@ -128,6 +130,8 @@ type scalingGroupState struct {
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId *string `pulumi:"vswitchId"`
 	// List of virtual switch IDs in which the ecs instances to be launched.
 	VswitchIds []string `pulumi:"vswitchIds"`
@@ -172,6 +176,8 @@ type ScalingGroupState struct {
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrInput
 	// List of virtual switch IDs in which the ecs instances to be launched.
 	VswitchIds pulumi.StringArrayInput
@@ -220,6 +226,8 @@ type scalingGroupArgs struct {
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId *string `pulumi:"vswitchId"`
 	// List of virtual switch IDs in which the ecs instances to be launched.
 	VswitchIds []string `pulumi:"vswitchIds"`
@@ -265,6 +273,8 @@ type ScalingGroupArgs struct {
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput
 	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrInput
 	// List of virtual switch IDs in which the ecs instances to be launched.
 	VswitchIds pulumi.StringArrayInput

@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM Group membership resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a RAM Group membership.
  * const group = new alicloud.ram.Group("group", {
  *     comments: "this is a group comments.",
@@ -42,8 +42,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_group_membership.html.markdown.
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**

@@ -15,6 +15,8 @@ type DiskAttachment struct {
 	pulumi.CustomResourceState
 
 	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+	//
+	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
 	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
@@ -57,6 +59,8 @@ func GetDiskAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DiskAttachment resources.
 type diskAttachmentState struct {
 	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+	//
+	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
 	DeviceName *string `pulumi:"deviceName"`
 	// ID of the Disk to be attached.
 	DiskId *string `pulumi:"diskId"`
@@ -66,6 +70,8 @@ type diskAttachmentState struct {
 
 type DiskAttachmentState struct {
 	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+	//
+	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
 	DeviceName pulumi.StringPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringPtrInput
@@ -79,6 +85,8 @@ func (DiskAttachmentState) ElementType() reflect.Type {
 
 type diskAttachmentArgs struct {
 	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+	//
+	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
 	DeviceName *string `pulumi:"deviceName"`
 	// ID of the Disk to be attached.
 	DiskId string `pulumi:"diskId"`
@@ -89,6 +97,8 @@ type diskAttachmentArgs struct {
 // The set of arguments for constructing a DiskAttachment resource.
 type DiskAttachmentArgs struct {
 	// The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+	//
+	// Deprecated: Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
 	DeviceName pulumi.StringPtrInput
 	// ID of the Disk to be attached.
 	DiskId pulumi.StringInput

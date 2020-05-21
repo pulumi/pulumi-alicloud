@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an EDAS application resource.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const default = new alicloud.edas.Application("default", {
  *     applicationName: "xxx",
  *     clusterId: "xxx",
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     warUrl: "http://xxx",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_application.html.markdown.
  */
 export class Application extends pulumi.CustomResource {
     /**

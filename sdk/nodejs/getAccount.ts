@@ -6,21 +6,19 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides information about the current account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const current = pulumi.output(alicloud.getAccount({ async: true }));
- * 
+ *
  * export const currentAccountId = current.id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/account.html.markdown.
  */
 export function getAccount(opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     if (!opts) {

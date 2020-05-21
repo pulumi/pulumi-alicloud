@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available scaling group resources. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const scalinggroupsDs = pulumi.output(alicloud.ess.getScalingGroups({
  *     ids: [
  *         "scalingGroupId1",
@@ -24,11 +24,9 @@ import * as utilities from "../utilities";
  *     ],
  *     nameRegex: "scalingGroupName",
  * }, { async: true }));
- * 
+ *
  * export const firstScalingGroup = scalinggroupsDs.groups[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_scaling_groups.html.markdown.
  */
 export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingGroupsResult> {
     args = args || {};

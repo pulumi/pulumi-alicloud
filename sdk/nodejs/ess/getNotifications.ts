@@ -8,25 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available notification resources. 
- * 
+ *
  * > **NOTE:** Available in 1.72.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const ds = pulumi.output(alicloud.ess.getNotifications({
  *     scalingGroupId: "scalingGroupId",
  * }, { async: true }));
- * 
+ *
  * export const firstNotification = ds.notifications[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_notifications.html.markdown.
  */
 export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> {
     if (!opts) {

@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * > **DEPRECATED:** This resource manages swarm cluster, which is being deprecated and will be replaced by Kubernetes cluster.
- * 
+ *
  * This resource will help you to manager a Swarm Cluster.
- * 
+ *
  * > **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitchId`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const myCluster = new alicloud.cs.Swarm("myCluster", {
  *     cidrBlock: "172.18.0.0/24",
  *     diskCategory: "cloudEfficiency",
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     vswitchId: var_vswitch_id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_swarm.html.markdown.
  */
 export class Swarm extends pulumi.CustomResource {
     /**
@@ -283,7 +281,6 @@ export interface SwarmState {
     readonly securityGroupId?: pulumi.Input<string>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-     * 
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;
@@ -356,7 +353,6 @@ export interface SwarmArgs {
     readonly releaseEip?: pulumi.Input<boolean>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
-     * 
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;

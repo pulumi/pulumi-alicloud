@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM User Policy attachment resource. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a RAM User Policy attachment.
  * const user = new alicloud.ram.User("user", {
  *     comments: "yoyoyo",
@@ -52,8 +52,6 @@ import * as utilities from "../utilities";
  *     userName: user.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_user_policy_attachment.html.markdown.
  */
 export class UserPolicyAttachment extends pulumi.CustomResource {
     /**

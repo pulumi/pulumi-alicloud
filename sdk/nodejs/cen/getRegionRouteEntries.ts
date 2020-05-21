@@ -7,24 +7,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Regional Route Entries available to the user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const entry = pulumi.output(alicloud.cen.getRegionRouteEntries({
  *     instanceId: "cen-id1",
  *     regionId: "cn-beijing",
  * }, { async: true }));
- * 
+ *
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_region_route_entries.html.markdown.
  */
 export function getRegionRouteEntries(args: GetRegionRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionRouteEntriesResult> {
     if (!opts) {

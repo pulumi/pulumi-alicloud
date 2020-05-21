@@ -7,23 +7,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of action trail of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const trails = pulumi.output(alicloud.actiontrail.getTrails({
  *     nameRegex: "tf-testacc-actiontrail",
  * }, { async: true }));
- * 
+ *
  * export const firstTrailName = trails.actiontrails[0].name;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/actiontrails.html.markdown.
  */
 export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
     args = args || {};

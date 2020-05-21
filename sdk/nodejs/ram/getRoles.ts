@@ -8,26 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const rolesDs = pulumi.output(alicloud.ram.getRoles({
  *     nameRegex: ".*test.*",
  *     outputFile: "roles.txt",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
  * }, { async: true }));
- * 
+ *
  * export const firstRoleId = rolesDs.roles[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ram_roles.html.markdown.
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};

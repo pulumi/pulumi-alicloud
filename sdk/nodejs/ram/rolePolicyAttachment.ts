@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a RAM Role attachment resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a RAM Role Policy attachment.
  * const role = new alicloud.ram.Role("role", {
  *     description: "this is a role test.",
@@ -65,8 +65,6 @@ import * as utilities from "../utilities";
  *     roleName: role.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ram_role_policy_attachment.html.markdown.
  */
 export class RolePolicyAttachment extends pulumi.CustomResource {
     /**

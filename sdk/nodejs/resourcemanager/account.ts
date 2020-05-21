@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Account resource. Member accounts are containers for resources in a resource directory. These accounts isolate resources and serve as organizational units in the resource directory. You can create member accounts in a folder and then manage them in a unified manner.
  * For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
- * 
+ *
  * > **NOTE:** Available in v1.83.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Add a Resource Manager Account.
  * const f1 = new alicloud.resourcemanager.Folder("f1", {folderName: "test1"});
  * const example = new alicloud.resourcemanager.Account("example", {
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     folderId: f1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/resource_manager_account.html.markdown.
  */
 export class Account extends pulumi.CustomResource {
     /**

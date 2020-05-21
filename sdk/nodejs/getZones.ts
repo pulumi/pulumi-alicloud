@@ -7,18 +7,18 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
- * 
- * 
+ *
+ *
  * > **NOTE:** If one zone is sold out, it will not be exported.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Declare the data source
  * const zonesDs = pulumi.output(alicloud.getZones({
  *     availableDiskCategory: "cloudSsd",
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     availabilityZone: zonesDs.zones[0].id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/zones.html.markdown.
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};

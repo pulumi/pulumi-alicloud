@@ -52,6 +52,8 @@ type Swarm struct {
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	//
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size pulumi.IntPtrOutput `pulumi:"size"`
 	// The ID of load balancer where the current cluster worker node is located.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
@@ -135,6 +137,8 @@ type swarmState struct {
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	//
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size *int `pulumi:"size"`
 	// The ID of load balancer where the current cluster worker node is located.
 	SlbId *string `pulumi:"slbId"`
@@ -179,6 +183,8 @@ type SwarmState struct {
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId pulumi.StringPtrInput
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	//
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size pulumi.IntPtrInput
 	// The ID of load balancer where the current cluster worker node is located.
 	SlbId pulumi.StringPtrInput
@@ -221,6 +227,8 @@ type swarmArgs struct {
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
 	ReleaseEip *bool `pulumi:"releaseEip"`
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	//
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size *int `pulumi:"size"`
 	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
 	VswitchId string `pulumi:"vswitchId"`
@@ -256,6 +264,8 @@ type SwarmArgs struct {
 	// Whether to release EIP after creating swarm cluster successfully. Default to false.
 	ReleaseEip pulumi.BoolPtrInput
 	// Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+	//
+	// Deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
 	Size pulumi.IntPtrInput
 	// The password of ECS instance node. If it is not specified, the container cluster's network mode will be `Classic`.
 	VswitchId pulumi.StringInput

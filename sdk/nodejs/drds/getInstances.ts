@@ -8,11 +8,9 @@ import * as utilities from "../utilities";
 /**
  *  The `alicloud.drds.Instance` data source provides a collection of DRDS instances available in Alibaba Cloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
- * 
- * > **NOTE:** Available in 1.35.0+.
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/drds_instances.html.markdown.
+ * > **NOTE:** Available in 1.35.0+.
+ *
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

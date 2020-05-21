@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the VServer groups related to a server load balancer.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const sampleDs = alicloud_slb_sample_slb.id.apply(id => alicloud.slb.getServerGroups({
  *     loadBalancerId: id,
  * }, { async: true }));
- * 
+ *
  * export const firstSlbServerGroupId = sampleDs.slbServerGroups[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_server_groups.html.markdown.
  */
 export function getServerGroups(args: GetServerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupsResult> {
     if (!opts) {

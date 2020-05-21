@@ -10,19 +10,19 @@ import * as utilities from "../utilities";
  * The `alicloud.ecs.getSecurityGroupRules` data source provides a collection of security permissions of a specific security group.
  * Each collection item represents a single `ingress` or `egress` permission rule.
  * The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * // Get the security group id from a variable
  * const securityGroupId = config.require("securityGroupId");
- * 
+ *
  * // Or get it from the alicloud.ecs.getSecurityGroups data source.
  * // Please note that the data source arguments must be enough to filter results to one security group.
  * const groupsDs = pulumi.output(alicloud.ecs.getSecurityGroups({
@@ -40,8 +40,6 @@ import * as utilities from "../utilities";
  *     userData: pulumi.interpolate`config_service.sh --portrange=${ingressRulesDs.rules[0].portRange}`,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/security_group_rules.html.markdown.
  */
 export function getSecurityGroupRules(args: GetSecurityGroupRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityGroupRulesResult> {
     if (!opts) {

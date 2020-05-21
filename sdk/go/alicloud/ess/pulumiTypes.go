@@ -13,9 +13,10 @@ import (
 type ScalingConfigurationDataDisk struct {
 	Category           *string `pulumi:"category"`
 	DeleteWithInstance *bool   `pulumi:"deleteWithInstance"`
-	Device             *string `pulumi:"device"`
-	Size               *int    `pulumi:"size"`
-	SnapshotId         *string `pulumi:"snapshotId"`
+	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+	Device     *string `pulumi:"device"`
+	Size       *int    `pulumi:"size"`
+	SnapshotId *string `pulumi:"snapshotId"`
 }
 
 // ScalingConfigurationDataDiskInput is an input type that accepts ScalingConfigurationDataDiskArgs and ScalingConfigurationDataDiskOutput values.
@@ -33,9 +34,10 @@ type ScalingConfigurationDataDiskInput interface {
 type ScalingConfigurationDataDiskArgs struct {
 	Category           pulumi.StringPtrInput `pulumi:"category"`
 	DeleteWithInstance pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
-	Device             pulumi.StringPtrInput `pulumi:"device"`
-	Size               pulumi.IntPtrInput    `pulumi:"size"`
-	SnapshotId         pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+	Device     pulumi.StringPtrInput `pulumi:"device"`
+	Size       pulumi.IntPtrInput    `pulumi:"size"`
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
 func (ScalingConfigurationDataDiskArgs) ElementType() reflect.Type {
@@ -98,6 +100,7 @@ func (o ScalingConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrO
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
 func (o ScalingConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }

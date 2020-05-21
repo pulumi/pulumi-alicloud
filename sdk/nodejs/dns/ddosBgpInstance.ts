@@ -6,19 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
- * 
+ *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
- * 
+ *
  * > **NOTE:** Available in 1.57.0+ .
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
  *     bandwidth: 201,
  *     baseBandwidth: 20,
@@ -26,10 +26,8 @@ import * as utilities from "../utilities";
  *     ipType: "IPv4",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddosbgp_instance.html.markdown.
  */
-/** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance */
+/** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance */
 export class DdosBgpInstance extends pulumi.CustomResource {
     /**
      * Get an existing DdosBgpInstance resource's state with the given name, ID, and optional extra
@@ -40,7 +38,7 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DdosBgpInstanceState, opts?: pulumi.CustomResourceOptions): DdosBgpInstance {
-        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance")
+        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
         return new DdosBgpInstance(name, <any>state, { ...opts, id: id });
     }
 
@@ -94,11 +92,11 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance */
+    /** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance */
     constructor(name: string, args: DdosBgpInstanceArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance */
+    /** @deprecated alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance */
     constructor(name: string, argsOrState?: DdosBgpInstanceArgs | DdosBgpInstanceState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance")
+        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DdosBgpInstanceState | undefined;

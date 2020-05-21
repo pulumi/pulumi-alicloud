@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
- * 
+ *
  * For information about Sag DnatEntry and how to use it, see [What is Sag DnatEntry](https://www.alibabacloud.com/help/doc-detail/124312.htm).
- * 
+ *
  * > **NOTE:** Available in 1.63.0+
- * 
+ *
  * > **NOTE:** Only the following regions suppor. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultDnatEntry = new alicloud.rocketmq.DnatEntry("default", {
  *     externalIp: "1.0.0.2",
  *     externalPort: "1",
@@ -31,8 +31,6 @@ import * as utilities from "../utilities";
  *     type: "Intranet",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_dnat_entry.html.markdown.
  */
 export class DnatEntry extends pulumi.CustomResource {
     /**

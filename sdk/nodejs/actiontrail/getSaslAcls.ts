@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.66.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const saslAclsDs = pulumi.output(alicloud.actiontrail.getSaslAcls({
  *     aclResourceName: "testTopic",
  *     aclResourceType: "Topic",
@@ -25,11 +25,9 @@ import * as utilities from "../utilities";
  *     outputFile: "saslAcls.txt",
  *     username: "username",
  * }, { async: true }));
- * 
+ *
  * export const firstSaslAclUsername = saslAclsDs.acls[0].username;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_sasl_acls.html.markdown.
  */
 export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslAclsResult> {
     if (!opts) {

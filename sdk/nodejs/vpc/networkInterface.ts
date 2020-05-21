@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ECS Elastic Network Interface resource.
- * 
+ *
  * For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
- * 
+ *
  * > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs. 
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfaceName";
- * 
+ *
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "192.168.0.0/24",
  * });
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     vswitchId: vswitch.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface.html.markdown.
  */
 export class NetworkInterface extends pulumi.CustomResource {
     /**

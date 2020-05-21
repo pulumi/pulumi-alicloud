@@ -17,7 +17,9 @@ import (
 type ServerCertificate struct {
 	pulumi.CustomResourceState
 
-	AlicloudCertifacteId   pulumi.StringPtrOutput `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+	AlicloudCertifacteId pulumi.StringPtrOutput `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
 	AlicloudCertifacteName pulumi.StringPtrOutput `pulumi:"alicloudCertifacteName"`
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId pulumi.StringPtrOutput `pulumi:"alicloudCertificateId"`
@@ -65,7 +67,9 @@ func GetServerCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerCertificate resources.
 type serverCertificateState struct {
-	AlicloudCertifacteId   *string `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+	AlicloudCertifacteId *string `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
 	AlicloudCertifacteName *string `pulumi:"alicloudCertifacteName"`
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId *string `pulumi:"alicloudCertificateId"`
@@ -86,7 +90,9 @@ type serverCertificateState struct {
 }
 
 type ServerCertificateState struct {
-	AlicloudCertifacteId   pulumi.StringPtrInput
+	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+	AlicloudCertifacteId pulumi.StringPtrInput
+	// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
 	AlicloudCertifacteName pulumi.StringPtrInput
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId pulumi.StringPtrInput
@@ -111,7 +117,9 @@ func (ServerCertificateState) ElementType() reflect.Type {
 }
 
 type serverCertificateArgs struct {
-	AlicloudCertifacteId   *string `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+	AlicloudCertifacteId *string `pulumi:"alicloudCertifacteId"`
+	// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
 	AlicloudCertifacteName *string `pulumi:"alicloudCertifacteName"`
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId *string `pulumi:"alicloudCertificateId"`
@@ -133,7 +141,9 @@ type serverCertificateArgs struct {
 
 // The set of arguments for constructing a ServerCertificate resource.
 type ServerCertificateArgs struct {
-	AlicloudCertifacteId   pulumi.StringPtrInput
+	// Deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+	AlicloudCertifacteId pulumi.StringPtrInput
+	// Deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
 	AlicloudCertifacteName pulumi.StringPtrInput
 	// an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
 	AlicloudCertificateId pulumi.StringPtrInput

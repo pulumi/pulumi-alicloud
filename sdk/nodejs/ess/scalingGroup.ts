@@ -236,7 +236,6 @@ export interface ScalingGroupState {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
-     * 
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;
@@ -315,7 +314,6 @@ export interface ScalingGroupArgs {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
-     * 
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;

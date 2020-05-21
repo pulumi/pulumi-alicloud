@@ -23,10 +23,14 @@ type BackupPolicy struct {
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntOutput `pulumi:"archiveBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+	//
+	// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
 	BackupRetentionPeriod pulumi.IntPtrOutput `pulumi:"backupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+	//
+	// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
 	CompressType pulumi.StringOutput `pulumi:"compressType"`
@@ -41,18 +45,24 @@ type BackupPolicy struct {
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace pulumi.IntOutput `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+	//
+	// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
 	LogBackup pulumi.BoolOutput `pulumi:"logBackup"`
 	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
 	LogBackupFrequency pulumi.StringOutput `pulumi:"logBackupFrequency"`
 	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
 	LogBackupRetentionPeriod pulumi.IntOutput `pulumi:"logBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
 	LogRetentionPeriod pulumi.IntOutput `pulumi:"logRetentionPeriod"`
 	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	PreferredBackupPeriods pulumi.StringArrayOutput `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrOutput `pulumi:"preferredBackupTime"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
 	RetentionPeriod pulumi.IntOutput `pulumi:"retentionPeriod"`
 }
 
@@ -94,10 +104,14 @@ type backupPolicyState struct {
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod *int `pulumi:"archiveBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+	//
+	// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+	//
+	// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
 	BackupTime *string `pulumi:"backupTime"`
 	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
 	CompressType *string `pulumi:"compressType"`
@@ -112,18 +126,24 @@ type backupPolicyState struct {
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace *int `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+	//
+	// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
 	LogBackup *bool `pulumi:"logBackup"`
 	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
 	LogBackupFrequency *string `pulumi:"logBackupFrequency"`
 	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
 	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
 	LogRetentionPeriod *int `pulumi:"logRetentionPeriod"`
 	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 }
 
@@ -135,10 +155,14 @@ type BackupPolicyState struct {
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+	//
+	// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
 	BackupPeriods pulumi.StringArrayInput
 	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
 	BackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+	//
+	// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
 	BackupTime pulumi.StringPtrInput
 	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
 	CompressType pulumi.StringPtrInput
@@ -153,18 +177,24 @@ type BackupPolicyState struct {
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace pulumi.IntPtrInput
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+	//
+	// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
 	LogBackup pulumi.BoolPtrInput
 	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
 	LogBackupFrequency pulumi.StringPtrInput
 	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
 	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
 	LogRetentionPeriod pulumi.IntPtrInput
 	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	PreferredBackupPeriods pulumi.StringArrayInput
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
 	RetentionPeriod pulumi.IntPtrInput
 }
 
@@ -180,10 +210,14 @@ type backupPolicyArgs struct {
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod *int `pulumi:"archiveBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+	//
+	// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+	//
+	// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
 	BackupTime *string `pulumi:"backupTime"`
 	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
 	CompressType *string `pulumi:"compressType"`
@@ -198,18 +232,24 @@ type backupPolicyArgs struct {
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace *int `pulumi:"localLogRetentionSpace"`
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+	//
+	// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
 	LogBackup *bool `pulumi:"logBackup"`
 	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
 	LogBackupFrequency *string `pulumi:"logBackupFrequency"`
 	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
 	LogBackupRetentionPeriod *int `pulumi:"logBackupRetentionPeriod"`
 	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
 	LogRetentionPeriod *int `pulumi:"logRetentionPeriod"`
 	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	PreferredBackupPeriods []string `pulumi:"preferredBackupPeriods"`
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime *string `pulumi:"preferredBackupTime"`
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
 	RetentionPeriod *int `pulumi:"retentionPeriod"`
 }
 
@@ -222,10 +262,14 @@ type BackupPolicyArgs struct {
 	// Instance archive backup retention days. Valid when the `enableBackupLog` is `true` and instance is mysql local disk. Valid values: [30-1095], and `archiveBackupRetentionPeriod` must larger than `backupRetentionPeriod` 730.
 	ArchiveBackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+	//
+	// Deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
 	BackupPeriods pulumi.StringArrayInput
 	// Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
 	BackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+	//
+	// Deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
 	BackupTime pulumi.StringPtrInput
 	// The compress type of instance policy. Valid values are `1`, `4`, `8`.
 	CompressType pulumi.StringPtrInput
@@ -240,18 +284,24 @@ type BackupPolicyArgs struct {
 	// Instance log backup local retention space. Valid when the `enableBackupLog` is `true`. Valid values: [5-50].
 	LocalLogRetentionSpace pulumi.IntPtrInput
 	// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+	//
+	// Deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
 	LogBackup pulumi.BoolPtrInput
 	// Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
 	LogBackupFrequency pulumi.StringPtrInput
 	// Instance log backup retention days. Valid when the `enableBackupLog` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backupRetentionPeriod`.
 	LogBackupRetentionPeriod pulumi.IntPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
 	LogRetentionPeriod pulumi.IntPtrInput
 	// DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
 	PreferredBackupPeriods pulumi.StringArrayInput
 	// DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
 	PreferredBackupTime pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+	//
+	// Deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
 	RetentionPeriod pulumi.IntPtrInput
 }
 

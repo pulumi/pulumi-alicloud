@@ -7,20 +7,20 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ALIKAFKA Instances in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.59.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -44,11 +44,9 @@ import * as utilities from "../utilities";
  *     nameRegex: "alikafkaInstanceName",
  *     outputFile: "instances.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstInstanceName = instancesDs.instances[0].name;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_instances.html.markdown.
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

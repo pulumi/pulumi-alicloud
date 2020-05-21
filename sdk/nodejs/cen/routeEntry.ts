@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CEN route entry resource. Cloud Enterprise Network (CEN) supports publishing and withdrawing route entries of attached networks. You can publish a route entry of an attached VPC or VBR to a CEN instance, then other attached networks can learn the route if there is no route conflict. You can withdraw a published route entry when CEN does not need it any more.
- * 
+ *
  * For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccCenRouteEntryConfig";
- * 
+ *
  * const hz = new alicloud.Provider("hz", {
  *     region: "cn-hangzhou",
  * });
@@ -77,8 +77,6 @@ import * as utilities from "../utilities";
  *     routeTableId: vpc.routeTableId,
  * }, { provider: hz, dependsOn: [attach] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cen_route_entry.html.markdown.
  */
 export class RouteEntry extends pulumi.CustomResource {
     /**

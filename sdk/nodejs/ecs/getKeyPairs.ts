@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Declare the data source
  * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {
  *     keyName: "keyPairDatasource",
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     nameRegex: keyName,
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/key_pairs.html.markdown.
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};

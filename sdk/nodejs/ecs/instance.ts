@@ -363,7 +363,6 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     /**
      * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
-     * 
      * @deprecated Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
@@ -448,7 +447,6 @@ export interface InstanceState {
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     readonly ioOptimized?: pulumi.Input<string>;
@@ -571,7 +569,6 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
-     * 
      * @deprecated Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
      */
     readonly allocatePublicIp?: pulumi.Input<boolean>;
@@ -656,7 +653,6 @@ export interface InstanceArgs {
     readonly internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
-     * 
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     readonly ioOptimized?: pulumi.Input<string>;

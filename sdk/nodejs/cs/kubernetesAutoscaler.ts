@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
- * 
+ *
  * > **NOTE:** The scaling group must use CentOS7 or AliyunLinux2 as base image.
- * 
+ *
  * > **NOTE:** The cluster-autoscaler can only use the same size of instanceTypes in one scaling group. 
- * 
+ *
  * > **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
- * 
+ *
  * > **NOTE:** Available in 1.65.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultKubernetesAutoscaler = new alicloud.cs.KubernetesAutoscaler("default", {
  *     clusterId: var_cluster_id,
  *     coolDownDuration: var_cool_down_duration,
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     utilization: var_utilization,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cs_kubernetes_autoscaler.html.markdown.
  */
 export class KubernetesAutoscaler extends pulumi.CustomResource {
     /**
@@ -80,7 +78,7 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     public readonly deferScaleInDuration!: pulumi.Output<string>;
     /**
-     * 
+     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -156,7 +154,7 @@ export interface KubernetesAutoscalerState {
      */
     readonly deferScaleInDuration?: pulumi.Input<string>;
     /**
-     * 
+     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
@@ -185,7 +183,7 @@ export interface KubernetesAutoscalerArgs {
      */
     readonly deferScaleInDuration: pulumi.Input<string>;
     /**
-     * 
+     *
      * * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
      * * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.

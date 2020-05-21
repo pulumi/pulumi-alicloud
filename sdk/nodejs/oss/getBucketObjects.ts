@@ -8,24 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the objects of an OSS bucket.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const bucketObjectsDs = pulumi.output(alicloud.oss.getBucketObjects({
  *     bucketName: "sampleBucket",
  *     keyRegex: "sample/sample_object.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstObjectKey = bucketObjectsDs.objects[0].key;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/oss_bucket_objects.html.markdown.
  */
 export function getBucketObjects(args: GetBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectsResult> {
     if (!opts) {

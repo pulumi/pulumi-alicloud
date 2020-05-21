@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const vpnGateways = pulumi.output(alicloud.vpn.getGateways({
  *     businessStatus: "Normal",
  *     ids: [
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     vpcId: "fake-vpc-id",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/vpn_gateways.html.markdown.
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};

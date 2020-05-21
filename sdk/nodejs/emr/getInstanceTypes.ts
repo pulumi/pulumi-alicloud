@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.emr.getInstanceTypes` data source provides a collection of ecs
  * instance types available in Alibaba Cloud account when create a emr cluster.
- * 
+ *
  * > **NOTE:** Available in 1.59.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultInstanceTypes = pulumi.output(alicloud.emr.getInstanceTypes({
  *     clusterType: "HADOOP",
  *     destinationResource: "InstanceType",
@@ -31,11 +31,9 @@ import * as utilities from "../utilities";
  *         "CORE",
  *     ],
  * }, { async: true }));
- * 
+ *
  * export const firstInstanceType = defaultInstanceTypes.types[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/emr_instance_types.html.markdown.
  */
 export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     if (!opts) {

@@ -9,7 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-//
 // Deprecated: This resource has been deprecated in favour of DnsDomain
 type Domain struct {
 	pulumi.CustomResourceState

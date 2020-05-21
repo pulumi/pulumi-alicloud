@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster. 
- * 
+ *
  * > **NOTE:** Available in 1.57.0+.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### 1. Create A Cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultMainVersions = alicloud.emr.getMainVersions({});
  * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
@@ -132,13 +132,13 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- * 
+ *
  * ### 2. Scale Up
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultMainVersions = alicloud.emr.getMainVersions({});
  * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
@@ -252,13 +252,13 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- * 
+ *
  * ### 3. Scale Down
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultMainVersions = alicloud.emr.getMainVersions({});
  * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
@@ -372,8 +372,6 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/emr_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

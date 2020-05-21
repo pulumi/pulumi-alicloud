@@ -8,24 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides availability zones for mongoDB that can be accessed by an Alibaba Cloud account within the region configured in the provider.
- * 
+ *
  * > **NOTE:** Available in v1.73.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const zonesIds = alicloud.mongodb.getZones({});
  * // Create an mongoDB instance with the first matched zone
  * const mongodb = new alicloud.mongodb.Instance("mongodb", {zoneId: zonesIds.then(zonesIds => zonesIds.zones[0].id)});
  * // Other properties...
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/mongodb_zones.html.markdown.
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};

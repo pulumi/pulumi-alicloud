@@ -8,23 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the apis of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const dataApigatwayApis = pulumi.output(alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
  * }, { async: true }));
- * 
+ *
  * export const firstApiId = alicloud_api_gateway_apis_data_apigatway.apis.0.id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/api_gateway_apis.html.markdown.
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
@@ -50,7 +48,6 @@ export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promis
 export interface GetApisArgs {
     /**
      * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-     * 
      * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
      */
     readonly apiId?: string;

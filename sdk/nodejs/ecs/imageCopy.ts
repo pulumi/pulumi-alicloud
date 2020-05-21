@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).
- * 
+ *
  * > **NOTE:** You can only copy the custom image when it is in the Available state.
- * 
+ *
  * > **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.
- * 
+ *
  * > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
- * 
+ *
  * > **NOTE:** Available in 1.66.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultImageCopy = new alicloud.ecs.ImageCopy("default", {
  *     description: "test-image",
  *     imageName: "test-image",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/image_copy.html.markdown.
  */
 export class ImageCopy extends pulumi.CustomResource {
     /**

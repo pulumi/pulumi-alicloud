@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/doc-detail/69319.htm).
- * 
+ *
  * > **NOTE:** The product region only support cn-hangzhou.
- * 
+ *
  * > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
- * 
+ *
  * > **NOTE:** Available in 1.37.0+ .
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const newInstance = new alicloud.ddos.DdosCooInstance("newInstance", {
  *     bandwidth: "30",
  *     baseBandwidth: "30",
@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     serviceBandwidth: "100",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ddoscoo_instance.html.markdown.
  */
 export class DdosCooInstance extends pulumi.CustomResource {
     /**

@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
- * 
+ *
  * > **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbdatabasebasic";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -44,8 +44,6 @@ import * as utilities from "../utilities";
  *     instanceId: instance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

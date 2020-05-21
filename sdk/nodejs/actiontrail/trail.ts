@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
- * 
+ *
  * > **NOTE:** Available in 1.35.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a new action trail.
  * const foo = new alicloud.actiontrail.Trail("foo", {
  *     eventRw: "Write-test",
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     roleName: alicloud_ram_role_policy_attachment_attach.roleName,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/actiontrail.html.markdown.
  */
 export class Trail extends pulumi.CustomResource {
     /**

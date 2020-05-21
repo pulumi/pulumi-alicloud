@@ -115,10 +115,13 @@ type Listener struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout  pulumi.IntPtrOutput    `pulumi:"idleTimeout"`
-	InstancePort pulumi.IntPtrOutput    `pulumi:"instancePort"`
-	LbPort       pulumi.IntPtrOutput    `pulumi:"lbPort"`
-	LbProtocol   pulumi.StringPtrOutput `pulumi:"lbProtocol"`
+	IdleTimeout pulumi.IntPtrOutput `pulumi:"idleTimeout"`
+	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+	InstancePort pulumi.IntPtrOutput `pulumi:"instancePort"`
+	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	LbPort pulumi.IntPtrOutput `pulumi:"lbPort"`
+	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	LbProtocol pulumi.StringPtrOutput `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringOutput `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
@@ -137,6 +140,8 @@ type Listener struct {
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrOutput `pulumi:"serverGroupId"`
 	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	//
+	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringOutput `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrOutput `pulumi:"stickySession"`
@@ -236,10 +241,13 @@ type listenerState struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout  *int    `pulumi:"idleTimeout"`
-	InstancePort *int    `pulumi:"instancePort"`
-	LbPort       *int    `pulumi:"lbPort"`
-	LbProtocol   *string `pulumi:"lbProtocol"`
+	IdleTimeout *int `pulumi:"idleTimeout"`
+	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+	InstancePort *int `pulumi:"instancePort"`
+	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	LbPort *int `pulumi:"lbPort"`
+	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	LbProtocol *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
@@ -258,6 +266,8 @@ type listenerState struct {
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	//
+	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession *string `pulumi:"stickySession"`
@@ -321,10 +331,13 @@ type ListenerState struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout  pulumi.IntPtrInput
+	IdleTimeout pulumi.IntPtrInput
+	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
 	InstancePort pulumi.IntPtrInput
-	LbPort       pulumi.IntPtrInput
-	LbProtocol   pulumi.StringPtrInput
+	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	LbPort pulumi.IntPtrInput
+	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	LbProtocol pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
@@ -343,6 +356,8 @@ type ListenerState struct {
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
 	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	//
+	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrInput
@@ -410,10 +425,13 @@ type listenerArgs struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout  *int    `pulumi:"idleTimeout"`
-	InstancePort *int    `pulumi:"instancePort"`
-	LbPort       *int    `pulumi:"lbPort"`
-	LbProtocol   *string `pulumi:"lbProtocol"`
+	IdleTimeout *int `pulumi:"idleTimeout"`
+	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+	InstancePort *int `pulumi:"instancePort"`
+	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	LbPort *int `pulumi:"lbPort"`
+	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	LbProtocol *string `pulumi:"lbProtocol"`
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward *string `pulumi:"listenerForward"`
 	// The Load Balancer ID which is used to launch a new listener.
@@ -432,6 +450,8 @@ type listenerArgs struct {
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	//
+	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession *string `pulumi:"stickySession"`
@@ -496,10 +516,13 @@ type ListenerArgs struct {
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
 	// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-	IdleTimeout  pulumi.IntPtrInput
+	IdleTimeout pulumi.IntPtrInput
+	// Deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
 	InstancePort pulumi.IntPtrInput
-	LbPort       pulumi.IntPtrInput
-	LbProtocol   pulumi.StringPtrInput
+	// Deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+	LbPort pulumi.IntPtrInput
+	// Deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+	LbProtocol pulumi.StringPtrInput
 	// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
 	ListenerForward pulumi.StringPtrInput
 	// The Load Balancer ID which is used to launch a new listener.
@@ -518,6 +541,8 @@ type ListenerArgs struct {
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
 	// It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	//
+	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput
 	// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
 	StickySession pulumi.StringPtrInput

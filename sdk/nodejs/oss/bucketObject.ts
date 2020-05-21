@@ -8,28 +8,28 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to put a object(content or file) to a oss bucket.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Uploading a file to a bucket
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const objectSource = new alicloud.oss.BucketObject("object-source", {
  *     bucket: "yourBucketName",
  *     key: "newObjectKey",
  *     source: "path/to/file",
  * });
  * ```
- * 
+ *
  * ### Uploading a content to a bucket
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const example = new alicloud.oss.Bucket("example", {
  *     acl: "public-read",
  *     bucket: "yourBucketName",
@@ -40,8 +40,6 @@ import * as utilities from "../utilities";
  *     key: "newObjectKey",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket_object.html.markdown.
  */
 export class BucketObject extends pulumi.CustomResource {
     /**

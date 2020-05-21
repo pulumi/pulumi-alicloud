@@ -8,25 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instancesDs = pulumi.output(alicloud.ecs.getInstances({
  *     nameRegex: "webServer",
  *     status: "Running",
  * }, { async: true }));
- * 
+ *
  * export const firstInstanceId = instancesDs.instances[0].id;
  * export const instanceIds = instancesDs.ids!;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/instances.html.markdown.
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

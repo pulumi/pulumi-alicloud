@@ -7,23 +7,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides CEN Bandwidth Limits available to the user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const bwl = pulumi.output(alicloud.cen.getBandwidthLimits({
  *     instanceIds: ["cen-id1"],
  * }, { async: true }));
- * 
+ *
  * export const firstCenBandwidthLimitsLocalRegionId = bwl.limits[0].localRegionId;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/cen_bandwidth_limits.html.markdown.
  */
 export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> {
     args = args || {};

@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Policy resource.  
  * For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
- * 
+ *
  * > **NOTE:** Available in v1.83.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const example = new alicloud.resourcemanager.Policy("example", {
  *     policyDocument: `		{
  * 			"Statement": [{
@@ -31,8 +31,6 @@ import * as utilities from "../utilities";
  *     policyName: "abc12345",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/resource_manager_policy.html.markdown.
  */
 export class Policy extends pulumi.CustomResource {
     /**

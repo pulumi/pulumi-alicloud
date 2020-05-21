@@ -6,19 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Nas Access Rule resource.
- * 
+ *
  * When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
- * 
+ *
  * > **NOTE:** Available in v1.34.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const fooAccessGroup = new alicloud.nas.AccessGroup("foo", {
  *     description: "tf-testAccNasConfig",
  *     type: "Vpc",
@@ -31,8 +31,6 @@ import * as utilities from "../utilities";
  *     userAccessType: "noSquash",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/nas_access_rule.html.markdown.
  */
 export class AccessRule extends pulumi.CustomResource {
     /**

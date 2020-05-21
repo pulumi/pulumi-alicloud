@@ -6,15 +6,15 @@ import * as utilities from "../utilities";
 
 /**
  * This resource will help you to bind a VPC to an OTS instance.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create an OTS instance
  * const fooInstance = new alicloud.ots.Instance("foo", {
  *     accessedBy: "Vpc",
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *     vswitchId: fooSwitch.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ots_instance_attachment.html.markdown.
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**

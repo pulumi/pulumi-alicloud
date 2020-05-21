@@ -8,26 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides available lifecycle hook resources. 
- * 
+ *
  * > **NOTE:** Available in 1.72.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const ds = pulumi.output(alicloud.ess.getLifecycleHooks({
  *     nameRegex: "lifecyclehookName",
  *     scalingGroupId: "scalingGroupId",
  * }, { async: true }));
- * 
+ *
  * export const firstLifecycleHook = ds.hooks[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ess_lifecycle_hooks.html.markdown.
  */
 export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};

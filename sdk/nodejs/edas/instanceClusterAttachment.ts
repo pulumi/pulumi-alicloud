@@ -6,25 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an EDAS instance cluster attachment resource.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const default = new alicloud.edas.InstanceClusterAttachment("default", {
  *     clusterId: var.cluster_id,
  *     instanceIds: var.instance_ids,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_instance_cluster_attachment.html.markdown.
  */
 export class InstanceClusterAttachment extends pulumi.CustomResource {
     /**

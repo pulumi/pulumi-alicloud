@@ -9,19 +9,19 @@ import * as utilities from "../utilities";
 /**
  * HTTPS listeners of guaranteed-performance SLB support configuring multiple certificates, allowing you to forward requests with different domain names to different backend servers.
  * Please refer to the [documentation](https://www.alibabacloud.com/help/doc-detail/85956.htm?spm=a2c63.p38356.b99.40.1c881563Co8p6w) for details.
- * 
+ *
  * > **NOTE:** Available in 1.60.0+
- * 
+ *
  * > **NOTE:** The instance with shared loadBalancerSpec doesn't support domainExtension.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instance = new alicloud.slb.LoadBalancer("instance", {
  *     internet: true,
  *     internetChargeType: "PayByTraffic",
@@ -103,8 +103,6 @@ import * as utilities from "../utilities";
  *     serverCertificateId: foo.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_domain_extension.html.markdown.
  */
 export class DomainExtension extends pulumi.CustomResource {
     /**

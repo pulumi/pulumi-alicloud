@@ -9,9 +9,7 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/kvstore_instances.html.markdown.
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};

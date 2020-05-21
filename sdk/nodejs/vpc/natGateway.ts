@@ -167,7 +167,6 @@ export interface NatGatewayState {
     readonly snatTableIds?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-     * 
      * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;
@@ -207,7 +206,6 @@ export interface NatGatewayArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
-     * 
      * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;

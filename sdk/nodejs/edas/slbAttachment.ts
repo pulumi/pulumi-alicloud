@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an EDAS slb application attachment resource.
- * 
+ *
  * > **NOTE:** Available in 1.82.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const default = new alicloud.edas.SlbAttachment("default", {
  *     appId: var.app_id,
  *     slbId: var.slb_id,
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     vserverGroupId: var.vserver_group_id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/edas_slb_attachment.html.markdown.
  */
 export class SlbAttachment extends pulumi.CustomResource {
     /**

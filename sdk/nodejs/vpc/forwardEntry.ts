@@ -6,18 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a forward resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "forward-entry-example-name";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -47,8 +47,6 @@ import * as utilities from "../utilities";
  *     ipProtocol: "tcp",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/forward_entry.html.markdown.
  */
 export class ForwardEntry extends pulumi.CustomResource {
     /**

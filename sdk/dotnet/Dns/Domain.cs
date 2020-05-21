@@ -9,10 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// 
-    /// Deprecated: This resource has been deprecated in favour of DnsDomain
-    /// </summary>
     [Obsolete(@"This resource has been deprecated in favour of DnsDomain")]
     public partial class Domain : Pulumi.CustomResource
     {

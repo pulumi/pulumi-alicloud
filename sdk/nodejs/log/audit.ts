@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * SLS log audit exists in the form of log service app.
- * 
+ *
  * In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
- * 
+ *
  * > **NOTE:** Available in 1.81.0
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const example = new alicloud.log.Audit("example", {
  *     aliuid: "12345678",
  *     displayName: "tf-audit-test",
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/log_audit.html.markdown.
  */
 export class Audit extends pulumi.CustomResource {
     /**

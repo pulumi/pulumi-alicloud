@@ -6,23 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides the identity of the current user.
- * 
+ *
  * > **NOTE:** Available in 1.65.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const current = pulumi.output(alicloud.getCallerIdentity({ async: true }));
- * 
+ *
  * export const currentUserArn = current.id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/caller_identity.markdown.
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
     if (!opts) {

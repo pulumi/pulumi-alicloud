@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
  * Provides a ADB cluster resource. A ADB cluster is an isolated database
  * environment in the cloud. A ADB cluster can contain multiple user-created
  * databases.
- * 
+ *
  * > **NOTE:** Available in v1.71.0+.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a ADB MySQL cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "adbClusterconfig";
  * const creation = config.get("creation") || "ADB";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/adb_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

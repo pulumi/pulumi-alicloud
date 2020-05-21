@@ -6,19 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an RDS account resource and used to manage databases.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbaccountmysql";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -43,8 +43,6 @@ import * as utilities from "../utilities";
  *     password: "Test12345",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_account.html.markdown.
  */
 export class Account extends pulumi.CustomResource {
     /**

@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
- * 
+ *
  * > **NOTE:** Available in 1.55.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccEssNotification-%d";
- * 
+ *
  * const defaultRegions = pulumi.output(alicloud.getRegions({
  *     current: true,
  * }, { async: true }));
@@ -56,8 +56,6 @@ import * as utilities from "../utilities";
  *     scalingGroupId: defaultScalingGroup.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ess_notification.html.markdown.
  */
 export class Notification extends pulumi.CustomResource {
     /**

@@ -6,24 +6,24 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ALIKAFKA sasl acl resource.
- * 
+ *
  * > **NOTE:** Available in 1.66.0+
- * 
+ *
  * > **NOTE:**  Only the following regions support create alikafka sasl user.
  * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const username = config.get("username") || "testusername";
  * const password = config.get("password") || "testpassword";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * }, { async: true }));
@@ -62,8 +62,6 @@ import * as utilities from "../utilities";
  *     username: defaultSaslUser.username,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/alikafka_sasl_acl.html.markdown.
  */
 export class SaslAcl extends pulumi.CustomResource {
     /**

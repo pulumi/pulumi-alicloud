@@ -8,21 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const eipsDs = pulumi.output(alicloud.ecs.getEips({ async: true }));
- * 
+ *
  * export const firstEipId = eipsDs.eips[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/eips.html.markdown.
  */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
     args = args || {};
@@ -53,7 +51,6 @@ export interface GetEipsArgs {
     readonly ids?: string[];
     /**
      * Deprecated since the version 1.8.0 of this provider.
-     * 
      * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
      */
     readonly inUse?: boolean;

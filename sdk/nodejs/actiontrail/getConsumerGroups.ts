@@ -7,27 +7,25 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.56.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const consumerGroupsDs = pulumi.output(alicloud.actiontrail.getConsumerGroups({
  *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
  *     outputFile: "consumerGroups.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstGroupName = consumerGroupsDs.consumerIds[0];
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/alikafka_consumer_groups.html.markdown.
  */
 export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
     if (!opts) {

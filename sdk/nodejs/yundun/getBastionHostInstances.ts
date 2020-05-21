@@ -7,25 +7,23 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of cloud Bastionhost instances in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.63.0+ .
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instanceBastionHostInstances = pulumi.output(alicloud.yundun.getBastionHostInstances({
  *     nameRegex: "^bastionhost",
  * }, { async: true }));
- * 
+ *
  * export const instance = alicloud_yundun_bastionhost_instances_instance.map(v => v.id);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/yundun_bastionhost_instances.html.markdown.
  */
 export function getBastionHostInstances(args?: GetBastionHostInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBastionHostInstancesResult> {
     args = args || {};

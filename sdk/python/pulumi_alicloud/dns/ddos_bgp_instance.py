@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
+warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
 class DdosBgpInstance(pulumi.CustomResource):
     bandwidth: pulumi.Output[float]
     """
@@ -39,7 +39,7 @@ class DdosBgpInstance(pulumi.CustomResource):
     """
     Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
     """
-    warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
+    warnings.warn("alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, bandwidth=None, base_bandwidth=None, ip_count=None, ip_type=None, name=None, period=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
@@ -64,8 +64,6 @@ class DdosBgpInstance(pulumi.CustomResource):
         ```
 
 
-        Deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] bandwidth: Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 51,91,101,201,301. The unit is Gbps.
@@ -76,7 +74,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         :param pulumi.Input[float] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: Enterprise,Professional. Default to `Enterprise`  
         """
-        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favour of alicloud.ddos.DdosBgpInstance")
+        pulumi.log.warn("DdosBgpInstance is deprecated: alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

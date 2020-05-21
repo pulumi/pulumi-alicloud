@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager handshake resource. You can invite accounts to join a resource directory for unified management.
  * For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
- * 
+ *
  * > **NOTE:** Available in v1.82.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Add a Resource Manager handshake.
  * const example = new alicloud.resourcemanager.Handshake("example", {
  *     note: "test resource manager handshake",
@@ -25,8 +25,6 @@ import * as utilities from "../utilities";
  *     targetType: "Account",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/resource_manager_handshake.html.markdown.
  */
 export class Handshake extends pulumi.CustomResource {
     /**

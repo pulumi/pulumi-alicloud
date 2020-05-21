@@ -8,17 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a PolarDB database resource. A DB database deployed in a DB cluster. A DB cluster can own multiple databases.
- * 
+ *
  * > **NOTE:** Available in v1.66.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const cluster = new alicloud.polardb.Cluster("cluster", {
  *     dbNodeClass: var_clusterclass,
  *     dbType: "MySQL",
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     dbName: "tftestdatabase",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

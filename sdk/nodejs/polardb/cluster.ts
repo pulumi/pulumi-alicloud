@@ -10,21 +10,21 @@ import * as utilities from "../utilities";
  * Provides a PolarDB cluster resource. A PolarDB cluster is an isolated database
  * environment in the cloud. A PolarDB cluster can contain multiple user-created
  * databases.
- * 
+ *
  * > **NOTE:** Available in v1.66.0+.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a PolarDB MySQL cluster
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "polardbClusterconfig";
  * const creation = config.get("creation") || "PolarDB";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/polardb_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

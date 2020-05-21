@@ -6,23 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an ONS topic resource.
- * 
+ *
  * For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
- * 
+ *
  * > **NOTE:** Available in 1.53.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicName";
- * 
+ *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
  *     remark: "defaultOnsInstanceRemark",
  * });
@@ -33,8 +33,6 @@ import * as utilities from "../utilities";
  *     topic: topic,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/ons_topic.html.markdown.
  */
 export class Topic extends pulumi.CustomResource {
     /**

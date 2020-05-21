@@ -8,25 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a resource to create a oss bucket and set its attribution.
- * 
+ *
  * > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const bucketAcl = new alicloud.oss.Bucket("bucket-acl", {
  *     acl: "private",
  *     bucket: "bucket-170309-acl",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/oss_bucket.html.markdown.
  */
 export class Bucket extends pulumi.CustomResource {
     /**
@@ -236,7 +234,6 @@ export interface BucketState {
     readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
-     * 
      * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;
@@ -301,7 +298,6 @@ export interface BucketArgs {
     readonly logging?: pulumi.Input<inputs.oss.BucketLogging>;
     /**
      * The flag of using logging enable container. Defaults true.
-     * 
      * @deprecated Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
      */
     readonly loggingIsenable?: pulumi.Input<boolean>;

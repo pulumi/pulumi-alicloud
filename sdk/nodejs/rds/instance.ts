@@ -10,19 +10,19 @@ import * as utilities from "../utilities";
  * Provides an RDS instance resource. A DB instance is an isolated database
  * environment in the cloud. A DB instance can contain multiple user-created
  * databases.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Create a RDS MySQL instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "dbInstanceconfig";
  * const creation = config.get("creation") || "Rds";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -45,13 +45,13 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
- * 
+ *
  * ### Create a RDS MySQL instance with specific parameters
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     cidrBlock: "172.16.0.0/16",
  * });
@@ -77,8 +77,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_instance.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -406,7 +404,6 @@ export interface InstanceState {
     readonly port?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
-     * 
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
@@ -527,7 +524,6 @@ export interface InstanceArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
-     * 
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;

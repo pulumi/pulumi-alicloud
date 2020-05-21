@@ -6,29 +6,27 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Sag SnatEntry resource. This topic describes how to add a SNAT entry to enable the SNAT function. The SNAT function can hide internal IP addresses and resolve private IP address conflicts. With this function, on-premises sites can access internal IP addresses, but cannot be accessed by internal IP addresses. If you do not add a SNAT entry, on-premises sites can access each other only when all related IP addresses do not conflict.
- * 
+ *
  * For information about Sag SnatEntry and how to use it, see [What is Sag SnatEntry](https://www.alibabacloud.com/help/doc-detail/124231.htm).
- * 
+ *
  * > **NOTE:** Available in 1.61.0+
- * 
+ *
  * > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const defaultSnatEntry = new alicloud.rocketmq.SnatEntry("default", {
  *     cidrBlock: "192.168.7.0/24",
  *     sagId: "sag-3rb1t3iagy3w0zgwy9",
  *     snatIp: "192.0.0.2",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/sag_snat_entry.html.markdown.
  */
 export class SnatEntry extends pulumi.CustomResource {
     /**

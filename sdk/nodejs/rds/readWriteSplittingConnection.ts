@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an RDS read write splitting connection resource to allocate an Intranet connection string for RDS instance.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "Rds";
  * const name = config.get("name") || "dbInstancevpc";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -60,8 +60,6 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * }, { dependsOn: [defaultReadOnlyInstance] });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/db_read_write_splitting_connection.html.markdown.
  */
 export class ReadWriteSplittingConnection extends pulumi.CustomResource {
     /**

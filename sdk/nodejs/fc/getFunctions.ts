@@ -8,24 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the Function Compute functions of the current Alibaba Cloud user.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const functionsDs = pulumi.output(alicloud.fc.getFunctions({
  *     nameRegex: "sampleFcFunction",
  *     serviceName: "sampleService",
  * }, { async: true }));
- * 
+ *
  * export const firstFcFunctionName = functionsDs.functions[0].name;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/fc_functions.html.markdown.
  */
 export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> {
     if (!opts) {

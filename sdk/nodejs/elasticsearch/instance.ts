@@ -6,19 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Elasticsearch instance resource. It contains data nodes, dedicated master node(optional) and etc. It can be associated with private IP whitelists and kibana IP whitelist.
- * 
+ *
  * > **NOTE:** Only one operation is supported in a request. So if `dataNodeSpec` and `dataNodeDiskSize` are both changed, system will respond error.
- * 
+ *
  * > **NOTE:** At present, `version` can not be modified once instance has been created.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const instance = new alicloud.elasticsearch.Instance("instance", {
  *     instanceChargeType: "PostPaid",
  *     dataNodeAmount: "2",
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/elasticsearch.html.markdown.
  */
 export class Instance extends pulumi.CustomResource {
     /**

@@ -9,23 +9,21 @@ import * as utilities from "../utilities";
 /**
  * Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
  * For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
- * 
+ *
  * > **NOTE:** Available in v1.82.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const example = new alicloud.resourcemanager.ResourceGroup("example", {
  *     displayName: "testrd",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/resource_manager_resource_group.html.markdown.
  */
 export class ResourceGroup extends pulumi.CustomResource {
     /**

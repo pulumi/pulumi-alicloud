@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
- * 
+ *
  * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
- * 
+ *
  * For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // create a server certificate
  * const foo = new alicloud.slb.ServerCertificate("foo", {
  *     privateKey: `-----BEGIN RSA PRIVATE KEY-----
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  * -----END CERTIFICATE-----`,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/slb_server_certificate.html.markdown.
  */
 export class ServerCertificate extends pulumi.CustomResource {
     /**

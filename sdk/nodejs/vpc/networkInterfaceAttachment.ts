@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
- * 
+ *
  * For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfaceAttachment";
  * const number = config.get("number") || "2";
- * 
+ *
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "192.168.0.0/24",
  * });
@@ -74,8 +74,6 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/network_interface_attachment.html.markdown.
  */
 export class NetworkInterfaceAttachment extends pulumi.CustomResource {
     /**

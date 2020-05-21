@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a kvstore account resource and used to manage databases.
- * 
+ *
  * > **NOTE:** Available in 1.66.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "KVStore";
  * const name = config.get("name") || "kvstoreinstancevpc";
- * 
+ *
  * const defaultZones = pulumi.output(alicloud.getZones({
  *     availableResourceCreation: creation,
  * }, { async: true }));
@@ -47,8 +47,6 @@ import * as utilities from "../utilities";
  *     instanceId: defaultInstance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/kvstore_account.html.markdown.
  */
 export class Account extends pulumi.CustomResource {
     /**

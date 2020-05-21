@@ -24,6 +24,8 @@ type Alarm struct {
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringOutput `pulumi:"metric"`
@@ -38,6 +40,8 @@ type Alarm struct {
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
@@ -103,6 +107,8 @@ type alarmState struct {
 	// Whether to enable alarm rule. Default to true.
 	Enabled *bool `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric *string `pulumi:"metric"`
@@ -117,6 +123,8 @@ type alarmState struct {
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
@@ -140,6 +148,8 @@ type AlarmState struct {
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringPtrInput
@@ -154,6 +164,8 @@ type AlarmState struct {
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrInput
@@ -181,6 +193,8 @@ type alarmArgs struct {
 	// Whether to enable alarm rule. Default to true.
 	Enabled *bool `pulumi:"enabled"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime *int `pulumi:"endTime"`
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric string `pulumi:"metric"`
@@ -195,6 +209,8 @@ type alarmArgs struct {
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime *int `pulumi:"silenceTime"`
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime *int `pulumi:"startTime"`
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics *string `pulumi:"statistics"`
@@ -217,6 +233,8 @@ type AlarmArgs struct {
 	// Whether to enable alarm rule. Default to true.
 	Enabled pulumi.BoolPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	EndTime pulumi.IntPtrInput
 	// Name of the monitoring metrics corresponding to a project, such as "CPUUtilization" and "networkinRate". For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Metric pulumi.StringInput
@@ -231,6 +249,8 @@ type AlarmArgs struct {
 	// Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
 	SilenceTime pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
+	//
+	// Deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.
 	StartTime pulumi.IntPtrInput
 	// Statistical method. It must be consistent with that defined for metrics. Valid values: ["Average", "Minimum", "Maximum"]. Default to "Average".
 	Statistics pulumi.StringPtrInput

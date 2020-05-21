@@ -7,26 +7,24 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides MountTargets available to the user.
- * 
+ *
  * > NOTE: Available in 1.35.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const mt = pulumi.output(alicloud.nas.getMountTargets({
  *     accessGroupName: "tf-testAccNasConfig",
  *     fileSystemId: "1a2sc4d",
  * }, { async: true }));
- * 
+ *
  * export const alicloudNasMountTargetsId = mt.targets[0].id;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/nas_mount_targets.html.markdown.
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
     if (!opts) {
@@ -66,7 +64,6 @@ export interface GetMountTargetsArgs {
     readonly ids?: string[];
     /**
      * Filter results by a specific MountTargetDomain.
-     * 
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
@@ -101,7 +98,6 @@ export interface GetMountTargetsResult {
     /**
      * MountTargetDomain of the MountTarget.
      * * `type`- NetworkType of The MountTarget.
-     * 
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;

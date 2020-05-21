@@ -8,19 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a CDN Accelerated Domain resource.
- * 
+ *
  * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
- * 
+ *
  * > **NOTE:** Available in v1.34.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * // Create a new Domain config.
  * const domain = new alicloud.cdn.DomainNew("domain", {
  *     cdnType: "web",
@@ -43,8 +43,6 @@ import * as utilities from "../utilities";
  *     functionName: "ipAllowListSet",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/r/cdn_domain_config.html.markdown.
  */
 export class DomainConfig extends pulumi.CustomResource {
     /**

@@ -7,21 +7,21 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of ONS Topics in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * > **NOTE:** Available in 1.53.0+
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicDatasourceName";
- * 
+ *
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
  *     remark: "defaultOnsInstanceRemark",
  * });
@@ -36,11 +36,9 @@ import * as utilities from "../utilities";
  *     nameRegex: topic,
  *     outputFile: "topics.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstTopicName = topicsDs.topics[0].topic;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/ons_topics.html.markdown.
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
     if (!opts) {

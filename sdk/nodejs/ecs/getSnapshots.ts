@@ -8,29 +8,29 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
- * 
+ *
  * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
- * 
+ *
  * > **NOTE:**  Available in 1.40.0+.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const snapshots = pulumi.output(alicloud.ecs.getSnapshots({
  *     ids: ["s-123456890abcdef"],
  *     nameRegex: "tf-testAcc-snapshot",
  * }, { async: true }));
  * ```
- * 
+ *
  * ##  Argument Reference
- * 
+ *
  * The following arguments are supported:
- * 
+ *
  * * `instanceId` - (Optional) The specified instance ID.
  * * `diskId` - (Optional) The specified disk ID.
  * * `encrypted` - (Optional) Queries the encrypted snapshots. Optional values:
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *   * all: All status.
  *   
  *   Default value: all.
- * 
+ *
  * * `type` - (Optional) The snapshot category. Optional values:
  *   * auto: Auto snapshots.
  *   * user: Manual snapshots.
@@ -66,8 +66,6 @@ import * as utilities from "../utilities";
  *   * none: The snapshots are not used yet.
  * * `tags` - (Optional) A map of tags assigned to snapshots.
  * * `outputFile` - (Optional) The name of output file that saves the filter results.
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/snapshots.html.markdown.
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};

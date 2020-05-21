@@ -15,6 +15,8 @@ type SecurityGroup struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	//
+	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolOutput `pulumi:"innerAccess"`
 	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
 	InnerAccessPolicy pulumi.StringOutput `pulumi:"innerAccessPolicy"`
@@ -63,6 +65,8 @@ type securityGroupState struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
 	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	//
+	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
 	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
@@ -84,6 +88,8 @@ type SecurityGroupState struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
 	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	//
+	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolPtrInput
 	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
 	InnerAccessPolicy pulumi.StringPtrInput
@@ -109,6 +115,8 @@ type securityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
 	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	//
+	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
 	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
@@ -131,6 +139,8 @@ type SecurityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
 	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	//
+	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolPtrInput
 	// Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
 	InnerAccessPolicy pulumi.StringPtrInput

@@ -8,37 +8,35 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the acls in the region.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const sampleDs = pulumi.output(alicloud.slb.getAcls({ async: true }));
- * 
+ *
  * export const firstSlbAclId = sampleDs.acls[0].id;
  * ```
- * 
+ *
  * ## Entry Block
- * 
+ *
  * The entry mapping supports the following:
- * 
+ *
  * * `entry`   - An IP addresses or CIDR blocks.
  * * `comment` - the comment of the entry.
- * 
+ *
  * ## Listener Block
- * 
+ *
  * The Listener mapping supports the following:
- * 
+ *
  * * `loadBalancerId` - the id of load balancer instance, the listener belongs to.
  * * `frontendPort` - the listener port.
  * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
  * * `aclType`      - the type of acl (such as white/black).
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/slb_acls.html.markdown.
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};

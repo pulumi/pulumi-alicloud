@@ -7,24 +7,22 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * 
+ *
  * const domainsDs = pulumi.output(alicloud.dns.getDomains({
  *     domainNameRegex: "^hegu",
  *     outputFile: "domains.txt",
  * }, { async: true }));
- * 
+ *
  * export const firstDomainId = domainsDs.domains[0].domainId;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-alicloud/blob/master/website/docs/d/dns_domains.html.markdown.
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
