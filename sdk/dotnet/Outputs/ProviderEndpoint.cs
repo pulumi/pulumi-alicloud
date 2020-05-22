@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Outputs
     {
         public readonly string? Actiontrail;
         public readonly string? Adb;
+        public readonly string? Alidns;
         public readonly string? Alikafka;
         public readonly string? Apigateway;
         public readonly string? Bssopenapi;
@@ -64,6 +65,8 @@ namespace Pulumi.AliCloud.Outputs
             string? actiontrail,
 
             string? adb,
+
+            string? alidns,
 
             string? alikafka,
 
@@ -153,6 +156,7 @@ namespace Pulumi.AliCloud.Outputs
         {
             Actiontrail = actiontrail;
             Adb = adb;
+            Alidns = alidns;
             Alikafka = alikafka;
             Apigateway = apigateway;
             Bssopenapi = bssopenapi;

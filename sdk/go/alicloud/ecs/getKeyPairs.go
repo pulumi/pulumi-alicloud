@@ -20,7 +20,7 @@ func GetKeyPairs(ctx *pulumi.Context, args *GetKeyPairsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getKeyPairs.
 type GetKeyPairsArgs struct {
 	// A finger print used to retrieve specified key pair.
-	FingerPrint *bool `pulumi:"fingerPrint"`
+	FingerPrint *string `pulumi:"fingerPrint"`
 	// A list of key pair IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the resulting key pairs.
@@ -35,7 +35,7 @@ type GetKeyPairsArgs struct {
 // A collection of values returned by getKeyPairs.
 type GetKeyPairsResult struct {
 	// Finger print of the key pair.
-	FingerPrint bool `pulumi:"fingerPrint"`
+	FingerPrint string `pulumi:"fingerPrint"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string   `pulumi:"id"`
 	Ids []string `pulumi:"ids"`

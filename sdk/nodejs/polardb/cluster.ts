@@ -78,7 +78,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+     * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -216,7 +216,7 @@ export interface ClusterState {
      */
     readonly autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+     * (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
      */
     readonly connectionString?: pulumi.Input<string>;
     /**

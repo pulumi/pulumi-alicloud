@@ -46,6 +46,7 @@ class Provider(pulumi.ProviderResource):
 
           * `actiontrail` (`pulumi.Input[str]`)
           * `adb` (`pulumi.Input[str]`)
+          * `alidns` (`pulumi.Input[str]`)
           * `alikafka` (`pulumi.Input[str]`)
           * `apigateway` (`pulumi.Input[str]`)
           * `bssopenapi` (`pulumi.Input[str]`)

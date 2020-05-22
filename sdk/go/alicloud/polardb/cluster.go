@@ -20,7 +20,7 @@ type Cluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
@@ -93,7 +93,7 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The dbNodeClass of cluster node.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
@@ -130,7 +130,7 @@ type clusterState struct {
 type ClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if securityIps is configured.
+	// (Available in 1.81.0+) PolarDB cluster connection string. When securityIps is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
 	ConnectionString pulumi.StringPtrInput
 	// The dbNodeClass of cluster node.
 	DbNodeClass pulumi.StringPtrInput

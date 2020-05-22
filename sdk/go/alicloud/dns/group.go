@@ -9,7 +9,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DNS Group resource.
 type Group struct {
 	pulumi.CustomResourceState
 

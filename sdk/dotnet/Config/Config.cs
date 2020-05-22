@@ -92,6 +92,7 @@ namespace Pulumi.AliCloud
              {
                 public string? Actiontrail { get; set; } = null!;
                 public string? Adb { get; set; } = null!;
+                public string? Alidns { get; set; } = null!;
                 public string? Alikafka { get; set; } = null!;
                 public string? Apigateway { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;

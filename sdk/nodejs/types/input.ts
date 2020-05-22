@@ -14,6 +14,7 @@ export interface ProviderAssumeRole {
 export interface ProviderEndpoint {
     actiontrail?: pulumi.Input<string>;
     adb?: pulumi.Input<string>;
+    alidns?: pulumi.Input<string>;
     alikafka?: pulumi.Input<string>;
     apigateway?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;

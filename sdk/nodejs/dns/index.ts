@@ -7,6 +7,7 @@ export * from "./ddosCooInstance";
 export * from "./dnsDomain";
 export * from "./domain";
 export * from "./domainAttachment";
+export * from "./domainGroup";
 export * from "./getDomainGroups";
 export * from "./getDomainRecords";
 export * from "./getDomainTxtGuid";

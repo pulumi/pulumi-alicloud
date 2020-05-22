@@ -52,7 +52,7 @@ export interface GetKeyPairsArgs {
     /**
      * A finger print used to retrieve specified key pair.
      */
-    readonly fingerPrint?: boolean;
+    readonly fingerPrint?: string;
     /**
      * A list of key pair IDs.
      */
@@ -79,7 +79,7 @@ export interface GetKeyPairsResult {
     /**
      * Finger print of the key pair.
      */
-    readonly fingerPrint: boolean;
+    readonly fingerPrint: string;
     readonly ids: string[];
     /**
      * A list of key pairs. Each element contains the following attributes:

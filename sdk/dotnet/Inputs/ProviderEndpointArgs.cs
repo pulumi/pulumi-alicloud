@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("adb")]
         public Input<string>? Adb { get; set; }
 
+        [Input("alidns")]
+        public Input<string>? Alidns { get; set; }
+
         [Input("alikafka")]
         public Input<string>? Alikafka { get; set; }
 

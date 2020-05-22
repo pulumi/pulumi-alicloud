@@ -2715,6 +2715,9 @@
                 "adb": {
                     "type": "string"
                 },
+                "alidns": {
+                    "type": "string"
+                },
                 "alikafka": {
                     "type": "string"
                 },
@@ -10217,6 +10220,14 @@
                         }
                     }
                 },
+                "alidns": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "alikafka": {
                     "type": "string",
                     "language": {
@@ -15553,6 +15564,108 @@
                 }
             },
             "type": "object"
+        },
+        "alicloud:resourcemanager/getFoldersFolder:getFoldersFolder": {
+            "properties": {
+                "folderId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "folderName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the folder.\n* `folder_id`- The ID of the folder.\n* `folder_name`- The name of the folder.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "folderId",
+                "folderName",
+                "id"
+            ]
+        },
+        "alicloud:resourcemanager/getResourceGroupsGroup:getResourceGroupsGroup": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the Alibaba Cloud account to which the resource group belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The time when the resource group was created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the resource group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the resource group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The unique identifier of the resource group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "createDate",
+                "displayName",
+                "id",
+                "name",
+                "status"
+            ]
         },
         "alicloud:rocketmq/getGroupsGroup:getGroupsGroup": {
             "properties": {
@@ -27156,8 +27269,50 @@
                 "type": "object"
             }
         },
+        "alicloud:dns/domainGroup:DomainGroup": {
+            "description": "Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "groupName": {
+                    "type": "string",
+                    "description": "Name of the domain group. \n"
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "User language. \n"
+                }
+            },
+            "required": [
+                "groupName"
+            ],
+            "inputProperties": {
+                "groupName": {
+                    "type": "string",
+                    "description": "Name of the domain group. \n"
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "User language. \n"
+                }
+            },
+            "requiredInputs": [
+                "groupName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DomainGroup resources.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string",
+                        "description": "Name of the domain group. \n"
+                    },
+                    "lang": {
+                        "type": "string",
+                        "description": "User language. \n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:dns/group:Group": {
-            "description": "Provides a DNS Group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Add a new Domain group.\nconst group = new alicloud.dns.Group(\"group\", {});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Add a new Domain group.\ngroup = alicloud.dns.Group(\"group\")\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -29050,7 +29205,7 @@
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
                 },
@@ -29255,7 +29410,7 @@
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
                 },
@@ -29459,7 +29614,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
                     },
@@ -38609,7 +38764,7 @@
                 },
                 "connectionString": {
                     "type": "string",
-                    "description": "(Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.\n"
+                    "description": "(Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only \"127.0.0.1\" is configured, it will also be an empty string.\n"
                 },
                 "dbNodeClass": {
                     "type": "string",
@@ -38772,7 +38927,7 @@
                     },
                     "connectionString": {
                         "type": "string",
-                        "description": "(Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.\n"
+                        "description": "(Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only \"127.0.0.1\" is configured, it will also be an empty string.\n"
                     },
                     "dbNodeClass": {
                         "type": "string",
@@ -42113,6 +42268,121 @@
                     "policyType": {
                         "type": "string",
                         "description": "The type of the policy. Valid values: `Custom`, `System`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:resourcemanager/policyVersion:PolicyVersion": {
+            "description": "Provides a Resource Manager Policy Version resource. \nFor information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "createDate": {
+                    "type": "string",
+                    "description": "The time when the policy version was created.\n"
+                },
+                "isDefaultVersion": {
+                    "type": "boolean",
+                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                },
+                "policyDocument": {
+                    "type": "string",
+                    "description": "The content of the policy. The content must be 1 to 2,048 characters in length.\n"
+                },
+                "policyName": {
+                    "type": "string",
+                    "description": "The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "The ID of the policy version.\n"
+                }
+            },
+            "required": [
+                "createDate",
+                "policyDocument",
+                "policyName",
+                "versionId"
+            ],
+            "inputProperties": {
+                "isDefaultVersion": {
+                    "type": "boolean",
+                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                },
+                "policyDocument": {
+                    "type": "string",
+                    "description": "The content of the policy. The content must be 1 to 2,048 characters in length.\n"
+                },
+                "policyName": {
+                    "type": "string",
+                    "description": "The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                }
+            },
+            "requiredInputs": [
+                "policyDocument",
+                "policyName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PolicyVersion resources.\n",
+                "properties": {
+                    "createDate": {
+                        "type": "string",
+                        "description": "The time when the policy version was created.\n"
+                    },
+                    "isDefaultVersion": {
+                        "type": "boolean",
+                        "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                    },
+                    "policyDocument": {
+                        "type": "string",
+                        "description": "The content of the policy. The content must be 1 to 2,048 characters in length.\n"
+                    },
+                    "policyName": {
+                        "type": "string",
+                        "description": "The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).\n"
+                    },
+                    "versionId": {
+                        "type": "string",
+                        "description": "The ID of the policy version.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:resourcemanager/resourceDirectory:ResourceDirectory": {
+            "description": "Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.\n\nFor information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n\u003e **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.\n\n\u003e **NOTE:** Before you destroy the resource, make sure that the following requirements are met:\n  - All member accounts must be removed from the resource directory. \n  - All folders except the root folder must be deleted from the resource directory.\n  \n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "masterAccountId": {
+                    "type": "string",
+                    "description": "The ID of the master account.\n"
+                },
+                "masterAccountName": {
+                    "type": "string",
+                    "description": "The name of the master account.\n"
+                },
+                "rootFolderId": {
+                    "type": "string",
+                    "description": "The ID of the root folder.\n"
+                }
+            },
+            "required": [
+                "masterAccountId",
+                "masterAccountName",
+                "rootFolderId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ResourceDirectory resources.\n",
+                "properties": {
+                    "masterAccountId": {
+                        "type": "string",
+                        "description": "The ID of the master account.\n"
+                    },
+                    "masterAccountName": {
+                        "type": "string",
+                        "description": "The name of the master account.\n"
+                    },
+                    "rootFolderId": {
+                        "type": "string",
+                        "description": "The ID of the root folder.\n"
                     }
                 },
                 "type": "object"
@@ -51222,7 +51492,7 @@
             }
         },
         "alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies": {
-            "description": "This data source provides the ECS instance type families of Alibaba Cloud.\n\n\u003e **NOTE:** Available in 1.54.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides the ECS instance type families of Alibaba Cloud.\n\n\u003e **NOTE:** Available in 1.54.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultInstanceTypeFamilies = pulumi.output(alicloud.ecs.getInstanceTypeFamilies({\n    instanceChargeType: \"PrePaid\",\n}, { async: true }));\n\nexport const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.families[0].id;\nexport const instanceIds = defaultInstanceTypeFamilies.ids;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.get_instance_type_families(instance_charge_type=\"PrePaid\")\npulumi.export(\"firstInstanceTypeFamilyId\", default.families[0][\"id\"])\npulumi.export(\"instanceIds\", default.ids)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstanceTypeFamilies.\n",
                 "properties": {
@@ -51571,7 +51841,7 @@
                 "description": "A collection of arguments for invoking getKeyPairs.\n",
                 "properties": {
                     "fingerPrint": {
-                        "type": "boolean",
+                        "type": "string",
                         "description": "A finger print used to retrieve specified key pair.\n"
                     },
                     "ids": {
@@ -51606,7 +51876,7 @@
                 "description": "A collection of values returned by getKeyPairs.\n",
                 "properties": {
                     "fingerPrint": {
-                        "type": "boolean",
+                        "type": "string",
                         "description": "Finger print of the key pair.\n"
                     },
                     "id": {
@@ -57165,6 +57435,153 @@
                 "required": [
                     "ids",
                     "zones",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:resourcemanager/getFolders:getFolders": {
+            "description": "This data source provides the resource manager folders of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.84.0+.\n\n\u003e **NOTE:**  You can view only the information of the first-level child folders of the specified folder.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFolders.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of resource manager folders IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by folder name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "parentFolderId": {
+                        "type": "string",
+                        "description": "The ID of the parent folder.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFolders.\n",
+                "properties": {
+                    "folders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getFoldersFolder:getFoldersFolder"
+                        },
+                        "description": "A list of folders. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of folder IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of folder names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "parentFolderId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "folders",
+                    "ids",
+                    "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:resourcemanager/getResourceGroups:getResourceGroups": {
+            "description": "This data source provides resource groups of the current Alibaba Cloud user.\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getResourceGroups.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of resource group IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by resource group name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getResourceGroups.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getResourceGroupsGroup:getResourceGroupsGroup"
+                        },
+                        "description": "A list of resource groups. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of resource group IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of resource group names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groups",
+                    "ids",
+                    "names",
                     "id"
                 ]
             }
