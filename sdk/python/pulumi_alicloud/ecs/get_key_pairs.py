@@ -14,8 +14,8 @@ class GetKeyPairsResult:
     A collection of values returned by getKeyPairs.
     """
     def __init__(__self__, finger_print=None, id=None, ids=None, key_pairs=None, name_regex=None, names=None, output_file=None, resource_group_id=None, tags=None):
-        if finger_print and not isinstance(finger_print, bool):
-            raise TypeError("Expected argument 'finger_print' to be a bool")
+        if finger_print and not isinstance(finger_print, str):
+            raise TypeError("Expected argument 'finger_print' to be a str")
         __self__.finger_print = finger_print
         """
         Finger print of the key pair.
@@ -94,7 +94,7 @@ def get_key_pairs(finger_print=None,ids=None,name_regex=None,output_file=None,re
 
 
 
-    :param bool finger_print: A finger print used to retrieve specified key pair.
+    :param str finger_print: A finger print used to retrieve specified key pair.
     :param list ids: A list of key pair IDs.
     :param str name_regex: A regex string to apply to the resulting key pairs.
     :param str resource_group_id: The Id of resource group which the key pair belongs.

@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
+        /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// (Available in 1.81.0+) PolarDB cluster connection string. Only return the Primary endpoint address if security_ips is configured.
+        /// (Available in 1.81.0+) PolarDB cluster connection string. When security_ips is configured, the address of cluster type endpoint will be returned, and if only "127.0.0.1" is configured, it will also be an empty string.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }

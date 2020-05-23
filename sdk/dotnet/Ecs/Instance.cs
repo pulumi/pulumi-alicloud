@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Ecs
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// User-defined data to customize the startup behaviors of an ECS instance and to pass data into an ECS instance. From version 1.60.0, it can be update in-place. If updated, the instance will reboot to make the change take effect. Note: Not all of changes will take effect and it depends on [cloud-init module type](https://cloudinit.readthedocs.io/en/latest/topics/modules.html).
@@ -612,16 +612,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -937,16 +937,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? SystemDiskSize { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 

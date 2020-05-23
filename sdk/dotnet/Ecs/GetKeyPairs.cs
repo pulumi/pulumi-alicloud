@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A finger print used to retrieve specified key pair.
         /// </summary>
         [Input("fingerPrint")]
-        public bool? FingerPrint { get; set; }
+        public string? FingerPrint { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// Finger print of the key pair.
         /// </summary>
-        public readonly bool FingerPrint;
+        public readonly string FingerPrint;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Ecs
 
         [OutputConstructor]
         private GetKeyPairsResult(
-            bool fingerPrint,
+            string fingerPrint,
 
             string id,
 

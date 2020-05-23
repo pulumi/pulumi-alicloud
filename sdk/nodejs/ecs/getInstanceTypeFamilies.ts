@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PrePaid",
  * }, { async: true }));
  *
- * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.instanceTypeFamilies.0.id;
+ * export const firstInstanceTypeFamilyId = defaultInstanceTypeFamilies.families[0].id;
  * export const instanceIds = defaultInstanceTypeFamilies.ids;
  * ```
  */

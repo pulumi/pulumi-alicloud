@@ -5721,6 +5721,44 @@ export namespace rds {
 }
 
 export namespace resourcemanager {
+    export interface GetFoldersFolder {
+        folderId: string;
+        folderName: string;
+        /**
+         * The ID of the folder.
+         * * `folderId`- The ID of the folder.
+         * * `folderName`- The name of the folder.
+         */
+        id: string;
+    }
+
+    export interface GetResourceGroupsGroup {
+        /**
+         * The ID of the Alibaba Cloud account to which the resource group belongs.
+         */
+        accountId: string;
+        /**
+         * The time when the resource group was created.
+         */
+        createDate: string;
+        /**
+         * The display name of the resource group.
+         */
+        displayName: string;
+        /**
+         * The ID of the resource group.
+         */
+        id: string;
+        /**
+         * The unique identifier of the resource group.
+         */
+        name: string;
+        /**
+         * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+         */
+        status: string;
+    }
+
     export interface ResourceGroupRegionStatus {
         regionId: string;
         /**

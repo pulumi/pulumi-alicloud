@@ -8,6 +8,7 @@ from .ddos_coo_instance import *
 from .dns_domain import *
 from .domain import *
 from .domain_attachment import *
+from .domain_group import *
 from .get_domain_groups import *
 from .get_domain_records import *
 from .get_domain_txt_guid import *

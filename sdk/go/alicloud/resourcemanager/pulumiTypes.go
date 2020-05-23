@@ -115,7 +115,272 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 	}).(ResourceGroupRegionStatusOutput)
 }
 
+type GetFoldersFolder struct {
+	FolderId   string `pulumi:"folderId"`
+	FolderName string `pulumi:"folderName"`
+	// The ID of the folder.
+	// * `folderId`- The ID of the folder.
+	// * `folderName`- The name of the folder.
+	Id string `pulumi:"id"`
+}
+
+// GetFoldersFolderInput is an input type that accepts GetFoldersFolderArgs and GetFoldersFolderOutput values.
+// You can construct a concrete instance of `GetFoldersFolderInput` via:
+//
+// 		 GetFoldersFolderArgs{...}
+//
+type GetFoldersFolderInput interface {
+	pulumi.Input
+
+	ToGetFoldersFolderOutput() GetFoldersFolderOutput
+	ToGetFoldersFolderOutputWithContext(context.Context) GetFoldersFolderOutput
+}
+
+type GetFoldersFolderArgs struct {
+	FolderId   pulumi.StringInput `pulumi:"folderId"`
+	FolderName pulumi.StringInput `pulumi:"folderName"`
+	// The ID of the folder.
+	// * `folderId`- The ID of the folder.
+	// * `folderName`- The name of the folder.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetFoldersFolderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersFolder)(nil)).Elem()
+}
+
+func (i GetFoldersFolderArgs) ToGetFoldersFolderOutput() GetFoldersFolderOutput {
+	return i.ToGetFoldersFolderOutputWithContext(context.Background())
+}
+
+func (i GetFoldersFolderArgs) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderOutput)
+}
+
+// GetFoldersFolderArrayInput is an input type that accepts GetFoldersFolderArray and GetFoldersFolderArrayOutput values.
+// You can construct a concrete instance of `GetFoldersFolderArrayInput` via:
+//
+// 		 GetFoldersFolderArray{ GetFoldersFolderArgs{...} }
+//
+type GetFoldersFolderArrayInput interface {
+	pulumi.Input
+
+	ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput
+	ToGetFoldersFolderArrayOutputWithContext(context.Context) GetFoldersFolderArrayOutput
+}
+
+type GetFoldersFolderArray []GetFoldersFolderInput
+
+func (GetFoldersFolderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFoldersFolder)(nil)).Elem()
+}
+
+func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput {
+	return i.ToGetFoldersFolderArrayOutputWithContext(context.Background())
+}
+
+func (i GetFoldersFolderArray) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFoldersFolderArrayOutput)
+}
+
+type GetFoldersFolderOutput struct{ *pulumi.OutputState }
+
+func (GetFoldersFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFoldersFolder)(nil)).Elem()
+}
+
+func (o GetFoldersFolderOutput) ToGetFoldersFolderOutput() GetFoldersFolderOutput {
+	return o
+}
+
+func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.Context) GetFoldersFolderOutput {
+	return o
+}
+
+func (o GetFoldersFolderOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+func (o GetFoldersFolderOutput) FolderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.FolderName }).(pulumi.StringOutput)
+}
+
+// The ID of the folder.
+// * `folderId`- The ID of the folder.
+// * `folderName`- The name of the folder.
+func (o GetFoldersFolderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFoldersFolder) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetFoldersFolderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFoldersFolderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFoldersFolder)(nil)).Elem()
+}
+
+func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutput() GetFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetFoldersFolderArrayOutput) ToGetFoldersFolderArrayOutputWithContext(ctx context.Context) GetFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFoldersFolder {
+		return vs[0].([]GetFoldersFolder)[vs[1].(int)]
+	}).(GetFoldersFolderOutput)
+}
+
+type GetResourceGroupsGroup struct {
+	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	AccountId string `pulumi:"accountId"`
+	// The time when the resource group was created.
+	CreateDate string `pulumi:"createDate"`
+	// The display name of the resource group.
+	DisplayName string `pulumi:"displayName"`
+	// The ID of the resource group.
+	Id string `pulumi:"id"`
+	// The unique identifier of the resource group.
+	Name string `pulumi:"name"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	Status string `pulumi:"status"`
+}
+
+// GetResourceGroupsGroupInput is an input type that accepts GetResourceGroupsGroupArgs and GetResourceGroupsGroupOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupInput` via:
+//
+// 		 GetResourceGroupsGroupArgs{...}
+//
+type GetResourceGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput
+	ToGetResourceGroupsGroupOutputWithContext(context.Context) GetResourceGroupsGroupOutput
+}
+
+type GetResourceGroupsGroupArgs struct {
+	// The ID of the Alibaba Cloud account to which the resource group belongs.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The time when the resource group was created.
+	CreateDate pulumi.StringInput `pulumi:"createDate"`
+	// The display name of the resource group.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The ID of the resource group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The unique identifier of the resource group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetResourceGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput {
+	return i.ToGetResourceGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupArgs) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupOutput)
+}
+
+// GetResourceGroupsGroupArrayInput is an input type that accepts GetResourceGroupsGroupArray and GetResourceGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetResourceGroupsGroupArrayInput` via:
+//
+// 		 GetResourceGroupsGroupArray{ GetResourceGroupsGroupArgs{...} }
+//
+type GetResourceGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput
+	ToGetResourceGroupsGroupArrayOutputWithContext(context.Context) GetResourceGroupsGroupArrayOutput
+}
+
+type GetResourceGroupsGroupArray []GetResourceGroupsGroupInput
+
+func (GetResourceGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput {
+	return i.ToGetResourceGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsGroupArray) ToGetResourceGroupsGroupArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsGroupArrayOutput)
+}
+
+type GetResourceGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutput() GetResourceGroupsGroupOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupOutput) ToGetResourceGroupsGroupOutputWithContext(ctx context.Context) GetResourceGroupsGroupOutput {
+	return o
+}
+
+// The ID of the Alibaba Cloud account to which the resource group belongs.
+func (o GetResourceGroupsGroupOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The time when the resource group was created.
+func (o GetResourceGroupsGroupOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The display name of the resource group.
+func (o GetResourceGroupsGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetResourceGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the resource group.
+func (o GetResourceGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
+func (o GetResourceGroupsGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetResourceGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsGroup)(nil)).Elem()
+}
+
+func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutput() GetResourceGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupArrayOutput) ToGetResourceGroupsGroupArrayOutputWithContext(ctx context.Context) GetResourceGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsGroup {
+		return vs[0].([]GetResourceGroupsGroup)[vs[1].(int)]
+	}).(GetResourceGroupsGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
+	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
 }

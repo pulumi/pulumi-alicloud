@@ -286,6 +286,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_domain_attachment": {Tok: resource(dnsMod, "DomainAttachment")},
 			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
 			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
+			"alicloud_alidns_domain_group":   {Tok: resource(dnsMod, "DomainGroup")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -462,12 +463,14 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ram_account_password_policy": {Tok: resource(ramMod, "AccountPasswordPolicy")},
 
 			// ResourceManager
-			"alicloud_resource_manager_handshake":      {Tok: resource(resourceManagerMod, "Handshake")},
-			"alicloud_resource_manager_folder":         {Tok: resource(resourceManagerMod, "Folder")},
-			"alicloud_resource_manager_resource_group": {Tok: resource(resourceManagerMod, "ResourceGroup")},
-			"alicloud_resource_manager_role":           {Tok: resource(resourceManagerMod, "Role")},
-			"alicloud_resource_manager_account":        {Tok: resource(resourceManagerMod, "Account")},
-			"alicloud_resource_manager_policy":         {Tok: resource(resourceManagerMod, "Policy")},
+			"alicloud_resource_manager_handshake":          {Tok: resource(resourceManagerMod, "Handshake")},
+			"alicloud_resource_manager_folder":             {Tok: resource(resourceManagerMod, "Folder")},
+			"alicloud_resource_manager_resource_group":     {Tok: resource(resourceManagerMod, "ResourceGroup")},
+			"alicloud_resource_manager_role":               {Tok: resource(resourceManagerMod, "Role")},
+			"alicloud_resource_manager_account":            {Tok: resource(resourceManagerMod, "Account")},
+			"alicloud_resource_manager_policy":             {Tok: resource(resourceManagerMod, "Policy")},
+			"alicloud_resource_manager_resource_directory": {Tok: resource(resourceManagerMod, "ResourceDirectory")},
+			"alicloud_resource_manager_policy_version":     {Tok: resource(resourceManagerMod, "PolicyVersion")},
 
 			// RocketMQ
 			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
@@ -628,6 +631,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_records":          {Tok: dataSource(dnsMod, "getRecords")},
 			"alicloud_dns_resolution_lines": {Tok: dataSource(dnsMod, "getResolutionLines")},
 			"alicloud_dns_domain_txt_guid":  {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
+			"alicloud_alidns_instance":      {Tok: dataSource(dnsMod, "getInstance")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -747,6 +751,10 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_instance_classes": {Tok: dataSource(rdsMod, "getInstanceClasses")},
 			"alicloud_db_instance_engines": {Tok: dataSource(rdsMod, "getInstanceEngines")},
 			"alicloud_db_zones":            {Tok: dataSource(rdsMod, "getZones")},
+
+			// ResourceManager
+			"alicloud_resource_manager_folders":         {Tok: dataSource(resourceManagerMod, "getFolders")},
+			"alicloud_resource_manager_resource_groups": {Tok: dataSource(resourceManagerMod, "getResourceGroups")},
 
 			// RocketMq
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},

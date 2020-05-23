@@ -68,6 +68,18 @@ def get_instance_type_families(generation=None,instance_charge_type=None,output_
 
     > **NOTE:** Available in 1.54.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecs.get_instance_type_families(instance_charge_type="PrePaid")
+    pulumi.export("firstInstanceTypeFamilyId", default.families[0]["id"])
+    pulumi.export("instanceIds", default.ids)
+    ```
 
 
 

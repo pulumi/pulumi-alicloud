@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// Provides a DNS Group resource.
-    /// </summary>
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
