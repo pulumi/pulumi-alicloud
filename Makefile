@@ -10,7 +10,7 @@ PROVIDER_ORG        := terraform-providers
 TFGEN               := pulumi-tfgen-${PACK}
 PROVIDER            := pulumi-resource-${PACK}
 VERSION             := $(shell scripts/get-version)
-PYPI_VERSION        := $(shell scripts/get-py-version)
+PYPI_VERSION        := $(shell cd scripts && ./get-py-version)
 PROVIDER_LATEST_SHA := $(shell scripts/get-tfprovider-sha ${PACK})
 LATEST_RESOURCE_PROVIDER_VERSION := $(shell curl --silent "https://api.github.com/repos/pulumi/pulumi-${PACK}/tags" | jq ".[0]".name -r)
 PROVIDER_VERSION := ${LATEST_RESOURCE_PROVIDER_VERSION:v%=%}
