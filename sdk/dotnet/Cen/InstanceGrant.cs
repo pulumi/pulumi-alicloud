@@ -13,6 +13,56 @@ namespace Pulumi.AliCloud.Cen
     /// Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
     /// 
     /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm). 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
+    ///         var account1 = new AliCloud.Provider("account1", new AliCloud.ProviderArgs
+    ///         {
+    ///             AccessKey = "access123",
+    ///             SecretKey = "secret123",
+    ///         });
+    ///         var account2 = new AliCloud.Provider("account2", new AliCloud.ProviderArgs
+    ///         {
+    ///             AccessKey = "access456",
+    ///             SecretKey = "secret456",
+    ///         });
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccCenInstanceGrantBasic";
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/16",
+    ///         });
+    ///         var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new AliCloud.Cen.InstanceGrantArgs
+    ///         {
+    ///             CenId = cen.Id,
+    ///             CenOwnerId = "uid2",
+    ///             ChildInstanceId = vpc.Id,
+    ///         });
+    ///         var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceOwnerId = "uid1",
+    ///             ChildInstanceRegionId = "cn-qingdao",
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class InstanceGrant : Pulumi.CustomResource
     {

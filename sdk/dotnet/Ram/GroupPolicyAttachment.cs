@@ -11,6 +11,58 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM Group Policy attachment resource. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a RAM Group Policy attachment.
+    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
+    ///         {
+    ///             Comments = "this is a group comments.",
+    ///             Force = true,
+    ///         });
+    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
+    ///         {
+    ///             Description = "this is a policy test",
+    ///             Document = @"    {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": [
+    ///             ""oss:ListObjects"",
+    ///             ""oss:GetObject""
+    ///           ],
+    ///           ""Effect"": ""Allow"",
+    ///           ""Resource"": [
+    ///             ""acs:oss:*:*:mybucket"",
+    ///             ""acs:oss:*:*:mybucket/*""
+    ///           ]
+    ///         }
+    ///       ],
+    ///         ""Version"": ""1""
+    ///     }
+    ///   
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///         var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new AliCloud.Ram.GroupPolicyAttachmentArgs
+    ///         {
+    ///             GroupName = @group.Name,
+    ///             PolicyName = policy.Name,
+    ///             PolicyType = policy.Type,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupPolicyAttachment : Pulumi.CustomResource
     {

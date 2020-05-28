@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policiesDs = Output.Create(AliCloud.Ram.GetPolicies.InvokeAsync(new AliCloud.Ram.GetPoliciesArgs
+        ///         {
+        ///             GroupName = "group1",
+        ///             OutputFile = "policies.txt",
+        ///             Type = "System",
+        ///             UserName = "user1",
+        ///         }));
+        ///         this.FirstPolicyName = policiesDs.Apply(policiesDs =&gt; policiesDs.Policies[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstPolicyName")]
+        ///     public Output&lt;string&gt; FirstPolicyName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPoliciesResult> InvokeAsync(GetPoliciesArgs? args = null, InvokeOptions? options = null)

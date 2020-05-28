@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Bandwidth Packages available to the user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bwp = Output.Create(AliCloud.Cen.GetBandwidthPackages.InvokeAsync(new AliCloud.Cen.GetBandwidthPackagesArgs
+        ///         {
+        ///             InstanceId = "cen-id1",
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenBandwidthPackageId = bwp.Apply(bwp =&gt; bwp.Packages[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenBandwidthPackageId")]
+        ///     public Output&lt;string&gt; FirstCenBandwidthPackageId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBandwidthPackagesResult> InvokeAsync(GetBandwidthPackagesArgs? args = null, InvokeOptions? options = null)

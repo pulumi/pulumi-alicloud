@@ -11,6 +11,29 @@ namespace Pulumi.AliCloud.Kms
 {
     /// <summary>
     /// A kms key can help user to protect data security in the transmission process.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var key = new AliCloud.Kms.Key("key", new AliCloud.Kms.KeyArgs
+    ///         {
+    ///             DeletionWindowInDays = "7",
+    ///             Description = "Hello KMS",
+    ///             IsEnabled = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {

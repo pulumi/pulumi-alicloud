@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vpnGateways = Output.Create(AliCloud.Vpn.GetGateways.InvokeAsync(new AliCloud.Vpn.GetGatewaysArgs
+        ///         {
+        ///             BusinessStatus = "Normal",
+        ///             Ids = 
+        ///             {
+        ///                 "fake-vpn-id1",
+        ///                 "fake-vpn-id2",
+        ///             },
+        ///             NameRegex = "testAcc*",
+        ///             OutputFile = "/tmp/vpns",
+        ///             Status = "active",
+        ///             VpcId = "fake-vpc-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)

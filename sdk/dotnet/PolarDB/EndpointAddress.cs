@@ -14,6 +14,60 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available in v1.68.0+. Each PolarDB instance will allocate a intranet connection string automatically and its prefix is Cluster ID.
     ///  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "PolarDB";
+    ///         var name = config.Get("name") ?? "polardbconnectionbasic";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///         });
+    ///         var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new AliCloud.PolarDB.ClusterArgs
+    ///         {
+    ///             DbType = "MySQL",
+    ///             DbVersion = "8.0",
+    ///             PayType = "PostPaid",
+    ///             DbNodeClass = "polar.mysql.x4.large",
+    ///             VswitchId = defaultSwitch.Id,
+    ///             Description = name,
+    ///         });
+    ///         var defaultEndpoints = defaultCluster.Id.Apply(id =&gt; AliCloud.PolarDB.GetEndpoints.InvokeAsync(new AliCloud.PolarDB.GetEndpointsArgs
+    ///         {
+    ///             DbClusterId = id,
+    ///         }));
+    ///         var endpoint = new AliCloud.PolarDB.EndpointAddress("endpoint", new AliCloud.PolarDB.EndpointAddressArgs
+    ///         {
+    ///             DbClusterId = defaultCluster.Id,
+    ///             DbEndpointId = defaultEndpoints.Apply(defaultEndpoints =&gt; defaultEndpoints.Endpoints[0].DbEndpointId),
+    ///             ConnectionPrefix = "testpolardbconn",
+    ///             NetType = "Public",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EndpointAddress : Pulumi.CustomResource
     {

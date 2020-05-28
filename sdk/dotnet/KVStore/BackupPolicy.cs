@@ -11,6 +11,64 @@ namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
     /// Provides a backup policy for ApsaraDB Redis / Memcache instance resource. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "KVStore";
+    ///         var multiAz = config.Get("multiAz") ?? "false";
+    ///         var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             EngineVersion = "2.8",
+    ///             InstanceClass = "Memcache",
+    ///             InstanceName = name,
+    ///             InstanceType = "memcache.master.small.default",
+    ///             PrivateIp = "172.16.0.10",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new AliCloud.KVStore.BackupPolicyArgs
+    ///         {
+    ///             BackupPeriods = 
+    ///             {
+    ///                 "Tuesday",
+    ///                 "Wednesday",
+    ///             },
+    ///             BackupTime = "10:00Z-11:00Z",
+    ///             InstanceId = defaultInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {

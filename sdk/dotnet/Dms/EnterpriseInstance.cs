@@ -14,6 +14,41 @@ namespace Pulumi.AliCloud.Dms
     /// 
     /// &gt; **NOTE:** API users must first register in DMS.
     /// &gt; **NOTE:** Available in 1.81.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Dms.EnterpriseInstance("default", new AliCloud.Dms.EnterpriseInstanceArgs
+    ///         {
+    ///             DatabasePassword = "Yourpassword123",
+    ///             DatabaseUser = "your_user_name",
+    ///             DbaUid = "1182725234xxxxxxx",
+    ///             EcsRegion = "cn-shanghai",
+    ///             EnvType = "test",
+    ///             ExportTimeout = 600,
+    ///             Host = "rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com",
+    ///             InstanceAlias = "your_alias_name",
+    ///             InstanceSource = "RDS",
+    ///             InstanceType = "MySQL",
+    ///             NetworkType = "VPC",
+    ///             Port = 3306,
+    ///             QueryTimeout = 60,
+    ///             SafeRule = "自由操作",
+    ///             Tid = "12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EnterpriseInstance : Pulumi.CustomResource
     {

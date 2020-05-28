@@ -18,6 +18,35 @@ namespace Pulumi.AliCloud.PolarDB
         /// &gt; **NOTE:** Available in v1.70.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var polardbClustersDs = Output.Create(AliCloud.PolarDB.GetClusters.InvokeAsync(new AliCloud.PolarDB.GetClustersArgs
+        ///         {
+        ///             DescriptionRegex = "pc-\\w+",
+        ///             Status = "Running",
+        ///         }));
+        ///         var @default = polardbClustersDs.Apply(polardbClustersDs =&gt; Output.Create(AliCloud.PolarDB.GetAccounts.InvokeAsync(new AliCloud.PolarDB.GetAccountsArgs
+        ///         {
+        ///             DbClusterId = polardbClustersDs.Clusters[0].Id,
+        ///         })));
+        ///         this.Ends = @default.Apply(@default =&gt; @default.Accounts[0].AccountName);
+        ///     }
+        /// 
+        ///     [Output("ends")]
+        ///     public Output&lt;string&gt; Ends { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)

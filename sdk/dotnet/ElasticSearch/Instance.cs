@@ -15,6 +15,41 @@ namespace Pulumi.AliCloud.ElasticSearch
     /// &gt; **NOTE:** Only one operation is supported in a request. So if `data_node_spec` and `data_node_disk_size` are both changed, system will respond error.
     /// 
     /// &gt; **NOTE:** At present, `version` can not be modified once instance has been created.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new AliCloud.ElasticSearch.Instance("instance", new AliCloud.ElasticSearch.InstanceArgs
+    ///         {
+    ///             InstanceChargeType = "PostPaid",
+    ///             DataNodeAmount = "2",
+    ///             DataNodeSpec = "elasticsearch.sn2ne.large",
+    ///             DataNodeDiskSize = "20",
+    ///             DataNodeDiskType = "cloud_ssd",
+    ///             VswitchId = "some vswitch id",
+    ///             Password = "Your password",
+    ///             Version = "5.5.3_with_X-Pack",
+    ///             Description = "description",
+    ///             ZoneCount = "2",
+    ///             Tags = 
+    ///             {
+    ///                 { "key1", "value1" },
+    ///                 { "key2", "value2" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

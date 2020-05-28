@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides an alias for the Alibaba Cloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var aliasDs = Output.Create(AliCloud.Ram.GetAccountAliases.InvokeAsync(new AliCloud.Ram.GetAccountAliasesArgs
+        ///         {
+        ///             OutputFile = "alias.txt",
+        ///         }));
+        ///         this.AccountAlias = aliasDs.Apply(aliasDs =&gt; aliasDs.AccountAlias);
+        ///     }
+        /// 
+        ///     [Output("accountAlias")]
+        ///     public Output&lt;string&gt; AccountAlias { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountAliasesResult> InvokeAsync(GetAccountAliasesArgs? args = null, InvokeOptions? options = null)

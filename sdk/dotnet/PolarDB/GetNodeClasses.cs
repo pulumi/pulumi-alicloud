@@ -17,6 +17,37 @@ namespace Pulumi.AliCloud.PolarDB
         /// &gt; **NOTE:** Available in v1.81.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "PolarDB",
+        ///         }));
+        ///         var resourcesNodeClasses = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.PolarDB.GetNodeClasses.InvokeAsync(new AliCloud.PolarDB.GetNodeClassesArgs
+        ///         {
+        ///             DbType = "MySQL",
+        ///             DbVersion = "5.6",
+        ///             PayType = "Postpaid",
+        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///         })));
+        ///         this.FirstPolardbNodeClass = resourcesNodeClasses.Apply(resourcesNodeClasses =&gt; resourcesNodeClasses.Classes);
+        ///     }
+        /// 
+        ///     [Output("firstPolardbNodeClass")]
+        ///     public Output&lt;string&gt; FirstPolardbNodeClass { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeClassesResult> InvokeAsync(GetNodeClassesArgs args, InvokeOptions? options = null)

@@ -19,6 +19,31 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var snapshots = Output.Create(AliCloud.Ecs.GetSnapshots.InvokeAsync(new AliCloud.Ecs.GetSnapshotsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "s-123456890abcdef",
+        ///             },
+        ///             NameRegex = "tf-testAcc-snapshot",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// ##  Argument Reference
         /// 

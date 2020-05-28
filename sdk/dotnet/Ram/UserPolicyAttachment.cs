@@ -11,6 +11,61 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM User Policy attachment resource. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a RAM User Policy attachment.
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888888",
+    ///         });
+    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
+    ///         {
+    ///             Description = "this is a policy test",
+    ///             Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": [
+    ///           ""oss:ListObjects"",
+    ///           ""oss:GetObject""
+    ///         ],
+    ///         ""Effect"": ""Allow"",
+    ///         ""Resource"": [
+    ///           ""acs:oss:*:*:mybucket"",
+    ///           ""acs:oss:*:*:mybucket/*""
+    ///         ]
+    ///       }
+    ///     ],
+    ///       ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///         var attach = new AliCloud.Ram.UserPolicyAttachment("attach", new AliCloud.Ram.UserPolicyAttachmentArgs
+    ///         {
+    ///             PolicyName = policy.Name,
+    ///             PolicyType = policy.Type,
+    ///             UserName = user.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class UserPolicyAttachment : Pulumi.CustomResource
     {

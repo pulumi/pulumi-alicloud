@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.Dns
         /// &gt; **NOTE:** Available in 1.60.0.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resolutionLinesDs = Output.Create(AliCloud.Dns.GetResolutionLines.InvokeAsync(new AliCloud.Dns.GetResolutionLinesArgs
+        ///         {
+        ///             LineCodes = 
+        ///             {
+        ///                 "cn_unicom_shanxi",
+        ///             },
+        ///             OutputFile = "support_lines.txt",
+        ///         }));
+        ///         this.FirstLineCode = resolutionLinesDs.Apply(resolutionLinesDs =&gt; resolutionLinesDs.Lines[0].LineCode);
+        ///     }
+        /// 
+        ///     [Output("firstLineCode")]
+        ///     public Output&lt;string&gt; FirstLineCode { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResolutionLinesResult> InvokeAsync(GetResolutionLinesArgs? args = null, InvokeOptions? options = null)

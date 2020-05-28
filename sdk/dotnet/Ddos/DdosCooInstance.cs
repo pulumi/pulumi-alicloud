@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Ddos
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
     /// &gt; **NOTE:** Available in 1.37.0+ .
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var newInstance = new AliCloud.Ddos.DdosCooInstance("newInstance", new AliCloud.Ddos.DdosCooInstanceArgs
+    ///         {
+    ///             Bandwidth = "30",
+    ///             BaseBandwidth = "30",
+    ///             DomainCount = "50",
+    ///             Period = "1",
+    ///             PortCount = "50",
+    ///             ServiceBandwidth = "100",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DdosCooInstance : Pulumi.CustomResource
     {

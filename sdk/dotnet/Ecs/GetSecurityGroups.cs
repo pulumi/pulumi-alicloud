@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var secGroupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             NameRegex = "^web-",
+        ///             OutputFile = "web_access.json",
+        ///         }));
+        ///         // In conjunction with a VPC
+        ///         var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///         });
+        ///         var primarySecGroupsDs = primaryVpcDs.Id.Apply(id =&gt; AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             VpcId = id,
+        ///         }));
+        ///         this.FirstGroupId = primarySecGroupsDs.Apply(primarySecGroupsDs =&gt; primarySecGroupsDs.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstGroupId")]
+        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupsResult> InvokeAsync(GetSecurityGroupsArgs? args = null, InvokeOptions? options = null)

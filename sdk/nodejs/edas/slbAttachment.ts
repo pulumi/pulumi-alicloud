@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.SlbAttachment("default", {
- *     appId: var.app_id,
- *     slbId: var.slb_id,
- *     slbIp: var.slb_ip,
- *     type: var.type,
- *     listenerPort: var.listener_port,
- *     vserverGroupId: var.vserver_group_id,
+ * const _default = new alicloud.edas.SlbAttachment("default", {
+ *     appId: _var.app_id,
+ *     slbId: _var.slb_id,
+ *     slbIp: _var.slb_ip,
+ *     type: _var.type,
+ *     listenerPort: _var.listener_port,
+ *     vserverGroupId: _var.vserver_group_id,
  * });
  * ```
  */

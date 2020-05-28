@@ -17,6 +17,85 @@ namespace Pulumi.AliCloud.Vpc
     /// &gt; **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
     /// 
     /// &gt; **NOTE:** Using this resource need to open a whitelist.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "NetworkAclEntries";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new AliCloud.Vpc.NetworkAclAttachmentArgs
+    ///         {
+    ///             NetworkAclId = defaultNetworkAcl.Id,
+    ///             Resources = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclAttachmentResourceArgs
+    ///                 {
+    ///                     ResourceId = defaultSwitch.Id,
+    ///                     ResourceType = "VSwitch",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultNetworkAclEntries = new AliCloud.Vpc.NetworkAclEntries("defaultNetworkAclEntries", new AliCloud.Vpc.NetworkAclEntriesArgs
+    ///         {
+    ///             Egresses = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclEntriesEgressArgs
+    ///                 {
+    ///                     Description = name,
+    ///                     DestinationCidrIp = "0.0.0.0/32",
+    ///                     EntryType = "custom",
+    ///                     Name = name,
+    ///                     Policy = "accept",
+    ///                     Port = "-1/-1",
+    ///                     Protocol = "all",
+    ///                 },
+    ///             },
+    ///             Ingresses = 
+    ///             {
+    ///                 new AliCloud.Vpc.Inputs.NetworkAclEntriesIngressArgs
+    ///                 {
+    ///                     Description = name,
+    ///                     EntryType = "custom",
+    ///                     Name = name,
+    ///                     Policy = "accept",
+    ///                     Port = "-1/-1",
+    ///                     Protocol = "all",
+    ///                     SourceCidrIp = "0.0.0.0/32",
+    ///                 },
+    ///             },
+    ///             NetworkAclId = defaultNetworkAcl.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NetworkAclEntries : Pulumi.CustomResource
     {

@@ -15,6 +15,27 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the server certificate list.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerCertificates.InvokeAsync());
+        ///         this.FirstSlbServerCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbServerCertificateId")]
+        ///     public Output&lt;string&gt; FirstSlbServerCertificateId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerCertificatesResult> InvokeAsync(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)

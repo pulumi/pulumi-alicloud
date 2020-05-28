@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.ecs.ReservedInstance("default", {
+ * const _default = new alicloud.ecs.ReservedInstance("default", {
  *     instanceType: "ecs.g6.large",
  *     instanceAmount: "1",
  *     periodUnit: "Year",

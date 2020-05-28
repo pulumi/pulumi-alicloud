@@ -17,6 +17,62 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "snat-entry-example-name";
+        ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Zones[0].Id),
+        ///             CidrBlock = "172.16.0.0/21",
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
+        ///         {
+        ///             Specification = "Small",
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooEip = new AliCloud.Ecs.Eip("fooEip", new AliCloud.Ecs.EipArgs
+        ///         {
+        ///         });
+        ///         var fooEipAssociation = new AliCloud.Ecs.EipAssociation("fooEipAssociation", new AliCloud.Ecs.EipAssociationArgs
+        ///         {
+        ///             AllocationId = fooEip.Id,
+        ///             InstanceId = fooNatGateway.Id,
+        ///         });
+        ///         var fooSnatEntry = new AliCloud.Vpc.SnatEntry("fooSnatEntry", new AliCloud.Vpc.SnatEntryArgs
+        ///         {
+        ///             SnatIp = fooEip.IpAddress,
+        ///             SnatTableId = fooNatGateway.SnatTableIds,
+        ///             SourceVswitchId = fooSwitch.Id,
+        ///         });
+        ///         var fooSnatEntries = fooSnatEntry.SnatTableId.Apply(snatTableId =&gt; AliCloud.Vpc.GetSnatEntries.InvokeAsync(new AliCloud.Vpc.GetSnatEntriesArgs
+        ///         {
+        ///             SnatTableId = snatTableId,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)

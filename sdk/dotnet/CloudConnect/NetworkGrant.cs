@@ -17,6 +17,45 @@ namespace Pulumi.AliCloud.CloudConnect
     /// &gt; **NOTE:** Available in 1.63.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network Grant. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ccnAccount = new AliCloud.Provider("ccnAccount", new AliCloud.ProviderArgs
+    ///         {
+    ///         });
+    ///         var cenAccount = new AliCloud.Provider("cenAccount", new AliCloud.ProviderArgs
+    ///         {
+    ///             AccessKey = "xxxxxx",
+    ///             Region = "cn-hangzhou",
+    ///             SecretKey = "xxxxxx",
+    ///         });
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
+    ///         {
+    ///             IsDefault = "true",
+    ///         });
+    ///         var @default = new AliCloud.CloudConnect.NetworkGrant("default", new AliCloud.CloudConnect.NetworkGrantArgs
+    ///         {
+    ///             CcnId = ccn.Id,
+    ///             CenId = cen.Id,
+    ///             CenUid = "xxxxxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NetworkGrant : Pulumi.CustomResource
     {

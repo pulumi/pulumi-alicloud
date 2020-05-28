@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var recordsDs = Output.Create(AliCloud.Dns.GetRecords.InvokeAsync(new AliCloud.Dns.GetRecordsArgs
+        ///         {
+        ///             DomainName = "xiaozhu.top",
+        ///             HostRecordRegex = "^@",
+        ///             IsLocked = false,
+        ///             OutputFile = "records.txt",
+        ///             Type = "A",
+        ///         }));
+        ///         this.FirstRecordId = recordsDs.Apply(recordsDs =&gt; recordsDs.Records[0].RecordId);
+        ///     }
+        /// 
+        ///     [Output("firstRecordId")]
+        ///     public Output&lt;string&gt; FirstRecordId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordsResult> InvokeAsync(GetRecordsArgs args, InvokeOptions? options = null)

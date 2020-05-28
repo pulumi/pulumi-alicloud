@@ -13,6 +13,51 @@ namespace Pulumi.AliCloud.Rds
     /// Provides an RDS instance resource. A DB instance is an isolated database
     /// environment in the cloud. A DB instance can contain multiple user-created
     /// databases.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a RDS MySQL instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "dbInstanceconfig";
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceChargeType = "Postpaid",
+    ///             InstanceName = name,
+    ///             InstanceStorage = "30",
+    ///             InstanceType = "rds.mysql.s2.large",
+    ///             MonitoringPeriod = "60",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

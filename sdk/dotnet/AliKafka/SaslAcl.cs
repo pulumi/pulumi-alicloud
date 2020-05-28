@@ -16,6 +16,70 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// &gt; **NOTE:**  Only the following regions support create alikafka sasl user.
     /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`ap-southeast-1`,`ap-south-1`,`ap-southeast-5`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var username = config.Get("username") ?? "testusername";
+    ///         var password = config.Get("password") ?? "testpassword";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
+    ///         {
+    ///             DeployType = "5",
+    ///             DiskSize = "500",
+    ///             DiskType = "1",
+    ///             IoMax = "20",
+    ///             TopicQuota = "50",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new AliCloud.AliKafka.TopicArgs
+    ///         {
+    ///             InstanceId = defaultInstance.Id,
+    ///             Remark = "topic-remark",
+    ///             Topic = "test-topic",
+    ///         });
+    ///         var defaultSaslUser = new AliCloud.AliKafka.SaslUser("defaultSaslUser", new AliCloud.AliKafka.SaslUserArgs
+    ///         {
+    ///             InstanceId = defaultInstance.Id,
+    ///             Password = password,
+    ///             Username = username,
+    ///         });
+    ///         var defaultSaslAcl = new AliCloud.AliKafka.SaslAcl("defaultSaslAcl", new AliCloud.AliKafka.SaslAclArgs
+    ///         {
+    ///             AclOperationType = "Write",
+    ///             AclResourceName = defaultTopic.TopicName,
+    ///             AclResourcePatternType = "LITERAL",
+    ///             AclResourceType = "Topic",
+    ///             InstanceId = defaultInstance.Id,
+    ///             Username = defaultSaslUser.Username,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SaslAcl : Pulumi.CustomResource
     {

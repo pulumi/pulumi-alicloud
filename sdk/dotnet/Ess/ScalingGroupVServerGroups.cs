@@ -30,6 +30,96 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "testAccEssVserverGroupsAttachment";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         {
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new AliCloud.Slb.ServerGroupArgs
+    ///         {
+    ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///         });
+    ///         var defaultListener = new List&lt;AliCloud.Slb.Listener&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             defaultListener.Add(new AliCloud.Slb.Listener($"defaultListener-{range.Value}", new AliCloud.Slb.ListenerArgs
+    ///             {
+    ///                 BackendPort = "22",
+    ///                 Bandwidth = "10",
+    ///                 FrontendPort = "22",
+    ///                 HealthCheckType = "tcp",
+    ///                 LoadBalancerId = 
+    ///                 {
+    ///                     defaultLoadBalancer,
+    ///                 }.Select(__item =&gt; __item.Id).ToList()[range.Value],
+    ///                 Protocol = "tcp",
+    ///             }));
+    ///         }
+    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
+    ///         {
+    ///             MaxSize = "2",
+    ///             MinSize = "2",
+    ///             ScalingGroupName = name,
+    ///             VswitchIds = 
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///         });
+    ///         var defaultScalingGroupVServerGroups = new AliCloud.Ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups", new AliCloud.Ess.ScalingGroupVServerGroupsArgs
+    ///         {
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///             VserverGroups = 
+    ///             {
+    ///                 new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupArgs
+    ///                 {
+    ///                     LoadbalancerId = defaultLoadBalancer.Id,
+    ///                     VserverAttributes = 
+    ///                     {
+    ///                         new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs
+    ///                         {
+    ///                             Port = "100",
+    ///                             VserverGroupId = defaultServerGroup.Id,
+    ///                             Weight = "60",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Block vserver_group
     /// 

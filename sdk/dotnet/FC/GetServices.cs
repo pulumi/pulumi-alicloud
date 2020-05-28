@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.FC
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fcServicesDs = Output.Create(AliCloud.FC.GetServices.InvokeAsync(new AliCloud.FC.GetServicesArgs
+        ///         {
+        ///             NameRegex = "sample_fc_service",
+        ///         }));
+        ///         this.FirstFcServiceName = fcServicesDs.Apply(fcServicesDs =&gt; fcServicesDs.Services[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstFcServiceName")]
+        ///     public Output&lt;string&gt; FirstFcServiceName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)

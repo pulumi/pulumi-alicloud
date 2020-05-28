@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.Kms
         /// &gt; **NOTE:** Available in v1.79.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsAliases = Output.Create(AliCloud.Kms.GetAliases.InvokeAsync(new AliCloud.Kms.GetAliasesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "d89e8a53-b708-41aa-8c67-6873axxx",
+        ///             },
+        ///             NameRegex = "alias/tf-testKmsAlias_123",
+        ///         }));
+        ///         this.FirstKeyId = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id;
+        ///     }
+        /// 
+        ///     [Output("firstKeyId")]
+        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAliasesResult> InvokeAsync(GetAliasesArgs? args = null, InvokeOptions? options = null)

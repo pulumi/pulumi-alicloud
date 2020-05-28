@@ -14,6 +14,33 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager Account and how to use it, see [What is Resource Manager Account](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.83.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a Resource Manager Account.
+    ///         var f1 = new AliCloud.ResourceManager.Folder("f1", new AliCloud.ResourceManager.FolderArgs
+    ///         {
+    ///             FolderName = "test1",
+    ///         });
+    ///         var example = new AliCloud.ResourceManager.Account("example", new AliCloud.ResourceManager.AccountArgs
+    ///         {
+    ///             DisplayName = "RDAccount",
+    ///             FolderId = f1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

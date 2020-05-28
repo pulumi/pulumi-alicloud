@@ -15,6 +15,70 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** Available in 1.79.0+
     /// 
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "auto_provisioning_group";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             Owners = "system",
+    ///         }));
+    ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
+    ///         {
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             InstanceType = "ecs.n1.tiny",
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///         });
+    ///         var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", new AliCloud.Ecs.AutoProvisioningGroupArgs
+    ///         {
+    ///             LaunchTemplateConfigs = 
+    ///             {
+    ///                 new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs
+    ///                 {
+    ///                     InstanceType = "ecs.n1.small",
+    ///                     VswitchId = defaultSwitch.Id,
+    ///                 },
+    ///             },
+    ///             LaunchTemplateId = template.Id,
+    ///             PayAsYouGoTargetCapacity = "1",
+    ///             SpotTargetCapacity = "2",
+    ///             TotalTargetCapacity = "4",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Block config
     /// 

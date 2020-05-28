@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.ActionTrail
         /// &gt; **NOTE:** Available in 1.56.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var consumerGroupsDs = Output.Create(AliCloud.ActionTrail.GetConsumerGroups.InvokeAsync(new AliCloud.ActionTrail.GetConsumerGroupsArgs
+        ///         {
+        ///             ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
+        ///             InstanceId = "xxx",
+        ///             OutputFile = "consumerGroups.txt",
+        ///         }));
+        ///         this.FirstGroupName = consumerGroupsDs.Apply(consumerGroupsDs =&gt; consumerGroupsDs.ConsumerIds[0]);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetConsumerGroupsResult> InvokeAsync(GetConsumerGroupsArgs args, InvokeOptions? options = null)

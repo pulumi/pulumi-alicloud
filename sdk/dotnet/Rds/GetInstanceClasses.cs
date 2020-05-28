@@ -17,6 +17,33 @@ namespace Pulumi.AliCloud.Rds
         /// &gt; **NOTE:** Available in v1.46.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resources = Output.Create(AliCloud.Rds.GetInstanceClasses.InvokeAsync(new AliCloud.Rds.GetInstanceClassesArgs
+        ///         {
+        ///             Engine = "MySQL",
+        ///             EngineVersion = "5.6",
+        ///             InstanceChargeType = "PostPaid",
+        ///             OutputFile = "./classes.txt",
+        ///         }));
+        ///         this.FirstDbInstanceClass = resources.Apply(resources =&gt; resources.InstanceClasses[0].InstanceClass);
+        ///     }
+        /// 
+        ///     [Output("firstDbInstanceClass")]
+        ///     public Output&lt;string&gt; FirstDbInstanceClass { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs? args = null, InvokeOptions? options = null)

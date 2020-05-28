@@ -19,6 +19,28 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
     /// 
     /// &gt; **NOTE:** Available in 1.68.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.ImageSharePermission("default", new AliCloud.Ecs.ImageSharePermissionArgs
+    ///         {
+    ///             AccountId = "1234567890",
+    ///             ImageId = "m-bp1gxyh***",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageSharePermission : Pulumi.CustomResource
     {

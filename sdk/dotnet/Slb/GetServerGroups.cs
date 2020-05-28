@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the VServer groups related to a server load balancer.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetServerGroups.InvokeAsync(new AliCloud.Slb.GetServerGroupsArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbServerGroups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbServerGroupId")]
+        ///     public Output&lt;string&gt; FirstSlbServerGroupId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs args, InvokeOptions? options = null)

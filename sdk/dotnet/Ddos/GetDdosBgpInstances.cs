@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Ddos
         /// &gt; **NOTE:** Available in 1.57.0+ .
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instanceDdosBgpInstances = Output.Create(AliCloud.Ddos.GetDdosBgpInstances.InvokeAsync(new AliCloud.Ddos.GetDdosBgpInstancesArgs
+        ///         {
+        ///             NameRegex = "^ddosbgp",
+        ///         }));
+        ///         this.Instance = alicloud_ddosbgp_instances.Instance.Select(__item =&gt; __item.Id).ToList();
+        ///     }
+        /// 
+        ///     [Output("instance")]
+        ///     public Output&lt;string&gt; Instance { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosBgpInstancesResult> InvokeAsync(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)

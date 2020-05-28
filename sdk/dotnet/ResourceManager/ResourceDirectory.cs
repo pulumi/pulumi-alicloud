@@ -22,6 +22,25 @@ namespace Pulumi.AliCloud.ResourceManager
     ///   - All member accounts must be removed from the resource directory. 
     ///   - All folders except the root folder must be deleted from the resource directory.
     ///   
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.ResourceManager.ResourceDirectory("example", new AliCloud.ResourceManager.ResourceDirectoryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ResourceDirectory : Pulumi.CustomResource
     {

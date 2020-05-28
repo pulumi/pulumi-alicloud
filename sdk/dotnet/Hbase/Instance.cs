@@ -21,6 +21,35 @@ namespace Pulumi.AliCloud.Hbase
     /// the official website mark  more regions. or you can call [DescribeRegions](https://help.aliyun.com/document_detail/144489.html)
     /// 
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a hbase instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Hbase.Instance("default", new AliCloud.Hbase.InstanceArgs
+    ///         {
+    ///             ColdStorageSize = 0,
+    ///             CoreDiskSize = 400,
+    ///             CoreDiskType = "cloud_efficiency",
+    ///             CoreInstanceQuantity = 2,
+    ///             CoreInstanceType = "hbase.sn1.large",
+    ///             EngineVersion = "2.0",
+    ///             MasterInstanceType = "hbase.sn1.large",
+    ///             PayType = "PostPaid",
+    ///             ZoneId = "cn-shenzhen-b",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

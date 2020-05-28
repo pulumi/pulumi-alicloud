@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.CS
     /// This resource will help you to manager a Swarm Cluster.
     /// 
     /// &gt; **NOTE:** Swarm cluster only supports VPC network and you can specify a VPC network by filed `vswitch_id`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myCluster = new AliCloud.CS.Swarm("myCluster", new AliCloud.CS.SwarmArgs
+    ///         {
+    ///             CidrBlock = "172.18.0.0/24",
+    ///             DiskCategory = "cloud_efficiency",
+    ///             DiskSize = 20,
+    ///             ImageId = @var.Image_id,
+    ///             InstanceType = "ecs.n4.small",
+    ///             NodeNumber = 2,
+    ///             Password = "Yourpassword1234",
+    ///             VswitchId = @var.Vswitch_id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Swarm : Pulumi.CustomResource
     {

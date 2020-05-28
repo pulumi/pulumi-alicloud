@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Yundun
         /// &gt; **NOTE:** Available in 1.63.0+ .
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instanceBastionHostInstances = Output.Create(AliCloud.Yundun.GetBastionHostInstances.InvokeAsync(new AliCloud.Yundun.GetBastionHostInstancesArgs
+        ///         {
+        ///             NameRegex = "^bastionhost",
+        ///         }));
+        ///         this.Instance = alicloud_yundun_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList();
+        ///     }
+        /// 
+        ///     [Output("instance")]
+        ///     public Output&lt;string&gt; Instance { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBastionHostInstancesResult> InvokeAsync(GetBastionHostInstancesArgs? args = null, InvokeOptions? options = null)

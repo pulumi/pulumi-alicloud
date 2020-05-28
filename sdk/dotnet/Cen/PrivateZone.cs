@@ -17,6 +17,43 @@ namespace Pulumi.AliCloud.Cen
     /// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.83.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = defaultNetwork.Id,
+    ///             ChildInstanceRegionId = "cn-hangzhou",
+    ///             InstanceId = defaultInstance.Id,
+    ///         });
+    ///         var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new AliCloud.Cen.PrivateZoneArgs
+    ///         {
+    ///             AccessRegionId = "cn-hangzhou",
+    ///             CenId = defaultInstance.Id,
+    ///             HostRegionId = "cn-hangzhou",
+    ///             HostVpcId = defaultNetwork.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PrivateZone : Pulumi.CustomResource
     {

@@ -14,6 +14,99 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "slbbackendservertest";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             CpuCoreCount = 1,
+    ///             MemorySize = 2,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             Owners = "system",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/16",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             defaultInstance.Add(new AliCloud.Ecs.Instance($"defaultInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
+    ///             {
+    ///                 AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///                 InstanceChargeType = "PostPaid",
+    ///                 InstanceName = name,
+    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///                 InternetChargeType = "PayByTraffic",
+    ///                 InternetMaxBandwidthOut = "10",
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     defaultSecurityGroup,
+    ///                 }.Select(__item =&gt; __item.Id).ToList(),
+    ///                 SystemDiskCategory = "cloud_efficiency",
+    ///                 VswitchId = defaultSwitch.Id,
+    ///             }));
+    ///         }
+    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         {
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var defaultBackendServer = new AliCloud.Slb.BackendServer("defaultBackendServer", new AliCloud.Slb.BackendServerArgs
+    ///         {
+    ///             BackendServers = 
+    ///             {
+    ///                 new AliCloud.Slb.Inputs.BackendServerBackendServerArgs
+    ///                 {
+    ///                     ServerId = defaultInstance[0].Id,
+    ///                     Weight = 100,
+    ///                 },
+    ///                 new AliCloud.Slb.Inputs.BackendServerBackendServerArgs
+    ///                 {
+    ///                     ServerId = defaultInstance[1].Id,
+    ///                     Weight = 100,
+    ///                 },
+    ///             },
+    ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Block servers
     /// 

@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Ess
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ds = Output.Create(AliCloud.Ess.GetScheduledTasks.InvokeAsync(new AliCloud.Ess.GetScheduledTasksArgs
+        ///         {
+        ///             NameRegex = "scheduled_task_name",
+        ///             ScheduledTaskId = "scheduled_task_id",
+        ///         }));
+        ///         this.FirstScheduledTask = ds.Apply(ds =&gt; ds.Tasks[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstScheduledTask")]
+        ///     public Output&lt;string&gt; FirstScheduledTask { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScheduledTasksResult> InvokeAsync(GetScheduledTasksArgs? args = null, InvokeOptions? options = null)

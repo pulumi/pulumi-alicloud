@@ -18,6 +18,28 @@ namespace Pulumi.AliCloud.Hbase
         /// &gt; **NOTE:**  Available in 1.67.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var hbase = Output.Create(AliCloud.Hbase.GetInstances.InvokeAsync(new AliCloud.Hbase.GetInstancesArgs
+        ///         {
+        ///             AvailabilityZone = "cn-shenzhen-b",
+        ///             NameRegex = "tf_testAccHBase",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

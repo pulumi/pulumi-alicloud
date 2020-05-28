@@ -11,6 +11,61 @@ namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
     /// Provides a forward resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "forward-entry-example-name";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new AliCloud.Vpc.NatGatewayArgs
+    ///         {
+    ///             Specification = "Small",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultEip = new AliCloud.Ecs.Eip("defaultEip", new AliCloud.Ecs.EipArgs
+    ///         {
+    ///         });
+    ///         var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new AliCloud.Ecs.EipAssociationArgs
+    ///         {
+    ///             AllocationId = defaultEip.Id,
+    ///             InstanceId = defaultNatGateway.Id,
+    ///         });
+    ///         var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new AliCloud.Vpc.ForwardEntryArgs
+    ///         {
+    ///             ExternalIp = defaultEip.IpAddress,
+    ///             ExternalPort = "80",
+    ///             ForwardTableId = defaultNatGateway.ForwardTableIds,
+    ///             InternalIp = "172.16.0.3",
+    ///             InternalPort = "8080",
+    ///             IpProtocol = "tcp",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ForwardEntry : Pulumi.CustomResource
     {

@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.Cas
     /// &gt; **NOTE:** The Cas Certificate region only support cn-hangzhou, ap-south-1, me-east-1, eu-central-1, ap-northeast-1, ap-southeast-2.
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+ .
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a new Certificate.
+    ///         var cert = new AliCloud.Cas.Certificate("cert", new AliCloud.Cas.CertificateArgs
+    ///         {
+    ///             Cert = File.ReadAllText($"{path.Module}/test.crt"),
+    ///             Key = File.ReadAllText($"{path.Module}/test.key"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Certificate : Pulumi.CustomResource
     {

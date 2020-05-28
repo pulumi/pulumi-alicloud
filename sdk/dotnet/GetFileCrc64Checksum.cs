@@ -17,6 +17,29 @@ namespace Pulumi.AliCloud
         /// &gt; **NOTE:** Available in 1.59.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.GetFileCrc64Checksum.InvokeAsync(new AliCloud.GetFileCrc64ChecksumArgs
+        ///         {
+        ///             Filename = "exampleFileName",
+        ///         }));
+        ///         this.FileCrc64Checksum = data.Alicloud_file_crc64_checksum.Defualt.Checksum;
+        ///     }
+        /// 
+        ///     [Output("fileCrc64Checksum")]
+        ///     public Output&lt;string&gt; FileCrc64Checksum { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileCrc64ChecksumResult> InvokeAsync(GetFileCrc64ChecksumArgs args, InvokeOptions? options = null)

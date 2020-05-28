@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.RocketMQ
     /// For more information about how to use it, see [RocketMQ Group Management API](https://www.alibabacloud.com/help/doc-detail/29616.html). 
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "onsInstanceName";
+    ///         var groupId = config.Get("groupId") ?? "GID-onsGroupDatasourceName";
+    ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
+    ///         {
+    ///             Remark = "default_ons_instance_remark",
+    ///         });
+    ///         var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new AliCloud.RocketMQ.GroupArgs
+    ///         {
+    ///             GroupId = groupId,
+    ///             InstanceId = defaultInstance.Id,
+    ///             Remark = "dafault_ons_group_remark",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

@@ -46,20 +46,20 @@ import * as utilities from "../utilities";
  *     zoneId: defaultInstanceTypes1.types[0].zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[];
- * for (const range = {value: 0}; range.value < (var.vpc_id == "" ? 1 : 0 == true); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: var.vpc_cidr}));
+ * for (const range = {value: 0}; range.value < (_var.vpc_id == "" ? 1 : 0 == true); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: _var.vpc_cidr}));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[];
- * for (const range = {value: 0}; range.value < (var.security_group_id == "" ? 1 : 0 == true); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id}));
+ * for (const range = {value: 0}; range.value < (_var.security_group_id == "" ? 1 : 0 == true); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id}));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[];
- * for (const range = {value: 0}; range.value < (var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
+ * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
- *         availabilityZone: var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : var.availability_zone,
- *         cidrBlock: var.vswitch_cidr,
- *         vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id,
+ *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         cidrBlock: _var.vswitch_cidr,
+ *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
  * }
  * // Ram role Resource for Module
@@ -123,10 +123,10 @@ import * as utilities from "../utilities";
  *     ],
  *     highAvailabilityEnable: true,
  *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId),
- *     securityGroupId: var.security_group_id == "" ? defaultSecurityGroup.id : var.security_group_id,
+ *     securityGroupId: _var.security_group_id == "" ? defaultSecurityGroup.id : _var.security_group_id,
  *     isOpenPublicIp: true,
  *     chargeType: "PostPaid",
- *     vswitchId: var.vswitch_id == "" ? vswitch.id : var.vswitch_id,
+ *     vswitchId: _var.vswitch_id == "" ? vswitch.id : _var.vswitch_id,
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",
@@ -166,20 +166,20 @@ import * as utilities from "../utilities";
  *     zoneId: defaultInstanceTypes1.types[0].zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[];
- * for (const range = {value: 0}; range.value < (var.vpc_id == "" ? 1 : 0 == true); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: var.vpc_cidr}));
+ * for (const range = {value: 0}; range.value < (_var.vpc_id == "" ? 1 : 0 == true); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: _var.vpc_cidr}));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[];
- * for (const range = {value: 0}; range.value < (var.security_group_id == "" ? 1 : 0 == true); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id}));
+ * for (const range = {value: 0}; range.value < (_var.security_group_id == "" ? 1 : 0 == true); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id}));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[];
- * for (const range = {value: 0}; range.value < (var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
+ * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
- *         availabilityZone: var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : var.availability_zone,
- *         cidrBlock: var.vswitch_cidr,
- *         vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id,
+ *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         cidrBlock: _var.vswitch_cidr,
+ *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
  * }
  * // Ram role Resource for Module
@@ -243,10 +243,10 @@ import * as utilities from "../utilities";
  *     ],
  *     highAvailabilityEnable: true,
  *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId),
- *     securityGroupId: var.security_group_id == "" ? defaultSecurityGroup.id : var.security_group_id,
+ *     securityGroupId: _var.security_group_id == "" ? defaultSecurityGroup.id : _var.security_group_id,
  *     isOpenPublicIp: true,
  *     chargeType: "PostPaid",
- *     vswitchId: var.vswitch_id == "" ? vswitch.id : var.vswitch_id,
+ *     vswitchId: _var.vswitch_id == "" ? vswitch.id : _var.vswitch_id,
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",
@@ -286,20 +286,20 @@ import * as utilities from "../utilities";
  *     zoneId: defaultInstanceTypes1.types[0].zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[];
- * for (const range = {value: 0}; range.value < (var.vpc_id == "" ? 1 : 0 == true); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: var.vpc_cidr}));
+ * for (const range = {value: 0}; range.value < (_var.vpc_id == "" ? 1 : 0 == true); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: _var.vpc_cidr}));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[];
- * for (const range = {value: 0}; range.value < (var.security_group_id == "" ? 1 : 0 == true); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id}));
+ * for (const range = {value: 0}; range.value < (_var.security_group_id == "" ? 1 : 0 == true); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`defaultSecurityGroup-${range.value}`, {vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id}));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[];
- * for (const range = {value: 0}; range.value < (var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
+ * for (const range = {value: 0}; range.value < (_var.vswitch_id == "" ? 1 : 0 == true); range.value++) {
  *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
- *         availabilityZone: var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : var.availability_zone,
- *         cidrBlock: var.vswitch_cidr,
- *         vpcId: var.vpc_id == "" ? vpc.id : var.vpc_id,
+ *         availabilityZone: _var.availability_zone == "" ? defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId) : _var.availability_zone,
+ *         cidrBlock: _var.vswitch_cidr,
+ *         vpcId: _var.vpc_id == "" ? vpc.id : _var.vpc_id,
  *     }));
  * }
  * // Ram role Resource for Module
@@ -363,10 +363,10 @@ import * as utilities from "../utilities";
  *     ],
  *     highAvailabilityEnable: true,
  *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types[0].zoneId),
- *     securityGroupId: var.security_group_id == "" ? defaultSecurityGroup.id : var.security_group_id,
+ *     securityGroupId: _var.security_group_id == "" ? defaultSecurityGroup.id : _var.security_group_id,
  *     isOpenPublicIp: true,
  *     chargeType: "PostPaid",
- *     vswitchId: var.vswitch_id == "" ? vswitch.id : var.vswitch_id,
+ *     vswitchId: _var.vswitch_id == "" ? vswitch.id : _var.vswitch_id,
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",

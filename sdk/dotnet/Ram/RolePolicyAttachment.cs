@@ -11,6 +11,75 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM Role attachment resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a RAM Role Policy attachment.
+    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
+    ///         {
+    ///             Description = "this is a role test.",
+    ///             Document = @"    {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": ""sts:AssumeRole"",
+    ///           ""Effect"": ""Allow"",
+    ///           ""Principal"": {
+    ///             ""Service"": [
+    ///               ""apigateway.aliyuncs.com"", 
+    ///               ""ecs.aliyuncs.com""
+    ///             ]
+    ///           }
+    ///         }
+    ///       ],
+    ///       ""Version"": ""1""
+    ///     }
+    ///     
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///         var policy = new AliCloud.Ram.Policy("policy", new AliCloud.Ram.PolicyArgs
+    ///         {
+    ///             Description = "this is a policy test",
+    ///             Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": [
+    ///           ""oss:ListObjects"",
+    ///           ""oss:GetObject""
+    ///         ],
+    ///         ""Effect"": ""Allow"",
+    ///         ""Resource"": [
+    ///           ""acs:oss:*:*:mybucket"",
+    ///           ""acs:oss:*:*:mybucket/*""
+    ///         ]
+    ///       }
+    ///     ],
+    ///       ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///         var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new AliCloud.Ram.RolePolicyAttachmentArgs
+    ///         {
+    ///             PolicyName = policy.Name,
+    ///             PolicyType = policy.Type,
+    ///             RoleName = role.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RolePolicyAttachment : Pulumi.CustomResource
     {

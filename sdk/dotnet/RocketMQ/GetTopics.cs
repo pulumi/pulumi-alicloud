@@ -17,6 +17,46 @@ namespace Pulumi.AliCloud.RocketMQ
         /// &gt; **NOTE:** Available in 1.53.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "onsInstanceName";
+        ///         var topic = config.Get("topic") ?? "onsTopicDatasourceName";
+        ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
+        ///         {
+        ///             Remark = "default_ons_instance_remark",
+        ///         });
+        ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
+        ///         {
+        ///             InstanceId = defaultInstance.Id,
+        ///             MessageType = 0,
+        ///             Remark = "dafault_ons_topic_remark",
+        ///             Topic = topic,
+        ///         });
+        ///         var topicsDs = defaultTopic.InstanceId.Apply(instanceId =&gt; AliCloud.RocketMQ.GetTopics.InvokeAsync(new AliCloud.RocketMQ.GetTopicsArgs
+        ///         {
+        ///             InstanceId = instanceId,
+        ///             NameRegex = topic,
+        ///             OutputFile = "topics.txt",
+        ///         }));
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].Topic);
+        ///     }
+        /// 
+        ///     [Output("firstTopicName")]
+        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)

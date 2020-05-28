@@ -19,6 +19,34 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.ImageCopy("default", new AliCloud.Ecs.ImageCopyArgs
+    ///         {
+    ///             Description = "test-image",
+    ///             ImageName = "test-image",
+    ///             SourceImageId = "m-bp1gxyhdswlsn18tu***",
+    ///             SourceRegionId = "cn-hangzhou",
+    ///             Tags = 
+    ///             {
+    ///                 { "FinanceDept", "FinanceDeptJoshua" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageCopy : Pulumi.CustomResource
     {

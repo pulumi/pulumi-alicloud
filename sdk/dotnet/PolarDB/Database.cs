@@ -13,6 +13,37 @@ namespace Pulumi.AliCloud.PolarDB
     /// Provides a PolarDB database resource. A DB database deployed in a DB cluster. A DB cluster can own multiple databases.
     /// 
     /// &gt; **NOTE:** Available in v1.66.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cluster = new AliCloud.PolarDB.Cluster("cluster", new AliCloud.PolarDB.ClusterArgs
+    ///         {
+    ///             DbNodeClass = @var.Clusterclass,
+    ///             DbType = "MySQL",
+    ///             DbVersion = "8.0",
+    ///             Description = "testDB",
+    ///             PayType = "PostPaid",
+    ///             VswitchId = "polar.mysql.x4.large",
+    ///         });
+    ///         var @default = new AliCloud.PolarDB.Database("default", new AliCloud.PolarDB.DatabaseArgs
+    ///         {
+    ///             DbClusterId = cluster.Id,
+    ///             DbName = "tftestdatabase",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.MongoDB
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.MongoDB.GetZones.InvokeAsync());
+        ///         // Create an mongoDB instance with the first matched zone
+        ///         var mongodb = new AliCloud.MongoDB.Instance("mongodb", new AliCloud.MongoDB.InstanceArgs
+        ///         {
+        ///             ZoneId = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),
+        ///         });
+        ///         // Other properties...
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)

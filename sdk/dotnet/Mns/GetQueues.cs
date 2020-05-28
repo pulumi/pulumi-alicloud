@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Mns
         /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var queues = Output.Create(AliCloud.Mns.GetQueues.InvokeAsync(new AliCloud.Mns.GetQueuesArgs
+        ///         {
+        ///             NamePrefix = "tf-",
+        ///         }));
+        ///         this.FirstQueueId = queues.Apply(queues =&gt; queues.Queues[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstQueueId")]
+        ///     public Output&lt;string&gt; FirstQueueId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs? args = null, InvokeOptions? options = null)

@@ -17,6 +17,35 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var clusters = Output.Create(AliCloud.Edas.GetClusters.InvokeAsync(new AliCloud.Edas.GetClustersArgs
+        ///         {
+        ///             LogicalRegionId = "cn-shenzhen:xxx",
+        ///             Ids = 
+        ///             {
+        ///                 "addfs-dfsasd",
+        ///             },
+        ///             OutputFile = "clusters.txt",
+        ///         }));
+        ///         this.FirstClusterName = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name;
+        ///     }
+        /// 
+        ///     [Output("firstClusterName")]
+        ///     public Output&lt;string&gt; FirstClusterName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs args, InvokeOptions? options = null)

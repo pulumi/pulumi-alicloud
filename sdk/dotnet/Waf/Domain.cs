@@ -15,6 +15,48 @@ namespace Pulumi.AliCloud.Waf
     /// For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+ .
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var domain = new AliCloud.Waf.Domain("domain", new AliCloud.Waf.DomainArgs
+    ///         {
+    ///             ClusterType = "PhysicalCluster",
+    ///             Domain = "www.aliyun.com",
+    ///             Http2Ports = 443,
+    ///             HttpPorts = 80,
+    ///             HttpToUserIp = "Off",
+    ///             HttpsPorts = 443,
+    ///             HttpsRedirect = "Off",
+    ///             InstanceId = "waf-123455",
+    ///             IsAccessProduct = "On",
+    ///             LoadBalancing = "IpHash",
+    ///             LogHeaders = 
+    ///             {
+    ///                 new AliCloud.Waf.Inputs.DomainLogHeaderArgs
+    ///                 {
+    ///                     Key = "foo",
+    ///                     Value = "http",
+    ///                 },
+    ///             },
+    ///             SourceIps = 
+    ///             {
+    ///                 "1.1.1.1",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

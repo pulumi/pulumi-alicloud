@@ -9,12 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ots
 {
-    /// <summary>
-    /// Provides an OTS table resource.
-    /// 
-    /// &gt; **NOTE:** From Provider version 1.10.0, the provider field 'ots_instance_name' has been deprecated and
-    /// you should use resource alicloud_ots_table's new field 'instance_name' and 'table_name' to re-import this resource.
-    /// </summary>
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>

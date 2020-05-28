@@ -18,6 +18,38 @@ namespace Pulumi.AliCloud.Emr
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetMainVersions.InvokeAsync(new AliCloud.Emr.GetMainVersionsArgs
+        ///         {
+        ///             ClusterTypes = 
+        ///             {
+        ///                 "HADOOP",
+        ///                 "ZOOKEEPER",
+        ///             },
+        ///             EmrVersion = "EMR-3.22.0",
+        ///         }));
+        ///         this.FirstMainVersion = @default.Apply(@default =&gt; @default.MainVersions[0].EmrVersion);
+        ///         this.ThisClusterTypes = @default.Apply(@default =&gt; @default.MainVersions[0].ClusterTypes);
+        ///     }
+        /// 
+        ///     [Output("firstMainVersion")]
+        ///     public Output&lt;string&gt; FirstMainVersion { get; set; }
+        ///     [Output("thisClusterTypes")]
+        ///     public Output&lt;string&gt; ThisClusterTypes { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMainVersionsResult> InvokeAsync(GetMainVersionsArgs? args = null, InvokeOptions? options = null)

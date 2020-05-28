@@ -13,6 +13,30 @@ namespace Pulumi.AliCloud.Dns
     /// Provides a DNS Record resource.
     /// 
     /// &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Domain record
+    ///         var record = new AliCloud.Dns.Record("record", new AliCloud.Dns.RecordArgs
+    ///         {
+    ///             HostRecord = "@",
+    ///             Type = "A",
+    ///             Value = "192.168.99.99",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Record : Pulumi.CustomResource
     {

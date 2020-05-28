@@ -21,6 +21,78 @@ namespace Pulumi.AliCloud.Slb
     /// * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
     /// * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "testcreatehttplistener";
+    ///         var ipVersion = config.Get("ipVersion") ?? "ipv4";
+    ///         var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("defaultLoadBalancer", new AliCloud.Slb.LoadBalancerArgs
+    ///         {
+    ///             Internet = true,
+    ///             InternetChargeType = "PayByTraffic",
+    ///         });
+    ///         var defaultAcl = new AliCloud.Slb.Acl("defaultAcl", new AliCloud.Slb.AclArgs
+    ///         {
+    ///             EntryLists = 
+    ///             {
+    ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
+    ///                 {
+    ///                     Comment = "first",
+    ///                     Entry = "10.10.10.0/24",
+    ///                 },
+    ///                 new AliCloud.Slb.Inputs.AclEntryListArgs
+    ///                 {
+    ///                     Comment = "second",
+    ///                     Entry = "168.10.10.0/24",
+    ///                 },
+    ///             },
+    ///             IpVersion = ipVersion,
+    ///         });
+    ///         var defaultListener = new AliCloud.Slb.Listener("defaultListener", new AliCloud.Slb.ListenerArgs
+    ///         {
+    ///             AclId = defaultAcl.Id,
+    ///             AclStatus = "on",
+    ///             AclType = "white",
+    ///             BackendPort = 80,
+    ///             Bandwidth = 10,
+    ///             Cookie = "testslblistenercookie",
+    ///             CookieTimeout = 86400,
+    ///             FrontendPort = 80,
+    ///             HealthCheck = "on",
+    ///             HealthCheckConnectPort = 20,
+    ///             HealthCheckDomain = "ali.com",
+    ///             HealthCheckHttpCode = "http_2xx,http_3xx",
+    ///             HealthCheckInterval = 5,
+    ///             HealthCheckTimeout = 8,
+    ///             HealthCheckUri = "/cons",
+    ///             HealthyThreshold = 8,
+    ///             IdleTimeout = 30,
+    ///             LoadBalancerId = defaultLoadBalancer.Id,
+    ///             Protocol = "http",
+    ///             RequestTimeout = 80,
+    ///             StickySession = "on",
+    ///             StickySessionType = "insert",
+    ///             UnhealthyThreshold = 8,
+    ///             XForwardedFor = new AliCloud.Slb.Inputs.ListenerXForwardedForArgs
+    ///             {
+    ///                 RetriveSlbId = true,
+    ///                 RetriveSlbIp = true,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Listener fields and protocol mapping
     /// 

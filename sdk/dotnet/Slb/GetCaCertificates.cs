@@ -15,6 +15,27 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the CA certificate list.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetCaCertificates.InvokeAsync());
+        ///         this.FirstSlbCaCertificateId = sampleDs.Apply(sampleDs =&gt; sampleDs.Certificates[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbCaCertificateId")]
+        ///     public Output&lt;string&gt; FirstSlbCaCertificateId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)

@@ -11,6 +11,38 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM User Login Profile resource.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a RAM login profile.
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888888",
+    ///         });
+    ///         var profile = new AliCloud.Ram.LoginProfile("profile", new AliCloud.Ram.LoginProfileArgs
+    ///         {
+    ///             Password = "Yourpassword1234",
+    ///             UserName = user.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LoginProfile : Pulumi.CustomResource
     {

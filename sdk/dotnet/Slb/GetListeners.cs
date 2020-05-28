@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetListeners.InvokeAsync(new AliCloud.Slb.GetListenersArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbListenerProtocol = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbListeners[0].Protocol);
+        ///     }
+        /// 
+        ///     [Output("firstSlbListenerProtocol")]
+        ///     public Output&lt;string&gt; FirstSlbListenerProtocol { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)

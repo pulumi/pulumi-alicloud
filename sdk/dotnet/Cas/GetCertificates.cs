@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Cas
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var certs = Output.Create(AliCloud.Cas.GetCertificates.InvokeAsync(new AliCloud.Cas.GetCertificatesArgs
+        ///         {
+        ///             NameRegex = "^cas",
+        ///             OutputFile = $"{path.Module}/cas_certificates.json",
+        ///         }));
+        ///         this.Cert = certs.Apply(certs =&gt; certs.Certificates[0].Id);
+        ///     }
+        /// 
+        ///     [Output("cert")]
+        ///     public Output&lt;string&gt; Cert { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)

@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the server load balancer attachments of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAttachments.InvokeAsync(new AliCloud.Slb.GetAttachmentsArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbAttachmentInstanceId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbAttachments[0].InstanceId);
+        ///     }
+        /// 
+        ///     [Output("firstSlbAttachmentInstanceId")]
+        ///     public Output&lt;string&gt; FirstSlbAttachmentInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAttachmentsResult> InvokeAsync(GetAttachmentsArgs args, InvokeOptions? options = null)

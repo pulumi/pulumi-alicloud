@@ -91,7 +91,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
                 "loadbalancerId": default_load_balancer.id,
                 "vserverAttributes": [{
                     "port": "100",
-                    "vserverGroupId": default_server_group.id,
+                    "vserver_group_id": default_server_group.id,
                     "weight": "60",
                 }],
             }])

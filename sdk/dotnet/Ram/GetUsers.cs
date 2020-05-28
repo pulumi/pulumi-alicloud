@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var usersDs = Output.Create(AliCloud.Ram.GetUsers.InvokeAsync(new AliCloud.Ram.GetUsersArgs
+        ///         {
+        ///             GroupName = "group1",
+        ///             NameRegex = "^user",
+        ///             OutputFile = "users.txt",
+        ///             PolicyName = "AliyunACSDefaultAccess",
+        ///             PolicyType = "Custom",
+        ///         }));
+        ///         this.FirstUserId = usersDs.Apply(usersDs =&gt; usersDs.Users[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstUserId")]
+        ///     public Output&lt;string&gt; FirstUserId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)

@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the apps of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetApps.InvokeAsync(new AliCloud.ApiGateway.GetAppsArgs
+        ///         {
+        ///             OutputFile = "outapps",
+        ///         }));
+        ///         this.FirstAppId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Apps[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstAppId")]
+        ///     public Output&lt;string&gt; FirstAppId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppsResult> InvokeAsync(GetAppsArgs? args = null, InvokeOptions? options = null)

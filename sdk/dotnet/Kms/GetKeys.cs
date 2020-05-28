@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Kms
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsKeysDs = Output.Create(AliCloud.Kms.GetKeys.InvokeAsync(new AliCloud.Kms.GetKeysArgs
+        ///         {
+        ///             DescriptionRegex = "Hello KMS",
+        ///             OutputFile = "kms_keys.json",
+        ///         }));
+        ///         this.FirstKeyId = kmsKeysDs.Apply(kmsKeysDs =&gt; kmsKeysDs.Keys[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstKeyId")]
+        ///     public Output&lt;string&gt; FirstKeyId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs? args = null, InvokeOptions? options = null)

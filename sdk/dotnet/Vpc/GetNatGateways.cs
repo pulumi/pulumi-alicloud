@@ -17,6 +17,53 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.37.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "natGatewaysDatasource";
+        ///         var @default = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var fooNatGateway = new AliCloud.Vpc.NatGateway("fooNatGateway", new AliCloud.Vpc.NatGatewayArgs
+        ///         {
+        ///             Specification = "Small",
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooNatGateways = Output.Tuple(fooNatGateway.Id, fooNatGateway.Name, fooNetwork.Id).Apply(values =&gt;
+        ///         {
+        ///             var fooNatGatewayId = values.Item1;
+        ///             var name = values.Item2;
+        ///             var fooNetworkId = values.Item3;
+        ///             return AliCloud.Vpc.GetNatGateways.InvokeAsync(new AliCloud.Vpc.GetNatGatewaysArgs
+        ///             {
+        ///                 Ids = 
+        ///                 {
+        ///                     fooNatGatewayId,
+        ///                 },
+        ///                 NameRegex = name,
+        ///                 VpcId = fooNetworkId,
+        ///             });
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)

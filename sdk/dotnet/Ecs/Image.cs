@@ -19,6 +19,36 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
     /// 
     /// &gt; **NOTE:**  Available in 1.64.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.Image("default", new AliCloud.Ecs.ImageArgs
+    ///         {
+    ///             Architecture = "x86_64",
+    ///             Description = "test-image",
+    ///             ImageName = "test-image",
+    ///             InstanceId = "i-bp1g6zv0ce8oghu7k***",
+    ///             Platform = "CentOS",
+    ///             ResourceGroupId = "rg-bp67acfmxazb4ph***",
+    ///             Tags = 
+    ///             {
+    ///                 { "FinanceDept", "FinanceDeptJoshua" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Image : Pulumi.CustomResource
     {

@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.ApplicationScale("default", {
- *     appId: var.app_id,
- *     deployGroup: var.deploy_group,
- *     ecuInfos: var.ecu_info,
- *     forceStatus: var.force_status,
+ * const _default = new alicloud.edas.ApplicationScale("default", {
+ *     appId: _var.app_id,
+ *     deployGroup: _var.deploy_group,
+ *     ecuInfos: _var.ecu_info,
+ *     forceStatus: _var.force_status,
  * });
  * ```
  */

@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.Cluster("default", {
- *     clusterName: var.cluster_name,
- *     clusterType: var.cluster_type,
- *     networkMode: var.network_mode,
- *     logicalRegionId: var.logical_region_id,
- *     vpcId: var.vpc_id,
+ * const _default = new alicloud.edas.Cluster("default", {
+ *     clusterName: _var.cluster_name,
+ *     clusterType: _var.cluster_type,
+ *     networkMode: _var.network_mode,
+ *     logicalRegionId: _var.logical_region_id,
+ *     vpcId: _var.vpc_id,
  * });
  * ```
  */

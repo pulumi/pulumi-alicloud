@@ -18,6 +18,32 @@ namespace Pulumi.AliCloud.Gpdb
         /// &gt; **NOTE:**  Available in 1.47.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var gpdb = Output.Create(AliCloud.Gpdb.GetInstances.InvokeAsync(new AliCloud.Gpdb.GetInstancesArgs
+        ///         {
+        ///             AvailabilityZone = "cn-beijing-c",
+        ///             NameRegex = "gp-.+\\d+",
+        ///             OutputFile = "instances.txt",
+        ///         }));
+        ///         this.InstanceId = gpdb.Apply(gpdb =&gt; gpdb.Instances[0].Id);
+        ///     }
+        /// 
+        ///     [Output("instanceId")]
+        ///     public Output&lt;string&gt; InstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

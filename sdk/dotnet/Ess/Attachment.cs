@@ -15,6 +15,123 @@ namespace Pulumi.AliCloud.Ess
     /// &gt; **NOTE:** ECS instances can be attached or remove only when the scaling group is active and it has no scaling activity in progress.
     /// 
     /// &gt; **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "essattachmentconfig";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             CpuCoreCount = 2,
+    ///             MemorySize = 4,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             Owners = "system",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new AliCloud.Ecs.SecurityGroupRuleArgs
+    ///         {
+    ///             CidrIp = "172.16.0.0/24",
+    ///             IpProtocol = "tcp",
+    ///             NicType = "intranet",
+    ///             Policy = "accept",
+    ///             PortRange = "22/22",
+    ///             Priority = 1,
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///             Type = "ingress",
+    ///         });
+    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
+    ///         {
+    ///             MaxSize = 2,
+    ///             MinSize = 0,
+    ///             RemovalPolicies = 
+    ///             {
+    ///                 "OldestInstance",
+    ///                 "NewestInstance",
+    ///             },
+    ///             ScalingGroupName = name,
+    ///             VswitchIds = 
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///         });
+    ///         var defaultScalingConfiguration = new AliCloud.Ess.ScalingConfiguration("defaultScalingConfiguration", new AliCloud.Ess.ScalingConfigurationArgs
+    ///         {
+    ///             Active = true,
+    ///             Enable = true,
+    ///             ForceDelete = true,
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///         });
+    ///         var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             defaultInstance.Add(new AliCloud.Ecs.Instance($"defaultInstance-{range.Value}", new AliCloud.Ecs.InstanceArgs
+    ///             {
+    ///                 ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///                 InstanceChargeType = "PostPaid",
+    ///                 InstanceName = name,
+    ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///                 InternetChargeType = "PayByTraffic",
+    ///                 InternetMaxBandwidthOut = "10",
+    ///                 SecurityGroups = 
+    ///                 {
+    ///                     defaultSecurityGroup.Id,
+    ///                 },
+    ///                 SystemDiskCategory = "cloud_efficiency",
+    ///                 VswitchId = defaultSwitch.Id,
+    ///             }));
+    ///         }
+    ///         var defaultAttachment = new AliCloud.Ess.Attachment("defaultAttachment", new AliCloud.Ess.AttachmentArgs
+    ///         {
+    ///             Force = true,
+    ///             InstanceIds = 
+    ///             {
+    ///                 defaultInstance[0].Id,
+    ///                 defaultInstance[1].Id,
+    ///             },
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Attachment : Pulumi.CustomResource
     {

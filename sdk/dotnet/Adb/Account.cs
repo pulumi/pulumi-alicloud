@@ -13,6 +13,58 @@ namespace Pulumi.AliCloud.Adb
     /// Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
     /// 
     /// &gt; **NOTE:** Available in v1.71.0+. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "ADB";
+    ///         var name = config.Get("name") ?? "adbaccountmysql";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var cluster = new AliCloud.Adb.Cluster("cluster", new AliCloud.Adb.ClusterArgs
+    ///         {
+    ///             DbClusterCategory = "Cluster",
+    ///             DbClusterVersion = "3.0",
+    ///             DbNodeClass = "C8",
+    ///             DbNodeCount = 2,
+    ///             DbNodeStorage = 200,
+    ///             Description = name,
+    ///             PayType = "PostPaid",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var account = new AliCloud.Adb.Account("account", new AliCloud.Adb.AccountArgs
+    ///         {
+    ///             AccountDescription = name,
+    ///             AccountName = "tftestnormal",
+    ///             AccountPassword = "Test12345",
+    ///             DbClusterId = cluster.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

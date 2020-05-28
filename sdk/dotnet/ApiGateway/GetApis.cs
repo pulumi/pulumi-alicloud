@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the apis of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatwayApis = Output.Create(AliCloud.ApiGateway.GetApis.InvokeAsync(new AliCloud.ApiGateway.GetApisArgs
+        ///         {
+        ///             OutputFile = "output_ApiGatawayApis",
+        ///         }));
+        ///         this.FirstApiId = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id;
+        ///     }
+        /// 
+        ///     [Output("firstApiId")]
+        ///     public Output&lt;string&gt; FirstApiId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApisResult> InvokeAsync(GetApisArgs? args = null, InvokeOptions? options = null)

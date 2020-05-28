@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; **NOTE:** Available in 1.42.0
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Nas.GetProtocols.InvokeAsync(new AliCloud.Nas.GetProtocolsArgs
+        ///         {
+        ///             OutputFile = "protocols.txt",
+        ///             Type = "Performance",
+        ///             ZoneId = "cn-beijing-e",
+        ///         }));
+        ///         this.NasProtocolsProtocol = @default.Apply(@default =&gt; @default.Protocols[0]);
+        ///     }
+        /// 
+        ///     [Output("nasProtocolsProtocol")]
+        ///     public Output&lt;string&gt; NasProtocolsProtocol { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProtocolsResult> InvokeAsync(GetProtocolsArgs args, InvokeOptions? options = null)

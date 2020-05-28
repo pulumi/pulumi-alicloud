@@ -19,6 +19,32 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var typesDs = Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+        ///         {
+        ///             CpuCoreCount = 1,
+        ///             MemorySize = 2,
+        ///         }));
+        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             InstanceType = typesDs.Apply(typesDs =&gt; typesDs.InstanceTypes[0].Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)

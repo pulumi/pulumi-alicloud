@@ -11,6 +11,54 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS account resource and used to manage databases.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var name = config.Get("name") ?? "dbaccountmysql";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceName = name,
+    ///             InstanceStorage = "10",
+    ///             InstanceType = "rds.mysql.s1.small",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var account = new AliCloud.Rds.Account("account", new AliCloud.Rds.AccountArgs
+    ///         {
+    ///             InstanceId = instance.Id,
+    ///             Password = "Test12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

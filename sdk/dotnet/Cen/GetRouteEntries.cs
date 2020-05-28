@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Route Entries available to the user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var entry = Output.Create(AliCloud.Cen.GetRouteEntries.InvokeAsync(new AliCloud.Cen.GetRouteEntriesArgs
+        ///         {
+        ///             InstanceId = "cen-id1",
+        ///             RouteTableId = "vtb-id1",
+        ///         }));
+        ///         this.FirstRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries[0].CidrBlock);
+        ///     }
+        /// 
+        ///     [Output("firstRouteEntriesRouteEntryCidrBlock")]
+        ///     public Output&lt;string&gt; FirstRouteEntriesRouteEntryCidrBlock { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)

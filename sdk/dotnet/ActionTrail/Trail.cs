@@ -13,6 +13,31 @@ namespace Pulumi.AliCloud.ActionTrail
     /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.35.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new action trail.
+    ///         var foo = new AliCloud.ActionTrail.Trail("foo", new AliCloud.ActionTrail.TrailArgs
+    ///         {
+    ///             EventRw = "Write-test",
+    ///             OssBucketName = alicloud_oss_bucket.Bucket.Id,
+    ///             OssKeyPrefix = "at-product-account-audit-B",
+    ///             RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Trail : Pulumi.CustomResource
     {

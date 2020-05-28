@@ -18,6 +18,33 @@ namespace Pulumi.AliCloud
         /// &gt; **NOTE:** If one zone is sold out, it will not be exported.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesDs = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableDiskCategory = "cloud_ssd",
+        ///             AvailableInstanceType = "ecs.n4.large",
+        ///         }));
+        ///         // Create an ECS instance with the first matched zone
+        ///         var instance = new AliCloud.Ecs.Instance("instance", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             AvailabilityZone = zonesDs.Apply(zonesDs =&gt; zonesDs.Zones[0].Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)

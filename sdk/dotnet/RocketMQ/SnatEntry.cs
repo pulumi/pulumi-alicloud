@@ -17,6 +17,29 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** Available in 1.61.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.RocketMQ.SnatEntry("default", new AliCloud.RocketMQ.SnatEntryArgs
+    ///         {
+    ///             CidrBlock = "192.168.7.0/24",
+    ///             SagId = "sag-3rb1t3iagy3w0zgwy9",
+    ///             SnatIp = "192.0.0.2",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SnatEntry : Pulumi.CustomResource
     {

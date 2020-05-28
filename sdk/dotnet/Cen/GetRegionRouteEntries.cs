@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Regional Route Entries available to the user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var entry = Output.Create(AliCloud.Cen.GetRegionRouteEntries.InvokeAsync(new AliCloud.Cen.GetRegionRouteEntriesArgs
+        ///         {
+        ///             InstanceId = "cen-id1",
+        ///             RegionId = "cn-beijing",
+        ///         }));
+        ///         this.FirstRegionRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =&gt; entry.Entries[0].CidrBlock);
+        ///     }
+        /// 
+        ///     [Output("firstRegionRouteEntriesRouteEntryCidrBlock")]
+        ///     public Output&lt;string&gt; FirstRegionRouteEntriesRouteEntryCidrBlock { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionRouteEntriesResult> InvokeAsync(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)

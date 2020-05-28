@@ -19,6 +19,35 @@ namespace Pulumi.AliCloud.Sag
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultAcls = Output.Create(AliCloud.Sag.GetAcls.InvokeAsync(new AliCloud.Sag.GetAclsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 alicloud_sag_acls.Default.Id,
+        ///             },
+        ///             NameRegex = "^tf-testAcc.*",
+        ///         }));
+        ///         var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl", new AliCloud.RocketMQ.AclArgs
+        ///         {
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAclsResult> InvokeAsync(GetAclsArgs? args = null, InvokeOptions? options = null)

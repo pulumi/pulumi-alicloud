@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Ddos
         /// This data source provides a list of BGP-Line Anti-DDoS Pro instances in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instanceDdosCooInstances = Output.Create(AliCloud.Ddos.GetDdosCooInstances.InvokeAsync(new AliCloud.Ddos.GetDdosCooInstancesArgs
+        ///         {
+        ///             NameRegex = "^ddoscoo",
+        ///         }));
+        ///         this.Instance = alicloud_ddoscoo_instances.Instance.Select(__item =&gt; __item.Id).ToList();
+        ///     }
+        /// 
+        ///     [Output("instance")]
+        ///     public Output&lt;string&gt; Instance { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDdosCooInstancesResult> InvokeAsync(GetDdosCooInstancesArgs? args = null, InvokeOptions? options = null)

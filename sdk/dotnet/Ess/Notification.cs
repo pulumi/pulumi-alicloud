@@ -13,6 +13,79 @@ namespace Pulumi.AliCloud.Ess
     /// Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.55.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccEssNotification-%d";
+    ///         var defaultRegions = Output.Create(AliCloud.GetRegions.InvokeAsync(new AliCloud.GetRegionsArgs
+    ///         {
+    ///             Current = true,
+    ///         }));
+    ///         var defaultAccount = Output.Create(AliCloud.GetAccount.InvokeAsync());
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new AliCloud.Ess.ScalingGroupArgs
+    ///         {
+    ///             MaxSize = 1,
+    ///             MinSize = 1,
+    ///             RemovalPolicies = 
+    ///             {
+    ///                 "OldestInstance",
+    ///                 "NewestInstance",
+    ///             },
+    ///             ScalingGroupName = name,
+    ///             VswitchIds = 
+    ///             {
+    ///                 defaultSwitch.Id,
+    ///             },
+    ///         });
+    ///         var defaultQueue = new AliCloud.Mns.Queue("defaultQueue", new AliCloud.Mns.QueueArgs
+    ///         {
+    ///         });
+    ///         var defaultNotification = new AliCloud.Ess.Notification("defaultNotification", new AliCloud.Ess.NotificationArgs
+    ///         {
+    ///             NotificationArn = Output.Tuple(defaultRegions, defaultAccount, defaultQueue.Name).Apply(values =&gt;
+    ///             {
+    ///                 var defaultRegions = values.Item1;
+    ///                 var defaultAccount = values.Item2;
+    ///                 var name = values.Item3;
+    ///                 return $"acs:ess:{defaultRegions.Regions[0].Id}:{defaultAccount.Id}:queue/{name}";
+    ///             }),
+    ///             NotificationTypes = 
+    ///             {
+    ///                 "AUTOSCALING:SCALE_OUT_SUCCESS",
+    ///                 "AUTOSCALING:SCALE_OUT_ERROR",
+    ///             },
+    ///             ScalingGroupId = defaultScalingGroup.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {

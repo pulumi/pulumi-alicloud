@@ -17,6 +17,35 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groups = Output.Create(AliCloud.Edas.GetDeployGroups.InvokeAsync(new AliCloud.Edas.GetDeployGroupsArgs
+        ///         {
+        ///             AppId = "xxx",
+        ///             Ids = 
+        ///             {
+        ///                 "xxx",
+        ///             },
+        ///             OutputFile = "groups.txt",
+        ///         }));
+        ///         this.FirstGroupName = groups.Apply(groups =&gt; groups.Groups[0].GroupName);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDeployGroupsResult> InvokeAsync(GetDeployGroupsArgs args, InvokeOptions? options = null)

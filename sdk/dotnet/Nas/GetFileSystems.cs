@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; NOTE: Available in 1.35.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fs = Output.Create(AliCloud.Nas.GetFileSystems.InvokeAsync(new AliCloud.Nas.GetFileSystemsArgs
+        ///         {
+        ///             Description = alicloud_nas_file_system.Foo.Description,
+        ///             ProtocolType = "NFS",
+        ///         }));
+        ///         this.AlicloudNasFileSystemsId = fs.Apply(fs =&gt; fs.Systems[0].Id);
+        ///     }
+        /// 
+        ///     [Output("alicloudNasFileSystemsId")]
+        ///     public Output&lt;string&gt; AlicloudNasFileSystemsId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFileSystemsResult> InvokeAsync(GetFileSystemsArgs? args = null, InvokeOptions? options = null)

@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.ActionTrail
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var saslAclsDs = Output.Create(AliCloud.ActionTrail.GetSaslAcls.InvokeAsync(new AliCloud.ActionTrail.GetSaslAclsArgs
+        ///         {
+        ///             AclResourceName = "testTopic",
+        ///             AclResourceType = "Topic",
+        ///             InstanceId = "xxx",
+        ///             OutputFile = "saslAcls.txt",
+        ///             Username = "username",
+        ///         }));
+        ///         this.FirstSaslAclUsername = saslAclsDs.Apply(saslAclsDs =&gt; saslAclsDs.Acls[0].Username);
+        ///     }
+        /// 
+        ///     [Output("firstSaslAclUsername")]
+        ///     public Output&lt;string&gt; FirstSaslAclUsername { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSaslAclsResult> InvokeAsync(GetSaslAclsArgs args, InvokeOptions? options = null)

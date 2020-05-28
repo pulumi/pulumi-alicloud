@@ -13,6 +13,32 @@ namespace Pulumi.AliCloud.Edas
     /// Provides an EDAS slb application attachment resource.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.SlbAttachment("default", new AliCloud.Edas.SlbAttachmentArgs
+    ///         {
+    ///             AppId = @var.App_id,
+    ///             SlbId = @var.Slb_id,
+    ///             SlbIp = @var.Slb_ip,
+    ///             Type = @var.Type,
+    ///             ListenerPort = @var.Listener_port,
+    ///             VserverGroupId = @var.Vserver_group_id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SlbAttachment : Pulumi.CustomResource
     {

@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Log
     /// In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
     /// 
     /// &gt; **NOTE:** Available in 1.81.0
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Log.Audit("example", new AliCloud.Log.AuditArgs
+    ///         {
+    ///             Aliuid = "12345678",
+    ///             DisplayName = "tf-audit-test",
+    ///             VariableMap = 
+    ///             {
+    ///                 { "actiontrail_enabled", "true" },
+    ///                 { "actiontrail_ttl", "180" },
+    ///                 { "oss_access_enabled", "true" },
+    ///                 { "oss_access_ttl", "180" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Audit : Pulumi.CustomResource
     {

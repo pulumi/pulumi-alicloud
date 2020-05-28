@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available in v1.34.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var k8sClusters = Output.Create(AliCloud.CS.GetKubernetesClusters.InvokeAsync(new AliCloud.CS.GetKubernetesClustersArgs
+        ///         {
+        ///             NameRegex = "my-first-k8s",
+        ///             OutputFile = "my-first-k8s-json",
+        ///         }));
+        ///         this.Output = k8sClusters.Apply(k8sClusters =&gt; k8sClusters.Clusters);
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKubernetesClustersResult> InvokeAsync(GetKubernetesClustersArgs? args = null, InvokeOptions? options = null)

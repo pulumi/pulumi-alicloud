@@ -13,6 +13,37 @@ namespace Pulumi.AliCloud.Ram
     /// Provides a RAM User access key resource.
     /// 
     /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.  
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new RAM access key for user.
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888888",
+    ///         });
+    ///         var ak = new AliCloud.Ram.AccessKey("ak", new AliCloud.Ram.AccessKeyArgs
+    ///         {
+    ///             SecretFile = "/xxx/xxx/xxx.txt",
+    ///             UserName = user.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessKey : Pulumi.CustomResource
     {

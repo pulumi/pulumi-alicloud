@@ -16,6 +16,31 @@ namespace Pulumi.AliCloud.Vpc
         /// that connect VPCs together.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var routerInterfacesDs = Output.Create(AliCloud.Vpc.GetRouterInterfaces.InvokeAsync(new AliCloud.Vpc.GetRouterInterfacesArgs
+        ///         {
+        ///             NameRegex = "^testenv",
+        ///             Status = "Active",
+        ///         }));
+        ///         this.FirstRouterInterfaceId = routerInterfacesDs.Apply(routerInterfacesDs =&gt; routerInterfacesDs.Interfaces[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstRouterInterfaceId")]
+        ///     public Output&lt;string&gt; FirstRouterInterfaceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterInterfacesResult> InvokeAsync(GetRouterInterfacesArgs? args = null, InvokeOptions? options = null)

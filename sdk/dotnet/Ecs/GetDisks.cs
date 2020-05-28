@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides the disks of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var disksDs = Output.Create(AliCloud.Ecs.GetDisks.InvokeAsync(new AliCloud.Ecs.GetDisksArgs
+        ///         {
+        ///             NameRegex = "sample_disk",
+        ///         }));
+        ///         this.FirstDiskId = disksDs.Apply(disksDs =&gt; disksDs.Disks[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstDiskId")]
+        ///     public Output&lt;string&gt; FirstDiskId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDisksResult> InvokeAsync(GetDisksArgs? args = null, InvokeOptions? options = null)

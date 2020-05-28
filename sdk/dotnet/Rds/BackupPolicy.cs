@@ -13,6 +13,53 @@ namespace Pulumi.AliCloud.Rds
     /// Provides an RDS instance backup policy resource and used to configure instance backup policy.
     /// 
     /// &gt; **NOTE:** Each DB instance has a backup policy and it will be set default values when destroying the resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var name = config.Get("name") ?? "dbbackuppolicybasic";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var instance = new AliCloud.Rds.Instance("instance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceName = name,
+    ///             InstanceStorage = "10",
+    ///             InstanceType = "rds.mysql.s1.small",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var policy = new AliCloud.Rds.BackupPolicy("policy", new AliCloud.Rds.BackupPolicyArgs
+    ///         {
+    ///             InstanceId = instance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BackupPolicy : Pulumi.CustomResource
     {

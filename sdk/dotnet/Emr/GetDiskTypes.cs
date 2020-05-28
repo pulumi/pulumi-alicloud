@@ -18,6 +18,34 @@ namespace Pulumi.AliCloud.Emr
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetDiskTypes.InvokeAsync(new AliCloud.Emr.GetDiskTypesArgs
+        ///         {
+        ///             ClusterType = "HADOOP",
+        ///             DestinationResource = "DataDisk",
+        ///             InstanceChargeType = "PostPaid",
+        ///             InstanceType = "ecs.g5.xlarge",
+        ///             ZoneId = "cn-huhehaote-a",
+        ///         }));
+        ///         this.DataDiskType = @default.Apply(@default =&gt; @default.Types[0].Value);
+        ///     }
+        /// 
+        ///     [Output("dataDiskType")]
+        ///     public Output&lt;string&gt; DataDiskType { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)

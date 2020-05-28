@@ -15,6 +15,37 @@ namespace Pulumi.AliCloud.RocketMQ
     /// For more information about how to use it, see [RocketMQ Topic Management API](https://www.alibabacloud.com/help/doc-detail/29591.html). 
     /// 
     /// &gt; **NOTE:** Available in 1.53.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "onsInstanceName";
+    ///         var topic = config.Get("topic") ?? "onsTopicName";
+    ///         var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new AliCloud.RocketMQ.InstanceArgs
+    ///         {
+    ///             Remark = "default_ons_instance_remark",
+    ///         });
+    ///         var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new AliCloud.RocketMQ.TopicArgs
+    ///         {
+    ///             InstanceId = defaultInstance.Id,
+    ///             MessageType = 0,
+    ///             Remark = "dafault_ons_topic_remark",
+    ///             Topic = topic,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

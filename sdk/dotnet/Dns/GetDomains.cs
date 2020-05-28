@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var domainsDs = Output.Create(AliCloud.Dns.GetDomains.InvokeAsync(new AliCloud.Dns.GetDomainsArgs
+        ///         {
+        ///             DomainNameRegex = "^hegu",
+        ///             OutputFile = "domains.txt",
+        ///         }));
+        ///         this.FirstDomainId = domainsDs.Apply(domainsDs =&gt; domainsDs.Domains[0].DomainId);
+        ///     }
+        /// 
+        ///     [Output("firstDomainId")]
+        ///     public Output&lt;string&gt; FirstDomainId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)

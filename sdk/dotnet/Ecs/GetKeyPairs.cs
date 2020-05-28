@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Ecs
         /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         // Declare the data source
+        ///         var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new AliCloud.Ecs.KeyPairArgs
+        ///         {
+        ///             KeyName = "keyPairDatasource",
+        ///         });
+        ///         var defaultKeyPairs = defaultKeyPair.KeyName.Apply(keyName =&gt; AliCloud.Ecs.GetKeyPairs.InvokeAsync(new AliCloud.Ecs.GetKeyPairsArgs
+        ///         {
+        ///             NameRegex = keyName,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeyPairsResult> InvokeAsync(GetKeyPairsArgs? args = null, InvokeOptions? options = null)

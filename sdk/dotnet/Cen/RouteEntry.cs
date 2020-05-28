@@ -13,6 +13,97 @@ namespace Pulumi.AliCloud.Cen
     /// Provides a CEN route entry resource. Cloud Enterprise Network (CEN) supports publishing and withdrawing route entries of attached networks. You can publish a route entry of an attached VPC or VBR to a CEN instance, then other attached networks can learn the route if there is no route conflict. You can withdraw a published route entry when CEN does not need it any more.
     /// 
     /// For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var hz = new AliCloud.Provider("hz", new AliCloud.ProviderArgs
+    ///         {
+    ///             Region = "cn-hangzhou",
+    ///         });
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccCenRouteEntryConfig";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             CpuCoreCount = 1,
+    ///             MemorySize = 2,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             Owners = "system",
+    ///         }));
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/21",
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             Description = "foo",
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new AliCloud.Ecs.InstanceArgs
+    ///         {
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             InstanceName = name,
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             InternetChargeType = "PayByTraffic",
+    ///             InternetMaxBandwidthOut = 5,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 defaultSecurityGroup.Id,
+    ///             },
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var attach = new AliCloud.Cen.InstanceAttachment("attach", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = vpc.Id,
+    ///             ChildInstanceRegionId = "cn-hangzhou",
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///         var route = new AliCloud.Vpc.RouteEntry("route", new AliCloud.Vpc.RouteEntryArgs
+    ///         {
+    ///             DestinationCidrblock = "11.0.0.0/16",
+    ///             NexthopId = defaultInstance.Id,
+    ///             NexthopType = "Instance",
+    ///             RouteTableId = vpc.RouteTableId,
+    ///         });
+    ///         var foo = new AliCloud.Cen.RouteEntry("foo", new AliCloud.Cen.RouteEntryArgs
+    ///         {
+    ///             CidrBlock = route.DestinationCidrblock,
+    ///             InstanceId = cen.Id,
+    ///             RouteTableId = vpc.RouteTableId,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RouteEntry : Pulumi.CustomResource
     {

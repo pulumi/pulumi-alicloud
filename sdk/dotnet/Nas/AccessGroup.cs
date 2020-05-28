@@ -15,6 +15,28 @@ namespace Pulumi.AliCloud.Nas
     /// In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             Description = "test_AccessG",
+    ///             Type = "Classic",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {

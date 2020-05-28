@@ -16,6 +16,30 @@ namespace Pulumi.AliCloud.MongoDB
         /// Filters support regular expression for the instance name, engine or instance type.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mongo = Output.Create(AliCloud.MongoDB.GetInstances.InvokeAsync(new AliCloud.MongoDB.GetInstancesArgs
+        ///         {
+        ///             AvailabilityZone = "eu-central-1a",
+        ///             InstanceClass = "dds.mongo.mid",
+        ///             InstanceType = "replicate",
+        ///             NameRegex = "dds-.+\\d+",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

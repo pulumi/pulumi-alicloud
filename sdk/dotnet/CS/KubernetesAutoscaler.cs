@@ -19,6 +19,39 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Add Policy to RAM role of the node to deploy cluster-autoscaler if you need.
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.CS.KubernetesAutoscaler("default", new AliCloud.CS.KubernetesAutoscalerArgs
+    ///         {
+    ///             ClusterId = @var.Cluster_id,
+    ///             CoolDownDuration = @var.Cool_down_duration,
+    ///             DeferScaleInDuration = @var.Defer_scale_in_duration,
+    ///             Nodepools = 
+    ///             {
+    ///                 new AliCloud.CS.Inputs.KubernetesAutoscalerNodepoolArgs
+    ///                 {
+    ///                     Id = "scaling_group_id",
+    ///                     Labels = "a=b",
+    ///                     Taints = "c=d:NoSchedule",
+    ///                 },
+    ///             },
+    ///             Utilization = @var.Utilization,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class KubernetesAutoscaler : Pulumi.CustomResource
     {

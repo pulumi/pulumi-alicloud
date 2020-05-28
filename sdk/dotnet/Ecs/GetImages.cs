@@ -16,6 +16,31 @@ namespace Pulumi.AliCloud.Ecs
         /// other public images and the ones available on the image market. 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var imagesDs = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+        ///         {
+        ///             NameRegex = "^centos_6",
+        ///             Owners = "system",
+        ///         }));
+        ///         this.FirstImageId = imagesDs.Apply(imagesDs =&gt; imagesDs.Images[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstImageId")]
+        ///     public Output&lt;string&gt; FirstImageId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)

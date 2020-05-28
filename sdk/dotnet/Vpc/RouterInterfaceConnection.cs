@@ -20,6 +20,64 @@ namespace Pulumi.AliCloud.Vpc
     /// &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
     /// 
     /// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var region = config.Get("region") ?? "cn-hangzhou";
+    ///         var name = config.Get("name") ?? "alicloudRouterInterfaceConnectionBasic";
+    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var barNetwork = new AliCloud.Vpc.Network("barNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/16",
+    ///         });
+    ///         var initiate = new AliCloud.Vpc.RouterInterface("initiate", new AliCloud.Vpc.RouterInterfaceArgs
+    ///         {
+    ///             Description = name,
+    ///             InstanceChargeType = "PostPaid",
+    ///             OppositeRegion = region,
+    ///             Role = "InitiatingSide",
+    ///             RouterId = fooNetwork.RouterId,
+    ///             RouterType = "VRouter",
+    ///             Specification = "Large.2",
+    ///         });
+    ///         var opposite = new AliCloud.Vpc.RouterInterface("opposite", new AliCloud.Vpc.RouterInterfaceArgs
+    ///         {
+    ///             Description = $"{name}-opposite",
+    ///             OppositeRegion = region,
+    ///             Role = "AcceptingSide",
+    ///             RouterId = barNetwork.RouterId,
+    ///             RouterType = "VRouter",
+    ///             Specification = "Large.1",
+    ///         });
+    ///         // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+    ///         var fooRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("fooRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
+    ///         {
+    ///             InterfaceId = initiate.Id,
+    ///             OppositeInterfaceId = opposite.Id,
+    ///         });
+    ///         var barRouterInterfaceConnection = new AliCloud.Vpc.RouterInterfaceConnection("barRouterInterfaceConnection", new AliCloud.Vpc.RouterInterfaceConnectionArgs
+    ///         {
+    ///             InterfaceId = opposite.Id,
+    ///             OppositeInterfaceId = initiate.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RouterInterfaceConnection : Pulumi.CustomResource
     {

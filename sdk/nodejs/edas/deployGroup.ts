@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.DeployGroup("default", {
- *     appId: var.app_id,
- *     groupName: var.group_name,
+ * const _default = new alicloud.edas.DeployGroup("default", {
+ *     appId: _var.app_id,
+ *     groupName: _var.group_name,
  * });
  * ```
  */
