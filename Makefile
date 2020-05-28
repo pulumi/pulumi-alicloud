@@ -61,7 +61,7 @@ build:: install_plugins provider
 
 install_plugins::
 	[ -x "$(shell which pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) 2.6.0
+	pulumi plugin install resource $(PACK) 2.5.0
 	pulumi plugin install resource tls 2.0.0
 
 lint::
