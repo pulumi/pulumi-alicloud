@@ -17,6 +17,36 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.36.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
+        ///         {
+        ///             Bandwidth = "2",
+        ///             Description = "tf-testAcc-CommonBandwidthPackage",
+        ///         });
+        ///         var fooCommonBandwidthPackages = fooCommonBandwithPackage.Id.Apply(id =&gt; AliCloud.Vpc.GetCommonBandwidthPackages.InvokeAsync(new AliCloud.Vpc.GetCommonBandwidthPackagesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///             NameRegex = "^tf-testAcc.*",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Public ip addresses Block
         ///   

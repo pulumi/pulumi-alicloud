@@ -15,6 +15,39 @@ namespace Pulumi.AliCloud.Ecs
     /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
     /// 
     /// &gt; **NOTE:** Available in 1.42.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var sp = new AliCloud.Ecs.SnapshotPolicy("sp", new AliCloud.Ecs.SnapshotPolicyArgs
+    ///         {
+    ///             RepeatWeekdays = 
+    ///             {
+    ///                 "1",
+    ///                 "2",
+    ///                 "3",
+    ///             },
+    ///             RetentionDays = -1,
+    ///             TimePoints = 
+    ///             {
+    ///                 "1",
+    ///                 "22",
+    ///                 "23",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SnapshotPolicy : Pulumi.CustomResource
     {

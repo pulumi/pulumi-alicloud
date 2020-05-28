@@ -11,6 +11,29 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM cloud account alias.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a alias for cloud account.
+    ///         var @alias = new AliCloud.Ram.AccountAlias("alias", new AliCloud.Ram.AccountAliasArgs
+    ///         {
+    ///             AccountAlias = "hallo",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccountAlias : Pulumi.CustomResource
     {

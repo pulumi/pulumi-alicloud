@@ -64,7 +64,7 @@ class ImageImport(pulumi.CustomResource):
             description="test import image",
             disk_device_mappings=[{
                 "diskImageSize": 5,
-                "ossBucket": "testimportimage",
+                "oss_bucket": "testimportimage",
                 "ossObject": "root.img",
             }],
             image_name="test-import-image",

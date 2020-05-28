@@ -9,13 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Dns
 {
-    /// <summary>
-    /// Provides a DNS domain resource.
-    /// 
-    /// &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
-    /// 
-    /// &gt; **NOTE:** Available in v1.81.0+.
-    /// </summary>
     public partial class DnsDomain : Pulumi.CustomResource
     {
         [Output("dnsServers")]

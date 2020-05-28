@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.3.3
+* Upgrade to Pulumi v2.3.0
+* Upgrade to pulumi-terraform-bridge v2.4.0
 * Upgrade to v1.84.0 of the AliCloud Terraform Provider
 
 ---

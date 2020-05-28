@@ -17,6 +17,29 @@ namespace Pulumi.AliCloud.Nas
     /// For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new AliCloud.Nas.FileSystem("foo", new AliCloud.Nas.FileSystemArgs
+    ///         {
+    ///             Description = "tf-testAccNasConfig",
+    ///             ProtocolType = "NFS",
+    ///             StorageType = "Performance",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FileSystem : Pulumi.CustomResource
     {

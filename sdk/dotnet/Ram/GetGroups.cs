@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groupsDs = Output.Create(AliCloud.Ram.GetGroups.InvokeAsync(new AliCloud.Ram.GetGroupsArgs
+        ///         {
+        ///             NameRegex = "^group[0-9]*",
+        ///             OutputFile = "groups.txt",
+        ///             UserName = "user1",
+        ///         }));
+        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)

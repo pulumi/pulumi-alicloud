@@ -14,6 +14,37 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager Policy and how to use it, see [What is Resource Manager Policy](https://www.alibabacloud.com/help/en/doc-detail/93732.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.83.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.ResourceManager.Policy("example", new AliCloud.ResourceManager.PolicyArgs
+    ///         {
+    ///             PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:*""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    ///     
+    /// ",
+    ///             PolicyName = "abc12345",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

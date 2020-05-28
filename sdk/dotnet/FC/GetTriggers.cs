@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.FC
         /// This data source provides the Function Compute triggers of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var fcTriggersDs = Output.Create(AliCloud.FC.GetTriggers.InvokeAsync(new AliCloud.FC.GetTriggersArgs
+        ///         {
+        ///             FunctionName = "sample_function",
+        ///             NameRegex = "sample_fc_trigger",
+        ///             ServiceName = "sample_service",
+        ///         }));
+        ///         this.FirstFcTriggerName = fcTriggersDs.Apply(fcTriggersDs =&gt; fcTriggersDs.Triggers[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstFcTriggerName")]
+        ///     public Output&lt;string&gt; FirstFcTriggerName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTriggersResult> InvokeAsync(GetTriggersArgs args, InvokeOptions? options = null)

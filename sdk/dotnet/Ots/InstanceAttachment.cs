@@ -11,6 +11,54 @@ namespace Pulumi.AliCloud.Ots
 {
     /// <summary>
     /// This resource will help you to bind a VPC to an OTS instance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create an OTS instance
+    ///         var fooInstance = new AliCloud.Ots.Instance("fooInstance", new AliCloud.Ots.InstanceArgs
+    ///         {
+    ///             AccessedBy = "Vpc",
+    ///             Description = "for table",
+    ///             Tags = 
+    ///             {
+    ///                 { "Created", "TF" },
+    ///                 { "For", "Building table" },
+    ///             },
+    ///         });
+    ///         var fooZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = fooZones.Apply(fooZones =&gt; fooZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.1.0/24",
+    ///             VpcId = fooNetwork.Id,
+    ///         });
+    ///         var fooInstanceAttachment = new AliCloud.Ots.InstanceAttachment("fooInstanceAttachment", new AliCloud.Ots.InstanceAttachmentArgs
+    ///         {
+    ///             InstanceName = fooInstance.Name,
+    ///             VpcName = "attachment1",
+    ///             VswitchId = fooSwitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class InstanceAttachment : Pulumi.CustomResource
     {

@@ -126,8 +126,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             security_group_id=default_security_group.id)
         default_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup",
             launch_template_configs=[{
-                "instanceType": "ecs.n1.small",
-                "vswitchId": default_switch.id,
+                "instance_type": "ecs.n1.small",
+                "vswitch_id": default_switch.id,
             }],
             launch_template_id=template.id,
             pay_as_you_go_target_capacity="1",

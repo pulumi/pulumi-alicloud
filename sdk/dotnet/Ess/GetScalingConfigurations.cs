@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Ess
         /// This data source provides available scaling configuration resources. 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var scalingconfigurationsDs = Output.Create(AliCloud.Ess.GetScalingConfigurations.InvokeAsync(new AliCloud.Ess.GetScalingConfigurationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "scaling_configuration_id1",
+        ///                 "scaling_configuration_id2",
+        ///             },
+        ///             NameRegex = "scaling_configuration_name",
+        ///             ScalingGroupId = "scaling_group_id",
+        ///         }));
+        ///         this.FirstScalingRule = scalingconfigurationsDs.Apply(scalingconfigurationsDs =&gt; scalingconfigurationsDs.Configurations[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstScalingRule")]
+        ///     public Output&lt;string&gt; FirstScalingRule { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScalingConfigurationsResult> InvokeAsync(GetScalingConfigurationsArgs? args = null, InvokeOptions? options = null)

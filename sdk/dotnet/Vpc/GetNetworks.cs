@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides VPCs available to the user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var vpcsDs = Output.Create(AliCloud.Vpc.GetNetworks.InvokeAsync(new AliCloud.Vpc.GetNetworksArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///             NameRegex = "^foo",
+        ///             Status = "Available",
+        ///         }));
+        ///         this.FirstVpcId = vpcsDs.Apply(vpcsDs =&gt; vpcsDs.Vpcs[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstVpcId")]
+        ///     public Output&lt;string&gt; FirstVpcId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)

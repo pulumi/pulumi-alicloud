@@ -13,6 +13,32 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an ECS snapshot resource.
     /// 
     /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new AliCloud.Ecs.SnapshotArgs
+    ///         {
+    ///             Description = "this snapshot is created for testing",
+    ///             DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
+    ///             Tags = 
+    ///             {
+    ///                 { "version", "1.2" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

@@ -15,6 +15,27 @@ namespace Pulumi.AliCloud
         /// This data source provides information about the current account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var current = Output.Create(AliCloud.GetAccount.InvokeAsync());
+        ///         this.CurrentAccountId = current.Apply(current =&gt; current.Id);
+        ///     }
+        /// 
+        ///     [Output("currentAccountId")]
+        ///     public Output&lt;string&gt; CurrentAccountId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(InvokeOptions? options = null)

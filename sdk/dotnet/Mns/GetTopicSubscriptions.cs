@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Mns
         /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var subscriptions = Output.Create(AliCloud.Mns.GetTopicSubscriptions.InvokeAsync(new AliCloud.Mns.GetTopicSubscriptionsArgs
+        ///         {
+        ///             NamePrefix = "tf-",
+        ///             TopicName = "topic_name",
+        ///         }));
+        ///         this.FirstTopicSubscriptionId = subscriptions.Apply(subscriptions =&gt; subscriptions.Subscriptions[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstTopicSubscriptionId")]
+        ///     public Output&lt;string&gt; FirstTopicSubscriptionId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicSubscriptionsResult> InvokeAsync(GetTopicSubscriptionsArgs args, InvokeOptions? options = null)

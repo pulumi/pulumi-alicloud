@@ -18,6 +18,39 @@ namespace Pulumi.AliCloud.Emr
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Emr.GetInstanceTypes.InvokeAsync(new AliCloud.Emr.GetInstanceTypesArgs
+        ///         {
+        ///             ClusterType = "HADOOP",
+        ///             DestinationResource = "InstanceType",
+        ///             InstanceChargeType = "PostPaid",
+        ///             InstanceType = "ecs.g5.2xlarge",
+        ///             SupportLocalStorage = false,
+        ///             SupportNodeTypes = 
+        ///             {
+        ///                 "MASTER",
+        ///                 "CORE",
+        ///             },
+        ///         }));
+        ///         this.FirstInstanceType = @default.Apply(@default =&gt; @default.Types[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceType")]
+        ///     public Output&lt;string&gt; FirstInstanceType { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)

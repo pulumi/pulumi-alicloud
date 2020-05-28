@@ -90,7 +90,7 @@ class NetworkAclEntries(pulumi.CustomResource):
                 "policy": "accept",
                 "port": "-1/-1",
                 "protocol": "all",
-                "sourceCidrIp": "0.0.0.0/32",
+                "source_cidr_ip": "0.0.0.0/32",
             }],
             network_acl_id=default_network_acl.id)
         ```

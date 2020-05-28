@@ -11,6 +11,114 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM role attachment resource to bind role for several ECS instances.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableDiskCategory = "cloud_efficiency",
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var defaultInstanceTypes = defaultZones.Apply(defaultZones =&gt; Output.Create(AliCloud.Ecs.GetInstanceTypes.InvokeAsync(new AliCloud.Ecs.GetInstanceTypesArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Zones[0].Id,
+    ///             CpuCoreCount = 2,
+    ///             MemorySize = 4,
+    ///         })));
+    ///         var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             MostRecent = true,
+    ///             NameRegex = "^ubuntu_18.*64",
+    ///             Owners = "system",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new AliCloud.Ecs.SecurityGroupRuleArgs
+    ///         {
+    ///             CidrIp = "172.16.0.0/24",
+    ///             IpProtocol = "tcp",
+    ///             NicType = "intranet",
+    ///             Policy = "accept",
+    ///             PortRange = "22/22",
+    ///             Priority = 1,
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///             Type = "ingress",
+    ///         });
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "ecsInstanceVPCExample";
+    ///         var foo = new AliCloud.Ecs.Instance("foo", new AliCloud.Ecs.InstanceArgs
+    ///         {
+    ///             ImageId = defaultImages.Apply(defaultImages =&gt; defaultImages.Images[0].Id),
+    ///             InstanceName = name,
+    ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
+    ///             InternetChargeType = "PayByTraffic",
+    ///             InternetMaxBandwidthOut = 5,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 defaultSecurityGroup.Id,
+    ///             },
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var role = new AliCloud.Ram.Role("role", new AliCloud.Ram.RoleArgs
+    ///         {
+    ///             Description = "this is a test",
+    ///             Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""ecs.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///             Force = true,
+    ///         });
+    ///         var attach = new AliCloud.Ram.RoleAttachment("attach", new AliCloud.Ram.RoleAttachmentArgs
+    ///         {
+    ///             InstanceIds = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     foo,
+    ///                 }.Select(__item =&gt; __item.Id).ToList(),
+    ///             },
+    ///             RoleName = role.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RoleAttachment : Pulumi.CustomResource
     {

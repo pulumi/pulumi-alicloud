@@ -15,6 +15,28 @@ namespace Pulumi.AliCloud.CR
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_namespace = new AliCloud.CR.Namespace("my-namespace", new AliCloud.CR.NamespaceArgs
+    ///         {
+    ///             AutoCreate = false,
+    ///             DefaultVisibility = "PUBLIC",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Namespace : Pulumi.CustomResource
     {

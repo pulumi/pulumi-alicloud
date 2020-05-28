@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    /// <summary>
-    /// Provides a key pair resource.
-    /// </summary>
     public partial class KeyPair : Pulumi.CustomResource
     {
         [Output("fingerPrint")]

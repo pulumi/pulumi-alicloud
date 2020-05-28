@@ -14,6 +14,42 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.82.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a Resource Manager role.
+    ///         var example = new AliCloud.ResourceManager.Role("example", new AliCloud.ResourceManager.RoleArgs
+    ///         {
+    ///             AssumeRolePolicyDocument = @"     {
+    ///           ""Statement"": [
+    ///                {
+    ///                     ""Action"": ""sts:AssumeRole"",
+    ///                     ""Effect"": ""Allow"",
+    ///                     ""Principal"": {
+    ///                         ""RAM"":""acs:ram::103755469187****:root""
+    ///                     }
+    ///                 }
+    ///           ],
+    ///           ""Version"": ""1""
+    ///      }
+    /// 	 
+    /// ",
+    ///             RoleName = "testrd",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {

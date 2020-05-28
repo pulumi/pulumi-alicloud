@@ -15,6 +15,53 @@ namespace Pulumi.AliCloud.Vpc
     /// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
     /// 
     /// &gt; **NOTE** Only one of private_ips or private_ips_count can be specified when assign private IPs. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "networkInterfaceName";
+    ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/24",
+    ///         });
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "VSwitch",
+    ///         }));
+    ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "192.168.0.0/24",
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var @group = new AliCloud.Ecs.SecurityGroup("group", new AliCloud.Ecs.SecurityGroupArgs
+    ///         {
+    ///             VpcId = vpc.Id,
+    ///         });
+    ///         var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new AliCloud.Vpc.NetworkInterfaceArgs
+    ///         {
+    ///             PrivateIp = "192.168.0.2",
+    ///             PrivateIpsCount = 3,
+    ///             SecurityGroups = 
+    ///             {
+    ///                 @group.Id,
+    ///             },
+    ///             VswitchId = vswitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NetworkInterface : Pulumi.CustomResource
     {

@@ -17,6 +17,56 @@ namespace Pulumi.AliCloud.ActionTrail
         /// &gt; **NOTE:** Available in 1.59.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "VSwitch",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             CidrBlock = "172.16.0.0/24",
+        ///             VpcId = defaultNetwork.Id,
+        ///         });
+        ///         var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new AliCloud.AliKafka.InstanceArgs
+        ///         {
+        ///             DeployType = "4",
+        ///             DiskSize = "500",
+        ///             DiskType = "1",
+        ///             IoMax = "20",
+        ///             TopicQuota = "50",
+        ///             VswitchId = defaultSwitch.Id,
+        ///         });
+        ///         var instancesDs = Output.Create(AliCloud.ActionTrail.GetInstances.InvokeAsync(new AliCloud.ActionTrail.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "alikafkaInstanceName",
+        ///             OutputFile = "instances.txt",
+        ///         }));
+        ///         this.FirstInstanceName = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceName")]
+        ///     public Output&lt;string&gt; FirstInstanceName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

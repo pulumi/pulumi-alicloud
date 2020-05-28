@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instancesDs = Output.Create(AliCloud.Oss.GetInstances.InvokeAsync(new AliCloud.Oss.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "sample-instance",
+        ///             OutputFile = "instances.txt",
+        ///         }));
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

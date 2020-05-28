@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.Edas
         /// &gt; **NOTE:** Available in 1.82.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var applications = Output.Create(AliCloud.Edas.GetApplications.InvokeAsync(new AliCloud.Edas.GetApplicationsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "xxx",
+        ///             },
+        ///             OutputFile = "application.txt",
+        ///         }));
+        ///         this.FirstApplicationName = applications.Apply(applications =&gt; applications.Applications[0].AppName);
+        ///     }
+        /// 
+        ///     [Output("firstApplicationName")]
+        ///     public Output&lt;string&gt; FirstApplicationName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)

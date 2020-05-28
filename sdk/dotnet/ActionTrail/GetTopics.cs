@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.ActionTrail
         /// &gt; **NOTE:** Available in 1.56.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var topicsDs = Output.Create(AliCloud.ActionTrail.GetTopics.InvokeAsync(new AliCloud.ActionTrail.GetTopicsArgs
+        ///         {
+        ///             InstanceId = "xxx",
+        ///             NameRegex = "alikafkaTopicName",
+        ///             OutputFile = "topics.txt",
+        ///         }));
+        ///         this.FirstTopicName = topicsDs.Apply(topicsDs =&gt; topicsDs.Topics[0].Topic);
+        ///     }
+        /// 
+        ///     [Output("firstTopicName")]
+        ///     public Output&lt;string&gt; FirstTopicName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs args, InvokeOptions? options = null)

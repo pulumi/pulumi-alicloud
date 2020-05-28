@@ -17,6 +17,43 @@ namespace Pulumi.AliCloud.Ecs
         /// The ID of the security group can be provided via a variable or the result from the other data source `alicloud.ecs.getSecurityGroups`.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
+        ///         var groupsDs = Output.Create(AliCloud.Ecs.GetSecurityGroups.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupsArgs
+        ///         {
+        ///             NameRegex = "api",
+        ///         }));
+        ///         var ingressRulesDs = groupsDs.Apply(groupsDs =&gt; Output.Create(AliCloud.Ecs.GetSecurityGroupRules.InvokeAsync(new AliCloud.Ecs.GetSecurityGroupRulesArgs
+        ///         {
+        ///             Direction = "ingress",
+        ///             GroupId = groupsDs.Groups[0].Id,
+        ///             IpProtocol = "TCP",
+        ///             NicType = "internet",
+        ///         })));
+        ///         // Pass port_range to the backend service
+        ///         var backend = new AliCloud.Ecs.Instance("backend", new AliCloud.Ecs.InstanceArgs
+        ///         {
+        ///             UserData = ingressRulesDs.Apply(ingressRulesDs =&gt; $"config_service.sh --portrange={ingressRulesDs.Rules[0].PortRange}"),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecurityGroupRulesResult> InvokeAsync(GetSecurityGroupRulesArgs args, InvokeOptions? options = null)

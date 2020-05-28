@@ -11,6 +11,42 @@ namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
     /// Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///             Description = "tf-testAccCenBandwidthPackageAttachmentDescription",
+    ///         });
+    ///         var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new AliCloud.Cen.BandwidthPackageArgs
+    ///         {
+    ///             Bandwidth = 20,
+    ///             GeographicRegionIds = 
+    ///             {
+    ///                 "China",
+    ///                 "Asia-Pacific",
+    ///             },
+    ///         });
+    ///         var foo = new AliCloud.Cen.BandwidthPackageAttachment("foo", new AliCloud.Cen.BandwidthPackageAttachmentArgs
+    ///         {
+    ///             BandwidthPackageId = bwp.Id,
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BandwidthPackageAttachment : Pulumi.CustomResource
     {

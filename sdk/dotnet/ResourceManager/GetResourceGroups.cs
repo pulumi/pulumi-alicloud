@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:** Available in v1.84.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs
+        ///         {
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstResourceGroupId = example.Apply(example =&gt; example.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstResourceGroupId")]
+        ///     public Output&lt;string&gt; FirstResourceGroupId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceGroupsResult> InvokeAsync(GetResourceGroupsArgs? args = null, InvokeOptions? options = null)

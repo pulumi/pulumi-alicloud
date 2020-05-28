@@ -11,6 +11,65 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provides an RDS readonly instance resource. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "Rds";
+    ///         var name = config.Get("name") ?? "dbInstancevpc";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new AliCloud.Rds.InstanceArgs
+    ///         {
+    ///             Engine = "MySQL",
+    ///             EngineVersion = "5.6",
+    ///             InstanceChargeType = "Postpaid",
+    ///             InstanceName = name,
+    ///             InstanceStorage = "20",
+    ///             InstanceType = "rds.mysql.t1.small",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.168.1.12",
+    ///                 "100.69.7.112",
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new AliCloud.Rds.ReadOnlyInstanceArgs
+    ///         {
+    ///             EngineVersion = defaultInstance.EngineVersion,
+    ///             InstanceName = $"{name}ro",
+    ///             InstanceStorage = "30",
+    ///             InstanceType = defaultInstance.InstanceType,
+    ///             MasterDbInstanceId = defaultInstance.Id,
+    ///             VswitchId = defaultSwitch.Id,
+    ///             ZoneId = defaultInstance.ZoneId,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ReadOnlyInstance : Pulumi.CustomResource
     {

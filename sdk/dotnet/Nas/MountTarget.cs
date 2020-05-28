@@ -19,6 +19,44 @@ namespace Pulumi.AliCloud.Nas
     /// &gt; NOTE: You must grant NAS with specific RAM permissions when creating a classic mount targets,
     /// and it only can be achieved by creating a classic mount target mannually.
     /// See [Add a mount point](https://www.alibabacloud.com/help/doc-detail/60431.htm) and [Why do I need RAM permissions to create a mount point in a classic network](https://www.alibabacloud.com/help/faq-detail/42176.htm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooFileSystem = new AliCloud.Nas.FileSystem("fooFileSystem", new AliCloud.Nas.FileSystemArgs
+    ///         {
+    ///             Description = "tf-testAccNasConfigFs",
+    ///             ProtocolType = "NFS",
+    ///             StorageType = "Performance",
+    ///         });
+    ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             Description = "tf-testAccNasConfig",
+    ///             Type = "Classic",
+    ///         });
+    ///         var bar = new AliCloud.Nas.AccessGroup("bar", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             Description = "tf-testAccNasConfig-2",
+    ///             Type = "Classic",
+    ///         });
+    ///         var fooMountTarget = new AliCloud.Nas.MountTarget("fooMountTarget", new AliCloud.Nas.MountTargetArgs
+    ///         {
+    ///             AccessGroupName = fooAccessGroup.Id,
+    ///             FileSystemId = fooFileSystem.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class MountTarget : Pulumi.CustomResource
     {

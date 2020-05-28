@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.Slb
         /// &gt; **NOTE:** Available in 1.54.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetMasterSlaveServerGroups.InvokeAsync(new AliCloud.Slb.GetMasterSlaveServerGroupsArgs
+        ///         {
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbServerGroupId = sampleDs.Apply(sampleDs =&gt; sampleDs.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbServerGroupId")]
+        ///     public Output&lt;string&gt; FirstSlbServerGroupId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMasterSlaveServerGroupsResult> InvokeAsync(GetMasterSlaveServerGroupsArgs args, InvokeOptions? options = null)

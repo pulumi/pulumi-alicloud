@@ -17,6 +17,27 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** The number of instances in the same region cannot exceed 8. At present, the resource does not support region "mq-internet-access" and "ap-southeast-5". 
     /// 
     /// &gt; **NOTE:** Available in 1.51.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.RocketMQ.Instance("example", new AliCloud.RocketMQ.InstanceArgs
+    ///         {
+    ///             Remark = "tf-example-ons-instance-remark",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

@@ -11,6 +11,53 @@ namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
     /// Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It can be associated with IP whitelists and backup configuration which are separate resource providers.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "KVStore";
+    ///         var name = config.Get("name") ?? "kvstoreinstancevpc";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             EngineVersion = "4.0",
+    ///             InstanceClass = "redis.master.small.default",
+    ///             InstanceName = name,
+    ///             InstanceType = "Redis",
+    ///             PrivateIp = "172.16.0.10",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

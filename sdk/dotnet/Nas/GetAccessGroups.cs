@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; NOTE: Available in 1.35.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ag = Output.Create(AliCloud.Nas.GetAccessGroups.InvokeAsync(new AliCloud.Nas.GetAccessGroupsArgs
+        ///         {
+        ///             Description = "tf-testAccAccessGroupsdatasource",
+        ///             NameRegex = "^foo",
+        ///             Type = "Classic",
+        ///         }));
+        ///         this.AlicloudNasAccessGroupsId = ag.Apply(ag =&gt; ag.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("alicloudNasAccessGroupsId")]
+        ///     public Output&lt;string&gt; AlicloudNasAccessGroupsId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessGroupsResult> InvokeAsync(GetAccessGroupsArgs? args = null, InvokeOptions? options = null)

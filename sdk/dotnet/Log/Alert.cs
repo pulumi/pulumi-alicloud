@@ -9,12 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Log
 {
-    /// <summary>
-    /// Log alert is a unit of log service, which is used to monitor and alert the user's logstore status information. 
-    /// Log Service enables you to configure alerts based on the charts in a dashboard to monitor the service status in real time.
-    /// 
-    /// &gt; **NOTE:** Available in 1.78.0
-    /// </summary>
     public partial class Alert : Pulumi.CustomResource
     {
         /// <summary>

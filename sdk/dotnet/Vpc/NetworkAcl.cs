@@ -13,6 +13,32 @@ namespace Pulumi.AliCloud.Vpc
     /// Provides a network acl resource to add network acls.
     /// 
     /// &gt; **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new AliCloud.Vpc.NetworkAclArgs
+    ///         {
+    ///             Description = "network_acl",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NetworkAcl : Pulumi.CustomResource
     {

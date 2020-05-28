@@ -15,6 +15,27 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the acls in the region.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetAcls.InvokeAsync());
+        ///         this.FirstSlbAclId = sampleDs.Apply(sampleDs =&gt; sampleDs.Acls[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbAclId")]
+        ///     public Output&lt;string&gt; FirstSlbAclId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// ## Entry Block
         /// 

@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud
         /// This data source provides Alibaba Cloud regions.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var currentRegionDs = Output.Create(AliCloud.GetRegions.InvokeAsync(new AliCloud.GetRegionsArgs
+        ///         {
+        ///             Current = true,
+        ///         }));
+        ///         this.CurrentRegionId = currentRegionDs.Apply(currentRegionDs =&gt; currentRegionDs.Regions[0].Id);
+        ///     }
+        /// 
+        ///     [Output("currentRegionId")]
+        ///     public Output&lt;string&gt; CurrentRegionId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)

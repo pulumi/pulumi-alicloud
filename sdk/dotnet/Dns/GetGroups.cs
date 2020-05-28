@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Dns
         /// This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groupsDs = Output.Create(AliCloud.Dns.GetGroups.InvokeAsync(new AliCloud.Dns.GetGroupsArgs
+        ///         {
+        ///             NameRegex = "^y[A-Za-z]+",
+        ///             OutputFile = "groups.txt",
+        ///         }));
+        ///         this.FirstGroupName = groupsDs.Apply(groupsDs =&gt; groupsDs.Groups[0].GroupName);
+        ///     }
+        /// 
+        ///     [Output("firstGroupName")]
+        ///     public Output&lt;string&gt; FirstGroupName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)

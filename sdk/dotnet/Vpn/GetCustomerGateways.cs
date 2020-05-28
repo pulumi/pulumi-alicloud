@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Vpn
         /// The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(AliCloud.Vpn.GetCustomerGateways.InvokeAsync(new AliCloud.Vpn.GetCustomerGatewaysArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "fake-id1",
+        ///                 "fake-id2",
+        ///             },
+        ///             NameRegex = "testAcc*",
+        ///             OutputFile = "/tmp/cgws",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCustomerGatewaysResult> InvokeAsync(GetCustomerGatewaysArgs? args = null, InvokeOptions? options = null)

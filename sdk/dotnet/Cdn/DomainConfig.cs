@@ -15,6 +15,51 @@ namespace Pulumi.AliCloud.Cdn
     /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Domain config.
+    ///         var domain = new AliCloud.Cdn.DomainNew("domain", new AliCloud.Cdn.DomainNewArgs
+    ///         {
+    ///             CdnType = "web",
+    ///             DomainName = "tf-testacc%d.xiaozhu.com",
+    ///             Scope = "overseas",
+    ///             Sources = new AliCloud.Cdn.Inputs.DomainNewSourcesArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = "20",
+    ///                 Type = "ipaddr",
+    ///                 Weight = "15",
+    ///             },
+    ///         });
+    ///         var config = new AliCloud.Cdn.DomainConfig("config", new AliCloud.Cdn.DomainConfigArgs
+    ///         {
+    ///             DomainName = domain.DomainName,
+    ///             FunctionArgs = 
+    ///             {
+    ///                 new AliCloud.Cdn.Inputs.DomainConfigFunctionArgArgs
+    ///                 {
+    ///                     ArgName = "ip_list",
+    ///                     ArgValue = "110.110.110.110",
+    ///                 },
+    ///             },
+    ///             FunctionName = "ip_allow_list_set",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DomainConfig : Pulumi.CustomResource
     {

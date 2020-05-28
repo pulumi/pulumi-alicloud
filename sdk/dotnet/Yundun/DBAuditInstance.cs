@@ -9,15 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Yundun
 {
-    /// <summary>
-    /// Cloud DBaudit instance resource ("Yundun_dbaudit" is the short term of this product).
-    /// 
-    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-    /// 
-    /// &gt; **NOTE:** Available in 1.62.0+ .
-    /// 
-    /// &gt; **NOTE:** In order to destroy Cloud DBaudit instance , users are required to apply for white list first
-    /// </summary>
     public partial class DBAuditInstance : Pulumi.CustomResource
     {
         /// <summary>

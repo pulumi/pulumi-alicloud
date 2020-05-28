@@ -13,6 +13,34 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an Reserved Instance resource.
     /// 
     /// &gt; **NOTE:** Available in 1.65.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.ReservedInstance("default", new AliCloud.Ecs.ReservedInstanceArgs
+    ///         {
+    ///             InstanceType = "ecs.g6.large",
+    ///             InstanceAmount = "1",
+    ///             PeriodUnit = "Year",
+    ///             OfferingType = "All Upfront",
+    ///             Description = "ReservedInstance",
+    ///             ZoneId = "cn-shanghai-g",
+    ///             Scope = "Zone",
+    ///             Period = "1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ReservedInstance : Pulumi.CustomResource
     {

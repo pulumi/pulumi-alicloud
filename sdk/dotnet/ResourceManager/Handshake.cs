@@ -14,6 +14,30 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager handshake and how to use it, see [What is Resource Manager handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.82.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a Resource Manager handshake.
+    ///         var example = new AliCloud.ResourceManager.Handshake("example", new AliCloud.ResourceManager.HandshakeArgs
+    ///         {
+    ///             Note = "test resource manager handshake",
+    ///             TargetEntity = "1182775234******",
+    ///             TargetType = "Account",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Handshake : Pulumi.CustomResource
     {

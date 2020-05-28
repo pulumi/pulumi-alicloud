@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.CR
         /// &gt; **NOTE:** Available in v1.35.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myNamespaces = Output.Create(AliCloud.CR.GetNamespaces.InvokeAsync(new AliCloud.CR.GetNamespacesArgs
+        ///         {
+        ///             NameRegex = "my-namespace",
+        ///             OutputFile = "my-namespace-json",
+        ///         }));
+        ///         this.Output = myNamespaces.Apply(myNamespaces =&gt; myNamespaces.Namespaces);
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)

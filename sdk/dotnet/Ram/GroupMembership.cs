@@ -11,6 +11,54 @@ namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
     /// Provides a RAM Group membership resource. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a RAM Group membership.
+    ///         var @group = new AliCloud.Ram.Group("group", new AliCloud.Ram.GroupArgs
+    ///         {
+    ///             Comments = "this is a group comments.",
+    ///             Force = true,
+    ///         });
+    ///         var user = new AliCloud.Ram.User("user", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888888",
+    ///         });
+    ///         var user1 = new AliCloud.Ram.User("user1", new AliCloud.Ram.UserArgs
+    ///         {
+    ///             Comments = "yoyoyo",
+    ///             DisplayName = "user_display_name1",
+    ///             Email = "hello.uuu@aaa.com",
+    ///             Force = true,
+    ///             Mobile = "86-18688888889",
+    ///         });
+    ///         var membership = new AliCloud.Ram.GroupMembership("membership", new AliCloud.Ram.GroupMembershipArgs
+    ///         {
+    ///             GroupName = @group.Name,
+    ///             UserNames = 
+    ///             {
+    ///                 user.Name,
+    ///                 user1.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {

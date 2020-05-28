@@ -17,6 +17,27 @@ namespace Pulumi.AliCloud
         /// &gt; **NOTE:** Available in 1.65.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var current = Output.Create(AliCloud.GetCallerIdentity.InvokeAsync());
+        ///         this.CurrentUserArn = current.Apply(current =&gt; current.Id);
+        ///     }
+        /// 
+        ///     [Output("currentUserArn")]
+        ///     public Output&lt;string&gt; CurrentUserArn { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCallerIdentityResult> InvokeAsync(InvokeOptions? options = null)

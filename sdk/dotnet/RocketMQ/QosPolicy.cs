@@ -18,6 +18,39 @@ namespace Pulumi.AliCloud.RocketMQ
     /// &gt; **NOTE:** Available in 1.60.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos", new AliCloud.RocketMQ.QosArgs
+    ///         {
+    ///         });
+    ///         var defaultQosPolicy = new AliCloud.RocketMQ.QosPolicy("defaultQosPolicy", new AliCloud.RocketMQ.QosPolicyArgs
+    ///         {
+    ///             Description = "tf-testSagQosPolicyDescription",
+    ///             DestCidr = "10.10.0.0/24",
+    ///             DestPortRange = "-1/-1",
+    ///             EndTime = "2019-10-26T16:41:33+0800",
+    ///             IpProtocol = "ALL",
+    ///             Priority = "1",
+    ///             QosId = defaultQos.Id,
+    ///             SourceCidr = "192.168.0.0/24",
+    ///             SourcePortRange = "-1/-1",
+    ///             StartTime = "2019-10-25T16:41:33+0800",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class QosPolicy : Pulumi.CustomResource
     {

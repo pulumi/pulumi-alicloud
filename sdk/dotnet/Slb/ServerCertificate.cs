@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Slb
     /// For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
     /// 
     /// For information about Server Certificate and how to use it, see [Configure Server Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // create a server certificate
+    ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs
+    ///         {
+    ///             PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
+    /// MIICXAIBAAKBgQDO0knDrlNdiys******ErVpjsckAaOW/JDG5PCSwkaMxk=
+    /// -----END RSA PRIVATE KEY-----
+    /// ",
+    ///             ServerCertificate = @"-----BEGIN CERTIFICATE-----
+    /// MIIDRjCCAq+gAwIBAgI+OuMs******XTtI90EAxEG/bJJyOm5LqoiA=
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ServerCertificate : Pulumi.CustomResource
     {

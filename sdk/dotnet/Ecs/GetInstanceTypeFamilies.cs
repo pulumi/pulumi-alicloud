@@ -17,6 +17,33 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:** Available in 1.54.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Ecs.GetInstanceTypeFamilies.InvokeAsync(new AliCloud.Ecs.GetInstanceTypeFamiliesArgs
+        ///         {
+        ///             InstanceChargeType = "PrePaid",
+        ///         }));
+        ///         this.FirstInstanceTypeFamilyId = @default.Apply(@default =&gt; @default.Families[0].Id);
+        ///         this.InstanceIds = @default.Apply(@default =&gt; @default.Ids);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceTypeFamilyId")]
+        ///     public Output&lt;string&gt; FirstInstanceTypeFamilyId { get; set; }
+        ///     [Output("instanceIds")]
+        ///     public Output&lt;string&gt; InstanceIds { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceTypeFamiliesResult> InvokeAsync(GetInstanceTypeFamiliesArgs? args = null, InvokeOptions? options = null)

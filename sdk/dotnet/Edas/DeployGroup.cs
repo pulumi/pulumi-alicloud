@@ -13,6 +13,29 @@ namespace Pulumi.AliCloud.Edas
     /// Provides an EDAS deploy group resource.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.DeployGroup("default", new AliCloud.Edas.DeployGroupArgs
+    ///         {
+    ///             AppId = @var.App_id,
+    ///             GroupName = @var.Group_name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DeployGroup : Pulumi.CustomResource
     {

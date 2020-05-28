@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Vpc
         /// The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(AliCloud.Vpc.GetSslVpnClientCerts.InvokeAsync(new AliCloud.Vpc.GetSslVpnClientCertsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "fake-cert-id",
+        ///             },
+        ///             NameRegex = "^foo",
+        ///             OutputFile = "/tmp/clientcert",
+        ///             SslVpnServerId = "fake-server-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSslVpnClientCertsResult> InvokeAsync(GetSslVpnClientCertsArgs? args = null, InvokeOptions? options = null)

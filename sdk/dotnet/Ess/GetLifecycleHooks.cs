@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Ess
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ds = Output.Create(AliCloud.Ess.GetLifecycleHooks.InvokeAsync(new AliCloud.Ess.GetLifecycleHooksArgs
+        ///         {
+        ///             NameRegex = "lifecyclehook_name",
+        ///             ScalingGroupId = "scaling_group_id",
+        ///         }));
+        ///         this.FirstLifecycleHook = ds.Apply(ds =&gt; ds.Hooks[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstLifecycleHook")]
+        ///     public Output&lt;string&gt; FirstLifecycleHook { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecycleHooksResult> InvokeAsync(GetLifecycleHooksArgs? args = null, InvokeOptions? options = null)

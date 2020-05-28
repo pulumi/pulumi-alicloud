@@ -14,6 +14,27 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
     /// 
     /// &gt; **NOTE:** Available in v1.82.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.ResourceManager.ResourceGroup("example", new AliCloud.ResourceManager.ResourceGroupArgs
+    ///         {
+    ///             DisplayName = "testrd",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ResourceGroup : Pulumi.CustomResource
     {

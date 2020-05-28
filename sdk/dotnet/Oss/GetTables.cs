@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Oss
         /// &gt; **NOTE:** Available in v1.40.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var tablesDs = Output.Create(AliCloud.Oss.GetTables.InvokeAsync(new AliCloud.Oss.GetTablesArgs
+        ///         {
+        ///             InstanceName = "sample-instance",
+        ///             NameRegex = "sample-table",
+        ///             OutputFile = "tables.txt",
+        ///         }));
+        ///         this.FirstTableId = tablesDs.Apply(tablesDs =&gt; tablesDs.Tables[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstTableId")]
+        ///     public Output&lt;string&gt; FirstTableId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)

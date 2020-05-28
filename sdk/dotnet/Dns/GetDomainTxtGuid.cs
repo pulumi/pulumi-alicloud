@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.Dns
         /// &gt; **NOTE:** Available in v1.80.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Dns.GetDomainTxtGuid.InvokeAsync(new AliCloud.Dns.GetDomainTxtGuidArgs
+        ///         {
+        ///             DomainName = "test111.abc",
+        ///             Type = "ADD_SUB_DOMAIN",
+        ///         }));
+        ///         this.Rr = @this.Apply(@this =&gt; @this.Rr);
+        ///         this.Value = @this.Apply(@this =&gt; @this.Value);
+        ///     }
+        /// 
+        ///     [Output("rr")]
+        ///     public Output&lt;string&gt; Rr { get; set; }
+        ///     [Output("value")]
+        ///     public Output&lt;string&gt; Value { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainTxtGuidResult> InvokeAsync(GetDomainTxtGuidArgs args, InvokeOptions? options = null)

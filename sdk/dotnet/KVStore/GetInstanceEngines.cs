@@ -17,6 +17,38 @@ namespace Pulumi.AliCloud.KVStore
         /// &gt; **NOTE:** Available in v1.51.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+        ///         {
+        ///             AvailableResourceCreation = "KVStore",
+        ///         }));
+        ///         var resourcesInstanceEngines = resourcesZones.Apply(resourcesZones =&gt; Output.Create(AliCloud.KVStore.GetInstanceEngines.InvokeAsync(new AliCloud.KVStore.GetInstanceEnginesArgs
+        ///         {
+        ///             Engine = "Redis",
+        ///             EngineVersion = "5.0",
+        ///             InstanceChargeType = "PrePaid",
+        ///             OutputFile = "./engines.txt",
+        ///             ZoneId = resourcesZones.Zones[0].Id,
+        ///         })));
+        ///         this.FirstKvstoreInstanceClass = resourcesInstanceEngines.Apply(resourcesInstanceEngines =&gt; resourcesInstanceEngines.InstanceEngines[0].Engine);
+        ///     }
+        /// 
+        ///     [Output("firstKvstoreInstanceClass")]
+        ///     public Output&lt;string&gt; FirstKvstoreInstanceClass { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs args, InvokeOptions? options = null)

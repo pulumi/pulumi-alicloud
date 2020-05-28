@@ -19,6 +19,37 @@ namespace Pulumi.AliCloud.CloudConnect
         /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var defaultNetworks = Output.Create(AliCloud.CloudConnect.GetNetworks.InvokeAsync(new AliCloud.CloudConnect.GetNetworksArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 alicloud_cloud_connect_networks.Default.Id,
+        ///             },
+        ///             NameRegex = "^tf-testAcc.*",
+        ///         }));
+        ///         var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new AliCloud.CloudConnect.NetworkArgs
+        ///         {
+        ///             CidrBlock = "192.168.0.0/24",
+        ///             Description = "tf-testAccCloudConnectNetworkDescription",
+        ///             IsDefault = true,
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)

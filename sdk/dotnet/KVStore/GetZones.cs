@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.KVStore
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var zonesIds = Output.Create(AliCloud.KVStore.GetZones.InvokeAsync());
+        ///         // Create an KVStore instance with the first matched zone
+        ///         var kvstore = new AliCloud.KVStore.Instance("kvstore", new AliCloud.KVStore.InstanceArgs
+        ///         {
+        ///             AvailabilityZone = zonesIds.Apply(zonesIds =&gt; zonesIds.Zones[0].Id),
+        ///         });
+        ///         // Other properties...
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)

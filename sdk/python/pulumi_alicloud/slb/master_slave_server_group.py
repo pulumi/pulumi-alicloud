@@ -110,13 +110,13 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                 {
                     "port": 100,
                     "serverId": instance_instance[0].id,
-                    "serverType": "Master",
+                    "server_type": "Master",
                     "weight": 100,
                 },
                 {
                     "port": 100,
                     "serverId": instance_instance[1].id,
-                    "serverType": "Slave",
+                    "server_type": "Slave",
                     "weight": 100,
                 },
             ])

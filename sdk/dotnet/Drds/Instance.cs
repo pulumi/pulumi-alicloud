@@ -19,6 +19,32 @@ namespace Pulumi.AliCloud.Drds
     /// &gt; **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
     /// 
     /// &gt; **NOTE:** Currently, this resource only support `Domestic Site Account`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Drds.Instance("default", new AliCloud.Drds.InstanceArgs
+    ///         {
+    ///             Description = "drds instance",
+    ///             InstanceChargeType = "PostPaid",
+    ///             InstanceSeries = "drds.sn1.4c8g",
+    ///             Specification = "drds.sn1.4c8g.8C16G",
+    ///             VswitchId = "vsw-bp1jlu3swk8rq2yoi40ey",
+    ///             ZoneId = "cn-hangzhou-e",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

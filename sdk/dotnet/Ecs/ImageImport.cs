@@ -17,6 +17,41 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
     /// 
     /// &gt; **NOTE:** Available in 1.69.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @this = new AliCloud.Ecs.ImageImport("this", new AliCloud.Ecs.ImageImportArgs
+    ///         {
+    ///             Architecture = "x86_64",
+    ///             Description = "test import image",
+    ///             DiskDeviceMappings = 
+    ///             {
+    ///                 new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
+    ///                 {
+    ///                     DiskImageSize = 5,
+    ///                     OssBucket = "testimportimage",
+    ///                     OssObject = "root.img",
+    ///                 },
+    ///             },
+    ///             ImageName = "test-import-image",
+    ///             LicenseType = "Auto",
+    ///             OsType = "linux",
+    ///             Platform = "Ubuntu",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageImport : Pulumi.CustomResource
     {

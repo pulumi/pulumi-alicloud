@@ -17,6 +17,36 @@ namespace Pulumi.AliCloud.MarketPlace
         /// &gt; **NOTE:** Available in 1.69.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.MarketPlace.GetProduct.InvokeAsync(new AliCloud.MarketPlace.GetProductArgs
+        ///         {
+        ///             ProductCode = "cmapi022206",
+        ///         }));
+        ///         this.ProductName = @default.Apply(@default =&gt; @default.Products[0].Name);
+        ///         this.FirstProductSkuCode = @default.Apply(@default =&gt; @default.Products[0].Skuses[0].SkuCode);
+        ///         this.FirstProductPackageVersion = @default.Apply(@default =&gt; @default.Products[0].Skuses[0].PackageVersions[0].PackageVersion);
+        ///     }
+        /// 
+        ///     [Output("productName")]
+        ///     public Output&lt;string&gt; ProductName { get; set; }
+        ///     [Output("firstProductSkuCode")]
+        ///     public Output&lt;string&gt; FirstProductSkuCode { get; set; }
+        ///     [Output("firstProductPackageVersion")]
+        ///     public Output&lt;string&gt; FirstProductPackageVersion { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProductResult> InvokeAsync(GetProductArgs args, InvokeOptions? options = null)

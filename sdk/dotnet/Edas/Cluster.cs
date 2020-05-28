@@ -13,6 +13,31 @@ namespace Pulumi.AliCloud.Edas
     /// Provides an EDAS cluster resource.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.Cluster("default", new AliCloud.Edas.ClusterArgs
+    ///         {
+    ///             ClusterName = @var.Cluster_name,
+    ///             ClusterType = @var.Cluster_type,
+    ///             NetworkMode = @var.Network_mode,
+    ///             LogicalRegionId = @var.Logical_region_id,
+    ///             VpcId = @var.Vpc_id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the objects of an OSS bucket.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bucketObjectsDs = Output.Create(AliCloud.Oss.GetBucketObjects.InvokeAsync(new AliCloud.Oss.GetBucketObjectsArgs
+        ///         {
+        ///             BucketName = "sample_bucket",
+        ///             KeyRegex = "sample/sample_object.txt",
+        ///         }));
+        ///         this.FirstObjectKey = bucketObjectsDs.Apply(bucketObjectsDs =&gt; bucketObjectsDs.Objects[0].Key);
+        ///     }
+        /// 
+        ///     [Output("firstObjectKey")]
+        ///     public Output&lt;string&gt; FirstObjectKey { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectsResult> InvokeAsync(GetBucketObjectsArgs args, InvokeOptions? options = null)

@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.CloudConnect
     /// &gt; **NOTE:** Available in 1.64.0+
     /// 
     /// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
+    ///         {
+    ///             IsDefault = "true",
+    ///         });
+    ///         var @default = new AliCloud.CloudConnect.NetworkAttachment("default", new AliCloud.CloudConnect.NetworkAttachmentArgs
+    ///         {
+    ///             CcnId = ccn.Id,
+    ///             SagId = "sag-xxxxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NetworkAttachment : Pulumi.CustomResource
     {

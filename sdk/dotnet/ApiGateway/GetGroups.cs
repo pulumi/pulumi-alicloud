@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.ApiGateway
         /// This data source provides the api groups of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dataApigatway = Output.Create(AliCloud.ApiGateway.GetGroups.InvokeAsync(new AliCloud.ApiGateway.GetGroupsArgs
+        ///         {
+        ///             OutputFile = "outgroups",
+        ///         }));
+        ///         this.FirstGroupId = dataApigatway.Apply(dataApigatway =&gt; dataApigatway.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstGroupId")]
+        ///     public Output&lt;string&gt; FirstGroupId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)

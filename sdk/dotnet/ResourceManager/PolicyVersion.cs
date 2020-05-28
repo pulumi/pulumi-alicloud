@@ -14,6 +14,49 @@ namespace Pulumi.AliCloud.ResourceManager
     /// For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
     /// 
     /// &gt; **NOTE:** Available in v1.84.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new AliCloud.ResourceManager.PolicyArgs
+    ///         {
+    ///             PolicyName = "tftest",
+    ///             PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:*""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         });
+    ///         var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new AliCloud.ResourceManager.PolicyVersionArgs
+    ///         {
+    ///             PolicyName = examplePolicy.PolicyName,
+    ///             PolicyDocument = @"		{
+    /// 			""Statement"": [{
+    /// 				""Action"": [""oss:*""],
+    /// 				""Effect"": ""Allow"",
+    /// 				""Resource"": [""acs:oss:*:*:myphotos""]
+    /// 			}],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PolicyVersion : Pulumi.CustomResource
     {

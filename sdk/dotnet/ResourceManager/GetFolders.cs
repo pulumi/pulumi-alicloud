@@ -19,6 +19,30 @@ namespace Pulumi.AliCloud.ResourceManager
         /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs
+        ///         {
+        ///             NameRegex = "tftest",
+        ///         }));
+        ///         this.FirstFolderId = example.Apply(example =&gt; example.Folders[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstFolderId")]
+        ///     public Output&lt;string&gt; FirstFolderId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFoldersResult> InvokeAsync(GetFoldersArgs? args = null, InvokeOptions? options = null)

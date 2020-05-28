@@ -17,6 +17,30 @@ namespace Pulumi.AliCloud.Ess
         /// &gt; **NOTE:** Available in 1.72.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ds = Output.Create(AliCloud.Ess.GetNotifications.InvokeAsync(new AliCloud.Ess.GetNotificationsArgs
+        ///         {
+        ///             ScalingGroupId = "scaling_group_id",
+        ///         }));
+        ///         this.FirstNotification = ds.Apply(ds =&gt; ds.Notifications[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstNotification")]
+        ///     public Output&lt;string&gt; FirstNotification { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationsResult> InvokeAsync(GetNotificationsArgs args, InvokeOptions? options = null)

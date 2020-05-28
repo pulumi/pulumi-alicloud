@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the server load balancers of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var slbsDs = Output.Create(AliCloud.Slb.GetLoadBalancers.InvokeAsync(new AliCloud.Slb.GetLoadBalancersArgs
+        ///         {
+        ///             NameRegex = "sample_slb",
+        ///         }));
+        ///         this.FirstSlbId = slbsDs.Apply(slbsDs =&gt; slbsDs.Slbs[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbId")]
+        ///     public Output&lt;string&gt; FirstSlbId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)

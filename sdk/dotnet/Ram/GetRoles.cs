@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Ram
         /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var rolesDs = Output.Create(AliCloud.Ram.GetRoles.InvokeAsync(new AliCloud.Ram.GetRolesArgs
+        ///         {
+        ///             NameRegex = ".*test.*",
+        ///             OutputFile = "roles.txt",
+        ///             PolicyName = "AliyunACSDefaultAccess",
+        ///             PolicyType = "Custom",
+        ///         }));
+        ///         this.FirstRoleId = rolesDs.Apply(rolesDs =&gt; rolesDs.Roles[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstRoleId")]
+        ///     public Output&lt;string&gt; FirstRoleId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)

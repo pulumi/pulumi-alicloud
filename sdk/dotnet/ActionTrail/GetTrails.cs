@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.ActionTrail
         /// This data source provides a list of action trail of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var trails = Output.Create(AliCloud.ActionTrail.GetTrails.InvokeAsync(new AliCloud.ActionTrail.GetTrailsArgs
+        ///         {
+        ///             NameRegex = "tf-testacc-actiontrail",
+        ///         }));
+        ///         this.FirstTrailName = trails.Apply(trails =&gt; trails.Actiontrails[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstTrailName")]
+        ///     public Output&lt;string&gt; FirstTrailName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrailsResult> InvokeAsync(GetTrailsArgs? args = null, InvokeOptions? options = null)

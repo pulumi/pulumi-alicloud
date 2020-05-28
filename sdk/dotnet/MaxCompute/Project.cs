@@ -13,6 +13,28 @@ namespace Pulumi.AliCloud.MaxCompute
     /// The project is the basic unit of operation in maxcompute. It is similar to the concept of Database or Schema in traditional databases, and sets the boundary for maxcompute multi-user isolation and access control. [Refer to details](https://www.alibabacloud.com/help/doc-detail/27818.html).
     /// 
     /// -&gt;**NOTE:** Available in 1.77.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.MaxCompute.Project("example", new AliCloud.MaxCompute.ProjectArgs
+    ///         {
+    ///             OrderType = "PayAsYouGo",
+    ///             SpecificationType = "OdpsStandard",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Project : Pulumi.CustomResource
     {

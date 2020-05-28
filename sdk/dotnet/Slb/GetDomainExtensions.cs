@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.Slb
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// 
+        /// {{% example %}}
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(AliCloud.Slb.GetDomainExtensions.InvokeAsync(new AliCloud.Slb.GetDomainExtensionsArgs
+        ///         {
+        ///             FrontendPort = "fake-port",
+        ///             Ids = 
+        ///             {
+        ///                 "fake-de-id",
+        ///             },
+        ///             LoadBalancerId = "fake-lb-id",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)

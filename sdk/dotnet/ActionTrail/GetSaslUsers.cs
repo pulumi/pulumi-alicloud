@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.ActionTrail
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var saslUsersDs = Output.Create(AliCloud.ActionTrail.GetSaslUsers.InvokeAsync(new AliCloud.ActionTrail.GetSaslUsersArgs
+        ///         {
+        ///             InstanceId = "xxx",
+        ///             NameRegex = "username",
+        ///             OutputFile = "saslUsers.txt",
+        ///         }));
+        ///         this.FirstSaslUsername = saslUsersDs.Apply(saslUsersDs =&gt; saslUsersDs.Users[0].Username);
+        ///     }
+        /// 
+        ///     [Output("firstSaslUsername")]
+        ///     public Output&lt;string&gt; FirstSaslUsername { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSaslUsersResult> InvokeAsync(GetSaslUsersArgs args, InvokeOptions? options = null)

@@ -15,6 +15,81 @@ namespace Pulumi.AliCloud.Cen
     /// For example, a CEN instance is bound to a bandwidth package of 20 Mbps and  the interconnection areas are Mainland China and North America. You can set the cross-region interconnection bandwidth between US West 1 and China East 1, China East 2, China South 1, and so on. However, the total bandwidth set for all the interconnected regions cannot exceed 20  Mbps.
     /// 
     /// For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var name = config.Get("name") ?? "tf-testAccCenBandwidthLimitConfig";
+    ///         var fra = new AliCloud.Provider("fra", new AliCloud.ProviderArgs
+    ///         {
+    ///             Region = "eu-central-1",
+    ///         });
+    ///         var sh = new AliCloud.Provider("sh", new AliCloud.ProviderArgs
+    ///         {
+    ///             Region = "cn-shanghai",
+    ///         });
+    ///         var vpc1 = new AliCloud.Vpc.Network("vpc1", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "192.168.0.0/16",
+    ///         });
+    ///         var vpc2 = new AliCloud.Vpc.Network("vpc2", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/12",
+    ///         });
+    ///         var cen = new AliCloud.Cen.Instance("cen", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///             Description = "tf-testAccCenBandwidthLimitConfigDescription",
+    ///         });
+    ///         var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new AliCloud.Cen.BandwidthPackageArgs
+    ///         {
+    ///             Bandwidth = 5,
+    ///             GeographicRegionIds = 
+    ///             {
+    ///                 "Europe",
+    ///                 "China",
+    ///             },
+    ///         });
+    ///         var bwpAttach = new AliCloud.Cen.BandwidthPackageAttachment("bwpAttach", new AliCloud.Cen.BandwidthPackageAttachmentArgs
+    ///         {
+    ///             BandwidthPackageId = bwp.Id,
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///         var vpcAttach1 = new AliCloud.Cen.InstanceAttachment("vpcAttach1", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = vpc1.Id,
+    ///             ChildInstanceRegionId = "eu-central-1",
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///         var vpcAttach2 = new AliCloud.Cen.InstanceAttachment("vpcAttach2", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = vpc2.Id,
+    ///             ChildInstanceRegionId = "cn-shanghai",
+    ///             InstanceId = cen.Id,
+    ///         });
+    ///         var foo = new AliCloud.Cen.BandwidthLimit("foo", new AliCloud.Cen.BandwidthLimitArgs
+    ///         {
+    ///             BandwidthLimit = 4,
+    ///             InstanceId = cen.Id,
+    ///             RegionIds = 
+    ///             {
+    ///                 "eu-central-1",
+    ///                 "cn-shanghai",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BandwidthLimit : Pulumi.CustomResource
     {

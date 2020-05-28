@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN instances available to the user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cenInstancesDs = Output.Create(AliCloud.Cen.GetInstances.InvokeAsync(new AliCloud.Cen.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "cen-id1",
+        ///             },
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenInstanceId = cenInstancesDs.Apply(cenInstancesDs =&gt; cenInstancesDs.Instances[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenInstanceId")]
+        ///     public Output&lt;string&gt; FirstCenInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

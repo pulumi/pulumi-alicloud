@@ -16,6 +16,36 @@ namespace Pulumi.AliCloud.Rds
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dbInstancesDs = Output.Create(AliCloud.Rds.GetInstances.InvokeAsync(new AliCloud.Rds.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "data-\\d+",
+        ///             Status = "Running",
+        ///             Tags = 
+        ///             {
+        ///                 { "size", "tiny" },
+        ///                 { "type", "database" },
+        ///             },
+        ///         }));
+        ///         this.FirstDbInstanceId = dbInstancesDs.Apply(dbInstancesDs =&gt; dbInstancesDs.Instances[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstDbInstanceId")]
+        ///     public Output&lt;string&gt; FirstDbInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

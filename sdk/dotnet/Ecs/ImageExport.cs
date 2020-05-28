@@ -19,6 +19,29 @@ namespace Pulumi.AliCloud.Ecs
     /// &gt; **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.
     /// 
     /// &gt; **NOTE:** Available in 1.68.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Ecs.ImageExport("default", new AliCloud.Ecs.ImageExportArgs
+    ///         {
+    ///             ImageId = "m-bp1gxy***",
+    ///             OssBucket = "ecsimageexportconfig",
+    ///             OssPrefix = "ecsExport",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageExport : Pulumi.CustomResource
     {

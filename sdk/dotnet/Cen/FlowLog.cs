@@ -9,15 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    /// <summary>
-    /// This resource used to create a flow log function in Cloud Enterprise Network (CEN). 
-    /// By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN. 
-    /// You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
-    /// 
-    /// For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/doc-detail/123006.htm).
-    /// 
-    /// &gt; **NOTE:** Available in 1.73.0+
-    /// </summary>
     public partial class FlowLog : Pulumi.CustomResource
     {
         /// <summary>

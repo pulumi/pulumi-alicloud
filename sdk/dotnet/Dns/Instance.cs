@@ -13,6 +13,32 @@ namespace Pulumi.AliCloud.Dns
     /// Create an DNS Instance resource.
     /// 
     /// &gt; **NOTE:** Available in v1.80.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @this = new AliCloud.Dns.Instance("this", new AliCloud.Dns.InstanceArgs
+    ///         {
+    ///             DnsSecurity = "no",
+    ///             DomainNumbers = "2",
+    ///             Period = 1,
+    ///             RenewPeriod = 1,
+    ///             RenewalStatus = "ManualRenewal",
+    ///             VersionCode = "version_personal",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

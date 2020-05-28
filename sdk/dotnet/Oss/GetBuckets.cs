@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the OSS buckets of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ossBucketsDs = Output.Create(AliCloud.Oss.GetBuckets.InvokeAsync(new AliCloud.Oss.GetBucketsArgs
+        ///         {
+        ///             NameRegex = "sample_oss_bucket",
+        ///         }));
+        ///         this.FirstOssBucketName = ossBucketsDs.Apply(ossBucketsDs =&gt; ossBucketsDs.Buckets[0].Name);
+        ///     }
+        /// 
+        ///     [Output("firstOssBucketName")]
+        ///     public Output&lt;string&gt; FirstOssBucketName { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketsResult> InvokeAsync(GetBucketsArgs? args = null, InvokeOptions? options = null)

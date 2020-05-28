@@ -17,6 +17,36 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in 1.78.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Cen.GetFlowlogs.InvokeAsync(new AliCloud.Cen.GetFlowlogsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "flowlog-tig1xxxxx",
+        ///             },
+        ///             NameRegex = "^foo",
+        ///         }));
+        ///         this.FirstCenFlowlogId = data.Alicloud_cen_instances.Default.Flowlogs[0].Id;
+        ///     }
+        /// 
+        ///     [Output("firstCenFlowlogId")]
+        ///     public Output&lt;string&gt; FirstCenFlowlogId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlowlogsResult> InvokeAsync(GetFlowlogsArgs? args = null, InvokeOptions? options = null)

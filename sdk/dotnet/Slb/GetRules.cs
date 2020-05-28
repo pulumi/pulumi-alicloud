@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Slb
         /// This data source provides the rules associated with a server load balancer listener.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sampleDs = Output.Create(AliCloud.Slb.GetRules.InvokeAsync(new AliCloud.Slb.GetRulesArgs
+        ///         {
+        ///             FrontendPort = 80,
+        ///             LoadBalancerId = alicloud_slb.Sample_slb.Id,
+        ///         }));
+        ///         this.FirstSlbRuleId = sampleDs.Apply(sampleDs =&gt; sampleDs.SlbRules[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSlbRuleId")]
+        ///     public Output&lt;string&gt; FirstSlbRuleId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesResult> InvokeAsync(GetRulesArgs args, InvokeOptions? options = null)

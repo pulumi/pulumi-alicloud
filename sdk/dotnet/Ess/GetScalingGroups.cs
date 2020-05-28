@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Ess
         /// This data source provides available scaling group resources. 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var scalinggroupsDs = Output.Create(AliCloud.Ess.GetScalingGroups.InvokeAsync(new AliCloud.Ess.GetScalingGroupsArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "scaling_group_id1",
+        ///                 "scaling_group_id2",
+        ///             },
+        ///             NameRegex = "scaling_group_name",
+        ///         }));
+        ///         this.FirstScalingGroup = scalinggroupsDs.Apply(scalinggroupsDs =&gt; scalinggroupsDs.Groups[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstScalingGroup")]
+        ///     public Output&lt;string&gt; FirstScalingGroup { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScalingGroupsResult> InvokeAsync(GetScalingGroupsArgs? args = null, InvokeOptions? options = null)

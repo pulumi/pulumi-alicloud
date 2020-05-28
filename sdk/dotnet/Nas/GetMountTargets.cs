@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Nas
         /// &gt; NOTE: Available in 1.35.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mt = Output.Create(AliCloud.Nas.GetMountTargets.InvokeAsync(new AliCloud.Nas.GetMountTargetsArgs
+        ///         {
+        ///             AccessGroupName = "tf-testAccNasConfig",
+        ///             FileSystemId = "1a2sc4d",
+        ///         }));
+        ///         this.AlicloudNasMountTargetsId = mt.Apply(mt =&gt; mt.Targets[0].Id);
+        ///     }
+        /// 
+        ///     [Output("alicloudNasMountTargetsId")]
+        ///     public Output&lt;string&gt; AlicloudNasMountTargetsId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetMountTargetsResult> InvokeAsync(GetMountTargetsArgs args, InvokeOptions? options = null)

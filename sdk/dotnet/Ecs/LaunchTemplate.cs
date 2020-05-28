@@ -13,6 +13,83 @@ namespace Pulumi.AliCloud.Ecs
     /// Provides an ECS Launch Template resource.
     /// 
     /// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var images = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs
+    ///         {
+    ///             Owners = "system",
+    ///         }));
+    ///         var instances = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync());
+    ///         var template = new AliCloud.Ecs.LaunchTemplate("template", new AliCloud.Ecs.LaunchTemplateArgs
+    ///         {
+    ///             DataDisks = 
+    ///             {
+    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
+    ///                 {
+    ///                     Description = "test1",
+    ///                     Name = "disk1",
+    ///                 },
+    ///                 new AliCloud.Ecs.Inputs.LaunchTemplateDataDiskArgs
+    ///                 {
+    ///                     Description = "test2",
+    ///                     Name = "disk2",
+    ///                 },
+    ///             },
+    ///             Description = "test1",
+    ///             HostName = "tf-test-host",
+    ///             ImageId = images.Apply(images =&gt; images.Images[0].Id),
+    ///             InstanceChargeType = "PrePaid",
+    ///             InstanceName = "tf-instance-name",
+    ///             InstanceType = instances.Apply(instances =&gt; instances.Instances[0].InstanceType),
+    ///             InternetChargeType = "PayByBandwidth",
+    ///             InternetMaxBandwidthIn = 5,
+    ///             InternetMaxBandwidthOut = 0,
+    ///             IoOptimized = "none",
+    ///             KeyPairName = "test-key-pair",
+    ///             NetworkInterfaces = new AliCloud.Ecs.Inputs.LaunchTemplateNetworkInterfacesArgs
+    ///             {
+    ///                 Description = "hello1",
+    ///                 Name = "eth0",
+    ///                 PrimaryIp = "10.0.0.2",
+    ///                 SecurityGroupId = "xxxx",
+    ///                 VswitchId = "xxxxxxx",
+    ///             },
+    ///             NetworkType = "vpc",
+    ///             RamRoleName = "xxxxx",
+    ///             ResourceGroupId = "rg-zkdfjahg9zxncv0",
+    ///             SecurityEnhancementStrategy = "Active",
+    ///             SecurityGroupId = "sg-zxcvj0lasdf102350asdf9a",
+    ///             SpotPriceLimit = 5,
+    ///             SpotStrategy = "SpotWithPriceLimit",
+    ///             SystemDiskCategory = "cloud_ssd",
+    ///             SystemDiskDescription = "test disk",
+    ///             SystemDiskName = "hello",
+    ///             SystemDiskSize = 40,
+    ///             Tags = 
+    ///             {
+    ///                 { "tag1", "hello" },
+    ///                 { "tag2", "world" },
+    ///             },
+    ///             Userdata = "xxxxxxxxxxxxxx",
+    ///             VpcId = "vpc-asdfnbg0as8dfk1nb2",
+    ///             VswitchId = "sw-ljkngaksdjfj0nnasdf",
+    ///             ZoneId = "beijing-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LaunchTemplate : Pulumi.CustomResource
     {

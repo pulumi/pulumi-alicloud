@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Oss
         /// This data source provides the ots instance attachments of the current Alibaba Cloud user.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var attachmentsDs = Output.Create(AliCloud.Oss.GetInstanceAttachments.InvokeAsync(new AliCloud.Oss.GetInstanceAttachmentsArgs
+        ///         {
+        ///             InstanceName = "sample-instance",
+        ///             NameRegex = "testvpc",
+        ///             OutputFile = "attachments.txt",
+        ///         }));
+        ///         this.FirstOtsAttachmentId = attachmentsDs.Apply(attachmentsDs =&gt; attachmentsDs.Attachments[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstOtsAttachmentId")]
+        ///     public Output&lt;string&gt; FirstOtsAttachmentId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)

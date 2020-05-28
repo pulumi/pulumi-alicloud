@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Pvtz
         /// This data source lists a number of Private Zones resource information owned by an Alibaba Cloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var pvtzZonesDs = Output.Create(AliCloud.Pvtz.GetZones.InvokeAsync(new AliCloud.Pvtz.GetZonesArgs
+        ///         {
+        ///             Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///         }));
+        ///         this.FirstZoneId = pvtzZonesDs.Apply(pvtzZonesDs =&gt; pvtzZonesDs.Zones[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstZoneId")]
+        ///     public Output&lt;string&gt; FirstZoneId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)

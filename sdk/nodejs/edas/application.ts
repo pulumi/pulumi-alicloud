@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.Application("default", {
+ * const _default = new alicloud.edas.Application("default", {
  *     applicationName: "xxx",
  *     clusterId: "xxx",
  *     packageType: "JAR",

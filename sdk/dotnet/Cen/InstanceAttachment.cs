@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cen
 {
-    /// <summary>
-    /// Provides a CEN child instance attachment resource.
-    /// </summary>
     public partial class InstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>

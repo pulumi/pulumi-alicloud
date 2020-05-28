@@ -17,6 +17,44 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:** Available in 1.36.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "route-tables-datasource-example-name";
+        ///         var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/12",
+        ///         });
+        ///         var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new AliCloud.Vpc.RouteTableArgs
+        ///         {
+        ///             Description = name,
+        ///             VpcId = fooNetwork.Id,
+        ///         });
+        ///         var fooRouteTables = fooRouteTable.Id.Apply(id =&gt; AliCloud.Vpc.GetRouteTables.InvokeAsync(new AliCloud.Vpc.GetRouteTablesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 id,
+        ///             },
+        ///         }));
+        ///         this.RouteTableIds = fooRouteTables.Apply(fooRouteTables =&gt; fooRouteTables.Ids);
+        ///     }
+        /// 
+        ///     [Output("routeTableIds")]
+        ///     public Output&lt;string&gt; RouteTableIds { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteTablesResult> InvokeAsync(GetRouteTablesArgs? args = null, InvokeOptions? options = null)

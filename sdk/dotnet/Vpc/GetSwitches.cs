@@ -15,6 +15,40 @@ namespace Pulumi.AliCloud.Vpc
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "vswitchDatasourceName";
+        ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync());
+        ///         var vpc = new AliCloud.Vpc.Network("vpc", new AliCloud.Vpc.NetworkArgs
+        ///         {
+        ///             CidrBlock = "172.16.0.0/16",
+        ///         });
+        ///         var vswitch = new AliCloud.Vpc.Switch("vswitch", new AliCloud.Vpc.SwitchArgs
+        ///         {
+        ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+        ///             CidrBlock = "172.16.0.0/24",
+        ///             VpcId = vpc.Id,
+        ///         });
+        ///         var defaultSwitches = vswitch.Name.Apply(name =&gt; AliCloud.Vpc.GetSwitches.InvokeAsync(new AliCloud.Vpc.GetSwitchesArgs
+        ///         {
+        ///             NameRegex = name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)

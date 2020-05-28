@@ -15,6 +15,32 @@ namespace Pulumi.AliCloud.Slb
     /// For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
     /// 
     /// For information about CA Certificate and how to use it, see [Configure CA Certificate](https://www.alibabacloud.com/help/doc-detail/85968.htm).
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // create a CA certificate
+    ///         var foo = new AliCloud.Slb.CaCertificate("foo", new AliCloud.Slb.CaCertificateArgs
+    ///         {
+    ///             CaCertificate = @"-----BEGIN CERTIFICATE-----
+    /// MIIDRjCCAq+gAwIBAgIJAJnI******90EAxEG/bJJyOm5LqoiA=
+    /// -----END CERTIFICATE-----
+    /// ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CaCertificate : Pulumi.CustomResource
     {

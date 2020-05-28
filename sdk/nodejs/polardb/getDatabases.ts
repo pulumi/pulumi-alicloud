@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const default = polardbClustersDs.then(polardbClustersDs => alicloud.polardb.getDatabases({
  *     dbClusterId: polardbClustersDs.clusters[0].id,
  * }));
- * export const ends = default.then(_default => _default.databases[0].dbName);
+ * export const ends = _default.then(_default => _default.databases[0].dbName);
  * ```
  */
 export function getDatabases(args: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {

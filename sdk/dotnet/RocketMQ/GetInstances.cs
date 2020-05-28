@@ -17,6 +17,46 @@ namespace Pulumi.AliCloud.RocketMQ
         /// &gt; **NOTE:** Available in 1.52.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var config = new Config();
+        ///         var name = config.Get("name") ?? "onsInstanceDatasourceName";
+        ///         var @default = new AliCloud.RocketMQ.Instance("default", new AliCloud.RocketMQ.InstanceArgs
+        ///         {
+        ///             Remark = "default_ons_instance_remark",
+        ///         });
+        ///         var instancesDs = Output.Tuple(@default.Id, @default.Name).Apply(values =&gt;
+        ///         {
+        ///             var id = values.Item1;
+        ///             var name = values.Item2;
+        ///             return AliCloud.RocketMQ.GetInstances.InvokeAsync(new AliCloud.RocketMQ.GetInstancesArgs
+        ///             {
+        ///                 Ids = 
+        ///                 {
+        ///                     id,
+        ///                 },
+        ///                 NameRegex = name,
+        ///                 OutputFile = "instances.txt",
+        ///             });
+        ///         });
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].InstanceId);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

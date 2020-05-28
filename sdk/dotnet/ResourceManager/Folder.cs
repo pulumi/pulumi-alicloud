@@ -16,6 +16,27 @@ namespace Pulumi.AliCloud.ResourceManager
     /// &gt; **NOTE:** Available in v1.82.0+.
     /// 
     /// &gt; **NOTE:** A maximum of five levels of folders can be created under the root folder.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.ResourceManager.Folder("example", new AliCloud.ResourceManager.FolderArgs
+    ///         {
+    ///             FolderName = "test",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Folder : Pulumi.CustomResource
     {

@@ -13,6 +13,31 @@ namespace Pulumi.AliCloud.Kms
     /// Create an alias for the master key (CMK).
     /// 
     /// &gt; **NOTE:** Available in v1.77.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var thisKey = new AliCloud.Kms.Key("thisKey", new AliCloud.Kms.KeyArgs
+    ///         {
+    ///         });
+    ///         var thisAlias = new AliCloud.Kms.Alias("thisAlias", new AliCloud.Kms.AliasArgs
+    ///         {
+    ///             AliasName = "alias/test_kms_alias",
+    ///             KeyId = thisKey.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Alias : Pulumi.CustomResource
     {

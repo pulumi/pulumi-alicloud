@@ -18,6 +18,35 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Application orchestration template must be a valid Docker Compose YAML template.
     /// 
     /// &gt; **NOTE:** At present, this resource only support swarm cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var app = new AliCloud.CS.Application("app", new AliCloud.CS.ApplicationArgs
+    ///         {
+    ///             ClusterName = "my-first-swarm",
+    ///             Environment = 
+    ///             {
+    ///                 { "EXTERNAL_URL", "123.123.123.123:8080" },
+    ///             },
+    ///             LatestImage = true,
+    ///             Template = File.ReadAllText("wordpress.yml"),
+    ///             Version = "1.2",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

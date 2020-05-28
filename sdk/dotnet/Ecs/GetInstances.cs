@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Ecs
         /// The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var instancesDs = Output.Create(AliCloud.Ecs.GetInstances.InvokeAsync(new AliCloud.Ecs.GetInstancesArgs
+        ///         {
+        ///             NameRegex = "web_server",
+        ///             Status = "Running",
+        ///         }));
+        ///         this.FirstInstanceId = instancesDs.Apply(instancesDs =&gt; instancesDs.Instances[0].Id);
+        ///         this.InstanceIds = instancesDs.Apply(instancesDs =&gt; instancesDs.Ids);
+        ///     }
+        /// 
+        ///     [Output("firstInstanceId")]
+        ///     public Output&lt;string&gt; FirstInstanceId { get; set; }
+        ///     [Output("instanceIds")]
+        ///     public Output&lt;string&gt; InstanceIds { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

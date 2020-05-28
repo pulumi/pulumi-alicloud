@@ -15,6 +15,36 @@ namespace Pulumi.AliCloud.Nas
     /// When NAS is activated, the Default VPC Permission Group is automatically generated. It allows all IP addresses in a VPC to access the mount point with full permissions. Full permissions include Read/Write permission with no restriction on root users.
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new AliCloud.Nas.AccessGroupArgs
+    ///         {
+    ///             Description = "tf-testAccNasConfig",
+    ///             Type = "Vpc",
+    ///         });
+    ///         var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new AliCloud.Nas.AccessRuleArgs
+    ///         {
+    ///             AccessGroupName = fooAccessGroup.Id,
+    ///             Priority = 2,
+    ///             RwAccessType = "RDWR",
+    ///             SourceCidrIp = "168.1.1.0/16",
+    ///             UserAccessType = "no_squash",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessRule : Pulumi.CustomResource
     {

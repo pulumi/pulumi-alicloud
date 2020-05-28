@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = new alicloud.edas.InstanceClusterAttachment("default", {
- *     clusterId: var.cluster_id,
- *     instanceIds: var.instance_ids,
+ * const _default = new alicloud.edas.InstanceClusterAttachment("default", {
+ *     clusterId: _var.cluster_id,
+ *     instanceIds: _var.instance_ids,
  * });
  * ```
  */

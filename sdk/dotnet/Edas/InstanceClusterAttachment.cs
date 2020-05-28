@@ -13,6 +13,29 @@ namespace Pulumi.AliCloud.Edas
     /// Provides an EDAS instance cluster attachment resource.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Edas.InstanceClusterAttachment("default", new AliCloud.Edas.InstanceClusterAttachmentArgs
+    ///         {
+    ///             ClusterId = @var.Cluster_id,
+    ///             InstanceIds = @var.Instance_ids,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class InstanceClusterAttachment : Pulumi.CustomResource
     {

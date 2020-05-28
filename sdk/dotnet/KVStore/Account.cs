@@ -13,6 +13,59 @@ namespace Pulumi.AliCloud.KVStore
     /// Provides a kvstore account resource and used to manage databases.
     /// 
     /// &gt; **NOTE:** Available in 1.66.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var creation = config.Get("creation") ?? "KVStore";
+    ///         var name = config.Get("name") ?? "kvstoreinstancevpc";
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = creation,
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new AliCloud.KVStore.InstanceArgs
+    ///         {
+    ///             EngineVersion = "4.0",
+    ///             InstanceClass = "redis.master.small.default",
+    ///             InstanceName = name,
+    ///             InstanceType = "Redis",
+    ///             PrivateIp = "172.16.0.10",
+    ///             SecurityIps = 
+    ///             {
+    ///                 "10.0.0.1",
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///         var account = new AliCloud.KVStore.Account("account", new AliCloud.KVStore.AccountArgs
+    ///         {
+    ///             AccountName = "tftestnormal",
+    ///             AccountPassword = "Test12345",
+    ///             InstanceId = defaultInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

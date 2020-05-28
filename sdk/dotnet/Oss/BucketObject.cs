@@ -11,6 +11,55 @@ namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
     /// Provides a resource to put a object(content or file) to a oss bucket.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Uploading a file to a bucket
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var object_source = new AliCloud.Oss.BucketObject("object-source", new AliCloud.Oss.BucketObjectArgs
+    ///         {
+    ///             Bucket = "your_bucket_name",
+    ///             Key = "new_object_key",
+    ///             Source = "path/to/file",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Uploading a content to a bucket
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Oss.Bucket("example", new AliCloud.Oss.BucketArgs
+    ///         {
+    ///             Acl = "public-read",
+    ///             Bucket = "your_bucket_name",
+    ///         });
+    ///         var object_content = new AliCloud.Oss.BucketObject("object-content", new AliCloud.Oss.BucketObjectArgs
+    ///         {
+    ///             Bucket = example.BucketName,
+    ///             Content = "the content that you want to upload.",
+    ///             Key = "new_object_key",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BucketObject : Pulumi.CustomResource
     {

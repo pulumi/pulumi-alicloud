@@ -9,14 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Slb
 {
-    /// <summary>
-    /// Provides an Application Load Balancer resource.
-    /// 
-    /// &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
-    /// 
-    /// &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-    /// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
-    /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {
         /// <summary>

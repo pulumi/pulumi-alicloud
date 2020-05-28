@@ -15,6 +15,30 @@ namespace Pulumi.AliCloud.Dns
     /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
     /// 
     /// &gt; **NOTE:** Available in 1.57.0+ .
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new AliCloud.Ddos.DdosBgpInstanceArgs
+    ///         {
+    ///             Bandwidth = "201",
+    ///             BaseBandwidth = "20",
+    ///             IpCount = "100",
+    ///             IpType = "IPv4",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [Obsolete(@"alicloud.dns.DdosBgpInstance has been deprecated in favor of alicloud.ddos.DdosBgpInstance")]
     public partial class DdosBgpInstance : Pulumi.CustomResource

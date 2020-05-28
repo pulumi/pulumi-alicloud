@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Datahub
 {
-    /// <summary>
-    /// The subscription is the basic unit of resource usage in Datahub Service under Publish/Subscribe model. You can manage the relationships between user and topics by using subscriptions. [Refer to details](https://help.aliyun.com/document_detail/47440.html).
-    /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
