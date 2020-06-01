@@ -10,9 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a DNS Record resource.
-//
-// > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 type Record struct {
 	pulumi.CustomResourceState
 

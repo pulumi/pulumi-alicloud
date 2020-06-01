@@ -56,7 +56,7 @@ class Application(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, application_name=None, build_pack_id=None, cluster_id=None, descriotion=None, ecu_infos=None, group_id=None, health_check_url=None, logical_region_id=None, package_type=None, package_version=None, war_url=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an EDAS application resource.
+        Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.
 
         > **NOTE:** Available in 1.82.0+
 

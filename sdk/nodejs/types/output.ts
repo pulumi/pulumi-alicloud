@@ -1694,6 +1694,25 @@ export namespace dds {
 }
 
 export namespace dns {
+    export interface GetAlidnsDomainGroupsGroup {
+        /**
+         * Number of domain names in the group.
+         */
+        domainCount: number;
+        /**
+         * Id of the domain group.
+         */
+        groupId: string;
+        /**
+         * The name of the domain group.
+         */
+        groupName: string;
+        /**
+         * Id of the instance.
+         */
+        id: string;
+    }
+
     export interface GetDomainGroupsGroup {
         groupId: string;
         groupName: string;
@@ -1760,6 +1779,33 @@ export namespace dns {
          * Name of the group.
          */
         groupName: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * DNS security level.
+         */
+        dnsSecurity: string;
+        /**
+         * Number of domain names bound.
+         */
+        domainNumbers: string;
+        /**
+         * Id of the instance.
+         */
+        id: string;
+        /**
+         * Id of the instance resource.
+         */
+        instanceId: string;
+        /**
+         * Paid package version.
+         */
+        versionCode: string;
+        /**
+         * Paid package version name.
+         */
+        versionName: string;
     }
 
     export interface GetRecordsRecord {
@@ -3783,6 +3829,25 @@ export namespace kms {
         keyId: string;
     }
 
+    export interface GetKeyVersionsVersion {
+        /**
+         * Date and time when the key version was created (UTC time).
+         */
+        creationDate: string;
+        /**
+         * ID of the KMS KeyVersion resource.
+         */
+        id: string;
+        /**
+         * The id of kms key.
+         */
+        keyId: string;
+        /**
+         * ID of the key version.
+         */
+        keyVersionId: string;
+    }
+
     export interface GetKeysKey {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the key.
@@ -5730,6 +5795,19 @@ export namespace resourcemanager {
          * * `folderName`- The name of the folder.
          */
         id: string;
+    }
+
+    export interface GetPolicyVersionsVersion {
+        createDate: string;
+        /**
+         * The ID of the resource, the value is `<policy_name>`:`<version_id>`.
+         * * `versionId`- The ID of the policy version.
+         * * `createDate`- The time when the policy version was created.
+         * * `isDefaultVersion`- Indicates whether the policy version is the default version.
+         */
+        id: string;
+        isDefaultVersion: boolean;
+        versionId: string;
     }
 
     export interface GetResourceGroupsGroup {

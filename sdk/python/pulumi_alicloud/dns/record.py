@@ -45,26 +45,7 @@ class Record(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, host_record=None, name=None, priority=None, routing=None, ttl=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DNS Record resource.
-
-        > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        # Create a new Domain record
-        record = alicloud.dns.Record("record",
-            host_record="@",
-            type="A",
-            value="192.168.99.99")
-        ```
-
-
+        Create a Record resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host_record: Host record for the domain record. This host_record can have at most 253 characters, and each part split with "." can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as "-",".","*","@",  and must not begin or end with "-".

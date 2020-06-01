@@ -7,7 +7,9 @@ from .alias import *
 from .ciphertext import *
 from .get_aliases import *
 from .get_ciphertext import *
+from .get_key_versions import *
 from .get_keys import *
 from .get_plaintext import *
 from .key import *
+from .key_version import *
 from .secret import *

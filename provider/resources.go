@@ -287,6 +287,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_instance":          {Tok: resource(dnsMod, "Instance")},
 			"alicloud_dns_domain":            {Tok: resource(dnsMod, "DnsDomain")},
 			"alicloud_alidns_domain_group":   {Tok: resource(dnsMod, "DomainGroup")},
+			"alicloud_alidns_record":         {Tok: resource(dnsMod, "AlidnsRecord")},
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
@@ -363,10 +364,18 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_instance": {Tok: resource(hbaseMod, "Instance")},
 
 			// KMS
-			"alicloud_kms_key":        {Tok: resource(kmsMod, "Key")},
-			"alicloud_kms_ciphertext": {Tok: resource(kmsMod, "Ciphertext")},
-			"alicloud_kms_secret":     {Tok: resource(kmsMod, "Secret")},
-			"alicloud_kms_alias":      {Tok: resource(kmsMod, "Alias")},
+			"alicloud_kms_key": {
+				Tok: resource(kmsMod, "Key"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"key_state": {
+						CSharpName: "KeyStatus",
+					},
+				},
+			},
+			"alicloud_kms_key_version": {Tok: resource(kmsMod, "KeyVersion")},
+			"alicloud_kms_ciphertext":  {Tok: resource(kmsMod, "Ciphertext")},
+			"alicloud_kms_secret":      {Tok: resource(kmsMod, "Secret")},
+			"alicloud_kms_alias":       {Tok: resource(kmsMod, "Alias")},
 
 			// KVStore
 			"alicloud_kvstore_backup_policy": {Tok: resource(kvstoreMod, "BackupPolicy")},
@@ -631,7 +640,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_records":          {Tok: dataSource(dnsMod, "getRecords")},
 			"alicloud_dns_resolution_lines": {Tok: dataSource(dnsMod, "getResolutionLines")},
 			"alicloud_dns_domain_txt_guid":  {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
-			"alicloud_alidns_instance":      {Tok: dataSource(dnsMod, "getInstance")},
+			"alicloud_dns_instances":        {Tok: dataSource(dnsMod, "getInstances")},
+			"alicloud_alidns_domain_groups": {Tok: dataSource(dnsMod, "getAlidnsDomainGroups")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -686,10 +696,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_zones":     {Tok: dataSource(hbaseMod, "getZones")},
 
 			// Kms
-			"alicloud_kms_ciphertext": {Tok: dataSource(kmsMod, "getCiphertext")},
-			"alicloud_kms_plaintext":  {Tok: dataSource(kmsMod, "getPlaintext")},
-			"alicloud_kms_keys":       {Tok: dataSource(kmsMod, "getKeys")},
-			"alicloud_kms_aliases":    {Tok: dataSource(kmsMod, "getAliases")},
+			"alicloud_kms_ciphertext":   {Tok: dataSource(kmsMod, "getCiphertext")},
+			"alicloud_kms_plaintext":    {Tok: dataSource(kmsMod, "getPlaintext")},
+			"alicloud_kms_keys":         {Tok: dataSource(kmsMod, "getKeys")},
+			"alicloud_kms_aliases":      {Tok: dataSource(kmsMod, "getAliases")},
+			"alicloud_kms_key_versions": {Tok: dataSource(kmsMod, "getKeyVersions")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},
@@ -755,6 +766,7 @@ func Provider() tfbridge.ProviderInfo {
 			// ResourceManager
 			"alicloud_resource_manager_folders":         {Tok: dataSource(resourceManagerMod, "getFolders")},
 			"alicloud_resource_manager_resource_groups": {Tok: dataSource(resourceManagerMod, "getResourceGroups")},
+			"alicloud_resource_manager_policy_versions": {Tok: dataSource(resourceManagerMod, "getPolicyVersions")},
 
 			// RocketMq
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},

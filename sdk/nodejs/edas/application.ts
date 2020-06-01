@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an EDAS application resource.
+ * Creates an EDAS ecs application on EDAS. The application will be deployed when `groupId` and `warUrl` are given.
  *
  * > **NOTE:** Available in 1.82.0+
  *

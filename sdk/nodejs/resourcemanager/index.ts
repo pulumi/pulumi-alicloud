@@ -5,6 +5,7 @@
 export * from "./account";
 export * from "./folder";
 export * from "./getFolders";
+export * from "./getPolicyVersions";
 export * from "./getResourceGroups";
 export * from "./handshake";
 export * from "./policy";

@@ -44,7 +44,7 @@ class SlbAttachment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_id=None, listener_port=None, slb_id=None, slb_ip=None, type=None, vserver_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an EDAS slb application attachment resource.
+        Binds SLB to an EDAS application.
 
         > **NOTE:** Available in 1.82.0+
 

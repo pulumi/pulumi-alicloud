@@ -10,6 +10,132 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type GetAlidnsDomainGroupsGroup struct {
+	// Number of domain names in the group.
+	DomainCount int `pulumi:"domainCount"`
+	// Id of the domain group.
+	GroupId string `pulumi:"groupId"`
+	// The name of the domain group.
+	GroupName string `pulumi:"groupName"`
+	// Id of the instance.
+	Id string `pulumi:"id"`
+}
+
+// GetAlidnsDomainGroupsGroupInput is an input type that accepts GetAlidnsDomainGroupsGroupArgs and GetAlidnsDomainGroupsGroupOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainGroupsGroupInput` via:
+//
+// 		 GetAlidnsDomainGroupsGroupArgs{...}
+//
+type GetAlidnsDomainGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainGroupsGroupOutput() GetAlidnsDomainGroupsGroupOutput
+	ToGetAlidnsDomainGroupsGroupOutputWithContext(context.Context) GetAlidnsDomainGroupsGroupOutput
+}
+
+type GetAlidnsDomainGroupsGroupArgs struct {
+	// Number of domain names in the group.
+	DomainCount pulumi.IntInput `pulumi:"domainCount"`
+	// Id of the domain group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The name of the domain group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Id of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetAlidnsDomainGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainGroupsGroupArgs) ToGetAlidnsDomainGroupsGroupOutput() GetAlidnsDomainGroupsGroupOutput {
+	return i.ToGetAlidnsDomainGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainGroupsGroupArgs) ToGetAlidnsDomainGroupsGroupOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainGroupsGroupOutput)
+}
+
+// GetAlidnsDomainGroupsGroupArrayInput is an input type that accepts GetAlidnsDomainGroupsGroupArray and GetAlidnsDomainGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetAlidnsDomainGroupsGroupArrayInput` via:
+//
+// 		 GetAlidnsDomainGroupsGroupArray{ GetAlidnsDomainGroupsGroupArgs{...} }
+//
+type GetAlidnsDomainGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetAlidnsDomainGroupsGroupArrayOutput() GetAlidnsDomainGroupsGroupArrayOutput
+	ToGetAlidnsDomainGroupsGroupArrayOutputWithContext(context.Context) GetAlidnsDomainGroupsGroupArrayOutput
+}
+
+type GetAlidnsDomainGroupsGroupArray []GetAlidnsDomainGroupsGroupInput
+
+func (GetAlidnsDomainGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainGroupsGroup)(nil)).Elem()
+}
+
+func (i GetAlidnsDomainGroupsGroupArray) ToGetAlidnsDomainGroupsGroupArrayOutput() GetAlidnsDomainGroupsGroupArrayOutput {
+	return i.ToGetAlidnsDomainGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsDomainGroupsGroupArray) ToGetAlidnsDomainGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsDomainGroupsGroupArrayOutput)
+}
+
+type GetAlidnsDomainGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsDomainGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainGroupsGroupOutput) ToGetAlidnsDomainGroupsGroupOutput() GetAlidnsDomainGroupsGroupOutput {
+	return o
+}
+
+func (o GetAlidnsDomainGroupsGroupOutput) ToGetAlidnsDomainGroupsGroupOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsGroupOutput {
+	return o
+}
+
+// Number of domain names in the group.
+func (o GetAlidnsDomainGroupsGroupOutput) DomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsGroup) int { return v.DomainCount }).(pulumi.IntOutput)
+}
+
+// Id of the domain group.
+func (o GetAlidnsDomainGroupsGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The name of the domain group.
+func (o GetAlidnsDomainGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Id of the instance.
+func (o GetAlidnsDomainGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsDomainGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetAlidnsDomainGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsDomainGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsDomainGroupsGroup)(nil)).Elem()
+}
+
+func (o GetAlidnsDomainGroupsGroupArrayOutput) ToGetAlidnsDomainGroupsGroupArrayOutput() GetAlidnsDomainGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainGroupsGroupArrayOutput) ToGetAlidnsDomainGroupsGroupArrayOutputWithContext(ctx context.Context) GetAlidnsDomainGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetAlidnsDomainGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlidnsDomainGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlidnsDomainGroupsGroup {
+		return vs[0].([]GetAlidnsDomainGroupsGroup)[vs[1].(int)]
+	}).(GetAlidnsDomainGroupsGroupOutput)
+}
+
 type GetDomainGroupsGroup struct {
 	GroupId   string `pulumi:"groupId"`
 	GroupName string `pulumi:"groupName"`
@@ -541,6 +667,150 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetInstancesInstance struct {
+	// DNS security level.
+	DnsSecurity string `pulumi:"dnsSecurity"`
+	// Number of domain names bound.
+	DomainNumbers string `pulumi:"domainNumbers"`
+	// Id of the instance.
+	Id string `pulumi:"id"`
+	// Id of the instance resource.
+	InstanceId string `pulumi:"instanceId"`
+	// Paid package version.
+	VersionCode string `pulumi:"versionCode"`
+	// Paid package version name.
+	VersionName string `pulumi:"versionName"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+// 		 GetInstancesInstanceArgs{...}
+//
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// DNS security level.
+	DnsSecurity pulumi.StringInput `pulumi:"dnsSecurity"`
+	// Number of domain names bound.
+	DomainNumbers pulumi.StringInput `pulumi:"domainNumbers"`
+	// Id of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Id of the instance resource.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Paid package version.
+	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	// Paid package version name.
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+// 		 GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// DNS security level.
+func (o GetInstancesInstanceOutput) DnsSecurity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DnsSecurity }).(pulumi.StringOutput)
+}
+
+// Number of domain names bound.
+func (o GetInstancesInstanceOutput) DomainNumbers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.DomainNumbers }).(pulumi.StringOutput)
+}
+
+// Id of the instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Id of the instance resource.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Paid package version.
+func (o GetInstancesInstanceOutput) VersionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VersionCode }).(pulumi.StringOutput)
+}
+
+// Paid package version name.
+func (o GetInstancesInstanceOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 type GetRecordsRecord struct {
 	// The domain name associated to the records.
 	DomainName string `pulumi:"domainName"`
@@ -836,6 +1106,8 @@ func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutio
 }
 
 func init() {
+	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordsRecordOutput{})
@@ -844,6 +1116,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRecordsRecordOutput{})
 	pulumi.RegisterOutputType(GetRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetResolutionLinesLineOutput{})

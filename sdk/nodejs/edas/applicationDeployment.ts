@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an EDAS application deployment resource.
- *
- * > **NOTE:** Available in 1.82.0+
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const _default = new alicloud.edas.ApplicationDeployment("default", {
- *     appId: _var.app_id,
- *     groupId: _var.group_id,
- *     packageVersion: _var.package_version,
- *     warUrl: _var.war_url,
- * });
- * ```
- */
 export class ApplicationDeployment extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationDeployment resource's state with the given name, ID, and optional extra

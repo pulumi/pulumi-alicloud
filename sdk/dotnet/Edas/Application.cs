@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Edas
 {
     /// <summary>
-    /// Provides an EDAS application resource.
+    /// Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
     /// </summary>

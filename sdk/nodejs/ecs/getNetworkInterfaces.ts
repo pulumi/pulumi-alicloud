@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkInterfaces = pulumi.all([attachment.networkInterfaceId, instance.id, group.id, vpc.id, vswitch.id]).apply(([networkInterfaceId, instanceId, groupId, vpcId, vswitchId]) => alicloud.ecs.getNetworkInterfaces({
  *     ids: [networkInterfaceId],
  *     instanceId: instanceId,
- *     nameRegex: "tf-testAccNetworkInterfacesBasic%d",
+ *     nameRegex: name,
  *     privateIp: "192.168.0.2",
  *     securityGroupId: groupId,
  *     tags: {

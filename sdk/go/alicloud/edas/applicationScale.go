@@ -10,9 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an EDAS application scale resource.
-//
-// > **NOTE:** Available in 1.82.0+
 type ApplicationScale struct {
 	pulumi.CustomResourceState
 

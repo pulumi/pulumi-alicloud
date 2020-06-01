@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an EDAS application resource.
+// Creates an EDAS ecs application on EDAS. The application will be deployed when `groupId` and `warUrl` are given.
 //
 // > **NOTE:** Available in 1.82.0+
 type Application struct {

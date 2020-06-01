@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Ecs
         ///                     networkInterfaceId,
         ///                 },
         ///                 InstanceId = instanceId,
-        ///                 NameRegex = "tf-testAccNetworkInterfacesBasic%d",
+        ///                 NameRegex = name,
         ///                 PrivateIp = "192.168.0.2",
         ///                 SecurityGroupId = groupId,
         ///                 Tags = 
