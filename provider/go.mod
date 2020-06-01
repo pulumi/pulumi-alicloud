@@ -15,5 +15,5 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v2 v2.4.0
 	github.com/pulumi/pulumi/pkg/v2 v2.3.0 // indirect
 	github.com/pulumi/pulumi/sdk/v2 v2.3.0
-	github.com/terraform-providers/terraform-provider-alicloud v1.84.0
+	github.com/terraform-providers/terraform-provider-alicloud v1.85.0
 )
