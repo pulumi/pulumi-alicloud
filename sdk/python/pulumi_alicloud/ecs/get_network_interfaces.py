@@ -148,7 +148,7 @@ def get_network_interfaces(ids=None,instance_id=None,name_regex=None,output_file
         network_interface_id=interface.id)
     default_network_interfaces = pulumi.Output.all(attachment.network_interface_id, instance.id, group.id, vpc.id, vswitch.id).apply(lambda network_interface_id, instanceId, groupId, vpcId, vswitchId: alicloud.ecs.get_network_interfaces(ids=[network_interface_id],
         instance_id=instance_id,
-        name_regex="tf-testAccNetworkInterfacesBasic%d",
+        name_regex=name,
         private_ip="192.168.0.2",
         security_group_id=group_id,
         tags={

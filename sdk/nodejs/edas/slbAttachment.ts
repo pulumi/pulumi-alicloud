@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an EDAS slb application attachment resource.
+ * Binds SLB to an EDAS application.
  *
  * > **NOTE:** Available in 1.82.0+
  *

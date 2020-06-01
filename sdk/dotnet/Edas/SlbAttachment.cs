@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Edas
 {
     /// <summary>
-    /// Provides an EDAS slb application attachment resource.
+    /// Binds SLB to an EDAS application.
     /// 
     /// &gt; **NOTE:** Available in 1.82.0+
     /// 

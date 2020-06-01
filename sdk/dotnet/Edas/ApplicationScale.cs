@@ -9,35 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Edas
 {
-    /// <summary>
-    /// Provides an EDAS application scale resource.
-    /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new AliCloud.Edas.ApplicationScale("default", new AliCloud.Edas.ApplicationScaleArgs
-    ///         {
-    ///             AppId = @var.App_id,
-    ///             DeployGroup = @var.Deploy_group,
-    ///             EcuInfos = @var.Ecu_info,
-    ///             ForceStatus = @var.Force_status,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     public partial class ApplicationScale : Pulumi.CustomResource
     {
         /// <summary>

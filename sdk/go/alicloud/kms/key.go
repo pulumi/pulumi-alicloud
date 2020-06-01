@@ -9,21 +9,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// A kms key can help user to protect data security in the transmission process.
+// A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
+//
+// > **NOTE:** Available in v1.85.0+.
 type Key struct {
 	pulumi.CustomResourceState
 
 	// The Alicloud Resource Name (ARN) of the key.
+	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
+	// * `creator` -The creator of the CMK.
+	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	// Specifies whether to enable automatic key rotation. Default:"Disabled".
+	AutomaticRotation pulumi.StringPtrOutput `pulumi:"automaticRotation"`
+	CreationDate      pulumi.StringOutput    `pulumi:"creationDate"`
+	Creator           pulumi.StringOutput    `pulumi:"creator"`
+	DeleteDate        pulumi.StringOutput    `pulumi:"deleteDate"`
+	// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+	//
+	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrOutput `pulumi:"deletionWindowInDays"`
-	// The description of the key.
+	// The description of the key as viewed in Alicloud console.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether the key is enabled. Defaults to true.
+	// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+	//
+	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
+	// The type of the CMK.
+	KeySpec pulumi.StringPtrOutput `pulumi:"keySpec"`
+	// The status of CMK. Defaults to Enabled.
+	KeyState pulumi.StringPtrOutput `pulumi:"keyState"`
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
 	KeyUsage pulumi.StringPtrOutput `pulumi:"keyUsage"`
+	// The date and time the last rotation was performed. The time is displayed in UTC.
+	LastRotationDate pulumi.StringOutput `pulumi:"lastRotationDate"`
+	// The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+	MaterialExpireTime pulumi.StringOutput `pulumi:"materialExpireTime"`
+	// The time the next rotation is scheduled for execution.
+	NextRotationDate pulumi.StringOutput `pulumi:"nextRotationDate"`
+	// The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+	Origin pulumi.StringPtrOutput `pulumi:"origin"`
+	// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	PendingWindowInDays pulumi.IntPtrOutput `pulumi:"pendingWindowInDays"`
+	// The ID of the current primary key version of the symmetric CMK.
+	PrimaryKeyVersion pulumi.StringOutput `pulumi:"primaryKeyVersion"`
+	// The protection level of the CMK. Defaults to "SOFTWARE".
+	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
+	// The period of automatic key rotation. Unit: seconds.
+	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 }
 
 // NewKey registers a new resource with the given unique name, arguments, and options.
@@ -55,30 +88,92 @@ func GetKey(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
+	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
+	// * `creator` -The creator of the CMK.
+	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn *string `pulumi:"arn"`
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	// Specifies whether to enable automatic key rotation. Default:"Disabled".
+	AutomaticRotation *string `pulumi:"automaticRotation"`
+	CreationDate      *string `pulumi:"creationDate"`
+	Creator           *string `pulumi:"creator"`
+	DeleteDate        *string `pulumi:"deleteDate"`
+	// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+	//
+	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
-	// The description of the key.
+	// The description of the key as viewed in Alicloud console.
 	Description *string `pulumi:"description"`
-	// Specifies whether the key is enabled. Defaults to true.
+	// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+	//
+	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
+	// The type of the CMK.
+	KeySpec *string `pulumi:"keySpec"`
+	// The status of CMK. Defaults to Enabled.
+	KeyState *string `pulumi:"keyState"`
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
 	KeyUsage *string `pulumi:"keyUsage"`
+	// The date and time the last rotation was performed. The time is displayed in UTC.
+	LastRotationDate *string `pulumi:"lastRotationDate"`
+	// The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+	MaterialExpireTime *string `pulumi:"materialExpireTime"`
+	// The time the next rotation is scheduled for execution.
+	NextRotationDate *string `pulumi:"nextRotationDate"`
+	// The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+	Origin *string `pulumi:"origin"`
+	// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
+	// The ID of the current primary key version of the symmetric CMK.
+	PrimaryKeyVersion *string `pulumi:"primaryKeyVersion"`
+	// The protection level of the CMK. Defaults to "SOFTWARE".
+	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// The period of automatic key rotation. Unit: seconds.
+	RotationInterval *string `pulumi:"rotationInterval"`
 }
 
 type KeyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
+	// * `creationDate` -The date and time when the CMK was created. The time is displayed in UTC.
+	// * `creator` -The creator of the CMK.
+	// * `deleteDate` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	Arn pulumi.StringPtrInput
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	// Specifies whether to enable automatic key rotation. Default:"Disabled".
+	AutomaticRotation pulumi.StringPtrInput
+	CreationDate      pulumi.StringPtrInput
+	Creator           pulumi.StringPtrInput
+	DeleteDate        pulumi.StringPtrInput
+	// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+	//
+	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrInput
-	// The description of the key.
+	// The description of the key as viewed in Alicloud console.
 	Description pulumi.StringPtrInput
-	// Specifies whether the key is enabled. Defaults to true.
+	// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+	//
+	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrInput
+	// The type of the CMK.
+	KeySpec pulumi.StringPtrInput
+	// The status of CMK. Defaults to Enabled.
+	KeyState pulumi.StringPtrInput
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
 	KeyUsage pulumi.StringPtrInput
+	// The date and time the last rotation was performed. The time is displayed in UTC.
+	LastRotationDate pulumi.StringPtrInput
+	// The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+	MaterialExpireTime pulumi.StringPtrInput
+	// The time the next rotation is scheduled for execution.
+	NextRotationDate pulumi.StringPtrInput
+	// The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+	Origin pulumi.StringPtrInput
+	// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	PendingWindowInDays pulumi.IntPtrInput
+	// The ID of the current primary key version of the symmetric CMK.
+	PrimaryKeyVersion pulumi.StringPtrInput
+	// The protection level of the CMK. Defaults to "SOFTWARE".
+	ProtectionLevel pulumi.StringPtrInput
+	// The period of automatic key rotation. Unit: seconds.
+	RotationInterval pulumi.StringPtrInput
 }
 
 func (KeyState) ElementType() reflect.Type {
@@ -86,28 +181,62 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	// Specifies whether to enable automatic key rotation. Default:"Disabled".
+	AutomaticRotation *string `pulumi:"automaticRotation"`
+	// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+	//
+	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
-	// The description of the key.
+	// The description of the key as viewed in Alicloud console.
 	Description *string `pulumi:"description"`
-	// Specifies whether the key is enabled. Defaults to true.
+	// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+	//
+	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
+	// The type of the CMK.
+	KeySpec *string `pulumi:"keySpec"`
+	// The status of CMK. Defaults to Enabled.
+	KeyState *string `pulumi:"keyState"`
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
 	KeyUsage *string `pulumi:"keyUsage"`
+	// The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+	Origin *string `pulumi:"origin"`
+	// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
+	// The protection level of the CMK. Defaults to "SOFTWARE".
+	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// The period of automatic key rotation. Unit: seconds.
+	RotationInterval *string `pulumi:"rotationInterval"`
 }
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
-	// Duration in days after which the key is deleted
-	// after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	// Specifies whether to enable automatic key rotation. Default:"Disabled".
+	AutomaticRotation pulumi.StringPtrInput
+	// Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
+	//
+	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrInput
-	// The description of the key.
+	// The description of the key as viewed in Alicloud console.
 	Description pulumi.StringPtrInput
-	// Specifies whether the key is enabled. Defaults to true.
+	// Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
+	//
+	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrInput
+	// The type of the CMK.
+	KeySpec pulumi.StringPtrInput
+	// The status of CMK. Defaults to Enabled.
+	KeyState pulumi.StringPtrInput
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.
 	KeyUsage pulumi.StringPtrInput
+	// The source of the key material for the CMK. Defaults to "Aliyun_KMS".
+	Origin pulumi.StringPtrInput
+	// Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.
+	PendingWindowInDays pulumi.IntPtrInput
+	// The protection level of the CMK. Defaults to "SOFTWARE".
+	ProtectionLevel pulumi.StringPtrInput
+	// The period of automatic key rotation. Unit: seconds.
+	RotationInterval pulumi.StringPtrInput
 }
 
 func (KeyArgs) ElementType() reflect.Type {

@@ -32,26 +32,7 @@ class ApplicationDeployment(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_id=None, group_id=None, package_version=None, war_url=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an EDAS application deployment resource.
-
-        > **NOTE:** Available in 1.82.0+
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.edas.ApplicationDeployment("default",
-            app_id=var["app_id"],
-            group_id=var["group_id"],
-            package_version=var["package_version"],
-            war_url=var["war_url"])
-        ```
-
-
+        Create a ApplicationDeployment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.

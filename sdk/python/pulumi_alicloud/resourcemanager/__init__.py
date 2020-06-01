@@ -6,6 +6,7 @@
 from .account import *
 from .folder import *
 from .get_folders import *
+from .get_policy_versions import *
 from .get_resource_groups import *
 from .handshake import *
 from .policy import *

@@ -4722,6 +4722,53 @@
                 "storage"
             ]
         },
+        "alicloud:dns/getAlidnsDomainGroupsGroup:getAlidnsDomainGroupsGroup": {
+            "properties": {
+                "domainCount": {
+                    "type": "integer",
+                    "description": "Number of domain names in the group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "Id of the domain group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "groupName": {
+                    "type": "string",
+                    "description": "The name of the domain group.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id of the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "domainCount",
+                "groupId",
+                "groupName",
+                "id"
+            ]
+        },
         "alicloud:dns/getDomainGroupsGroup:getDomainGroupsGroup": {
             "properties": {
                 "groupId": {
@@ -4969,6 +5016,73 @@
             "required": [
                 "groupId",
                 "groupName"
+            ]
+        },
+        "alicloud:dns/getInstancesInstance:getInstancesInstance": {
+            "properties": {
+                "dnsSecurity": {
+                    "type": "string",
+                    "description": "DNS security level.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "domainNumbers": {
+                    "type": "string",
+                    "description": "Number of domain names bound.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id of the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "Id of the instance resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionCode": {
+                    "type": "string",
+                    "description": "Paid package version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionName": {
+                    "type": "string",
+                    "description": "Paid package version name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dnsSecurity",
+                "domainNumbers",
+                "id",
+                "instanceId",
+                "versionCode",
+                "versionName"
             ]
         },
         "alicloud:dns/getRecordsRecord:getRecordsRecord": {
@@ -10612,6 +10726,53 @@
                 "keyId"
             ]
         },
+        "alicloud:kms/getKeyVersionsVersion:getKeyVersionsVersion": {
+            "properties": {
+                "creationDate": {
+                    "type": "string",
+                    "description": "Date and time when the key version was created (UTC time).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the KMS KeyVersion resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "The id of kms key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "keyVersionId": {
+                    "type": "string",
+                    "description": "ID of the key version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "creationDate",
+                "id",
+                "keyId",
+                "keyVersionId"
+            ]
+        },
         "alicloud:kms/getKeysKey:getKeysKey": {
             "properties": {
                 "arn": {
@@ -15598,6 +15759,50 @@
                 "folderId",
                 "folderName",
                 "id"
+            ]
+        },
+        "alicloud:resourcemanager/getPolicyVersionsVersion:getPolicyVersionsVersion": {
+            "properties": {
+                "createDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the resource, the value is `\u003cpolicy_name\u003e`:`\u003cversion_id\u003e`.\n* `version_id`- The ID of the policy version.\n* `create_date`- The time when the policy version was created.\n* `is_default_version`- Indicates whether the policy version is the default version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isDefaultVersion": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "createDate",
+                "id",
+                "isDefaultVersion",
+                "versionId"
             ]
         },
         "alicloud:resourcemanager/getResourceGroupsGroup:getResourceGroupsGroup": {
@@ -26797,6 +27002,163 @@
                 "type": "object"
             }
         },
+        "alicloud:dns/alidnsRecord:AlidnsRecord": {
+            "description": "Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).\n\n\u003e **NOTE:** Available in v1.85.0+.\n\n\u003e **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "domainName": {
+                    "type": "string",
+                    "description": "Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or \"-\", and must not begin or end with \"-\", and \"-\" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.\n"
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "User language. \n"
+                },
+                "line": {
+                    "type": "string",
+                    "description": "The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. \n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.\n"
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The remark of the domain record. \n"
+                },
+                "rr": {
+                    "type": "string",
+                    "description": "Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the domain record. Valid values: `ENABLE`,`DISABLE`. \n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.\n"
+                },
+                "userClientIp": {
+                    "type": "string",
+                    "description": "The IP address of the client. \n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.\n"
+                }
+            },
+            "required": [
+                "domainName",
+                "rr",
+                "type",
+                "value"
+            ],
+            "inputProperties": {
+                "domainName": {
+                    "type": "string",
+                    "description": "Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or \"-\", and must not begin or end with \"-\", and \"-\" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.\n"
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "User language. \n"
+                },
+                "line": {
+                    "type": "string",
+                    "description": "The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. \n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.\n"
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The remark of the domain record. \n"
+                },
+                "rr": {
+                    "type": "string",
+                    "description": "Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the domain record. Valid values: `ENABLE`,`DISABLE`. \n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.\n"
+                },
+                "userClientIp": {
+                    "type": "string",
+                    "description": "The IP address of the client. \n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.\n"
+                }
+            },
+            "requiredInputs": [
+                "domainName",
+                "rr",
+                "type",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AlidnsRecord resources.\n",
+                "properties": {
+                    "domainName": {
+                        "type": "string",
+                        "description": "Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or \"-\", and must not begin or end with \"-\", and \"-\" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.\n"
+                    },
+                    "lang": {
+                        "type": "string",
+                        "description": "User language. \n"
+                    },
+                    "line": {
+                        "type": "string",
+                        "description": "The resolution line of domain record. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value. \n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "The priority of domain record. Valid values: `[1-10]`. When the `type` is `MX`, this parameter is required.\n"
+                    },
+                    "remark": {
+                        "type": "string",
+                        "description": "The remark of the domain record. \n"
+                    },
+                    "rr": {
+                        "type": "string",
+                        "description": "Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the domain record. Valid values: `ENABLE`,`DISABLE`. \n"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "description": "The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.\n"
+                    },
+                    "userClientIp": {
+                        "type": "string",
+                        "description": "The IP address of the client. \n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:dns/ddosBgpInstance:DdosBgpInstance": {
             "description": "Anti-DDoS Advanced instance resource. \"Ddosbgp\" is the short term of this product.\n\n\u003e **NOTE:** The endpoint of bssopenapi used only support \"business.aliyuncs.com\" at present.\n\n\u003e **NOTE:** Available in 1.57.0+ .\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst instance = new alicloud.ddos.DdosBgpInstance(\"instance\", {\n    bandwidth: 201,\n    baseBandwidth: 20,\n    ipCount: 100,\n    ipType: \"IPv4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ninstance = alicloud.ddos.DdosBgpInstance(\"instance\",\n    bandwidth=\"201\",\n    base_bandwidth=\"20\",\n    ip_count=\"100\",\n    ip_type=\"IPv4\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var instance = new AliCloud.Ddos.DdosBgpInstance(\"instance\", new AliCloud.Ddos.DdosBgpInstanceArgs\n        {\n            Bandwidth = \"201\",\n            BaseBandwidth = \"20\",\n            IpCount = \"100\",\n            IpType = \"IPv4\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -27271,7 +27633,7 @@
             }
         },
         "alicloud:dns/domainGroup:DomainGroup": {
-            "description": "Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Add a new Alinds Domain Group.\nconst example = new alicloud.dns.DomainGroup(\"example\", {\n    groupName: \"tf-testDG\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Add a new Alinds Domain Group.\nexample = alicloud.dns.DomainGroup(\"example\", group_name=\"tf-testDG\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a new Alinds Domain Group.\n        var example = new AliCloud.Dns.DomainGroup(\"example\", new AliCloud.Dns.DomainGroupArgs\n        {\n            GroupName = \"tf-testDG\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "groupName": {
                     "type": "string",
@@ -27445,7 +27807,6 @@
             }
         },
         "alicloud:dns/record:Record": {
-            "description": "Provides a DNS Record resource.\n\n\u003e **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Create a new Domain record\nconst record = new alicloud.dns.Record(\"record\", {\n    hostRecord: \"@\",\n    type: \"A\",\n    value: \"192.168.99.99\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Create a new Domain record\nrecord = alicloud.dns.Record(\"record\",\n    host_record=\"@\",\n    type=\"A\",\n    value=\"192.168.99.99\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Domain record\n        var record = new AliCloud.Dns.Record(\"record\", new AliCloud.Dns.RecordArgs\n        {\n            HostRecord = \"@\",\n            Type = \"A\",\n            Value = \"192.168.99.99\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "hostRecord": {
                     "type": "string",
@@ -30812,7 +31173,7 @@
             }
         },
         "alicloud:edas/application:Application": {
-            "description": "Provides an EDAS application resource.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "applicationName": {
                     "type": "string",
@@ -30976,7 +31337,6 @@
             }
         },
         "alicloud:edas/applicationDeployment:ApplicationDeployment": {
-            "description": "Provides an EDAS application deployment resource.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst _default = new alicloud.edas.ApplicationDeployment(\"default\", {\n    appId: _var.app_id,\n    groupId: _var.group_id,\n    packageVersion: _var.package_version,\n    warUrl: _var.war_url,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.edas.ApplicationDeployment(\"default\",\n    app_id=var[\"app_id\"],\n    group_id=var[\"group_id\"],\n    package_version=var[\"package_version\"],\n    war_url=var[\"war_url\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Edas.ApplicationDeployment(\"default\", new AliCloud.Edas.ApplicationDeploymentArgs\n        {\n            AppId = @var.App_id,\n            GroupId = @var.Group_id,\n            PackageVersion = @var.Package_version,\n            WarUrl = @var.War_url,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "appId": {
                     "type": "string",
@@ -31056,7 +31416,6 @@
             }
         },
         "alicloud:edas/applicationScale:ApplicationScale": {
-            "description": "Provides an EDAS application scale resource.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst _default = new alicloud.edas.ApplicationScale(\"default\", {\n    appId: _var.app_id,\n    deployGroup: _var.deploy_group,\n    ecuInfos: _var.ecu_info,\n    forceStatus: _var.force_status,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.edas.ApplicationScale(\"default\",\n    app_id=var[\"app_id\"],\n    deploy_group=var[\"deploy_group\"],\n    ecu_infos=var[\"ecu_info\"],\n    force_status=var[\"force_status\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Edas.ApplicationScale(\"default\", new AliCloud.Edas.ApplicationScaleArgs\n        {\n            AppId = @var.App_id,\n            DeployGroup = @var.Deploy_group,\n            EcuInfos = @var.Ecu_info,\n            ForceStatus = @var.Force_status,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "appId": {
                     "type": "string",
@@ -31381,7 +31740,7 @@
             }
         },
         "alicloud:edas/slbAttachment:SlbAttachment": {
-            "description": "Provides an EDAS slb application attachment resource.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst _default = new alicloud.edas.SlbAttachment(\"default\", {\n    appId: _var.app_id,\n    slbId: _var.slb_id,\n    slbIp: _var.slb_ip,\n    type: _var.type,\n    listenerPort: _var.listener_port,\n    vserverGroupId: _var.vserver_group_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.edas.SlbAttachment(\"default\",\n    app_id=var[\"app_id\"],\n    slb_id=var[\"slb_id\"],\n    slb_ip=var[\"slb_ip\"],\n    type=var[\"type\"],\n    listener_port=var[\"listener_port\"],\n    vserver_group_id=var[\"vserver_group_id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Edas.SlbAttachment(\"default\", new AliCloud.Edas.SlbAttachmentArgs\n        {\n            AppId = @var.App_id,\n            SlbId = @var.Slb_id,\n            SlbIp = @var.Slb_ip,\n            Type = @var.Type,\n            ListenerPort = @var.Listener_port,\n            VserverGroupId = @var.Vserver_group_id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Binds SLB to an EDAS application.\n\n\u003e **NOTE:** Available in 1.82.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst _default = new alicloud.edas.SlbAttachment(\"default\", {\n    appId: _var.app_id,\n    slbId: _var.slb_id,\n    slbIp: _var.slb_ip,\n    type: _var.type,\n    listenerPort: _var.listener_port,\n    vserverGroupId: _var.vserver_group_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.edas.SlbAttachment(\"default\",\n    app_id=var[\"app_id\"],\n    slb_id=var[\"slb_id\"],\n    slb_ip=var[\"slb_ip\"],\n    type=var[\"type\"],\n    listener_port=var[\"listener_port\"],\n    vserver_group_id=var[\"vserver_group_id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Edas.SlbAttachment(\"default\", new AliCloud.Edas.SlbAttachmentArgs\n        {\n            AppId = @var.App_id,\n            SlbId = @var.Slb_id,\n            SlbIp = @var.Slb_ip,\n            Type = @var.Type,\n            ListenerPort = @var.Listener_port,\n            VserverGroupId = @var.Vserver_group_id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "appId": {
                     "type": "string",
@@ -34834,48 +35193,150 @@
             }
         },
         "alicloud:kms/key:Key": {
-            "description": "A kms key can help user to protect data security in the transmission process.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst key = new alicloud.kms.Key(\"key\", {\n    deletionWindowInDays: 7,\n    description: \"Hello KMS\",\n    isEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nkey = alicloud.kms.Key(\"key\",\n    deletion_window_in_days=\"7\",\n    description=\"Hello KMS\",\n    is_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var key = new AliCloud.Kms.Key(\"key\", new AliCloud.Kms.KeyArgs\n        {\n            DeletionWindowInDays = \"7\",\n            Description = \"Hello KMS\",\n            IsEnabled = true,\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).\n\n\u003e **NOTE:** Available in v1.85.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "arn": {
                     "type": "string",
-                    "description": "The Alicloud Resource Name (ARN) of the key.\n"
+                    "description": "The Alicloud Resource Name (ARN) of the key.\n* `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.\n* `creator` -The creator of the CMK.\n* `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.\n"
+                },
+                "automaticRotation": {
+                    "type": "string",
+                    "description": "Specifies whether to enable automatic key rotation. Default:\"Disabled\".\n"
+                },
+                "creationDate": {
+                    "type": "string"
+                },
+                "creator": {
+                    "type": "string"
+                },
+                "deleteDate": {
+                    "type": "string"
                 },
                 "deletionWindowInDays": {
                     "type": "integer",
-                    "description": "Duration in days after which the key is deleted\nafter destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                    "description": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.\n",
+                    "deprecationMessage": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead."
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the key.\n"
+                    "description": "The description of the key as viewed in Alicloud console.\n"
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether the key is enabled. Defaults to true.\n"
+                    "description": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.\n",
+                    "deprecationMessage": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead."
+                },
+                "keySpec": {
+                    "type": "string",
+                    "description": "The type of the CMK.\n"
+                },
+                "keyState": {
+                    "type": "string",
+                    "description": "The status of CMK. Defaults to Enabled.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "KeyStatus"
+                        }
+                    }
                 },
                 "keyUsage": {
                     "type": "string",
                     "description": "Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.\n"
+                },
+                "lastRotationDate": {
+                    "type": "string",
+                    "description": "The date and time the last rotation was performed. The time is displayed in UTC. \n"
+                },
+                "materialExpireTime": {
+                    "type": "string",
+                    "description": "The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.\n"
+                },
+                "nextRotationDate": {
+                    "type": "string",
+                    "description": "The time the next rotation is scheduled for execution. \n"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "The source of the key material for the CMK. Defaults to \"Aliyun_KMS\".\n"
+                },
+                "pendingWindowInDays": {
+                    "type": "integer",
+                    "description": "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                },
+                "primaryKeyVersion": {
+                    "type": "string",
+                    "description": "The ID of the current primary key version of the symmetric CMK. \n"
+                },
+                "protectionLevel": {
+                    "type": "string",
+                    "description": "The protection level of the CMK. Defaults to \"SOFTWARE\".\n"
+                },
+                "rotationInterval": {
+                    "type": "string",
+                    "description": "The period of automatic key rotation. Unit: seconds. \n"
                 }
             },
             "required": [
-                "arn"
+                "arn",
+                "creationDate",
+                "creator",
+                "deleteDate",
+                "lastRotationDate",
+                "materialExpireTime",
+                "nextRotationDate",
+                "primaryKeyVersion"
             ],
             "inputProperties": {
+                "automaticRotation": {
+                    "type": "string",
+                    "description": "Specifies whether to enable automatic key rotation. Default:\"Disabled\".\n"
+                },
                 "deletionWindowInDays": {
                     "type": "integer",
-                    "description": "Duration in days after which the key is deleted\nafter destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                    "description": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.\n",
+                    "deprecationMessage": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead."
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the key.\n"
+                    "description": "The description of the key as viewed in Alicloud console.\n"
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether the key is enabled. Defaults to true.\n"
+                    "description": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.\n",
+                    "deprecationMessage": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead."
+                },
+                "keySpec": {
+                    "type": "string",
+                    "description": "The type of the CMK.\n"
+                },
+                "keyState": {
+                    "type": "string",
+                    "description": "The status of CMK. Defaults to Enabled.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "KeyStatus"
+                        }
+                    }
                 },
                 "keyUsage": {
                     "type": "string",
                     "description": "Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.\n"
+                },
+                "origin": {
+                    "type": "string",
+                    "description": "The source of the key material for the CMK. Defaults to \"Aliyun_KMS\".\n"
+                },
+                "pendingWindowInDays": {
+                    "type": "integer",
+                    "description": "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                },
+                "protectionLevel": {
+                    "type": "string",
+                    "description": "The protection level of the CMK. Defaults to \"SOFTWARE\".\n"
+                },
+                "rotationInterval": {
+                    "type": "string",
+                    "description": "The period of automatic key rotation. Unit: seconds. \n"
                 }
             },
             "stateInputs": {
@@ -34883,23 +35344,132 @@
                 "properties": {
                     "arn": {
                         "type": "string",
-                        "description": "The Alicloud Resource Name (ARN) of the key.\n"
+                        "description": "The Alicloud Resource Name (ARN) of the key.\n* `creation_date` -The date and time when the CMK was created. The time is displayed in UTC.\n* `creator` -The creator of the CMK.\n* `delete_date` -The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.\n"
+                    },
+                    "automaticRotation": {
+                        "type": "string",
+                        "description": "Specifies whether to enable automatic key rotation. Default:\"Disabled\".\n"
+                    },
+                    "creationDate": {
+                        "type": "string"
+                    },
+                    "creator": {
+                        "type": "string"
+                    },
+                    "deleteDate": {
+                        "type": "string"
                     },
                     "deletionWindowInDays": {
                         "type": "integer",
-                        "description": "Duration in days after which the key is deleted\nafter destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                        "description": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.\n",
+                        "deprecationMessage": "Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead."
                     },
                     "description": {
                         "type": "string",
-                        "description": "The description of the key.\n"
+                        "description": "The description of the key as viewed in Alicloud console.\n"
                     },
                     "isEnabled": {
                         "type": "boolean",
-                        "description": "Specifies whether the key is enabled. Defaults to true.\n"
+                        "description": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.\n",
+                        "deprecationMessage": "Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead."
+                    },
+                    "keySpec": {
+                        "type": "string",
+                        "description": "The type of the CMK.\n"
+                    },
+                    "keyState": {
+                        "type": "string",
+                        "description": "The status of CMK. Defaults to Enabled.\n",
+                        "language": {
+                            "csharp": {
+                                "name": "KeyStatus"
+                            }
+                        }
                     },
                     "keyUsage": {
                         "type": "string",
                         "description": "Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.\n"
+                    },
+                    "lastRotationDate": {
+                        "type": "string",
+                        "description": "The date and time the last rotation was performed. The time is displayed in UTC. \n"
+                    },
+                    "materialExpireTime": {
+                        "type": "string",
+                        "description": "The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.\n"
+                    },
+                    "nextRotationDate": {
+                        "type": "string",
+                        "description": "The time the next rotation is scheduled for execution. \n"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "description": "The source of the key material for the CMK. Defaults to \"Aliyun_KMS\".\n"
+                    },
+                    "pendingWindowInDays": {
+                        "type": "integer",
+                        "description": "Duration in days after which the key is deleted after destruction of the resource, must be between 7 and 30 days. Defaults to 30 days.\n"
+                    },
+                    "primaryKeyVersion": {
+                        "type": "string",
+                        "description": "The ID of the current primary key version of the symmetric CMK. \n"
+                    },
+                    "protectionLevel": {
+                        "type": "string",
+                        "description": "The protection level of the CMK. Defaults to \"SOFTWARE\".\n"
+                    },
+                    "rotationInterval": {
+                        "type": "string",
+                        "description": "The period of automatic key rotation. Unit: seconds. \n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:kms/keyVersion:KeyVersion": {
+            "description": "Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).\n\n\u003e **NOTE:** Available in v1.85.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "creationDate": {
+                    "type": "string",
+                    "description": "The date and time (UTC time) when the Alikms key version was created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "The id of the master key (CMK).\n"
+                },
+                "keyVersionId": {
+                    "type": "string",
+                    "description": "The id of the Alikms key version.\n"
+                }
+            },
+            "required": [
+                "creationDate",
+                "keyId",
+                "keyVersionId"
+            ],
+            "inputProperties": {
+                "keyId": {
+                    "type": "string",
+                    "description": "The id of the master key (CMK).\n"
+                }
+            },
+            "requiredInputs": [
+                "keyId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KeyVersion resources.\n",
+                "properties": {
+                    "creationDate": {
+                        "type": "string",
+                        "description": "The date and time (UTC time) when the Alikms key version was created.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "The id of the master key (CMK).\n"
+                    },
+                    "keyVersionId": {
+                        "type": "string",
+                        "description": "The id of the Alikms key version.\n"
                     }
                 },
                 "type": "object"
@@ -42277,7 +42847,7 @@
             }
         },
         "alicloud:resourcemanager/policyVersion:PolicyVersion": {
-            "description": "Provides a Resource Manager Policy Version resource. \nFor information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a Resource Manager Policy Version resource. \nFor information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst examplePolicy = new alicloud.resourcemanager.Policy(\"examplePolicy\", {\n    policyName: \"tftest\",\n    policyDocument: `\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n`,\n});\nconst examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion(\"examplePolicyVersion\", {\n    policyName: examplePolicy.policyName,\n    policyDocument: `\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample_policy = alicloud.resourcemanager.Policy(\"examplePolicy\",\n    policy_name=\"tftest\",\n    policy_document=\"\"\"\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n\"\"\")\nexample_policy_version = alicloud.resourcemanager.PolicyVersion(\"examplePolicyVersion\",\n    policy_name=example_policy.policy_name,\n    policy_document=\"\"\"\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var examplePolicy = new AliCloud.ResourceManager.Policy(\"examplePolicy\", new AliCloud.ResourceManager.PolicyArgs\n        {\n            PolicyName = \"tftest\",\n            PolicyDocument = @\"\t\t{\n\t\t\t\"\"Statement\"\": [{\n\t\t\t\t\"\"Action\"\": [\"\"oss:*\"\"],\n\t\t\t\t\"\"Effect\"\": \"\"Allow\"\",\n\t\t\t\t\"\"Resource\"\": [\"\"acs:oss:*:*:*\"\"]\n\t\t\t}],\n\t\t\t\"\"Version\"\": \"\"1\"\"\n\t\t}\n\",\n        });\n        var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion(\"examplePolicyVersion\", new AliCloud.ResourceManager.PolicyVersionArgs\n        {\n            PolicyName = examplePolicy.PolicyName,\n            PolicyDocument = @\"\t\t{\n\t\t\t\"\"Statement\"\": [{\n\t\t\t\t\"\"Action\"\": [\"\"oss:*\"\"],\n\t\t\t\t\"\"Effect\"\": \"\"Allow\"\",\n\t\t\t\t\"\"Resource\"\": [\"\"acs:oss:*:*:myphotos\"\"]\n\t\t\t}],\n\t\t\t\"\"Version\"\": \"\"1\"\"\n\t\t}\n\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "createDate": {
                     "type": "string",
@@ -42352,7 +42922,7 @@
             }
         },
         "alicloud:resourcemanager/resourceDirectory:ResourceDirectory": {
-            "description": "Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.\n\nFor information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n\u003e **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.\n\n\u003e **NOTE:** Before you destroy the resource, make sure that the following requirements are met:\n  - All member accounts must be removed from the resource directory. \n  - All folders except the root folder must be deleted from the resource directory.\n  \n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a Resource Manager Resource Directory resource. Resource Directory enables you to establish an organizational structure for the resources used by applications of your enterprise. You can plan, build, and manage the resources in a centralized manner by using only one resource directory.\n\nFor information about Resource Manager Resource Directory and how to use it, see [What is Resource Manager Resource Directory](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n\u003e **NOTE:** An account can only be used to enable a resource directory after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.\n\n\u003e **NOTE:** Before you destroy the resource, make sure that the following requirements are met:\n  - All member accounts must be removed from the resource directory. \n  - All folders except the root folder must be deleted from the resource directory.\n  \n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = new alicloud.resourcemanager.ResourceDirectory(\"example\", {});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.resourcemanager.ResourceDirectory(\"example\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AliCloud.ResourceManager.ResourceDirectory(\"example\", new AliCloud.ResourceManager.ResourceDirectoryArgs\n        {\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "masterAccountId": {
                     "type": "string",
@@ -50540,6 +51110,72 @@
                 ]
             }
         },
+        "alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups": {
+            "description": "This data source provides a list of Alidns Domain Groups in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:**  Available in 1.85.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAlidnsDomainGroups.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of instance IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by the domain group name. \n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAlidnsDomainGroups.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:dns/getAlidnsDomainGroupsGroup:getAlidnsDomainGroupsGroup"
+                        },
+                        "description": "A list of instances. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of instance IDs. \n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of domain group names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groups",
+                    "ids",
+                    "names",
+                    "id"
+                ]
+            }
+        },
         "alicloud:dns/getDomainGroups:getDomainGroups": {
             "inputs": {
                 "description": "A collection of arguments for invoking getDomainGroups.\n",
@@ -50932,6 +51568,57 @@
                     "groups",
                     "ids",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:dns/getInstances:getInstances": {
+            "description": "This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:**  Available in 1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstances.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of instance IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstances.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of instance IDs. \n"
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:dns/getInstancesInstance:getInstancesInstance"
+                        },
+                        "description": "A list of instances. Each element contains the following attributes:\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instances",
                     "id"
                 ]
             }
@@ -51936,7 +52623,7 @@
             }
         },
         "alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces": {
-            "description": "Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.\n\nFor information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"networkInterfacesName\";\n\nconst vpc = new alicloud.vpc.Network(\"vpc\", {\n    cidrBlock: \"192.168.0.0/24\",\n});\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst vswitch = new alicloud.vpc.Switch(\"vswitch\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"192.168.0.0/24\",\n    vpcId: vpc.id,\n});\nconst group = new alicloud.ecs.SecurityGroup(\"group\", {\n    vpcId: vpc.id,\n});\nconst interfaceNetworkInterface = new alicloud.vpc.NetworkInterface(\"interface\", {\n    description: \"Basic test\",\n    privateIp: \"192.168.0.2\",\n    securityGroups: [group.id],\n    tags: {\n        \"TF-VER\": \"0.11.3\",\n    },\n    vswitchId: vswitch.id,\n});\nconst instance = new alicloud.ecs.Instance(\"instance\", {\n    availabilityZone: defaultZones.zones[0].id,\n    imageId: \"centos_7_04_64_20G_alibase_201701015.vhd\",\n    instanceName: name,\n    instanceType: \"ecs.e3.xlarge\",\n    internetMaxBandwidthOut: 10,\n    securityGroups: [group.id],\n    systemDiskCategory: \"cloud_efficiency\",\n    vswitchId: vswitch.id,\n});\nconst attachment = new alicloud.vpc.NetworkInterfaceAttachment(\"attachment\", {\n    instanceId: instance.id,\n    networkInterfaceId: interfaceNetworkInterface.id,\n});\nconst defaultNetworkInterfaces = pulumi.all([attachment.networkInterfaceId, instance.id, group.id, vpc.id, vswitch.id]).apply(([networkInterfaceId, instanceId, groupId, vpcId, vswitchId]) =\u003e alicloud.ecs.getNetworkInterfaces({\n    ids: [networkInterfaceId],\n    instanceId: instanceId,\n    nameRegex: \"tf-testAccNetworkInterfacesBasic%d\",\n    privateIp: \"192.168.0.2\",\n    securityGroupId: groupId,\n    tags: {\n        \"TF-VER\": \"0.11.3\",\n    },\n    type: \"Secondary\",\n    vpcId: vpcId,\n    vswitchId: vswitchId,\n}, { async: true }));\n\nexport const eni0Name = defaultNetworkInterfaces.interfaces[0].name;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"networkInterfacesName\"\nvpc = alicloud.vpc.Network(\"vpc\", cidr_block=\"192.168.0.0/24\")\ndefault_zones = alicloud.get_zones(available_resource_creation=\"VSwitch\")\nvswitch = alicloud.vpc.Switch(\"vswitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"192.168.0.0/24\",\n    vpc_id=vpc.id)\ngroup = alicloud.ecs.SecurityGroup(\"group\", vpc_id=vpc.id)\ninterface = alicloud.vpc.NetworkInterface(\"interface\",\n    description=\"Basic test\",\n    private_ip=\"192.168.0.2\",\n    security_groups=[group.id],\n    tags={\n        \"TF-VER\": \"0.11.3\",\n    },\n    vswitch_id=vswitch.id)\ninstance = alicloud.ecs.Instance(\"instance\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    image_id=\"centos_7_04_64_20G_alibase_201701015.vhd\",\n    instance_name=name,\n    instance_type=\"ecs.e3.xlarge\",\n    internet_max_bandwidth_out=10,\n    security_groups=[group.id],\n    system_disk_category=\"cloud_efficiency\",\n    vswitch_id=vswitch.id)\nattachment = alicloud.vpc.NetworkInterfaceAttachment(\"attachment\",\n    instance_id=instance.id,\n    network_interface_id=interface.id)\ndefault_network_interfaces = pulumi.Output.all(attachment.network_interface_id, instance.id, group.id, vpc.id, vswitch.id).apply(lambda network_interface_id, instanceId, groupId, vpcId, vswitchId: alicloud.ecs.get_network_interfaces(ids=[network_interface_id],\n    instance_id=instance_id,\n    name_regex=\"tf-testAccNetworkInterfacesBasic%d\",\n    private_ip=\"192.168.0.2\",\n    security_group_id=group_id,\n    tags={\n        \"TF-VER\": \"0.11.3\",\n    },\n    type=\"Secondary\",\n    vpc_id=vpc_id,\n    vswitch_id=vswitch_id))\npulumi.export(\"eni0Name\", default_network_interfaces.interfaces[0][\"name\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"networkInterfacesName\";\n        var vpc = new AliCloud.Vpc.Network(\"vpc\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"192.168.0.0/24\",\n        });\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var vswitch = new AliCloud.Vpc.Switch(\"vswitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"192.168.0.0/24\",\n            VpcId = vpc.Id,\n        });\n        var @group = new AliCloud.Ecs.SecurityGroup(\"group\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = vpc.Id,\n        });\n        var @interface = new AliCloud.Vpc.NetworkInterface(\"interface\", new AliCloud.Vpc.NetworkInterfaceArgs\n        {\n            Description = \"Basic test\",\n            PrivateIp = \"192.168.0.2\",\n            SecurityGroups = \n            {\n                @group.Id,\n            },\n            Tags = \n            {\n                { \"TF-VER\", \"0.11.3\" },\n            },\n            VswitchId = vswitch.Id,\n        });\n        var instance = new AliCloud.Ecs.Instance(\"instance\", new AliCloud.Ecs.InstanceArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            ImageId = \"centos_7_04_64_20G_alibase_201701015.vhd\",\n            InstanceName = name,\n            InstanceType = \"ecs.e3.xlarge\",\n            InternetMaxBandwidthOut = 10,\n            SecurityGroups = \n            {\n                @group.Id,\n            },\n            SystemDiskCategory = \"cloud_efficiency\",\n            VswitchId = vswitch.Id,\n        });\n        var attachment = new AliCloud.Vpc.NetworkInterfaceAttachment(\"attachment\", new AliCloud.Vpc.NetworkInterfaceAttachmentArgs\n        {\n            InstanceId = instance.Id,\n            NetworkInterfaceId = @interface.Id,\n        });\n        var defaultNetworkInterfaces = Output.Tuple(attachment.NetworkInterfaceId, instance.Id, @group.Id, vpc.Id, vswitch.Id).Apply(values =\u003e\n        {\n            var networkInterfaceId = values.Item1;\n            var instanceId = values.Item2;\n            var groupId = values.Item3;\n            var vpcId = values.Item4;\n            var vswitchId = values.Item5;\n            return AliCloud.Ecs.GetNetworkInterfaces.InvokeAsync(new AliCloud.Ecs.GetNetworkInterfacesArgs\n            {\n                Ids = \n                {\n                    networkInterfaceId,\n                },\n                InstanceId = instanceId,\n                NameRegex = \"tf-testAccNetworkInterfacesBasic%d\",\n                PrivateIp = \"192.168.0.2\",\n                SecurityGroupId = groupId,\n                Tags = \n                {\n                    { \"TF-VER\", \"0.11.3\" },\n                },\n                Type = \"Secondary\",\n                VpcId = vpcId,\n                VswitchId = vswitchId,\n            });\n        });\n        this.Eni0Name = defaultNetworkInterfaces.Apply(defaultNetworkInterfaces =\u003e defaultNetworkInterfaces.Interfaces[0].Name);\n    }\n\n    [Output(\"eni0Name\")]\n    public Output\u003cstring\u003e Eni0Name { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n##  Argument Reference\n\nThe following arguments are supported:\n\n* `ids` - (Optional)  A list of ENI IDs.\n* `name_regex` - (Optional) A regex string to filter results by ENI name.\n* `vpc_id` - (Optional) The VPC ID linked to ENIs.\n* `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.\n* `private_ip` - (Optional) The primary private IP address of the ENI.\n* `security_group_id` - (Optional) The security group ID linked to ENIs.\n* `name` - (Optional) The name of the ENIs.\n* `type` - (Optional) The type of ENIs, Only support for \"Primary\" or \"Secondary\".\n* `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.\n* `tags` - (Optional) A map of tags assigned to ENIs.\n* `output_file` - (Optional) The name of output file that saves the filter results.\n* `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.\n",
+            "description": "Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.\n\nFor information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"networkInterfacesName\";\n\nconst vpc = new alicloud.vpc.Network(\"vpc\", {\n    cidrBlock: \"192.168.0.0/24\",\n});\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst vswitch = new alicloud.vpc.Switch(\"vswitch\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"192.168.0.0/24\",\n    vpcId: vpc.id,\n});\nconst group = new alicloud.ecs.SecurityGroup(\"group\", {\n    vpcId: vpc.id,\n});\nconst interfaceNetworkInterface = new alicloud.vpc.NetworkInterface(\"interface\", {\n    description: \"Basic test\",\n    privateIp: \"192.168.0.2\",\n    securityGroups: [group.id],\n    tags: {\n        \"TF-VER\": \"0.11.3\",\n    },\n    vswitchId: vswitch.id,\n});\nconst instance = new alicloud.ecs.Instance(\"instance\", {\n    availabilityZone: defaultZones.zones[0].id,\n    imageId: \"centos_7_04_64_20G_alibase_201701015.vhd\",\n    instanceName: name,\n    instanceType: \"ecs.e3.xlarge\",\n    internetMaxBandwidthOut: 10,\n    securityGroups: [group.id],\n    systemDiskCategory: \"cloud_efficiency\",\n    vswitchId: vswitch.id,\n});\nconst attachment = new alicloud.vpc.NetworkInterfaceAttachment(\"attachment\", {\n    instanceId: instance.id,\n    networkInterfaceId: interfaceNetworkInterface.id,\n});\nconst defaultNetworkInterfaces = pulumi.all([attachment.networkInterfaceId, instance.id, group.id, vpc.id, vswitch.id]).apply(([networkInterfaceId, instanceId, groupId, vpcId, vswitchId]) =\u003e alicloud.ecs.getNetworkInterfaces({\n    ids: [networkInterfaceId],\n    instanceId: instanceId,\n    nameRegex: name,\n    privateIp: \"192.168.0.2\",\n    securityGroupId: groupId,\n    tags: {\n        \"TF-VER\": \"0.11.3\",\n    },\n    type: \"Secondary\",\n    vpcId: vpcId,\n    vswitchId: vswitchId,\n}, { async: true }));\n\nexport const eni0Name = defaultNetworkInterfaces.interfaces[0].name;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"networkInterfacesName\"\nvpc = alicloud.vpc.Network(\"vpc\", cidr_block=\"192.168.0.0/24\")\ndefault_zones = alicloud.get_zones(available_resource_creation=\"VSwitch\")\nvswitch = alicloud.vpc.Switch(\"vswitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"192.168.0.0/24\",\n    vpc_id=vpc.id)\ngroup = alicloud.ecs.SecurityGroup(\"group\", vpc_id=vpc.id)\ninterface = alicloud.vpc.NetworkInterface(\"interface\",\n    description=\"Basic test\",\n    private_ip=\"192.168.0.2\",\n    security_groups=[group.id],\n    tags={\n        \"TF-VER\": \"0.11.3\",\n    },\n    vswitch_id=vswitch.id)\ninstance = alicloud.ecs.Instance(\"instance\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    image_id=\"centos_7_04_64_20G_alibase_201701015.vhd\",\n    instance_name=name,\n    instance_type=\"ecs.e3.xlarge\",\n    internet_max_bandwidth_out=10,\n    security_groups=[group.id],\n    system_disk_category=\"cloud_efficiency\",\n    vswitch_id=vswitch.id)\nattachment = alicloud.vpc.NetworkInterfaceAttachment(\"attachment\",\n    instance_id=instance.id,\n    network_interface_id=interface.id)\ndefault_network_interfaces = pulumi.Output.all(attachment.network_interface_id, instance.id, group.id, vpc.id, vswitch.id).apply(lambda network_interface_id, instanceId, groupId, vpcId, vswitchId: alicloud.ecs.get_network_interfaces(ids=[network_interface_id],\n    instance_id=instance_id,\n    name_regex=name,\n    private_ip=\"192.168.0.2\",\n    security_group_id=group_id,\n    tags={\n        \"TF-VER\": \"0.11.3\",\n    },\n    type=\"Secondary\",\n    vpc_id=vpc_id,\n    vswitch_id=vswitch_id))\npulumi.export(\"eni0Name\", default_network_interfaces.interfaces[0][\"name\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"networkInterfacesName\";\n        var vpc = new AliCloud.Vpc.Network(\"vpc\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"192.168.0.0/24\",\n        });\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var vswitch = new AliCloud.Vpc.Switch(\"vswitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"192.168.0.0/24\",\n            VpcId = vpc.Id,\n        });\n        var @group = new AliCloud.Ecs.SecurityGroup(\"group\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = vpc.Id,\n        });\n        var @interface = new AliCloud.Vpc.NetworkInterface(\"interface\", new AliCloud.Vpc.NetworkInterfaceArgs\n        {\n            Description = \"Basic test\",\n            PrivateIp = \"192.168.0.2\",\n            SecurityGroups = \n            {\n                @group.Id,\n            },\n            Tags = \n            {\n                { \"TF-VER\", \"0.11.3\" },\n            },\n            VswitchId = vswitch.Id,\n        });\n        var instance = new AliCloud.Ecs.Instance(\"instance\", new AliCloud.Ecs.InstanceArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            ImageId = \"centos_7_04_64_20G_alibase_201701015.vhd\",\n            InstanceName = name,\n            InstanceType = \"ecs.e3.xlarge\",\n            InternetMaxBandwidthOut = 10,\n            SecurityGroups = \n            {\n                @group.Id,\n            },\n            SystemDiskCategory = \"cloud_efficiency\",\n            VswitchId = vswitch.Id,\n        });\n        var attachment = new AliCloud.Vpc.NetworkInterfaceAttachment(\"attachment\", new AliCloud.Vpc.NetworkInterfaceAttachmentArgs\n        {\n            InstanceId = instance.Id,\n            NetworkInterfaceId = @interface.Id,\n        });\n        var defaultNetworkInterfaces = Output.Tuple(attachment.NetworkInterfaceId, instance.Id, @group.Id, vpc.Id, vswitch.Id).Apply(values =\u003e\n        {\n            var networkInterfaceId = values.Item1;\n            var instanceId = values.Item2;\n            var groupId = values.Item3;\n            var vpcId = values.Item4;\n            var vswitchId = values.Item5;\n            return AliCloud.Ecs.GetNetworkInterfaces.InvokeAsync(new AliCloud.Ecs.GetNetworkInterfacesArgs\n            {\n                Ids = \n                {\n                    networkInterfaceId,\n                },\n                InstanceId = instanceId,\n                NameRegex = name,\n                PrivateIp = \"192.168.0.2\",\n                SecurityGroupId = groupId,\n                Tags = \n                {\n                    { \"TF-VER\", \"0.11.3\" },\n                },\n                Type = \"Secondary\",\n                VpcId = vpcId,\n                VswitchId = vswitchId,\n            });\n        });\n        this.Eni0Name = defaultNetworkInterfaces.Apply(defaultNetworkInterfaces =\u003e defaultNetworkInterfaces.Interfaces[0].Name);\n    }\n\n    [Output(\"eni0Name\")]\n    public Output\u003cstring\u003e Eni0Name { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n##  Argument Reference\n\nThe following arguments are supported:\n\n* `ids` - (Optional)  A list of ENI IDs.\n* `name_regex` - (Optional) A regex string to filter results by ENI name.\n* `vpc_id` - (Optional) The VPC ID linked to ENIs.\n* `vswitch_id` - (Optional) The VSwitch ID linked to ENIs.\n* `private_ip` - (Optional) The primary private IP address of the ENI.\n* `security_group_id` - (Optional) The security group ID linked to ENIs.\n* `name` - (Optional) The name of the ENIs.\n* `type` - (Optional) The type of ENIs, Only support for \"Primary\" or \"Secondary\".\n* `instance_id` - (Optional) The ECS instance ID that the ENI is attached to.\n* `tags` - (Optional) A map of tags assigned to ENIs.\n* `output_file` - (Optional) The name of output file that saves the filter results.\n* `resource_group_id` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNetworkInterfaces.\n",
                 "properties": {
@@ -54438,6 +55125,69 @@
                     "ciphertextBlob",
                     "keyId",
                     "plaintext",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:kms/getKeyVersions:getKeyVersions": {
+            "description": "This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.\n\n\u003e NOTE: Available in v1.85.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKeyVersions.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of KMS KeyVersion IDs.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "The id of kms key.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "keyId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKeyVersions.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of KMS KeyVersion IDs.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "ID of the key.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:kms/getKeyVersionsVersion:getKeyVersionsVersion"
+                        },
+                        "description": "A list of KMS KeyVersions. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "keyId",
+                    "versions",
                     "id"
                 ]
             }
@@ -57444,7 +58194,7 @@
             }
         },
         "alicloud:resourcemanager/getFolders:getFolders": {
-            "description": "This data source provides the resource manager folders of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.84.0+.\n\n\u003e **NOTE:**  You can view only the information of the first-level child folders of the specified folder.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides the resource manager folders of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.84.0+.\n\n\u003e **NOTE:**  You can view only the information of the first-level child folders of the specified folder.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = pulumi.output(alicloud.resourcemanager.getFolders({\n    nameRegex: \"tftest\",\n}, { async: true }));\n\nexport const firstFolderId = example.folders[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.resourcemanager.get_folders(name_regex=\"tftest\")\npulumi.export(\"firstFolderId\", example.folders[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs\n        {\n            NameRegex = \"tftest\",\n        }));\n        this.FirstFolderId = example.Apply(example =\u003e example.Folders[0].Id);\n    }\n\n    [Output(\"firstFolderId\")]\n    public Output\u003cstring\u003e FirstFolderId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getFolders.\n",
                 "properties": {
@@ -57516,8 +58266,79 @@
                 ]
             }
         },
+        "alicloud:resourcemanager/getPolicyVersions:getPolicyVersions": {
+            "description": "This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.85.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPolicyVersions.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of policy version IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policyName": {
+                        "type": "string",
+                        "description": "The name of the policy.\n"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "The type of the policy. Valid values:`Custom` and `System`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "policyName",
+                    "policyType"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPolicyVersions.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of policy version IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policyName": {
+                        "type": "string"
+                    },
+                    "policyType": {
+                        "type": "string"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getPolicyVersionsVersion:getPolicyVersionsVersion"
+                        },
+                        "description": "A list of policy versions. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "policyName",
+                    "policyType",
+                    "versions",
+                    "id"
+                ]
+            }
+        },
         "alicloud:resourcemanager/getResourceGroups:getResourceGroups": {
-            "description": "This data source provides resource groups of the current Alibaba Cloud user.\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides resource groups of the current Alibaba Cloud user.\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = pulumi.output(alicloud.resourcemanager.getResourceGroups({\n    nameRegex: \"tftest\",\n}, { async: true }));\n\nexport const firstResourceGroupId = example.groups[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.resourcemanager.get_resource_groups(name_regex=\"tftest\")\npulumi.export(\"firstResourceGroupId\", example.groups[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs\n        {\n            NameRegex = \"tftest\",\n        }));\n        this.FirstResourceGroupId = example.Apply(example =\u003e example.Groups[0].Id);\n    }\n\n    [Output(\"firstResourceGroupId\")]\n    public Output\u003cstring\u003e FirstResourceGroupId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getResourceGroups.\n",
                 "properties": {

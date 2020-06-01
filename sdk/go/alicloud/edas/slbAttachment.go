@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides an EDAS slb application attachment resource.
+// Binds SLB to an EDAS application.
 //
 // > **NOTE:** Available in 1.82.0+
 type SlbAttachment struct {

@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a DNS Record resource.
- *
- * > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * // Create a new Domain record
- * const record = new alicloud.dns.Record("record", {
- *     hostRecord: "@",
- *     type: "A",
- *     value: "192.168.99.99",
- * });
- * ```
- */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra

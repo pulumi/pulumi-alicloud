@@ -127,6 +127,132 @@ func (o GetAliasesAliasArrayOutput) Index(i pulumi.IntInput) GetAliasesAliasOutp
 	}).(GetAliasesAliasOutput)
 }
 
+type GetKeyVersionsVersion struct {
+	// Date and time when the key version was created (UTC time).
+	CreationDate string `pulumi:"creationDate"`
+	// ID of the KMS KeyVersion resource.
+	Id string `pulumi:"id"`
+	// The id of kms key.
+	KeyId string `pulumi:"keyId"`
+	// ID of the key version.
+	KeyVersionId string `pulumi:"keyVersionId"`
+}
+
+// GetKeyVersionsVersionInput is an input type that accepts GetKeyVersionsVersionArgs and GetKeyVersionsVersionOutput values.
+// You can construct a concrete instance of `GetKeyVersionsVersionInput` via:
+//
+// 		 GetKeyVersionsVersionArgs{...}
+//
+type GetKeyVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetKeyVersionsVersionOutput() GetKeyVersionsVersionOutput
+	ToGetKeyVersionsVersionOutputWithContext(context.Context) GetKeyVersionsVersionOutput
+}
+
+type GetKeyVersionsVersionArgs struct {
+	// Date and time when the key version was created (UTC time).
+	CreationDate pulumi.StringInput `pulumi:"creationDate"`
+	// ID of the KMS KeyVersion resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of kms key.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// ID of the key version.
+	KeyVersionId pulumi.StringInput `pulumi:"keyVersionId"`
+}
+
+func (GetKeyVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetKeyVersionsVersionArgs) ToGetKeyVersionsVersionOutput() GetKeyVersionsVersionOutput {
+	return i.ToGetKeyVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetKeyVersionsVersionArgs) ToGetKeyVersionsVersionOutputWithContext(ctx context.Context) GetKeyVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyVersionsVersionOutput)
+}
+
+// GetKeyVersionsVersionArrayInput is an input type that accepts GetKeyVersionsVersionArray and GetKeyVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetKeyVersionsVersionArrayInput` via:
+//
+// 		 GetKeyVersionsVersionArray{ GetKeyVersionsVersionArgs{...} }
+//
+type GetKeyVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetKeyVersionsVersionArrayOutput() GetKeyVersionsVersionArrayOutput
+	ToGetKeyVersionsVersionArrayOutputWithContext(context.Context) GetKeyVersionsVersionArrayOutput
+}
+
+type GetKeyVersionsVersionArray []GetKeyVersionsVersionInput
+
+func (GetKeyVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetKeyVersionsVersionArray) ToGetKeyVersionsVersionArrayOutput() GetKeyVersionsVersionArrayOutput {
+	return i.ToGetKeyVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeyVersionsVersionArray) ToGetKeyVersionsVersionArrayOutputWithContext(ctx context.Context) GetKeyVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyVersionsVersionArrayOutput)
+}
+
+type GetKeyVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetKeyVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetKeyVersionsVersionOutput) ToGetKeyVersionsVersionOutput() GetKeyVersionsVersionOutput {
+	return o
+}
+
+func (o GetKeyVersionsVersionOutput) ToGetKeyVersionsVersionOutputWithContext(ctx context.Context) GetKeyVersionsVersionOutput {
+	return o
+}
+
+// Date and time when the key version was created (UTC time).
+func (o GetKeyVersionsVersionOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// ID of the KMS KeyVersion resource.
+func (o GetKeyVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of kms key.
+func (o GetKeyVersionsVersionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// ID of the key version.
+func (o GetKeyVersionsVersionOutput) KeyVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyVersionsVersion) string { return v.KeyVersionId }).(pulumi.StringOutput)
+}
+
+type GetKeyVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeyVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetKeyVersionsVersionArrayOutput) ToGetKeyVersionsVersionArrayOutput() GetKeyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetKeyVersionsVersionArrayOutput) ToGetKeyVersionsVersionArrayOutputWithContext(ctx context.Context) GetKeyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetKeyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetKeyVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyVersionsVersion {
+		return vs[0].([]GetKeyVersionsVersion)[vs[1].(int)]
+	}).(GetKeyVersionsVersionOutput)
+}
+
 type GetKeysKey struct {
 	// The Alibaba Cloud Resource Name (ARN) of the key.
 	Arn string `pulumi:"arn"`
@@ -283,6 +409,8 @@ func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 func init() {
 	pulumi.RegisterOutputType(GetAliasesAliasOutput{})
 	pulumi.RegisterOutputType(GetAliasesAliasArrayOutput{})
+	pulumi.RegisterOutputType(GetKeyVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetKeyVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
 }

@@ -232,6 +232,132 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 	}).(GetFoldersFolderOutput)
 }
 
+type GetPolicyVersionsVersion struct {
+	CreateDate string `pulumi:"createDate"`
+	// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
+	// * `versionId`- The ID of the policy version.
+	// * `createDate`- The time when the policy version was created.
+	// * `isDefaultVersion`- Indicates whether the policy version is the default version.
+	Id               string `pulumi:"id"`
+	IsDefaultVersion bool   `pulumi:"isDefaultVersion"`
+	VersionId        string `pulumi:"versionId"`
+}
+
+// GetPolicyVersionsVersionInput is an input type that accepts GetPolicyVersionsVersionArgs and GetPolicyVersionsVersionOutput values.
+// You can construct a concrete instance of `GetPolicyVersionsVersionInput` via:
+//
+// 		 GetPolicyVersionsVersionArgs{...}
+//
+type GetPolicyVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetPolicyVersionsVersionOutput() GetPolicyVersionsVersionOutput
+	ToGetPolicyVersionsVersionOutputWithContext(context.Context) GetPolicyVersionsVersionOutput
+}
+
+type GetPolicyVersionsVersionArgs struct {
+	CreateDate pulumi.StringInput `pulumi:"createDate"`
+	// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
+	// * `versionId`- The ID of the policy version.
+	// * `createDate`- The time when the policy version was created.
+	// * `isDefaultVersion`- Indicates whether the policy version is the default version.
+	Id               pulumi.StringInput `pulumi:"id"`
+	IsDefaultVersion pulumi.BoolInput   `pulumi:"isDefaultVersion"`
+	VersionId        pulumi.StringInput `pulumi:"versionId"`
+}
+
+func (GetPolicyVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetPolicyVersionsVersionArgs) ToGetPolicyVersionsVersionOutput() GetPolicyVersionsVersionOutput {
+	return i.ToGetPolicyVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyVersionsVersionArgs) ToGetPolicyVersionsVersionOutputWithContext(ctx context.Context) GetPolicyVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyVersionsVersionOutput)
+}
+
+// GetPolicyVersionsVersionArrayInput is an input type that accepts GetPolicyVersionsVersionArray and GetPolicyVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetPolicyVersionsVersionArrayInput` via:
+//
+// 		 GetPolicyVersionsVersionArray{ GetPolicyVersionsVersionArgs{...} }
+//
+type GetPolicyVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyVersionsVersionArrayOutput() GetPolicyVersionsVersionArrayOutput
+	ToGetPolicyVersionsVersionArrayOutputWithContext(context.Context) GetPolicyVersionsVersionArrayOutput
+}
+
+type GetPolicyVersionsVersionArray []GetPolicyVersionsVersionInput
+
+func (GetPolicyVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyVersionsVersion)(nil)).Elem()
+}
+
+func (i GetPolicyVersionsVersionArray) ToGetPolicyVersionsVersionArrayOutput() GetPolicyVersionsVersionArrayOutput {
+	return i.ToGetPolicyVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyVersionsVersionArray) ToGetPolicyVersionsVersionArrayOutputWithContext(ctx context.Context) GetPolicyVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyVersionsVersionArrayOutput)
+}
+
+type GetPolicyVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetPolicyVersionsVersionOutput) ToGetPolicyVersionsVersionOutput() GetPolicyVersionsVersionOutput {
+	return o
+}
+
+func (o GetPolicyVersionsVersionOutput) ToGetPolicyVersionsVersionOutputWithContext(ctx context.Context) GetPolicyVersionsVersionOutput {
+	return o
+}
+
+func (o GetPolicyVersionsVersionOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The ID of the resource, the value is `<policy_name>`:`<version_id>`.
+// * `versionId`- The ID of the policy version.
+// * `createDate`- The time when the policy version was created.
+// * `isDefaultVersion`- Indicates whether the policy version is the default version.
+func (o GetPolicyVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPolicyVersionsVersionOutput) IsDefaultVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPolicyVersionsVersion) bool { return v.IsDefaultVersion }).(pulumi.BoolOutput)
+}
+
+func (o GetPolicyVersionsVersionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyVersionsVersion) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+type GetPolicyVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyVersionsVersion)(nil)).Elem()
+}
+
+func (o GetPolicyVersionsVersionArrayOutput) ToGetPolicyVersionsVersionArrayOutput() GetPolicyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetPolicyVersionsVersionArrayOutput) ToGetPolicyVersionsVersionArrayOutputWithContext(ctx context.Context) GetPolicyVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetPolicyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetPolicyVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyVersionsVersion {
+		return vs[0].([]GetPolicyVersionsVersion)[vs[1].(int)]
+	}).(GetPolicyVersionsVersionOutput)
+}
+
 type GetResourceGroupsGroup struct {
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId string `pulumi:"accountId"`
@@ -381,6 +507,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetPolicyVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
 }

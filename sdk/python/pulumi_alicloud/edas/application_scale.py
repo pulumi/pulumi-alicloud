@@ -32,26 +32,7 @@ class ApplicationScale(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, app_id=None, deploy_group=None, ecu_infos=None, force_status=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides an EDAS application scale resource.
-
-        > **NOTE:** Available in 1.82.0+
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.edas.ApplicationScale("default",
-            app_id=var["app_id"],
-            deploy_group=var["deploy_group"],
-            ecu_infos=var["ecu_info"],
-            force_status=var["force_status"])
-        ```
-
-
+        Create a ApplicationScale resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.

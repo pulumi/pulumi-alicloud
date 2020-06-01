@@ -847,8 +847,8 @@ github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81P
 github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/svanharmelen/jsonapi v0.0.0-20180618144545-0c0828c3f16d/go.mod h1:BSTlc8jOjh0niykqEGVXOLXdi9o0r0kR8tCYiMvjFgw=
-github.com/terraform-providers/terraform-provider-alicloud v1.84.0 h1:MzYSb41YcuCaONYtAggYHSX5aqMwPVYjXocSDKVFnuE=
-github.com/terraform-providers/terraform-provider-alicloud v1.84.0/go.mod h1:deJQ0y7z7RISi+myDnG2I+zCcLb+g9P3fusPJ5+Hp94=
+github.com/terraform-providers/terraform-provider-alicloud v1.85.0 h1:i7/EY6RMWqtkru+57f1bADhI4mqwfMR/RQMeohRRcYI=
+github.com/terraform-providers/terraform-provider-alicloud v1.85.0/go.mod h1:deJQ0y7z7RISi+myDnG2I+zCcLb+g9P3fusPJ5+Hp94=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
