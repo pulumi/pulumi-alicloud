@@ -108,9 +108,9 @@ type Instance struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
-	// The instance status.
-	Status   pulumi.StringOutput `pulumi:"status"`
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
+	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+	Status   pulumi.StringPtrOutput `pulumi:"status"`
+	SubnetId pulumi.StringOutput    `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -263,7 +263,7 @@ type instanceState struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The instance status.
+	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status   *string `pulumi:"status"`
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
@@ -382,7 +382,7 @@ type InstanceState struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
-	// The instance status.
+	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status   pulumi.StringPtrInput
 	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
@@ -503,7 +503,9 @@ type instanceArgs struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	SubnetId     *string `pulumi:"subnetId"`
+	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+	Status   *string `pulumi:"status"`
+	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
@@ -619,7 +621,9 @@ type InstanceArgs struct {
 	// - SpotWithPriceLimit: A price threshold for a spot instance
 	// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
-	SubnetId     pulumi.StringPtrInput
+	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+	Status   pulumi.StringPtrInput
+	SubnetId pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.

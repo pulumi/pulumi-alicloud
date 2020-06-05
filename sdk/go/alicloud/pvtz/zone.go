@@ -25,8 +25,10 @@ type Zone struct {
 	// The count of the Private Zone Record.
 	RecordCount pulumi.IntOutput `pulumi:"recordCount"`
 	// The remark of the Private Zone.
-	Remark     pulumi.StringPtrOutput `pulumi:"remark"`
-	UpdateTime pulumi.StringOutput    `pulumi:"updateTime"`
+	Remark pulumi.StringPtrOutput `pulumi:"remark"`
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	UpdateTime      pulumi.StringOutput    `pulumi:"updateTime"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 }
@@ -72,8 +74,10 @@ type zoneState struct {
 	// The count of the Private Zone Record.
 	RecordCount *int `pulumi:"recordCount"`
 	// The remark of the Private Zone.
-	Remark     *string `pulumi:"remark"`
-	UpdateTime *string `pulumi:"updateTime"`
+	Remark *string `pulumi:"remark"`
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	UpdateTime      *string `pulumi:"updateTime"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
 }
@@ -92,8 +96,10 @@ type ZoneState struct {
 	// The count of the Private Zone Record.
 	RecordCount pulumi.IntPtrInput
 	// The remark of the Private Zone.
-	Remark     pulumi.StringPtrInput
-	UpdateTime pulumi.StringPtrInput
+	Remark pulumi.StringPtrInput
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	UpdateTime      pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
 }
@@ -113,6 +119,8 @@ type zoneArgs struct {
 	ProxyPattern *string `pulumi:"proxyPattern"`
 	// The remark of the Private Zone.
 	Remark *string `pulumi:"remark"`
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
 }
@@ -129,6 +137,8 @@ type ZoneArgs struct {
 	ProxyPattern pulumi.StringPtrInput
 	// The remark of the Private Zone.
 	Remark pulumi.StringPtrInput
+	// The Id of resource group which the Private Zone belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
 }

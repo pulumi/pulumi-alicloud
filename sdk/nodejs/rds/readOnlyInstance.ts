@@ -120,6 +120,10 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
+     * The ID of resource group which the DB read-only instance belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -155,6 +159,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["masterDbInstanceId"] = state ? state.masterDbInstanceId : undefined;
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -178,6 +183,7 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["masterDbInstanceId"] = args ? args.masterDbInstanceId : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -237,6 +243,10 @@ export interface ReadOnlyInstanceState {
      */
     readonly port?: pulumi.Input<string>;
     /**
+     * The ID of resource group which the DB read-only instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -280,6 +290,10 @@ export interface ReadOnlyInstanceArgs {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
      */
     readonly parameters?: pulumi.Input<pulumi.Input<inputs.rds.ReadOnlyInstanceParameter>[]>;
+    /**
+     * The ID of resource group which the DB read-only instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

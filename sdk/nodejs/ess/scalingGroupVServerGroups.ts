@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *     minSize: 2,
  *     scalingGroupName: name,
  *     vswitchIds: [defaultSwitch.id],
- * }, { dependsOn: [...defaultListener] });
+ * });
  * const defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups("default", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     vserverGroups: [{

@@ -10,6 +10,7 @@ export * from "./domain";
 export * from "./domainAttachment";
 export * from "./domainGroup";
 export * from "./getAlidnsDomainGroups";
+export * from "./getAlidnsRecords";
 export * from "./getDomainGroups";
 export * from "./getDomainRecords";
 export * from "./getDomainTxtGuid";

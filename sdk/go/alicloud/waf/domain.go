@@ -50,7 +50,7 @@ type Domain struct {
 	// The read timeout of a WAF exclusive cluster. Unit: seconds.
 	ReadTime pulumi.IntPtrOutput `pulumi:"readTime"`
 	// The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// List of the IP address or domain of the origin server to which the specified domain points.
 	SourceIps pulumi.StringArrayOutput `pulumi:"sourceIps"`
 	Status    pulumi.IntOutput         `pulumi:"status"`

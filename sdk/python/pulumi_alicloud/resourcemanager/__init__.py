@@ -5,9 +5,14 @@
 # Export this package's modules as members:
 from .account import *
 from .folder import *
+from .get_accounts import *
 from .get_folders import *
+from .get_handshakes import *
+from .get_policies import *
 from .get_policy_versions import *
+from .get_resource_directories import *
 from .get_resource_groups import *
+from .get_roles import *
 from .handshake import *
 from .policy import *
 from .policy_version import *

@@ -39,10 +39,10 @@ type ScalingGroup struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-	// - OldestInstance: removes the first ECS instance attached to the scaling group.
-	// - NewestInstance: removes the first ECS instance attached to the scaling group.
-	// - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-	// - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayOutput `pulumi:"removalPolicies"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrOutput `pulumi:"scalingGroupName"`
@@ -118,10 +118,10 @@ type scalingGroupState struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-	// - OldestInstance: removes the first ECS instance attached to the scaling group.
-	// - NewestInstance: removes the first ECS instance attached to the scaling group.
-	// - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-	// - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies []string `pulumi:"removalPolicies"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
@@ -164,10 +164,10 @@ type ScalingGroupState struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-	// - OldestInstance: removes the first ECS instance attached to the scaling group.
-	// - NewestInstance: removes the first ECS instance attached to the scaling group.
-	// - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-	// - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
@@ -214,10 +214,10 @@ type scalingGroupArgs struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-	// - OldestInstance: removes the first ECS instance attached to the scaling group.
-	// - NewestInstance: removes the first ECS instance attached to the scaling group.
-	// - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-	// - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies []string `pulumi:"removalPolicies"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
@@ -261,10 +261,10 @@ type ScalingGroupArgs struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-	// - OldestInstance: removes the first ECS instance attached to the scaling group.
-	// - NewestInstance: removes the first ECS instance attached to the scaling group.
-	// - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-	// - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+	// - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput

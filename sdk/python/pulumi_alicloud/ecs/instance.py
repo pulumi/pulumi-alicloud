@@ -193,7 +193,7 @@ class Instance(pulumi.CustomResource):
     """
     status: pulumi.Output[str]
     """
-    The instance status.
+    The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
     """
     subnet_id: pulumi.Output[str]
     system_disk_auto_snapshot_policy_id: pulumi.Output[str]
@@ -228,7 +228,7 @@ class Instance(pulumi.CustomResource):
     """
     The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
     """
-    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, subnet_id=None, system_disk_auto_snapshot_policy_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allocate_public_ip=None, auto_release_time=None, auto_renew_period=None, availability_zone=None, credit_specification=None, data_disks=None, deletion_protection=None, description=None, dry_run=None, force_delete=None, host_name=None, image_id=None, include_data_disks=None, instance_charge_type=None, instance_name=None, instance_type=None, internet_charge_type=None, internet_max_bandwidth_in=None, internet_max_bandwidth_out=None, io_optimized=None, is_outdated=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, password=None, period=None, period_unit=None, private_ip=None, renewal_status=None, resource_group_id=None, role_name=None, security_enhancement_strategy=None, security_groups=None, spot_price_limit=None, spot_strategy=None, status=None, subnet_id=None, system_disk_auto_snapshot_policy_id=None, system_disk_category=None, system_disk_size=None, tags=None, user_data=None, volume_tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -287,6 +287,7 @@ class Instance(pulumi.CustomResource):
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+        :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
@@ -379,6 +380,7 @@ class Instance(pulumi.CustomResource):
             __props__['security_groups'] = security_groups
             __props__['spot_price_limit'] = spot_price_limit
             __props__['spot_strategy'] = spot_strategy
+            __props__['status'] = status
             __props__['subnet_id'] = subnet_id
             __props__['system_disk_auto_snapshot_policy_id'] = system_disk_auto_snapshot_policy_id
             __props__['system_disk_category'] = system_disk_category
@@ -388,7 +390,6 @@ class Instance(pulumi.CustomResource):
             __props__['volume_tags'] = volume_tags
             __props__['vswitch_id'] = vswitch_id
             __props__['public_ip'] = None
-            __props__['status'] = None
         super(Instance, __self__).__init__(
             'alicloud:ecs/instance:Instance',
             resource_name,
@@ -459,7 +460,7 @@ class Instance(pulumi.CustomResource):
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
-        :param pulumi.Input[str] status: The instance status.
+        :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.

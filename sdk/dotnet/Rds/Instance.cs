@@ -177,6 +177,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of resource group which the DB instance belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         /// </summary>
         [Output("securityGroupId")]
@@ -390,6 +396,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// The ID of resource group which the DB instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         /// </summary>
         [Input("securityGroupId")]
@@ -592,6 +604,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the DB instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// It has been deprecated from 1.69.0 and use `security_group_ids` instead.

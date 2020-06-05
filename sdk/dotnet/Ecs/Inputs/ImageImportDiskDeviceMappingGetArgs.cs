@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class ImageImportDiskDeviceMappingGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+        /// The name of disk N in the custom image.
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -36,6 +36,9 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("ossBucket")]
         public Input<string>? OssBucket { get; set; }
 
+        /// <summary>
+        /// The file name of your OSS Object.
+        /// </summary>
         [Input("ossObject")]
         public Input<string>? OssObject { get; set; }
 

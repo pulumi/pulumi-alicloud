@@ -32,6 +32,8 @@ type ReadOnlyInstance struct {
 	Parameters ReadOnlyInstanceParameterArrayOutput `pulumi:"parameters"`
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The ID of resource group which the DB read-only instance belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -100,6 +102,8 @@ type readOnlyInstanceState struct {
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
+	// The ID of resource group which the DB read-only instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -129,6 +133,8 @@ type ReadOnlyInstanceState struct {
 	Parameters ReadOnlyInstanceParameterArrayInput
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
+	// The ID of resource group which the DB read-only instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -156,6 +162,8 @@ type readOnlyInstanceArgs struct {
 	MasterDbInstanceId string `pulumi:"masterDbInstanceId"`
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []ReadOnlyInstanceParameter `pulumi:"parameters"`
+	// The ID of resource group which the DB read-only instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -180,6 +188,8 @@ type ReadOnlyInstanceArgs struct {
 	MasterDbInstanceId pulumi.StringInput
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters ReadOnlyInstanceParameterArrayInput
+	// The ID of resource group which the DB read-only instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

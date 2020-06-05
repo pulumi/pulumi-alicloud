@@ -6,3 +6,4 @@ export * from "./ddosBgpInstance";
 export * from "./ddosCooInstance";
 export * from "./getDdosBgpInstances";
 export * from "./getDdosCooInstances";
+export * from "./schedulerRule";

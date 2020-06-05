@@ -49,6 +49,8 @@ type Instance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Set the instance's private IP.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
+	// The ID of resource group which the resource belongs.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Set the instance's IP whitelist of the default security group.
@@ -127,6 +129,8 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// Set the instance's private IP.
 	PrivateIp *string `pulumi:"privateIp"`
+	// The ID of resource group which the resource belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Set the instance's IP whitelist of the default security group.
@@ -175,6 +179,8 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// Set the instance's private IP.
 	PrivateIp pulumi.StringPtrInput
+	// The ID of resource group which the resource belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
 	// Set the instance's IP whitelist of the default security group.
@@ -225,6 +231,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Set the instance's private IP.
 	PrivateIp *string `pulumi:"privateIp"`
+	// The ID of resource group which the resource belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Security Group ID of ECS.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Set the instance's IP whitelist of the default security group.
@@ -272,6 +280,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Set the instance's private IP.
 	PrivateIp pulumi.StringPtrInput
+	// The ID of resource group which the resource belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// The Security Group ID of ECS.
 	SecurityGroupId pulumi.StringPtrInput
 	// Set the instance's IP whitelist of the default security group.

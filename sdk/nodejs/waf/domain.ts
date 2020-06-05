@@ -129,7 +129,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * List of the IP address or domain of the origin server to which the specified domain points.
      */

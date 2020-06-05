@@ -115,6 +115,186 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 	}).(ResourceGroupRegionStatusOutput)
 }
 
+type GetAccountsAccount struct {
+	AccountId   string `pulumi:"accountId"`
+	DisplayName string `pulumi:"displayName"`
+	// The ID of the folder.
+	FolderId string `pulumi:"folderId"`
+	// The ID of the resource.
+	// * `accountId`- The ID of the account.
+	// * `displayName`- The name of the member account.
+	Id string `pulumi:"id"`
+	// The way in which the member account joined the resource directory.
+	JoinMethod string `pulumi:"joinMethod"`
+	// The time when the member account joined the resource directory.
+	JoinTime string `pulumi:"joinTime"`
+	// The time when the member account was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The ID of the resource directory.
+	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
+	// The status of the member account.
+	Status string `pulumi:"status"`
+	// The type of the member account.
+	Type string `pulumi:"type"`
+}
+
+// GetAccountsAccountInput is an input type that accepts GetAccountsAccountArgs and GetAccountsAccountOutput values.
+// You can construct a concrete instance of `GetAccountsAccountInput` via:
+//
+// 		 GetAccountsAccountArgs{...}
+//
+type GetAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountOutput() GetAccountsAccountOutput
+	ToGetAccountsAccountOutputWithContext(context.Context) GetAccountsAccountOutput
+}
+
+type GetAccountsAccountArgs struct {
+	AccountId   pulumi.StringInput `pulumi:"accountId"`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The ID of the folder.
+	FolderId pulumi.StringInput `pulumi:"folderId"`
+	// The ID of the resource.
+	// * `accountId`- The ID of the account.
+	// * `displayName`- The name of the member account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The way in which the member account joined the resource directory.
+	JoinMethod pulumi.StringInput `pulumi:"joinMethod"`
+	// The time when the member account joined the resource directory.
+	JoinTime pulumi.StringInput `pulumi:"joinTime"`
+	// The time when the member account was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The ID of the resource directory.
+	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
+	// The status of the member account.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of the member account.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return i.ToGetAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArgs) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountOutput)
+}
+
+// GetAccountsAccountArrayInput is an input type that accepts GetAccountsAccountArray and GetAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetAccountsAccountArrayInput` via:
+//
+// 		 GetAccountsAccountArray{ GetAccountsAccountArgs{...} }
+//
+type GetAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput
+	ToGetAccountsAccountArrayOutputWithContext(context.Context) GetAccountsAccountArrayOutput
+}
+
+type GetAccountsAccountArray []GetAccountsAccountInput
+
+func (GetAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return i.ToGetAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountsAccountArray) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountsAccountArrayOutput)
+}
+
+type GetAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutput() GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) ToGetAccountsAccountOutputWithContext(ctx context.Context) GetAccountsAccountOutput {
+	return o
+}
+
+func (o GetAccountsAccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o GetAccountsAccountOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The ID of the folder.
+func (o GetAccountsAccountOutput) FolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+// * `accountId`- The ID of the account.
+// * `displayName`- The name of the member account.
+func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The way in which the member account joined the resource directory.
+func (o GetAccountsAccountOutput) JoinMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.JoinMethod }).(pulumi.StringOutput)
+}
+
+// The time when the member account joined the resource directory.
+func (o GetAccountsAccountOutput) JoinTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.JoinTime }).(pulumi.StringOutput)
+}
+
+// The time when the member account was modified.
+func (o GetAccountsAccountOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The ID of the resource directory.
+func (o GetAccountsAccountOutput) ResourceDirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
+}
+
+// The status of the member account.
+func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the member account.
+func (o GetAccountsAccountOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountsAccount)(nil)).Elem()
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutput() GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) ToGetAccountsAccountArrayOutputWithContext(ctx context.Context) GetAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
+		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
+	}).(GetAccountsAccountOutput)
+}
+
 type GetFoldersFolder struct {
 	FolderId   string `pulumi:"folderId"`
 	FolderName string `pulumi:"folderName"`
@@ -230,6 +410,360 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFoldersFolder {
 		return vs[0].([]GetFoldersFolder)[vs[1].(int)]
 	}).(GetFoldersFolderOutput)
+}
+
+type GetHandshakesHandshake struct {
+	// The time when the invitation expires.
+	ExpireTime  string `pulumi:"expireTime"`
+	HandshakeId string `pulumi:"handshakeId"`
+	// The ID of the resource.
+	// * `handshakeId`- The ID of the invitation.
+	Id string `pulumi:"id"`
+	// The ID of the master account of the resource directory.
+	MasterAccountId string `pulumi:"masterAccountId"`
+	// The name of the master account of the resource directory.
+	MasterAccountName string `pulumi:"masterAccountName"`
+	// The time when the invitation was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The invitation note.
+	Note string `pulumi:"note"`
+	// The ID of the resource directory.
+	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
+	// The status of the invitation.
+	Status string `pulumi:"status"`
+	// The ID or logon email address of the invited account.
+	TargetEntity string `pulumi:"targetEntity"`
+	// The type of the invited account.
+	TargetType string `pulumi:"targetType"`
+}
+
+// GetHandshakesHandshakeInput is an input type that accepts GetHandshakesHandshakeArgs and GetHandshakesHandshakeOutput values.
+// You can construct a concrete instance of `GetHandshakesHandshakeInput` via:
+//
+// 		 GetHandshakesHandshakeArgs{...}
+//
+type GetHandshakesHandshakeInput interface {
+	pulumi.Input
+
+	ToGetHandshakesHandshakeOutput() GetHandshakesHandshakeOutput
+	ToGetHandshakesHandshakeOutputWithContext(context.Context) GetHandshakesHandshakeOutput
+}
+
+type GetHandshakesHandshakeArgs struct {
+	// The time when the invitation expires.
+	ExpireTime  pulumi.StringInput `pulumi:"expireTime"`
+	HandshakeId pulumi.StringInput `pulumi:"handshakeId"`
+	// The ID of the resource.
+	// * `handshakeId`- The ID of the invitation.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the master account of the resource directory.
+	MasterAccountId pulumi.StringInput `pulumi:"masterAccountId"`
+	// The name of the master account of the resource directory.
+	MasterAccountName pulumi.StringInput `pulumi:"masterAccountName"`
+	// The time when the invitation was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The invitation note.
+	Note pulumi.StringInput `pulumi:"note"`
+	// The ID of the resource directory.
+	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
+	// The status of the invitation.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID or logon email address of the invited account.
+	TargetEntity pulumi.StringInput `pulumi:"targetEntity"`
+	// The type of the invited account.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+}
+
+func (GetHandshakesHandshakeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHandshakesHandshake)(nil)).Elem()
+}
+
+func (i GetHandshakesHandshakeArgs) ToGetHandshakesHandshakeOutput() GetHandshakesHandshakeOutput {
+	return i.ToGetHandshakesHandshakeOutputWithContext(context.Background())
+}
+
+func (i GetHandshakesHandshakeArgs) ToGetHandshakesHandshakeOutputWithContext(ctx context.Context) GetHandshakesHandshakeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHandshakesHandshakeOutput)
+}
+
+// GetHandshakesHandshakeArrayInput is an input type that accepts GetHandshakesHandshakeArray and GetHandshakesHandshakeArrayOutput values.
+// You can construct a concrete instance of `GetHandshakesHandshakeArrayInput` via:
+//
+// 		 GetHandshakesHandshakeArray{ GetHandshakesHandshakeArgs{...} }
+//
+type GetHandshakesHandshakeArrayInput interface {
+	pulumi.Input
+
+	ToGetHandshakesHandshakeArrayOutput() GetHandshakesHandshakeArrayOutput
+	ToGetHandshakesHandshakeArrayOutputWithContext(context.Context) GetHandshakesHandshakeArrayOutput
+}
+
+type GetHandshakesHandshakeArray []GetHandshakesHandshakeInput
+
+func (GetHandshakesHandshakeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHandshakesHandshake)(nil)).Elem()
+}
+
+func (i GetHandshakesHandshakeArray) ToGetHandshakesHandshakeArrayOutput() GetHandshakesHandshakeArrayOutput {
+	return i.ToGetHandshakesHandshakeArrayOutputWithContext(context.Background())
+}
+
+func (i GetHandshakesHandshakeArray) ToGetHandshakesHandshakeArrayOutputWithContext(ctx context.Context) GetHandshakesHandshakeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHandshakesHandshakeArrayOutput)
+}
+
+type GetHandshakesHandshakeOutput struct{ *pulumi.OutputState }
+
+func (GetHandshakesHandshakeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHandshakesHandshake)(nil)).Elem()
+}
+
+func (o GetHandshakesHandshakeOutput) ToGetHandshakesHandshakeOutput() GetHandshakesHandshakeOutput {
+	return o
+}
+
+func (o GetHandshakesHandshakeOutput) ToGetHandshakesHandshakeOutputWithContext(ctx context.Context) GetHandshakesHandshakeOutput {
+	return o
+}
+
+// The time when the invitation expires.
+func (o GetHandshakesHandshakeOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o GetHandshakesHandshakeOutput) HandshakeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.HandshakeId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+// * `handshakeId`- The ID of the invitation.
+func (o GetHandshakesHandshakeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the master account of the resource directory.
+func (o GetHandshakesHandshakeOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+// The name of the master account of the resource directory.
+func (o GetHandshakesHandshakeOutput) MasterAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// The time when the invitation was modified.
+func (o GetHandshakesHandshakeOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The invitation note.
+func (o GetHandshakesHandshakeOutput) Note() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.Note }).(pulumi.StringOutput)
+}
+
+// The ID of the resource directory.
+func (o GetHandshakesHandshakeOutput) ResourceDirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
+}
+
+// The status of the invitation.
+func (o GetHandshakesHandshakeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID or logon email address of the invited account.
+func (o GetHandshakesHandshakeOutput) TargetEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.TargetEntity }).(pulumi.StringOutput)
+}
+
+// The type of the invited account.
+func (o GetHandshakesHandshakeOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHandshakesHandshake) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+type GetHandshakesHandshakeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHandshakesHandshakeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHandshakesHandshake)(nil)).Elem()
+}
+
+func (o GetHandshakesHandshakeArrayOutput) ToGetHandshakesHandshakeArrayOutput() GetHandshakesHandshakeArrayOutput {
+	return o
+}
+
+func (o GetHandshakesHandshakeArrayOutput) ToGetHandshakesHandshakeArrayOutputWithContext(ctx context.Context) GetHandshakesHandshakeArrayOutput {
+	return o
+}
+
+func (o GetHandshakesHandshakeArrayOutput) Index(i pulumi.IntInput) GetHandshakesHandshakeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHandshakesHandshake {
+		return vs[0].([]GetHandshakesHandshake)[vs[1].(int)]
+	}).(GetHandshakesHandshakeOutput)
+}
+
+type GetPoliciesPolicy struct {
+	// The number of times the policy is referenced.
+	AttachmentCount int `pulumi:"attachmentCount"`
+	// The time when the policy was created.
+	CreateDate string `pulumi:"createDate"`
+	// The default version of the policy.
+	DefaultVersion string `pulumi:"defaultVersion"`
+	// The description of the policy.
+	Description string `pulumi:"description"`
+	// The ID of the policy.
+	// * `policyName`- The name of the policy.
+	// * `policyType`- The type of the policy.
+	Id         string `pulumi:"id"`
+	PolicyName string `pulumi:"policyName"`
+	// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+	PolicyType string `pulumi:"policyType"`
+	// The time when the policy was updated.
+	UpdateDate string `pulumi:"updateDate"`
+}
+
+// GetPoliciesPolicyInput is an input type that accepts GetPoliciesPolicyArgs and GetPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetPoliciesPolicyInput` via:
+//
+// 		 GetPoliciesPolicyArgs{...}
+//
+type GetPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput
+	ToGetPoliciesPolicyOutputWithContext(context.Context) GetPoliciesPolicyOutput
+}
+
+type GetPoliciesPolicyArgs struct {
+	// The number of times the policy is referenced.
+	AttachmentCount pulumi.IntInput `pulumi:"attachmentCount"`
+	// The time when the policy was created.
+	CreateDate pulumi.StringInput `pulumi:"createDate"`
+	// The default version of the policy.
+	DefaultVersion pulumi.StringInput `pulumi:"defaultVersion"`
+	// The description of the policy.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the policy.
+	// * `policyName`- The name of the policy.
+	// * `policyType`- The type of the policy.
+	Id         pulumi.StringInput `pulumi:"id"`
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// The time when the policy was updated.
+	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
+}
+
+func (GetPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput {
+	return i.ToGetPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetPoliciesPolicyArgs) ToGetPoliciesPolicyOutputWithContext(ctx context.Context) GetPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyOutput)
+}
+
+// GetPoliciesPolicyArrayInput is an input type that accepts GetPoliciesPolicyArray and GetPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetPoliciesPolicyArrayInput` via:
+//
+// 		 GetPoliciesPolicyArray{ GetPoliciesPolicyArgs{...} }
+//
+type GetPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput
+	ToGetPoliciesPolicyArrayOutputWithContext(context.Context) GetPoliciesPolicyArrayOutput
+}
+
+type GetPoliciesPolicyArray []GetPoliciesPolicyInput
+
+func (GetPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput {
+	return i.ToGetPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoliciesPolicyArray) ToGetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoliciesPolicyArrayOutput)
+}
+
+type GetPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutput() GetPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx context.Context) GetPoliciesPolicyOutput {
+	return o
+}
+
+// The number of times the policy is referenced.
+func (o GetPoliciesPolicyOutput) AttachmentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
+}
+
+// The time when the policy was created.
+func (o GetPoliciesPolicyOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+// The default version of the policy.
+func (o GetPoliciesPolicyOutput) DefaultVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.DefaultVersion }).(pulumi.StringOutput)
+}
+
+// The description of the policy.
+func (o GetPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the policy.
+// * `policyName`- The name of the policy.
+// * `policyType`- The type of the policy.
+func (o GetPoliciesPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPoliciesPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+func (o GetPoliciesPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The time when the policy was updated.
+func (o GetPoliciesPolicyOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
+type GetPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutput() GetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyArrayOutput) ToGetPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoliciesPolicy {
+		return vs[0].([]GetPoliciesPolicy)[vs[1].(int)]
+	}).(GetPoliciesPolicyOutput)
 }
 
 type GetPolicyVersionsVersion struct {
@@ -356,6 +890,141 @@ func (o GetPolicyVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetPolicyV
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyVersionsVersion {
 		return vs[0].([]GetPolicyVersionsVersion)[vs[1].(int)]
 	}).(GetPolicyVersionsVersionOutput)
+}
+
+type GetResourceDirectoriesDirectory struct {
+	// The ID of resource directory.
+	// * `masterAccountId`- The ID of the master account.
+	// * `masterAccountName`- The name of the master account.
+	Id                string `pulumi:"id"`
+	MasterAccountId   string `pulumi:"masterAccountId"`
+	MasterAccountName string `pulumi:"masterAccountName"`
+	// The ID of the resource directory.
+	ResourceDirectoryId string `pulumi:"resourceDirectoryId"`
+	// The ID of the root folder.
+	RootFolderId string `pulumi:"rootFolderId"`
+}
+
+// GetResourceDirectoriesDirectoryInput is an input type that accepts GetResourceDirectoriesDirectoryArgs and GetResourceDirectoriesDirectoryOutput values.
+// You can construct a concrete instance of `GetResourceDirectoriesDirectoryInput` via:
+//
+// 		 GetResourceDirectoriesDirectoryArgs{...}
+//
+type GetResourceDirectoriesDirectoryInput interface {
+	pulumi.Input
+
+	ToGetResourceDirectoriesDirectoryOutput() GetResourceDirectoriesDirectoryOutput
+	ToGetResourceDirectoriesDirectoryOutputWithContext(context.Context) GetResourceDirectoriesDirectoryOutput
+}
+
+type GetResourceDirectoriesDirectoryArgs struct {
+	// The ID of resource directory.
+	// * `masterAccountId`- The ID of the master account.
+	// * `masterAccountName`- The name of the master account.
+	Id                pulumi.StringInput `pulumi:"id"`
+	MasterAccountId   pulumi.StringInput `pulumi:"masterAccountId"`
+	MasterAccountName pulumi.StringInput `pulumi:"masterAccountName"`
+	// The ID of the resource directory.
+	ResourceDirectoryId pulumi.StringInput `pulumi:"resourceDirectoryId"`
+	// The ID of the root folder.
+	RootFolderId pulumi.StringInput `pulumi:"rootFolderId"`
+}
+
+func (GetResourceDirectoriesDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceDirectoriesDirectory)(nil)).Elem()
+}
+
+func (i GetResourceDirectoriesDirectoryArgs) ToGetResourceDirectoriesDirectoryOutput() GetResourceDirectoriesDirectoryOutput {
+	return i.ToGetResourceDirectoriesDirectoryOutputWithContext(context.Background())
+}
+
+func (i GetResourceDirectoriesDirectoryArgs) ToGetResourceDirectoriesDirectoryOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceDirectoriesDirectoryOutput)
+}
+
+// GetResourceDirectoriesDirectoryArrayInput is an input type that accepts GetResourceDirectoriesDirectoryArray and GetResourceDirectoriesDirectoryArrayOutput values.
+// You can construct a concrete instance of `GetResourceDirectoriesDirectoryArrayInput` via:
+//
+// 		 GetResourceDirectoriesDirectoryArray{ GetResourceDirectoriesDirectoryArgs{...} }
+//
+type GetResourceDirectoriesDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceDirectoriesDirectoryArrayOutput() GetResourceDirectoriesDirectoryArrayOutput
+	ToGetResourceDirectoriesDirectoryArrayOutputWithContext(context.Context) GetResourceDirectoriesDirectoryArrayOutput
+}
+
+type GetResourceDirectoriesDirectoryArray []GetResourceDirectoriesDirectoryInput
+
+func (GetResourceDirectoriesDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceDirectoriesDirectory)(nil)).Elem()
+}
+
+func (i GetResourceDirectoriesDirectoryArray) ToGetResourceDirectoriesDirectoryArrayOutput() GetResourceDirectoriesDirectoryArrayOutput {
+	return i.ToGetResourceDirectoriesDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceDirectoriesDirectoryArray) ToGetResourceDirectoriesDirectoryArrayOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceDirectoriesDirectoryArrayOutput)
+}
+
+type GetResourceDirectoriesDirectoryOutput struct{ *pulumi.OutputState }
+
+func (GetResourceDirectoriesDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceDirectoriesDirectory)(nil)).Elem()
+}
+
+func (o GetResourceDirectoriesDirectoryOutput) ToGetResourceDirectoriesDirectoryOutput() GetResourceDirectoriesDirectoryOutput {
+	return o
+}
+
+func (o GetResourceDirectoriesDirectoryOutput) ToGetResourceDirectoriesDirectoryOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryOutput {
+	return o
+}
+
+// The ID of resource directory.
+// * `masterAccountId`- The ID of the master account.
+// * `masterAccountName`- The name of the master account.
+func (o GetResourceDirectoriesDirectoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetResourceDirectoriesDirectoryOutput) MasterAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.MasterAccountId }).(pulumi.StringOutput)
+}
+
+func (o GetResourceDirectoriesDirectoryOutput) MasterAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.MasterAccountName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource directory.
+func (o GetResourceDirectoriesDirectoryOutput) ResourceDirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.ResourceDirectoryId }).(pulumi.StringOutput)
+}
+
+// The ID of the root folder.
+func (o GetResourceDirectoriesDirectoryOutput) RootFolderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceDirectoriesDirectory) string { return v.RootFolderId }).(pulumi.StringOutput)
+}
+
+type GetResourceDirectoriesDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceDirectoriesDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceDirectoriesDirectory)(nil)).Elem()
+}
+
+func (o GetResourceDirectoriesDirectoryArrayOutput) ToGetResourceDirectoriesDirectoryArrayOutput() GetResourceDirectoriesDirectoryArrayOutput {
+	return o
+}
+
+func (o GetResourceDirectoriesDirectoryArrayOutput) ToGetResourceDirectoriesDirectoryArrayOutputWithContext(ctx context.Context) GetResourceDirectoriesDirectoryArrayOutput {
+	return o
+}
+
+func (o GetResourceDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetResourceDirectoriesDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceDirectoriesDirectory {
+		return vs[0].([]GetResourceDirectoriesDirectory)[vs[1].(int)]
+	}).(GetResourceDirectoriesDirectoryOutput)
 }
 
 type GetResourceGroupsGroup struct {
@@ -502,13 +1171,185 @@ func (o GetResourceGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetResourceG
 	}).(GetResourceGroupsGroupOutput)
 }
 
+type GetRolesRole struct {
+	Arn         string `pulumi:"arn"`
+	CreateDate  string `pulumi:"createDate"`
+	Description string `pulumi:"description"`
+	// The ID of the role.
+	// * `roleId`- The ID of the role.
+	// * `roleName`- The name of the role.
+	// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// * `createDate`- The time when the RAM role was created.
+	// * `updateDate`- The time when the RAM role was updated.
+	// * `description`- The description of the RAM role.
+	// * `maxSessionDuration`- The maximum session duration of the RAM role.
+	Id                 string `pulumi:"id"`
+	MaxSessionDuration int    `pulumi:"maxSessionDuration"`
+	RoleId             string `pulumi:"roleId"`
+	RoleName           string `pulumi:"roleName"`
+	UpdateDate         string `pulumi:"updateDate"`
+}
+
+// GetRolesRoleInput is an input type that accepts GetRolesRoleArgs and GetRolesRoleOutput values.
+// You can construct a concrete instance of `GetRolesRoleInput` via:
+//
+// 		 GetRolesRoleArgs{...}
+//
+type GetRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetRolesRoleOutput() GetRolesRoleOutput
+	ToGetRolesRoleOutputWithContext(context.Context) GetRolesRoleOutput
+}
+
+type GetRolesRoleArgs struct {
+	Arn         pulumi.StringInput `pulumi:"arn"`
+	CreateDate  pulumi.StringInput `pulumi:"createDate"`
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the role.
+	// * `roleId`- The ID of the role.
+	// * `roleName`- The name of the role.
+	// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// * `createDate`- The time when the RAM role was created.
+	// * `updateDate`- The time when the RAM role was updated.
+	// * `description`- The description of the RAM role.
+	// * `maxSessionDuration`- The maximum session duration of the RAM role.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	MaxSessionDuration pulumi.IntInput    `pulumi:"maxSessionDuration"`
+	RoleId             pulumi.StringInput `pulumi:"roleId"`
+	RoleName           pulumi.StringInput `pulumi:"roleName"`
+	UpdateDate         pulumi.StringInput `pulumi:"updateDate"`
+}
+
+func (GetRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesRole)(nil)).Elem()
+}
+
+func (i GetRolesRoleArgs) ToGetRolesRoleOutput() GetRolesRoleOutput {
+	return i.ToGetRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetRolesRoleArgs) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleOutput)
+}
+
+// GetRolesRoleArrayInput is an input type that accepts GetRolesRoleArray and GetRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetRolesRoleArrayInput` via:
+//
+// 		 GetRolesRoleArray{ GetRolesRoleArgs{...} }
+//
+type GetRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput
+	ToGetRolesRoleArrayOutputWithContext(context.Context) GetRolesRoleArrayOutput
+}
+
+type GetRolesRoleArray []GetRolesRoleInput
+
+func (GetRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesRole)(nil)).Elem()
+}
+
+func (i GetRolesRoleArray) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput {
+	return i.ToGetRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolesRoleArray) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesRoleArrayOutput)
+}
+
+type GetRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesRole)(nil)).Elem()
+}
+
+func (o GetRolesRoleOutput) ToGetRolesRoleOutput() GetRolesRoleOutput {
+	return o
+}
+
+func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context) GetRolesRoleOutput {
+	return o
+}
+
+func (o GetRolesRoleOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+func (o GetRolesRoleOutput) CreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.CreateDate }).(pulumi.StringOutput)
+}
+
+func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the role.
+// * `roleId`- The ID of the role.
+// * `roleName`- The name of the role.
+// * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
+// * `createDate`- The time when the RAM role was created.
+// * `updateDate`- The time when the RAM role was updated.
+// * `description`- The description of the RAM role.
+// * `maxSessionDuration`- The maximum session duration of the RAM role.
+func (o GetRolesRoleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRolesRoleOutput) MaxSessionDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRolesRole) int { return v.MaxSessionDuration }).(pulumi.IntOutput)
+}
+
+func (o GetRolesRoleOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+func (o GetRolesRoleOutput) RoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.RoleName }).(pulumi.StringOutput)
+}
+
+func (o GetRolesRoleOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesRole) string { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
+type GetRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesRole)(nil)).Elem()
+}
+
+func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutput() GetRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetRolesRoleArrayOutput) ToGetRolesRoleArrayOutputWithContext(ctx context.Context) GetRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolesRole {
+		return vs[0].([]GetRolesRole)[vs[1].(int)]
+	}).(GetRolesRoleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
+	pulumi.RegisterOutputType(GetHandshakesHandshakeOutput{})
+	pulumi.RegisterOutputType(GetHandshakesHandshakeArrayOutput{})
+	pulumi.RegisterOutputType(GetPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetPolicyVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceDirectoriesDirectoryOutput{})
+	pulumi.RegisterOutputType(GetResourceDirectoriesDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
 }

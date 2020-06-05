@@ -167,6 +167,12 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> PrivateIp { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of resource group which the resource belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Output("securityGroupId")]
@@ -354,6 +360,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
+        /// The ID of resource group which the resource belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The Security Group ID of ECS.
         /// </summary>
         [Input("securityGroupId")]
@@ -518,6 +530,12 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the resource belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The Security Group ID of ECS.

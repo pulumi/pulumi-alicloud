@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .alert import *
 from .audit import *
+from .dashboard import *
 from .log_tail_attachment import *
 from .log_tail_config import *
 from .machine_group import *

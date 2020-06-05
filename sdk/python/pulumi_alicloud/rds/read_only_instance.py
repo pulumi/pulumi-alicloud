@@ -49,6 +49,10 @@ class ReadOnlyInstance(pulumi.CustomResource):
     """
     RDS database connection port.
     """
+    resource_group_id: pulumi.Output[str]
+    """
+    The ID of resource group which the DB read-only instance belongs.
+    """
     tags: pulumi.Output[dict]
     """
     A mapping of tags to assign to the resource.
@@ -63,7 +67,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
     """
     The Zone to launch the DB instance.
     """
-    def __init__(__self__, resource_name, opts=None, engine_version=None, instance_name=None, instance_storage=None, instance_type=None, master_db_instance_id=None, parameters=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, engine_version=None, instance_name=None, instance_storage=None, instance_type=None, master_db_instance_id=None, parameters=None, resource_group_id=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS readonly instance resource. 
 
@@ -119,6 +123,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -161,6 +166,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'master_db_instance_id'")
             __props__['master_db_instance_id'] = master_db_instance_id
             __props__['parameters'] = parameters
+            __props__['resource_group_id'] = resource_group_id
             __props__['tags'] = tags
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
@@ -174,7 +180,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, connection_string=None, engine=None, engine_version=None, instance_name=None, instance_storage=None, instance_type=None, master_db_instance_id=None, parameters=None, port=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, connection_string=None, engine=None, engine_version=None, instance_name=None, instance_storage=None, instance_type=None, master_db_instance_id=None, parameters=None, port=None, resource_group_id=None, tags=None, vswitch_id=None, zone_id=None):
         """
         Get an existing ReadOnlyInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -191,6 +197,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] master_db_instance_id: ID of the master instance.
         :param pulumi.Input[list] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
         :param pulumi.Input[str] port: RDS database connection port.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -215,6 +222,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         __props__["master_db_instance_id"] = master_db_instance_id
         __props__["parameters"] = parameters
         __props__["port"] = port
+        __props__["resource_group_id"] = resource_group_id
         __props__["tags"] = tags
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id

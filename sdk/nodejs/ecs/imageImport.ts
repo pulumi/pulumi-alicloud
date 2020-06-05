@@ -78,9 +78,12 @@ export class ImageImport extends pulumi.CustomResource {
      */
     public readonly diskDeviceMappings!: pulumi.Output<outputs.ecs.ImageImportDiskDeviceMapping[]>;
     /**
-     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
      */
     public readonly imageName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     */
     public readonly licenseType!: pulumi.Output<string | undefined>;
     /**
      * Operating system platform type. Valid values: `windows`, Default is `linux`.
@@ -151,9 +154,12 @@ export interface ImageImportState {
      */
     readonly diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[]>;
     /**
-     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
      */
     readonly imageName?: pulumi.Input<string>;
+    /**
+     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     */
     readonly licenseType?: pulumi.Input<string>;
     /**
      * Operating system platform type. Valid values: `windows`, Default is `linux`.
@@ -182,9 +188,12 @@ export interface ImageImportArgs {
      */
     readonly diskDeviceMappings: pulumi.Input<pulumi.Input<inputs.ecs.ImageImportDiskDeviceMapping>[]>;
     /**
-     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
      */
     readonly imageName?: pulumi.Input<string>;
+    /**
+     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     */
     readonly licenseType?: pulumi.Input<string>;
     /**
      * Operating system platform type. Valid values: `windows`, Default is `linux`.

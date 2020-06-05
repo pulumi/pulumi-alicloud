@@ -4149,6 +4149,176 @@
                 "privateIp"
             ]
         },
+        "alicloud:cs/getRegistryEnterpriseInstancesInstance:getRegistryEnterpriseInstancesInstance": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespaceQuota": {
+                    "type": "string",
+                    "description": "The max number of namespaces that an instance can create.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespaceUsage": {
+                    "type": "string",
+                    "description": "The number of namespaces already created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "publicEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of domains for access on internet network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoQuota": {
+                    "type": "string",
+                    "description": "The max number of repos that an instance can create.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoUsage": {
+                    "type": "string",
+                    "description": "The number of repos already created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "specification": {
+                    "type": "string",
+                    "description": "Specification of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of domains for access on vpc network.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "namespaceQuota",
+                "namespaceUsage",
+                "publicEndpoints",
+                "region",
+                "repoQuota",
+                "repoUsage",
+                "specification",
+                "vpcEndpoints"
+            ]
+        },
+        "alicloud:cs/getRegistryEnterpriseNamespacesNamespace:getRegistryEnterpriseNamespacesNamespace": {
+            "properties": {
+                "autoCreate": {
+                    "type": "boolean",
+                    "description": "Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultVisibility": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, default repository visibility in this namespace.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition namespace.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "autoCreate",
+                "defaultVisibility",
+                "id",
+                "instanceId",
+                "name"
+            ]
+        },
         "alicloud:cs/getServerlessKubernetesClustersCluster:getServerlessKubernetesClustersCluster": {
             "properties": {
                 "connections": {
@@ -4293,6 +4463,59 @@
                 "apiServerIntranet",
                 "masterPublicIp"
             ]
+        },
+        "alicloud:ddos/SchedulerRuleRule:SchedulerRuleRule": {
+            "properties": {
+                "priority": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regionId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "valueType": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "alicloud:ddos/getDdosBgpInstancesInstance:getDdosBgpInstancesInstance": {
             "properties": {
@@ -4767,6 +4990,123 @@
                 "groupId",
                 "groupName",
                 "id"
+            ]
+        },
+        "alicloud:dns/getAlidnsRecordsRecord:getAlidnsRecordsRecord": {
+            "properties": {
+                "domainName": {
+                    "type": "string",
+                    "description": "The domain name associated to the records. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "line": {
+                    "type": "string",
+                    "description": "ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "locked": {
+                    "type": "boolean",
+                    "description": "Indicates whether the record is locked.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Priority of the `MX` record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recordId": {
+                    "type": "string",
+                    "description": "ID of the record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rr": {
+                    "type": "string",
+                    "description": "Host record of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Record status. Valid values: `ENABLE` and `DISABLE`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "TTL of the record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Host record value of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "domainName",
+                "id",
+                "line",
+                "locked",
+                "priority",
+                "recordId",
+                "rr",
+                "status",
+                "ttl",
+                "type",
+                "value"
             ]
         },
         "alicloud:dns/getDomainGroupsGroup:getDomainGroupsGroup": {
@@ -5409,7 +5749,7 @@
             "properties": {
                 "device": {
                     "type": "string",
-                    "description": "Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,\n",
+                    "description": "The name of disk N in the custom image.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5445,6 +5785,7 @@
                 },
                 "ossObject": {
                     "type": "string",
+                    "description": "The file name of your OSS Object.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10850,6 +11191,56 @@
                 "status"
             ]
         },
+        "alicloud:kms/getSecretsSecret:getSecretsSecret": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the Kms Secret. The value is same as KMS secret_name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "plannedDeleteTime": {
+                    "type": "string",
+                    "description": "Schedule deletion time.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "Name of the KMS Secret.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "plannedDeleteTime",
+                "secretName",
+                "tags"
+            ]
+        },
         "alicloud:kvstore/InstanceParameter:InstanceParameter": {
             "properties": {
                 "name": {
@@ -15726,6 +16117,111 @@
             },
             "type": "object"
         },
+        "alicloud:resourcemanager/getAccountsAccount:getAccountsAccount": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The ID of the folder.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the resource.\n* `account_id`- The ID of the account.\n* `display_name`- The name of the member account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "joinMethod": {
+                    "type": "string",
+                    "description": "The way in which the member account joined the resource directory. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "joinTime": {
+                    "type": "string",
+                    "description": "The time when the member account joined the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "modifyTime": {
+                    "type": "string",
+                    "description": "The time when the member account was modified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceDirectoryId": {
+                    "type": "string",
+                    "description": "The ID of the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the member account. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the member account. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "displayName",
+                "folderId",
+                "id",
+                "joinMethod",
+                "joinTime",
+                "modifyTime",
+                "resourceDirectoryId",
+                "status",
+                "type"
+            ]
+        },
         "alicloud:resourcemanager/getFoldersFolder:getFoldersFolder": {
             "properties": {
                 "folderId": {
@@ -15759,6 +16255,208 @@
                 "folderId",
                 "folderName",
                 "id"
+            ]
+        },
+        "alicloud:resourcemanager/getHandshakesHandshake:getHandshakesHandshake": {
+            "properties": {
+                "expireTime": {
+                    "type": "string",
+                    "description": "The time when the invitation expires.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "handshakeId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the resource.\n* `handshake_id`- The ID of the invitation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "masterAccountId": {
+                    "type": "string",
+                    "description": "The ID of the master account of the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "masterAccountName": {
+                    "type": "string",
+                    "description": "The name of the master account of the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "modifyTime": {
+                    "type": "string",
+                    "description": "The time when the invitation was modified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "note": {
+                    "type": "string",
+                    "description": "The invitation note.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceDirectoryId": {
+                    "type": "string",
+                    "description": "The ID of the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the invitation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetEntity": {
+                    "type": "string",
+                    "description": "The ID or logon email address of the invited account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetType": {
+                    "type": "string",
+                    "description": "The type of the invited account. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expireTime",
+                "handshakeId",
+                "id",
+                "masterAccountId",
+                "masterAccountName",
+                "modifyTime",
+                "note",
+                "resourceDirectoryId",
+                "status",
+                "targetEntity",
+                "targetType"
+            ]
+        },
+        "alicloud:resourcemanager/getPoliciesPolicy:getPoliciesPolicy": {
+            "properties": {
+                "attachmentCount": {
+                    "type": "integer",
+                    "description": "The number of times the policy is referenced.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "description": "The time when the policy was created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultVersion": {
+                    "type": "string",
+                    "description": "The default version of the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the policy.\n* `policy_name`- The name of the policy.\n* `policy_type`- The type of the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "policyType": {
+                    "type": "string",
+                    "description": "The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateDate": {
+                    "type": "string",
+                    "description": "The time when the policy was updated.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "attachmentCount",
+                "createDate",
+                "defaultVersion",
+                "description",
+                "id",
+                "policyName",
+                "policyType",
+                "updateDate"
             ]
         },
         "alicloud:resourcemanager/getPolicyVersionsVersion:getPolicyVersionsVersion": {
@@ -15803,6 +16501,61 @@
                 "id",
                 "isDefaultVersion",
                 "versionId"
+            ]
+        },
+        "alicloud:resourcemanager/getResourceDirectoriesDirectory:getResourceDirectoriesDirectory": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of resource directory.\n* `master_account_id`- The ID of the master account.\n* `master_account_name`- The name of the master account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "masterAccountId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "masterAccountName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceDirectoryId": {
+                    "type": "string",
+                    "description": "The ID of the resource directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rootFolderId": {
+                    "type": "string",
+                    "description": "The ID of the root folder.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "masterAccountId",
+                "masterAccountName",
+                "resourceDirectoryId",
+                "rootFolderId"
             ]
         },
         "alicloud:resourcemanager/getResourceGroupsGroup:getResourceGroupsGroup": {
@@ -15870,6 +16623,86 @@
                 "id",
                 "name",
                 "status"
+            ]
+        },
+        "alicloud:resourcemanager/getRolesRole:getRolesRole": {
+            "properties": {
+                "arn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the role.\n* `role_id`- The ID of the role.\n* `role_name`- The name of the role.\n* `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.\n* `create_date`- The time when the RAM role was created.\n* `update_date`- The time when the RAM role was updated.\n* `description`- The description of the RAM role.\n* `max_session_duration`- The maximum session duration of the RAM role.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSessionDuration": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updateDate": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "arn",
+                "createDate",
+                "description",
+                "id",
+                "maxSessionDuration",
+                "roleId",
+                "roleName",
+                "updateDate"
             ]
         },
         "alicloud:rocketmq/getGroupsGroup:getGroupsGroup": {
@@ -19512,6 +20345,23 @@
                 }
             },
             "type": "object"
+        },
+        "alicloud:waf/getDomainsDomain:getDomainsDomain": {
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "Name of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "domain"
+            ]
         },
         "alicloud:yundun/getBastionHostInstancesInstance:getBastionHostInstancesInstance": {
             "properties": {
@@ -25709,6 +26559,185 @@
                 "type": "object"
             }
         },
+        "alicloud:cs/registryEnterpriseNamespace:RegistryEnterpriseNamespace": {
+            "description": "This resource will help you to manager Container Registry Enterprise Edition namespaces.\n\nFor information about Container Registry Enterprise Edition namespaces and how to use it, see [Create a Namespace](https://www.alibabacloud.com/help/doc-detail/145483.htm)\n\n\u003e **NOTE:** Available in v1.86.0+.\n\n\u003e **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "autoCreate": {
+                    "type": "boolean",
+                    "description": "Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.\n"
+                },
+                "defaultVisibility": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, default repository visibility in this namespace.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.\n"
+                }
+            },
+            "required": [
+                "autoCreate",
+                "defaultVisibility",
+                "instanceId",
+                "name"
+            ],
+            "inputProperties": {
+                "autoCreate": {
+                    "type": "boolean",
+                    "description": "Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.\n"
+                },
+                "defaultVisibility": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, default repository visibility in this namespace.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.\n"
+                }
+            },
+            "requiredInputs": [
+                "autoCreate",
+                "defaultVisibility",
+                "instanceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegistryEnterpriseNamespace resources.\n",
+                "properties": {
+                    "autoCreate": {
+                        "type": "boolean",
+                        "description": "Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.\n"
+                    },
+                    "defaultVisibility": {
+                        "type": "string",
+                        "description": "`PUBLIC` or `PRIVATE`, default repository visibility in this namespace.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition namespace. It can contain 2 to 30 characters.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo": {
+            "description": "This resource will help you to manager Container Registry Enterprise Edition repositories.\n\nFor information about Container Registry Enterprise Edition repository and how to use it, see [Create a Repository](https://www.alibabacloud.com/help/doc-detail/145291.htm)\n\n\u003e **NOTE:** Available in v1.86.0+.\n\n\u003e **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "detail": {
+                    "type": "string",
+                    "description": "The repository specific information. MarkDown format is supported, and the length limit is 2000.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.\n"
+                },
+                "repoId": {
+                    "type": "string",
+                    "description": "The uuid of Container Registry Enterprise Edition repository.\n"
+                },
+                "repoType": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, repo's visibility.\n"
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The repository general information. It can contain 1 to 100 characters.\n"
+                }
+            },
+            "required": [
+                "instanceId",
+                "name",
+                "namespace",
+                "repoId",
+                "repoType",
+                "summary"
+            ],
+            "inputProperties": {
+                "detail": {
+                    "type": "string",
+                    "description": "The repository specific information. MarkDown format is supported, and the length limit is 2000.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.\n"
+                },
+                "repoType": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, repo's visibility.\n"
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The repository general information. It can contain 1 to 100 characters.\n"
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "namespace",
+                "repoType",
+                "summary"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegistryEnterpriseRepo resources.\n",
+                "properties": {
+                    "detail": {
+                        "type": "string",
+                        "description": "The repository specific information. MarkDown format is supported, and the length limit is 2000.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition repository. It can contain 2 to 64 characters.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition namespace where repository is located. It can contain 2 to 30 characters.\n"
+                    },
+                    "repoId": {
+                        "type": "string",
+                        "description": "The uuid of Container Registry Enterprise Edition repository.\n"
+                    },
+                    "repoType": {
+                        "type": "string",
+                        "description": "`PUBLIC` or `PRIVATE`, repo's visibility.\n"
+                    },
+                    "summary": {
+                        "type": "string",
+                        "description": "The repository general information. It can contain 1 to 100 characters.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:cs/serverlessKubernetes:ServerlessKubernetes": {
             "properties": {
                 "clientCert": {
@@ -26657,6 +27686,104 @@
                     "type": "alicloud:dns/ddosCooInstance:DdosCooInstance"
                 }
             ]
+        },
+        "alicloud:ddos/schedulerRule:SchedulerRule": {
+            "description": "Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/doc-detail/157481.htm).\n\n\u003e **NOTE:** Available in 1.86.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "cname": {
+                    "type": "string",
+                    "description": "The cname is the traffic scheduler corresponding to rules.\n"
+                },
+                "param": {
+                    "type": "string"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.\n"
+                },
+                "ruleName": {
+                    "type": "string",
+                    "description": "The name of the rule.\n"
+                },
+                "ruleType": {
+                    "type": "integer",
+                    "description": "The rule type. Valid values:\n`2`: tiered protection.\n`3`: globalization acceleration.\n`6`: Cloud product interaction.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:ddos/SchedulerRuleRule:SchedulerRuleRule"
+                    },
+                    "description": "The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:\n`Type`: String type, required, the address format of the linkage resource. Valid values:\n`A`: IP address.\n`CNAME`: Domain name.\n`Value`: String type, required, link address of resource.\n`Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.\n`ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:\n`1`: Anti-DDoS Pro.\n`2`: (Tiered protection) cloud resource IP.\n`3`: (sea acceleration) MCA IP address.\n`6`: (Cloud product linkage) cloud resource IP.\n`RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.\n"
+                }
+            },
+            "required": [
+                "cname",
+                "ruleName",
+                "ruleType",
+                "rules"
+            ],
+            "inputProperties": {
+                "param": {
+                    "type": "string"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.\n"
+                },
+                "ruleName": {
+                    "type": "string",
+                    "description": "The name of the rule.\n"
+                },
+                "ruleType": {
+                    "type": "integer",
+                    "description": "The rule type. Valid values:\n`2`: tiered protection.\n`3`: globalization acceleration.\n`6`: Cloud product interaction.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:ddos/SchedulerRuleRule:SchedulerRuleRule"
+                    },
+                    "description": "The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:\n`Type`: String type, required, the address format of the linkage resource. Valid values:\n`A`: IP address.\n`CNAME`: Domain name.\n`Value`: String type, required, link address of resource.\n`Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.\n`ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:\n`1`: Anti-DDoS Pro.\n`2`: (Tiered protection) cloud resource IP.\n`3`: (sea acceleration) MCA IP address.\n`6`: (Cloud product linkage) cloud resource IP.\n`RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.\n"
+                }
+            },
+            "requiredInputs": [
+                "ruleName",
+                "ruleType",
+                "rules"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SchedulerRule resources.\n",
+                "properties": {
+                    "cname": {
+                        "type": "string",
+                        "description": "The cname is the traffic scheduler corresponding to rules.\n"
+                    },
+                    "param": {
+                        "type": "string"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.\n"
+                    },
+                    "ruleName": {
+                        "type": "string",
+                        "description": "The name of the rule.\n"
+                    },
+                    "ruleType": {
+                        "type": "integer",
+                        "description": "The rule type. Valid values:\n`2`: tiered protection.\n`3`: globalization acceleration.\n`6`: Cloud product interaction.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:ddos/SchedulerRuleRule:SchedulerRuleRule"
+                        },
+                        "description": "The details of the common filter interaction rule, expressed as a JSON string. The structure is as follows:\n`Type`: String type, required, the address format of the linkage resource. Valid values:\n`A`: IP address.\n`CNAME`: Domain name.\n`Value`: String type, required, link address of resource.\n`Priority`: the priority of the rule. This parameter is required and of Integer type. Valid values: 0~100 the larger the value, the higher the priority.\n`ValueType`: Required. The type of the linked resource. It is an Integer. Valid values:\n`1`: Anti-DDoS Pro.\n`2`: (Tiered protection) cloud resource IP.\n`3`: (sea acceleration) MCA IP address.\n`6`: (Cloud product linkage) cloud resource IP.\n`RegionId`: String type, optional (Required when ValueType is 2) the ID of the region.\n"
+                    }
+                },
+                "type": "object"
+            }
         },
         "alicloud:dms/enterpriseInstance:EnterpriseInstance": {
             "description": "Provides a DMS Enterprise Instance resource.\n\n\u003e **NOTE:** API users must first register in DMS.\n\u003e **NOTE:** Available in 1.81.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance(\"default\", {\n    databasePassword: \"Yourpassword123\",\n    databaseUser: \"your_user_name\",\n    dbaUid: Number.parseFloat(\"1182725234xxxxxxx\"),\n    ecsRegion: \"cn-shanghai\",\n    envType: \"test\",\n    exportTimeout: 600,\n    host: \"rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com\",\n    instanceAlias: \"your_alias_name\",\n    instanceSource: \"RDS\",\n    instanceType: \"MySQL\",\n    networkType: \"VPC\",\n    port: 3306,\n    queryTimeout: 60,\n    safeRule: \"自由操作\",\n    tid: 12345,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.dms.EnterpriseInstance(\"default\",\n    database_password=\"Yourpassword123\",\n    database_user=\"your_user_name\",\n    dba_uid=\"1182725234xxxxxxx\",\n    ecs_region=\"cn-shanghai\",\n    env_type=\"test\",\n    export_timeout=600,\n    host=\"rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com\",\n    instance_alias=\"your_alias_name\",\n    instance_source=\"RDS\",\n    instance_type=\"MySQL\",\n    network_type=\"VPC\",\n    port=3306,\n    query_timeout=60,\n    safe_rule=\"自由操作\",\n    tid=\"12345\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Dms.EnterpriseInstance(\"default\", new AliCloud.Dms.EnterpriseInstanceArgs\n        {\n            DatabasePassword = \"Yourpassword123\",\n            DatabaseUser = \"your_user_name\",\n            DbaUid = \"1182725234xxxxxxx\",\n            EcsRegion = \"cn-shanghai\",\n            EnvType = \"test\",\n            ExportTimeout = 600,\n            Host = \"rm-uf648hgsxxxxxx.mysql.rds.aliyuncs.com\",\n            InstanceAlias = \"your_alias_name\",\n            InstanceSource = \"RDS\",\n            InstanceType = \"MySQL\",\n            NetworkType = \"VPC\",\n            Port = 3306,\n            QueryTimeout = 60,\n            SafeRule = \"自由操作\",\n            Tid = \"12345\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
@@ -28589,7 +29716,6 @@
             }
         },
         "alicloud:ecs/diskAttachment:DiskAttachment": {
-            "description": "Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "deviceName": {
                     "type": "string",
@@ -29256,10 +30382,11 @@
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
+                    "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
                 },
                 "licenseType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.\n"
                 },
                 "osType": {
                     "type": "string",
@@ -29291,10 +30418,11 @@
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
+                    "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
                 },
                 "licenseType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.\n"
                 },
                 "osType": {
                     "type": "string",
@@ -29328,10 +30456,11 @@
                     },
                     "imageName": {
                         "type": "string",
-                        "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
+                        "description": "The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).\n"
                     },
                     "licenseType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.\n"
                     },
                     "osType": {
                         "type": "string",
@@ -29548,7 +30677,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The instance status.\n"
+                    "description": "The instance status. Valid values: [\"Running\", \"Stopped\"]. You can control the instance start and stop through this parameter. Default to `Running`.\n"
                 },
                 "subnetId": {
                     "type": "string"
@@ -29600,7 +30729,6 @@
                 "publicIp",
                 "roleName",
                 "securityGroups",
-                "status",
                 "subnetId",
                 "volumeTags"
             ],
@@ -29754,6 +30882,10 @@
                 "spotStrategy": {
                     "type": "string",
                     "description": "The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'. Value range:\n- NoSpot: A regular Pay-As-You-Go instance.\n- SpotWithPriceLimit: A price threshold for a spot instance\n- SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The instance status. Valid values: [\"Running\", \"Stopped\"]. You can control the instance start and stop through this parameter. Default to `Running`.\n"
                 },
                 "subnetId": {
                     "type": "string"
@@ -29957,7 +31089,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The instance status.\n"
+                        "description": "The instance status. Valid values: [\"Running\", \"Stopped\"]. You can control the instance start and stop through this parameter. Default to `Running`.\n"
                     },
                     "subnetId": {
                         "type": "string"
@@ -31861,6 +32993,10 @@
                     "type": "integer",
                     "description": "The Elasticsearch cluster's data node quantity, between 2 and 50.\n"
                 },
+                "dataNodeDiskEncrypted": {
+                    "type": "boolean",
+                    "description": "If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.\n"
+                },
                 "dataNodeDiskSize": {
                     "type": "integer",
                     "description": "The single data node storage space.\n- `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).\n- `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].\n"
@@ -31883,7 +33019,7 @@
                 },
                 "instanceChargeType": {
                     "type": "string",
-                    "description": "Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
+                    "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
                 },
                 "kibanaDomain": {
                     "type": "string",
@@ -31940,6 +33076,10 @@
                         "type": "string"
                     }
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Elasticsearch instance belongs.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.\n"
@@ -31976,6 +33116,7 @@
                 "port",
                 "privateWhitelists",
                 "publicWhitelists",
+                "resourceGroupId",
                 "status",
                 "version",
                 "vswitchId"
@@ -31984,6 +33125,10 @@
                 "dataNodeAmount": {
                     "type": "integer",
                     "description": "The Elasticsearch cluster's data node quantity, between 2 and 50.\n"
+                },
+                "dataNodeDiskEncrypted": {
+                    "type": "boolean",
+                    "description": "If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.\n"
                 },
                 "dataNodeDiskSize": {
                     "type": "integer",
@@ -32003,7 +33148,7 @@
                 },
                 "instanceChargeType": {
                     "type": "string",
-                    "description": "Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
+                    "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
                 },
                 "kibanaWhitelists": {
                     "type": "array",
@@ -32048,6 +33193,10 @@
                         "type": "string"
                     }
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Elasticsearch instance belongs.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -32083,6 +33232,10 @@
                         "type": "integer",
                         "description": "The Elasticsearch cluster's data node quantity, between 2 and 50.\n"
                     },
+                    "dataNodeDiskEncrypted": {
+                        "type": "boolean",
+                        "description": "If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.\n"
+                    },
                     "dataNodeDiskSize": {
                         "type": "integer",
                         "description": "The single data node storage space.\n- `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).\n- `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].\n"
@@ -32105,7 +33258,7 @@
                     },
                     "instanceChargeType": {
                         "type": "string",
-                        "description": "Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
+                        "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
                     },
                     "kibanaDomain": {
                         "type": "string",
@@ -32161,6 +33314,10 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The Id of resource group which the Elasticsearch instance belongs.\n"
                     },
                     "status": {
                         "type": "string",
@@ -33450,7 +34607,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the first ECS instance attached to the scaling group.\n- NewestInstance: removes the first ECS instance attached to the scaling group.\n- OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.\n- Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.\n"
+                    "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.\n- NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.\n- OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.\n- Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.\n"
                 },
                 "scalingGroupName": {
                     "type": "string",
@@ -33534,7 +34691,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the first ECS instance attached to the scaling group.\n- NewestInstance: removes the first ECS instance attached to the scaling group.\n- OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.\n- Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.\n"
+                    "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.\n- NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.\n- OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.\n- Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.\n"
                 },
                 "scalingGroupName": {
                     "type": "string",
@@ -33615,7 +34772,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the first ECS instance attached to the scaling group.\n- NewestInstance: removes the first ECS instance attached to the scaling group.\n- OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.\n- Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.\n"
+                        "description": "RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:\n- OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.\n- NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.\n- OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.\n- Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.\n"
                     },
                     "scalingGroupName": {
                         "type": "string",
@@ -33646,7 +34803,7 @@
             }
         },
         "alicloud:ess/scalingGroupVServerGroups:ScalingGroupVServerGroups": {
-            "description": "Attaches/Detaches vserver groups to a specified scaling group.\n\n\u003e **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.\n\n\u003e **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.\n \n\u003e **NOTE:** A scaling group can have at most 5 vserver groups attached by default.\n\n\u003e **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.\n\n\u003e **NOTE:** When attach vserver groups to scaling group, existing ECS instances will be added to vserver groups; Instead, ECS instances will be removed from vserver group when detach.\n\n\u003e **NOTE:** Detach action will be executed before attach action.\n\n\u003e **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.\n\n\u003e **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.\n\n\u003e **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"testAccEssVserverGroupsAttachment\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/24\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultLoadBalancer = new alicloud.slb.LoadBalancer(\"default\", {\n    vswitchId: defaultSwitch.id,\n});\nconst defaultServerGroup = new alicloud.slb.ServerGroup(\"default\", {\n    loadBalancerId: defaultLoadBalancer.id,\n});\nconst defaultListener: alicloud.slb.Listener[] = [];\nfor (let i = 0; i \u003c 2; i++) {\n    defaultListener.push(new alicloud.slb.Listener(`default-${i}`, {\n        backendPort: 22,\n        bandwidth: 10,\n        frontendPort: 22,\n        healthCheckType: \"tcp\",\n        loadBalancerId: defaultLoadBalancer.id.apply(id =\u003e id[i]),\n        protocol: \"tcp\",\n    }));\n}\nconst defaultScalingGroup = new alicloud.ess.ScalingGroup(\"default\", {\n    maxSize: 2,\n    minSize: 2,\n    scalingGroupName: name,\n    vswitchIds: [defaultSwitch.id],\n}, { dependsOn: [...defaultListener] });\nconst defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups(\"default\", {\n    scalingGroupId: defaultScalingGroup.id,\n    vserverGroups: [{\n        loadbalancerId: defaultLoadBalancer.id,\n        vserverAttributes: [{\n            port: 100,\n            vserverGroupId: defaultServerGroup.id,\n            weight: 60,\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"testAccEssVserverGroupsAttachment\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/24\",\n    vpc_id=default_network.id)\ndefault_load_balancer = alicloud.slb.LoadBalancer(\"defaultLoadBalancer\", vswitch_id=default_switch.id)\ndefault_server_group = alicloud.slb.ServerGroup(\"defaultServerGroup\", load_balancer_id=default_load_balancer.id)\ndefault_listener = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    default_listener.append(alicloud.slb.Listener(f\"defaultListener-{range['value']}\",\n        backend_port=\"22\",\n        bandwidth=\"10\",\n        frontend_port=\"22\",\n        health_check_type=\"tcp\",\n        load_balancer_id=[__item.id for __item in [default_load_balancer]][range[\"value\"]],\n        protocol=\"tcp\"))\ndefault_scaling_group = alicloud.ess.ScalingGroup(\"defaultScalingGroup\",\n    max_size=\"2\",\n    min_size=\"2\",\n    scaling_group_name=name,\n    vswitch_ids=[default_switch.id])\ndefault_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups(\"defaultScalingGroupVServerGroups\",\n    scaling_group_id=default_scaling_group.id,\n    vserver_groups=[{\n        \"loadbalancerId\": default_load_balancer.id,\n        \"vserverAttributes\": [{\n            \"port\": \"100\",\n            \"vserver_group_id\": default_server_group.id,\n            \"weight\": \"60\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"testAccEssVserverGroupsAttachment\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/24\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer(\"defaultLoadBalancer\", new AliCloud.Slb.LoadBalancerArgs\n        {\n            VswitchId = defaultSwitch.Id,\n        });\n        var defaultServerGroup = new AliCloud.Slb.ServerGroup(\"defaultServerGroup\", new AliCloud.Slb.ServerGroupArgs\n        {\n            LoadBalancerId = defaultLoadBalancer.Id,\n        });\n        var defaultListener = new List\u003cAliCloud.Slb.Listener\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            defaultListener.Add(new AliCloud.Slb.Listener($\"defaultListener-{range.Value}\", new AliCloud.Slb.ListenerArgs\n            {\n                BackendPort = \"22\",\n                Bandwidth = \"10\",\n                FrontendPort = \"22\",\n                HealthCheckType = \"tcp\",\n                LoadBalancerId = \n                {\n                    defaultLoadBalancer,\n                }.Select(__item =\u003e __item.Id).ToList()[range.Value],\n                Protocol = \"tcp\",\n            }));\n        }\n        var defaultScalingGroup = new AliCloud.Ess.ScalingGroup(\"defaultScalingGroup\", new AliCloud.Ess.ScalingGroupArgs\n        {\n            MaxSize = \"2\",\n            MinSize = \"2\",\n            ScalingGroupName = name,\n            VswitchIds = \n            {\n                defaultSwitch.Id,\n            },\n        });\n        var defaultScalingGroupVServerGroups = new AliCloud.Ess.ScalingGroupVServerGroups(\"defaultScalingGroupVServerGroups\", new AliCloud.Ess.ScalingGroupVServerGroupsArgs\n        {\n            ScalingGroupId = defaultScalingGroup.Id,\n            VserverGroups = \n            {\n                new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupArgs\n                {\n                    LoadbalancerId = defaultLoadBalancer.Id,\n                    VserverAttributes = \n                    {\n                        new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs\n                        {\n                            Port = \"100\",\n                            VserverGroupId = defaultServerGroup.Id,\n                            Weight = \"60\",\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Block vserver_group\n\nthe vserver_group supports the following:\n\n* `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.\n* `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.\n\n## Block vserver_attribute\n\n* `vserver_group_id` - (Required) ID of VServer Group.\n* `port` - (Required) - The port will be used for VServer Group backend server.\n* `weight` - (Required) The weight of an ECS instance attached to the VServer Group.\n",
+            "description": "Attaches/Detaches vserver groups to a specified scaling group.\n\n\u003e **NOTE:** The load balancer of which vserver groups belongs to must be in `active` status.\n\n\u003e **NOTE:** If scaling group's network type is `VPC`, the vserver groups must be in the same `VPC`.\n \n\u003e **NOTE:** A scaling group can have at most 5 vserver groups attached by default.\n\n\u003e **NOTE:** Vserver groups and the default group of loadbalancer share the same backend server quota.\n\n\u003e **NOTE:** When attach vserver groups to scaling group, existing ECS instances will be added to vserver groups; Instead, ECS instances will be removed from vserver group when detach.\n\n\u003e **NOTE:** Detach action will be executed before attach action.\n\n\u003e **NOTE:** Vserver group is defined uniquely by `loadbalancer_id`, `vserver_group_id`, `port`.\n\n\u003e **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.\n\n\u003e **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"testAccEssVserverGroupsAttachment\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/24\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultLoadBalancer = new alicloud.slb.LoadBalancer(\"default\", {\n    vswitchId: defaultSwitch.id,\n});\nconst defaultServerGroup = new alicloud.slb.ServerGroup(\"default\", {\n    loadBalancerId: defaultLoadBalancer.id,\n});\nconst defaultListener: alicloud.slb.Listener[] = [];\nfor (let i = 0; i \u003c 2; i++) {\n    defaultListener.push(new alicloud.slb.Listener(`default-${i}`, {\n        backendPort: 22,\n        bandwidth: 10,\n        frontendPort: 22,\n        healthCheckType: \"tcp\",\n        loadBalancerId: defaultLoadBalancer.id.apply(id =\u003e id[i]),\n        protocol: \"tcp\",\n    }));\n}\nconst defaultScalingGroup = new alicloud.ess.ScalingGroup(\"default\", {\n    maxSize: 2,\n    minSize: 2,\n    scalingGroupName: name,\n    vswitchIds: [defaultSwitch.id],\n});\nconst defaultScalingGroupVServerGroups = new alicloud.ess.ScalingGroupVServerGroups(\"default\", {\n    scalingGroupId: defaultScalingGroup.id,\n    vserverGroups: [{\n        loadbalancerId: defaultLoadBalancer.id,\n        vserverAttributes: [{\n            port: 100,\n            vserverGroupId: defaultServerGroup.id,\n            weight: 60,\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"testAccEssVserverGroupsAttachment\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/24\",\n    vpc_id=default_network.id)\ndefault_load_balancer = alicloud.slb.LoadBalancer(\"defaultLoadBalancer\", vswitch_id=default_switch.id)\ndefault_server_group = alicloud.slb.ServerGroup(\"defaultServerGroup\", load_balancer_id=default_load_balancer.id)\ndefault_listener = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    default_listener.append(alicloud.slb.Listener(f\"defaultListener-{range['value']}\",\n        backend_port=\"22\",\n        bandwidth=\"10\",\n        frontend_port=\"22\",\n        health_check_type=\"tcp\",\n        load_balancer_id=[__item.id for __item in [default_load_balancer]][range[\"value\"]],\n        protocol=\"tcp\"))\ndefault_scaling_group = alicloud.ess.ScalingGroup(\"defaultScalingGroup\",\n    max_size=\"2\",\n    min_size=\"2\",\n    scaling_group_name=name,\n    vswitch_ids=[default_switch.id])\ndefault_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups(\"defaultScalingGroupVServerGroups\",\n    scaling_group_id=default_scaling_group.id,\n    vserver_groups=[{\n        \"loadbalancerId\": default_load_balancer.id,\n        \"vserverAttributes\": [{\n            \"port\": \"100\",\n            \"vserver_group_id\": default_server_group.id,\n            \"weight\": \"60\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"testAccEssVserverGroupsAttachment\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/24\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer(\"defaultLoadBalancer\", new AliCloud.Slb.LoadBalancerArgs\n        {\n            VswitchId = defaultSwitch.Id,\n        });\n        var defaultServerGroup = new AliCloud.Slb.ServerGroup(\"defaultServerGroup\", new AliCloud.Slb.ServerGroupArgs\n        {\n            LoadBalancerId = defaultLoadBalancer.Id,\n        });\n        var defaultListener = new List\u003cAliCloud.Slb.Listener\u003e();\n        for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n        {\n            var range = new { Value = rangeIndex };\n            defaultListener.Add(new AliCloud.Slb.Listener($\"defaultListener-{range.Value}\", new AliCloud.Slb.ListenerArgs\n            {\n                BackendPort = \"22\",\n                Bandwidth = \"10\",\n                FrontendPort = \"22\",\n                HealthCheckType = \"tcp\",\n                LoadBalancerId = \n                {\n                    defaultLoadBalancer,\n                }.Select(__item =\u003e __item.Id).ToList()[range.Value],\n                Protocol = \"tcp\",\n            }));\n        }\n        var defaultScalingGroup = new AliCloud.Ess.ScalingGroup(\"defaultScalingGroup\", new AliCloud.Ess.ScalingGroupArgs\n        {\n            MaxSize = \"2\",\n            MinSize = \"2\",\n            ScalingGroupName = name,\n            VswitchIds = \n            {\n                defaultSwitch.Id,\n            },\n        });\n        var defaultScalingGroupVServerGroups = new AliCloud.Ess.ScalingGroupVServerGroups(\"defaultScalingGroupVServerGroups\", new AliCloud.Ess.ScalingGroupVServerGroupsArgs\n        {\n            ScalingGroupId = defaultScalingGroup.Id,\n            VserverGroups = \n            {\n                new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupArgs\n                {\n                    LoadbalancerId = defaultLoadBalancer.Id,\n                    VserverAttributes = \n                    {\n                        new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs\n                        {\n                            Port = \"100\",\n                            VserverGroupId = defaultServerGroup.Id,\n                            Weight = \"60\",\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Block vserver_group\n\nthe vserver_group supports the following:\n\n* `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.\n* `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.\n\n## Block vserver_attribute\n\n* `vserver_group_id` - (Required) ID of VServer Group.\n* `port` - (Required) - The port will be used for VServer Group backend server.\n* `weight` - (Required) The weight of an ECS instance attached to the VServer Group.\n",
             "properties": {
                 "force": {
                     "type": "boolean",
@@ -35926,6 +37083,10 @@
                     "type": "string",
                     "description": "Set the instance's private IP.\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the resource belongs.\n"
+                },
                 "securityGroupId": {
                     "type": "string",
                     "description": "The Security Group ID of ECS.\n"
@@ -36039,6 +37200,10 @@
                     "type": "string",
                     "description": "Set the instance's private IP.\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the resource belongs.\n"
+                },
                 "securityGroupId": {
                     "type": "string",
                     "description": "The Security Group ID of ECS.\n"
@@ -36148,6 +37313,10 @@
                     "privateIp": {
                         "type": "string",
                         "description": "Set the instance's private IP.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of resource group which the resource belongs.\n"
                     },
                     "securityGroupId": {
                         "type": "string",
@@ -36462,6 +37631,77 @@
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "Log audit detailed configuration.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:log/dashboard:Dashboard": {
+            "description": "The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.\n[Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).\n\n\u003e **NOTE:** Available in 1.86.0\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "charList": {
+                    "type": "string",
+                    "description": "Configuration of charts in the dashboard.\n"
+                },
+                "dashboardName": {
+                    "type": "string",
+                    "description": "The name of the Log Dashboard.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Dashboard alias.\n"
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "The name of the log project. It is the only in one Alicloud account.\n"
+                }
+            },
+            "required": [
+                "charList",
+                "dashboardName",
+                "projectName"
+            ],
+            "inputProperties": {
+                "charList": {
+                    "type": "string",
+                    "description": "Configuration of charts in the dashboard.\n"
+                },
+                "dashboardName": {
+                    "type": "string",
+                    "description": "The name of the Log Dashboard.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Dashboard alias.\n"
+                },
+                "projectName": {
+                    "type": "string",
+                    "description": "The name of the log project. It is the only in one Alicloud account.\n"
+                }
+            },
+            "requiredInputs": [
+                "charList",
+                "dashboardName",
+                "projectName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Dashboard resources.\n",
+                "properties": {
+                    "charList": {
+                        "type": "string",
+                        "description": "Configuration of charts in the dashboard.\n"
+                    },
+                    "dashboardName": {
+                        "type": "string",
+                        "description": "The name of the Log Dashboard.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Dashboard alias.\n"
+                    },
+                    "projectName": {
+                        "type": "string",
+                        "description": "The name of the log project. It is the only in one Alicloud account.\n"
                     }
                 },
                 "type": "object"
@@ -39878,6 +41118,10 @@
                     "type": "string",
                     "description": "The remark of the Private Zone.\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Private Zone belongs.\n"
+                },
                 "updateTime": {
                     "type": "string"
                 },
@@ -39909,6 +41153,10 @@
                 "remark": {
                     "type": "string",
                     "description": "The remark of the Private Zone.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Private Zone belongs.\n"
                 },
                 "userClientIp": {
                     "type": "string",
@@ -39943,6 +41191,10 @@
                     "remark": {
                         "type": "string",
                         "description": "The remark of the Private Zone.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The Id of resource group which the Private Zone belongs.\n"
                     },
                     "updateTime": {
                         "type": "string"
@@ -41895,6 +43147,10 @@
                     "type": "string",
                     "description": "RDS database connection port.\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the DB instance belongs.\n"
+                },
                 "securityGroupId": {
                     "type": "string",
                     "description": "It has been deprecated from 1.69.0 and use `security_group_ids` instead.\n",
@@ -41954,6 +43210,7 @@
                 "monitoringPeriod",
                 "parameters",
                 "port",
+                "resourceGroupId",
                 "securityGroupId",
                 "securityGroupIds",
                 "securityIps",
@@ -42022,6 +43279,10 @@
                 "period": {
                     "type": "integer",
                     "description": "The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the DB instance belongs.\n"
                 },
                 "securityGroupId": {
                     "type": "string",
@@ -42150,6 +43411,10 @@
                         "type": "string",
                         "description": "RDS database connection port.\n"
                     },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of resource group which the DB instance belongs.\n"
+                    },
                     "securityGroupId": {
                         "type": "string",
                         "description": "It has been deprecated from 1.69.0 and use `security_group_ids` instead.\n",
@@ -42242,6 +43507,10 @@
                     "type": "string",
                     "description": "RDS database connection port.\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the DB read-only instance belongs.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -42268,6 +43537,7 @@
                 "masterDbInstanceId",
                 "parameters",
                 "port",
+                "resourceGroupId",
                 "zoneId"
             ],
             "inputProperties": {
@@ -42297,6 +43567,10 @@
                         "$ref": "#/types/alicloud:rds/ReadOnlyInstanceParameter:ReadOnlyInstanceParameter"
                     },
                     "description": "Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of resource group which the DB read-only instance belongs.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -42361,6 +43635,10 @@
                     "port": {
                         "type": "string",
                         "description": "RDS database connection port.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of resource group which the DB read-only instance belongs.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -48626,6 +49904,7 @@
                 "domain",
                 "instanceId",
                 "isAccessProduct",
+                "resourceGroupId",
                 "sourceIps",
                 "status"
             ],
@@ -50816,6 +52095,150 @@
                 ]
             }
         },
+        "alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances": {
+            "description": "This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.86.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegistryEnterpriseInstances.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ids to filter results by instance id.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by instance name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegistryEnterpriseInstances.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition instances. Its element is an instance uuid.\n"
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/getRegistryEnterpriseInstancesInstance:getRegistryEnterpriseInstancesInstance"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Editioninstances. Each element contains the following attributes:\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of instance names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instances",
+                    "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces": {
+            "description": "This data source provides a list Container Registry Enterprise Edition namespaces on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.86.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegistryEnterpriseNamespaces.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ids to filter results by namespace id.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by namespace name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegistryEnterpriseNamespaces.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of namespace names.\n"
+                    },
+                    "namespaces": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/getRegistryEnterpriseNamespacesNamespace:getRegistryEnterpriseNamespacesNamespace"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instanceId",
+                    "names",
+                    "namespaces",
+                    "id"
+                ]
+            }
+        },
         "alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters": {
             "description": "This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.\n\n\u003e **NOTE:** Available in 1.58.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst k8sClusters = pulumi.output(alicloud.cs.getServerlessKubernetesClusters({\n    nameRegex: \"my-first-k8s\",\n    outputFile: \"my-first-k8s-json\",\n}, { async: true }));\n\nexport const output = k8sClusters.clusters;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nk8s_clusters = alicloud.cs.get_serverless_kubernetes_clusters(name_regex=\"my-first-k8s\",\n    output_file=\"my-first-k8s-json\")\npulumi.export(\"output\", k8s_clusters.clusters)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var k8sClusters = Output.Create(AliCloud.CS.GetServerlessKubernetesClusters.InvokeAsync(new AliCloud.CS.GetServerlessKubernetesClustersArgs\n        {\n            NameRegex = \"my-first-k8s\",\n            OutputFile = \"my-first-k8s-json\",\n        }));\n        this.Output = k8sClusters.Apply(k8sClusters =\u003e k8sClusters.Clusters);\n    }\n\n    [Output(\"output\")]\n    public Output\u003cstring\u003e Output { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -51172,6 +52595,170 @@
                     "groups",
                     "ids",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:dns/getAlidnsRecords:getAlidnsRecords": {
+            "description": "This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAlidnsRecords.\n",
+                "properties": {
+                    "direction": {
+                        "type": "string",
+                        "description": "Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.\n"
+                    },
+                    "domainName": {
+                        "type": "string",
+                        "description": "The domain name associated to the records. \n"
+                    },
+                    "groupId": {
+                        "type": "integer",
+                        "description": "Domain name group ID.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of record IDs.\n"
+                    },
+                    "keyWord": {
+                        "type": "string",
+                        "description": "Keywords.\n"
+                    },
+                    "lang": {
+                        "type": "string",
+                        "description": "User language.\n"
+                    },
+                    "line": {
+                        "type": "string",
+                        "description": "ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) \n"
+                    },
+                    "orderBy": {
+                        "type": "string",
+                        "description": "Sort by. Sort from newest to oldest according to the time added by resolution.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "rrKeyWord": {
+                        "type": "string",
+                        "description": "The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.\n"
+                    },
+                    "rrRegex": {
+                        "type": "string",
+                        "description": "Host record regex. \n"
+                    },
+                    "searchMode": {
+                        "type": "string",
+                        "description": "Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Record status. Valid values: `ENABLE` and `DISABLE`.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .\n"
+                    },
+                    "typeKeyWord": {
+                        "type": "string",
+                        "description": "Analyze type keywords, search by full match, not case sensitive.\n"
+                    },
+                    "valueKeyWord": {
+                        "type": "string",
+                        "description": "The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.\n"
+                    },
+                    "valueRegex": {
+                        "type": "string",
+                        "description": "Host record value regex. \n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domainName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAlidnsRecords.\n",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "domainName": {
+                        "type": "string",
+                        "description": "Name of the domain record belongs to.\n"
+                    },
+                    "groupId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of record IDs. \n"
+                    },
+                    "keyWord": {
+                        "type": "string"
+                    },
+                    "lang": {
+                        "type": "string"
+                    },
+                    "line": {
+                        "type": "string",
+                        "description": "ISP line of the record. \n"
+                    },
+                    "orderBy": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "records": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:dns/getAlidnsRecordsRecord:getAlidnsRecordsRecord"
+                        },
+                        "description": "A list of records. Each element contains the following attributes:\n"
+                    },
+                    "rrKeyWord": {
+                        "type": "string"
+                    },
+                    "rrRegex": {
+                        "type": "string"
+                    },
+                    "searchMode": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the record.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the record.\n"
+                    },
+                    "typeKeyWord": {
+                        "type": "string"
+                    },
+                    "valueKeyWord": {
+                        "type": "string"
+                    },
+                    "valueRegex": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domainName",
+                    "ids",
+                    "records",
                     "id"
                 ]
             }
@@ -55313,6 +56900,93 @@
                 ]
             }
         },
+        "alicloud:kms/getSecrets:getSecrets": {
+            "description": "This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSecrets.\n",
+                "properties": {
+                    "fetchTags": {
+                        "type": "boolean",
+                        "description": "Whether to include the predetermined resource tag in the return value. Default to `false`.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of KMS Secret ids. The value is same as KMS secret_name.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter the results by the KMS secret_name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSecrets.\n",
+                "properties": {
+                    "fetchTags": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Kms Secret ids. The value is same as KMS secret_name. \n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of KMS Secret names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "secrets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:kms/getSecretsSecret:getSecretsSecret"
+                        },
+                        "description": "A list of KMS Secrets. Each element contains the following attributes:\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "names",
+                    "secrets",
+                    "id"
+                ]
+            }
+        },
         "alicloud:kvstore/getInstanceClasses:getInstanceClasses": {
             "description": "This data source provides the KVStore instance classes resource available info of Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.49.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst resourcesZones = pulumi.output(alicloud.getZones({\n    availableResourceCreation: \"KVStore\",\n}, { async: true }));\nconst resourcesInstanceClasses = resourcesZones.apply(resourcesZones =\u003e alicloud.kvstore.getInstanceClasses({\n    engine: \"Redis\",\n    engineVersion: \"5.0\",\n    instanceChargeType: \"PrePaid\",\n    outputFile: \"./classes.txt\",\n    zoneId: resourcesZones.zones[0].id,\n}, { async: true }));\n\nexport const firstKvstoreInstanceClass = resourcesInstanceClasses.instanceClasses;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nresources_zones = alicloud.get_zones(available_resource_creation=\"KVStore\")\nresources_instance_classes = alicloud.kvstore.get_instance_classes(engine=\"Redis\",\n    engine_version=\"5.0\",\n    instance_charge_type=\"PrePaid\",\n    output_file=\"./classes.txt\",\n    zone_id=resources_zones.zones[0][\"id\"])\npulumi.export(\"firstKvstoreInstanceClass\", resources_instance_classes.instance_classes)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var resourcesZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableResourceCreation = \"KVStore\",\n        }));\n        var resourcesInstanceClasses = resourcesZones.Apply(resourcesZones =\u003e Output.Create(AliCloud.KVStore.GetInstanceClasses.InvokeAsync(new AliCloud.KVStore.GetInstanceClassesArgs\n        {\n            Engine = \"Redis\",\n            EngineVersion = \"5.0\",\n            InstanceChargeType = \"PrePaid\",\n            OutputFile = \"./classes.txt\",\n            ZoneId = resourcesZones.Zones[0].Id,\n        })));\n        this.FirstKvstoreInstanceClass = resourcesInstanceClasses.Apply(resourcesInstanceClasses =\u003e resourcesInstanceClasses.InstanceClasses);\n    }\n\n    [Output(\"firstKvstoreInstanceClass\")]\n    public Output\u003cstring\u003e FirstKvstoreInstanceClass { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -58193,6 +59867,57 @@
                 ]
             }
         },
+        "alicloud:resourcemanager/getAccounts:getAccounts": {
+            "description": "This data source provides the Resource Manager Accounts of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccounts.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of account IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccounts.\n",
+                "properties": {
+                    "accounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getAccountsAccount:getAccountsAccount"
+                        },
+                        "description": "A list of accounts. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of account IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accounts",
+                    "ids",
+                    "id"
+                ]
+            }
+        },
         "alicloud:resourcemanager/getFolders:getFolders": {
             "description": "This data source provides the resource manager folders of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.84.0+.\n\n\u003e **NOTE:**  You can view only the information of the first-level child folders of the specified folder.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = pulumi.output(alicloud.resourcemanager.getFolders({\n    nameRegex: \"tftest\",\n}, { async: true }));\n\nexport const firstFolderId = example.folders[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.resourcemanager.get_folders(name_regex=\"tftest\")\npulumi.export(\"firstFolderId\", example.folders[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AliCloud.ResourceManager.GetFolders.InvokeAsync(new AliCloud.ResourceManager.GetFoldersArgs\n        {\n            NameRegex = \"tftest\",\n        }));\n        this.FirstFolderId = example.Apply(example =\u003e example.Folders[0].Id);\n    }\n\n    [Output(\"firstFolderId\")]\n    public Output\u003cstring\u003e FirstFolderId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -58262,6 +59987,130 @@
                     "folders",
                     "ids",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:resourcemanager/getHandshakes:getHandshakes": {
+            "description": "This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHandshakes.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Resource Manager Handshake IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHandshakes.\n",
+                "properties": {
+                    "handshakes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getHandshakesHandshake:getHandshakesHandshake"
+                        },
+                        "description": "A list of Resource Manager Handshakes. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Resource Manager Handshake IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "handshakes",
+                    "ids",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:resourcemanager/getPolicies:getPolicies": {
+            "description": "This data source provides the Resource Manager Policies of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPolicies.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Resource Manager Policy IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by policy name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPolicies.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of policy IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of policy names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getPoliciesPolicy:getPoliciesPolicy"
+                        },
+                        "description": "A list of policies. Each element contains the following attributes:\n"
+                    },
+                    "policyType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "names",
+                    "policies",
                     "id"
                 ]
             }
@@ -58337,6 +60186,42 @@
                 ]
             }
         },
+        "alicloud:resourcemanager/getResourceDirectories:getResourceDirectories": {
+            "description": "This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getResourceDirectories.\n",
+                "properties": {
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getResourceDirectories.\n",
+                "properties": {
+                    "directories": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getResourceDirectoriesDirectory:getResourceDirectoriesDirectory"
+                        },
+                        "description": "A list of resource directories. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "directories",
+                    "id"
+                ]
+            }
+        },
         "alicloud:resourcemanager/getResourceGroups:getResourceGroups": {
             "description": "This data source provides resource groups of the current Alibaba Cloud user.\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = pulumi.output(alicloud.resourcemanager.getResourceGroups({\n    nameRegex: \"tftest\",\n}, { async: true }));\n\nexport const firstResourceGroupId = example.groups[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.resourcemanager.get_resource_groups(name_regex=\"tftest\")\npulumi.export(\"firstResourceGroupId\", example.groups[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AliCloud.ResourceManager.GetResourceGroups.InvokeAsync(new AliCloud.ResourceManager.GetResourceGroupsArgs\n        {\n            NameRegex = \"tftest\",\n        }));\n        this.FirstResourceGroupId = example.Apply(example =\u003e example.Groups[0].Id);\n    }\n\n    [Output(\"firstResourceGroupId\")]\n    public Output\u003cstring\u003e FirstResourceGroupId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -58407,6 +60292,72 @@
                     "groups",
                     "ids",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:resourcemanager/getRoles:getRoles": {
+            "description": "This data source provides the Resource Manager Roles of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRoles.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Resource Manager Role IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by role name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRoles.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of role IDs.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of role names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:resourcemanager/getRolesRole:getRolesRole"
+                        },
+                        "description": "A list of roles. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "names",
+                    "roles",
                     "id"
                 ]
             }
@@ -60864,6 +62815,68 @@
                     "gateways",
                     "ids",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:waf/getDomains:getDomains": {
+            "description": "Provides a WAF datasource to retrieve domains.\n\nFor information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).\n\n\u003e **NOTE:** Available in 1.86.0+ .\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDomains.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of WAF domain names. Each item is domain name.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The Id of waf instance to which waf domain belongs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDomains.\n",
+                "properties": {
+                    "domains": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:waf/getDomainsDomain:getDomainsDomain"
+                        },
+                        "description": "A list of Domains. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "(Optional) A list of WAF domain names. Each item is domain name.\n"
+                    },
+                    "instanceId": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domains",
+                    "ids",
+                    "instanceId",
                     "id"
                 ]
             }

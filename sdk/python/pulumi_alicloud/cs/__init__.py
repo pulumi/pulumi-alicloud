@@ -7,9 +7,13 @@ from .application import *
 from .cluster import *
 from .get_kubernetes_clusters import *
 from .get_managed_kubernetes_clusters import *
+from .get_registry_enterprise_instances import *
+from .get_registry_enterprise_namespaces import *
 from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *
 from .managed_kubernetes import *
+from .registry_enterprise_namespace import *
+from .registry_enterprise_repo import *
 from .serverless_kubernetes import *
 from .swarm import *

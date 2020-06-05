@@ -587,6 +587,14 @@ export namespace cs {
 }
 
 export namespace ddos {
+    export interface SchedulerRuleRule {
+        priority?: pulumi.Input<number>;
+        regionId?: pulumi.Input<string>;
+        status?: pulumi.Input<number>;
+        type?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+        valueType?: pulumi.Input<number>;
+    }
 }
 
 export namespace dds {
@@ -628,7 +636,7 @@ export namespace ecs {
 
     export interface ImageImportDiskDeviceMapping {
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * The name of disk N in the custom image.
          */
         device?: pulumi.Input<string>;
         /**
@@ -643,6 +651,9 @@ export namespace ecs {
          * Save the exported OSS bucket.
          */
         ossBucket?: pulumi.Input<string>;
+        /**
+         * The file name of your OSS Object.
+         */
         ossObject?: pulumi.Input<string>;
     }
 

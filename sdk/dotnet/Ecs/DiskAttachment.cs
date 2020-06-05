@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    /// <summary>
-    /// Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
-    /// </summary>
     public partial class DiskAttachment : Pulumi.CustomResource
     {
         /// <summary>

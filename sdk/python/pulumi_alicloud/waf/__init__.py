@@ -4,4 +4,5 @@
 
 # Export this package's modules as members:
 from .domain import *
+from .get_domains import *
 from .instance import *

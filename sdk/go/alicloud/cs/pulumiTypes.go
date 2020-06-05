@@ -2611,6 +2611,321 @@ func (o GetManagedKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi
 	}).(GetManagedKubernetesClustersClusterWorkerNodeOutput)
 }
 
+type GetRegistryEnterpriseInstancesInstance struct {
+	// ID of Container Registry Enterprise Edition instance.
+	Id string `pulumi:"id"`
+	// Name of Container Registry Enterprise Edition instance.
+	Name string `pulumi:"name"`
+	// The max number of namespaces that an instance can create.
+	NamespaceQuota string `pulumi:"namespaceQuota"`
+	// The number of namespaces already created.
+	NamespaceUsage string `pulumi:"namespaceUsage"`
+	// A list of domains for access on internet network.
+	PublicEndpoints []string `pulumi:"publicEndpoints"`
+	// Region of Container Registry Enterprise Edition instance.
+	Region string `pulumi:"region"`
+	// The max number of repos that an instance can create.
+	RepoQuota string `pulumi:"repoQuota"`
+	// The number of repos already created.
+	RepoUsage string `pulumi:"repoUsage"`
+	// Specification of Container Registry Enterprise Edition instance.
+	Specification string `pulumi:"specification"`
+	// A list of domains for access on vpc network.
+	VpcEndpoints []string `pulumi:"vpcEndpoints"`
+}
+
+// GetRegistryEnterpriseInstancesInstanceInput is an input type that accepts GetRegistryEnterpriseInstancesInstanceArgs and GetRegistryEnterpriseInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseInstancesInstanceInput` via:
+//
+// 		 GetRegistryEnterpriseInstancesInstanceArgs{...}
+//
+type GetRegistryEnterpriseInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseInstancesInstanceOutput() GetRegistryEnterpriseInstancesInstanceOutput
+	ToGetRegistryEnterpriseInstancesInstanceOutputWithContext(context.Context) GetRegistryEnterpriseInstancesInstanceOutput
+}
+
+type GetRegistryEnterpriseInstancesInstanceArgs struct {
+	// ID of Container Registry Enterprise Edition instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of Container Registry Enterprise Edition instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The max number of namespaces that an instance can create.
+	NamespaceQuota pulumi.StringInput `pulumi:"namespaceQuota"`
+	// The number of namespaces already created.
+	NamespaceUsage pulumi.StringInput `pulumi:"namespaceUsage"`
+	// A list of domains for access on internet network.
+	PublicEndpoints pulumi.StringArrayInput `pulumi:"publicEndpoints"`
+	// Region of Container Registry Enterprise Edition instance.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The max number of repos that an instance can create.
+	RepoQuota pulumi.StringInput `pulumi:"repoQuota"`
+	// The number of repos already created.
+	RepoUsage pulumi.StringInput `pulumi:"repoUsage"`
+	// Specification of Container Registry Enterprise Edition instance.
+	Specification pulumi.StringInput `pulumi:"specification"`
+	// A list of domains for access on vpc network.
+	VpcEndpoints pulumi.StringArrayInput `pulumi:"vpcEndpoints"`
+}
+
+func (GetRegistryEnterpriseInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseInstancesInstance)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseInstancesInstanceArgs) ToGetRegistryEnterpriseInstancesInstanceOutput() GetRegistryEnterpriseInstancesInstanceOutput {
+	return i.ToGetRegistryEnterpriseInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseInstancesInstanceArgs) ToGetRegistryEnterpriseInstancesInstanceOutputWithContext(ctx context.Context) GetRegistryEnterpriseInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseInstancesInstanceOutput)
+}
+
+// GetRegistryEnterpriseInstancesInstanceArrayInput is an input type that accepts GetRegistryEnterpriseInstancesInstanceArray and GetRegistryEnterpriseInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseInstancesInstanceArrayInput` via:
+//
+// 		 GetRegistryEnterpriseInstancesInstanceArray{ GetRegistryEnterpriseInstancesInstanceArgs{...} }
+//
+type GetRegistryEnterpriseInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseInstancesInstanceArrayOutput() GetRegistryEnterpriseInstancesInstanceArrayOutput
+	ToGetRegistryEnterpriseInstancesInstanceArrayOutputWithContext(context.Context) GetRegistryEnterpriseInstancesInstanceArrayOutput
+}
+
+type GetRegistryEnterpriseInstancesInstanceArray []GetRegistryEnterpriseInstancesInstanceInput
+
+func (GetRegistryEnterpriseInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseInstancesInstance)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseInstancesInstanceArray) ToGetRegistryEnterpriseInstancesInstanceArrayOutput() GetRegistryEnterpriseInstancesInstanceArrayOutput {
+	return i.ToGetRegistryEnterpriseInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseInstancesInstanceArray) ToGetRegistryEnterpriseInstancesInstanceArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseInstancesInstanceArrayOutput)
+}
+
+type GetRegistryEnterpriseInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseInstancesInstance)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseInstancesInstanceOutput) ToGetRegistryEnterpriseInstancesInstanceOutput() GetRegistryEnterpriseInstancesInstanceOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseInstancesInstanceOutput) ToGetRegistryEnterpriseInstancesInstanceOutputWithContext(ctx context.Context) GetRegistryEnterpriseInstancesInstanceOutput {
+	return o
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The max number of namespaces that an instance can create.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) NamespaceQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.NamespaceQuota }).(pulumi.StringOutput)
+}
+
+// The number of namespaces already created.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) NamespaceUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.NamespaceUsage }).(pulumi.StringOutput)
+}
+
+// A list of domains for access on internet network.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) PublicEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) []string { return v.PublicEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Region of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The max number of repos that an instance can create.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) RepoQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.RepoQuota }).(pulumi.StringOutput)
+}
+
+// The number of repos already created.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) RepoUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.RepoUsage }).(pulumi.StringOutput)
+}
+
+// Specification of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) Specification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Specification }).(pulumi.StringOutput)
+}
+
+// A list of domains for access on vpc network.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) VpcEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) []string { return v.VpcEndpoints }).(pulumi.StringArrayOutput)
+}
+
+type GetRegistryEnterpriseInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseInstancesInstance)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseInstancesInstanceArrayOutput) ToGetRegistryEnterpriseInstancesInstanceArrayOutput() GetRegistryEnterpriseInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseInstancesInstanceArrayOutput) ToGetRegistryEnterpriseInstancesInstanceArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetRegistryEnterpriseInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistryEnterpriseInstancesInstance {
+		return vs[0].([]GetRegistryEnterpriseInstancesInstance)[vs[1].(int)]
+	}).(GetRegistryEnterpriseInstancesInstanceOutput)
+}
+
+type GetRegistryEnterpriseNamespacesNamespace struct {
+	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+	AutoCreate bool `pulumi:"autoCreate"`
+	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+	DefaultVisibility string `pulumi:"defaultVisibility"`
+	// ID of Container Registry Enterprise Edition namespace.
+	Id string `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition namespace.
+	Name string `pulumi:"name"`
+}
+
+// GetRegistryEnterpriseNamespacesNamespaceInput is an input type that accepts GetRegistryEnterpriseNamespacesNamespaceArgs and GetRegistryEnterpriseNamespacesNamespaceOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseNamespacesNamespaceInput` via:
+//
+// 		 GetRegistryEnterpriseNamespacesNamespaceArgs{...}
+//
+type GetRegistryEnterpriseNamespacesNamespaceInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseNamespacesNamespaceOutput() GetRegistryEnterpriseNamespacesNamespaceOutput
+	ToGetRegistryEnterpriseNamespacesNamespaceOutputWithContext(context.Context) GetRegistryEnterpriseNamespacesNamespaceOutput
+}
+
+type GetRegistryEnterpriseNamespacesNamespaceArgs struct {
+	// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+	AutoCreate pulumi.BoolInput `pulumi:"autoCreate"`
+	// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+	DefaultVisibility pulumi.StringInput `pulumi:"defaultVisibility"`
+	// ID of Container Registry Enterprise Edition namespace.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition namespace.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRegistryEnterpriseNamespacesNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseNamespacesNamespaceArgs) ToGetRegistryEnterpriseNamespacesNamespaceOutput() GetRegistryEnterpriseNamespacesNamespaceOutput {
+	return i.ToGetRegistryEnterpriseNamespacesNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseNamespacesNamespaceArgs) ToGetRegistryEnterpriseNamespacesNamespaceOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseNamespacesNamespaceOutput)
+}
+
+// GetRegistryEnterpriseNamespacesNamespaceArrayInput is an input type that accepts GetRegistryEnterpriseNamespacesNamespaceArray and GetRegistryEnterpriseNamespacesNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseNamespacesNamespaceArrayInput` via:
+//
+// 		 GetRegistryEnterpriseNamespacesNamespaceArray{ GetRegistryEnterpriseNamespacesNamespaceArgs{...} }
+//
+type GetRegistryEnterpriseNamespacesNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseNamespacesNamespaceArrayOutput() GetRegistryEnterpriseNamespacesNamespaceArrayOutput
+	ToGetRegistryEnterpriseNamespacesNamespaceArrayOutputWithContext(context.Context) GetRegistryEnterpriseNamespacesNamespaceArrayOutput
+}
+
+type GetRegistryEnterpriseNamespacesNamespaceArray []GetRegistryEnterpriseNamespacesNamespaceInput
+
+func (GetRegistryEnterpriseNamespacesNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseNamespacesNamespace)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseNamespacesNamespaceArray) ToGetRegistryEnterpriseNamespacesNamespaceArrayOutput() GetRegistryEnterpriseNamespacesNamespaceArrayOutput {
+	return i.ToGetRegistryEnterpriseNamespacesNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseNamespacesNamespaceArray) ToGetRegistryEnterpriseNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseNamespacesNamespaceArrayOutput)
+}
+
+type GetRegistryEnterpriseNamespacesNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseNamespacesNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) ToGetRegistryEnterpriseNamespacesNamespaceOutput() GetRegistryEnterpriseNamespacesNamespaceOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) ToGetRegistryEnterpriseNamespacesNamespaceOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesNamespaceOutput {
+	return o
+}
+
+// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) AutoCreate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) bool { return v.AutoCreate }).(pulumi.BoolOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) DefaultVisibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.DefaultVisibility }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition namespace.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace.
+func (o GetRegistryEnterpriseNamespacesNamespaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseNamespacesNamespace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRegistryEnterpriseNamespacesNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseNamespacesNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseNamespacesNamespace)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseNamespacesNamespaceArrayOutput) ToGetRegistryEnterpriseNamespacesNamespaceArrayOutput() GetRegistryEnterpriseNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseNamespacesNamespaceArrayOutput) ToGetRegistryEnterpriseNamespacesNamespaceArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseNamespacesNamespaceArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetRegistryEnterpriseNamespacesNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistryEnterpriseNamespacesNamespace {
+		return vs[0].([]GetRegistryEnterpriseNamespacesNamespace)[vs[1].(int)]
+	}).(GetRegistryEnterpriseNamespacesNamespaceOutput)
+}
+
 type GetServerlessKubernetesClustersCluster struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
@@ -2895,6 +3210,10 @@ func init() {
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseNamespacesNamespaceOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseNamespacesNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionsOutput{})

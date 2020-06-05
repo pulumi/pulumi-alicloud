@@ -187,6 +187,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
+     * The ID of resource group which the DB instance belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
@@ -256,6 +260,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["parameters"] = state ? state.parameters : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["securityIpMode"] = state ? state.securityIpMode : undefined;
@@ -294,6 +299,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["monitoringPeriod"] = args ? args.monitoringPeriod : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["securityIpMode"] = args ? args.securityIpMode : undefined;
@@ -402,6 +408,10 @@ export interface InstanceState {
      * RDS database connection port.
      */
     readonly port?: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the DB instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -522,6 +532,10 @@ export interface InstanceArgs {
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
      */
     readonly period?: pulumi.Input<number>;
+    /**
+     * The ID of resource group which the DB instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
