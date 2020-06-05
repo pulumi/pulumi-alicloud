@@ -195,9 +195,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly spotStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The instance status.
+     * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string | undefined>;
     public readonly subnetId!: pulumi.Output<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.
@@ -335,6 +335,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityGroups"] = args ? args.securityGroups : undefined;
             inputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             inputs["spotStrategy"] = args ? args.spotStrategy : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["subnetId"] = args ? args.subnetId : undefined;
             inputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
@@ -344,7 +345,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["volumeTags"] = args ? args.volumeTags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["publicIp"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -525,7 +525,7 @@ export interface InstanceState {
      */
     readonly spotStrategy?: pulumi.Input<string>;
     /**
-     * The instance status.
+     * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
     readonly status?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
@@ -726,6 +726,10 @@ export interface InstanceArgs {
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      */
     readonly spotStrategy?: pulumi.Input<string>;
+    /**
+     * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+     */
+    readonly status?: pulumi.Input<string>;
     readonly subnetId?: pulumi.Input<string>;
     /**
      * The ID of the automatic snapshot policy applied to the system disk.

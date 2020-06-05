@@ -60,6 +60,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> DataNodeAmount { get; private set; } = null!;
 
         /// <summary>
+        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Output("dataNodeDiskEncrypted")]
+        public Output<bool?> DataNodeDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -92,7 +98,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -159,6 +165,12 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         [Output("publicWhitelists")]
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
+
+        /// <summary>
+        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -245,6 +257,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int> DataNodeAmount { get; set; } = null!;
 
         /// <summary>
+        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Input("dataNodeDiskEncrypted")]
+        public Input<bool>? DataNodeDiskEncrypted { get; set; }
+
+        /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -271,7 +289,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -344,6 +362,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _publicWhitelists = value;
         }
 
+        /// <summary>
+        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -390,6 +414,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? DataNodeAmount { get; set; }
 
         /// <summary>
+        /// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        /// </summary>
+        [Input("dataNodeDiskEncrypted")]
+        public Input<bool>? DataNodeDiskEncrypted { get; set; }
+
+        /// <summary>
         /// The single data node storage space.
         /// - `cloud_ssd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
         /// - `cloud_efficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -422,7 +452,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -512,6 +542,12 @@ namespace Pulumi.AliCloud.ElasticSearch
             get => _publicWhitelists ?? (_publicWhitelists = new InputList<string>());
             set => _publicWhitelists = value;
         }
+
+        /// <summary>
+        /// The Id of resource group which the Elasticsearch instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.

@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Waf
         /// The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// List of the IP address or domain of the origin server to which the specified domain points.

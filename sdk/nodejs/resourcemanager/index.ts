@@ -4,9 +4,14 @@
 // Export members:
 export * from "./account";
 export * from "./folder";
+export * from "./getAccounts";
 export * from "./getFolders";
+export * from "./getHandshakes";
+export * from "./getPolicies";
 export * from "./getPolicyVersions";
+export * from "./getResourceDirectories";
 export * from "./getResourceGroups";
+export * from "./getRoles";
 export * from "./handshake";
 export * from "./policy";
 export * from "./policyVersion";

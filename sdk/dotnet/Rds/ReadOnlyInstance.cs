@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of resource group which the DB read-only instance belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -235,6 +241,12 @@ namespace Pulumi.AliCloud.Rds
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The ID of resource group which the DB read-only instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -327,6 +339,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The ID of resource group which the DB read-only instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

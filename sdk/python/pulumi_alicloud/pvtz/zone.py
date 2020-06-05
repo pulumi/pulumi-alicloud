@@ -34,12 +34,16 @@ class Zone(pulumi.CustomResource):
     """
     The remark of the Private Zone.
     """
+    resource_group_id: pulumi.Output[str]
+    """
+    The Id of resource group which the Private Zone belongs.
+    """
     update_time: pulumi.Output[str]
     user_client_ip: pulumi.Output[str]
     """
     The IP address of the client.
     """
-    def __init__(__self__, resource_name, opts=None, lang=None, name=None, proxy_pattern=None, remark=None, user_client_ip=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, lang=None, name=None, proxy_pattern=None, remark=None, resource_group_id=None, user_client_ip=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Zone resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -50,6 +54,7 @@ class Zone(pulumi.CustomResource):
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         """
         if __name__ is not None:
@@ -73,6 +78,7 @@ class Zone(pulumi.CustomResource):
             __props__['name'] = name
             __props__['proxy_pattern'] = proxy_pattern
             __props__['remark'] = remark
+            __props__['resource_group_id'] = resource_group_id
             __props__['user_client_ip'] = user_client_ip
             __props__['creation_time'] = None
             __props__['is_ptr'] = None
@@ -85,7 +91,7 @@ class Zone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_time=None, is_ptr=None, lang=None, name=None, proxy_pattern=None, record_count=None, remark=None, update_time=None, user_client_ip=None):
+    def get(resource_name, id, opts=None, creation_time=None, is_ptr=None, lang=None, name=None, proxy_pattern=None, record_count=None, remark=None, resource_group_id=None, update_time=None, user_client_ip=None):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,6 +106,7 @@ class Zone(pulumi.CustomResource):
                - RECORD: indicates that the recursive DNS proxy is enabled.
         :param pulumi.Input[float] record_count: The count of the Private Zone Record.
         :param pulumi.Input[str] remark: The remark of the Private Zone.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[str] user_client_ip: The IP address of the client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -113,6 +120,7 @@ class Zone(pulumi.CustomResource):
         __props__["proxy_pattern"] = proxy_pattern
         __props__["record_count"] = record_count
         __props__["remark"] = remark
+        __props__["resource_group_id"] = resource_group_id
         __props__["update_time"] = update_time
         __props__["user_client_ip"] = user_client_ip
         return Zone(resource_name, opts=opts, __props__=__props__)

@@ -10,6 +10,132 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type SchedulerRuleRule struct {
+	Priority  *int    `pulumi:"priority"`
+	RegionId  *string `pulumi:"regionId"`
+	Status    *int    `pulumi:"status"`
+	Type      *string `pulumi:"type"`
+	Value     *string `pulumi:"value"`
+	ValueType *int    `pulumi:"valueType"`
+}
+
+// SchedulerRuleRuleInput is an input type that accepts SchedulerRuleRuleArgs and SchedulerRuleRuleOutput values.
+// You can construct a concrete instance of `SchedulerRuleRuleInput` via:
+//
+// 		 SchedulerRuleRuleArgs{...}
+//
+type SchedulerRuleRuleInput interface {
+	pulumi.Input
+
+	ToSchedulerRuleRuleOutput() SchedulerRuleRuleOutput
+	ToSchedulerRuleRuleOutputWithContext(context.Context) SchedulerRuleRuleOutput
+}
+
+type SchedulerRuleRuleArgs struct {
+	Priority  pulumi.IntPtrInput    `pulumi:"priority"`
+	RegionId  pulumi.StringPtrInput `pulumi:"regionId"`
+	Status    pulumi.IntPtrInput    `pulumi:"status"`
+	Type      pulumi.StringPtrInput `pulumi:"type"`
+	Value     pulumi.StringPtrInput `pulumi:"value"`
+	ValueType pulumi.IntPtrInput    `pulumi:"valueType"`
+}
+
+func (SchedulerRuleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerRuleRule)(nil)).Elem()
+}
+
+func (i SchedulerRuleRuleArgs) ToSchedulerRuleRuleOutput() SchedulerRuleRuleOutput {
+	return i.ToSchedulerRuleRuleOutputWithContext(context.Background())
+}
+
+func (i SchedulerRuleRuleArgs) ToSchedulerRuleRuleOutputWithContext(ctx context.Context) SchedulerRuleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleRuleOutput)
+}
+
+// SchedulerRuleRuleArrayInput is an input type that accepts SchedulerRuleRuleArray and SchedulerRuleRuleArrayOutput values.
+// You can construct a concrete instance of `SchedulerRuleRuleArrayInput` via:
+//
+// 		 SchedulerRuleRuleArray{ SchedulerRuleRuleArgs{...} }
+//
+type SchedulerRuleRuleArrayInput interface {
+	pulumi.Input
+
+	ToSchedulerRuleRuleArrayOutput() SchedulerRuleRuleArrayOutput
+	ToSchedulerRuleRuleArrayOutputWithContext(context.Context) SchedulerRuleRuleArrayOutput
+}
+
+type SchedulerRuleRuleArray []SchedulerRuleRuleInput
+
+func (SchedulerRuleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchedulerRuleRule)(nil)).Elem()
+}
+
+func (i SchedulerRuleRuleArray) ToSchedulerRuleRuleArrayOutput() SchedulerRuleRuleArrayOutput {
+	return i.ToSchedulerRuleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SchedulerRuleRuleArray) ToSchedulerRuleRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerRuleRuleArrayOutput)
+}
+
+type SchedulerRuleRuleOutput struct{ *pulumi.OutputState }
+
+func (SchedulerRuleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerRuleRule)(nil)).Elem()
+}
+
+func (o SchedulerRuleRuleOutput) ToSchedulerRuleRuleOutput() SchedulerRuleRuleOutput {
+	return o
+}
+
+func (o SchedulerRuleRuleOutput) ToSchedulerRuleRuleOutputWithContext(ctx context.Context) SchedulerRuleRuleOutput {
+	return o
+}
+
+func (o SchedulerRuleRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+func (o SchedulerRuleRuleOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+func (o SchedulerRuleRuleOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.Status }).(pulumi.IntPtrOutput)
+}
+
+func (o SchedulerRuleRuleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o SchedulerRuleRuleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+func (o SchedulerRuleRuleOutput) ValueType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchedulerRuleRule) *int { return v.ValueType }).(pulumi.IntPtrOutput)
+}
+
+type SchedulerRuleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SchedulerRuleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchedulerRuleRule)(nil)).Elem()
+}
+
+func (o SchedulerRuleRuleArrayOutput) ToSchedulerRuleRuleArrayOutput() SchedulerRuleRuleArrayOutput {
+	return o
+}
+
+func (o SchedulerRuleRuleArrayOutput) ToSchedulerRuleRuleArrayOutputWithContext(ctx context.Context) SchedulerRuleRuleArrayOutput {
+	return o
+}
+
+func (o SchedulerRuleRuleArrayOutput) Index(i pulumi.IntInput) SchedulerRuleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchedulerRuleRule {
+		return vs[0].([]SchedulerRuleRule)[vs[1].(int)]
+	}).(SchedulerRuleRuleOutput)
+}
+
 type GetDdosBgpInstancesInstance struct {
 	// The instance's elastic defend bandwidth.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -326,6 +452,8 @@ func (o GetDdosCooInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDdos
 }
 
 func init() {
+	pulumi.RegisterOutputType(SchedulerRuleRuleOutput{})
+	pulumi.RegisterOutputType(SchedulerRuleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetDdosBgpInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetDdosCooInstancesInstanceOutput{})

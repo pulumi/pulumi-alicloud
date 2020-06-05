@@ -4,6 +4,7 @@
 // Export members:
 export * from "./alert";
 export * from "./audit";
+export * from "./dashboard";
 export * from "./logTailAttachment";
 export * from "./logTailConfig";
 export * from "./machineGroup";

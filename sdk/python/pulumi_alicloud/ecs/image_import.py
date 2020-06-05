@@ -22,17 +22,20 @@ class ImageImport(pulumi.CustomResource):
     """
     Description of the system with disks and snapshots under the image.
 
-      * `device` (`str`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+      * `device` (`str`) - The name of disk N in the custom image.
       * `diskImageSize` (`float`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
       * `format` (`str`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
       * `oss_bucket` (`str`) - Save the exported OSS bucket.
-      * `ossObject` (`str`)
+      * `ossObject` (`str`) - The file name of your OSS Object.
     """
     image_name: pulumi.Output[str]
     """
-    The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+    The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
     """
     license_type: pulumi.Output[str]
+    """
+    The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+    """
     os_type: pulumi.Output[str]
     """
     Operating system platform type. Valid values: `windows`, Default is `linux`.
@@ -79,17 +82,18 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
         :param pulumi.Input[list] disk_device_mappings: Description of the system with disks and snapshots under the image.
-        :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
         :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 
         The **disk_device_mappings** object supports the following:
 
-          * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+          * `device` (`pulumi.Input[str]`) - The name of disk N in the custom image.
           * `diskImageSize` (`pulumi.Input[float]`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
           * `format` (`pulumi.Input[str]`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
           * `oss_bucket` (`pulumi.Input[str]`) - Save the exported OSS bucket.
-          * `ossObject` (`pulumi.Input[str]`)
+          * `ossObject` (`pulumi.Input[str]`) - The file name of your OSS Object.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,17 +139,18 @@ class ImageImport(pulumi.CustomResource):
         :param pulumi.Input[str] architecture: Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
         :param pulumi.Input[str] description: Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
         :param pulumi.Input[list] disk_device_mappings: Description of the system with disks and snapshots under the image.
-        :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[str] image_name: The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        :param pulumi.Input[str] license_type: The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
         :param pulumi.Input[str] os_type: Operating system platform type. Valid values: `windows`, Default is `linux`.
         :param pulumi.Input[str] platform: Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `Debian`, `CoreOS`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
 
         The **disk_device_mappings** object supports the following:
 
-          * `device` (`pulumi.Input[str]`) - Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+          * `device` (`pulumi.Input[str]`) - The name of disk N in the custom image.
           * `diskImageSize` (`pulumi.Input[float]`) - Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
           * `format` (`pulumi.Input[str]`) - Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
           * `oss_bucket` (`pulumi.Input[str]`) - Save the exported OSS bucket.
-          * `ossObject` (`pulumi.Input[str]`)
+          * `ossObject` (`pulumi.Input[str]`) - The file name of your OSS Object.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -82,6 +82,10 @@ class Instance(pulumi.CustomResource):
     """
     Set the instance's private IP.
     """
+    resource_group_id: pulumi.Output[str]
+    """
+    The ID of resource group which the resource belongs.
+    """
     security_group_id: pulumi.Output[str]
     """
     The Security Group ID of ECS.
@@ -102,7 +106,7 @@ class Instance(pulumi.CustomResource):
     """
     The ID of VSwitch.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, availability_zone=None, backup_id=None, engine_version=None, instance_charge_type=None, instance_class=None, instance_name=None, instance_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, parameters=None, password=None, period=None, private_ip=None, security_group_id=None, security_ips=None, tags=None, vpc_auth_mode=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, availability_zone=None, backup_id=None, engine_version=None, instance_charge_type=None, instance_class=None, instance_name=None, instance_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, parameters=None, password=None, period=None, private_ip=None, resource_group_id=None, security_group_id=None, security_ips=None, tags=None, vpc_auth_mode=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an ApsaraDB Redis / Memcache instance resource. A DB instance is an isolated database environment in the cloud. It can be associated with IP whitelists and backup configuration which are separate resource providers.
 
@@ -156,6 +160,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] private_ip: Set the instance's private IP.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ips: Set the instance's IP whitelist of the default security group.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -203,6 +208,7 @@ class Instance(pulumi.CustomResource):
             __props__['password'] = password
             __props__['period'] = period
             __props__['private_ip'] = private_ip
+            __props__['resource_group_id'] = resource_group_id
             __props__['security_group_id'] = security_group_id
             __props__['security_ips'] = security_ips
             __props__['tags'] = tags
@@ -216,7 +222,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, availability_zone=None, backup_id=None, connection_domain=None, engine_version=None, instance_charge_type=None, instance_class=None, instance_name=None, instance_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, parameters=None, password=None, period=None, private_ip=None, security_group_id=None, security_ips=None, tags=None, vpc_auth_mode=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, availability_zone=None, backup_id=None, connection_domain=None, engine_version=None, instance_charge_type=None, instance_class=None, instance_name=None, instance_type=None, kms_encrypted_password=None, kms_encryption_context=None, maintain_end_time=None, maintain_start_time=None, parameters=None, password=None, period=None, private_ip=None, resource_group_id=None, security_group_id=None, security_ips=None, tags=None, vpc_auth_mode=None, vswitch_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -241,6 +247,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] password: The password of the DB instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
         :param pulumi.Input[float] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
         :param pulumi.Input[str] private_ip: Set the instance's private IP.
+        :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[list] security_ips: Set the instance's IP whitelist of the default security group.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
@@ -274,6 +281,7 @@ class Instance(pulumi.CustomResource):
         __props__["password"] = password
         __props__["period"] = period
         __props__["private_ip"] = private_ip
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_group_id"] = security_group_id
         __props__["security_ips"] = security_ips
         __props__["tags"] = tags

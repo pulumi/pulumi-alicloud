@@ -257,6 +257,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_kubernetes_autoscaler": {Tok: resource(csMod, "KubernetesAutoscaler")},
 			"alicloud_cs_managed_kubernetes":    {Tok: resource(csMod, "ManagedKubernetes")},
 			"alicloud_cs_serverless_kubernetes": {Tok: resource(csMod, "ServerlessKubernetes")},
+			"alicloud_cr_ee_repo":               {Tok: resource(csMod, "RegistryEnterpriseRepo")},
+			"alicloud_cr_ee_namespace":          {Tok: resource(csMod, "RegistryEnterpriseNamespace")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -272,6 +274,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_db_instance":                        {Tok: resource(rdsMod, "Instance")},
 			"alicloud_db_read_write_splitting_connection": {Tok: resource(rdsMod, "ReadWriteSplittingConnection")},
 			"alicloud_db_readonly_instance":               {Tok: resource(rdsMod, "ReadOnlyInstance")},
+
+			// DDOS
+			"alicloud_ddoscoo_scheduler_rule": {Tok: resource(ddosMod, "SchedulerRule")},
 
 			// DMS
 			"alicloud_dms_enterprise_instance": {Tok: resource(dmsMod, "EnterpriseInstance")},
@@ -391,6 +396,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_logtail_config":     {Tok: resource(logMod, "LogTailConfig")},
 			"alicloud_log_alert":          {Tok: resource(logMod, "Alert")},
 			"alicloud_log_audit":          {Tok: resource(logMod, "Audit")},
+			"alicloud_log_dashboard":      {Tok: resource(logMod, "Dashboard")},
 
 			// Marketplace
 			"alicloud_market_order": {Tok: resource(marketPlaceMod, "Order")},
@@ -624,6 +630,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_kubernetes_clusters":            {Tok: dataSource(csMod, "getKubernetesClusters")},
 			"alicloud_cs_managed_kubernetes_clusters":    {Tok: dataSource(csMod, "getManagedKubernetesClusters")},
 			"alicloud_cs_serverless_kubernetes_clusters": {Tok: dataSource(csMod, "getServerlessKubernetesClusters")},
+			"alicloud_cr_ee_instances":                   {Tok: dataSource(csMod, "getRegistryEnterpriseInstances")},
+			"alicloud_cr_ee_namespaces":                  {Tok: dataSource(csMod, "getRegistryEnterpriseNamespaces")},
 
 			// Dds
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},
@@ -642,6 +650,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_dns_domain_txt_guid":  {Tok: dataSource(dnsMod, "getDomainTxtGuid")},
 			"alicloud_dns_instances":        {Tok: dataSource(dnsMod, "getInstances")},
 			"alicloud_alidns_domain_groups": {Tok: dataSource(dnsMod, "getAlidnsDomainGroups")},
+			"alicloud_alidns_records":       {Tok: dataSource(dnsMod, "getAlidnsRecords")},
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
@@ -701,6 +710,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kms_keys":         {Tok: dataSource(kmsMod, "getKeys")},
 			"alicloud_kms_aliases":      {Tok: dataSource(kmsMod, "getAliases")},
 			"alicloud_kms_key_versions": {Tok: dataSource(kmsMod, "getKeyVersions")},
+			"alicloud_kms_secrets":      {Tok: dataSource(kmsMod, "getSecrets")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},
@@ -767,6 +777,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_folders":         {Tok: dataSource(resourceManagerMod, "getFolders")},
 			"alicloud_resource_manager_resource_groups": {Tok: dataSource(resourceManagerMod, "getResourceGroups")},
 			"alicloud_resource_manager_policy_versions": {Tok: dataSource(resourceManagerMod, "getPolicyVersions")},
+			"alicloud_resource_manager_handshakes":      {Tok: dataSource(resourceManagerMod, "getHandshakes")},
+			"alicloud_resource_manager_accounts":        {Tok: dataSource(resourceManagerMod, "getAccounts")},
+			"alicloud_resource_manager_roles":           {Tok: dataSource(resourceManagerMod, "getRoles")},
+			"alicloud_resource_manager_policies":        {Tok: dataSource(resourceManagerMod, "getPolicies")},
+			"alicloud_resource_manager_resource_directories": {
+				Tok: dataSource(resourceManagerMod, "getResourceDirectories"),
+			},
 
 			// RocketMq
 			"alicloud_ons_groups":    {Tok: dataSource(rocketMqMod, "getGroups")},
@@ -815,6 +832,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Adb
 			"alicloud_adb_clusters": {Tok: dataSource(adbMod, "getClusters")},
 			"alicloud_adb_zones":    {Tok: dataSource(adbMod, "getZones")},
+
+			// Waf
+			"alicloud_waf_domains": {Tok: dataSource(wafMod, "getDomains")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

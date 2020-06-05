@@ -136,6 +136,195 @@ func (o GetAlidnsDomainGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetAlidn
 	}).(GetAlidnsDomainGroupsGroupOutput)
 }
 
+type GetAlidnsRecordsRecord struct {
+	// The domain name associated to the records.
+	DomainName string `pulumi:"domainName"`
+	// ID of the resource.
+	Id string `pulumi:"id"`
+	// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	Line string `pulumi:"line"`
+	// Indicates whether the record is locked.
+	Locked bool `pulumi:"locked"`
+	// Priority of the `MX` record.
+	Priority int `pulumi:"priority"`
+	// ID of the record.
+	RecordId string `pulumi:"recordId"`
+	// Host record of the domain.
+	Rr string `pulumi:"rr"`
+	// Record status. Valid values: `ENABLE` and `DISABLE`.
+	Status string `pulumi:"status"`
+	// TTL of the record.
+	Ttl int `pulumi:"ttl"`
+	// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+	Type string `pulumi:"type"`
+	// Host record value of the domain.
+	Value string `pulumi:"value"`
+}
+
+// GetAlidnsRecordsRecordInput is an input type that accepts GetAlidnsRecordsRecordArgs and GetAlidnsRecordsRecordOutput values.
+// You can construct a concrete instance of `GetAlidnsRecordsRecordInput` via:
+//
+// 		 GetAlidnsRecordsRecordArgs{...}
+//
+type GetAlidnsRecordsRecordInput interface {
+	pulumi.Input
+
+	ToGetAlidnsRecordsRecordOutput() GetAlidnsRecordsRecordOutput
+	ToGetAlidnsRecordsRecordOutputWithContext(context.Context) GetAlidnsRecordsRecordOutput
+}
+
+type GetAlidnsRecordsRecordArgs struct {
+	// The domain name associated to the records.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// ID of the resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	Line pulumi.StringInput `pulumi:"line"`
+	// Indicates whether the record is locked.
+	Locked pulumi.BoolInput `pulumi:"locked"`
+	// Priority of the `MX` record.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// ID of the record.
+	RecordId pulumi.StringInput `pulumi:"recordId"`
+	// Host record of the domain.
+	Rr pulumi.StringInput `pulumi:"rr"`
+	// Record status. Valid values: `ENABLE` and `DISABLE`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// TTL of the record.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+	Type pulumi.StringInput `pulumi:"type"`
+	// Host record value of the domain.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlidnsRecordsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsRecordsRecord)(nil)).Elem()
+}
+
+func (i GetAlidnsRecordsRecordArgs) ToGetAlidnsRecordsRecordOutput() GetAlidnsRecordsRecordOutput {
+	return i.ToGetAlidnsRecordsRecordOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsRecordsRecordArgs) ToGetAlidnsRecordsRecordOutputWithContext(ctx context.Context) GetAlidnsRecordsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsRecordsRecordOutput)
+}
+
+// GetAlidnsRecordsRecordArrayInput is an input type that accepts GetAlidnsRecordsRecordArray and GetAlidnsRecordsRecordArrayOutput values.
+// You can construct a concrete instance of `GetAlidnsRecordsRecordArrayInput` via:
+//
+// 		 GetAlidnsRecordsRecordArray{ GetAlidnsRecordsRecordArgs{...} }
+//
+type GetAlidnsRecordsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetAlidnsRecordsRecordArrayOutput() GetAlidnsRecordsRecordArrayOutput
+	ToGetAlidnsRecordsRecordArrayOutputWithContext(context.Context) GetAlidnsRecordsRecordArrayOutput
+}
+
+type GetAlidnsRecordsRecordArray []GetAlidnsRecordsRecordInput
+
+func (GetAlidnsRecordsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsRecordsRecord)(nil)).Elem()
+}
+
+func (i GetAlidnsRecordsRecordArray) ToGetAlidnsRecordsRecordArrayOutput() GetAlidnsRecordsRecordArrayOutput {
+	return i.ToGetAlidnsRecordsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlidnsRecordsRecordArray) ToGetAlidnsRecordsRecordArrayOutputWithContext(ctx context.Context) GetAlidnsRecordsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlidnsRecordsRecordArrayOutput)
+}
+
+type GetAlidnsRecordsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsRecordsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlidnsRecordsRecord)(nil)).Elem()
+}
+
+func (o GetAlidnsRecordsRecordOutput) ToGetAlidnsRecordsRecordOutput() GetAlidnsRecordsRecordOutput {
+	return o
+}
+
+func (o GetAlidnsRecordsRecordOutput) ToGetAlidnsRecordsRecordOutputWithContext(ctx context.Context) GetAlidnsRecordsRecordOutput {
+	return o
+}
+
+// The domain name associated to the records.
+func (o GetAlidnsRecordsRecordOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// ID of the resource.
+func (o GetAlidnsRecordsRecordOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+func (o GetAlidnsRecordsRecordOutput) Line() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
+}
+
+// Indicates whether the record is locked.
+func (o GetAlidnsRecordsRecordOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// Priority of the `MX` record.
+func (o GetAlidnsRecordsRecordOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// ID of the record.
+func (o GetAlidnsRecordsRecordOutput) RecordId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.RecordId }).(pulumi.StringOutput)
+}
+
+// Host record of the domain.
+func (o GetAlidnsRecordsRecordOutput) Rr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Rr }).(pulumi.StringOutput)
+}
+
+// Record status. Valid values: `ENABLE` and `DISABLE`.
+func (o GetAlidnsRecordsRecordOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// TTL of the record.
+func (o GetAlidnsRecordsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+func (o GetAlidnsRecordsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Host record value of the domain.
+func (o GetAlidnsRecordsRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlidnsRecordsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlidnsRecordsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlidnsRecordsRecord)(nil)).Elem()
+}
+
+func (o GetAlidnsRecordsRecordArrayOutput) ToGetAlidnsRecordsRecordArrayOutput() GetAlidnsRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetAlidnsRecordsRecordArrayOutput) ToGetAlidnsRecordsRecordArrayOutputWithContext(ctx context.Context) GetAlidnsRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetAlidnsRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetAlidnsRecordsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlidnsRecordsRecord {
+		return vs[0].([]GetAlidnsRecordsRecord)[vs[1].(int)]
+	}).(GetAlidnsRecordsRecordOutput)
+}
+
 type GetDomainGroupsGroup struct {
 	GroupId   string `pulumi:"groupId"`
 	GroupName string `pulumi:"groupName"`
@@ -1108,6 +1297,8 @@ func (o GetResolutionLinesLineArrayOutput) Index(i pulumi.IntInput) GetResolutio
 func init() {
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAlidnsDomainGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetAlidnsRecordsRecordOutput{})
+	pulumi.RegisterOutputType(GetAlidnsRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDomainGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainRecordsRecordOutput{})

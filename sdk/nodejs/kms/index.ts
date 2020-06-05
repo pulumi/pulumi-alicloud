@@ -9,6 +9,7 @@ export * from "./getCiphertext";
 export * from "./getKeyVersions";
 export * from "./getKeys";
 export * from "./getPlaintext";
+export * from "./getSecrets";
 export * from "./key";
 export * from "./keyVersion";
 export * from "./secret";

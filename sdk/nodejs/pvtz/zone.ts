@@ -55,6 +55,10 @@ export class Zone extends pulumi.CustomResource {
      * The remark of the Private Zone.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
+    /**
+     * The Id of resource group which the Private Zone belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The IP address of the client.
@@ -80,6 +84,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["proxyPattern"] = state ? state.proxyPattern : undefined;
             inputs["recordCount"] = state ? state.recordCount : undefined;
             inputs["remark"] = state ? state.remark : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["userClientIp"] = state ? state.userClientIp : undefined;
         } else {
@@ -88,6 +93,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["proxyPattern"] = args ? args.proxyPattern : undefined;
             inputs["remark"] = args ? args.remark : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["userClientIp"] = args ? args.userClientIp : undefined;
             inputs["creationTime"] = undefined /*out*/;
             inputs["isPtr"] = undefined /*out*/;
@@ -133,6 +139,10 @@ export interface ZoneState {
      * The remark of the Private Zone.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the Private Zone belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
     /**
      * The IP address of the client.
@@ -162,6 +172,10 @@ export interface ZoneArgs {
      * The remark of the Private Zone.
      */
     readonly remark?: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the Private Zone belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The IP address of the client.
      */

@@ -78,10 +78,10 @@ export class ScalingGroup extends pulumi.CustomResource {
     public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-     * - OldestInstance: removes the first ECS instance attached to the scaling group.
-     * - NewestInstance: removes the first ECS instance attached to the scaling group.
-     * - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-     * - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+     * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+     * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+     * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+     * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
     public readonly removalPolicies!: pulumi.Output<string[]>;
     /**
@@ -216,10 +216,10 @@ export interface ScalingGroupState {
     readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-     * - OldestInstance: removes the first ECS instance attached to the scaling group.
-     * - NewestInstance: removes the first ECS instance attached to the scaling group.
-     * - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-     * - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+     * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+     * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+     * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+     * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
     readonly removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -294,10 +294,10 @@ export interface ScalingGroupArgs {
     readonly onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-     * - OldestInstance: removes the first ECS instance attached to the scaling group.
-     * - NewestInstance: removes the first ECS instance attached to the scaling group.
-     * - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-     * - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+     * - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+     * - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+     * - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+     * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
     readonly removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**

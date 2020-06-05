@@ -140,6 +140,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateIp!: pulumi.Output<string>;
     /**
+     * The ID of resource group which the resource belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * The Security Group ID of ECS.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
@@ -190,6 +194,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["password"] = state ? state.password : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["privateIp"] = state ? state.privateIp : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -217,6 +222,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["privateIp"] = args ? args.privateIp : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -309,6 +315,10 @@ export interface InstanceState {
      */
     readonly privateIp?: pulumi.Input<string>;
     /**
+     * The ID of resource group which the resource belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * The Security Group ID of ECS.
      */
     readonly securityGroupId?: pulumi.Input<string>;
@@ -399,6 +409,10 @@ export interface InstanceArgs {
      * Set the instance's private IP.
      */
     readonly privateIp?: pulumi.Input<string>;
+    /**
+     * The ID of resource group which the resource belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * The Security Group ID of ECS.
      */

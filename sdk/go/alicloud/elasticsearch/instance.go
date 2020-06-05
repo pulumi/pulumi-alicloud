@@ -20,6 +20,8 @@ type Instance struct {
 
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntOutput `pulumi:"dataNodeAmount"`
+	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+	DataNodeDiskEncrypted pulumi.BoolPtrOutput `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -32,7 +34,7 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Instance connection domain (only VPC network access supported).
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
@@ -55,6 +57,8 @@ type Instance struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
 	PublicWhitelists  pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
+	// The Id of resource group which the Elasticsearch instance belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -117,6 +121,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount *int `pulumi:"dataNodeAmount"`
+	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -129,7 +135,7 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Instance connection domain (only VPC network access supported).
 	Domain *string `pulumi:"domain"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain *string `pulumi:"kibanaDomain"`
@@ -152,6 +158,8 @@ type instanceState struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	PublicWhitelists  []string `pulumi:"publicWhitelists"`
+	// The Id of resource group which the Elasticsearch instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -169,6 +177,8 @@ type instanceState struct {
 type InstanceState struct {
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntPtrInput
+	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -181,7 +191,7 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Instance connection domain (only VPC network access supported).
 	Domain pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrInput
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringPtrInput
@@ -204,6 +214,8 @@ type InstanceState struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
 	PublicWhitelists  pulumi.StringArrayInput
+	// The Id of resource group which the Elasticsearch instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -225,6 +237,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount int `pulumi:"dataNodeAmount"`
+	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+	DataNodeDiskEncrypted *bool `pulumi:"dataNodeDiskEncrypted"`
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -235,7 +249,7 @@ type instanceArgs struct {
 	DataNodeSpec string `pulumi:"dataNodeSpec"`
 	// The description of instance. It a string of 0 to 30 characters.
 	Description *string `pulumi:"description"`
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
@@ -252,6 +266,8 @@ type instanceArgs struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
 	PublicWhitelists  []string `pulumi:"publicWhitelists"`
+	// The Id of resource group which the Elasticsearch instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.
@@ -268,6 +284,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The Elasticsearch cluster's data node quantity, between 2 and 50.
 	DataNodeAmount pulumi.IntInput
+	// If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+	DataNodeDiskEncrypted pulumi.BoolPtrInput
 	// The single data node storage space.
 	// - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
 	// - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -278,7 +296,7 @@ type InstanceArgs struct {
 	DataNodeSpec pulumi.StringInput
 	// The description of instance. It a string of 0 to 30 characters.
 	Description pulumi.StringPtrInput
-	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
@@ -295,6 +313,8 @@ type InstanceArgs struct {
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
 	PublicWhitelists  pulumi.StringArrayInput
+	// The Id of resource group which the Elasticsearch instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
 	// - value: It can be up to 128 characters in length. It cannot contain "http://" and "https://". It can be a null string.

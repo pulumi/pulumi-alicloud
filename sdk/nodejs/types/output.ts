@@ -1409,6 +1409,72 @@ export namespace cs {
         privateIp: string;
     }
 
+    export interface GetRegistryEnterpriseInstancesInstance {
+        /**
+         * ID of Container Registry Enterprise Edition instance.
+         */
+        id: string;
+        /**
+         * Name of Container Registry Enterprise Edition instance.
+         */
+        name: string;
+        /**
+         * The max number of namespaces that an instance can create.
+         */
+        namespaceQuota: string;
+        /**
+         * The number of namespaces already created.
+         */
+        namespaceUsage: string;
+        /**
+         * A list of domains for access on internet network.
+         */
+        publicEndpoints: string[];
+        /**
+         * Region of Container Registry Enterprise Edition instance.
+         */
+        region: string;
+        /**
+         * The max number of repos that an instance can create.
+         */
+        repoQuota: string;
+        /**
+         * The number of repos already created.
+         */
+        repoUsage: string;
+        /**
+         * Specification of Container Registry Enterprise Edition instance.
+         */
+        specification: string;
+        /**
+         * A list of domains for access on vpc network.
+         */
+        vpcEndpoints: string[];
+    }
+
+    export interface GetRegistryEnterpriseNamespacesNamespace {
+        /**
+         * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
+         */
+        autoCreate: boolean;
+        /**
+         * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
+         */
+        defaultVisibility: string;
+        /**
+         * ID of Container Registry Enterprise Edition namespace.
+         */
+        id: string;
+        /**
+         * ID of Container Registry Enterprise Edition instance.
+         */
+        instanceId: string;
+        /**
+         * Name of Container Registry Enterprise Edition namespace.
+         */
+        name: string;
+    }
+
     export interface GetServerlessKubernetesClustersCluster {
         /**
          * Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
@@ -1654,6 +1720,15 @@ export namespace ddos {
          */
         serviceBandwidth: number;
     }
+
+    export interface SchedulerRuleRule {
+        priority?: number;
+        regionId?: string;
+        status: number;
+        type?: string;
+        value?: string;
+        valueType?: number;
+    }
 }
 
 export namespace dds {
@@ -1711,6 +1786,53 @@ export namespace dns {
          * Id of the instance.
          */
         id: string;
+    }
+
+    export interface GetAlidnsRecordsRecord {
+        /**
+         * The domain name associated to the records. 
+         */
+        domainName: string;
+        /**
+         * ID of the resource.
+         */
+        id: string;
+        /**
+         * ISP line. Valid values: `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) 
+         */
+        line: string;
+        /**
+         * Indicates whether the record is locked.
+         */
+        locked: boolean;
+        /**
+         * Priority of the `MX` record.
+         */
+        priority: number;
+        /**
+         * ID of the record.
+         */
+        recordId: string;
+        /**
+         * Host record of the domain.
+         */
+        rr: string;
+        /**
+         * Record status. Valid values: `ENABLE` and `DISABLE`.
+         */
+        status: string;
+        /**
+         * TTL of the record.
+         */
+        ttl: number;
+        /**
+         * Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
+         */
+        type: string;
+        /**
+         * Host record value of the domain.
+         */
+        value: string;
     }
 
     export interface GetDomainGroupsGroup {
@@ -2649,7 +2771,7 @@ export namespace ecs {
 
     export interface ImageImportDiskDeviceMapping {
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * The name of disk N in the custom image.
          */
         device: string;
         /**
@@ -2664,6 +2786,9 @@ export namespace ecs {
          * Save the exported OSS bucket.
          */
         ossBucket?: string;
+        /**
+         * The file name of your OSS Object.
+         */
         ossObject?: string;
     }
 
@@ -3877,6 +4002,25 @@ export namespace kms {
          * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
          */
         status: string;
+    }
+
+    export interface GetSecretsSecret {
+        /**
+         * ID of the Kms Secret. The value is same as KMS secret_name.
+         */
+        id: string;
+        /**
+         * Schedule deletion time.
+         */
+        plannedDeleteTime: string;
+        /**
+         * Name of the KMS Secret.
+         */
+        secretName: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
     }
 }
 
@@ -5786,6 +5930,45 @@ export namespace rds {
 }
 
 export namespace resourcemanager {
+    export interface GetAccountsAccount {
+        accountId: string;
+        displayName: string;
+        /**
+         * The ID of the folder.
+         */
+        folderId: string;
+        /**
+         * The ID of the resource.
+         * * `accountId`- The ID of the account.
+         * * `displayName`- The name of the member account.
+         */
+        id: string;
+        /**
+         * The way in which the member account joined the resource directory. 
+         */
+        joinMethod: string;
+        /**
+         * The time when the member account joined the resource directory.
+         */
+        joinTime: string;
+        /**
+         * The time when the member account was modified.
+         */
+        modifyTime: string;
+        /**
+         * The ID of the resource directory.
+         */
+        resourceDirectoryId: string;
+        /**
+         * The status of the member account. 
+         */
+        status: string;
+        /**
+         * The type of the member account. 
+         */
+        type: string;
+    }
+
     export interface GetFoldersFolder {
         folderId: string;
         folderName: string;
@@ -5795,6 +5978,85 @@ export namespace resourcemanager {
          * * `folderName`- The name of the folder.
          */
         id: string;
+    }
+
+    export interface GetHandshakesHandshake {
+        /**
+         * The time when the invitation expires.
+         */
+        expireTime: string;
+        handshakeId: string;
+        /**
+         * The ID of the resource.
+         * * `handshakeId`- The ID of the invitation.
+         */
+        id: string;
+        /**
+         * The ID of the master account of the resource directory.
+         */
+        masterAccountId: string;
+        /**
+         * The name of the master account of the resource directory.
+         */
+        masterAccountName: string;
+        /**
+         * The time when the invitation was modified.
+         */
+        modifyTime: string;
+        /**
+         * The invitation note.
+         */
+        note: string;
+        /**
+         * The ID of the resource directory.
+         */
+        resourceDirectoryId: string;
+        /**
+         * The status of the invitation.
+         */
+        status: string;
+        /**
+         * The ID or logon email address of the invited account.
+         */
+        targetEntity: string;
+        /**
+         * The type of the invited account. 
+         */
+        targetType: string;
+    }
+
+    export interface GetPoliciesPolicy {
+        /**
+         * The number of times the policy is referenced.
+         */
+        attachmentCount: number;
+        /**
+         * The time when the policy was created.
+         */
+        createDate: string;
+        /**
+         * The default version of the policy.
+         */
+        defaultVersion: string;
+        /**
+         * The description of the policy.
+         */
+        description: string;
+        /**
+         * The ID of the policy.
+         * * `policyName`- The name of the policy.
+         * * `policyType`- The type of the policy.
+         */
+        id: string;
+        policyName: string;
+        /**
+         * The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
+         */
+        policyType: string;
+        /**
+         * The time when the policy was updated.
+         */
+        updateDate: string;
     }
 
     export interface GetPolicyVersionsVersion {
@@ -5808,6 +6070,25 @@ export namespace resourcemanager {
         id: string;
         isDefaultVersion: boolean;
         versionId: string;
+    }
+
+    export interface GetResourceDirectoriesDirectory {
+        /**
+         * The ID of resource directory.
+         * * `masterAccountId`- The ID of the master account.
+         * * `masterAccountName`- The name of the master account.
+         */
+        id: string;
+        masterAccountId: string;
+        masterAccountName: string;
+        /**
+         * The ID of the resource directory.
+         */
+        resourceDirectoryId: string;
+        /**
+         * The ID of the root folder.
+         */
+        rootFolderId: string;
     }
 
     export interface GetResourceGroupsGroup {
@@ -5835,6 +6116,27 @@ export namespace resourcemanager {
          * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
          */
         status: string;
+    }
+
+    export interface GetRolesRole {
+        arn: string;
+        createDate: string;
+        description: string;
+        /**
+         * The ID of the role.
+         * * `roleId`- The ID of the role.
+         * * `roleName`- The name of the role.
+         * * `arn`- The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * * `createDate`- The time when the RAM role was created.
+         * * `updateDate`- The time when the RAM role was updated.
+         * * `description`- The description of the RAM role.
+         * * `maxSessionDuration`- The maximum session duration of the RAM role.
+         */
+        id: string;
+        maxSessionDuration: number;
+        roleId: string;
+        roleName: string;
+        updateDate: string;
     }
 
     export interface ResourceGroupRegionStatus {
@@ -7252,6 +7554,13 @@ export namespace waf {
     export interface DomainLogHeader {
         key?: string;
         value?: string;
+    }
+
+    export interface GetDomainsDomain {
+        /**
+         * Name of the domain.
+         */
+        domain: string;
     }
 }
 

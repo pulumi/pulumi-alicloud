@@ -245,10 +245,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The instance status.
+        /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         /// </summary>
         [Output("status")]
-        public Output<string> Status { get; private set; } = null!;
+        public Output<string?> Status { get; private set; } = null!;
 
         [Output("subnetId")]
         public Output<string> SubnetId { get; private set; } = null!;
@@ -590,6 +590,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
+        /// <summary>
+        /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
@@ -910,7 +916,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The instance status.
+        /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

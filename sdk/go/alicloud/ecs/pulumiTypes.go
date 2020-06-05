@@ -257,7 +257,7 @@ func (o ImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageDiskDev
 }
 
 type ImageImportDiskDeviceMapping struct {
-	// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+	// The name of disk N in the custom image.
 	Device *string `pulumi:"device"`
 	// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
 	DiskImageSize *int `pulumi:"diskImageSize"`
@@ -265,6 +265,7 @@ type ImageImportDiskDeviceMapping struct {
 	Format *string `pulumi:"format"`
 	// Save the exported OSS bucket.
 	OssBucket *string `pulumi:"ossBucket"`
+	// The file name of your OSS Object.
 	OssObject *string `pulumi:"ossObject"`
 }
 
@@ -281,7 +282,7 @@ type ImageImportDiskDeviceMappingInput interface {
 }
 
 type ImageImportDiskDeviceMappingArgs struct {
-	// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+	// The name of disk N in the custom image.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
 	DiskImageSize pulumi.IntPtrInput `pulumi:"diskImageSize"`
@@ -289,6 +290,7 @@ type ImageImportDiskDeviceMappingArgs struct {
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Save the exported OSS bucket.
 	OssBucket pulumi.StringPtrInput `pulumi:"ossBucket"`
+	// The file name of your OSS Object.
 	OssObject pulumi.StringPtrInput `pulumi:"ossObject"`
 }
 
@@ -344,7 +346,7 @@ func (o ImageImportDiskDeviceMappingOutput) ToImageImportDiskDeviceMappingOutput
 	return o
 }
 
-// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+// The name of disk N in the custom image.
 func (o ImageImportDiskDeviceMappingOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
@@ -364,6 +366,7 @@ func (o ImageImportDiskDeviceMappingOutput) OssBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssBucket }).(pulumi.StringPtrOutput)
 }
 
+// The file name of your OSS Object.
 func (o ImageImportDiskDeviceMappingOutput) OssObject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssObject }).(pulumi.StringPtrOutput)
 }

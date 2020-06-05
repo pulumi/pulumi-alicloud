@@ -406,6 +406,132 @@ func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 	}).(GetKeysKeyOutput)
 }
 
+type GetSecretsSecret struct {
+	// ID of the Kms Secret. The value is same as KMS secret_name.
+	Id string `pulumi:"id"`
+	// Schedule deletion time.
+	PlannedDeleteTime string `pulumi:"plannedDeleteTime"`
+	// Name of the KMS Secret.
+	SecretName string `pulumi:"secretName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+}
+
+// GetSecretsSecretInput is an input type that accepts GetSecretsSecretArgs and GetSecretsSecretOutput values.
+// You can construct a concrete instance of `GetSecretsSecretInput` via:
+//
+// 		 GetSecretsSecretArgs{...}
+//
+type GetSecretsSecretInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretOutput() GetSecretsSecretOutput
+	ToGetSecretsSecretOutputWithContext(context.Context) GetSecretsSecretOutput
+}
+
+type GetSecretsSecretArgs struct {
+	// ID of the Kms Secret. The value is same as KMS secret_name.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Schedule deletion time.
+	PlannedDeleteTime pulumi.StringInput `pulumi:"plannedDeleteTime"`
+	// Name of the KMS Secret.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+}
+
+func (GetSecretsSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecret)(nil)).Elem()
+}
+
+func (i GetSecretsSecretArgs) ToGetSecretsSecretOutput() GetSecretsSecretOutput {
+	return i.ToGetSecretsSecretOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretArgs) ToGetSecretsSecretOutputWithContext(ctx context.Context) GetSecretsSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretOutput)
+}
+
+// GetSecretsSecretArrayInput is an input type that accepts GetSecretsSecretArray and GetSecretsSecretArrayOutput values.
+// You can construct a concrete instance of `GetSecretsSecretArrayInput` via:
+//
+// 		 GetSecretsSecretArray{ GetSecretsSecretArgs{...} }
+//
+type GetSecretsSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput
+	ToGetSecretsSecretArrayOutputWithContext(context.Context) GetSecretsSecretArrayOutput
+}
+
+type GetSecretsSecretArray []GetSecretsSecretInput
+
+func (GetSecretsSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecret)(nil)).Elem()
+}
+
+func (i GetSecretsSecretArray) ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput {
+	return i.ToGetSecretsSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretsSecretArray) ToGetSecretsSecretArrayOutputWithContext(ctx context.Context) GetSecretsSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsSecretArrayOutput)
+}
+
+type GetSecretsSecretOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsSecret)(nil)).Elem()
+}
+
+func (o GetSecretsSecretOutput) ToGetSecretsSecretOutput() GetSecretsSecretOutput {
+	return o
+}
+
+func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.Context) GetSecretsSecretOutput {
+	return o
+}
+
+// ID of the Kms Secret. The value is same as KMS secret_name.
+func (o GetSecretsSecretOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Schedule deletion time.
+func (o GetSecretsSecretOutput) PlannedDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.PlannedDeleteTime }).(pulumi.StringOutput)
+}
+
+// Name of the KMS Secret.
+func (o GetSecretsSecretOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetSecretsSecretOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetSecretsSecret) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+type GetSecretsSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsSecret)(nil)).Elem()
+}
+
+func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutput() GetSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretArrayOutput) ToGetSecretsSecretArrayOutputWithContext(ctx context.Context) GetSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretsSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretsSecret {
+		return vs[0].([]GetSecretsSecret)[vs[1].(int)]
+	}).(GetSecretsSecretOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetAliasesAliasOutput{})
 	pulumi.RegisterOutputType(GetAliasesAliasArrayOutput{})
@@ -413,4 +539,6 @@ func init() {
 	pulumi.RegisterOutputType(GetKeyVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretOutput{})
+	pulumi.RegisterOutputType(GetSecretsSecretArrayOutput{})
 }

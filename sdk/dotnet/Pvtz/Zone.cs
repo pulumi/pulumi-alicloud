@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.Pvtz
         [Output("remark")]
         public Output<string?> Remark { get; private set; } = null!;
 
+        /// <summary>
+        /// The Id of resource group which the Private Zone belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
@@ -131,6 +137,12 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? Remark { get; set; }
 
         /// <summary>
+        /// The Id of resource group which the Private Zone belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The IP address of the client.
         /// </summary>
         [Input("userClientIp")]
@@ -180,6 +192,12 @@ namespace Pulumi.AliCloud.Pvtz
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the Private Zone belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

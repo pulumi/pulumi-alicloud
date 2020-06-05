@@ -56,10 +56,10 @@ class ScalingGroup(pulumi.CustomResource):
     removal_policies: pulumi.Output[list]
     """
     RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-    - OldestInstance: removes the first ECS instance attached to the scaling group.
-    - NewestInstance: removes the first ECS instance attached to the scaling group.
-    - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-    - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+    - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+    - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+    - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+    - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
     """
     scaling_group_name: pulumi.Output[str]
     """
@@ -103,10 +103,10 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[float] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[float] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
         :param pulumi.Input[list] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-               - OldestInstance: removes the first ECS instance attached to the scaling group.
-               - NewestInstance: removes the first ECS instance attached to the scaling group.
-               - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-               - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+               - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+               - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+               - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+               - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[float] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            
@@ -181,10 +181,10 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[float] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[float] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.  
         :param pulumi.Input[list] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
-               - OldestInstance: removes the first ECS instance attached to the scaling group.
-               - NewestInstance: removes the first ECS instance attached to the scaling group.
-               - OldestScalingConfiguration: removes the ECS instance with the oldest scaling configuration.
-               - Default values: OldestScalingConfiguration and OldestInstance. You can enter up to two removal policies.
+               - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
+               - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
+               - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
+               - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         :param pulumi.Input[float] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.            

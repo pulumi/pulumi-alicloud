@@ -74,11 +74,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Output("imageName")]
         public Output<string?> ImageName { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// </summary>
         [Output("licenseType")]
         public Output<string?> LicenseType { get; private set; } = null!;
 
@@ -165,11 +168,14 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
+        /// <summary>
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// </summary>
         [Input("licenseType")]
         public Input<string>? LicenseType { get; set; }
 
@@ -217,11 +223,14 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a capital letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
+        /// <summary>
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// </summary>
         [Input("licenseType")]
         public Input<string>? LicenseType { get; set; }
 

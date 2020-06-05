@@ -7,3 +7,4 @@ from .ddos_bgp_instance import *
 from .ddos_coo_instance import *
 from .get_ddos_bgp_instances import *
 from .get_ddos_coo_instances import *
+from .scheduler_rule import *

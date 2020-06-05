@@ -63,6 +63,8 @@ type Instance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// RDS database connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The ID of resource group which the DB instance belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -176,6 +178,8 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// RDS database connection port.
 	Port *string `pulumi:"port"`
+	// The ID of resource group which the DB instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -250,6 +254,8 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// RDS database connection port.
 	Port pulumi.StringPtrInput
+	// The ID of resource group which the DB instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -324,6 +330,8 @@ type instanceArgs struct {
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period *int `pulumi:"period"`
+	// The ID of resource group which the DB instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -395,6 +403,8 @@ type InstanceArgs struct {
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1.
 	Period pulumi.IntPtrInput
+	// The ID of resource group which the DB instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
 	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.

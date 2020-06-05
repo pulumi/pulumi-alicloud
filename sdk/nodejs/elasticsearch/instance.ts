@@ -69,6 +69,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dataNodeAmount!: pulumi.Output<number>;
     /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    public readonly dataNodeDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -91,7 +95,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly domain!: pulumi.Output<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -136,6 +140,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly privateWhitelists!: pulumi.Output<string[]>;
     public readonly publicWhitelists!: pulumi.Output<string[]>;
     /**
+     * The Id of resource group which the Elasticsearch instance belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -171,6 +179,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["dataNodeAmount"] = state ? state.dataNodeAmount : undefined;
+            inputs["dataNodeDiskEncrypted"] = state ? state.dataNodeDiskEncrypted : undefined;
             inputs["dataNodeDiskSize"] = state ? state.dataNodeDiskSize : undefined;
             inputs["dataNodeDiskType"] = state ? state.dataNodeDiskType : undefined;
             inputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
@@ -188,6 +197,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["port"] = state ? state.port : undefined;
             inputs["privateWhitelists"] = state ? state.privateWhitelists : undefined;
             inputs["publicWhitelists"] = state ? state.publicWhitelists : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -214,6 +224,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             inputs["dataNodeAmount"] = args ? args.dataNodeAmount : undefined;
+            inputs["dataNodeDiskEncrypted"] = args ? args.dataNodeDiskEncrypted : undefined;
             inputs["dataNodeDiskSize"] = args ? args.dataNodeDiskSize : undefined;
             inputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
             inputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
@@ -227,6 +238,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["privateWhitelists"] = args ? args.privateWhitelists : undefined;
             inputs["publicWhitelists"] = args ? args.publicWhitelists : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -257,6 +269,10 @@ export interface InstanceState {
      */
     readonly dataNodeAmount?: pulumi.Input<number>;
     /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    readonly dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -279,7 +295,7 @@ export interface InstanceState {
      */
     readonly domain?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -324,6 +340,10 @@ export interface InstanceState {
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The Id of resource group which the Elasticsearch instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      */
     readonly status?: pulumi.Input<string>;
@@ -356,6 +376,10 @@ export interface InstanceArgs {
      */
     readonly dataNodeAmount: pulumi.Input<number>;
     /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     */
+    readonly dataNodeDiskEncrypted?: pulumi.Input<boolean>;
+    /**
      * The single data node storage space.
      * - `cloudSsd`: An SSD disk, supports a maximum of 2048 GiB (2 TB).
      * - `cloudEfficiency` An ultra disk, supports a maximum of 5120 GiB (5 TB). If the data to be stored is larger than 2048 GiB, an ultra disk can only support the following data sizes (GiB): [`2560`, `3072`, `3584`, `4096`, `4608`, `5120`].
@@ -374,7 +398,7 @@ export interface InstanceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
+     * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
     /**
@@ -406,6 +430,10 @@ export interface InstanceArgs {
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Id of resource group which the Elasticsearch instance belongs.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource. 
      * - key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:". It cannot contain "http://" and "https://". It cannot be a null string.
