@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.Dns
     ///     {
     ///         var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new AliCloud.Ddos.DdosBgpInstanceArgs
     ///         {
-    ///             Bandwidth = "201",
-    ///             BaseBandwidth = "20",
-    ///             IpCount = "100",
+    ///             Bandwidth = 201,
+    ///             BaseBandwidth = 20,
+    ///             IpCount = 100,
     ///             IpType = "IPv4",
     ///         });
     ///     }

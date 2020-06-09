@@ -58,6 +58,10 @@ export interface GetAttachmentsArgs {
  * A collection of values returned by getAttachments.
  */
 export interface GetAttachmentsResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly instanceIds?: string[];
     readonly loadBalancerId: string;
     readonly outputFile?: string;
@@ -65,8 +69,4 @@ export interface GetAttachmentsResult {
      * A list of SLB attachments. Each element contains the following attributes:
      */
     readonly slbAttachments: outputs.slb.GetAttachmentsSlbAttachment[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

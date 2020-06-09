@@ -74,6 +74,10 @@ export interface GetMainVersionsResult {
      */
     readonly emrVersion?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of emr instance types IDs. 
      */
     readonly ids: string[];
@@ -82,8 +86,4 @@ export interface GetMainVersionsResult {
      */
     readonly mainVersions: outputs.emr.GetMainVersionsMainVersion[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

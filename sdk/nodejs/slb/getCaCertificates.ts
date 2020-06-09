@@ -72,6 +72,10 @@ export interface GetCaCertificatesResult {
      */
     readonly certificates: outputs.slb.GetCaCertificatesCertificate[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB ca certificates IDs.
      */
     readonly ids: string[];
@@ -89,8 +93,4 @@ export interface GetCaCertificatesResult {
      * (Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

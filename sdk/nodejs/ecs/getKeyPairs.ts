@@ -80,6 +80,10 @@ export interface GetKeyPairsResult {
      * Finger print of the key pair.
      */
     readonly fingerPrint: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ids: string[];
     /**
      * A list of key pairs. Each element contains the following attributes:
@@ -99,8 +103,4 @@ export interface GetKeyPairsResult {
      * (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -69,6 +69,10 @@ export interface GetAppsResult {
      */
     readonly apps: outputs.apigateway.GetAppsApp[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of app IDs. 
      */
     readonly ids: string[];
@@ -79,8 +83,4 @@ export interface GetAppsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

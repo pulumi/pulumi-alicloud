@@ -94,6 +94,10 @@ export interface GetSecurityGroupsResult {
      */
     readonly groups: outputs.ecs.GetSecurityGroupsGroup[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of Security Group IDs.
      */
     readonly ids: string[];
@@ -115,8 +119,4 @@ export interface GetSecurityGroupsResult {
      * The ID of the VPC that owns the security group.
      */
     readonly vpcId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

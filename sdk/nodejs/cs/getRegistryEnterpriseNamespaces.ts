@@ -69,6 +69,10 @@ export interface GetRegistryEnterpriseNamespacesArgs {
  */
 export interface GetRegistryEnterpriseNamespacesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of matched Container Registry Enterprise Edition namespaces. Its element is a namespace uuid.
      */
     readonly ids: string[];
@@ -86,8 +90,4 @@ export interface GetRegistryEnterpriseNamespacesResult {
      */
     readonly namespaces: outputs.cs.GetRegistryEnterpriseNamespacesNamespace[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

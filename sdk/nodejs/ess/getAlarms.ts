@@ -81,6 +81,10 @@ export interface GetAlarmsResult {
      */
     readonly alarms: outputs.ess.GetAlarmsAlarm[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of alarm ids.
      */
     readonly ids: string[];
@@ -98,8 +102,4 @@ export interface GetAlarmsResult {
      * The scaling group associated with this alarm.
      */
     readonly scalingGroupId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

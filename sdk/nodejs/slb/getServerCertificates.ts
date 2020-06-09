@@ -72,6 +72,10 @@ export interface GetServerCertificatesResult {
      */
     readonly certificates: outputs.slb.GetServerCertificatesCertificate[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB server certificates IDs.
      */
     readonly ids: string[];
@@ -89,8 +93,4 @@ export interface GetServerCertificatesResult {
      * (Available in v1.66.0+) A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -51,6 +51,7 @@ export interface GetEipsArgs {
     readonly ids?: string[];
     /**
      * Deprecated since the version 1.8.0 of this provider.
+     *
      * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
      */
     readonly inUse?: boolean;
@@ -78,9 +79,16 @@ export interface GetEipsResult {
      */
     readonly eips: outputs.ecs.GetEipsEip[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of EIP IDs.
      */
     readonly ids: string[];
+    /**
+     * @deprecated Field 'in_use' has been deprecated from provider version 1.8.0.
+     */
     readonly inUse?: boolean;
     readonly ipAddresses?: string[];
     /**
@@ -93,8 +101,4 @@ export interface GetEipsResult {
      */
     readonly resourceGroupId?: string;
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -59,12 +59,12 @@ export interface GetHandshakesResult {
      */
     readonly handshakes: outputs.resourcemanager.GetHandshakesHandshake[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of Resource Manager Handshake IDs.
      */
     readonly ids: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

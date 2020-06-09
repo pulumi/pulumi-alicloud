@@ -296,6 +296,9 @@ class Instance(pulumi.CustomResource):
             __props__['parameters'] = parameters
             __props__['period'] = period
             __props__['resource_group_id'] = resource_group_id
+            if security_group_id is not None:
+                warnings.warn("Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.", DeprecationWarning)
+                pulumi.log.warn("security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.")
             __props__['security_group_id'] = security_group_id
             __props__['security_group_ids'] = security_group_ids
             __props__['security_ip_mode'] = security_ip_mode

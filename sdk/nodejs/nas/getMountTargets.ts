@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -64,6 +65,7 @@ export interface GetMountTargetsArgs {
     readonly ids?: string[];
     /**
      * Filter results by a specific MountTargetDomain.
+     *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
@@ -92,12 +94,17 @@ export interface GetMountTargetsResult {
     readonly accessGroupName?: string;
     readonly fileSystemId: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of MountTargetDomain.
      */
     readonly ids: string[];
     /**
      * MountTargetDomain of the MountTarget.
      * * `type`- NetworkType of The MountTarget.
+     *
      * @deprecated Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.
      */
     readonly mountTargetDomain?: string;
@@ -115,8 +122,4 @@ export interface GetMountTargetsResult {
      * VSwitchId of The MountTarget.
      */
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Dns
     ///             Bandwidth = "30",
     ///             BaseBandwidth = "30",
     ///             DomainCount = "50",
-    ///             Period = "1",
+    ///             Period = 1,
     ///             PortCount = "50",
     ///             ServiceBandwidth = "100",
     ///         });

@@ -69,12 +69,12 @@ export interface GetCustomerGatewaysResult {
      * A list of VPN customer gateways. Each element contains the following attributes:
      */
     readonly gateways: outputs.vpn.GetCustomerGatewaysGateway[];
-    readonly ids: string[];
-    readonly nameRegex?: string;
-    readonly names: string[];
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
+    readonly nameRegex?: string;
+    readonly names: string[];
+    readonly outputFile?: string;
 }

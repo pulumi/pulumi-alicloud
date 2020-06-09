@@ -135,6 +135,10 @@ export interface GetRouteEntriesResult {
      */
     readonly entries: outputs.vpc.GetRouteEntriesEntry[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The instance ID of the next hop.
      */
     readonly instanceId?: string;
@@ -147,8 +151,4 @@ export interface GetRouteEntriesResult {
      * The type of the route entry.
      */
     readonly type?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -87,6 +87,10 @@ export interface GetInstanceEnginesResult {
      * DB Instance version.
      */
     readonly engineVersion?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly instanceChargeType?: string;
     /**
      * A list of Rds available resource. Each element contains the following attributes:
@@ -95,8 +99,4 @@ export interface GetInstanceEnginesResult {
     readonly multiZone?: boolean;
     readonly outputFile?: string;
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

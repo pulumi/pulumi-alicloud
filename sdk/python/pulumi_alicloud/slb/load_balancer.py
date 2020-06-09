@@ -129,6 +129,9 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['bandwidth'] = bandwidth
             __props__['delete_protection'] = delete_protection
             __props__['instance_charge_type'] = instance_charge_type
+            if internet is not None:
+                warnings.warn("Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.", DeprecationWarning)
+                pulumi.log.warn("internet is deprecated: Field 'internet' has been deprecated from provider version 1.55.3. Use 'address_type' replaces it.")
             __props__['internet'] = internet
             __props__['internet_charge_type'] = internet_charge_type
             __props__['master_zone_id'] = master_zone_id

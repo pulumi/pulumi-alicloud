@@ -65,6 +65,10 @@ export interface GetZoneRecordsArgs {
  */
 export interface GetZoneRecordsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of Private Zone Record IDs.
      */
     readonly ids: string[];
@@ -75,8 +79,4 @@ export interface GetZoneRecordsResult {
      */
     readonly records: outputs.pvtz.GetZoneRecordsRecord[];
     readonly zoneId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -86,6 +86,10 @@ export interface GetInstancesResult {
      */
     readonly availabilityZone?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The ids list of MongoDB instances
      */
     readonly ids: string[];
@@ -108,8 +112,4 @@ export interface GetInstancesResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

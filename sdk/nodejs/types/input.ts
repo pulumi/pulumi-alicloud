@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface ProviderAssumeRole {
     policy?: pulumi.Input<string>;
@@ -59,7 +60,6 @@ export interface ProviderEndpoint {
     vpc?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
 }
-
 export namespace actiontrail {
 }
 
@@ -229,6 +229,7 @@ export namespace apigateway {
          */
         nameService: pulumi.Input<string>;
     }
+
 }
 
 export namespace cas {
@@ -412,6 +413,9 @@ export namespace cms {
         city: pulumi.Input<string>;
         isp: pulumi.Input<string>;
     }
+}
+
+export namespace config {
 }
 
 export namespace cr {
@@ -845,12 +849,16 @@ export namespace emr {
          */
         sysDiskType?: pulumi.Input<string>;
     }
+
 }
 
 export namespace ess {
     export interface ScalingConfigurationDataDisk {
         category?: pulumi.Input<string>;
         deleteWithInstance?: pulumi.Input<boolean>;
+        /**
+         * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+         */
         device?: pulumi.Input<string>;
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
@@ -1083,7 +1091,7 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * 
+         *
          * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
@@ -1213,6 +1221,7 @@ export namespace oss {
          */
         indexDocument: pulumi.Input<string>;
     }
+
 }
 
 export namespace ots {
@@ -1233,6 +1242,7 @@ export namespace polardb {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;
     }
+
 }
 
 export namespace pvtz {
@@ -1477,6 +1487,7 @@ export namespace vpn {
          */
         ipsecPfs?: pulumi.Input<string>;
     }
+
 }
 
 export namespace waf {
@@ -1484,7 +1495,9 @@ export namespace waf {
         key?: pulumi.Input<string>;
         value?: pulumi.Input<string>;
     }
+
 }
 
 export namespace yundun {
 }
+

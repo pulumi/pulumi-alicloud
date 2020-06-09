@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -61,12 +62,12 @@ export interface GetProductArgs {
 export interface GetProductResult {
     readonly availableRegion?: string;
     /**
-     * A product. It contains the following attributes:
-     */
-    readonly products: outputs.marketplace.GetProductProduct[];
-    readonly productCode: string;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly productCode: string;
+    /**
+     * A product. It contains the following attributes:
+     */
+    readonly products: outputs.marketplace.GetProductProduct[];
 }

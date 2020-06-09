@@ -73,6 +73,10 @@ export interface GetScheduledTasksArgs {
  */
 export interface GetScheduledTasksResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of scheduled task ids.
      */
     readonly ids: string[];
@@ -91,8 +95,4 @@ export interface GetScheduledTasksResult {
      * A list of scheduled tasks. Each element contains the following attributes:
      */
     readonly tasks: outputs.ess.GetScheduledTasksTask[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

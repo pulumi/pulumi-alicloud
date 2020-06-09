@@ -71,6 +71,10 @@ export interface GetRulesArgs {
 export interface GetRulesResult {
     readonly frontendPort: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB listener rules IDs.
      */
     readonly ids: string[];
@@ -85,8 +89,4 @@ export interface GetRulesResult {
      * A list of SLB listener rules. Each element contains the following attributes:
      */
     readonly slbRules: outputs.slb.GetRulesSlbRule[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

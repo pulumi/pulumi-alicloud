@@ -59,12 +59,12 @@ export interface GetAccountsResult {
      */
     readonly accounts: outputs.resourcemanager.GetAccountsAccount[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of account IDs.
      */
     readonly ids: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

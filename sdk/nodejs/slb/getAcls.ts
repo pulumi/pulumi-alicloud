@@ -88,6 +88,10 @@ export interface GetAclsResult {
      */
     readonly acls: outputs.slb.GetAclsAcl[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB acls IDs.
      */
     readonly ids: string[];
@@ -105,8 +109,4 @@ export interface GetAclsResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

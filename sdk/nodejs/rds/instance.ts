@@ -86,6 +86,7 @@ export class Instance extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceState, opts?: pulumi.CustomResourceOptions): Instance {
         return new Instance(name, <any>state, { ...opts, id: id });
@@ -192,6 +193,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     *
+     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -414,6 +417,7 @@ export interface InstanceState {
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;
@@ -538,6 +542,7 @@ export interface InstanceArgs {
     readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     readonly securityGroupId?: pulumi.Input<string>;

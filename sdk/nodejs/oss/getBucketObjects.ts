@@ -65,6 +65,10 @@ export interface GetBucketObjectsArgs {
  */
 export interface GetBucketObjectsResult {
     readonly bucketName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly keyPrefix?: string;
     readonly keyRegex?: string;
     /**
@@ -72,8 +76,4 @@ export interface GetBucketObjectsResult {
      */
     readonly objects: outputs.oss.GetBucketObjectsObject[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

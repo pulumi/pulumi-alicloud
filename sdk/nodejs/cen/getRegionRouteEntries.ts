@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -62,11 +63,11 @@ export interface GetRegionRouteEntriesResult {
      * A list of CEN Route Entries. Each element contains the following attributes:
      */
     readonly entries: outputs.cen.GetRegionRouteEntriesEntry[];
-    readonly instanceId: string;
-    readonly outputFile?: string;
-    readonly regionId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceId: string;
+    readonly outputFile?: string;
+    readonly regionId: string;
 }

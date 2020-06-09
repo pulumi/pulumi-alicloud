@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Kms
     ///         {
     ///             Description = "Hello KMS",
     ///             KeyState = "Enabled",
-    ///             PendingWindowInDays = "7",
+    ///             PendingWindowInDays = 7,
     ///         });
     ///     }
     /// 

@@ -49,9 +49,9 @@ namespace Pulumi.AliCloud.Rds
     ///             EngineVersion = "5.6",
     ///             InstanceChargeType = "Postpaid",
     ///             InstanceName = name,
-    ///             InstanceStorage = "30",
+    ///             InstanceStorage = 30,
     ///             InstanceType = "rds.mysql.s2.large",
-    ///             MonitoringPeriod = "60",
+    ///             MonitoringPeriod = 60,
     ///             VswitchId = defaultSwitch.Id,
     ///         });
     ///     }

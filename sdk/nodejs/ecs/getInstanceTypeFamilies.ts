@@ -78,6 +78,10 @@ export interface GetInstanceTypeFamiliesResult {
      */
     readonly generation?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of instance type family IDs.
      */
     readonly ids: string[];
@@ -85,8 +89,4 @@ export interface GetInstanceTypeFamiliesResult {
     readonly outputFile?: string;
     readonly spotStrategy?: string;
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

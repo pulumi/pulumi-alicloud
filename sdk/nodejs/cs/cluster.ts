@@ -14,6 +14,7 @@ export class Cluster extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterState, opts?: pulumi.CustomResourceOptions): Cluster {
         return new Cluster(name, <any>state, { ...opts, id: id });
@@ -48,6 +49,9 @@ export class Cluster extends pulumi.CustomResource {
     public readonly password!: pulumi.Output<string>;
     public readonly releaseEip!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     */
     public readonly size!: pulumi.Output<number | undefined>;
     public /*out*/ readonly slbId!: pulumi.Output<string>;
     public /*out*/ readonly vpcId!: pulumi.Output<string>;
@@ -148,6 +152,9 @@ export interface ClusterState {
     readonly password?: pulumi.Input<string>;
     readonly releaseEip?: pulumi.Input<boolean>;
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     */
     readonly size?: pulumi.Input<number>;
     readonly slbId?: pulumi.Input<string>;
     readonly vpcId?: pulumi.Input<string>;
@@ -170,6 +177,9 @@ export interface ClusterArgs {
     readonly nodeNumber?: pulumi.Input<number>;
     readonly password: pulumi.Input<string>;
     readonly releaseEip?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     */
     readonly size?: pulumi.Input<number>;
     readonly vswitchId: pulumi.Input<string>;
 }

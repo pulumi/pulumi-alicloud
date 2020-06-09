@@ -3,6 +3,6 @@
 
 // Export members:
 export * from "./bastionHostInstance";
-export * from "./dBAuditInstance";
+export * from "./dbauditInstance";
 export * from "./getBastionHostInstances";
 export * from "./getDBAuditInstance";

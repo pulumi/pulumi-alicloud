@@ -98,6 +98,10 @@ export interface GetRouterInterfacesArgs {
  */
 export interface GetRouterInterfacesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of router interface IDs.
      */
     readonly ids: string[];
@@ -139,8 +143,4 @@ export interface GetRouterInterfacesResult {
      * Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
      */
     readonly status?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

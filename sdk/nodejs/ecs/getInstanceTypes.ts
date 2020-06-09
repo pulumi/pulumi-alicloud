@@ -127,6 +127,10 @@ export interface GetInstanceTypesResult {
     readonly gpuAmount?: number;
     readonly gpuSpec?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of instance type IDs.
      */
     readonly ids: string[];
@@ -146,8 +150,4 @@ export interface GetInstanceTypesResult {
     readonly outputFile?: string;
     readonly sortedBy?: string;
     readonly spotStrategy?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

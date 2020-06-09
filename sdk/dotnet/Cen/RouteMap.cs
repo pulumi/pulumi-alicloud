@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 vpc01.Id,
     ///             },
-    ///             DestinationInstanceIdsReverseMatch = "false",
+    ///             DestinationInstanceIdsReverseMatch = false,
     ///             DestinationRouteTableIds = 
     ///             {
     ///                 vpc01.RouteTableId,
@@ -96,17 +96,17 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 "65501:1",
     ///             },
-    ///             NextPriority = "1",
+    ///             NextPriority = 1,
     ///             OperateCommunitySets = 
     ///             {
     ///                 "65501:1",
     ///             },
-    ///             Preference = "20",
+    ///             Preference = 20,
     ///             PrependAsPaths = 
     ///             {
     ///                 "65501",
     ///             },
-    ///             Priority = "1",
+    ///             Priority = 1,
     ///             RouteTypes = 
     ///             {
     ///                 "System",
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Cen
     ///             {
     ///                 vpc00.Id,
     ///             },
-    ///             SourceInstanceIdsReverseMatch = "false",
+    ///             SourceInstanceIdsReverseMatch = false,
     ///             SourceRegionIds = 
     ///             {
     ///                 "cn-hangzhou",

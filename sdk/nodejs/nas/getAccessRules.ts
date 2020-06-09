@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -79,6 +80,10 @@ export interface GetAccessRulesArgs {
 export interface GetAccessRulesResult {
     readonly accessGroupName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of rule IDs, Each element set to `accessRuleId` (Each element formats as `<access_group_name>:<access rule id>` before 1.53.0).
      */
     readonly ids: string[];
@@ -99,8 +104,4 @@ export interface GetAccessRulesResult {
      * UserAccess of the AccessRule
      */
     readonly userAccess?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

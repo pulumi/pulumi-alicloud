@@ -14,6 +14,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ManagedKubernetesState, opts?: pulumi.CustomResourceOptions): ManagedKubernetes {
         return new ManagedKubernetes(name, <any>state, { ...opts, id: id });
@@ -127,6 +128,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     */
     public /*out*/ readonly slbId!: pulumi.Output<string>;
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
@@ -422,6 +426,9 @@ export interface ManagedKubernetesState {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     readonly serviceCidr?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     */
     readonly slbId?: pulumi.Input<string>;
     readonly slbInternet?: pulumi.Input<string>;
     /**

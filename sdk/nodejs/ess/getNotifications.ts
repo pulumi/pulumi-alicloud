@@ -61,6 +61,10 @@ export interface GetNotificationsArgs {
  */
 export interface GetNotificationsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of notification ids.
      */
     readonly ids?: string[];
@@ -73,8 +77,4 @@ export interface GetNotificationsResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

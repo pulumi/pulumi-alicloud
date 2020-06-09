@@ -53,9 +53,9 @@ export interface GetAccountAliasesResult {
      * Alias of the account.
      */
     readonly accountAlias: string;
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly outputFile?: string;
 }

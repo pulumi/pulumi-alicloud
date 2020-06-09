@@ -70,6 +70,10 @@ export interface GetMasterSlaveServerGroupsResult {
      */
     readonly groups: outputs.slb.GetMasterSlaveServerGroupsGroup[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB master slave server groups IDs.
      */
     readonly ids: string[];
@@ -80,8 +84,4 @@ export interface GetMasterSlaveServerGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

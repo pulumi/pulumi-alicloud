@@ -75,6 +75,10 @@ export interface GetScalingRulesArgs {
  */
 export interface GetScalingRulesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of scaling rule ids.
      */
     readonly ids: string[];
@@ -96,8 +100,4 @@ export interface GetScalingRulesResult {
      * Type of the scaling rule.
      */
     readonly type?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

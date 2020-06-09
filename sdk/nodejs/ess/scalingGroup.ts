@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class ScalingGroup extends pulumi.CustomResource {
@@ -14,6 +12,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ScalingGroupState, opts?: pulumi.CustomResourceOptions): ScalingGroup {
         return new ScalingGroup(name, <any>state, { ...opts, id: id });
@@ -98,6 +97,8 @@ export class ScalingGroup extends pulumi.CustomResource {
     public readonly spotInstanceRemedy!: pulumi.Output<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     *
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -236,6 +237,7 @@ export interface ScalingGroupState {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;
@@ -314,6 +316,7 @@ export interface ScalingGroupArgs {
     readonly spotInstanceRemedy?: pulumi.Input<boolean>;
     /**
      * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;

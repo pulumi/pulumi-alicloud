@@ -35,6 +35,7 @@ export class DdosBgpInstance extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DdosBgpInstanceState, opts?: pulumi.CustomResourceOptions): DdosBgpInstance {
         return new DdosBgpInstance(name, <any>state, { ...opts, id: id });

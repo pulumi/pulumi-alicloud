@@ -78,6 +78,10 @@ export interface GetPoliciesArgs {
  */
 export interface GetPoliciesResult {
     readonly groupName?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly nameRegex?: string;
     /**
      * A list of ram group names.
@@ -94,8 +98,4 @@ export interface GetPoliciesResult {
      */
     readonly type?: string;
     readonly userName?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

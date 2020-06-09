@@ -128,6 +128,7 @@ export class Listener extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListenerState, opts?: pulumi.CustomResourceOptions): Listener {
         return new Listener(name, <any>state, { ...opts, id: id });
@@ -247,8 +248,17 @@ export class Listener extends pulumi.CustomResource {
      * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      */
     public readonly idleTimeout!: pulumi.Output<number | undefined>;
+    /**
+     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+     */
     public readonly instancePort!: pulumi.Output<number | undefined>;
+    /**
+     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     */
     public readonly lbPort!: pulumi.Output<number | undefined>;
+    /**
+     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     */
     public readonly lbProtocol!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -285,6 +295,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly serverGroupId!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     *
+     * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     public readonly sslCertificateId!: pulumi.Output<string>;
     /**
@@ -533,8 +545,17 @@ export interface ListenerState {
      * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      */
     readonly idleTimeout?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+     */
     readonly instancePort?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     */
     readonly lbPort?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     */
     readonly lbProtocol?: pulumi.Input<string>;
     /**
      * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -571,6 +592,7 @@ export interface ListenerState {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;
@@ -700,8 +722,17 @@ export interface ListenerArgs {
      * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
      */
     readonly idleTimeout?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'instance_port' has been deprecated, and using 'backend_port' to replace.
+     */
     readonly instancePort?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.
+     */
     readonly lbPort?: pulumi.Input<number>;
+    /**
+     * @deprecated Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.
+     */
     readonly lbProtocol?: pulumi.Input<string>;
     /**
      * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
@@ -738,6 +769,7 @@ export interface ListenerArgs {
     readonly serverGroupId?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.59.0 and using `serverCertificateId` instead. 
+     *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     readonly sslCertificateId?: pulumi.Input<string>;

@@ -80,6 +80,10 @@ export interface GetUsersArgs {
 export interface GetUsersResult {
     readonly groupName?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of ram user IDs. 
      */
     readonly ids: string[];
@@ -95,8 +99,4 @@ export interface GetUsersResult {
      * A list of users. Each element contains the following attributes:
      */
     readonly users: outputs.ram.GetUsersUser[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

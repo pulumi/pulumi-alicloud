@@ -98,6 +98,10 @@ export interface GetInstanceTypesResult {
     readonly clusterType: string;
     readonly destinationResource: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of emr instance types IDs. 
      */
     readonly ids: string[];
@@ -114,8 +118,4 @@ export interface GetInstanceTypesResult {
      * The available zone id in Alibaba Cloud account
      */
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

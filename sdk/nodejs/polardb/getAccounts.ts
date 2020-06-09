@@ -67,13 +67,13 @@ export interface GetAccountsResult {
      */
     readonly accounts: outputs.polardb.GetAccountsAccount[];
     readonly dbClusterId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly nameRegex?: string;
     /**
      * Account name of the cluster.
      */
     readonly names: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

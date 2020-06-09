@@ -72,6 +72,10 @@ export interface GetTriggersArgs {
 export interface GetTriggersResult {
     readonly functionName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of FC triggers ids.
      */
     readonly ids: string[];
@@ -86,8 +90,4 @@ export interface GetTriggersResult {
      * A list of FC triggers. Each element contains the following attributes:
      */
     readonly triggers: outputs.fc.GetTriggersTrigger[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

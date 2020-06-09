@@ -156,6 +156,10 @@ export interface GetNetworkInterfacesArgs {
  * A collection of values returned by getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ids: string[];
     /**
      * ID of the instance that the ENI is attached to.
@@ -190,8 +194,4 @@ export interface GetNetworkInterfacesResult {
      * ID of the VSwitch that the ENI is linked to.
      */
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

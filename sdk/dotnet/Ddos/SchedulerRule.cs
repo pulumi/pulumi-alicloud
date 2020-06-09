@@ -34,19 +34,19 @@ namespace Pulumi.AliCloud.Ddos
     ///             {
     ///                 new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
     ///                 {
-    ///                     Priority = "100",
+    ///                     Priority = 100,
     ///                     RegionId = "cn-hangzhou",
     ///                     Type = "A",
     ///                     Value = "170.33.2.125",
-    ///                     ValueType = "3",
+    ///                     ValueType = 3,
     ///                 },
     ///                 new AliCloud.Ddos.Inputs.SchedulerRuleRuleArgs
     ///                 {
-    ///                     Priority = "50",
+    ///                     Priority = 50,
     ///                     RegionId = "cn-hangzhou",
     ///                     Type = "A",
     ///                     Value = "170.33.14.193",
-    ///                     ValueType = "1",
+    ///                     ValueType = 1,
     ///                 },
     ///             },
     ///         });

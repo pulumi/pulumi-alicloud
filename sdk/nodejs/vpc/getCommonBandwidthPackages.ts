@@ -77,6 +77,10 @@ export interface GetCommonBandwidthPackagesArgs {
  */
 export interface GetCommonBandwidthPackagesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of Common Bandwidth Packages IDs.
      */
     readonly ids: string[];
@@ -94,8 +98,4 @@ export interface GetCommonBandwidthPackagesResult {
      * The Id of resource group which the common bandwidth package belongs.
      */
     readonly resourceGroupId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

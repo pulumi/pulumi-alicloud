@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -9,7 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
  *
  * > **NOTE:**  Available in 1.86.0+.
- *
  */
 export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsRecordsResult> {
     if (!opts) {
@@ -122,6 +122,10 @@ export interface GetAlidnsRecordsResult {
     readonly domainName: string;
     readonly groupId?: number;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of record IDs. 
      */
     readonly ids: string[];
@@ -151,8 +155,4 @@ export interface GetAlidnsRecordsResult {
     readonly typeKeyWord?: string;
     readonly valueKeyWord?: string;
     readonly valueRegex?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

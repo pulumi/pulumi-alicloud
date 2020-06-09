@@ -70,6 +70,10 @@ export interface GetReposArgs {
 export interface GetReposResult {
     readonly enableDetails?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of matched Container Registry Repositories. Its element is set to `names`.
      */
     readonly ids: string[];
@@ -87,8 +91,4 @@ export interface GetReposResult {
      * A list of matched Container Registry Namespaces. Each element contains the following attributes:
      */
     readonly repos: outputs.cr.GetReposRepo[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

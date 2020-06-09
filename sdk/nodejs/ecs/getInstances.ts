@@ -114,6 +114,10 @@ export interface GetInstancesResult {
      */
     readonly availabilityZone?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of ECS instance IDs.
      */
     readonly ids: string[];
@@ -155,8 +159,4 @@ export interface GetInstancesResult {
      * ID of the VSwitch the instance belongs to.
      */
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

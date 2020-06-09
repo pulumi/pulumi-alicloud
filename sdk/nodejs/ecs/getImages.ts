@@ -67,6 +67,10 @@ export interface GetImagesArgs {
  */
 export interface GetImagesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of image IDs.
      */
     readonly ids: string[];
@@ -78,8 +82,4 @@ export interface GetImagesResult {
     readonly nameRegex?: string;
     readonly outputFile?: string;
     readonly owners?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

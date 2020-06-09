@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///             DestPortRange = "-1/-1",
     ///             EndTime = "2019-10-26T16:41:33+0800",
     ///             IpProtocol = "ALL",
-    ///             Priority = "1",
+    ///             Priority = 1,
     ///             QosId = defaultQos.Id,
     ///             SourceCidr = "192.168.0.0/24",
     ///             SourcePortRange = "-1/-1",

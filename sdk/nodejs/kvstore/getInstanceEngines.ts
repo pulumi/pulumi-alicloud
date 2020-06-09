@@ -85,6 +85,10 @@ export interface GetInstanceEnginesResult {
      * KVStore Instance version.
      */
     readonly engineVersion?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly instanceChargeType?: string;
     /**
      * A list of KVStore available instance engines. Each element contains the following attributes:
@@ -95,8 +99,4 @@ export interface GetInstanceEnginesResult {
      * The Zone to launch the KVStore instance.
      */
     readonly zoneId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

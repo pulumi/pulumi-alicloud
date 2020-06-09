@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Slb
     ///     {
     ///         var instance = new AliCloud.Slb.LoadBalancer("instance", new AliCloud.Slb.LoadBalancerArgs
     ///         {
-    ///             Internet = "true",
+    ///             Internet = true,
     ///             InternetChargeType = "PayByTraffic",
     ///         });
     ///         var foo = new AliCloud.Slb.ServerCertificate("foo", new AliCloud.Slb.ServerCertificateArgs

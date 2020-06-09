@@ -70,6 +70,10 @@ export interface GetSslVpnClientCertsArgs {
 export interface GetSslVpnClientCertsResult {
     readonly certs: outputs.vpc.GetSslVpnClientCertsCert[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SSL-VPN client cert IDs.
      */
     readonly ids: string[];
@@ -83,8 +87,4 @@ export interface GetSslVpnClientCertsResult {
      * ID of the SSL-VPN Server.
      */
     readonly sslVpnServerId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

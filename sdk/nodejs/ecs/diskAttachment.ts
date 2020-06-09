@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class DiskAttachment extends pulumi.CustomResource {
@@ -14,6 +12,7 @@ export class DiskAttachment extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DiskAttachmentState, opts?: pulumi.CustomResourceOptions): DiskAttachment {
         return new DiskAttachment(name, <any>state, { ...opts, id: id });
@@ -35,6 +34,8 @@ export class DiskAttachment extends pulumi.CustomResource {
 
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+     *
+     * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     public readonly deviceName!: pulumi.Output<string>;
     /**
@@ -90,6 +91,7 @@ export class DiskAttachment extends pulumi.CustomResource {
 export interface DiskAttachmentState {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+     *
      * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;
@@ -109,6 +111,7 @@ export interface DiskAttachmentState {
 export interface DiskAttachmentArgs {
     /**
      * The device name has been deprecated, and when attaching disk, it will be allocated automatically by system according to default order from /dev/xvdb to /dev/xvdz.
+     *
      * @deprecated Attribute device_name is deprecated on disk attachment resource. Suggest to remove it from your template.
      */
     readonly deviceName?: pulumi.Input<string>;

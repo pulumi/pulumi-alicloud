@@ -147,6 +147,9 @@ class ScalingGroup(pulumi.CustomResource):
             __props__['scaling_group_name'] = scaling_group_name
             __props__['spot_instance_pools'] = spot_instance_pools
             __props__['spot_instance_remedy'] = spot_instance_remedy
+            if vswitch_id is not None:
+                warnings.warn("Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.", DeprecationWarning)
+                pulumi.log.warn("vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.")
             __props__['vswitch_id'] = vswitch_id
             __props__['vswitch_ids'] = vswitch_ids
         super(ScalingGroup, __self__).__init__(

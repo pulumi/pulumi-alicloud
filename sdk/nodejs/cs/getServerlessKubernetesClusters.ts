@@ -71,6 +71,10 @@ export interface GetServerlessKubernetesClustersResult {
     readonly clusters: outputs.cs.GetServerlessKubernetesClustersCluster[];
     readonly enableDetails?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of matched Kubernetes clusters' ids.
      */
     readonly ids: string[];
@@ -80,8 +84,4 @@ export interface GetServerlessKubernetesClustersResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

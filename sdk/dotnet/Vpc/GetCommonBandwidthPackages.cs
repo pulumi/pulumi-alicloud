@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new AliCloud.Vpc.CommonBandwithPackageArgs
         ///         {
-        ///             Bandwidth = "2",
+        ///             Bandwidth = 2,
         ///             Description = "tf-testAcc-CommonBandwidthPackage",
         ///         });
         ///         var fooCommonBandwidthPackages = fooCommonBandwithPackage.Id.Apply(id =&gt; AliCloud.Vpc.GetCommonBandwidthPackages.InvokeAsync(new AliCloud.Vpc.GetCommonBandwidthPackagesArgs

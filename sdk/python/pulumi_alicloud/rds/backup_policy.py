@@ -166,8 +166,14 @@ class BackupPolicy(pulumi.CustomResource):
             __props__['archive_backup_keep_count'] = archive_backup_keep_count
             __props__['archive_backup_keep_policy'] = archive_backup_keep_policy
             __props__['archive_backup_retention_period'] = archive_backup_retention_period
+            if backup_periods is not None:
+                warnings.warn("Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead", DeprecationWarning)
+                pulumi.log.warn("backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead")
             __props__['backup_periods'] = backup_periods
             __props__['backup_retention_period'] = backup_retention_period
+            if backup_time is not None:
+                warnings.warn("Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead", DeprecationWarning)
+                pulumi.log.warn("backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead")
             __props__['backup_time'] = backup_time
             __props__['compress_type'] = compress_type
             __props__['enable_backup_log'] = enable_backup_log
@@ -177,12 +183,21 @@ class BackupPolicy(pulumi.CustomResource):
             __props__['instance_id'] = instance_id
             __props__['local_log_retention_hours'] = local_log_retention_hours
             __props__['local_log_retention_space'] = local_log_retention_space
+            if log_backup is not None:
+                warnings.warn("Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead", DeprecationWarning)
+                pulumi.log.warn("log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead")
             __props__['log_backup'] = log_backup
             __props__['log_backup_frequency'] = log_backup_frequency
             __props__['log_backup_retention_period'] = log_backup_retention_period
+            if log_retention_period is not None:
+                warnings.warn("Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead", DeprecationWarning)
+                pulumi.log.warn("log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead")
             __props__['log_retention_period'] = log_retention_period
             __props__['preferred_backup_periods'] = preferred_backup_periods
             __props__['preferred_backup_time'] = preferred_backup_time
+            if retention_period is not None:
+                warnings.warn("Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead", DeprecationWarning)
+                pulumi.log.warn("retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead")
             __props__['retention_period'] = retention_period
         super(BackupPolicy, __self__).__init__(
             'alicloud:rds/backupPolicy:BackupPolicy',

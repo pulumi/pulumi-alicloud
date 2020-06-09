@@ -71,6 +71,10 @@ export interface GetResourceGroupsResult {
      */
     readonly groups: outputs.resourcemanager.GetResourceGroupsGroup[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of resource group IDs.
      */
     readonly ids: string[];
@@ -84,8 +88,4 @@ export interface GetResourceGroupsResult {
      * The status of the resource group. Possible values:`Creating`,`Deleted`,`OK` and `PendingDelete`.
      */
     readonly status?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

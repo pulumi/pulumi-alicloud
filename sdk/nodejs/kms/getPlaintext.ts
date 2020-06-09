@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -41,6 +42,10 @@ export interface GetPlaintextResult {
     readonly ciphertextBlob: string;
     readonly encryptionContext?: {[key: string]: string};
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The globally unique ID of the CMK. It is the ID of the CMK used to decrypt ciphertext.
      */
     readonly keyId: string;
@@ -48,8 +53,4 @@ export interface GetPlaintextResult {
      * The decrypted plaintext.
      */
     readonly plaintext: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

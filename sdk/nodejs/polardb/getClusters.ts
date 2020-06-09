@@ -94,6 +94,10 @@ export interface GetClustersResult {
      */
     readonly descriptions: string[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of RDS cluster IDs. 
      */
     readonly ids: string[];
@@ -103,8 +107,4 @@ export interface GetClustersResult {
      */
     readonly status?: string;
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

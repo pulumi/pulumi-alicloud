@@ -125,6 +125,9 @@ class Alarm(pulumi.CustomResource):
             __props__['dimensions'] = dimensions
             __props__['effective_interval'] = effective_interval
             __props__['enabled'] = enabled
+            if end_time is not None:
+                warnings.warn("Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.", DeprecationWarning)
+                pulumi.log.warn("end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['end_time'] = end_time
             if metric is None:
                 raise TypeError("Missing required property 'metric'")
@@ -136,6 +139,9 @@ class Alarm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['silence_time'] = silence_time
+            if start_time is not None:
+                warnings.warn("Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.", DeprecationWarning)
+                pulumi.log.warn("start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.")
             __props__['start_time'] = start_time
             __props__['statistics'] = statistics
             if threshold is None:

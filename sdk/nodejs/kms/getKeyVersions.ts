@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -62,6 +63,10 @@ export interface GetKeyVersionsArgs {
  */
 export interface GetKeyVersionsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of KMS KeyVersion IDs.
      */
     readonly ids: string[];
@@ -74,8 +79,4 @@ export interface GetKeyVersionsResult {
      * A list of KMS KeyVersions. Each element contains the following attributes:
      */
     readonly versions: outputs.kms.GetKeyVersionsVersion[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

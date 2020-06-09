@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
- *
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -78,6 +77,10 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of RKV instance IDs.
      */
     readonly ids: string[];
@@ -108,8 +111,4 @@ export interface GetInstancesResult {
      * VSwitch ID the instance belongs to.
      */
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -120,9 +120,21 @@ class Provider(pulumi.ProviderResource):
                 ecs_role_name = utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
             __props__['ecs_role_name'] = ecs_role_name
             __props__['endpoints'] = pulumi.Output.from_input(endpoints).apply(json.dumps) if endpoints is not None else None
+            if fc is not None:
+                warnings.warn("Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.", DeprecationWarning)
+                pulumi.log.warn("fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.")
             __props__['fc'] = fc
+            if log_endpoint is not None:
+                warnings.warn("Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.", DeprecationWarning)
+                pulumi.log.warn("log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.")
             __props__['log_endpoint'] = log_endpoint
+            if mns_endpoint is not None:
+                warnings.warn("Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.", DeprecationWarning)
+                pulumi.log.warn("mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.")
             __props__['mns_endpoint'] = mns_endpoint
+            if ots_instance_name is not None:
+                warnings.warn("Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.", DeprecationWarning)
+                pulumi.log.warn("ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.")
             __props__['ots_instance_name'] = ots_instance_name
             if profile is None:
                 profile = utilities.get_env('ALICLOUD_PROFILE')
