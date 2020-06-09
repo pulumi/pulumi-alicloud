@@ -69,6 +69,10 @@ export interface GetSslVpnServersArgs {
  */
 export interface GetSslVpnServersResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SSL-VPN server IDs.
      */
     readonly ids: string[];
@@ -86,8 +90,4 @@ export interface GetSslVpnServersResult {
      * The ID of the VPN gateway instance.
      */
     readonly vpnGatewayId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

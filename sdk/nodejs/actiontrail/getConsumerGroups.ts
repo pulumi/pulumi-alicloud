@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -66,10 +67,10 @@ export interface GetConsumerGroupsResult {
      * A list of consumer group ids.
      */
     readonly consumerIds: string[];
-    readonly instanceId: string;
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceId: string;
+    readonly outputFile?: string;
 }

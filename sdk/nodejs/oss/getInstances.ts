@@ -74,6 +74,10 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of instance IDs.
      */
     readonly ids: string[];
@@ -91,8 +95,4 @@ export interface GetInstancesResult {
      * The tags of the instance.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

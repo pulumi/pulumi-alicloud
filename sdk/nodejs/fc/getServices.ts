@@ -60,6 +60,10 @@ export interface GetServicesArgs {
  */
 export interface GetServicesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of FC services ids.
      */
     readonly ids: string[];
@@ -73,8 +77,4 @@ export interface GetServicesResult {
      * A list of FC services. Each element contains the following attributes:
      */
     readonly services: outputs.fc.GetServicesService[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -67,13 +67,13 @@ export interface GetDatabasesResult {
      */
     readonly databases: outputs.polardb.GetDatabasesDatabase[];
     readonly dbClusterId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly nameRegex?: string;
     /**
      * database name of the cluster.
      */
     readonly names: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

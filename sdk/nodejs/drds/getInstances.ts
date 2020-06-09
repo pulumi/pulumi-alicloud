@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -10,7 +11,6 @@ import * as utilities from "../utilities";
  * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
  *
  * > **NOTE:** Available in 1.35.0+.
- *
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -52,6 +52,10 @@ export interface GetInstancesResult {
      */
     readonly descriptions: string[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of DRDS instance IDs.
      */
     readonly ids: string[];
@@ -61,8 +65,4 @@ export interface GetInstancesResult {
     readonly instances: outputs.drds.GetInstancesInstance[];
     readonly nameRegex?: string;
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -101,6 +101,10 @@ export interface GetInstanceClassesResult {
     readonly engine?: string;
     readonly engineVersion?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Available in 1.60.0+) A list of Rds instance class codes.
      */
     readonly ids: string[];
@@ -114,8 +118,4 @@ export interface GetInstanceClassesResult {
     readonly sortedBy?: string;
     readonly storageType?: string;
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

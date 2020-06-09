@@ -319,6 +319,9 @@ class Kubernetes(pulumi.CustomResource):
                 raise TypeError("Missing required property 'master_vswitch_ids'")
             __props__['master_vswitch_ids'] = master_vswitch_ids
             __props__['name'] = name
+            if name_prefix is not None:
+                warnings.warn("Field 'name_prefix' has been deprecated from provider version 1.75.0.", DeprecationWarning)
+                pulumi.log.warn("name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.")
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
             __props__['node_cidr_mask'] = node_cidr_mask

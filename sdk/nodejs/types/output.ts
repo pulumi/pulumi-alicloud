@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface GetRegionsRegion {
@@ -48,6 +49,61 @@ export interface GetZonesZone {
     slbSlaveZoneIds: string[];
 }
 
+export interface ProviderAssumeRole {
+    policy?: string;
+    roleArn?: string;
+    sessionExpiration?: number;
+    sessionName?: string;
+}
+
+export interface ProviderEndpoint {
+    actiontrail?: string;
+    adb?: string;
+    alidns?: string;
+    alikafka?: string;
+    apigateway?: string;
+    bssopenapi?: string;
+    cas?: string;
+    cbn?: string;
+    cdn?: string;
+    cen?: string;
+    cms?: string;
+    cr?: string;
+    cs?: string;
+    datahub?: string;
+    ddosbgp?: string;
+    ddoscoo?: string;
+    dds?: string;
+    dmsEnterprise?: string;
+    dns?: string;
+    drds?: string;
+    ecs?: string;
+    elasticsearch?: string;
+    emr?: string;
+    ess?: string;
+    fc?: string;
+    gpdb?: string;
+    kms?: string;
+    kvstore?: string;
+    location?: string;
+    log?: string;
+    market?: string;
+    maxcompute?: string;
+    mns?: string;
+    nas?: string;
+    ons?: string;
+    oss?: string;
+    ots?: string;
+    polardb?: string;
+    pvtz?: string;
+    ram?: string;
+    rds?: string;
+    resourcemanager?: string;
+    slb?: string;
+    sts?: string;
+    vpc?: string;
+    wafOpenapi?: string;
+}
 export namespace actiontrail {
     export interface GetInstancesInstance {
         /**
@@ -1032,6 +1088,64 @@ export namespace cms {
     export interface SiteMonitorIspCity {
         city: string;
         isp: string;
+    }
+}
+
+export namespace config {
+    export interface AssumeRole {
+        policy?: string;
+        roleArn: string;
+        sessionExpiration?: number;
+        sessionName?: string;
+    }
+
+    export interface Endpoints {
+        actiontrail?: string;
+        adb?: string;
+        alidns?: string;
+        alikafka?: string;
+        apigateway?: string;
+        bssopenapi?: string;
+        cas?: string;
+        cbn?: string;
+        cdn?: string;
+        cen?: string;
+        cms?: string;
+        cr?: string;
+        cs?: string;
+        datahub?: string;
+        ddosbgp?: string;
+        ddoscoo?: string;
+        dds?: string;
+        dmsEnterprise?: string;
+        dns?: string;
+        drds?: string;
+        ecs?: string;
+        elasticsearch?: string;
+        emr?: string;
+        ess?: string;
+        fc?: string;
+        gpdb?: string;
+        kms?: string;
+        kvstore?: string;
+        location?: string;
+        log?: string;
+        market?: string;
+        maxcompute?: string;
+        mns?: string;
+        nas?: string;
+        ons?: string;
+        oss?: string;
+        ots?: string;
+        polardb?: string;
+        pvtz?: string;
+        ram?: string;
+        rds?: string;
+        resourcemanager?: string;
+        slb?: string;
+        sts?: string;
+        vpc?: string;
+        wafOpenapi?: string;
     }
 }
 
@@ -3570,6 +3684,9 @@ export namespace ess {
     export interface ScalingConfigurationDataDisk {
         category?: string;
         deleteWithInstance?: boolean;
+        /**
+         * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
+         */
         device?: string;
         size?: number;
         snapshotId?: string;
@@ -4636,7 +4753,7 @@ export namespace mongodb {
          */
         nodeId: string;
         /**
-         * 
+         *
          * - Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
@@ -7624,3 +7741,4 @@ export namespace yundun {
         userVswitchId: string;
     }
 }
+

@@ -72,6 +72,10 @@ export interface GetLifecycleHooksResult {
      */
     readonly hooks: outputs.ess.GetLifecycleHooksHook[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of lifecycle hook ids.
      */
     readonly ids: string[];
@@ -85,8 +89,4 @@ export interface GetLifecycleHooksResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

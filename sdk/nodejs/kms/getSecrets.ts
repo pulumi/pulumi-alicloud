@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -9,7 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
  *  
  * > **NOTE:** Available in v1.86.0+.
- *
  */
 export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsResult> {
     args = args || {};
@@ -58,6 +58,10 @@ export interface GetSecretsArgs {
 export interface GetSecretsResult {
     readonly fetchTags?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of Kms Secret ids. The value is same as KMS secret_name. 
      */
     readonly ids: string[];
@@ -75,8 +79,4 @@ export interface GetSecretsResult {
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: any};
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

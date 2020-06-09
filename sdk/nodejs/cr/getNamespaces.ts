@@ -59,6 +59,10 @@ export interface GetNamespacesArgs {
  */
 export interface GetNamespacesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of matched Container Registry namespaces. Its element is a namespace name.
      */
     readonly ids: string[];
@@ -72,8 +76,4 @@ export interface GetNamespacesResult {
      */
     readonly namespaces: outputs.cr.GetNamespacesNamespace[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

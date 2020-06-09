@@ -74,6 +74,10 @@ export interface GetScalingConfigurationsResult {
      */
     readonly configurations: outputs.ess.GetScalingConfigurationsConfiguration[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of scaling configuration ids.
      */
     readonly ids: string[];
@@ -87,8 +91,4 @@ export interface GetScalingConfigurationsResult {
      * ID of the scaling group.
      */
     readonly scalingGroupId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

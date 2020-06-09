@@ -67,6 +67,10 @@ export interface GetPolicyVersionsArgs {
  */
 export interface GetPolicyVersionsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of policy version IDs.
      */
     readonly ids: string[];
@@ -77,8 +81,4 @@ export interface GetPolicyVersionsResult {
      * A list of policy versions. Each element contains the following attributes:
      */
     readonly versions: outputs.resourcemanager.GetPolicyVersionsVersion[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

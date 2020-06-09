@@ -14,6 +14,7 @@ export class NatGateway extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NatGatewayState, opts?: pulumi.CustomResourceOptions): NatGateway {
         return new NatGateway(name, <any>state, { ...opts, id: id });
@@ -67,6 +68,8 @@ export class NatGateway extends pulumi.CustomResource {
     public /*out*/ readonly snatTableIds!: pulumi.Output<string>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+     *
+     * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     public readonly spec!: pulumi.Output<string | undefined>;
     /**
@@ -167,6 +170,7 @@ export interface NatGatewayState {
     readonly snatTableIds?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+     *
      * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;
@@ -206,6 +210,7 @@ export interface NatGatewayArgs {
     readonly period?: pulumi.Input<number>;
     /**
      * It has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
+     *
      * @deprecated Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.
      */
     readonly spec?: pulumi.Input<string>;

@@ -64,6 +64,10 @@ export interface GetGroupsResult {
      */
     readonly groups: outputs.apigateway.GetGroupsGroup[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of api group IDs. 
      */
     readonly ids: string[];
@@ -73,8 +77,4 @@ export interface GetGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

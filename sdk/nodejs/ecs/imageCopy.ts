@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -44,6 +42,7 @@ export class ImageCopy extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageCopyState, opts?: pulumi.CustomResourceOptions): ImageCopy {
         return new ImageCopy(name, <any>state, { ...opts, id: id });
@@ -85,6 +84,9 @@ export class ImageCopy extends pulumi.CustomResource {
      * Key ID used to encrypt the image.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * The source image ID.
@@ -175,6 +177,9 @@ export interface ImageCopyState {
      * Key ID used to encrypt the image.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The source image ID.
@@ -216,6 +221,9 @@ export interface ImageCopyArgs {
      * Key ID used to encrypt the image.
      */
     readonly kmsKeyId?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * The source image ID.

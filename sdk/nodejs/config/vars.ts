@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("alicloud");
@@ -16,7 +18,7 @@ export let accessKey: string | undefined = __config.get("accessKey") || utilitie
  * Alibaba Cloud console.
  */
 export let accountId: string | undefined = __config.get("accountId") || utilities.getEnv("ALICLOUD_ACCOUNT_ID");
-export let assumeRole: { policy?: string, roleArn: string, sessionExpiration?: number, sessionName?: string } | undefined = __config.getObject<{ policy?: string, roleArn: string, sessionExpiration?: number, sessionName?: string }>("assumeRole");
+export let assumeRole: outputs.config.AssumeRole | undefined = __config.getObject<outputs.config.AssumeRole>("assumeRole");
 /**
  * Use this to mark a terraform configuration file source.
  */
@@ -26,7 +28,7 @@ export let configurationSource: string | undefined = __config.get("configuration
  * of the Alibaba Cloud console.
  */
 export let ecsRoleName: string | undefined = __config.get("ecsRoleName") || utilities.getEnv("ALICLOUD_ECS_ROLE_NAME");
-export let endpoints: { actiontrail?: string, adb?: string, alidns?: string, alikafka?: string, apigateway?: string, bssopenapi?: string, cas?: string, cbn?: string, cdn?: string, cen?: string, cms?: string, cr?: string, cs?: string, datahub?: string, ddosbgp?: string, ddoscoo?: string, dds?: string, dmsEnterprise?: string, dns?: string, drds?: string, ecs?: string, elasticsearch?: string, emr?: string, ess?: string, fc?: string, gpdb?: string, kms?: string, kvstore?: string, location?: string, log?: string, market?: string, maxcompute?: string, mns?: string, nas?: string, ons?: string, oss?: string, ots?: string, polardb?: string, pvtz?: string, ram?: string, rds?: string, resourcemanager?: string, slb?: string, sts?: string, vpc?: string, wafOpenapi?: string }[] | undefined = __config.getObject<{ actiontrail?: string, adb?: string, alidns?: string, alikafka?: string, apigateway?: string, bssopenapi?: string, cas?: string, cbn?: string, cdn?: string, cen?: string, cms?: string, cr?: string, cs?: string, datahub?: string, ddosbgp?: string, ddoscoo?: string, dds?: string, dmsEnterprise?: string, dns?: string, drds?: string, ecs?: string, elasticsearch?: string, emr?: string, ess?: string, fc?: string, gpdb?: string, kms?: string, kvstore?: string, location?: string, log?: string, market?: string, maxcompute?: string, mns?: string, nas?: string, ons?: string, oss?: string, ots?: string, polardb?: string, pvtz?: string, ram?: string, rds?: string, resourcemanager?: string, slb?: string, sts?: string, vpc?: string, wafOpenapi?: string }[]>("endpoints");
+export let endpoints: outputs.config.Endpoints[] | undefined = __config.getObject<outputs.config.Endpoints[]>("endpoints");
 export let fc: string | undefined = __config.get("fc");
 export let logEndpoint: string | undefined = __config.get("logEndpoint");
 export let mnsEndpoint: string | undefined = __config.get("mnsEndpoint");

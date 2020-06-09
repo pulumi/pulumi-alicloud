@@ -84,6 +84,10 @@ export interface GetNatGatewaysResult {
      */
     readonly gateways: outputs.vpc.GetNatGatewaysGateway[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of Nat gateways IDs.
      */
     readonly ids: string[];
@@ -97,8 +101,4 @@ export interface GetNatGatewaysResult {
      * The ID of the VPC.
      */
     readonly vpcId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

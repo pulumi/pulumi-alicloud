@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -41,6 +39,7 @@ export class ServerCertificate extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ServerCertificateState, opts?: pulumi.CustomResourceOptions): ServerCertificate {
         return new ServerCertificate(name, <any>state, { ...opts, id: id });
@@ -60,7 +59,13 @@ export class ServerCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerCertificate.__pulumiType;
     }
 
+    /**
+     * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+     */
     public readonly alicloudCertifacteId!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+     */
     public readonly alicloudCertifacteName!: pulumi.Output<string | undefined>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
@@ -145,7 +150,13 @@ export class ServerCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServerCertificate resources.
  */
 export interface ServerCertificateState {
+    /**
+     * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+     */
     readonly alicloudCertifacteId?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+     */
     readonly alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
@@ -185,7 +196,13 @@ export interface ServerCertificateState {
  * The set of arguments for constructing a ServerCertificate resource.
  */
 export interface ServerCertificateArgs {
+    /**
+     * @deprecated Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.
+     */
     readonly alicloudCertifacteId?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.
+     */
     readonly alicloudCertifacteName?: pulumi.Input<string>;
     /**
      * an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.

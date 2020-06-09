@@ -61,11 +61,11 @@ export interface GetBackendServersArgs {
  */
 export interface GetBackendServersResult {
     readonly backendServers: outputs.slb.GetBackendServersBackendServer[];
-    readonly ids: string[];
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
+    readonly loadBalancerId: string;
+    readonly outputFile?: string;
 }

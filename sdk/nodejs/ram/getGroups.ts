@@ -75,6 +75,10 @@ export interface GetGroupsResult {
      * A list of groups. Each element contains the following attributes:
      */
     readonly groups: outputs.ram.GetGroupsGroup[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly nameRegex?: string;
     /**
      * A list of ram group names.
@@ -84,8 +88,4 @@ export interface GetGroupsResult {
     readonly policyName?: string;
     readonly policyType?: string;
     readonly userName?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

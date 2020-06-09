@@ -73,6 +73,10 @@ export interface GetFoldersResult {
      */
     readonly folders: outputs.resourcemanager.GetFoldersFolder[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of folder IDs.
      */
     readonly ids: string[];
@@ -83,8 +87,4 @@ export interface GetFoldersResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly parentFolderId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

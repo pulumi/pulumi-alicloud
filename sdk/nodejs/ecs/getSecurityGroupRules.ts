@@ -104,6 +104,10 @@ export interface GetSecurityGroupRulesResult {
      */
     readonly groupName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
      */
     readonly ipProtocol?: string;
@@ -120,8 +124,4 @@ export interface GetSecurityGroupRulesResult {
      * A list of security group rules. Each element contains the following attributes:
      */
     readonly rules: outputs.ecs.GetSecurityGroupRulesRule[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

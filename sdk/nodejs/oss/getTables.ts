@@ -68,6 +68,10 @@ export interface GetTablesArgs {
  */
 export interface GetTablesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of table IDs.
      */
     readonly ids: string[];
@@ -85,8 +89,4 @@ export interface GetTablesResult {
      * A list of tables. Each element contains the following attributes:
      */
     readonly tables: outputs.oss.GetTablesTable[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

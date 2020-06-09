@@ -53,9 +53,9 @@ export interface GetResourceDirectoriesResult {
      * A list of resource directories. Each element contains the following attributes:
      */
     readonly directories: outputs.resourcemanager.GetResourceDirectoriesDirectory[];
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly outputFile?: string;
 }

@@ -65,13 +65,13 @@ export interface GetDomainsResult {
      */
     readonly domains: outputs.waf.GetDomainsDomain[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of WAF domain names. Each item is domain name.
      */
     readonly ids: string[];
     readonly instanceId: string;
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

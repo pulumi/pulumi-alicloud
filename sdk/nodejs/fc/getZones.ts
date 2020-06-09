@@ -49,6 +49,10 @@ export interface GetZonesArgs {
  */
 export interface GetZonesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of zone IDs.
      */
     readonly ids: string[];
@@ -57,8 +61,4 @@ export interface GetZonesResult {
      * A list of availability zones. Each element contains the following attributes:
      */
     readonly zones: outputs.fc.GetZonesZone[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

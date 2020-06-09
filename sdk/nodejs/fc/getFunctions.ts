@@ -69,6 +69,10 @@ export interface GetFunctionsResult {
      */
     readonly functions: outputs.fc.GetFunctionsFunction[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of functions ids.
      */
     readonly ids: string[];
@@ -79,8 +83,4 @@ export interface GetFunctionsResult {
     readonly names: string[];
     readonly outputFile?: string;
     readonly serviceName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

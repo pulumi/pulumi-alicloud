@@ -46,6 +46,7 @@ export class Image extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ImageState, opts?: pulumi.CustomResourceOptions): Image {
         return new Image(name, <any>state, { ...opts, id: id });
@@ -91,6 +92,9 @@ export class Image extends pulumi.CustomResource {
      * The instance ID.
      */
     public readonly instanceId!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
@@ -187,6 +191,9 @@ export interface ImageState {
      * The instance ID.
      */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.
@@ -236,6 +243,9 @@ export interface ImageArgs {
      * The instance ID.
      */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     */
     readonly name?: pulumi.Input<string>;
     /**
      * Specifies the operating system platform of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `CentOS`, `Ubuntu`, `SUSE`, `OpenSUSE`, `RedHat`, `Debian`, `CoreOS`, `Aliyun Linux`, `Windows Server 2003`, `Windows Server 2008`, `Windows Server 2012`, `Windows 7`, Default is `Others Linux`, `Customized Linux`.

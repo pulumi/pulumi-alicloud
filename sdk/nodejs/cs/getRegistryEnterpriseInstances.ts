@@ -64,6 +64,10 @@ export interface GetRegistryEnterpriseInstancesArgs {
  */
 export interface GetRegistryEnterpriseInstancesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of matched Container Registry Enterprise Edition instances. Its element is an instance uuid.
      */
     readonly ids: string[];
@@ -77,8 +81,4 @@ export interface GetRegistryEnterpriseInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

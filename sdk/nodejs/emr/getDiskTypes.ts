@@ -83,6 +83,10 @@ export interface GetDiskTypesResult {
     readonly clusterType: string;
     readonly destinationResource: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of data disk and system disk type IDs. 
      */
     readonly ids: string[];
@@ -94,8 +98,4 @@ export interface GetDiskTypesResult {
      */
     readonly types: outputs.emr.GetDiskTypesType[];
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

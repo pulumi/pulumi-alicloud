@@ -38,12 +38,12 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         {
     ///             Description = "tf-testSagQosCarDescription",
     ///             LimitType = "Absolute",
-    ///             MaxBandwidthAbs = "20",
-    ///             MaxBandwidthPercent = "20",
-    ///             MinBandwidthAbs = "10",
-    ///             MinBandwidthPercent = "10",
+    ///             MaxBandwidthAbs = 20,
+    ///             MaxBandwidthPercent = 20,
+    ///             MinBandwidthAbs = 10,
+    ///             MinBandwidthPercent = 10,
     ///             PercentSourceType = "InternetUpBandwidth",
-    ///             Priority = "1",
+    ///             Priority = 1,
     ///             QosId = defaultQos.Id,
     ///         });
     ///     }

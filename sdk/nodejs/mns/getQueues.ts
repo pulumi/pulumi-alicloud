@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -53,6 +54,10 @@ export interface GetQueuesArgs {
  * A collection of values returned by getQueues.
  */
 export interface GetQueuesResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly namePrefix?: string;
     /**
      * A list of queue names. 
@@ -63,8 +68,4 @@ export interface GetQueuesResult {
      * A list of queues. Each element contains the following attributes:
      */
     readonly queues: outputs.mns.GetQueuesQueue[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

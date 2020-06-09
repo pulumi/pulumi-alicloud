@@ -96,6 +96,10 @@ export interface GetNetworksResult {
      */
     readonly cidrBlock?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of VPC IDs.
      */
     readonly ids: string[];
@@ -123,8 +127,4 @@ export interface GetNetworksResult {
      */
     readonly vpcs: outputs.vpc.GetNetworksVpc[];
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

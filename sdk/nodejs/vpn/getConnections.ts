@@ -82,6 +82,10 @@ export interface GetConnectionsResult {
      */
     readonly customerGatewayId?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) IDs of the VPN connections.
      */
     readonly ids: string[];
@@ -95,8 +99,4 @@ export interface GetConnectionsResult {
      * ID of the VPN gateway.
      */
     readonly vpnGatewayId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -92,6 +92,10 @@ export interface GetGatewaysResult {
      */
     readonly gateways: outputs.vpn.GetGatewaysGateway[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * IDs of the VPN.
      */
     readonly ids: string[];
@@ -109,8 +113,4 @@ export interface GetGatewaysResult {
      * ID of the VPC that the VPN belongs.
      */
     readonly vpcId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

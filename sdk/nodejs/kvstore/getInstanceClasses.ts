@@ -90,11 +90,13 @@ export interface GetInstanceClassesArgs {
     readonly outputFile?: string;
     /**
      * It has been deprecated from 1.68.0.
+     *
      * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
      */
     readonly packageType?: string;
     /**
      * It has been deprecated from 1.68.0. 
+     *
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
     readonly performanceType?: string;
@@ -109,6 +111,7 @@ export interface GetInstanceClassesArgs {
     readonly sortedBy?: string;
     /**
      * It has been deprecated from 1.68.0. 
+     *
      * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
      */
     readonly storageType?: string;
@@ -130,6 +133,10 @@ export interface GetInstanceClassesResult {
     readonly editionType?: string;
     readonly engine?: string;
     readonly engineVersion?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly instanceChargeType?: string;
     /**
      * A list of KVStore available instance classes.
@@ -137,15 +144,20 @@ export interface GetInstanceClassesResult {
     readonly instanceClasses: string[];
     readonly nodeType?: string;
     readonly outputFile?: string;
+    /**
+     * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
+     */
     readonly packageType?: string;
+    /**
+     * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
+     */
     readonly performanceType?: string;
     readonly seriesType?: string;
     readonly shardNumber?: number;
     readonly sortedBy?: string;
+    /**
+     * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
+     */
     readonly storageType?: string;
     readonly zoneId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -73,6 +73,10 @@ export interface GetListenersResult {
      * Frontend port used to receive incoming traffic and distribute it to the backend servers.
      */
     readonly frontendPort?: number;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly loadBalancerId: string;
     readonly outputFile?: string;
     /**
@@ -83,8 +87,4 @@ export interface GetListenersResult {
      * A list of SLB listeners. Each element contains the following attributes:
      */
     readonly slbListeners: outputs.slb.GetListenersSlbListener[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

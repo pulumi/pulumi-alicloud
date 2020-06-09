@@ -383,8 +383,17 @@ class Listener(pulumi.CustomResource):
             __props__['health_check_uri'] = health_check_uri
             __props__['healthy_threshold'] = healthy_threshold
             __props__['idle_timeout'] = idle_timeout
+            if instance_port is not None:
+                warnings.warn("Field 'instance_port' has been deprecated, and using 'backend_port' to replace.", DeprecationWarning)
+                pulumi.log.warn("instance_port is deprecated: Field 'instance_port' has been deprecated, and using 'backend_port' to replace.")
             __props__['instance_port'] = instance_port
+            if lb_port is not None:
+                warnings.warn("Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.", DeprecationWarning)
+                pulumi.log.warn("lb_port is deprecated: Field 'lb_port' has been deprecated, and using 'frontend_port' to replace.")
             __props__['lb_port'] = lb_port
+            if lb_protocol is not None:
+                warnings.warn("Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.", DeprecationWarning)
+                pulumi.log.warn("lb_protocol is deprecated: Field 'lb_protocol' has been deprecated, and using 'protocol' to replace.")
             __props__['lb_protocol'] = lb_protocol
             __props__['listener_forward'] = listener_forward
             if load_balancer_id is None:
@@ -399,6 +408,9 @@ class Listener(pulumi.CustomResource):
             __props__['scheduler'] = scheduler
             __props__['server_certificate_id'] = server_certificate_id
             __props__['server_group_id'] = server_group_id
+            if ssl_certificate_id is not None:
+                warnings.warn("Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.", DeprecationWarning)
+                pulumi.log.warn("ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.")
             __props__['ssl_certificate_id'] = ssl_certificate_id
             __props__['sticky_session'] = sticky_session
             __props__['sticky_session_type'] = sticky_session_type

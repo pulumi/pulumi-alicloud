@@ -37,6 +37,9 @@ class GetMountTargetsResult:
         """
         if mount_target_domain and not isinstance(mount_target_domain, str):
             raise TypeError("Expected argument 'mount_target_domain' to be a str")
+        if mount_target_domain is not None:
+            warnings.warn("Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.", DeprecationWarning)
+            pulumi.log.warn("mount_target_domain is deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.")
         __self__.mount_target_domain = mount_target_domain
         """
         MountTargetDomain of the MountTarget.

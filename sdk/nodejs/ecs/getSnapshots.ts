@@ -145,6 +145,10 @@ export interface GetSnapshotsResult {
      */
     readonly encrypted?: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of snapshot IDs.
      */
     readonly ids: string[];
@@ -185,8 +189,4 @@ export interface GetSnapshotsResult {
      * * none
      */
     readonly usage?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -133,8 +133,14 @@ class Key(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['automatic_rotation'] = automatic_rotation
+            if deletion_window_in_days is not None:
+                warnings.warn("Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.", DeprecationWarning)
+                pulumi.log.warn("deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.")
             __props__['deletion_window_in_days'] = deletion_window_in_days
             __props__['description'] = description
+            if is_enabled is not None:
+                warnings.warn("Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.", DeprecationWarning)
+                pulumi.log.warn("is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.")
             __props__['is_enabled'] = is_enabled
             __props__['key_spec'] = key_spec
             __props__['key_state'] = key_state

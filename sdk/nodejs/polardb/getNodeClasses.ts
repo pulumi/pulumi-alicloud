@@ -96,6 +96,10 @@ export interface GetNodeClassesResult {
     readonly dbNodeClass?: string;
     readonly dbType?: string;
     readonly dbVersion?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly outputFile?: string;
     readonly payType: string;
     readonly regionId?: string;
@@ -103,8 +107,4 @@ export interface GetNodeClassesResult {
      * The Zone to launch the PolarDB cluster.
      */
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

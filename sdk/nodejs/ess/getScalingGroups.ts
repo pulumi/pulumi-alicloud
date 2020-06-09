@@ -68,6 +68,10 @@ export interface GetScalingGroupsResult {
      */
     readonly groups: outputs.ess.GetScalingGroupsGroup[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of scaling group ids.
      */
     readonly ids: string[];
@@ -77,8 +81,4 @@ export interface GetScalingGroupsResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -41,6 +41,7 @@ export class Swarm extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SwarmState, opts?: pulumi.CustomResourceOptions): Swarm {
         return new Swarm(name, <any>state, { ...opts, id: id });
@@ -123,6 +124,8 @@ export class Swarm extends pulumi.CustomResource {
     public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     *
+     * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     public readonly size!: pulumi.Output<number | undefined>;
     /**
@@ -281,6 +284,7 @@ export interface SwarmState {
     readonly securityGroupId?: pulumi.Input<string>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     *
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;
@@ -353,6 +357,7 @@ export interface SwarmArgs {
     readonly releaseEip?: pulumi.Input<boolean>;
     /**
      * Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
+     *
      * @deprecated Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.
      */
     readonly size?: pulumi.Input<number>;

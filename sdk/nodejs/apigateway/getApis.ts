@@ -48,6 +48,7 @@ export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promis
 export interface GetApisArgs {
     /**
      * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+     *
      * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
      */
     readonly apiId?: string;
@@ -70,6 +71,9 @@ export interface GetApisArgs {
  * A collection of values returned by getApis.
  */
 export interface GetApisResult {
+    /**
+     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+     */
     readonly apiId?: string;
     /**
      * A list of apis. Each element contains the following attributes:
@@ -80,6 +84,10 @@ export interface GetApisResult {
      */
     readonly groupId?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of api IDs. 
      */
     readonly ids: string[];
@@ -89,8 +97,4 @@ export interface GetApisResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

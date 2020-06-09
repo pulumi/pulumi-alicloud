@@ -112,6 +112,10 @@ export interface GetLoadBalancersResult {
      */
     readonly address?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of slb IDs.
      */
     readonly ids: string[];
@@ -150,8 +154,4 @@ export interface GetLoadBalancersResult {
      * ID of the VSwitch the SLB belongs to.
      */
     readonly vswitchId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

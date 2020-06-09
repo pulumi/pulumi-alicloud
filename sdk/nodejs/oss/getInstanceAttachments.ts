@@ -65,6 +65,10 @@ export interface GetInstanceAttachmentsResult {
      */
     readonly attachments: outputs.oss.GetInstanceAttachmentsAttachment[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The instance name.
      */
     readonly instanceName: string;
@@ -78,8 +82,4 @@ export interface GetInstanceAttachmentsResult {
      * A list of vpc ids.
      */
     readonly vpcIds: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

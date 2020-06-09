@@ -109,6 +109,10 @@ export interface GetDisksResult {
      * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
     readonly encrypted?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly ids: string[];
     /**
      * ID of the related instance. It is `null` unless the `status` is `In_use`.
@@ -128,8 +132,4 @@ export interface GetDisksResult {
      * Disk type. Possible values: `system` and `data`.
      */
     readonly type?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

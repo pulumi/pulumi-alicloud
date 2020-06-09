@@ -104,6 +104,10 @@ export interface GetSwitchesResult {
      */
     readonly cidrBlock?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of VSwitch IDs.
      */
     readonly ids: string[];
@@ -131,8 +135,4 @@ export interface GetSwitchesResult {
      * ID of the availability zone where the VSwitch is located.
      */
     readonly zoneId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -102,6 +102,9 @@ class NatGateway(pulumi.CustomResource):
             __props__['instance_charge_type'] = instance_charge_type
             __props__['name'] = name
             __props__['period'] = period
+            if spec is not None:
+                warnings.warn("Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.", DeprecationWarning)
+                pulumi.log.warn("spec is deprecated: Field 'spec' has been deprecated from provider version 1.7.1, and new field 'specification' can replace it.")
             __props__['spec'] = spec
             __props__['specification'] = specification
             if vpc_id is None:

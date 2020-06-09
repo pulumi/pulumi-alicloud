@@ -87,6 +87,10 @@ export interface GetRouteTablesArgs {
  */
 export interface GetRouteTablesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of Route Tables IDs.
      */
     readonly ids: string[];
@@ -106,8 +110,4 @@ export interface GetRouteTablesResult {
     readonly tables: outputs.vpc.GetRouteTablesTable[];
     readonly tags?: {[key: string]: any};
     readonly vpcId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

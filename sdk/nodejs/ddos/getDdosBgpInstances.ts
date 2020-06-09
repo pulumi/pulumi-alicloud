@@ -62,6 +62,10 @@ export interface GetDdosBgpInstancesArgs {
  */
 export interface GetDdosBgpInstancesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of instance IDs.
      */
     readonly ids: string[];
@@ -75,8 +79,4 @@ export interface GetDdosBgpInstancesResult {
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

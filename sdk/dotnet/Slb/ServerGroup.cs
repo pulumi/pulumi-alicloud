@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Slb
     ///                 InstanceName = name,
     ///                 InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
     ///                 InternetChargeType = "PayByTraffic",
-    ///                 InternetMaxBandwidthOut = "10",
+    ///                 InternetMaxBandwidthOut = 10,
     ///                 SecurityGroups = 
     ///                 {
     ///                     defaultSecurityGroup,

@@ -64,6 +64,10 @@ export interface GetServerGroupsArgs {
  */
 export interface GetServerGroupsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of SLB VServer groups IDs.
      */
     readonly ids: string[];
@@ -78,8 +82,4 @@ export interface GetServerGroupsResult {
      * A list of SLB VServer groups. Each element contains the following attributes:
      */
     readonly slbServerGroups: outputs.slb.GetServerGroupsSlbServerGroup[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

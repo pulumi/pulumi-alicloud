@@ -58,14 +58,14 @@ export interface GetBucketsResult {
      * A list of buckets. Each element contains the following attributes:
      */
     readonly buckets: outputs.oss.GetBucketsBucket[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly nameRegex?: string;
     /**
      * A list of bucket names. 
      */
     readonly names: string[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

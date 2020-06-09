@@ -55,9 +55,15 @@ class GetInstanceClassesResult:
         __self__.output_file = output_file
         if package_type and not isinstance(package_type, str):
             raise TypeError("Expected argument 'package_type' to be a str")
+        if package_type is not None:
+            warnings.warn("The parameter 'package_type' has been deprecated from 1.68.0.", DeprecationWarning)
+            pulumi.log.warn("package_type is deprecated: The parameter 'package_type' has been deprecated from 1.68.0.")
         __self__.package_type = package_type
         if performance_type and not isinstance(performance_type, str):
             raise TypeError("Expected argument 'performance_type' to be a str")
+        if performance_type is not None:
+            warnings.warn("The parameter 'performance_type' has been deprecated from 1.68.0.", DeprecationWarning)
+            pulumi.log.warn("performance_type is deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.")
         __self__.performance_type = performance_type
         if series_type and not isinstance(series_type, str):
             raise TypeError("Expected argument 'series_type' to be a str")
@@ -70,6 +76,9 @@ class GetInstanceClassesResult:
         __self__.sorted_by = sorted_by
         if storage_type and not isinstance(storage_type, str):
             raise TypeError("Expected argument 'storage_type' to be a str")
+        if storage_type is not None:
+            warnings.warn("The parameter 'storage_type' has been deprecated from 1.68.0.", DeprecationWarning)
+            pulumi.log.warn("storage_type is deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.")
         __self__.storage_type = storage_type
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")

@@ -102,7 +102,13 @@ class ServerCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if alicloud_certifacte_id is not None:
+                warnings.warn("Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.", DeprecationWarning)
+                pulumi.log.warn("alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.")
             __props__['alicloud_certifacte_id'] = alicloud_certifacte_id
+            if alicloud_certifacte_name is not None:
+                warnings.warn("Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.", DeprecationWarning)
+                pulumi.log.warn("alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.")
             __props__['alicloud_certifacte_name'] = alicloud_certifacte_name
             __props__['alicloud_certificate_id'] = alicloud_certificate_id
             __props__['alicloud_certificate_name'] = alicloud_certificate_name

@@ -101,6 +101,10 @@ export interface GetSnatEntriesResult {
      */
     readonly entries: outputs.vpc.GetSnatEntriesEntry[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Optional) A list of Snat Entries IDs.
      */
     readonly ids: string[];
@@ -114,8 +118,4 @@ export interface GetSnatEntriesResult {
      * The source CIDR block of the Snat Entry.
      */
     readonly sourceCidr?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

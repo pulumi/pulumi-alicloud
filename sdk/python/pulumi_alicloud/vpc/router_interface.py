@@ -120,6 +120,9 @@ class RouterInterface(pulumi.CustomResource):
             __props__['health_check_target_ip'] = health_check_target_ip
             __props__['instance_charge_type'] = instance_charge_type
             __props__['name'] = name
+            if opposite_access_point_id is not None:
+                warnings.warn("Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.", DeprecationWarning)
+                pulumi.log.warn("opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.")
             __props__['opposite_access_point_id'] = opposite_access_point_id
             if opposite_region is None:
                 raise TypeError("Missing required property 'opposite_region'")

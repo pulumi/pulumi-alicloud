@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -67,6 +68,10 @@ export interface GetNetworksArgs {
  */
 export interface GetNetworksResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of CCN instances IDs.
      */
     readonly ids: string[];
@@ -80,8 +85,4 @@ export interface GetNetworksResult {
      */
     readonly networks: outputs.cloudconnect.GetNetworksNetwork[];
     readonly outputFile?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

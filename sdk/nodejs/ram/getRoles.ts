@@ -73,6 +73,10 @@ export interface GetRolesArgs {
  */
 export interface GetRolesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of ram role IDs. 
      */
     readonly ids: string[];
@@ -88,8 +92,4 @@ export interface GetRolesResult {
      * A list of roles. Each element contains the following attributes:
      */
     readonly roles: outputs.ram.GetRolesRole[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

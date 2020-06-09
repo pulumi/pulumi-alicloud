@@ -16,6 +16,9 @@ class GetApisResult:
     def __init__(__self__, api_id=None, apis=None, group_id=None, id=None, ids=None, name_regex=None, names=None, output_file=None):
         if api_id and not isinstance(api_id, str):
             raise TypeError("Expected argument 'api_id' to be a str")
+        if api_id is not None:
+            warnings.warn("Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.", DeprecationWarning)
+            pulumi.log.warn("api_id is deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.")
         __self__.api_id = api_id
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")

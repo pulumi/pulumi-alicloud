@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Slb
     ///             InstanceName = name,
     ///             InstanceType = defaultInstanceTypes.Apply(defaultInstanceTypes =&gt; defaultInstanceTypes.InstanceTypes[0].Id),
     ///             InternetChargeType = "PayByTraffic",
-    ///             InternetMaxBandwidthOut = "10",
+    ///             InternetMaxBandwidthOut = 10,
     ///             SecurityGroups = 
     ///             {
     ///                 defaultSecurityGroup,
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Slb
     ///             BackendPort = 22,
     ///             Bandwidth = 5,
     ///             FrontendPort = 22,
-    ///             HealthCheckConnectPort = "20",
+    ///             HealthCheckConnectPort = 20,
     ///             LoadBalancerId = defaultLoadBalancer.Id,
     ///             Protocol = "http",
     ///         });

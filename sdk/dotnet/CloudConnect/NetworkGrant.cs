@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///         });
     ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
     ///         {
-    ///             IsDefault = "true",
+    ///             IsDefault = true,
     ///         });
     ///         var @default = new AliCloud.CloudConnect.NetworkGrant("default", new AliCloud.CloudConnect.NetworkGrantArgs
     ///         {

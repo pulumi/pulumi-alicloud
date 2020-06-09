@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -95,6 +96,10 @@ export interface GetDomainsResult {
     readonly domains: outputs.dns.GetDomainsDomain[];
     readonly groupNameRegex?: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of domain IDs.
      */
     readonly ids: string[];
@@ -115,8 +120,4 @@ export interface GetDomainsResult {
      * Cloud analysis version code of the domain.
      */
     readonly versionCode?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///     {
     ///         var ccn = new AliCloud.CloudConnect.Network("ccn", new AliCloud.CloudConnect.NetworkArgs
     ///         {
-    ///             IsDefault = "true",
+    ///             IsDefault = true,
     ///         });
     ///         var @default = new AliCloud.CloudConnect.NetworkAttachment("default", new AliCloud.CloudConnect.NetworkAttachmentArgs
     ///         {

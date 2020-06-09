@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class SecurityGroup extends pulumi.CustomResource {
@@ -14,6 +12,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SecurityGroupState, opts?: pulumi.CustomResourceOptions): SecurityGroup {
         return new SecurityGroup(name, <any>state, { ...opts, id: id });
@@ -39,6 +38,8 @@ export class SecurityGroup extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     *
+     * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     public readonly innerAccess!: pulumi.Output<boolean>;
     /**
@@ -120,6 +121,7 @@ export interface SecurityGroupState {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     *
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;
@@ -161,6 +163,7 @@ export interface SecurityGroupArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+     *
      * @deprecated Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
      */
     readonly innerAccess?: pulumi.Input<boolean>;

@@ -14,6 +14,7 @@ export class Kubernetes extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KubernetesState, opts?: pulumi.CustomResourceOptions): Kubernetes {
         return new Kubernetes(name, <any>state, { ...opts, id: id });
@@ -127,6 +128,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
+     */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
@@ -164,6 +168,9 @@ export class Kubernetes extends pulumi.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
+    /**
+     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     */
     public /*out*/ readonly slbId!: pulumi.Output<string>;
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
@@ -485,6 +492,9 @@ export interface KubernetesState {
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
@@ -522,6 +532,9 @@ export interface KubernetesState {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
     readonly serviceCidr?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     */
     readonly slbId?: pulumi.Input<string>;
     readonly slbInternet?: pulumi.Input<string>;
     /**
@@ -683,6 +696,9 @@ export interface KubernetesArgs {
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * @deprecated Field 'name_prefix' has been deprecated from provider version 1.75.0.
+     */
     readonly namePrefix?: pulumi.Input<string>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.

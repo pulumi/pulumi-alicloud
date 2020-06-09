@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
@@ -96,6 +97,10 @@ export interface GetFlowlogsResult {
     readonly description?: string;
     readonly flowlogs: outputs.cen.GetFlowlogsFlowlog[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of CEN flow log IDs.
      */
     readonly ids: string[];
@@ -117,8 +122,4 @@ export interface GetFlowlogsResult {
      * The status of flowlog.
      */
     readonly status?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -70,11 +70,11 @@ export interface GetDomainExtensionsResult {
      */
     readonly extensions: outputs.slb.GetDomainExtensionsExtension[];
     readonly frontendPort: number;
-    readonly ids: string[];
-    readonly loadBalancerId: string;
-    readonly outputFile?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ids: string[];
+    readonly loadBalancerId: string;
+    readonly outputFile?: string;
 }

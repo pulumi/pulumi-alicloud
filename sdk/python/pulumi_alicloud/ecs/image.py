@@ -136,6 +136,9 @@ class Image(pulumi.CustomResource):
             __props__['force'] = force
             __props__['image_name'] = image_name
             __props__['instance_id'] = instance_id
+            if name is not None:
+                warnings.warn("Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.")
             __props__['name'] = name
             __props__['platform'] = platform
             __props__['resource_group_id'] = resource_group_id

@@ -429,8 +429,8 @@
         "vpc/getSslVpnClientCerts.ts",
         "vpc/getSslVpnServers.ts",
         "vpc/getSwitches.ts",
-        "vpc/hAVip.ts",
-        "vpc/hAVipAttachment.ts",
+        "vpc/havip.ts",
+        "vpc/havipAttachment.ts",
         "vpc/index.ts",
         "vpc/natGateway.ts",
         "vpc/network.ts",
@@ -462,10 +462,9 @@
         "waf/index.ts",
         "waf/instance.ts",
         "yundun/bastionHostInstance.ts",
-        "yundun/dBAuditInstance.ts",
+        "yundun/dbauditInstance.ts",
         "yundun/getBastionHostInstances.ts",
         "yundun/getDBAuditInstance.ts",
         "yundun/index.ts"
     ]
 }
-
