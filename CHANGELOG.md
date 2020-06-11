@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 2.8.1 (2020-06-11)
+* Switch to GitHub actions for build
+
 ## 2.8.0 (2020-06-06)
 * Upgrade to v1.86.0 of the AliCloud Terraform Provider
 
