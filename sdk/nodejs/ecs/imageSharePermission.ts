@@ -28,6 +28,12 @@ import * as utilities from "../utilities";
  *     imageId: "m-bp1gxyh***",
  * });
  * ```
+ *
+ * ## Attributes Reference0
+ *  
+ *  The following attributes are exported:
+ *  
+ * * `id` - ID of the image. It formats as `<image_id>:<account_id>`
  */
 export class ImageSharePermission extends pulumi.CustomResource {
     /**

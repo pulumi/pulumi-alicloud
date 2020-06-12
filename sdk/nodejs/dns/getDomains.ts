@@ -37,11 +37,17 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("alicloud:dns/getDomains:getDomains", {
         "aliDomain": args.aliDomain,
         "domainNameRegex": args.domainNameRegex,
+        "groupId": args.groupId,
         "groupNameRegex": args.groupNameRegex,
         "ids": args.ids,
         "instanceId": args.instanceId,
+        "keyWord": args.keyWord,
+        "lang": args.lang,
         "outputFile": args.outputFile,
         "resourceGroupId": args.resourceGroupId,
+        "searchMode": args.searchMode,
+        "starmark": args.starmark,
+        "tags": args.tags,
         "versionCode": args.versionCode,
     }, opts);
 }
@@ -59,6 +65,10 @@ export interface GetDomainsArgs {
      */
     readonly domainNameRegex?: string;
     /**
+     * Domain group ID, if not filled, the default is all groups.
+     */
+    readonly groupId?: string;
+    /**
      * A regex string to filter results by the group name.
      */
     readonly groupNameRegex?: string;
@@ -70,11 +80,31 @@ export interface GetDomainsArgs {
      * Cloud analysis product ID.
      */
     readonly instanceId?: string;
+    /**
+     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+     */
+    readonly keyWord?: string;
+    /**
+     * User language.
+     */
+    readonly lang?: string;
     readonly outputFile?: string;
     /**
      * The Id of resource group which the dns belongs.
      */
     readonly resourceGroupId?: string;
+    /**
+     * Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+     */
+    readonly searchMode?: string;
+    /**
+     * Whether to query the domain name star.
+     */
+    readonly starmark?: boolean;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    readonly tags?: {[key: string]: any};
     /**
      * Cloud analysis version code.
      */
@@ -94,6 +124,10 @@ export interface GetDomainsResult {
      * A list of domains. Each element contains the following attributes:
      */
     readonly domains: outputs.dns.GetDomainsDomain[];
+    /**
+     * Id of group that contains the domain.
+     */
+    readonly groupId?: string;
     readonly groupNameRegex?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -107,6 +141,8 @@ export interface GetDomainsResult {
      * Cloud analysis product ID of the domain.
      */
     readonly instanceId?: string;
+    readonly keyWord?: string;
+    readonly lang?: string;
     /**
      * A list of domain names.
      */
@@ -116,8 +152,11 @@ export interface GetDomainsResult {
      * The Id of resource group which the dns belongs.
      */
     readonly resourceGroupId?: string;
+    readonly searchMode?: string;
+    readonly starmark?: boolean;
+    readonly tags?: {[key: string]: any};
     /**
-     * Cloud analysis version code of the domain.
+     * Cloud resolution version ID.
      */
     readonly versionCode?: string;
 }

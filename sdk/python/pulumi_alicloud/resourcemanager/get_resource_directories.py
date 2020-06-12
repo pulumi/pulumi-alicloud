@@ -53,8 +53,8 @@ def get_resource_directories(output_file=None,opts=None):
     import pulumi
     import pulumi_alicloud as alicloud
 
-    defaule = alicloud.resourcemanager.get_resource_directories()
-    pulumi.export("resourceDirectoryId", defaule.directories[0]["id"])
+    default = alicloud.resourcemanager.get_resource_directories()
+    pulumi.export("resourceDirectoryId", default.directories[0]["id"])
     ```
     """
     __args__ = dict()

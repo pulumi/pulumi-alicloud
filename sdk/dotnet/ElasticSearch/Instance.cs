@@ -98,6 +98,24 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
+        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
+        /// </summary>
+        [Output("enableKibanaPrivateNetwork")]
+        public Output<bool?> EnableKibanaPrivateNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        /// </summary>
+        [Output("enableKibanaPublicNetwork")]
+        public Output<bool?> EnableKibanaPublicNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Bool, default to false. When it set to true, the instance can enable public network access。
+        /// </summary>
+        [Output("enablePublic")]
+        public Output<bool?> EnablePublic { get; private set; } = null!;
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Output("instanceChargeType")]
@@ -114,6 +132,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Output("kibanaPort")]
         public Output<int> KibanaPort { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the Kibana's IP whitelist in private network.
+        /// </summary>
+        [Output("kibanaPrivateWhitelists")]
+        public Output<ImmutableArray<string>> KibanaPrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
         /// Set the Kibana's IP whitelist in internet network.
@@ -163,6 +187,9 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Output("privateWhitelists")]
         public Output<ImmutableArray<string>> PrivateWhitelists { get; private set; } = null!;
 
+        /// <summary>
+        /// Set the instance's IP whitelist in internet network.
+        /// </summary>
         [Output("publicWhitelists")]
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
 
@@ -289,10 +316,40 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
+        /// </summary>
+        [Input("enableKibanaPrivateNetwork")]
+        public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
+
+        /// <summary>
+        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        /// </summary>
+        [Input("enableKibanaPublicNetwork")]
+        public Input<bool>? EnableKibanaPublicNetwork { get; set; }
+
+        /// <summary>
+        /// Bool, default to false. When it set to true, the instance can enable public network access。
+        /// </summary>
+        [Input("enablePublic")]
+        public Input<bool>? EnablePublic { get; set; }
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        [Input("kibanaPrivateWhitelists")]
+        private InputList<string>? _kibanaPrivateWhitelists;
+
+        /// <summary>
+        /// Set the Kibana's IP whitelist in private network.
+        /// </summary>
+        public InputList<string> KibanaPrivateWhitelists
+        {
+            get => _kibanaPrivateWhitelists ?? (_kibanaPrivateWhitelists = new InputList<string>());
+            set => _kibanaPrivateWhitelists = value;
+        }
 
         [Input("kibanaWhitelists")]
         private InputList<string>? _kibanaWhitelists;
@@ -356,6 +413,10 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;
+
+        /// <summary>
+        /// Set the instance's IP whitelist in internet network.
+        /// </summary>
         public InputList<string> PublicWhitelists
         {
             get => _publicWhitelists ?? (_publicWhitelists = new InputList<string>());
@@ -452,6 +513,24 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? Domain { get; set; }
 
         /// <summary>
+        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
+        /// </summary>
+        [Input("enableKibanaPrivateNetwork")]
+        public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
+
+        /// <summary>
+        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        /// </summary>
+        [Input("enableKibanaPublicNetwork")]
+        public Input<bool>? EnableKibanaPublicNetwork { get; set; }
+
+        /// <summary>
+        /// Bool, default to false. When it set to true, the instance can enable public network access。
+        /// </summary>
+        [Input("enablePublic")]
+        public Input<bool>? EnablePublic { get; set; }
+
+        /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
         /// </summary>
         [Input("instanceChargeType")]
@@ -468,6 +547,18 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("kibanaPort")]
         public Input<int>? KibanaPort { get; set; }
+
+        [Input("kibanaPrivateWhitelists")]
+        private InputList<string>? _kibanaPrivateWhitelists;
+
+        /// <summary>
+        /// Set the Kibana's IP whitelist in private network.
+        /// </summary>
+        public InputList<string> KibanaPrivateWhitelists
+        {
+            get => _kibanaPrivateWhitelists ?? (_kibanaPrivateWhitelists = new InputList<string>());
+            set => _kibanaPrivateWhitelists = value;
+        }
 
         [Input("kibanaWhitelists")]
         private InputList<string>? _kibanaWhitelists;
@@ -537,6 +628,10 @@ namespace Pulumi.AliCloud.ElasticSearch
 
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;
+
+        /// <summary>
+        /// Set the instance's IP whitelist in internet network.
+        /// </summary>
         public InputList<string> PublicWhitelists
         {
             get => _publicWhitelists ?? (_publicWhitelists = new InputList<string>());

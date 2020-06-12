@@ -25,6 +25,8 @@ type BastionHostInstance struct {
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// security group IDs configured to bastionhost
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
@@ -78,6 +80,8 @@ type bastionHostInstanceState struct {
 	LicenseCode *string `pulumi:"licenseCode"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
+	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// security group IDs configured to bastionhost
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
@@ -92,6 +96,8 @@ type BastionHostInstanceState struct {
 	LicenseCode pulumi.StringPtrInput
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
+	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// security group IDs configured to bastionhost
 	SecurityGroupIds pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
@@ -110,6 +116,8 @@ type bastionHostInstanceArgs struct {
 	LicenseCode string `pulumi:"licenseCode"`
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
 	Period *int `pulumi:"period"`
+	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// security group IDs configured to bastionhost
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A mapping of tags to assign to the resource.
@@ -125,6 +133,8 @@ type BastionHostInstanceArgs struct {
 	LicenseCode pulumi.StringInput
 	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
 	Period pulumi.IntPtrInput
+	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// security group IDs configured to bastionhost
 	SecurityGroupIds pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.

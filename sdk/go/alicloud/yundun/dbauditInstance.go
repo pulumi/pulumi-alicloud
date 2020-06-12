@@ -26,6 +26,8 @@ type DBAuditInstance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringOutput `pulumi:"planCode"`
+	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// vSwtich ID configured to audit
@@ -75,6 +77,8 @@ type dbauditInstanceState struct {
 	Period *int `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode *string `pulumi:"planCode"`
+	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// vSwtich ID configured to audit
@@ -88,6 +92,8 @@ type DBAuditInstanceState struct {
 	Period pulumi.IntPtrInput
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringPtrInput
+	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// vSwtich ID configured to audit
@@ -105,6 +111,8 @@ type dbauditInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode string `pulumi:"planCode"`
+	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// vSwtich ID configured to audit
@@ -119,6 +127,8 @@ type DBAuditInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
 	PlanCode pulumi.StringInput
+	// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// vSwtich ID configured to audit

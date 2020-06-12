@@ -43,6 +43,11 @@ class ImageSharePermission(pulumi.CustomResource):
             image_id="m-bp1gxyh***")
         ```
 
+        ## Attributes Reference0
+         
+         The following attributes are exported:
+         
+        * `id` - ID of the image. It formats as `<image_id>:<account_id>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

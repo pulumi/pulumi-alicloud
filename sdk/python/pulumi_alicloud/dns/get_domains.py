@@ -13,7 +13,7 @@ class GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
-    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, group_name_regex=None, id=None, ids=None, instance_id=None, names=None, output_file=None, resource_group_id=None, version_code=None):
+    def __init__(__self__, ali_domain=None, domain_name_regex=None, domains=None, group_id=None, group_name_regex=None, id=None, ids=None, instance_id=None, key_word=None, lang=None, names=None, output_file=None, resource_group_id=None, search_mode=None, starmark=None, tags=None, version_code=None):
         if ali_domain and not isinstance(ali_domain, bool):
             raise TypeError("Expected argument 'ali_domain' to be a bool")
         __self__.ali_domain = ali_domain
@@ -28,6 +28,12 @@ class GetDomainsResult:
         __self__.domains = domains
         """
         A list of domains. Each element contains the following attributes:
+        """
+        if group_id and not isinstance(group_id, str):
+            raise TypeError("Expected argument 'group_id' to be a str")
+        __self__.group_id = group_id
+        """
+        Id of group that contains the domain.
         """
         if group_name_regex and not isinstance(group_name_regex, str):
             raise TypeError("Expected argument 'group_name_regex' to be a str")
@@ -50,6 +56,12 @@ class GetDomainsResult:
         """
         Cloud analysis product ID of the domain.
         """
+        if key_word and not isinstance(key_word, str):
+            raise TypeError("Expected argument 'key_word' to be a str")
+        __self__.key_word = key_word
+        if lang and not isinstance(lang, str):
+            raise TypeError("Expected argument 'lang' to be a str")
+        __self__.lang = lang
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         __self__.names = names
@@ -65,11 +77,20 @@ class GetDomainsResult:
         """
         The Id of resource group which the dns belongs.
         """
+        if search_mode and not isinstance(search_mode, str):
+            raise TypeError("Expected argument 'search_mode' to be a str")
+        __self__.search_mode = search_mode
+        if starmark and not isinstance(starmark, bool):
+            raise TypeError("Expected argument 'starmark' to be a bool")
+        __self__.starmark = starmark
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        __self__.tags = tags
         if version_code and not isinstance(version_code, str):
             raise TypeError("Expected argument 'version_code' to be a str")
         __self__.version_code = version_code
         """
-        Cloud analysis version code of the domain.
+        Cloud resolution version ID.
         """
 class AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
@@ -80,16 +101,22 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             ali_domain=self.ali_domain,
             domain_name_regex=self.domain_name_regex,
             domains=self.domains,
+            group_id=self.group_id,
             group_name_regex=self.group_name_regex,
             id=self.id,
             ids=self.ids,
             instance_id=self.instance_id,
+            key_word=self.key_word,
+            lang=self.lang,
             names=self.names,
             output_file=self.output_file,
             resource_group_id=self.resource_group_id,
+            search_mode=self.search_mode,
+            starmark=self.starmark,
+            tags=self.tags,
             version_code=self.version_code)
 
-def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids=None,instance_id=None,output_file=None,resource_group_id=None,version_code=None,opts=None):
+def get_domains(ali_domain=None,domain_name_regex=None,group_id=None,group_name_regex=None,ids=None,instance_id=None,key_word=None,lang=None,output_file=None,resource_group_id=None,search_mode=None,starmark=None,tags=None,version_code=None,opts=None):
     """
     This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
 
@@ -110,10 +137,16 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
     :param str domain_name_regex: A regex string to filter results by the domain name. 
+    :param str group_id: Domain group ID, if not filled, the default is all groups.
     :param str group_name_regex: A regex string to filter results by the group name.
     :param list ids: - A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
+    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+    :param str lang: User language.
     :param str resource_group_id: The Id of resource group which the dns belongs.
+    :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+    :param bool starmark: Whether to query the domain name star.
+    :param dict tags: A mapping of tags to assign to the resource.
     :param str version_code: Cloud analysis version code.
     """
     __args__ = dict()
@@ -121,11 +154,17 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
 
     __args__['aliDomain'] = ali_domain
     __args__['domainNameRegex'] = domain_name_regex
+    __args__['groupId'] = group_id
     __args__['groupNameRegex'] = group_name_regex
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
+    __args__['keyWord'] = key_word
+    __args__['lang'] = lang
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
+    __args__['searchMode'] = search_mode
+    __args__['starmark'] = starmark
+    __args__['tags'] = tags
     __args__['versionCode'] = version_code
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -137,11 +176,17 @@ def get_domains(ali_domain=None,domain_name_regex=None,group_name_regex=None,ids
         ali_domain=__ret__.get('aliDomain'),
         domain_name_regex=__ret__.get('domainNameRegex'),
         domains=__ret__.get('domains'),
+        group_id=__ret__.get('groupId'),
         group_name_regex=__ret__.get('groupNameRegex'),
         id=__ret__.get('id'),
         ids=__ret__.get('ids'),
         instance_id=__ret__.get('instanceId'),
+        key_word=__ret__.get('keyWord'),
+        lang=__ret__.get('lang'),
         names=__ret__.get('names'),
         output_file=__ret__.get('outputFile'),
         resource_group_id=__ret__.get('resourceGroupId'),
+        search_mode=__ret__.get('searchMode'),
+        starmark=__ret__.get('starmark'),
+        tags=__ret__.get('tags'),
         version_code=__ret__.get('versionCode'))

@@ -1060,6 +1060,129 @@ export namespace cen {
          */
         status: string;
     }
+
+    export interface GetRouteMapsMap {
+        /**
+         * A match statement. It indicates the mode in which the as-path attribute is matched.
+         */
+        asPathMatchMode: string;
+        /**
+         * The ID of the CEN instance.
+         */
+        cenId: string;
+        /**
+         * The ID of the region to which the CEN instance belongs.
+         */
+        cenRegionId: string;
+        /**
+         * A match statement. It indicates the mode in which the prefix attribute is matched.
+         */
+        cidrMatchMode: string;
+        /**
+         * A match statement. It indicates the mode in which the community attribute is matched.
+         */
+        communityMatchMode: string;
+        /**
+         * An action statement. It indicates the mode in which the community attribute is operated.
+         */
+        communityOperateMode: string;
+        /**
+         * The description of the route map.
+         */
+        description: string;
+        /**
+         * A match statement that indicates the list of IDs of the destination instances.
+         */
+        destinationChildInstanceTypes: string[];
+        /**
+         * A match statement that indicates the prefix list.
+         */
+        destinationCidrBlocks: string[];
+        /**
+         * A match statement that indicates the list of IDs of the destination instances.
+         */
+        destinationInstanceIds: string[];
+        /**
+         * Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition. 
+         */
+        destinationInstanceIdsReverseMatch: boolean;
+        /**
+         * A match statement that indicates the list of IDs of the destination route tables.
+         */
+        destinationRouteTableIds: string[];
+        /**
+         * The ID of the route map.
+         */
+        id: string;
+        /**
+         * The action that is performed to a route if the route meets all the match conditions.
+         */
+        mapResult: string;
+        /**
+         * A match statement that indicates the As path list.
+         */
+        matchAsns: string[];
+        /**
+         * A match statement that indicates the community set.
+         */
+        matchCommunitySets: string[];
+        /**
+         * The priority of the next route map that is associated with the current route map. 
+         */
+        nextPriority: number;
+        /**
+         * An action statement that operates the community attribute.
+         */
+        operateCommunitySets: string[];
+        /**
+         * An action statement that modifies the preference of the route.
+         */
+        preference: number;
+        /**
+         * Indicates AS Path prepending when a regional gateway receives or publishes a route.
+         */
+        prependAsPaths: string[];
+        /**
+         * The priority of the route map.
+         */
+        priority: number;
+        /**
+         * The ID of the route map.
+         */
+        routeMapId: string;
+        /**
+         * A match statement that indicates the list of route types.
+         */
+        routeTypes: string[];
+        /**
+         * A match statement that indicates the list of IDs of the source instances.
+         */
+        sourceChildInstanceTypes: string[];
+        /**
+         * A match statement that indicates the list of IDs of the source instances.
+         */
+        sourceInstanceIds: string[];
+        /**
+         * Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
+         */
+        sourceInstanceIdsReverseMatch: boolean;
+        /**
+         * A match statement that indicates the list of IDs of the source regions.
+         */
+        sourceRegionIds: string[];
+        /**
+         * A match statement that indicates the list of IDs of the source route tables.
+         */
+        sourceRouteTableIds: string[];
+        /**
+         * The status of the route map, including `Creating`, `Active` and `Deleting`.
+         */
+        status: string;
+        /**
+         * The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+         */
+        transmitDirection: string;
+    }
 }
 
 export namespace cloudconnect {
@@ -1589,6 +1712,68 @@ export namespace cs {
         name: string;
     }
 
+    export interface GetRegistryEnterpriseReposRepo {
+        /**
+         * ID of Container Registry Enterprise Edition repository.
+         */
+        id: string;
+        /**
+         * ID of Container Registry Enterprise Edition instance.
+         */
+        instanceId: string;
+        /**
+         * Name of Container Registry Enterprise Edition repository.
+         */
+        name: string;
+        /**
+         * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+         */
+        namespace: string;
+        /**
+         * `PUBLIC` or `PRIVATE`, repository's visibility.
+         */
+        repoType: string;
+        /**
+         * The repository general information.
+         */
+        summary: string;
+        /**
+         * A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+         */
+        tags: outputs.cs.GetRegistryEnterpriseReposRepoTag[];
+    }
+
+    export interface GetRegistryEnterpriseReposRepoTag {
+        /**
+         * Digest of this image.
+         */
+        digest: string;
+        /**
+         * Create time of this image, unix time in nanoseconds.
+         */
+        imageCreate: string;
+        /**
+         * Id of this image.
+         */
+        imageId: string;
+        /**
+         * Status of this image, in bytes.
+         */
+        imageSize: number;
+        /**
+         * Last update time of this image, unix time in nanoseconds.
+         */
+        imageUpdate: string;
+        /**
+         * Status of this image.
+         */
+        status: string;
+        /**
+         * Tag of this image.
+         */
+        tag: string;
+    }
+
     export interface GetServerlessKubernetesClustersCluster {
         /**
          * Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
@@ -1973,7 +2158,7 @@ export namespace dns {
          */
         aliDomain: boolean;
         /**
-         * DNS list of the domain in the analysis system.
+         * DNS list of domain names in the resolution system.
          */
         dnsServers: string[];
         /**
@@ -1985,7 +2170,7 @@ export namespace dns {
          */
         domainName: string;
         /**
-         * Id of group that contains the domain.
+         * Domain group ID, if not filled, the default is all groups.
          */
         groupId: string;
         /**
@@ -1993,17 +2178,55 @@ export namespace dns {
          */
         groupName: string;
         /**
+         * The Id of resource.
+         */
+        id: string;
+        /**
+         * Whether it is in black hole.
+         */
+        inBlackHole: boolean;
+        /**
+         * Whether it is cleaning.
+         */
+        inClean: boolean;
+        /**
          * Cloud analysis product ID.
          */
         instanceId: string;
+        lineType: string;
+        /**
+         * Minimum TTL.
+         */
+        minTtl: number;
         /**
          * Punycode of the Chinese domain.
          */
         punyCode: string;
         /**
+         * Tree-like analytical line list.
+         */
+        recordLineTreeJson: string;
+        /**
+         * Whether it is a regional route.
+         */
+        regionLines: boolean;
+        /**
+         * The Id of resource group which the dns belongs.
+         */
+        remark: string;
+        /**
+         * Whether to allow auxiliary dns.
+         */
+        slaveDns: boolean;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
          * Cloud analysis version code.
          */
         versionCode: string;
+        versionName: string;
     }
 
     export interface GetGroupsGroup {

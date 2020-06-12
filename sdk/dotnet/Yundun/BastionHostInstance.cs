@@ -36,6 +36,12 @@ namespace Pulumi.AliCloud.Yundun
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// security group IDs configured to bastionhost
         /// </summary>
         [Output("securityGroupIds")]
@@ -114,6 +120,12 @@ namespace Pulumi.AliCloud.Yundun
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
 
@@ -165,6 +177,12 @@ namespace Pulumi.AliCloud.Yundun
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;

@@ -29,6 +29,12 @@ import * as utilities from "../utilities";
  *     ossPrefix: "ecsExport",
  * });
  * ```
+ *
+ * ## Attributes Reference0
+ *  
+ *  The following attributes are exported:
+ *  
+ * * `id` - ID of the image.
  */
 export class ImageExport extends pulumi.CustomResource {
     /**

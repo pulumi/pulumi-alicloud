@@ -2747,6 +2747,357 @@
                 }
             }
         },
+        "alicloud:cen/getRouteMapsMap:getRouteMapsMap": {
+            "properties": {
+                "asPathMatchMode": {
+                    "type": "string",
+                    "description": "A match statement. It indicates the mode in which the as-path attribute is matched.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cenId": {
+                    "type": "string",
+                    "description": "The ID of the CEN instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cenRegionId": {
+                    "type": "string",
+                    "description": "The ID of the region to which the CEN instance belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cidrMatchMode": {
+                    "type": "string",
+                    "description": "A match statement. It indicates the mode in which the prefix attribute is matched.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "communityMatchMode": {
+                    "type": "string",
+                    "description": "A match statement. It indicates the mode in which the community attribute is matched.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "communityOperateMode": {
+                    "type": "string",
+                    "description": "An action statement. It indicates the mode in which the community attribute is operated.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the route map.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationChildInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the destination instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationCidrBlocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the prefix list.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationInstanceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the destination instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationInstanceIdsReverseMatch": {
+                    "type": "boolean",
+                    "description": "Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "destinationRouteTableIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the destination route tables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the route map.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mapResult": {
+                    "type": "string",
+                    "description": "The action that is performed to a route if the route meets all the match conditions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchAsns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the As path list.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchCommunitySets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the community set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nextPriority": {
+                    "type": "integer",
+                    "description": "The priority of the next route map that is associated with the current route map. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operateCommunitySets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An action statement that operates the community attribute.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preference": {
+                    "type": "integer",
+                    "description": "An action statement that modifies the preference of the route.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "prependAsPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Indicates AS Path prepending when a regional gateway receives or publishes a route.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority of the route map.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routeMapId": {
+                    "type": "string",
+                    "description": "The ID of the route map.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "routeTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of route types.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceChildInstanceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the source instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceInstanceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the source instances.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceInstanceIdsReverseMatch": {
+                    "type": "boolean",
+                    "description": "Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceRegionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the source regions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceRouteTableIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A match statement that indicates the list of IDs of the source route tables.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the route map, including `Creating`, `Active` and `Deleting`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "transmitDirection": {
+                    "type": "string",
+                    "description": "The direction in which the route map is applied, including `RegionIn` and `RegionOut`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "asPathMatchMode",
+                "cenId",
+                "cenRegionId",
+                "cidrMatchMode",
+                "communityMatchMode",
+                "communityOperateMode",
+                "description",
+                "destinationChildInstanceTypes",
+                "destinationCidrBlocks",
+                "destinationInstanceIds",
+                "destinationInstanceIdsReverseMatch",
+                "destinationRouteTableIds",
+                "id",
+                "mapResult",
+                "matchAsns",
+                "matchCommunitySets",
+                "nextPriority",
+                "operateCommunitySets",
+                "preference",
+                "prependAsPaths",
+                "priority",
+                "routeMapId",
+                "routeTypes",
+                "sourceChildInstanceTypes",
+                "sourceInstanceIds",
+                "sourceInstanceIdsReverseMatch",
+                "sourceRegionIds",
+                "sourceRouteTableIds",
+                "status",
+                "transmitDirection"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:cloudconnect/getNetworksNetwork:getNetworksNetwork": {
             "properties": {
                 "cidrBlock": {
@@ -4628,6 +4979,173 @@
                 }
             }
         },
+        "alicloud:cs/getRegistryEnterpriseReposRepo:getRegistryEnterpriseReposRepo": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition repository.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition repository.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition namespace where the repositories are located in.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoType": {
+                    "type": "string",
+                    "description": "`PUBLIC` or `PRIVATE`, repository's visibility.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The repository general information.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:cs/getRegistryEnterpriseReposRepoTag:getRegistryEnterpriseReposRepoTag"
+                    },
+                    "description": "A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "instanceId",
+                "name",
+                "namespace",
+                "repoType",
+                "summary",
+                "tags"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:cs/getRegistryEnterpriseReposRepoTag:getRegistryEnterpriseReposRepoTag": {
+            "properties": {
+                "digest": {
+                    "type": "string",
+                    "description": "Digest of this image.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageCreate": {
+                    "type": "string",
+                    "description": "Create time of this image, unix time in nanoseconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Id of this image.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageSize": {
+                    "type": "integer",
+                    "description": "Status of this image, in bytes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageUpdate": {
+                    "type": "string",
+                    "description": "Last update time of this image, unix time in nanoseconds.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of this image.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Tag of this image.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "digest",
+                "imageCreate",
+                "imageId",
+                "imageSize",
+                "imageUpdate",
+                "status",
+                "tag"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:cs/getServerlessKubernetesClustersCluster:getServerlessKubernetesClustersCluster": {
             "properties": {
                 "connections": {
@@ -5618,7 +6136,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "DNS list of the domain in the analysis system.\n",
+                    "description": "DNS list of domain names in the resolution system.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5645,7 +6163,7 @@
                 },
                 "groupId": {
                     "type": "string",
-                    "description": "Id of group that contains the domain.\n",
+                    "description": "Domain group ID, if not filled, the default is all groups.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5661,9 +6179,53 @@
                         }
                     }
                 },
+                "id": {
+                    "type": "string",
+                    "description": "The Id of resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "inBlackHole": {
+                    "type": "boolean",
+                    "description": "Whether it is in black hole.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "inClean": {
+                    "type": "boolean",
+                    "description": "Whether it is cleaning.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "instanceId": {
                     "type": "string",
                     "description": "Cloud analysis product ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lineType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minTtl": {
+                    "type": "integer",
+                    "description": "Minimum TTL.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5679,9 +6241,65 @@
                         }
                     }
                 },
+                "recordLineTreeJson": {
+                    "type": "string",
+                    "description": "Tree-like analytical line list.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regionLines": {
+                    "type": "boolean",
+                    "description": "Whether it is a regional route.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remark": {
+                    "type": "string",
+                    "description": "The Id of resource group which the dns belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "slaveDns": {
+                    "type": "boolean",
+                    "description": "Whether to allow auxiliary dns.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "versionCode": {
                     "type": "string",
                     "description": "Cloud analysis version code.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionName": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5697,9 +6315,20 @@
                 "domainName",
                 "groupId",
                 "groupName",
+                "id",
+                "inBlackHole",
+                "inClean",
                 "instanceId",
+                "lineType",
+                "minTtl",
                 "punyCode",
-                "versionCode"
+                "recordLineTreeJson",
+                "regionLines",
+                "remark",
+                "slaveDns",
+                "tags",
+                "versionCode",
+                "versionName"
             ],
             "language": {
                 "nodejs": {
@@ -31433,7 +32062,7 @@
             }
         },
         "alicloud:ecs/imageCopy:ImageCopy": {
-            "description": "Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).\n\n\u003e **NOTE:** You can only copy the custom image when it is in the Available state.\n\n\u003e **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.\n\n\u003e **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.\n\n\u003e **NOTE:** Available in 1.66.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageCopy = new alicloud.ecs.ImageCopy(\"default\", {\n    description: \"test-image\",\n    imageName: \"test-image\",\n    sourceImageId: \"m-bp1gxyhdswlsn18tu***\",\n    sourceRegionId: \"cn-hangzhou\",\n    tags: {\n        FinanceDept: \"FinanceDeptJoshua\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageCopy(\"default\",\n    description=\"test-image\",\n    image_name=\"test-image\",\n    source_image_id=\"m-bp1gxyhdswlsn18tu***\",\n    source_region_id=\"cn-hangzhou\",\n    tags={\n        \"FinanceDept\": \"FinanceDeptJoshua\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageCopy(\"default\", new AliCloud.Ecs.ImageCopyArgs\n        {\n            Description = \"test-image\",\n            ImageName = \"test-image\",\n            SourceImageId = \"m-bp1gxyhdswlsn18tu***\",\n            SourceRegionId = \"cn-hangzhou\",\n            Tags = \n            {\n                { \"FinanceDept\", \"FinanceDeptJoshua\" },\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Copies a custom image from one region to another. You can use copied images to perform operations in the target region, such as creating instances (RunInstances) and replacing system disks (ReplaceSystemDisk).\n\n\u003e **NOTE:** You can only copy the custom image when it is in the Available state.\n\n\u003e **NOTE:** You can only copy the image belonging to your Alibaba Cloud account. Images cannot be copied from one account to another.\n\n\u003e **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.\n\n\u003e **NOTE:** Available in 1.66.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageCopy = new alicloud.ecs.ImageCopy(\"default\", {\n    description: \"test-image\",\n    imageName: \"test-image\",\n    sourceImageId: \"m-bp1gxyhdswlsn18tu***\",\n    sourceRegionId: \"cn-hangzhou\",\n    tags: {\n        FinanceDept: \"FinanceDeptJoshua\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageCopy(\"default\",\n    description=\"test-image\",\n    image_name=\"test-image\",\n    source_image_id=\"m-bp1gxyhdswlsn18tu***\",\n    source_region_id=\"cn-hangzhou\",\n    tags={\n        \"FinanceDept\": \"FinanceDeptJoshua\",\n    })\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageCopy(\"default\", new AliCloud.Ecs.ImageCopyArgs\n        {\n            Description = \"test-image\",\n            ImageName = \"test-image\",\n            SourceImageId = \"m-bp1gxyhdswlsn18tu***\",\n            SourceRegionId = \"cn-hangzhou\",\n            Tags = \n            {\n                { \"FinanceDept\", \"FinanceDeptJoshua\" },\n            },\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Attributes Reference0\n \n The following attributes are exported:\n \n* `id` - ID of the image.\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -31573,7 +32202,7 @@
             }
         },
         "alicloud:ecs/imageExport:ImageExport": {
-            "description": "Export a custom image to the OSS bucket in the same region as the custom image.\n\n\u003e **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.\n\n\u003e **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.\n\n\u003e **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.\n\n\u003e **NOTE:** Available in 1.68.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageExport = new alicloud.ecs.ImageExport(\"default\", {\n    imageId: \"m-bp1gxy***\",\n    ossBucket: \"ecsimageexportconfig\",\n    ossPrefix: \"ecsExport\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageExport(\"default\",\n    image_id=\"m-bp1gxy***\",\n    oss_bucket=\"ecsimageexportconfig\",\n    oss_prefix=\"ecsExport\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageExport(\"default\", new AliCloud.Ecs.ImageExportArgs\n        {\n            ImageId = \"m-bp1gxy***\",\n            OssBucket = \"ecsimageexportconfig\",\n            OssPrefix = \"ecsExport\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Export a custom image to the OSS bucket in the same region as the custom image.\n\n\u003e **NOTE:** If you create an ECS instance using a mirror image and create a system disk snapshot again, exporting a custom image created from the system disk snapshot is not supported.\n\n\u003e **NOTE:** Support for exporting custom images that include data disk snapshot information in the image. The number of data disks cannot exceed 4 and the maximum capacity of a single data disk cannot exceed 500 GiB.\n\n\u003e **NOTE:** Before exporting the image, you must authorize the cloud server ECS official service account to write OSS permissions through RAM.\n\n\u003e **NOTE:** Available in 1.68.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageExport = new alicloud.ecs.ImageExport(\"default\", {\n    imageId: \"m-bp1gxy***\",\n    ossBucket: \"ecsimageexportconfig\",\n    ossPrefix: \"ecsExport\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageExport(\"default\",\n    image_id=\"m-bp1gxy***\",\n    oss_bucket=\"ecsimageexportconfig\",\n    oss_prefix=\"ecsExport\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageExport(\"default\", new AliCloud.Ecs.ImageExportArgs\n        {\n            ImageId = \"m-bp1gxy***\",\n            OssBucket = \"ecsimageexportconfig\",\n            OssPrefix = \"ecsExport\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Attributes Reference0\n \n The following attributes are exported:\n \n* `id` - ID of the image.\n",
             "properties": {
                 "imageId": {
                     "type": "string",
@@ -31630,7 +32259,7 @@
             }
         },
         "alicloud:ecs/imageImport:ImageImport": {
-            "description": "Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.\n\n\u003e **NOTE:** You must upload the image file to the object storage OSS in advance.\n\n\u003e **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.\n\n\u003e **NOTE:** Available in 1.69.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst thisImageImport = new alicloud.ecs.ImageImport(\"this\", {\n    architecture: \"x86_64\",\n    description: \"test import image\",\n    diskDeviceMappings: [{\n        diskImageSize: 5,\n        ossBucket: \"testimportimage\",\n        ossObject: \"root.img\",\n    }],\n    imageName: \"test-import-image\",\n    licenseType: \"Auto\",\n    osType: \"linux\",\n    platform: \"Ubuntu\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nthis = alicloud.ecs.ImageImport(\"this\",\n    architecture=\"x86_64\",\n    description=\"test import image\",\n    disk_device_mappings=[{\n        \"diskImageSize\": 5,\n        \"oss_bucket\": \"testimportimage\",\n        \"ossObject\": \"root.img\",\n    }],\n    image_name=\"test-import-image\",\n    license_type=\"Auto\",\n    os_type=\"linux\",\n    platform=\"Ubuntu\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @this = new AliCloud.Ecs.ImageImport(\"this\", new AliCloud.Ecs.ImageImportArgs\n        {\n            Architecture = \"x86_64\",\n            Description = \"test import image\",\n            DiskDeviceMappings = \n            {\n                new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs\n                {\n                    DiskImageSize = 5,\n                    OssBucket = \"testimportimage\",\n                    OssObject = \"root.img\",\n                },\n            },\n            ImageName = \"test-import-image\",\n            LicenseType = \"Auto\",\n            OsType = \"linux\",\n            Platform = \"Ubuntu\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.\n\n\u003e **NOTE:** You must upload the image file to the object storage OSS in advance.\n\n\u003e **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.\n\n\u003e **NOTE:** Available in 1.69.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst thisImageImport = new alicloud.ecs.ImageImport(\"this\", {\n    architecture: \"x86_64\",\n    description: \"test import image\",\n    diskDeviceMappings: [{\n        diskImageSize: 5,\n        ossBucket: \"testimportimage\",\n        ossObject: \"root.img\",\n    }],\n    imageName: \"test-import-image\",\n    licenseType: \"Auto\",\n    osType: \"linux\",\n    platform: \"Ubuntu\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nthis = alicloud.ecs.ImageImport(\"this\",\n    architecture=\"x86_64\",\n    description=\"test import image\",\n    disk_device_mappings=[{\n        \"diskImageSize\": 5,\n        \"oss_bucket\": \"testimportimage\",\n        \"ossObject\": \"root.img\",\n    }],\n    image_name=\"test-import-image\",\n    license_type=\"Auto\",\n    os_type=\"linux\",\n    platform=\"Ubuntu\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @this = new AliCloud.Ecs.ImageImport(\"this\", new AliCloud.Ecs.ImageImportArgs\n        {\n            Architecture = \"x86_64\",\n            Description = \"test import image\",\n            DiskDeviceMappings = \n            {\n                new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs\n                {\n                    DiskImageSize = 5,\n                    OssBucket = \"testimportimage\",\n                    OssObject = \"root.img\",\n                },\n            },\n            ImageName = \"test-import-image\",\n            LicenseType = \"Auto\",\n            OsType = \"linux\",\n            Platform = \"Ubuntu\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Attributes Reference0\n \n The following attributes are exported:\n \n* `id` - ID of the image.\n",
             "properties": {
                 "architecture": {
                     "type": "string",
@@ -31742,7 +32371,7 @@
             }
         },
         "alicloud:ecs/imageSharePermission:ImageSharePermission": {
-            "description": "Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.\n\n\u003e **NOTE:** You can only share your own custom images to other Alibaba Cloud users.\n\n\u003e **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.\n\n\u003e **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.\n\n\u003e **NOTE:** Available in 1.68.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageSharePermission = new alicloud.ecs.ImageSharePermission(\"default\", {\n    accountId: \"1234567890\",\n    imageId: \"m-bp1gxyh***\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageSharePermission(\"default\",\n    account_id=\"1234567890\",\n    image_id=\"m-bp1gxyh***\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageSharePermission(\"default\", new AliCloud.Ecs.ImageSharePermissionArgs\n        {\n            AccountId = \"1234567890\",\n            ImageId = \"m-bp1gxyh***\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Manage image sharing permissions. You can share your custom image to other Alibaba Cloud users. The user can use the shared custom image to create ECS instances or replace the system disk of the instance.\n\n\u003e **NOTE:** You can only share your own custom images to other Alibaba Cloud users.\n\n\u003e **NOTE:** Each custom image can be shared with up to 50 Alibaba Cloud accounts. You can submit a ticket to share with more users.\n\n\u003e **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.\n\n\u003e **NOTE:** Available in 1.68.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultImageSharePermission = new alicloud.ecs.ImageSharePermission(\"default\", {\n    accountId: \"1234567890\",\n    imageId: \"m-bp1gxyh***\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.ecs.ImageSharePermission(\"default\",\n    account_id=\"1234567890\",\n    image_id=\"m-bp1gxyh***\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Ecs.ImageSharePermission(\"default\", new AliCloud.Ecs.ImageSharePermissionArgs\n        {\n            AccountId = \"1234567890\",\n            ImageId = \"m-bp1gxyh***\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n## Attributes Reference0\n \n The following attributes are exported:\n \n* `id` - ID of the image. It formats as `\u003cimage_id\u003e:\u003caccount_id\u003e`\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -34284,6 +34913,18 @@
                     "type": "string",
                     "description": "Instance connection domain (only VPC network access supported).\n"
                 },
+                "enableKibanaPrivateNetwork": {
+                    "type": "boolean",
+                    "description": "Bool, default to false. When it set to true, the instance can close kibana private network access。\n"
+                },
+                "enableKibanaPublicNetwork": {
+                    "type": "boolean",
+                    "description": "Bool, default to true. When it set to false, the instance can enable kibana public network access。\n"
+                },
+                "enablePublic": {
+                    "type": "boolean",
+                    "description": "Bool, default to false. When it set to true, the instance can enable public network access。\n"
+                },
                 "instanceChargeType": {
                     "type": "string",
                     "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
@@ -34295,6 +34936,13 @@
                 "kibanaPort": {
                     "type": "integer",
                     "description": "Kibana console port.\n"
+                },
+                "kibanaPrivateWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set the Kibana's IP whitelist in private network.\n"
                 },
                 "kibanaWhitelists": {
                     "type": "array",
@@ -34341,7 +34989,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Set the instance's IP whitelist in internet network.\n"
                 },
                 "resourceGroupId": {
                     "type": "string",
@@ -34379,6 +35028,7 @@
                 "domain",
                 "kibanaDomain",
                 "kibanaPort",
+                "kibanaPrivateWhitelists",
                 "kibanaWhitelists",
                 "port",
                 "privateWhitelists",
@@ -34413,9 +35063,28 @@
                     "type": "string",
                     "description": "The description of instance. It a string of 0 to 30 characters.\n"
                 },
+                "enableKibanaPrivateNetwork": {
+                    "type": "boolean",
+                    "description": "Bool, default to false. When it set to true, the instance can close kibana private network access。\n"
+                },
+                "enableKibanaPublicNetwork": {
+                    "type": "boolean",
+                    "description": "Bool, default to true. When it set to false, the instance can enable kibana public network access。\n"
+                },
+                "enablePublic": {
+                    "type": "boolean",
+                    "description": "Bool, default to false. When it set to true, the instance can enable public network access。\n"
+                },
                 "instanceChargeType": {
                     "type": "string",
                     "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
+                },
+                "kibanaPrivateWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set the Kibana's IP whitelist in private network.\n"
                 },
                 "kibanaWhitelists": {
                     "type": "array",
@@ -34458,7 +35127,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Set the instance's IP whitelist in internet network.\n"
                 },
                 "resourceGroupId": {
                     "type": "string",
@@ -34523,6 +35193,18 @@
                         "type": "string",
                         "description": "Instance connection domain (only VPC network access supported).\n"
                     },
+                    "enableKibanaPrivateNetwork": {
+                        "type": "boolean",
+                        "description": "Bool, default to false. When it set to true, the instance can close kibana private network access。\n"
+                    },
+                    "enableKibanaPublicNetwork": {
+                        "type": "boolean",
+                        "description": "Bool, default to true. When it set to false, the instance can enable kibana public network access。\n"
+                    },
+                    "enablePublic": {
+                        "type": "boolean",
+                        "description": "Bool, default to false. When it set to true, the instance can enable public network access。\n"
+                    },
                     "instanceChargeType": {
                         "type": "string",
                         "description": "Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.\n"
@@ -34534,6 +35216,13 @@
                     "kibanaPort": {
                         "type": "integer",
                         "description": "Kibana console port.\n"
+                    },
+                    "kibanaPrivateWhitelists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Set the Kibana's IP whitelist in private network.\n"
                     },
                     "kibanaWhitelists": {
                         "type": "array",
@@ -34580,7 +35269,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Set the instance's IP whitelist in internet network.\n"
                     },
                     "resourceGroupId": {
                         "type": "string",
@@ -44458,7 +45148,7 @@
                 },
                 "vswitchId": {
                     "type": "string",
-                    "description": "The virtual switch ID to launch DB instances in one VPC.\n"
+                    "description": "The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -44591,7 +45281,7 @@
                 },
                 "vswitchId": {
                     "type": "string",
-                    "description": "The virtual switch ID to launch DB instances in one VPC.\n"
+                    "description": "The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -44722,7 +45412,7 @@
                     },
                     "vswitchId": {
                         "type": "string",
-                        "description": "The virtual switch ID to launch DB instances in one VPC.\n"
+                        "description": "The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -51605,6 +52295,10 @@
                     "type": "integer",
                     "description": "Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify \"period\".\n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.\n"
+                },
                 "securityGroupIds": {
                     "type": "array",
                     "items": {
@@ -51641,6 +52335,10 @@
                 "period": {
                     "type": "integer",
                     "description": "Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify \"period\".\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.\n"
                 },
                 "securityGroupIds": {
                     "type": "array",
@@ -51681,6 +52379,10 @@
                         "type": "integer",
                         "description": "Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify \"period\".\n"
                     },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.\n"
+                    },
                     "securityGroupIds": {
                         "type": "array",
                         "items": {
@@ -51717,6 +52419,10 @@
                     "type": "string",
                     "description": "Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) \n"
                 },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -51746,6 +52452,10 @@
                 "planCode": {
                     "type": "string",
                     "description": "Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) \n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -51778,6 +52488,10 @@
                     "planCode": {
                         "type": "string",
                         "description": "Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) \n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -53019,6 +53733,100 @@
                 ]
             }
         },
+        "alicloud:cen/getRouteMaps:getRouteMaps": {
+            "description": "This data source provides CEN Route Maps available to the user.\n\n\u003e **NOTE:** Available in v1.87.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRouteMaps.\n",
+                "properties": {
+                    "cenId": {
+                        "type": "string",
+                        "description": "The ID of the CEN instance.\n"
+                    },
+                    "cenRegionId": {
+                        "type": "string",
+                        "description": "The ID of the region to which the CEN instance belongs.\n"
+                    },
+                    "descriptionRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter CEN route map by description.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CEN route map IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the route map, including `Creating`, `Active` and `Deleting`.\n"
+                    },
+                    "transmitDirection": {
+                        "type": "string",
+                        "description": "The direction in which the route map is applied, including `RegionIn` and `RegionOut`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cenId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRouteMaps.\n",
+                "properties": {
+                    "cenId": {
+                        "type": "string",
+                        "description": "The ID of the CEN instance.\n"
+                    },
+                    "cenRegionId": {
+                        "type": "string",
+                        "description": "The ID of the region to which the CEN instance belongs.\n"
+                    },
+                    "descriptionRegex": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CEN route map IDs.\n"
+                    },
+                    "maps": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cen/getRouteMapsMap:getRouteMapsMap"
+                        },
+                        "description": "A list of CEN instances. Each element contains the following attributes:\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the route map.\n"
+                    },
+                    "transmitDirection": {
+                        "type": "string",
+                        "description": "The direction in which the route map is applied.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cenId",
+                    "ids",
+                    "maps",
+                    "id"
+                ]
+            }
+        },
         "alicloud:cloudconnect/getNetworks:getNetworks": {
             "description": "This data source provides Cloud Connect Networks available to the user.\n\n\u003e **NOTE:** Available in 1.59.0+\n\n\u003e **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultNetworks = alicloud_cloud_connect_networks_default.id.apply(id =\u003e alicloud.cloudconnect.getNetworks({\n    ids: [id],\n    nameRegex: \"^tf-testAcc.*\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.cloudconnect.Network(\"default\", {\n    cidrBlock: \"192.168.0.0/24\",\n    description: \"tf-testAccCloudConnectNetworkDescription\",\n    isDefault: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault_networks = alicloud.cloudconnect.get_networks(ids=[alicloud_cloud_connect_networks[\"default\"][\"id\"]],\n    name_regex=\"^tf-testAcc.*\")\ndefault_network = alicloud.cloudconnect.Network(\"defaultNetwork\",\n    cidr_block=\"192.168.0.0/24\",\n    description=\"tf-testAccCloudConnectNetworkDescription\",\n    is_default=True)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var defaultNetworks = Output.Create(AliCloud.CloudConnect.GetNetworks.InvokeAsync(new AliCloud.CloudConnect.GetNetworksArgs\n        {\n            Ids = \n            {\n                alicloud_cloud_connect_networks.Default.Id,\n            },\n            NameRegex = \"^tf-testAcc.*\",\n        }));\n        var defaultNetwork = new AliCloud.CloudConnect.Network(\"defaultNetwork\", new AliCloud.CloudConnect.NetworkArgs\n        {\n            CidrBlock = \"192.168.0.0/24\",\n            Description = \"tf-testAccCloudConnectNetworkDescription\",\n            IsDefault = true,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -53502,6 +54310,99 @@
                     "instanceId",
                     "names",
                     "namespaces",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos": {
+            "description": "This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.87.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegistryEnterpriseRepos.\n",
+                "properties": {
+                    "enableDetails": {
+                        "type": "boolean",
+                        "description": "Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ids to filter results by repository id.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by repository name.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition namespace where the repositories are located in.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegistryEnterpriseRepos.\n",
+                "properties": {
+                    "enableDetails": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition repositories. Its element is a repository id.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of repository names.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition namespace where repo is located.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "repos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/getRegistryEnterpriseReposRepo:getRegistryEnterpriseReposRepo"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition namespaces. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instanceId",
+                    "names",
+                    "repos",
                     "id"
                 ]
             }
@@ -54268,6 +55169,10 @@
                         "type": "string",
                         "description": "A regex string to filter results by the domain name. \n"
                     },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Domain group ID, if not filled, the default is all groups.\n"
+                    },
                     "groupNameRegex": {
                         "type": "string",
                         "description": "A regex string to filter results by the group name.\n"
@@ -54283,12 +55188,35 @@
                         "type": "string",
                         "description": "Cloud analysis product ID.\n"
                     },
+                    "keyWord": {
+                        "type": "string",
+                        "description": "The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.\n"
+                    },
+                    "lang": {
+                        "type": "string",
+                        "description": "User language.\n"
+                    },
                     "outputFile": {
                         "type": "string"
                     },
                     "resourceGroupId": {
                         "type": "string",
                         "description": "The Id of resource group which the dns belongs.\n"
+                    },
+                    "searchMode": {
+                        "type": "string",
+                        "description": "Search mode, `LIKE` fuzzy search, `EXACT` exact search.\n"
+                    },
+                    "starmark": {
+                        "type": "boolean",
+                        "description": "Whether to query the domain name star.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
                     },
                     "versionCode": {
                         "type": "string",
@@ -54314,6 +55242,10 @@
                         },
                         "description": "A list of domains. Each element contains the following attributes:\n"
                     },
+                    "groupId": {
+                        "type": "string",
+                        "description": "Id of group that contains the domain.\n"
+                    },
                     "groupNameRegex": {
                         "type": "string"
                     },
@@ -54332,6 +55264,12 @@
                         "type": "string",
                         "description": "Cloud analysis product ID of the domain.\n"
                     },
+                    "keyWord": {
+                        "type": "string"
+                    },
+                    "lang": {
+                        "type": "string"
+                    },
                     "names": {
                         "type": "array",
                         "items": {
@@ -54346,9 +55284,21 @@
                         "type": "string",
                         "description": "The Id of resource group which the dns belongs.\n"
                     },
+                    "searchMode": {
+                        "type": "string"
+                    },
+                    "starmark": {
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
                     "versionCode": {
                         "type": "string",
-                        "description": "Cloud analysis version code of the domain.\n"
+                        "description": "Cloud resolution version ID.\n"
                     }
                 },
                 "type": "object",
@@ -61454,7 +62404,7 @@
             }
         },
         "alicloud:resourcemanager/getResourceDirectories:getResourceDirectories": {
-            "description": "This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaule = pulumi.output(alicloud.resourcemanager.getResourceDirectories({ async: true }));\n\nexport const resourceDirectoryId = defaule.directories[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefaule = alicloud.resourcemanager.get_resource_directories()\npulumi.export(\"resourceDirectoryId\", defaule.directories[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var defaule = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());\n        this.ResourceDirectoryId = defaule.Apply(defaule =\u003e defaule.Directories[0].Id);\n    }\n\n    [Output(\"resourceDirectoryId\")]\n    public Output\u003cstring\u003e ResourceDirectoryId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "This data source provides the Resource Manager Resource Directories of the current Alibaba Cloud user.\n\n\u003e **NOTE:**  Available in 1.86.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultResourceDirectories = pulumi.output(alicloud.resourcemanager.getResourceDirectories({ async: true }));\n\nexport const resourceDirectoryId = defaultResourceDirectories.directories[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.resourcemanager.get_resource_directories()\npulumi.export(\"resourceDirectoryId\", default.directories[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());\n        this.ResourceDirectoryId = @default.Apply(@default =\u003e @default.Directories[0].Id);\n    }\n\n    [Output(\"resourceDirectoryId\")]\n    public Output\u003cstring\u003e ResourceDirectoryId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getResourceDirectories.\n",
                 "properties": {

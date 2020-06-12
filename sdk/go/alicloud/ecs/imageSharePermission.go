@@ -19,6 +19,13 @@ import (
 // > **NOTE:** After creating an ECS instance using a shared image, once the custom image owner releases the image sharing relationship or deletes the custom image, the instance cannot initialize the system disk.
 //
 // > **NOTE:** Available in 1.68.0+.
+//
+//
+// ## Attributes Reference0
+//
+//  The following attributes are exported:
+//
+// * `id` - ID of the image. It formats as `<image_id>:<account_id>`
 type ImageSharePermission struct {
 	pulumi.CustomResourceState
 

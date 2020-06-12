@@ -19,6 +19,10 @@ class BastionHostInstance(pulumi.CustomResource):
     """
     Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
     """
+    resource_group_id: pulumi.Output[str]
+    """
+    The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+    """
     security_group_ids: pulumi.Output[list]
     """
     security group IDs configured to bastionhost
@@ -31,13 +35,14 @@ class BastionHostInstance(pulumi.CustomResource):
     """
     vSwtich ID configured to bastionhost
     """
-    def __init__(__self__, resource_name, opts=None, description=None, license_code=None, period=None, security_group_ids=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, license_code=None, period=None, resource_group_id=None, security_group_ids=None, tags=None, vswitch_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a BastionHostInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[float] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[list] security_group_ids: security group IDs configured to bastionhost
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to bastionhost
@@ -66,6 +71,7 @@ class BastionHostInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'license_code'")
             __props__['license_code'] = license_code
             __props__['period'] = period
+            __props__['resource_group_id'] = resource_group_id
             if security_group_ids is None:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__['security_group_ids'] = security_group_ids
@@ -80,7 +86,7 @@ class BastionHostInstance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, license_code=None, period=None, security_group_ids=None, tags=None, vswitch_id=None):
+    def get(resource_name, id, opts=None, description=None, license_code=None, period=None, resource_group_id=None, security_group_ids=None, tags=None, vswitch_id=None):
         """
         Get an existing BastionHostInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -90,6 +96,7 @@ class BastionHostInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[float] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[list] security_group_ids: security group IDs configured to bastionhost
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to bastionhost
@@ -101,6 +108,7 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__["description"] = description
         __props__["license_code"] = license_code
         __props__["period"] = period
+        __props__["resource_group_id"] = resource_group_id
         __props__["security_group_ids"] = security_group_ids
         __props__["tags"] = tags
         __props__["vswitch_id"] = vswitch_id

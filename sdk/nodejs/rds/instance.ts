@@ -224,7 +224,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -448,7 +448,7 @@ export interface InstanceState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**
@@ -573,7 +573,7 @@ export interface InstanceArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC.
+     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     readonly vswitchId?: pulumi.Input<string>;
     /**

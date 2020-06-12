@@ -96,6 +96,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly domain!: pulumi.Output<string>;
     /**
+     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     */
+    public readonly enableKibanaPrivateNetwork!: pulumi.Output<boolean | undefined>;
+    /**
+     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     */
+    public readonly enableKibanaPublicNetwork!: pulumi.Output<boolean | undefined>;
+    /**
+     * Bool, default to false. When it set to true, the instance can enable public network access。
+     */
+    public readonly enablePublic!: pulumi.Output<boolean | undefined>;
+    /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
@@ -107,6 +119,10 @@ export class Instance extends pulumi.CustomResource {
      * Kibana console port.
      */
     public /*out*/ readonly kibanaPort!: pulumi.Output<number>;
+    /**
+     * Set the Kibana's IP whitelist in private network.
+     */
+    public readonly kibanaPrivateWhitelists!: pulumi.Output<string[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
@@ -139,6 +155,9 @@ export class Instance extends pulumi.CustomResource {
      * Set the instance's IP whitelist in VPC network.
      */
     public readonly privateWhitelists!: pulumi.Output<string[]>;
+    /**
+     * Set the instance's IP whitelist in internet network.
+     */
     public readonly publicWhitelists!: pulumi.Output<string[]>;
     /**
      * The Id of resource group which the Elasticsearch instance belongs.
@@ -186,9 +205,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["dataNodeSpec"] = state ? state.dataNodeSpec : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["domain"] = state ? state.domain : undefined;
+            inputs["enableKibanaPrivateNetwork"] = state ? state.enableKibanaPrivateNetwork : undefined;
+            inputs["enableKibanaPublicNetwork"] = state ? state.enableKibanaPublicNetwork : undefined;
+            inputs["enablePublic"] = state ? state.enablePublic : undefined;
             inputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             inputs["kibanaDomain"] = state ? state.kibanaDomain : undefined;
             inputs["kibanaPort"] = state ? state.kibanaPort : undefined;
+            inputs["kibanaPrivateWhitelists"] = state ? state.kibanaPrivateWhitelists : undefined;
             inputs["kibanaWhitelists"] = state ? state.kibanaWhitelists : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
@@ -230,7 +253,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["dataNodeDiskType"] = args ? args.dataNodeDiskType : undefined;
             inputs["dataNodeSpec"] = args ? args.dataNodeSpec : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableKibanaPrivateNetwork"] = args ? args.enableKibanaPrivateNetwork : undefined;
+            inputs["enableKibanaPublicNetwork"] = args ? args.enableKibanaPublicNetwork : undefined;
+            inputs["enablePublic"] = args ? args.enablePublic : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
+            inputs["kibanaPrivateWhitelists"] = args ? args.kibanaPrivateWhitelists : undefined;
             inputs["kibanaWhitelists"] = args ? args.kibanaWhitelists : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
@@ -296,6 +323,18 @@ export interface InstanceState {
      */
     readonly domain?: pulumi.Input<string>;
     /**
+     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     */
+    readonly enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
+    /**
+     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     */
+    readonly enableKibanaPublicNetwork?: pulumi.Input<boolean>;
+    /**
+     * Bool, default to false. When it set to true, the instance can enable public network access。
+     */
+    readonly enablePublic?: pulumi.Input<boolean>;
+    /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
@@ -307,6 +346,10 @@ export interface InstanceState {
      * Kibana console port.
      */
     readonly kibanaPort?: pulumi.Input<number>;
+    /**
+     * Set the Kibana's IP whitelist in private network.
+     */
+    readonly kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
@@ -339,6 +382,9 @@ export interface InstanceState {
      * Set the instance's IP whitelist in VPC network.
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set the instance's IP whitelist in internet network.
+     */
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of resource group which the Elasticsearch instance belongs.
@@ -399,9 +445,25 @@ export interface InstanceArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     */
+    readonly enableKibanaPrivateNetwork?: pulumi.Input<boolean>;
+    /**
+     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     */
+    readonly enableKibanaPublicNetwork?: pulumi.Input<boolean>;
+    /**
+     * Bool, default to false. When it set to true, the instance can enable public network access。
+     */
+    readonly enablePublic?: pulumi.Input<boolean>;
+    /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      */
     readonly instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Set the Kibana's IP whitelist in private network.
+     */
+    readonly kibanaPrivateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set the Kibana's IP whitelist in internet network.
      */
@@ -430,6 +492,9 @@ export interface InstanceArgs {
      * Set the instance's IP whitelist in VPC network.
      */
     readonly privateWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set the instance's IP whitelist in internet network.
+     */
     readonly publicWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Id of resource group which the Elasticsearch instance belongs.

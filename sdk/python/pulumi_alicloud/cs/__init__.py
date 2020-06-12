@@ -9,6 +9,7 @@ from .get_kubernetes_clusters import *
 from .get_managed_kubernetes_clusters import *
 from .get_registry_enterprise_instances import *
 from .get_registry_enterprise_namespaces import *
+from .get_registry_enterprise_repos import *
 from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *

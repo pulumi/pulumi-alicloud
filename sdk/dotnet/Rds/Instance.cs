@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -464,7 +464,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -674,7 +674,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The virtual switch ID to launch DB instances in one VPC.
+        /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
