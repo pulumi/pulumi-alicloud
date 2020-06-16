@@ -37,6 +37,12 @@ import * as utilities from "../utilities";
  *     platform: "Ubuntu",
  * });
  * ```
+ *
+ * ## Attributes Reference0
+ *  
+ *  The following attributes are exported:
+ *  
+ * * `id` - ID of the image.
  */
 export class ImageImport extends pulumi.CustomResource {
     /**

@@ -62,6 +62,12 @@ namespace Pulumi.AliCloud.Dns
         public string? DomainNameRegex { get; set; }
 
         /// <summary>
+        /// Domain group ID, if not filled, the default is all groups.
+        /// </summary>
+        [Input("groupId")]
+        public string? GroupId { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by the group name.
         /// </summary>
         [Input("groupNameRegex")]
@@ -85,6 +91,18 @@ namespace Pulumi.AliCloud.Dns
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
+        /// <summary>
+        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+        /// </summary>
+        [Input("keyWord")]
+        public string? KeyWord { get; set; }
+
+        /// <summary>
+        /// User language.
+        /// </summary>
+        [Input("lang")]
+        public string? Lang { get; set; }
+
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -93,6 +111,30 @@ namespace Pulumi.AliCloud.Dns
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+        /// </summary>
+        [Input("searchMode")]
+        public string? SearchMode { get; set; }
+
+        /// <summary>
+        /// Whether to query the domain name star.
+        /// </summary>
+        [Input("starmark")]
+        public bool? Starmark { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, object> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Cloud analysis version code.
@@ -118,6 +160,10 @@ namespace Pulumi.AliCloud.Dns
         /// A list of domains. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
+        /// <summary>
+        /// Id of group that contains the domain.
+        /// </summary>
+        public readonly string? GroupId;
         public readonly string? GroupNameRegex;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -131,6 +177,8 @@ namespace Pulumi.AliCloud.Dns
         /// Cloud analysis product ID of the domain.
         /// </summary>
         public readonly string? InstanceId;
+        public readonly string? KeyWord;
+        public readonly string? Lang;
         /// <summary>
         /// A list of domain names.
         /// </summary>
@@ -140,8 +188,11 @@ namespace Pulumi.AliCloud.Dns
         /// The Id of resource group which the dns belongs.
         /// </summary>
         public readonly string? ResourceGroupId;
+        public readonly string? SearchMode;
+        public readonly bool? Starmark;
+        public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>
-        /// Cloud analysis version code of the domain.
+        /// Cloud resolution version ID.
         /// </summary>
         public readonly string? VersionCode;
 
@@ -153,6 +204,8 @@ namespace Pulumi.AliCloud.Dns
 
             ImmutableArray<Outputs.GetDomainsDomainResult> domains,
 
+            string? groupId,
+
             string? groupNameRegex,
 
             string id,
@@ -161,24 +214,40 @@ namespace Pulumi.AliCloud.Dns
 
             string? instanceId,
 
+            string? keyWord,
+
+            string? lang,
+
             ImmutableArray<string> names,
 
             string? outputFile,
 
             string? resourceGroupId,
 
+            string? searchMode,
+
+            bool? starmark,
+
+            ImmutableDictionary<string, object>? tags,
+
             string? versionCode)
         {
             AliDomain = aliDomain;
             DomainNameRegex = domainNameRegex;
             Domains = domains;
+            GroupId = groupId;
             GroupNameRegex = groupNameRegex;
             Id = id;
             Ids = ids;
             InstanceId = instanceId;
+            KeyWord = keyWord;
+            Lang = lang;
             Names = names;
             OutputFile = outputFile;
             ResourceGroupId = resourceGroupId;
+            SearchMode = searchMode;
+            Starmark = starmark;
+            Tags = tags;
             VersionCode = versionCode;
         }
     }

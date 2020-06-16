@@ -19,6 +19,13 @@ import (
 // > **NOTE:** If the copying is not completed, you cannot call DeleteImage to delete the image but you can call CancelCopyImage to cancel the copying.
 //
 // > **NOTE:** Available in 1.66.0+.
+//
+//
+// ## Attributes Reference0
+//
+//  The following attributes are exported:
+//
+// * `id` - ID of the image.
 type ImageCopy struct {
 	pulumi.CustomResourceState
 

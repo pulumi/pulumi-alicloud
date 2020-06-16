@@ -76,6 +76,11 @@ class ImageImport(pulumi.CustomResource):
             platform="Ubuntu")
         ```
 
+        ## Attributes Reference0
+         
+         The following attributes are exported:
+         
+        * `id` - ID of the image.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

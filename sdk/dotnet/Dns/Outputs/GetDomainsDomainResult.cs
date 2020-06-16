@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly bool AliDomain;
         /// <summary>
-        /// DNS list of the domain in the analysis system.
+        /// DNS list of domain names in the resolution system.
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// Id of group that contains the domain.
+        /// Domain group ID, if not filled, the default is all groups.
         /// </summary>
         public readonly string GroupId;
         /// <summary>
@@ -38,17 +38,55 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
+        /// The Id of resource.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// Whether it is in black hole.
+        /// </summary>
+        public readonly bool InBlackHole;
+        /// <summary>
+        /// Whether it is cleaning.
+        /// </summary>
+        public readonly bool InClean;
+        /// <summary>
         /// Cloud analysis product ID.
         /// </summary>
         public readonly string InstanceId;
+        public readonly string LineType;
+        /// <summary>
+        /// Minimum TTL.
+        /// </summary>
+        public readonly int MinTtl;
         /// <summary>
         /// Punycode of the Chinese domain.
         /// </summary>
         public readonly string PunyCode;
         /// <summary>
+        /// Tree-like analytical line list.
+        /// </summary>
+        public readonly string RecordLineTreeJson;
+        /// <summary>
+        /// Whether it is a regional route.
+        /// </summary>
+        public readonly bool RegionLines;
+        /// <summary>
+        /// The Id of resource group which the dns belongs.
+        /// </summary>
+        public readonly string Remark;
+        /// <summary>
+        /// Whether to allow auxiliary dns.
+        /// </summary>
+        public readonly bool SlaveDns;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
         /// Cloud analysis version code.
         /// </summary>
         public readonly string VersionCode;
+        public readonly string VersionName;
 
         [OutputConstructor]
         private GetDomainsDomainResult(
@@ -64,11 +102,33 @@ namespace Pulumi.AliCloud.Dns.Outputs
 
             string groupName,
 
+            string id,
+
+            bool inBlackHole,
+
+            bool inClean,
+
             string instanceId,
+
+            string lineType,
+
+            int minTtl,
 
             string punyCode,
 
-            string versionCode)
+            string recordLineTreeJson,
+
+            bool regionLines,
+
+            string remark,
+
+            bool slaveDns,
+
+            ImmutableDictionary<string, object> tags,
+
+            string versionCode,
+
+            string versionName)
         {
             AliDomain = aliDomain;
             DnsServers = dnsServers;
@@ -76,9 +136,20 @@ namespace Pulumi.AliCloud.Dns.Outputs
             DomainName = domainName;
             GroupId = groupId;
             GroupName = groupName;
+            Id = id;
+            InBlackHole = inBlackHole;
+            InClean = inClean;
             InstanceId = instanceId;
+            LineType = lineType;
+            MinTtl = minTtl;
             PunyCode = punyCode;
+            RecordLineTreeJson = recordLineTreeJson;
+            RegionLines = regionLines;
+            Remark = remark;
+            SlaveDns = slaveDns;
+            Tags = tags;
             VersionCode = versionCode;
+            VersionName = versionName;
         }
     }
 }

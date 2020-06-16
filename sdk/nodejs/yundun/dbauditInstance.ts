@@ -45,6 +45,10 @@ export class DBAuditInstance extends pulumi.CustomResource {
      */
     public readonly planCode!: pulumi.Output<string>;
     /**
+     * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -68,6 +72,7 @@ export class DBAuditInstance extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["planCode"] = state ? state.planCode : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -84,6 +89,7 @@ export class DBAuditInstance extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["planCode"] = args ? args.planCode : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
         }
@@ -115,6 +121,10 @@ export interface DBAuditInstanceState {
      */
     readonly planCode?: pulumi.Input<string>;
     /**
+     * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
@@ -140,6 +150,10 @@ export interface DBAuditInstanceArgs {
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium) 
      */
     readonly planCode: pulumi.Input<string>;
+    /**
+     * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

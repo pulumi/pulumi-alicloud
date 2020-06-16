@@ -1090,6 +1090,366 @@ func (o GetRouteEntriesEntryConflictArrayOutput) Index(i pulumi.IntInput) GetRou
 	}).(GetRouteEntriesEntryConflictOutput)
 }
 
+type GetRouteMapsMap struct {
+	// A match statement. It indicates the mode in which the as-path attribute is matched.
+	AsPathMatchMode string `pulumi:"asPathMatchMode"`
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// The ID of the region to which the CEN instance belongs.
+	CenRegionId string `pulumi:"cenRegionId"`
+	// A match statement. It indicates the mode in which the prefix attribute is matched.
+	CidrMatchMode string `pulumi:"cidrMatchMode"`
+	// A match statement. It indicates the mode in which the community attribute is matched.
+	CommunityMatchMode string `pulumi:"communityMatchMode"`
+	// An action statement. It indicates the mode in which the community attribute is operated.
+	CommunityOperateMode string `pulumi:"communityOperateMode"`
+	// The description of the route map.
+	Description string `pulumi:"description"`
+	// A match statement that indicates the list of IDs of the destination instances.
+	DestinationChildInstanceTypes []string `pulumi:"destinationChildInstanceTypes"`
+	// A match statement that indicates the prefix list.
+	DestinationCidrBlocks []string `pulumi:"destinationCidrBlocks"`
+	// A match statement that indicates the list of IDs of the destination instances.
+	DestinationInstanceIds []string `pulumi:"destinationInstanceIds"`
+	// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
+	DestinationInstanceIdsReverseMatch bool `pulumi:"destinationInstanceIdsReverseMatch"`
+	// A match statement that indicates the list of IDs of the destination route tables.
+	DestinationRouteTableIds []string `pulumi:"destinationRouteTableIds"`
+	// The ID of the route map.
+	Id string `pulumi:"id"`
+	// The action that is performed to a route if the route meets all the match conditions.
+	MapResult string `pulumi:"mapResult"`
+	// A match statement that indicates the As path list.
+	MatchAsns []string `pulumi:"matchAsns"`
+	// A match statement that indicates the community set.
+	MatchCommunitySets []string `pulumi:"matchCommunitySets"`
+	// The priority of the next route map that is associated with the current route map.
+	NextPriority int `pulumi:"nextPriority"`
+	// An action statement that operates the community attribute.
+	OperateCommunitySets []string `pulumi:"operateCommunitySets"`
+	// An action statement that modifies the preference of the route.
+	Preference int `pulumi:"preference"`
+	// Indicates AS Path prepending when a regional gateway receives or publishes a route.
+	PrependAsPaths []string `pulumi:"prependAsPaths"`
+	// The priority of the route map.
+	Priority int `pulumi:"priority"`
+	// The ID of the route map.
+	RouteMapId string `pulumi:"routeMapId"`
+	// A match statement that indicates the list of route types.
+	RouteTypes []string `pulumi:"routeTypes"`
+	// A match statement that indicates the list of IDs of the source instances.
+	SourceChildInstanceTypes []string `pulumi:"sourceChildInstanceTypes"`
+	// A match statement that indicates the list of IDs of the source instances.
+	SourceInstanceIds []string `pulumi:"sourceInstanceIds"`
+	// Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
+	SourceInstanceIdsReverseMatch bool `pulumi:"sourceInstanceIdsReverseMatch"`
+	// A match statement that indicates the list of IDs of the source regions.
+	SourceRegionIds []string `pulumi:"sourceRegionIds"`
+	// A match statement that indicates the list of IDs of the source route tables.
+	SourceRouteTableIds []string `pulumi:"sourceRouteTableIds"`
+	// The status of the route map, including `Creating`, `Active` and `Deleting`.
+	Status string `pulumi:"status"`
+	// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+	TransmitDirection string `pulumi:"transmitDirection"`
+}
+
+// GetRouteMapsMapInput is an input type that accepts GetRouteMapsMap and GetRouteMapsMapOutput values.
+// You can construct a concrete instance of `GetRouteMapsMapInput` via:
+//
+// 		 GetRouteMapsMap{ "key": GetRouteMapsArgs{...} }
+//
+type GetRouteMapsMapInput interface {
+	pulumi.Input
+
+	ToGetRouteMapsMapOutput() GetRouteMapsMapOutput
+	ToGetRouteMapsMapOutputWithContext(context.Context) GetRouteMapsMapOutput
+}
+
+type GetRouteMapsMapArgs struct {
+	// A match statement. It indicates the mode in which the as-path attribute is matched.
+	AsPathMatchMode pulumi.StringInput `pulumi:"asPathMatchMode"`
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The ID of the region to which the CEN instance belongs.
+	CenRegionId pulumi.StringInput `pulumi:"cenRegionId"`
+	// A match statement. It indicates the mode in which the prefix attribute is matched.
+	CidrMatchMode pulumi.StringInput `pulumi:"cidrMatchMode"`
+	// A match statement. It indicates the mode in which the community attribute is matched.
+	CommunityMatchMode pulumi.StringInput `pulumi:"communityMatchMode"`
+	// An action statement. It indicates the mode in which the community attribute is operated.
+	CommunityOperateMode pulumi.StringInput `pulumi:"communityOperateMode"`
+	// The description of the route map.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A match statement that indicates the list of IDs of the destination instances.
+	DestinationChildInstanceTypes pulumi.StringArrayInput `pulumi:"destinationChildInstanceTypes"`
+	// A match statement that indicates the prefix list.
+	DestinationCidrBlocks pulumi.StringArrayInput `pulumi:"destinationCidrBlocks"`
+	// A match statement that indicates the list of IDs of the destination instances.
+	DestinationInstanceIds pulumi.StringArrayInput `pulumi:"destinationInstanceIds"`
+	// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
+	DestinationInstanceIdsReverseMatch pulumi.BoolInput `pulumi:"destinationInstanceIdsReverseMatch"`
+	// A match statement that indicates the list of IDs of the destination route tables.
+	DestinationRouteTableIds pulumi.StringArrayInput `pulumi:"destinationRouteTableIds"`
+	// The ID of the route map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The action that is performed to a route if the route meets all the match conditions.
+	MapResult pulumi.StringInput `pulumi:"mapResult"`
+	// A match statement that indicates the As path list.
+	MatchAsns pulumi.StringArrayInput `pulumi:"matchAsns"`
+	// A match statement that indicates the community set.
+	MatchCommunitySets pulumi.StringArrayInput `pulumi:"matchCommunitySets"`
+	// The priority of the next route map that is associated with the current route map.
+	NextPriority pulumi.IntInput `pulumi:"nextPriority"`
+	// An action statement that operates the community attribute.
+	OperateCommunitySets pulumi.StringArrayInput `pulumi:"operateCommunitySets"`
+	// An action statement that modifies the preference of the route.
+	Preference pulumi.IntInput `pulumi:"preference"`
+	// Indicates AS Path prepending when a regional gateway receives or publishes a route.
+	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
+	// The priority of the route map.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The ID of the route map.
+	RouteMapId pulumi.StringInput `pulumi:"routeMapId"`
+	// A match statement that indicates the list of route types.
+	RouteTypes pulumi.StringArrayInput `pulumi:"routeTypes"`
+	// A match statement that indicates the list of IDs of the source instances.
+	SourceChildInstanceTypes pulumi.StringArrayInput `pulumi:"sourceChildInstanceTypes"`
+	// A match statement that indicates the list of IDs of the source instances.
+	SourceInstanceIds pulumi.StringArrayInput `pulumi:"sourceInstanceIds"`
+	// Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
+	SourceInstanceIdsReverseMatch pulumi.BoolInput `pulumi:"sourceInstanceIdsReverseMatch"`
+	// A match statement that indicates the list of IDs of the source regions.
+	SourceRegionIds pulumi.StringArrayInput `pulumi:"sourceRegionIds"`
+	// A match statement that indicates the list of IDs of the source route tables.
+	SourceRouteTableIds pulumi.StringArrayInput `pulumi:"sourceRouteTableIds"`
+	// The status of the route map, including `Creating`, `Active` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+	TransmitDirection pulumi.StringInput `pulumi:"transmitDirection"`
+}
+
+func (GetRouteMapsMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteMapsMap)(nil)).Elem()
+}
+
+func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutput() GetRouteMapsMapOutput {
+	return i.ToGetRouteMapsMapOutputWithContext(context.Background())
+}
+
+func (i GetRouteMapsMapArgs) ToGetRouteMapsMapOutputWithContext(ctx context.Context) GetRouteMapsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteMapsMapOutput)
+}
+
+// GetRouteMapsMapArrayInput is an input type that accepts GetRouteMapsMapArray and GetRouteMapsMapArrayOutput values.
+// You can construct a concrete instance of `GetRouteMapsMapArrayInput` via:
+//
+// 		 GetRouteMapsMapArray{ GetRouteMapsMapArgs{...} }
+//
+type GetRouteMapsMapArrayInput interface {
+	pulumi.Input
+
+	ToGetRouteMapsMapArrayOutput() GetRouteMapsMapArrayOutput
+	ToGetRouteMapsMapArrayOutputWithContext(context.Context) GetRouteMapsMapArrayOutput
+}
+
+type GetRouteMapsMapArray []GetRouteMapsMapInput
+
+func (GetRouteMapsMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteMapsMap)(nil)).Elem()
+}
+
+func (i GetRouteMapsMapArray) ToGetRouteMapsMapArrayOutput() GetRouteMapsMapArrayOutput {
+	return i.ToGetRouteMapsMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouteMapsMapArray) ToGetRouteMapsMapArrayOutputWithContext(ctx context.Context) GetRouteMapsMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouteMapsMapArrayOutput)
+}
+
+type GetRouteMapsMapOutput struct{ *pulumi.OutputState }
+
+func (GetRouteMapsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouteMapsMap)(nil)).Elem()
+}
+
+func (o GetRouteMapsMapOutput) ToGetRouteMapsMapOutput() GetRouteMapsMapOutput {
+	return o
+}
+
+func (o GetRouteMapsMapOutput) ToGetRouteMapsMapOutputWithContext(ctx context.Context) GetRouteMapsMapOutput {
+	return o
+}
+
+// A match statement. It indicates the mode in which the as-path attribute is matched.
+func (o GetRouteMapsMapOutput) AsPathMatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.AsPathMatchMode }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetRouteMapsMapOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The ID of the region to which the CEN instance belongs.
+func (o GetRouteMapsMapOutput) CenRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.CenRegionId }).(pulumi.StringOutput)
+}
+
+// A match statement. It indicates the mode in which the prefix attribute is matched.
+func (o GetRouteMapsMapOutput) CidrMatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.CidrMatchMode }).(pulumi.StringOutput)
+}
+
+// A match statement. It indicates the mode in which the community attribute is matched.
+func (o GetRouteMapsMapOutput) CommunityMatchMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.CommunityMatchMode }).(pulumi.StringOutput)
+}
+
+// An action statement. It indicates the mode in which the community attribute is operated.
+func (o GetRouteMapsMapOutput) CommunityOperateMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.CommunityOperateMode }).(pulumi.StringOutput)
+}
+
+// The description of the route map.
+func (o GetRouteMapsMapOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A match statement that indicates the list of IDs of the destination instances.
+func (o GetRouteMapsMapOutput) DestinationChildInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationChildInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the prefix list.
+func (o GetRouteMapsMapOutput) DestinationCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the destination instances.
+func (o GetRouteMapsMapOutput) DestinationInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to enable the reverse match method of the DestinationInstanceIds match condition.
+func (o GetRouteMapsMapOutput) DestinationInstanceIdsReverseMatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) bool { return v.DestinationInstanceIdsReverseMatch }).(pulumi.BoolOutput)
+}
+
+// A match statement that indicates the list of IDs of the destination route tables.
+func (o GetRouteMapsMapOutput) DestinationRouteTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.DestinationRouteTableIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the route map.
+func (o GetRouteMapsMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The action that is performed to a route if the route meets all the match conditions.
+func (o GetRouteMapsMapOutput) MapResult() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.MapResult }).(pulumi.StringOutput)
+}
+
+// A match statement that indicates the As path list.
+func (o GetRouteMapsMapOutput) MatchAsns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.MatchAsns }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the community set.
+func (o GetRouteMapsMapOutput) MatchCommunitySets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.MatchCommunitySets }).(pulumi.StringArrayOutput)
+}
+
+// The priority of the next route map that is associated with the current route map.
+func (o GetRouteMapsMapOutput) NextPriority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) int { return v.NextPriority }).(pulumi.IntOutput)
+}
+
+// An action statement that operates the community attribute.
+func (o GetRouteMapsMapOutput) OperateCommunitySets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.OperateCommunitySets }).(pulumi.StringArrayOutput)
+}
+
+// An action statement that modifies the preference of the route.
+func (o GetRouteMapsMapOutput) Preference() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) int { return v.Preference }).(pulumi.IntOutput)
+}
+
+// Indicates AS Path prepending when a regional gateway receives or publishes a route.
+func (o GetRouteMapsMapOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
+}
+
+// The priority of the route map.
+func (o GetRouteMapsMapOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The ID of the route map.
+func (o GetRouteMapsMapOutput) RouteMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.RouteMapId }).(pulumi.StringOutput)
+}
+
+// A match statement that indicates the list of route types.
+func (o GetRouteMapsMapOutput) RouteTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.RouteTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the source instances.
+func (o GetRouteMapsMapOutput) SourceChildInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.SourceChildInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the source instances.
+func (o GetRouteMapsMapOutput) SourceInstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.SourceInstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to enable the reverse match method of the SourceInstanceIds match condition.
+func (o GetRouteMapsMapOutput) SourceInstanceIdsReverseMatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) bool { return v.SourceInstanceIdsReverseMatch }).(pulumi.BoolOutput)
+}
+
+// A match statement that indicates the list of IDs of the source regions.
+func (o GetRouteMapsMapOutput) SourceRegionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.SourceRegionIds }).(pulumi.StringArrayOutput)
+}
+
+// A match statement that indicates the list of IDs of the source route tables.
+func (o GetRouteMapsMapOutput) SourceRouteTableIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) []string { return v.SourceRouteTableIds }).(pulumi.StringArrayOutput)
+}
+
+// The status of the route map, including `Creating`, `Active` and `Deleting`.
+func (o GetRouteMapsMapOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
+func (o GetRouteMapsMapOutput) TransmitDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouteMapsMap) string { return v.TransmitDirection }).(pulumi.StringOutput)
+}
+
+type GetRouteMapsMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouteMapsMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouteMapsMap)(nil)).Elem()
+}
+
+func (o GetRouteMapsMapArrayOutput) ToGetRouteMapsMapArrayOutput() GetRouteMapsMapArrayOutput {
+	return o
+}
+
+func (o GetRouteMapsMapArrayOutput) ToGetRouteMapsMapArrayOutputWithContext(ctx context.Context) GetRouteMapsMapArrayOutput {
+	return o
+}
+
+func (o GetRouteMapsMapArrayOutput) Index(i pulumi.IntInput) GetRouteMapsMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouteMapsMap {
+		return vs[0].([]GetRouteMapsMap)[vs[1].(int)]
+	}).(GetRouteMapsMapOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitOutput{})
 	pulumi.RegisterOutputType(GetBandwidthLimitsLimitArrayOutput{})
@@ -1105,4 +1465,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryConflictOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryConflictArrayOutput{})
+	pulumi.RegisterOutputType(GetRouteMapsMapOutput{})
+	pulumi.RegisterOutputType(GetRouteMapsMapArrayOutput{})
 }

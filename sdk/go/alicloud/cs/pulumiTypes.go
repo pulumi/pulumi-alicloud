@@ -2926,6 +2926,312 @@ func (o GetRegistryEnterpriseNamespacesNamespaceArrayOutput) Index(i pulumi.IntI
 	}).(GetRegistryEnterpriseNamespacesNamespaceOutput)
 }
 
+type GetRegistryEnterpriseReposRepo struct {
+	// ID of Container Registry Enterprise Edition repository.
+	Id string `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition repository.
+	Name string `pulumi:"name"`
+	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	Namespace string `pulumi:"namespace"`
+	// `PUBLIC` or `PRIVATE`, repository's visibility.
+	RepoType string `pulumi:"repoType"`
+	// The repository general information.
+	Summary string `pulumi:"summary"`
+	// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+	Tags []GetRegistryEnterpriseReposRepoTag `pulumi:"tags"`
+}
+
+// GetRegistryEnterpriseReposRepoInput is an input type that accepts GetRegistryEnterpriseReposRepoArgs and GetRegistryEnterpriseReposRepoOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseReposRepoInput` via:
+//
+// 		 GetRegistryEnterpriseReposRepoArgs{...}
+//
+type GetRegistryEnterpriseReposRepoInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseReposRepoOutput() GetRegistryEnterpriseReposRepoOutput
+	ToGetRegistryEnterpriseReposRepoOutputWithContext(context.Context) GetRegistryEnterpriseReposRepoOutput
+}
+
+type GetRegistryEnterpriseReposRepoArgs struct {
+	// ID of Container Registry Enterprise Edition repository.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition repository.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// `PUBLIC` or `PRIVATE`, repository's visibility.
+	RepoType pulumi.StringInput `pulumi:"repoType"`
+	// The repository general information.
+	Summary pulumi.StringInput `pulumi:"summary"`
+	// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+	Tags GetRegistryEnterpriseReposRepoTagArrayInput `pulumi:"tags"`
+}
+
+func (GetRegistryEnterpriseReposRepoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposRepo)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseReposRepoArgs) ToGetRegistryEnterpriseReposRepoOutput() GetRegistryEnterpriseReposRepoOutput {
+	return i.ToGetRegistryEnterpriseReposRepoOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseReposRepoArgs) ToGetRegistryEnterpriseReposRepoOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseReposRepoOutput)
+}
+
+// GetRegistryEnterpriseReposRepoArrayInput is an input type that accepts GetRegistryEnterpriseReposRepoArray and GetRegistryEnterpriseReposRepoArrayOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseReposRepoArrayInput` via:
+//
+// 		 GetRegistryEnterpriseReposRepoArray{ GetRegistryEnterpriseReposRepoArgs{...} }
+//
+type GetRegistryEnterpriseReposRepoArrayInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseReposRepoArrayOutput() GetRegistryEnterpriseReposRepoArrayOutput
+	ToGetRegistryEnterpriseReposRepoArrayOutputWithContext(context.Context) GetRegistryEnterpriseReposRepoArrayOutput
+}
+
+type GetRegistryEnterpriseReposRepoArray []GetRegistryEnterpriseReposRepoInput
+
+func (GetRegistryEnterpriseReposRepoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseReposRepo)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseReposRepoArray) ToGetRegistryEnterpriseReposRepoArrayOutput() GetRegistryEnterpriseReposRepoArrayOutput {
+	return i.ToGetRegistryEnterpriseReposRepoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseReposRepoArray) ToGetRegistryEnterpriseReposRepoArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseReposRepoArrayOutput)
+}
+
+type GetRegistryEnterpriseReposRepoOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseReposRepoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposRepo)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseReposRepoOutput) ToGetRegistryEnterpriseReposRepoOutput() GetRegistryEnterpriseReposRepoOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoOutput) ToGetRegistryEnterpriseReposRepoOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoOutput {
+	return o
+}
+
+// ID of Container Registry Enterprise Edition repository.
+func (o GetRegistryEnterpriseReposRepoOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition instance.
+func (o GetRegistryEnterpriseReposRepoOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition repository.
+func (o GetRegistryEnterpriseReposRepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition namespace where the repositories are located in.
+func (o GetRegistryEnterpriseReposRepoOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// `PUBLIC` or `PRIVATE`, repository's visibility.
+func (o GetRegistryEnterpriseReposRepoOutput) RepoType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The repository general information.
+func (o GetRegistryEnterpriseReposRepoOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) string { return v.Summary }).(pulumi.StringOutput)
+}
+
+// A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
+func (o GetRegistryEnterpriseReposRepoOutput) Tags() GetRegistryEnterpriseReposRepoTagArrayOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepo) []GetRegistryEnterpriseReposRepoTag { return v.Tags }).(GetRegistryEnterpriseReposRepoTagArrayOutput)
+}
+
+type GetRegistryEnterpriseReposRepoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseReposRepoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseReposRepo)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseReposRepoArrayOutput) ToGetRegistryEnterpriseReposRepoArrayOutput() GetRegistryEnterpriseReposRepoArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoArrayOutput) ToGetRegistryEnterpriseReposRepoArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoArrayOutput) Index(i pulumi.IntInput) GetRegistryEnterpriseReposRepoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistryEnterpriseReposRepo {
+		return vs[0].([]GetRegistryEnterpriseReposRepo)[vs[1].(int)]
+	}).(GetRegistryEnterpriseReposRepoOutput)
+}
+
+type GetRegistryEnterpriseReposRepoTag struct {
+	// Digest of this image.
+	Digest string `pulumi:"digest"`
+	// Create time of this image, unix time in nanoseconds.
+	ImageCreate string `pulumi:"imageCreate"`
+	// Id of this image.
+	ImageId string `pulumi:"imageId"`
+	// Status of this image, in bytes.
+	ImageSize int `pulumi:"imageSize"`
+	// Last update time of this image, unix time in nanoseconds.
+	ImageUpdate string `pulumi:"imageUpdate"`
+	// Status of this image.
+	Status string `pulumi:"status"`
+	// Tag of this image.
+	Tag string `pulumi:"tag"`
+}
+
+// GetRegistryEnterpriseReposRepoTagInput is an input type that accepts GetRegistryEnterpriseReposRepoTagArgs and GetRegistryEnterpriseReposRepoTagOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseReposRepoTagInput` via:
+//
+// 		 GetRegistryEnterpriseReposRepoTagArgs{...}
+//
+type GetRegistryEnterpriseReposRepoTagInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseReposRepoTagOutput() GetRegistryEnterpriseReposRepoTagOutput
+	ToGetRegistryEnterpriseReposRepoTagOutputWithContext(context.Context) GetRegistryEnterpriseReposRepoTagOutput
+}
+
+type GetRegistryEnterpriseReposRepoTagArgs struct {
+	// Digest of this image.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// Create time of this image, unix time in nanoseconds.
+	ImageCreate pulumi.StringInput `pulumi:"imageCreate"`
+	// Id of this image.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Status of this image, in bytes.
+	ImageSize pulumi.IntInput `pulumi:"imageSize"`
+	// Last update time of this image, unix time in nanoseconds.
+	ImageUpdate pulumi.StringInput `pulumi:"imageUpdate"`
+	// Status of this image.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Tag of this image.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (GetRegistryEnterpriseReposRepoTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposRepoTag)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseReposRepoTagArgs) ToGetRegistryEnterpriseReposRepoTagOutput() GetRegistryEnterpriseReposRepoTagOutput {
+	return i.ToGetRegistryEnterpriseReposRepoTagOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseReposRepoTagArgs) ToGetRegistryEnterpriseReposRepoTagOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseReposRepoTagOutput)
+}
+
+// GetRegistryEnterpriseReposRepoTagArrayInput is an input type that accepts GetRegistryEnterpriseReposRepoTagArray and GetRegistryEnterpriseReposRepoTagArrayOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseReposRepoTagArrayInput` via:
+//
+// 		 GetRegistryEnterpriseReposRepoTagArray{ GetRegistryEnterpriseReposRepoTagArgs{...} }
+//
+type GetRegistryEnterpriseReposRepoTagArrayInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseReposRepoTagArrayOutput() GetRegistryEnterpriseReposRepoTagArrayOutput
+	ToGetRegistryEnterpriseReposRepoTagArrayOutputWithContext(context.Context) GetRegistryEnterpriseReposRepoTagArrayOutput
+}
+
+type GetRegistryEnterpriseReposRepoTagArray []GetRegistryEnterpriseReposRepoTagInput
+
+func (GetRegistryEnterpriseReposRepoTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseReposRepoTag)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseReposRepoTagArray) ToGetRegistryEnterpriseReposRepoTagArrayOutput() GetRegistryEnterpriseReposRepoTagArrayOutput {
+	return i.ToGetRegistryEnterpriseReposRepoTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseReposRepoTagArray) ToGetRegistryEnterpriseReposRepoTagArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseReposRepoTagArrayOutput)
+}
+
+type GetRegistryEnterpriseReposRepoTagOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseReposRepoTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseReposRepoTag)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseReposRepoTagOutput) ToGetRegistryEnterpriseReposRepoTagOutput() GetRegistryEnterpriseReposRepoTagOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoTagOutput) ToGetRegistryEnterpriseReposRepoTagOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoTagOutput {
+	return o
+}
+
+// Digest of this image.
+func (o GetRegistryEnterpriseReposRepoTagOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// Create time of this image, unix time in nanoseconds.
+func (o GetRegistryEnterpriseReposRepoTagOutput) ImageCreate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageCreate }).(pulumi.StringOutput)
+}
+
+// Id of this image.
+func (o GetRegistryEnterpriseReposRepoTagOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Status of this image, in bytes.
+func (o GetRegistryEnterpriseReposRepoTagOutput) ImageSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) int { return v.ImageSize }).(pulumi.IntOutput)
+}
+
+// Last update time of this image, unix time in nanoseconds.
+func (o GetRegistryEnterpriseReposRepoTagOutput) ImageUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.ImageUpdate }).(pulumi.StringOutput)
+}
+
+// Status of this image.
+func (o GetRegistryEnterpriseReposRepoTagOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag of this image.
+func (o GetRegistryEnterpriseReposRepoTagOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseReposRepoTag) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type GetRegistryEnterpriseReposRepoTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseReposRepoTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseReposRepoTag)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseReposRepoTagArrayOutput) ToGetRegistryEnterpriseReposRepoTagArrayOutput() GetRegistryEnterpriseReposRepoTagArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoTagArrayOutput) ToGetRegistryEnterpriseReposRepoTagArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseReposRepoTagArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseReposRepoTagArrayOutput) Index(i pulumi.IntInput) GetRegistryEnterpriseReposRepoTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistryEnterpriseReposRepoTag {
+		return vs[0].([]GetRegistryEnterpriseReposRepoTag)[vs[1].(int)]
+	}).(GetRegistryEnterpriseReposRepoTagOutput)
+}
+
 type GetServerlessKubernetesClustersCluster struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
@@ -3214,6 +3520,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseNamespacesNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoArrayOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoTagOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionsOutput{})

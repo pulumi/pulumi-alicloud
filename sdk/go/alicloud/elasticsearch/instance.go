@@ -34,12 +34,20 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Instance connection domain (only VPC network access supported).
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Bool, default to false. When it set to true, the instance can close kibana private network access。
+	EnableKibanaPrivateNetwork pulumi.BoolPtrOutput `pulumi:"enableKibanaPrivateNetwork"`
+	// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+	EnableKibanaPublicNetwork pulumi.BoolPtrOutput `pulumi:"enableKibanaPublicNetwork"`
+	// Bool, default to false. When it set to true, the instance can enable public network access。
+	EnablePublic pulumi.BoolPtrOutput `pulumi:"enablePublic"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringOutput `pulumi:"kibanaDomain"`
 	// Kibana console port.
 	KibanaPort pulumi.IntOutput `pulumi:"kibanaPort"`
+	// Set the Kibana's IP whitelist in private network.
+	KibanaPrivateWhitelists pulumi.StringArrayOutput `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayOutput `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -56,7 +64,8 @@ type Instance struct {
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayOutput `pulumi:"privateWhitelists"`
-	PublicWhitelists  pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
+	// Set the instance's IP whitelist in internet network.
+	PublicWhitelists pulumi.StringArrayOutput `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -135,12 +144,20 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Instance connection domain (only VPC network access supported).
 	Domain *string `pulumi:"domain"`
+	// Bool, default to false. When it set to true, the instance can close kibana private network access。
+	EnableKibanaPrivateNetwork *bool `pulumi:"enableKibanaPrivateNetwork"`
+	// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
+	// Bool, default to false. When it set to true, the instance can enable public network access。
+	EnablePublic *bool `pulumi:"enablePublic"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Kibana console domain (Internet access supported).
 	KibanaDomain *string `pulumi:"kibanaDomain"`
 	// Kibana console port.
 	KibanaPort *int `pulumi:"kibanaPort"`
+	// Set the Kibana's IP whitelist in private network.
+	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -157,7 +174,8 @@ type instanceState struct {
 	Port *int `pulumi:"port"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	PublicWhitelists  []string `pulumi:"publicWhitelists"`
+	// Set the instance's IP whitelist in internet network.
+	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -191,12 +209,20 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Instance connection domain (only VPC network access supported).
 	Domain pulumi.StringPtrInput
+	// Bool, default to false. When it set to true, the instance can close kibana private network access。
+	EnableKibanaPrivateNetwork pulumi.BoolPtrInput
+	// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+	EnableKibanaPublicNetwork pulumi.BoolPtrInput
+	// Bool, default to false. When it set to true, the instance can enable public network access。
+	EnablePublic pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrInput
 	// Kibana console domain (Internet access supported).
 	KibanaDomain pulumi.StringPtrInput
 	// Kibana console port.
 	KibanaPort pulumi.IntPtrInput
+	// Set the Kibana's IP whitelist in private network.
+	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
 	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -213,7 +239,8 @@ type InstanceState struct {
 	Port pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
-	PublicWhitelists  pulumi.StringArrayInput
+	// Set the instance's IP whitelist in internet network.
+	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
@@ -249,8 +276,16 @@ type instanceArgs struct {
 	DataNodeSpec string `pulumi:"dataNodeSpec"`
 	// The description of instance. It a string of 0 to 30 characters.
 	Description *string `pulumi:"description"`
+	// Bool, default to false. When it set to true, the instance can close kibana private network access。
+	EnableKibanaPrivateNetwork *bool `pulumi:"enableKibanaPrivateNetwork"`
+	// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+	EnableKibanaPublicNetwork *bool `pulumi:"enableKibanaPublicNetwork"`
+	// Bool, default to false. When it set to true, the instance can enable public network access。
+	EnablePublic *bool `pulumi:"enablePublic"`
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// Set the Kibana's IP whitelist in private network.
+	KibanaPrivateWhitelists []string `pulumi:"kibanaPrivateWhitelists"`
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists []string `pulumi:"kibanaWhitelists"`
 	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -265,7 +300,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists []string `pulumi:"privateWhitelists"`
-	PublicWhitelists  []string `pulumi:"publicWhitelists"`
+	// Set the instance's IP whitelist in internet network.
+	PublicWhitelists []string `pulumi:"publicWhitelists"`
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -296,8 +332,16 @@ type InstanceArgs struct {
 	DataNodeSpec pulumi.StringInput
 	// The description of instance. It a string of 0 to 30 characters.
 	Description pulumi.StringPtrInput
+	// Bool, default to false. When it set to true, the instance can close kibana private network access。
+	EnableKibanaPrivateNetwork pulumi.BoolPtrInput
+	// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+	EnableKibanaPublicNetwork pulumi.BoolPtrInput
+	// Bool, default to false. When it set to true, the instance can enable public network access。
+	EnablePublic pulumi.BoolPtrInput
 	// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
 	InstanceChargeType pulumi.StringPtrInput
+	// Set the Kibana's IP whitelist in private network.
+	KibanaPrivateWhitelists pulumi.StringArrayInput
 	// Set the Kibana's IP whitelist in internet network.
 	KibanaWhitelists pulumi.StringArrayInput
 	// An KMS encrypts password used to a instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kmsEncryptedPassword` fields.
@@ -312,7 +356,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Set the instance's IP whitelist in VPC network.
 	PrivateWhitelists pulumi.StringArrayInput
-	PublicWhitelists  pulumi.StringArrayInput
+	// Set the instance's IP whitelist in internet network.
+	PublicWhitelists pulumi.StringArrayInput
 	// The Id of resource group which the Elasticsearch instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.

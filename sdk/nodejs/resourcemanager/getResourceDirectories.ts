@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaule = pulumi.output(alicloud.resourcemanager.getResourceDirectories({ async: true }));
+ * const defaultResourceDirectories = pulumi.output(alicloud.resourcemanager.getResourceDirectories({ async: true }));
  *
- * export const resourceDirectoryId = defaule.directories[0].id;
+ * export const resourceDirectoryId = defaultResourceDirectories.directories[0].id;
  * ```
  */
 export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceDirectoriesResult> {

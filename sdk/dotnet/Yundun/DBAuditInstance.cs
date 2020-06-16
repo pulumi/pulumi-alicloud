@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.Yundun
         public Output<string> PlanCode { get; private set; } = null!;
 
         /// <summary>
+        /// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
@@ -105,6 +111,12 @@ namespace Pulumi.AliCloud.Yundun
         [Input("planCode", required: true)]
         public Input<string> PlanCode { get; set; } = null!;
 
+        /// <summary>
+        /// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -147,6 +159,12 @@ namespace Pulumi.AliCloud.Yundun
         /// </summary>
         [Input("planCode")]
         public Input<string>? PlanCode { get; set; }
+
+        /// <summary>
+        /// The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

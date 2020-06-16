@@ -8,6 +8,7 @@ export * from "./getKubernetesClusters";
 export * from "./getManagedKubernetesClusters";
 export * from "./getRegistryEnterpriseInstances";
 export * from "./getRegistryEnterpriseNamespaces";
+export * from "./getRegistryEnterpriseRepos";
 export * from "./getServerlessKubernetesClusters";
 export * from "./kubernetes";
 export * from "./kubernetesAutoscaler";

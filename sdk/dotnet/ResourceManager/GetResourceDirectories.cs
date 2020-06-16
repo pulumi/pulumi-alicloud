@@ -28,8 +28,8 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {
         ///     public MyStack()
         ///     {
-        ///         var defaule = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());
-        ///         this.ResourceDirectoryId = defaule.Apply(defaule =&gt; defaule.Directories[0].Id);
+        ///         var @default = Output.Create(AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync());
+        ///         this.ResourceDirectoryId = @default.Apply(@default =&gt; @default.Directories[0].Id);
         ///     }
         /// 
         ///     [Output("resourceDirectoryId")]

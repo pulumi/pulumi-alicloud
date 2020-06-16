@@ -618,6 +618,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_route_entries":        {Tok: dataSource(cenMod, "getRouteEntries")},
 			"alicloud_cen_region_route_entries": {Tok: dataSource(cenMod, "getRegionRouteEntries")},
 			"alicloud_cen_flowlogs":             {Tok: dataSource(cenMod, "getFlowlogs")},
+			"alicloud_cen_route_maps":           {Tok: dataSource(cenMod, "getRouteMaps")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -632,6 +633,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_serverless_kubernetes_clusters": {Tok: dataSource(csMod, "getServerlessKubernetesClusters")},
 			"alicloud_cr_ee_instances":                   {Tok: dataSource(csMod, "getRegistryEnterpriseInstances")},
 			"alicloud_cr_ee_namespaces":                  {Tok: dataSource(csMod, "getRegistryEnterpriseNamespaces")},
+			"alicloud_cr_ee_repos":                       {Tok: dataSource(csMod, "getRegistryEnterpriseRepos")},
 
 			// Dds
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},

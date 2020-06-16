@@ -83,7 +83,7 @@ type Instance struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
@@ -198,7 +198,7 @@ type instanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
@@ -274,7 +274,7 @@ type InstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
@@ -350,7 +350,7 @@ type instanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
@@ -423,7 +423,7 @@ type InstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// The virtual switch ID to launch DB instances in one VPC.
+	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.

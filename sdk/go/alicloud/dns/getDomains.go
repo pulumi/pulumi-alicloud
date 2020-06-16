@@ -23,15 +23,27 @@ type GetDomainsArgs struct {
 	AliDomain *bool `pulumi:"aliDomain"`
 	// A regex string to filter results by the domain name.
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
+	// Domain group ID, if not filled, the default is all groups.
+	GroupId *string `pulumi:"groupId"`
 	// A regex string to filter results by the group name.
 	GroupNameRegex *string `pulumi:"groupNameRegex"`
 	// - A list of domain IDs.
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
+	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+	KeyWord *string `pulumi:"keyWord"`
+	// User language.
+	Lang       *string `pulumi:"lang"`
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Search mode, `LIKE` fuzzy search, `EXACT` exact search.
+	SearchMode *string `pulumi:"searchMode"`
+	// Whether to query the domain name star.
+	Starmark *bool `pulumi:"starmark"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode *string `pulumi:"versionCode"`
 }
@@ -42,19 +54,26 @@ type GetDomainsResult struct {
 	AliDomain       *bool   `pulumi:"aliDomain"`
 	DomainNameRegex *string `pulumi:"domainNameRegex"`
 	// A list of domains. Each element contains the following attributes:
-	Domains        []GetDomainsDomain `pulumi:"domains"`
-	GroupNameRegex *string            `pulumi:"groupNameRegex"`
+	Domains []GetDomainsDomain `pulumi:"domains"`
+	// Id of group that contains the domain.
+	GroupId        *string `pulumi:"groupId"`
+	GroupNameRegex *string `pulumi:"groupNameRegex"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of domain IDs.
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID of the domain.
 	InstanceId *string `pulumi:"instanceId"`
+	KeyWord    *string `pulumi:"keyWord"`
+	Lang       *string `pulumi:"lang"`
 	// A list of domain names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Cloud analysis version code of the domain.
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	SearchMode      *string                `pulumi:"searchMode"`
+	Starmark        *bool                  `pulumi:"starmark"`
+	Tags            map[string]interface{} `pulumi:"tags"`
+	// Cloud resolution version ID.
 	VersionCode *string `pulumi:"versionCode"`
 }

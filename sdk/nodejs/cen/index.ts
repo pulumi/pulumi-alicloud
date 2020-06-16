@@ -12,6 +12,7 @@ export * from "./getFlowlogs";
 export * from "./getInstances";
 export * from "./getRegionRouteEntries";
 export * from "./getRouteEntries";
+export * from "./getRouteMaps";
 export * from "./instance";
 export * from "./instanceAttachment";
 export * from "./instanceGrant";

@@ -580,22 +580,42 @@ func (o GetDomainRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetDomainRec
 type GetDomainsDomain struct {
 	// Specifies whether the domain is from Alibaba Cloud or not.
 	AliDomain bool `pulumi:"aliDomain"`
-	// DNS list of the domain in the analysis system.
+	// DNS list of domain names in the resolution system.
 	DnsServers []string `pulumi:"dnsServers"`
 	// ID of the domain.
 	DomainId string `pulumi:"domainId"`
 	// Name of the domain.
 	DomainName string `pulumi:"domainName"`
-	// Id of group that contains the domain.
+	// Domain group ID, if not filled, the default is all groups.
 	GroupId string `pulumi:"groupId"`
 	// Name of group that contains the domain.
 	GroupName string `pulumi:"groupName"`
+	// The Id of resource.
+	Id string `pulumi:"id"`
+	// Whether it is in black hole.
+	InBlackHole bool `pulumi:"inBlackHole"`
+	// Whether it is cleaning.
+	InClean bool `pulumi:"inClean"`
 	// Cloud analysis product ID.
 	InstanceId string `pulumi:"instanceId"`
+	LineType   string `pulumi:"lineType"`
+	// Minimum TTL.
+	MinTtl int `pulumi:"minTtl"`
 	// Punycode of the Chinese domain.
 	PunyCode string `pulumi:"punyCode"`
+	// Tree-like analytical line list.
+	RecordLineTreeJson string `pulumi:"recordLineTreeJson"`
+	// Whether it is a regional route.
+	RegionLines bool `pulumi:"regionLines"`
+	// The Id of resource group which the dns belongs.
+	Remark string `pulumi:"remark"`
+	// Whether to allow auxiliary dns.
+	SlaveDns bool `pulumi:"slaveDns"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode string `pulumi:"versionCode"`
+	VersionName string `pulumi:"versionName"`
 }
 
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
@@ -613,22 +633,42 @@ type GetDomainsDomainInput interface {
 type GetDomainsDomainArgs struct {
 	// Specifies whether the domain is from Alibaba Cloud or not.
 	AliDomain pulumi.BoolInput `pulumi:"aliDomain"`
-	// DNS list of the domain in the analysis system.
+	// DNS list of domain names in the resolution system.
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// ID of the domain.
 	DomainId pulumi.StringInput `pulumi:"domainId"`
 	// Name of the domain.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// Id of group that contains the domain.
+	// Domain group ID, if not filled, the default is all groups.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 	// Name of group that contains the domain.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The Id of resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether it is in black hole.
+	InBlackHole pulumi.BoolInput `pulumi:"inBlackHole"`
+	// Whether it is cleaning.
+	InClean pulumi.BoolInput `pulumi:"inClean"`
 	// Cloud analysis product ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	LineType   pulumi.StringInput `pulumi:"lineType"`
+	// Minimum TTL.
+	MinTtl pulumi.IntInput `pulumi:"minTtl"`
 	// Punycode of the Chinese domain.
 	PunyCode pulumi.StringInput `pulumi:"punyCode"`
+	// Tree-like analytical line list.
+	RecordLineTreeJson pulumi.StringInput `pulumi:"recordLineTreeJson"`
+	// Whether it is a regional route.
+	RegionLines pulumi.BoolInput `pulumi:"regionLines"`
+	// The Id of resource group which the dns belongs.
+	Remark pulumi.StringInput `pulumi:"remark"`
+	// Whether to allow auxiliary dns.
+	SlaveDns pulumi.BoolInput `pulumi:"slaveDns"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// Cloud analysis version code.
 	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	VersionName pulumi.StringInput `pulumi:"versionName"`
 }
 
 func (GetDomainsDomainArgs) ElementType() reflect.Type {
@@ -688,7 +728,7 @@ func (o GetDomainsDomainOutput) AliDomain() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.AliDomain }).(pulumi.BoolOutput)
 }
 
-// DNS list of the domain in the analysis system.
+// DNS list of domain names in the resolution system.
 func (o GetDomainsDomainOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainsDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
@@ -703,7 +743,7 @@ func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Id of group that contains the domain.
+// Domain group ID, if not filled, the default is all groups.
 func (o GetDomainsDomainOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.GroupId }).(pulumi.StringOutput)
 }
@@ -713,9 +753,33 @@ func (o GetDomainsDomainOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
+// The Id of resource.
+func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether it is in black hole.
+func (o GetDomainsDomainOutput) InBlackHole() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.InBlackHole }).(pulumi.BoolOutput)
+}
+
+// Whether it is cleaning.
+func (o GetDomainsDomainOutput) InClean() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.InClean }).(pulumi.BoolOutput)
+}
+
 // Cloud analysis product ID.
 func (o GetDomainsDomainOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainOutput) LineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.LineType }).(pulumi.StringOutput)
+}
+
+// Minimum TTL.
+func (o GetDomainsDomainOutput) MinTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDomainsDomain) int { return v.MinTtl }).(pulumi.IntOutput)
 }
 
 // Punycode of the Chinese domain.
@@ -723,9 +787,38 @@ func (o GetDomainsDomainOutput) PunyCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.PunyCode }).(pulumi.StringOutput)
 }
 
+// Tree-like analytical line list.
+func (o GetDomainsDomainOutput) RecordLineTreeJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.RecordLineTreeJson }).(pulumi.StringOutput)
+}
+
+// Whether it is a regional route.
+func (o GetDomainsDomainOutput) RegionLines() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.RegionLines }).(pulumi.BoolOutput)
+}
+
+// The Id of resource group which the dns belongs.
+func (o GetDomainsDomainOutput) Remark() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.Remark }).(pulumi.StringOutput)
+}
+
+// Whether to allow auxiliary dns.
+func (o GetDomainsDomainOutput) SlaveDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.SlaveDns }).(pulumi.BoolOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetDomainsDomainOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetDomainsDomain) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
 // Cloud analysis version code.
 func (o GetDomainsDomainOutput) VersionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.VersionCode }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsDomainOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.VersionName }).(pulumi.StringOutput)
 }
 
 type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }

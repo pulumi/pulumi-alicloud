@@ -13,6 +13,7 @@ from .get_flowlogs import *
 from .get_instances import *
 from .get_region_route_entries import *
 from .get_route_entries import *
+from .get_route_maps import *
 from .instance import *
 from .instance_attachment import *
 from .instance_grant import *

@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Attributes Reference0
+    ///  
+    ///  The following attributes are exported:
+    ///  
+    /// * `id` - ID of the image.
     /// </summary>
     public partial class ImageImport : Pulumi.CustomResource
     {

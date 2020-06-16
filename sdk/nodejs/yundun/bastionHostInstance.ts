@@ -42,6 +42,10 @@ export class BastionHostInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
      * security group IDs configured to bastionhost
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
@@ -69,6 +73,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["licenseCode"] = state ? state.licenseCode : undefined;
             inputs["period"] = state ? state.period : undefined;
+            inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -89,6 +94,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["period"] = args ? args.period : undefined;
+            inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -118,6 +124,10 @@ export interface BastionHostInstanceState {
      */
     readonly period?: pulumi.Input<number>;
     /**
+     * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
+    /**
      * security group IDs configured to bastionhost
      */
     readonly securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -144,6 +154,10 @@ export interface BastionHostInstanceArgs {
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
      */
     readonly period?: pulumi.Input<number>;
+    /**
+     * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+     */
+    readonly resourceGroupId?: pulumi.Input<string>;
     /**
      * security group IDs configured to bastionhost
      */
