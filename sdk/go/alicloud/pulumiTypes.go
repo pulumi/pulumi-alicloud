@@ -461,6 +461,7 @@ type ProviderEndpoint struct {
 	Apigateway      *string `pulumi:"apigateway"`
 	Bssopenapi      *string `pulumi:"bssopenapi"`
 	Cas             *string `pulumi:"cas"`
+	Cassandra       *string `pulumi:"cassandra"`
 	Cbn             *string `pulumi:"cbn"`
 	Cdn             *string `pulumi:"cdn"`
 	Cen             *string `pulumi:"cen"`
@@ -522,6 +523,7 @@ type ProviderEndpointArgs struct {
 	Apigateway      pulumi.StringPtrInput `pulumi:"apigateway"`
 	Bssopenapi      pulumi.StringPtrInput `pulumi:"bssopenapi"`
 	Cas             pulumi.StringPtrInput `pulumi:"cas"`
+	Cassandra       pulumi.StringPtrInput `pulumi:"cassandra"`
 	Cbn             pulumi.StringPtrInput `pulumi:"cbn"`
 	Cdn             pulumi.StringPtrInput `pulumi:"cdn"`
 	Cen             pulumi.StringPtrInput `pulumi:"cen"`
@@ -641,6 +643,10 @@ func (o ProviderEndpointOutput) Bssopenapi() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Cas() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cas }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Cassandra() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cassandra }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Cbn() pulumi.StringPtrOutput {

@@ -17,6 +17,32 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available in v1.87.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myRepos = Output.Create(AliCloud.CS.GetRegistryEnterpriseRepos.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseReposArgs
+        ///         {
+        ///             InstanceId = "cri-xx",
+        ///             NameRegex = "my-repos",
+        ///             OutputFile = "my-repo-json",
+        ///         }));
+        ///         this.Output = myRepos.Apply(myRepos =&gt; myRepos.Repos);
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseReposResult> InvokeAsync(GetRegistryEnterpriseReposArgs args, InvokeOptions? options = null)

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const myRepos = pulumi.output(alicloud.CrEeRepos({
+ * const myRepos = pulumi.output(alicloud.cs.getRegistryEnterpriseRepos({
  *     instanceId: "cri-xx",
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",

@@ -19,6 +19,51 @@ namespace Pulumi.AliCloud.Gpdb
     /// [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
     /// 
     /// &gt; **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a Gpdb instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs
+    ///         {
+    ///             AvailableResourceCreation = "Gpdb",
+    ///         }));
+    ///         var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new AliCloud.Vpc.NetworkArgs
+    ///         {
+    ///             CidrBlock = "172.16.0.0/16",
+    ///         });
+    ///         var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new AliCloud.Vpc.SwitchArgs
+    ///         {
+    ///             AvailabilityZone = defaultZones.Apply(defaultZones =&gt; defaultZones.Zones[0].Id),
+    ///             CidrBlock = "172.16.0.0/24",
+    ///             VpcId = defaultNetwork.Id,
+    ///         });
+    ///         var example = new AliCloud.Gpdb.Instance("example", new AliCloud.Gpdb.InstanceArgs
+    ///         {
+    ///             Description = "tf-gpdb-test",
+    ///             Engine = "gpdb",
+    ///             EngineVersion = "4.3",
+    ///             InstanceClass = "gpdb.group.segsdx2",
+    ///             InstanceGroupCount = "2",
+    ///             SecurityIpLists = 
+    ///             {
+    ///                 "10.168.1.12",
+    ///                 "100.69.7.112",
+    ///             },
+    ///             VswitchId = defaultSwitch.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

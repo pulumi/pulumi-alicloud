@@ -49,7 +49,7 @@ class Cluster(pulumi.CustomResource):
       * `hostGroupType` (`str`) - host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
       * `instanceList` (`str`) - Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
       * `instance_type` (`str`) - Host Ecs instance type.
-      * `nodeCount` (`str`) - Host number in this group.
+      * `node_count` (`str`) - Host number in this group.
       * `period` (`float`) - If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
       * `sysDiskCapacity` (`str`) - System disk capacity.
       * `sysDiskType` (`str`) - System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
@@ -151,7 +151,7 @@ class Cluster(pulumi.CustomResource):
           * `hostGroupType` (`pulumi.Input[str]`) - host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
           * `instanceList` (`pulumi.Input[str]`) - Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
           * `instance_type` (`pulumi.Input[str]`) - Host Ecs instance type.
-          * `nodeCount` (`pulumi.Input[str]`) - Host number in this group.
+          * `node_count` (`pulumi.Input[str]`) - Host number in this group.
           * `period` (`pulumi.Input[float]`) - If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
           * `sysDiskCapacity` (`pulumi.Input[str]`) - System disk capacity.
           * `sysDiskType` (`pulumi.Input[str]`) - System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
@@ -253,7 +253,7 @@ class Cluster(pulumi.CustomResource):
           * `hostGroupType` (`pulumi.Input[str]`) - host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
           * `instanceList` (`pulumi.Input[str]`) - Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
           * `instance_type` (`pulumi.Input[str]`) - Host Ecs instance type.
-          * `nodeCount` (`pulumi.Input[str]`) - Host number in this group.
+          * `node_count` (`pulumi.Input[str]`) - Host number in this group.
           * `period` (`pulumi.Input[float]`) - If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
           * `sysDiskCapacity` (`pulumi.Input[str]`) - System disk capacity.
           * `sysDiskType` (`pulumi.Input[str]`) - System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.

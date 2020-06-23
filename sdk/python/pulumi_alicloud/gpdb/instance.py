@@ -59,6 +59,32 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
 
+        ## Example Usage
+
+        ### Create a Gpdb instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            availability_zone=default_zones.zones[0]["id"],
+            cidr_block="172.16.0.0/24",
+            vpc_id=default_network.id)
+        example = alicloud.gpdb.Instance("example",
+            description="tf-gpdb-test",
+            engine="gpdb",
+            engine_version="4.3",
+            instance_class="gpdb.group.segsdx2",
+            instance_group_count="2",
+            security_ip_lists=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ],
+            vswitch_id=default_switch.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

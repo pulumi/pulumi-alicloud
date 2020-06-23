@@ -14,6 +14,39 @@ import * as utilities from "../utilities";
  * [`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]
  *
  * > **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.
+ *
+ * ## Example Usage
+ *
+ * ### Create a Gpdb instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = pulumi.output(alicloud.getZones({
+ *     availableResourceCreation: "Gpdb",
+ * }, { async: true }));
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     availabilityZone: defaultZones.zones[0].id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const example = new alicloud.gpdb.Instance("example", {
+ *     description: "tf-gpdb-test",
+ *     engine: "gpdb",
+ *     engineVersion: "4.3",
+ *     instanceClass: "gpdb.group.segsdx2",
+ *     instanceGroupCount: "2",
+ *     securityIpLists: [
+ *         "10.168.1.12",
+ *         "100.69.7.112",
+ *     ],
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

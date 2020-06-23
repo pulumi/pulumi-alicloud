@@ -20,6 +20,7 @@ export interface ProviderEndpoint {
     apigateway?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
     cas?: pulumi.Input<string>;
+    cassandra?: pulumi.Input<string>;
     cbn?: pulumi.Input<string>;
     cdn?: pulumi.Input<string>;
     cen?: pulumi.Input<string>;
@@ -233,6 +234,9 @@ export namespace apigateway {
 }
 
 export namespace cas {
+}
+
+export namespace cassandra {
 }
 
 export namespace cdn {
@@ -602,6 +606,9 @@ export namespace ddos {
 }
 
 export namespace dds {
+}
+
+export namespace dms {
 }
 
 export namespace dns {

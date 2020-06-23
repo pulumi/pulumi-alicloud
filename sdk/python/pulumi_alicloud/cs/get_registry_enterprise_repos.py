@@ -81,6 +81,19 @@ def get_registry_enterprise_repos(enable_details=None,ids=None,instance_id=None,
 
     > **NOTE:** Available in v1.87.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
+        name_regex="my-repos",
+        output_file="my-repo-json")
+    pulumi.export("output", my_repos.repos)
+    ```
 
 
 

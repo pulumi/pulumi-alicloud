@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./enterpriseInstance";
+export * from "./getEnterpriseInstances";

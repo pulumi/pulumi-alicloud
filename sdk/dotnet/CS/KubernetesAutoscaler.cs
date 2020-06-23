@@ -83,6 +83,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.KubernetesAutoscalerNodepool>> Nodepools { get; private set; } = null!;
 
         /// <summary>
+        /// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        /// </summary>
+        [Output("useEcsRamRoleToken")]
+        public Output<bool?> UseEcsRamRoleToken { get; private set; } = null!;
+
+        /// <summary>
         /// The utilization option of cluster-autoscaler.
         /// </summary>
         [Output("utilization")]
@@ -168,6 +174,12 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        /// </summary>
+        [Input("useEcsRamRoleToken")]
+        public Input<bool>? UseEcsRamRoleToken { get; set; }
+
+        /// <summary>
         /// The utilization option of cluster-autoscaler.
         /// </summary>
         [Input("utilization", required: true)]
@@ -212,6 +224,12 @@ namespace Pulumi.AliCloud.CS
             get => _nodepools ?? (_nodepools = new InputList<Inputs.KubernetesAutoscalerNodepoolGetArgs>());
             set => _nodepools = value;
         }
+
+        /// <summary>
+        /// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+        /// </summary>
+        [Input("useEcsRamRoleToken")]
+        public Input<bool>? UseEcsRamRoleToken { get; set; }
 
         /// <summary>
         /// The utilization option of cluster-autoscaler.

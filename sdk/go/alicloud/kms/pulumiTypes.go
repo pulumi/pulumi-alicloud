@@ -406,6 +406,141 @@ func (o GetKeysKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeyOutput {
 	}).(GetKeysKeyOutput)
 }
 
+type GetSecretVersionsVersion struct {
+	// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
+	SecretData string `pulumi:"secretData"`
+	// The type of the secret value. (Returned when `enableDetails` is true).
+	SecretDataType string `pulumi:"secretDataType"`
+	// The name of the secret.
+	SecretName string `pulumi:"secretName"`
+	// The version number of the secret value.
+	VersionId string `pulumi:"versionId"`
+	// Stage labels that mark the secret version.
+	VersionStages []string `pulumi:"versionStages"`
+}
+
+// GetSecretVersionsVersionInput is an input type that accepts GetSecretVersionsVersionArgs and GetSecretVersionsVersionOutput values.
+// You can construct a concrete instance of `GetSecretVersionsVersionInput` via:
+//
+// 		 GetSecretVersionsVersionArgs{...}
+//
+type GetSecretVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetSecretVersionsVersionOutput() GetSecretVersionsVersionOutput
+	ToGetSecretVersionsVersionOutputWithContext(context.Context) GetSecretVersionsVersionOutput
+}
+
+type GetSecretVersionsVersionArgs struct {
+	// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
+	SecretData pulumi.StringInput `pulumi:"secretData"`
+	// The type of the secret value. (Returned when `enableDetails` is true).
+	SecretDataType pulumi.StringInput `pulumi:"secretDataType"`
+	// The name of the secret.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+	// The version number of the secret value.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
+	// Stage labels that mark the secret version.
+	VersionStages pulumi.StringArrayInput `pulumi:"versionStages"`
+}
+
+func (GetSecretVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretVersionsVersion)(nil)).Elem()
+}
+
+func (i GetSecretVersionsVersionArgs) ToGetSecretVersionsVersionOutput() GetSecretVersionsVersionOutput {
+	return i.ToGetSecretVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetSecretVersionsVersionArgs) ToGetSecretVersionsVersionOutputWithContext(ctx context.Context) GetSecretVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretVersionsVersionOutput)
+}
+
+// GetSecretVersionsVersionArrayInput is an input type that accepts GetSecretVersionsVersionArray and GetSecretVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetSecretVersionsVersionArrayInput` via:
+//
+// 		 GetSecretVersionsVersionArray{ GetSecretVersionsVersionArgs{...} }
+//
+type GetSecretVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretVersionsVersionArrayOutput() GetSecretVersionsVersionArrayOutput
+	ToGetSecretVersionsVersionArrayOutputWithContext(context.Context) GetSecretVersionsVersionArrayOutput
+}
+
+type GetSecretVersionsVersionArray []GetSecretVersionsVersionInput
+
+func (GetSecretVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretVersionsVersion)(nil)).Elem()
+}
+
+func (i GetSecretVersionsVersionArray) ToGetSecretVersionsVersionArrayOutput() GetSecretVersionsVersionArrayOutput {
+	return i.ToGetSecretVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretVersionsVersionArray) ToGetSecretVersionsVersionArrayOutputWithContext(ctx context.Context) GetSecretVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretVersionsVersionArrayOutput)
+}
+
+type GetSecretVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetSecretVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretVersionsVersion)(nil)).Elem()
+}
+
+func (o GetSecretVersionsVersionOutput) ToGetSecretVersionsVersionOutput() GetSecretVersionsVersionOutput {
+	return o
+}
+
+func (o GetSecretVersionsVersionOutput) ToGetSecretVersionsVersionOutputWithContext(ctx context.Context) GetSecretVersionsVersionOutput {
+	return o
+}
+
+// The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
+func (o GetSecretVersionsVersionOutput) SecretData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsVersion) string { return v.SecretData }).(pulumi.StringOutput)
+}
+
+// The type of the secret value. (Returned when `enableDetails` is true).
+func (o GetSecretVersionsVersionOutput) SecretDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsVersion) string { return v.SecretDataType }).(pulumi.StringOutput)
+}
+
+// The name of the secret.
+func (o GetSecretVersionsVersionOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsVersion) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// The version number of the secret value.
+func (o GetSecretVersionsVersionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretVersionsVersion) string { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// Stage labels that mark the secret version.
+func (o GetSecretVersionsVersionOutput) VersionStages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecretVersionsVersion) []string { return v.VersionStages }).(pulumi.StringArrayOutput)
+}
+
+type GetSecretVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretVersionsVersion)(nil)).Elem()
+}
+
+func (o GetSecretVersionsVersionArrayOutput) ToGetSecretVersionsVersionArrayOutput() GetSecretVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetSecretVersionsVersionArrayOutput) ToGetSecretVersionsVersionArrayOutputWithContext(ctx context.Context) GetSecretVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetSecretVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetSecretVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretVersionsVersion {
+		return vs[0].([]GetSecretVersionsVersion)[vs[1].(int)]
+	}).(GetSecretVersionsVersionOutput)
+}
+
 type GetSecretsSecret struct {
 	// ID of the Kms Secret. The value is same as KMS secret_name.
 	Id string `pulumi:"id"`
@@ -539,6 +674,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKeyVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetSecretVersionsVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretsSecretOutput{})
 	pulumi.RegisterOutputType(GetSecretsSecretArrayOutput{})
 }

@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? Apigateway;
         public readonly string? Bssopenapi;
         public readonly string? Cas;
+        public readonly string? Cassandra;
         public readonly string? Cbn;
         public readonly string? Cdn;
         public readonly string? Cen;
@@ -75,6 +76,8 @@ namespace Pulumi.AliCloud.Outputs
             string? bssopenapi,
 
             string? cas,
+
+            string? cassandra,
 
             string? cbn,
 
@@ -161,6 +164,7 @@ namespace Pulumi.AliCloud.Outputs
             Apigateway = apigateway;
             Bssopenapi = bssopenapi;
             Cas = cas;
+            Cassandra = cassandra;
             Cbn = cbn;
             Cdn = cdn;
             Cen = cen;

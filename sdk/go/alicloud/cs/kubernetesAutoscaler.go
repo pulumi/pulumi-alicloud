@@ -33,6 +33,8 @@ type KubernetesAutoscaler struct {
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
 	Nodepools KubernetesAutoscalerNodepoolArrayOutput `pulumi:"nodepools"`
+	// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+	UseEcsRamRoleToken pulumi.BoolPtrOutput `pulumi:"useEcsRamRoleToken"`
 	// The utilization option of cluster-autoscaler.
 	Utilization pulumi.StringOutput `pulumi:"utilization"`
 }
@@ -88,6 +90,8 @@ type kubernetesAutoscalerState struct {
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
 	Nodepools []KubernetesAutoscalerNodepool `pulumi:"nodepools"`
+	// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+	UseEcsRamRoleToken *bool `pulumi:"useEcsRamRoleToken"`
 	// The utilization option of cluster-autoscaler.
 	Utilization *string `pulumi:"utilization"`
 }
@@ -104,6 +108,8 @@ type KubernetesAutoscalerState struct {
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
 	Nodepools KubernetesAutoscalerNodepoolArrayInput
+	// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+	UseEcsRamRoleToken pulumi.BoolPtrInput
 	// The utilization option of cluster-autoscaler.
 	Utilization pulumi.StringPtrInput
 }
@@ -124,6 +130,8 @@ type kubernetesAutoscalerArgs struct {
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
 	Nodepools []KubernetesAutoscalerNodepool `pulumi:"nodepools"`
+	// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+	UseEcsRamRoleToken *bool `pulumi:"useEcsRamRoleToken"`
 	// The utilization option of cluster-autoscaler.
 	Utilization string `pulumi:"utilization"`
 }
@@ -141,6 +149,8 @@ type KubernetesAutoscalerArgs struct {
 	// * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
 	// * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
 	Nodepools KubernetesAutoscalerNodepoolArrayInput
+	// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+	UseEcsRamRoleToken pulumi.BoolPtrInput
 	// The utilization option of cluster-autoscaler.
 	Utilization pulumi.StringInput
 }

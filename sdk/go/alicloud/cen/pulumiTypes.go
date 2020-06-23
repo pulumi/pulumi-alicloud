@@ -658,6 +658,150 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetPrivateZonesZone struct {
+	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	AccessRegionId string `pulumi:"accessRegionId"`
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	HostRegionId string `pulumi:"hostRegionId"`
+	// The VPC that belongs to the service region.
+	HostVpcId string `pulumi:"hostVpcId"`
+	// The DNS IP addresses of the PrivateZone service.
+	PrivateZoneDnsServers string `pulumi:"privateZoneDnsServers"`
+	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+	Status string `pulumi:"status"`
+}
+
+// GetPrivateZonesZoneInput is an input type that accepts GetPrivateZonesZoneArgs and GetPrivateZonesZoneOutput values.
+// You can construct a concrete instance of `GetPrivateZonesZoneInput` via:
+//
+// 		 GetPrivateZonesZoneArgs{...}
+//
+type GetPrivateZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetPrivateZonesZoneOutput() GetPrivateZonesZoneOutput
+	ToGetPrivateZonesZoneOutputWithContext(context.Context) GetPrivateZonesZoneOutput
+}
+
+type GetPrivateZonesZoneArgs struct {
+	// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+	AccessRegionId pulumi.StringInput `pulumi:"accessRegionId"`
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+	HostRegionId pulumi.StringInput `pulumi:"hostRegionId"`
+	// The VPC that belongs to the service region.
+	HostVpcId pulumi.StringInput `pulumi:"hostVpcId"`
+	// The DNS IP addresses of the PrivateZone service.
+	PrivateZoneDnsServers pulumi.StringInput `pulumi:"privateZoneDnsServers"`
+	// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetPrivateZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateZonesZone)(nil)).Elem()
+}
+
+func (i GetPrivateZonesZoneArgs) ToGetPrivateZonesZoneOutput() GetPrivateZonesZoneOutput {
+	return i.ToGetPrivateZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetPrivateZonesZoneArgs) ToGetPrivateZonesZoneOutputWithContext(ctx context.Context) GetPrivateZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateZonesZoneOutput)
+}
+
+// GetPrivateZonesZoneArrayInput is an input type that accepts GetPrivateZonesZoneArray and GetPrivateZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetPrivateZonesZoneArrayInput` via:
+//
+// 		 GetPrivateZonesZoneArray{ GetPrivateZonesZoneArgs{...} }
+//
+type GetPrivateZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateZonesZoneArrayOutput() GetPrivateZonesZoneArrayOutput
+	ToGetPrivateZonesZoneArrayOutputWithContext(context.Context) GetPrivateZonesZoneArrayOutput
+}
+
+type GetPrivateZonesZoneArray []GetPrivateZonesZoneInput
+
+func (GetPrivateZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateZonesZone)(nil)).Elem()
+}
+
+func (i GetPrivateZonesZoneArray) ToGetPrivateZonesZoneArrayOutput() GetPrivateZonesZoneArrayOutput {
+	return i.ToGetPrivateZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateZonesZoneArray) ToGetPrivateZonesZoneArrayOutputWithContext(ctx context.Context) GetPrivateZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateZonesZoneArrayOutput)
+}
+
+type GetPrivateZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateZonesZone)(nil)).Elem()
+}
+
+func (o GetPrivateZonesZoneOutput) ToGetPrivateZonesZoneOutput() GetPrivateZonesZoneOutput {
+	return o
+}
+
+func (o GetPrivateZonesZoneOutput) ToGetPrivateZonesZoneOutputWithContext(ctx context.Context) GetPrivateZonesZoneOutput {
+	return o
+}
+
+// The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+func (o GetPrivateZonesZoneOutput) AccessRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.AccessRegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetPrivateZonesZoneOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+func (o GetPrivateZonesZoneOutput) HostRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.HostRegionId }).(pulumi.StringOutput)
+}
+
+// The VPC that belongs to the service region.
+func (o GetPrivateZonesZoneOutput) HostVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.HostVpcId }).(pulumi.StringOutput)
+}
+
+// The DNS IP addresses of the PrivateZone service.
+func (o GetPrivateZonesZoneOutput) PrivateZoneDnsServers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.PrivateZoneDnsServers }).(pulumi.StringOutput)
+}
+
+// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+func (o GetPrivateZonesZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateZonesZone) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPrivateZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateZonesZone)(nil)).Elem()
+}
+
+func (o GetPrivateZonesZoneArrayOutput) ToGetPrivateZonesZoneArrayOutput() GetPrivateZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetPrivateZonesZoneArrayOutput) ToGetPrivateZonesZoneArrayOutputWithContext(ctx context.Context) GetPrivateZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetPrivateZonesZoneArrayOutput) Index(i pulumi.IntInput) GetPrivateZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateZonesZone {
+		return vs[0].([]GetPrivateZonesZone)[vs[1].(int)]
+	}).(GetPrivateZonesZoneOutput)
+}
+
 type GetRegionRouteEntriesEntry struct {
 	// The destination CIDR block of the route entry.
 	CidrBlock string `pulumi:"cidrBlock"`
@@ -1459,6 +1603,8 @@ func init() {
 	pulumi.RegisterOutputType(GetFlowlogsFlowlogArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetPrivateZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionRouteEntriesEntryOutput{})
 	pulumi.RegisterOutputType(GetRegionRouteEntriesEntryArrayOutput{})
 	pulumi.RegisterOutputType(GetRouteEntriesEntryOutput{})

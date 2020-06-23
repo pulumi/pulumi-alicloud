@@ -44,6 +44,10 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     Enable login to the node through SSH. default: false 
     """
+    exclude_autoscaler_nodes: pulumi.Output[bool]
+    """
+    Exclude autoscaler nodes from `worker_nodes`. default: false 
+    """
     image_id: pulumi.Output[str]
     """
     Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -84,6 +88,10 @@ class ManagedKubernetes(pulumi.CustomResource):
     node_cidr_mask: pulumi.Output[float]
     """
     The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+    """
+    node_name_mode: pulumi.Output[str]
+    """
+    Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
     """
     password: pulumi.Output[str]
     """
@@ -181,8 +189,12 @@ class ManagedKubernetes(pulumi.CustomResource):
     """
     Worker payment period unit. `Month` or `Week`, defaults to `Month`.
     """
+    worker_ram_role_name: pulumi.Output[str]
+    """
+    The RamRole Name attached to worker node.
+    """
     worker_vswitch_ids: pulumi.Output[list]
-    def __init__(__self__, resource_name, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, user_data=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_internet_enabled=None, user_ca=None, user_data=None, version=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ManagedKubernetes resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -193,6 +205,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cpu_policy: kubelet cpu policy. options: static|none. default: none.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. default: false 
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. default: false 
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: true 
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -202,10 +215,12 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[str] security_group_id: The ID of security group where the current cluster worker node is located.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -251,6 +266,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['cluster_ca_cert'] = cluster_ca_cert
             __props__['cpu_policy'] = cpu_policy
             __props__['enable_ssh'] = enable_ssh
+            __props__['exclude_autoscaler_nodes'] = exclude_autoscaler_nodes
             __props__['image_id'] = image_id
             __props__['install_cloud_monitor'] = install_cloud_monitor
             __props__['key_name'] = key_name
@@ -261,10 +277,12 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['name_prefix'] = name_prefix
             __props__['new_nat_gateway'] = new_nat_gateway
             __props__['node_cidr_mask'] = node_cidr_mask
+            __props__['node_name_mode'] = node_name_mode
             __props__['password'] = password
             __props__['pod_cidr'] = pod_cidr
             __props__['pod_vswitch_ids'] = pod_vswitch_ids
             __props__['proxy_mode'] = proxy_mode
+            __props__['security_group_id'] = security_group_id
             __props__['service_cidr'] = service_cidr
             __props__['slb_internet_enabled'] = slb_internet_enabled
             __props__['user_ca'] = user_ca
@@ -290,12 +308,12 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__['worker_vswitch_ids'] = worker_vswitch_ids
             __props__['connections'] = None
             __props__['nat_gateway_id'] = None
-            __props__['security_group_id'] = None
             __props__['slb_id'] = None
             __props__['slb_internet'] = None
             __props__['slb_intranet'] = None
             __props__['vpc_id'] = None
             __props__['worker_nodes'] = None
+            __props__['worker_ram_role_name'] = None
         super(ManagedKubernetes, __self__).__init__(
             'alicloud:cs/managedKubernetes:ManagedKubernetes',
             resource_name,
@@ -303,7 +321,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, user_data=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_vswitch_ids=None):
+    def get(resource_name, id, opts=None, addons=None, availability_zone=None, client_cert=None, client_key=None, cluster_ca_cert=None, connections=None, cpu_policy=None, enable_ssh=None, exclude_autoscaler_nodes=None, image_id=None, install_cloud_monitor=None, key_name=None, kms_encrypted_password=None, kms_encryption_context=None, kube_config=None, name=None, name_prefix=None, nat_gateway_id=None, new_nat_gateway=None, node_cidr_mask=None, node_name_mode=None, password=None, pod_cidr=None, pod_vswitch_ids=None, proxy_mode=None, security_group_id=None, service_cidr=None, slb_id=None, slb_internet=None, slb_internet_enabled=None, slb_intranet=None, user_ca=None, user_data=None, version=None, vpc_id=None, worker_auto_renew=None, worker_auto_renew_period=None, worker_data_disk_category=None, worker_data_disk_size=None, worker_disk_category=None, worker_disk_size=None, worker_instance_charge_type=None, worker_instance_types=None, worker_nodes=None, worker_number=None, worker_period=None, worker_period_unit=None, worker_ram_role_name=None, worker_vswitch_ids=None):
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -318,6 +336,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[dict] connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
         :param pulumi.Input[str] cpu_policy: kubelet cpu policy. options: static|none. default: none.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. default: false 
+        :param pulumi.Input[bool] exclude_autoscaler_nodes: Exclude autoscaler nodes from `worker_nodes`. default: false 
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: true 
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -328,6 +347,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[float] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
+        :param pulumi.Input[str] node_name_mode: Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
         :param pulumi.Input[str] password: The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel. 
         :param pulumi.Input[list] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswtich_ids`.but must be in same availability zones.
@@ -350,6 +370,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[float] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[float] worker_period: Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit. `Month` or `Week`, defaults to `Month`.
+        :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
 
         The **addons** object supports the following:
 
@@ -382,6 +403,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["connections"] = connections
         __props__["cpu_policy"] = cpu_policy
         __props__["enable_ssh"] = enable_ssh
+        __props__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
         __props__["image_id"] = image_id
         __props__["install_cloud_monitor"] = install_cloud_monitor
         __props__["key_name"] = key_name
@@ -393,6 +415,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["nat_gateway_id"] = nat_gateway_id
         __props__["new_nat_gateway"] = new_nat_gateway
         __props__["node_cidr_mask"] = node_cidr_mask
+        __props__["node_name_mode"] = node_name_mode
         __props__["password"] = password
         __props__["pod_cidr"] = pod_cidr
         __props__["pod_vswitch_ids"] = pod_vswitch_ids
@@ -419,6 +442,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__["worker_number"] = worker_number
         __props__["worker_period"] = worker_period
         __props__["worker_period_unit"] = worker_period_unit
+        __props__["worker_ram_role_name"] = worker_ram_role_name
         __props__["worker_vswitch_ids"] = worker_vswitch_ids
         return ManagedKubernetes(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

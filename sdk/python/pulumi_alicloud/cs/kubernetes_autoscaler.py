@@ -33,11 +33,15 @@ class KubernetesAutoscaler(pulumi.CustomResource):
       * `labels` (`str`)
       * `taints` (`str`)
     """
+    use_ecs_ram_role_token: pulumi.Output[bool]
+    """
+    Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+    """
     utilization: pulumi.Output[str]
     """
     The utilization option of cluster-autoscaler.
     """
-    def __init__(__self__, resource_name, opts=None, cluster_id=None, cool_down_duration=None, defer_scale_in_duration=None, nodepools=None, utilization=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cluster_id=None, cool_down_duration=None, defer_scale_in_duration=None, nodepools=None, use_ecs_ram_role_token=None, utilization=None, __props__=None, __name__=None, __opts__=None):
         """
         This resource will help you to manager cluster-autoscaler in Kubernetes Cluster. 
 
@@ -79,6 +83,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
                * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
                * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
 
         The **nodepools** object supports the following:
@@ -114,6 +119,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                 raise TypeError("Missing required property 'defer_scale_in_duration'")
             __props__['defer_scale_in_duration'] = defer_scale_in_duration
             __props__['nodepools'] = nodepools
+            __props__['use_ecs_ram_role_token'] = use_ecs_ram_role_token
             if utilization is None:
                 raise TypeError("Missing required property 'utilization'")
             __props__['utilization'] = utilization
@@ -124,7 +130,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cluster_id=None, cool_down_duration=None, defer_scale_in_duration=None, nodepools=None, utilization=None):
+    def get(resource_name, id, opts=None, cluster_id=None, cool_down_duration=None, defer_scale_in_duration=None, nodepools=None, use_ecs_ram_role_token=None, utilization=None):
         """
         Get an existing KubernetesAutoscaler resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -139,6 +145,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                * `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.
                * `nodepools.taints` - (Required) The taints for the nodes in scaling group.
                * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
+        :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
 
         The **nodepools** object supports the following:
@@ -155,6 +162,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         __props__["cool_down_duration"] = cool_down_duration
         __props__["defer_scale_in_duration"] = defer_scale_in_duration
         __props__["nodepools"] = nodepools
+        __props__["use_ecs_ram_role_token"] = use_ecs_ram_role_token
         __props__["utilization"] = utilization
         return KubernetesAutoscaler(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

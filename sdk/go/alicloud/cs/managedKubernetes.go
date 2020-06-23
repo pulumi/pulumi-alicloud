@@ -28,6 +28,8 @@ type ManagedKubernetes struct {
 	CpuPolicy pulumi.StringPtrOutput `pulumi:"cpuPolicy"`
 	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrOutput `pulumi:"enableSsh"`
+	// Exclude autoscaler nodes from `workerNodes`. default: false
+	ExcludeAutoscalerNodes pulumi.BoolPtrOutput `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
@@ -49,6 +51,8 @@ type ManagedKubernetes struct {
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrOutput `pulumi:"nodeCidrMask"`
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	NodeNameMode pulumi.StringPtrOutput `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -97,8 +101,10 @@ type ManagedKubernetes struct {
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod pulumi.IntPtrOutput `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-	WorkerPeriodUnit pulumi.StringPtrOutput   `pulumi:"workerPeriodUnit"`
-	WorkerVswitchIds pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
+	WorkerPeriodUnit pulumi.StringPtrOutput `pulumi:"workerPeriodUnit"`
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName pulumi.StringOutput      `pulumi:"workerRamRoleName"`
+	WorkerVswitchIds  pulumi.StringArrayOutput `pulumi:"workerVswitchIds"`
 }
 
 // NewManagedKubernetes registers a new resource with the given unique name, arguments, and options.
@@ -153,6 +159,8 @@ type managedKubernetesState struct {
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Enable login to the node through SSH. default: false
 	EnableSsh *bool `pulumi:"enableSsh"`
+	// Exclude autoscaler nodes from `workerNodes`. default: false
+	ExcludeAutoscalerNodes *bool `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
@@ -174,6 +182,8 @@ type managedKubernetesState struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -222,8 +232,10 @@ type managedKubernetesState struct {
 	// Worker payment period. When period unit is `Month`, it can be one of { “1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”,”48”,”60”}.  When period unit is `Week`, it can be one of {“1”, “2”, “3”, “4”}.
 	WorkerPeriod *int `pulumi:"workerPeriod"`
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
-	WorkerPeriodUnit *string  `pulumi:"workerPeriodUnit"`
-	WorkerVswitchIds []string `pulumi:"workerVswitchIds"`
+	WorkerPeriodUnit *string `pulumi:"workerPeriodUnit"`
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName *string  `pulumi:"workerRamRoleName"`
+	WorkerVswitchIds  []string `pulumi:"workerVswitchIds"`
 }
 
 type ManagedKubernetesState struct {
@@ -242,6 +254,8 @@ type ManagedKubernetesState struct {
 	CpuPolicy pulumi.StringPtrInput
 	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrInput
+	// Exclude autoscaler nodes from `workerNodes`. default: false
+	ExcludeAutoscalerNodes pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. default: true
@@ -263,6 +277,8 @@ type ManagedKubernetesState struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -312,7 +328,9 @@ type ManagedKubernetesState struct {
 	WorkerPeriod pulumi.IntPtrInput
 	// Worker payment period unit. `Month` or `Week`, defaults to `Month`.
 	WorkerPeriodUnit pulumi.StringPtrInput
-	WorkerVswitchIds pulumi.StringArrayInput
+	// The RamRole Name attached to worker node.
+	WorkerRamRoleName pulumi.StringPtrInput
+	WorkerVswitchIds  pulumi.StringArrayInput
 }
 
 func (ManagedKubernetesState) ElementType() reflect.Type {
@@ -333,6 +351,8 @@ type managedKubernetesArgs struct {
 	CpuPolicy *string `pulumi:"cpuPolicy"`
 	// Enable login to the node through SSH. default: false
 	EnableSsh *bool `pulumi:"enableSsh"`
+	// Exclude autoscaler nodes from `workerNodes`. default: false
+	ExcludeAutoscalerNodes *bool `pulumi:"excludeAutoscalerNodes"`
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
@@ -352,6 +372,8 @@ type managedKubernetesArgs struct {
 	NewNatGateway *bool `pulumi:"newNatGateway"`
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask *int `pulumi:"nodeCidrMask"`
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -360,6 +382,8 @@ type managedKubernetesArgs struct {
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -408,6 +432,8 @@ type ManagedKubernetesArgs struct {
 	CpuPolicy pulumi.StringPtrInput
 	// Enable login to the node through SSH. default: false
 	EnableSsh pulumi.BoolPtrInput
+	// Exclude autoscaler nodes from `workerNodes`. default: false
+	ExcludeAutoscalerNodes pulumi.BoolPtrInput
 	// Custom Image support. Must based on CentOS7 or AliyunLinux2.
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. default: true
@@ -427,6 +453,8 @@ type ManagedKubernetesArgs struct {
 	NewNatGateway pulumi.BoolPtrInput
 	// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
 	NodeCidrMask pulumi.IntPtrInput
+	// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test.
+	NodeNameMode pulumi.StringPtrInput
 	// The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
@@ -435,6 +463,8 @@ type ManagedKubernetesArgs struct {
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
+	// The ID of security group where the current cluster worker node is located.
+	SecurityGroupId pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.

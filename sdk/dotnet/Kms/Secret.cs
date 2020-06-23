@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Kms
 {
-    /// <summary>
-    /// This resouce used to create a secret and store its initial version.
-    /// 
-    /// &gt; **NOTE:** Available in 1.76.0+.
-    /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>

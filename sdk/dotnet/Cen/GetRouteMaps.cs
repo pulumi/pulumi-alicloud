@@ -17,6 +17,38 @@ namespace Pulumi.AliCloud.Cen
         /// &gt; **NOTE:** Available in v1.87.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs
+        ///         {
+        ///             CenId = "cen-ihdlgo87ai********",
+        ///             CenRegionId = "cn-hangzhou",
+        ///             DescriptionRegex = "datasource_test",
+        ///             Ids = 
+        ///             {
+        ///                 "cenrmap-bnh97kb3mn********",
+        ///             },
+        ///             Status = "Active",
+        ///             TransmitDirection = "RegionIn",
+        ///         }));
+        ///         this.FirstCenRouteMapId = @this.Apply(@this =&gt; @this.Maps[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstCenRouteMapId")]
+        ///     public Output&lt;string&gt; FirstCenRouteMapId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouteMapsResult> InvokeAsync(GetRouteMapsArgs args, InvokeOptions? options = null)
