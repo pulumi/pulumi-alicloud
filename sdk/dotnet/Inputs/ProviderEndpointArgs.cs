@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("cas")]
         public Input<string>? Cas { get; set; }
 
+        [Input("cassandra")]
+        public Input<string>? Cassandra { get; set; }
+
         [Input("cbn")]
         public Input<string>? Cbn { get; set; }
 

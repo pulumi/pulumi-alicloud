@@ -57,6 +57,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EnableSsh { get; private set; } = null!;
 
         /// <summary>
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// </summary>
+        [Output("excludeAutoscalerNodes")]
+        public Output<bool?> ExcludeAutoscalerNodes { get; private set; } = null!;
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Output("imageId")]
@@ -118,6 +124,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("nodeCidrMask")]
         public Output<int?> NodeCidrMask { get; private set; } = null!;
+
+        /// <summary>
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// </summary>
+        [Output("nodeNameMode")]
+        public Output<string?> NodeNameMode { get; private set; } = null!;
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -263,6 +275,12 @@ namespace Pulumi.AliCloud.CS
         [Output("workerPeriodUnit")]
         public Output<string?> WorkerPeriodUnit { get; private set; } = null!;
 
+        /// <summary>
+        /// The RamRole Name attached to worker node.
+        /// </summary>
+        [Output("workerRamRoleName")]
+        public Output<string> WorkerRamRoleName { get; private set; } = null!;
+
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
 
@@ -357,6 +375,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// </summary>
+        [Input("excludeAutoscalerNodes")]
+        public Input<bool>? ExcludeAutoscalerNodes { get; set; }
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Input("imageId")]
@@ -420,6 +444,12 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? NodeCidrMask { get; set; }
 
         /// <summary>
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// </summary>
+        [Input("nodeNameMode")]
+        public Input<string>? NodeNameMode { get; set; }
+
+        /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         /// </summary>
         [Input("password")]
@@ -448,6 +478,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
+
+        /// <summary>
+        /// The ID of security group where the current cluster worker node is located.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
         /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -611,6 +647,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableSsh { get; set; }
 
         /// <summary>
+        /// Exclude autoscaler nodes from `worker_nodes`. default: false 
+        /// </summary>
+        [Input("excludeAutoscalerNodes")]
+        public Input<bool>? ExcludeAutoscalerNodes { get; set; }
+
+        /// <summary>
         /// Custom Image support. Must based on CentOS7 or AliyunLinux2.
         /// </summary>
         [Input("imageId")]
@@ -678,6 +720,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
+
+        /// <summary>
+        /// Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+        /// </summary>
+        [Input("nodeNameMode")]
+        public Input<string>? NodeNameMode { get; set; }
 
         /// <summary>
         /// The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -840,6 +888,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("workerPeriodUnit")]
         public Input<string>? WorkerPeriodUnit { get; set; }
+
+        /// <summary>
+        /// The RamRole Name attached to worker node.
+        /// </summary>
+        [Input("workerRamRoleName")]
+        public Input<string>? WorkerRamRoleName { get; set; }
 
         [Input("workerVswitchIds")]
         private InputList<string>? _workerVswitchIds;

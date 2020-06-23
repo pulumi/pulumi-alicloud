@@ -35,6 +35,7 @@ const (
 	aliKafaMod         = "AliKafka"
 	apiGatewayMod      = "ApiGateway"
 	casMod             = "Cas"
+	cassandraMod       = "Cassandra"
 	cdnMod             = "Cdn"
 	cenMod             = "Cen"
 	cloudConnectMod    = "CloudConnect"
@@ -207,6 +208,10 @@ func Provider() tfbridge.ProviderInfo {
 			// Cas
 			"alicloud_cas_certificate": {Tok: resource(casMod, "Certificate")},
 
+			// Cassandra
+			"alicloud_cassandra_cluster":     {Tok: resource(cassandraMod, "Cluster")},
+			"alicloud_cassandra_data_center": {Tok: resource(cassandraMod, "DataCenter")},
+
 			//CDN
 			"alicloud_cdn_domain":        {Tok: resource(cdnMod, "Domain")},
 			"alicloud_cdn_domain_config": {Tok: resource(cdnMod, "DomainConfig")},
@@ -230,6 +235,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_flowlog":                      {Tok: resource(cenMod, "FlowLog")},
 			"alicloud_cen_route_map":                    {Tok: resource(cenMod, "RouteMap")},
 			"alicloud_cen_private_zone":                 {Tok: resource(cenMod, "PrivateZone")},
+			"alicloud_cen_vbr_health_check":             {Tok: resource(cenMod, "VbrHealthCheck")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_network":            {Tok: resource(cloudConnectMod, "Network")},
@@ -611,6 +617,11 @@ func Provider() tfbridge.ProviderInfo {
 			// Cas
 			"alicloud_cas_certificates": {Tok: dataSource(casMod, "getCertificates")},
 
+			// Cassandra
+			"alicloud_cassandra_clusters":     {Tok: dataSource(cassandraMod, "getClusters")},
+			"alicloud_cassandra_data_centers": {Tok: dataSource(cassandraMod, "getDataCenters")},
+			"alicloud_cassandra_zones":        {Tok: dataSource(cassandraMod, "getZones")},
+
 			// Cen
 			"alicloud_cen_bandwidth_limits":     {Tok: dataSource(cenMod, "getBandwidthLimits")},
 			"alicloud_cen_bandwidth_packages":   {Tok: dataSource(cenMod, "getBandwidthPackages")},
@@ -619,6 +630,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cen_region_route_entries": {Tok: dataSource(cenMod, "getRegionRouteEntries")},
 			"alicloud_cen_flowlogs":             {Tok: dataSource(cenMod, "getFlowlogs")},
 			"alicloud_cen_route_maps":           {Tok: dataSource(cenMod, "getRouteMaps")},
+			"alicloud_cen_private_zones":        {Tok: dataSource(cenMod, "getPrivateZones")},
 
 			// CloudConnect
 			"alicloud_cloud_connect_networks": {Tok: dataSource(cloudConnectMod, "getNetworks")},
@@ -641,6 +653,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Ddos
 			"alicloud_ddoscoo_instances": {Tok: dataSource(ddosMod, "getDdosCooInstances")},
 			"alicloud_ddosbgp_instances": {Tok: dataSource(ddosMod, "getDdosBgpInstances")},
+
+			// Dms
+			"alicloud_dms_enterprise_instances": {Tok: dataSource(dmsMod, "getEnterpriseInstances")},
 
 			// Dns
 			"alicloud_dns_domain_groups":    {Tok: dataSource(dnsMod, "getDomainGroups")},
@@ -707,12 +722,13 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_hbase_zones":     {Tok: dataSource(hbaseMod, "getZones")},
 
 			// Kms
-			"alicloud_kms_ciphertext":   {Tok: dataSource(kmsMod, "getCiphertext")},
-			"alicloud_kms_plaintext":    {Tok: dataSource(kmsMod, "getPlaintext")},
-			"alicloud_kms_keys":         {Tok: dataSource(kmsMod, "getKeys")},
-			"alicloud_kms_aliases":      {Tok: dataSource(kmsMod, "getAliases")},
-			"alicloud_kms_key_versions": {Tok: dataSource(kmsMod, "getKeyVersions")},
-			"alicloud_kms_secrets":      {Tok: dataSource(kmsMod, "getSecrets")},
+			"alicloud_kms_ciphertext":      {Tok: dataSource(kmsMod, "getCiphertext")},
+			"alicloud_kms_plaintext":       {Tok: dataSource(kmsMod, "getPlaintext")},
+			"alicloud_kms_keys":            {Tok: dataSource(kmsMod, "getKeys")},
+			"alicloud_kms_aliases":         {Tok: dataSource(kmsMod, "getAliases")},
+			"alicloud_kms_key_versions":    {Tok: dataSource(kmsMod, "getKeyVersions")},
+			"alicloud_kms_secrets":         {Tok: dataSource(kmsMod, "getSecrets")},
+			"alicloud_kms_secret_versions": {Tok: dataSource(kmsMod, "getSecretVersions")},
 
 			// KvStore
 			"alicloud_kvstore_instances":        {Tok: dataSource(kvstoreMod, "getInstances")},

@@ -64,6 +64,7 @@ export interface ProviderEndpoint {
     apigateway?: string;
     bssopenapi?: string;
     cas?: string;
+    cassandra?: string;
     cbn?: string;
     cdn?: string;
     cen?: string;
@@ -672,6 +673,131 @@ export namespace cas {
     }
 }
 
+export namespace cassandra {
+    export interface GetClustersCluster {
+        /**
+         * The ID of the Cassandra cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the Cassandra cluster.
+         */
+        clusterName: string;
+        createdTime: string;
+        /**
+         * The count of data centers
+         */
+        dataCenterCount: number;
+        /**
+         * The expire time of the cluster.
+         */
+        expireTime: string;
+        /**
+         * The ID of the Cassandra cluster.
+         */
+        id: string;
+        /**
+         * The lock mode of the cluster.
+         */
+        lockMode: string;
+        /**
+         * The major version of the cluster.
+         */
+        majorVersion: string;
+        /**
+         * The minor version of the cluster.
+         */
+        minorVersion: string;
+        /**
+         * Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
+         */
+        payType: string;
+        /**
+         * Status of the cluster.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags?: {[key: string]: any};
+    }
+
+    export interface GetDataCentersCenter {
+        /**
+         * The cluster id of dataCenters belongs to.
+         */
+        clusterId: string;
+        /**
+         * The commodity ID of the Cassandra dataCenter.
+         */
+        commodityInstance: string;
+        createdTime: string;
+        /**
+         * The id of the Cassandra dataCenter.
+         */
+        dataCenterId: string;
+        /**
+         * The name of the Cassandra dataCenter.
+         */
+        dataCenterName: string;
+        /**
+         * One node disk size, unit:GB.
+         */
+        diskSize: number;
+        /**
+         * Cloud_ssd or cloud_efficiency.
+         */
+        diskType: string;
+        /**
+         * The expire time of the dataCenter.
+         */
+        expireTime: string;
+        /**
+         * The instance type of the Cassandra dataCenter, eg: cassandra.c.large.
+         */
+        instanceType: string;
+        /**
+         * The lock mode of the dataCenter.
+         */
+        lockMode: string;
+        /**
+         * The node count of dataCenter.
+         */
+        nodeCount: number;
+        /**
+         * Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
+         */
+        payType: string;
+        /**
+         * Status of the dataCenter.
+         */
+        status: string;
+        /**
+         * VPC ID the dataCenter belongs to.
+         */
+        vpcId: string;
+        /**
+         * VSwitch ID the dataCenter belongs to.
+         */
+        vswitchId: string;
+        /**
+         * Zone ID the dataCenter belongs to.
+         */
+        zoneId: string;
+    }
+
+    export interface GetZonesZone {
+        /**
+         * ID of the zone.
+         */
+        id: string;
+        /**
+         * A list of zone ids in which the multi zone.
+         */
+        multiZoneIds: string[];
+    }
+}
+
 export namespace cdn {
     export interface DomainAuthConfig {
         /**
@@ -980,6 +1106,33 @@ export namespace cen {
         tags: {[key: string]: any};
     }
 
+    export interface GetPrivateZonesZone {
+        /**
+         * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
+         */
+        accessRegionId: string;
+        /**
+         * The ID of the CEN instance.
+         */
+        cenId: string;
+        /**
+         * The service region. The service region is the target region of the PrivateZone service accessed through CEN.
+         */
+        hostRegionId: string;
+        /**
+         * The VPC that belongs to the service region.
+         */
+        hostVpcId: string;
+        /**
+         * The DNS IP addresses of the PrivateZone service.
+         */
+        privateZoneDnsServers: string;
+        /**
+         * The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
+         */
+        status: string;
+    }
+
     export interface GetRegionRouteEntriesEntry {
         /**
          * The destination CIDR block of the route entry.
@@ -1230,6 +1383,7 @@ export namespace config {
         apigateway?: string;
         bssopenapi?: string;
         cas?: string;
+        cassandra?: string;
         cbn?: string;
         cdn?: string;
         cen?: string;
@@ -2064,6 +2218,99 @@ export namespace dds {
         description: string;
         nodeId: string;
         storage: number;
+    }
+}
+
+export namespace dms {
+    export interface GetEnterpriseInstancesInstance {
+        /**
+         * The name of the data link for the database instance.
+         */
+        dataLinkName: string;
+        /**
+         * The logon password of the database instance.
+         */
+        databasePassword: string;
+        /**
+         * The logon username of the database instance.
+         */
+        databaseUser: string;
+        /**
+         * The ID of the database administrator (DBA) of the database instance.
+         */
+        dbaId: string;
+        /**
+         * The nickname of the DBA.
+         */
+        dbaNickName: string;
+        /**
+         * Indicates whether the online data description language (DDL) service was enabled for the database instance.
+         */
+        ddlOnline: number;
+        /**
+         * The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.
+         */
+        ecsInstanceId: string;
+        /**
+         * The region where the database instance resides.
+         */
+        ecsRegion: string;
+        /**
+         * The type of the environment to which the database instance belongs.
+         */
+        envType: string;
+        /**
+         * The timeout period for exporting the database instance.
+         */
+        exportTimeout: number;
+        /**
+         * The endpoint of the database instance.
+         */
+        host: string;
+        /**
+         * The alias of the database instance.
+         */
+        instanceAlias: string;
+        /**
+         * The ID of the database instance.
+         */
+        instanceId: string;
+        /**
+         * The source of the database instance.
+         */
+        instanceSource: string;
+        /**
+         * The ID of the database instance.
+         */
+        instanceType: string;
+        /**
+         * The connection port of the database instance.
+         */
+        port: number;
+        /**
+         * The timeout period for querying the database instance.
+         */
+        queryTimeout: number;
+        /**
+         * The ID of the security rule for the database instance.
+         */
+        safeRuleId: string;
+        /**
+         * The system ID (SID) of the database instance.
+         */
+        sid: string;
+        /**
+         * Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
+         */
+        status: string;
+        /**
+         * Indicates whether cross-database query was enabled for the database instance.
+         */
+        useDsql: number;
+        /**
+         * The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
+         */
+        vpcId: string;
     }
 }
 
@@ -4342,6 +4589,29 @@ export namespace kms {
          * Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
          */
         status: string;
+    }
+
+    export interface GetSecretVersionsVersion {
+        /**
+         * The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enableDetails` is true).
+         */
+        secretData: string;
+        /**
+         * The type of the secret value. (Returned when `enableDetails` is true).
+         */
+        secretDataType: string;
+        /**
+         * The name of the secret.
+         */
+        secretName: string;
+        /**
+         * The version number of the secret value.
+         */
+        versionId: string;
+        /**
+         * Stage labels that mark the secret version.
+         */
+        versionStages: string[];
     }
 
     export interface GetSecretsSecret {

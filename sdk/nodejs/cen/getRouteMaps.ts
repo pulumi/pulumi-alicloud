@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisCenRouteMaps = pulumi.output(alicloud.CenRouteMaps({
+ * const thisRouteMaps = pulumi.output(alicloud.cen.getRouteMaps({
  *     cenId: "cen-ihdlgo87ai********",
  *     cenRegionId: "cn-hangzhou",
  *     descriptionRegex: "datasourceTest",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     transmitDirection: "RegionIn",
  * }, { async: true }));
  *
- * export const firstCenRouteMapId = thisCenRouteMaps.maps.0.id;
+ * export const firstCenRouteMapId = thisRouteMaps.maps[0].id;
  * ```
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {

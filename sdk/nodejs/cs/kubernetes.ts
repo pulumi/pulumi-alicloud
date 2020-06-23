@@ -64,6 +64,10 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly enableSsh!: pulumi.Output<boolean | undefined>;
     /**
+     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     */
+    public readonly excludeAutoscalerNodes!: pulumi.Output<boolean | undefined>;
+    /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
@@ -145,6 +149,10 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
     /**
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     */
+    public readonly nodeNameMode!: pulumi.Output<string | undefined>;
+    /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     public readonly password!: pulumi.Output<string | undefined>;
@@ -163,7 +171,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * The ID of security group where the current cluster worker node is located.
      */
-    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
@@ -239,6 +247,10 @@ export class Kubernetes extends pulumi.CustomResource {
      * Worker payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     public readonly workerPeriodUnit!: pulumi.Output<string | undefined>;
+    /**
+     * The RamRole Name attached to worker node.
+     */
+    public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
     public readonly workerVswitchIds!: pulumi.Output<string[]>;
 
     /**
@@ -261,6 +273,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["connections"] = state ? state.connections : undefined;
             inputs["cpuPolicy"] = state ? state.cpuPolicy : undefined;
             inputs["enableSsh"] = state ? state.enableSsh : undefined;
+            inputs["excludeAutoscalerNodes"] = state ? state.excludeAutoscalerNodes : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
@@ -282,6 +295,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["natGatewayId"] = state ? state.natGatewayId : undefined;
             inputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             inputs["nodeCidrMask"] = state ? state.nodeCidrMask : undefined;
+            inputs["nodeNameMode"] = state ? state.nodeNameMode : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["podCidr"] = state ? state.podCidr : undefined;
             inputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
@@ -308,6 +322,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerNumber"] = state ? state.workerNumber : undefined;
             inputs["workerPeriod"] = state ? state.workerPeriod : undefined;
             inputs["workerPeriodUnit"] = state ? state.workerPeriodUnit : undefined;
+            inputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
             inputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
         } else {
             const args = argsOrState as KubernetesArgs | undefined;
@@ -333,6 +348,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             inputs["cpuPolicy"] = args ? args.cpuPolicy : undefined;
             inputs["enableSsh"] = args ? args.enableSsh : undefined;
+            inputs["excludeAutoscalerNodes"] = args ? args.excludeAutoscalerNodes : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
@@ -352,10 +368,12 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             inputs["nodeCidrMask"] = args ? args.nodeCidrMask : undefined;
+            inputs["nodeNameMode"] = args ? args.nodeNameMode : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["podCidr"] = args ? args.podCidr : undefined;
             inputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
             inputs["userCa"] = args ? args.userCa : undefined;
@@ -376,12 +394,12 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["connections"] = undefined /*out*/;
             inputs["masterNodes"] = undefined /*out*/;
             inputs["natGatewayId"] = undefined /*out*/;
-            inputs["securityGroupId"] = undefined /*out*/;
             inputs["slbId"] = undefined /*out*/;
             inputs["slbInternet"] = undefined /*out*/;
             inputs["slbIntranet"] = undefined /*out*/;
             inputs["vpcId"] = undefined /*out*/;
             inputs["workerNodes"] = undefined /*out*/;
+            inputs["workerRamRoleName"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -427,6 +445,10 @@ export interface KubernetesState {
      * Enable login to the node through SSH. default: false 
      */
     readonly enableSsh?: pulumi.Input<boolean>;
+    /**
+     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     */
+    readonly excludeAutoscalerNodes?: pulumi.Input<boolean>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
@@ -508,6 +530,10 @@ export interface KubernetesState {
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
+    /**
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     */
+    readonly nodeNameMode?: pulumi.Input<string>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
@@ -603,6 +629,10 @@ export interface KubernetesState {
      * Worker payment period unit. `Month` or `Week`, defaults to `Month`.
      */
     readonly workerPeriodUnit?: pulumi.Input<string>;
+    /**
+     * The RamRole Name attached to worker node.
+     */
+    readonly workerRamRoleName?: pulumi.Input<string>;
     readonly workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -635,6 +665,10 @@ export interface KubernetesArgs {
      * Enable login to the node through SSH. default: false 
      */
     readonly enableSsh?: pulumi.Input<boolean>;
+    /**
+     * Exclude autoscaler nodes from `workerNodes`. default: false 
+     */
+    readonly excludeAutoscalerNodes?: pulumi.Input<boolean>;
     /**
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      */
@@ -709,6 +743,10 @@ export interface KubernetesArgs {
      */
     readonly nodeCidrMask?: pulumi.Input<number>;
     /**
+     * Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. 
+     */
+    readonly nodeNameMode?: pulumi.Input<string>;
+    /**
      * The password of ssh login cluster node. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
     readonly password?: pulumi.Input<string>;
@@ -724,6 +762,10 @@ export interface KubernetesArgs {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
     readonly proxyMode?: pulumi.Input<string>;
+    /**
+     * The ID of security group where the current cluster worker node is located.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */

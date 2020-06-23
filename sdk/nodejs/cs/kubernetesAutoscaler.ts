@@ -86,6 +86,10 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
      */
     public readonly nodepools!: pulumi.Output<outputs.cs.KubernetesAutoscalerNodepool[] | undefined>;
     /**
+     * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+     */
+    public readonly useEcsRamRoleToken!: pulumi.Output<boolean | undefined>;
+    /**
      * The utilization option of cluster-autoscaler.
      */
     public readonly utilization!: pulumi.Output<string>;
@@ -106,6 +110,7 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             inputs["coolDownDuration"] = state ? state.coolDownDuration : undefined;
             inputs["deferScaleInDuration"] = state ? state.deferScaleInDuration : undefined;
             inputs["nodepools"] = state ? state.nodepools : undefined;
+            inputs["useEcsRamRoleToken"] = state ? state.useEcsRamRoleToken : undefined;
             inputs["utilization"] = state ? state.utilization : undefined;
         } else {
             const args = argsOrState as KubernetesAutoscalerArgs | undefined;
@@ -125,6 +130,7 @@ export class KubernetesAutoscaler extends pulumi.CustomResource {
             inputs["coolDownDuration"] = args ? args.coolDownDuration : undefined;
             inputs["deferScaleInDuration"] = args ? args.deferScaleInDuration : undefined;
             inputs["nodepools"] = args ? args.nodepools : undefined;
+            inputs["useEcsRamRoleToken"] = args ? args.useEcsRamRoleToken : undefined;
             inputs["utilization"] = args ? args.utilization : undefined;
         }
         if (!opts) {
@@ -162,6 +168,10 @@ export interface KubernetesAutoscalerState {
      */
     readonly nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
     /**
+     * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+     */
+    readonly useEcsRamRoleToken?: pulumi.Input<boolean>;
+    /**
      * The utilization option of cluster-autoscaler.
      */
     readonly utilization?: pulumi.Input<string>;
@@ -190,6 +200,10 @@ export interface KubernetesAutoscalerArgs {
      * * `nodepools.labels` - (Required) The labels for the nodes in scaling group.
      */
     readonly nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
+    /**
+     * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
+     */
+    readonly useEcsRamRoleToken?: pulumi.Input<boolean>;
     /**
      * The utilization option of cluster-autoscaler.
      */

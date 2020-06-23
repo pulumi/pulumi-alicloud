@@ -1716,6 +1716,345 @@
                 }
             }
         },
+        "alicloud:cassandra/getClustersCluster:getClustersCluster": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The ID of the Cassandra cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "The name of the Cassandra cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataCenterCount": {
+                    "type": "integer",
+                    "description": "The count of data centers\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expireTime": {
+                    "type": "string",
+                    "description": "The expire time of the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the Cassandra cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lockMode": {
+                    "type": "string",
+                    "description": "The lock mode of the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "majorVersion": {
+                    "type": "string",
+                    "description": "The major version of the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minorVersion": {
+                    "type": "string",
+                    "description": "The minor version of the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the cluster.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterId",
+                "clusterName",
+                "createdTime",
+                "dataCenterCount",
+                "expireTime",
+                "id",
+                "lockMode",
+                "majorVersion",
+                "minorVersion",
+                "payType",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:cassandra/getDataCentersCenter:getDataCentersCenter": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster id of dataCenters belongs to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "commodityInstance": {
+                    "type": "string",
+                    "description": "The commodity ID of the Cassandra dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "createdTime": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataCenterId": {
+                    "type": "string",
+                    "description": "The id of the Cassandra dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dataCenterName": {
+                    "type": "string",
+                    "description": "The name of the Cassandra dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskSize": {
+                    "type": "integer",
+                    "description": "One node disk size, unit:GB.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "diskType": {
+                    "type": "string",
+                    "description": "Cloud_ssd or cloud_efficiency.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expireTime": {
+                    "type": "string",
+                    "description": "The expire time of the dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "The instance type of the Cassandra dataCenter, eg: cassandra.c.large.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lockMode": {
+                    "type": "string",
+                    "description": "The lock mode of the dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The node count of dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the dataCenter.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "VPC ID the dataCenter belongs to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "VSwitch ID the dataCenter belongs to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "Zone ID the dataCenter belongs to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterId",
+                "commodityInstance",
+                "createdTime",
+                "dataCenterId",
+                "dataCenterName",
+                "diskSize",
+                "diskType",
+                "expireTime",
+                "instanceType",
+                "lockMode",
+                "nodeCount",
+                "payType",
+                "status",
+                "vpcId",
+                "vswitchId",
+                "zoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:cassandra/getZonesZone:getZonesZone": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the zone.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "multiZoneIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of zone ids in which the multi zone.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "multiZoneIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:cdn/DomainAuthConfig:DomainAuthConfig": {
             "properties": {
                 "authType": {
@@ -2528,6 +2867,78 @@
                 }
             }
         },
+        "alicloud:cen/getPrivateZonesZone:getPrivateZonesZone": {
+            "properties": {
+                "accessRegionId": {
+                    "type": "string",
+                    "description": "The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cenId": {
+                    "type": "string",
+                    "description": "The ID of the CEN instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostRegionId": {
+                    "type": "string",
+                    "description": "The service region. The service region is the target region of the PrivateZone service accessed through CEN.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostVpcId": {
+                    "type": "string",
+                    "description": "The VPC that belongs to the service region.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateZoneDnsServers": {
+                    "type": "string",
+                    "description": "The DNS IP addresses of the PrivateZone service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessRegionId",
+                "cenId",
+                "hostRegionId",
+                "hostVpcId",
+                "privateZoneDnsServers",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:cen/getRegionRouteEntriesEntry:getRegionRouteEntriesEntry": {
             "properties": {
                 "cidrBlock": {
@@ -3230,6 +3641,9 @@
                     "type": "string"
                 },
                 "cas": {
+                    "type": "string"
+                },
+                "cassandra": {
                     "type": "string"
                 },
                 "cbn": {
@@ -5807,6 +6221,238 @@
                 "description",
                 "nodeId",
                 "storage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:dms/getEnterpriseInstancesInstance:getEnterpriseInstancesInstance": {
+            "properties": {
+                "dataLinkName": {
+                    "type": "string",
+                    "description": "The name of the data link for the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "databasePassword": {
+                    "type": "string",
+                    "description": "The logon password of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "databaseUser": {
+                    "type": "string",
+                    "description": "The logon username of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbaId": {
+                    "type": "string",
+                    "description": "The ID of the database administrator (DBA) of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dbaNickName": {
+                    "type": "string",
+                    "description": "The nickname of the DBA.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ddlOnline": {
+                    "type": "integer",
+                    "description": "Indicates whether the online data description language (DDL) service was enabled for the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ecsInstanceId": {
+                    "type": "string",
+                    "description": "The ID of the Elastic Compute Service (ECS) instance to which the database instance belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ecsRegion": {
+                    "type": "string",
+                    "description": "The region where the database instance resides.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "envType": {
+                    "type": "string",
+                    "description": "The type of the environment to which the database instance belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "exportTimeout": {
+                    "type": "integer",
+                    "description": "The timeout period for exporting the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The endpoint of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceAlias": {
+                    "type": "string",
+                    "description": "The alias of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceSource": {
+                    "type": "string",
+                    "description": "The source of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "The ID of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The connection port of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
+                    "type": "integer",
+                    "description": "The timeout period for querying the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "safeRuleId": {
+                    "type": "string",
+                    "description": "The ID of the security rule for the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sid": {
+                    "type": "string",
+                    "description": "The system ID (SID) of the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "useDsql": {
+                    "type": "integer",
+                    "description": "Indicates whether cross-database query was enabled for the database instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataLinkName",
+                "databasePassword",
+                "databaseUser",
+                "dbaId",
+                "dbaNickName",
+                "ddlOnline",
+                "ecsInstanceId",
+                "ecsRegion",
+                "envType",
+                "exportTimeout",
+                "host",
+                "instanceAlias",
+                "instanceId",
+                "instanceSource",
+                "instanceType",
+                "port",
+                "queryTimeout",
+                "safeRuleId",
+                "sid",
+                "status",
+                "useDsql",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -11987,6 +12633,14 @@
                         }
                     }
                 },
+                "cassandra": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "cbn": {
                     "type": "string",
                     "language": {
@@ -12471,6 +13125,71 @@
                 "description",
                 "id",
                 "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:kms/getSecretVersionsVersion:getSecretVersionsVersion": {
+            "properties": {
+                "secretData": {
+                    "type": "string",
+                    "description": "The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretDataType": {
+                    "type": "string",
+                    "description": "The type of the secret value. (Returned when `enable_details` is true).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "The name of the secret.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionId": {
+                    "type": "string",
+                    "description": "The version number of the secret value.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionStages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Stage labels that mark the secret version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "secretData",
+                "secretDataType",
+                "secretName",
+                "versionId",
+                "versionStages"
             ],
             "language": {
                 "nodejs": {
@@ -24306,6 +25025,528 @@
                 "type": "object"
             }
         },
+        "alicloud:cassandra/cluster:Cluster": {
+            "description": "Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services. \nIt offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.\nYou can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n\u003e **NOTE:**  The following regions support create Vpc network Cassandra cluster.\nThe official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).\n\n\u003e **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "dataCenterName": {
+                    "type": "string",
+                    "description": "Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "diskSize": {
+                    "type": "integer",
+                    "description": "User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                },
+                "diskType": {
+                    "type": "string",
+                    "description": "The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                },
+                "enablePublic": {
+                    "type": "boolean"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                },
+                "ipWhite": {
+                    "type": "string",
+                    "description": "Set the instance's IP whitelist in VPC network.\n"
+                },
+                "maintainEndTime": {
+                    "type": "string",
+                    "description": "The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                },
+                "maintainStartTime": {
+                    "type": "string",
+                    "description": "The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                },
+                "majorVersion": {
+                    "type": "string",
+                    "description": "Cassandra major version. Now only support version `3.11`.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The node count of Cassandra dataCenter-1 default to 2. \n"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.\n"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "periodUnit": {
+                    "type": "string"
+                },
+                "publicPoints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "securityGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of security group ids to associate with.\n"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The vswitch_id of dataCenter-1, can not empty.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                }
+            },
+            "required": [
+                "instanceType",
+                "ipWhite",
+                "majorVersion",
+                "nodeCount",
+                "payType",
+                "publicPoints",
+                "securityGroups",
+                "status",
+                "vswitchId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "dataCenterName": {
+                    "type": "string",
+                    "description": "Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "diskSize": {
+                    "type": "integer",
+                    "description": "User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                },
+                "diskType": {
+                    "type": "string",
+                    "description": "The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                },
+                "enablePublic": {
+                    "type": "boolean"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                },
+                "ipWhite": {
+                    "type": "string",
+                    "description": "Set the instance's IP whitelist in VPC network.\n"
+                },
+                "maintainEndTime": {
+                    "type": "string",
+                    "description": "The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                },
+                "maintainStartTime": {
+                    "type": "string",
+                    "description": "The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                },
+                "majorVersion": {
+                    "type": "string",
+                    "description": "Cassandra major version. Now only support version `3.11`.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The node count of Cassandra dataCenter-1 default to 2. \n"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.\n"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "periodUnit": {
+                    "type": "string"
+                },
+                "securityGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of security group ids to associate with.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "A mapping of tags to assign to the resource.\n"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The vswitch_id of dataCenter-1, can not empty.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                }
+            },
+            "requiredInputs": [
+                "instanceType",
+                "majorVersion",
+                "nodeCount",
+                "payType",
+                "vswitchId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Cluster resources.\n",
+                "properties": {
+                    "autoRenew": {
+                        "type": "boolean",
+                        "description": "Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.\n"
+                    },
+                    "autoRenewPeriod": {
+                        "type": "integer",
+                        "description": "Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                    },
+                    "clusterName": {
+                        "type": "string",
+                        "description": "Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                    },
+                    "dataCenterName": {
+                        "type": "string",
+                        "description": "Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                    },
+                    "diskSize": {
+                        "type": "integer",
+                        "description": "User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                    },
+                    "diskType": {
+                        "type": "string",
+                        "description": "The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                    },
+                    "enablePublic": {
+                        "type": "boolean"
+                    },
+                    "instanceType": {
+                        "type": "string",
+                        "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                    },
+                    "ipWhite": {
+                        "type": "string",
+                        "description": "Set the instance's IP whitelist in VPC network.\n"
+                    },
+                    "maintainEndTime": {
+                        "type": "string",
+                        "description": "The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                    },
+                    "maintainStartTime": {
+                        "type": "string",
+                        "description": "The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).\n"
+                    },
+                    "majorVersion": {
+                        "type": "string",
+                        "description": "Cassandra major version. Now only support version `3.11`.\n"
+                    },
+                    "nodeCount": {
+                        "type": "integer",
+                        "description": "The node count of Cassandra dataCenter-1 default to 2. \n"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "payType": {
+                        "type": "string",
+                        "description": "The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.\n"
+                    },
+                    "period": {
+                        "type": "integer"
+                    },
+                    "periodUnit": {
+                        "type": "string"
+                    },
+                    "publicPoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "securityGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of security group ids to associate with.\n"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    },
+                    "vswitchId": {
+                        "type": "string",
+                        "description": "The vswitch_id of dataCenter-1, can not empty.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:cassandra/dataCenter:DataCenter": {
+            "description": "Provides a Cassandra dataCenter resource supports replica set dataCenters only. The Cassandra provides stable, reliable, and automatic scalable database services. \nIt offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.\nYou can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n\u003e **NOTE:**  Create a cassandra dataCenter need a clusterId,so need create a cassandra cluster first.\n\n\u003e **NOTE:**  The following regions support create Vpc network Cassandra cluster.\nThe official website mark  more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).\n\n\u003e **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cassandra cluster id of dataCenter-2 belongs to.  \n"
+                },
+                "dataCenterId": {
+                    "type": "string"
+                },
+                "dataCenterName": {
+                    "type": "string",
+                    "description": "Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "diskSize": {
+                    "type": "integer",
+                    "description": "User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                },
+                "diskType": {
+                    "type": "string",
+                    "description": "The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                },
+                "enablePublic": {
+                    "type": "boolean"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The node count of Cassandra dataCenter-2, default to 2. \n"
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.\n"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "periodUnit": {
+                    "type": "string"
+                },
+                "publicPoints": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "status": {
+                    "type": "string"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "dataCenterId",
+                "instanceType",
+                "nodeCount",
+                "payType",
+                "publicPoints",
+                "status",
+                "vswitchId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "autoRenew": {
+                    "type": "boolean",
+                    "description": "Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.\n"
+                },
+                "autoRenewPeriod": {
+                    "type": "integer",
+                    "description": "Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cassandra cluster id of dataCenter-2 belongs to.  \n"
+                },
+                "dataCenterName": {
+                    "type": "string",
+                    "description": "Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                },
+                "diskSize": {
+                    "type": "integer",
+                    "description": "User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                },
+                "diskType": {
+                    "type": "string",
+                    "description": "The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                },
+                "enablePublic": {
+                    "type": "boolean"
+                },
+                "instanceType": {
+                    "type": "string",
+                    "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                },
+                "nodeCount": {
+                    "type": "integer",
+                    "description": "The node count of Cassandra dataCenter-2, default to 2. \n"
+                },
+                "payType": {
+                    "type": "string",
+                    "description": "The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.\n"
+                },
+                "period": {
+                    "type": "integer"
+                },
+                "periodUnit": {
+                    "type": "string"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "instanceType",
+                "nodeCount",
+                "payType",
+                "vswitchId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DataCenter resources.\n",
+                "properties": {
+                    "autoRenew": {
+                        "type": "boolean",
+                        "description": "Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.\n"
+                    },
+                    "autoRenewPeriod": {
+                        "type": "integer",
+                        "description": "Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "Cassandra cluster id of dataCenter-2 belongs to.  \n"
+                    },
+                    "dataCenterId": {
+                        "type": "string"
+                    },
+                    "dataCenterName": {
+                        "type": "string",
+                        "description": "Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted. \n"
+                    },
+                    "diskSize": {
+                        "type": "integer",
+                        "description": "User-defined Cassandra dataCenter one core node's storage space.Unit: GB. Value range:\n- Custom storage space; value range: [160, 2000].\n- 80-GB increments.\n"
+                    },
+                    "diskType": {
+                        "type": "string",
+                        "description": "The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.\n"
+                    },
+                    "enablePublic": {
+                        "type": "boolean"
+                    },
+                    "instanceType": {
+                        "type": "string",
+                        "description": "Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.\n"
+                    },
+                    "nodeCount": {
+                        "type": "integer",
+                        "description": "The node count of Cassandra dataCenter-2, default to 2. \n"
+                    },
+                    "payType": {
+                        "type": "string",
+                        "description": "The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.\n"
+                    },
+                    "period": {
+                        "type": "integer"
+                    },
+                    "periodUnit": {
+                        "type": "string"
+                    },
+                    "publicPoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "vswitchId": {
+                        "type": "string",
+                        "description": "The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be \"\" or consistent.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:cdn/domain:Domain": {
             "properties": {
                 "authConfig": {
@@ -25985,6 +27226,127 @@
                 "type": "object"
             }
         },
+        "alicloud:cen/vbrHealthCheck:VbrHealthCheck": {
+            "description": "This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance. \nAfter you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.\n\nFor information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).\n\n\u003e **NOTE:** Available in 1.88.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "cenId": {
+                    "type": "string",
+                    "description": "The ID of the CEN instance.\n"
+                },
+                "healthCheckInterval": {
+                    "type": "integer",
+                    "description": "Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.\n"
+                },
+                "healthCheckSourceIp": {
+                    "type": "string",
+                    "description": "The source IP address of health checks.\n"
+                },
+                "healthCheckTargetIp": {
+                    "type": "string",
+                    "description": "The destination IP address of health checks.\n"
+                },
+                "healthyThreshold": {
+                    "type": "integer",
+                    "description": "Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.\n"
+                },
+                "vbrInstanceId": {
+                    "type": "string",
+                    "description": "The ID of the VBR.\n"
+                },
+                "vbrInstanceOwnerId": {
+                    "type": "integer",
+                    "description": "The ID of the account to which the VBR belongs.\n"
+                },
+                "vbrInstanceRegionId": {
+                    "type": "string",
+                    "description": "The ID of the region to which the VBR belongs.\n"
+                }
+            },
+            "required": [
+                "cenId",
+                "healthCheckTargetIp",
+                "vbrInstanceId",
+                "vbrInstanceRegionId"
+            ],
+            "inputProperties": {
+                "cenId": {
+                    "type": "string",
+                    "description": "The ID of the CEN instance.\n"
+                },
+                "healthCheckInterval": {
+                    "type": "integer",
+                    "description": "Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.\n"
+                },
+                "healthCheckSourceIp": {
+                    "type": "string",
+                    "description": "The source IP address of health checks.\n"
+                },
+                "healthCheckTargetIp": {
+                    "type": "string",
+                    "description": "The destination IP address of health checks.\n"
+                },
+                "healthyThreshold": {
+                    "type": "integer",
+                    "description": "Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.\n"
+                },
+                "vbrInstanceId": {
+                    "type": "string",
+                    "description": "The ID of the VBR.\n"
+                },
+                "vbrInstanceOwnerId": {
+                    "type": "integer",
+                    "description": "The ID of the account to which the VBR belongs.\n"
+                },
+                "vbrInstanceRegionId": {
+                    "type": "string",
+                    "description": "The ID of the region to which the VBR belongs.\n"
+                }
+            },
+            "requiredInputs": [
+                "cenId",
+                "healthCheckTargetIp",
+                "vbrInstanceId",
+                "vbrInstanceRegionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VbrHealthCheck resources.\n",
+                "properties": {
+                    "cenId": {
+                        "type": "string",
+                        "description": "The ID of the CEN instance.\n"
+                    },
+                    "healthCheckInterval": {
+                        "type": "integer",
+                        "description": "Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.\n"
+                    },
+                    "healthCheckSourceIp": {
+                        "type": "string",
+                        "description": "The source IP address of health checks.\n"
+                    },
+                    "healthCheckTargetIp": {
+                        "type": "string",
+                        "description": "The destination IP address of health checks.\n"
+                    },
+                    "healthyThreshold": {
+                        "type": "integer",
+                        "description": "Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.\n"
+                    },
+                    "vbrInstanceId": {
+                        "type": "string",
+                        "description": "The ID of the VBR.\n"
+                    },
+                    "vbrInstanceOwnerId": {
+                        "type": "integer",
+                        "description": "The ID of the account to which the VBR belongs.\n"
+                    },
+                    "vbrInstanceRegionId": {
+                        "type": "string",
+                        "description": "The ID of the region to which the VBR belongs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:cloudconnect/network:Network": {
             "description": "Provides a cloud connect network resource. Cloud Connect Network (CCN) is another important component of Smart Access Gateway. It is a device access matrix composed of Alibaba Cloud distributed access gateways. You can add multiple Smart Access Gateway (SAG) devices to a CCN instance and then attach the CCN instance to a Cloud Enterprise Network (CEN) instance to connect the local branches to the Alibaba Cloud.\n\nFor information about cloud connect network and how to use it, see [What is Cloud Connect Network](https://www.alibabacloud.com/help/doc-detail/93667.htm).\n\n\u003e **NOTE:** Available in 1.59.0+\n\n\u003e **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultNetwork = new alicloud.cloudconnect.Network(\"default\", {\n    cidrBlock: \"192.168.0.0/24\",\n    description: \"tf-testAccCloudConnectNetworkDescription\",\n    isDefault: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.cloudconnect.Network(\"default\",\n    cidr_block=\"192.168.0.0/24\",\n    description=\"tf-testAccCloudConnectNetworkDescription\",\n    is_default=True)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.CloudConnect.Network(\"default\", new AliCloud.CloudConnect.NetworkArgs\n        {\n            CidrBlock = \"192.168.0.0/24\",\n            Description = \"tf-testAccCloudConnectNetworkDescription\",\n            IsDefault = true,\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -27079,6 +28441,10 @@
                     "type": "boolean",
                     "description": "Enable login to the node through SSH. default: false \n"
                 },
+                "excludeAutoscalerNodes": {
+                    "type": "boolean",
+                    "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
+                },
                 "imageId": {
                     "type": "string",
                     "description": "Custom Image support. Must based on CentOS7 or AliyunLinux2.\n"
@@ -27173,6 +28539,10 @@
                 "nodeCidrMask": {
                     "type": "integer",
                     "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
+                },
+                "nodeNameMode": {
+                    "type": "string",
+                    "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
                 },
                 "password": {
                     "type": "string",
@@ -27284,6 +28654,10 @@
                     "type": "string",
                     "description": "Worker payment period unit. `Month` or `Week`, defaults to `Month`.\n"
                 },
+                "workerRamRoleName": {
+                    "type": "string",
+                    "description": "The RamRole Name attached to worker node.\n"
+                },
                 "workerVswitchIds": {
                     "type": "array",
                     "items": {
@@ -27307,6 +28681,7 @@
                 "workerInstanceTypes",
                 "workerNodes",
                 "workerNumber",
+                "workerRamRoleName",
                 "workerVswitchIds"
             ],
             "inputProperties": {
@@ -27339,6 +28714,10 @@
                 "enableSsh": {
                     "type": "boolean",
                     "description": "Enable login to the node through SSH. default: false \n"
+                },
+                "excludeAutoscalerNodes": {
+                    "type": "boolean",
+                    "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
                 },
                 "imageId": {
                     "type": "string",
@@ -27424,6 +28803,10 @@
                     "type": "integer",
                     "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
                 },
+                "nodeNameMode": {
+                    "type": "string",
+                    "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.\n"
@@ -27442,6 +28825,10 @@
                 "proxyMode": {
                     "type": "string",
                     "description": "Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of security group where the current cluster worker node is located.\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -27559,6 +28946,10 @@
                         "type": "boolean",
                         "description": "Enable login to the node through SSH. default: false \n"
                     },
+                    "excludeAutoscalerNodes": {
+                        "type": "boolean",
+                        "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
+                    },
                     "imageId": {
                         "type": "string",
                         "description": "Custom Image support. Must based on CentOS7 or AliyunLinux2.\n"
@@ -27653,6 +29044,10 @@
                     "nodeCidrMask": {
                         "type": "integer",
                         "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
+                    },
+                    "nodeNameMode": {
+                        "type": "string",
+                        "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
                     },
                     "password": {
                         "type": "string",
@@ -27764,6 +29159,10 @@
                         "type": "string",
                         "description": "Worker payment period unit. `Month` or `Week`, defaults to `Month`.\n"
                     },
+                    "workerRamRoleName": {
+                        "type": "string",
+                        "description": "The RamRole Name attached to worker node.\n"
+                    },
                     "workerVswitchIds": {
                         "type": "array",
                         "items": {
@@ -27796,6 +29195,10 @@
                     },
                     "description": "\n* `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.\n* `nodepools.taints` - (Required) The taints for the nodes in scaling group.\n* `nodepools.labels` - (Required) The labels for the nodes in scaling group.\n"
                 },
+                "useEcsRamRoleToken": {
+                    "type": "boolean",
+                    "description": "Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false\n"
+                },
                 "utilization": {
                     "type": "string",
                     "description": "The utilization option of cluster-autoscaler.\n"
@@ -27826,6 +29229,10 @@
                         "$ref": "#/types/alicloud:cs/KubernetesAutoscalerNodepool:KubernetesAutoscalerNodepool"
                     },
                     "description": "\n* `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.\n* `nodepools.taints` - (Required) The taints for the nodes in scaling group.\n* `nodepools.labels` - (Required) The labels for the nodes in scaling group.\n"
+                },
+                "useEcsRamRoleToken": {
+                    "type": "boolean",
+                    "description": "Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false\n"
                 },
                 "utilization": {
                     "type": "string",
@@ -27859,6 +29266,10 @@
                             "$ref": "#/types/alicloud:cs/KubernetesAutoscalerNodepool:KubernetesAutoscalerNodepool"
                         },
                         "description": "\n* `nodepools.id` - (Required) The scaling group id of the groups configured for cluster-autoscaler.\n* `nodepools.taints` - (Required) The taints for the nodes in scaling group.\n* `nodepools.labels` - (Required) The labels for the nodes in scaling group.\n"
+                    },
+                    "useEcsRamRoleToken": {
+                        "type": "boolean",
+                        "description": "Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false\n"
                     },
                     "utilization": {
                         "type": "string",
@@ -27903,6 +29314,10 @@
                 "enableSsh": {
                     "type": "boolean",
                     "description": "Enable login to the node through SSH. default: false \n"
+                },
+                "excludeAutoscalerNodes": {
+                    "type": "boolean",
+                    "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
                 },
                 "imageId": {
                     "type": "string",
@@ -27949,6 +29364,10 @@
                 "nodeCidrMask": {
                     "type": "integer",
                     "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
+                },
+                "nodeNameMode": {
+                    "type": "string",
+                    "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
                 },
                 "password": {
                     "type": "string",
@@ -28060,6 +29479,10 @@
                     "type": "string",
                     "description": "Worker payment period unit. `Month` or `Week`, defaults to `Month`.\n"
                 },
+                "workerRamRoleName": {
+                    "type": "string",
+                    "description": "The RamRole Name attached to worker node.\n"
+                },
                 "workerVswitchIds": {
                     "type": "array",
                     "items": {
@@ -28081,6 +29504,7 @@
                 "workerInstanceTypes",
                 "workerNodes",
                 "workerNumber",
+                "workerRamRoleName",
                 "workerVswitchIds"
             ],
             "inputProperties": {
@@ -28113,6 +29537,10 @@
                 "enableSsh": {
                     "type": "boolean",
                     "description": "Enable login to the node through SSH. default: false \n"
+                },
+                "excludeAutoscalerNodes": {
+                    "type": "boolean",
+                    "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
                 },
                 "imageId": {
                     "type": "string",
@@ -28156,6 +29584,10 @@
                     "type": "integer",
                     "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
                 },
+                "nodeNameMode": {
+                    "type": "string",
+                    "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.\n"
@@ -28174,6 +29606,10 @@
                 "proxyMode": {
                     "type": "string",
                     "description": "Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of security group where the current cluster worker node is located.\n"
                 },
                 "serviceCidr": {
                     "type": "string",
@@ -28289,6 +29725,10 @@
                         "type": "boolean",
                         "description": "Enable login to the node through SSH. default: false \n"
                     },
+                    "excludeAutoscalerNodes": {
+                        "type": "boolean",
+                        "description": "Exclude autoscaler nodes from `worker_nodes`. default: false \n"
+                    },
                     "imageId": {
                         "type": "string",
                         "description": "Custom Image support. Must based on CentOS7 or AliyunLinux2.\n"
@@ -28334,6 +29774,10 @@
                     "nodeCidrMask": {
                         "type": "integer",
                         "description": "The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24\n"
+                    },
+                    "nodeNameMode": {
+                        "type": "string",
+                        "description": "Each node name consists of a prefix, an IP substring, and a suffix. For example, if the node IP address is 192.168.0.55, the prefix is aliyun.com, IP substring length is 5, and the suffix is test, the node name will be aliyun.com00055test. \n"
                     },
                     "password": {
                         "type": "string",
@@ -28444,6 +29888,10 @@
                     "workerPeriodUnit": {
                         "type": "string",
                         "description": "Worker payment period unit. `Month` or `Week`, defaults to `Month`.\n"
+                    },
+                    "workerRamRoleName": {
+                        "type": "string",
+                        "description": "The RamRole Name attached to worker node.\n"
                     },
                     "workerVswitchIds": {
                         "type": "array",
@@ -37778,7 +39226,7 @@
             }
         },
         "alicloud:gpdb/instance:Instance": {
-            "description": "Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services. \nYou can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)\n\n\u003e **NOTE:**  Available in 1.47.0+\n\n\u003e **NOTE:**  The following regions don't support create Classic network Gpdb instance.\n[`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]\n\n\u003e **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services. \nYou can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/35387.htm)\n\n\u003e **NOTE:**  Available in 1.47.0+\n\n\u003e **NOTE:**  The following regions don't support create Classic network Gpdb instance.\n[`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`,`us-east-1`,`eu-central-1`,`cn-shanghai-finance-1`,`cn-shenzhen-finance-1`,`cn-hangzhou-finance`]\n\n\u003e **NOTE:**  Create instance or change instance would cost 10~15 minutes. Please make full preparation.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### Create a Gpdb instance\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableResourceCreation: \"Gpdb\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/24\",\n    vpcId: defaultNetwork.id,\n});\nconst example = new alicloud.gpdb.Instance(\"example\", {\n    description: \"tf-gpdb-test\",\n    engine: \"gpdb\",\n    engineVersion: \"4.3\",\n    instanceClass: \"gpdb.group.segsdx2\",\n    instanceGroupCount: \"2\",\n    securityIpLists: [\n        \"10.168.1.12\",\n        \"100.69.7.112\",\n    ],\n    vswitchId: defaultSwitch.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault_zones = alicloud.get_zones(available_resource_creation=\"Gpdb\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/24\",\n    vpc_id=default_network.id)\nexample = alicloud.gpdb.Instance(\"example\",\n    description=\"tf-gpdb-test\",\n    engine=\"gpdb\",\n    engine_version=\"4.3\",\n    instance_class=\"gpdb.group.segsdx2\",\n    instance_group_count=\"2\",\n    security_ip_lists=[\n        \"10.168.1.12\",\n        \"100.69.7.112\",\n    ],\n    vswitch_id=default_switch.id)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableResourceCreation = \"Gpdb\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/24\",\n            VpcId = defaultNetwork.Id,\n        });\n        var example = new AliCloud.Gpdb.Instance(\"example\", new AliCloud.Gpdb.InstanceArgs\n        {\n            Description = \"tf-gpdb-test\",\n            Engine = \"gpdb\",\n            EngineVersion = \"4.3\",\n            InstanceClass = \"gpdb.group.segsdx2\",\n            InstanceGroupCount = \"2\",\n            SecurityIpLists = \n            {\n                \"10.168.1.12\",\n                \"100.69.7.112\",\n            },\n            VswitchId = defaultSwitch.Id,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string"
@@ -38590,7 +40038,6 @@
             }
         },
         "alicloud:kms/secret:Secret": {
-            "description": "This resouce used to create a secret and store its initial version.\n\n\u003e **NOTE:** Available in 1.76.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "arn": {
                     "type": "string",
@@ -53305,6 +54752,215 @@
                 ]
             }
         },
+        "alicloud:cassandra/getClusters:getClusters": {
+            "description": "The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.\nFilters support regular expression for the cluster name, ids or tags.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getClusters.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of Cassandra cluster ids.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to apply to the cluster name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getClusters.\n",
+                "properties": {
+                    "clusters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cassandra/getClustersCluster:getClustersCluster"
+                        },
+                        "description": "A list of Cassandra clusters. Its every element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of Cassandra cluster ids.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The name list of Cassandra clusters.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A mapping of tags to assign to the resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusters",
+                    "ids",
+                    "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:cassandra/getDataCenters:getDataCenters": {
+            "description": "The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.\nFilters support regular expression for the cluster name or ids.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDataCenters.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster id of dataCenters belongs to.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of Cassandra data center ids.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to apply to the cluster name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDataCenters.\n",
+                "properties": {
+                    "centers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cassandra/getDataCentersCenter:getDataCentersCenter"
+                        },
+                        "description": "A list of Cassandra data centers. Its every element contains the following attributes:\n"
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The ID of the Cassandra cluster.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of Cassandra data center ids.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The name list of Cassandra data centers.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "centers",
+                    "clusterId",
+                    "ids",
+                    "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:cassandra/getZones:getZones": {
+            "description": "This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.\n\n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZones.\n",
+                "properties": {
+                    "multi": {
+                        "type": "boolean",
+                        "description": "Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZones.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of zone IDs.\n"
+                    },
+                    "multi": {
+                        "type": "boolean"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cassandra/getZonesZone:getZonesZone"
+                        },
+                        "description": "A list of availability zones. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "zones",
+                    "id"
+                ]
+            }
+        },
         "alicloud:cen/getBandwidthLimits:getBandwidthLimits": {
             "description": "This data source provides CEN Bandwidth Limits available to the user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst bwl = pulumi.output(alicloud.cen.getBandwidthLimits({\n    instanceIds: [\"cen-id1\"],\n}, { async: true }));\n\nexport const firstCenBandwidthLimitsLocalRegionId = bwl.limits[0].localRegionId;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nbwl = alicloud.cen.get_bandwidth_limits(instance_ids=[\"cen-id1\"])\npulumi.export(\"firstCenBandwidthLimitsLocalRegionId\", bwl.limits[0][\"localRegionId\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bwl = Output.Create(AliCloud.Cen.GetBandwidthLimits.InvokeAsync(new AliCloud.Cen.GetBandwidthLimitsArgs\n        {\n            InstanceIds = \n            {\n                \"cen-id1\",\n            },\n        }));\n        this.FirstCenBandwidthLimitsLocalRegionId = bwl.Apply(bwl =\u003e bwl.Limits[0].LocalRegionId);\n    }\n\n    [Output(\"firstCenBandwidthLimitsLocalRegionId\")]\n    public Output\u003cstring\u003e FirstCenBandwidthLimitsLocalRegionId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -53611,6 +55267,85 @@
                 ]
             }
         },
+        "alicloud:cen/getPrivateZones:getPrivateZones": {
+            "description": "This data source provides CEN Private Zones available to the user.\n\n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrivateZones.\n",
+                "properties": {
+                    "cenId": {
+                        "type": "string",
+                        "description": "The ID of the CEN instance.\n"
+                    },
+                    "hostRegionId": {
+                        "type": "string",
+                        "description": "The service region. The service region is the target region of the PrivateZone service accessed through CEN.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CEN private zone IDs.\n* `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cenId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrivateZones.\n",
+                "properties": {
+                    "cenId": {
+                        "type": "string",
+                        "description": "The ID of the CEN instance.\n"
+                    },
+                    "hostRegionId": {
+                        "type": "string",
+                        "description": "The service region. The service region is the target region of the PrivateZone service accessed through CEN.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CEN private zone IDs.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the PrivateZone service.\n"
+                    },
+                    "zones": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cen/getPrivateZonesZone:getPrivateZonesZone"
+                        },
+                        "description": "A list of CEN private zones. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cenId",
+                    "ids",
+                    "zones",
+                    "id"
+                ]
+            }
+        },
         "alicloud:cen/getRegionRouteEntries:getRegionRouteEntries": {
             "description": "This data source provides CEN Regional Route Entries available to the user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst entry = pulumi.output(alicloud.cen.getRegionRouteEntries({\n    instanceId: \"cen-id1\",\n    regionId: \"cn-beijing\",\n}, { async: true }));\n\nexport const firstRegionRouteEntriesRouteEntryCidrBlock = entry.entries[0].cidrBlock;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nentry = alicloud.cen.get_region_route_entries(instance_id=\"cen-id1\",\n    region_id=\"cn-beijing\")\npulumi.export(\"firstRegionRouteEntriesRouteEntryCidrBlock\", entry.entries[0][\"cidr_block\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var entry = Output.Create(AliCloud.Cen.GetRegionRouteEntries.InvokeAsync(new AliCloud.Cen.GetRegionRouteEntriesArgs\n        {\n            InstanceId = \"cen-id1\",\n            RegionId = \"cn-beijing\",\n        }));\n        this.FirstRegionRouteEntriesRouteEntryCidrBlock = entry.Apply(entry =\u003e entry.Entries[0].CidrBlock);\n    }\n\n    [Output(\"firstRegionRouteEntriesRouteEntryCidrBlock\")]\n    public Output\u003cstring\u003e FirstRegionRouteEntriesRouteEntryCidrBlock { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -53734,7 +55469,7 @@
             }
         },
         "alicloud:cen/getRouteMaps:getRouteMaps": {
-            "description": "This data source provides CEN Route Maps available to the user.\n\n\u003e **NOTE:** Available in v1.87.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides CEN Route Maps available to the user.\n\n\u003e **NOTE:** Available in v1.87.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst thisRouteMaps = pulumi.output(alicloud.cen.getRouteMaps({\n    cenId: \"cen-ihdlgo87ai********\",\n    cenRegionId: \"cn-hangzhou\",\n    descriptionRegex: \"datasource_test\",\n    ids: [\"cenrmap-bnh97kb3mn********\"],\n    status: \"Active\",\n    transmitDirection: \"RegionIn\",\n}, { async: true }));\n\nexport const firstCenRouteMapId = thisRouteMaps.maps[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nthis = alicloud.cen.get_route_maps(cen_id=\"cen-ihdlgo87ai********\",\n    cen_region_id=\"cn-hangzhou\",\n    description_regex=\"datasource_test\",\n    ids=[\"cenrmap-bnh97kb3mn********\"],\n    status=\"Active\",\n    transmit_direction=\"RegionIn\")\npulumi.export(\"firstCenRouteMapId\", this.maps[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @this = Output.Create(AliCloud.Cen.GetRouteMaps.InvokeAsync(new AliCloud.Cen.GetRouteMapsArgs\n        {\n            CenId = \"cen-ihdlgo87ai********\",\n            CenRegionId = \"cn-hangzhou\",\n            DescriptionRegex = \"datasource_test\",\n            Ids = \n            {\n                \"cenrmap-bnh97kb3mn********\",\n            },\n            Status = \"Active\",\n            TransmitDirection = \"RegionIn\",\n        }));\n        this.FirstCenRouteMapId = @this.Apply(@this =\u003e @this.Maps[0].Id);\n    }\n\n    [Output(\"firstCenRouteMapId\")]\n    public Output\u003cstring\u003e FirstCenRouteMapId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRouteMaps.\n",
                 "properties": {
@@ -54315,7 +56050,7 @@
             }
         },
         "alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos": {
-            "description": "This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.87.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.87.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst myRepos = pulumi.output(alicloud.cs.getRegistryEnterpriseRepos({\n    instanceId: \"cri-xx\",\n    nameRegex: \"my-repos\",\n    outputFile: \"my-repo-json\",\n}, { async: true }));\n\nexport const output = myRepos.repos;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nmy_repos = alicloud.cs.get_registry_enterprise_repos(instance_id=\"cri-xx\",\n    name_regex=\"my-repos\",\n    output_file=\"my-repo-json\")\npulumi.export(\"output\", my_repos.repos)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myRepos = Output.Create(AliCloud.CS.GetRegistryEnterpriseRepos.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseReposArgs\n        {\n            InstanceId = \"cri-xx\",\n            NameRegex = \"my-repos\",\n            OutputFile = \"my-repo-json\",\n        }));\n        this.Output = myRepos.Apply(myRepos =\u003e myRepos.Repos);\n    }\n\n    [Output(\"output\")]\n    public Output\u003cstring\u003e Output { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRegistryEnterpriseRepos.\n",
                 "properties": {
@@ -54697,6 +56432,102 @@
                     "ids",
                     "instances",
                     "names",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:dms/getEnterpriseInstances:getEnterpriseInstances": {
+            "description": "This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:** Available in 1.88.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getEnterpriseInstances.\n",
+                "properties": {
+                    "envType": {
+                        "type": "string",
+                        "description": "The type of the environment to which the database instance belongs.\n"
+                    },
+                    "instanceAliasRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter the results by the DMS Enterprise Instance instance_alias.\n"
+                    },
+                    "instanceSource": {
+                        "type": "string",
+                        "description": "The source of the database instance.\n"
+                    },
+                    "instanceType": {
+                        "type": "string",
+                        "description": "The ID of the database instance.\n"
+                    },
+                    "netType": {
+                        "type": "string",
+                        "description": "The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "searchKey": {
+                        "type": "string",
+                        "description": "The keyword used to query database instances.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.\n"
+                    },
+                    "tid": {
+                        "type": "integer",
+                        "description": "The ID of the tenant in Data Management (DMS) Enterprise.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEnterpriseInstances.\n",
+                "properties": {
+                    "envType": {
+                        "type": "string",
+                        "description": "The type of the environment to which the database instance belongs..\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "instanceAliasRegex": {
+                        "type": "string"
+                    },
+                    "instanceSource": {
+                        "type": "string",
+                        "description": "The ID of the database instance.\n"
+                    },
+                    "instanceType": {
+                        "type": "string",
+                        "description": "The ID of the database instance.\n"
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:dms/getEnterpriseInstancesInstance:getEnterpriseInstancesInstance"
+                        },
+                        "description": "A list of KMS keys. Each element contains the following attributes:\n"
+                    },
+                    "netType": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "searchKey": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the database instance.\n"
+                    },
+                    "tid": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instances",
                     "id"
                 ]
             }
@@ -59113,6 +60944,83 @@
                     "ciphertextBlob",
                     "keyId",
                     "plaintext",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:kms/getSecretVersions:getSecretVersions": {
+            "description": "This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSecretVersions.\n",
+                "properties": {
+                    "enableDetails": {
+                        "type": "boolean",
+                        "description": "Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of KMS Secret Version ids.\n"
+                    },
+                    "includeDeprecated": {
+                        "type": "string",
+                        "description": "Specifies whether to return deprecated secret versions. Default to `false`.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "secretName": {
+                        "type": "string",
+                        "description": "The name of the secret.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "secretName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSecretVersions.\n",
+                "properties": {
+                    "enableDetails": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Kms Secret Version ids. \n"
+                    },
+                    "includeDeprecated": {
+                        "type": "string"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "secretName": {
+                        "type": "string",
+                        "description": "The name of the secret.\n"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:kms/getSecretVersionsVersion:getSecretVersionsVersion"
+                        },
+                        "description": "A list of KMS Secret Versions. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "secretName",
+                    "versions",
                     "id"
                 ]
             }
@@ -65259,6 +67167,7 @@
                 "alikafka": "AliKafka",
                 "apigateway": "ApiGateway",
                 "cas": "Cas",
+                "cassandra": "Cassandra",
                 "cdn": "Cdn",
                 "cen": "Cen",
                 "cloudconnect": "CloudConnect",

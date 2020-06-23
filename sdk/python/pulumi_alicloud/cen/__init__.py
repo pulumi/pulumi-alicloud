@@ -11,6 +11,7 @@ from .get_bandwidth_limits import *
 from .get_bandwidth_packages import *
 from .get_flowlogs import *
 from .get_instances import *
+from .get_private_zones import *
 from .get_region_route_entries import *
 from .get_route_entries import *
 from .get_route_maps import *
@@ -20,3 +21,4 @@ from .instance_grant import *
 from .private_zone import *
 from .route_entry import *
 from .route_map import *
+from .vbr_health_check import *

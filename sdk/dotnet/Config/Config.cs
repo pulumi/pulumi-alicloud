@@ -97,6 +97,7 @@ namespace Pulumi.AliCloud
                 public string? Apigateway { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
                 public string? Cas { get; set; } = null!;
+                public string? Cassandra { get; set; } = null!;
                 public string? Cbn { get; set; } = null!;
                 public string? Cdn { get; set; } = null!;
                 public string? Cen { get; set; } = null!;

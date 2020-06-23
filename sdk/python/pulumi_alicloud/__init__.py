@@ -4,7 +4,7 @@
 
 import importlib
 # Make subpackages available:
-__all__ = ['actiontrail', 'adb', 'alikafka', 'apigateway', 'cas', 'cdn', 'cen', 'cloudconnect', 'cms', 'config', 'cr', 'cs', 'datahub', 'ddos', 'dds', 'dms', 'dns', 'drds', 'ecs', 'edas', 'elasticsearch', 'emr', 'ess', 'fc', 'gpdb', 'hbase', 'kms', 'kvstore', 'log', 'marketplace', 'maxcompute', 'mns', 'mongodb', 'nas', 'oss', 'ots', 'polardb', 'pvtz', 'ram', 'rds', 'resourcemanager', 'rocketmq', 'sag', 'slb', 'vpc', 'vpn', 'waf', 'yundun']
+__all__ = ['actiontrail', 'adb', 'alikafka', 'apigateway', 'cas', 'cassandra', 'cdn', 'cen', 'cloudconnect', 'cms', 'config', 'cr', 'cs', 'datahub', 'ddos', 'dds', 'dms', 'dns', 'drds', 'ecs', 'edas', 'elasticsearch', 'emr', 'ess', 'fc', 'gpdb', 'hbase', 'kms', 'kvstore', 'log', 'marketplace', 'maxcompute', 'mns', 'mongodb', 'nas', 'oss', 'ots', 'polardb', 'pvtz', 'ram', 'rds', 'resourcemanager', 'rocketmq', 'sag', 'slb', 'vpc', 'vpn', 'waf', 'yundun']
 for pkg in __all__:
     if pkg != 'config':
         importlib.import_module(f'{__name__}.{pkg}')

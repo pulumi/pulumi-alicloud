@@ -84,6 +84,22 @@ def get_route_maps(cen_id=None,cen_region_id=None,description_regex=None,ids=Non
 
     > **NOTE:** Available in v1.87.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    this = alicloud.cen.get_route_maps(cen_id="cen-ihdlgo87ai********",
+        cen_region_id="cn-hangzhou",
+        description_regex="datasource_test",
+        ids=["cenrmap-bnh97kb3mn********"],
+        status="Active",
+        transmit_direction="RegionIn")
+    pulumi.export("firstCenRouteMapId", this.maps[0]["id"])
+    ```
 
 
 
