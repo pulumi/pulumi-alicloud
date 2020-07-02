@@ -862,7 +862,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^2.0.0",
 			},
 			Overlay: &tfbridge.OverlayInfo{
-				Files:   []string{},
 				Modules: map[string]*tfbridge.OverlayInfo{},
 			},
 		},
