@@ -51,6 +51,28 @@ class VbrHealthCheck(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.88.0+
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_instance = alicloud.cen.Instance("defaultInstance")
+        default_instance_attachment = alicloud.cen.InstanceAttachment("defaultInstanceAttachment",
+            child_instance_id="vbr-xxxxx",
+            child_instance_region_id="cn-hangzhou",
+            instance_id=default_instance.id)
+        default_vbr_health_check = alicloud.cen.VbrHealthCheck("defaultVbrHealthCheck",
+            cen_id=default_instance.id,
+            health_check_interval=2,
+            health_check_source_ip="192.168.1.2",
+            health_check_target_ip="10.0.0.2",
+            healthy_threshold=8,
+            vbr_instance_id="vbr-xxxxx",
+            vbr_instance_region_id="cn-hangzhou")
+        ```
 
 
         :param str resource_name: The name of the resource.

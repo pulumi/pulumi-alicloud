@@ -13,7 +13,7 @@ class GetSecretVersionsResult:
     """
     A collection of values returned by getSecretVersions.
     """
-    def __init__(__self__, enable_details=None, id=None, ids=None, include_deprecated=None, output_file=None, secret_name=None, versions=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, include_deprecated=None, output_file=None, secret_name=None, version_stage=None, versions=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         __self__.enable_details = enable_details
@@ -41,6 +41,9 @@ class GetSecretVersionsResult:
         """
         The name of the secret.
         """
+        if version_stage and not isinstance(version_stage, str):
+            raise TypeError("Expected argument 'version_stage' to be a str")
+        __self__.version_stage = version_stage
         if versions and not isinstance(versions, list):
             raise TypeError("Expected argument 'versions' to be a list")
         __self__.versions = versions
@@ -59,14 +62,27 @@ class AwaitableGetSecretVersionsResult(GetSecretVersionsResult):
             include_deprecated=self.include_deprecated,
             output_file=self.output_file,
             secret_name=self.secret_name,
+            version_stage=self.version_stage,
             versions=self.versions)
 
-def get_secret_versions(enable_details=None,ids=None,include_deprecated=None,output_file=None,secret_name=None,opts=None):
+def get_secret_versions(enable_details=None,ids=None,include_deprecated=None,output_file=None,secret_name=None,version_stage=None,opts=None):
     """
     This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
      
     > **NOTE:** Available in v1.88.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_secret_versions_ds = alicloud.kms.get_secret_versions(enable_details=True,
+        secret_name="secret_name")
+    pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0]["secret_data"])
+    ```
 
 
 
@@ -74,6 +90,7 @@ def get_secret_versions(enable_details=None,ids=None,include_deprecated=None,out
     :param list ids: A list of KMS Secret Version ids.
     :param str include_deprecated: Specifies whether to return deprecated secret versions. Default to `false`.
     :param str secret_name: The name of the secret.
+    :param str version_stage: The stage of the secret version.
     """
     __args__ = dict()
 
@@ -83,6 +100,7 @@ def get_secret_versions(enable_details=None,ids=None,include_deprecated=None,out
     __args__['includeDeprecated'] = include_deprecated
     __args__['outputFile'] = output_file
     __args__['secretName'] = secret_name
+    __args__['versionStage'] = version_stage
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -96,4 +114,5 @@ def get_secret_versions(enable_details=None,ids=None,include_deprecated=None,out
         include_deprecated=__ret__.get('includeDeprecated'),
         output_file=__ret__.get('outputFile'),
         secret_name=__ret__.get('secretName'),
+        version_stage=__ret__.get('versionStage'),
         versions=__ret__.get('versions'))

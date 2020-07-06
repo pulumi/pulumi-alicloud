@@ -138,7 +138,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
-     * Internet bandwidth billing method. Optional values: PayByTraffic.
+     * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -170,7 +170,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.ecs.LaunchTemplateNetworkInterfaces | undefined>;
     /**
-     * Network type of the instance. Value options: Classic | VPC.
+     * Network type of the instance. Value options: `classic` | `vpc`.
      */
     public readonly networkType!: pulumi.Output<string | undefined>;
     /**
@@ -368,7 +368,7 @@ export interface LaunchTemplateState {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * Internet bandwidth billing method. Optional values: PayByTraffic.
+     * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -400,7 +400,7 @@ export interface LaunchTemplateState {
      */
     readonly networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
     /**
-     * Network type of the instance. Value options: Classic | VPC.
+     * Network type of the instance. Value options: `classic` | `vpc`.
      */
     readonly networkType?: pulumi.Input<string>;
     /**
@@ -509,7 +509,7 @@ export interface LaunchTemplateArgs {
      */
     readonly instanceType?: pulumi.Input<string>;
     /**
-     * Internet bandwidth billing method. Optional values: PayByTraffic.
+     * Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
@@ -541,7 +541,7 @@ export interface LaunchTemplateArgs {
      */
     readonly networkInterfaces?: pulumi.Input<inputs.ecs.LaunchTemplateNetworkInterfaces>;
     /**
-     * Network type of the instance. Value options: Classic | VPC.
+     * Network type of the instance. Value options: `classic` | `vpc`.
      */
     readonly networkType?: pulumi.Input<string>;
     /**

@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The Id of resource group which the Private Zone belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;

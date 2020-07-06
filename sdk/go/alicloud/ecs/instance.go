@@ -115,7 +115,7 @@ type Instance struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
-	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -270,7 +270,7 @@ type instanceState struct {
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -389,7 +389,7 @@ type InstanceState struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
-	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -510,7 +510,7 @@ type instanceArgs struct {
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -628,7 +628,7 @@ type InstanceArgs struct {
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
 	// Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloudEfficiency`.
 	SystemDiskCategory pulumi.StringPtrInput
-	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

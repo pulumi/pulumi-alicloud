@@ -75,6 +75,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("drds")]
         public Input<string>? Drds { get; set; }
 
+        [Input("eci")]
+        public Input<string>? Eci { get; set; }
+
         [Input("ecs")]
         public Input<string>? Ecs { get; set; }
 

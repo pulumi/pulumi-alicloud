@@ -78,6 +78,7 @@ export interface ProviderEndpoint {
     dmsEnterprise?: string;
     dns?: string;
     drds?: string;
+    eci?: string;
     ecs?: string;
     elasticsearch?: string;
     emr?: string;
@@ -1397,6 +1398,7 @@ export namespace config {
         dmsEnterprise?: string;
         dns?: string;
         drds?: string;
+        eci?: string;
         ecs?: string;
         elasticsearch?: string;
         emr?: string;
@@ -2604,6 +2606,23 @@ export namespace drds {
          * Zone ID the instance belongs to.
          */
         zoneId: string;
+    }
+}
+
+export namespace eci {
+    export interface OpenApiImageCacheImageRegistryCredential {
+        /**
+         * The password of the Image Registry.
+         */
+        password?: string;
+        /**
+         * The address of Image Registry without `http://` or `https://`.
+         */
+        server?: string;
+        /**
+         * The user name of Image Registry.
+         */
+        userName?: string;
     }
 }
 

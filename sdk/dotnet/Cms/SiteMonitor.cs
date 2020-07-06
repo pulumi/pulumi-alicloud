@@ -9,32 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Cms
 {
+    /// <summary>
+    /// This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
+    /// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+    /// 
+    /// Available in 1.72.0+
+    /// </summary>
     public partial class SiteMonitor : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The URL or IP address monitored by the site monitoring task.
+        /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
+        /// <summary>
+        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// </summary>
         [Output("alertIds")]
         public Output<ImmutableArray<string>> AlertIds { get; private set; } = null!;
 
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        /// </summary>
         [Output("interval")]
         public Output<int?> Interval { get; private set; } = null!;
 
+        /// <summary>
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        /// </summary>
         [Output("ispCities")]
         public Output<ImmutableArray<Outputs.SiteMonitorIspCity>> IspCities { get; private set; } = null!;
 
+        /// <summary>
+        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        /// </summary>
         [Output("optionsJson")]
         public Output<string?> OptionsJson { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        /// </summary>
         [Output("taskName")]
         public Output<string> TaskName { get; private set; } = null!;
 
         [Output("taskState")]
         public Output<string> TaskState { get; private set; } = null!;
 
+        /// <summary>
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// </summary>
         [Output("taskType")]
         public Output<string> TaskType { get; private set; } = null!;
 
@@ -87,34 +114,57 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class SiteMonitorArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL or IP address monitored by the site monitoring task.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         [Input("alertIds")]
         private InputList<string>? _alertIds;
+
+        /// <summary>
+        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// </summary>
         public InputList<string> AlertIds
         {
             get => _alertIds ?? (_alertIds = new InputList<string>());
             set => _alertIds = value;
         }
 
+        /// <summary>
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         [Input("ispCities")]
         private InputList<Inputs.SiteMonitorIspCityArgs>? _ispCities;
+
+        /// <summary>
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        /// </summary>
         public InputList<Inputs.SiteMonitorIspCityArgs> IspCities
         {
             get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCityArgs>());
             set => _ispCities = value;
         }
 
+        /// <summary>
+        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        /// </summary>
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
 
+        /// <summary>
+        /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        /// </summary>
         [Input("taskName", required: true)]
         public Input<string> TaskName { get; set; } = null!;
 
+        /// <summary>
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// </summary>
         [Input("taskType", required: true)]
         public Input<string> TaskType { get; set; } = null!;
 
@@ -125,11 +175,18 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class SiteMonitorState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL or IP address monitored by the site monitoring task.
+        /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         [Input("alertIds")]
         private InputList<string>? _alertIds;
+
+        /// <summary>
+        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// </summary>
         public InputList<string> AlertIds
         {
             get => _alertIds ?? (_alertIds = new InputList<string>());
@@ -139,26 +196,42 @@ namespace Pulumi.AliCloud.Cms
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        /// <summary>
+        /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         [Input("ispCities")]
         private InputList<Inputs.SiteMonitorIspCityGetArgs>? _ispCities;
+
+        /// <summary>
+        /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        /// </summary>
         public InputList<Inputs.SiteMonitorIspCityGetArgs> IspCities
         {
             get => _ispCities ?? (_ispCities = new InputList<Inputs.SiteMonitorIspCityGetArgs>());
             set => _ispCities = value;
         }
 
+        /// <summary>
+        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        /// </summary>
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
 
+        /// <summary>
+        /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        /// </summary>
         [Input("taskName")]
         public Input<string>? TaskName { get; set; }
 
         [Input("taskState")]
         public Input<string>? TaskState { get; set; }
 
+        /// <summary>
+        /// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        /// </summary>
         [Input("taskType")]
         public Input<string>? TaskType { get; set; }
 

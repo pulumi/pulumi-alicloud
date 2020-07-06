@@ -10,6 +10,23 @@ import * as utilities from "../utilities";
  * This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
  *  
  * > **NOTE:** Available in v1.88.0+.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const kmsSecretVersionsDs = pulumi.output(alicloud.kms.getSecretVersions({
+ *     enableDetails: true,
+ *     secretName: "secretName",
+ * }, { async: true }));
+ *
+ * export const firstSecretData = kmsSecretVersionsDs.versions[0].secretData;
+ * ```
  */
 export function getSecretVersions(args: GetSecretVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionsResult> {
     if (!opts) {
@@ -25,6 +42,7 @@ export function getSecretVersions(args: GetSecretVersionsArgs, opts?: pulumi.Inv
         "includeDeprecated": args.includeDeprecated,
         "outputFile": args.outputFile,
         "secretName": args.secretName,
+        "versionStage": args.versionStage,
     }, opts);
 }
 
@@ -49,6 +67,10 @@ export interface GetSecretVersionsArgs {
      * The name of the secret.
      */
     readonly secretName: string;
+    /**
+     * The stage of the secret version.
+     */
+    readonly versionStage?: string;
 }
 
 /**
@@ -70,6 +92,7 @@ export interface GetSecretVersionsResult {
      * The name of the secret.
      */
     readonly secretName: string;
+    readonly versionStage?: string;
     /**
      * A list of KMS Secret Versions. Each element contains the following attributes:
      */

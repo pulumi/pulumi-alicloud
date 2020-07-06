@@ -20,6 +20,39 @@ namespace Pulumi.AliCloud.Cassandra
     /// The official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).
     /// 
     /// &gt; **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Create a cassandra cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.Cassandra.Cluster("default", new AliCloud.Cassandra.ClusterArgs
+    ///         {
+    ///             AutoRenew = false,
+    ///             ClusterName = "cassandra-cluster-name-tf",
+    ///             DataCenterName = "dc-1",
+    ///             DiskSize = 160,
+    ///             DiskType = "cloud_ssd",
+    ///             InstanceType = "cassandra.c.large",
+    ///             IpWhite = "127.0.0.1",
+    ///             MaintainEndTime = "20:00Z",
+    ///             MaintainStartTime = "18:00Z",
+    ///             MajorVersion = "3.11",
+    ///             NodeCount = 2,
+    ///             PayType = "PayAsYouGo",
+    ///             VswitchId = "vsw-xxxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

@@ -12,7 +12,10 @@ from .. import utilities, tables
 class Notification(pulumi.CustomResource):
     notification_arn: pulumi.Output[str]
     """
-    The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+    The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+    * region: the region ID of the scaling group. For more information, see `Regions and zones`
+    * account-id: the ID of your account.
+    * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
     """
     notification_types: pulumi.Output[list]
     """
@@ -71,7 +74,10 @@ class Notification(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+        :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+               * region: the region ID of the scaling group. For more information, see `Regions and zones`
+               * account-id: the ID of your account.
+               * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[list] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """
@@ -116,7 +122,10 @@ class Notification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+        :param pulumi.Input[str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+               * region: the region ID of the scaling group. For more information, see `Regions and zones`
+               * account-id: the ID of your account.
+               * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[list] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[str] scaling_group_id: The ID of the Auto Scaling group.
         """

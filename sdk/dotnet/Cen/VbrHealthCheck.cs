@@ -16,6 +16,42 @@ namespace Pulumi.AliCloud.Cen
     /// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.88.0+
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new AliCloud.Cen.InstanceArgs
+    ///         {
+    ///         });
+    ///         var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new AliCloud.Cen.InstanceAttachmentArgs
+    ///         {
+    ///             ChildInstanceId = "vbr-xxxxx",
+    ///             ChildInstanceRegionId = "cn-hangzhou",
+    ///             InstanceId = defaultInstance.Id,
+    ///         });
+    ///         var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new AliCloud.Cen.VbrHealthCheckArgs
+    ///         {
+    ///             CenId = defaultInstance.Id,
+    ///             HealthCheckInterval = 2,
+    ///             HealthCheckSourceIp = "192.168.1.2",
+    ///             HealthCheckTargetIp = "10.0.0.2",
+    ///             HealthyThreshold = 8,
+    ///             VbrInstanceId = "vbr-xxxxx",
+    ///             VbrInstanceRegionId = "cn-hangzhou",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VbrHealthCheck : Pulumi.CustomResource
     {

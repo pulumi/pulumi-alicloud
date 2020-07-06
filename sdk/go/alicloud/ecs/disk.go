@@ -30,6 +30,8 @@ type Disk struct {
 	EnableAutoSnapshot pulumi.BoolPtrOutput `pulumi:"enableAutoSnapshot"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
+	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Id of resource group which the disk belongs.
@@ -93,6 +95,8 @@ type diskState struct {
 	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the disk belongs.
@@ -123,6 +127,8 @@ type DiskState struct {
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrInput
+	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+	KmsKeyId pulumi.StringPtrInput
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
@@ -157,6 +163,8 @@ type diskArgs struct {
 	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name *string `pulumi:"name"`
 	// The Id of resource group which the disk belongs.
@@ -186,6 +194,8 @@ type DiskArgs struct {
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
 	Encrypted pulumi.BoolPtrInput
+	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+	KmsKeyId pulumi.StringPtrInput
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	Name pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.

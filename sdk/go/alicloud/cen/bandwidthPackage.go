@@ -24,7 +24,7 @@ type BandwidthPackage struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The time of the bandwidth package to expire.
 	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
-	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
 	GeographicRegionIds pulumi.StringArrayOutput `pulumi:"geographicRegionIds"`
 	// The name of the bandwidth package. Defaults to null.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -76,7 +76,7 @@ type bandwidthPackageState struct {
 	Description *string `pulumi:"description"`
 	// The time of the bandwidth package to expire.
 	ExpiredTime *string `pulumi:"expiredTime"`
-	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
 	GeographicRegionIds []string `pulumi:"geographicRegionIds"`
 	// The name of the bandwidth package. Defaults to null.
 	Name *string `pulumi:"name"`
@@ -95,7 +95,7 @@ type BandwidthPackageState struct {
 	Description pulumi.StringPtrInput
 	// The time of the bandwidth package to expire.
 	ExpiredTime pulumi.StringPtrInput
-	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
 	GeographicRegionIds pulumi.StringArrayInput
 	// The name of the bandwidth package. Defaults to null.
 	Name pulumi.StringPtrInput
@@ -116,7 +116,7 @@ type bandwidthPackageArgs struct {
 	ChargeType *string `pulumi:"chargeType"`
 	// The description of the bandwidth package. Default to null.
 	Description *string `pulumi:"description"`
-	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
 	GeographicRegionIds []string `pulumi:"geographicRegionIds"`
 	// The name of the bandwidth package. Defaults to null.
 	Name *string `pulumi:"name"`
@@ -132,7 +132,7 @@ type BandwidthPackageArgs struct {
 	ChargeType pulumi.StringPtrInput
 	// The description of the bandwidth package. Default to null.
 	Description pulumi.StringPtrInput
-	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+	// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
 	GeographicRegionIds pulumi.StringArrayInput
 	// The name of the bandwidth package. Defaults to null.
 	Name pulumi.StringPtrInput

@@ -100,6 +100,7 @@ type Endpoints struct {
 	DmsEnterprise   *string `pulumi:"dmsEnterprise"`
 	Dns             *string `pulumi:"dns"`
 	Drds            *string `pulumi:"drds"`
+	Eci             *string `pulumi:"eci"`
 	Ecs             *string `pulumi:"ecs"`
 	Elasticsearch   *string `pulumi:"elasticsearch"`
 	Emr             *string `pulumi:"emr"`
@@ -162,6 +163,7 @@ type EndpointsArgs struct {
 	DmsEnterprise   pulumi.StringPtrInput `pulumi:"dmsEnterprise"`
 	Dns             pulumi.StringPtrInput `pulumi:"dns"`
 	Drds            pulumi.StringPtrInput `pulumi:"drds"`
+	Eci             pulumi.StringPtrInput `pulumi:"eci"`
 	Ecs             pulumi.StringPtrInput `pulumi:"ecs"`
 	Elasticsearch   pulumi.StringPtrInput `pulumi:"elasticsearch"`
 	Emr             pulumi.StringPtrInput `pulumi:"emr"`
@@ -324,6 +326,10 @@ func (o EndpointsOutput) Dns() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Drds() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Drds }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Eci() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Eci }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ecs() pulumi.StringPtrOutput {

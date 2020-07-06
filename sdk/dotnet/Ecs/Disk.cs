@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// Provides a ECS disk resource.
+    /// 
+    /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+    /// </summary>
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>
@@ -52,6 +57,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// </summary>
+        [Output("kmsKeyId")]
+        public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -179,6 +190,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         /// </summary>
         [Input("name")]
@@ -263,6 +280,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.

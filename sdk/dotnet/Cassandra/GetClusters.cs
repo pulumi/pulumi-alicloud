@@ -18,6 +18,27 @@ namespace Pulumi.AliCloud.Cassandra
         /// &gt; **NOTE:**  Available in 1.88.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cassandra = Output.Create(AliCloud.Cassandra.GetClusters.InvokeAsync(new AliCloud.Cassandra.GetClustersArgs
+        ///         {
+        ///             NameRegex = "tf_testAccCassandra",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)

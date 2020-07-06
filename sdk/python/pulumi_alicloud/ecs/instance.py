@@ -206,7 +206,7 @@ class Instance(pulumi.CustomResource):
     """
     system_disk_size: pulumi.Output[float]
     """
-    Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+    Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
     """
     tags: pulumi.Output[dict]
     """
@@ -290,7 +290,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -469,7 +469,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`.
-        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[float] system_disk_size: Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. 
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.

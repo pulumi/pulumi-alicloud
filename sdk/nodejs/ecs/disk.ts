@@ -61,6 +61,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly encrypted!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     */
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
     public readonly name!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["enableAutoSnapshot"] = state ? state.enableAutoSnapshot : undefined;
             inputs["encrypted"] = state ? state.encrypted : undefined;
+            inputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["size"] = state ? state.size : undefined;
@@ -126,6 +131,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["enableAutoSnapshot"] = args ? args.enableAutoSnapshot : undefined;
             inputs["encrypted"] = args ? args.encrypted : undefined;
+            inputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -176,6 +182,10 @@ export interface DiskState {
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     */
+    readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */
@@ -235,6 +245,10 @@ export interface DiskArgs {
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
     readonly encrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+     */
+    readonly kmsKeyId?: pulumi.Input<string>;
     /**
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
      */

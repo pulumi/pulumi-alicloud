@@ -71,6 +71,17 @@ def get_data_centers(cluster_id=None,ids=None,name_regex=None,output_file=None,o
 
     > **NOTE:**  Available in 1.88.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
+        name_regex="tf_testAccCassandra_dc")
+    ```
 
 
 
