@@ -48,6 +48,7 @@ const (
 	dmsMod             = "Dms"
 	dnsMod             = "Dns"
 	drdsMod            = "Drds"
+	eciMod             = "Eci"
 	ecsMod             = "Ecs"
 	edasMod            = "Edas"
 	elasticsearchMod   = "ElasticSearch"
@@ -302,6 +303,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Drds
 			"alicloud_drds_instance": {Tok: resource(drdsMod, "Instance")},
+
+			// Eci
+			"alicloud_eci_openapi_image_cache": {Tok: resource(eciMod, "OpenApiImageCache")},
 
 			// ECS
 			"alicloud_auto_provisioning_group": {Tok: resource(ecsMod, "AutoProvisioningGroup")},

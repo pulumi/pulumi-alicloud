@@ -28,7 +28,7 @@ class BandwidthPackage(pulumi.CustomResource):
     """
     geographic_region_ids: pulumi.Output[list]
     """
-    List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+    List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
     """
     name: pulumi.Output[str]
     """
@@ -70,7 +70,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[float] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] charge_type: The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
-        :param pulumi.Input[list] geographic_region_ids: List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+        :param pulumi.Input[list] geographic_region_ids: List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         :param pulumi.Input[str] name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[float] period: The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
         """
@@ -122,7 +122,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] charge_type: The billing method. Valid value: PostPaid | PrePaid. Default to PostPaid. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] expired_time: The time of the bandwidth package to expire.
-        :param pulumi.Input[list] geographic_region_ids: List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+        :param pulumi.Input[list] geographic_region_ids: List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         :param pulumi.Input[str] name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[float] period: The purchase period in month. Valid value: 1, 2, 3, 6, 12. Default to 1.
         :param pulumi.Input[str] status: The status of the bandwidth, including "InUse" and "Idle".

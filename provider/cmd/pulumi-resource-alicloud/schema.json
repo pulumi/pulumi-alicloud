@@ -3685,6 +3685,9 @@
                 "drds": {
                     "type": "string"
                 },
+                "eci": {
+                    "type": "string"
+                },
                 "ecs": {
                     "type": "string"
                 },
@@ -7330,6 +7333,38 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password of the Image Registry.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "server": {
+                    "type": "string",
+                    "description": "The address of Image Registry without `http://` or `https://`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "The user name of Image Registry.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "alicloud:ecs/AutoProvisioningGroupLaunchTemplateConfig:AutoProvisioningGroupLaunchTemplateConfig": {
             "properties": {
@@ -12738,6 +12773,14 @@
                     }
                 },
                 "drds": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "eci": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -25026,7 +25069,7 @@
             }
         },
         "alicloud:cassandra/cluster:Cluster": {
-            "description": "Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services. \nIt offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.\nYou can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n\u003e **NOTE:**  The following regions support create Vpc network Cassandra cluster.\nThe official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).\n\n\u003e **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services. \nIt offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.\nYou can see detail product introduction [here](https://www.alibabacloud.com/help/product/49055.htm).\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n\u003e **NOTE:**  The following regions support create Vpc network Cassandra cluster.\nThe official website mark more regions. Or you can call [DescribeRegions](https://help.aliyun.com/document_detail/157540.html).\n\n\u003e **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.\n\n{{% examples %}}\n## Example Usage\n\n{{% example %}}\n### Create a cassandra cluster\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultCluster = new alicloud.cassandra.Cluster(\"default\", {\n    autoRenew: false,\n    clusterName: \"cassandra-cluster-name-tf\",\n    dataCenterName: \"dc-1\",\n    diskSize: 160,\n    diskType: \"cloud_ssd\",\n    instanceType: \"cassandra.c.large\",\n    ipWhite: \"127.0.0.1\",\n    maintainEndTime: \"20:00Z\",\n    maintainStartTime: \"18:00Z\",\n    majorVersion: \"3.11\",\n    nodeCount: 2,\n    payType: \"PayAsYouGo\",\n    vswitchId: \"vsw-xxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.cassandra.Cluster(\"default\",\n    auto_renew=\"false\",\n    cluster_name=\"cassandra-cluster-name-tf\",\n    data_center_name=\"dc-1\",\n    disk_size=\"160\",\n    disk_type=\"cloud_ssd\",\n    instance_type=\"cassandra.c.large\",\n    ip_white=\"127.0.0.1\",\n    maintain_end_time=\"20:00Z\",\n    maintain_start_time=\"18:00Z\",\n    major_version=\"3.11\",\n    node_count=\"2\",\n    pay_type=\"PayAsYouGo\",\n    vswitch_id=\"vsw-xxxx\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.Cassandra.Cluster(\"default\", new AliCloud.Cassandra.ClusterArgs\n        {\n            AutoRenew = false,\n            ClusterName = \"cassandra-cluster-name-tf\",\n            DataCenterName = \"dc-1\",\n            DiskSize = 160,\n            DiskType = \"cloud_ssd\",\n            InstanceType = \"cassandra.c.large\",\n            IpWhite = \"127.0.0.1\",\n            MaintainEndTime = \"20:00Z\",\n            MaintainStartTime = \"18:00Z\",\n            MajorVersion = \"3.11\",\n            NodeCount = 2,\n            PayType = \"PayAsYouGo\",\n            VswitchId = \"vsw-xxxx\",\n        });\n    }\n\n}\n```\n\nThis is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "autoRenew": {
                     "type": "boolean",
@@ -26152,7 +26195,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.\n"
+                    "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.\n"
                 },
                 "name": {
                     "type": "string",
@@ -26192,7 +26235,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.\n"
+                    "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.\n"
                 },
                 "name": {
                     "type": "string",
@@ -26231,7 +26274,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.\n"
+                        "description": "List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.\n"
                     },
                     "name": {
                         "type": "string",
@@ -27227,7 +27270,7 @@
             }
         },
         "alicloud:cen/vbrHealthCheck:VbrHealthCheck": {
-            "description": "This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance. \nAfter you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.\n\nFor information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).\n\n\u003e **NOTE:** Available in 1.88.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance. \nAfter you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.\n\nFor information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).\n\n\u003e **NOTE:** Available in 1.88.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultInstance = new alicloud.cen.Instance(\"default\", {});\nconst defaultInstanceAttachment = new alicloud.cen.InstanceAttachment(\"default\", {\n    childInstanceId: \"vbr-xxxxx\",\n    childInstanceRegionId: \"cn-hangzhou\",\n    instanceId: defaultInstance.id,\n});\nconst defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck(\"default\", {\n    cenId: defaultInstance.id,\n    healthCheckInterval: 2,\n    healthCheckSourceIp: \"192.168.1.2\",\n    healthCheckTargetIp: \"10.0.0.2\",\n    healthyThreshold: 8,\n    vbrInstanceId: \"vbr-xxxxx\",\n    vbrInstanceRegionId: \"cn-hangzhou\",\n}, { dependsOn: [defaultInstanceAttachment] });\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault_instance = alicloud.cen.Instance(\"defaultInstance\")\ndefault_instance_attachment = alicloud.cen.InstanceAttachment(\"defaultInstanceAttachment\",\n    child_instance_id=\"vbr-xxxxx\",\n    child_instance_region_id=\"cn-hangzhou\",\n    instance_id=default_instance.id)\ndefault_vbr_health_check = alicloud.cen.VbrHealthCheck(\"defaultVbrHealthCheck\",\n    cen_id=default_instance.id,\n    health_check_interval=2,\n    health_check_source_ip=\"192.168.1.2\",\n    health_check_target_ip=\"10.0.0.2\",\n    healthy_threshold=8,\n    vbr_instance_id=\"vbr-xxxxx\",\n    vbr_instance_region_id=\"cn-hangzhou\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var defaultInstance = new AliCloud.Cen.Instance(\"defaultInstance\", new AliCloud.Cen.InstanceArgs\n        {\n        });\n        var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment(\"defaultInstanceAttachment\", new AliCloud.Cen.InstanceAttachmentArgs\n        {\n            ChildInstanceId = \"vbr-xxxxx\",\n            ChildInstanceRegionId = \"cn-hangzhou\",\n            InstanceId = defaultInstance.Id,\n        });\n        var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck(\"defaultVbrHealthCheck\", new AliCloud.Cen.VbrHealthCheckArgs\n        {\n            CenId = defaultInstance.Id,\n            HealthCheckInterval = 2,\n            HealthCheckSourceIp = \"192.168.1.2\",\n            HealthCheckTargetIp = \"10.0.0.2\",\n            HealthyThreshold = 8,\n            VbrInstanceId = \"vbr-xxxxx\",\n            VbrInstanceRegionId = \"cn-hangzhou\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "cenId": {
                     "type": "string",
@@ -27773,39 +27816,47 @@
             }
         },
         "alicloud:cms/siteMonitor:SiteMonitor": {
+            "description": "This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.\nDetails at https://www.alibabacloud.com/help/doc-detail/67907.htm\n\nAvailable in 1.72.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL or IP address monitored by the site monitoring task.\n"
                 },
                 "alertIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of existing alert rules to be associated with the site monitoring task.\n"
                 },
                 "createTime": {
                     "type": "string"
                 },
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.\n"
                 },
                 "ispCities": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/alicloud:cms/SiteMonitorIspCity:SiteMonitorIspCity"
-                    }
+                    },
+                    "description": "The detection points in a JSON array. For example, `[{\"city\":\"546\",\"isp\":\"465\"},{\"city\":\"572\",\"isp\":\"465\"},{\"city\":\"738\",\"isp\":\"465\"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.\n"
                 },
                 "optionsJson": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The extended options of the protocol of the site monitoring task. The options vary according to the protocol.\n"
                 },
                 "taskName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.\n"
                 },
                 "taskState": {
                     "type": "string"
                 },
                 "taskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.\n"
                 },
                 "updateTime": {
                     "type": "string"
@@ -27821,31 +27872,38 @@
             ],
             "inputProperties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The URL or IP address monitored by the site monitoring task.\n"
                 },
                 "alertIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of existing alert rules to be associated with the site monitoring task.\n"
                 },
                 "interval": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.\n"
                 },
                 "ispCities": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/alicloud:cms/SiteMonitorIspCity:SiteMonitorIspCity"
-                    }
+                    },
+                    "description": "The detection points in a JSON array. For example, `[{\"city\":\"546\",\"isp\":\"465\"},{\"city\":\"572\",\"isp\":\"465\"},{\"city\":\"738\",\"isp\":\"465\"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.\n"
                 },
                 "optionsJson": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The extended options of the protocol of the site monitoring task. The options vary according to the protocol.\n"
                 },
                 "taskName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.\n"
                 },
                 "taskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.\n"
                 }
             },
             "requiredInputs": [
@@ -27857,37 +27915,44 @@
                 "description": "Input properties used for looking up and filtering SiteMonitor resources.\n",
                 "properties": {
                     "address": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The URL or IP address monitored by the site monitoring task.\n"
                     },
                     "alertIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The IDs of existing alert rules to be associated with the site monitoring task.\n"
                     },
                     "createTime": {
                         "type": "string"
                     },
                     "interval": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.\n"
                     },
                     "ispCities": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/alicloud:cms/SiteMonitorIspCity:SiteMonitorIspCity"
-                        }
+                        },
+                        "description": "The detection points in a JSON array. For example, `[{\"city\":\"546\",\"isp\":\"465\"},{\"city\":\"572\",\"isp\":\"465\"},{\"city\":\"738\",\"isp\":\"465\"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.\n"
                     },
                     "optionsJson": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The extended options of the protocol of the site monitoring task. The options vary according to the protocol.\n"
                     },
                     "taskName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.\n"
                     },
                     "taskState": {
                         "type": "string"
                     },
                     "taskType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.\n"
                     },
                     "updateTime": {
                         "type": "string"
@@ -32495,6 +32560,185 @@
                 "type": "object"
             }
         },
+        "alicloud:eci/openApiImageCache:OpenApiImageCache": {
+            "description": "An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).\n\n\u003e **NOTE:** Available in v1.89.0+.\n\n\u003e **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "containerGroupId": {
+                    "type": "string",
+                    "description": "The ID of the container group job that is used to create the image cache.\n* `status` -The status of the image cache.\n"
+                },
+                "eipInstanceId": {
+                    "type": "string",
+                    "description": "The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)\n"
+                },
+                "imageCacheName": {
+                    "type": "string",
+                    "description": "The name of the image cache.\n"
+                },
+                "imageCacheSize": {
+                    "type": "integer",
+                    "description": "The size of the image cache. Default to `20`. Unit: GiB.\n"
+                },
+                "imageRegistryCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                    },
+                    "description": "The Image Registry parameters about the image to be cached.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The images to be cached. The image name must be versioned.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the security group. You do not need to specify the same security group as the container group.\n"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone id to cache image.\n"
+                }
+            },
+            "required": [
+                "containerGroupId",
+                "imageCacheName",
+                "images",
+                "securityGroupId",
+                "status",
+                "vswitchId"
+            ],
+            "inputProperties": {
+                "eipInstanceId": {
+                    "type": "string",
+                    "description": "The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)\n"
+                },
+                "imageCacheName": {
+                    "type": "string",
+                    "description": "The name of the image cache.\n"
+                },
+                "imageCacheSize": {
+                    "type": "integer",
+                    "description": "The size of the image cache. Default to `20`. Unit: GiB.\n"
+                },
+                "imageRegistryCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                    },
+                    "description": "The Image Registry parameters about the image to be cached.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The images to be cached. The image name must be versioned.\n"
+                },
+                "resourceGroupId": {
+                    "type": "string",
+                    "description": "The ID of the resource group.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.\n"
+                },
+                "securityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the security group. You do not need to specify the same security group as the container group.\n"
+                },
+                "vswitchId": {
+                    "type": "string",
+                    "description": "The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone id to cache image.\n"
+                }
+            },
+            "requiredInputs": [
+                "imageCacheName",
+                "images",
+                "securityGroupId",
+                "vswitchId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OpenApiImageCache resources.\n",
+                "properties": {
+                    "containerGroupId": {
+                        "type": "string",
+                        "description": "The ID of the container group job that is used to create the image cache.\n* `status` -The status of the image cache.\n"
+                    },
+                    "eipInstanceId": {
+                        "type": "string",
+                        "description": "The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)\n"
+                    },
+                    "imageCacheName": {
+                        "type": "string",
+                        "description": "The name of the image cache.\n"
+                    },
+                    "imageCacheSize": {
+                        "type": "integer",
+                        "description": "The size of the image cache. Default to `20`. Unit: GiB.\n"
+                    },
+                    "imageRegistryCredentials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                        },
+                        "description": "The Image Registry parameters about the image to be cached.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The images to be cached. The image name must be versioned.\n"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of the resource group.\n"
+                    },
+                    "retentionDays": {
+                        "type": "integer",
+                        "description": "The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.\n"
+                    },
+                    "securityGroupId": {
+                        "type": "string",
+                        "description": "The ID of the security group. You do not need to specify the same security group as the container group.\n"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "vswitchId": {
+                        "type": "string",
+                        "description": "The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone id to cache image.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:ecs/autoProvisioningGroup:AutoProvisioningGroup": {
             "description": "Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.\n\n\u003e **NOTE:** Available in 1.79.0+\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst config = new pulumi.Config();\nconst name = config.get(\"name\") || \"auto_provisioning_group\";\n\nconst defaultZones = pulumi.output(alicloud.getZones({\n    availableDiskCategory: \"cloud_efficiency\",\n    availableResourceCreation: \"VSwitch\",\n}, { async: true }));\nconst defaultNetwork = new alicloud.vpc.Network(\"default\", {\n    cidrBlock: \"172.16.0.0/16\",\n});\nconst defaultSwitch = new alicloud.vpc.Switch(\"default\", {\n    availabilityZone: defaultZones.zones[0].id,\n    cidrBlock: \"172.16.0.0/24\",\n    vpcId: defaultNetwork.id,\n});\nconst defaultSecurityGroup = new alicloud.ecs.SecurityGroup(\"default\", {\n    vpcId: defaultNetwork.id,\n});\nconst defaultImages = pulumi.output(alicloud.ecs.getImages({\n    mostRecent: true,\n    nameRegex: \"^ubuntu_18.*64\",\n    owners: \"system\",\n}, { async: true }));\nconst template = new alicloud.ecs.LaunchTemplate(\"template\", {\n    imageId: defaultImages.images[0].id,\n    instanceType: \"ecs.n1.tiny\",\n    securityGroupId: defaultSecurityGroup.id,\n});\nconst defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup(\"default\", {\n    launchTemplateConfigs: [{\n        instanceType: \"ecs.n1.small\",\n        vswitchId: defaultSwitch.id,\n    }],\n    launchTemplateId: template.id,\n    payAsYouGoTargetCapacity: \"1\",\n    spotTargetCapacity: \"2\",\n    totalTargetCapacity: \"4\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nconfig = pulumi.Config()\nname = config.get(\"name\")\nif name is None:\n    name = \"auto_provisioning_group\"\ndefault_zones = alicloud.get_zones(available_disk_category=\"cloud_efficiency\",\n    available_resource_creation=\"VSwitch\")\ndefault_network = alicloud.vpc.Network(\"defaultNetwork\", cidr_block=\"172.16.0.0/16\")\ndefault_switch = alicloud.vpc.Switch(\"defaultSwitch\",\n    availability_zone=default_zones.zones[0][\"id\"],\n    cidr_block=\"172.16.0.0/24\",\n    vpc_id=default_network.id)\ndefault_security_group = alicloud.ecs.SecurityGroup(\"defaultSecurityGroup\", vpc_id=default_network.id)\ndefault_images = alicloud.ecs.get_images(most_recent=True,\n    name_regex=\"^ubuntu_18.*64\",\n    owners=\"system\")\ntemplate = alicloud.ecs.LaunchTemplate(\"template\",\n    image_id=default_images.images[0][\"id\"],\n    instance_type=\"ecs.n1.tiny\",\n    security_group_id=default_security_group.id)\ndefault_auto_provisioning_group = alicloud.ecs.AutoProvisioningGroup(\"defaultAutoProvisioningGroup\",\n    launch_template_configs=[{\n        \"instance_type\": \"ecs.n1.small\",\n        \"vswitch_id\": default_switch.id,\n    }],\n    launch_template_id=template.id,\n    pay_as_you_go_target_capacity=\"1\",\n    spot_target_capacity=\"2\",\n    total_target_capacity=\"4\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var name = config.Get(\"name\") ?? \"auto_provisioning_group\";\n        var defaultZones = Output.Create(AliCloud.GetZones.InvokeAsync(new AliCloud.GetZonesArgs\n        {\n            AvailableDiskCategory = \"cloud_efficiency\",\n            AvailableResourceCreation = \"VSwitch\",\n        }));\n        var defaultNetwork = new AliCloud.Vpc.Network(\"defaultNetwork\", new AliCloud.Vpc.NetworkArgs\n        {\n            CidrBlock = \"172.16.0.0/16\",\n        });\n        var defaultSwitch = new AliCloud.Vpc.Switch(\"defaultSwitch\", new AliCloud.Vpc.SwitchArgs\n        {\n            AvailabilityZone = defaultZones.Apply(defaultZones =\u003e defaultZones.Zones[0].Id),\n            CidrBlock = \"172.16.0.0/24\",\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup(\"defaultSecurityGroup\", new AliCloud.Ecs.SecurityGroupArgs\n        {\n            VpcId = defaultNetwork.Id,\n        });\n        var defaultImages = Output.Create(AliCloud.Ecs.GetImages.InvokeAsync(new AliCloud.Ecs.GetImagesArgs\n        {\n            MostRecent = true,\n            NameRegex = \"^ubuntu_18.*64\",\n            Owners = \"system\",\n        }));\n        var template = new AliCloud.Ecs.LaunchTemplate(\"template\", new AliCloud.Ecs.LaunchTemplateArgs\n        {\n            ImageId = defaultImages.Apply(defaultImages =\u003e defaultImages.Images[0].Id),\n            InstanceType = \"ecs.n1.tiny\",\n            SecurityGroupId = defaultSecurityGroup.Id,\n        });\n        var defaultAutoProvisioningGroup = new AliCloud.Ecs.AutoProvisioningGroup(\"defaultAutoProvisioningGroup\", new AliCloud.Ecs.AutoProvisioningGroupArgs\n        {\n            LaunchTemplateConfigs = \n            {\n                new AliCloud.Ecs.Inputs.AutoProvisioningGroupLaunchTemplateConfigArgs\n                {\n                    InstanceType = \"ecs.n1.small\",\n                    VswitchId = defaultSwitch.Id,\n                },\n            },\n            LaunchTemplateId = template.Id,\n            PayAsYouGoTargetCapacity = \"1\",\n            SpotTargetCapacity = \"2\",\n            TotalTargetCapacity = \"4\",\n        });\n    }\n\n}\n```\n\n\n{{% /example %}}\n{{% /examples %}}\n## Block config\n\nThe config mapping supports the following:\n* `instance_type` - (Optional) The instance type of the Nth extended configurations of the launch template.\n* `max_price` - (Required) The maximum price of the instance type specified in the Nth extended configurations of the launch template.\n* `vswitch_id` - (Required) The ID of the VSwitch in the Nth extended configurations of the launch template.\n* `weighted_capacity` - (Optional) The weight of the instance type specified in the Nth extended configurations of the launch template.\n* `priority` - (Optional) The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.\n",
             "properties": {
@@ -32877,6 +33121,7 @@
             }
         },
         "alicloud:ecs/disk:Disk": {
+            "description": "Provides a ECS disk resource.\n\n\u003e **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -32905,6 +33150,10 @@
                 "encrypted": {
                     "type": "boolean",
                     "description": "If true, the disk will be encrypted, conflict with `snapshot_id`.\n"
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.\n"
                 },
                 "name": {
                     "type": "string",
@@ -32969,6 +33218,10 @@
                     "type": "boolean",
                     "description": "If true, the disk will be encrypted, conflict with `snapshot_id`.\n"
                 },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as \"-\",\".\",\"_\", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.\n"
@@ -33027,6 +33280,10 @@
                     "encrypted": {
                         "type": "boolean",
                         "description": "If true, the disk will be encrypted, conflict with `snapshot_id`.\n"
+                    },
+                    "kmsKeyId": {
+                        "type": "string",
+                        "description": "The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.\n"
                     },
                     "name": {
                         "type": "string",
@@ -34036,7 +34293,7 @@
                 },
                 "systemDiskSize": {
                     "type": "integer",
-                    "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.\n"
+                    "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. \n"
                 },
                 "tags": {
                     "type": "object",
@@ -34244,7 +34501,7 @@
                 },
                 "systemDiskSize": {
                     "type": "integer",
-                    "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.\n"
+                    "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. \n"
                 },
                 "tags": {
                     "type": "object",
@@ -34448,7 +34705,7 @@
                     },
                     "systemDiskSize": {
                         "type": "integer",
-                        "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. ECS instance's system disk can be reset when replacing system disk. When it is changed, the instance will reboot to make the change take effect.\n"
+                        "description": "Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}. \n"
                     },
                     "tags": {
                         "type": "object",
@@ -34682,7 +34939,7 @@
                 },
                 "internetChargeType": {
                     "type": "string",
-                    "description": "Internet bandwidth billing method. Optional values: PayByTraffic.\n"
+                    "description": "Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.\n"
                 },
                 "internetMaxBandwidthIn": {
                     "type": "integer",
@@ -34710,7 +34967,7 @@
                 },
                 "networkType": {
                     "type": "string",
-                    "description": "Network type of the instance. Value options: Classic | VPC.\n"
+                    "description": "Network type of the instance. Value options: `classic` | `vpc`.\n"
                 },
                 "ramRoleName": {
                     "type": "string",
@@ -34819,7 +35076,7 @@
                 },
                 "internetChargeType": {
                     "type": "string",
-                    "description": "Internet bandwidth billing method. Optional values: PayByTraffic.\n"
+                    "description": "Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.\n"
                 },
                 "internetMaxBandwidthIn": {
                     "type": "integer",
@@ -34847,7 +35104,7 @@
                 },
                 "networkType": {
                     "type": "string",
-                    "description": "Network type of the instance. Value options: Classic | VPC.\n"
+                    "description": "Network type of the instance. Value options: `classic` | `vpc`.\n"
                 },
                 "ramRoleName": {
                     "type": "string",
@@ -34954,7 +35211,7 @@
                     },
                     "internetChargeType": {
                         "type": "string",
-                        "description": "Internet bandwidth billing method. Optional values: PayByTraffic.\n"
+                        "description": "Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.\n"
                     },
                     "internetMaxBandwidthIn": {
                         "type": "integer",
@@ -34982,7 +35239,7 @@
                     },
                     "networkType": {
                         "type": "string",
-                        "description": "Network type of the instance. Value options: Classic | VPC.\n"
+                        "description": "Network type of the instance. Value options: `classic` | `vpc`.\n"
                     },
                     "ramRoleName": {
                         "type": "string",
@@ -37456,7 +37713,7 @@
             "properties": {
                 "notificationArn": {
                     "type": "string",
-                    "description": "The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.\n"
+                    "description": "The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.\n* region: the region ID of the scaling group. For more information, see `Regions and zones`\n* account-id: the ID of your account.\n* resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.\n"
                 },
                 "notificationTypes": {
                     "type": "array",
@@ -37478,7 +37735,7 @@
             "inputProperties": {
                 "notificationArn": {
                     "type": "string",
-                    "description": "The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.\n"
+                    "description": "The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.\n* region: the region ID of the scaling group. For more information, see `Regions and zones`\n* account-id: the ID of your account.\n* resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.\n"
                 },
                 "notificationTypes": {
                     "type": "array",
@@ -37502,7 +37759,7 @@
                 "properties": {
                     "notificationArn": {
                         "type": "string",
-                        "description": "The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notification_arn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.\n"
+                        "description": "The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.\n* region: the region ID of the scaling group. For more information, see `Regions and zones`\n* account-id: the ID of your account.\n* resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.\n"
                     },
                     "notificationTypes": {
                         "type": "array",
@@ -44539,6 +44796,7 @@
                 "isPtr",
                 "name",
                 "recordCount",
+                "resourceGroupId",
                 "updateTime"
             ],
             "inputProperties": {
@@ -54753,7 +55011,7 @@
             }
         },
         "alicloud:cassandra/getClusters:getClusters": {
-            "description": "The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.\nFilters support regular expression for the cluster name, ids or tags.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.\nFilters support regular expression for the cluster name, ids or tags.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst cassandra = pulumi.output(alicloud.cassandra.getClusters({\n    nameRegex: \"tf_testAccCassandra\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ncassandra = alicloud.cassandra.get_clusters(name_regex=\"tf_testAccCassandra\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cassandra = Output.Create(AliCloud.Cassandra.GetClusters.InvokeAsync(new AliCloud.Cassandra.GetClustersArgs\n        {\n            NameRegex = \"tf_testAccCassandra\",\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getClusters.\n",
                 "properties": {
@@ -54833,7 +55091,7 @@
             }
         },
         "alicloud:cassandra/getDataCenters:getDataCenters": {
-            "description": "The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.\nFilters support regular expression for the cluster name or ids.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.\nFilters support regular expression for the cluster name or ids.\n\n\u003e **NOTE:**  Available in 1.88.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst cassandra = pulumi.output(alicloud.cassandra.getDataCenters({\n    clusterId: \"cds-xxxxx\",\n    nameRegex: \"tf_testAccCassandra_dc\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ncassandra = alicloud.cassandra.get_data_centers(cluster_id=\"cds-xxxxx\",\n    name_regex=\"tf_testAccCassandra_dc\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cassandra = Output.Create(AliCloud.Cassandra.GetDataCenters.InvokeAsync(new AliCloud.Cassandra.GetDataCentersArgs\n        {\n            ClusterId = \"cds-xxxxx\",\n            NameRegex = \"tf_testAccCassandra_dc\",\n        }));\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDataCenters.\n",
                 "properties": {
@@ -54911,7 +55169,7 @@
             }
         },
         "alicloud:cassandra/getZones:getZones": {
-            "description": "This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.\n\n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.\n\n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst zonesIds = alicloud.cassandra.getZones({});\n// Create an Cassandra cluster with the first matched zone\nconst cassandra = new alicloud.cassandra.Cluster(\"cassandra\", {zoneId: zonesIds.then(zonesIds =\u003e zonesIds.zones[0].id)});\n// Other properties...\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nzones_ids = alicloud.cassandra.get_zones()\n# Create an Cassandra cluster with the first matched zone\ncassandra = alicloud.cassandra.Cluster(\"cassandra\", zone_id=zones_ids.zones[0][\"id\"])\n# Other properties...\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var zonesIds = Output.Create(AliCloud.Cassandra.GetZones.InvokeAsync());\n        // Create an Cassandra cluster with the first matched zone\n        var cassandra = new AliCloud.Cassandra.Cluster(\"cassandra\", new AliCloud.Cassandra.ClusterArgs\n        {\n            ZoneId = zonesIds.Apply(zonesIds =\u003e zonesIds.Zones[0].Id),\n        });\n        // Other properties...\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getZones.\n",
                 "properties": {
@@ -60949,7 +61207,7 @@
             }
         },
         "alicloud:kms/getSecretVersions:getSecretVersions": {
-            "description": "This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.88.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst kmsSecretVersionsDs = pulumi.output(alicloud.kms.getSecretVersions({\n    enableDetails: true,\n    secretName: \"secret_name\",\n}, { async: true }));\n\nexport const firstSecretData = kmsSecretVersionsDs.versions[0].secretData;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nkms_secret_versions_ds = alicloud.kms.get_secret_versions(enable_details=True,\n    secret_name=\"secret_name\")\npulumi.export(\"firstSecretData\", kms_secret_versions_ds.versions[0][\"secret_data\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kmsSecretVersionsDs = Output.Create(AliCloud.Kms.GetSecretVersions.InvokeAsync(new AliCloud.Kms.GetSecretVersionsArgs\n        {\n            EnableDetails = true,\n            SecretName = \"secret_name\",\n        }));\n        this.FirstSecretData = kmsSecretVersionsDs.Apply(kmsSecretVersionsDs =\u003e kmsSecretVersionsDs.Versions[0].SecretData);\n    }\n\n    [Output(\"firstSecretData\")]\n    public Output\u003cstring\u003e FirstSecretData { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecretVersions.\n",
                 "properties": {
@@ -60974,6 +61232,10 @@
                     "secretName": {
                         "type": "string",
                         "description": "The name of the secret.\n"
+                    },
+                    "versionStage": {
+                        "type": "string",
+                        "description": "The stage of the secret version.\n"
                     }
                 },
                 "type": "object",
@@ -61008,6 +61270,9 @@
                         "type": "string",
                         "description": "The name of the secret.\n"
                     },
+                    "versionStage": {
+                        "type": "string"
+                    },
                     "versions": {
                         "type": "array",
                         "items": {
@@ -61026,7 +61291,7 @@
             }
         },
         "alicloud:kms/getSecrets:getSecrets": {
-            "description": "This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.86.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.\n \n\u003e **NOTE:** Available in v1.86.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst kmsSecretsDs = pulumi.output(alicloud.kms.getSecrets({\n    fetchTags: true,\n    nameRegex: \"name_regex\",\n    tags: {\n        \"k-aa\": \"v-aa\",\n        \"k-bb\": \"v-bb\",\n    },\n}, { async: true }));\n\nexport const firstSecretId = kmsSecretsDs.secrets[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nkms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,\n    name_regex=\"name_regex\",\n    tags={\n        \"k-aa\": \"v-aa\",\n        \"k-bb\": \"v-bb\",\n    })\npulumi.export(\"firstSecretId\", kms_secrets_ds.secrets[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var kmsSecretsDs = Output.Create(AliCloud.Kms.GetSecrets.InvokeAsync(new AliCloud.Kms.GetSecretsArgs\n        {\n            FetchTags = true,\n            NameRegex = \"name_regex\",\n            Tags = \n            {\n                { \"k-aa\", \"v-aa\" },\n                { \"k-bb\", \"v-bb\" },\n            },\n        }));\n        this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =\u003e kmsSecretsDs.Secrets[0].Id);\n    }\n\n    [Output(\"firstSecretId\")]\n    public Output\u003cstring\u003e FirstSecretId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecrets.\n",
                 "properties": {
@@ -67180,6 +67445,7 @@
                 "dms": "Dms",
                 "dns": "Dns",
                 "drds": "Drds",
+                "eci": "Eci",
                 "ecs": "Ecs",
                 "edas": "Edas",
                 "elasticsearch": "ElasticSearch",

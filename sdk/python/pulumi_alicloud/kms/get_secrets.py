@@ -74,6 +74,22 @@ def get_secrets(fetch_tags=None,ids=None,name_regex=None,output_file=None,tags=N
      
     > **NOTE:** Available in v1.86.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
+        name_regex="name_regex",
+        tags={
+            "k-aa": "v-aa",
+            "k-bb": "v-bb",
+        })
+    pulumi.export("firstSecretId", kms_secrets_ds.secrets[0]["id"])
+    ```
 
 
 

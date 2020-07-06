@@ -34,6 +34,7 @@ export interface ProviderEndpoint {
     dmsEnterprise?: pulumi.Input<string>;
     dns?: pulumi.Input<string>;
     drds?: pulumi.Input<string>;
+    eci?: pulumi.Input<string>;
     ecs?: pulumi.Input<string>;
     elasticsearch?: pulumi.Input<string>;
     emr?: pulumi.Input<string>;
@@ -615,6 +616,23 @@ export namespace dns {
 }
 
 export namespace drds {
+}
+
+export namespace eci {
+    export interface OpenApiImageCacheImageRegistryCredential {
+        /**
+         * The password of the Image Registry.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * The address of Image Registry without `http://` or `https://`.
+         */
+        server?: pulumi.Input<string>;
+        /**
+         * The user name of Image Registry.
+         */
+        userName?: pulumi.Input<string>;
+    }
 }
 
 export namespace ecs {

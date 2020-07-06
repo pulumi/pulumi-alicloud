@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         /// </summary>
         [Output("geographicRegionIds")]
         public Output<ImmutableArray<string>> GeographicRegionIds { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         /// </summary>
         public InputList<string> GeographicRegionIds
         {
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _geographicRegionIds;
 
         /// <summary>
-        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+        /// List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
         /// </summary>
         public InputList<string> GeographicRegionIds
         {

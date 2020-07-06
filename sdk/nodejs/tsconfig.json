@@ -146,6 +146,8 @@
         "drds/getInstances.ts",
         "drds/index.ts",
         "drds/instance.ts",
+        "eci/index.ts",
+        "eci/openApiImageCache.ts",
         "ecs/autoProvisioningGroup.ts",
         "ecs/copyImage.ts",
         "ecs/disk.ts",

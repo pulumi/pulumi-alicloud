@@ -6,6 +6,12 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
+ * Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+ *
+ * Available in 1.72.0+
+ */
 export class SiteMonitor extends pulumi.CustomResource {
     /**
      * Get an existing SiteMonitor resource's state with the given name, ID, and optional extra
@@ -34,14 +40,35 @@ export class SiteMonitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === SiteMonitor.__pulumiType;
     }
 
+    /**
+     * The URL or IP address monitored by the site monitoring task.
+     */
     public readonly address!: pulumi.Output<string>;
+    /**
+     * The IDs of existing alert rules to be associated with the site monitoring task.
+     */
     public readonly alertIds!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     */
     public readonly interval!: pulumi.Output<number | undefined>;
+    /**
+     * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     */
     public readonly ispCities!: pulumi.Output<outputs.cms.SiteMonitorIspCity[] | undefined>;
+    /**
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     */
     public readonly optionsJson!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+     */
     public readonly taskName!: pulumi.Output<string>;
     public /*out*/ readonly taskState!: pulumi.Output<string>;
+    /**
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     */
     public readonly taskType!: pulumi.Output<string>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -104,14 +131,35 @@ export class SiteMonitor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SiteMonitor resources.
  */
 export interface SiteMonitorState {
+    /**
+     * The URL or IP address monitored by the site monitoring task.
+     */
     readonly address?: pulumi.Input<string>;
+    /**
+     * The IDs of existing alert rules to be associated with the site monitoring task.
+     */
     readonly alertIds?: pulumi.Input<pulumi.Input<string>[]>;
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     */
     readonly interval?: pulumi.Input<number>;
+    /**
+     * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     */
     readonly ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
+    /**
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     */
     readonly optionsJson?: pulumi.Input<string>;
+    /**
+     * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+     */
     readonly taskName?: pulumi.Input<string>;
     readonly taskState?: pulumi.Input<string>;
+    /**
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     */
     readonly taskType?: pulumi.Input<string>;
     readonly updateTime?: pulumi.Input<string>;
 }
@@ -120,11 +168,32 @@ export interface SiteMonitorState {
  * The set of arguments for constructing a SiteMonitor resource.
  */
 export interface SiteMonitorArgs {
+    /**
+     * The URL or IP address monitored by the site monitoring task.
+     */
     readonly address: pulumi.Input<string>;
+    /**
+     * The IDs of existing alert rules to be associated with the site monitoring task.
+     */
     readonly alertIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     */
     readonly interval?: pulumi.Input<number>;
+    /**
+     * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     */
     readonly ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
+    /**
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     */
     readonly optionsJson?: pulumi.Input<string>;
+    /**
+     * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+     */
     readonly taskName: pulumi.Input<string>;
+    /**
+     * The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+     */
     readonly taskType: pulumi.Input<string>;
 }

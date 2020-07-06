@@ -17,6 +17,36 @@ namespace Pulumi.AliCloud.Kms
         /// &gt; **NOTE:** Available in v1.86.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsSecretsDs = Output.Create(AliCloud.Kms.GetSecrets.InvokeAsync(new AliCloud.Kms.GetSecretsArgs
+        ///         {
+        ///             FetchTags = true,
+        ///             NameRegex = "name_regex",
+        ///             Tags = 
+        ///             {
+        ///                 { "k-aa", "v-aa" },
+        ///                 { "k-bb", "v-bb" },
+        ///             },
+        ///         }));
+        ///         this.FirstSecretId = kmsSecretsDs.Apply(kmsSecretsDs =&gt; kmsSecretsDs.Secrets[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstSecretId")]
+        ///     public Output&lt;string&gt; FirstSecretId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretsResult> InvokeAsync(GetSecretsArgs? args = null, InvokeOptions? options = null)

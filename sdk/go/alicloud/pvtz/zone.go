@@ -27,8 +27,8 @@ type Zone struct {
 	// The remark of the Private Zone.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	UpdateTime      pulumi.StringOutput    `pulumi:"updateTime"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	UpdateTime      pulumi.StringOutput `pulumi:"updateTime"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 }

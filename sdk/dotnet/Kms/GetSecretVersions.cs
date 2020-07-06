@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Kms
         /// &gt; **NOTE:** Available in v1.88.0+.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var kmsSecretVersionsDs = Output.Create(AliCloud.Kms.GetSecretVersions.InvokeAsync(new AliCloud.Kms.GetSecretVersionsArgs
+        ///         {
+        ///             EnableDetails = true,
+        ///             SecretName = "secret_name",
+        ///         }));
+        ///         this.FirstSecretData = kmsSecretVersionsDs.Apply(kmsSecretVersionsDs =&gt; kmsSecretVersionsDs.Versions[0].SecretData);
+        ///     }
+        /// 
+        ///     [Output("firstSecretData")]
+        ///     public Output&lt;string&gt; FirstSecretData { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretVersionsResult> InvokeAsync(GetSecretVersionsArgs args, InvokeOptions? options = null)
@@ -59,6 +84,12 @@ namespace Pulumi.AliCloud.Kms
         [Input("secretName", required: true)]
         public string SecretName { get; set; } = null!;
 
+        /// <summary>
+        /// The stage of the secret version.
+        /// </summary>
+        [Input("versionStage")]
+        public string? VersionStage { get; set; }
+
         public GetSecretVersionsArgs()
         {
         }
@@ -83,6 +114,7 @@ namespace Pulumi.AliCloud.Kms
         /// The name of the secret.
         /// </summary>
         public readonly string SecretName;
+        public readonly string? VersionStage;
         /// <summary>
         /// A list of KMS Secret Versions. Each element contains the following attributes:
         /// </summary>
@@ -102,6 +134,8 @@ namespace Pulumi.AliCloud.Kms
 
             string secretName,
 
+            string? versionStage,
+
             ImmutableArray<Outputs.GetSecretVersionsVersionResult> versions)
         {
             EnableDetails = enableDetails;
@@ -110,6 +144,7 @@ namespace Pulumi.AliCloud.Kms
             IncludeDeprecated = includeDeprecated;
             OutputFile = outputFile;
             SecretName = secretName;
+            VersionStage = versionStage;
             Versions = versions;
         }
     }

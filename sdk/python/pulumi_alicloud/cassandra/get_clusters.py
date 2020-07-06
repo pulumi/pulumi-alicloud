@@ -71,6 +71,16 @@ def get_clusters(ids=None,name_regex=None,output_file=None,tags=None,opts=None):
 
     > **NOTE:**  Available in 1.88.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
+    ```
 
 
 

@@ -10,19 +10,30 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
+// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+//
+// Available in 1.72.0+
 type SiteMonitor struct {
 	pulumi.CustomResourceState
 
-	Address     pulumi.StringOutput           `pulumi:"address"`
-	AlertIds    pulumi.StringArrayOutput      `pulumi:"alertIds"`
-	CreateTime  pulumi.StringOutput           `pulumi:"createTime"`
-	Interval    pulumi.IntPtrOutput           `pulumi:"interval"`
-	IspCities   SiteMonitorIspCityArrayOutput `pulumi:"ispCities"`
-	OptionsJson pulumi.StringPtrOutput        `pulumi:"optionsJson"`
-	TaskName    pulumi.StringOutput           `pulumi:"taskName"`
-	TaskState   pulumi.StringOutput           `pulumi:"taskState"`
-	TaskType    pulumi.StringOutput           `pulumi:"taskType"`
-	UpdateTime  pulumi.StringOutput           `pulumi:"updateTime"`
+	// The URL or IP address monitored by the site monitoring task.
+	Address pulumi.StringOutput `pulumi:"address"`
+	// The IDs of existing alert rules to be associated with the site monitoring task.
+	AlertIds   pulumi.StringArrayOutput `pulumi:"alertIds"`
+	CreateTime pulumi.StringOutput      `pulumi:"createTime"`
+	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+	Interval pulumi.IntPtrOutput `pulumi:"interval"`
+	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+	IspCities SiteMonitorIspCityArrayOutput `pulumi:"ispCities"`
+	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+	OptionsJson pulumi.StringPtrOutput `pulumi:"optionsJson"`
+	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+	TaskName  pulumi.StringOutput `pulumi:"taskName"`
+	TaskState pulumi.StringOutput `pulumi:"taskState"`
+	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	TaskType   pulumi.StringOutput `pulumi:"taskType"`
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewSiteMonitor registers a new resource with the given unique name, arguments, and options.
@@ -62,29 +73,43 @@ func GetSiteMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SiteMonitor resources.
 type siteMonitorState struct {
-	Address     *string              `pulumi:"address"`
-	AlertIds    []string             `pulumi:"alertIds"`
-	CreateTime  *string              `pulumi:"createTime"`
-	Interval    *int                 `pulumi:"interval"`
-	IspCities   []SiteMonitorIspCity `pulumi:"ispCities"`
-	OptionsJson *string              `pulumi:"optionsJson"`
-	TaskName    *string              `pulumi:"taskName"`
-	TaskState   *string              `pulumi:"taskState"`
-	TaskType    *string              `pulumi:"taskType"`
-	UpdateTime  *string              `pulumi:"updateTime"`
+	// The URL or IP address monitored by the site monitoring task.
+	Address *string `pulumi:"address"`
+	// The IDs of existing alert rules to be associated with the site monitoring task.
+	AlertIds   []string `pulumi:"alertIds"`
+	CreateTime *string  `pulumi:"createTime"`
+	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+	Interval *int `pulumi:"interval"`
+	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+	IspCities []SiteMonitorIspCity `pulumi:"ispCities"`
+	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+	OptionsJson *string `pulumi:"optionsJson"`
+	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+	TaskName  *string `pulumi:"taskName"`
+	TaskState *string `pulumi:"taskState"`
+	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	TaskType   *string `pulumi:"taskType"`
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type SiteMonitorState struct {
-	Address     pulumi.StringPtrInput
-	AlertIds    pulumi.StringArrayInput
-	CreateTime  pulumi.StringPtrInput
-	Interval    pulumi.IntPtrInput
-	IspCities   SiteMonitorIspCityArrayInput
+	// The URL or IP address monitored by the site monitoring task.
+	Address pulumi.StringPtrInput
+	// The IDs of existing alert rules to be associated with the site monitoring task.
+	AlertIds   pulumi.StringArrayInput
+	CreateTime pulumi.StringPtrInput
+	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+	Interval pulumi.IntPtrInput
+	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+	IspCities SiteMonitorIspCityArrayInput
+	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
 	OptionsJson pulumi.StringPtrInput
-	TaskName    pulumi.StringPtrInput
-	TaskState   pulumi.StringPtrInput
-	TaskType    pulumi.StringPtrInput
-	UpdateTime  pulumi.StringPtrInput
+	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+	TaskName  pulumi.StringPtrInput
+	TaskState pulumi.StringPtrInput
+	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	TaskType   pulumi.StringPtrInput
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (SiteMonitorState) ElementType() reflect.Type {
@@ -92,24 +117,38 @@ func (SiteMonitorState) ElementType() reflect.Type {
 }
 
 type siteMonitorArgs struct {
-	Address     string               `pulumi:"address"`
-	AlertIds    []string             `pulumi:"alertIds"`
-	Interval    *int                 `pulumi:"interval"`
-	IspCities   []SiteMonitorIspCity `pulumi:"ispCities"`
-	OptionsJson *string              `pulumi:"optionsJson"`
-	TaskName    string               `pulumi:"taskName"`
-	TaskType    string               `pulumi:"taskType"`
+	// The URL or IP address monitored by the site monitoring task.
+	Address string `pulumi:"address"`
+	// The IDs of existing alert rules to be associated with the site monitoring task.
+	AlertIds []string `pulumi:"alertIds"`
+	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+	Interval *int `pulumi:"interval"`
+	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+	IspCities []SiteMonitorIspCity `pulumi:"ispCities"`
+	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+	OptionsJson *string `pulumi:"optionsJson"`
+	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+	TaskName string `pulumi:"taskName"`
+	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	TaskType string `pulumi:"taskType"`
 }
 
 // The set of arguments for constructing a SiteMonitor resource.
 type SiteMonitorArgs struct {
-	Address     pulumi.StringInput
-	AlertIds    pulumi.StringArrayInput
-	Interval    pulumi.IntPtrInput
-	IspCities   SiteMonitorIspCityArrayInput
+	// The URL or IP address monitored by the site monitoring task.
+	Address pulumi.StringInput
+	// The IDs of existing alert rules to be associated with the site monitoring task.
+	AlertIds pulumi.StringArrayInput
+	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+	Interval pulumi.IntPtrInput
+	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+	IspCities SiteMonitorIspCityArrayInput
+	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
 	OptionsJson pulumi.StringPtrInput
-	TaskName    pulumi.StringInput
-	TaskType    pulumi.StringInput
+	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+	TaskName pulumi.StringInput
+	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+	TaskType pulumi.StringInput
 }
 
 func (SiteMonitorArgs) ElementType() reflect.Type {

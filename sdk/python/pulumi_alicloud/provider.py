@@ -65,6 +65,7 @@ class Provider(pulumi.ProviderResource):
           * `dmsEnterprise` (`pulumi.Input[str]`)
           * `dns` (`pulumi.Input[str]`)
           * `drds` (`pulumi.Input[str]`)
+          * `eci` (`pulumi.Input[str]`)
           * `ecs` (`pulumi.Input[str]`)
           * `elasticsearch` (`pulumi.Input[str]`)
           * `emr` (`pulumi.Input[str]`)

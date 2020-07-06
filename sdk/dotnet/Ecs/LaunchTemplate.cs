@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Internet bandwidth billing method. Optional values: PayByTraffic.
+        /// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<Outputs.LaunchTemplateNetworkInterfaces?> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
-        /// Network type of the instance. Value options: Classic | VPC.
+        /// Network type of the instance. Value options: `classic` | `vpc`.
         /// </summary>
         [Output("networkType")]
         public Output<string?> NetworkType { get; private set; } = null!;
@@ -398,7 +398,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Internet bandwidth billing method. Optional values: PayByTraffic.
+        /// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.LaunchTemplateNetworkInterfacesArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Value options: Classic | VPC.
+        /// Network type of the instance. Value options: `classic` | `vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -616,7 +616,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Internet bandwidth billing method. Optional values: PayByTraffic.
+        /// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -662,7 +662,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.LaunchTemplateNetworkInterfacesGetArgs>? NetworkInterfaces { get; set; }
 
         /// <summary>
-        /// Network type of the instance. Value options: Classic | VPC.
+        /// Network type of the instance. Value options: `classic` | `vpc`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

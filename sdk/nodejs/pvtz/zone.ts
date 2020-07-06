@@ -59,7 +59,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The IP address of the client.

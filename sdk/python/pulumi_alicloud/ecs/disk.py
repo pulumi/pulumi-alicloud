@@ -38,6 +38,10 @@ class Disk(pulumi.CustomResource):
     """
     If true, the disk will be encrypted, conflict with `snapshot_id`.
     """
+    kms_key_id: pulumi.Output[str]
+    """
+    The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+    """
     name: pulumi.Output[str]
     """
     Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -63,7 +67,7 @@ class Disk(pulumi.CustomResource):
     """
     A mapping of tags to assign to the resource.
     """
-    def __init__(__self__, resource_name, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, name=None, resource_group_id=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, kms_key_id=None, name=None, resource_group_id=None, size=None, snapshot_id=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Disk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -75,6 +79,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
                > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
@@ -108,6 +113,7 @@ class Disk(pulumi.CustomResource):
             __props__['description'] = description
             __props__['enable_auto_snapshot'] = enable_auto_snapshot
             __props__['encrypted'] = encrypted
+            __props__['kms_key_id'] = kms_key_id
             __props__['name'] = name
             __props__['resource_group_id'] = resource_group_id
             if size is None:
@@ -123,7 +129,7 @@ class Disk(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, name=None, resource_group_id=None, size=None, snapshot_id=None, status=None, tags=None):
+    def get(resource_name, id, opts=None, availability_zone=None, category=None, delete_auto_snapshot=None, delete_with_instance=None, description=None, enable_auto_snapshot=None, encrypted=None, kms_key_id=None, name=None, resource_group_id=None, size=None, snapshot_id=None, status=None, tags=None):
         """
         Get an existing Disk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -138,6 +144,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
         :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
                > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
@@ -157,6 +164,7 @@ class Disk(pulumi.CustomResource):
         __props__["description"] = description
         __props__["enable_auto_snapshot"] = enable_auto_snapshot
         __props__["encrypted"] = encrypted
+        __props__["kms_key_id"] = kms_key_id
         __props__["name"] = name
         __props__["resource_group_id"] = resource_group_id
         __props__["size"] = size

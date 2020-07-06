@@ -86,7 +86,10 @@ export class Notification extends pulumi.CustomResource {
     }
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notificationArn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+     * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+     * * region: the region ID of the scaling group. For more information, see `Regions and zones`
+     * * account-id: the ID of your account.
+     * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
     public readonly notificationArn!: pulumi.Output<string>;
     /**
@@ -144,7 +147,10 @@ export class Notification extends pulumi.CustomResource {
  */
 export interface NotificationState {
     /**
-     * The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notificationArn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+     * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+     * * region: the region ID of the scaling group. For more information, see `Regions and zones`
+     * * account-id: the ID of your account.
+     * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
     readonly notificationArn?: pulumi.Input<string>;
     /**
@@ -162,7 +168,10 @@ export interface NotificationState {
  */
 export interface NotificationArgs {
     /**
-     * The Alibaba Cloud Resource Name (ARN) for the notification object. The format of `notificationArn` is acs:ess:{region}:{account-id}:{resource-relative-id}. Valid values for `resource-relative-id`: 'cloudmonitor', 'queue/', 'topic/'.
+     * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
+     * * region: the region ID of the scaling group. For more information, see `Regions and zones`
+     * * account-id: the ID of your account.
+     * * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
      */
     readonly notificationArn: pulumi.Input<string>;
     /**

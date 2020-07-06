@@ -19,13 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisCenPrivateZones = pulumi.output(alicloud.CenPrivateZones({
+ * const thisPrivateZones = pulumi.output(alicloud.cen.getPrivateZones({
  *     cenId: "cen-o40h17ll9w********",
  *     ids: ["cn-hangzhou"],
  *     status: "Active",
  * }, { async: true }));
  *
- * export const firstCenPrivateZonesId = thisCenPrivateZones.zones.0.id;
+ * export const firstCenPrivateZonesId = thisPrivateZones.zones[0].id;
  * ```
  */
 export function getPrivateZones(args: GetPrivateZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateZonesResult> {

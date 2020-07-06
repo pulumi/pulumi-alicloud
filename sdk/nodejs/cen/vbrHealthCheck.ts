@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     childInstanceRegionId: "cn-hangzhou",
  *     instanceId: defaultInstance.id,
  * });
- * const defaultCenVbrHealthCheck = new alicloud.CenVbrHealthCheck("default", {
+ * const defaultVbrHealthCheck = new alicloud.cen.VbrHealthCheck("default", {
  *     cenId: defaultInstance.id,
  *     healthCheckInterval: 2,
  *     healthCheckSourceIp: "192.168.1.2",

@@ -56,6 +56,19 @@ def get_zones(multi=None,output_file=None,opts=None):
 
     > **NOTE:** Available in v1.88.0+.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    zones_ids = alicloud.cassandra.get_zones()
+    # Create an Cassandra cluster with the first matched zone
+    cassandra = alicloud.cassandra.Cluster("cassandra", zone_id=zones_ids.zones[0]["id"])
+    # Other properties...
+    ```
 
 
 

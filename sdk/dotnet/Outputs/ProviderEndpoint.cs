@@ -34,6 +34,7 @@ namespace Pulumi.AliCloud.Outputs
         public readonly string? DmsEnterprise;
         public readonly string? Dns;
         public readonly string? Drds;
+        public readonly string? Eci;
         public readonly string? Ecs;
         public readonly string? Elasticsearch;
         public readonly string? Emr;
@@ -104,6 +105,8 @@ namespace Pulumi.AliCloud.Outputs
             string? dns,
 
             string? drds,
+
+            string? eci,
 
             string? ecs,
 
@@ -178,6 +181,7 @@ namespace Pulumi.AliCloud.Outputs
             DmsEnterprise = dmsEnterprise;
             Dns = dns;
             Drds = drds;
+            Eci = eci;
             Ecs = ecs;
             Elasticsearch = elasticsearch;
             Emr = emr;

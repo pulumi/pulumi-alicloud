@@ -34,7 +34,7 @@ type LaunchTemplate struct {
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
-	// Internet bandwidth billing method. Optional values: PayByTraffic.
+	// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
 	InternetMaxBandwidthIn pulumi.IntOutput `pulumi:"internetMaxBandwidthIn"`
@@ -52,7 +52,7 @@ type LaunchTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrOutput `pulumi:"networkInterfaces"`
-	// Network type of the instance. Value options: Classic | VPC.
+	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType pulumi.StringPtrOutput `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrOutput `pulumi:"ramRoleName"`
@@ -141,7 +141,7 @@ type launchTemplateState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
-	// Internet bandwidth billing method. Optional values: PayByTraffic.
+	// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -159,7 +159,7 @@ type launchTemplateState struct {
 	Name *string `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
-	// Network type of the instance. Value options: Classic | VPC.
+	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType *string `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
@@ -221,7 +221,7 @@ type LaunchTemplateState struct {
 	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
-	// Internet bandwidth billing method. Optional values: PayByTraffic.
+	// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
 	InternetChargeType pulumi.StringPtrInput
 	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -239,7 +239,7 @@ type LaunchTemplateState struct {
 	Name pulumi.StringPtrInput
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
-	// Network type of the instance. Value options: Classic | VPC.
+	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput
@@ -305,7 +305,7 @@ type launchTemplateArgs struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType *string `pulumi:"instanceType"`
-	// Internet bandwidth billing method. Optional values: PayByTraffic.
+	// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -323,7 +323,7 @@ type launchTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The list of network interfaces created with instance.
 	NetworkInterfaces *LaunchTemplateNetworkInterfaces `pulumi:"networkInterfaces"`
-	// Network type of the instance. Value options: Classic | VPC.
+	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType *string `pulumi:"networkType"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
@@ -386,7 +386,7 @@ type LaunchTemplateArgs struct {
 	InstanceName pulumi.StringPtrInput
 	// Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
 	InstanceType pulumi.StringPtrInput
-	// Internet bandwidth billing method. Optional values: PayByTraffic.
+	// Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
 	InternetChargeType pulumi.StringPtrInput
 	// The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -404,7 +404,7 @@ type LaunchTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// The list of network interfaces created with instance.
 	NetworkInterfaces LaunchTemplateNetworkInterfacesPtrInput
-	// Network type of the instance. Value options: Classic | VPC.
+	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput

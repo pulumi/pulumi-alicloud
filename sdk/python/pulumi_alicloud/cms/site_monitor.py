@@ -11,20 +11,57 @@ from .. import utilities, tables
 
 class SiteMonitor(pulumi.CustomResource):
     address: pulumi.Output[str]
+    """
+    The URL or IP address monitored by the site monitoring task.
+    """
     alert_ids: pulumi.Output[list]
+    """
+    The IDs of existing alert rules to be associated with the site monitoring task.
+    """
     create_time: pulumi.Output[str]
     interval: pulumi.Output[float]
+    """
+    The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+    """
     isp_cities: pulumi.Output[list]
+    """
+    The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+
+      * `city` (`str`)
+      * `isp` (`str`)
+    """
     options_json: pulumi.Output[str]
+    """
+    The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+    """
     task_name: pulumi.Output[str]
+    """
+    The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+    """
     task_state: pulumi.Output[str]
     task_type: pulumi.Output[str]
+    """
+    The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
+    """
     update_time: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, address=None, alert_ids=None, interval=None, isp_cities=None, options_json=None, task_name=None, task_type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SiteMonitor resource with the given unique name, props, and options.
+        This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
+        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+
+        Available in 1.72.0+
+
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.
+        :param pulumi.Input[list] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
+        :param pulumi.Input[float] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        :param pulumi.Input[list] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
 
         The **isp_cities** object supports the following:
 
@@ -79,6 +116,13 @@ class SiteMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address: The URL or IP address monitored by the site monitoring task.
+        :param pulumi.Input[list] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
+        :param pulumi.Input[float] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+        :param pulumi.Input[list] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm?spm=a2c63.p38356.b99.238.5fec36962UlFG6) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+        :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+        :param pulumi.Input[str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
+        :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, Ping, TCP, UDP, DNS, SMTP, POP3, and FTP.
 
         The **isp_cities** object supports the following:
 

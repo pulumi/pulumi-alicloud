@@ -65,7 +65,7 @@ class LaunchTemplate(pulumi.CustomResource):
     """
     internet_charge_type: pulumi.Output[str]
     """
-    Internet bandwidth billing method. Optional values: PayByTraffic.
+    Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
     """
     internet_max_bandwidth_in: pulumi.Output[float]
     """
@@ -103,7 +103,7 @@ class LaunchTemplate(pulumi.CustomResource):
     """
     network_type: pulumi.Output[str]
     """
-    Network type of the instance. Value options: Classic | VPC.
+    Network type of the instance. Value options: `classic` | `vpc`.
     """
     ram_role_name: pulumi.Output[str]
     """
@@ -248,7 +248,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - PostPaid: Pay-As-You-Go.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
-        :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: PayByTraffic.
+        :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         :param pulumi.Input[float] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
         :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         :param pulumi.Input[str] io_optimized: Whether it is an I/O-optimized instance or not. Optional values:
@@ -259,7 +259,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[dict] network_interfaces: The list of network interfaces created with instance.
-        :param pulumi.Input[str] network_type: Network type of the instance. Value options: Classic | VPC.
+        :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
@@ -386,7 +386,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - PostPaid: Pay-As-You-Go.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
-        :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: PayByTraffic.
+        :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
         :param pulumi.Input[float] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
         :param pulumi.Input[float] internet_max_bandwidth_out: Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
         :param pulumi.Input[str] io_optimized: Whether it is an I/O-optimized instance or not. Optional values:
@@ -397,7 +397,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[dict] network_interfaces: The list of network interfaces created with instance.
-        :param pulumi.Input[str] network_type: Network type of the instance. Value options: Classic | VPC.
+        :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.

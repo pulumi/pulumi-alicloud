@@ -71,7 +71,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
      */
     public readonly geographicRegionIds!: pulumi.Output<string[]>;
     /**
@@ -156,7 +156,7 @@ export interface BandwidthPackageState {
      */
     readonly expiredTime?: pulumi.Input<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
      */
     readonly geographicRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -190,7 +190,7 @@ export interface BandwidthPackageArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East.
+     * List of the two areas to connect. Valid value: China | North-America | Asia-Pacific | Europe | Middle-East | Australia.
      */
     readonly geographicRegionIds: pulumi.Input<pulumi.Input<string>[]>;
     /**

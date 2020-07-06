@@ -30,6 +30,8 @@ type GetSecretVersionsArgs struct {
 	OutputFile        *string `pulumi:"outputFile"`
 	// The name of the secret.
 	SecretName string `pulumi:"secretName"`
+	// The stage of the secret version.
+	VersionStage *string `pulumi:"versionStage"`
 }
 
 // A collection of values returned by getSecretVersions.
@@ -42,7 +44,8 @@ type GetSecretVersionsResult struct {
 	IncludeDeprecated *string  `pulumi:"includeDeprecated"`
 	OutputFile        *string  `pulumi:"outputFile"`
 	// The name of the secret.
-	SecretName string `pulumi:"secretName"`
+	SecretName   string  `pulumi:"secretName"`
+	VersionStage *string `pulumi:"versionStage"`
 	// A list of KMS Secret Versions. Each element contains the following attributes:
 	Versions []GetSecretVersionsVersion `pulumi:"versions"`
 }
