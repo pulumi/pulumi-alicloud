@@ -25,6 +25,10 @@ class DomainNew(pulumi.CustomResource):
       * `server_certificate` (`str`) - The SSL server certificate string. This is required if `server_certificate_status` is `on`
       * `serverCertificateStatus` (`str`) - This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
     """
+    cname: pulumi.Output[str]
+    """
+    (Available in v1.90.0+) The CNAME of the CDN domain.
+    """
     domain_name: pulumi.Output[str]
     """
     Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -111,6 +115,7 @@ class DomainNew(pulumi.CustomResource):
                 raise TypeError("Missing required property 'sources'")
             __props__['sources'] = sources
             __props__['tags'] = tags
+            __props__['cname'] = None
         super(DomainNew, __self__).__init__(
             'alicloud:cdn/domainNew:DomainNew',
             resource_name,
@@ -118,7 +123,7 @@ class DomainNew(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, cdn_type=None, certificate_config=None, domain_name=None, resource_group_id=None, scope=None, sources=None, tags=None):
+    def get(resource_name, id, opts=None, cdn_type=None, certificate_config=None, cname=None, domain_name=None, resource_group_id=None, scope=None, sources=None, tags=None):
         """
         Get an existing DomainNew resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -128,6 +133,7 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         :param pulumi.Input[dict] certificate_config: Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+        :param pulumi.Input[str] cname: (Available in v1.90.0+) The CNAME of the CDN domain.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[str] scope: Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
@@ -157,6 +163,7 @@ class DomainNew(pulumi.CustomResource):
 
         __props__["cdn_type"] = cdn_type
         __props__["certificate_config"] = certificate_config
+        __props__["cname"] = cname
         __props__["domain_name"] = domain_name
         __props__["resource_group_id"] = resource_group_id
         __props__["scope"] = scope

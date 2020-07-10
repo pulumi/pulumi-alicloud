@@ -211,9 +211,179 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 	}).(GetDomainsDomainOutput)
 }
 
+type GetInstancesInstance struct {
+	// The timestamp (in seconds) indicating when the WAF instance expires.
+	EndDate int `pulumi:"endDate"`
+	// The ID of the WAF instance.
+	Id string `pulumi:"id"`
+	// Indicates whether the WAF instance has overdue payments.
+	InDebt int `pulumi:"inDebt"`
+	// The ID of WAF the instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The region where the WAF instance is located.
+	Region string `pulumi:"region"`
+	// The number of days before the trial period of the WAF instance expires.
+	RemainDay int `pulumi:"remainDay"`
+	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+	Status           int    `pulumi:"status"`
+	SubscriptionType string `pulumi:"subscriptionType"`
+	// Indicates whether this is a trial instance.
+	Trial int `pulumi:"trial"`
+}
+
+// GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceInput` via:
+//
+// 		 GetInstancesInstanceArgs{...}
+//
+type GetInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceOutput() GetInstancesInstanceOutput
+	ToGetInstancesInstanceOutputWithContext(context.Context) GetInstancesInstanceOutput
+}
+
+type GetInstancesInstanceArgs struct {
+	// The timestamp (in seconds) indicating when the WAF instance expires.
+	EndDate pulumi.IntInput `pulumi:"endDate"`
+	// The ID of the WAF instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates whether the WAF instance has overdue payments.
+	InDebt pulumi.IntInput `pulumi:"inDebt"`
+	// The ID of WAF the instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The region where the WAF instance is located.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The number of days before the trial period of the WAF instance expires.
+	RemainDay pulumi.IntInput `pulumi:"remainDay"`
+	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+	Status           pulumi.IntInput    `pulumi:"status"`
+	SubscriptionType pulumi.StringInput `pulumi:"subscriptionType"`
+	// Indicates whether this is a trial instance.
+	Trial pulumi.IntInput `pulumi:"trial"`
+}
+
+func (GetInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return i.ToGetInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArgs) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceOutput)
+}
+
+// GetInstancesInstanceArrayInput is an input type that accepts GetInstancesInstanceArray and GetInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetInstancesInstanceArrayInput` via:
+//
+// 		 GetInstancesInstanceArray{ GetInstancesInstanceArgs{...} }
+//
+type GetInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput
+	ToGetInstancesInstanceArrayOutputWithContext(context.Context) GetInstancesInstanceArrayOutput
+}
+
+type GetInstancesInstanceArray []GetInstancesInstanceInput
+
+func (GetInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return i.ToGetInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancesInstanceArray) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancesInstanceArrayOutput)
+}
+
+type GetInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutput() GetInstancesInstanceOutput {
+	return o
+}
+
+func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx context.Context) GetInstancesInstanceOutput {
+	return o
+}
+
+// The timestamp (in seconds) indicating when the WAF instance expires.
+func (o GetInstancesInstanceOutput) EndDate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.EndDate }).(pulumi.IntOutput)
+}
+
+// The ID of the WAF instance.
+func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether the WAF instance has overdue payments.
+func (o GetInstancesInstanceOutput) InDebt() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.InDebt }).(pulumi.IntOutput)
+}
+
+// The ID of WAF the instance.
+func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The region where the WAF instance is located.
+func (o GetInstancesInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The number of days before the trial period of the WAF instance expires.
+func (o GetInstancesInstanceOutput) RemainDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.RemainDay }).(pulumi.IntOutput)
+}
+
+// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+func (o GetInstancesInstanceOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Status }).(pulumi.IntOutput)
+}
+
+func (o GetInstancesInstanceOutput) SubscriptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.SubscriptionType }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a trial instance.
+func (o GetInstancesInstanceOutput) Trial() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.Trial }).(pulumi.IntOutput)
+}
+
+type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancesInstance)(nil)).Elem()
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutput() GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) ToGetInstancesInstanceArrayOutputWithContext(ctx context.Context) GetInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancesInstance {
+		return vs[0].([]GetInstancesInstance)[vs[1].(int)]
+	}).(GetInstancesInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainLogHeaderOutput{})
 	pulumi.RegisterOutputType(DomainLogHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

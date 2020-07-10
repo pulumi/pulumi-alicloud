@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesAddon
     {
         public readonly string? Config;
+        public readonly bool? Disabled;
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
@@ -23,9 +24,12 @@ namespace Pulumi.AliCloud.CS.Outputs
         private KubernetesAddon(
             string? config,
 
+            bool? disabled,
+
             string? name)
         {
             Config = config;
+            Disabled = disabled;
             Name = name;
         }
     }

@@ -257,7 +257,8 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 }
 
 type KubernetesAddon struct {
-	Config *string `pulumi:"config"`
+	Config   *string `pulumi:"config"`
+	Disabled *bool   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 }
@@ -275,7 +276,8 @@ type KubernetesAddonInput interface {
 }
 
 type KubernetesAddonArgs struct {
-	Config pulumi.StringPtrInput `pulumi:"config"`
+	Config   pulumi.StringPtrInput `pulumi:"config"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -334,6 +336,10 @@ func (o KubernetesAddonOutput) ToKubernetesAddonOutputWithContext(ctx context.Co
 
 func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -895,7 +901,7 @@ func (o KubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) KubernetesWork
 
 type ManagedKubernetesAddon struct {
 	Config   *string `pulumi:"config"`
-	Disabled *string `pulumi:"disabled"`
+	Disabled *bool   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name *string `pulumi:"name"`
 }
@@ -914,7 +920,7 @@ type ManagedKubernetesAddonInput interface {
 
 type ManagedKubernetesAddonArgs struct {
 	Config   pulumi.StringPtrInput `pulumi:"config"`
-	Disabled pulumi.StringPtrInput `pulumi:"disabled"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
 	// The kubernetes cluster's name. It is unique in one Alicloud account.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -975,8 +981,8 @@ func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
-func (o ManagedKubernetesAddonOutput) Disabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Disabled }).(pulumi.StringPtrOutput)
+func (o ManagedKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // The kubernetes cluster's name. It is unique in one Alicloud account.
@@ -3232,6 +3238,222 @@ func (o GetRegistryEnterpriseReposRepoTagArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetRegistryEnterpriseReposRepoTagOutput)
 }
 
+type GetRegistryEnterpriseSyncRulesRule struct {
+	// ID of Container Registry Enterprise Edition sync rule.
+	Id string `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition local instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition sync rule.
+	Name string `pulumi:"name"`
+	// Name of Container Registry Enterprise Edition local namespace.
+	NamespaceName string `pulumi:"namespaceName"`
+	// Region of Container Registry Enterprise Edition local instance.
+	RegionId string `pulumi:"regionId"`
+	// Name of Container Registry Enterprise Edition local repo.
+	RepoName string `pulumi:"repoName"`
+	// `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
+	SyncDirection string `pulumi:"syncDirection"`
+	// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+	SyncScope string `pulumi:"syncScope"`
+	// `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
+	SyncTrigger string `pulumi:"syncTrigger"`
+	// The regular expression used to filter image tags for synchronization in the source repository.
+	TagFilter string `pulumi:"tagFilter"`
+	// ID of Container Registry Enterprise Edition target instance.
+	TargetInstanceId string `pulumi:"targetInstanceId"`
+	// Name of Container Registry Enterprise Edition target namespace.
+	TargetNamespaceName string `pulumi:"targetNamespaceName"`
+	// Region of Container Registry Enterprise Edition target instance.
+	TargetRegionId string `pulumi:"targetRegionId"`
+	// Name of Container Registry Enterprise Edition target repo.
+	TargetRepoName string `pulumi:"targetRepoName"`
+}
+
+// GetRegistryEnterpriseSyncRulesRuleInput is an input type that accepts GetRegistryEnterpriseSyncRulesRuleArgs and GetRegistryEnterpriseSyncRulesRuleOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseSyncRulesRuleInput` via:
+//
+// 		 GetRegistryEnterpriseSyncRulesRuleArgs{...}
+//
+type GetRegistryEnterpriseSyncRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseSyncRulesRuleOutput() GetRegistryEnterpriseSyncRulesRuleOutput
+	ToGetRegistryEnterpriseSyncRulesRuleOutputWithContext(context.Context) GetRegistryEnterpriseSyncRulesRuleOutput
+}
+
+type GetRegistryEnterpriseSyncRulesRuleArgs struct {
+	// ID of Container Registry Enterprise Edition sync rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// ID of Container Registry Enterprise Edition local instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Name of Container Registry Enterprise Edition sync rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of Container Registry Enterprise Edition local namespace.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Region of Container Registry Enterprise Edition local instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// Name of Container Registry Enterprise Edition local repo.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
+	SyncDirection pulumi.StringInput `pulumi:"syncDirection"`
+	// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+	SyncScope pulumi.StringInput `pulumi:"syncScope"`
+	// `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
+	SyncTrigger pulumi.StringInput `pulumi:"syncTrigger"`
+	// The regular expression used to filter image tags for synchronization in the source repository.
+	TagFilter pulumi.StringInput `pulumi:"tagFilter"`
+	// ID of Container Registry Enterprise Edition target instance.
+	TargetInstanceId pulumi.StringInput `pulumi:"targetInstanceId"`
+	// Name of Container Registry Enterprise Edition target namespace.
+	TargetNamespaceName pulumi.StringInput `pulumi:"targetNamespaceName"`
+	// Region of Container Registry Enterprise Edition target instance.
+	TargetRegionId pulumi.StringInput `pulumi:"targetRegionId"`
+	// Name of Container Registry Enterprise Edition target repo.
+	TargetRepoName pulumi.StringInput `pulumi:"targetRepoName"`
+}
+
+func (GetRegistryEnterpriseSyncRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseSyncRulesRule)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseSyncRulesRuleArgs) ToGetRegistryEnterpriseSyncRulesRuleOutput() GetRegistryEnterpriseSyncRulesRuleOutput {
+	return i.ToGetRegistryEnterpriseSyncRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseSyncRulesRuleArgs) ToGetRegistryEnterpriseSyncRulesRuleOutputWithContext(ctx context.Context) GetRegistryEnterpriseSyncRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseSyncRulesRuleOutput)
+}
+
+// GetRegistryEnterpriseSyncRulesRuleArrayInput is an input type that accepts GetRegistryEnterpriseSyncRulesRuleArray and GetRegistryEnterpriseSyncRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetRegistryEnterpriseSyncRulesRuleArrayInput` via:
+//
+// 		 GetRegistryEnterpriseSyncRulesRuleArray{ GetRegistryEnterpriseSyncRulesRuleArgs{...} }
+//
+type GetRegistryEnterpriseSyncRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRegistryEnterpriseSyncRulesRuleArrayOutput() GetRegistryEnterpriseSyncRulesRuleArrayOutput
+	ToGetRegistryEnterpriseSyncRulesRuleArrayOutputWithContext(context.Context) GetRegistryEnterpriseSyncRulesRuleArrayOutput
+}
+
+type GetRegistryEnterpriseSyncRulesRuleArray []GetRegistryEnterpriseSyncRulesRuleInput
+
+func (GetRegistryEnterpriseSyncRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseSyncRulesRule)(nil)).Elem()
+}
+
+func (i GetRegistryEnterpriseSyncRulesRuleArray) ToGetRegistryEnterpriseSyncRulesRuleArrayOutput() GetRegistryEnterpriseSyncRulesRuleArrayOutput {
+	return i.ToGetRegistryEnterpriseSyncRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegistryEnterpriseSyncRulesRuleArray) ToGetRegistryEnterpriseSyncRulesRuleArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseSyncRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegistryEnterpriseSyncRulesRuleArrayOutput)
+}
+
+type GetRegistryEnterpriseSyncRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseSyncRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegistryEnterpriseSyncRulesRule)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) ToGetRegistryEnterpriseSyncRulesRuleOutput() GetRegistryEnterpriseSyncRulesRuleOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) ToGetRegistryEnterpriseSyncRulesRuleOutputWithContext(ctx context.Context) GetRegistryEnterpriseSyncRulesRuleOutput {
+	return o
+}
+
+// ID of Container Registry Enterprise Edition sync rule.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition local instance.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition sync rule.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition local namespace.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Region of Container Registry Enterprise Edition local instance.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition local repo.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) SyncDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.SyncDirection }).(pulumi.StringOutput)
+}
+
+// `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) SyncScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.SyncScope }).(pulumi.StringOutput)
+}
+
+// `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) SyncTrigger() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.SyncTrigger }).(pulumi.StringOutput)
+}
+
+// The regular expression used to filter image tags for synchronization in the source repository.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) TagFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.TagFilter }).(pulumi.StringOutput)
+}
+
+// ID of Container Registry Enterprise Edition target instance.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) TargetInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.TargetInstanceId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition target namespace.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) TargetNamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.TargetNamespaceName }).(pulumi.StringOutput)
+}
+
+// Region of Container Registry Enterprise Edition target instance.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) TargetRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.TargetRegionId }).(pulumi.StringOutput)
+}
+
+// Name of Container Registry Enterprise Edition target repo.
+func (o GetRegistryEnterpriseSyncRulesRuleOutput) TargetRepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseSyncRulesRule) string { return v.TargetRepoName }).(pulumi.StringOutput)
+}
+
+type GetRegistryEnterpriseSyncRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegistryEnterpriseSyncRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegistryEnterpriseSyncRulesRule)(nil)).Elem()
+}
+
+func (o GetRegistryEnterpriseSyncRulesRuleArrayOutput) ToGetRegistryEnterpriseSyncRulesRuleArrayOutput() GetRegistryEnterpriseSyncRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseSyncRulesRuleArrayOutput) ToGetRegistryEnterpriseSyncRulesRuleArrayOutputWithContext(ctx context.Context) GetRegistryEnterpriseSyncRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetRegistryEnterpriseSyncRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRegistryEnterpriseSyncRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegistryEnterpriseSyncRulesRule {
+		return vs[0].([]GetRegistryEnterpriseSyncRulesRule)[vs[1].(int)]
+	}).(GetRegistryEnterpriseSyncRulesRuleOutput)
+}
+
 type GetServerlessKubernetesClustersCluster struct {
 	// Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
 	Connections GetServerlessKubernetesClustersClusterConnections `pulumi:"connections"`
@@ -3524,6 +3746,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoArrayOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoTagOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseReposRepoTagArrayOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseSyncRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetRegistryEnterpriseSyncRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetServerlessKubernetesClustersClusterConnectionsOutput{})

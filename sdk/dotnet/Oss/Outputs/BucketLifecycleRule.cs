@@ -26,9 +26,9 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies.
+        /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         /// </summary>
-        public readonly string Prefix;
+        public readonly string? Prefix;
         /// <summary>
         /// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string? id,
 
-            string prefix,
+            string? prefix,
 
             ImmutableArray<Outputs.BucketLifecycleRuleTransition> transitions)
         {

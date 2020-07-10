@@ -470,6 +470,7 @@ export namespace cs {
 
     export interface KubernetesAddon {
         config?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
@@ -533,7 +534,7 @@ export namespace cs {
 
     export interface ManagedKubernetesAddon {
         config?: pulumi.Input<string>;
-        disabled?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
@@ -619,7 +620,7 @@ export namespace drds {
 }
 
 export namespace eci {
-    export interface OpenApiImageCacheImageRegistryCredential {
+    export interface ImageCacheImageRegistryCredential {
         /**
          * The password of the Image Registry.
          */
@@ -631,6 +632,12 @@ export namespace eci {
         /**
          * The user name of Image Registry.
          */
+        userName?: pulumi.Input<string>;
+    }
+
+    export interface OpenApiImageCacheImageRegistryCredential {
+        password?: pulumi.Input<string>;
+        server?: pulumi.Input<string>;
         userName?: pulumi.Input<string>;
     }
 }
@@ -1165,9 +1172,9 @@ export namespace oss {
          */
         id?: pulumi.Input<string>;
         /**
-         * Object key prefix identifying one or more objects to which the rule applies.
+         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
          */
-        prefix: pulumi.Input<string>;
+        prefix?: pulumi.Input<string>;
         /**
          * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
          */

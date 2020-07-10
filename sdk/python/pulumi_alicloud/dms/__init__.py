@@ -4,4 +4,6 @@
 
 # Export this package's modules as members:
 from .enterprise_instance import *
+from .enterprise_user import *
 from .get_enterprise_instances import *
+from .get_enterprise_users import *

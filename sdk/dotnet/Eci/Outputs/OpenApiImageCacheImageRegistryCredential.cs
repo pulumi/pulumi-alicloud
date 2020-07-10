@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class OpenApiImageCacheImageRegistryCredential
     {
-        /// <summary>
-        /// The password of the Image Registry.
-        /// </summary>
         public readonly string? Password;
-        /// <summary>
-        /// The address of Image Registry without `http://` or `https://`.
-        /// </summary>
         public readonly string? Server;
-        /// <summary>
-        /// The user name of Image Registry.
-        /// </summary>
         public readonly string? UserName;
 
         [OutputConstructor]

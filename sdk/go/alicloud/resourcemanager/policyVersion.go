@@ -10,16 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Resource Manager Policy Version resource.
-// For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
-//
-// > **NOTE:** Available in v1.84.0+.
 type PolicyVersion struct {
 	pulumi.CustomResourceState
 
 	// The time when the policy version was created.
 	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrOutput `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
@@ -66,6 +64,8 @@ type policyVersionState struct {
 	// The time when the policy version was created.
 	CreateDate *string `pulumi:"createDate"`
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
 	PolicyDocument *string `pulumi:"policyDocument"`
@@ -79,6 +79,8 @@ type PolicyVersionState struct {
 	// The time when the policy version was created.
 	CreateDate pulumi.StringPtrInput
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrInput
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
 	PolicyDocument pulumi.StringPtrInput
@@ -94,6 +96,8 @@ func (PolicyVersionState) ElementType() reflect.Type {
 
 type policyVersionArgs struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
 	PolicyDocument string `pulumi:"policyDocument"`
@@ -104,6 +108,8 @@ type policyVersionArgs struct {
 // The set of arguments for constructing a PolicyVersion resource.
 type PolicyVersionArgs struct {
 	// Specifies whether to set the policy version as the default version. Default to `false`.
+	//
+	// Deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0
 	IsDefaultVersion pulumi.BoolPtrInput
 	// The content of the policy. The content must be 1 to 2,048 characters in length.
 	PolicyDocument pulumi.StringInput

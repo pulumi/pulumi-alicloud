@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesAddon
     {
         public readonly string? Config;
-        public readonly string? Disabled;
+        public readonly bool? Disabled;
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         private ManagedKubernetesAddon(
             string? config,
 
-            string? disabled,
+            bool? disabled,
 
             string? name)
         {

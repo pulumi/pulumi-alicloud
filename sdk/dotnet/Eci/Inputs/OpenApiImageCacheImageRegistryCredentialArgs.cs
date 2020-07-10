@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class OpenApiImageCacheImageRegistryCredentialArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The password of the Image Registry.
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// The address of Image Registry without `http://` or `https://`.
-        /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }
 
-        /// <summary>
-        /// The user name of Image Registry.
-        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

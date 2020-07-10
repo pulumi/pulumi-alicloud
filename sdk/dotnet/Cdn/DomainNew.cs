@@ -24,6 +24,12 @@ namespace Pulumi.AliCloud.Cdn
         public Output<Outputs.DomainNewCertificateConfig> CertificateConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.90.0+) The CNAME of the CDN domain.
+        /// </summary>
+        [Output("cname")]
+        public Output<string> Cname { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         /// </summary>
         [Output("domainName")]
@@ -165,6 +171,12 @@ namespace Pulumi.AliCloud.Cdn
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigGetArgs>? CertificateConfig { get; set; }
+
+        /// <summary>
+        /// (Available in v1.90.0+) The CNAME of the CDN domain.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
 
         /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.

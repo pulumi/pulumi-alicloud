@@ -22,6 +22,8 @@ type DomainNew struct {
 	CdnType pulumi.StringOutput `pulumi:"cdnType"`
 	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
 	CertificateConfig DomainNewCertificateConfigOutput `pulumi:"certificateConfig"`
+	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	Cname pulumi.StringOutput `pulumi:"cname"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Resource group ID.
@@ -75,6 +77,8 @@ type domainNewState struct {
 	CdnType *string `pulumi:"cdnType"`
 	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
 	CertificateConfig *DomainNewCertificateConfig `pulumi:"certificateConfig"`
+	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	Cname *string `pulumi:"cname"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
 	// Resource group ID.
@@ -92,6 +96,8 @@ type DomainNewState struct {
 	CdnType pulumi.StringPtrInput
 	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
 	CertificateConfig DomainNewCertificateConfigPtrInput
+	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	Cname pulumi.StringPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
 	// Resource group ID.

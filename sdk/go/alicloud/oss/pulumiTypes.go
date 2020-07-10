@@ -152,8 +152,8 @@ type BucketLifecycleRule struct {
 	Expirations []BucketLifecycleRuleExpiration `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id *string `pulumi:"id"`
-	// Object key prefix identifying one or more objects to which the rule applies.
-	Prefix string `pulumi:"prefix"`
+	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	Prefix *string `pulumi:"prefix"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
 	Transitions []BucketLifecycleRuleTransition `pulumi:"transitions"`
 }
@@ -177,8 +177,8 @@ type BucketLifecycleRuleArgs struct {
 	Expirations BucketLifecycleRuleExpirationArrayInput `pulumi:"expirations"`
 	// Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Object key prefix identifying one or more objects to which the rule applies.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
 	Transitions BucketLifecycleRuleTransitionArrayInput `pulumi:"transitions"`
 }
@@ -250,9 +250,9 @@ func (o BucketLifecycleRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Object key prefix identifying one or more objects to which the rule applies.
-func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketLifecycleRule) string { return v.Prefix }).(pulumi.StringOutput)
+// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+func (o BucketLifecycleRuleOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).

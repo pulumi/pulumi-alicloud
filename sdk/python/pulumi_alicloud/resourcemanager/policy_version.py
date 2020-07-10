@@ -32,44 +32,7 @@ class PolicyVersion(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, is_default_version=None, policy_document=None, policy_name=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Resource Manager Policy Version resource. 
-        For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
-
-        > **NOTE:** Available in v1.84.0+.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
-            policy_name="tftest",
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
-            policy_name=example_policy.policy_name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:myphotos"]
-        			}],
-        			"Version": "1"
-        		}
-        \"\"\")
-        ```
-
-
+        Create a PolicyVersion resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`. 
@@ -93,6 +56,9 @@ class PolicyVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if is_default_version is not None:
+                warnings.warn("Field 'is_default_version' has been deprecated from provider version 1.90.0", DeprecationWarning)
+                pulumi.log.warn("is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0")
             __props__['is_default_version'] = is_default_version
             if policy_document is None:
                 raise TypeError("Missing required property 'policy_document'")
