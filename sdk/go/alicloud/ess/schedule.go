@@ -6,7 +6,6 @@ package ess
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -14,12 +13,16 @@ type Schedule struct {
 	pulumi.CustomResourceState
 
 	Description          pulumi.StringOutput    `pulumi:"description"`
+	DesiredCapacity      pulumi.IntPtrOutput    `pulumi:"desiredCapacity"`
 	LaunchExpirationTime pulumi.IntPtrOutput    `pulumi:"launchExpirationTime"`
-	LaunchTime           pulumi.StringOutput    `pulumi:"launchTime"`
+	LaunchTime           pulumi.StringPtrOutput `pulumi:"launchTime"`
+	MaxValue             pulumi.IntPtrOutput    `pulumi:"maxValue"`
+	MinValue             pulumi.IntPtrOutput    `pulumi:"minValue"`
 	RecurrenceEndTime    pulumi.StringOutput    `pulumi:"recurrenceEndTime"`
 	RecurrenceType       pulumi.StringOutput    `pulumi:"recurrenceType"`
 	RecurrenceValue      pulumi.StringOutput    `pulumi:"recurrenceValue"`
-	ScheduledAction      pulumi.StringOutput    `pulumi:"scheduledAction"`
+	ScalingGroupId       pulumi.StringOutput    `pulumi:"scalingGroupId"`
+	ScheduledAction      pulumi.StringPtrOutput `pulumi:"scheduledAction"`
 	ScheduledTaskName    pulumi.StringPtrOutput `pulumi:"scheduledTaskName"`
 	TaskEnabled          pulumi.BoolPtrOutput   `pulumi:"taskEnabled"`
 }
@@ -27,12 +30,6 @@ type Schedule struct {
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
 func NewSchedule(ctx *pulumi.Context,
 	name string, args *ScheduleArgs, opts ...pulumi.ResourceOption) (*Schedule, error) {
-	if args == nil || args.LaunchTime == nil {
-		return nil, errors.New("missing required argument 'LaunchTime'")
-	}
-	if args == nil || args.ScheduledAction == nil {
-		return nil, errors.New("missing required argument 'ScheduledAction'")
-	}
 	if args == nil {
 		args = &ScheduleArgs{}
 	}
@@ -59,11 +56,15 @@ func GetSchedule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Schedule resources.
 type scheduleState struct {
 	Description          *string `pulumi:"description"`
+	DesiredCapacity      *int    `pulumi:"desiredCapacity"`
 	LaunchExpirationTime *int    `pulumi:"launchExpirationTime"`
 	LaunchTime           *string `pulumi:"launchTime"`
+	MaxValue             *int    `pulumi:"maxValue"`
+	MinValue             *int    `pulumi:"minValue"`
 	RecurrenceEndTime    *string `pulumi:"recurrenceEndTime"`
 	RecurrenceType       *string `pulumi:"recurrenceType"`
 	RecurrenceValue      *string `pulumi:"recurrenceValue"`
+	ScalingGroupId       *string `pulumi:"scalingGroupId"`
 	ScheduledAction      *string `pulumi:"scheduledAction"`
 	ScheduledTaskName    *string `pulumi:"scheduledTaskName"`
 	TaskEnabled          *bool   `pulumi:"taskEnabled"`
@@ -71,11 +72,15 @@ type scheduleState struct {
 
 type ScheduleState struct {
 	Description          pulumi.StringPtrInput
+	DesiredCapacity      pulumi.IntPtrInput
 	LaunchExpirationTime pulumi.IntPtrInput
 	LaunchTime           pulumi.StringPtrInput
+	MaxValue             pulumi.IntPtrInput
+	MinValue             pulumi.IntPtrInput
 	RecurrenceEndTime    pulumi.StringPtrInput
 	RecurrenceType       pulumi.StringPtrInput
 	RecurrenceValue      pulumi.StringPtrInput
+	ScalingGroupId       pulumi.StringPtrInput
 	ScheduledAction      pulumi.StringPtrInput
 	ScheduledTaskName    pulumi.StringPtrInput
 	TaskEnabled          pulumi.BoolPtrInput
@@ -87,12 +92,16 @@ func (ScheduleState) ElementType() reflect.Type {
 
 type scheduleArgs struct {
 	Description          *string `pulumi:"description"`
+	DesiredCapacity      *int    `pulumi:"desiredCapacity"`
 	LaunchExpirationTime *int    `pulumi:"launchExpirationTime"`
-	LaunchTime           string  `pulumi:"launchTime"`
+	LaunchTime           *string `pulumi:"launchTime"`
+	MaxValue             *int    `pulumi:"maxValue"`
+	MinValue             *int    `pulumi:"minValue"`
 	RecurrenceEndTime    *string `pulumi:"recurrenceEndTime"`
 	RecurrenceType       *string `pulumi:"recurrenceType"`
 	RecurrenceValue      *string `pulumi:"recurrenceValue"`
-	ScheduledAction      string  `pulumi:"scheduledAction"`
+	ScalingGroupId       *string `pulumi:"scalingGroupId"`
+	ScheduledAction      *string `pulumi:"scheduledAction"`
 	ScheduledTaskName    *string `pulumi:"scheduledTaskName"`
 	TaskEnabled          *bool   `pulumi:"taskEnabled"`
 }
@@ -100,12 +109,16 @@ type scheduleArgs struct {
 // The set of arguments for constructing a Schedule resource.
 type ScheduleArgs struct {
 	Description          pulumi.StringPtrInput
+	DesiredCapacity      pulumi.IntPtrInput
 	LaunchExpirationTime pulumi.IntPtrInput
-	LaunchTime           pulumi.StringInput
+	LaunchTime           pulumi.StringPtrInput
+	MaxValue             pulumi.IntPtrInput
+	MinValue             pulumi.IntPtrInput
 	RecurrenceEndTime    pulumi.StringPtrInput
 	RecurrenceType       pulumi.StringPtrInput
 	RecurrenceValue      pulumi.StringPtrInput
-	ScheduledAction      pulumi.StringInput
+	ScalingGroupId       pulumi.StringPtrInput
+	ScheduledAction      pulumi.StringPtrInput
 	ScheduledTaskName    pulumi.StringPtrInput
 	TaskEnabled          pulumi.BoolPtrInput
 }

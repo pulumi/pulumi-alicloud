@@ -218,11 +218,23 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sqlCollectorStatus!: pulumi.Output<string | undefined>;
     /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    public readonly sslAction!: pulumi.Output<string>;
+    /**
+     * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+     */
+    public /*out*/ readonly sslStatus!: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
@@ -270,7 +282,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityIps"] = state ? state.securityIps : undefined;
             inputs["sqlCollectorConfigValue"] = state ? state.sqlCollectorConfigValue : undefined;
             inputs["sqlCollectorStatus"] = state ? state.sqlCollectorStatus : undefined;
+            inputs["sslAction"] = state ? state.sslAction : undefined;
+            inputs["sslStatus"] = state ? state.sslStatus : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -309,11 +324,14 @@ export class Instance extends pulumi.CustomResource {
             inputs["securityIps"] = args ? args.securityIps : undefined;
             inputs["sqlCollectorConfigValue"] = args ? args.sqlCollectorConfigValue : undefined;
             inputs["sqlCollectorStatus"] = args ? args.sqlCollectorStatus : undefined;
+            inputs["sslAction"] = args ? args.sslAction : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["connectionString"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["sslStatus"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -442,11 +460,23 @@ export interface InstanceState {
      */
     readonly sqlCollectorStatus?: pulumi.Input<string>;
     /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    readonly sslAction?: pulumi.Input<string>;
+    /**
+     * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+     */
+    readonly sslStatus?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
@@ -567,11 +597,19 @@ export interface InstanceArgs {
      */
     readonly sqlCollectorStatus?: pulumi.Input<string>;
     /**
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     */
+    readonly sslAction?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The TDE(Transparent Data Encryption) status.
+     */
+    readonly tdeStatus?: pulumi.Input<string>;
     /**
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */

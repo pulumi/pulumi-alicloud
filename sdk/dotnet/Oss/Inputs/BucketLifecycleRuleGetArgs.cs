@@ -37,10 +37,10 @@ namespace Pulumi.AliCloud.Oss.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies.
+        /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         /// </summary>
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
+        [Input("prefix")]
+        public Input<string>? Prefix { get; set; }
 
         [Input("transitions")]
         private InputList<Inputs.BucketLifecycleRuleTransitionGetArgs>? _transitions;

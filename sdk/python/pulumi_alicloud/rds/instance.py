@@ -122,11 +122,23 @@ class Instance(pulumi.CustomResource):
     """
     The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
     """
+    ssl_action: pulumi.Output[str]
+    """
+    Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+    """
+    ssl_status: pulumi.Output[str]
+    """
+    Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+    """
     tags: pulumi.Output[dict]
     """
     A mapping of tags to assign to the resource.
     - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
     - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+    """
+    tde_status: pulumi.Output[str]
+    """
+    The TDE(Transparent Data Encryption) status.
     """
     vswitch_id: pulumi.Output[str]
     """
@@ -138,7 +150,7 @@ class Instance(pulumi.CustomResource):
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
     The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `.getZones`.
     """
-    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, resource_group_id=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, resource_group_id=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, ssl_action=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides an RDS instance resource. A DB instance is an isolated database
         environment in the cloud. A DB instance can contain multiple user-created
@@ -242,9 +254,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
@@ -305,11 +319,14 @@ class Instance(pulumi.CustomResource):
             __props__['security_ips'] = security_ips
             __props__['sql_collector_config_value'] = sql_collector_config_value
             __props__['sql_collector_status'] = sql_collector_status
+            __props__['ssl_action'] = ssl_action
             __props__['tags'] = tags
+            __props__['tde_status'] = tde_status
             __props__['vswitch_id'] = vswitch_id
             __props__['zone_id'] = zone_id
             __props__['connection_string'] = None
             __props__['port'] = None
+            __props__['ssl_status'] = None
         super(Instance, __self__).__init__(
             'alicloud:rds/instance:Instance',
             resource_name,
@@ -317,7 +334,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, resource_group_id=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, tags=None, vswitch_id=None, zone_id=None):
+    def get(resource_name, id, opts=None, auto_renew=None, auto_renew_period=None, auto_upgrade_minor_version=None, connection_string=None, db_instance_storage_type=None, engine=None, engine_version=None, force_restart=None, instance_charge_type=None, instance_name=None, instance_storage=None, instance_type=None, maintain_time=None, monitoring_period=None, parameters=None, period=None, port=None, resource_group_id=None, security_group_id=None, security_group_ids=None, security_ip_mode=None, security_ips=None, sql_collector_config_value=None, sql_collector_status=None, ssl_action=None, ssl_status=None, tags=None, tde_status=None, vswitch_id=None, zone_id=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -362,9 +379,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[list] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[float] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
+        :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        :param pulumi.Input[str] ssl_status: Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
         :param pulumi.Input[dict] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        :param pulumi.Input[str] tde_status: The TDE(Transparent Data Encryption) status.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
@@ -403,7 +423,10 @@ class Instance(pulumi.CustomResource):
         __props__["security_ips"] = security_ips
         __props__["sql_collector_config_value"] = sql_collector_config_value
         __props__["sql_collector_status"] = sql_collector_status
+        __props__["ssl_action"] = ssl_action
+        __props__["ssl_status"] = ssl_status
         __props__["tags"] = tags
+        __props__["tde_status"] = tde_status
         __props__["vswitch_id"] = vswitch_id
         __props__["zone_id"] = zone_id
         return Instance(resource_name, opts=opts, __props__=__props__)

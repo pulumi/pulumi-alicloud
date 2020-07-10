@@ -1930,6 +1930,65 @@ export namespace cs {
         tag: string;
     }
 
+    export interface GetRegistryEnterpriseSyncRulesRule {
+        /**
+         * ID of Container Registry Enterprise Edition sync rule.
+         */
+        id: string;
+        /**
+         * ID of Container Registry Enterprise Edition local instance.
+         */
+        instanceId: string;
+        /**
+         * Name of Container Registry Enterprise Edition sync rule.
+         */
+        name: string;
+        /**
+         * Name of Container Registry Enterprise Edition local namespace.
+         */
+        namespaceName: string;
+        /**
+         * Region of Container Registry Enterprise Edition local instance.
+         */
+        regionId: string;
+        /**
+         * Name of Container Registry Enterprise Edition local repo.
+         */
+        repoName: string;
+        /**
+         * `FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.
+         */
+        syncDirection: string;
+        /**
+         * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
+         */
+        syncScope: string;
+        /**
+         * `PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.
+         */
+        syncTrigger: string;
+        /**
+         * The regular expression used to filter image tags for synchronization in the source repository.
+         */
+        tagFilter: string;
+        /**
+         * ID of Container Registry Enterprise Edition target instance.
+         */
+        targetInstanceId: string;
+        /**
+         * Name of Container Registry Enterprise Edition target namespace.
+         */
+        targetNamespaceName: string;
+        /**
+         * Region of Container Registry Enterprise Edition target instance.
+         */
+        targetRegionId: string;
+        /**
+         * Name of Container Registry Enterprise Edition target repo.
+         */
+        targetRepoName: string;
+    }
+
     export interface GetServerlessKubernetesClustersCluster {
         /**
          * Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
@@ -1984,6 +2043,7 @@ export namespace cs {
 
     export interface KubernetesAddon {
         config?: string;
+        disabled?: boolean;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
@@ -2047,7 +2107,7 @@ export namespace cs {
 
     export interface ManagedKubernetesAddon {
         config?: string;
-        disabled?: string;
+        disabled?: boolean;
         /**
          * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
@@ -2313,6 +2373,42 @@ export namespace dms {
          * The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
          */
         vpcId: string;
+    }
+
+    export interface GetEnterpriseUsersUser {
+        /**
+         * The Alibaba Cloud unique ID (UID) of the user.
+         */
+        id: string;
+        /**
+         * The DingTalk number or mobile number of the user.
+         */
+        mobile: string;
+        /**
+         * The nickname of the user.
+         */
+        nickName: string;
+        /**
+         * The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
+         */
+        parentUid: number;
+        /**
+         * The list ids of the role that the user plays.
+         */
+        roleIds: number[];
+        /**
+         * The list names of the role that he user plays.
+         */
+        roleNames: string[];
+        /**
+         * The status of the user.
+         */
+        status: string;
+        uid: string;
+        /**
+         * The ID of the user.
+         */
+        userId: string;
     }
 }
 
@@ -2610,7 +2706,74 @@ export namespace drds {
 }
 
 export namespace eci {
-    export interface OpenApiImageCacheImageRegistryCredential {
+    export interface GetImageCachesCach {
+        /**
+         * The id of container group. 
+         */
+        containerGroupId: string;
+        /**
+         * Image cache pulls image event information.
+         */
+        events: outputs.eci.GetImageCachesCachEvent[];
+        /**
+         * The time of expired.
+         */
+        expireDateTime: string;
+        /**
+         * The ID of the ECI Image Cache.
+         */
+        id: string;
+        /**
+         * The id of the ECI Image Cache.
+         */
+        imageCacheId: string;
+        /**
+         * The name of ECI Image Cache.
+         */
+        imageCacheName: string;
+        /**
+         * The list of cached images.
+         */
+        images: string[];
+        /**
+         * The progress of ECI Image Cache.
+         */
+        progress: string;
+        /**
+         * The id of snapshot.
+         */
+        snapshotId: string;
+        /**
+         * The status of ECI Image Cache.
+         */
+        status: string;
+    }
+
+    export interface GetImageCachesCachEvent {
+        /**
+         * Number of events.   
+         */
+        count: number;
+        /**
+         * Start time.   
+         */
+        firstTimestamp: string;
+        /**
+         * End time.   
+         */
+        lastTimestamp: string;
+        message: string;
+        /**
+         * The name of event.   
+         */
+        name: string;
+        /**
+         * The type of event.  
+         */
+        type: string;
+    }
+
+    export interface ImageCacheImageRegistryCredential {
         /**
          * The password of the Image Registry.
          */
@@ -2622,6 +2785,12 @@ export namespace eci {
         /**
          * The user name of Image Registry.
          */
+        userName?: string;
+    }
+
+    export interface OpenApiImageCacheImageRegistryCredential {
+        password?: string;
+        server?: string;
         userName?: string;
     }
 }
@@ -5417,9 +5586,9 @@ export namespace oss {
          */
         id: string;
         /**
-         * Object key prefix identifying one or more objects to which the rule applies.
+         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
          */
-        prefix: string;
+        prefix?: string;
         /**
          * Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
          */
@@ -8190,6 +8359,42 @@ export namespace waf {
          * Name of the domain.
          */
         domain: string;
+    }
+
+    export interface GetInstancesInstance {
+        /**
+         * The timestamp (in seconds) indicating when the WAF instance expires.
+         */
+        endDate: number;
+        /**
+         * The ID of the WAF instance.
+         */
+        id: string;
+        /**
+         * Indicates whether the WAF instance has overdue payments.
+         */
+        inDebt: number;
+        /**
+         * The ID of WAF the instance.
+         */
+        instanceId: string;
+        /**
+         * The region where the WAF instance is located.
+         */
+        region: string;
+        /**
+         * The number of days before the trial period of the WAF instance expires.
+         */
+        remainDay: number;
+        /**
+         * The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
+         */
+        status: number;
+        subscriptionType: string;
+        /**
+         * Indicates whether this is a trial instance.
+         */
+        trial: number;
     }
 }
 

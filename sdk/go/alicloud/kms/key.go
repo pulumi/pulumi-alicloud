@@ -36,7 +36,7 @@ type Key struct {
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
 	// The type of the CMK.
-	KeySpec pulumi.StringPtrOutput `pulumi:"keySpec"`
+	KeySpec pulumi.StringOutput `pulumi:"keySpec"`
 	// The status of CMK. Defaults to Enabled.
 	KeyState pulumi.StringPtrOutput `pulumi:"keyState"`
 	// Specifies the usage of CMK. Currently, default to 'ENCRYPT/DECRYPT', indicating that CMK is used for encryption and decryption.

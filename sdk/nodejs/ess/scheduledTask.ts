@@ -37,6 +37,10 @@ export class ScheduledTask extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+     */
+    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    /**
      * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
      */
     public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
@@ -46,7 +50,15 @@ export class ScheduledTask extends pulumi.CustomResource {
      * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
-    public readonly launchTime!: pulumi.Output<string>;
+    public readonly launchTime!: pulumi.Output<string | undefined>;
+    /**
+     * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    public readonly maxValue!: pulumi.Output<number | undefined>;
+    /**
+     * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    public readonly minValue!: pulumi.Output<number | undefined>;
     /**
      * Specifies the end time after which the scheduled task is no longer repeated. 
      * Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
@@ -71,9 +83,13 @@ export class ScheduledTask extends pulumi.CustomResource {
      */
     public readonly recurrenceValue!: pulumi.Output<string>;
     /**
-     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+     * The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
      */
-    public readonly scheduledAction!: pulumi.Output<string>;
+    public readonly scalingGroupId!: pulumi.Output<string>;
+    /**
+     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
+     */
+    public readonly scheduledAction!: pulumi.Output<string | undefined>;
     /**
      * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
      */
@@ -90,34 +106,36 @@ export class ScheduledTask extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ScheduledTaskArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ScheduledTaskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScheduledTaskArgs | ScheduledTaskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ScheduledTaskState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["launchExpirationTime"] = state ? state.launchExpirationTime : undefined;
             inputs["launchTime"] = state ? state.launchTime : undefined;
+            inputs["maxValue"] = state ? state.maxValue : undefined;
+            inputs["minValue"] = state ? state.minValue : undefined;
             inputs["recurrenceEndTime"] = state ? state.recurrenceEndTime : undefined;
             inputs["recurrenceType"] = state ? state.recurrenceType : undefined;
             inputs["recurrenceValue"] = state ? state.recurrenceValue : undefined;
+            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["scheduledAction"] = state ? state.scheduledAction : undefined;
             inputs["scheduledTaskName"] = state ? state.scheduledTaskName : undefined;
             inputs["taskEnabled"] = state ? state.taskEnabled : undefined;
         } else {
             const args = argsOrState as ScheduledTaskArgs | undefined;
-            if (!args || args.launchTime === undefined) {
-                throw new Error("Missing required property 'launchTime'");
-            }
-            if (!args || args.scheduledAction === undefined) {
-                throw new Error("Missing required property 'scheduledAction'");
-            }
             inputs["description"] = args ? args.description : undefined;
+            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["launchExpirationTime"] = args ? args.launchExpirationTime : undefined;
             inputs["launchTime"] = args ? args.launchTime : undefined;
+            inputs["maxValue"] = args ? args.maxValue : undefined;
+            inputs["minValue"] = args ? args.minValue : undefined;
             inputs["recurrenceEndTime"] = args ? args.recurrenceEndTime : undefined;
             inputs["recurrenceType"] = args ? args.recurrenceType : undefined;
             inputs["recurrenceValue"] = args ? args.recurrenceValue : undefined;
+            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
             inputs["scheduledAction"] = args ? args.scheduledAction : undefined;
             inputs["scheduledTaskName"] = args ? args.scheduledTaskName : undefined;
             inputs["taskEnabled"] = args ? args.taskEnabled : undefined;
@@ -142,6 +160,10 @@ export interface ScheduledTaskState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+     */
+    readonly desiredCapacity?: pulumi.Input<number>;
+    /**
      * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
      */
     readonly launchExpirationTime?: pulumi.Input<number>;
@@ -152,6 +174,14 @@ export interface ScheduledTaskState {
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
     readonly launchTime?: pulumi.Input<string>;
+    /**
+     * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    readonly maxValue?: pulumi.Input<number>;
+    /**
+     * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    readonly minValue?: pulumi.Input<number>;
     /**
      * Specifies the end time after which the scheduled task is no longer repeated. 
      * Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
@@ -176,7 +206,11 @@ export interface ScheduledTaskState {
      */
     readonly recurrenceValue?: pulumi.Input<string>;
     /**
-     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+     * The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
+     */
+    readonly scalingGroupId?: pulumi.Input<string>;
+    /**
+     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
      */
     readonly scheduledAction?: pulumi.Input<string>;
     /**
@@ -198,6 +232,10 @@ export interface ScheduledTaskArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+     */
+    readonly desiredCapacity?: pulumi.Input<number>;
+    /**
      * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
      */
     readonly launchExpirationTime?: pulumi.Input<number>;
@@ -207,7 +245,15 @@ export interface ScheduledTaskArgs {
      * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
-    readonly launchTime: pulumi.Input<string>;
+    readonly launchTime?: pulumi.Input<string>;
+    /**
+     * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    readonly maxValue?: pulumi.Input<number>;
+    /**
+     * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+     */
+    readonly minValue?: pulumi.Input<number>;
     /**
      * Specifies the end time after which the scheduled task is no longer repeated. 
      * Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
@@ -232,9 +278,13 @@ export interface ScheduledTaskArgs {
      */
     readonly recurrenceValue?: pulumi.Input<string>;
     /**
-     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+     * The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
      */
-    readonly scheduledAction: pulumi.Input<string>;
+    readonly scalingGroupId?: pulumi.Input<string>;
+    /**
+     * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduledAction` and `scalingGroupId` at the same time.
+     */
+    readonly scheduledAction?: pulumi.Input<string>;
     /**
      * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
      */

@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+        /// </summary>
+        [Output("desiredCapacity")]
+        public Output<int?> DesiredCapacity { get; private set; } = null!;
+
+        /// <summary>
         /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         /// </summary>
         [Output("launchExpirationTime")]
@@ -30,7 +36,19 @@ namespace Pulumi.AliCloud.Ess
         /// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         /// </summary>
         [Output("launchTime")]
-        public Output<string> LaunchTime { get; private set; } = null!;
+        public Output<string?> LaunchTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Output("maxValue")]
+        public Output<int?> MaxValue { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Output("minValue")]
+        public Output<int?> MinValue { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the end time after which the scheduled task is no longer repeated. 
@@ -62,10 +80,16 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> RecurrenceValue { get; private set; } = null!;
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// </summary>
+        [Output("scalingGroupId")]
+        public Output<string> ScalingGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         /// </summary>
         [Output("scheduledAction")]
-        public Output<string> ScheduledAction { get; private set; } = null!;
+        public Output<string?> ScheduledAction { get; private set; } = null!;
 
         /// <summary>
         /// Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
@@ -87,7 +111,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ScheduledTask(string name, ScheduledTaskArgs args, CustomResourceOptions? options = null)
+        public ScheduledTask(string name, ScheduledTaskArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:ess/scheduledTask:ScheduledTask", name, args ?? new ScheduledTaskArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -132,6 +156,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+        /// </summary>
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
         /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         /// </summary>
         [Input("launchExpirationTime")]
@@ -143,8 +173,20 @@ namespace Pulumi.AliCloud.Ess
         /// If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
         /// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         /// </summary>
-        [Input("launchTime", required: true)]
-        public Input<string> LaunchTime { get; set; } = null!;
+        [Input("launchTime")]
+        public Input<string>? LaunchTime { get; set; }
+
+        /// <summary>
+        /// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Input("maxValue")]
+        public Input<int>? MaxValue { get; set; }
+
+        /// <summary>
+        /// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Input("minValue")]
+        public Input<int>? MinValue { get; set; }
 
         /// <summary>
         /// Specifies the end time after which the scheduled task is no longer repeated. 
@@ -176,10 +218,16 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceValue { get; set; }
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         /// </summary>
-        [Input("scheduledAction", required: true)]
-        public Input<string> ScheduledAction { get; set; } = null!;
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        /// <summary>
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// </summary>
+        [Input("scheduledAction")]
+        public Input<string>? ScheduledAction { get; set; }
 
         /// <summary>
         /// Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
@@ -207,6 +255,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+        /// </summary>
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
         /// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         /// </summary>
         [Input("launchExpirationTime")]
@@ -220,6 +274,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("launchTime")]
         public Input<string>? LaunchTime { get; set; }
+
+        /// <summary>
+        /// The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Input("maxValue")]
+        public Input<int>? MaxValue { get; set; }
+
+        /// <summary>
+        /// The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        /// </summary>
+        [Input("minValue")]
+        public Input<int>? MinValue { get; set; }
 
         /// <summary>
         /// Specifies the end time after which the scheduled task is no longer repeated. 
@@ -251,7 +317,13 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceValue { get; set; }
 
         /// <summary>
-        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+        /// The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        /// <summary>
+        /// The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         /// </summary>
         [Input("scheduledAction")]
         public Input<string>? ScheduledAction { get; set; }

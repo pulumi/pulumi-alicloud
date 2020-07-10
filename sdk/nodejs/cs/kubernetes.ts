@@ -200,7 +200,7 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly version!: pulumi.Output<string>;
     /**
      * The ID of VPC where the current cluster is located.
      */

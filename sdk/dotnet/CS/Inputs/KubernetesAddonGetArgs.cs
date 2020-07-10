@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("config")]
         public Input<string>? Config { get; set; }
 
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
         /// <summary>
         /// The kubernetes cluster's name. It is unique in one Alicloud account.
         /// </summary>

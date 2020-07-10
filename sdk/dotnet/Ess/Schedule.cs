@@ -14,11 +14,20 @@ namespace Pulumi.AliCloud.Ess
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("desiredCapacity")]
+        public Output<int?> DesiredCapacity { get; private set; } = null!;
+
         [Output("launchExpirationTime")]
         public Output<int?> LaunchExpirationTime { get; private set; } = null!;
 
         [Output("launchTime")]
-        public Output<string> LaunchTime { get; private set; } = null!;
+        public Output<string?> LaunchTime { get; private set; } = null!;
+
+        [Output("maxValue")]
+        public Output<int?> MaxValue { get; private set; } = null!;
+
+        [Output("minValue")]
+        public Output<int?> MinValue { get; private set; } = null!;
 
         [Output("recurrenceEndTime")]
         public Output<string> RecurrenceEndTime { get; private set; } = null!;
@@ -29,8 +38,11 @@ namespace Pulumi.AliCloud.Ess
         [Output("recurrenceValue")]
         public Output<string> RecurrenceValue { get; private set; } = null!;
 
+        [Output("scalingGroupId")]
+        public Output<string> ScalingGroupId { get; private set; } = null!;
+
         [Output("scheduledAction")]
-        public Output<string> ScheduledAction { get; private set; } = null!;
+        public Output<string?> ScheduledAction { get; private set; } = null!;
 
         [Output("scheduledTaskName")]
         public Output<string?> ScheduledTaskName { get; private set; } = null!;
@@ -46,7 +58,7 @@ namespace Pulumi.AliCloud.Ess
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Schedule(string name, ScheduleArgs args, CustomResourceOptions? options = null)
+        public Schedule(string name, ScheduleArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:ess/schedule:Schedule", name, args ?? new ScheduleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -87,11 +99,20 @@ namespace Pulumi.AliCloud.Ess
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
+
         [Input("launchExpirationTime")]
         public Input<int>? LaunchExpirationTime { get; set; }
 
-        [Input("launchTime", required: true)]
-        public Input<string> LaunchTime { get; set; } = null!;
+        [Input("launchTime")]
+        public Input<string>? LaunchTime { get; set; }
+
+        [Input("maxValue")]
+        public Input<int>? MaxValue { get; set; }
+
+        [Input("minValue")]
+        public Input<int>? MinValue { get; set; }
 
         [Input("recurrenceEndTime")]
         public Input<string>? RecurrenceEndTime { get; set; }
@@ -102,8 +123,11 @@ namespace Pulumi.AliCloud.Ess
         [Input("recurrenceValue")]
         public Input<string>? RecurrenceValue { get; set; }
 
-        [Input("scheduledAction", required: true)]
-        public Input<string> ScheduledAction { get; set; } = null!;
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
+
+        [Input("scheduledAction")]
+        public Input<string>? ScheduledAction { get; set; }
 
         [Input("scheduledTaskName")]
         public Input<string>? ScheduledTaskName { get; set; }
@@ -121,11 +145,20 @@ namespace Pulumi.AliCloud.Ess
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("desiredCapacity")]
+        public Input<int>? DesiredCapacity { get; set; }
+
         [Input("launchExpirationTime")]
         public Input<int>? LaunchExpirationTime { get; set; }
 
         [Input("launchTime")]
         public Input<string>? LaunchTime { get; set; }
+
+        [Input("maxValue")]
+        public Input<int>? MaxValue { get; set; }
+
+        [Input("minValue")]
+        public Input<int>? MinValue { get; set; }
 
         [Input("recurrenceEndTime")]
         public Input<string>? RecurrenceEndTime { get; set; }
@@ -135,6 +168,9 @@ namespace Pulumi.AliCloud.Ess
 
         [Input("recurrenceValue")]
         public Input<string>? RecurrenceValue { get; set; }
+
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
 
         [Input("scheduledAction")]
         public Input<string>? ScheduledAction { get; set; }

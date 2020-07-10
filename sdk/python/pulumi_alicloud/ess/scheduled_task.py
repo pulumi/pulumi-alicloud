@@ -14,6 +14,10 @@ class ScheduledTask(pulumi.CustomResource):
     """
     Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
     """
+    desired_capacity: pulumi.Output[float]
+    """
+    The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
+    """
     launch_expiration_time: pulumi.Output[float]
     """
     The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
@@ -24,6 +28,14 @@ class ScheduledTask(pulumi.CustomResource):
     The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
     If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
     Otherwise, the task is only executed once at the date and time specified by LaunchTime.
+    """
+    max_value: pulumi.Output[float]
+    """
+    The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+    """
+    min_value: pulumi.Output[float]
+    """
+    The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
     """
     recurrence_end_time: pulumi.Output[str]
     """
@@ -48,9 +60,13 @@ class ScheduledTask(pulumi.CustomResource):
     - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
     - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
     """
+    scaling_group_id: pulumi.Output[str]
+    """
+    The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+    """
     scheduled_action: pulumi.Output[str]
     """
-    The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+    The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
     """
     scheduled_task_name: pulumi.Output[str]
     """
@@ -60,17 +76,20 @@ class ScheduledTask(pulumi.CustomResource):
     """
     Specifies whether to start the scheduled task. Default to true.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, launch_expiration_time=None, launch_time=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, desired_capacity=None, launch_expiration_time=None, launch_time=None, max_value=None, min_value=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scaling_group_id=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a ScheduledTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
+        :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
+        :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. 
                Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
                The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
@@ -85,7 +104,8 @@ class ScheduledTask(pulumi.CustomResource):
                - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
                - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
                - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
-        :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+        :param pulumi.Input[str] scaling_group_id: The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         :param pulumi.Input[str] scheduled_task_name: Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         :param pulumi.Input[bool] task_enabled: Specifies whether to start the scheduled task. Default to true.
         """
@@ -107,15 +127,15 @@ class ScheduledTask(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            __props__['desired_capacity'] = desired_capacity
             __props__['launch_expiration_time'] = launch_expiration_time
-            if launch_time is None:
-                raise TypeError("Missing required property 'launch_time'")
             __props__['launch_time'] = launch_time
+            __props__['max_value'] = max_value
+            __props__['min_value'] = min_value
             __props__['recurrence_end_time'] = recurrence_end_time
             __props__['recurrence_type'] = recurrence_type
             __props__['recurrence_value'] = recurrence_value
-            if scheduled_action is None:
-                raise TypeError("Missing required property 'scheduled_action'")
+            __props__['scaling_group_id'] = scaling_group_id
             __props__['scheduled_action'] = scheduled_action
             __props__['scheduled_task_name'] = scheduled_task_name
             __props__['task_enabled'] = task_enabled
@@ -126,7 +146,7 @@ class ScheduledTask(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, launch_expiration_time=None, launch_time=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None):
+    def get(resource_name, id, opts=None, description=None, desired_capacity=None, launch_expiration_time=None, launch_time=None, max_value=None, min_value=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scaling_group_id=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None):
         """
         Get an existing ScheduledTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -135,11 +155,14 @@ class ScheduledTask(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
+        :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
         :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
+        :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
+        :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. 
                Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
                The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
@@ -154,7 +177,8 @@ class ScheduledTask(pulumi.CustomResource):
                - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
                - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
                - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
-        :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.
+        :param pulumi.Input[str] scaling_group_id: The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
+        :param pulumi.Input[str] scheduled_action: The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
         :param pulumi.Input[str] scheduled_task_name: Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
         :param pulumi.Input[bool] task_enabled: Specifies whether to start the scheduled task. Default to true.
         """
@@ -163,11 +187,15 @@ class ScheduledTask(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["description"] = description
+        __props__["desired_capacity"] = desired_capacity
         __props__["launch_expiration_time"] = launch_expiration_time
         __props__["launch_time"] = launch_time
+        __props__["max_value"] = max_value
+        __props__["min_value"] = min_value
         __props__["recurrence_end_time"] = recurrence_end_time
         __props__["recurrence_type"] = recurrence_type
         __props__["recurrence_value"] = recurrence_value
+        __props__["scaling_group_id"] = scaling_group_id
         __props__["scheduled_action"] = scheduled_action
         __props__["scheduled_task_name"] = scheduled_task_name
         __props__["task_enabled"] = task_enabled

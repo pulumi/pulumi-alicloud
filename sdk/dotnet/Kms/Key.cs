@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Kms
         /// The type of the CMK.
         /// </summary>
         [Output("keySpec")]
-        public Output<string?> KeySpec { get; private set; } = null!;
+        public Output<string> KeySpec { get; private set; } = null!;
 
         /// <summary>
         /// The status of CMK. Defaults to Enabled.

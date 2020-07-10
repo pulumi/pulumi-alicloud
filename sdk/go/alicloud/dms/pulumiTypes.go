@@ -298,7 +298,177 @@ func (o GetEnterpriseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetE
 	}).(GetEnterpriseInstancesInstanceOutput)
 }
 
+type GetEnterpriseUsersUser struct {
+	// The Alibaba Cloud unique ID (UID) of the user.
+	Id string `pulumi:"id"`
+	// The DingTalk number or mobile number of the user.
+	Mobile string `pulumi:"mobile"`
+	// The nickname of the user.
+	NickName string `pulumi:"nickName"`
+	// The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
+	ParentUid int `pulumi:"parentUid"`
+	// The list ids of the role that the user plays.
+	RoleIds []int `pulumi:"roleIds"`
+	// The list names of the role that he user plays.
+	RoleNames []string `pulumi:"roleNames"`
+	// The status of the user.
+	Status string `pulumi:"status"`
+	Uid    string `pulumi:"uid"`
+	// The ID of the user.
+	UserId string `pulumi:"userId"`
+}
+
+// GetEnterpriseUsersUserInput is an input type that accepts GetEnterpriseUsersUserArgs and GetEnterpriseUsersUserOutput values.
+// You can construct a concrete instance of `GetEnterpriseUsersUserInput` via:
+//
+// 		 GetEnterpriseUsersUserArgs{...}
+//
+type GetEnterpriseUsersUserInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseUsersUserOutput() GetEnterpriseUsersUserOutput
+	ToGetEnterpriseUsersUserOutputWithContext(context.Context) GetEnterpriseUsersUserOutput
+}
+
+type GetEnterpriseUsersUserArgs struct {
+	// The Alibaba Cloud unique ID (UID) of the user.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The DingTalk number or mobile number of the user.
+	Mobile pulumi.StringInput `pulumi:"mobile"`
+	// The nickname of the user.
+	NickName pulumi.StringInput `pulumi:"nickName"`
+	// The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
+	ParentUid pulumi.IntInput `pulumi:"parentUid"`
+	// The list ids of the role that the user plays.
+	RoleIds pulumi.IntArrayInput `pulumi:"roleIds"`
+	// The list names of the role that he user plays.
+	RoleNames pulumi.StringArrayInput `pulumi:"roleNames"`
+	// The status of the user.
+	Status pulumi.StringInput `pulumi:"status"`
+	Uid    pulumi.StringInput `pulumi:"uid"`
+	// The ID of the user.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (GetEnterpriseUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseUsersUser)(nil)).Elem()
+}
+
+func (i GetEnterpriseUsersUserArgs) ToGetEnterpriseUsersUserOutput() GetEnterpriseUsersUserOutput {
+	return i.ToGetEnterpriseUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseUsersUserArgs) ToGetEnterpriseUsersUserOutputWithContext(ctx context.Context) GetEnterpriseUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseUsersUserOutput)
+}
+
+// GetEnterpriseUsersUserArrayInput is an input type that accepts GetEnterpriseUsersUserArray and GetEnterpriseUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetEnterpriseUsersUserArrayInput` via:
+//
+// 		 GetEnterpriseUsersUserArray{ GetEnterpriseUsersUserArgs{...} }
+//
+type GetEnterpriseUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetEnterpriseUsersUserArrayOutput() GetEnterpriseUsersUserArrayOutput
+	ToGetEnterpriseUsersUserArrayOutputWithContext(context.Context) GetEnterpriseUsersUserArrayOutput
+}
+
+type GetEnterpriseUsersUserArray []GetEnterpriseUsersUserInput
+
+func (GetEnterpriseUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseUsersUser)(nil)).Elem()
+}
+
+func (i GetEnterpriseUsersUserArray) ToGetEnterpriseUsersUserArrayOutput() GetEnterpriseUsersUserArrayOutput {
+	return i.ToGetEnterpriseUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnterpriseUsersUserArray) ToGetEnterpriseUsersUserArrayOutputWithContext(ctx context.Context) GetEnterpriseUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnterpriseUsersUserArrayOutput)
+}
+
+type GetEnterpriseUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnterpriseUsersUser)(nil)).Elem()
+}
+
+func (o GetEnterpriseUsersUserOutput) ToGetEnterpriseUsersUserOutput() GetEnterpriseUsersUserOutput {
+	return o
+}
+
+func (o GetEnterpriseUsersUserOutput) ToGetEnterpriseUsersUserOutputWithContext(ctx context.Context) GetEnterpriseUsersUserOutput {
+	return o
+}
+
+// The Alibaba Cloud unique ID (UID) of the user.
+func (o GetEnterpriseUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The DingTalk number or mobile number of the user.
+func (o GetEnterpriseUsersUserOutput) Mobile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.Mobile }).(pulumi.StringOutput)
+}
+
+// The nickname of the user.
+func (o GetEnterpriseUsersUserOutput) NickName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.NickName }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
+func (o GetEnterpriseUsersUserOutput) ParentUid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) int { return v.ParentUid }).(pulumi.IntOutput)
+}
+
+// The list ids of the role that the user plays.
+func (o GetEnterpriseUsersUserOutput) RoleIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) []int { return v.RoleIds }).(pulumi.IntArrayOutput)
+}
+
+// The list names of the role that he user plays.
+func (o GetEnterpriseUsersUserOutput) RoleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) []string { return v.RoleNames }).(pulumi.StringArrayOutput)
+}
+
+// The status of the user.
+func (o GetEnterpriseUsersUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o GetEnterpriseUsersUserOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The ID of the user.
+func (o GetEnterpriseUsersUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnterpriseUsersUser) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type GetEnterpriseUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnterpriseUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnterpriseUsersUser)(nil)).Elem()
+}
+
+func (o GetEnterpriseUsersUserArrayOutput) ToGetEnterpriseUsersUserArrayOutput() GetEnterpriseUsersUserArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseUsersUserArrayOutput) ToGetEnterpriseUsersUserArrayOutputWithContext(ctx context.Context) GetEnterpriseUsersUserArrayOutput {
+	return o
+}
+
+func (o GetEnterpriseUsersUserArrayOutput) Index(i pulumi.IntInput) GetEnterpriseUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnterpriseUsersUser {
+		return vs[0].([]GetEnterpriseUsersUser)[vs[1].(int)]
+	}).(GetEnterpriseUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEnterpriseInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseUsersUserOutput{})
+	pulumi.RegisterOutputType(GetEnterpriseUsersUserArrayOutput{})
 }

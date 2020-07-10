@@ -219,12 +219,30 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Output("sslAction")]
+        public Output<string> SslAction { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        /// </summary>
+        [Output("sslStatus")]
+        public Output<string> SslStatus { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Output("tdeStatus")]
+        public Output<string?> TdeStatus { get; private set; } = null!;
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -449,6 +467,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("sqlCollectorStatus")]
         public Input<string>? SqlCollectorStatus { get; set; }
 
+        /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -462,6 +486,12 @@ namespace Pulumi.AliCloud.Rds
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -659,6 +689,18 @@ namespace Pulumi.AliCloud.Rds
         [Input("sqlCollectorStatus")]
         public Input<string>? SqlCollectorStatus { get; set; }
 
+        /// <summary>
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// </summary>
+        [Input("sslAction")]
+        public Input<string>? SslAction { get; set; }
+
+        /// <summary>
+        /// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+        /// </summary>
+        [Input("sslStatus")]
+        public Input<string>? SslStatus { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -672,6 +714,12 @@ namespace Pulumi.AliCloud.Rds
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The TDE(Transparent Data Encryption) status.
+        /// </summary>
+        [Input("tdeStatus")]
+        public Input<string>? TdeStatus { get; set; }
 
         /// <summary>
         /// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.

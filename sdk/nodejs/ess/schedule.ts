@@ -33,12 +33,16 @@ export class Schedule extends pulumi.CustomResource {
     }
 
     public readonly description!: pulumi.Output<string>;
+    public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
-    public readonly launchTime!: pulumi.Output<string>;
+    public readonly launchTime!: pulumi.Output<string | undefined>;
+    public readonly maxValue!: pulumi.Output<number | undefined>;
+    public readonly minValue!: pulumi.Output<number | undefined>;
     public readonly recurrenceEndTime!: pulumi.Output<string>;
     public readonly recurrenceType!: pulumi.Output<string>;
     public readonly recurrenceValue!: pulumi.Output<string>;
-    public readonly scheduledAction!: pulumi.Output<string>;
+    public readonly scalingGroupId!: pulumi.Output<string>;
+    public readonly scheduledAction!: pulumi.Output<string | undefined>;
     public readonly scheduledTaskName!: pulumi.Output<string | undefined>;
     public readonly taskEnabled!: pulumi.Output<boolean | undefined>;
 
@@ -49,34 +53,36 @@ export class Schedule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ScheduleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ScheduleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ScheduleArgs | ScheduleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ScheduleState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
             inputs["launchExpirationTime"] = state ? state.launchExpirationTime : undefined;
             inputs["launchTime"] = state ? state.launchTime : undefined;
+            inputs["maxValue"] = state ? state.maxValue : undefined;
+            inputs["minValue"] = state ? state.minValue : undefined;
             inputs["recurrenceEndTime"] = state ? state.recurrenceEndTime : undefined;
             inputs["recurrenceType"] = state ? state.recurrenceType : undefined;
             inputs["recurrenceValue"] = state ? state.recurrenceValue : undefined;
+            inputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             inputs["scheduledAction"] = state ? state.scheduledAction : undefined;
             inputs["scheduledTaskName"] = state ? state.scheduledTaskName : undefined;
             inputs["taskEnabled"] = state ? state.taskEnabled : undefined;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if (!args || args.launchTime === undefined) {
-                throw new Error("Missing required property 'launchTime'");
-            }
-            if (!args || args.scheduledAction === undefined) {
-                throw new Error("Missing required property 'scheduledAction'");
-            }
             inputs["description"] = args ? args.description : undefined;
+            inputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
             inputs["launchExpirationTime"] = args ? args.launchExpirationTime : undefined;
             inputs["launchTime"] = args ? args.launchTime : undefined;
+            inputs["maxValue"] = args ? args.maxValue : undefined;
+            inputs["minValue"] = args ? args.minValue : undefined;
             inputs["recurrenceEndTime"] = args ? args.recurrenceEndTime : undefined;
             inputs["recurrenceType"] = args ? args.recurrenceType : undefined;
             inputs["recurrenceValue"] = args ? args.recurrenceValue : undefined;
+            inputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
             inputs["scheduledAction"] = args ? args.scheduledAction : undefined;
             inputs["scheduledTaskName"] = args ? args.scheduledTaskName : undefined;
             inputs["taskEnabled"] = args ? args.taskEnabled : undefined;
@@ -97,11 +103,15 @@ export class Schedule extends pulumi.CustomResource {
  */
 export interface ScheduleState {
     readonly description?: pulumi.Input<string>;
+    readonly desiredCapacity?: pulumi.Input<number>;
     readonly launchExpirationTime?: pulumi.Input<number>;
     readonly launchTime?: pulumi.Input<string>;
+    readonly maxValue?: pulumi.Input<number>;
+    readonly minValue?: pulumi.Input<number>;
     readonly recurrenceEndTime?: pulumi.Input<string>;
     readonly recurrenceType?: pulumi.Input<string>;
     readonly recurrenceValue?: pulumi.Input<string>;
+    readonly scalingGroupId?: pulumi.Input<string>;
     readonly scheduledAction?: pulumi.Input<string>;
     readonly scheduledTaskName?: pulumi.Input<string>;
     readonly taskEnabled?: pulumi.Input<boolean>;
@@ -112,12 +122,16 @@ export interface ScheduleState {
  */
 export interface ScheduleArgs {
     readonly description?: pulumi.Input<string>;
+    readonly desiredCapacity?: pulumi.Input<number>;
     readonly launchExpirationTime?: pulumi.Input<number>;
-    readonly launchTime: pulumi.Input<string>;
+    readonly launchTime?: pulumi.Input<string>;
+    readonly maxValue?: pulumi.Input<number>;
+    readonly minValue?: pulumi.Input<number>;
     readonly recurrenceEndTime?: pulumi.Input<string>;
     readonly recurrenceType?: pulumi.Input<string>;
     readonly recurrenceValue?: pulumi.Input<string>;
-    readonly scheduledAction: pulumi.Input<string>;
+    readonly scalingGroupId?: pulumi.Input<string>;
+    readonly scheduledAction?: pulumi.Input<string>;
     readonly scheduledTaskName?: pulumi.Input<string>;
     readonly taskEnabled?: pulumi.Input<boolean>;
 }

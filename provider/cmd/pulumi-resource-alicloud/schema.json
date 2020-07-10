@@ -4153,6 +4153,14 @@
                         }
                     }
                 },
+                "disabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "The kubernetes cluster's name. It is unique in one Alicloud account.\n",
@@ -4318,7 +4326,7 @@
                     }
                 },
                 "disabled": {
-                    "type": "string",
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5563,6 +5571,158 @@
                 }
             }
         },
+        "alicloud:cs/getRegistryEnterpriseSyncRulesRule:getRegistryEnterpriseSyncRulesRule": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition sync rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition local instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition sync rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition local namespace.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regionId": {
+                    "type": "string",
+                    "description": "Region of Container Registry Enterprise Edition local instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition local repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncDirection": {
+                    "type": "string",
+                    "description": "`FROM` or `TO`, the direction of synchronization. `FROM` indicates that the local instance is the source instance. `TO` indicates that the local instance is the target instance to be synchronized.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncScope": {
+                    "type": "string",
+                    "description": "`REPO` or `NAMESPACE`,the scope that the synchronization rule applies.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "syncTrigger": {
+                    "type": "string",
+                    "description": "`PASSIVE` or `INITIATIVE`, the policy configured to trigger the synchronization rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tagFilter": {
+                    "type": "string",
+                    "description": "The regular expression used to filter image tags for synchronization in the source repository.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetInstanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition target instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetNamespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition target namespace.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetRegionId": {
+                    "type": "string",
+                    "description": "Region of Container Registry Enterprise Edition target instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "targetRepoName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition target repo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "instanceId",
+                "name",
+                "namespaceName",
+                "regionId",
+                "repoName",
+                "syncDirection",
+                "syncScope",
+                "syncTrigger",
+                "tagFilter",
+                "targetInstanceId",
+                "targetNamespaceName",
+                "targetRegionId",
+                "targetRepoName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:cs/getServerlessKubernetesClustersCluster:getServerlessKubernetesClustersCluster": {
             "properties": {
                 "connections": {
@@ -6463,6 +6623,113 @@
                 }
             }
         },
+        "alicloud:dms/getEnterpriseUsersUser:getEnterpriseUsersUser": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The Alibaba Cloud unique ID (UID) of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mobile": {
+                    "type": "string",
+                    "description": "The DingTalk number or mobile number of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nickName": {
+                    "type": "string",
+                    "description": "The nickname of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentUid": {
+                    "type": "integer",
+                    "description": "The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "The list ids of the role that the user plays.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list names of the role that he user plays.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "mobile",
+                "nickName",
+                "parentUid",
+                "roleIds",
+                "roleNames",
+                "status",
+                "uid",
+                "userId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:dns/getAlidnsDomainGroupsGroup:getAlidnsDomainGroupsGroup": {
             "properties": {
                 "domainCount": {
@@ -7334,7 +7601,7 @@
                 }
             }
         },
-        "alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential": {
+        "alicloud:eci/ImageCacheImageRegistryCredential:ImageCacheImageRegistryCredential": {
             "properties": {
                 "password": {
                     "type": "string",
@@ -7365,6 +7632,224 @@
                 }
             },
             "type": "object"
+        },
+        "alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "server": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "alicloud:eci/getImageCachesCach:getImageCachesCach": {
+            "properties": {
+                "containerGroupId": {
+                    "type": "string",
+                    "description": "The id of container group. \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "events": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:eci/getImageCachesCachEvent:getImageCachesCachEvent"
+                    },
+                    "description": "Image cache pulls image event information.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expireDateTime": {
+                    "type": "string",
+                    "description": "The time of expired.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the ECI Image Cache.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageCacheId": {
+                    "type": "string",
+                    "description": "The id of the ECI Image Cache.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "imageCacheName": {
+                    "type": "string",
+                    "description": "The name of ECI Image Cache.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of cached images.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "progress": {
+                    "type": "string",
+                    "description": "The progress of ECI Image Cache.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "The id of snapshot.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of ECI Image Cache.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "containerGroupId",
+                "events",
+                "expireDateTime",
+                "id",
+                "imageCacheId",
+                "imageCacheName",
+                "images",
+                "progress",
+                "snapshotId",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "alicloud:eci/getImageCachesCachEvent:getImageCachesCachEvent": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "Number of events.   \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstTimestamp": {
+                    "type": "string",
+                    "description": "Start time.   \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastTimestamp": {
+                    "type": "string",
+                    "description": "End time.   \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of event.   \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of event.  \n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "count",
+                "firstTimestamp",
+                "lastTimestamp",
+                "message",
+                "name",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "alicloud:ecs/AutoProvisioningGroupLaunchTemplateConfig:AutoProvisioningGroupLaunchTemplateConfig": {
             "properties": {
@@ -15342,7 +15827,7 @@
                 },
                 "prefix": {
                     "type": "string",
-                    "description": "Object key prefix identifying one or more objects to which the rule applies.\n",
+                    "description": "Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15364,15 +15849,13 @@
             },
             "type": "object",
             "required": [
-                "enabled",
-                "prefix"
+                "enabled"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled",
-                        "id",
-                        "prefix"
+                        "id"
                     ]
                 }
             }
@@ -23011,6 +23494,107 @@
                 }
             }
         },
+        "alicloud:waf/getInstancesInstance:getInstancesInstance": {
+            "properties": {
+                "endDate": {
+                    "type": "integer",
+                    "description": "The timestamp (in seconds) indicating when the WAF instance expires.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the WAF instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "inDebt": {
+                    "type": "integer",
+                    "description": "Indicates whether the WAF instance has overdue payments.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The ID of WAF the instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the WAF instance is located.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remainDay": {
+                    "type": "integer",
+                    "description": "The number of days before the trial period of the WAF instance expires.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subscriptionType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trial": {
+                    "type": "integer",
+                    "description": "Indicates whether this is a trial instance.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "endDate",
+                "id",
+                "inDebt",
+                "instanceId",
+                "region",
+                "remainDay",
+                "status",
+                "subscriptionType",
+                "trial"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "alicloud:yundun/getBastionHostInstancesInstance:getBastionHostInstancesInstance": {
             "properties": {
                 "description": {
@@ -25980,6 +26564,10 @@
                     "$ref": "#/types/alicloud:cdn/DomainNewCertificateConfig:DomainNewCertificateConfig",
                     "description": "Certificate config of the accelerated domain. It's a list and consist of at most 1 item.\n"
                 },
+                "cname": {
+                    "type": "string",
+                    "description": "(Available in v1.90.0+) The CNAME of the CDN domain.\n"
+                },
                 "domainName": {
                     "type": "string",
                     "description": "Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or \"-\", and must not begin or end with \"-\", and \"-\" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.\n"
@@ -26007,6 +26595,7 @@
             "required": [
                 "cdnType",
                 "certificateConfig",
+                "cname",
                 "domainName",
                 "resourceGroupId",
                 "scope",
@@ -26060,6 +26649,10 @@
                     "certificateConfig": {
                         "$ref": "#/types/alicloud:cdn/DomainNewCertificateConfig:DomainNewCertificateConfig",
                         "description": "Certificate config of the accelerated domain. It's a list and consist of at most 1 item.\n"
+                    },
+                    "cname": {
+                        "type": "string",
+                        "description": "(Available in v1.90.0+) The CNAME of the CDN domain.\n"
                     },
                     "domainName": {
                         "type": "string",
@@ -28742,6 +29335,7 @@
                 "slbId",
                 "slbInternet",
                 "slbIntranet",
+                "version",
                 "vpcId",
                 "workerInstanceTypes",
                 "workerNodes",
@@ -30147,6 +30741,171 @@
                 "type": "object"
             }
         },
+        "alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule": {
+            "description": "This resource will help you to manager Container Registry Enterprise Edition sync rules.\n\nFor information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)\n\n\u003e **NOTE:** Available in v1.90.0+.\n\n\u003e **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition source instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition sync rule.\n"
+                },
+                "namespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.\n"
+                },
+                "ruleId": {
+                    "type": "string",
+                    "description": "The uuid of Container Registry Enterprise Edition sync rule.\n"
+                },
+                "syncDirection": {
+                    "type": "string",
+                    "description": "`FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.\n"
+                },
+                "syncScope": {
+                    "type": "string",
+                    "description": "`REPO` or `NAMESPACE`,the scope that the synchronization rule applies.\n"
+                },
+                "tagFilter": {
+                    "type": "string",
+                    "description": "The regular expression used to filter image tags for synchronization in the source repository.\n"
+                },
+                "targetInstanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition target instance to be synchronized.\n"
+                },
+                "targetNamespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.\n"
+                },
+                "targetRegionId": {
+                    "type": "string",
+                    "description": "The target region to be synchronized.\n"
+                },
+                "targetRepoName": {
+                    "type": "string",
+                    "description": "Name of the target repository.\n"
+                }
+            },
+            "required": [
+                "instanceId",
+                "name",
+                "namespaceName",
+                "ruleId",
+                "syncDirection",
+                "syncScope",
+                "tagFilter",
+                "targetInstanceId",
+                "targetNamespaceName",
+                "targetRegionId"
+            ],
+            "inputProperties": {
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition source instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition sync rule.\n"
+                },
+                "namespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.\n"
+                },
+                "tagFilter": {
+                    "type": "string",
+                    "description": "The regular expression used to filter image tags for synchronization in the source repository.\n"
+                },
+                "targetInstanceId": {
+                    "type": "string",
+                    "description": "ID of Container Registry Enterprise Edition target instance to be synchronized.\n"
+                },
+                "targetNamespaceName": {
+                    "type": "string",
+                    "description": "Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.\n"
+                },
+                "targetRegionId": {
+                    "type": "string",
+                    "description": "The target region to be synchronized.\n"
+                },
+                "targetRepoName": {
+                    "type": "string",
+                    "description": "Name of the target repository.\n"
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "namespaceName",
+                "tagFilter",
+                "targetInstanceId",
+                "targetNamespaceName",
+                "targetRegionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegistryEnterpriseSyncRule resources.\n",
+                "properties": {
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition source instance.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition sync rule.\n"
+                    },
+                    "namespaceName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.\n"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.\n"
+                    },
+                    "ruleId": {
+                        "type": "string",
+                        "description": "The uuid of Container Registry Enterprise Edition sync rule.\n"
+                    },
+                    "syncDirection": {
+                        "type": "string",
+                        "description": "`FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.\n"
+                    },
+                    "syncScope": {
+                        "type": "string",
+                        "description": "`REPO` or `NAMESPACE`,the scope that the synchronization rule applies.\n"
+                    },
+                    "tagFilter": {
+                        "type": "string",
+                        "description": "The regular expression used to filter image tags for synchronization in the source repository.\n"
+                    },
+                    "targetInstanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition target instance to be synchronized.\n"
+                    },
+                    "targetNamespaceName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.\n"
+                    },
+                    "targetRegionId": {
+                        "type": "string",
+                        "description": "The target region to be synchronized.\n"
+                    },
+                    "targetRepoName": {
+                        "type": "string",
+                        "description": "Name of the target repository.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:cs/serverlessKubernetes:ServerlessKubernetes": {
             "properties": {
                 "clientCert": {
@@ -31538,6 +32297,130 @@
                 "type": "object"
             }
         },
+        "alicloud:dms/enterpriseUser:EnterpriseUser": {
+            "description": "Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).\n\n\u003e **NOTE:** Available in 1.90.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "maxExecuteCount": {
+                    "type": "integer",
+                    "description": "Maximum number of inquiries on the day.\n"
+                },
+                "maxResultCount": {
+                    "type": "integer",
+                    "description": "Query the maximum number of rows on the day.\n"
+                },
+                "mobile": {
+                    "type": "string",
+                    "description": "The DingTalk number or mobile number of the user.\n"
+                },
+                "nickName": {
+                    "type": "string",
+                    "description": "The nickname of the user.\n"
+                },
+                "roleNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The roles that the user plays.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.\n"
+                },
+                "tid": {
+                    "type": "integer",
+                    "description": "The tenant ID. \n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "The Alibaba Cloud unique ID (UID) of the user to add.\n"
+                }
+            },
+            "required": [
+                "uid"
+            ],
+            "inputProperties": {
+                "maxExecuteCount": {
+                    "type": "integer",
+                    "description": "Maximum number of inquiries on the day.\n"
+                },
+                "maxResultCount": {
+                    "type": "integer",
+                    "description": "Query the maximum number of rows on the day.\n"
+                },
+                "mobile": {
+                    "type": "string",
+                    "description": "The DingTalk number or mobile number of the user.\n"
+                },
+                "nickName": {
+                    "type": "string",
+                    "description": "The nickname of the user.\n"
+                },
+                "roleNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The roles that the user plays.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.\n"
+                },
+                "tid": {
+                    "type": "integer",
+                    "description": "The tenant ID. \n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "The Alibaba Cloud unique ID (UID) of the user to add.\n"
+                }
+            },
+            "requiredInputs": [
+                "uid"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EnterpriseUser resources.\n",
+                "properties": {
+                    "maxExecuteCount": {
+                        "type": "integer",
+                        "description": "Maximum number of inquiries on the day.\n"
+                    },
+                    "maxResultCount": {
+                        "type": "integer",
+                        "description": "Query the maximum number of rows on the day.\n"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "The DingTalk number or mobile number of the user.\n"
+                    },
+                    "nickName": {
+                        "type": "string",
+                        "description": "The nickname of the user.\n"
+                    },
+                    "roleNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The roles that the user plays.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.\n"
+                    },
+                    "tid": {
+                        "type": "integer",
+                        "description": "The tenant ID. \n"
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "The Alibaba Cloud unique ID (UID) of the user to add.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "alicloud:dns/alidnsRecord:AlidnsRecord": {
             "description": "Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).\n\n\u003e **NOTE:** Available in v1.85.0+.\n\n\u003e **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Create a new Domain Record\nconst record = new alicloud.dns.AlidnsRecord(\"record\", {\n    domainName: \"domainname\",\n    remark: \"Test new alidns record.\",\n    rr: \"@\",\n    status: \"ENABLE\",\n    type: \"A\",\n    value: \"192.168.99.99\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Create a new Domain Record\nrecord = alicloud.dns.AlidnsRecord(\"record\",\n    domain_name=\"domainname\",\n    remark=\"Test new alidns record.\",\n    rr=\"@\",\n    status=\"ENABLE\",\n    type=\"A\",\n    value=\"192.168.99.99\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Domain Record\n        var record = new AliCloud.Dns.AlidnsRecord(\"record\", new AliCloud.Dns.AlidnsRecordArgs\n        {\n            DomainName = \"domainname\",\n            Remark = \"Test new alidns record.\",\n            Rr = \"@\",\n            Status = \"ENABLE\",\n            Type = \"A\",\n            Value = \"192.168.99.99\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -32560,7 +33443,7 @@
                 "type": "object"
             }
         },
-        "alicloud:eci/openApiImageCache:OpenApiImageCache": {
+        "alicloud:eci/imageCache:ImageCache": {
             "description": "An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).\n\n\u003e **NOTE:** Available in v1.89.0+.\n\n\u003e **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "containerGroupId": {
@@ -32582,7 +33465,7 @@
                 "imageRegistryCredentials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                        "$ref": "#/types/alicloud:eci/ImageCacheImageRegistryCredential:ImageCacheImageRegistryCredential"
                     },
                     "description": "The Image Registry parameters about the image to be cached.\n"
                 },
@@ -32641,7 +33524,7 @@
                 "imageRegistryCredentials": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                        "$ref": "#/types/alicloud:eci/ImageCacheImageRegistryCredential:ImageCacheImageRegistryCredential"
                     },
                     "description": "The Image Registry parameters about the image to be cached.\n"
                 },
@@ -32680,7 +33563,7 @@
                 "vswitchId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering OpenApiImageCache resources.\n",
+                "description": "Input properties used for looking up and filtering ImageCache resources.\n",
                 "properties": {
                     "containerGroupId": {
                         "type": "string",
@@ -32701,7 +33584,7 @@
                     "imageRegistryCredentials": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                            "$ref": "#/types/alicloud:eci/ImageCacheImageRegistryCredential:ImageCacheImageRegistryCredential"
                         },
                         "description": "The Image Registry parameters about the image to be cached.\n"
                     },
@@ -32734,6 +33617,152 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The zone id to cache image.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "alicloud:eci/openApiImageCache:OpenApiImageCache": {
+            "properties": {
+                "containerGroupId": {
+                    "type": "string"
+                },
+                "eipInstanceId": {
+                    "type": "string"
+                },
+                "imageCacheName": {
+                    "type": "string"
+                },
+                "imageCacheSize": {
+                    "type": "integer"
+                },
+                "imageRegistryCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "resourceGroupId": {
+                    "type": "string"
+                },
+                "retentionDays": {
+                    "type": "integer"
+                },
+                "securityGroupId": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "vswitchId": {
+                    "type": "string"
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "containerGroupId",
+                "imageCacheName",
+                "images",
+                "securityGroupId",
+                "status",
+                "vswitchId"
+            ],
+            "inputProperties": {
+                "eipInstanceId": {
+                    "type": "string"
+                },
+                "imageCacheName": {
+                    "type": "string"
+                },
+                "imageCacheSize": {
+                    "type": "integer"
+                },
+                "imageRegistryCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                    }
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "resourceGroupId": {
+                    "type": "string"
+                },
+                "retentionDays": {
+                    "type": "integer"
+                },
+                "securityGroupId": {
+                    "type": "string"
+                },
+                "vswitchId": {
+                    "type": "string"
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "imageCacheName",
+                "images",
+                "securityGroupId",
+                "vswitchId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OpenApiImageCache resources.\n",
+                "properties": {
+                    "containerGroupId": {
+                        "type": "string"
+                    },
+                    "eipInstanceId": {
+                        "type": "string"
+                    },
+                    "imageCacheName": {
+                        "type": "string"
+                    },
+                    "imageCacheSize": {
+                        "type": "integer"
+                    },
+                    "imageRegistryCredentials": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:eci/OpenApiImageCacheImageRegistryCredential:OpenApiImageCacheImageRegistryCredential"
+                        }
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "resourceGroupId": {
+                        "type": "string"
+                    },
+                    "retentionDays": {
+                        "type": "integer"
+                    },
+                    "securityGroupId": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "vswitchId": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -33121,7 +34150,6 @@
             }
         },
         "alicloud:ecs/disk:Disk": {
-            "description": "Provides a ECS disk resource.\n\n\u003e **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -38703,11 +39731,20 @@
                 "description": {
                     "type": "string"
                 },
+                "desiredCapacity": {
+                    "type": "integer"
+                },
                 "launchExpirationTime": {
                     "type": "integer"
                 },
                 "launchTime": {
                     "type": "string"
+                },
+                "maxValue": {
+                    "type": "integer"
+                },
+                "minValue": {
+                    "type": "integer"
                 },
                 "recurrenceEndTime": {
                     "type": "string"
@@ -38716,6 +39753,9 @@
                     "type": "string"
                 },
                 "recurrenceValue": {
+                    "type": "string"
+                },
+                "scalingGroupId": {
                     "type": "string"
                 },
                 "scheduledAction": {
@@ -38730,21 +39770,29 @@
             },
             "required": [
                 "description",
-                "launchTime",
                 "recurrenceEndTime",
                 "recurrenceType",
                 "recurrenceValue",
-                "scheduledAction"
+                "scalingGroupId"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string"
+                },
+                "desiredCapacity": {
+                    "type": "integer"
                 },
                 "launchExpirationTime": {
                     "type": "integer"
                 },
                 "launchTime": {
                     "type": "string"
+                },
+                "maxValue": {
+                    "type": "integer"
+                },
+                "minValue": {
+                    "type": "integer"
                 },
                 "recurrenceEndTime": {
                     "type": "string"
@@ -38753,6 +39801,9 @@
                     "type": "string"
                 },
                 "recurrenceValue": {
+                    "type": "string"
+                },
+                "scalingGroupId": {
                     "type": "string"
                 },
                 "scheduledAction": {
@@ -38765,21 +39816,26 @@
                     "type": "boolean"
                 }
             },
-            "requiredInputs": [
-                "launchTime",
-                "scheduledAction"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Schedule resources.\n",
                 "properties": {
                     "description": {
                         "type": "string"
                     },
+                    "desiredCapacity": {
+                        "type": "integer"
+                    },
                     "launchExpirationTime": {
                         "type": "integer"
                     },
                     "launchTime": {
                         "type": "string"
+                    },
+                    "maxValue": {
+                        "type": "integer"
+                    },
+                    "minValue": {
+                        "type": "integer"
                     },
                     "recurrenceEndTime": {
                         "type": "string"
@@ -38788,6 +39844,9 @@
                         "type": "string"
                     },
                     "recurrenceValue": {
+                        "type": "string"
+                    },
+                    "scalingGroupId": {
                         "type": "string"
                     },
                     "scheduledAction": {
@@ -38809,6 +39868,10 @@
                     "type": "string",
                     "description": "Description of the scheduled task, which is 2-200 characters (English or Chinese) long.\n"
                 },
+                "desiredCapacity": {
+                    "type": "integer",
+                    "description": "The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.\n"
+                },
                 "launchExpirationTime": {
                     "type": "integer",
                     "description": "The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600\n"
@@ -38816,6 +39879,14 @@
                 "launchTime": {
                     "type": "string",
                     "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                },
+                "maxValue": {
+                    "type": "integer",
+                    "description": "The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
+                },
+                "minValue": {
+                    "type": "integer",
+                    "description": "The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
                 },
                 "recurrenceEndTime": {
                     "type": "string",
@@ -38829,9 +39900,13 @@
                     "type": "string",
                     "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                 },
+                "scalingGroupId": {
+                    "type": "string",
+                    "description": "The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
+                },
                 "scheduledAction": {
                     "type": "string",
-                    "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.\n"
+                    "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
                 },
                 "scheduledTaskName": {
                     "type": "string",
@@ -38844,16 +39919,19 @@
             },
             "required": [
                 "description",
-                "launchTime",
                 "recurrenceEndTime",
                 "recurrenceType",
                 "recurrenceValue",
-                "scheduledAction"
+                "scalingGroupId"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string",
                     "description": "Description of the scheduled task, which is 2-200 characters (English or Chinese) long.\n"
+                },
+                "desiredCapacity": {
+                    "type": "integer",
+                    "description": "The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.\n"
                 },
                 "launchExpirationTime": {
                     "type": "integer",
@@ -38862,6 +39940,14 @@
                 "launchTime": {
                     "type": "string",
                     "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                },
+                "maxValue": {
+                    "type": "integer",
+                    "description": "The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
+                },
+                "minValue": {
+                    "type": "integer",
+                    "description": "The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
                 },
                 "recurrenceEndTime": {
                     "type": "string",
@@ -38875,9 +39961,13 @@
                     "type": "string",
                     "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                 },
+                "scalingGroupId": {
+                    "type": "string",
+                    "description": "The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
+                },
                 "scheduledAction": {
                     "type": "string",
-                    "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.\n"
+                    "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
                 },
                 "scheduledTaskName": {
                     "type": "string",
@@ -38888,16 +39978,16 @@
                     "description": "Specifies whether to start the scheduled task. Default to true.\n"
                 }
             },
-            "requiredInputs": [
-                "launchTime",
-                "scheduledAction"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ScheduledTask resources.\n",
                 "properties": {
                     "description": {
                         "type": "string",
                         "description": "Description of the scheduled task, which is 2-200 characters (English or Chinese) long.\n"
+                    },
+                    "desiredCapacity": {
+                        "type": "integer",
+                        "description": "The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.\n"
                     },
                     "launchExpirationTime": {
                         "type": "integer",
@@ -38906,6 +39996,14 @@
                     "launchTime": {
                         "type": "string",
                         "description": "The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.\nIf the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.\nOtherwise, the task is only executed once at the date and time specified by LaunchTime.\n"
+                    },
+                    "maxValue": {
+                        "type": "integer",
+                        "description": "The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
+                    },
+                    "minValue": {
+                        "type": "integer",
+                        "description": "The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.\n"
                     },
                     "recurrenceEndTime": {
                         "type": "string",
@@ -38919,9 +40017,13 @@
                         "type": "string",
                         "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                     },
+                    "scalingGroupId": {
+                        "type": "string",
+                        "description": "The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
+                    },
                     "scheduledAction": {
                         "type": "string",
-                        "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule.\n"
+                        "description": "The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.\n"
                     },
                     "scheduledTaskName": {
                         "type": "string",
@@ -40100,6 +41202,7 @@
                 "creationDate",
                 "creator",
                 "deleteDate",
+                "keySpec",
                 "lastRotationDate",
                 "materialExpireTime",
                 "nextRotationDate",
@@ -46844,12 +47947,24 @@
                     "type": "string",
                     "description": "The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.\n"
                 },
+                "sslAction": {
+                    "type": "string",
+                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                },
+                "sslStatus": {
+                    "type": "string",
+                    "description": "Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
+                },
+                "tdeStatus": {
+                    "type": "string",
+                    "description": "The TDE(Transparent Data Encryption) status.\n"
                 },
                 "vswitchId": {
                     "type": "string",
@@ -46876,6 +47991,8 @@
                 "securityGroupId",
                 "securityGroupIds",
                 "securityIps",
+                "sslAction",
+                "sslStatus",
                 "zoneId"
             ],
             "inputProperties": {
@@ -46977,12 +48094,20 @@
                     "type": "string",
                     "description": "The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.\n"
                 },
+                "sslAction": {
+                    "type": "string",
+                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
                     "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
+                },
+                "tdeStatus": {
+                    "type": "string",
+                    "description": "The TDE(Transparent Data Encryption) status.\n"
                 },
                 "vswitchId": {
                     "type": "string",
@@ -47108,12 +48233,24 @@
                         "type": "string",
                         "description": "The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.\n"
                     },
+                    "sslAction": {
+                        "type": "string",
+                        "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                    },
+                    "sslStatus": {
+                        "type": "string",
+                        "description": "Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.\n"
+                    },
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
                         "description": "A mapping of tags to assign to the resource.\n- Key: It can be up to 64 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It cannot be a null string.\n- Value: It can be up to 128 characters in length. It cannot begin with \"aliyun\", \"acs:\", \"http://\", or \"https://\". It can be a null string.\n"
+                    },
+                    "tdeStatus": {
+                        "type": "string",
+                        "description": "The TDE(Transparent Data Encryption) status.\n"
                     },
                     "vswitchId": {
                         "type": "string",
@@ -47707,7 +48844,8 @@
                 },
                 "defaultVersion": {
                     "type": "string",
-                    "description": "The version of the policy. Default to v1.\n"
+                    "description": "The version of the policy. Default to v1.\n",
+                    "deprecationMessage": "Field 'default_version' has been deprecated from provider version 1.90.0"
                 },
                 "description": {
                     "type": "string",
@@ -47736,7 +48874,8 @@
             "inputProperties": {
                 "defaultVersion": {
                     "type": "string",
-                    "description": "The version of the policy. Default to v1.\n"
+                    "description": "The version of the policy. Default to v1.\n",
+                    "deprecationMessage": "Field 'default_version' has been deprecated from provider version 1.90.0"
                 },
                 "description": {
                     "type": "string",
@@ -47764,7 +48903,8 @@
                     },
                     "defaultVersion": {
                         "type": "string",
-                        "description": "The version of the policy. Default to v1.\n"
+                        "description": "The version of the policy. Default to v1.\n",
+                        "deprecationMessage": "Field 'default_version' has been deprecated from provider version 1.90.0"
                     },
                     "description": {
                         "type": "string",
@@ -47787,7 +48927,6 @@
             }
         },
         "alicloud:resourcemanager/policyVersion:PolicyVersion": {
-            "description": "Provides a Resource Manager Policy Version resource. \nFor information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).\n\n\u003e **NOTE:** Available in v1.84.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst examplePolicy = new alicloud.resourcemanager.Policy(\"examplePolicy\", {\n    policyName: \"tftest\",\n    policyDocument: `\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n`,\n});\nconst examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion(\"examplePolicyVersion\", {\n    policyName: examplePolicy.policyName,\n    policyDocument: `\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample_policy = alicloud.resourcemanager.Policy(\"examplePolicy\",\n    policy_name=\"tftest\",\n    policy_document=\"\"\"\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:*\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n\"\"\")\nexample_policy_version = alicloud.resourcemanager.PolicyVersion(\"examplePolicyVersion\",\n    policy_name=example_policy.policy_name,\n    policy_document=\"\"\"\t\t{\n\t\t\t\"Statement\": [{\n\t\t\t\t\"Action\": [\"oss:*\"],\n\t\t\t\t\"Effect\": \"Allow\",\n\t\t\t\t\"Resource\": [\"acs:oss:*:*:myphotos\"]\n\t\t\t}],\n\t\t\t\"Version\": \"1\"\n\t\t}\n\"\"\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var examplePolicy = new AliCloud.ResourceManager.Policy(\"examplePolicy\", new AliCloud.ResourceManager.PolicyArgs\n        {\n            PolicyName = \"tftest\",\n            PolicyDocument = @\"\t\t{\n\t\t\t\"\"Statement\"\": [{\n\t\t\t\t\"\"Action\"\": [\"\"oss:*\"\"],\n\t\t\t\t\"\"Effect\"\": \"\"Allow\"\",\n\t\t\t\t\"\"Resource\"\": [\"\"acs:oss:*:*:*\"\"]\n\t\t\t}],\n\t\t\t\"\"Version\"\": \"\"1\"\"\n\t\t}\n\",\n        });\n        var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion(\"examplePolicyVersion\", new AliCloud.ResourceManager.PolicyVersionArgs\n        {\n            PolicyName = examplePolicy.PolicyName,\n            PolicyDocument = @\"\t\t{\n\t\t\t\"\"Statement\"\": [{\n\t\t\t\t\"\"Action\"\": [\"\"oss:*\"\"],\n\t\t\t\t\"\"Effect\"\": \"\"Allow\"\",\n\t\t\t\t\"\"Resource\"\": [\"\"acs:oss:*:*:myphotos\"\"]\n\t\t\t}],\n\t\t\t\"\"Version\"\": \"\"1\"\"\n\t\t}\n\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "createDate": {
                     "type": "string",
@@ -47795,7 +48934,8 @@
                 },
                 "isDefaultVersion": {
                     "type": "boolean",
-                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n",
+                    "deprecationMessage": "Field 'is_default_version' has been deprecated from provider version 1.90.0"
                 },
                 "policyDocument": {
                     "type": "string",
@@ -47819,7 +48959,8 @@
             "inputProperties": {
                 "isDefaultVersion": {
                     "type": "boolean",
-                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                    "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n",
+                    "deprecationMessage": "Field 'is_default_version' has been deprecated from provider version 1.90.0"
                 },
                 "policyDocument": {
                     "type": "string",
@@ -47843,7 +48984,8 @@
                     },
                     "isDefaultVersion": {
                         "type": "boolean",
-                        "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n"
+                        "description": "Specifies whether to set the policy version as the default version. Default to `false`. \n",
+                        "deprecationMessage": "Field 'is_default_version' has been deprecated from provider version 1.90.0"
                     },
                     "policyDocument": {
                         "type": "string",
@@ -47986,7 +49128,7 @@
             }
         },
         "alicloud:resourcemanager/role:Role": {
-            "description": "Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.\nFor information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).\n\n\u003e **NOTE:** Available in v1.82.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Add a Resource Manager role.\nconst example = new alicloud.resourcemanager.Role(\"example\", {\n    assumeRolePolicyDocument: `     {\n          \"Statement\": [\n               {\n                    \"Action\": \"sts:AssumeRole\",\n                    \"Effect\": \"Allow\",\n                    \"Principal\": {\n                        \"RAM\":\"acs:ram::103755469187****:root\"\n                    }\n                }\n          ],\n          \"Version\": \"1\"\n     }\n\t `,\n    roleName: \"testrd\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Add a Resource Manager role.\nexample = alicloud.resourcemanager.Role(\"example\",\n    assume_role_policy_document=\"\"\"     {\n          \"Statement\": [\n               {\n                    \"Action\": \"sts:AssumeRole\",\n                    \"Effect\": \"Allow\",\n                    \"Principal\": {\n                        \"RAM\":\"acs:ram::103755469187****:root\"\n                    }\n                }\n          ],\n          \"Version\": \"1\"\n     }\n\t \n\"\"\",\n    role_name=\"testrd\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a Resource Manager role.\n        var example = new AliCloud.ResourceManager.Role(\"example\", new AliCloud.ResourceManager.RoleArgs\n        {\n            AssumeRolePolicyDocument = @\"     {\n          \"\"Statement\"\": [\n               {\n                    \"\"Action\"\": \"\"sts:AssumeRole\"\",\n                    \"\"Effect\"\": \"\"Allow\"\",\n                    \"\"Principal\"\": {\n                        \"\"RAM\"\":\"\"acs:ram::103755469187****:root\"\"\n                    }\n                }\n          ],\n          \"\"Version\"\": \"\"1\"\"\n     }\n\t \n\",\n            RoleName = \"testrd\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.\nFor information about Resource Manager role and how to use it, see [What is Resource Manager role](https://www.alibabacloud.com/help/en/doc-detail/111231.htm).\n\n\u003e **NOTE:** Available in v1.82.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Add a Resource Manager role.\nconst example = new alicloud.resourcemanager.Role(\"example\", {\n    assumeRolePolicyDocument: `     {\n          \"Statement\": [\n               {\n                    \"Action\": \"sts:AssumeRole\",\n                    \"Effect\": \"Allow\",\n                    \"Principal\": {\n                        \"RAM\":[\n                                \"acs:ram::103755469187****:root\"，\n                                \"acs:ram::104408977069****:root\"\n                        ]\n                    }\n                }\n          ],\n          \"Version\": \"1\"\n     }\n\t `,\n    roleName: \"testrd\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\n# Add a Resource Manager role.\nexample = alicloud.resourcemanager.Role(\"example\",\n    assume_role_policy_document=\"\"\"     {\n          \"Statement\": [\n               {\n                    \"Action\": \"sts:AssumeRole\",\n                    \"Effect\": \"Allow\",\n                    \"Principal\": {\n                        \"RAM\":[\n                                \"acs:ram::103755469187****:root\"，\n                                \"acs:ram::104408977069****:root\"\n                        ]\n                    }\n                }\n          ],\n          \"Version\": \"1\"\n     }\n\t \n\"\"\",\n    role_name=\"testrd\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a Resource Manager role.\n        var example = new AliCloud.ResourceManager.Role(\"example\", new AliCloud.ResourceManager.RoleArgs\n        {\n            AssumeRolePolicyDocument = @\"     {\n          \"\"Statement\"\": [\n               {\n                    \"\"Action\"\": \"\"sts:AssumeRole\"\",\n                    \"\"Effect\"\": \"\"Allow\"\",\n                    \"\"Principal\"\": {\n                        \"\"RAM\"\":[\n                                \"\"acs:ram::103755469187****:root\"\"，\n                                \"\"acs:ram::104408977069****:root\"\"\n                        ]\n                    }\n                }\n          ],\n          \"\"Version\"\": \"\"1\"\"\n     }\n\t \n\",\n            RoleName = \"testrd\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "arn": {
                     "type": "string",
@@ -56400,6 +57542,108 @@
                 ]
             }
         },
+        "alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules": {
+            "description": "This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.90.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegistryEnterpriseSyncRules.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ids to filter results by sync rule id.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition local instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by sync rule name.\n"
+                    },
+                    "namespaceName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition local namespace.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition local repo.\n"
+                    },
+                    "targetInstanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition target instance.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegistryEnterpriseSyncRules.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition sync rules. Its element is a sync rule uuid.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition local instance.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of sync rule names.\n"
+                    },
+                    "namespaceName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition local namespace.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "Name of Container Registry Enterprise Edition local repo.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:cs/getRegistryEnterpriseSyncRulesRule:getRegistryEnterpriseSyncRulesRule"
+                        },
+                        "description": "A list of matched Container Registry Enterprise Edition sync rules. Each element contains the following attributes:\n"
+                    },
+                    "targetInstanceId": {
+                        "type": "string",
+                        "description": "ID of Container Registry Enterprise Edition target instance.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instanceId",
+                    "names",
+                    "rules",
+                    "id"
+                ]
+            }
+        },
         "alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters": {
             "description": "This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.\n\n\u003e **NOTE:** Available in 1.58.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst k8sClusters = pulumi.output(alicloud.cs.getServerlessKubernetesClusters({\n    nameRegex: \"my-first-k8s\",\n    outputFile: \"my-first-k8s-json\",\n}, { async: true }));\n\nexport const output = k8sClusters.clusters;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nk8s_clusters = alicloud.cs.get_serverless_kubernetes_clusters(name_regex=\"my-first-k8s\",\n    output_file=\"my-first-k8s-json\")\npulumi.export(\"output\", k8s_clusters.clusters)\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var k8sClusters = Output.Create(AliCloud.CS.GetServerlessKubernetesClusters.InvokeAsync(new AliCloud.CS.GetServerlessKubernetesClustersArgs\n        {\n            NameRegex = \"my-first-k8s\",\n            OutputFile = \"my-first-k8s-json\",\n        }));\n        this.Output = k8sClusters.Apply(k8sClusters =\u003e k8sClusters.Clusters);\n    }\n\n    [Output(\"output\")]\n    public Output\u003cstring\u003e Output { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
@@ -56786,6 +58030,86 @@
                 "type": "object",
                 "required": [
                     "instances",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:dms/getEnterpriseUsers:getEnterpriseUsers": {
+            "description": "This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:** Available in 1.90.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getEnterpriseUsers.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of DMS Enterprise User IDs (UID).\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "The role of the user to query.\n"
+                    },
+                    "searchKey": {
+                        "type": "string",
+                        "description": "The keyword used to query users.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the user.\n"
+                    },
+                    "tid": {
+                        "type": "integer",
+                        "description": "The ID of the tenant in DMS Enterprise.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEnterpriseUsers.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of DMS Enterprise User IDs (UID).\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "searchKey": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the user.\n"
+                    },
+                    "tid": {
+                        "type": "integer"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:dms/getEnterpriseUsersUser:getEnterpriseUsersUser"
+                        },
+                        "description": "A list of DMS Enterprise Users. Each element contains the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "users",
                     "id"
                 ]
             }
@@ -57793,6 +59117,103 @@
                     "descriptions",
                     "ids",
                     "instances",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:eci/getImageCaches:getImageCaches": {
+            "description": "Provides a collection of ECI Image Cache to the specified filters.\n\n\u003e **NOTE:** Available in 1.90.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getImageCaches.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list ids of ECI Image Cache.\n"
+                    },
+                    "image": {
+                        "type": "string",
+                        "description": "Find the mirror cache containing it according to the image name.\n"
+                    },
+                    "imageCacheName": {
+                        "type": "string",
+                        "description": "The name of ECI Image Cache.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string",
+                        "description": "A regex string to filter results by the image cache name.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "snapshotId": {
+                        "type": "string",
+                        "description": "The id of snapshot.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of ECI Image Cache.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getImageCaches.\n",
+                "properties": {
+                    "caches": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:eci/getImageCachesCach:getImageCachesCach"
+                        },
+                        "description": "A list of caches. Each element contains the following attributes:\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list ids of ECI Image Cache.\n"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "imageCacheName": {
+                        "type": "string",
+                        "description": "The name of the ECI Image Cache.\n"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of ECI Image Cache names.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "snapshotId": {
+                        "type": "string",
+                        "description": "The id of snapshot.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of ECI Image Cache.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "caches",
+                    "ids",
+                    "names",
                     "id"
                 ]
             }
@@ -67267,6 +68688,79 @@
                     "domains",
                     "ids",
                     "instanceId",
+                    "id"
+                ]
+            }
+        },
+        "alicloud:waf/getInstances:getInstances": {
+            "description": "Provides a WAF datasource to retrieve instances.\n\nFor information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).\n\n\u003e **NOTE:** Available in 1.90.0+ .\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInstances.\n",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of WAF instance IDs. \n"
+                    },
+                    "instanceSource": {
+                        "type": "string",
+                        "description": "The source of the WAF instance.\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "resourceGroupId": {
+                        "type": "string",
+                        "description": "The ID of resource group to which WAF instance belongs.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInstances.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "(Optional) A list of WAF instance IDs. \n"
+                    },
+                    "instanceSource": {
+                        "type": "string"
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/alicloud:waf/getInstancesInstance:getInstancesInstance"
+                        },
+                        "description": "A list of WAF instances. Each element contains the following attributes:\n"
+                    },
+                    "outputFile": {
+                        "type": "string"
+                    },
+                    "resourceGroupId": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Indicates whether the WAF instance has expired.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "instances",
                     "id"
                 ]
             }

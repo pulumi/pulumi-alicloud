@@ -62,7 +62,10 @@ class Role(pulumi.CustomResource):
                             "Action": "sts:AssumeRole",
                             "Effect": "Allow",
                             "Principal": {
-                                "RAM":"acs:ram::103755469187****:root"
+                                "RAM":[
+                                        "acs:ram::103755469187****:root"，
+                                        "acs:ram::104408977069****:root"
+                                ]
                             }
                         }
                   ],

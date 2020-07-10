@@ -43,6 +43,10 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
     /**
+     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     */
+    public /*out*/ readonly cname!: pulumi.Output<string>;
+    /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
     public readonly domainName!: pulumi.Output<string>;
@@ -77,6 +81,7 @@ export class DomainNew extends pulumi.CustomResource {
             const state = argsOrState as DomainNewState | undefined;
             inputs["cdnType"] = state ? state.cdnType : undefined;
             inputs["certificateConfig"] = state ? state.certificateConfig : undefined;
+            inputs["cname"] = state ? state.cname : undefined;
             inputs["domainName"] = state ? state.domainName : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             inputs["scope"] = state ? state.scope : undefined;
@@ -100,6 +105,7 @@ export class DomainNew extends pulumi.CustomResource {
             inputs["scope"] = args ? args.scope : undefined;
             inputs["sources"] = args ? args.sources : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["cname"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -124,6 +130,10 @@ export interface DomainNewState {
      * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
      */
     readonly certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    /**
+     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     */
+    readonly cname?: pulumi.Input<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */

@@ -20,6 +20,8 @@ type Policy struct {
 	// The time when the policy was created.
 	CreateDate pulumi.StringOutput `pulumi:"createDate"`
 	// The version of the policy. Default to v1.
+	//
+	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
 	// The description of the policy. The description must be 1 to 1,024 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -68,6 +70,8 @@ type policyState struct {
 	// The time when the policy was created.
 	CreateDate *string `pulumi:"createDate"`
 	// The version of the policy. Default to v1.
+	//
+	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
 	DefaultVersion *string `pulumi:"defaultVersion"`
 	// The description of the policy. The description must be 1 to 1,024 characters in length.
 	Description *string `pulumi:"description"`
@@ -83,6 +87,8 @@ type PolicyState struct {
 	// The time when the policy was created.
 	CreateDate pulumi.StringPtrInput
 	// The version of the policy. Default to v1.
+	//
+	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
 	DefaultVersion pulumi.StringPtrInput
 	// The description of the policy. The description must be 1 to 1,024 characters in length.
 	Description pulumi.StringPtrInput
@@ -100,6 +106,8 @@ func (PolicyState) ElementType() reflect.Type {
 
 type policyArgs struct {
 	// The version of the policy. Default to v1.
+	//
+	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
 	DefaultVersion *string `pulumi:"defaultVersion"`
 	// The description of the policy. The description must be 1 to 1,024 characters in length.
 	Description *string `pulumi:"description"`
@@ -112,6 +120,8 @@ type policyArgs struct {
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
 	// The version of the policy. Default to v1.
+	//
+	// Deprecated: Field 'default_version' has been deprecated from provider version 1.90.0
 	DefaultVersion pulumi.StringPtrInput
 	// The description of the policy. The description must be 1 to 1,024 characters in length.
 	Description pulumi.StringPtrInput

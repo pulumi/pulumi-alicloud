@@ -4,46 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a Resource Manager Policy Version resource. 
- * For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
- *
- * > **NOTE:** Available in v1.84.0+.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const examplePolicy = new alicloud.resourcemanager.Policy("examplePolicy", {
- *     policyName: "tftest",
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:*"]
- * 			}],
- * 			"Version": "1"
- * 		}
- * `,
- * });
- * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("examplePolicyVersion", {
- *     policyName: examplePolicy.policyName,
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:myphotos"]
- * 			}],
- * 			"Version": "1"
- * 		}
- * `,
- * });
- * ```
- */
 export class PolicyVersion extends pulumi.CustomResource {
     /**
      * Get an existing PolicyVersion resource's state with the given name, ID, and optional extra
@@ -78,6 +38,8 @@ export class PolicyVersion extends pulumi.CustomResource {
     public /*out*/ readonly createDate!: pulumi.Output<string>;
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`. 
+     *
+     * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
     public readonly isDefaultVersion!: pulumi.Output<boolean | undefined>;
     /**
@@ -145,6 +107,8 @@ export interface PolicyVersionState {
     readonly createDate?: pulumi.Input<string>;
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`. 
+     *
+     * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
     readonly isDefaultVersion?: pulumi.Input<boolean>;
     /**
@@ -167,6 +131,8 @@ export interface PolicyVersionState {
 export interface PolicyVersionArgs {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`. 
+     *
+     * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
     readonly isDefaultVersion?: pulumi.Input<boolean>;
     /**

@@ -288,6 +288,7 @@ class Kubernetes(pulumi.CustomResource):
         The **addons** object supports the following:
 
           * `config` (`pulumi.Input[str]`)
+          * `disabled` (`pulumi.Input[bool]`)
           * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is unique in one Alicloud account.
         """
         if __name__ is not None:
@@ -449,6 +450,7 @@ class Kubernetes(pulumi.CustomResource):
         The **addons** object supports the following:
 
           * `config` (`pulumi.Input[str]`)
+          * `disabled` (`pulumi.Input[bool]`)
           * `name` (`pulumi.Input[str]`) - The kubernetes cluster's name. It is unique in one Alicloud account.
 
         The **connections** object supports the following:

@@ -11,15 +11,19 @@ from .. import utilities, tables
 
 class Schedule(pulumi.CustomResource):
     description: pulumi.Output[str]
+    desired_capacity: pulumi.Output[float]
     launch_expiration_time: pulumi.Output[float]
     launch_time: pulumi.Output[str]
+    max_value: pulumi.Output[float]
+    min_value: pulumi.Output[float]
     recurrence_end_time: pulumi.Output[str]
     recurrence_type: pulumi.Output[str]
     recurrence_value: pulumi.Output[str]
+    scaling_group_id: pulumi.Output[str]
     scheduled_action: pulumi.Output[str]
     scheduled_task_name: pulumi.Output[str]
     task_enabled: pulumi.Output[bool]
-    def __init__(__self__, resource_name, opts=None, description=None, launch_expiration_time=None, launch_time=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, desired_capacity=None, launch_expiration_time=None, launch_time=None, max_value=None, min_value=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scaling_group_id=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Schedule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -43,15 +47,15 @@ class Schedule(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            __props__['desired_capacity'] = desired_capacity
             __props__['launch_expiration_time'] = launch_expiration_time
-            if launch_time is None:
-                raise TypeError("Missing required property 'launch_time'")
             __props__['launch_time'] = launch_time
+            __props__['max_value'] = max_value
+            __props__['min_value'] = min_value
             __props__['recurrence_end_time'] = recurrence_end_time
             __props__['recurrence_type'] = recurrence_type
             __props__['recurrence_value'] = recurrence_value
-            if scheduled_action is None:
-                raise TypeError("Missing required property 'scheduled_action'")
+            __props__['scaling_group_id'] = scaling_group_id
             __props__['scheduled_action'] = scheduled_action
             __props__['scheduled_task_name'] = scheduled_task_name
             __props__['task_enabled'] = task_enabled
@@ -62,7 +66,7 @@ class Schedule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, launch_expiration_time=None, launch_time=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None):
+    def get(resource_name, id, opts=None, description=None, desired_capacity=None, launch_expiration_time=None, launch_time=None, max_value=None, min_value=None, recurrence_end_time=None, recurrence_type=None, recurrence_value=None, scaling_group_id=None, scheduled_action=None, scheduled_task_name=None, task_enabled=None):
         """
         Get an existing Schedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -76,11 +80,15 @@ class Schedule(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["description"] = description
+        __props__["desired_capacity"] = desired_capacity
         __props__["launch_expiration_time"] = launch_expiration_time
         __props__["launch_time"] = launch_time
+        __props__["max_value"] = max_value
+        __props__["min_value"] = min_value
         __props__["recurrence_end_time"] = recurrence_end_time
         __props__["recurrence_type"] = recurrence_type
         __props__["recurrence_value"] = recurrence_value
+        __props__["scaling_group_id"] = scaling_group_id
         __props__["scheduled_action"] = scheduled_action
         __props__["scheduled_task_name"] = scheduled_task_name
         __props__["task_enabled"] = task_enabled

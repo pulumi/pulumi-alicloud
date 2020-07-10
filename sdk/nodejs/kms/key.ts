@@ -85,7 +85,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * The type of the CMK.
      */
-    public readonly keySpec!: pulumi.Output<string | undefined>;
+    public readonly keySpec!: pulumi.Output<string>;
     /**
      * The status of CMK. Defaults to Enabled.
      */

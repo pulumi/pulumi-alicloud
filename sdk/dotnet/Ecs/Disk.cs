@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
-    /// <summary>
-    /// Provides a ECS disk resource.
-    /// 
-    /// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
-    /// </summary>
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

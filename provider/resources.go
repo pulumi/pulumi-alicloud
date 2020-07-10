@@ -266,6 +266,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cs_serverless_kubernetes": {Tok: resource(csMod, "ServerlessKubernetes")},
 			"alicloud_cr_ee_repo":               {Tok: resource(csMod, "RegistryEnterpriseRepo")},
 			"alicloud_cr_ee_namespace":          {Tok: resource(csMod, "RegistryEnterpriseNamespace")},
+			"alicloud_cr_ee_sync_rule":          {Tok: resource(csMod, "RegistryEnterpriseSyncRule")},
 
 			// DataHub
 			"alicloud_datahub_project":      {Tok: resource(datahubMod, "Project")},
@@ -287,6 +288,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// DMS
 			"alicloud_dms_enterprise_instance": {Tok: resource(dmsMod, "EnterpriseInstance")},
+			"alicloud_dms_enterprise_user":     {Tok: resource(dmsMod, "EnterpriseUser")},
 
 			// DNS
 			"alicloud_dns": {
@@ -306,6 +308,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Eci
 			"alicloud_eci_openapi_image_cache": {Tok: resource(eciMod, "OpenApiImageCache")},
+			"alicloud_eci_image_cache":         {Tok: resource(eciMod, "ImageCache")},
 
 			// ECS
 			"alicloud_auto_provisioning_group": {Tok: resource(ecsMod, "AutoProvisioningGroup")},
@@ -650,6 +653,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cr_ee_instances":                   {Tok: dataSource(csMod, "getRegistryEnterpriseInstances")},
 			"alicloud_cr_ee_namespaces":                  {Tok: dataSource(csMod, "getRegistryEnterpriseNamespaces")},
 			"alicloud_cr_ee_repos":                       {Tok: dataSource(csMod, "getRegistryEnterpriseRepos")},
+			"alicloud_cr_ee_sync_rules":                  {Tok: dataSource(csMod, "getRegistryEnterpriseSyncRules")},
 
 			// Dds
 			"alicloud_mongo_instances": {Tok: dataSource(ddsMod, "getMongoInstances")},
@@ -660,6 +664,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Dms
 			"alicloud_dms_enterprise_instances": {Tok: dataSource(dmsMod, "getEnterpriseInstances")},
+			"alicloud_dms_enterprise_users":     {Tok: dataSource(dmsMod, "getEnterpriseUsers")},
 
 			// Dns
 			"alicloud_dns_domain_groups":    {Tok: dataSource(dnsMod, "getDomainGroups")},
@@ -675,6 +680,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Drds
 			"alicloud_drds_instances": {Tok: dataSource(drdsMod, "getInstances")},
+
+			// Eci
+			"alicloud_eci_image_caches": {Tok: dataSource(eciMod, "getImageCaches")},
 
 			// Ecs
 			"alicloud_images":                 {Tok: dataSource(ecsMod, "getImages")},
@@ -856,7 +864,8 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_adb_zones":    {Tok: dataSource(adbMod, "getZones")},
 
 			// Waf
-			"alicloud_waf_domains": {Tok: dataSource(wafMod, "getDomains")},
+			"alicloud_waf_domains":   {Tok: dataSource(wafMod, "getDomains")},
+			"alicloud_waf_instances": {Tok: dataSource(wafMod, "getInstances")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

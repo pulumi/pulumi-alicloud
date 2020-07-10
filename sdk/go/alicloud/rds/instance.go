@@ -79,10 +79,16 @@ type Instance struct {
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrOutput `pulumi:"sqlCollectorStatus"`
+	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+	SslAction pulumi.StringOutput `pulumi:"sslAction"`
+	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -194,10 +200,16 @@ type instanceState struct {
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
+	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+	SslAction *string `pulumi:"sslAction"`
+	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+	SslStatus *string `pulumi:"sslStatus"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -270,10 +282,16 @@ type InstanceState struct {
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput
+	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+	SslAction pulumi.StringPtrInput
+	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
+	SslStatus pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -346,10 +364,14 @@ type instanceArgs struct {
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus *string `pulumi:"sqlCollectorStatus"`
+	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+	SslAction *string `pulumi:"sslAction"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus *string `pulumi:"tdeStatus"`
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
@@ -419,10 +441,14 @@ type InstanceArgs struct {
 	SqlCollectorConfigValue pulumi.IntPtrInput
 	// The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
 	SqlCollectorStatus pulumi.StringPtrInput
+	// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+	SslAction pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
+	// The TDE(Transparent Data Encryption) status.
+	TdeStatus pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.

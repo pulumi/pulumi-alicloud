@@ -10,11 +10,13 @@ from .get_managed_kubernetes_clusters import *
 from .get_registry_enterprise_instances import *
 from .get_registry_enterprise_namespaces import *
 from .get_registry_enterprise_repos import *
+from .get_registry_enterprise_sync_rules import *
 from .get_serverless_kubernetes_clusters import *
 from .kubernetes import *
 from .kubernetes_autoscaler import *
 from .managed_kubernetes import *
 from .registry_enterprise_namespace import *
 from .registry_enterprise_repo import *
+from .registry_enterprise_sync_rule import *
 from .serverless_kubernetes import *
 from .swarm import *
