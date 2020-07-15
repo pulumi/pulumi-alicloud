@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
  *
  * > **NOTE:** Available in v1.90.0+
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const mySyncRules = alicloud.cs.getRegistryEnterpriseSyncRules({
+ *     instanceId: "cri-xxx",
+ *     namespaceName: "test-namespace",
+ *     repoName: "test-repo",
+ *     targetInstanceId: "cri-yyy",
+ *     nameRegex: "test-rule",
+ * });
+ * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
+ * ```
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
     if (!opts) {

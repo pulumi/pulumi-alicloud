@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.DmsEnterpriseUser("example", {
+ * const example = new alicloud.dms.EnterpriseUser("example", {
  *     mobile: "1591066xxxx",
  *     nickName: "tf-test",
  *     roleNames: ["DBA"],

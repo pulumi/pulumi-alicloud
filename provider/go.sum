@@ -863,6 +863,8 @@ github.com/terraform-providers/terraform-provider-alicloud v1.89.0 h1:ygb49wIXm2
 github.com/terraform-providers/terraform-provider-alicloud v1.89.0/go.mod h1:Qn1RxKoXagClVojb8KEGuztETETIj1popH1rOhAQwtA=
 github.com/terraform-providers/terraform-provider-alicloud v1.90.0 h1:fTtoZN/HJ5OJd1b+ytvhPl1vspSlnfAJfw/Ko8lVPIQ=
 github.com/terraform-providers/terraform-provider-alicloud v1.90.0/go.mod h1:Qn1RxKoXagClVojb8KEGuztETETIj1popH1rOhAQwtA=
+github.com/terraform-providers/terraform-provider-alicloud v1.90.1 h1:GQSPJQ+2wH8RjTzQOg+LyEK3SSA5aoK8rK5YLyHb2G0=
+github.com/terraform-providers/terraform-provider-alicloud v1.90.1/go.mod h1:Qn1RxKoXagClVojb8KEGuztETETIj1popH1rOhAQwtA=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=

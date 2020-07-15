@@ -21,9 +21,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultCrEeSyncRule = new alicloud.CrEeSyncRule("default", {
+ * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
  *     instanceId: "my-source-instance-id",
- *     name: "test-sync-rule",
  *     namespaceName: "my-source-namespace",
  *     repoName: "my-source-repo",
  *     tagFilter: ".*",

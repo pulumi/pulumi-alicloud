@@ -22,6 +22,10 @@ class CommonBandwithPackage(pulumi.CustomResource):
     """
     The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
     """
+    isp: pulumi.Output[str]
+    """
+    The type of the Internet Service Provider. Default to `BGP`.
+    """
     name: pulumi.Output[str]
     """
     The name of the common bandwidth package.
@@ -34,7 +38,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
     """
     The Id of resource group which the common bandwidth package belongs.
     """
-    def __init__(__self__, resource_name, opts=None, bandwidth=None, description=None, internet_charge_type=None, name=None, ratio=None, resource_group_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bandwidth=None, description=None, internet_charge_type=None, isp=None, name=None, ratio=None, resource_group_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a CommonBandwithPackage resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -42,6 +46,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[float] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
+        :param pulumi.Input[str] isp: The type of the Internet Service Provider. Default to `BGP`.
         :param pulumi.Input[str] name: The name of the common bandwidth package.
         :param pulumi.Input[float] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
@@ -68,6 +73,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             __props__['bandwidth'] = bandwidth
             __props__['description'] = description
             __props__['internet_charge_type'] = internet_charge_type
+            __props__['isp'] = isp
             __props__['name'] = name
             __props__['ratio'] = ratio
             __props__['resource_group_id'] = resource_group_id
@@ -78,7 +84,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, bandwidth=None, description=None, internet_charge_type=None, name=None, ratio=None, resource_group_id=None):
+    def get(resource_name, id, opts=None, bandwidth=None, description=None, internet_charge_type=None, isp=None, name=None, ratio=None, resource_group_id=None):
         """
         Get an existing CommonBandwithPackage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -89,6 +95,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         :param pulumi.Input[float] bandwidth: The bandwidth of the common bandwidth package, in Mbps.
         :param pulumi.Input[str] description: The description of the common bandwidth package instance.
         :param pulumi.Input[str] internet_charge_type: The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
+        :param pulumi.Input[str] isp: The type of the Internet Service Provider. Default to `BGP`.
         :param pulumi.Input[str] name: The name of the common bandwidth package.
         :param pulumi.Input[float] ratio: Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the common bandwidth package belongs.
@@ -100,6 +107,7 @@ class CommonBandwithPackage(pulumi.CustomResource):
         __props__["bandwidth"] = bandwidth
         __props__["description"] = description
         __props__["internet_charge_type"] = internet_charge_type
+        __props__["isp"] = isp
         __props__["name"] = name
         __props__["ratio"] = ratio
         __props__["resource_group_id"] = resource_group_id

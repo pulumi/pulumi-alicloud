@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
@@ -36,9 +36,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
         /// </summary>
         public readonly bool? Encrypted;
+        /// <summary>
+        /// The KMS key ID corresponding to the Nth data disk.
+        /// </summary>
+        public readonly string? KmsKeyId;
         /// <summary>
         /// The name of the data disk.
         /// </summary>
@@ -69,6 +73,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             bool? encrypted,
 
+            string? kmsKeyId,
+
             string? name,
 
             int size,
@@ -80,6 +86,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             DeleteWithInstance = deleteWithInstance;
             Description = description;
             Encrypted = encrypted;
+            KmsKeyId = kmsKeyId;
             Name = name;
             Size = size;
             SnapshotId = snapshotId;

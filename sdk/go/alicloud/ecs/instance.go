@@ -31,7 +31,7 @@ type Instance struct {
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
-	// Whether enable the deletion protection or not.
+	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -47,7 +47,7 @@ type Instance struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrOutput `pulumi:"includeDataDisks"`
@@ -186,7 +186,7 @@ type instanceState struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
-	// Whether enable the deletion protection or not.
+	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -202,7 +202,7 @@ type instanceState struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName *string `pulumi:"hostName"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId *string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
@@ -305,7 +305,7 @@ type InstanceState struct {
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayInput
-	// Whether enable the deletion protection or not.
+	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
@@ -321,7 +321,7 @@ type InstanceState struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringPtrInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput
@@ -428,7 +428,7 @@ type instanceArgs struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
-	// Whether enable the deletion protection or not.
+	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -444,7 +444,7 @@ type instanceArgs struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName *string `pulumi:"hostName"`
-	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId string `pulumi:"imageId"`
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks *bool `pulumi:"includeDataDisks"`
@@ -546,7 +546,7 @@ type InstanceArgs struct {
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance.
 	DataDisks InstanceDataDiskArrayInput
-	// Whether enable the deletion protection or not.
+	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
@@ -562,7 +562,7 @@ type InstanceArgs struct {
 	// Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
 	// On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
 	HostName pulumi.StringPtrInput
-	// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+	// The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
 	ImageId pulumi.StringInput
 	// Whether to change instance disks charge type when changing instance charge type.
 	IncludeDataDisks pulumi.BoolPtrInput

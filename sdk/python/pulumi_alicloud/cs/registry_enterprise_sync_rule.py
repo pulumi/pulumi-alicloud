@@ -68,6 +68,24 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         > **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.cs.RegistryEnterpriseSyncRule("default",
+            instance_id="my-source-instance-id",
+            namespace_name="my-source-namespace",
+            repo_name="my-source-repo",
+            tag_filter=".*",
+            target_instance_id="my-target-instance-id",
+            target_namespace_name="my-target-namespace",
+            target_region_id="cn-hangzhou",
+            target_repo_name="my-target-repo")
+        ```
 
 
         :param str resource_name: The name of the resource.

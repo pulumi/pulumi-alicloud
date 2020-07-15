@@ -19,6 +19,8 @@ type CommonBandwithPackage struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
+	// The type of the Internet Service Provider. Default to `BGP`.
+	Isp pulumi.StringPtrOutput `pulumi:"isp"`
 	// The name of the common bandwidth package.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
@@ -64,6 +66,8 @@ type commonBandwithPackageState struct {
 	Description *string `pulumi:"description"`
 	// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The type of the Internet Service Provider. Default to `BGP`.
+	Isp *string `pulumi:"isp"`
 	// The name of the common bandwidth package.
 	Name *string `pulumi:"name"`
 	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
@@ -79,6 +83,8 @@ type CommonBandwithPackageState struct {
 	Description pulumi.StringPtrInput
 	// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
 	InternetChargeType pulumi.StringPtrInput
+	// The type of the Internet Service Provider. Default to `BGP`.
+	Isp pulumi.StringPtrInput
 	// The name of the common bandwidth package.
 	Name pulumi.StringPtrInput
 	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
@@ -98,6 +104,8 @@ type commonBandwithPackageArgs struct {
 	Description *string `pulumi:"description"`
 	// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
+	// The type of the Internet Service Provider. Default to `BGP`.
+	Isp *string `pulumi:"isp"`
 	// The name of the common bandwidth package.
 	Name *string `pulumi:"name"`
 	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
@@ -114,6 +122,8 @@ type CommonBandwithPackageArgs struct {
 	Description pulumi.StringPtrInput
 	// The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
 	InternetChargeType pulumi.StringPtrInput
+	// The type of the Internet Service Provider. Default to `BGP`.
+	Isp pulumi.StringPtrInput
 	// The name of the common bandwidth package.
 	Name pulumi.StringPtrInput
 	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].

@@ -3580,7 +3580,7 @@ export namespace ecs {
          */
         category?: string;
         /**
-         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
          */
         deleteWithInstance?: boolean;
         /**
@@ -3588,9 +3588,13 @@ export namespace ecs {
          */
         description?: string;
         /**
-         * -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+         * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
          */
         encrypted?: boolean;
+        /**
+         * The KMS key ID corresponding to the Nth data disk.
+         */
+        kmsKeyId?: string;
         /**
          * The name of the data disk.
          */

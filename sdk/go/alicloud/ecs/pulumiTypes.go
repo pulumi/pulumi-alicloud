@@ -402,12 +402,14 @@ type InstanceDataDisk struct {
 	// - `ephemeralSsd`: The local SSD disk.
 	// Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
-	// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
 	Encrypted *bool `pulumi:"encrypted"`
+	// The KMS key ID corresponding to the Nth data disk.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The size of the data disk.
@@ -444,12 +446,14 @@ type InstanceDataDiskArgs struct {
 	// - `ephemeralSsd`: The local SSD disk.
 	// Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+	// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The KMS key ID corresponding to the Nth data disk.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The size of the data disk.
@@ -531,7 +535,7 @@ func (o InstanceDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
 func (o InstanceDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -541,9 +545,14 @@ func (o InstanceDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
 func (o InstanceDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The KMS key ID corresponding to the Nth data disk.
+func (o InstanceDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the data disk.

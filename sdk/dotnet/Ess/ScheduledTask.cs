@@ -51,16 +51,14 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> MinValue { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the end time after which the scheduled task is no longer repeated. 
-        /// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
+        /// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
         /// </summary>
         [Output("recurrenceEndTime")]
         public Output<string> RecurrenceEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the recurrence type of the scheduled task. 
-        /// If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+        /// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         /// - Daily: The scheduled task is executed once every specified number of days.
         /// - Weekly: The scheduled task is executed on each specified day of a week.
         /// - Monthly: The scheduled task is executed on each specified day of a month.
@@ -70,7 +68,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> RecurrenceType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -189,16 +187,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? MinValue { get; set; }
 
         /// <summary>
-        /// Specifies the end time after which the scheduled task is no longer repeated. 
-        /// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
+        /// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
         /// </summary>
         [Input("recurrenceEndTime")]
         public Input<string>? RecurrenceEndTime { get; set; }
 
         /// <summary>
-        /// Specifies the recurrence type of the scheduled task. 
-        /// If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+        /// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         /// - Daily: The scheduled task is executed once every specified number of days.
         /// - Weekly: The scheduled task is executed on each specified day of a week.
         /// - Monthly: The scheduled task is executed on each specified day of a month.
@@ -208,7 +204,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceType { get; set; }
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -288,16 +284,14 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? MinValue { get; set; }
 
         /// <summary>
-        /// Specifies the end time after which the scheduled task is no longer repeated. 
-        /// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
+        /// Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+        /// The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
         /// </summary>
         [Input("recurrenceEndTime")]
         public Input<string>? RecurrenceEndTime { get; set; }
 
         /// <summary>
-        /// Specifies the recurrence type of the scheduled task. 
-        /// If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+        /// Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
         /// - Daily: The scheduled task is executed once every specified number of days.
         /// - Weekly: The scheduled task is executed on each specified day of a week.
         /// - Monthly: The scheduled task is executed on each specified day of a month.
@@ -307,7 +301,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? RecurrenceType { get; set; }
 
         /// <summary>
-        /// Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+        /// Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
         /// - Daily: You can enter one value. Valid values: 1 to 31.
         /// - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
         /// - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.

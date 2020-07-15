@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
@@ -43,10 +43,16 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+        /// -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
+
+        /// <summary>
+        /// The KMS key ID corresponding to the Nth data disk.
+        /// </summary>
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
         /// The name of the data disk.

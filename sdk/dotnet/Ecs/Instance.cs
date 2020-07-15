@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<Outputs.InstanceDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not.
+        /// Whether enable the deletion protection or not. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -392,7 +392,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether enable the deletion protection or not.
+        /// Whether enable the deletion protection or not. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -428,7 +428,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
@@ -711,7 +711,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether enable the deletion protection or not.
+        /// Whether enable the deletion protection or not. Default value: `false`.
         /// - true: Enable deletion protection.
         /// - false: Disable deletion protection.
         /// </summary>
@@ -747,7 +747,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HostName { get; set; }
 
         /// <summary>
-        /// The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+        /// The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

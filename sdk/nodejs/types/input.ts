@@ -709,7 +709,7 @@ export namespace ecs {
          */
         category?: pulumi.Input<string>;
         /**
-         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloudSsd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
@@ -717,9 +717,13 @@ export namespace ecs {
          */
         description?: pulumi.Input<string>;
         /**
-         * -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+         * -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
          */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * The KMS key ID corresponding to the Nth data disk.
+         */
+        kmsKeyId?: pulumi.Input<string>;
         /**
          * The name of the data disk.
          */

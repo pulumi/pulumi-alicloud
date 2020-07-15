@@ -69,6 +69,20 @@ def get_instances(ids=None,instance_source=None,output_file=None,resource_group_
 
     > **NOTE:** Available in 1.90.0+ .
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.waf.get_instances(ids=["waf-cn-09k********"],
+        status="1",
+        resource_group_id="rg-acfmwvv********",
+        instance_source="waf-cloud")
+    pulumi.export("theFirstWafInstanceId", default.instances[0]["id"])
+    ```
 
 
 
