@@ -17,6 +17,35 @@ namespace Pulumi.AliCloud.Dms
         /// &gt; **NOTE:** Available in 1.90.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dmsEnterpriseUsersDs = Output.Create(AliCloud.Dms.GetEnterpriseUsers.InvokeAsync(new AliCloud.Dms.GetEnterpriseUsersArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "uid",
+        ///             },
+        ///             Role = "USER",
+        ///             Status = "NORMAL",
+        ///         }));
+        ///         this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =&gt; dmsEnterpriseUsersDs.Users[0].Id);
+        ///     }
+        /// 
+        ///     [Output("firstUserId")]
+        ///     public Output&lt;string&gt; FirstUserId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnterpriseUsersResult> InvokeAsync(GetEnterpriseUsersArgs? args = null, InvokeOptions? options = null)

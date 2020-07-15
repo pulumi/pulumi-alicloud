@@ -218,7 +218,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sqlCollectorStatus!: pulumi.Output<string | undefined>;
     /**
-     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
     public readonly sslAction!: pulumi.Output<string>;
     /**
@@ -232,7 +232,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     public readonly tdeStatus!: pulumi.Output<string | undefined>;
     /**
@@ -460,7 +460,7 @@ export interface InstanceState {
      */
     readonly sqlCollectorStatus?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
     readonly sslAction?: pulumi.Input<string>;
     /**
@@ -474,7 +474,7 @@ export interface InstanceState {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**
@@ -597,7 +597,7 @@ export interface InstanceArgs {
      */
     readonly sqlCollectorStatus?: pulumi.Input<string>;
     /**
-     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      */
     readonly sslAction?: pulumi.Input<string>;
     /**
@@ -607,7 +607,7 @@ export interface InstanceArgs {
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      */
     readonly tdeStatus?: pulumi.Input<string>;
     /**

@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const dmsEnterpriseUsersDs = pulumi.output(alicloud.DmsEnterpriseUsers({
+ * const dmsEnterpriseUsersDs = pulumi.output(alicloud.dms.getEnterpriseUsers({
  *     ids: ["uid"],
  *     role: "USER",
  *     status: "NORMAL",
  * }, { async: true }));
  *
- * export const firstUserId = dmsEnterpriseUsersDs.users.0.id;
+ * export const firstUserId = dmsEnterpriseUsersDs.users[0].id;
  * ```
  */
 export function getEnterpriseUsers(args?: GetEnterpriseUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseUsersResult> {

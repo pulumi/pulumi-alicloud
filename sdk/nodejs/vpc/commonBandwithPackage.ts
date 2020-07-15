@@ -45,6 +45,10 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
+     * The type of the Internet Service Provider. Default to `BGP`.
+     */
+    public readonly isp!: pulumi.Output<string | undefined>;
+    /**
      * The name of the common bandwidth package.
      */
     public readonly name!: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["internetChargeType"] = state ? state.internetChargeType : undefined;
+            inputs["isp"] = state ? state.isp : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["ratio"] = state ? state.ratio : undefined;
             inputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -83,6 +88,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
             inputs["bandwidth"] = args ? args.bandwidth : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["internetChargeType"] = args ? args.internetChargeType : undefined;
+            inputs["isp"] = args ? args.isp : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["ratio"] = args ? args.ratio : undefined;
             inputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -115,6 +121,10 @@ export interface CommonBandwithPackageState {
      */
     readonly internetChargeType?: pulumi.Input<string>;
     /**
+     * The type of the Internet Service Provider. Default to `BGP`.
+     */
+    readonly isp?: pulumi.Input<string>;
+    /**
      * The name of the common bandwidth package.
      */
     readonly name?: pulumi.Input<string>;
@@ -144,6 +154,10 @@ export interface CommonBandwithPackageArgs {
      * The billing method of the common bandwidth package. Valid values are "PayByBandwidth" and "PayBy95" and "PayByTraffic". "PayBy95" is pay by classic 95th percentile pricing. International Account doesn't supports "PayByBandwidth" and "PayBy95". Default to "PayByTraffic".
      */
     readonly internetChargeType?: pulumi.Input<string>;
+    /**
+     * The type of the Internet Service Provider. Default to `BGP`.
+     */
+    readonly isp?: pulumi.Input<string>;
     /**
      * The name of the common bandwidth package.
      */

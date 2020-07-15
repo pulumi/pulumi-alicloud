@@ -65,7 +65,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
     /**
-     * Whether enable the deletion protection or not.
+     * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
@@ -91,7 +91,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string>;
     /**
-     * The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+     * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
@@ -397,7 +397,7 @@ export interface InstanceState {
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
-     * Whether enable the deletion protection or not.
+     * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
@@ -423,7 +423,7 @@ export interface InstanceState {
      */
     readonly hostName?: pulumi.Input<string>;
     /**
-     * The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+     * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly imageId?: pulumi.Input<string>;
     /**
@@ -605,7 +605,7 @@ export interface InstanceArgs {
      */
     readonly dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
-     * Whether enable the deletion protection or not.
+     * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
@@ -631,7 +631,7 @@ export interface InstanceArgs {
      */
     readonly hostName?: pulumi.Input<string>;
     /**
-     * The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+     * The Image to use for the instance. ECS instance's image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect.
      */
     readonly imageId: pulumi.Input<string>;
     /**

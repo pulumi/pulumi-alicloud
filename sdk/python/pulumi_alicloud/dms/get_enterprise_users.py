@@ -71,6 +71,19 @@ def get_enterprise_users(ids=None,output_file=None,role=None,search_key=None,sta
 
     > **NOTE:** Available in 1.90.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    dms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=["uid"],
+        role="USER",
+        status="NORMAL")
+    pulumi.export("firstUserId", dms_enterprise_users_ds.users[0]["id"])
+    ```
 
 
 

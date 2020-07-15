@@ -13,6 +13,33 @@ namespace Pulumi.AliCloud.Dms
     /// Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).
     /// 
     /// &gt; **NOTE:** Available in 1.90.0+.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Dms.EnterpriseUser("example", new AliCloud.Dms.EnterpriseUserArgs
+    ///         {
+    ///             Mobile = "1591066xxxx",
+    ///             NickName = "tf-test",
+    ///             RoleNames = 
+    ///             {
+    ///                 "DBA",
+    ///             },
+    ///             Uid = "uid",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EnterpriseUser : Pulumi.CustomResource
     {

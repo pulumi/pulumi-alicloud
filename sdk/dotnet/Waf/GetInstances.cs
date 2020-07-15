@@ -19,6 +19,36 @@ namespace Pulumi.AliCloud.Waf
         /// &gt; **NOTE:** Available in 1.90.0+ .
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync(new AliCloud.Waf.GetInstancesArgs
+        ///         {
+        ///             Ids = 
+        ///             {
+        ///                 "waf-cn-09k********",
+        ///             },
+        ///             Status = "1",
+        ///             ResourceGroupId = "rg-acfmwvv********",
+        ///             InstanceSource = "waf-cloud",
+        ///         }));
+        ///         this.TheFirstWafInstanceId = @default.Apply(@default =&gt; @default.Instances[0].Id);
+        ///     }
+        /// 
+        ///     [Output("theFirstWafInstanceId")]
+        ///     public Output&lt;string&gt; TheFirstWafInstanceId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)

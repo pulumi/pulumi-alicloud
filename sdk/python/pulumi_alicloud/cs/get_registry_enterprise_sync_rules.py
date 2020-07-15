@@ -91,6 +91,21 @@ def get_registry_enterprise_sync_rules(ids=None,instance_id=None,name_regex=None
 
     > **NOTE:** Available in v1.90.0+
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    my_sync_rules = alicloud.cs.get_registry_enterprise_sync_rules(instance_id="cri-xxx",
+        namespace_name="test-namespace",
+        repo_name="test-repo",
+        target_instance_id="cri-yyy",
+        name_regex="test-rule")
+    pulumi.export("output", [__item["id"] for __item in my_sync_rules.rules])
+    ```
 
 
 

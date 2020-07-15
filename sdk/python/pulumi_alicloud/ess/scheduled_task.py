@@ -39,14 +39,12 @@ class ScheduledTask(pulumi.CustomResource):
     """
     recurrence_end_time: pulumi.Output[str]
     """
-    Specifies the end time after which the scheduled task is no longer repeated. 
-    Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-    The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
+    Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+    The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
     """
     recurrence_type: pulumi.Output[str]
     """
-    Specifies the recurrence type of the scheduled task. 
-    If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+    Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
     - Daily: The scheduled task is executed once every specified number of days.
     - Weekly: The scheduled task is executed on each specified day of a week.
     - Monthly: The scheduled task is executed on each specified day of a month.
@@ -54,7 +52,7 @@ class ScheduledTask(pulumi.CustomResource):
     """
     recurrence_value: pulumi.Output[str]
     """
-    Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+    Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
     - Daily: You can enter one value. Valid values: 1 to 31.
     - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
     - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -90,16 +88,14 @@ class ScheduledTask(pulumi.CustomResource):
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
-        :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. 
-               Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-               The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
-        :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. 
-               If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+        :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+               The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
+        :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
                - Daily: The scheduled task is executed once every specified number of days.
                - Weekly: The scheduled task is executed on each specified day of a week.
                - Monthly: The scheduled task is executed on each specified day of a month.
                - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
-        :param pulumi.Input[str] recurrence_value: Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+        :param pulumi.Input[str] recurrence_value: Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
                - Daily: You can enter one value. Valid values: 1 to 31.
                - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
                - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.
@@ -163,16 +159,14 @@ class ScheduledTask(pulumi.CustomResource):
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
         :param pulumi.Input[float] max_value: The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
         :param pulumi.Input[float] min_value: The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
-        :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. 
-               Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
-               The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.
-        :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. 
-               If set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:
+        :param pulumi.Input[str] recurrence_end_time: Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+               The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
+        :param pulumi.Input[str] recurrence_type: Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:
                - Daily: The scheduled task is executed once every specified number of days.
                - Weekly: The scheduled task is executed on each specified day of a week.
                - Monthly: The scheduled task is executed on each specified day of a month.
                - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
-        :param pulumi.Input[str] recurrence_value: Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`
+        :param pulumi.Input[str] recurrence_value: Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`
                - Daily: You can enter one value. Valid values: 1 to 31.
                - Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.
                - Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.

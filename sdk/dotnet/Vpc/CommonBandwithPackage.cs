@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// </summary>
+        [Output("isp")]
+        public Output<string?> Isp { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the common bandwidth package.
         /// </summary>
         [Output("name")]
@@ -112,6 +118,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
+        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// </summary>
+        [Input("isp")]
+        public Input<string>? Isp { get; set; }
+
+        /// <summary>
         /// The name of the common bandwidth package.
         /// </summary>
         [Input("name")]
@@ -153,6 +165,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
+
+        /// <summary>
+        /// The type of the Internet Service Provider. Default to `BGP`.
+        /// </summary>
+        [Input("isp")]
+        public Input<string>? Isp { get; set; }
 
         /// <summary>
         /// The name of the common bandwidth package.

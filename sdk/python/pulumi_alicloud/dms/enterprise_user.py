@@ -48,6 +48,20 @@ class EnterpriseUser(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.90.0+.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.dms.EnterpriseUser("example",
+            mobile="1591066xxxx",
+            nick_name="tf-test",
+            role_names=["DBA"],
+            uid="uid")
+        ```
 
 
         :param str resource_name: The name of the resource.

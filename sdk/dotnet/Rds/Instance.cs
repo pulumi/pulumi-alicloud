@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> SqlCollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// </summary>
         [Output("sslAction")]
         public Output<string> SslAction { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Output("tdeStatus")]
         public Output<string?> TdeStatus { get; private set; } = null!;
@@ -468,7 +468,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -488,7 +488,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }
@@ -690,7 +690,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SqlCollectorStatus { get; set; }
 
         /// <summary>
-        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+        /// Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -716,7 +716,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The TDE(Transparent Data Encryption) status.
+        /// The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
         /// </summary>
         [Input("tdeStatus")]
         public Input<string>? TdeStatus { get; set; }

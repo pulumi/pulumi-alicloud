@@ -17,6 +17,35 @@ namespace Pulumi.AliCloud.CS
         /// &gt; **NOTE:** Available in v1.90.0+
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var mySyncRules = Output.Create(AliCloud.CS.GetRegistryEnterpriseSyncRules.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseSyncRulesArgs
+        ///         {
+        ///             InstanceId = "cri-xxx",
+        ///             NamespaceName = "test-namespace",
+        ///             RepoName = "test-repo",
+        ///             TargetInstanceId = "cri-yyy",
+        ///             NameRegex = "test-rule",
+        ///         }));
+        ///         this.Output = mySyncRules.Apply(mySyncRules =&gt; mySyncRules.Rules.Select(__item =&gt; __item.Id).ToList());
+        ///     }
+        /// 
+        ///     [Output("output")]
+        ///     public Output&lt;string&gt; Output { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryEnterpriseSyncRulesResult> InvokeAsync(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions? options = null)

@@ -15,6 +15,34 @@ namespace Pulumi.AliCloud.Eci
     /// &gt; **NOTE:** Available in v1.89.0+.
     /// 
     /// &gt; **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AliCloud.Eci.ImageCache("example", new AliCloud.Eci.ImageCacheArgs
+    ///         {
+    ///             EipInstanceId = "eip-uf60c7cqb2pcrkgxhxxxx",
+    ///             ImageCacheName = "tf-test",
+    ///             Images = 
+    ///             {
+    ///                 "registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest",
+    ///             },
+    ///             SecurityGroupId = "sg-2zeef68b66fxxxx",
+    ///             VswitchId = "vsw-2zef9k7ng82xxxx",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ImageCache : Pulumi.CustomResource
     {

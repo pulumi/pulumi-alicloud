@@ -46,9 +46,10 @@ class Instance(pulumi.CustomResource):
         - `cloud_essd`: The ESSD cloud disk.
         - `ephemeral_ssd`: The local SSD disk.
         Default to `cloud_efficiency`.
-      * `delete_with_instance` (`bool`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+      * `delete_with_instance` (`bool`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
       * `description` (`str`) - The description of the data disk.
-      * `encrypted` (`bool`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+      * `encrypted` (`bool`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+      * `kms_key_id` (`str`) - The KMS key ID corresponding to the Nth data disk.
       * `name` (`str`) - The name of the data disk.
       * `size` (`float`) - The size of the data disk.
         - cloud：[5, 2000]
@@ -60,7 +61,7 @@ class Instance(pulumi.CustomResource):
     """
     deletion_protection: pulumi.Output[bool]
     """
-    Whether enable the deletion protection or not.
+    Whether enable the deletion protection or not. Default value: `false`.
     - true: Enable deletion protection.
     - false: Disable deletion protection.
     """
@@ -86,7 +87,7 @@ class Instance(pulumi.CustomResource):
     """
     image_id: pulumi.Output[str]
     """
-    The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+    The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
     """
     include_data_disks: pulumi.Output[bool]
     """
@@ -243,7 +244,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[list] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the data disk.
@@ -254,7 +255,7 @@ class Instance(pulumi.CustomResource):
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
@@ -310,9 +311,10 @@ class Instance(pulumi.CustomResource):
             - `cloud_essd`: The ESSD cloud disk.
             - `ephemeral_ssd`: The local SSD disk.
             Default to `cloud_efficiency`.
-          * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+          * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+          * `kms_key_id` (`pulumi.Input[str]`) - The KMS key ID corresponding to the Nth data disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]
@@ -421,7 +423,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[list] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
+        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: The description of the data disk.
@@ -432,7 +434,7 @@ class Instance(pulumi.CustomResource):
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
-        :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
@@ -489,9 +491,10 @@ class Instance(pulumi.CustomResource):
             - `cloud_essd`: The ESSD cloud disk.
             - `ephemeral_ssd`: The local SSD disk.
             Default to `cloud_efficiency`.
-          * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+          * `delete_with_instance` (`pulumi.Input[bool]`) - Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.
           * `description` (`pulumi.Input[str]`) - The description of the data disk.
-          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk.
+          * `encrypted` (`pulumi.Input[bool]`) - -(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.
+          * `kms_key_id` (`pulumi.Input[str]`) - The KMS key ID corresponding to the Nth data disk.
           * `name` (`pulumi.Input[str]`) - The name of the data disk.
           * `size` (`pulumi.Input[float]`) - The size of the data disk.
             - cloud：[5, 2000]

@@ -68,6 +68,21 @@ class ImageCache(pulumi.CustomResource):
 
         > **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.eci.ImageCache("example",
+            eip_instance_id="eip-uf60c7cqb2pcrkgxhxxxx",
+            image_cache_name="tf-test",
+            images=["registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"],
+            security_group_id="sg-2zeef68b66fxxxx",
+            vswitch_id="vsw-2zef9k7ng82xxxx")
+        ```
 
 
         :param str resource_name: The name of the resource.

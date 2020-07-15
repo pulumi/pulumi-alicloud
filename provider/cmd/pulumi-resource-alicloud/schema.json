@@ -8031,7 +8031,7 @@
                 },
                 "deleteWithInstance": {
                     "type": "boolean",
-                    "description": "Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.\n",
+                    "description": "Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param. Default value: `true`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -8049,7 +8049,16 @@
                 },
                 "encrypted": {
                     "type": "boolean",
-                    "description": "-(Optional, Bool, ForceNew) Encrypted the data in this disk.\n",
+                    "description": "-(Optional, Bool, ForceNew) Encrypted the data in this disk. Default value: `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kmsKeyId": {
+                    "type": "string",
+                    "description": "The KMS key ID corresponding to the Nth data disk.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -30742,7 +30751,7 @@
             }
         },
         "alicloud:cs/registryEnterpriseSyncRule:RegistryEnterpriseSyncRule": {
-            "description": "This resource will help you to manager Container Registry Enterprise Edition sync rules.\n\nFor information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)\n\n\u003e **NOTE:** Available in v1.90.0+.\n\n\u003e **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This resource will help you to manager Container Registry Enterprise Edition sync rules.\n\nFor information about Container Registry Enterprise Edition sync rules and how to use it, see [Create a Sync Rule](https://www.alibabacloud.com/help/doc-detail/145280.htm)\n\n\u003e **NOTE:** Available in v1.90.0+.\n\n\u003e **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule(\"default\", {\n    instanceId: \"my-source-instance-id\",\n    namespaceName: \"my-source-namespace\",\n    repoName: \"my-source-repo\",\n    tagFilter: \".*\",\n    targetInstanceId: \"my-target-instance-id\",\n    targetNamespaceName: \"my-target-namespace\",\n    targetRegionId: \"cn-hangzhou\",\n    targetRepoName: \"my-target-repo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.cs.RegistryEnterpriseSyncRule(\"default\",\n    instance_id=\"my-source-instance-id\",\n    namespace_name=\"my-source-namespace\",\n    repo_name=\"my-source-repo\",\n    tag_filter=\".*\",\n    target_instance_id=\"my-target-instance-id\",\n    target_namespace_name=\"my-target-namespace\",\n    target_region_id=\"cn-hangzhou\",\n    target_repo_name=\"my-target-repo\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = new AliCloud.CS.RegistryEnterpriseSyncRule(\"default\", new AliCloud.CS.RegistryEnterpriseSyncRuleArgs\n        {\n            InstanceId = \"my-source-instance-id\",\n            NamespaceName = \"my-source-namespace\",\n            RepoName = \"my-source-repo\",\n            TagFilter = \".*\",\n            TargetInstanceId = \"my-target-instance-id\",\n            TargetNamespaceName = \"my-target-namespace\",\n            TargetRegionId = \"cn-hangzhou\",\n            TargetRepoName = \"my-target-repo\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "instanceId": {
                     "type": "string",
@@ -32298,7 +32307,7 @@
             }
         },
         "alicloud:dms/enterpriseUser:EnterpriseUser": {
-            "description": "Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).\n\n\u003e **NOTE:** Available in 1.90.0+.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a DMS Enterprise User resource. For information about Alidms Enterprise User and how to use it, see [What is Resource Alidms Enterprise User](https://www.alibabacloud.com/help/doc-detail/98001.htm).\n\n\u003e **NOTE:** Available in 1.90.0+.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = new alicloud.dms.EnterpriseUser(\"example\", {\n    mobile: \"1591066xxxx\",\n    nickName: \"tf-test\",\n    roleNames: [\"DBA\"],\n    uid: \"uid\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.dms.EnterpriseUser(\"example\",\n    mobile=\"1591066xxxx\",\n    nick_name=\"tf-test\",\n    role_names=[\"DBA\"],\n    uid=\"uid\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AliCloud.Dms.EnterpriseUser(\"example\", new AliCloud.Dms.EnterpriseUserArgs\n        {\n            Mobile = \"1591066xxxx\",\n            NickName = \"tf-test\",\n            RoleNames = \n            {\n                \"DBA\",\n            },\n            Uid = \"uid\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "maxExecuteCount": {
                     "type": "integer",
@@ -33444,7 +33453,7 @@
             }
         },
         "alicloud:eci/imageCache:ImageCache": {
-            "description": "An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).\n\n\u003e **NOTE:** Available in v1.89.0+.\n\n\u003e **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).\n\n\u003e **NOTE:** Available in v1.89.0+.\n\n\u003e **NOTE:** Each image cache corresponds to a snapshot, and the user does not delete the snapshot directly, otherwise the cache will fail.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nBasic Usage\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst example = new alicloud.eci.ImageCache(\"example\", {\n    eipInstanceId: \"eip-uf60c7cqb2pcrkgxhxxxx\",\n    imageCacheName: \"tf-test\",\n    images: [\"registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest\"],\n    securityGroupId: \"sg-2zeef68b66fxxxx\",\n    vswitchId: \"vsw-2zef9k7ng82xxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nexample = alicloud.eci.ImageCache(\"example\",\n    eip_instance_id=\"eip-uf60c7cqb2pcrkgxhxxxx\",\n    image_cache_name=\"tf-test\",\n    images=[\"registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest\"],\n    security_group_id=\"sg-2zeef68b66fxxxx\",\n    vswitch_id=\"vsw-2zef9k7ng82xxxx\")\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AliCloud.Eci.ImageCache(\"example\", new AliCloud.Eci.ImageCacheArgs\n        {\n            EipInstanceId = \"eip-uf60c7cqb2pcrkgxhxxxx\",\n            ImageCacheName = \"tf-test\",\n            Images = \n            {\n                \"registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest\",\n            },\n            SecurityGroupId = \"sg-2zeef68b66fxxxx\",\n            VswitchId = \"vsw-2zef9k7ng82xxxx\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "containerGroupId": {
                     "type": "string",
@@ -35180,7 +35189,7 @@
                 },
                 "deletionProtection": {
                     "type": "boolean",
-                    "description": "Whether enable the deletion protection or not.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
+                    "description": "Whether enable the deletion protection or not. Default value: `false`.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
                 },
                 "description": {
                     "type": "string",
@@ -35200,7 +35209,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.\n"
+                    "description": "The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.\n"
                 },
                 "includeDataDisks": {
                     "type": "boolean",
@@ -35392,7 +35401,7 @@
                 },
                 "deletionProtection": {
                     "type": "boolean",
-                    "description": "Whether enable the deletion protection or not.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
+                    "description": "Whether enable the deletion protection or not. Default value: `false`.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
                 },
                 "description": {
                     "type": "string",
@@ -35412,7 +35421,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.\n"
+                    "description": "The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.\n"
                 },
                 "includeDataDisks": {
                     "type": "boolean",
@@ -35592,7 +35601,7 @@
                     },
                     "deletionProtection": {
                         "type": "boolean",
-                        "description": "Whether enable the deletion protection or not.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
+                        "description": "Whether enable the deletion protection or not. Default value: `false`.\n- true: Enable deletion protection.\n- false: Disable deletion protection.\n"
                     },
                     "description": {
                         "type": "string",
@@ -35612,7 +35621,7 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "The Image to use for the instance. ECS instance's image can be replaced via changing 'image_id'. When it is changed, the instance will reboot to make the change take effect.\n"
+                        "description": "The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.\n"
                     },
                     "includeDataDisks": {
                         "type": "boolean",
@@ -39890,15 +39899,15 @@
                 },
                 "recurrenceEndTime": {
                     "type": "string",
-                    "description": "Specifies the end time after which the scheduled task is no longer repeated. \nSpecify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.\nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.\n"
+                    "description": "Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.\n"
                 },
                 "recurrenceType": {
                     "type": "string",
-                    "description": "Specifies the recurrence type of the scheduled task. \nIf set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
+                    "description": "Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
                 },
                 "recurrenceValue": {
                     "type": "string",
-                    "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
+                    "description": "Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                 },
                 "scalingGroupId": {
                     "type": "string",
@@ -39951,15 +39960,15 @@
                 },
                 "recurrenceEndTime": {
                     "type": "string",
-                    "description": "Specifies the end time after which the scheduled task is no longer repeated. \nSpecify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.\nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.\n"
+                    "description": "Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.\n"
                 },
                 "recurrenceType": {
                     "type": "string",
-                    "description": "Specifies the recurrence type of the scheduled task. \nIf set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
+                    "description": "Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
                 },
                 "recurrenceValue": {
                     "type": "string",
-                    "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
+                    "description": "Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                 },
                 "scalingGroupId": {
                     "type": "string",
@@ -40007,15 +40016,15 @@
                     },
                     "recurrenceEndTime": {
                         "type": "string",
-                        "description": "Specifies the end time after which the scheduled task is no longer repeated. \nSpecify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.\nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation.\n"
+                        "description": "Specifies the end time after which the scheduled task is no longer repeated. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. \nThe time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.\n"
                     },
                     "recurrenceType": {
                         "type": "string",
-                        "description": "Specifies the recurrence type of the scheduled task. \nIf set, both `recurrence_value` and `recurrence_end_time` must be set. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
+                        "description": "Specifies the recurrence type of the scheduled task. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. Valid values:\n- Daily: The scheduled task is executed once every specified number of days.\n- Weekly: The scheduled task is executed on each specified day of a week.\n- Monthly: The scheduled task is executed on each specified day of a month.\n- Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.\n"
                     },
                     "recurrenceValue": {
                         "type": "string",
-                        "description": "Specifies how often a scheduled task recurs. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
+                        "description": "Specifies how often a scheduled task recurs. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time. The valid value depends on `recurrence_type`\n- Daily: You can enter one value. Valid values: 1 to 31.\n- Weekly: You can enter multiple values and separate them with commas (,). For example, the values 0 to 6 correspond to the days of the week in sequence from Sunday to Saturday.\n- Monthly: You can enter two values in A-B format. Valid values of A and B: 1 to 31. The value of B must be greater than or equal to the value of A.\n- Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.\n"
                     },
                     "scalingGroupId": {
                         "type": "string",
@@ -47949,7 +47958,7 @@
                 },
                 "sslAction": {
                     "type": "string",
-                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).\n"
                 },
                 "sslStatus": {
                     "type": "string",
@@ -47964,7 +47973,7 @@
                 },
                 "tdeStatus": {
                     "type": "string",
-                    "description": "The TDE(Transparent Data Encryption) status.\n"
+                    "description": "The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).\n"
                 },
                 "vswitchId": {
                     "type": "string",
@@ -48096,7 +48105,7 @@
                 },
                 "sslAction": {
                     "type": "string",
-                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                    "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).\n"
                 },
                 "tags": {
                     "type": "object",
@@ -48107,7 +48116,7 @@
                 },
                 "tdeStatus": {
                     "type": "string",
-                    "description": "The TDE(Transparent Data Encryption) status.\n"
+                    "description": "The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).\n"
                 },
                 "vswitchId": {
                     "type": "string",
@@ -48235,7 +48244,7 @@
                     },
                     "sslAction": {
                         "type": "string",
-                        "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.\n"
+                        "description": "Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).\n"
                     },
                     "sslStatus": {
                         "type": "string",
@@ -48250,7 +48259,7 @@
                     },
                     "tdeStatus": {
                         "type": "string",
-                        "description": "The TDE(Transparent Data Encryption) status.\n"
+                        "description": "The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).\n"
                     },
                     "vswitchId": {
                         "type": "string",
@@ -52101,6 +52110,10 @@
                     "type": "string",
                     "description": "The billing method of the common bandwidth package. Valid values are \"PayByBandwidth\" and \"PayBy95\" and \"PayByTraffic\". \"PayBy95\" is pay by classic 95th percentile pricing. International Account doesn't supports \"PayByBandwidth\" and \"PayBy95\". Default to \"PayByTraffic\".\n"
                 },
+                "isp": {
+                    "type": "string",
+                    "description": "The type of the Internet Service Provider. Default to `BGP`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the common bandwidth package.\n"
@@ -52132,6 +52145,10 @@
                     "type": "string",
                     "description": "The billing method of the common bandwidth package. Valid values are \"PayByBandwidth\" and \"PayBy95\" and \"PayByTraffic\". \"PayBy95\" is pay by classic 95th percentile pricing. International Account doesn't supports \"PayByBandwidth\" and \"PayBy95\". Default to \"PayByTraffic\".\n"
                 },
+                "isp": {
+                    "type": "string",
+                    "description": "The type of the Internet Service Provider. Default to `BGP`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the common bandwidth package.\n"
@@ -52162,6 +52179,10 @@
                     "internetChargeType": {
                         "type": "string",
                         "description": "The billing method of the common bandwidth package. Valid values are \"PayByBandwidth\" and \"PayBy95\" and \"PayByTraffic\". \"PayBy95\" is pay by classic 95th percentile pricing. International Account doesn't supports \"PayByBandwidth\" and \"PayBy95\". Default to \"PayByTraffic\".\n"
+                    },
+                    "isp": {
+                        "type": "string",
+                        "description": "The type of the Internet Service Provider. Default to `BGP`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -57543,7 +57564,7 @@
             }
         },
         "alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules": {
-            "description": "This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.90.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.\n\n\u003e **NOTE:** Available in v1.90.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst mySyncRules = alicloud.cs.getRegistryEnterpriseSyncRules({\n    instanceId: \"cri-xxx\",\n    namespaceName: \"test-namespace\",\n    repoName: \"test-repo\",\n    targetInstanceId: \"cri-yyy\",\n    nameRegex: \"test-rule\",\n});\nexport const output = mySyncRules.then(mySyncRules =\u003e mySyncRules.rules.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\nmy_sync_rules = alicloud.cs.get_registry_enterprise_sync_rules(instance_id=\"cri-xxx\",\n    namespace_name=\"test-namespace\",\n    repo_name=\"test-repo\",\n    target_instance_id=\"cri-yyy\",\n    name_regex=\"test-rule\")\npulumi.export(\"output\", [__item[\"id\"] for __item in my_sync_rules.rules])\n```\n```csharp\nusing System.Linq;\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mySyncRules = Output.Create(AliCloud.CS.GetRegistryEnterpriseSyncRules.InvokeAsync(new AliCloud.CS.GetRegistryEnterpriseSyncRulesArgs\n        {\n            InstanceId = \"cri-xxx\",\n            NamespaceName = \"test-namespace\",\n            RepoName = \"test-repo\",\n            TargetInstanceId = \"cri-yyy\",\n            NameRegex = \"test-rule\",\n        }));\n        this.Output = mySyncRules.Apply(mySyncRules =\u003e mySyncRules.Rules.Select(__item =\u003e __item.Id).ToList());\n    }\n\n    [Output(\"output\")]\n    public Output\u003cstring\u003e Output { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRegistryEnterpriseSyncRules.\n",
                 "properties": {
@@ -58035,7 +58056,7 @@
             }
         },
         "alicloud:dms/getEnterpriseUsers:getEnterpriseUsers": {
-            "description": "This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:** Available in 1.90.0+\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "This data source provides a list of DMS Enterprise Users in an Alibaba Cloud account according to the specified filters.\n\n\u003e **NOTE:** Available in 1.90.0+\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\n// Declare the data source\nconst dmsEnterpriseUsersDs = pulumi.output(alicloud.dms.getEnterpriseUsers({\n    ids: [\"uid\"],\n    role: \"USER\",\n    status: \"NORMAL\",\n}, { async: true }));\n\nexport const firstUserId = dmsEnterpriseUsersDs.users[0].id;\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndms_enterprise_users_ds = alicloud.dms.get_enterprise_users(ids=[\"uid\"],\n    role=\"USER\",\n    status=\"NORMAL\")\npulumi.export(\"firstUserId\", dms_enterprise_users_ds.users[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var dmsEnterpriseUsersDs = Output.Create(AliCloud.Dms.GetEnterpriseUsers.InvokeAsync(new AliCloud.Dms.GetEnterpriseUsersArgs\n        {\n            Ids = \n            {\n                \"uid\",\n            },\n            Role = \"USER\",\n            Status = \"NORMAL\",\n        }));\n        this.FirstUserId = dmsEnterpriseUsersDs.Apply(dmsEnterpriseUsersDs =\u003e dmsEnterpriseUsersDs.Users[0].Id);\n    }\n\n    [Output(\"firstUserId\")]\n    public Output\u003cstring\u003e FirstUserId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getEnterpriseUsers.\n",
                 "properties": {
@@ -68693,7 +68714,7 @@
             }
         },
         "alicloud:waf/getInstances:getInstances": {
-            "description": "Provides a WAF datasource to retrieve instances.\n\nFor information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).\n\n\u003e **NOTE:** Available in 1.90.0+ .\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Provides a WAF datasource to retrieve instances.\n\nFor information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).\n\n\u003e **NOTE:** Available in 1.90.0+ .\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as alicloud from \"@pulumi/alicloud\";\n\nconst default = alicloud.waf.getInstances({\n    ids: [\"waf-cn-09k********\"],\n    status: \"1\",\n    resourceGroupId: \"rg-acfmwvv********\",\n    instanceSource: \"waf-cloud\",\n});\nexport const theFirstWafInstanceId = _default.then(_default =\u003e _default.instances[0].id);\n```\n```python\nimport pulumi\nimport pulumi_alicloud as alicloud\n\ndefault = alicloud.waf.get_instances(ids=[\"waf-cn-09k********\"],\n    status=\"1\",\n    resource_group_id=\"rg-acfmwvv********\",\n    instance_source=\"waf-cloud\")\npulumi.export(\"theFirstWafInstanceId\", default.instances[0][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AliCloud = Pulumi.AliCloud;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var @default = Output.Create(AliCloud.Waf.GetInstances.InvokeAsync(new AliCloud.Waf.GetInstancesArgs\n        {\n            Ids = \n            {\n                \"waf-cn-09k********\",\n            },\n            Status = \"1\",\n            ResourceGroupId = \"rg-acfmwvv********\",\n            InstanceSource = \"waf-cloud\",\n        }));\n        this.TheFirstWafInstanceId = @default.Apply(@default =\u003e @default.Instances[0].Id);\n    }\n\n    [Output(\"theFirstWafInstanceId\")]\n    public Output\u003cstring\u003e TheFirstWafInstanceId { get; set; }\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstances.\n",
                 "properties": {

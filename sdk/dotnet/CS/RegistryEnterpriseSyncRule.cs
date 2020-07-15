@@ -17,6 +17,34 @@ namespace Pulumi.AliCloud.CS
     /// &gt; **NOTE:** Available in v1.90.0+.
     /// 
     /// &gt; **NOTE:** You need to set your registry password in Container Registry Enterprise Edition console before use this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new AliCloud.CS.RegistryEnterpriseSyncRuleArgs
+    ///         {
+    ///             InstanceId = "my-source-instance-id",
+    ///             NamespaceName = "my-source-namespace",
+    ///             RepoName = "my-source-repo",
+    ///             TagFilter = ".*",
+    ///             TargetInstanceId = "my-target-instance-id",
+    ///             TargetNamespaceName = "my-target-namespace",
+    ///             TargetRegionId = "cn-hangzhou",
+    ///             TargetRepoName = "my-target-repo",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RegistryEnterpriseSyncRule : Pulumi.CustomResource
     {

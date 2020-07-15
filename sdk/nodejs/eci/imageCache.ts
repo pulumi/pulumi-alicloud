@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.EciImageCache("example", {
+ * const example = new alicloud.eci.ImageCache("example", {
  *     eipInstanceId: "eip-uf60c7cqb2pcrkgxhxxxx",
  *     imageCacheName: "tf-test",
  *     images: ["registry.cn-beijing.aliyuncs.com/sceneplatform/sae-image-xxxx:latest"],
