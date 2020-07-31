@@ -14,6 +14,8 @@ type ManagedKubernetes struct {
 	pulumi.CustomResourceState
 
 	Addons ManagedKubernetesAddonArrayOutput `pulumi:"addons"`
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	ApiAudiences pulumi.StringArrayOutput `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -34,6 +36,8 @@ type ManagedKubernetes struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
+	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+	IsEnterpriseSecurityGroup pulumi.BoolOutput `pulumi:"isEnterpriseSecurityGroup"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrOutput `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -61,8 +65,10 @@ type ManagedKubernetes struct {
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	ServiceAccountIssuer pulumi.StringPtrOutput `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
@@ -86,6 +92,14 @@ type ManagedKubernetes struct {
 	WorkerAutoRenewPeriod  pulumi.IntPtrOutput    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     pulumi.IntPtrOutput    `pulumi:"workerDataDiskSize"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// - category: the type of the data disks. Valid values:
+	// + cloud: basic disks.
+	// + cloud_efficiency: ultra disks.
+	// + cloud_ssd: SSDs.
+	// - size: the size of a data disk. Unit: GiB.
+	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayOutput `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrOutput `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -145,6 +159,8 @@ func GetManagedKubernetes(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ManagedKubernetes resources.
 type managedKubernetesState struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -165,6 +181,8 @@ type managedKubernetesState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
+	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -192,8 +210,10 @@ type managedKubernetesState struct {
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
@@ -217,6 +237,14 @@ type managedKubernetesState struct {
 	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// - category: the type of the data disks. Valid values:
+	// + cloud: basic disks.
+	// + cloud_efficiency: ultra disks.
+	// + cloud_ssd: SSDs.
+	// - size: the size of a data disk. Unit: GiB.
+	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -240,6 +268,8 @@ type managedKubernetesState struct {
 
 type ManagedKubernetesState struct {
 	Addons ManagedKubernetesAddonArrayInput
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -260,6 +290,8 @@ type ManagedKubernetesState struct {
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrInput
+	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -287,8 +319,10 @@ type ManagedKubernetesState struct {
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
@@ -312,6 +346,14 @@ type ManagedKubernetesState struct {
 	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// - category: the type of the data disks. Valid values:
+	// + cloud: basic disks.
+	// + cloud_efficiency: ultra disks.
+	// + cloud_ssd: SSDs.
+	// - size: the size of a data disk. Unit: GiB.
+	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -339,6 +381,8 @@ func (ManagedKubernetesState) ElementType() reflect.Type {
 
 type managedKubernetesArgs struct {
 	Addons []ManagedKubernetesAddon `pulumi:"addons"`
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	ApiAudiences []string `pulumi:"apiAudiences"`
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -357,6 +401,8 @@ type managedKubernetesArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
+	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName *string `pulumi:"keyName"`
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -382,8 +428,10 @@ type managedKubernetesArgs struct {
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -400,6 +448,14 @@ type managedKubernetesArgs struct {
 	WorkerAutoRenewPeriod  *int    `pulumi:"workerAutoRenewPeriod"`
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
 	WorkerDataDiskSize     *int    `pulumi:"workerDataDiskSize"`
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// - category: the type of the data disks. Valid values:
+	// + cloud: basic disks.
+	// + cloud_efficiency: ultra disks.
+	// + cloud_ssd: SSDs.
+	// - size: the size of a data disk. Unit: GiB.
+	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	WorkerDataDisks []ManagedKubernetesWorkerDataDisk `pulumi:"workerDataDisks"`
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory *string `pulumi:"workerDiskCategory"`
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -420,6 +476,8 @@ type managedKubernetesArgs struct {
 // The set of arguments for constructing a ManagedKubernetes resource.
 type ManagedKubernetesArgs struct {
 	Addons ManagedKubernetesAddonArrayInput
+	// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature.
+	ApiAudiences pulumi.StringArrayInput
 	// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
 	AvailabilityZone pulumi.StringPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
@@ -438,6 +496,8 @@ type ManagedKubernetesArgs struct {
 	ImageId pulumi.StringPtrInput
 	// Install cloud monitor agent on ECS. default: true
 	InstallCloudMonitor pulumi.BoolPtrInput
+	// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
 	KeyName pulumi.StringPtrInput
 	// An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
@@ -463,8 +523,10 @@ type ManagedKubernetesArgs struct {
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
-	// The ID of security group where the current cluster worker node is located.
+	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
+	// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `kubernetes.default.svc` to enable the Token Volume Projection feature.
+	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
@@ -481,6 +543,14 @@ type ManagedKubernetesArgs struct {
 	WorkerAutoRenewPeriod  pulumi.IntPtrInput
 	WorkerDataDiskCategory pulumi.StringPtrInput
 	WorkerDataDiskSize     pulumi.IntPtrInput
+	// The data disk configurations of worker nodes, such as the disk type and disk size.
+	// - category: the type of the data disks. Valid values:
+	// + cloud: basic disks.
+	// + cloud_efficiency: ultra disks.
+	// + cloud_ssd: SSDs.
+	// - size: the size of a data disk. Unit: GiB.
+	// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+	WorkerDataDisks ManagedKubernetesWorkerDataDiskArrayInput
 	// The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
 	WorkerDiskCategory pulumi.StringPtrInput
 	// The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.

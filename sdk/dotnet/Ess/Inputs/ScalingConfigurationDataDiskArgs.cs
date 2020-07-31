@@ -12,14 +12,29 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingConfigurationDataDiskArgs : Pulumi.ResourceArgs
     {
+        [Input("autoSnapshotPolicyId")]
+        public Input<string>? AutoSnapshotPolicyId { get; set; }
+
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("device")]
         public Input<string>? Device { get; set; }
+
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("size")]
         public Input<int>? Size { get; set; }

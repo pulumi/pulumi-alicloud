@@ -24,7 +24,7 @@ class ScheduledTask(pulumi.CustomResource):
     """
     launch_time: pulumi.Output[str]
     """
-    The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+    The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
     The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
     If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
     Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -82,7 +82,7 @@ class ScheduledTask(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
-        :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+        :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -153,7 +153,7 @@ class ScheduledTask(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
         :param pulumi.Input[float] desired_capacity: The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
         :param pulumi.Input[float] launch_expiration_time: The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
-        :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. 
+        :param pulumi.Input[str] launch_time: The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
                The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
                If the `recurrence_type` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
                Otherwise, the task is only executed once at the date and time specified by LaunchTime.

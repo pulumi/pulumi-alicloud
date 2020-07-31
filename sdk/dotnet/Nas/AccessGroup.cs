@@ -10,36 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Nas Access Group resource.
+    /// Provides a NAS Access Group resource.
     /// 
     /// In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
+    /// For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
     /// 
     /// &gt; **NOTE:** Available in v1.33.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// 
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foo = new AliCloud.Nas.AccessGroup("foo", new AliCloud.Nas.AccessGroupArgs
-    ///         {
-    ///             Description = "test_AccessG",
-    ///             Type = "Classic",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A Name of one Access Group.
+        /// </summary>
+        [Output("accessGroupName")]
+        public Output<string> AccessGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// </summary>
+        [Output("accessGroupType")]
+        public Output<string> AccessGroupType { get; private set; } = null!;
+
         /// <summary>
         /// The Access Group description.
         /// </summary>
@@ -47,13 +38,19 @@ namespace Pulumi.AliCloud.Nas
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A Name of one Access Group.
+        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// </summary>
+        [Output("fileSystemType")]
+        public Output<string?> FileSystemType { get; private set; } = null!;
+
+        /// <summary>
+        /// Replaced by `access_group_name` after version 1.92.0.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Replaced by `access_group_type` after version 1.92.0.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -66,7 +63,7 @@ namespace Pulumi.AliCloud.Nas
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessGroup(string name, AccessGroupArgs args, CustomResourceOptions? options = null)
+        public AccessGroup(string name, AccessGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:nas/accessGroup:AccessGroup", name, args ?? new AccessGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -105,22 +102,40 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A Name of one Access Group.
+        /// </summary>
+        [Input("accessGroupName")]
+        public Input<string>? AccessGroupName { get; set; }
+
+        /// <summary>
+        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// </summary>
+        [Input("accessGroupType")]
+        public Input<string>? AccessGroupType { get; set; }
+
+        /// <summary>
         /// The Access Group description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A Name of one Access Group.
+        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// Replaced by `access_group_name` after version 1.92.0.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Replaced by `access_group_type` after version 1.92.0.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public AccessGroupArgs()
         {
@@ -130,19 +145,37 @@ namespace Pulumi.AliCloud.Nas
     public sealed class AccessGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A Name of one Access Group.
+        /// </summary>
+        [Input("accessGroupName")]
+        public Input<string>? AccessGroupName { get; set; }
+
+        /// <summary>
+        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// </summary>
+        [Input("accessGroupType")]
+        public Input<string>? AccessGroupType { get; set; }
+
+        /// <summary>
         /// The Access Group description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A Name of one Access Group.
+        /// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
+        /// <summary>
+        /// Replaced by `access_group_name` after version 1.92.0.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+        /// Replaced by `access_group_type` after version 1.92.0.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

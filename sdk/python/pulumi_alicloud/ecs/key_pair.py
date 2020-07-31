@@ -22,7 +22,7 @@ class KeyPair(pulumi.CustomResource):
     key_name_prefix: pulumi.Output[str]
     public_key: pulumi.Output[str]
     """
-    You can import an existing public key and using Alicloud key pair to manage it.
+    You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
     """
     resource_group_id: pulumi.Output[str]
     """
@@ -36,7 +36,7 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it.
+        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         if __name__ is not None:
@@ -80,7 +80,7 @@ class KeyPair(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it.
+        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

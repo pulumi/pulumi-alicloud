@@ -22,15 +22,20 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
+	// A regex string to filter results by instance description.
+	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of DRDS instance IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by instance name.
+	// A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
+	//
+	// Deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
+	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of DRDS descriptions.
 	Descriptions []string `pulumi:"descriptions"`
 	// The provider-assigned unique ID for this managed resource.
@@ -38,7 +43,8 @@ type GetInstancesResult struct {
 	// A list of DRDS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// A list of DRDS instances.
-	Instances  []GetInstancesInstance `pulumi:"instances"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	OutputFile *string                `pulumi:"outputFile"`
+	Instances []GetInstancesInstance `pulumi:"instances"`
+	// Deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.
+	NameRegex  *string `pulumi:"nameRegex"`
+	OutputFile *string `pulumi:"outputFile"`
 }

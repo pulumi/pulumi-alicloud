@@ -18,7 +18,7 @@ type ScheduledTask struct {
 	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
 	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrOutput `pulumi:"launchExpirationTime"`
-	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
 	// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
 	// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -86,7 +86,7 @@ type scheduledTaskState struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
 	LaunchExpirationTime *int `pulumi:"launchExpirationTime"`
-	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
 	// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
 	// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -127,7 +127,7 @@ type ScheduledTaskState struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrInput
-	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
 	// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
 	// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -172,7 +172,7 @@ type scheduledTaskArgs struct {
 	DesiredCapacity *int `pulumi:"desiredCapacity"`
 	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
 	LaunchExpirationTime *int `pulumi:"launchExpirationTime"`
-	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
 	// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
 	// Otherwise, the task is only executed once at the date and time specified by LaunchTime.
@@ -214,7 +214,7 @@ type ScheduledTaskArgs struct {
 	DesiredCapacity pulumi.IntPtrInput
 	// The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
 	LaunchExpirationTime pulumi.IntPtrInput
-	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	// The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
 	// If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
 	// Otherwise, the task is only executed once at the date and time specified by LaunchTime.

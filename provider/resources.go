@@ -65,6 +65,7 @@ const (
 	mongoDbMod         = "MongoDB"
 	mnsMod             = "Mns"
 	nasMod             = "Nas"
+	oosMod             = "Oos"
 	ossMod             = "Oss"
 	otsMod             = "Ots"
 	polarDbMod         = "PolarDB"
@@ -331,6 +332,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_snapshot_policy":         {Tok: resource(ecsMod, "SnapshotPolicy")},
 			"alicloud_copy_image":              {Tok: resource(ecsMod, "CopyImage")},
 			"alicloud_image_import":            {Tok: resource(ecsMod, "ImageImport")},
+			"alicloud_ecs_dedicated_host":      {Tok: resource(ecsMod, "DedicatedHost")},
 
 			// Edas
 			"alicloud_edas_application":                 {Tok: resource(edasMod, "Application")},
@@ -431,6 +433,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_access_rule":  {Tok: resource(nasMod, "AccessRule")},
 			"alicloud_nas_file_system":  {Tok: resource(nasMod, "FileSystem")},
 			"alicloud_nas_mount_target": {Tok: resource(nasMod, "MountTarget")},
+
+			// Oos
+			"alicloud_oos_template": {Tok: resource(oosMod, "Template")},
 
 			// Oss
 			"alicloud_oss_bucket": {
@@ -696,6 +701,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_instance_type_families": {Tok: dataSource(ecsMod, "getInstanceTypeFamilies")},
 			"alicloud_network_interfaces":     {Tok: dataSource(ecsMod, "getNetworkInterfaces")},
 			"alicloud_snapshots":              {Tok: dataSource(ecsMod, "getSnapshots")},
+			"alicloud_ecs_dedicated_hosts":    {Tok: dataSource(ecsMod, "getDedicatedHosts")},
 
 			"alicloud_edas_applications":  {Tok: dataSource(edasMod, "getApplications")},
 			"alicloud_edas_deploy_groups": {Tok: dataSource(edasMod, "getDeployGroups")},
@@ -767,6 +773,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_nas_file_systems":  {Tok: dataSource(nasMod, "getFileSystems")},
 			"alicloud_nas_mount_targets": {Tok: dataSource(nasMod, "getMountTargets")},
 			"alicloud_nas_protocols":     {Tok: dataSource(nasMod, "getProtocols")},
+
+			// Oos
+			"alicloud_oos_templates": {Tok: dataSource(oosMod, "getTemplates")},
 
 			// Oss
 			"alicloud_oss_bucket_objects": {Tok: dataSource(ossMod, "getBucketObjects")},

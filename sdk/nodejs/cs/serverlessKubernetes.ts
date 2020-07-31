@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class ServerlessKubernetes extends pulumi.CustomResource {
@@ -32,6 +34,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServerlessKubernetes.__pulumiType;
     }
 
+    public readonly addons!: pulumi.Output<outputs.cs.ServerlessKubernetesAddon[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
@@ -76,9 +79,9 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly privateZone!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of security group where the current cluster worker node is located.
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster .
      */
@@ -88,9 +91,15 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     *
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
-    public readonly vswitchId!: pulumi.Output<string>;
+    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    /**
+     * The vswitches where new kubernetes cluster will be located.
+     */
+    public readonly vswitchIds!: pulumi.Output<string[]>;
 
     /**
      * Create a ServerlessKubernetes resource with the given unique name, arguments, and options.
@@ -104,6 +113,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ServerlessKubernetesState | undefined;
+            inputs["addons"] = state ? state.addons : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
             inputs["clusterCaCert"] = state ? state.clusterCaCert : undefined;
@@ -119,14 +129,13 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["vpcId"] = state ? state.vpcId : undefined;
             inputs["vswitchId"] = state ? state.vswitchId : undefined;
+            inputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
             const args = argsOrState as ServerlessKubernetesArgs | undefined;
             if (!args || args.vpcId === undefined) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            if (!args || args.vswitchId === undefined) {
-                throw new Error("Missing required property 'vswitchId'");
-            }
+            inputs["addons"] = args ? args.addons : undefined;
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
@@ -138,10 +147,11 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             inputs["namePrefix"] = args ? args.namePrefix : undefined;
             inputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             inputs["privateZone"] = args ? args.privateZone : undefined;
+            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["vpcId"] = args ? args.vpcId : undefined;
             inputs["vswitchId"] = args ? args.vswitchId : undefined;
-            inputs["securityGroupId"] = undefined /*out*/;
+            inputs["vswitchIds"] = args ? args.vswitchIds : undefined;
         }
         if (!opts) {
             opts = {}
@@ -158,6 +168,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServerlessKubernetes resources.
  */
 export interface ServerlessKubernetesState {
+    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
@@ -202,7 +213,7 @@ export interface ServerlessKubernetesState {
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**
-     * The ID of security group where the current cluster worker node is located.
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
     readonly securityGroupId?: pulumi.Input<string>;
     /**
@@ -214,15 +225,22 @@ export interface ServerlessKubernetesState {
      */
     readonly vpcId?: pulumi.Input<string>;
     /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     *
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
     readonly vswitchId?: pulumi.Input<string>;
+    /**
+     * The vswitches where new kubernetes cluster will be located.
+     */
+    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a ServerlessKubernetes resource.
  */
 export interface ServerlessKubernetesArgs {
+    readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.ServerlessKubernetesAddon>[]>;
     /**
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      */
@@ -267,6 +285,10 @@ export interface ServerlessKubernetesArgs {
      */
     readonly privateZone?: pulumi.Input<boolean>;
     /**
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     */
+    readonly securityGroupId?: pulumi.Input<string>;
+    /**
      * Default nil, A map of tags assigned to the kubernetes cluster .
      */
     readonly tags?: pulumi.Input<{[key: string]: any}>;
@@ -275,7 +297,13 @@ export interface ServerlessKubernetesArgs {
      */
     readonly vpcId: pulumi.Input<string>;
     /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     * (Required, ForceNew) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+     *
+     * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
      */
-    readonly vswitchId: pulumi.Input<string>;
+    readonly vswitchId?: pulumi.Input<string>;
+    /**
+     * The vswitches where new kubernetes cluster will be located.
+     */
+    readonly vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

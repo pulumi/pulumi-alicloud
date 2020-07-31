@@ -53,7 +53,11 @@ export class ScalingConfiguration extends pulumi.CustomResource {
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
+     * Name of an image file, indicating the image resource selected when an instance is enabled.
+     */
+    public readonly imageName!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -143,9 +147,21 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly substitute!: pulumi.Output<string>;
     /**
+     * The id of auto snapshot policy for system disk.
+     */
+    public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
+    /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
     public readonly systemDiskCategory!: pulumi.Output<string | undefined>;
+    /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+     */
+    public readonly systemDiskName!: pulumi.Output<string | undefined>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
@@ -178,6 +194,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["enable"] = state ? state.enable : undefined;
             inputs["forceDelete"] = state ? state.forceDelete : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
+            inputs["imageName"] = state ? state.imageName : undefined;
             inputs["instanceIds"] = state ? state.instanceIds : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
@@ -199,15 +216,15 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             inputs["substitute"] = state ? state.substitute : undefined;
+            inputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
+            inputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
+            inputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             inputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             inputs["tags"] = state ? state.tags : undefined;
             inputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as ScalingConfigurationArgs | undefined;
-            if (!args || args.imageId === undefined) {
-                throw new Error("Missing required property 'imageId'");
-            }
             if (!args || args.scalingGroupId === undefined) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
@@ -216,6 +233,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["enable"] = args ? args.enable : undefined;
             inputs["forceDelete"] = args ? args.forceDelete : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
+            inputs["imageName"] = args ? args.imageName : undefined;
             inputs["instanceIds"] = args ? args.instanceIds : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
@@ -237,7 +255,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             inputs["substitute"] = args ? args.substitute : undefined;
+            inputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             inputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
+            inputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
+            inputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             inputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["userData"] = args ? args.userData : undefined;
@@ -277,6 +298,10 @@ export interface ScalingConfigurationState {
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
     readonly imageId?: pulumi.Input<string>;
+    /**
+     * Name of an image file, indicating the image resource selected when an instance is enabled.
+     */
+    readonly imageName?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -366,9 +391,21 @@ export interface ScalingConfigurationState {
      */
     readonly substitute?: pulumi.Input<string>;
     /**
+     * The id of auto snapshot policy for system disk.
+     */
+    readonly systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    readonly systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+     */
+    readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
@@ -408,7 +445,11 @@ export interface ScalingConfigurationArgs {
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
-    readonly imageId: pulumi.Input<string>;
+    readonly imageId?: pulumi.Input<string>;
+    /**
+     * Name of an image file, indicating the image resource selected when an instance is enabled.
+     */
+    readonly imageName?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -498,9 +539,21 @@ export interface ScalingConfigurationArgs {
      */
     readonly substitute?: pulumi.Input<string>;
     /**
+     * The id of auto snapshot policy for system disk.
+     */
+    readonly systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
     readonly systemDiskCategory?: pulumi.Input<string>;
+    /**
+     * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     */
+    readonly systemDiskDescription?: pulumi.Input<string>;
+    /**
+     * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+     */
+    readonly systemDiskName?: pulumi.Input<string>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */

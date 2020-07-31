@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The ip address of the bind eip.
+        /// </summary>
+        public readonly ImmutableArray<string> IpLists;
+        /// <summary>
         /// Name of the NAT gateway.
         /// </summary>
         public readonly string Name;
@@ -60,6 +64,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string id,
 
+            ImmutableArray<string> ipLists,
+
             string name,
 
             string snatTableId,
@@ -74,6 +80,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             Description = description;
             ForwardTableId = forwardTableId;
             Id = id;
+            IpLists = ipLists;
             Name = name;
             SnatTableId = snatTableId;
             Spec = spec;

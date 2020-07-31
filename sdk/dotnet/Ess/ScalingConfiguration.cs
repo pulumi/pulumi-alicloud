@@ -39,7 +39,13 @@ namespace Pulumi.AliCloud.Ess
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
         /// </summary>
         [Output("imageId")]
-        public Output<string> ImageId { get; private set; } = null!;
+        public Output<string?> ImageId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of an image file, indicating the image resource selected when an instance is enabled.
+        /// </summary>
+        [Output("imageName")]
+        public Output<string?> ImageName { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
@@ -168,10 +174,28 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> Substitute { get; private set; } = null!;
 
         /// <summary>
+        /// The id of auto snapshot policy for system disk.
+        /// </summary>
+        [Output("systemDiskAutoSnapshotPolicyId")]
+        public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string?> SystemDiskCategory { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// </summary>
+        [Output("systemDiskDescription")]
+        public Output<string?> SystemDiskDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        /// </summary>
+        [Output("systemDiskName")]
+        public Output<string?> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -272,8 +296,14 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
         /// </summary>
-        [Input("imageId", required: true)]
-        public Input<string> ImageId { get; set; } = null!;
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Name of an image file, indicating the image resource selected when an instance is enabled.
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -427,10 +457,28 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Substitute { get; set; }
 
         /// <summary>
+        /// The id of auto snapshot policy for system disk.
+        /// </summary>
+        [Input("systemDiskAutoSnapshotPolicyId")]
+        public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
         /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
+
+        /// <summary>
+        /// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// </summary>
+        [Input("systemDiskDescription")]
+        public Input<string>? SystemDiskDescription { get; set; }
+
+        /// <summary>
+        /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        /// </summary>
+        [Input("systemDiskName")]
+        public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -500,6 +548,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// Name of an image file, indicating the image resource selected when an instance is enabled.
+        /// </summary>
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -653,10 +707,28 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? Substitute { get; set; }
 
         /// <summary>
+        /// The id of auto snapshot policy for system disk.
+        /// </summary>
+        [Input("systemDiskAutoSnapshotPolicyId")]
+        public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
+
+        /// <summary>
         /// Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
+
+        /// <summary>
+        /// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// </summary>
+        [Input("systemDiskDescription")]
+        public Input<string>? SystemDiskDescription { get; set; }
+
+        /// <summary>
+        /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        /// </summary>
+        [Input("systemDiskName")]
+        public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.

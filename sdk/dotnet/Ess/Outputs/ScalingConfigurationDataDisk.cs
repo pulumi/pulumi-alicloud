@@ -13,27 +13,47 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class ScalingConfigurationDataDisk
     {
+        public readonly string? AutoSnapshotPolicyId;
         public readonly string? Category;
         public readonly bool? DeleteWithInstance;
+        public readonly string? Description;
         public readonly string? Device;
+        public readonly bool? Encrypted;
+        public readonly string? KmsKeyId;
+        public readonly string? Name;
         public readonly int? Size;
         public readonly string? SnapshotId;
 
         [OutputConstructor]
         private ScalingConfigurationDataDisk(
+            string? autoSnapshotPolicyId,
+
             string? category,
 
             bool? deleteWithInstance,
 
+            string? description,
+
             string? device,
+
+            bool? encrypted,
+
+            string? kmsKeyId,
+
+            string? name,
 
             int? size,
 
             string? snapshotId)
         {
+            AutoSnapshotPolicyId = autoSnapshotPolicyId;
             Category = category;
             DeleteWithInstance = deleteWithInstance;
+            Description = description;
             Device = device;
+            Encrypted = encrypted;
+            KmsKeyId = kmsKeyId;
+            Name = name;
             Size = size;
             SnapshotId = snapshotId;
         }

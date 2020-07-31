@@ -993,6 +993,8 @@ type GetNatGatewaysGateway struct {
 	ForwardTableId string `pulumi:"forwardTableId"`
 	// The ID of the NAT gateway.
 	Id string `pulumi:"id"`
+	// The ip address of the bind eip.
+	IpLists []string `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name string `pulumi:"name"`
 	// The snat table id.
@@ -1026,6 +1028,8 @@ type GetNatGatewaysGatewayArgs struct {
 	ForwardTableId pulumi.StringInput `pulumi:"forwardTableId"`
 	// The ID of the NAT gateway.
 	Id pulumi.StringInput `pulumi:"id"`
+	// The ip address of the bind eip.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// Name of the NAT gateway.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The snat table id.
@@ -1108,6 +1112,11 @@ func (o GetNatGatewaysGatewayOutput) ForwardTableId() pulumi.StringOutput {
 // The ID of the NAT gateway.
 func (o GetNatGatewaysGatewayOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNatGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ip address of the bind eip.
+func (o GetNatGatewaysGatewayOutput) IpLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNatGatewaysGateway) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
 // Name of the NAT gateway.

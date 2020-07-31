@@ -36,6 +36,10 @@ export class Kubernetes extends pulumi.CustomResource {
 
     public readonly addons!: pulumi.Output<outputs.cs.KubernetesAddon[] | undefined>;
     /**
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
+     */
+    public readonly apiAudiences!: pulumi.Output<string[] | undefined>;
+    /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
     public readonly availabilityZone!: pulumi.Output<string>;
@@ -75,6 +79,10 @@ export class Kubernetes extends pulumi.CustomResource {
      * Install cloud monitor agent on ECS. default: true 
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     */
+    public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
@@ -169,9 +177,13 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly proxyMode!: pulumi.Output<string | undefined>;
     /**
-     * The ID of security group where the current cluster worker node is located.
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
+    /**
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
+     */
+    public readonly serviceAccountIssuer!: pulumi.Output<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
@@ -215,6 +227,16 @@ export class Kubernetes extends pulumi.CustomResource {
     public readonly workerAutoRenewPeriod!: pulumi.Output<number | undefined>;
     public readonly workerDataDiskCategory!: pulumi.Output<string | undefined>;
     public readonly workerDataDiskSize!: pulumi.Output<number | undefined>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size. 
+     * - category: the type of the data disks. Valid values:
+     * + cloud: basic disks.
+     * + cloud_efficiency: ultra disks.
+     * + cloud_ssd: SSDs.
+     * - size: the size of a data disk. Unit: GiB.
+     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     */
+    public readonly workerDataDisks!: pulumi.Output<outputs.cs.KubernetesWorkerDataDisk[] | undefined>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
@@ -266,6 +288,7 @@ export class Kubernetes extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as KubernetesState | undefined;
             inputs["addons"] = state ? state.addons : undefined;
+            inputs["apiAudiences"] = state ? state.apiAudiences : undefined;
             inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             inputs["clientCert"] = state ? state.clientCert : undefined;
             inputs["clientKey"] = state ? state.clientKey : undefined;
@@ -276,6 +299,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["excludeAutoscalerNodes"] = state ? state.excludeAutoscalerNodes : undefined;
             inputs["imageId"] = state ? state.imageId : undefined;
             inputs["installCloudMonitor"] = state ? state.installCloudMonitor : undefined;
+            inputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = state ? state.keyName : undefined;
             inputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
@@ -301,6 +325,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
             inputs["proxyMode"] = state ? state.proxyMode : undefined;
             inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            inputs["serviceAccountIssuer"] = state ? state.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = state ? state.serviceCidr : undefined;
             inputs["slbId"] = state ? state.slbId : undefined;
             inputs["slbInternet"] = state ? state.slbInternet : undefined;
@@ -314,6 +339,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerAutoRenewPeriod"] = state ? state.workerAutoRenewPeriod : undefined;
             inputs["workerDataDiskCategory"] = state ? state.workerDataDiskCategory : undefined;
             inputs["workerDataDiskSize"] = state ? state.workerDataDiskSize : undefined;
+            inputs["workerDataDisks"] = state ? state.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = state ? state.workerDiskCategory : undefined;
             inputs["workerDiskSize"] = state ? state.workerDiskSize : undefined;
             inputs["workerInstanceChargeType"] = state ? state.workerInstanceChargeType : undefined;
@@ -342,6 +368,7 @@ export class Kubernetes extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workerVswitchIds'");
             }
             inputs["addons"] = args ? args.addons : undefined;
+            inputs["apiAudiences"] = args ? args.apiAudiences : undefined;
             inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientKey"] = args ? args.clientKey : undefined;
@@ -351,6 +378,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["excludeAutoscalerNodes"] = args ? args.excludeAutoscalerNodes : undefined;
             inputs["imageId"] = args ? args.imageId : undefined;
             inputs["installCloudMonitor"] = args ? args.installCloudMonitor : undefined;
+            inputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             inputs["keyName"] = args ? args.keyName : undefined;
             inputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             inputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
@@ -374,6 +402,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
             inputs["proxyMode"] = args ? args.proxyMode : undefined;
             inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            inputs["serviceAccountIssuer"] = args ? args.serviceAccountIssuer : undefined;
             inputs["serviceCidr"] = args ? args.serviceCidr : undefined;
             inputs["slbInternetEnabled"] = args ? args.slbInternetEnabled : undefined;
             inputs["userCa"] = args ? args.userCa : undefined;
@@ -383,6 +412,7 @@ export class Kubernetes extends pulumi.CustomResource {
             inputs["workerAutoRenewPeriod"] = args ? args.workerAutoRenewPeriod : undefined;
             inputs["workerDataDiskCategory"] = args ? args.workerDataDiskCategory : undefined;
             inputs["workerDataDiskSize"] = args ? args.workerDataDiskSize : undefined;
+            inputs["workerDataDisks"] = args ? args.workerDataDisks : undefined;
             inputs["workerDiskCategory"] = args ? args.workerDiskCategory : undefined;
             inputs["workerDiskSize"] = args ? args.workerDiskSize : undefined;
             inputs["workerInstanceChargeType"] = args ? args.workerInstanceChargeType : undefined;
@@ -417,6 +447,10 @@ export class Kubernetes extends pulumi.CustomResource {
  */
 export interface KubernetesState {
     readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
+    /**
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
+     */
+    readonly apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
@@ -457,6 +491,10 @@ export interface KubernetesState {
      * Install cloud monitor agent on ECS. default: true 
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
+    /**
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     */
+    readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
@@ -551,9 +589,13 @@ export interface KubernetesState {
      */
     readonly proxyMode?: pulumi.Input<string>;
     /**
-     * The ID of security group where the current cluster worker node is located.
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
+     */
+    readonly serviceAccountIssuer?: pulumi.Input<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
@@ -597,6 +639,16 @@ export interface KubernetesState {
     readonly workerAutoRenewPeriod?: pulumi.Input<number>;
     readonly workerDataDiskCategory?: pulumi.Input<string>;
     readonly workerDataDiskSize?: pulumi.Input<number>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size. 
+     * - category: the type of the data disks. Valid values:
+     * + cloud: basic disks.
+     * + cloud_efficiency: ultra disks.
+     * + cloud_ssd: SSDs.
+     * - size: the size of a data disk. Unit: GiB.
+     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     */
+    readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */
@@ -642,6 +694,10 @@ export interface KubernetesState {
 export interface KubernetesArgs {
     readonly addons?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAddon>[]>;
     /**
+     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well.
+     */
+    readonly apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitchIds` should be set, its value will be vswitch's zone.
      */
     readonly availabilityZone?: pulumi.Input<string>;
@@ -677,6 +733,10 @@ export interface KubernetesArgs {
      * Install cloud monitor agent on ECS. default: true 
      */
     readonly installCloudMonitor?: pulumi.Input<boolean>;
+    /**
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     */
+    readonly isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
@@ -763,9 +823,13 @@ export interface KubernetesArgs {
      */
     readonly proxyMode?: pulumi.Input<string>;
     /**
-     * The ID of security group where the current cluster worker node is located.
+     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
     readonly securityGroupId?: pulumi.Input<string>;
+    /**
+     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well).
+     */
+    readonly serviceAccountIssuer?: pulumi.Input<string>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
@@ -796,6 +860,16 @@ export interface KubernetesArgs {
     readonly workerAutoRenewPeriod?: pulumi.Input<number>;
     readonly workerDataDiskCategory?: pulumi.Input<string>;
     readonly workerDataDiskSize?: pulumi.Input<number>;
+    /**
+     * The data disk configurations of worker nodes, such as the disk type and disk size. 
+     * - category: the type of the data disks. Valid values:
+     * + cloud: basic disks.
+     * + cloud_efficiency: ultra disks.
+     * + cloud_ssd: SSDs.
+     * - size: the size of a data disk. Unit: GiB.
+     * - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+     */
+    readonly workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesWorkerDataDisk>[]>;
     /**
      * The system disk category of worker node. Its valid value are `cloudSsd` and `cloudEfficiency`. Default to `cloudEfficiency`.
      */

@@ -50,6 +50,7 @@ export interface ProviderEndpoint {
     mns?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
+    oos?: pulumi.Input<string>;
     oss?: pulumi.Input<string>;
     ots?: pulumi.Input<string>;
     polardb?: pulumi.Input<string>;
@@ -517,6 +518,20 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
+    export interface KubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: pulumi.Input<string>;
+        category?: pulumi.Input<string>;
+        device?: pulumi.Input<string>;
+        encrypted?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        size?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string>;
+    }
+
     export interface KubernetesWorkerNode {
         /**
          * ID of the node.
@@ -557,6 +572,20 @@ export namespace cs {
         serviceDomain?: pulumi.Input<string>;
     }
 
+    export interface ManagedKubernetesWorkerDataDisk {
+        autoSnapshotPolicyId?: pulumi.Input<string>;
+        category?: pulumi.Input<string>;
+        device?: pulumi.Input<string>;
+        encrypted?: pulumi.Input<string>;
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
+        size?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string>;
+    }
+
     export interface ManagedKubernetesWorkerNode {
         /**
          * ID of the node.
@@ -570,6 +599,15 @@ export namespace cs {
          * The private IP address of node.
          */
         privateIp?: pulumi.Input<string>;
+    }
+
+    export interface ServerlessKubernetesAddon {
+        config?: pulumi.Input<string>;
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The kubernetes cluster's name. It is the only in one Alicloud account.
+         */
+        name?: pulumi.Input<string>;
     }
 
     export interface SwarmNode {
@@ -649,6 +687,17 @@ export namespace ecs {
         priority?: pulumi.Input<string>;
         vswitchId: pulumi.Input<string>;
         weightedCapacity?: pulumi.Input<string>;
+    }
+
+    export interface DedicatedHostNetworkAttribute {
+        /**
+         * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
+         */
+        slbUdpTimeout?: pulumi.Input<number>;
+        /**
+         * The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
+         */
+        udpTimeout?: pulumi.Input<number>;
     }
 
     export interface ImageDiskDeviceMapping {
@@ -890,12 +939,17 @@ export namespace emr {
 
 export namespace ess {
     export interface ScalingConfigurationDataDisk {
+        autoSnapshotPolicyId?: pulumi.Input<string>;
         category?: pulumi.Input<string>;
         deleteWithInstance?: pulumi.Input<boolean>;
+        description?: pulumi.Input<string>;
         /**
          * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          */
         device?: pulumi.Input<string>;
+        encrypted?: pulumi.Input<boolean>;
+        kmsKeyId?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         size?: pulumi.Input<number>;
         snapshotId?: pulumi.Input<string>;
     }
@@ -1138,6 +1192,9 @@ export namespace mongodb {
 export namespace nas {
 }
 
+export namespace oos {
+}
+
 export namespace oss {
     export interface BucketCorsRule {
         /**
@@ -1234,6 +1291,10 @@ export namespace oss {
     }
 
     export interface BucketServerSideEncryptionRule {
+        /**
+         * The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+         */
+        kmsMasterKeyId?: pulumi.Input<string>;
         /**
          * The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
          */

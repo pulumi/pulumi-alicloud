@@ -15,6 +15,12 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<Outputs.KubernetesAddon>> Addons { get; private set; } = null!;
 
         /// <summary>
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        /// </summary>
+        [Output("apiAudiences")]
+        public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
+
+        /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
         [Output("availabilityZone")]
@@ -73,6 +79,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("installCloudMonitor")]
         public Output<bool?> InstallCloudMonitor { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+        /// </summary>
+        [Output("isEnterpriseSecurityGroup")]
+        public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -213,10 +225,16 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ProxyMode { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        /// </summary>
+        [Output("serviceAccountIssuer")]
+        public Output<string?> ServiceAccountIssuer { get; private set; } = null!;
 
         /// <summary>
         /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -283,6 +301,18 @@ namespace Pulumi.AliCloud.CS
 
         [Output("workerDataDiskSize")]
         public Output<int?> WorkerDataDiskSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
+        /// - category: the type of the data disks. Valid values:
+        /// + cloud: basic disks.
+        /// + cloud_efficiency: ultra disks.
+        /// + cloud_ssd: SSDs.
+        /// - size: the size of a data disk. Unit: GiB.
+        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// </summary>
+        [Output("workerDataDisks")]
+        public Output<ImmutableArray<Outputs.KubernetesWorkerDataDisk>> WorkerDataDisks { get; private set; } = null!;
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -395,6 +425,18 @@ namespace Pulumi.AliCloud.CS
             set => _addons = value;
         }
 
+        [Input("apiAudiences")]
+        private InputList<string>? _apiAudiences;
+
+        /// <summary>
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        /// </summary>
+        public InputList<string> ApiAudiences
+        {
+            get => _apiAudiences ?? (_apiAudiences = new InputList<string>());
+            set => _apiAudiences = value;
+        }
+
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
@@ -448,6 +490,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
+
+        /// <summary>
+        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+        /// </summary>
+        [Input("isEnterpriseSecurityGroup")]
+        public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -599,10 +647,16 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ProxyMode { get; set; }
 
         /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        /// </summary>
+        [Input("serviceAccountIssuer")]
+        public Input<string>? ServiceAccountIssuer { get; set; }
 
         /// <summary>
         /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -651,6 +705,24 @@ namespace Pulumi.AliCloud.CS
 
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
+
+        [Input("workerDataDisks")]
+        private InputList<Inputs.KubernetesWorkerDataDiskArgs>? _workerDataDisks;
+
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
+        /// - category: the type of the data disks. Valid values:
+        /// + cloud: basic disks.
+        /// + cloud_efficiency: ultra disks.
+        /// + cloud_ssd: SSDs.
+        /// - size: the size of a data disk. Unit: GiB.
+        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// </summary>
+        public InputList<Inputs.KubernetesWorkerDataDiskArgs> WorkerDataDisks
+        {
+            get => _workerDataDisks ?? (_workerDataDisks = new InputList<Inputs.KubernetesWorkerDataDiskArgs>());
+            set => _workerDataDisks = value;
+        }
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -723,6 +795,18 @@ namespace Pulumi.AliCloud.CS
             set => _addons = value;
         }
 
+        [Input("apiAudiences")]
+        private InputList<string>? _apiAudiences;
+
+        /// <summary>
+        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well.
+        /// </summary>
+        public InputList<string> ApiAudiences
+        {
+            get => _apiAudiences ?? (_apiAudiences = new InputList<string>());
+            set => _apiAudiences = value;
+        }
+
         /// <summary>
         /// The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
         /// </summary>
@@ -782,6 +866,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("installCloudMonitor")]
         public Input<bool>? InstallCloudMonitor { get; set; }
+
+        /// <summary>
+        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+        /// </summary>
+        [Input("isEnterpriseSecurityGroup")]
+        public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
         /// The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
@@ -951,10 +1041,16 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ProxyMode { get; set; }
 
         /// <summary>
-        /// The ID of security group where the current cluster worker node is located.
+        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well).
+        /// </summary>
+        [Input("serviceAccountIssuer")]
+        public Input<string>? ServiceAccountIssuer { get; set; }
 
         /// <summary>
         /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -1021,6 +1117,24 @@ namespace Pulumi.AliCloud.CS
 
         [Input("workerDataDiskSize")]
         public Input<int>? WorkerDataDiskSize { get; set; }
+
+        [Input("workerDataDisks")]
+        private InputList<Inputs.KubernetesWorkerDataDiskGetArgs>? _workerDataDisks;
+
+        /// <summary>
+        /// The data disk configurations of worker nodes, such as the disk type and disk size. 
+        /// - category: the type of the data disks. Valid values:
+        /// + cloud: basic disks.
+        /// + cloud_efficiency: ultra disks.
+        /// + cloud_ssd: SSDs.
+        /// - size: the size of a data disk. Unit: GiB.
+        /// - encrypted: specifies whether to encrypt data disks. Valid values: true and false.
+        /// </summary>
+        public InputList<Inputs.KubernetesWorkerDataDiskGetArgs> WorkerDataDisks
+        {
+            get => _workerDataDisks ?? (_workerDataDisks = new InputList<Inputs.KubernetesWorkerDataDiskGetArgs>());
+            set => _workerDataDisks = value;
+        }
 
         /// <summary>
         /// The system disk category of worker node. Its valid value are `cloud_ssd` and `cloud_efficiency`. Default to `cloud_efficiency`.

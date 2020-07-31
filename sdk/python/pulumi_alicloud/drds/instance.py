@@ -54,7 +54,7 @@ class Instance(pulumi.CustomResource):
 
         For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
 
-        > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
+        > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 
         > **NOTE:** Currently, this resource only support `Domestic Site Account`.
 
@@ -124,7 +124,11 @@ class Instance(pulumi.CustomResource):
             if specification is None:
                 raise TypeError("Missing required property 'specification'")
             __props__['specification'] = specification
+            if vswitch_id is None:
+                raise TypeError("Missing required property 'vswitch_id'")
             __props__['vswitch_id'] = vswitch_id
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(Instance, __self__).__init__(
             'alicloud:drds/instance:Instance',

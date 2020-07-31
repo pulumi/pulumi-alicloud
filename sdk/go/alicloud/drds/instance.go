@@ -16,7 +16,7 @@ import (
 //
 // For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
 //
-// > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
+// > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
 //
 // > **NOTE:** Currently, this resource only support `Domestic Site Account`.
 type Instance struct {
@@ -43,9 +43,9 @@ type Instance struct {
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringOutput `pulumi:"specification"`
 	// The VSwitch ID to launch in.
-	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -59,6 +59,12 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args == nil || args.Specification == nil {
 		return nil, errors.New("missing required argument 'Specification'")
+	}
+	if args == nil || args.VswitchId == nil {
+		return nil, errors.New("missing required argument 'VswitchId'")
+	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
 	}
 	if args == nil {
 		args = &InstanceArgs{}
@@ -164,9 +170,9 @@ type instanceArgs struct {
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification string `pulumi:"specification"`
 	// The VSwitch ID to launch in.
-	VswitchId *string `pulumi:"vswitchId"`
+	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the DRDS instance.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -192,9 +198,9 @@ type InstanceArgs struct {
 	// - value range : `drds.sn1.32c64g.128c256g`
 	Specification pulumi.StringInput
 	// The VSwitch ID to launch in.
-	VswitchId pulumi.StringPtrInput
+	VswitchId pulumi.StringInput
 	// The Zone to launch the DRDS instance.
-	ZoneId pulumi.StringPtrInput
+	ZoneId pulumi.StringInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

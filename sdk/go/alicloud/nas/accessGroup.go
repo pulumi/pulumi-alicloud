@@ -6,32 +6,35 @@ package nas
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Nas Access Group resource.
+// Provides a NAS Access Group resource.
 //
 // In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
+// For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
 //
 // > **NOTE:** Available in v1.33.0+.
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
+	// A Name of one Access Group.
+	AccessGroupName pulumi.StringOutput `pulumi:"accessGroupName"`
+	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	AccessGroupType pulumi.StringOutput `pulumi:"accessGroupType"`
 	// The Access Group description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A Name of one Access Group.
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+	FileSystemType pulumi.StringPtrOutput `pulumi:"fileSystemType"`
+	// Replaced by `accessGroupName` after version 1.92.0.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	// Replaced by `accessGroupType` after version 1.92.0.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewAccessGroup registers a new resource with the given unique name, arguments, and options.
 func NewAccessGroup(ctx *pulumi.Context,
 	name string, args *AccessGroupArgs, opts ...pulumi.ResourceOption) (*AccessGroup, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
 		args = &AccessGroupArgs{}
 	}
@@ -57,20 +60,32 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
+	// A Name of one Access Group.
+	AccessGroupName *string `pulumi:"accessGroupName"`
+	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	AccessGroupType *string `pulumi:"accessGroupType"`
 	// The Access Group description.
 	Description *string `pulumi:"description"`
-	// A Name of one Access Group.
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// Replaced by `accessGroupName` after version 1.92.0.
 	Name *string `pulumi:"name"`
-	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	// Replaced by `accessGroupType` after version 1.92.0.
 	Type *string `pulumi:"type"`
 }
 
 type AccessGroupState struct {
+	// A Name of one Access Group.
+	AccessGroupName pulumi.StringPtrInput
+	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	AccessGroupType pulumi.StringPtrInput
 	// The Access Group description.
 	Description pulumi.StringPtrInput
-	// A Name of one Access Group.
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+	FileSystemType pulumi.StringPtrInput
+	// Replaced by `accessGroupName` after version 1.92.0.
 	Name pulumi.StringPtrInput
-	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	// Replaced by `accessGroupType` after version 1.92.0.
 	Type pulumi.StringPtrInput
 }
 
@@ -79,22 +94,34 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
+	// A Name of one Access Group.
+	AccessGroupName *string `pulumi:"accessGroupName"`
+	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	AccessGroupType *string `pulumi:"accessGroupType"`
 	// The Access Group description.
 	Description *string `pulumi:"description"`
-	// A Name of one Access Group.
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+	FileSystemType *string `pulumi:"fileSystemType"`
+	// Replaced by `accessGroupName` after version 1.92.0.
 	Name *string `pulumi:"name"`
-	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-	Type string `pulumi:"type"`
+	// Replaced by `accessGroupType` after version 1.92.0.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
+	// A Name of one Access Group.
+	AccessGroupName pulumi.StringPtrInput
+	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+	AccessGroupType pulumi.StringPtrInput
 	// The Access Group description.
 	Description pulumi.StringPtrInput
-	// A Name of one Access Group.
+	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+	FileSystemType pulumi.StringPtrInput
+	// Replaced by `accessGroupName` after version 1.92.0.
 	Name pulumi.StringPtrInput
-	// A Type of one Access Group. Valid values: `Vpc` and `Classic`.
-	Type pulumi.StringInput
+	// Replaced by `accessGroupType` after version 1.92.0.
+	Type pulumi.StringPtrInput
 }
 
 func (AccessGroupArgs) ElementType() reflect.Type {

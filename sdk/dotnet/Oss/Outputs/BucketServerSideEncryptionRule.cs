@@ -14,13 +14,21 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketServerSideEncryptionRule
     {
         /// <summary>
+        /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
+        /// </summary>
+        public readonly string? KmsMasterKeyId;
+        /// <summary>
         /// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
         /// </summary>
         public readonly string SseAlgorithm;
 
         [OutputConstructor]
-        private BucketServerSideEncryptionRule(string sseAlgorithm)
+        private BucketServerSideEncryptionRule(
+            string? kmsMasterKeyId,
+
+            string sseAlgorithm)
         {
+            KmsMasterKeyId = kmsMasterKeyId;
             SseAlgorithm = sseAlgorithm;
         }
     }

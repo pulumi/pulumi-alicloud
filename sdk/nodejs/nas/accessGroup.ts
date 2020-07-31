@@ -5,9 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Nas Access Group resource.
+ * Provides a NAS Access Group resource.
  *
  * In NAS, the permission group acts as a whitelist that allows you to restrict file system access. You can allow specified IP addresses or CIDR blocks to access the file system, and assign different levels of access permission to different IP addresses or CIDR blocks by adding rules to the permission group.
+ * For information about NAS Access Group and how to use it, see [What is NAS Access Group](https://www.alibabacloud.com/help/en/doc-detail/27534)
  *
  * > **NOTE:** Available in v1.33.0+.
  *
@@ -54,15 +55,27 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
+     * A Name of one Access Group.
+     */
+    public readonly accessGroupName!: pulumi.Output<string>;
+    /**
+     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     */
+    public readonly accessGroupType!: pulumi.Output<string>;
+    /**
      * The Access Group description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A Name of one Access Group.
+     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     */
+    public readonly fileSystemType!: pulumi.Output<string | undefined>;
+    /**
+     * Replaced by `accessGroupName` after version 1.92.0.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Replaced by `accessGroupType` after version 1.92.0.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -73,20 +86,23 @@ export class AccessGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessGroupArgs | AccessGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
+            inputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            inputs["accessGroupType"] = state ? state.accessGroupType : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["fileSystemType"] = state ? state.fileSystemType : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            if (!args || args.type === undefined) {
-                throw new Error("Missing required property 'type'");
-            }
+            inputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            inputs["accessGroupType"] = args ? args.accessGroupType : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["fileSystemType"] = args ? args.fileSystemType : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
@@ -106,15 +122,27 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
+     * A Name of one Access Group.
+     */
+    readonly accessGroupName?: pulumi.Input<string>;
+    /**
+     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     */
+    readonly accessGroupType?: pulumi.Input<string>;
+    /**
      * The Access Group description.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A Name of one Access Group.
+     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     */
+    readonly fileSystemType?: pulumi.Input<string>;
+    /**
+     * Replaced by `accessGroupName` after version 1.92.0.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Replaced by `accessGroupType` after version 1.92.0.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -124,15 +152,27 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
+     * A Name of one Access Group.
+     */
+    readonly accessGroupName?: pulumi.Input<string>;
+    /**
+     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     */
+    readonly accessGroupType?: pulumi.Input<string>;
+    /**
      * The Access Group description.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A Name of one Access Group.
+     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`. Note that the extreme only support Vpc Network.
+     */
+    readonly fileSystemType?: pulumi.Input<string>;
+    /**
+     * Replaced by `accessGroupName` after version 1.92.0.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A Type of one Access Group. Valid values: `Vpc` and `Classic`.
+     * Replaced by `accessGroupType` after version 1.92.0.
      */
-    readonly type: pulumi.Input<string>;
+    readonly type?: pulumi.Input<string>;
 }

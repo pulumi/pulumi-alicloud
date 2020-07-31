@@ -80,6 +80,10 @@ class Bucket(pulumi.CustomResource):
     """
     Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
     """
+    redundancy_type: pulumi.Output[str]
+    """
+    The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+    """
     referer_config: pulumi.Output[dict]
     """
     The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
@@ -91,6 +95,7 @@ class Bucket(pulumi.CustomResource):
     """
     A configuration of server-side encryption (documented below).
 
+      * `kmsMasterKeyId` (`str`) - The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
       * `sseAlgorithm` (`str`) - The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
     """
     storage_class: pulumi.Output[str]
@@ -114,7 +119,7 @@ class Bucket(pulumi.CustomResource):
       * `errorDocument` (`str`) - An absolute path to the document to return in case of a 4XX error.
       * `indexDocument` (`str`) - Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
     """
-    def __init__(__self__, resource_name, opts=None, acl=None, bucket=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, logging=None, logging_isenable=None, policy=None, referer_config=None, server_side_encryption_rule=None, storage_class=None, tags=None, versioning=None, website=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, acl=None, bucket=None, cors_rules=None, force_destroy=None, lifecycle_rules=None, logging=None, logging_isenable=None, policy=None, redundancy_type=None, referer_config=None, server_side_encryption_rule=None, storage_class=None, tags=None, versioning=None, website=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource to create a oss bucket and set its attribution.
 
@@ -144,6 +149,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[dict] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm) (documented below).
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[dict] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[dict] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
@@ -185,6 +191,7 @@ class Bucket(pulumi.CustomResource):
 
         The **server_side_encryption_rule** object supports the following:
 
+          * `kmsMasterKeyId` (`pulumi.Input[str]`) - The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
           * `sseAlgorithm` (`pulumi.Input[str]`) - The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 
         The **versioning** object supports the following:
@@ -224,6 +231,7 @@ class Bucket(pulumi.CustomResource):
                 pulumi.log.warn("logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.")
             __props__['logging_isenable'] = logging_isenable
             __props__['policy'] = policy
+            __props__['redundancy_type'] = redundancy_type
             __props__['referer_config'] = referer_config
             __props__['server_side_encryption_rule'] = server_side_encryption_rule
             __props__['storage_class'] = storage_class
@@ -242,7 +250,7 @@ class Bucket(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl=None, bucket=None, cors_rules=None, creation_date=None, extranet_endpoint=None, force_destroy=None, intranet_endpoint=None, lifecycle_rules=None, location=None, logging=None, logging_isenable=None, owner=None, policy=None, referer_config=None, server_side_encryption_rule=None, storage_class=None, tags=None, versioning=None, website=None):
+    def get(resource_name, id, opts=None, acl=None, bucket=None, cors_rules=None, creation_date=None, extranet_endpoint=None, force_destroy=None, intranet_endpoint=None, lifecycle_rules=None, location=None, logging=None, logging_isenable=None, owner=None, policy=None, redundancy_type=None, referer_config=None, server_side_encryption_rule=None, storage_class=None, tags=None, versioning=None, website=None):
         """
         Get an existing Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -262,6 +270,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] owner: The bucket owner.
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[dict] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm) (documented below).
         :param pulumi.Input[dict] server_side_encryption_rule: A configuration of server-side encryption (documented below).
         :param pulumi.Input[str] storage_class: Specifies the storage class that objects that conform to the rule are converted into. The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard. Values: `IA`, `Archive`. 
@@ -303,6 +312,7 @@ class Bucket(pulumi.CustomResource):
 
         The **server_side_encryption_rule** object supports the following:
 
+          * `kmsMasterKeyId` (`pulumi.Input[str]`) - The alibaba cloud KMS master key ID used for the SSE-KMS encryption. 
           * `sseAlgorithm` (`pulumi.Input[str]`) - The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 
         The **versioning** object supports the following:
@@ -331,6 +341,7 @@ class Bucket(pulumi.CustomResource):
         __props__["logging_isenable"] = logging_isenable
         __props__["owner"] = owner
         __props__["policy"] = policy
+        __props__["redundancy_type"] = redundancy_type
         __props__["referer_config"] = referer_config
         __props__["server_side_encryption_rule"] = server_side_encryption_rule
         __props__["storage_class"] = storage_class

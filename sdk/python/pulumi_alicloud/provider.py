@@ -81,6 +81,7 @@ class Provider(pulumi.ProviderResource):
           * `mns` (`pulumi.Input[str]`)
           * `nas` (`pulumi.Input[str]`)
           * `ons` (`pulumi.Input[str]`)
+          * `oos` (`pulumi.Input[str]`)
           * `oss` (`pulumi.Input[str]`)
           * `ots` (`pulumi.Input[str]`)
           * `polardb` (`pulumi.Input[str]`)

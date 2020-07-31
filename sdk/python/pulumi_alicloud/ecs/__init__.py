@@ -5,10 +5,12 @@
 # Export this package's modules as members:
 from .auto_provisioning_group import *
 from .copy_image import *
+from .dedicated_host import *
 from .disk import *
 from .disk_attachment import *
 from .eip import *
 from .eip_association import *
+from .get_dedicated_hosts import *
 from .get_disks import *
 from .get_eips import *
 from .get_images import *

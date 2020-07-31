@@ -810,6 +810,8 @@ func (o BucketRefererConfigPtrOutput) Referers() pulumi.StringArrayOutput {
 }
 
 type BucketServerSideEncryptionRule struct {
+	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+	KmsMasterKeyId *string `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 	SseAlgorithm string `pulumi:"sseAlgorithm"`
 }
@@ -827,6 +829,8 @@ type BucketServerSideEncryptionRuleInput interface {
 }
 
 type BucketServerSideEncryptionRuleArgs struct {
+	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+	KmsMasterKeyId pulumi.StringPtrInput `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 	SseAlgorithm pulumi.StringInput `pulumi:"sseAlgorithm"`
 }
@@ -909,6 +913,11 @@ func (o BucketServerSideEncryptionRuleOutput) ToBucketServerSideEncryptionRulePt
 	}).(BucketServerSideEncryptionRulePtrOutput)
 }
 
+// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+func (o BucketServerSideEncryptionRuleOutput) KmsMasterKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketServerSideEncryptionRule) *string { return v.KmsMasterKeyId }).(pulumi.StringPtrOutput)
+}
+
 // The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
 func (o BucketServerSideEncryptionRuleOutput) SseAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketServerSideEncryptionRule) string { return v.SseAlgorithm }).(pulumi.StringOutput)
@@ -930,6 +939,16 @@ func (o BucketServerSideEncryptionRulePtrOutput) ToBucketServerSideEncryptionRul
 
 func (o BucketServerSideEncryptionRulePtrOutput) Elem() BucketServerSideEncryptionRuleOutput {
 	return o.ApplyT(func(v *BucketServerSideEncryptionRule) BucketServerSideEncryptionRule { return *v }).(BucketServerSideEncryptionRuleOutput)
+}
+
+// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+func (o BucketServerSideEncryptionRulePtrOutput) KmsMasterKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerSideEncryptionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsMasterKeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
@@ -1465,6 +1484,8 @@ type GetBucketsBucket struct {
 	// Bucket owner.
 	Owner  string  `pulumi:"owner"`
 	Policy *string `pulumi:"policy"`
+	// Redundancy type. Possible values: `LRS`, and `ZRS`.
+	RedundancyType string `pulumi:"redundancyType"`
 	// A list of one element containing referer configuration. It contains the following attributes:
 	RefererConfig GetBucketsBucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of default encryption for a bucket. It contains the following attributes:
@@ -1513,6 +1534,8 @@ type GetBucketsBucketArgs struct {
 	// Bucket owner.
 	Owner  pulumi.StringInput    `pulumi:"owner"`
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// Redundancy type. Possible values: `LRS`, and `ZRS`.
+	RedundancyType pulumi.StringInput `pulumi:"redundancyType"`
 	// A list of one element containing referer configuration. It contains the following attributes:
 	RefererConfig GetBucketsBucketRefererConfigInput `pulumi:"refererConfig"`
 	// A configuration of default encryption for a bucket. It contains the following attributes:
@@ -1631,6 +1654,11 @@ func (o GetBucketsBucketOutput) Owner() pulumi.StringOutput {
 
 func (o GetBucketsBucketOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBucketsBucket) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// Redundancy type. Possible values: `LRS`, and `ZRS`.
+func (o GetBucketsBucketOutput) RedundancyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucket) string { return v.RedundancyType }).(pulumi.StringOutput)
 }
 
 // A list of one element containing referer configuration. It contains the following attributes:
@@ -2131,6 +2159,8 @@ func (o GetBucketsBucketRefererConfigOutput) Referers() pulumi.StringArrayOutput
 }
 
 type GetBucketsBucketServerSideEncryptionRule struct {
+	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+	KmsMasterKeyId string `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use.
 	SseAlgorithm string `pulumi:"sseAlgorithm"`
 }
@@ -2148,6 +2178,8 @@ type GetBucketsBucketServerSideEncryptionRuleInput interface {
 }
 
 type GetBucketsBucketServerSideEncryptionRuleArgs struct {
+	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+	KmsMasterKeyId pulumi.StringInput `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use.
 	SseAlgorithm pulumi.StringInput `pulumi:"sseAlgorithm"`
 }
@@ -2176,6 +2208,11 @@ func (o GetBucketsBucketServerSideEncryptionRuleOutput) ToGetBucketsBucketServer
 
 func (o GetBucketsBucketServerSideEncryptionRuleOutput) ToGetBucketsBucketServerSideEncryptionRuleOutputWithContext(ctx context.Context) GetBucketsBucketServerSideEncryptionRuleOutput {
 	return o
+}
+
+// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+func (o GetBucketsBucketServerSideEncryptionRuleOutput) KmsMasterKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketsBucketServerSideEncryptionRule) string { return v.KmsMasterKeyId }).(pulumi.StringOutput)
 }
 
 // The server-side encryption algorithm to use.

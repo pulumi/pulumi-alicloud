@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about DRDS and how to use it, see [What is DRDS](https://www.alibabacloud.com/help/doc-detail/29659.htm).
  *
- * > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao.
+ * > **NOTE:** At present, DRDS instance only can be supported in the regions: cn-shenzhen, cn-beijing, cn-hangzhou, cn-hongkong, cn-qingdao, ap-southeast-1.
  *
  * > **NOTE:** Currently, this resource only support `Domestic Site Account`.
  *
@@ -92,11 +92,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The VSwitch ID to launch in.
      */
-    public readonly vswitchId!: pulumi.Output<string | undefined>;
+    public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -126,6 +126,12 @@ export class Instance extends pulumi.CustomResource {
             }
             if (!args || args.specification === undefined) {
                 throw new Error("Missing required property 'specification'");
+            }
+            if (!args || args.vswitchId === undefined) {
+                throw new Error("Missing required property 'vswitchId'");
+            }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -222,9 +228,9 @@ export interface InstanceArgs {
     /**
      * The VSwitch ID to launch in.
      */
-    readonly vswitchId?: pulumi.Input<string>;
+    readonly vswitchId: pulumi.Input<string>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }
